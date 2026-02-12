@@ -318,7 +318,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -542,7 +544,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -1798,7 +1800,8 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1951,7 +1954,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2577,7 +2581,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2730,7 +2735,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3151,7 +3157,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3304,7 +3311,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4028,6 +4036,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
+  --p-internal-border-radius: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -4179,7 +4188,8 @@ exports[`should render dsr component for PButton 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4569,7 +4579,8 @@ p {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4989,7 +5000,8 @@ h2 {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
+  --p-internal-border-radius: var(--p-radius-lg);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5284,7 +5296,8 @@ svg {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
+  --p-internal-border-radius: var(--p-radius-lg);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6138,7 +6151,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -6265,6 +6278,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -6409,6 +6423,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
+  --p-internal-border-radius: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -6837,7 +6852,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -6882,6 +6897,7 @@ img {
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -7261,6 +7277,7 @@ dialog::backdrop {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -7641,6 +7658,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
+  --p-internal-border-radius: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -7804,7 +7822,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -7971,7 +7991,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8131,7 +8153,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8299,7 +8323,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8464,7 +8490,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8624,7 +8652,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8787,7 +8817,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8947,7 +8979,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9107,7 +9141,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9274,7 +9310,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9434,7 +9472,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9588,7 +9628,8 @@ exports[`should render dsr component for PLink 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-link-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9965,7 +10006,8 @@ p {
   display: inline-block;
   vertical-align: top;
   --p-internal-link-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -10208,7 +10250,7 @@ slot[name="header"] {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -10474,6 +10516,7 @@ dialog::backdrop {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -10978,7 +11021,9 @@ slot[name="label-after"] {
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -11202,7 +11247,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -12510,7 +12555,8 @@ exports[`should render dsr component for PScroller 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12663,7 +12709,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13497,6 +13544,7 @@ dialog::backdrop {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -13906,7 +13954,8 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14059,7 +14108,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14630,7 +14680,8 @@ exports[`should render dsr component for PTable 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14783,7 +14834,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15362,7 +15414,8 @@ exports[`should render dsr component for PTabs 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15515,7 +15568,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15916,7 +15970,8 @@ exports[`should render dsr component for PTabsBar 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -16069,7 +16124,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;

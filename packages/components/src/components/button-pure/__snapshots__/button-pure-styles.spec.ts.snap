@@ -765,7 +765,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -848,7 +848,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -931,7 +931,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -976,6 +976,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -991,6 +992,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1006,6 +1008,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1021,6 +1024,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1036,6 +1040,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1126,7 +1131,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -1174,6 +1179,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1193,6 +1199,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1212,6 +1219,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1231,6 +1239,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1250,6 +1259,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
