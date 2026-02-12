@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -31,36 +31,10 @@ export class SelectOption {
   @Prop() public value?: string;
 
   /** Disables the option. */
-  @Prop({ mutable: true }) public disabled?: boolean = false;
-
-  /** Stores the option's own disabled state (not inherited from optgroup). */
-  private ownDisabled: boolean;
-
-  @Watch('disabled')
-  public onDisabledChange(newValue: boolean): void {
-    // Only update ownDisabled if not currently overridden by parent optgroup
-    if (!this.host.disabledParent) {
-      this.ownDisabled = newValue;
-    }
-  }
+  @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
-  }
-
-  public componentWillLoad(): void {
-    // Store the initial disabled value set by the user
-    this.ownDisabled = this.disabled;
-  }
-
-  public componentWillRender(): void {
-    // If parent optgroup is disabled, the option should be disabled
-    // If parent optgroup is not disabled (or no optgroup), use the option's own disabled state
-    if (this.host.disabledParent) {
-      this.disabled = true;
-    } else {
-      this.disabled = this.ownDisabled;
-    }
   }
 
   public render(): JSX.Element {
