@@ -12,7 +12,7 @@ export type FetchPdsVersionsOptions = {
  * @returns True if version matches v4 alpha pattern (e.g., "4.0.0-alpha.0")
  */
 const isV4Alpha = (version: string): boolean => {
-  return /^4\.\d+\.\d+-alpha\.\d+$/.test(version);
+  return /^4\.\d+\.\d+-alpha|beta\.\d+$/.test(version);
 };
 
 export const fetchPdsVersions = async ({

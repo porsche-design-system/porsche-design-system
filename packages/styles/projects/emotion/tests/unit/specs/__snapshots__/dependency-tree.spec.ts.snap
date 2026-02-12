@@ -59,104 +59,73 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "border/radiusXs.cjs": [
     "tokens/dist/esm/border/radius/radiusXs.cjs",
   ],
-  "color/dark/colorBackdropDark.cjs": [
-    "tokens/dist/esm/color/dark/background/colorBackdropDark.cjs",
-  ],
-  "color/dark/colorCanvasDark.cjs": [
-    "tokens/dist/esm/color/dark/background/colorCanvasDark.cjs",
-  ],
-  "color/dark/colorContrastHighDark.cjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.cjs",
-  ],
-  "color/dark/colorContrastHigherDark.cjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastHigherDark.cjs",
-  ],
-  "color/dark/colorContrastLowDark.cjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.cjs",
-  ],
-  "color/dark/colorContrastLowerDark.cjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastLowerDark.cjs",
-  ],
-  "color/dark/colorContrastMediumDark.cjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.cjs",
-  ],
-  "color/dark/colorErrorDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorDark.cjs",
-  ],
-  "color/dark/colorErrorFrostedDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.cjs",
-  ],
-  "color/dark/colorErrorFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.cjs",
-  ],
-  "color/dark/colorErrorLowDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorLowDark.cjs",
-  ],
-  "color/dark/colorErrorMediumDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorMediumDark.cjs",
-  ],
-  "color/dark/colorFocusDark.cjs": [
+  "color/color-scheme.cjs": [
     "tokens/dist/esm/color/dark/a11y/colorFocusDark.cjs",
-  ],
-  "color/dark/colorFrostedDark.cjs": [
+    "tokens/dist/esm/color/dark/background/colorBackdropDark.cjs",
+    "tokens/dist/esm/color/dark/background/colorCanvasDark.cjs",
     "tokens/dist/esm/color/dark/background/colorFrostedDark.cjs",
-  ],
-  "color/dark/colorFrostedSoftDark.cjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.cjs",
-  ],
-  "color/dark/colorFrostedStrongDark.cjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.cjs",
-  ],
-  "color/dark/colorInfoDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoDark.cjs",
-  ],
-  "color/dark/colorInfoFrostedDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.cjs",
-  ],
-  "color/dark/colorInfoFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.cjs",
-  ],
-  "color/dark/colorInfoLowDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoLowDark.cjs",
-  ],
-  "color/dark/colorInfoMediumDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoMediumDark.cjs",
-  ],
-  "color/dark/colorPrimaryDark.cjs": [
-    "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.cjs",
-  ],
-  "color/dark/colorSuccessDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessDark.cjs",
-  ],
-  "color/dark/colorSuccessFrostedDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.cjs",
-  ],
-  "color/dark/colorSuccessFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.cjs",
-  ],
-  "color/dark/colorSuccessLowDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessLowDark.cjs",
-  ],
-  "color/dark/colorSuccessMediumDark.cjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessMediumDark.cjs",
-  ],
-  "color/dark/colorSurfaceDark.cjs": [
     "tokens/dist/esm/color/dark/background/colorSurfaceDark.cjs",
-  ],
-  "color/dark/colorWarningDark.cjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.cjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastHigherDark.cjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.cjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastLowerDark.cjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.cjs",
+    "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorLowDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorMediumDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoLowDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoMediumDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessLowDark.cjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessMediumDark.cjs",
     "tokens/dist/esm/color/dark/semantic/colorWarningDark.cjs",
-  ],
-  "color/dark/colorWarningFrostedDark.cjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.cjs",
-  ],
-  "color/dark/colorWarningFrostedSoftDark.cjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningFrostedSoftDark.cjs",
-  ],
-  "color/dark/colorWarningLowDark.cjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningLowDark.cjs",
-  ],
-  "color/dark/colorWarningMediumDark.cjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningMediumDark.cjs",
+    "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs",
+    "tokens/dist/esm/color/light/background/colorBackdropLight.cjs",
+    "tokens/dist/esm/color/light/background/colorCanvasLight.cjs",
+    "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
+    "tokens/dist/esm/color/light/background/colorFrostedSoftLight.cjs",
+    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.cjs",
+    "tokens/dist/esm/color/light/background/colorSurfaceLight.cjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastHighLight.cjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastHigherLight.cjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastLowLight.cjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastLowerLight.cjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.cjs",
+    "tokens/dist/esm/color/light/foreground/colorPrimaryLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorLowLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorMediumLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoLowLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoMediumLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessLowLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessMediumLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningLowLight.cjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningMediumLight.cjs",
   ],
   "color/deprecated/theme.cjs": [
     "color/deprecated/themeDark.cjs",
@@ -421,105 +390,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/light-dark/colorWarningMedium.cjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorWarningMedium.cjs",
   ],
-  "color/light/colorBackdropLight.cjs": [
-    "tokens/dist/esm/color/light/background/colorBackdropLight.cjs",
-  ],
-  "color/light/colorCanvasLight.cjs": [
-    "tokens/dist/esm/color/light/background/colorCanvasLight.cjs",
-  ],
-  "color/light/colorContrastHighLight.cjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastHighLight.cjs",
-  ],
-  "color/light/colorContrastHigherLight.cjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastHigherLight.cjs",
-  ],
-  "color/light/colorContrastLowLight.cjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastLowLight.cjs",
-  ],
-  "color/light/colorContrastLowerLight.cjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastLowerLight.cjs",
-  ],
-  "color/light/colorContrastMediumLight.cjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.cjs",
-  ],
-  "color/light/colorErrorFrostedLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.cjs",
-  ],
-  "color/light/colorErrorFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.cjs",
-  ],
-  "color/light/colorErrorLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorLight.cjs",
-  ],
-  "color/light/colorErrorLowLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorLowLight.cjs",
-  ],
-  "color/light/colorErrorMediumLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorMediumLight.cjs",
-  ],
-  "color/light/colorFocusLight.cjs": [
-    "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs",
-  ],
-  "color/light/colorFrostedLight.cjs": [
-    "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
-  ],
-  "color/light/colorFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/light/background/colorFrostedSoftLight.cjs",
-  ],
-  "color/light/colorFrostedStrongLight.cjs": [
-    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.cjs",
-  ],
-  "color/light/colorInfoFrostedLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.cjs",
-  ],
-  "color/light/colorInfoFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.cjs",
-  ],
-  "color/light/colorInfoLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoLight.cjs",
-  ],
-  "color/light/colorInfoLowLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoLowLight.cjs",
-  ],
-  "color/light/colorInfoMediumLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoMediumLight.cjs",
-  ],
-  "color/light/colorPrimaryLight.cjs": [
-    "tokens/dist/esm/color/light/foreground/colorPrimaryLight.cjs",
-  ],
-  "color/light/colorSuccessFrostedLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.cjs",
-  ],
-  "color/light/colorSuccessFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.cjs",
-  ],
-  "color/light/colorSuccessLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessLight.cjs",
-  ],
-  "color/light/colorSuccessLowLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessLowLight.cjs",
-  ],
-  "color/light/colorSuccessMediumLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessMediumLight.cjs",
-  ],
-  "color/light/colorSurfaceLight.cjs": [
-    "tokens/dist/esm/color/light/background/colorSurfaceLight.cjs",
-  ],
-  "color/light/colorWarningFrostedLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.cjs",
-  ],
-  "color/light/colorWarningFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.cjs",
-  ],
-  "color/light/colorWarningLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningLight.cjs",
-  ],
-  "color/light/colorWarningLowLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningLowLight.cjs",
-  ],
-  "color/light/colorWarningMediumLight.cjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningMediumLight.cjs",
-  ],
   "focus/deprecated/getFocusStyle.cjs": [
     "border/deprecated/borderRadiusMedium.cjs",
     "border/deprecated/borderRadiusSmall.cjs",
@@ -527,7 +397,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/deprecated/themeLightStateFocus.cjs",
   ],
   "focus/getFocusVisibleStyle.cjs": [
-    "color/light/colorFocusLight.cjs",
+    "color/light-dark/colorFocus.cjs",
   ],
   "font/deprecated/fontFamily.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
@@ -819,39 +689,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "border/radiusSm.cjs",
     "border/radiusXl.cjs",
     "border/radiusXs.cjs",
-    "color/dark/colorBackdropDark.cjs",
-    "color/dark/colorCanvasDark.cjs",
-    "color/dark/colorContrastHighDark.cjs",
-    "color/dark/colorContrastHigherDark.cjs",
-    "color/dark/colorContrastLowDark.cjs",
-    "color/dark/colorContrastLowerDark.cjs",
-    "color/dark/colorContrastMediumDark.cjs",
-    "color/dark/colorErrorDark.cjs",
-    "color/dark/colorErrorFrostedDark.cjs",
-    "color/dark/colorErrorFrostedSoftDark.cjs",
-    "color/dark/colorErrorLowDark.cjs",
-    "color/dark/colorErrorMediumDark.cjs",
-    "color/dark/colorFocusDark.cjs",
-    "color/dark/colorFrostedDark.cjs",
-    "color/dark/colorFrostedSoftDark.cjs",
-    "color/dark/colorFrostedStrongDark.cjs",
-    "color/dark/colorInfoDark.cjs",
-    "color/dark/colorInfoFrostedDark.cjs",
-    "color/dark/colorInfoFrostedSoftDark.cjs",
-    "color/dark/colorInfoLowDark.cjs",
-    "color/dark/colorInfoMediumDark.cjs",
-    "color/dark/colorPrimaryDark.cjs",
-    "color/dark/colorSuccessDark.cjs",
-    "color/dark/colorSuccessFrostedDark.cjs",
-    "color/dark/colorSuccessFrostedSoftDark.cjs",
-    "color/dark/colorSuccessLowDark.cjs",
-    "color/dark/colorSuccessMediumDark.cjs",
-    "color/dark/colorSurfaceDark.cjs",
-    "color/dark/colorWarningDark.cjs",
-    "color/dark/colorWarningFrostedDark.cjs",
-    "color/dark/colorWarningFrostedSoftDark.cjs",
-    "color/dark/colorWarningLowDark.cjs",
-    "color/dark/colorWarningMediumDark.cjs",
+    "color/color-scheme.cjs",
     "color/deprecated/theme.cjs",
     "color/deprecated/themeDark.cjs",
     "color/deprecated/themeDarkBackgroundBase.cjs",
@@ -928,39 +766,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/light-dark/colorWarningFrostedSoft.cjs",
     "color/light-dark/colorWarningLow.cjs",
     "color/light-dark/colorWarningMedium.cjs",
-    "color/light/colorBackdropLight.cjs",
-    "color/light/colorCanvasLight.cjs",
-    "color/light/colorContrastHighLight.cjs",
-    "color/light/colorContrastHigherLight.cjs",
-    "color/light/colorContrastLowLight.cjs",
-    "color/light/colorContrastLowerLight.cjs",
-    "color/light/colorContrastMediumLight.cjs",
-    "color/light/colorErrorFrostedLight.cjs",
-    "color/light/colorErrorFrostedSoftLight.cjs",
-    "color/light/colorErrorLight.cjs",
-    "color/light/colorErrorLowLight.cjs",
-    "color/light/colorErrorMediumLight.cjs",
-    "color/light/colorFocusLight.cjs",
-    "color/light/colorFrostedLight.cjs",
-    "color/light/colorFrostedSoftLight.cjs",
-    "color/light/colorFrostedStrongLight.cjs",
-    "color/light/colorInfoFrostedLight.cjs",
-    "color/light/colorInfoFrostedSoftLight.cjs",
-    "color/light/colorInfoLight.cjs",
-    "color/light/colorInfoLowLight.cjs",
-    "color/light/colorInfoMediumLight.cjs",
-    "color/light/colorPrimaryLight.cjs",
-    "color/light/colorSuccessFrostedLight.cjs",
-    "color/light/colorSuccessFrostedSoftLight.cjs",
-    "color/light/colorSuccessLight.cjs",
-    "color/light/colorSuccessLowLight.cjs",
-    "color/light/colorSuccessMediumLight.cjs",
-    "color/light/colorSurfaceLight.cjs",
-    "color/light/colorWarningFrostedLight.cjs",
-    "color/light/colorWarningFrostedSoftLight.cjs",
-    "color/light/colorWarningLight.cjs",
-    "color/light/colorWarningLowLight.cjs",
-    "color/light/colorWarningMediumLight.cjs",
     "focus/deprecated/getFocusStyle.cjs",
     "focus/getFocusVisibleStyle.cjs",
     "font/deprecated/fontFamily.cjs",
@@ -1941,104 +1746,73 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "border/radiusXs.mjs": [
     "tokens/dist/esm/border/radius/radiusXs.mjs",
   ],
-  "color/dark/colorBackdropDark.mjs": [
-    "tokens/dist/esm/color/dark/background/colorBackdropDark.mjs",
-  ],
-  "color/dark/colorCanvasDark.mjs": [
-    "tokens/dist/esm/color/dark/background/colorCanvasDark.mjs",
-  ],
-  "color/dark/colorContrastHighDark.mjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.mjs",
-  ],
-  "color/dark/colorContrastHigherDark.mjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastHigherDark.mjs",
-  ],
-  "color/dark/colorContrastLowDark.mjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.mjs",
-  ],
-  "color/dark/colorContrastLowerDark.mjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastLowerDark.mjs",
-  ],
-  "color/dark/colorContrastMediumDark.mjs": [
-    "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.mjs",
-  ],
-  "color/dark/colorErrorDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorDark.mjs",
-  ],
-  "color/dark/colorErrorFrostedDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.mjs",
-  ],
-  "color/dark/colorErrorFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.mjs",
-  ],
-  "color/dark/colorErrorLowDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorLowDark.mjs",
-  ],
-  "color/dark/colorErrorMediumDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorErrorMediumDark.mjs",
-  ],
-  "color/dark/colorFocusDark.mjs": [
+  "color/color-scheme.mjs": [
     "tokens/dist/esm/color/dark/a11y/colorFocusDark.mjs",
-  ],
-  "color/dark/colorFrostedDark.mjs": [
+    "tokens/dist/esm/color/dark/background/colorBackdropDark.mjs",
+    "tokens/dist/esm/color/dark/background/colorCanvasDark.mjs",
     "tokens/dist/esm/color/dark/background/colorFrostedDark.mjs",
-  ],
-  "color/dark/colorFrostedSoftDark.mjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.mjs",
-  ],
-  "color/dark/colorFrostedStrongDark.mjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.mjs",
-  ],
-  "color/dark/colorInfoDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoDark.mjs",
-  ],
-  "color/dark/colorInfoFrostedDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.mjs",
-  ],
-  "color/dark/colorInfoFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.mjs",
-  ],
-  "color/dark/colorInfoLowDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoLowDark.mjs",
-  ],
-  "color/dark/colorInfoMediumDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorInfoMediumDark.mjs",
-  ],
-  "color/dark/colorPrimaryDark.mjs": [
-    "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.mjs",
-  ],
-  "color/dark/colorSuccessDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessDark.mjs",
-  ],
-  "color/dark/colorSuccessFrostedDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.mjs",
-  ],
-  "color/dark/colorSuccessFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.mjs",
-  ],
-  "color/dark/colorSuccessLowDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessLowDark.mjs",
-  ],
-  "color/dark/colorSuccessMediumDark.mjs": [
-    "tokens/dist/esm/color/dark/semantic/colorSuccessMediumDark.mjs",
-  ],
-  "color/dark/colorSurfaceDark.mjs": [
     "tokens/dist/esm/color/dark/background/colorSurfaceDark.mjs",
-  ],
-  "color/dark/colorWarningDark.mjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.mjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastHigherDark.mjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.mjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastLowerDark.mjs",
+    "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.mjs",
+    "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorLowDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorErrorMediumDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoLowDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorInfoMediumDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessLowDark.mjs",
+    "tokens/dist/esm/color/dark/semantic/colorSuccessMediumDark.mjs",
     "tokens/dist/esm/color/dark/semantic/colorWarningDark.mjs",
-  ],
-  "color/dark/colorWarningFrostedDark.mjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.mjs",
-  ],
-  "color/dark/colorWarningFrostedSoftDark.mjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningFrostedSoftDark.mjs",
-  ],
-  "color/dark/colorWarningLowDark.mjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningLowDark.mjs",
-  ],
-  "color/dark/colorWarningMediumDark.mjs": [
     "tokens/dist/esm/color/dark/semantic/colorWarningMediumDark.mjs",
+    "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs",
+    "tokens/dist/esm/color/light/background/colorBackdropLight.mjs",
+    "tokens/dist/esm/color/light/background/colorCanvasLight.mjs",
+    "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
+    "tokens/dist/esm/color/light/background/colorFrostedSoftLight.mjs",
+    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.mjs",
+    "tokens/dist/esm/color/light/background/colorSurfaceLight.mjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastHighLight.mjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastHigherLight.mjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastLowLight.mjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastLowerLight.mjs",
+    "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.mjs",
+    "tokens/dist/esm/color/light/foreground/colorPrimaryLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorLowLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorErrorMediumLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoLowLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorInfoMediumLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessLowLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorSuccessMediumLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningLowLight.mjs",
+    "tokens/dist/esm/color/light/semantic/colorWarningMediumLight.mjs",
   ],
   "color/deprecated/theme.mjs": [
     "color/deprecated/themeDark.mjs",
@@ -2303,105 +2077,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/light-dark/colorWarningMedium.mjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorWarningMedium.mjs",
   ],
-  "color/light/colorBackdropLight.mjs": [
-    "tokens/dist/esm/color/light/background/colorBackdropLight.mjs",
-  ],
-  "color/light/colorCanvasLight.mjs": [
-    "tokens/dist/esm/color/light/background/colorCanvasLight.mjs",
-  ],
-  "color/light/colorContrastHighLight.mjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastHighLight.mjs",
-  ],
-  "color/light/colorContrastHigherLight.mjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastHigherLight.mjs",
-  ],
-  "color/light/colorContrastLowLight.mjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastLowLight.mjs",
-  ],
-  "color/light/colorContrastLowerLight.mjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastLowerLight.mjs",
-  ],
-  "color/light/colorContrastMediumLight.mjs": [
-    "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.mjs",
-  ],
-  "color/light/colorErrorFrostedLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.mjs",
-  ],
-  "color/light/colorErrorFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.mjs",
-  ],
-  "color/light/colorErrorLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorLight.mjs",
-  ],
-  "color/light/colorErrorLowLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorLowLight.mjs",
-  ],
-  "color/light/colorErrorMediumLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorErrorMediumLight.mjs",
-  ],
-  "color/light/colorFocusLight.mjs": [
-    "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs",
-  ],
-  "color/light/colorFrostedLight.mjs": [
-    "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
-  ],
-  "color/light/colorFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/light/background/colorFrostedSoftLight.mjs",
-  ],
-  "color/light/colorFrostedStrongLight.mjs": [
-    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.mjs",
-  ],
-  "color/light/colorInfoFrostedLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.mjs",
-  ],
-  "color/light/colorInfoFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.mjs",
-  ],
-  "color/light/colorInfoLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoLight.mjs",
-  ],
-  "color/light/colorInfoLowLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoLowLight.mjs",
-  ],
-  "color/light/colorInfoMediumLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorInfoMediumLight.mjs",
-  ],
-  "color/light/colorPrimaryLight.mjs": [
-    "tokens/dist/esm/color/light/foreground/colorPrimaryLight.mjs",
-  ],
-  "color/light/colorSuccessFrostedLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.mjs",
-  ],
-  "color/light/colorSuccessFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.mjs",
-  ],
-  "color/light/colorSuccessLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessLight.mjs",
-  ],
-  "color/light/colorSuccessLowLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessLowLight.mjs",
-  ],
-  "color/light/colorSuccessMediumLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorSuccessMediumLight.mjs",
-  ],
-  "color/light/colorSurfaceLight.mjs": [
-    "tokens/dist/esm/color/light/background/colorSurfaceLight.mjs",
-  ],
-  "color/light/colorWarningFrostedLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.mjs",
-  ],
-  "color/light/colorWarningFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.mjs",
-  ],
-  "color/light/colorWarningLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningLight.mjs",
-  ],
-  "color/light/colorWarningLowLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningLowLight.mjs",
-  ],
-  "color/light/colorWarningMediumLight.mjs": [
-    "tokens/dist/esm/color/light/semantic/colorWarningMediumLight.mjs",
-  ],
   "focus/deprecated/getFocusStyle.mjs": [
     "border/deprecated/borderRadiusMedium.mjs",
     "border/deprecated/borderRadiusSmall.mjs",
@@ -2409,7 +2084,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/deprecated/themeLightStateFocus.mjs",
   ],
   "focus/getFocusVisibleStyle.mjs": [
-    "color/light/colorFocusLight.mjs",
+    "color/light-dark/colorFocus.mjs",
   ],
   "font/deprecated/fontFamily.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",
@@ -2701,39 +2376,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "border/radiusSm.mjs",
     "border/radiusXl.mjs",
     "border/radiusXs.mjs",
-    "color/dark/colorBackdropDark.mjs",
-    "color/dark/colorCanvasDark.mjs",
-    "color/dark/colorContrastHighDark.mjs",
-    "color/dark/colorContrastHigherDark.mjs",
-    "color/dark/colorContrastLowDark.mjs",
-    "color/dark/colorContrastLowerDark.mjs",
-    "color/dark/colorContrastMediumDark.mjs",
-    "color/dark/colorErrorDark.mjs",
-    "color/dark/colorErrorFrostedDark.mjs",
-    "color/dark/colorErrorFrostedSoftDark.mjs",
-    "color/dark/colorErrorLowDark.mjs",
-    "color/dark/colorErrorMediumDark.mjs",
-    "color/dark/colorFocusDark.mjs",
-    "color/dark/colorFrostedDark.mjs",
-    "color/dark/colorFrostedSoftDark.mjs",
-    "color/dark/colorFrostedStrongDark.mjs",
-    "color/dark/colorInfoDark.mjs",
-    "color/dark/colorInfoFrostedDark.mjs",
-    "color/dark/colorInfoFrostedSoftDark.mjs",
-    "color/dark/colorInfoLowDark.mjs",
-    "color/dark/colorInfoMediumDark.mjs",
-    "color/dark/colorPrimaryDark.mjs",
-    "color/dark/colorSuccessDark.mjs",
-    "color/dark/colorSuccessFrostedDark.mjs",
-    "color/dark/colorSuccessFrostedSoftDark.mjs",
-    "color/dark/colorSuccessLowDark.mjs",
-    "color/dark/colorSuccessMediumDark.mjs",
-    "color/dark/colorSurfaceDark.mjs",
-    "color/dark/colorWarningDark.mjs",
-    "color/dark/colorWarningFrostedDark.mjs",
-    "color/dark/colorWarningFrostedSoftDark.mjs",
-    "color/dark/colorWarningLowDark.mjs",
-    "color/dark/colorWarningMediumDark.mjs",
+    "color/color-scheme.mjs",
     "color/deprecated/theme.mjs",
     "color/deprecated/themeDark.mjs",
     "color/deprecated/themeDarkBackgroundBase.mjs",
@@ -2810,39 +2453,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/light-dark/colorWarningFrostedSoft.mjs",
     "color/light-dark/colorWarningLow.mjs",
     "color/light-dark/colorWarningMedium.mjs",
-    "color/light/colorBackdropLight.mjs",
-    "color/light/colorCanvasLight.mjs",
-    "color/light/colorContrastHighLight.mjs",
-    "color/light/colorContrastHigherLight.mjs",
-    "color/light/colorContrastLowLight.mjs",
-    "color/light/colorContrastLowerLight.mjs",
-    "color/light/colorContrastMediumLight.mjs",
-    "color/light/colorErrorFrostedLight.mjs",
-    "color/light/colorErrorFrostedSoftLight.mjs",
-    "color/light/colorErrorLight.mjs",
-    "color/light/colorErrorLowLight.mjs",
-    "color/light/colorErrorMediumLight.mjs",
-    "color/light/colorFocusLight.mjs",
-    "color/light/colorFrostedLight.mjs",
-    "color/light/colorFrostedSoftLight.mjs",
-    "color/light/colorFrostedStrongLight.mjs",
-    "color/light/colorInfoFrostedLight.mjs",
-    "color/light/colorInfoFrostedSoftLight.mjs",
-    "color/light/colorInfoLight.mjs",
-    "color/light/colorInfoLowLight.mjs",
-    "color/light/colorInfoMediumLight.mjs",
-    "color/light/colorPrimaryLight.mjs",
-    "color/light/colorSuccessFrostedLight.mjs",
-    "color/light/colorSuccessFrostedSoftLight.mjs",
-    "color/light/colorSuccessLight.mjs",
-    "color/light/colorSuccessLowLight.mjs",
-    "color/light/colorSuccessMediumLight.mjs",
-    "color/light/colorSurfaceLight.mjs",
-    "color/light/colorWarningFrostedLight.mjs",
-    "color/light/colorWarningFrostedSoftLight.mjs",
-    "color/light/colorWarningLight.mjs",
-    "color/light/colorWarningLowLight.mjs",
-    "color/light/colorWarningMediumLight.mjs",
     "focus/deprecated/getFocusStyle.mjs",
     "focus/getFocusVisibleStyle.mjs",
     "font/deprecated/fontFamily.mjs",

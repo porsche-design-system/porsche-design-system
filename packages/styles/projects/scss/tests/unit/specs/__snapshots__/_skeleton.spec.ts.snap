@@ -64,7 +64,7 @@ exports[`skeleton() > should return correct css 1`] = `
 div {
   display: block;
   border-radius: 4px;
-  background: transparent linear-gradient(to right, light-dark(hsla(240, 5%, 70%, 0.148), hsla(240, 2%, 43%, 0.228)) 0%, light-dark(hsla(236, 6.5%, 42%, 0.236), hsla(240, 1.5%, 61.8%, 0.302)) 50%, light-dark(hsla(240, 5%, 70%, 0.148), hsla(240, 2%, 43%, 0.228)) 100%) 0 0/200% 100%;
+  background: transparent linear-gradient(to right, var(--_color-frosted, light-dark(hsla(240, 5%, 70%, 0.148), hsla(240, 2%, 43%, 0.228))) 0%, var(--_color-frosted-strong, light-dark(hsla(236, 6.5%, 42%, 0.236), hsla(240, 1.5%, 61.8%, 0.302))) 50%, var(--_color-frosted, light-dark(hsla(240, 5%, 70%, 0.148), hsla(240, 2%, 43%, 0.228))) 100%) 0 0/200% 100%;
   animation: skeleton 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }"
 `;
