@@ -601,7 +601,6 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
       // await expect(buttonElement).toHaveCSS('outline', 'rgb(1, 2, 5) none 0px');
 
-
       await host.focus();
       await waitForStencilLifecycle(page);
 
@@ -2208,11 +2207,8 @@ test.describe('optgroups', () => {
     expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      const value = await getProperty<string>(child, 'value');
-      const disabled = await getProperty<boolean>(child, 'disabled');
-      const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item.disabled);
-      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabled')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
 
     await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).disabled = false));
@@ -2283,8 +2279,8 @@ test.describe('optgroups', () => {
     expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      expect(await getProperty<boolean>(child, 'disabled')).toBeFalsy();
-      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabled')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
   });
 

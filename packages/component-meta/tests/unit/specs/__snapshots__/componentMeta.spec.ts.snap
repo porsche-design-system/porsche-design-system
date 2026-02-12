@@ -7102,6 +7102,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the option.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "value": {
@@ -8469,6 +8472,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the option.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "value": {
