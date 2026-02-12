@@ -237,6 +237,17 @@ slot:not([name]) {
   }
 }
 
+@media (forced-colors: active) {
+  slot[name="label-after"] {
+    opacity: 1;
+    color: GrayText;
+  }
+  ::slotted(*:not([slot])) {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -296,7 +307,14 @@ slot:not([name]) {
 .message:empty {
   opacity: 0;
   position: absolute;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: auto, disabled: false, hideLabel: false and state: none 1`] = `

@@ -62,6 +62,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -69,6 +75,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -156,6 +163,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -163,6 +176,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -251,7 +265,24 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -338,6 +369,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -345,6 +382,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -431,7 +469,20 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -523,7 +574,24 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -615,7 +683,24 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -706,6 +791,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-success);
@@ -713,6 +804,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -800,6 +892,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -807,6 +905,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -894,6 +993,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -901,6 +1006,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -987,6 +1093,12 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -994,6 +1106,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -1175,6 +1288,12 @@ label {
   }
 }
 
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -1182,6 +1301,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;

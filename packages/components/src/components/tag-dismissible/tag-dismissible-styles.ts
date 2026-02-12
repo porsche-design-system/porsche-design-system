@@ -1,6 +1,7 @@
 import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -63,6 +64,10 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
           '&:hover > .icon': {
             backgroundColor: colorFrosted,
           },
+        }),
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
         }),
         '&:focus-visible': getFocusBaseStyles(),
       },

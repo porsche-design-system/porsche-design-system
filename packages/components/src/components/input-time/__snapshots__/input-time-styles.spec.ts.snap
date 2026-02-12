@@ -46,7 +46,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -116,6 +116,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -170,7 +177,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -239,6 +246,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -293,7 +307,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -362,6 +376,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -416,7 +437,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -486,6 +507,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-success);
@@ -540,7 +568,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -609,6 +637,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -663,7 +698,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -731,6 +766,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -786,7 +828,7 @@ input::-webkit-calendar-picker-indicator {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border-color: transparent;
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -854,7 +896,14 @@ input::-webkit-calendar-picker-indicator {
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
-}"
+}
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
@@ -903,7 +952,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .spinner {
@@ -1096,6 +1145,13 @@ input::-webkit-calendar-picker-indicator {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
 "
 `;
 
@@ -1129,6 +1185,13 @@ input {
 input::-webkit-calendar-picker-indicator {
   display: none;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -1147,7 +1210,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -1336,6 +1399,19 @@ input::-webkit-calendar-picker-indicator {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .wrapper {
+    border-color: GrayText;
+  }
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  .label {
+    color: GrayText;
+  }
+}
 "
 `;
 
@@ -1369,6 +1445,13 @@ input {
 input::-webkit-calendar-picker-indicator {
   display: none;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -1387,7 +1470,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .spinner {
@@ -1461,5 +1544,18 @@ input::-webkit-calendar-picker-indicator {
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    border-color: GrayText;
+  }
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;

@@ -1,4 +1,9 @@
-import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -107,10 +112,17 @@ export const getComponentCss = (
         ? {
             borderStartEndRadius: dialogBorderRadius,
             borderEndEndRadius: dialogBorderRadius,
+            ...forcedColorsMediaQuery({
+              borderInlineEnd: '2px solid CanvasText',
+            }),
           }
         : {
             borderStartStartRadius: dialogBorderRadius,
             borderEndStartRadius: dialogBorderRadius,
+            // TODO: Fix needs to be implemented for Fullscreen (which is not available as prop for Flyout yet)
+            ...forcedColorsMediaQuery({
+              borderInlineStart: '2px solid CanvasText',
+            }),
           }),
       ...(isFooterFixed && {
         gridTemplateRows: hasHeader ? 'auto 1fr auto' : '1fr',

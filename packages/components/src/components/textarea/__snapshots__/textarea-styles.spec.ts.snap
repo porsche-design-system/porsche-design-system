@@ -1996,6 +1996,13 @@ textarea {
 textarea:focus {
   border-color: var(--p-color-error);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -2055,5 +2062,11 @@ textarea:focus {
 .message:empty {
   opacity: 0;
   position: absolute;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
