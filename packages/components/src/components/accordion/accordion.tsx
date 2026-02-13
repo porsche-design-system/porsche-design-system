@@ -1,33 +1,26 @@
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  HEADING_TAGS,
-  hasPropValueChanged,
-  validateProps,
-} from '../../utils';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../utils';
 import { getComponentCss } from './accordion-styles';
 import {
-  ACCORDION_SIZES,
-  type AccordionHeadingTag,
-  type AccordionSize,
+  ACCORDION_ALIGN_ICONS,
+  ACCORDIONS_BACKGROUNDS,
+  type AccordionAlignIcon,
+  type AccordionBackground,
   type AccordionUpdateEventDetail,
 } from './accordion-utils';
 
 const propTypes: PropTypes<typeof Accordion> = {
-  size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
-  heading: AllowedTypes.string,
-  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
   open: AllowedTypes.boolean,
+  alignIcon: AllowedTypes.oneOf<AccordionAlignIcon>(ACCORDION_ALIGN_ICONS),
+  background: AllowedTypes.oneOf<AccordionBackground>(ACCORDIONS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
   sticky: AllowedTypes.boolean,
 };
 
 /**
- * @slot {"name": "heading", "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup." }
- * @slot {"name": "", "description": "Default slot for the main content" }
+ * @slot {"name": "summary", "description": "Specifies a summary, caption, or legend for the internally used `<details>` element's disclosure box. Clicking the summary toggles the state of the parent `<details>` element open and closed." }
+ * @slot {"name": "", "description": "Default slot for the internally used `<details>` content." }
  *
  * @controlled {"props": ["open"], "event": "update"}
  */
@@ -38,19 +31,16 @@ const propTypes: PropTypes<typeof Accordion> = {
 export class Accordion {
   @Element() public host!: HTMLElement;
 
-  /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
-
-  /** Defines the heading used in accordion. */
-  @Prop() public heading?: string;
-
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
-  @Prop() public headingTag?: AccordionHeadingTag = 'h2';
-
-  /** Defines if accordion is open. */
+  /** Sets the open/closed state of the Accordion. */
   @Prop() public open?: boolean;
 
-  /** Displays the Accordion as compact version with thinner border and smaller paddings. */
+  /** Aligns the icon within the summary section. */
+  @Prop() public alignIcon?: AccordionAlignIcon = 'end';
+
+  /** Defines the background color */
+  @Prop() public background?: AccordionBackground = 'frosted';
+
+  /** Displays the Accordion as compact version. */
   @Prop() public compact?: boolean;
 
   /**
@@ -61,51 +51,35 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.sticky);
-
-    const buttonId = 'accordion-control';
-    const contentId = 'accordion-panel';
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const Heading = this.headingTag;
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.alignIcon,
+      this.background,
+      this.compact,
+      this.open,
+      this.sticky
+    );
 
     return (
-      <Host>
-        <Heading class="heading">
-          <button
-            id={buttonId}
-            type="button"
-            aria-expanded={this.open ? 'true' : 'false'}
-            aria-controls={contentId}
-            onClick={this.onButtonClick}
-          >
-            {this.heading || <slot name="heading" />}
-            <span class="icon-container">
-              <PrefixedTagNames.pIcon
-                class="icon"
-                name={this.open ? 'minus' : 'plus'}
-                size="xx-small"
-                aria-hidden="true"
-              />
-            </span>
-          </button>
-        </Heading>
-        <div id={contentId} class="collapsible" role="region" aria-labelledby={buttonId}>
-          <div>
-            <slot />
-          </div>
+      <details {...(this.open ? { open: true } : {})}>
+        {/** biome-ignore lint/a11y/noStaticElementInteractions: necessary to enable a controlled state */}
+        <summary onClick={this.onSummaryClick}>
+          <slot name="summary" />
+          <span></span>
+        </summary>
+        <div>
+          <slot />
         </div>
-      </Host>
+      </details>
     );
   }
 
-  private onButtonClick = (): void => {
+  private onSummaryClick = (e: Event): void => {
+    e.preventDefault();
+    e.stopPropagation();
     this.update.emit({ open: !this.open });
   };
 }

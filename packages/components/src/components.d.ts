@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
-import { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { AccordionAlignIcon, AccordionBackground, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -67,9 +67,9 @@ import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventD
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
-export { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { AccordionAlignIcon, AccordionBackground, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -135,25 +135,21 @@ export namespace Components {
      */
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings.
+          * Aligns the icon within the summary section.
+         */
+        "alignIcon"?: AccordionAlignIcon;
+        /**
+          * Defines the background color
+         */
+        "background"?: AccordionBackground;
+        /**
+          * Displays the Accordion as compact version.
          */
         "compact"?: boolean;
         /**
-          * Defines the heading used in accordion.
-         */
-        "heading"?: string;
-        /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
-         */
-        "headingTag"?: AccordionHeadingTag;
-        /**
-          * Defines if accordion is open.
+          * Sets the open/closed state of the Accordion.
          */
         "open"?: boolean;
-        /**
-          * The text size.
-         */
-        "size"?: BreakpointCustomizable<AccordionSize>;
         /**
           * @experimental Sticks the Accordion heading at the top, fixed while scrolling
          */
@@ -3762,29 +3758,25 @@ declare namespace LocalJSX {
      */
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings.
+          * Aligns the icon within the summary section.
+         */
+        "alignIcon"?: AccordionAlignIcon;
+        /**
+          * Defines the background color
+         */
+        "background"?: AccordionBackground;
+        /**
+          * Displays the Accordion as compact version.
          */
         "compact"?: boolean;
-        /**
-          * Defines the heading used in accordion.
-         */
-        "heading"?: string;
-        /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
-         */
-        "headingTag"?: AccordionHeadingTag;
         /**
           * Emitted when accordion state is changed.
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
-          * Defines if accordion is open.
+          * Sets the open/closed state of the Accordion.
          */
         "open"?: boolean;
-        /**
-          * The text size.
-         */
-        "size"?: BreakpointCustomizable<AccordionSize>;
         /**
           * @experimental Sticks the Accordion heading at the top, fixed while scrolling
          */
