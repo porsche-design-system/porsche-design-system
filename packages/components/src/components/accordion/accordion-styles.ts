@@ -29,7 +29,6 @@ import type { AccordionAlignIcon, AccordionBackground } from './accordion-utils'
  * @css-variable {"name": "--p-accordion-summary-top", "description": "In case prop `sticky` is set to true, it's possible to control the sticky top position of the internally used `<summary>` element.", "defaultValue": "0"}
  */
 const cssVarSummaryTop = '--p-accordion-summary-top';
-const cssVarPositionStickyTop = '--p-accordion-position-sticky-top'; // deprecated, use --p-accordion-summary-top instead
 
 /**
  * @css-variable {"name": "--p-accordion-px", "description": "Defines the logical inline start and end padding of the accordion.", "defaultValue": "16px"}
@@ -132,7 +131,7 @@ export const getComponentCss = (
         all: 'unset',
         ...(isSticky && {
           position: 'sticky',
-          top: `var(${cssVarSummaryTop}, var(${cssVarPositionStickyTop}, 0))`,
+          top: `var(${cssVarSummaryTop}, 0px)`,
           zIndex: 1, // ensures stacking to be above the details content
         }),
         display: 'flex',
@@ -153,6 +152,7 @@ export const getComponentCss = (
           },
         }),
         '& > span': {
+          flexShrink: 0,
           display: 'grid',
           width: '1.5rem',
           height: '1.5rem',
