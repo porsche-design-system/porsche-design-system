@@ -158,14 +158,29 @@
         <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
       </div>
       <div data-card="accordion">
-        <p-accordion heading="Some heading">
+        <p-accordion>
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some heading" size="medium">
+        <p-accordion align-icon="start" background="canvas">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some heading" size="medium" sticky="true">
+        <p-accordion align-icon="start" background="none">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion style="--p-accordion-px: 32px; --p-accordion-py: 24px;">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion sticky="true">
+          <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion>
+          <span slot="summary">Some summary</span>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </p-accordion>
       </div>
       <div data-card="button">
