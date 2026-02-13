@@ -18,7 +18,6 @@ import {
   legacyRadiusSmall,
   radiusFull,
   radiusXl,
-  spacingStaticMd,
   spacingStaticSm,
   typescaleSm,
 } from '../../styles/css-variables';
@@ -61,6 +60,13 @@ export const getComponentCss = (
   const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
 
+  const compactFactor = isCompact ? 0.64285714 : 1;
+
+  // TODO: should be done smarter and ensure that it's in sync with button/link
+  const paddingBlock = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
+  const paddingInline = `calc(33.6px * (${compactFactor} - 0.64285714) + 16px)`;
+  const gap = `calc(11.2px * (${compactFactor} - 0.64285714) + 4px)`;
+
   return getCss({
     '@global': {
       '@keyframes overflow-hidden': {
@@ -91,7 +97,7 @@ export const getComponentCss = (
         font: `${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary, // enables color inheritance for slotted content
         display: 'block',
-        padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : spacingStaticMd}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : spacingStaticMd})`,
+        padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
         background: background === 'none' ? 'transparent' : background === 'canvas' ? colorCanvas : colorFrosted,
         borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
         '&::details-content': {
@@ -136,10 +142,10 @@ export const getComponentCss = (
           justifyContent: 'flex-end',
         }),
         alignItems: 'center',
-        gap: spacingStaticSm,
+        gap,
         cursor: 'pointer',
-        padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : spacingStaticMd}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : spacingStaticMd})`,
-        margin: `calc(-1 * var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : spacingStaticMd})) calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : spacingStaticMd}))`,
+        padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
+        margin: `calc(-1 * var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock})) calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
         '&:focus-visible > span': getFocusBaseStyles(),
         ...hoverMediaQuery({
           '&:hover > span': {
@@ -150,6 +156,7 @@ export const getComponentCss = (
           display: 'grid',
           width: '1.5rem',
           height: '1.5rem',
+          [alignIcon === 'start' ? 'marginInlineStart' : 'marginInlineEnd']: '-5px', // compensate white space of svg icon and optimize visual alignment
           borderRadius: radiusFull,
           background: 'transparent',
           transition: getTransition('background-color'),
