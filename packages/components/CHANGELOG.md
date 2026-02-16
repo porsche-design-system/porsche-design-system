@@ -33,6 +33,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Accordion`:
   - Modernize visual appearance ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Use semantic HTML element `<details>` and `<summary>` internally (instead of divs and buttons) for better
+    accessibility and native behavior
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
 
 ### Removed
 
