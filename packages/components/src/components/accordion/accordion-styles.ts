@@ -30,12 +30,12 @@ import type { AccordionAlignIcon, AccordionBackground } from './accordion-utils'
 const cssVarSummaryTop = '--p-accordion-summary-top';
 
 /**
- * @css-variable {"name": "--p-accordion-px", "description": "Defines the logical inline start and end padding of the accordion.", "defaultValue": "16px"}
+ * @css-variable {"name": "--p-accordion-px", "description": "Defines the horizontal padding of the accordion.", "defaultValue": "16px"}
  */
 const cssVarPaddingInline = '--p-accordion-px';
 
 /**
- * @css-variable {"name": "--p-accordion-px", "description": "Defines the logical block start and end padding of the accordion.", "defaultValue": "16px"}
+ * @css-variable {"name": "--p-accordion-py", "description": "Defines the vertical padding of the accordion.", "defaultValue": "16px"}
  */
 const cssVarPaddingBlock = '--p-accordion-py';
 

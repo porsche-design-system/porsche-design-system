@@ -14,6 +14,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Accordion`:
+  - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `background` with values `canvas | frosted (default) | none`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `align-icon` with values `start | end (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-px` to control the horizontal padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-py` to control the vertical padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-summary-top` to control the optional sticky top position
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
+### Changed
+
+- `Accordion`:
+  - Modernize visual appearance ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
+### Removed
+
+- `Accordion`:
+  - Prop `heading` and `heading-tag` in favor of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" heading-tag="h3">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - Slot `heading` in favor of `slot="summary"`, enabling semantic slots and more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    <p-acccordion>
+    - <span slot="heading">Some summary</span>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    <p-accordion>
+    + <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
 ## [4.0.0-beta.0] - 2026-02-12
 
 ### Added
