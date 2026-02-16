@@ -67,24 +67,6 @@ test('should set "gridTemplateRows: 0fr" (0px) and "visibility: hidden" on colla
   expect(await getCollapseVisibility(page)).toBe('hidden');
 });
 
-test.fixme('should not produce scrollbars of parent element on initial close', async ({ page }) => {
-  const otherPreMarkup = `
-    <div id="container" style="height: 200px; overflow: auto">
-      <div style="transform: translate3d(0, 0, 0)">`;
-  const otherPostMarkup = '</div></div>';
-  const otherSlottedMarkup = `
-    <div style="height: 1000px"></div>
-    <p-button>Lorem ipsum</p-button>`;
-
-  await initAccordion(page, { otherPreMarkup, otherPostMarkup, otherSlottedMarkup });
-
-  const container = page.locator('#container');
-  const clientHeight = await container.evaluate((el) => el.clientHeight);
-  const scrollHeight = await container.evaluate((el) => el.scrollHeight);
-
-  expect(scrollHeight > clientHeight).toBe(false);
-});
-
 test('should set correct gridTemplateRows and visibility on collapsible on open change', async ({ page }) => {
   await initAccordion(page);
   const host = getHost(page);
