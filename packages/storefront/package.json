@@ -37,7 +37,7 @@
     "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.0.0-alpha.0",
+    "@porsche-design-system/components-react": "4.0.0-beta.0",
     "react-syntax-highlighter": "^15.6.6",
     "next": "15.4.2",
     "algoliasearch": "^5.40.0",

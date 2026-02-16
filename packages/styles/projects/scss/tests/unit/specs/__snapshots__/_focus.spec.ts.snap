@@ -51,7 +51,7 @@ div {
   border-radius: 6px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 3px;
 }
 div:focus:not(:focus-visible) {
@@ -110,7 +110,7 @@ div {
   border-radius: 6px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 0;
 }
 div:focus:not(:focus-visible) {
@@ -169,7 +169,7 @@ div {
   border-radius: 4px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 2px;
 }
 div:focus:not(:focus-visible) {
@@ -228,7 +228,7 @@ div {
   border-radius: 4px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 2px;
 }
 div:focus:not(:focus-visible) {

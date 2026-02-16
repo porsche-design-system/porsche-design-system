@@ -182,45 +182,142 @@ body {
   --p-duration-lg: 0.6s;
   --p-duration-xl: 1.2s;
 }
+.scheme-normal {
+  color-scheme: normal;
+}
+.scheme-dark {
+  color-scheme: dark;
+}
+.scheme-light {
+  color-scheme: light;
+}
+.scheme-light-dark {
+  color-scheme: light dark;
+}
+.scheme-only-dark {
+  color-scheme: only dark;
+}
+.scheme-only-light {
+  color-scheme: only light;
+}
 
 @supports not (color: light-dark(white, black)) {
-  :root {
-    --color-focus: #1a44ea;
-    --color-canvas: #fff;
-    --color-surface: hsl(240, 10%, 95%);
-    --color-frosted: hsla(240, 5%, 70%, 0.148);
-    --color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
-    --color-frosted-strong: hsla(236, 6.5%, 42%, 0.236);
-    --color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
-    --color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
-    --color-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
-    --color-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
-    --color-contrast-high: hsla(240, 7.1%, 11%, 0.7);
-    --color-contrast-higher: hsla(240, 8.7%, 9%, 0.8);
-    --color-primary: hsl(225, 66.7%, 1.2%);
-    --color-success: hsl(115, 77.5%, 27.8%);
-    --color-success-low: hsla(115, 77.5%, 27.8%, 0.18);
-    --color-success-medium: hsla(115, 77.5%, 27.8%, 0.6);
-    --color-success-frosted: hsla(115, 77.5%, 27.8%, 0.18);
-    --color-success-frosted-soft: hsla(115, 77.5%, 27.8%, 0.1);
-    --color-warning: hsl(28, 97.7%, 34.1%);
-    --color-warning-low: hsla(28, 97.7%, 34.1%, 0.18);
-    --color-warning-medium: hsla(28, 97.7%, 34.1%, 0.6);
-    --color-warning-frosted: hsla(28, 97.7%, 34.1%, 0.18);
-    --color-warning-frosted-soft: hsla(28, 97.7%, 34.1%, 0.1);
-    --color-error: hsl(357, 78%, 41%);
-    --color-error-low: hsla(357, 78%, 41%, 0.18);
-    --color-error-medium: hsla(357, 78%, 41%, 0.6);
-    --color-error-frosted: hsla(357, 78%, 41%, 0.18);
-    --color-error-frosted-soft: hsla(357, 78%, 41%, 0.1);
-    --color-info: hsl(228, 83.2%, 51%);
-    --color-info-low: hsla(228, 83.2%, 51%, 0.18);
-    --color-info-medium: hsla(228, 83.2%, 51%, 0.6);
-    --color-info-frosted: hsla(228, 83.2%, 51%, 0.18);
-    --color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
+  :root,
+  .scheme-light,
+  .scheme-only-light,
+  .scheme-normal,
+  .scheme-light-dark {
+    --p-color-focus: #1a44ea;
+    --p-color-canvas: #fff;
+    --p-color-surface: hsl(240, 10%, 95%);
+    --p-color-frosted: hsla(240, 5%, 70%, 0.148);
+    --p-color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
+    --p-color-frosted-strong: hsla(236, 6.5%, 42%, 0.236);
+    --p-color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+    --p-color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
+    --p-color-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
+    --p-color-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
+    --p-color-contrast-high: hsla(240, 7.1%, 11%, 0.7);
+    --p-color-contrast-higher: hsla(240, 8.7%, 9%, 0.8);
+    --p-color-primary: hsl(225, 66.7%, 1.2%);
+    --p-color-success: hsl(115, 77.5%, 27.8%);
+    --p-color-success-low: hsla(115, 77.5%, 27.8%, 0.18);
+    --p-color-success-medium: hsla(115, 77.5%, 27.8%, 0.6);
+    --p-color-success-frosted: hsla(115, 77.5%, 27.8%, 0.18);
+    --p-color-success-frosted-soft: hsla(115, 77.5%, 27.8%, 0.1);
+    --p-color-warning: hsl(28, 97.7%, 34.1%);
+    --p-color-warning-low: hsla(28, 97.7%, 34.1%, 0.18);
+    --p-color-warning-medium: hsla(28, 97.7%, 34.1%, 0.6);
+    --p-color-warning-frosted: hsla(28, 97.7%, 34.1%, 0.18);
+    --p-color-warning-frosted-soft: hsla(28, 97.7%, 34.1%, 0.1);
+    --p-color-error: hsl(357, 78%, 41%);
+    --p-color-error-low: hsla(357, 78%, 41%, 0.18);
+    --p-color-error-medium: hsla(357, 78%, 41%, 0.6);
+    --p-color-error-frosted: hsla(357, 78%, 41%, 0.18);
+    --p-color-error-frosted-soft: hsla(357, 78%, 41%, 0.1);
+    --p-color-info: hsl(228, 83.2%, 51%);
+    --p-color-info-low: hsla(228, 83.2%, 51%, 0.18);
+    --p-color-info-medium: hsla(228, 83.2%, 51%, 0.6);
+    --p-color-info-frosted: hsla(228, 83.2%, 51%, 0.18);
+    --p-color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
+  }
+
+  .scheme-dark,
+  .scheme-only-dark {
+    --p-color-focus: #1a44ea;
+    --p-color-canvas: hsl(225, 66.7%, 1.2%);
+    --p-color-surface: hsl(240, 2%, 10%);
+    --p-color-frosted: hsla(240, 2%, 43%, 0.228);
+    --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+    --p-color-frosted-strong: hsla(240, 1.5%, 61.8%, 0.302);
+    --p-color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+    --p-color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+    --p-color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+    --p-color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+    --p-color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+    --p-color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+    --p-color-primary: hsl(225, 100%, 99%);
+    --p-color-success: hsl(157, 84.9%, 41.6%);
+    --p-color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
+    --p-color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
+    --p-color-success-frosted: hsla(157, 84.9%, 41.6%, 0.26);
+    --p-color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
+    --p-color-warning: hsl(28, 90.2%, 56.1%);
+    --p-color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
+    --p-color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
+    --p-color-warning-frosted: hsla(28, 90.2%, 56.1%, 0.26);
+    --p-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+    --p-color-error: hsl(0, 96.9%, 62%);
+    --p-color-error-low: hsla(0, 96.9%, 62%, 0.18);
+    --p-color-error-medium: hsla(0, 96.9%, 62%, 0.6);
+    --p-color-error-frosted: hsla(0, 96.9%, 62%, 0.26);
+    --p-color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
+    --p-color-info: hsl(210, 100%, 54.5%);
+    --p-color-info-low: hsla(210, 100%, 54.5%, 0.18);
+    --p-color-info-medium: hsla(210, 100%, 54.5%, 0.6);
+    --p-color-info-frosted: hsla(210, 100%, 54.5%, 0.26);
+    --p-color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .scheme-light-dark {
+      --p-color-focus: #1a44ea;
+      --p-color-canvas: hsl(225, 66.7%, 1.2%);
+      --p-color-surface: hsl(240, 2%, 10%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+      --p-color-frosted-strong: hsla(240, 1.5%, 61.8%, 0.302);
+      --p-color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+      --p-color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+      --p-color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+      --p-color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+      --p-color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+      --p-color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-success: hsl(157, 84.9%, 41.6%);
+      --p-color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
+      --p-color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
+      --p-color-success-frosted: hsla(157, 84.9%, 41.6%, 0.26);
+      --p-color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
+      --p-color-warning: hsl(28, 90.2%, 56.1%);
+      --p-color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
+      --p-color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
+      --p-color-warning-frosted: hsla(28, 90.2%, 56.1%, 0.26);
+      --p-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+      --p-color-error: hsl(0, 96.9%, 62%);
+      --p-color-error-low: hsla(0, 96.9%, 62%, 0.18);
+      --p-color-error-medium: hsla(0, 96.9%, 62%, 0.6);
+      --p-color-error-frosted: hsla(0, 96.9%, 62%, 0.26);
+      --p-color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
+      --p-color-info: hsl(210, 100%, 54.5%);
+      --p-color-info-low: hsla(210, 100%, 54.5%, 0.18);
+      --p-color-info-medium: hsla(210, 100%, 54.5%, 0.6);
+      --p-color-info-frosted: hsla(210, 100%, 54.5%, 0.26);
+      --p-color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
+    }
   }
 }
-@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-arabic-bold.1796b39.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-arabic-regular.413b375.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-bold.4cb90bb.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-regular.b845952.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-semi-bold.378f7d5.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-bold.d2546b1.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-regular.0b3d9b3.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-semi-bold.f3a9ae0.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-bold.0fbdc6d.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-pashto-bold.f30f194.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-pashto-regular.3989814.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-bold.b9e9f23.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-regular.ac04c30.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-semi-bold.8d53572.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-urdu-bold.49a86a4.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-urdu-regular.ad23819.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}"
+@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-arabic-bold.1796b39.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-arabic-regular.413b375.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-bold.4cb90bb.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-regular.b845952.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-semi-bold.378f7d5.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-bold.d2546b1.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-regular.0b3d9b3.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-semi-bold.f3a9ae0.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-bold.0fbdc6d.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-pashto-bold.f30f194.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-pashto-regular.3989814.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-bold.b9e9f23.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-regular.ac04c30.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-semi-bold.8d53572.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-urdu-bold.49a86a4.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-urdu-regular.ad23819.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}"
 `;
 
 exports[`should match compiled index css 1`] = `
@@ -405,43 +502,140 @@ body {
   --p-duration-lg: 0.6s;
   --p-duration-xl: 1.2s;
 }
+.scheme-normal {
+  color-scheme: normal;
+}
+.scheme-dark {
+  color-scheme: dark;
+}
+.scheme-light {
+  color-scheme: light;
+}
+.scheme-light-dark {
+  color-scheme: light dark;
+}
+.scheme-only-dark {
+  color-scheme: only dark;
+}
+.scheme-only-light {
+  color-scheme: only light;
+}
 
 @supports not (color: light-dark(white, black)) {
-  :root {
-    --color-focus: #1a44ea;
-    --color-canvas: #fff;
-    --color-surface: hsl(240, 10%, 95%);
-    --color-frosted: hsla(240, 5%, 70%, 0.148);
-    --color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
-    --color-frosted-strong: hsla(236, 6.5%, 42%, 0.236);
-    --color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
-    --color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
-    --color-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
-    --color-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
-    --color-contrast-high: hsla(240, 7.1%, 11%, 0.7);
-    --color-contrast-higher: hsla(240, 8.7%, 9%, 0.8);
-    --color-primary: hsl(225, 66.7%, 1.2%);
-    --color-success: hsl(115, 77.5%, 27.8%);
-    --color-success-low: hsla(115, 77.5%, 27.8%, 0.18);
-    --color-success-medium: hsla(115, 77.5%, 27.8%, 0.6);
-    --color-success-frosted: hsla(115, 77.5%, 27.8%, 0.18);
-    --color-success-frosted-soft: hsla(115, 77.5%, 27.8%, 0.1);
-    --color-warning: hsl(28, 97.7%, 34.1%);
-    --color-warning-low: hsla(28, 97.7%, 34.1%, 0.18);
-    --color-warning-medium: hsla(28, 97.7%, 34.1%, 0.6);
-    --color-warning-frosted: hsla(28, 97.7%, 34.1%, 0.18);
-    --color-warning-frosted-soft: hsla(28, 97.7%, 34.1%, 0.1);
-    --color-error: hsl(357, 78%, 41%);
-    --color-error-low: hsla(357, 78%, 41%, 0.18);
-    --color-error-medium: hsla(357, 78%, 41%, 0.6);
-    --color-error-frosted: hsla(357, 78%, 41%, 0.18);
-    --color-error-frosted-soft: hsla(357, 78%, 41%, 0.1);
-    --color-info: hsl(228, 83.2%, 51%);
-    --color-info-low: hsla(228, 83.2%, 51%, 0.18);
-    --color-info-medium: hsla(228, 83.2%, 51%, 0.6);
-    --color-info-frosted: hsla(228, 83.2%, 51%, 0.18);
-    --color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
+  :root,
+  .scheme-light,
+  .scheme-only-light,
+  .scheme-normal,
+  .scheme-light-dark {
+    --p-color-focus: #1a44ea;
+    --p-color-canvas: #fff;
+    --p-color-surface: hsl(240, 10%, 95%);
+    --p-color-frosted: hsla(240, 5%, 70%, 0.148);
+    --p-color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
+    --p-color-frosted-strong: hsla(236, 6.5%, 42%, 0.236);
+    --p-color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+    --p-color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
+    --p-color-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
+    --p-color-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
+    --p-color-contrast-high: hsla(240, 7.1%, 11%, 0.7);
+    --p-color-contrast-higher: hsla(240, 8.7%, 9%, 0.8);
+    --p-color-primary: hsl(225, 66.7%, 1.2%);
+    --p-color-success: hsl(115, 77.5%, 27.8%);
+    --p-color-success-low: hsla(115, 77.5%, 27.8%, 0.18);
+    --p-color-success-medium: hsla(115, 77.5%, 27.8%, 0.6);
+    --p-color-success-frosted: hsla(115, 77.5%, 27.8%, 0.18);
+    --p-color-success-frosted-soft: hsla(115, 77.5%, 27.8%, 0.1);
+    --p-color-warning: hsl(28, 97.7%, 34.1%);
+    --p-color-warning-low: hsla(28, 97.7%, 34.1%, 0.18);
+    --p-color-warning-medium: hsla(28, 97.7%, 34.1%, 0.6);
+    --p-color-warning-frosted: hsla(28, 97.7%, 34.1%, 0.18);
+    --p-color-warning-frosted-soft: hsla(28, 97.7%, 34.1%, 0.1);
+    --p-color-error: hsl(357, 78%, 41%);
+    --p-color-error-low: hsla(357, 78%, 41%, 0.18);
+    --p-color-error-medium: hsla(357, 78%, 41%, 0.6);
+    --p-color-error-frosted: hsla(357, 78%, 41%, 0.18);
+    --p-color-error-frosted-soft: hsla(357, 78%, 41%, 0.1);
+    --p-color-info: hsl(228, 83.2%, 51%);
+    --p-color-info-low: hsla(228, 83.2%, 51%, 0.18);
+    --p-color-info-medium: hsla(228, 83.2%, 51%, 0.6);
+    --p-color-info-frosted: hsla(228, 83.2%, 51%, 0.18);
+    --p-color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
+  }
+
+  .scheme-dark,
+  .scheme-only-dark {
+    --p-color-focus: #1a44ea;
+    --p-color-canvas: hsl(225, 66.7%, 1.2%);
+    --p-color-surface: hsl(240, 2%, 10%);
+    --p-color-frosted: hsla(240, 2%, 43%, 0.228);
+    --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+    --p-color-frosted-strong: hsla(240, 1.5%, 61.8%, 0.302);
+    --p-color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+    --p-color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+    --p-color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+    --p-color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+    --p-color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+    --p-color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+    --p-color-primary: hsl(225, 100%, 99%);
+    --p-color-success: hsl(157, 84.9%, 41.6%);
+    --p-color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
+    --p-color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
+    --p-color-success-frosted: hsla(157, 84.9%, 41.6%, 0.26);
+    --p-color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
+    --p-color-warning: hsl(28, 90.2%, 56.1%);
+    --p-color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
+    --p-color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
+    --p-color-warning-frosted: hsla(28, 90.2%, 56.1%, 0.26);
+    --p-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+    --p-color-error: hsl(0, 96.9%, 62%);
+    --p-color-error-low: hsla(0, 96.9%, 62%, 0.18);
+    --p-color-error-medium: hsla(0, 96.9%, 62%, 0.6);
+    --p-color-error-frosted: hsla(0, 96.9%, 62%, 0.26);
+    --p-color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
+    --p-color-info: hsl(210, 100%, 54.5%);
+    --p-color-info-low: hsla(210, 100%, 54.5%, 0.18);
+    --p-color-info-medium: hsla(210, 100%, 54.5%, 0.6);
+    --p-color-info-frosted: hsla(210, 100%, 54.5%, 0.26);
+    --p-color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .scheme-light-dark {
+      --p-color-focus: #1a44ea;
+      --p-color-canvas: hsl(225, 66.7%, 1.2%);
+      --p-color-surface: hsl(240, 2%, 10%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+      --p-color-frosted-strong: hsla(240, 1.5%, 61.8%, 0.302);
+      --p-color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+      --p-color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+      --p-color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+      --p-color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+      --p-color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+      --p-color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-success: hsl(157, 84.9%, 41.6%);
+      --p-color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
+      --p-color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
+      --p-color-success-frosted: hsla(157, 84.9%, 41.6%, 0.26);
+      --p-color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
+      --p-color-warning: hsl(28, 90.2%, 56.1%);
+      --p-color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
+      --p-color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
+      --p-color-warning-frosted: hsla(28, 90.2%, 56.1%, 0.26);
+      --p-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+      --p-color-error: hsl(0, 96.9%, 62%);
+      --p-color-error-low: hsla(0, 96.9%, 62%, 0.18);
+      --p-color-error-medium: hsla(0, 96.9%, 62%, 0.6);
+      --p-color-error-frosted: hsla(0, 96.9%, 62%, 0.26);
+      --p-color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
+      --p-color-info: hsl(210, 100%, 54.5%);
+      --p-color-info-low: hsla(210, 100%, 54.5%, 0.18);
+      --p-color-info-medium: hsla(210, 100%, 54.5%, 0.6);
+      --p-color-info-frosted: hsla(210, 100%, 54.5%, 0.26);
+      --p-color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
+    }
   }
 }
-@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-arabic-bold.1796b39.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-arabic-regular.413b375.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-bold.4cb90bb.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-regular.b845952.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-semi-bold.378f7d5.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-bold.d2546b1.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-regular.0b3d9b3.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-semi-bold.f3a9ae0.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-bold.0fbdc6d.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-pashto-bold.f30f194.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-pashto-regular.3989814.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-bold.b9e9f23.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-regular.ac04c30.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-semi-bold.8d53572.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-urdu-bold.49a86a4.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-urdu-regular.ad23819.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}"
+@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-arabic-bold.1796b39.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-arabic-regular.413b375.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-bold.4cb90bb.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-regular.b845952.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-semi-bold.378f7d5.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-bold.d2546b1.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-regular.0b3d9b3.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-semi-bold.f3a9ae0.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-bold.0fbdc6d.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-pashto-bold.f30f194.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-pashto-regular.3989814.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-bold.b9e9f23.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-regular.ac04c30.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-semi-bold.8d53572.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-urdu-bold.49a86a4.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}@font-face{font-family:"Porsche Next";font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-urdu-regular.ad23819.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}"
 `;
