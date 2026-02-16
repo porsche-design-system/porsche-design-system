@@ -2,6 +2,11 @@
   p-accordion ~ p-accordion {
     margin-block: 16px;
   }
+
+  .custom-padding {
+    --p-accordion-px: 32px;
+    --p-accordion-py: 24px;
+  }
 </style>
 
 
@@ -62,7 +67,7 @@
 
 
 <div class="playground" title="should render single accordion with slotted heading and custom padding">
-  <p-accordion style="--p-accordion-px: 32px; --p-accordion-py: 24px;">
+  <p-accordion class="custom-padding">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
