@@ -146,6 +146,7 @@ export class Textarea {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    this.textAreaElement.value = newValue;
     this.internals?.setFormValue(newValue);
   }
 

@@ -41,6 +41,9 @@ const isOpen = ref(false);
 </template>
 ```
 
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+
 ## [4.0.0-beta.0] - 2026-02-12
 
 ### Added
