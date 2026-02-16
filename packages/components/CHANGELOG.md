@@ -14,6 +14,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+Vue: All component events now emit the full `CustomEvent` instead of just the event detail.  
+The event detail itself is unchanged but must be accessed via `e.detail` instead of `e`.  
+Props and other component data can be accessed directly via `e.target`.
+
+```diff
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+- const onUpdate = (e: AccordionUpdateEventDetail): void => {
++ const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = e.open;
++  isOpen1.value = e.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :heading="'Some Heading'" :open="isOpen" @update="onUpdate">
+    <PText>Some Content</PText>
+  </PAccordion>
+</template>
+```
+
 ## [4.0.0-beta.0] - 2026-02-12
 
 ### Added
