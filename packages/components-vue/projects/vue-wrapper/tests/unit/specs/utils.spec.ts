@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import * as Vue from 'vue';
 import type { Ref } from 'vue';
+import * as Vue from 'vue';
 import type { ToastMessage } from '../../../src/lib/types';
 import * as utils from '../../../src/utils';
 
@@ -116,7 +116,7 @@ describe('addEventListenerToElementRef()', () => {
     const event = new CustomEvent(eventName, { detail: 'someDetail' });
     element.dispatchEvent(event);
 
-    expect(emit).toHaveBeenCalledWith(eventName, event.detail);
+    expect(emit).toHaveBeenCalledWith(eventName, event);
   });
 });
 
