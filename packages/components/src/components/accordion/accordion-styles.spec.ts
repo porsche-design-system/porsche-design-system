@@ -1,22 +1,23 @@
+import { describe, it } from 'vitest';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 import { getComponentCss } from './accordion-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', false, true, false],
-    ['small', false, false, false],
-    ['small', true, true, false],
-    ['small', true, false, false],
-    ['medium', false, true, false],
-    ['medium', false, false, false],
-    ['medium', true, true, false],
-    ['medium', true, false, false],
-    ['medium', true, false, true],
-    ['small', false, true, false],
-    ['medium', true, false, false],
-    ['medium', true, false, true],
-    [{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }, false, true, false],
-  ])('should return correct css for size: %j, compact: %s, open: %s and sticky: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
-  });
+    ['start', 'frosted', false, false, false],
+    ['start', 'frosted', true, false, false],
+    ['start', 'frosted', true, true, false],
+    ['start', 'frosted', true, true, true],
+    ['end', 'frosted', true, true, true],
+    ['start', 'frosted', false, false, false],
+    ['start', 'canvas', false, false, false],
+    ['start', 'canvas', false, false, true],
+    ['start', 'canvas', false, true, true],
+    ['start', 'none', false, false, false],
+  ])(
+    'should return correct css for alignIcon: %s, background: %s, isCompact: %s, isOpen: %s and isSticky: %s',
+    (...args) => {
+      validateCssAndMatchSnapshot(getComponentCss(...args));
+    }
+  );
 });

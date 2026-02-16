@@ -7,7 +7,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   motionDurationMap,
-  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   colorCanvas,
@@ -78,7 +77,6 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
         display: 'block',
         '&:not([name])': {
@@ -121,7 +119,7 @@ export const getComponentCss = (
             marginTop: spacingStaticSm,
             // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the grid-template-rows rule and animation
             gridTemplateRows: '1fr',
-            visibility: 'visible', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
+            visibility: 'inherit', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
             // as soon as all browsers are supporting `allow-discrete` reliable, visibility transition shouldn't be necessary anymore
             transition: `visibility 0s linear 0s, ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
           },

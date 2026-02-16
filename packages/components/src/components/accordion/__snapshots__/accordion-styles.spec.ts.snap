@@ -1,1302 +1,1004 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: false and sticky: false 1`] = `
-":host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 20px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: end, background: frosted, isCompact: true, isOpen: true and isSticky: true 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    position: sticky;
+    top: var(--p-accordion-summary-top, 0px);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: true and sticky: false 1`] = `
-":host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 20px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,.25s);
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: canvas, isCompact: false, isOpen: false and isSticky: false 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-canvas);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: false 1`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: canvas, isCompact: false, isOpen: false and isSticky: true 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-canvas);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    position: sticky;
+    top: var(--p-accordion-summary-top, 0px);
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    background: var(--p-color-canvas);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: false 2`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: canvas, isCompact: false, isOpen: true and isSticky: true 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-canvas);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    position: sticky;
+    top: var(--p-accordion-summary-top, 0px);
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    background: var(--p-color-canvas);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: true 1`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-  position: sticky;
-  top: var(--p-accordion-position-sticky-top, 0);
-  z-index: 1;
-  background: var(--p-color-canvas);
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  position: relative;
-  z-index: 0;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: false, isOpen: false and isSticky: false 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: true 2`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-  position: sticky;
-  top: var(--p-accordion-position-sticky-top, 0);
-  z-index: 1;
-  background: var(--p-color-canvas);
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  position: relative;
-  z-index: 0;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: false, isOpen: false and isSticky: false 2`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: true and sticky: false 1`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding-bottom: 8px;
-}
-.collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,.25s);
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: true, isOpen: false and isSticky: false 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: false and sticky: false 1`] = `
-":host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 15px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: true, isOpen: true and isSticky: false 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true and sticky: false 1`] = `
-":host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 15px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,.25s);
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: true, isOpen: true and isSticky: true 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    position: sticky;
+    top: var(--p-accordion-summary-top, 0px);
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true and sticky: false 2`] = `
-":host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 15px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,.25s);
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: none, isCompact: false, isOpen: false and isSticky: false 1`] = `
+"@keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
   to {
     overflow: hidden;
   }
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: false and sticky: false 1`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
 }
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(hover:hover) {
-  button::before {
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
+    background: transparent;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: var(--p-spacing-static-sm);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
+    margin: calc(-1 * var(--p-accordion-py, 0)) calc(-1 * var(--p-accordion-px, 0));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
-  from {
-    overflow: hidden;
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
   }
-  to {
-    overflow: hidden;
-  }
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: true and sticky: false 1`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
 }
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding-bottom: 8px;
-}
-.collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,.25s);
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
-  from {
-    overflow: hidden;
-  }
-  to {
-    overflow: hidden;
-  }
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and sticky: false 1`] = `
-":host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 15px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media(min-width:480px) {
-  button {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    padding: 20px 0;
-  }
-}
-
-@media(min-width:760px) {
-  button {
-    font-size: 1rem;
-    padding: 15px 0;
-  }
-}
-
-@media(min-width:1000px) {
-  button {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    padding: 20px 0;
-  }
-}
-
-@media(min-width:1300px) {
-  button {
-    font-size: 1rem;
-    padding: 15px 0;
-  }
-}
-
-@media(min-width:1760px) {
-  button {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    padding: 20px 0;
-  }
-}
-
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,.25s);
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
-  from {
-    overflow: hidden;
-  }
-  to {
-    overflow: hidden;
-  }
-}"
+"
 `;
