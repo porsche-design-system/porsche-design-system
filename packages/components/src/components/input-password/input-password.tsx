@@ -141,6 +141,7 @@ export class InputPassword {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    this.inputElement.value = newValue;
     this.internals?.setFormValue(newValue);
   }
 
