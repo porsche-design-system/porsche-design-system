@@ -1826,6 +1826,11 @@ export const sitemap: Routes = {
             path: '/must-know/accessibility/introduction',
             type: 'PAGE',
           },
+          'ai-agent-setup': {
+            name: 'Setting AI Agent Context',
+            path: '/must-know/accessibility/ai-agent-setup',
+            type: 'PAGE',
+          },
           statement: {
             name: 'Statement',
             path: '/must-know/accessibility/statement',
