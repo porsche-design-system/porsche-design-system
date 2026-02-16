@@ -145,6 +145,11 @@ export const getComponentCss = (
         cursor: 'pointer',
         padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
         margin: `calc(-1 * var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock})) calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
+        ...(isSticky &&
+          background === 'canvas' && {
+            background: colorCanvas,
+            borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
+          }),
         '&:focus-visible > span': getFocusBaseStyles(),
         ...hoverMediaQuery({
           '&:hover > span': {

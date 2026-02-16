@@ -44,7 +44,7 @@ export class Accordion {
   @Prop() public compact?: boolean;
 
   /**
-   * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+   * @experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with `background="canvas"`.
    */
   @Prop() public sticky?: boolean;
 

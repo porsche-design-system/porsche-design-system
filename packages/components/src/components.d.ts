@@ -151,7 +151,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with `background="canvas"`.
          */
         "sticky"?: boolean;
     }
@@ -3778,7 +3778,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with `background="canvas"`.
          */
         "sticky"?: boolean;
     }
