@@ -12,6 +12,14 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-accordion-px": {
+        "defaultValue": "16px",
+        "description": "Defines the logical block start and end padding of the accordion.",
+      },
+      "--p-accordion-summary-top": {
+        "defaultValue": "0",
+        "description": "In case prop \`sticky\` is set to true, it's possible to control the sticky top position of the internally used \`<summary>\` element.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -33,65 +41,52 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-icon",
-    ],
     "propsMeta": {
+      "alignIcon": {
+        "allowedValues": [
+          "start",
+          "end",
+        ],
+        "defaultValue": "end",
+        "description": "Aligns the icon within the summary section.",
+        "type": "AccordionAlignIcon",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "frosted",
+        "description": "Defines the background color",
+        "type": "AccordionBackground",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays the Accordion as compact version with thinner border and smaller paddings.",
+        "description": "Displays the Accordion as compact version.",
         "type": "boolean",
-      },
-      "heading": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Defines the heading used in accordion.",
-        "type": "string",
-      },
-      "headingTag": {
-        "allowedValues": [
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-        ],
-        "defaultValue": "h2",
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
-        "type": "AccordionHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Defines if accordion is open.",
+        "description": "Sets the open/closed state of the Accordion.",
         "type": "boolean",
-      },
-      "size": {
-        "allowedValues": [
-          "small",
-          "medium",
-        ],
-        "defaultValue": "small",
-        "description": "The text size.",
-        "isBreakpointCustomizable": true,
-        "type": "AccordionSize",
       },
       "sticky": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "@experimental Sticks the Accordion heading at the top, fixed while scrolling",
+        "description": "@experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with \`background="canvas"\`.",
         "isExperimental": true,
         "type": "boolean",
       },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot for the main content",
+        "description": "Default slot for the internally used \`<details>\` content.",
       },
-      "heading": {
-        "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup.",
+      "summary": {
+        "description": "Specifies a summary, caption, or legend for the internally used \`<details>\` element's disclosure box. Clicking the summary toggles the state of the parent \`<details>\` element open and closed.",
       },
     },
     "styling": "jss",
