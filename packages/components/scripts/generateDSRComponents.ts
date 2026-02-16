@@ -1,7 +1,7 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { breakpoint } from '@porsche-design-system/emotion';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { breakpoint } from '@porsche-design-system/emotion';
 import { kebabCase, pascalCase } from 'change-case';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
@@ -184,7 +184,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // adjust named slot conditions
         newFileContent = newFileContent
           .replace(
-            /has(?:Heading|Label|Description)\(this\.props\.host, (this\.props\.(heading|label|description))\)/g,
+            /has(?:Heading|Label|Description|Summary)\(this\.props\.host, (this\.props\.(heading|label|description|summary))\)/g,
             `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
           )
           .replace(
@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(summary|caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -391,6 +391,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
+      } else if (tagName === 'p-accordion') {
+        newFileContent = newFileContent.replace(/this\.props\.(hasSummary)/g, '$1').replace(/hasSummary =/, 'const $&');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')

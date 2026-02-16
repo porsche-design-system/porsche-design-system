@@ -13,6 +13,7 @@ import {
   colorFrosted,
   colorPrimary,
   fontPorscheNext,
+  fontWeightSemibold,
   leadingNormal,
   legacyRadiusSmall,
   radiusFull,
@@ -28,6 +29,7 @@ import type { AccordionAlignIcon, AccordionBackground } from './accordion-utils'
  * @css-variable {"name": "--p-accordion-summary-top", "description": "In case prop `sticky` is set to true, it's possible to control the sticky top position of the internally used `<summary>` element.", "defaultValue": "0"}
  */
 const cssVarSummaryTop = '--p-accordion-summary-top';
+const cssVarSummaryTopDeprecated = '--p-accordion-position-sticky-top'; // deprecated
 
 /**
  * @css-variable {"name": "--p-accordion-px", "description": "Defines the horizontal padding of the accordion.", "defaultValue": "16px"}
@@ -89,6 +91,11 @@ export const getComponentCss = (
           },
         },
       },
+      'h1,h2,h3,h4,h5,h6': {
+        all: 'unset',
+        font: 'inherit',
+        fontWeight: fontWeightSemibold,
+      },
       details: {
         all: 'unset',
         font: `${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
@@ -129,7 +136,7 @@ export const getComponentCss = (
         all: 'unset',
         ...(isSticky && {
           position: 'sticky',
-          top: `var(${cssVarSummaryTop}, 0px)`,
+          top: `var(${cssVarSummaryTop}, var(${cssVarSummaryTopDeprecated}, 0px))`,
           zIndex: 1, // ensures stacking to be above the details content
         }),
         display: 'flex',

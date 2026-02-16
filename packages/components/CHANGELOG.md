@@ -37,6 +37,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed
 
 - `Accordion`:
+  - Prop `tag` use `heading-tag` (deprecated with v4 now) instead or make use of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" tag="h3">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+
+### Deprecated
+
+- `Accordion`:
   - Prop `heading` and `heading-tag` in favor of `slot="summary"` for more flexibility
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
     ```diff

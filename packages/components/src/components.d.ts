@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionAlignIcon, AccordionBackground, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { AccordionAlignIcon, AccordionBackground, AccordionHeadingTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
 import { ButtonIcon } from "./components/button/button-utils";
@@ -67,7 +67,7 @@ import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventD
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { AccordionAlignIcon, AccordionBackground, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { AccordionAlignIcon, AccordionBackground, AccordionHeadingTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
 export { ButtonIcon } from "./components/button/button-utils";
@@ -146,6 +146,14 @@ export namespace Components {
           * Displays the Accordion as compact version.
          */
         "compact"?: boolean;
+        /**
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "heading"?: string;
+        /**
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: AccordionHeadingTag;
         /**
           * Sets the open/closed state of the Accordion.
          */
@@ -3769,6 +3777,14 @@ declare namespace LocalJSX {
           * Displays the Accordion as compact version.
          */
         "compact"?: boolean;
+        /**
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "heading"?: string;
+        /**
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: AccordionHeadingTag;
         /**
           * Emitted when accordion state is changed.
          */
