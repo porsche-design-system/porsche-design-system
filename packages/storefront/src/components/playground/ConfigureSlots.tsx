@@ -28,7 +28,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
       <div className="flex flex-col gap-fluid-sm">
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
-            <div key={slotName} className="flex flex-col gap-fluid-sm bg-surface p-fluid-sm rounded-md">
+            <div key={slotName} className="flex flex-col gap-fluid-sm">
               <div className="w-full flex justify-between">
                 <div className="w-full flex gap-static-xs">
                   {capitalCase(slotName)}

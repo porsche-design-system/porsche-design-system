@@ -49,14 +49,14 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
 
   return (
     <>
-      <nav aria-label="Main">
+      <nav aria-label="Main" className="flex flex-col gap-static-sm">
         {Object.entries(sitemap).map(([path, category]) => (
           <PAccordion
             key={path}
             heading={category.name as string}
             headingTag="h3"
-            compact={true}
-            className={['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
+            background="none"
+            className={['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md' : ''}
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
           >

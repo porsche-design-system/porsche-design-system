@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof Accordion> = {
 
 /**
  * @slot {"name": "summary", "description": "Specifies a summary, caption, or legend for the internally used `<details>` element's disclosure box. Clicking the summary toggles the state of the parent `<details>` element open and closed." }
- * @slot {"name": "heading", "description": "Specifies a heading for the internally used `<details>` element's disclosure box. Clicking the summary toggles the state of the parent `<details>` element open and closed." }
+ * @slot {"name": "heading", "description": "Specifies a heading for the internally used `<details>` element's disclosure box. Clicking the summary toggles the state of the parent `<details>` element open and closed.", "isDeprecated": "true" }
  * @slot {"name": "", "description": "Default slot for the internally used `<details>` content." }
  *
  * @controlled {"props": ["open"], "event": "update"}
