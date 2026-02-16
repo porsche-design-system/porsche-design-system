@@ -19,7 +19,7 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
   padding: 16px;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  background: var(--p-color-frosted);
+  background: var(--p-color-error-frosted);
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
   box-shadow: 0px 8px 40px rgba(0,0,0,.16);
 }

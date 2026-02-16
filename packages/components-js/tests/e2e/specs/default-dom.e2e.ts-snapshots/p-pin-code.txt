@@ -1,5 +1,12 @@
-<div class="root">
-  <label class="label" id="label" for="current-input"> Some label</label>
+<fieldset
+  class="root"
+  aria-describedby="description message"
+  aria-labelledby="label"
+>
+  <div class="label-wrapper">
+    <label class="label" id="label" for="current-input"> Some label</label>
+    <slot name="label-after"> </slot>
+  </div>
   <div class="wrapper">
     <input
       id="current-input"
@@ -37,4 +44,4 @@
   </div>
   <span id="message" class="message" role="alert"> </span>
   <span id="loading" class="loading" role="status"> </span>
-</div>
+</fieldset>

@@ -4,9 +4,9 @@ exports[`scss package content > should match content 1`] = `
 "@forward 'border';
 @forward 'breakpoint';
 @forward 'display';
-@forward 'drop-shadow';
+@forward 'shadow';
 @forward 'font';
-@forward 'frosted-glass';
+@forward 'blur';
 @forward 'gradient';
 @forward 'grid';
 @forward 'grid-gap';
@@ -24,7 +24,7 @@ exports[`scss package content > should match content 1`] = `
 @forward 'motion';
 @forward 'spacing';
 @forward 'text';
-@forward 'theme';
+@forward 'color';
 @forward 'focus';
 @forward 'media-query';
 @forward 'skeleton';

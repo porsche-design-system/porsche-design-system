@@ -1,0 +1,38 @@
+@use 'font';
+
+@mixin prose-heading-2xl {
+  font: normal normal font.$font-weight-normal font.$typescale-2xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-xl {
+  font: normal normal font.$font-weight-normal font.$typescale-xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-lg {
+  font: normal normal font.$font-weight-normal font.$typescale-lg / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-md {
+  font: normal normal font.$font-weight-normal font.$typescale-md / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-sm {
+  font: normal normal font.$font-weight-normal font.$typescale-sm / font.$leading-normal font.$font-porsche-next;
+}
+
+/* alias (deprecated) */
+@mixin pds-heading-xx-large {
+  @include prose-heading-2xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-x-large {
+  @include prose-heading-xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-large {
+  @include prose-heading-lg();
+}
+/* alias (deprecated) */
+@mixin pds-heading-medium {
+  @include prose-heading-md();
+}
+/* alias (deprecated) */
+@mixin pds-heading-small {
+  @include prose-heading-sm();
+}

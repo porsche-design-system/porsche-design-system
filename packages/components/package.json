@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "4.0.0-alpha.0",
+  "version": "4.0.0-beta.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -45,7 +45,6 @@
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/emotion": "0.0.0",
-    "@porsche-design-system/shared-styles": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "~4.23.2"

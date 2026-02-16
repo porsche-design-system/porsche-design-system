@@ -31,7 +31,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       background: #00b0f4;
       height: 150px;
       transition: background 0.3s ease;
-      color: $pds-theme-light-primary;
+      color: $color-primary;
     }
 
     .is-active {

@@ -7,70 +7,102 @@ import {
   breakpointXl,
   breakpointXs,
   colorBackdrop,
+  colorBackdropDark,
   colorBackdropLight,
   colorCanvas,
+  colorCanvasDark,
   colorCanvasLight,
   colorContrastHigh,
+  colorContrastHighDark,
   colorContrastHigher,
+  colorContrastHigherDark,
   colorContrastHigherLight,
   colorContrastHighLight,
   colorContrastLow,
+  colorContrastLowDark,
   colorContrastLower,
+  colorContrastLowerDark,
   colorContrastLowerLight,
   colorContrastLowLight,
   colorContrastMedium,
+  colorContrastMediumDark,
   colorContrastMediumLight,
-  colorDisabled,
-  colorDisabledLight,
   colorError,
+  colorErrorDark,
   colorErrorFrosted,
+  colorErrorFrostedDark,
   colorErrorFrostedLight,
   colorErrorFrostedSoft,
+  colorErrorFrostedSoftDark,
   colorErrorFrostedSoftLight,
   colorErrorLight,
   colorErrorLow,
+  colorErrorLowDark,
   colorErrorLowLight,
   colorErrorMedium,
+  colorErrorMediumDark,
   colorErrorMediumLight,
   colorFocus,
+  colorFocusDark,
   colorFocusLight,
   colorFrosted,
+  colorFrostedDark,
   colorFrostedLight,
   colorFrostedSoft,
+  colorFrostedSoftDark,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongDark,
+  colorFrostedStrongLight,
   colorInfo,
+  colorInfoDark,
   colorInfoFrosted,
+  colorInfoFrostedDark,
   colorInfoFrostedLight,
   colorInfoFrostedSoft,
+  colorInfoFrostedSoftDark,
   colorInfoFrostedSoftLight,
   colorInfoLight,
   colorInfoLow,
+  colorInfoLowDark,
   colorInfoLowLight,
   colorInfoMedium,
+  colorInfoMediumDark,
   colorInfoMediumLight,
   colorPrimary,
+  colorPrimaryDark,
   colorPrimaryLight,
   colorSuccess,
+  colorSuccessDark,
   colorSuccessFrosted,
+  colorSuccessFrostedDark,
   colorSuccessFrostedLight,
   colorSuccessFrostedSoft,
+  colorSuccessFrostedSoftDark,
   colorSuccessFrostedSoftLight,
   colorSuccessLight,
   colorSuccessLow,
+  colorSuccessLowDark,
   colorSuccessLowLight,
   colorSuccessMedium,
+  colorSuccessMediumDark,
   colorSuccessMediumLight,
   colorSurface,
+  colorSurfaceDark,
   colorSurfaceLight,
   colorWarning,
+  colorWarningDark,
   colorWarningFrosted,
+  colorWarningFrostedDark,
   colorWarningFrostedLight,
   colorWarningFrostedSoftDark,
   colorWarningFrostedSoftLight,
   colorWarningLight,
   colorWarningLow,
+  colorWarningLowDark,
   colorWarningLowLight,
   colorWarningMedium,
+  colorWarningMediumDark,
   colorWarningMediumLight,
   durationLg,
   durationMd,
@@ -132,11 +164,11 @@ export const getTailwindcssTheme = () => {
   --color-white: #fff;
 
   --color-focus: ${colorFocus};
-  --color-disabled: ${colorDisabled};
   --color-canvas: ${colorCanvas};
   --color-surface: ${colorSurface};
   --color-frosted: ${colorFrosted};
   --color-frosted-soft: ${colorFrostedSoft};
+  --color-frosted-strong: ${colorFrostedStrong};
   --color-backdrop: ${colorBackdrop};
   --color-contrast-lower: ${colorContrastLower};
   --color-contrast-low: ${colorContrastLow};
@@ -164,7 +196,6 @@ export const getTailwindcssTheme = () => {
   --color-info-medium: ${colorInfoMedium};
   --color-info-frosted: ${colorInfoFrosted};
   --color-info-frosted-soft: ${colorInfoFrostedSoft};
-  --color-skeleton: light-dark(#f7f7f7,#1a1b1e);
 
   /* Typography */
   --font-porsche-next: ${fontPorscheNext};
@@ -262,7 +293,7 @@ export const getTailwindcssTheme = () => {
   --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
+  --animate-skeleton: skeleton var(--transition-duration-xl) var(--ease-in-out) infinite;
 
   @keyframes skeleton {
     from {
@@ -275,29 +306,14 @@ export const getTailwindcssTheme = () => {
 }
 
 @layer theme {
-  /* deprecated, use .scheme-light instead */
-  .light {
-    color-scheme: light;
-  }
-
-  /* deprecated, use .scheme-dark instead */
-  .dark {
-    color-scheme: dark;
-  }
-
-  /* deprecated, use .scheme-light-dark instead */
-  .auto {
-    color-scheme: light dark;
-  }
-
   @supports not (color: light-dark(white, black)) {
-    :root {
+    :root, .scheme-light, .scheme-only-light, .scheme-normal, .scheme-light-dark {
       --color-focus: ${colorFocusLight};
-      --color-disabled: ${colorDisabledLight};
       --color-canvas: ${colorCanvasLight};
       --color-surface: ${colorSurfaceLight};
       --color-frosted: ${colorFrostedLight};
       --color-frosted-soft: ${colorFrostedSoftLight};
+      --color-frosted-strong: ${colorFrostedStrongLight};
       --color-backdrop: ${colorBackdropLight};
       --color-contrast-lower: ${colorContrastLowerLight};
       --color-contrast-low: ${colorContrastLowLight};
@@ -325,7 +341,80 @@ export const getTailwindcssTheme = () => {
       --color-info-medium: ${colorInfoMediumLight};
       --color-info-frosted: ${colorInfoFrostedLight};
       --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
-      --color-skeleton: #f7f7f7;
+    }
+
+    .scheme-dark, .scheme-only-dark {
+      --color-focus: ${colorFocusDark};
+      --color-canvas: ${colorCanvasDark};
+      --color-surface: ${colorSurfaceDark};
+      --color-frosted: ${colorFrostedDark};
+      --color-frosted-soft: ${colorFrostedSoftDark};
+      --color-frosted-strong: ${colorFrostedStrongDark};
+      --color-backdrop: ${colorBackdropDark};
+      --color-contrast-lower: ${colorContrastLowerDark};
+      --color-contrast-low: ${colorContrastLowDark};
+      --color-contrast-medium: ${colorContrastMediumDark};
+      --color-contrast-high: ${colorContrastHighDark};
+      --color-contrast-higher: ${colorContrastHigherDark};
+      --color-primary: ${colorPrimaryDark};
+      --color-success: ${colorSuccessDark};
+      --color-success-low: ${colorSuccessLowDark};
+      --color-success-medium: ${colorSuccessMediumDark};
+      --color-success-frosted: ${colorSuccessFrostedDark};
+      --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
+      --color-warning: ${colorWarningDark};
+      --color-warning-low: ${colorWarningLowDark};
+      --color-warning-medium: ${colorWarningMediumDark};
+      --color-warning-frosted: ${colorWarningFrostedDark};
+      --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+      --color-error: ${colorErrorDark};
+      --color-error-low: ${colorErrorLowDark};
+      --color-error-medium: ${colorErrorMediumDark};
+      --color-error-frosted: ${colorErrorFrostedDark};
+      --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
+      --color-info: ${colorInfoDark};
+      --color-info-low: ${colorInfoLowDark};
+      --color-info-medium: ${colorInfoMediumDark};
+      --color-info-frosted: ${colorInfoFrostedDark};
+      --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .scheme-light-dark {
+        --color-focus: ${colorFocusDark};
+        --color-canvas: ${colorCanvasDark};
+        --color-surface: ${colorSurfaceDark};
+        --color-frosted: ${colorFrostedDark};
+        --color-frosted-soft: ${colorFrostedSoftDark};
+        --color-frosted-strong: ${colorFrostedStrongDark};
+        --color-backdrop: ${colorBackdropDark};
+        --color-contrast-lower: ${colorContrastLowerDark};
+        --color-contrast-low: ${colorContrastLowDark};
+        --color-contrast-medium: ${colorContrastMediumDark};
+        --color-contrast-high: ${colorContrastHighDark};
+        --color-contrast-higher: ${colorContrastHigherDark};
+        --color-primary: ${colorPrimaryDark};
+        --color-success: ${colorSuccessDark};
+        --color-success-low: ${colorSuccessLowDark};
+        --color-success-medium: ${colorSuccessMediumDark};
+        --color-success-frosted: ${colorSuccessFrostedDark};
+        --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
+        --color-warning: ${colorWarningDark};
+        --color-warning-low: ${colorWarningLowDark};
+        --color-warning-medium: ${colorWarningMediumDark};
+        --color-warning-frosted: ${colorWarningFrostedDark};
+        --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+        --color-error: ${colorErrorDark};
+        --color-error-low: ${colorErrorLowDark};
+        --color-error-medium: ${colorErrorMediumDark};
+        --color-error-frosted: ${colorErrorFrostedDark};
+        --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
+        --color-info: ${colorInfoDark};
+        --color-info-low: ${colorInfoLowDark};
+        --color-info-medium: ${colorInfoMediumDark};
+        --color-info-frosted: ${colorInfoFrostedDark};
+        --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
+      }
     }
   }
 }
@@ -445,9 +534,7 @@ export const getTailwindcssTheme = () => {
 
 /* Skeleton */
 @utility skeleton {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
+  @apply animate-skeleton block rounded-sm bg-transparent bg-[linear-gradient(to_right,var(--color-frosted)_0%,var(--color-frosted-strong)_50%,var(--color-frosted)_100%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
 /* Typography: Text */

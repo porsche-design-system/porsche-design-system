@@ -1,12 +1,5 @@
 import { createPart, type Part } from 'ag-grid-community';
-import {
-  borderWidthThin,
-  colorContrastLower,
-  colorDisabled,
-  colorFrostedSoft,
-  colorPrimary,
-  radiusLg,
-} from '../styles';
+import { borderWidthThin, colorContrastLower, colorFrostedSoft, colorPrimary, radiusLg } from '../styles';
 
 export const checkboxCheckedShapeImage = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>`;
 export const checkboxIndeterminateShapeImage = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>`;
@@ -51,7 +44,7 @@ export const checkboxStyle: Part = createPart({
     checkboxIndeterminateShapeColor: colorPrimary,
 
     // Disabled state
-    checkboxDisabledColor: colorDisabled,
+    checkboxDisabledColor: 'light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))',
   },
   css: `
     .ag-checkbox-input-wrapper,

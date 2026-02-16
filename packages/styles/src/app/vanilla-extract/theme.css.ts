@@ -6,7 +6,6 @@ import {
   colorContrastLow,
   colorContrastLower,
   colorContrastMedium,
-  colorDisabled,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedSoft,
@@ -15,12 +14,14 @@ import {
   colorFocus,
   colorFrosted,
   colorFrostedSoft,
+  colorFrostedStrong,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedSoft,
   colorInfoLow,
   colorInfoMedium,
   colorPrimary,
+  colorSchemeStyles,
   colorSuccess,
   colorSuccessFrosted,
   colorSuccessFrostedSoft,
@@ -33,15 +34,19 @@ import {
   colorWarningLow,
   colorWarningMedium,
 } from '@porsche-design-system/vanilla-extract';
-import { createTheme } from '@vanilla-extract/css';
+import { createTheme, type GlobalStyleRule, globalStyle } from '@vanilla-extract/css';
+
+for (const { selector, rule } of colorSchemeStyles) {
+  globalStyle(selector, rule as GlobalStyleRule);
+}
 
 export const [vanillaExtractTheme, vars] = createTheme({
   focus: colorFocus,
-  disabled: colorDisabled,
   canvas: colorCanvas,
   surface: colorSurface,
   frosted: colorFrosted,
   frostedSoft: colorFrostedSoft,
+  frostedStrong: colorFrostedStrong,
   backdrop: colorBackdrop,
   contrastLower: colorContrastLower,
   contrastLow: colorContrastLow,

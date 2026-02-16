@@ -1,3 +1,4 @@
+@use '@porsche-design-system/scss' as pds;
 @use 'app/scss/blur';
 @use 'app/scss/border';
 @use 'app/scss/color';
@@ -10,3 +11,5 @@
 @use 'app/scss/skeleton';
 @use 'app/scss/spacing';
 @use 'app/scss/typography';
+
+@include pds.color-scheme();

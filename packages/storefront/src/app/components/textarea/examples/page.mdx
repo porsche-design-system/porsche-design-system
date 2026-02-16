@@ -4,6 +4,7 @@ import { Configurator } from '@/components/playground/Configurator';
 import { textareaStory, textareaStorySlots } from '@/app/components/textarea/textarea.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import { textareaExampleForm } from '@porsche-design-system/shared/examples';
+import { Notification } from '@/components/common/Notification';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
@@ -41,5 +42,16 @@ can be used. Make sure **not** to define the corresponding property on the host 
 (because a property definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
+
+In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This
+slot must be used to render content after the label which is not directly part of it (e.g. an external link or a
+`popover` component).
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  If the <code>component</code> is in <code>disabled/loading</code> state
+  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
+  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
+  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+</Notification>
 
 <ComponentStory story={textareaStorySlots} />

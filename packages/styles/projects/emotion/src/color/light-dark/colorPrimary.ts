@@ -1,3 +1,3 @@
 import { colorPrimary as _colorPrimary } from '@porsche-design-system/tokens';
 
-export const colorPrimary = _colorPrimary;
+export const colorPrimary = `var(--_color-primary, ${_colorPrimary})`;

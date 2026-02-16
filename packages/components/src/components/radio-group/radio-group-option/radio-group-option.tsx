@@ -21,10 +21,11 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
   loading: AllowedTypes.boolean,
 };
 
+// Though "description" and "message" slots are technically available (provided by the "label" component),
+// they are not documented here to avoid confusion since they are not intended for use within radio group options.
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)." }
  */
 @Component({
   tag: 'p-radio-group-option',
@@ -79,14 +80,6 @@ export class RadioGroupOption {
       <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
         {/* wrapped in host for programmatic selection via radio-group-option */}
         <div class="root">
-          <Label
-            host={this.host}
-            label={this.label}
-            htmlFor={id}
-            isDisabled={isDisabled}
-            isLoading={isLoading}
-            stopClickPropagation={true}
-          />
           <div class="wrapper">
             <input
               id={id}
@@ -111,6 +104,14 @@ export class RadioGroupOption {
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
             )}
           </div>
+          <Label
+            host={this.host}
+            label={this.label}
+            htmlFor={id}
+            isDisabled={isDisabled}
+            isLoading={isLoading}
+            stopClickPropagation={true}
+          />
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
           )}

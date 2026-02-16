@@ -37,18 +37,8 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-success-medium' },
-          children: ['.text-success-medium'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-warning' },
           children: ['.text-warning'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-warning-medium' },
-          children: ['.text-warning-medium'],
         },
         {
           tag: 'li',
@@ -57,18 +47,8 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-error-medium' },
-          children: ['.text-error-medium'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-info' },
           children: ['.text-info'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-info-medium' },
-          children: ['.text-info-medium'],
         },
       ],
     },
@@ -133,6 +113,19 @@ export const colorStoryBackgroundColor: Story<'div'> = {
               properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
             '.bg-frosted-soft',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            '.bg-frosted-strong',
           ],
         },
         {

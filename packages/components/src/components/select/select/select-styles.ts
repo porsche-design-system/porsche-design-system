@@ -1,5 +1,5 @@
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
   getButtonImageJssStyle,
@@ -15,7 +15,10 @@ import {
 import type { BreakpointCustomizable } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
@@ -46,7 +49,9 @@ export const getComponentCss = (
           [`${cssVarInternalOptgroupScaling}`]: isCompact ? 0.64285714 : 1,
           ...hostHiddenStyles,
         }),
+        ...(isDisabled && getDisabledBaseStyles()),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('select', isOpen, isDisabled, state, isCompact, cssVarInternalSelectScaling),

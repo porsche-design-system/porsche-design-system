@@ -1780,6 +1780,15 @@ exports[`should match snapshot 1`] = `
   },
   "p-checkbox": {
     "cssVariablesMeta": {
+      "--p-checkbox-background-color": {
+        "description": "🧪Experimental: Background color of Checkbox.",
+      },
+      "--p-checkbox-border-color": {
+        "description": "🧪Experimental: Border colors of Checkbox. Should be used to override the default border color in different states (e.g., hover, focus, error), e.g. when the Checkbox is wrapped inside a custom label.",
+      },
+      "--p-checkbox-icon-color": {
+        "description": "🧪Experimental: Checkmark icon color of Checkbox.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -1911,6 +1920,9 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -3641,6 +3653,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -3843,6 +3858,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4026,6 +4044,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -4223,6 +4244,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4412,6 +4436,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -4610,6 +4637,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4806,6 +4836,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4999,6 +5032,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5182,6 +5218,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -5379,6 +5418,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5562,6 +5604,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -7021,6 +7066,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -7348,6 +7396,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -7555,6 +7606,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -7611,14 +7665,11 @@ exports[`should match snapshot 1`] = `
       "p-radio-group",
     ],
     "slotsMeta": {
-      "description": {
-        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
     },
     "styling": "jss",
@@ -7845,6 +7896,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -8375,6 +8429,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -9881,6 +9938,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",

@@ -47,6 +47,10 @@ export const EmotionColor = () => {
         <span>Frosted Soft</span>
       </EmotionColorSwatches>
       <EmotionColorSwatches>
+        <EmotionColorSwatchesItem bg="frostedStrong" />
+        <span>Frosted Strong</span>
+      </EmotionColorSwatches>
+      <EmotionColorSwatches>
         <EmotionColorSwatchesItem bg="backdrop" />
         <span>Backdrop</span>
       </EmotionColorSwatches>

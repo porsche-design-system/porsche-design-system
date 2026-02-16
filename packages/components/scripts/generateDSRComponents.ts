@@ -209,14 +209,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(
+            /hasNamedSlot\(host, '(label-after)'\)/g,
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+          )
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
           newFileContent = newFileContent
+            .replace(/(type LabelProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 children, ')
             .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
-            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/}\) => \{/, `$& const { namedSlotChildren } = splitChildren(children);\n`)
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`);
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
@@ -261,7 +269,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
-        // radio-group-option uses a label component without allowing slots
+        // radio-group-option uses a label component
         if (tagName === 'p-radio-group-option') {
           newFileContent = newFileContent
             .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
@@ -405,11 +413,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
-      } else if (tagName === 'p-radio-button-wrapper') {
-        newFileContent = newFileContent.replace(
-          /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,
-          '&& !($1 && ($2 || otherChildren[0]?.props.defaultChecked))' // wrap in brackets because of negation
-        );
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
@@ -481,19 +484,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
         );
         // TODO: recover @media query for :host style if needed
-      } else if (tagName === 'p-grid') {
-        // pass down gutter prop to p-grid-item children
-        newFileContent = newFileContent
-          .replace(
-            /const { children, namedSlotChildren, otherChildren } =.*/,
-            `$&
-    const manipulatedChildren = children.map((child) =>
-      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-segmented-control') {
         // pass down value, backgroundColor and theme prop to p-segmented-control-item children
         newFileContent = newFileContent
@@ -530,35 +520,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
-      } else if (tagName === 'p-select-wrapper-dropdown') {
-        newFileContent = newFileContent
-          // part prop is not typed in JSX, although it's valid HTML attribute
-          .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
-          // Remove markup after button
-          .replace(/\{\[\n\s*this\.props\.description && \([\s\S]+?]}/, '')
-          // Change isOpen, optionMaps, searchString to not be a prop
-          .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
-          // fix warning about read-only field
-          .replace(/value={/, 'defaultValue={')
-          .replace(/\{\.\.\.getFilterInputAriaAttributes([\s\S]*?)\)}/, '')
-          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes([\s\S]*?)\)}/, '');
-      } else if (tagName === 'p-select-wrapper') {
-        newFileContent = newFileContent
-          .replace(/(required={).*(})/, '$1false$2')
-          // Add PSelectWrapperDropdown component import
-          .replace(
-            /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
-            "$1import { PSelectWrapperDropdown } from '../components/select-wrapper-dropdown.wrapper';\r"
-          )
-          // Remove hasCustomDropdown attribute
-          .replace(/^\s*private\s+hasCustomDropdown\s*:\s*any\s*;\s*$/gm, '')
-          // Add hasCustomDropdown fn
-          .replace(
-            /(public\s+render\(\): JSX\.Element\s*{)/,
-            '$1\nconst hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);'
-          )
-          // Change hasCustomDropdown to use fn instead of prop
-          .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
@@ -620,52 +581,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /className=\{(\{[\S\s]+?})}/g,
             `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
           );
-      } else if (tagName === 'p-text-field-wrapper') {
-        // make private like isSearch, isPassword and hasUnit work
-        const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
-          .map(([match]) => match)
-          .filter((member, idx, arr) => arr.findIndex((m) => member.startsWith(m.split('=')[0])) === idx); // remove duplicates
-
-        const constants = rawPrivateMembers
-          .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
-          .map((member, _, arr) =>
-            member
-              .replace(
-                // use local constants
-                new RegExp('this.(' + arr.map((m) => /^const ([A-Za-z]+)/.exec(m)![1]).join('|') + ')'),
-                '$1'
-              )
-              .replace(/(const isWithinForm) /, '$1Value ') // fix collision with imported function
-              .replace(/this\.input\.(type)/, '$1') // reuse already destructured const
-              .replace(/this\.input/, 'otherChildren[0]?.props') // use input child
-              .replace(/this\./, '$&props.') // all others must be actual props
-              .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
-              .replace(
-                /!!otherChildren\[0\]\?\.props\.value/,
-                "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && $&" // fix typing of otherChildren
-              )
-          )
-          .join('\n    ');
-
-        newFileContent = newFileContent
-          .replace(
-            // use local constants instead of previously replaced private members that became something like
-            // this.props.isSearch, this.props.hasUnit, etc.
-            new RegExp(
-              `this\.props\.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
-                .map(([, group]) => group)
-                .join('|')})`,
-              'g'
-            ),
-            '$1'
-          )
-          .replace(
-            // inject local constants
-            / +const style = minifyCss/,
-            `    ${constants}
-
-$&`
-          );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent
           .replace(/value={/, 'defaultValue={') // fix warning about read-only field
@@ -693,32 +608,6 @@ $&`
           .replace(/hasSlottedButton =/, 'const $&')
           .replace(/if \(hasSlottedButton\).*{[\s\S]*?}/, '');
         // .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
-      } else if (tagName === 'p-link-tile-model-signature') {
-        newFileContent = newFileContent
-          .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
-          .replace(/ {4}.*throwIfElementIsNotOfKind[\s\S]+?;\n/g, '') // remove validation
-          .replace(/(const overlayLinkProps).+?=([\s\S]+?);/, '$1 = $2 as const;') // remove typing
-          .replace(
-            /setRequiredPropsOfSlottedLinks.+?;/,
-            `const manipulatedChildren = children.map((child) =>
-      typeof child === 'object' && 'props' in child && namedSlotChildren.includes(child)
-        ? { ...child, props: { ...child.props, theme: 'dark', variant: child.props.slot } }
-        : child
-    );` // manipulate p-link children like our web component does at runtime
-          )
-          .replace(
-            /(const linkEl) = getLinkOrSlottedAnchorElement.+;/,
-            `const primaryLink = manipulatedChildren.find(
-      (child) => typeof child === 'object' && 'props' in child && child.props.variant === 'primary'
-    ) as any;
-    $1 = primaryLink.props.href
-      ? primaryLink.props
-      : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find(
-          (child: any) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
-        ).props;`
-          ) // rewire source for linkEl
-          .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       } else if (tagName === 'p-link-tile-product') {
         // TODO: why is something like this only needed here?
         newFileContent = newFileContent

@@ -6,7 +6,6 @@ exports[`pds-focus() > should return correct css for opts: { offset: '3px', bord
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* TBD: $color-skeleton: #f7f7f7; */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -26,6 +25,7 @@ exports[`pds-focus() > should return correct css for opts: { offset: '3px', bord
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -45,14 +45,13 @@ exports[`pds-focus() > should return correct css for opts: { offset: '3px', bord
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 div {
   border-radius: 6px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 3px;
 }
 div:focus:not(:focus-visible) {
@@ -66,7 +65,6 @@ exports[`pds-focus() > should return correct css for opts: { offset: 'none', bor
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* TBD: $color-skeleton: #f7f7f7; */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -86,6 +84,7 @@ exports[`pds-focus() > should return correct css for opts: { offset: 'none', bor
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -105,14 +104,13 @@ exports[`pds-focus() > should return correct css for opts: { offset: 'none', bor
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 div {
   border-radius: 6px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 0;
 }
 div:focus:not(:focus-visible) {
@@ -126,7 +124,6 @@ exports[`pds-focus() > should return correct css for opts: { offset: 'small', bo
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* TBD: $color-skeleton: #f7f7f7; */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -146,6 +143,7 @@ exports[`pds-focus() > should return correct css for opts: { offset: 'small', bo
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -165,14 +163,13 @@ exports[`pds-focus() > should return correct css for opts: { offset: 'small', bo
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 div {
   border-radius: 4px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 2px;
 }
 div:focus:not(:focus-visible) {
@@ -186,7 +183,6 @@ exports[`pds-focus() > should return correct css for opts: {} 1`] = `
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* TBD: $color-skeleton: #f7f7f7; */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -206,6 +202,7 @@ exports[`pds-focus() > should return correct css for opts: {} 1`] = `
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -225,14 +222,13 @@ exports[`pds-focus() > should return correct css for opts: {} 1`] = `
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 div {
   border-radius: 4px;
 }
 div:focus {
-  outline: 2px solid #1a44ea;
+  outline: 2px solid var(--_color-focus, light-dark(#1a44ea, #1a44ea));
   outline-offset: 2px;
 }
 div:focus:not(:focus-visible) {

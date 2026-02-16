@@ -10,126 +10,148 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    'Migrate from Porsche Design System v3 to v4',
-    'Notable New Features',
-    'Planned upcoming changes in next alpha release',
+    '📣 New Features',
     '🛠️ Setup Changes',
-    '👹Breaking Changes',
+    '⭐ Introducing Color Scheme',
+    '👹 Breaking Changes',
     '❌ Removed Props, Slots and Events (deprecated in v3 already)',
     '❌ Removed Components (deprecated in v3 already)',
   ]}
 />
 
-## Migrate from Porsche Design System v3 to v4
+The introduction of the new **Porsche Design Language** brings updated layout and design principles. To minimize
+refactoring effort during the migration from `v3` to `v4`, we have avoided **breaking changes** wherever possible.
+However, a few essential breaking changes and deprecations have been introduced to align with the new standards and
+require your attention.
 
-With the new **Porsche Design Language** comes some changes regarding layout and design principles. To keep refactoring
-efforts as low as possible when upgrading from `v3` to `v4`, **breaking changes** were avoided as far as possible.
-Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
-
-## Notable New Features
+## 📣 New Features
 
 - New design language for all components
-  - New color palette
-  - Redesigned form elements and buttons
-  - Redesigned footer of dialog elements
-  - All headings use regular as font-weight
-- Design Tokens are exposed as CSS variables (currently colors only).
-  - [Colors](/global-styles/color/examples/)
-- Theming now works by adding a `light`, `dark` or `auto` CSS class to any HTML element
+- New color palette based on CSS `light-dark()` and `color-scheme`
+- Redesigned form elements and buttons
+- Redesigned footer of dialog elements
+- All headings use regular as font-weight
+- Design Tokens are exposed as CSS variables, and all component styles are built directly upon them
+  - [Colors](/styles/color/examples/)
+- Theming now works by adding a `scheme-light`, `scheme-dark` or `scheme-light-dark` CSS class to any HTML element
   - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
   - [Angular](/developing/angular/advanced/#global-theme)
   - [React](/developing/react/advanced/#global-theme)
   - [Vue](/developing/vue/advanced/#global-theme)
   - [Next.js](/developing/next-js/advanced/#global-theme)
   - [React Router](/developing/react-router/advanced/#global-theme)
-
-## Planned upcoming changes in next alpha release
-
-- Redesign `p-accordion`, `p-tabs`, `p-tabs-bar` and `p-pagination`
-- Overhaul storefront documentation and examples
-- Introduce design language guidelines (Brand Guide)
-- Expose more design tokens as CSS variables (e.g. spacing, typography, shadows, etc.)
-- Review `light-dark()` and `color-scheme` and refine the theming strategy as appropriate
-- Evaluate support for streaming React Server Components using suspense
+- Aligned styling solutions with the new design language and color palette.
+  - [Tailwind CSS](/tailwindcss/introduction/)
+  - [SCSS](/scss/introduction/)
+  - [Emotion](/emotion/introduction/)
+  - [Vanilla Extract](/vanilla-extract/introduction/)
 
 ## 🛠️ Setup Changes
 
-### Partials
+### Mandatory Global Styles & Theme Logic
 
-- Removed `getInitialStyles()`, `getFontFaceStyles()` and `getFontFaceStylesheet()` partial in favor of CSS imports from
-  `@porsche-design-system/components-{js|angular|react|vue}`.
+Because all components are now built directly upon CSS variables, **Global Styles are mandatory** for using the Porsche
+Design System.
+
+These styles provide the architectural foundation for the system, specifically:
+
+- **Design Tokens:** Defines CSS variables for color (based on `light-dark()` and `color-scheme` logic), typography,
+  spacing, and others.
+- **Normalize Styles:** Ensures consistent cross-browser rendering and base resets.
+- **Font-Face Styles:** Defines the Porsche Next font family, including all weights and styles.
+
+Without these global styles, components will not have access to their required color variables and will fail to render
+correctly. See [Styles](/styles/introduction/) for more information.
 
 ```diff
-- import { getInitialStyles, getFontFaceStyles, getFontFaceStylesheet } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
-```
+/* src/global-style.css */
 
-- Instead, a mandatory CSS global style, including CSS color variables, font-face definitions and normalize styles needs
-  to be imported into your main css file. See [Global Styles](/global-styles/introduction/) for more information.
-
-```diff
-/* src/style.css */
 + @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+
 /* Alternative with fonts from China CDN */
 + @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
 ```
 
-- If you need to keep the border-radius aligned with the Porsche App, you can enable it by importing a separate CSS
-  file.
+### Manual FOUC Prevention
+
+In previous versions, **FOUC (Flash of Unstyled Content)** was handled automatically via `getInitialStyles()`. Because
+these JavaScript partials have been removed, you must now implement this logic manually within your global stylesheet.
+
+To ensure components are hidden until the design system is fully initialized, add the following to your **main CSS
+file**:
+
+- [Vanilla JS](/developing/vanilla-js/getting-started/#integration)
+- [Angular](/developing/angular/getting-started/#integration)
+- [React](/developing/react/getting-started/#integration)
+- [Vue](/developing/vue/getting-started/#integration)
+- [Next.js](/developing/next-js/getting-started/#integration)
+- [React Router](/developing/react-router/getting-started/#integration)
 
 ```diff
-/* src/style.css */
-+ @import '@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css';
-```
+/* src/global-style.css */
 
-- Automatic FOUC handling, previously defined in `getInitialStyles()`, must be implemented manually now. See Getting
-  Started for more information:
-  - [Vanilla JS](/developing/vanilla-js/getting-started/#integration)
-  - [Angular](/developing/angular/getting-started/#integration)
-  - [React](/developing/react/getting-started/#integration)
-  - [Vue](/developing/vue/getting-started/#integration)
-  - [Next.js](/developing/next-js/getting-started/#integration)
-  - [React Router](/developing/react-router/getting-started/#integration)
-
-```diff
-// Vanilla Js, React, Vue
+/* Vanilla Js, React, Vue */
 + :not(:defined) {
 +   visibility: hidden;
 + }
 
-// Angular (Uses custom elements which are never defined like app-root, so we need to manually list the components)
+/* Angular (Uses custom elements which are never defined like app-root, so we need to manually list the components) */
 + :is(p-accordion, p-banner, p-button, prefixed-p-button,...):not(:defined) {
 +   visibility: hidden;
 + }
 
-// Next.js, React Router
+/* Next.js, React Router */
 + :not(:defined,[data-ssr]) {
 +   visibility: hidden;
 + }
 ```
 
-- Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
-  `@porsche-design-system/fallbacks` coming soon.
+### Legacy Border-Radius Support (My Porsche App)
+
+If you need to maintain visual consistency with the **My Porsche App** (legacy styles), you can force the previous
+border-radius specifications by importing an optional CSS override.
+
+To enable this, add the following import to your **main CSS file** after the mandatory global styles:
 
 ```diff
-- import { getBrowserSupportFallbackScript, getCookiesFallbackScript } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
+/* src/global-style.css */
+
++ @import '@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css';
 ```
 
-- Removed `getDSRPonyfill()` partial as it is no longer needed.
+## ⭐ Introducing Color Scheme
 
-```diff
-- import { getDSRPonyfill } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
-```
+The new color system leverages the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function to
+deliver native, preference-based theming. By adopting this browser-native engine, we have eliminated the need for
+proprietary switching logic, resulting in a more performant and standardized architecture.
 
-### Theme
+### Core Implementation
 
-- Removed theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
-  class.
+All colors and styles are now driven by the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
+broad compatibility, our **mandatory global styles** (detailed in the [Setup Changes](#setup-changes) section) include
+utility classes that provide a polyfill for browsers lacking native support for the
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/types/color_light-dark) function (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+
+#### Utility Classes
+
+Apply these classes to the document or any container to control the theme context:
+
+- `.scheme-light` — Forces light mode.
+- `.scheme-dark` — Forces dark mode.
+- `.scheme-light-dark` — Dynamically follows system/OS settings.
+
+#### Usage
+
+- Removed theme prop from PDS Components and Provider since it's handled by CSS `light-dark()` and `color-scheme`.
 
 ```html
-<html class="dark">
+<html class="scheme-dark">
   <body>
     <!-- All components inside will use the dark theme -->
-    <div class="light">
+    <div class="scheme-light">
       <!-- All components inside will use the light theme -->
     </div>
   </body>
@@ -137,17 +159,17 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 ```
 
 ```diff
-- <p-input-text theme="light" name="some-name"></p-input-text>
-+ <p-input-text class="light" name="some-name"></p-input-text>
+- <p-button theme="light" name="some-name"></p-button>
++ <p-button class="scheme-light" name="some-name"></p-button>
 
-- <p-input-text theme="dark" name="some-name"></p-input-text>
-+ <p-input-text class="dark" name="some-name"></p-input-text>
+- <p-button theme="dark" name="some-name"></p-button>
++ <p-button class="scheme-dark" name="some-name"></p-button>
 
-- <p-input-text theme="auto" name="some-name"></p-input-text>
-+ <p-input-text class="auto" name="some-name"></p-input-text>
+- <p-button theme="auto" name="some-name"></p-button>
++ <p-button class="scheme-light-dark" name="some-name"></p-button>
 ```
 
-#### Angular
+##### Angular
 
 ```diff
 // app.module.ts
@@ -164,12 +186,12 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="dark">
++ <body class="scheme-dark">
   <app-root></app-root>
 </body>
 ```
 
-#### React
+##### React
 
 ```diff
 // src/main.tsx
@@ -182,12 +204,12 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="dark">
++ <body class="scheme-dark">
   <div id="app"></div>
 </body>
 ```
 
-#### Vue
+##### Vue
 
 ```diff
 // pages/App.vue
@@ -202,17 +224,17 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="dark">
++ <body class="scheme-dark">
   <div id="app"></div>
 </body>
 ```
 
-#### Next.js
+##### Next.js
 
 ```diff
 // app/layout.tsx
 - <body>
-+ <body className="dark">
++ <body className="scheme-dark">
 -  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
     {children}
@@ -220,13 +242,13 @@ export class AppModule {}
 </body>
 ```
 
-#### React Router
+##### React Router
 
 ```diff
 // root.tsx
 
 - <body>
-+ <body className="dark">
++ <body className="scheme-dark">
   {children}
   <ScrollRestoration />
   <Scripts />
@@ -238,63 +260,28 @@ export class AppModule {}
 </PorscheDesignSystemProvider>
 ```
 
-## 👹Breaking Changes
+## 👹 Breaking Changes
 
-### Styles Package
+### Partials
 
-- Removed `getHoverStyle`/`pds-hover` since it did not work reliable
-
-#### Emotion, Styled Components
-
-- Changed import path for styles. These styles will likely work with both Styled Components and Emotion but are only
-  officially supported with Emotion going forward.
+- Removed `getInitialStyles()`, `getFontFaceStyles()` and `getFontFaceStylesheet()` partials. These styles are now
+  included in the mandatory global styles, see [Setup Changes](#setup-changes) for more information.
 
 ```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+- import { getInitialStyles, getFontFaceStyles, getFontFaceStylesheet } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
-- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
-  color function)
+- Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
+  `@porsche-design-system/fallbacks` coming soon.
 
 ```diff
-- getSkeletonStyle({ theme: 'light|dark' })
-+ getSkeletonStyle()
+- import { getBrowserSupportFallbackScript, getCookiesFallbackScript } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
-#### Vanilla Extract
-
-- Changed import path for Vanilla Extract styles.
+- Removed `getDSRPonyfill()` partial as it is no longer needed.
 
 ```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
-```
-
-- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
-  color function)
-
-```diff
-const skeletonAnimation = keyframes(skeletonKeyframes);
-- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
-+ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
-```
-
-#### SCSS
-
-- Changed import path for SCSS styles.
-
-```diff
-- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
-+ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
-```
-
-- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
-  `light-dark()` CSS color function)
-
-```
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
+- import { getDSRPonyfill } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
 ### Common

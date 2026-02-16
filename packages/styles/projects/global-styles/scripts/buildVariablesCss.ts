@@ -21,8 +21,6 @@ import {
   colorContrastLowLight,
   colorContrastMedium,
   colorContrastMediumLight,
-  colorDisabled,
-  colorDisabledLight,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedLight,
@@ -39,6 +37,8 @@ import {
   colorFrostedLight,
   colorFrostedSoft,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongLight,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedLight,
@@ -122,11 +122,11 @@ import * as prettier from 'prettier';
 export const buildVariablesCss = async (): Promise<void> => {
   const styles = `:root {
   --p-color-focus: ${colorFocus};
-  --p-color-disabled: ${colorDisabled};
   --p-color-canvas: ${colorCanvas};
   --p-color-surface: ${colorSurface};
   --p-color-frosted: ${colorFrosted};
   --p-color-frosted-soft: ${colorFrostedSoft};
+  --p-color-frosted-strong: ${colorFrostedStrong};
   --p-color-backdrop: ${colorBackdrop};
   --p-color-contrast-lower: ${colorContrastLower};
   --p-color-contrast-low: ${colorContrastLow};
@@ -216,47 +216,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-duration-md: ${durationMd};
   --p-duration-lg: ${durationLg};
   --p-duration-xl: ${durationXl};
-}
-
-@supports not (color: light-dark(white, black)) {
-  :root {
-    --color-focus: ${colorFocusLight};
-    --color-disabled: ${colorDisabledLight};
-    --color-canvas: ${colorCanvasLight};
-    --color-surface: ${colorSurfaceLight};
-    --color-frosted: ${colorFrostedLight};
-    --color-frosted-soft: ${colorFrostedSoftLight};
-    --color-backdrop: ${colorBackdropLight};
-    --color-contrast-lower: ${colorContrastLowerLight};
-    --color-contrast-low: ${colorContrastLowLight};
-    --color-contrast-medium: ${colorContrastMediumLight};
-    --color-contrast-high: ${colorContrastHighLight};
-    --color-contrast-higher: ${colorContrastHigherLight};
-    --color-primary: ${colorPrimaryLight};
-    --color-success: ${colorSuccessLight};
-    --color-success-low: ${colorSuccessLowLight};
-    --color-success-medium: ${colorSuccessMediumLight};
-    --color-success-frosted: ${colorSuccessFrostedLight};
-    --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
-    --color-warning: ${colorWarningLight};
-    --color-warning-low: ${colorWarningLowLight};
-    --color-warning-medium: ${colorWarningMediumLight};
-    --color-warning-frosted: ${colorWarningFrostedLight};
-    --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
-    --color-error: ${colorErrorLight};
-    --color-error-low: ${colorErrorLowLight};
-    --color-error-medium: ${colorErrorMediumLight};
-    --color-error-frosted: ${colorErrorFrostedLight};
-    --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
-    --color-info: ${colorInfoLight};
-    --color-info-low: ${colorInfoLowLight};
-    --color-info-medium: ${colorInfoMediumLight};
-    --color-info-frosted: ${colorInfoFrostedLight};
-    --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
-    --color-skeleton: #f7f7f7;
-  }
-}
-`;
+}`;
 
   const targetPath = './dist';
   const targetFile = 'variables.css';

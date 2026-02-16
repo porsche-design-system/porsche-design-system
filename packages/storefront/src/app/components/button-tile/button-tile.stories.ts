@@ -36,7 +36,6 @@ export const buttonTileStory: Story<'p-button-tile'> = {
       label: 'Some label',
       description: 'Some Description',
       gradient: true,
-      style: { colorScheme: 'dark' },
     },
     slots: {
       header: buttonTileSlotStory.header.basic,
@@ -74,7 +73,6 @@ export const buttonTileStoryGrid: Story<'p-button-tile'> = {
                 ? 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'
                 : 'Some description',
             ...(index === 0 ? { size: 'large' } : {}),
-            style: { colorScheme: 'dark' },
           },
           children: [
             {
@@ -102,7 +100,7 @@ export const buttonTileStoryGrid: Story<'p-button-tile'> = {
 
 export const buttonTileStoryFooterSlot: Story<'p-button-tile'> = {
   state: {
-    properties: { label: 'Some label', description: 'Some Description', style: { colorScheme: 'dark' } },
+    properties: { label: 'Some label', description: 'Some Description' },
   },
   generator: ({ properties } = {}) => [
     {

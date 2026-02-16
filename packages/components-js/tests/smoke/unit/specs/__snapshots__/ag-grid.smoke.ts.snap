@@ -845,69 +845,36 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": undefined,
         "modeParams": {
           "$default": {
-            "accentColor": "hsl(228, 83.2%, 51%)",
-            "backgroundColor": "#fff",
-            "borderColor": "hsla(240, 5.3%, 14.9%, 0.500)",
+            "accentColor": "light-dark(hsl(228, 83.2%, 51%),hsl(210, 100%, 54.5%))",
+            "backgroundColor": "light-dark(#fff,hsl(225, 66.7%, 1.2%))",
+            "borderColor": "light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450))",
             "borderRadius": "4px",
-            "browserColorScheme": "light",
+            "browserColorScheme": "inherit",
             "checkboxBorderRadius": "4px",
             "checkboxBorderWidth": 2,
-            "columnHoverColor": "hsla(236, 6.4%, 51%, 0.148)",
+            "columnHoverColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
             "focusShadow": "none",
             "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
             "fontSize": "1rem",
-            "foregroundColor": "hsl(225, 66.7%, 1.2%)",
-            "headerBackgroundColor": "hsl(240, 7.7%, 97.5%)",
+            "foregroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+            "headerBackgroundColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
             "headerFontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
             "headerFontWeight": 600,
             "headerHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)",
             "iconSize": 24,
-            "inputBorder": "1px solid hsla(240, 6.1%, 7%, 0.600)",
-            "inputDisabledBackgroundColor": "#fff",
-            "inputDisabledBorder": "1px solid hsla(233, 6.6%, 23.9%, 0.412)",
-            "inputFocusBorder": "1px solid hsl(225, 66.7%, 1.2%)",
             "inputFocusShadow": "none",
-            "inputInvalidBorder": "1px solid hsl(357, 78%, 41%)",
-            "invalidColor": "hsl(357, 78%, 41%)",
-            "modalOverlayBackgroundColor": "hsla(236, 6.4%, 51%, 0.148)",
-            "oddRowBackgroundColor": "hsl(240, 7.7%, 97.5%)",
-            "rangeSelectionBorderColor": "#1A44EA",
+            "invalidColor": "light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180))",
+            "modalOverlayBackgroundColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
+            "oddRowBackgroundColor": "light-dark(hsl(240, 10%, 95%),hsl(240, 2%, 10%))",
+            "rangeSelectionBorderColor": "light-dark(#1A44EA,#1A44EA)",
             "rowHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 4)",
-            "rowHoverColor": "hsla(236, 6.4%, 51%, 0.148)",
-            "selectedRowBackgroundColor": "hsl(240, 7.7%, 97.5%)",
+            "rowHoverColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
+            "selectedRowBackgroundColor": "light-dark(hsla(228, 83.2%, 51%, 0.180),hsla(210, 100%, 54.5%, 0.180))",
             "spacing": 10,
             "toggleButtonHeight": 28,
             "toggleButtonSwitchInset": 3,
             "toggleButtonWidth": 48,
             "wrapperBorderRadius": "6px",
-          },
-        },
-      },
-      PartImpl {
-        "css": undefined,
-        "cssImports": undefined,
-        "feature": undefined,
-        "modeParams": {
-          "$default": {},
-          "dark": {
-            "accentColor": "hsl(210, 100%, 54.5%)",
-            "backgroundColor": "hsl(225, 66.7%, 1.2%)",
-            "borderColor": "hsla(240, 12.5%, 96.9%, 0.450)",
-            "browserColorScheme": "dark",
-            "columnHoverColor": "hsla(240, 2.2%, 44.1%, 0.228)",
-            "foregroundColor": "hsl(240, 12.5%, 96.9%)",
-            "headerBackgroundColor": "hsl(240, 2%, 10%)",
-            "inputBorder": "1px solid hsla(240, 12.5%, 96.9%, 0.560)",
-            "inputDisabledBackgroundColor": "hsl(225, 66.7%, 1.2%)",
-            "inputDisabledBorder": "1px solid hsla(240, 1.5%, 61.8%, 0.302)",
-            "inputFocusBorder": "1px solid hsl(240, 12.5%, 96.9%)",
-            "inputInvalidBorder": "1px solid hsl(0, 96.9%, 62%)",
-            "invalidColor": "hsl(0, 96.9%, 62%)",
-            "modalOverlayBackgroundColor": "hsla(240, 2.2%, 44.1%, 0.228)",
-            "oddRowBackgroundColor": "hsl(240, 2%, 10%)",
-            "rangeSelectionBorderColor": "#1A44EA",
-            "rowHoverColor": "hsla(240, 2.2%, 44.1%, 0.228)",
-            "selectedRowBackgroundColor": "hsl(240, 2%, 10%)",
           },
         },
       },
@@ -972,35 +939,40 @@ exports[`ag-grid package content > should match content 1`] = `
       PartImpl {
         "css": "
     .ag-toggle-button-input-wrapper {
-        border: 2px solid var(--ag-toggle-button-off-border-color);
+        border: 1px solid var(--ag-toggle-button-off-border-color);
         position: relative;
 
+        /* Inner circle (switch) - default OFF state */
         &::before {
             height: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
             width: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
-            top: calc(4px - 2px) !important;
-            left: calc(4px - 2px) !important;
+            top: calc(4px - 1px) !important;
+            left: calc(4px - 1px) !important;
+            background-color: var(--ag-toggle-button-switch-background-color);
         }
 
+        /* ON state - inner circle becomes success color and moves to the right */
         &.ag-checked {
             border-color: var(--ag-toggle-button-on-border-color);
 
             &::before {
-                --ag-toggle-button-switch-background-color: #fff;
-                --ag-toggle-button-on-border-color: #fff;
+                background-color: light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%));
                 left: calc(100% - var(--ag-toggle-button-height) + 6px) !important;
             }
         }
 
+        /* Hover state (unchecked) */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-off-hover-border-color);
         }
 
+        /* Hover state (checked) */
         &.ag-checked:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-on-hover-border-color);
             background-color: var(--ag-toggle-button-on-hover-background-color);
         }
 
+        /* Disabled state styling */
         &.ag-disabled {
             opacity: 1 !important;
             border-color: var(--ag-toggle-button-disabled-color);
@@ -1023,26 +995,15 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": "toggleButtonStyle",
         "modeParams": {
           "$default": {
-            "toggleButtonDisabledColor": "hsla(233, 6.6%, 23.9%, 0.412)",
-            "toggleButtonOffBackgroundColor": "#fff",
-            "toggleButtonOffBorderColor": "hsla(240, 6.1%, 7%, 0.600)",
-            "toggleButtonOffHoverBorderColor": "hsl(225, 66.7%, 1.2%)",
-            "toggleButtonOnBackgroundColor": "hsl(115, 77.5%, 27.8%)",
-            "toggleButtonOnBorderColor": "hsl(115, 77.5%, 27.8%)",
-            "toggleButtonOnHoverBackgroundColor": "hsl(115, 77.5%, 27.8%)",
-            "toggleButtonOnHoverBorderColor": "hsl(115, 77.5%, 27.8%)",
-            "toggleButtonSwitchBackgroundColor": "hsl(225, 66.7%, 1.2%)",
-          },
-          "dark": {
-            "toggleButtonDisabledColor": "hsla(240, 1.5%, 61.8%, 0.302)",
-            "toggleButtonOffBackgroundColor": "hsl(225, 66.7%, 1.2%)",
-            "toggleButtonOffBorderColor": "hsla(240, 12.5%, 96.9%, 0.560)",
-            "toggleButtonOffHoverBorderColor": "hsl(240, 12.5%, 96.9%)",
-            "toggleButtonOnBackgroundColor": "hsl(157, 84.9%, 41.6%)",
-            "toggleButtonOnBorderColor": "hsl(157, 84.9%, 41.6%)",
-            "toggleButtonOnHoverBackgroundColor": "hsl(157, 84.9%, 41.6%)",
-            "toggleButtonOnHoverBorderColor": "hsl(157, 84.9%, 41.6%)",
-            "toggleButtonSwitchBackgroundColor": "hsl(240, 12.5%, 96.9%)",
+            "toggleButtonDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+            "toggleButtonOffBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+            "toggleButtonOffBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+            "toggleButtonOffHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+            "toggleButtonOnBackgroundColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))",
+            "toggleButtonOnBorderColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.180))",
+            "toggleButtonOnHoverBackgroundColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))",
+            "toggleButtonOnHoverBorderColor": "light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%))",
+            "toggleButtonSwitchBackgroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
           },
         },
       },
@@ -1055,7 +1016,7 @@ exports[`ag-grid package content > should match content 1`] = `
         width: var(--ag-icon-size);
         height: var(--ag-icon-size);
         background-color: var(--ag-checkbox-unchecked-background-color);
-        border: solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);
+        border: solid 1px var(--ag-checkbox-unchecked-border-color);
 
         :where(input) {
             cursor: pointer;
@@ -1105,6 +1066,7 @@ exports[`ag-grid package content > should match content 1`] = `
             }
         }
 
+        /* Hover styling for enabled items */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-checkbox-unchecked-hover-border-color) !important;
         }
@@ -1116,7 +1078,7 @@ exports[`ag-grid package content > should match content 1`] = `
     }
 
     .ag-checkbox-input-wrapper {
-        border-radius: var(--ag-checkbox-border-radius);
+        border-radius: 8px;
 
         &.ag-checked::after {
             mask-image: var(--ag-checkbox-checked-shape-image);
@@ -1145,58 +1107,46 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": "checkboxStyle",
         "modeParams": {
           "$default": {
-            "checkboxCheckedBackgroundColor": "hsl(225, 66.7%, 1.2%)",
-            "checkboxCheckedBorderColor": "hsl(225, 66.7%, 1.2%)",
-            "checkboxCheckedHoverBackgroundColor": "hsla(240, 7.1%, 11%, 0.700)",
-            "checkboxCheckedHoverBorderColor": "hsla(240, 7.1%, 11%, 0.700)",
-            "checkboxCheckedShapeColor": {
-              "ref": "backgroundColor",
-            },
+            "checkboxCheckedBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+            "checkboxCheckedBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+            "checkboxCheckedHoverBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+            "checkboxCheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+            "checkboxCheckedShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
             "checkboxCheckedShapeImage": {
               "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
             },
-            "checkboxDisabledColor": "hsla(233, 6.6%, 23.9%, 0.412)",
-            "checkboxIndeterminateBackgroundColor": "#fff",
-            "checkboxIndeterminateBorderColor": "hsla(240, 6.1%, 7%, 0.600)",
-            "checkboxIndeterminateShapeColor": "hsl(225, 66.7%, 1.2%)",
+            "checkboxDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+            "checkboxIndeterminateBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+            "checkboxIndeterminateBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+            "checkboxIndeterminateShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
             "checkboxIndeterminateShapeImage": {
               "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
             },
-            "checkboxUncheckedBackgroundColor": {
-              "ref": "backgroundColor",
-            },
-            "checkboxUncheckedBorderColor": "hsla(240, 6.1%, 7%, 0.600)",
-            "checkboxUncheckedHoverBorderColor": "hsl(225, 66.7%, 1.2%)",
+            "checkboxUncheckedBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+            "checkboxUncheckedBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+            "checkboxUncheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
             "radioCheckedShapeImage": {
               "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
             },
           },
-          "dark": {
-            "checkboxCheckedBackgroundColor": "hsl(240, 12.5%, 96.9%)",
-            "checkboxCheckedBorderColor": "hsl(240, 12.5%, 96.9%)",
-            "checkboxCheckedHoverBackgroundColor": "hsla(240, 12.5%, 96.9%, 0.670)",
-            "checkboxCheckedHoverBorderColor": "hsla(240, 12.5%, 96.9%, 0.670)",
-            "checkboxCheckedShapeColor": {
-              "ref": "backgroundColor",
-            },
-            "checkboxCheckedShapeImage": {
-              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
-            },
-            "checkboxDisabledColor": "hsla(240, 1.5%, 61.8%, 0.302)",
-            "checkboxIndeterminateBackgroundColor": "hsl(225, 66.7%, 1.2%)",
-            "checkboxIndeterminateBorderColor": "hsla(240, 12.5%, 96.9%, 0.560)",
-            "checkboxIndeterminateShapeColor": "hsl(240, 12.5%, 96.9%)",
-            "checkboxIndeterminateShapeImage": {
-              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
-            },
-            "checkboxUncheckedBackgroundColor": {
-              "ref": "backgroundColor",
-            },
-            "checkboxUncheckedBorderColor": "hsla(240, 12.5%, 96.9%, 0.560)",
-            "checkboxUncheckedHoverBorderColor": "hsl(240, 12.5%, 96.9%)",
-            "radioCheckedShapeImage": {
-              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
-            },
+        },
+      },
+      PartImpl {
+        "css": "
+    /* Custom border radius for input fields */
+    .ag-text-field-input {
+        border-radius: 12px;
+    }
+  ",
+        "cssImports": undefined,
+        "feature": "inputStyles",
+        "modeParams": {
+          "$default": {
+            "inputBorder": "solid 1px light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+            "inputDisabledBackgroundColor": "light-dark(#fff,hsl(225, 66.7%, 1.2%))",
+            "inputDisabledBorder": "solid 1px light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+            "inputFocusBorder": "solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+            "inputInvalidBorder": "solid 1px light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180))",
           },
         },
       },

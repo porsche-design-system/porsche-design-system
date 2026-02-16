@@ -14,19 +14,19 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --color-white: #fff;
 
   --color-focus: light-dark(#1a44ea, #1a44ea);
-  --color-disabled: light-dark(
-    hsla(233, 6.6%, 23.9%, 0.412),
-    hsla(240, 1.5%, 61.8%, 0.302)
-  );
   --color-canvas: light-dark(#fff, hsl(225, 66.7%, 1.2%));
-  --color-surface: light-dark(hsl(240, 7.7%, 97.5%), hsl(240, 2%, 10%));
+  --color-surface: light-dark(hsl(240, 10%, 95%), hsl(240, 2%, 10%));
   --color-frosted: light-dark(
-    hsla(236, 6.4%, 51%, 0.148),
-    hsla(240, 2.2%, 44.1%, 0.228)
+    hsla(240, 5%, 70%, 0.148),
+    hsla(240, 2%, 43%, 0.228)
   );
   --color-frosted-soft: light-dark(
     hsla(234, 9.8%, 60%, 0.06),
     hsla(240, 3.7%, 26.5%, 0.154)
+  );
+  --color-frosted-strong: light-dark(
+    hsla(236, 6.5%, 42%, 0.236),
+    hsla(240, 1.5%, 61.8%, 0.302)
   );
   --color-backdrop: light-dark(
     hsla(240, 5.3%, 14.9%, 0.5),
@@ -52,7 +52,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
     hsla(240, 8.7%, 9%, 0.8),
     hsla(240, 12.5%, 96.9%, 0.78)
   );
-  --color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(240, 12.5%, 96.9%));
+  --color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(225, 100%, 99%));
   --color-success: light-dark(hsl(115, 77.5%, 27.8%), hsl(157, 84.9%, 41.6%));
   --color-success-low: light-dark(
     hsla(115, 77.5%, 27.8%, 0.18),
@@ -64,7 +64,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   );
   --color-success-frosted: light-dark(
     hsla(115, 77.5%, 27.8%, 0.18),
-    hsla(157, 84.9%, 41.6%, 0.18)
+    hsla(157, 84.9%, 41.6%, 0.26)
   );
   --color-success-frosted-soft: light-dark(
     hsla(115, 77.5%, 27.8%, 0.1),
@@ -81,7 +81,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   );
   --color-warning-frosted: light-dark(
     hsla(28, 97.7%, 34.1%, 0.18),
-    hsla(28, 90.2%, 56.1%, 0.18)
+    hsla(28, 90.2%, 56.1%, 0.26)
   );
   --color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
   --color-error: light-dark(hsl(357, 78%, 41%), hsl(0, 96.9%, 62%));
@@ -95,7 +95,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   );
   --color-error-frosted: light-dark(
     hsla(357, 78%, 41%, 0.18),
-    hsla(0, 96.9%, 62%, 0.18)
+    hsla(0, 96.9%, 62%, 0.26)
   );
   --color-error-frosted-soft: light-dark(
     hsla(357, 78%, 41%, 0.1),
@@ -112,13 +112,12 @@ exports[`should match compiled tailwindcss theme 1`] = `
   );
   --color-info-frosted: light-dark(
     hsla(228, 83.2%, 51%, 0.18),
-    hsla(210, 100%, 54.5%, 0.18)
+    hsla(210, 100%, 54.5%, 0.26)
   );
   --color-info-frosted-soft: light-dark(
     hsla(228, 83.2%, 51%, 0.1),
     hsla(210, 100%, 54.5%, 0.1)
   );
-  --color-skeleton: light-dark(#f7f7f7, #1a1b1e);
 
   /* Typography */
   --font-porsche-next:
@@ -225,8 +224,8 @@ exports[`should match compiled tailwindcss theme 1`] = `
   ); /* alias (deprecated) */
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-long)
-    var(--ease-in-out) infinite;
+  --animate-skeleton: skeleton var(--transition-duration-xl) var(--ease-in-out)
+    infinite;
 
   @keyframes skeleton {
     from {
@@ -239,29 +238,18 @@ exports[`should match compiled tailwindcss theme 1`] = `
 }
 
 @layer theme {
-  /* deprecated, use .scheme-light instead */
-  .light {
-    color-scheme: light;
-  }
-
-  /* deprecated, use .scheme-dark instead */
-  .dark {
-    color-scheme: dark;
-  }
-
-  /* deprecated, use .scheme-light-dark instead */
-  .auto {
-    color-scheme: light dark;
-  }
-
   @supports not (color: light-dark(white, black)) {
-    :root {
+    :root,
+    .scheme-light,
+    .scheme-only-light,
+    .scheme-normal,
+    .scheme-light-dark {
       --color-focus: #1a44ea;
-      --color-disabled: hsla(233, 6.6%, 23.9%, 0.412);
       --color-canvas: #fff;
-      --color-surface: hsl(240, 7.7%, 97.5%);
-      --color-frosted: hsla(236, 6.4%, 51%, 0.148);
+      --color-surface: hsl(240, 10%, 95%);
+      --color-frosted: hsla(240, 5%, 70%, 0.148);
       --color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
+      --color-frosted-strong: hsla(236, 6.5%, 42%, 0.236);
       --color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
       --color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
       --color-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
@@ -289,7 +277,81 @@ exports[`should match compiled tailwindcss theme 1`] = `
       --color-info-medium: hsla(228, 83.2%, 51%, 0.6);
       --color-info-frosted: hsla(228, 83.2%, 51%, 0.18);
       --color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
-      --color-skeleton: #f7f7f7;
+    }
+
+    .scheme-dark,
+    .scheme-only-dark {
+      --color-focus: #1a44ea;
+      --color-canvas: hsl(225, 66.7%, 1.2%);
+      --color-surface: hsl(240, 2%, 10%);
+      --color-frosted: hsla(240, 2%, 43%, 0.228);
+      --color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+      --color-frosted-strong: hsla(240, 1.5%, 61.8%, 0.302);
+      --color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+      --color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+      --color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+      --color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+      --color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+      --color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+      --color-primary: hsl(225, 100%, 99%);
+      --color-success: hsl(157, 84.9%, 41.6%);
+      --color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
+      --color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
+      --color-success-frosted: hsla(157, 84.9%, 41.6%, 0.26);
+      --color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
+      --color-warning: hsl(28, 90.2%, 56.1%);
+      --color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
+      --color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
+      --color-warning-frosted: hsla(28, 90.2%, 56.1%, 0.26);
+      --color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+      --color-error: hsl(0, 96.9%, 62%);
+      --color-error-low: hsla(0, 96.9%, 62%, 0.18);
+      --color-error-medium: hsla(0, 96.9%, 62%, 0.6);
+      --color-error-frosted: hsla(0, 96.9%, 62%, 0.26);
+      --color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
+      --color-info: hsl(210, 100%, 54.5%);
+      --color-info-low: hsla(210, 100%, 54.5%, 0.18);
+      --color-info-medium: hsla(210, 100%, 54.5%, 0.6);
+      --color-info-frosted: hsla(210, 100%, 54.5%, 0.26);
+      --color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .scheme-light-dark {
+        --color-focus: #1a44ea;
+        --color-canvas: hsl(225, 66.7%, 1.2%);
+        --color-surface: hsl(240, 2%, 10%);
+        --color-frosted: hsla(240, 2%, 43%, 0.228);
+        --color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+        --color-frosted-strong: hsla(240, 1.5%, 61.8%, 0.302);
+        --color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+        --color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+        --color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+        --color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+        --color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+        --color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+        --color-primary: hsl(225, 100%, 99%);
+        --color-success: hsl(157, 84.9%, 41.6%);
+        --color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
+        --color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
+        --color-success-frosted: hsla(157, 84.9%, 41.6%, 0.26);
+        --color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
+        --color-warning: hsl(28, 90.2%, 56.1%);
+        --color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
+        --color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
+        --color-warning-frosted: hsla(28, 90.2%, 56.1%, 0.26);
+        --color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+        --color-error: hsl(0, 96.9%, 62%);
+        --color-error-low: hsla(0, 96.9%, 62%, 0.18);
+        --color-error-medium: hsla(0, 96.9%, 62%, 0.6);
+        --color-error-frosted: hsla(0, 96.9%, 62%, 0.26);
+        --color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
+        --color-info: hsl(210, 100%, 54.5%);
+        --color-info-low: hsla(210, 100%, 54.5%, 0.18);
+        --color-info-medium: hsla(210, 100%, 54.5%, 0.6);
+        --color-info-frosted: hsla(210, 100%, 54.5%, 0.26);
+        --color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
+      }
     }
   }
 }
@@ -408,9 +470,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
 /* Skeleton */
 @utility skeleton {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
+  @apply animate-skeleton block rounded-sm bg-transparent bg-[linear-gradient(to_right,var(--color-frosted)_0%,var(--color-frosted-strong)_50%,var(--color-frosted)_100%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
 /* Typography: Text */

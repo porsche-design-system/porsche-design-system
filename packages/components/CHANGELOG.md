@@ -18,6 +18,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
   to generate accessible code that follows WCAG 2.2 AA standards. ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
+
+## [4.0.0-beta.0] - 2026-02-12
+
+### Added
+
+- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in
+  positioning a custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 - `Canvas`: prop `background` to set the background color to `canvas | surface`
 - `Carousel`:
   - `width` prop now supports `wide` and `full` values
@@ -35,7 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tailwind CSS`:
   - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
     `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
-    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
+    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`, `--color-frosted-strong`
 - `SCSS`:
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
   - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
@@ -43,30 +50,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Blur: `$blur-frosted`
   - Border: `$radius-xs`, `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-2xl`, `$radius-3xl`,
     `$radius-4xl` and `$radius-full`
-  - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
-    `$color-canvas-dark`, `$color-surface`, `$color-surface-light`, `$color-surface-dark`, `$color-frosted`,
-    `$color-frosted-light`, `$color-frosted-dark`, `$color-frosted-soft`, `$color-frosted-soft-light`,
-    `$color-frosted-soft-dark`, `$color-backdrop`, `$color-backdrop-light`, `$color-backdrop-dark`,
-    `$color-contrast-lower`, `$color-contrast-lower-light`, `$color-contrast-lower-dark`, `$color-contrast-low`,
-    `$color-contrast-low-light`, `$color-contrast-low-dark`, `$color-contrast-medium`, `$color-contrast-medium-light`,
-    `$color-contrast-medium-dark`, `$color-contrast-high`, `$color-contrast-high-light`, `$color-contrast-high-dark`,
-    `$color-contrast-higher`, `$color-contrast-higher-light`, `$color-contrast-higher-dark`, `$color-primary`,
-    `$color-primary-light`, `$color-primary-dark`, `$color-success`, `$color-success-light`, `$color-success-dark`,
-    `$color-success-low`, `$color-success-low-light`, `$color-success-low-dark`, `$color-success-medium`,
-    `$color-success-medium-light`, `$color-success-medium-dark`, `$color-success-frosted`,
-    `$color-success-frosted-light`, `$color-success-frosted-dark`, `$color-success-frosted-soft`,
-    `$color-success-frosted-soft-light`, `$color-success-frosted-soft-dark`, `$color-warning`, `$color-warning-light`,
-    `$color-warning-dark`, `$color-warning-low`, `$color-warning-low-light`, `$color-warning-low-dark`,
-    `$color-warning-medium`, `$color-warning-medium-light`, `$color-warning-medium-dark`, `$color-warning-frosted`,
-    `$color-warning-frosted-light`, `$color-warning-frosted-dark`, `$color-warning-frosted-soft`,
-    `$color-warning-frosted-soft-light`, `$color-warning-frosted-soft-dark`, `$color-error`, `$color-error-light`,
-    `$color-error-dark`, `$color-error-low`, `$color-error-low-light`, `$color-error-low-dark`, `$color-error-medium`,
-    `$color-error-medium-light`, `$color-error-medium-dark`, `$color-error-frosted`, `$color-error-frosted-light`,
-    `$color-error-frosted-dark`, `$color-error-frosted-soft`, `$color-error-frosted-soft-light`,
-    `$color-error-frosted-soft-dark`, `$color-info`, `$color-info-light`, `$color-info-dark`, `$color-info-low`,
-    `$color-info-low-light`, `$color-info-low-dark`, `$color-info-medium`, `$color-info-medium-light`,
-    `$color-info-medium-dark`, `$color-info-frosted`, `$color-info-frosted-light`, `$color-info-frosted-dark`,
-    `$color-info-frosted-soft`, `$color-info-frosted-soft-light` and `$color-info-frosted-soft-dark`
+  - Color Scheme: `@mixin color-scheme()`
+  - Color: `$color-focus`,`$color-canvas`, `$color-surface`, `$color-frosted`, `$color-frosted-soft`,
+    `$color-frosted-strong`, `$color-backdrop`, `$color-contrast-lower`, `$color-contrast-low`,
+    `$color-contrast-medium`, `$color-contrast-high`, `$color-contrast-higher`, `$color-primary`, `$color-success`,
+    `$color-success-low`, `$color-success-medium`, `$color-success-frosted`, `$color-success-frosted-soft`,
+    `$color-warning`, `$color-warning-low`, `$color-warning-medium`, `$color-warning-frosted`,
+    `$color-warning-frosted-soft`,`$color-error`, `$color-error-low`, `$color-error-medium`,
+    `$color-error-frosted`,`$color-error-frosted-soft`, `$color-info`, `$color-info-low`, `$color-info-medium`,
+    `$color-info-frosted`, `$color-info-frosted-soft`
   - Focus: `@mixin focus-visible()`
   - Gradient: `$gradient-stops-fade-dark`
   - Skeleton: `@mixin skeleton()`
@@ -86,27 +78,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Blur: `blurFrosted`
   - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
     `radiusFull`
-  - Color: `colorCanvas`, `colorCanvasLight`, `colorCanvasDark`, `colorSurface`, `colorSurfaceLight`,
-    `colorSurfaceDark`, `colorFrosted`, `colorFrostedLight`, `colorFrostedDark`, `colorFrostedSoft`,
-    `colorFrostedSoftLight`, `colorFrostedSoftDark`, `colorBackdrop`, `colorBackdropLight`, `colorBackdropDark`,
-    `colorPrimary`, `colorPrimaryLight`, `colorPrimaryDark`, `colorContrastHigher`, `colorContrastHigherLight`,
-    `colorContrastHigherDark`, `colorContrastHigh`, `colorContrastHighLight`, `colorContrastHighDark`,
-    `colorContrastMedium`, `colorContrastMediumLight`, `colorContrastMediumDark`, `colorContrastLow`,
-    `colorContrastLowLight`, `colorContrastLowDark`, `colorContrastLower`, `colorContrastLowerLight`,
-    `colorContrastLowerDark`, `colorInfo`, `colorInfoLight`, `colorInfoDark`, `colorInfoMedium`, `colorInfoMediumLight`,
-    `colorInfoMediumDark`, `colorInfoLow`, `colorInfoLowLight`, `colorInfoLowDark`, `colorInfoFrosted`,
-    `colorInfoFrostedLight`, `colorInfoFrostedDark`, `colorInfoFrostedSoft`, `colorInfoFrostedSoftLight`,
-    `colorInfoFrostedSoftDark`, `colorSuccess`, `colorSuccessLight`, `colorSuccessDark`, `colorSuccessMedium`,
-    `colorSuccessMediumLight`, `colorSuccessMediumDark`, `colorSuccessLow`, `colorSuccessLowLight`,
-    `colorSuccessLowDark`, `colorSuccessFrosted`, `colorSuccessFrostedLight`, `colorSuccessFrostedDark`,
-    `colorSuccessFrostedSoft`, `colorSuccessFrostedSoftLight`, `colorSuccessFrostedSoftDark`, `colorWarning`,
-    `colorWarningLight`, `colorWarningDark`, `colorWarningMedium`, `colorWarningMediumLight`, `colorWarningMediumDark`,
-    `colorWarningLow`, `colorWarningLowLight`, `colorWarningLowDark`, `colorWarningFrosted`, `colorWarningFrostedLight`,
-    `colorWarningFrostedDark`, `colorWarningFrostedSoft`, `colorWarningFrostedSoftLight`, `colorWarningFrostedSoftDark`,
-    `colorError`, `colorErrorLight`, `colorErrorDark`, `colorErrorMedium`, `colorErrorMediumLight`,
-    `colorErrorMediumDark`, `colorErrorLow`, `colorErrorLowLight`, `colorErrorLowDark`, `colorErrorFrosted`,
-    `colorErrorFrostedLight`, `colorErrorFrostedDark`, `colorErrorFrostedSoft`, `colorErrorFrostedSoftLight`,
-    `colorErrorFrostedSoftDark`, `colorFocus`, `colorFocusLight` and `colorFocusDark`
+  - Color: `colorCanvas`, `colorSurface`, `colorFrosted`, `colorFrostedSoft`, `colorFrostedStrong`,
+    `colorBackdrop`,`colorPrimary`, `colorContrastHigher`, `colorContrastHigh`, `colorContrastMedium`,
+    `colorContrastLow`, `colorContrastLower`, `colorInfo`, `colorInfoMedium`, `colorInfoLow`, `colorInfoFrosted`,
+    `colorInfoFrostedSoft`, `colorSuccess`, `colorSuccessMedium`, `colorSuccessLow`, `colorSuccessFrosted`,
+    `colorSuccessFrostedSoft`, `colorWarning`, `colorWarningMedium`, `colorWarningLow`, `colorWarningFrosted`,
+    `colorWarningFrostedSoft`, `colorError`, `colorErrorMedium`, `colorErrorLow`, `colorErrorFrosted`,
+    `colorErrorFrostedSoft`, `colorFocus`,
+  - Color Scheme: `colorSchemeStyles()`
   - Focus: `getFocusVisibleStyle()`
   - Gradient: `gradientStopsFadeDark`,
   - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
@@ -122,8 +101,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- Remove theme prop since it's handled by CSS variables which can be controlled by `.scheme-light`, `.scheme-dark` or
+  `.scheme-light-dark` CSS class, e.g. `<p-button>Some label</p-button>` inside `<div class="scheme-dark">…</div>` will
+  render the dark theme.
+- `Link Tile`, `Button Tile`: uses `color-scheme: dark` by default
 - `Tailwind CSS`:
   - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
+  - Rename theme CSS classes `.light` to `.scheme-light`, `.dark` to `.scheme-dark` and `.auto` to `.scheme-light-dark`
 - `Canvas`: visual appearance on mobile view
 - `Styles`: Import paths for npm package:
 
@@ -152,12 +136,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
 
-- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
-
-```diff
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
-```
+- Tailwind CSS: `--color-disabled`
 
 - Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
   color function)
@@ -190,7 +169,6 @@ and migration steps.
     `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
 
 - `Divider`: value `contrast-lower` for prop `color`
-
 - `Multi Select, Select`:
   - `selected` slot for custom selection rendering and enabling complex options
   - `options-status` slot for loading, error and no results states when using custom filtering
@@ -428,6 +406,23 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
+## [3.32.0] - 2026-02-04
+
+## [3.32.0-rc.2] - 2026-02-03
+
+### Added
+
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 
 ## [3.32.0-rc.1] - 2026-01-12
 

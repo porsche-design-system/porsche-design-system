@@ -20,8 +20,6 @@ import {
   colorContrastMedium,
   colorContrastMediumDark,
   colorContrastMediumLight,
-  colorDisabledDark,
-  colorDisabledLight,
   colorError,
   colorErrorDark,
   colorErrorFrosted,
@@ -46,6 +44,9 @@ import {
   colorFrostedSoft,
   colorFrostedSoftDark,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongDark,
+  colorFrostedStrongLight,
   colorInfo,
   colorInfoDark,
   colorInfoFrosted,
@@ -101,104 +102,172 @@ import {
 
 export const getColorScss = () => {
   return `
-    $color-focus: ${colorFocus};
-    $color-focus-light: ${colorFocusLight};
-    $color-focus-dark: ${colorFocusDark};
-    $color-canvas: ${colorCanvas};
-    $color-canvas-light: ${colorCanvasLight};
-    $color-canvas-dark: ${colorCanvasDark};
-    $color-surface: ${colorSurface};
-    $color-surface-light: ${colorSurfaceLight};
-    $color-surface-dark: ${colorSurfaceDark};
-    $color-frosted: ${colorFrosted};
-    $color-frosted-light: ${colorFrostedLight};
-    $color-frosted-dark: ${colorFrostedDark};
-    $color-frosted-soft: ${colorFrostedSoft};
-    $color-frosted-soft-light: ${colorFrostedSoftLight};
-    $color-frosted-soft-dark: ${colorFrostedSoftDark};
-    $color-backdrop: ${colorBackdrop};
-    $color-backdrop-light: ${colorBackdropLight};
-    $color-backdrop-dark: ${colorBackdropDark};
-    $color-contrast-lower: ${colorContrastLower};
-    $color-contrast-lower-light: ${colorContrastLowerLight};
-    $color-contrast-lower-dark: ${colorContrastLowerDark};
-    $color-contrast-low: ${colorContrastLow};
-    $color-contrast-low-light: ${colorContrastLowLight};
-    $color-contrast-low-dark: ${colorContrastLowDark};
-    $color-contrast-medium: ${colorContrastMedium};
-    $color-contrast-medium-light: ${colorContrastMediumLight};
-    $color-contrast-medium-dark: ${colorContrastMediumDark};
-    $color-contrast-high: ${colorContrastHigh};
-    $color-contrast-high-light: ${colorContrastHighLight};
-    $color-contrast-high-dark: ${colorContrastHighDark};
-    $color-contrast-higher: ${colorContrastHigher};
-    $color-contrast-higher-light: ${colorContrastHigherLight};
-    $color-contrast-higher-dark: ${colorContrastHigherDark};
-    $color-primary: ${colorPrimary};
-    $color-primary-light: ${colorPrimaryLight};
-    $color-primary-dark: ${colorPrimaryDark};
-    $color-success: ${colorSuccess};
-    $color-success-light: ${colorSuccessLight};
-    $color-success-dark: ${colorSuccessDark};
-    $color-success-low: ${colorSuccessLow};
-    $color-success-low-light: ${colorSuccessLowLight};
-    $color-success-low-dark: ${colorSuccessLowDark};
-    $color-success-medium: ${colorSuccessMedium};
-    $color-success-medium-light: ${colorSuccessMediumLight};
-    $color-success-medium-dark: ${colorSuccessMediumDark};
-    $color-success-frosted: ${colorSuccessFrosted};
-    $color-success-frosted-light: ${colorSuccessFrostedLight};
-    $color-success-frosted-dark: ${colorSuccessFrostedDark};
-    $color-success-frosted-soft: ${colorSuccessFrostedSoft};
-    $color-success-frosted-soft-light: ${colorSuccessFrostedSoftLight};
-    $color-success-frosted-soft-dark: ${colorSuccessFrostedSoftDark};
-    $color-warning: ${colorWarning};
-    $color-warning-light: ${colorWarningLight};
-    $color-warning-dark: ${colorWarningDark};
-    $color-warning-low: ${colorWarningLow};
-    $color-warning-low-light: ${colorWarningLowLight};
-    $color-warning-low-dark: ${colorWarningLowDark};
-    $color-warning-medium: ${colorWarningMedium};
-    $color-warning-medium-light: ${colorWarningMediumLight};
-    $color-warning-medium-dark: ${colorWarningMediumDark};
-    $color-warning-frosted: ${colorWarningFrosted};
-    $color-warning-frosted-light: ${colorWarningFrostedLight};
-    $color-warning-frosted-dark: ${colorWarningFrostedDark};
-    $color-warning-frosted-soft: ${colorWarningFrostedSoft};
-    $color-warning-frosted-soft-light: ${colorWarningFrostedSoftLight};
-    $color-warning-frosted-soft-dark: ${colorWarningFrostedSoftDark};
-    $color-error: ${colorError};
-    $color-error-light: ${colorErrorLight};
-    $color-error-dark: ${colorErrorDark};
-    $color-error-low: ${colorErrorLow};
-    $color-error-low-light: ${colorErrorLowLight};
-    $color-error-low-dark: ${colorErrorLowDark};
-    $color-error-medium: ${colorErrorMedium};
-    $color-error-medium-light: ${colorErrorMediumLight};
-    $color-error-medium-dark: ${colorErrorMediumDark};
-    $color-error-frosted: ${colorErrorFrosted};
-    $color-error-frosted-light: ${colorErrorFrostedLight};
-    $color-error-frosted-dark: ${colorErrorFrostedDark};
-    $color-error-frosted-soft: ${colorErrorFrostedSoft};
-    $color-error-frosted-soft-light: ${colorErrorFrostedSoftLight};
-    $color-error-frosted-soft-dark: ${colorErrorFrostedSoftDark};
-    $color-info: ${colorInfo};
-    $color-info-light: ${colorInfoLight};
-    $color-info-dark: ${colorInfoDark};
-    $color-info-low: ${colorInfoLow};
-    $color-info-low-light: ${colorInfoLowLight};
-    $color-info-low-dark: ${colorInfoLowDark};
-    $color-info-medium: ${colorInfoMedium};
-    $color-info-medium-light: ${colorInfoMediumLight};
-    $color-info-medium-dark: ${colorInfoMediumDark};
-    $color-info-frosted: ${colorInfoFrosted};
-    $color-info-frosted-light: ${colorInfoFrostedLight};
-    $color-info-frosted-dark: ${colorInfoFrostedDark};
-    $color-info-frosted-soft: ${colorInfoFrostedSoft};
-    $color-info-frosted-soft-light: ${colorInfoFrostedSoftLight};
-    $color-info-frosted-soft-dark: ${colorInfoFrostedSoftDark};
+    $color-focus: var(--_color-focus, ${colorFocus});
+    $color-canvas: var(--_color-canvas, ${colorCanvas});
+    $color-surface: var(--_color-surface, ${colorSurface});
+    $color-frosted: var(--_color-frosted, ${colorFrosted});
+    $color-frosted-soft: var(--_color-frosted-soft, ${colorFrostedSoft});
+    $color-frosted-strong: var(--_color-frosted-strong, ${colorFrostedStrong});
+    $color-backdrop: var(--_color-backdrop, ${colorBackdrop});
+    $color-contrast-lower: var(--_color-contrast-lower, ${colorContrastLower});
+    $color-contrast-low: var(--_color-contrast-low, ${colorContrastLow});
+    $color-contrast-medium: var(--_color-contrast-medium, ${colorContrastMedium});
+    $color-contrast-high: var(--_color-contrast-high, ${colorContrastHigh});
+    $color-contrast-higher: var(--_color-contrast-higher, ${colorContrastHigher});
+    $color-primary: var(--_color-primary, ${colorPrimary});
+    $color-success: var(--_color-success, ${colorSuccess});
+    $color-success-low: var(--_color-success-low, ${colorSuccessLow});
+    $color-success-medium: var(--_color-success-medium, ${colorSuccessMedium});
+    $color-success-frosted: var(--_color-success-frosted, ${colorSuccessFrosted});
+    $color-success-frosted-soft: var(--_color-success-frosted-soft, ${colorSuccessFrostedSoft});
+    $color-warning: var(--_color-warning, ${colorWarning});
+    $color-warning-low: var(--_color-warning-low, ${colorWarningLow});
+    $color-warning-medium: var(--_color-warning-medium, ${colorWarningMedium});
+    $color-warning-frosted: var(--_color-warning-frosted, ${colorWarningFrosted});
+    $color-warning-frosted-soft: var(--_color-warning-frosted-soft, ${colorWarningFrostedSoft});
+    $color-error: var(--_color-error, ${colorError});
+    $color-error-low: var(--_color-error-low, ${colorErrorLow});
+    $color-error-medium: var(--_color-error-medium, ${colorErrorMedium});
+    $color-error-frosted: var(--_color-error-frosted, ${colorErrorFrosted});
+    $color-error-frosted-soft: var(--_color-error-frosted-soft, ${colorErrorFrostedSoft});
+    $color-info: var(--_color-info, ${colorInfo});
+    $color-info-low: var(--_color-info-low, ${colorInfoLow});
+    $color-info-medium: var(--_color-info-medium, ${colorInfoMedium});
+    $color-info-frosted: var(--_color-info-frosted, ${colorInfoFrosted});
+    $color-info-frosted-soft: var(--_color-info-frosted-soft, ${colorInfoFrostedSoft});
 
-    /* TBD: $color-skeleton: #f7f7f7; */
+    @mixin color-scheme() {
+      .scheme-normal {
+        color-scheme: normal;
+      }
+      .scheme-dark {
+        color-scheme: dark;
+      }
+      .scheme-light {
+        color-scheme: light;
+      }
+      .scheme-light-dark {
+        color-scheme: light dark;
+      }
+      .scheme-only-dark {
+        color-scheme: only dark;
+      }
+      .scheme-only-light {
+        color-scheme: only light;
+      }
+
+      @supports not (color: light-dark(white, black)) {
+        :root, .scheme-light, .scheme-only-light, .scheme-normal, .scheme-light-dark {
+          --_color-focus: ${colorFocusLight};
+          --_color-canvas: ${colorCanvasLight};
+          --_color-surface: ${colorSurfaceLight};
+          --_color-frosted: ${colorFrostedLight};
+          --_color-frosted-soft: ${colorFrostedSoftLight};
+          --_color-frosted-strong: ${colorFrostedStrongLight};
+          --_color-backdrop: ${colorBackdropLight};
+          --_color-contrast-lower: ${colorContrastLowerLight};
+          --_color-contrast-low: ${colorContrastLowLight};
+          --_color-contrast-medium: ${colorContrastMediumLight};
+          --_color-contrast-high: ${colorContrastHighLight};
+          --_color-contrast-higher: ${colorContrastHigherLight};
+          --_color-primary: ${colorPrimaryLight};
+          --_color-success: ${colorSuccessLight};
+          --_color-success-low: ${colorSuccessLowLight};
+          --_color-success-medium: ${colorSuccessMediumLight};
+          --_color-success-frosted: ${colorSuccessFrostedLight};
+          --_color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
+          --_color-warning: ${colorWarningLight};
+          --_color-warning-low: ${colorWarningLowLight};
+          --_color-warning-medium: ${colorWarningMediumLight};
+          --_color-warning-frosted: ${colorWarningFrostedLight};
+          --_color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
+          --_color-error: ${colorErrorLight};
+          --_color-error-low: ${colorErrorLowLight};
+          --_color-error-medium: ${colorErrorMediumLight};
+          --_color-error-frosted: ${colorErrorFrostedLight};
+          --_color-error-frosted-soft: ${colorErrorFrostedSoftLight};
+          --_color-info: ${colorInfoLight};
+          --_color-info-low: ${colorInfoLowLight};
+          --_color-info-medium: ${colorInfoMediumLight};
+          --_color-info-frosted: ${colorInfoFrostedLight};
+          --_color-info-frosted-soft: ${colorInfoFrostedSoftLight};
+        }
+
+        .scheme-dark, .scheme-only-dark {
+          --_color-focus: ${colorFocusDark};
+          --_color-canvas: ${colorCanvasDark};
+          --_color-surface: ${colorSurfaceDark};
+          --_color-frosted: ${colorFrostedDark};
+          --_color-frosted-soft: ${colorFrostedSoftDark};
+          --_color-frosted-strong: ${colorFrostedStrongDark};
+          --_color-backdrop: ${colorBackdropDark};
+          --_color-contrast-lower: ${colorContrastLowerDark};
+          --_color-contrast-low: ${colorContrastLowDark};
+          --_color-contrast-medium: ${colorContrastMediumDark};
+          --_color-contrast-high: ${colorContrastHighDark};
+          --_color-contrast-higher: ${colorContrastHigherDark};
+          --_color-primary: ${colorPrimaryDark};
+          --_color-success: ${colorSuccessDark};
+          --_color-success-low: ${colorSuccessLowDark};
+          --_color-success-medium: ${colorSuccessMediumDark};
+          --_color-success-frosted: ${colorSuccessFrostedDark};
+          --_color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
+          --_color-warning: ${colorWarningDark};
+          --_color-warning-low: ${colorWarningLowDark};
+          --_color-warning-medium: ${colorWarningMediumDark};
+          --_color-warning-frosted: ${colorWarningFrostedDark};
+          --_color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+          --_color-error: ${colorErrorDark};
+          --_color-error-low: ${colorErrorLowDark};
+          --_color-error-medium: ${colorErrorMediumDark};
+          --_color-error-frosted: ${colorErrorFrostedDark};
+          --_color-error-frosted-soft: ${colorErrorFrostedSoftDark};
+          --_color-info: ${colorInfoDark};
+          --_color-info-low: ${colorInfoLowDark};
+          --_color-info-medium: ${colorInfoMediumDark};
+          --_color-info-frosted: ${colorInfoFrostedDark};
+          --_color-info-frosted-soft: ${colorInfoFrostedSoftDark};
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .scheme-light-dark {
+            --_color-focus: ${colorFocusDark};
+            --_color-canvas: ${colorCanvasDark};
+            --_color-surface: ${colorSurfaceDark};
+            --_color-frosted: ${colorFrostedDark};
+            --_color-frosted-soft: ${colorFrostedSoftDark};
+            --_color-frosted-strong: ${colorFrostedStrongDark};
+            --_color-backdrop: ${colorBackdropDark};
+            --_color-contrast-lower: ${colorContrastLowerDark};
+            --_color-contrast-low: ${colorContrastLowDark};
+            --_color-contrast-medium: ${colorContrastMediumDark};
+            --_color-contrast-high: ${colorContrastHighDark};
+            --_color-contrast-higher: ${colorContrastHigherDark};
+            --_color-primary: ${colorPrimaryDark};
+            --_color-success: ${colorSuccessDark};
+            --_color-success-low: ${colorSuccessLowDark};
+            --_color-success-medium: ${colorSuccessMediumDark};
+            --_color-success-frosted: ${colorSuccessFrostedDark};
+            --_color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
+            --_color-warning: ${colorWarningDark};
+            --_color-warning-low: ${colorWarningLowDark};
+            --_color-warning-medium: ${colorWarningMediumDark};
+            --_color-warning-frosted: ${colorWarningFrostedDark};
+            --_color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+            --_color-error: ${colorErrorDark};
+            --_color-error-low: ${colorErrorLowDark};
+            --_color-error-medium: ${colorErrorMediumDark};
+            --_color-error-frosted: ${colorErrorFrostedDark};
+            --_color-error-frosted-soft: ${colorErrorFrostedSoftDark};
+            --_color-info: ${colorInfoDark};
+            --_color-info-low: ${colorInfoLowDark};
+            --_color-info-medium: ${colorInfoMediumDark};
+            --_color-info-frosted: ${colorInfoFrostedDark};
+            --_color-info-frosted-soft: ${colorInfoFrostedSoftDark};
+          }
+        }
+      }
+    }
 
     $pds-theme-light-primary: ${colorPrimaryLight}; /* alias (deprecated) */
     $pds-theme-light-background-base: ${colorCanvasLight}; /* alias (deprecated) */
@@ -219,7 +288,7 @@ export const getColorScss = () => {
     $pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148); /* alias (deprecated) */
     $pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148); /* alias (deprecated) */
     $pds-theme-light-state-focus: #1a44ea; /* alias (deprecated) */
-    $pds-theme-light-state-disabled: ${colorDisabledLight}; /* alias (deprecated) */
+    $pds-theme-light-state-disabled: hsla(233,6.6%,23.9%,0.412); /* (deprecated) */
     $pds-theme-dark-primary: ${colorPrimaryDark}; /* alias (deprecated) */
     $pds-theme-dark-background-base: ${colorCanvasDark}; /* alias (deprecated) */
     $pds-theme-dark-background-surface: ${colorSurfaceDark}; /* alias (deprecated) */
@@ -239,6 +308,6 @@ export const getColorScss = () => {
     $pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228); /* alias (deprecated) */
     $pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228); /* alias (deprecated) */
     $pds-theme-dark-state-focus: #1a44ea; /* alias (deprecated) */
-    $pds-theme-dark-state-disabled: ${colorDisabledDark}; /* alias (deprecated) */
+    $pds-theme-dark-state-disabled: hsla(240,1.5%,61.8%,0.302); /* (deprecated) */
 `;
 };

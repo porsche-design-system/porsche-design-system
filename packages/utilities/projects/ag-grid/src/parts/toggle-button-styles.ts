@@ -2,7 +2,6 @@ import { createPart, type Part } from 'ag-grid-community';
 import {
   borderWidthThin,
   colorContrastLower,
-  colorDisabled,
   colorFrostedSoft,
   colorPrimary,
   colorSuccess,
@@ -38,7 +37,7 @@ export const toggleButtonStyle: Part = createPart({
     toggleButtonSwitchBackgroundColor: colorPrimary, // Inner circle color when OFF
 
     // Disabled state
-    toggleButtonDisabledColor: colorDisabled,
+    toggleButtonDisabledColor: 'light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))',
   },
   css: `
     .ag-toggle-button-input-wrapper {
