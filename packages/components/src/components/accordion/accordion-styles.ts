@@ -63,7 +63,7 @@ export const getComponentCss = (
 
   // TODO: should be done smarter and ensure that it's in sync with button/link
   const paddingBlock = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
-  const paddingInline = `calc(33.6px * (${compactFactor} - 0.64285714) + 16px)`;
+  const paddingInline = `calc(11.2px * (${compactFactor} - 0.64285714) + 12px)`;
   const gap = `calc(11.2px * (${compactFactor} - 0.64285714) + 4px)`;
 
   return getCss({
@@ -159,14 +159,16 @@ export const getComponentCss = (
         '& > span': {
           flexShrink: 0,
           display: 'grid',
+          placeItems: 'center',
           width: '1.5rem',
           height: '1.5rem',
-          [alignIcon === 'start' ? 'marginInlineStart' : 'marginInlineEnd']: '-5px', // compensate white space of svg icon and optimize visual alignment
           borderRadius: radiusFull,
           background: 'transparent',
           transition: getTransition('background-color'),
           '&::before': {
             content: '""',
+            width: '1rem',
+            height: '1rem',
             WebkitMask: `${icon} center/contain no-repeat`, // necessary for Sogou browser support :-)
             mask: `${icon} center/contain no-repeat`,
             background: colorPrimary,
