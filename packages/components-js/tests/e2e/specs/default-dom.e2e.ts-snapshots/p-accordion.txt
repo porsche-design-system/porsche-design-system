@@ -1,23 +1,9 @@
-<h2 class="heading">
-  <button
-    id="accordion-control"
-    type="button"
-    aria-expanded="false"
-    aria-controls="accordion-panel"
-  >
-    <slot name="heading"> </slot>
-    <span class="icon-container">
-      <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
-    </span>
-  </button>
-</h2>
-<div
-  id="accordion-panel"
-  class="collapsible"
-  role="region"
-  aria-labelledby="accordion-control"
->
+<details>
+  <summary>
+    <slot name="summary"> </slot>
+    <span> </span>
+  </summary>
   <div>
     <slot> </slot>
   </div>
-</div>
+</details>
