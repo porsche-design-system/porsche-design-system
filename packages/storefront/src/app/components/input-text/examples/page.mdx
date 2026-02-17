@@ -55,10 +55,10 @@ If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have t
 `--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
 
 <Notification heading="Attention" heading-tag="h3" state="warning">
-  If the <code>component</code> is in <code>disabled/loading</code> state
-  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
-  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
-  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+  In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive keyboard focus. Add <code>tabindex="-1"</code> to those UI elements.
+
+The <code>label-after</code> slot is not affected by a <code>disabled/loading</code> state at all.
+
 </Notification>
 
 <ComponentStory story={inputTextStorySlots} />

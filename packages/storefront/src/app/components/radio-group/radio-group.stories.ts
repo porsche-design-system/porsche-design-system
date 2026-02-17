@@ -39,10 +39,7 @@ export const radioGroupStory: Story<'p-radio-group'> = {
     {
       tag: 'p-radio-group',
       properties,
-      children: [
-        ...(slots?.['label-after']?.generator() ?? []),
-        ...radioGroupOptions,
-      ],
+      children: [...(slots?.['label-after']?.generator() ?? []), ...radioGroupOptions],
     },
   ],
 };
@@ -57,7 +54,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
           tag: 'span',
           properties: { slot: 'label' },
           children: [
-            'Some label with a ',
+            'Some slotted label with a ',
             {
               tag: 'a',
               properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
@@ -75,7 +72,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
           tag: 'span',
           properties: { slot: 'description' },
           children: [
-            'Some description with a ',
+            'Some slotted description with a ',
             {
               tag: 'a',
               properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
@@ -88,7 +85,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
           tag: 'span',
           properties: { slot: 'message' },
           children: [
-            'Some error message with a ',
+            'Some slotted error message with a ',
             {
               tag: 'a',
               properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
@@ -136,7 +133,31 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
         },
         {
           tag: 'p-radio-group-option',
-          properties: { value: 'c' },
+          properties: { value: 'c', disabled: 'true' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                'Disabled Option C with slotted label, a nested ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://www.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+                ' and a label-after slot.',
+              ],
+            },
+            {
+              tag: 'p-popover',
+              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              children: ['Some information about the disabled state.'],
+            },
+          ],
+        },
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'd' },
           children: [
             {
               tag: 'span',
