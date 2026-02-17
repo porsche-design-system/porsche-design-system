@@ -102,6 +102,36 @@ test.describe('value', () => {
     await expect(inputMonth).toHaveJSProperty('value', testInput);
     await expect(inputMonth).toHaveValue(testInput);
   });
+
+  test('should allow controlled input via programmatic value updates in input listener', async ({ page }) => {
+    await initInputMonth(page, { props: { name: 'some-name' } });
+    const host = getHost(page);
+    const inputMonth = getInputMonth(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputMonth).toHaveValue('');
+
+    // Add input event listener that always sets value to '2025-05'
+    await page.evaluate(() => {
+      const hostElement = document.querySelector('p-input-month');
+      hostElement.addEventListener('input', () => {
+        hostElement.value = '2025-05';
+      });
+    });
+
+    await inputMonth.focus();
+    await expect(inputMonth).toBeFocused();
+
+    await inputMonth.fill('2019-03');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-05');
+    await expect(inputMonth).toHaveValue('2025-05');
+
+    await inputMonth.fill('2026-08');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-05');
+    await expect(inputMonth).toHaveValue('2025-05');
+  });
 });
 
 test.describe('form', () => {
