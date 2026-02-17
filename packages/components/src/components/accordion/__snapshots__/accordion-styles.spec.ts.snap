@@ -15,10 +15,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -135,10 +139,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -249,10 +257,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -370,10 +382,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -491,10 +507,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -607,10 +627,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -723,10 +747,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -839,10 +867,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -955,10 +987,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -1076,10 +1112,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
@@ -1190,10 +1230,14 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot {
-    display: block;
+  slot[name="summary"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
   }
   slot:not([name]) {
+    display: block;
     overflow: hidden;
   }
   details[open] slot:not([name]) {
