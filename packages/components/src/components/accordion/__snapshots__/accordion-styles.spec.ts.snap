@@ -63,7 +63,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
     margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
@@ -183,7 +183,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -303,7 +303,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -428,7 +428,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
@@ -553,7 +553,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -673,7 +673,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -793,7 +793,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -913,7 +913,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
@@ -1035,7 +1035,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
@@ -1156,7 +1156,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -1276,7 +1276,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
