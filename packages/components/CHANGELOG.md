@@ -16,9 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
-Vue: All component events now emit the full `CustomEvent` instead of just the event detail.  
-The event detail itself is unchanged but must be accessed via `e.detail` instead of `e`.  
-Props and other component data can be accessed directly via `e.target`.
+Vue: All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must be
+accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
 
 ```diff
 <script setup lang="ts">
@@ -27,16 +26,16 @@ import { ref } from 'vue';
 
 const isOpen = ref(false);
 
-- const onUpdate = (e: AccordionUpdateEventDetail): void => {
-+ const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>): void => {
--  isOpen1.value = e.open;
-+  isOpen1.value = e.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
 };
 </script>
 
 <template>
-  <PAccordion :heading="'Some Heading'" :open="isOpen" @update="onUpdate">
-    <PText>Some Content</PText>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
   </PAccordion>
 </template>
 ```
