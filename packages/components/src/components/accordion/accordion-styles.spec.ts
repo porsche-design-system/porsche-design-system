@@ -13,6 +13,7 @@ describe('getComponentCss()', () => {
     ['start', 'canvas', false, false, false],
     ['start', 'canvas', false, false, true],
     ['start', 'canvas', false, true, true],
+    ['start', 'surface', false, true, true],
     ['start', 'none', false, false, false],
   ])(
     'should return correct css for alignIcon: %s, background: %s, isCompact: %s, isOpen: %s and isSticky: %s',

@@ -25,6 +25,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.4s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -32,6 +37,8 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
     display: block;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -49,15 +56,15 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
     position: sticky;
-    top: var(--p-accordion-summary-top, 0px);
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     z-index: 1;
     display: flex;
     justify-content: space-between;
@@ -94,6 +101,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -127,6 +145,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.25s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -149,10 +172,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -192,6 +215,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -225,6 +259,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.25s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -249,15 +288,15 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
     position: sticky;
-    top: var(--p-accordion-summary-top, 0px);
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     z-index: 1;
     display: flex;
     justify-content: flex-end;
@@ -267,7 +306,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
-    background: var(--p-color-canvas);
+    background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   summary:focus-visible > span {
@@ -297,6 +336,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -330,6 +380,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.4s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -354,15 +409,15 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
     position: sticky;
-    top: var(--p-accordion-summary-top, 0px);
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     z-index: 1;
     display: flex;
     justify-content: flex-end;
@@ -372,7 +427,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
-    background: var(--p-color-canvas);
+    background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   summary:focus-visible > span {
@@ -402,6 +457,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -435,6 +501,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.25s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -442,6 +513,8 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     display: block;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -457,10 +530,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -500,6 +573,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -533,6 +617,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.25s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -540,6 +629,8 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     display: block;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -555,10 +646,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -598,6 +689,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -631,6 +733,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.25s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -638,6 +745,8 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     display: block;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -653,10 +762,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -696,6 +805,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -729,6 +849,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.4s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -736,6 +861,8 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     display: block;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -751,10 +878,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
@@ -794,6 +921,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -827,6 +965,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.4s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -834,6 +977,8 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     display: block;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -851,15 +996,15 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   summary {
     all: unset;
     position: sticky;
-    top: var(--p-accordion-summary-top, 0px);
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     z-index: 1;
     display: flex;
     justify-content: flex-end;
@@ -897,6 +1042,17 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
@@ -930,6 +1086,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     overflow: visible;
     animation: overflow-hidden var(--p-transition-duration,.25s);
   }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
   details {
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -952,10 +1113,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   details[open] > div {
     opacity: 1;
-    margin-top: var(--p-spacing-static-sm);
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .6s) cubic-bezier(.4,0,.5,1);
   }
   summary {
     all: unset;
@@ -995,6 +1156,138 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   details[open] summary > span::before {
     transform: rotate3d(0,0,1,180deg);
   }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: 0;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
+@media(hover:hover) {
+    summary:hover > span {
+      background: var(--p-color-frosted);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for alignIcon: start, background: surface, isCompact: false, isOpen: true and isSticky: true 1`] = `
+"@keyframes overflow-hidden {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot {
+    display: block;
+  }
+  slot:not([name]) {
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: block;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-surface);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > div {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    position: sticky;
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    background: linear-gradient(180deg,var(--p-color-surface) 0%,var(--p-color-surface) 90%,transparent 100%);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  summary:focus-visible > span {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary > span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary > span::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary > span::before {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary > span::before {
+      background-color: LinkText;
+    }
+}
+
 @media(hover:hover) {
     summary:hover > span {
       background: var(--p-color-frosted);
