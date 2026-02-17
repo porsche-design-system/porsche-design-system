@@ -57,6 +57,12 @@ exports[`getComponentCss() > should return correct css 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover {
       background-color: var(--p-color-frosted-soft);
@@ -95,5 +101,15 @@ exports[`getComponentCss() > should return correct css 1`] = `
     hyphens: var(--p-hyphens, auto);
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
-  }"
+  }
+@media (forced-colors: active) {
+    .arrow {
+      background: CanvasText;
+    }
+    .content {
+      outline: 2px solid CanvasText;
+      outline-offset: -2px;
+    }
+}
+"
 `;

@@ -15,6 +15,7 @@ import {
   legacyRadiusMedium,
   radiusXl,
 } from '../../styles/css-variables';
+import { forcedColorsMediaQuery } from '../../styles';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -49,6 +50,10 @@ export const getNotificationRootJssStyle = (
       // 4 columns are for icon, content, optional action button and optional close button
       gridTemplateColumns: `auto minmax(auto, 1fr)${hasAction ? ' auto' : ''}${hasClose ? ' auto' : ''}`,
     },
+    ...forcedColorsMediaQuery({
+      outline: '2px solid CanvasText',
+      outlineOffset: '-2px',
+    }),
   };
 };
 

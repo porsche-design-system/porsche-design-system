@@ -15,7 +15,6 @@ export const getComponentCss = (isDisabled: boolean): string => {
     '@global': {
       ':host': addImportantToEachRule({
         ...hostHiddenStyles,
-        ...(isDisabled && getDisabledBaseStyles()),
       }),
       '::slotted(*)': {
         '--p-internal-select-option-padding-left': paddingSlottedInlineStart,
@@ -31,6 +30,7 @@ export const getComponentCss = (isDisabled: boolean): string => {
         paddingInline,
         font: textXSmallStyle.font.replace(' 400 ', ` ${fontWeightSemiBold} `),
         color: colorPrimary,
+        ...(isDisabled && getDisabledBaseStyles()),
       },
     },
   });

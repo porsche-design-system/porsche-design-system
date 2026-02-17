@@ -43,7 +43,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -129,6 +129,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -180,7 +187,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -266,6 +273,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -317,7 +331,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -382,6 +396,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -433,7 +454,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -498,6 +519,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -549,7 +577,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -614,6 +642,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -665,7 +700,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -731,6 +766,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-success);
@@ -782,7 +824,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -848,6 +890,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-success);
@@ -899,7 +948,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -964,6 +1013,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -1015,7 +1071,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -1100,6 +1156,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -1151,7 +1214,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -1215,6 +1278,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -1266,7 +1336,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -1330,6 +1400,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -1382,7 +1459,7 @@ input {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border-color: transparent;
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -1466,7 +1543,14 @@ input {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true and counter: true 2`] = `
@@ -1513,7 +1597,7 @@ input {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border-color: transparent;
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -1597,7 +1681,14 @@ input {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false and counter: false 1`] = `
@@ -1643,7 +1734,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .spinner {
@@ -1832,6 +1923,13 @@ input {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
 "
 `;
 
@@ -1862,6 +1960,13 @@ input {
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-overflow: ellipsis;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -1880,7 +1985,7 @@ input {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -2065,6 +2170,19 @@ input {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .wrapper {
+    border-color: GrayText;
+  }
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  .label {
+    color: GrayText;
+  }
+}
 "
 `;
 
@@ -2095,6 +2213,13 @@ input {
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-overflow: ellipsis;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -2113,7 +2238,7 @@ input {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .spinner {
@@ -2183,5 +2308,18 @@ input {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    border-color: GrayText;
+  }
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;

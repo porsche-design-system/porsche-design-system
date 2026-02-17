@@ -18,6 +18,7 @@ export const getCheckboxCheckedBaseStyles = (isLoading: boolean, state: FormStat
 
   return {
     '&::before': {
+      forcedColorAdjust: 'none',
       WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
       mask: `${checkedIcon} center/contain no-repeat`,
       backgroundColor: `var(${cssVarCheckboxIconColor}, ${state === 'none' ? colorPrimary : formStateBorderColor})`,

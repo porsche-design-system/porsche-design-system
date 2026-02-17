@@ -152,6 +152,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -320,6 +326,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -526,6 +538,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -668,6 +686,12 @@ p,::slotted([slot="description"]) {
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
 "
 `;
 
@@ -793,6 +817,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 "
@@ -1010,6 +1040,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1154,6 +1190,12 @@ p,::slotted([slot="description"]) {
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
 "
 `;
 
@@ -1280,6 +1322,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 "
@@ -1430,6 +1478,12 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1592,6 +1646,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 "
@@ -1773,6 +1833,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1985,6 +2051,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2163,6 +2235,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -2377,6 +2455,12 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
