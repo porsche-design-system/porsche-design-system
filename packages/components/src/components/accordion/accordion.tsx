@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof Accordion> = {
 
 /**
  * @slot {"name": "summary", "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed." }
- * @slot {"name": "heading", "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.", "isDeprecated": "true" }
+ * @slot {"name": "heading", "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.", "isDeprecated": true }
  * @slot {"name": "", "description": "Main content displayed when the accordion is expanded." }
  *
  * @controlled {"props": ["open"], "event": "update"}
