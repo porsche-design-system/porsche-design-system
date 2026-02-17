@@ -138,13 +138,13 @@ const textareaChangeCounter = ref(0);
 
 // unused event parameters are used to verify that types can be imported from package root
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const onAccordionUpdate = (detail: AccordionUpdateEventDetail) => accordionUpdateEventCounter.value++;
-const onPaginationUpdate = (detail: PaginationUpdateEventDetail) => paginationUpdateEventCounter.value++;
-const onTabsBarUpdate = (detail: TabsBarUpdateEventDetail) => tabsBarUpdateEventCounter.value++;
-const onTabsUpdate = (detail: TabsUpdateEventDetail) => tabsUpdateEventCounter.value++;
-const onTextFieldSearchChange = (e: InputTextInputEventDetail) =>
+const onAccordionUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => accordionUpdateEventCounter.value++;
+const onPaginationUpdate = (e: CustomEvent<PaginationUpdateEventDetail>) => paginationUpdateEventCounter.value++;
+const onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => tabsBarUpdateEventCounter.value++;
+const onTabsUpdate = (e: CustomEvent<TabsUpdateEventDetail>) => tabsUpdateEventCounter.value++;
+const onTextFieldSearchChange = (e: CustomEvent<InputTextInputEventDetail>) =>
   (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
-const onSwitchUpdate = (detail: SwitchUpdateEventDetail) => switchUpdateEventCounter.value++;
+const onSwitchUpdate = (e: CustomEvent<SwitchUpdateEventDetail>) => switchUpdateEventCounter.value++;
 const onBannerDismiss = () => {
   bannerDismissEventCounter.value++;
   isBannerOpen.value = false;
@@ -153,92 +153,92 @@ const onModalDismiss = () => {
   modalDismissEventCounter.value++;
   isModalOpen.value = false;
 };
-const onTableUpdate = (detail: TableUpdateEventDetail) => tableUpdateEventCounter.value++;
-const onCarouselUpdate = (detail: CarouselUpdateEventDetail) => carouselUpdateEventCounter.value++;
+const onTableUpdate = (e: CustomEvent<TableUpdateEventDetail>) => tableUpdateEventCounter.value++;
+const onCarouselUpdate = (e: CustomEvent<CarouselUpdateEventDetail>) => carouselUpdateEventCounter.value++;
 
 // PInputDate
-const onInputDateInput = (e: InputDateInputEventDetail) => {
+const onInputDateInput = (e: CustomEvent<InputDateInputEventDetail>) => {
   inputDateValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputDateBlur = (_: InputDateBlurEventDetail) => inputDateBlurCounter.value++;
-const onInputDateChange = (_: InputDateChangeEventDetail) => inputDateChangeCounter.value++;
+const onInputDateBlur = (_: CustomEvent<InputDateBlurEventDetail>) => inputDateBlurCounter.value++;
+const onInputDateChange = (_: CustomEvent<InputDateChangeEventDetail>) => inputDateChangeCounter.value++;
 
 // PInputMonth
-const onInputMonthInput = (e: InputMonthInputEventDetail) => {
+const onInputMonthInput = (e: CustomEvent<InputMonthInputEventDetail>) => {
   inputMonthValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputMonthBlur = (_: InputMonthBlurEventDetail) => inputMonthBlurCounter.value++;
-const onInputMonthChange = (_: InputMonthChangeEventDetail) => inputMonthChangeCounter.value++;
+const onInputMonthBlur = (_: CustomEvent<InputMonthBlurEventDetail>) => inputMonthBlurCounter.value++;
+const onInputMonthChange = (_: CustomEvent<InputMonthChangeEventDetail>) => inputMonthChangeCounter.value++;
 
 // PInputWeek
-const onInputWeekInput = (e: InputWeekInputEventDetail) => {
+const onInputWeekInput = (e: CustomEvent<InputWeekInputEventDetail>) => {
   inputWeekValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputWeekBlur = (_: InputWeekBlurEventDetail) => inputWeekBlurCounter.value++;
-const onInputWeekChange = (_: InputWeekChangeEventDetail) => inputWeekChangeCounter.value++;
+const onInputWeekBlur = (_: CustomEvent<InputWeekBlurEventDetail>) => inputWeekBlurCounter.value++;
+const onInputWeekChange = (_: CustomEvent<InputWeekChangeEventDetail>) => inputWeekChangeCounter.value++;
 
 // PInputEmail
-const onInputEmailInput = (e: InputEmailInputEventDetail) => {
+const onInputEmailInput = (e: CustomEvent<InputEmailInputEventDetail>) => {
   inputEmailValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputEmailBlur = (_: InputEmailBlurEventDetail) => inputEmailBlurCounter.value++;
-const onInputEmailChange = (_: InputEmailChangeEventDetail) => inputEmailChangeCounter.value++;
+const onInputEmailBlur = (_: CustomEvent<InputEmailBlurEventDetail>) => inputEmailBlurCounter.value++;
+const onInputEmailChange = (_: CustomEvent<InputEmailChangeEventDetail>) => inputEmailChangeCounter.value++;
 
 // PInputNumber
-const onInputNumberInput = (e: InputNumberInputEventDetail) => {
+const onInputNumberInput = (e: CustomEvent<InputNumberInputEventDetail>) => {
   inputNumberValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputNumberBlur = (_: InputNumberBlurEventDetail) => inputNumberBlurCounter.value++;
-const onInputNumberChange = (_: InputNumberChangeEventDetail) => inputNumberChangeCounter.value++;
+const onInputNumberBlur = (_: CustomEvent<InputNumberBlurEventDetail>) => inputNumberBlurCounter.value++;
+const onInputNumberChange = (_: CustomEvent<InputNumberChangeEventDetail>) => inputNumberChangeCounter.value++;
 
 // PInputPassword
-const onInputPasswordInput = (e: InputPasswordInputEventDetail) => {
+const onInputPasswordInput = (e: CustomEvent<InputPasswordInputEventDetail>) => {
   inputPasswordValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputPasswordBlur = (_: InputPasswordBlurEventDetail) => inputPasswordBlurCounter.value++;
-const onInputPasswordChange = (_: InputPasswordChangeEventDetail) => inputPasswordChangeCounter.value++;
+const onInputPasswordBlur = (_: CustomEvent<InputPasswordBlurEventDetail>) => inputPasswordBlurCounter.value++;
+const onInputPasswordChange = (_: CustomEvent<InputPasswordChangeEventDetail>) => inputPasswordChangeCounter.value++;
 
 // PInputSearch
-const onInputSearchInput = (e: InputSearchInputEventDetail) => {
+const onInputSearchInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
   inputSearchValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputSearchBlur = (_: InputSearchBlurEventDetail) => inputSearchBlurCounter.value++;
-const onInputSearchChange = (_: InputSearchChangeEventDetail) => inputSearchChangeCounter.value++;
+const onInputSearchBlur = (_: CustomEvent<InputSearchBlurEventDetail>) => inputSearchBlurCounter.value++;
+const onInputSearchChange = (_: CustomEvent<InputSearchChangeEventDetail>) => inputSearchChangeCounter.value++;
 
 // PInputTel
-const onInputTelInput = (e: InputTelInputEventDetail) => {
+const onInputTelInput = (e: CustomEvent<InputTelInputEventDetail>) => {
   inputTelValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputTelBlur = (_: InputTelBlurEventDetail) => inputTelBlurCounter.value++;
-const onInputTelChange = (_: InputTelChangeEventDetail) => inputTelChangeCounter.value++;
+const onInputTelBlur = (_: CustomEvent<InputTelBlurEventDetail>) => inputTelBlurCounter.value++;
+const onInputTelChange = (_: CustomEvent<InputTelChangeEventDetail>) => inputTelChangeCounter.value++;
 
 // PInputText
-const onInputTextInput = (e: InputTextInputEventDetail) => {
+const onInputTextInput = (e: CustomEvent<InputTextInputEventDetail>) => {
   inputTextValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputTextBlur = (_: InputTextBlurEventDetail) => inputTextBlurCounter.value++;
-const onInputTextChange = (_: InputTextChangeEventDetail) => inputTextChangeCounter.value++;
+const onInputTextBlur = (_: CustomEvent<InputTextBlurEventDetail>) => inputTextBlurCounter.value++;
+const onInputTextChange = (_: CustomEvent<InputTextChangeEventDetail>) => inputTextChangeCounter.value++;
 
 // PInputTime
-const onInputTimeInput = (e: InputTimeInputEventDetail) => {
+const onInputTimeInput = (e: CustomEvent<InputTimeInputEventDetail>) => {
   inputTimeValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputTimeBlur = (_: InputTimeBlurEventDetail) => inputTimeBlurCounter.value++;
-const onInputTimeChange = (_: InputTimeChangeEventDetail) => inputTimeChangeCounter.value++;
+const onInputTimeBlur = (_: CustomEvent<InputTimeBlurEventDetail>) => inputTimeBlurCounter.value++;
+const onInputTimeChange = (_: CustomEvent<InputTimeChangeEventDetail>) => inputTimeChangeCounter.value++;
 
 // PInputUrl
-const onInputUrlInput = (e: InputUrlInputEventDetail) => {
+const onInputUrlInput = (e: CustomEvent<InputUrlInputEventDetail>) => {
   inputUrlValue.value = (e.target as HTMLInputElement).value;
 };
-const onInputUrlBlur = (_: InputUrlBlurEventDetail) => inputUrlBlurCounter.value++;
-const onInputUrlChange = (_: InputUrlChangeEventDetail) => inputUrlChangeCounter.value++;
+const onInputUrlBlur = (_: CustomEvent<InputUrlBlurEventDetail>) => inputUrlBlurCounter.value++;
+const onInputUrlChange = (_: CustomEvent<InputUrlChangeEventDetail>) => inputUrlChangeCounter.value++;
 
 // PTextarea
-const onTextareaInput = (e: TextareaInputEventDetail) => {
+const onTextareaInput = (e: CustomEvent<TextareaInputEventDetail>) => {
   textareaValue.value = (e.target as HTMLTextAreaElement).value;
 };
-const onTextareaBlur = (_: TextareaBlurEventDetail) => textareaBlurCounter.value++;
-const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter.value++;
+const onTextareaBlur = (_: CustomEvent<TextareaBlurEventDetail>) => textareaBlurCounter.value++;
+const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textareaChangeCounter.value++;
 /* eslint-enable @typescript-eslint/no-unused-vars */
 </script>
 
