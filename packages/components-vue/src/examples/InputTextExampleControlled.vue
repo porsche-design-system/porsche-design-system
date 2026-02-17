@@ -3,7 +3,6 @@ import { type InputTextInputEventDetail, PInputText, PText } from '@porsche-desi
 import { computed, ref } from 'vue';
 
 const value = ref<string>('');
-const inputRef = ref<HTMLElement & { value: string }>();
 
 const onInput = (e: CustomEvent<InputTextInputEventDetail>) => {
   const target = e.target as HTMLElement & { value: string };
