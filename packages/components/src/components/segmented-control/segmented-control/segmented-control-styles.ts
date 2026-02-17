@@ -32,9 +32,8 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(disabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
-      ...getFunctionalComponentLabelAfterStyles(disabled, getDisabledBaseStyles()),
       ...(disabled && {
         '::slotted(*:not([slot]))': addImportantToEachRule(getDisabledBaseStyles()),
       }),

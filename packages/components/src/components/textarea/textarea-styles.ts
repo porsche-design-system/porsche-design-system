@@ -67,7 +67,7 @@ export const getComponentCss = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         all: 'unset',

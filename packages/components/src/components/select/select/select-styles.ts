@@ -1,5 +1,10 @@
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  getDisabledBaseStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
   getButtonImageJssStyle,
@@ -51,7 +56,7 @@ export const getComponentCss = (
         }),
         ...(isDisabled && getDisabledBaseStyles()),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('select', isOpen, isDisabled, state, isCompact, cssVarInternalSelectScaling),

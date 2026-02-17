@@ -56,7 +56,7 @@ export const getComponentCss = (
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),

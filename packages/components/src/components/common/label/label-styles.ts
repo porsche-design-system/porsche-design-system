@@ -7,18 +7,11 @@ import type { BreakpointCustomizable } from '../../../utils/breakpoint-customiza
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 import { typescaleXs } from '@porsche-design-system/tokens';
 
-export const getFunctionalComponentLabelAfterStyles = (
-  isDisabledOrLoading: boolean,
-  additionalIsDisabledJssStyle?: JssStyle
-): Styles => {
+export const getFunctionalComponentLabelAfterStyles = (): Styles => {
   return {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
-      ...(isDisabledOrLoading && {
-        pointerEvents: 'none',
-        ...additionalIsDisabledJssStyle,
-      }),
     },
   };
 };
