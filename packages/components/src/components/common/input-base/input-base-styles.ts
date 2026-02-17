@@ -23,6 +23,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
+import { mergeDeep } from '../../../utils';
 
 /**
  * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
@@ -108,10 +109,12 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       },
       ...(isDisabled && {
-        ...getDisabledBaseStyles(),
-        ...forcedColorsMediaQuery({
-          borderColor: 'GrayText',
-        })}),
+        ...mergeDeep({ ...getDisabledBaseStyles() }, {
+          ...forcedColorsMediaQuery({
+            borderColor: 'GrayText',
+          }),
+        }),
+      }),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&
