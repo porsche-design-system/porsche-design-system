@@ -25,7 +25,7 @@ export class InputTextExampleControlledComponent {
       const newValue = target.value.slice(0, 3);
       this.value = newValue;
       // The web component doesn't prevent native input, so we must manually reset the input element's value.
-      // React won't re-render since setState with the truncated value doesn't trigger a change when it's already set.
+      // Angular won't re-render since setState with the truncated value doesn't trigger a change when it's already set.
       target.value = newValue;
     }
   }
