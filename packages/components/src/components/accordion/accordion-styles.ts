@@ -186,7 +186,7 @@ export const getComponentCss = (
             transform: 'rotate3d(0)',
             transition: getTransition('transform', duration, easing),
             ...forcedColorsMediaQuery({
-              backgroundColor: 'Mark',
+              backgroundColor: 'LinkText',
             }),
             'details[open] &': {
               transform: 'rotate3d(0,0,1,180deg)',
