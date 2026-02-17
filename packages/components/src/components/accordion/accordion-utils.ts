@@ -1,6 +1,6 @@
 import type { HeadingTag } from '../../utils';
 
-export const ACCORDIONS_BACKGROUNDS = ['canvas', 'frosted', 'none'] as const;
+export const ACCORDIONS_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
 export type AccordionBackground = (typeof ACCORDIONS_BACKGROUNDS)[number];
 
 export const ACCORDION_ALIGN_ICONS = ['start', 'end'] as const;

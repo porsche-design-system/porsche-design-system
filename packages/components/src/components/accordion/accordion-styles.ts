@@ -1,3 +1,4 @@
+import { frostedGlassStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -12,13 +13,13 @@ import {
   colorCanvas,
   colorFrosted,
   colorPrimary,
+  colorSurface,
   fontPorscheNext,
   fontWeightSemibold,
   leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusXl,
-  spacingStaticSm,
   typescaleSm,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
@@ -26,18 +27,18 @@ import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgro
 import type { AccordionAlignIcon, AccordionBackground } from './accordion-utils';
 
 /**
- * @css-variable {"name": "--p-accordion-summary-top", "description": "In case prop `sticky` is set to true, it's possible to control the sticky top position of the internally used `<summary>` element.", "defaultValue": "0"}
+ * @css-variable {"name": "--p-accordion-summary-top", "description": "Controls the sticky top position when `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarSummaryTop = '--p-accordion-summary-top';
 const cssVarSummaryTopDeprecated = '--p-accordion-position-sticky-top'; // deprecated
 
 /**
- * @css-variable {"name": "--p-accordion-px", "description": "Defines the horizontal padding of the accordion.", "defaultValue": "16px"}
+ * @css-variable {"name": "--p-accordion-px", "description": "Horizontal padding of the accordion.", "defaultValue": "16px"}
  */
 const cssVarPaddingInline = '--p-accordion-px';
 
 /**
- * @css-variable {"name": "--p-accordion-py", "description": "Defines the vertical padding of the accordion.", "defaultValue": "16px"}
+ * @css-variable {"name": "--p-accordion-py", "description": "Vertical padding of the accordion.", "defaultValue": "16px"}
  */
 const cssVarPaddingBlock = '--p-accordion-py';
 
@@ -49,6 +50,13 @@ const cssVarPaddingBlock = '--p-accordion-py';
 const icon = getInlineSVGBackgroundImage(
   `<path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/>`
 );
+
+const backgroundMap: Record<AccordionBackground, string> = {
+  canvas: colorCanvas,
+  surface: colorSurface,
+  frosted: colorFrosted,
+  none: 'transparent',
+};
 
 export const getComponentCss = (
   alignIcon: AccordionAlignIcon,
@@ -62,10 +70,10 @@ export const getComponentCss = (
 
   const compactFactor = isCompact ? 0.64285714 : 1;
 
-  // TODO: should be done smarter and ensure that it's in sync with button/link
   const paddingBlock = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
   const paddingInline = `calc(11.2px * (${compactFactor} - 0.64285714) + 12px)`;
   const gap = `calc(11.2px * (${compactFactor} - 0.64285714) + 4px)`;
+  const marginTop = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
 
   return getCss({
     '@global': {
@@ -102,7 +110,8 @@ export const getComponentCss = (
         color: colorPrimary, // enables color inheritance for slotted content
         display: 'block',
         padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
-        background: background === 'none' ? 'transparent' : background === 'canvas' ? colorCanvas : colorFrosted,
+        background: backgroundMap[background],
+        ...(background === 'frosted' && frostedGlassStyle),
         borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
         '&::details-content': {
           contentVisibility: addImportantToRule('visible'), // we need to overwrite it to support cross-browser animation, we take care of content-visibility on our own to be a11y compliant
@@ -123,12 +132,12 @@ export const getComponentCss = (
         '&[open]': {
           '& > div': {
             opacity: 1,
-            marginTop: spacingStaticSm,
+            marginTop,
             // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the grid-template-rows rule and animation
             gridTemplateRows: '1fr',
             visibility: 'inherit', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
             // as soon as all browsers are supporting `allow-discrete` reliable, visibility transition shouldn't be necessary anymore
-            transition: `visibility 0s linear 0s, ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
+            transition: `visibility 0s linear 0s, ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', 'long', easing)}`,
           },
         },
       },
@@ -151,8 +160,8 @@ export const getComponentCss = (
         padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
         margin: `calc(-1 * var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock})) calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
         ...(isSticky &&
-          background === 'canvas' && {
-            background: colorCanvas,
+          (background === 'canvas' || background === 'surface') && {
+            background: `linear-gradient(180deg,${backgroundMap[background]} 0%,${backgroundMap[background]} 90%,transparent 100%)`,
             borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
           }),
         '&:focus-visible > span': getFocusBaseStyles(),

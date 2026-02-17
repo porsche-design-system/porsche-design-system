@@ -22,9 +22,9 @@ const propTypes: PropTypes<typeof Accordion> = {
 };
 
 /**
- * @slot {"name": "summary", "description": "Specifies a summary, caption, or legend for the internally used `<details>` element's disclosure box. Clicking the summary toggles the state of the parent `<details>` element open and closed." }
- * @slot {"name": "heading", "description": "Specifies a heading for the internally used `<details>` element's disclosure box. Clicking the summary toggles the state of the parent `<details>` element open and closed.", "isDeprecated": "true" }
- * @slot {"name": "", "description": "Default slot for the internally used `<details>` content." }
+ * @slot {"name": "summary", "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed." }
+ * @slot {"name": "heading", "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.", "isDeprecated": "true" }
+ * @slot {"name": "", "description": "Main content displayed when the accordion is expanded." }
  *
  * @controlled {"props": ["open"], "event": "update"}
  */
@@ -35,30 +35,30 @@ const propTypes: PropTypes<typeof Accordion> = {
 export class Accordion {
   @Element() public host!: HTMLElement;
 
-  /** Sets the open/closed state of the Accordion. */
+  /** Controls whether the accordion is open or closed. */
   @Prop() public open?: boolean;
 
   /** Aligns the icon within the summary section. */
   @Prop() public alignIcon?: AccordionAlignIcon = 'end';
 
-  /** Defines the background color */
-  @Prop() public background?: AccordionBackground = 'frosted';
+  /** Defines the background color. Use `frosted` only on images or gradients. */
+  @Prop() public background?: AccordionBackground = 'none';
 
-  /** Displays the Accordion as compact version. */
+  /** Displays the accordion in compact mode. */
   @Prop() public compact?: boolean;
 
   /**
    * @deprecated, will be removed with next major release, use slot `summary` instead.
-   * Sets a heading tag, so it fits correctly within the outline of the page. */
+   * Sets the heading text within the summary section. */
   @Prop() public heading?: string;
 
   /**
    * @deprecated, will be removed with next major release, use slot `summary` instead.
-   * Sets a heading tag, so it fits correctly within the outline of the page. */
+   * Sets the heading tag for proper semantic structure within the page. */
   @Prop() public headingTag?: AccordionHeadingTag = 'h2';
 
   /**
-   * @experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with `background="canvas"`.
+   * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`.
    */
   @Prop() public sticky?: boolean;
 

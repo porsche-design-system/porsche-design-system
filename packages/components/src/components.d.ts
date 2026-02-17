@@ -139,27 +139,27 @@ export namespace Components {
          */
         "alignIcon"?: AccordionAlignIcon;
         /**
-          * Defines the background color
+          * Defines the background color. Use `frosted` only on images or gradients.
          */
         "background"?: AccordionBackground;
         /**
-          * Displays the Accordion as compact version.
+          * Displays the accordion in compact mode.
          */
         "compact"?: boolean;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
-          * Sets the open/closed state of the Accordion.
+          * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with `background="canvas"`.
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`.
          */
         "sticky"?: boolean;
     }
@@ -3770,19 +3770,19 @@ declare namespace LocalJSX {
          */
         "alignIcon"?: AccordionAlignIcon;
         /**
-          * Defines the background color
+          * Defines the background color. Use `frosted` only on images or gradients.
          */
         "background"?: AccordionBackground;
         /**
-          * Displays the Accordion as compact version.
+          * Displays the accordion in compact mode.
          */
         "compact"?: boolean;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -3790,11 +3790,11 @@ declare namespace LocalJSX {
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
-          * Sets the open/closed state of the Accordion.
+          * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with `background="canvas"`.
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`.
          */
         "sticky"?: boolean;
     }
