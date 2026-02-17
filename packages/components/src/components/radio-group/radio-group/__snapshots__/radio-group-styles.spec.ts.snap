@@ -1621,10 +1621,10 @@ slot[name="label-after"] {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
-  opacity: 0.4;
 }
 .label:empty {
   display: none;
@@ -1858,10 +1858,10 @@ slot[name="label-after"] {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
-  opacity: 0.4;
 }
 .label:empty {
   display: none;

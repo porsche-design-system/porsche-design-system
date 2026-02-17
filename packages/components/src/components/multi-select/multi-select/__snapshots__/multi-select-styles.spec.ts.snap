@@ -871,7 +871,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -898,6 +897,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -1025,6 +1025,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -1078,7 +1079,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1105,6 +1105,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -1232,6 +1233,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -1284,7 +1286,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1311,6 +1312,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -1438,6 +1440,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -1490,7 +1493,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 0.64285714 !important;
     --p-internal-multi-select-option-scaling: 0.64285714 !important;
     --p-internal-optgroup-scaling: 0.64285714 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1517,6 +1519,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -1644,6 +1647,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -1696,7 +1700,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1723,6 +1726,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -1850,6 +1854,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -1903,7 +1908,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1930,6 +1934,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -2056,6 +2061,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -2109,7 +2115,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2136,6 +2141,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -2262,6 +2268,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -2314,7 +2321,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2341,6 +2347,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -2467,6 +2474,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -4232,7 +4240,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4259,6 +4266,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -4386,6 +4394,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -4439,7 +4448,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4466,6 +4474,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -4593,6 +4602,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -4645,7 +4655,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4672,6 +4681,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -4799,6 +4809,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -4852,7 +4863,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-multi-select-scaling: 0.64285714 !important;
     --p-internal-multi-select-option-scaling: 0.64285714 !important;
     --p-internal-optgroup-scaling: 0.64285714 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4879,6 +4889,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -5006,6 +5017,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -5059,7 +5071,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -5086,6 +5097,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -5212,6 +5224,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
@@ -5265,7 +5278,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-multi-select-scaling: 1 !important;
     --p-internal-multi-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -5292,6 +5304,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button span {
@@ -5418,6 +5431,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
     pointer-events: none;
+    opacity: 0.4;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;

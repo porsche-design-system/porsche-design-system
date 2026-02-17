@@ -1960,7 +1960,6 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2001,6 +2000,7 @@ textarea:focus {
 }
 .wrapper {
   display: grid;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -2018,6 +2018,7 @@ textarea:focus {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;

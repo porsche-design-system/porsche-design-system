@@ -3,7 +3,6 @@
 exports[`getComponentCss() > should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -69,6 +68,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -86,6 +86,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -546,7 +547,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -612,6 +612,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -632,6 +633,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -684,7 +686,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and compact false 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -750,6 +751,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -770,6 +772,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -1102,7 +1105,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -1168,6 +1170,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1188,6 +1191,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -1239,7 +1243,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and compact false 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -1305,6 +1308,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1325,6 +1329,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -1658,7 +1663,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -1724,6 +1728,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1744,6 +1749,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -1796,7 +1802,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and compact false 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -1862,6 +1867,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1882,6 +1888,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -2210,7 +2217,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -2276,6 +2282,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -2293,6 +2300,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -2345,7 +2353,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and compact false 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -2411,6 +2418,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -2428,6 +2436,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -2835,6 +2844,7 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -2967,6 +2977,7 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -3018,7 +3029,6 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -3084,6 +3094,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -3101,6 +3112,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -3152,7 +3164,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and compact false 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -3218,6 +3229,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -3235,6 +3247,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -3286,7 +3299,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -3342,6 +3354,7 @@ input:focus-visible {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -3368,6 +3381,7 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -3419,7 +3433,6 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and compact true 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 0.64285714;
 }
 :host([hidden]) {
@@ -3475,6 +3488,7 @@ input:focus-visible {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -3501,6 +3515,7 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -3828,7 +3843,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and compact false 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -3894,6 +3908,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -3911,6 +3926,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -3963,7 +3979,6 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and compact false 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
   --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
@@ -4029,6 +4044,7 @@ input:checked::before {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   position: absolute;
@@ -4046,6 +4062,7 @@ input:checked::before {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;

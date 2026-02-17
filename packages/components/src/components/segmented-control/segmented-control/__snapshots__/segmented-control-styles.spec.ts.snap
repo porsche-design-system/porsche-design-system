@@ -208,9 +208,6 @@ slot[name="label-after"] {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(*:not([slot])) {
-  opacity: 0.4 !important;
-}
 slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
@@ -257,10 +254,10 @@ slot:not([name]) {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
-  opacity: 0.4;
 }
 .label:empty {
   display: none;

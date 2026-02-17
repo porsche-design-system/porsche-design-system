@@ -1771,7 +1771,6 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
   --p-internal-input-base-scaling: 0.64285714;
   --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
   --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1810,6 +1809,7 @@ input {
   color: var(--p-color-primary);
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  opacity: 0.4;
 }
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
@@ -1830,6 +1830,7 @@ input {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
@@ -2005,7 +2006,6 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
   --p-internal-input-base-scaling: 1;
   --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
   --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2044,6 +2044,7 @@ input {
   color: var(--p-color-primary);
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  opacity: 0.4;
 }
 .wrapper:focus-within {
   border-color: var(--p-color-error);
@@ -2069,6 +2070,7 @@ input {
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
