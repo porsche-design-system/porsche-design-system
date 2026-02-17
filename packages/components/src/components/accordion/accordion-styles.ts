@@ -89,8 +89,14 @@ export const getComponentCss = (
         }),
       },
       slot: {
-        display: 'block',
+        '&[name="summary"]': {
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap,
+        },
         '&:not([name])': {
+          display: 'block',
           // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the overflow rule and animation
           overflow: 'hidden',
           'details[open] &': {
