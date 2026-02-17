@@ -1,73 +1,47 @@
-<style>
-  .scaling-0 {
-    --p-internal-switch-scaling: 0;
-  }
-
-  .scaling-0-5 {
-    --p-internal-switch-scaling: 0.5;
-  }
-
-  .scaling-0-8 {
-    --p-internal-switch-scaling: 0.8;
-  }
-
-  .scaling-1 {
-    --p-internal-switch-scaling: 1;
-  }
-
-  .scaling-2 {
-    --p-internal-switch-scaling: 2;
-  }
-</style>
-
-<div class="playground light auto-layout-inline" title="should render with defaults">
+<div class="playground auto-layout-inline" title="should render with defaults">
   <p-switch class="a11ytree-snapshot-test">Some label</p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in state checked">
+<div class="playground auto-layout-inline" title="should render in state checked">
   <p-switch checked="true" class="a11ytree-snapshot-test">Some label</p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in state disabled">
+<div class="playground auto-layout-inline" title="should render in state disabled">
   <p-switch disabled="true" class="a11ytree-snapshot-test">Some label</p-switch>
   <p-switch disabled="true" checked="true">Some label</p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in state loading">
+<div class="playground auto-layout-inline" title="should render in state loading">
   <p-switch loading="true" class="a11ytree-snapshot-test">Some label</p-switch>
   <p-switch loading="true" checked="true">Some label</p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should align label to start">
-  <p-switch align-label="left">Some label</p-switch>
+<div class="playground auto-layout-inline" title="should align label to start">
   <p-switch align-label="start">Some label</p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should align label to the start or end depending on viewport">
-  <p-switch align-label="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
-    Some label
-  </p-switch>
+<div class="playground auto-layout-inline" title="should align label to the start or end depending on viewport">
   <p-switch align-label="{ base: 'start', xs: 'end', s: 'start', m: 'end', l: 'start', xl: 'end' }">
     Some label
   </p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render without label">
+<div class="playground auto-layout-inline" title="should render without label">
   <p-switch hide-label="true" class="a11ytree-snapshot-test">Some label</p-switch>
 </div>
-<div class="playground light auto-layout-inline" title="should render with or without label depending on viewport">
+<div class="playground auto-layout-inline" title="should render with or without label depending on viewport">
   <p-switch hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with stretched label">
+<div class="playground auto-layout-inline" title="should render with stretched label">
   <p-switch stretch="true">Some label</p-switch>
   <p-switch stretch="true" align-label="start">Some label</p-switch>
 </div>
-<div class="playground light auto-layout-inline" title="should render with stretched label depending on viewport">
+<div class="playground auto-layout-inline" title="should render with stretched label depending on viewport">
   <p-switch stretch="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-switch>
 </div>
 
-<div class="playground light" title="should render with multiline label">
+<div class="playground" title="should render with multiline label">
   <p-switch style="max-width: 15rem">
     This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
   </p-switch>
@@ -76,55 +50,16 @@
   </p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with slotted and deeply nested anchor">
-  <p-switch>
-    <span>
-      Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-      <em>emphasized</em> and <i>italic</i> text.
-    </span>
-  </p-switch>
-</div>
-
-<div class="playground light" title="should render with min-width when viewport is too small">
+<div class="playground" title="should render with min-width when viewport is too small">
   <div style="width: 0">
-    <p-switch>X</p-switch>
+    <p-switch>Some label</p-switch>
   </div>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in compact mode">
+<div class="playground auto-layout-inline" title="should render in compact mode">
   <p-switch compact="true">Some label</p-switch>
   <p-switch compact="true" checked="true">Some label</p-switch>
   <p-switch compact="true" loading="true">Some label</p-switch>
   <p-switch compact="true" disabled="true">Some label</p-switch>
   <p-switch compact="true" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-switch class="scaling-0">Some label</p-switch>
-  <p-switch class="scaling-0" checked="true">Some label</p-switch>
-  <p-switch class="scaling-0" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-switch class="scaling-0-5">Some label</p-switch>
-  <p-switch class="scaling-0-5" checked="true">Some label</p-switch>
-  <p-switch class="scaling-0-5" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-switch class="scaling-0-8">Some label</p-switch>
-  <p-switch class="scaling-0-8" checked="true">Some label</p-switch>
-  <p-switch class="scaling-0-8" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-switch class="scaling-1">Some label</p-switch>
-  <p-switch class="scaling-1" checked="true">Some label</p-switch>
-  <p-switch class="scaling-1" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-switch class="scaling-2">Some label</p-switch>
-  <p-switch class="scaling-2" checked="true">Some label</p-switch>
-  <p-switch class="scaling-2" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
 </div>

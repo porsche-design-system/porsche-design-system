@@ -10,14 +10,13 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   hasPropValueChanged,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -49,7 +48,6 @@ const propTypes: PropTypes<typeof InputText> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -124,9 +122,6 @@ export class InputText {
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Show or hide the character counter. */
   @Prop() public counter?: boolean = false;
 
@@ -147,6 +142,9 @@ export class InputText {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -208,7 +206,6 @@ export class InputText {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
       this.counter
     );
 
@@ -236,7 +233,6 @@ export class InputText {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}

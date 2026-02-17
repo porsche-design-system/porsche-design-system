@@ -1,613 +1,345 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+slot {
+  display: block;
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+}
 .option {
   display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: #404044;
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7E7F82;
 }
 .option--hidden {
   display: none;
 }
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
 .checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #88898C;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
+  grid-area: 1/1;
+}
+.checkbox::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+slot {
+  display: block;
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+}
 .option {
   display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: #404044;
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7E7F82;
 }
 .option--hidden {
   display: none;
 }
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
 .checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #88898C;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
-  border-color: #FBFCFF;
-  background-color: #FBFCFF;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
+  grid-area: 1/1;
+  forced-color-adjust: none;
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
+}
+.checkbox::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
+  opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+slot {
+  display: block;
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+}
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .option {
   display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: #404044;
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7E7F82;
 }
 .option--hidden {
   display: none;
 }
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
 .checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 .checkbox::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
+  grid-area: 1/1;
+}
+.checkbox::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .checkbox {
+    border-color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
+  opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+slot {
+  display: block;
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+}
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .option {
   display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
+  padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: #404044;
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7E7F82;
 }
 .option--hidden {
   display: none;
 }
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
 .checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 .checkbox::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
-":host {
-  display: block;
-  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.option {
-  display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
-.checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #6B6D70;
-  outline: 0;
-  cursor: pointer;
   grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  forced-color-adjust: none;
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
-.checkbox::before {
+.checkbox::after {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
-":host {
-  display: block;
-  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.option {
-  display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
-.checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #6B6D70;
-  outline: 0;
-  cursor: pointer;
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
-  border-color: #010205;
-  background-color: #010205;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-.checkbox::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
-":host {
-  display: block;
-  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .checkbox {
+    border-color: GrayText;
+  }
 }
-:host([hidden]) {
-  display: none !important;
-}
-.option {
-  display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
-.checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
-}
-.checkbox::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
-":host {
-  display: block;
-  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.option {
-  display: flex;
-  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.checkbox-wrapper {
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  height: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-}
-.checkbox {
-  flex-shrink: 0;
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-.checkbox::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}"
+"
 `;

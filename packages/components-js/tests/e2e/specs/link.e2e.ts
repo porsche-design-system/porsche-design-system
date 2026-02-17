@@ -1,5 +1,5 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
@@ -188,9 +188,44 @@ test.describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-link'], 'componentDidUpdate: p-link').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-link'];
+        },
+        { message: 'componentDidUpdate: p-link' }
+      )
+      .toBe(1);
+
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-icon'];
+        },
+        { message: 'componentDidLoad: p-icon' }
+      )
+      .toBe(1);
+
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        { message: 'componentDidUpdate: all' }
+      )
+      .toBe(1);
+
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        { message: 'componentDidLoad: all' }
+      )
+      .toBe(2);
   });
 });

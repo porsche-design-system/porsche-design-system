@@ -5,42 +5,22 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
-  useNavigate,
   useRouteLoaderData,
 } from 'react-router';
 
 import type { Route } from './+types/root';
 import './app.css';
-import {
-  getBrowserSupportFallbackScript,
-  getCookiesFallbackScript,
-  getFontFaceStyles,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
-import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
-import { useState } from 'react';
-import { routes } from '~/routes';
+import { getFontLinks, getIconLinks, getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 export async function loader() {
   return {
     headPartials: (
       <>
         {getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'React Router' })}
-        {getInitialStyles({ format: 'jsx' })}
-        {getFontFaceStyles({ format: 'jsx' })}
         {getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold', 'bold'] })}
         {getIconLinks({ format: 'jsx', icons: ['arrow-head-right', 'arrow-head-left'] })}
         {/*{getComponentChunkLinks({ format: 'jsx', components: ['button', 'link'] })}*/}
-      </>
-    ),
-    bodyPartials: (
-      <>
-        {getBrowserSupportFallbackScript({ format: 'jsx' })}
-        {getCookiesFallbackScript({ format: 'jsx' })}
       </>
     ),
   };
@@ -62,35 +42,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        {partials?.bodyPartials}
       </body>
     </html>
   );
 }
 
 export default function App() {
-  const navigate = useNavigate();
-  const [theme, setTheme] = useState<Theme>('light');
-  const themes: Theme[] = ['light', 'dark', 'auto'];
-
   return (
     <>
-      <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)} style={{ width: '200px' }}>
-        <option disabled value="">
-          Select a page
-        </option>
-        {routes.map((route, i) => (
-          <option key={i} value={route.path} children={route.name} />
-        ))}
-      </select>
-
-      <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
-        {themes.map((item) => (
-          <option key={item} value={item} children={item} />
-        ))}
-      </select>
-
-      <PorscheDesignSystemProvider theme={theme}>
+      <PorscheDesignSystemProvider>
         <div id="app">
           <Outlet />
         </div>

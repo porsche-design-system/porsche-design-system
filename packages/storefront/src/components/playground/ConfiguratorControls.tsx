@@ -1,5 +1,11 @@
 'use client';
 
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
+import type React from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { ConfigureColorScheme } from '@/components/playground/ConfigureColorScheme';
 import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
@@ -12,11 +18,6 @@ import type {
   PropTypeMapping,
 } from '@/utils/generator/generator';
 import { isAllowedValue } from '@/utils/isAllowedValue';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
-import type React from 'react';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 type ConfiguratorControlsProps<T extends ConfiguratorTagNames> = {
   tagName: T;
@@ -125,6 +126,20 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     });
   };
 
+  const handleUpdateColorScheme = (colorScheme: string) => {
+    setStoryState((prev) => {
+      const updatedProps = { ...prev.properties, style: { ...prev.properties?.style, colorScheme } };
+      if (!colorScheme) {
+        delete (updatedProps.style as Record<string, string>).colorScheme;
+        if (Object.keys(updatedProps.style).length === 0) {
+          // @ts-expect-error TODO: Fix typing
+          delete updatedProps.style;
+        }
+      }
+      return { ...prev, properties: updatedProps as PropTypeMapping[typeof tagName] };
+    });
+  };
+
   useEffect(() => {
     requestAnimationFrame(() => setDomReady(true));
   }, []);
@@ -161,6 +176,10 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         }}
       />
     ),
+    <ConfigureColorScheme
+      style={storyState.properties?.style ?? {}}
+      handleUpdateColorScheme={handleUpdateColorScheme}
+    />,
   ];
 
   return (

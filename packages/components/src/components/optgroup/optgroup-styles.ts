@@ -1,33 +1,24 @@
-import { fontWeightSemiBold, spacingStaticSmall, textXSmallStyle } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import type { Theme } from '../../types';
+import { fontWeightSemiBold, textXSmallStyle } from '@porsche-design-system/emotion';
+import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../styles';
+import { colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
-const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
 
-export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
+const paddingBlock = `calc(11.2px * (var(${cssVarInternalOptgroupScaling}) - 0.64285714) + 4px)`;
+const paddingInline = `calc(16.8px * (var(${cssVarInternalOptgroupScaling}) - 0.64285714) + 6px)`;
+const gap = `calc(11.2px * (var(${cssVarInternalOptgroupScaling}) - 0.64285714) + 4px)`;
+const paddingSlottedInlineStart = `calc(44.8px * (var(${cssVarInternalOptgroupScaling}) - 0.64285714) + 12px)`;
 
-  const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
-  const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
-
+export const getComponentCss = (isDisabled: boolean): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       '::slotted(*)': {
-        '--p-internal-select-option-padding-left': '28px',
-        '--p-internal-multi-select-option-padding-left': '28px',
+        '--p-internal-select-option-padding-left': paddingSlottedInlineStart,
+        '--p-internal-multi-select-option-padding-left': paddingSlottedInlineStart,
       },
       '[role="group"]': {
         display: 'flex',
@@ -35,18 +26,11 @@ export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
         gap,
       },
       '[role="presentation"]': {
-        padding,
+        paddingBlock,
+        paddingInline,
         font: textXSmallStyle.font.replace(' 400 ', ` ${fontWeightSemiBold} `),
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-        ...(isDisabled && {
-          color: disabledColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-          }),
-        }),
+        color: colorPrimary,
+        ...(isDisabled && getDisabledBaseStyles()),
       },
     },
   });

@@ -1,8 +1,8 @@
-import { TAG_NAMES } from '../src/lib/tagNames';
-import type { TagName } from '../src/lib/tagNames';
 import { bundles } from '@porsche-design-system/components/stencil.config';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+import type { TagName } from '../src/lib/tagNames';
+import { TAG_NAMES } from '../src/lib/tagNames';
 
 const generateTagNamesWithChunk = (): void => {
   const tagNamesWithoutChunk = bundles.map(({ components }) => components.slice(1)).flat();

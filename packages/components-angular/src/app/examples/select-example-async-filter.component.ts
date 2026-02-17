@@ -63,7 +63,7 @@ import {
           class="flex gap-static-sm py-static-sm px-[12px]"
           role="alert"
         >
-          <p-icon name="information" color="notification-error"></p-icon>
+          <p-icon name="information" color="error"></p-icon>
           <span class="text-error">{{ error }}</span>
         </div>
       }

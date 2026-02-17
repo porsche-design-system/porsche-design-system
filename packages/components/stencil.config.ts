@@ -1,7 +1,7 @@
-import type { Config } from '@stencil/core';
 import * as path from 'node:path';
-import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
+import replace from '@rollup/plugin-replace';
+import type { Config } from '@stencil/core';
 import { version } from './package.json';
 
 /**
@@ -22,13 +22,11 @@ const isDevBuild = process.env.PDS_IS_STAGING === '1';
 // specify chunking of components that can't be used standalone
 // it's important to list the parent component first since it affects the chunk name
 export const bundles: { components: TagName[] }[] = [
-  { components: ['p-flex', 'p-flex-item'] },
   { components: ['p-drilldown', 'p-drilldown-item', 'p-drilldown-link'] },
-  { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-multi-select', 'p-multi-select-option'] },
   { components: ['p-segmented-control', 'p-segmented-control-item'] },
+  { components: ['p-radio-group', 'p-radio-group-option'] },
   { components: ['p-select', 'p-select-option'] },
-  { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },
   {
     components: [
@@ -49,7 +47,7 @@ export const bundles: { components: TagName[] }[] = [
 export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
-  invisiblePrehydration: false, // done manually via getInitialStyles() partial and injectGlobalStyle() fallback
+  invisiblePrehydration: false, // done manually
   outputTargets: [
     { type: 'dist' },
     {

@@ -1,6 +1,7 @@
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'React Router: Getting started - Porsche Design System',
@@ -18,13 +19,13 @@ System, follow these steps. This guide is based on the following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@react-router/*@7</PTag>
+  <PTag compact={true} variant="info">@react-router/*@7</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">react@19</PTag>
+  <PTag compact={true} variant="info">react@19</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  <PTag compact={true} variant="info">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-react@3</PTag>
+  <PTag compact={true} variant="info">@porsche-design-system/components-react@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash
@@ -109,7 +110,45 @@ export default function App() {
 }
 ```
 
-### Step 4 (recommended)
+### Step 4
+
+Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
+recommended styles, such as:
+
+- CSS color variables (including color scheme utilities)
+- Font-face definitions
+- Normalize styles
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
+
+See [Styles](/styles/introduction/) for more details about global styles. See [Theme](/must-know/theme/) to learn about
+theming.
+
+```diff
+/* app/app.css */
++ @import '@porsche-design-system/components-react';
+```
+
+To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
+`:defined` pseudo-class, consider applying the style only to the relevant tags (`:is(p-button...)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+If all the components are fully rendered server-side (e.g., when using the `/ssr` sub-package), it is not necessary to
+do this.
+
+```diff
+/* app/app.css */
+@import '@porsche-design-system/components-react';
+
++ :not(:defined,[data-ssr]) {
++   visibility: hidden;
++ }
+```
+
+### Step 5 (recommended)
 
 To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
 Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
@@ -127,10 +166,8 @@ import {
 } from 'react-router';
 import {
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
-  getInitialStyles,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-react/partials';
 
@@ -138,10 +175,6 @@ export async function loader() {
   return {
     headPartials: (
       <>
-        {/* necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components */}
-        {getInitialStyles({ format: 'jsx' })}
-        {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
-        {getFontFaceStyles({ format: 'jsx' })}
         {/* preloads Porsche Next font (=> minimize FOUT) */}
         {getFontLinks({ format: 'jsx' })}
         {/* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */}
@@ -177,7 +210,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Step 5 (recommended)
+### Step 6 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
@@ -193,14 +226,17 @@ Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design Syste
 > now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
 > Tailwind CSS, to build applications quickly and efficiently.
 
-```css
-/* app/app.css */
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-react/tailwindcss';
+```diff
+/* app/app.css */
+@import '@porsche-design-system/components-react';
+
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-react/tailwindcss';
 ```
 
-### Step 6
+### Step 7
 
 Add a Porsche Design System component (e.g., `<PWordmark />`) with some Tailwind CSS styles. Then, run `npm run dev` and
 verify that the component and styles display correctly.

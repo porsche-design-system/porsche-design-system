@@ -2,9 +2,9 @@
 import {
   type MultiSelectChangeEventDetail,
   PButton,
+  PInputText,
   PMultiSelect,
   PMultiSelectOption,
-  PTextFieldWrapper,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -21,9 +21,9 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onChange = (e: MultiSelectChangeEventDetail) => {
-  selectedValues.value = e.value;
-  inputValue.value = e.value.join(',');
+const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+  selectedValues.value = e.detail.value;
+  inputValue.value = e.detail.value.join(',');
 };
 
 const onAddOption = () => {
@@ -39,9 +39,7 @@ const onRemoveOption = () => {
 
 <template>
   <div>
-    <PTextFieldWrapper label="Value:">
-      <input name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1,2" />
-    </PTextFieldWrapper>
+    <PInputText label="Value:" name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1,2" />
     <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
     <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
 

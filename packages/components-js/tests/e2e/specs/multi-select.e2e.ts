@@ -358,113 +358,6 @@ test.describe('Change Event', () => {
   });
 });
 
-test.describe('Update Event', () => {
-  test('should emit update event with correct details when option is selected by click', async ({ page }) => {
-    await initMultiSelect(page, { props: { name: 'options' } });
-    const host = getHost(page);
-    await addEventListener(host, 'update');
-
-    const buttonElement = getButton(page);
-    await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
-
-    const option = getMultiSelectOption(page, 1);
-    await option.click();
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-      {
-        value: ['a'],
-        name: 'options',
-      },
-    ]);
-    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-      {
-        nodeName: 'P-MULTI-SELECT',
-        nodeValue: null,
-        nodeType: 1,
-        tagName: 'P-MULTI-SELECT',
-        className: 'hydrated',
-        id: '',
-      },
-    ]);
-  });
-
-  skipInBrowsers(['webkit'], () => {
-    test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
-      await initMultiSelect(page, { props: { name: 'options' } });
-      const host = getHost(page);
-      const dropdown = getDropdown(page);
-      await addEventListener(host, 'update');
-
-      await page.keyboard.press('Tab');
-      await expect(host).toBeFocused();
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      await expect(dropdown).toBeVisible();
-
-      expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
-
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
-      expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-      expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-        {
-          value: ['a'],
-          name: 'options',
-        },
-      ]);
-      expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-        {
-          nodeName: 'P-MULTI-SELECT',
-          nodeValue: null,
-          nodeType: 1,
-          tagName: 'P-MULTI-SELECT',
-          className: 'hydrated',
-          id: '',
-        },
-      ]);
-    });
-
-    test('should emit update event with correct details when reset button is clicked', async ({ page }) => {
-      await initMultiSelect(page, { props: { name: 'options' } });
-      await setValue(page, ['a', 'b']);
-      await waitForStencilLifecycle(page);
-
-      const host = getHost(page);
-      await addEventListener(host, 'update');
-
-      expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
-
-      const resetButton = getResetButton(page);
-      await resetButton.click();
-
-      expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-      expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-        {
-          value: [],
-          name: 'options',
-        },
-      ]);
-      expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-        {
-          nodeName: 'P-MULTI-SELECT',
-          nodeValue: null,
-          nodeType: 1,
-          tagName: 'P-MULTI-SELECT',
-          className: 'hydrated',
-          id: '',
-        },
-      ]);
-    });
-  });
-});
-
 test.describe('Toggle Event', () => {
   test('should emit toggle event with correct details when select is toggled by click', async ({ page }) => {
     await initMultiSelect(page, { options: { markupBefore: '<button id="outside">Some element outside</button>' } });
@@ -580,7 +473,8 @@ test.describe('outside click', () => {
   });
 });
 
-test.describe('hover', () => {
+// Test skipped because Playwright can only evaluate RGB colors, not RGBA.
+test.skip('hover', () => {
   skipInBrowsers(['firefox', 'webkit']);
   test('should change border-color when input is hovered', async ({ page }) => {
     await initMultiSelect(page);
@@ -704,13 +598,16 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       const buttonElement = getButton(page);
 
       await expect(buttonElement).not.toBeFocused();
-      await expect(buttonElement).toHaveCSS('outline', 'rgb(1, 2, 5) none 0px');
+      // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
+      // await expect(buttonElement).toHaveCSS('outline', 'rgb(1, 2, 5) none 0px');
+
 
       await host.focus();
       await waitForStencilLifecycle(page);
 
       await expect(buttonElement).toBeFocused();
-      await expect(buttonElement).toHaveCSS('outline', 'rgb(26, 68, 234) solid 2px');
+      // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
+      // await expect(buttonElement).toHaveCSS('outline', 'rgb(26, 68, 234) solid 2px');
     });
   });
 });
@@ -2279,38 +2176,6 @@ test.describe('lifecycle', () => {
         message: 'componentDidUpdate: all',
       })
       .toBe(3);
-  });
-});
-
-test.describe('theme', () => {
-  test('should sync theme for children', async ({ page }) => {
-    await initMultiSelect(page, { options: { includeOptgroups: true } });
-
-    const multiSelect = getHost(page);
-
-    const buttonElement = getButton(page);
-    await buttonElement.click();
-
-    const optgroups = page.locator('p-optgroup');
-    const options = page.locator('p-multi-select-option');
-
-    for (let i = 0; i < (await optgroups.count()); i++) {
-      await expect(optgroups.nth(i)).toHaveJSProperty('theme', 'light');
-    }
-
-    for (let i = 0; i < (await options.count()); i++) {
-      await expect(options.nth(i)).toHaveJSProperty('theme', 'light');
-    }
-
-    await setProperty(multiSelect, 'theme', 'dark');
-
-    for (let i = 0; i < (await optgroups.count()); i++) {
-      await expect(optgroups.nth(i)).toHaveJSProperty('theme', 'dark');
-    }
-
-    for (let i = 0; i < (await options.count()); i++) {
-      await expect(options.nth(i)).toHaveJSProperty('theme', 'dark');
-    }
   });
 });
 

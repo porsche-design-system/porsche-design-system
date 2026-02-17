@@ -5,13 +5,12 @@ export type { FlagName } from '@porsche-design-system/flags';
 export type { IconName } from '@porsche-design-system/icons';
 export type { ButtonAriaAttribute, LinkAriaAttribute } from '../utils';
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
-export type { Theme } from '../utils/theme';
 export type { HeadingSize } from '../utils/typography/heading-size';
 export type { HeadingTag } from '../utils/typography/heading-tag';
 export type { TextSize } from '../utils/typography/text-size';
-export type { TypographyAlign, TypographyAlignDeprecated } from '../utils/typography/typography-align';
-export type { TypographyTextColor, TypographyTextColorDeprecated } from '../utils/typography/typography-text-color';
-export type { TypographyTextWeight, TypographyTextWeightDeprecated } from '../utils/typography/typography-text-weight';
+export type { TypographyAlign } from '../utils/typography/typography-align';
+export type { TypographyTextColor } from '../utils/typography/typography-text-color';
+export type { TypographyTextWeight } from '../utils/typography/typography-text-weight';
 export type { PropTypes, ValidatorFunction } from '../utils/validation/validateProps';
 
 export type LinkButtonIconName = IconName | 'none';
@@ -24,7 +23,7 @@ export type { ButtonType } from '../utils/link-button/button-type';
 
 export type LinkVariant = LinkButtonVariant;
 
-export type { AlignLabel, AlignLabelDeprecated } from '../utils/link-button/align-label';
+export type { AlignLabel } from '../utils/link-button/align-label';
 export type { LinkTarget } from '../utils/link-button/link-target';
 
 // TODO: Share type across repo

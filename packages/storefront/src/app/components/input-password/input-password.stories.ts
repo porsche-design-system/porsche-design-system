@@ -53,6 +53,18 @@ export const inputPasswordSlotStories: SlotStories<'p-input-password'> = {
       ],
     },
   },
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
 };
 
 export const inputPasswordStory: Story<'p-input-password'> = {
@@ -63,7 +75,11 @@ export const inputPasswordStory: Story<'p-input-password'> = {
     {
       tag: 'p-input-password',
       properties,
-      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
+      children: [
+        ...(slots?.start?.generator() ?? []),
+        ...(slots?.end?.generator() ?? []),
+        ...(slots?.['label-after']?.generator() ?? []),
+      ],
     },
   ],
 };
@@ -88,7 +104,24 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
           properties: { slot: 'label' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
+            ' and a "label-after" slot.',
+          ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: [
+            'Some Popover content with a ',
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -97,7 +130,11 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
           properties: { slot: 'description' },
           children: [
             'Some description with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -106,7 +143,11 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
           properties: { slot: 'message' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },

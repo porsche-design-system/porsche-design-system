@@ -1,6 +1,6 @@
-import path from 'path';
 import fs from 'fs';
 import { globbySync } from 'globby';
+import path from 'path';
 
 const generateTagNamesWithChunk = (): void => {
   // can't resolve @porsche-design-system/components-js without building it first, therefore we use relative path

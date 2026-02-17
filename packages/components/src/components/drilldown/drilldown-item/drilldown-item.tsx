@@ -1,8 +1,9 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../types';
+import { Component, Element, forceUpdate, Host, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  getNamedSlot,
   getPrefixedTagNames,
   hasNamedSlot,
   isElementOfKind,
@@ -10,11 +11,9 @@ import {
   throwIfParentIsNotOfKind,
   unobserveChildren,
   validateProps,
-  getNamedSlot,
 } from '../../../utils';
 import { type DrilldownUpdateEventDetail, INTERNAL_UPDATE_EVENT_NAME } from '../drilldown/drilldown-utils';
 import { getComponentCss } from './drilldown-item-styles';
-import type { DrilldownItemInternalHTMLProps } from './drilldown-item-utils';
 
 const propTypes: PropTypes<typeof DrilldownItem> = {
   identifier: AllowedTypes.string,
@@ -35,7 +34,7 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
   shadow: true,
 })
 export class DrilldownItem {
-  @Element() public host!: HTMLElement & DrilldownItemInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure. */
   @Prop() public label?: string;
@@ -56,10 +55,6 @@ export class DrilldownItem {
 
   private hasSlottedHeader: boolean;
   private hasSlottedButton: boolean;
-
-  private get theme(): Theme {
-    return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by drilldown)
-  }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-drilldown', 'p-drilldown-item']);
@@ -114,7 +109,6 @@ export class DrilldownItem {
             icon="arrow-head-right"
             active={this.secondary}
             aria={{ 'aria-expanded': this.secondary }}
-            theme={this.theme}
             onClick={() => this.onClickButton()}
           >
             {this.label}
@@ -127,7 +121,6 @@ export class DrilldownItem {
           alignLabel="end"
           stretch={true}
           icon="arrow-left"
-          theme={this.theme}
           hideLabel={{ base: true, s: false }}
           onClick={() => this.emitInternalUpdateEvent(this.identifier)}
         >

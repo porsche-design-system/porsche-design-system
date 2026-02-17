@@ -1,0 +1,17 @@
+export * from './deprecated';
+export { fontHyphenationStyle } from './fontHyphenationStyle';
+export { fontPorscheNext } from './fontPorscheNext';
+export { fontSizeDisplayLarge } from './fontSizeDisplayLarge';
+export { fontSizeDisplayMedium } from './fontSizeDisplayMedium';
+export { fontSizeDisplaySmall } from './fontSizeDisplaySmall';
+export { fontWeightBold } from './fontWeightBold';
+export { fontWeightNormal } from './fontWeightNormal';
+export { fontWeightSemibold } from './fontWeightSemibold';
+export { leadingNormal } from './leadingNormal';
+export { typescale2Xl } from './typescale2Xl';
+export { typescale2Xs } from './typescale2Xs';
+export { typescaleLg } from './typescaleLg';
+export { typescaleMd } from './typescaleMd';
+export { typescaleSm } from './typescaleSm';
+export { typescaleXl } from './typescaleXl';
+export { typescaleXs } from './typescaleXs';

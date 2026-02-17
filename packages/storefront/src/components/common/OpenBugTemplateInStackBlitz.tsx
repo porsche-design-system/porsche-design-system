@@ -1,33 +1,33 @@
 'use client';
 
-import { ThemeSelect } from '@/components/common/ThemeSelect';
-import { frameworkNameMap } from '@/models/framework';
-import type { StorefrontTheme } from '@/models/theme';
-import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
-import { getReactCode } from '@/utils/generator/generateReactMarkup';
-import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
-import { getVueCode } from '@/utils/generator/generateVueMarkup';
 import {
   PButton,
   PSegmentedControl,
   PSegmentedControlItem,
-  type SegmentedControlUpdateEventDetail,
-  type SelectUpdateEventDetail,
+  type SegmentedControlChangeEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { useState } from 'react';
+import { ThemeSelect } from '@/components/common/ThemeSelect';
+import { frameworkNameMap } from '@/models/framework';
+import type { StorefrontColorScheme } from '@/models/theme';
+import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
+import { getReactCode } from '@/utils/generator/generateReactMarkup';
+import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
+import { getVueCode } from '@/utils/generator/generateVueMarkup';
 
 export const OpenBugTemplateInStackBlitz = () => {
   const [selectedFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
-  const [selectedTheme, setSelectedTheme] = useState<StorefrontTheme>('light');
+  const [selectedTheme, setSelectedTheme] = useState<StorefrontColorScheme>('scheme-light');
 
-  const onUpdateFramework = (e: CustomEvent<SegmentedControlUpdateEventDetail>) => {
+  const onFrameworkChange = (e: CustomEvent<SegmentedControlChangeEventDetail>) => {
     setSelectedFramework(e.detail.value as Framework);
   };
 
-  const onUpdateTheme = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    setSelectedTheme(e.detail.value as StorefrontTheme);
+  const onUpdateTheme = (e: CustomEvent<SelectChangeEventDetail>) => {
+    setSelectedTheme(e.detail.value as StorefrontColorScheme);
   };
 
   const onOpenInStackblitz = () => {
@@ -51,7 +51,7 @@ export const OpenBugTemplateInStackBlitz = () => {
 
   return (
     <div className="flex flex-col gap-fluid-sm">
-      <PSegmentedControl value={selectedFramework} onUpdate={onUpdateFramework} aria-label="Choose your Framework:">
+      <PSegmentedControl value={selectedFramework} onChange={onFrameworkChange} aria-label="Choose your Framework:">
         {Object.entries(frameworkNameMap)
           .filter(([framework]) => framework !== 'next')
           .map(([framework, name]) => (
@@ -61,7 +61,7 @@ export const OpenBugTemplateInStackBlitz = () => {
           ))}
       </PSegmentedControl>
       <div className="flex gap-fluid-xs">
-        <ThemeSelect className="w-[13rem]" value={selectedTheme} onUpdate={onUpdateTheme} />
+        <ThemeSelect className="w-[13rem]" value={selectedTheme} onThemeChange={onUpdateTheme} />
       </div>
       <PButton
         className="w-fit mt-fluid-sm"

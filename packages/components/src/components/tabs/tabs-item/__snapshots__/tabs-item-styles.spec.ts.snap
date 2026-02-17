@@ -1,43 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: block;
-  color: #FBFCFF !important;
+  color: var(--p-color-primary) !important;
   border-radius: 2px !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-:host(::-moz-focus-inner) {
-  border: 0 !important;
-}
-:host(:focus) {
-  outline: 0 !important;
-}
 :host(:focus-visible) {
-  outline: 2px solid #1A44EA !important;
+  outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light 1`] = `
-":host {
-  display: block;
-  color: #010205 !important;
-  border-radius: 2px !important;
 }
-:host([hidden]) {
-  display: none !important;
+@media (forced-colors: active) {
+  :host(:focus-visible) {
+    outline-color: Highlight !important;
+  }
 }
-:host(::-moz-focus-inner) {
-  border: 0 !important;
-}
-:host(:focus) {
-  outline: 0 !important;
-}
-:host(:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
-}"
+"
 `;

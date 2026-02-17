@@ -18,12 +18,6 @@ exports[`should match snapshot 1`] = `
       },
     },
     "eventsMeta": {
-      "accordionChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when accordion state is changed.",
-        "isDeprecated": true,
-        "type": "AccordionUpdateEventDetail",
-        "typeDetail": "{ open: boolean }",
-      },
       "update": {
         "description": "Emitted when accordion state is changed.",
         "type": "AccordionUpdateEventDetail",
@@ -39,7 +33,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -92,31 +85,6 @@ exports[`should match snapshot 1`] = `
         "isExperimental": true,
         "type": "boolean",
       },
-      "tag": {
-        "allowedValues": [
-          null,
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated, will be removed with next major release, use \`heading-tag\` instead. Sets a heading tag, so it fits correctly within the outline of the page.",
-        "isDeprecated": true,
-        "type": "AccordionTag",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -165,7 +133,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-inline-notification",
     ],
@@ -208,42 +175,16 @@ exports[`should match snapshot 1`] = `
         "isRequired": true,
         "type": "boolean",
       },
-      "persistent": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.",
-        "isDeprecated": true,
-        "type": "boolean",
-      },
       "state": {
         "allowedValues": [
           "info",
+          "success",
           "warning",
           "error",
-          "neutral",
         ],
         "defaultValue": "info",
-        "deprecatedValues": [
-          "neutral",
-        ],
         "description": "State of the banner.",
         "type": "BannerState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the banner color depending on the theme.",
-        "type": "Theme",
-      },
-      "width": {
-        "defaultValue": null,
-        "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "BannerWidth",
       },
     },
     "slotsMeta": {
@@ -254,11 +195,6 @@ exports[`should match snapshot 1`] = `
       "heading": {
         "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.",
         "hasAltProp": true,
-      },
-      "title": {
-        "description": "Please use the heading prop or slot="heading" instead.",
-        "hasAltProp": true,
-        "isDeprecated": true,
       },
     },
     "styling": "jss",
@@ -279,7 +215,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -641,16 +576,6 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the button color depending on the theme.",
-        "type": "Theme",
-      },
       "type": {
         "allowedValues": [
           "button",
@@ -671,13 +596,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "primary",
           "secondary",
-          "ghost",
-          "tertiary",
         ],
         "defaultValue": "primary",
-        "deprecatedValues": [
-          "tertiary",
-        ],
         "description": "The style variant of the button.",
         "type": "ButtonVariant",
       },
@@ -685,41 +605,6 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the button label.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-button-group": {
-    "deprecationMessage": "since v3.32.0, will be removed with next major release. Use simple styles instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "propsMeta": {
-      "direction": {
-        "allowedValues": [
-          "row",
-          "column",
-        ],
-        "defaultValue": {
-          "base": "column",
-          "xs": "row",
-        },
-        "description": "Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.",
-        "isBreakpointCustomizable": true,
-        "type": "ButtonGroupDirection",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the buttons to group.",
       },
     },
     "styling": "jss",
@@ -740,7 +625,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -756,14 +640,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "start",
           "end",
-          "left",
-          "right",
         ],
         "defaultValue": "end",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "Aligns the label.",
         "isBreakpointCustomizable": true,
         "type": "ButtonPureAlignLabel",
@@ -1139,16 +1017,6 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the button color depending on the theme.",
-        "type": "Theme",
-      },
       "type": {
         "allowedValues": [
           "button",
@@ -1170,23 +1038,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.",
         "type": "string",
-      },
-      "weight": {
-        "allowedValues": [
-          "regular",
-          "semi-bold",
-          "bold",
-          "thin",
-          "semibold",
-        ],
-        "defaultValue": "regular",
-        "deprecatedValues": [
-          "thin",
-          "semibold",
-        ],
-        "description": "The weight of the text (only has effect with visible label). @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "ButtonPureWeight",
       },
     },
     "slotsMeta": {
@@ -1212,10 +1063,8 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
-      "p-button-pure",
     ],
     "propsMeta": {
       "align": {
@@ -1247,33 +1096,12 @@ exports[`should match snapshot 1`] = `
           "3/4",
           "16/9",
           "9/16",
-          "1:1",
-          "4:3",
-          "3:4",
-          "16:9",
-          "9:16",
+          "auto",
         ],
         "defaultValue": "4/3",
-        "deprecatedValues": [
-          "1:1",
-          "4:3",
-          "3:4",
-          "16:9",
-          "9:16",
-        ],
         "description": "Aspect ratio of the button-tile.",
         "isBreakpointCustomizable": true,
         "type": "ButtonTileAspectRatio",
-      },
-      "background": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "dark",
-        "description": "Adapts the description and button theme when used on light background image.",
-        "type": "ButtonTileBackground",
       },
       "compact": {
         "allowedValues": "boolean",
@@ -1297,7 +1125,7 @@ exports[`should match snapshot 1`] = `
       },
       "gradient": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "Show gradient.",
         "type": "boolean",
       },
@@ -1618,12 +1446,8 @@ exports[`should match snapshot 1`] = `
           "medium",
           "large",
           "inherit",
-          "default",
         ],
         "defaultValue": "medium",
-        "deprecatedValues": [
-          "default",
-        ],
         "description": "Font size of the description.",
         "isBreakpointCustomizable": true,
         "type": "ButtonTileSize",
@@ -1663,6 +1487,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-canvas": {
+    "cssVariablesMeta": {
+      "--p-canvas-sidebar-end-width": {
+        "defaultValue": "320px",
+        "description": "Width of the sidebar end.",
+      },
+      "--p-canvas-sidebar-start-width": {
+        "defaultValue": "320px",
+        "description": "Width of the sidebar start.",
+      },
+    },
     "eventsMeta": {
       "sidebarEndDismiss": {
         "description": "Emitted when the sidebar end requests to be dismissed.",
@@ -1684,14 +1518,21 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button",
       "p-crest",
       "p-wordmark",
-      "p-flyout",
     ],
     "propsMeta": {
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+        ],
+        "defaultValue": "canvas",
+        "description": "Defines the background color of the main section and auto adjust it for the sidebar",
+        "type": "CanvasBackground",
+      },
       "sidebarEndOpen": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -1703,16 +1544,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Open the sidebar on the start side",
         "type": "boolean",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -1761,10 +1592,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-ps\`. When used then the prop \`width\` has no effect anymore.",
       },
-      "--p-carousel-prev-next-filter": {
-        "defaultValue": "none",
-        "description": "CSS Filter applied to the navigation (prev/next buttons)",
-      },
       "--p-carousel-ps": {
         "defaultValue": "",
         "description": "Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-pe\`. When used then the prop \`width\` has no effect anymore.",
@@ -1779,12 +1606,6 @@ exports[`should match snapshot 1`] = `
       },
     },
     "eventsMeta": {
-      "carouselChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when carousel's content slides.",
-        "isDeprecated": true,
-        "type": "CarouselUpdateEventDetail",
-        "typeDetail": "{ activeIndex: number; previousIndex: number }",
-      },
       "update": {
         "description": "Emitted when carousel's content slides.",
         "type": "CarouselUpdateEventDetail",
@@ -1800,7 +1621,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-link-pure",
       "p-button-pure",
@@ -1826,12 +1646,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "start",
           "center",
-          "left",
         ],
         "defaultValue": "start",
-        "deprecatedValues": [
-          "left",
-        ],
         "description": "Alignment of heading and description",
         "type": "CarouselAlignHeader",
       },
@@ -1850,29 +1666,17 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the description used in the carousel.",
         "type": "string",
       },
-      "disablePagination": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`pagination\` instead. If true, the carousel will not show pagination bullets at the bottom.",
-        "isBreakpointCustomizable": true,
-        "isDeprecated": true,
-        "type": "boolean",
-      },
       "focusOnCenterSlide": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.",
         "type": "boolean",
       },
-      "gradientColor": {
-        "allowedValues": [
-          "background-base",
-          "background-surface",
-          "none",
-        ],
-        "defaultValue": "none",
-        "description": "Adapts the background gradient for the left and right edge.",
-        "type": "CarouselGradientColor",
+      "gradient": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Fades the slides out.",
+        "type": "boolean",
       },
       "heading": {
         "allowedValues": "string",
@@ -1904,14 +1708,14 @@ exports[`should match snapshot 1`] = `
       },
       "pagination": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "If false, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "rewind": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "Whether the slides should rewind from last to first slide and vice versa.",
         "type": "boolean",
       },
@@ -1940,19 +1744,9 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "CarouselSlidesPerPage",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
-      },
       "trimSpace": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "Determines whether to trim spaces before/after the carousel if \`focusOnCenterSlide\` option is true.",
         "type": "boolean",
       },
@@ -1966,13 +1760,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "basic",
         "description": "Defines the outer spacings between the carousel and the left and right screen sides.",
         "type": "CarouselWidth",
-      },
-      "wrapContent": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "boolean",
       },
     },
     "slotsMeta": {
@@ -1993,6 +1780,15 @@ exports[`should match snapshot 1`] = `
   },
   "p-checkbox": {
     "cssVariablesMeta": {
+      "--p-checkbox-background-color": {
+        "description": "🧪Experimental: Background color of Checkbox.",
+      },
+      "--p-checkbox-border-color": {
+        "description": "🧪Experimental: Border colors of Checkbox. Should be used to override the default border color in different states (e.g., hover, focus, error), e.g. when the Checkbox is wrapped inside a custom label.",
+      },
+      "--p-checkbox-icon-color": {
+        "description": "🧪Experimental: Checkmark icon color of Checkbox.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -2009,10 +1805,6 @@ exports[`should match snapshot 1`] = `
         "type": "CheckboxChangeEventDetail",
         "typeDetail": "Event",
       },
-      "update": {
-        "type": "CheckboxUpdateEventDetail",
-        "typeDetail": "{ name: string; value?: string; checked: boolean }",
-      },
     },
     "hasAriaProp": false,
     "hasElementInternals": true,
@@ -2023,7 +1815,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -2119,16 +1910,6 @@ exports[`should match snapshot 1`] = `
         "description": "The validation state.",
         "type": "CheckboxState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "on",
@@ -2149,151 +1930,6 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-checkbox-wrapper": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
-    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-checkbox\` instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": true,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-spinner",
-      "p-icon",
-    ],
-    "observedAttributes": [
-      "disabled",
-      "required",
-    ],
-    "propsMeta": {
-      "hideLabel": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
-        "isBreakpointCustomizable": true,
-        "type": "boolean",
-      },
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The label text.",
-        "type": "string",
-      },
-      "loading": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "@experimental Disables the checkbox and shows a loading indicator.",
-        "isExperimental": true,
-        "type": "boolean",
-      },
-      "message": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The message styled depending on validation state.",
-        "type": "string",
-      },
-      "state": {
-        "allowedValues": [
-          "none",
-          "error",
-          "success",
-        ],
-        "defaultValue": "none",
-        "description": "The validation state.",
-        "type": "CheckboxWrapperState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
-      },
-    },
-    "requiredChild": "input type=checkbox",
-    "requiredChildSelector": "input[type=checkbox]",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the input.",
-      },
-      "label": {
-        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-content-wrapper": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "propsMeta": {
-      "backgroundColor": {
-        "allowedValues": [
-          "transparent",
-          "default",
-        ],
-        "defaultValue": "transparent",
-        "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "ContentWrapperBackgroundColor",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "Theme",
-      },
-      "width": {
-        "allowedValues": [
-          "narrow",
-          "basic",
-          "extended",
-          "fluid",
-          "full",
-        ],
-        "defaultValue": "extended",
-        "description": "Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.",
-        "type": "ContentWrapperWidth",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for main content.",
-      },
-    },
-    "styling": "jss",
-  },
   "p-crest": {
     "hasAriaProp": true,
     "hasElementInternals": false,
@@ -2304,7 +1940,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -2349,7 +1984,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "align": {
         "allowedValues": [
@@ -2357,14 +1991,8 @@ exports[`should match snapshot 1`] = `
           "center",
           "end",
           "inherit",
-          "left",
-          "right",
         ],
         "defaultValue": "start",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "Text alignment of the component.",
         "type": "DisplayAlign",
       },
@@ -2374,7 +2002,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "DisplayColor",
       },
       "ellipsis": {
@@ -2409,16 +2037,6 @@ exports[`should match snapshot 1`] = `
         "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
         "type": "DisplayTag",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -2437,24 +2055,16 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "color": {
         "allowedValues": [
+          "contrast-lower",
           "contrast-low",
           "contrast-medium",
           "contrast-high",
-          "neutral-contrast-high",
-          "neutral-contrast-medium",
-          "neutral-contrast-low",
         ],
-        "defaultValue": "contrast-low",
-        "deprecatedValues": [
-          "neutral-contrast-high",
-          "neutral-contrast-medium",
-          "neutral-contrast-low",
-        ],
-        "description": "Defines color depending on theme.",
+        "defaultValue": "contrast-lower",
+        "description": "Defines color.",
         "type": "DividerColor",
       },
       "direction": {
@@ -2466,28 +2076,6 @@ exports[`should match snapshot 1`] = `
         "description": "Defines direction.",
         "isBreakpointCustomizable": true,
         "type": "DividerDirection",
-      },
-      "orientation": {
-        "allowedValues": [
-          null,
-          "vertical",
-          "horizontal",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`direction\` instead. Defines orientation.",
-        "isBreakpointCustomizable": true,
-        "isDeprecated": true,
-        "type": "DividerOrientation",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts color depending on theme.",
-        "type": "Theme",
       },
     },
     "styling": "jss",
@@ -2528,7 +2116,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
       "p-button",
@@ -2555,16 +2142,6 @@ exports[`should match snapshot 1`] = `
         "description": "If true, the drilldown is visualized as opened.",
         "type": "boolean",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the drilldown color depending on the theme.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -2584,7 +2161,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -2664,7 +2240,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "active": {
         "allowedValues": "boolean",
@@ -2736,7 +2311,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -2787,94 +2361,6 @@ exports[`should match snapshot 1`] = `
         "description": "The validation state.",
         "type": "FieldsetState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts color depending on theme.",
-        "type": "Theme",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the main content.",
-      },
-      "label": {
-        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-fieldset-wrapper": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use \`p-fieldset\` instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-icon",
-    ],
-    "propsMeta": {
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The label text.",
-        "type": "string",
-      },
-      "labelSize": {
-        "allowedValues": [
-          "small",
-          "medium",
-        ],
-        "defaultValue": "medium",
-        "description": "The size of the label text.",
-        "type": "FieldsetWrapperLabelSize",
-      },
-      "message": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The message styled depending on validation state.",
-        "type": "string",
-      },
-      "required": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Marks the Fieldset as required.",
-        "type": "boolean",
-      },
-      "state": {
-        "allowedValues": [
-          "none",
-          "error",
-          "success",
-        ],
-        "defaultValue": "none",
-        "description": "The validation state.",
-        "type": "FieldsetWrapperState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts color depending on theme.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -2899,7 +2385,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -3051,198 +2536,6 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-flex": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Flex instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "propsMeta": {
-      "alignContent": {
-        "allowedValues": [
-          "stretch",
-          "flex-start",
-          "flex-end",
-          "center",
-          "space-between",
-          "space-around",
-          "space-evenly",
-        ],
-        "defaultValue": "stretch",
-        "description": "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexAlignContent",
-      },
-      "alignItems": {
-        "allowedValues": [
-          "stretch",
-          "flex-start",
-          "flex-end",
-          "center",
-          "baseline",
-        ],
-        "defaultValue": "stretch",
-        "description": "Defines how the flex items are aligned along the cross axis.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexAlignItems",
-      },
-      "direction": {
-        "allowedValues": [
-          "row",
-          "row-reverse",
-          "column",
-          "column-reverse",
-        ],
-        "defaultValue": "row",
-        "description": "Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexDirection",
-      },
-      "inline": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Defines the flex containers content flow if 2 or more containers are siblings of each other.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexInline",
-      },
-      "justifyContent": {
-        "allowedValues": [
-          "flex-start",
-          "flex-end",
-          "center",
-          "space-between",
-          "space-around",
-          "space-evenly",
-        ],
-        "defaultValue": "flex-start",
-        "description": "Defines how the flex items are aligned along the main axis.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexJustifyContent",
-      },
-      "wrap": {
-        "allowedValues": [
-          "nowrap",
-          "wrap",
-          "wrap-reverse",
-        ],
-        "defaultValue": "nowrap",
-        "description": "Handles wrapping behaviour of elements.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexWrap",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the flex items.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-flex-item": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Flex instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": false,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "propsMeta": {
-      "alignSelf": {
-        "allowedValues": [
-          "auto",
-          "flex-start",
-          "flex-end",
-          "center",
-          "baseline",
-          "stretch",
-        ],
-        "defaultValue": "auto",
-        "description": "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexItemAlignSelf",
-      },
-      "flex": {
-        "allowedValues": [
-          "initial",
-          "auto",
-          "none",
-          "equal",
-        ],
-        "defaultValue": "initial",
-        "description": "The shorthand property for the combined definition of "shrink", "grow" and "basis"",
-        "isBreakpointCustomizable": true,
-        "type": "FlexItemFlex",
-      },
-      "grow": {
-        "allowedValues": [
-          0,
-          1,
-        ],
-        "defaultValue": 0,
-        "description": "The ability to allow/disallow the flex child to grow.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexItemGrow",
-      },
-      "offset": {
-        "allowedValues": [
-          "none",
-          "one-quarter",
-          "one-third",
-          "half",
-          "two-thirds",
-          "three-quarters",
-        ],
-        "defaultValue": "none",
-        "description": "The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexItemOffset",
-      },
-      "shrink": {
-        "allowedValues": [
-          0,
-          1,
-        ],
-        "defaultValue": 1,
-        "description": "The ability to allow/disallow the flex child to shrink.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexItemShrink",
-      },
-      "width": {
-        "allowedValues": [
-          "auto",
-          "one-quarter",
-          "one-third",
-          "half",
-          "two-thirds",
-          "three-quarters",
-          "full",
-        ],
-        "defaultValue": "auto",
-        "description": "The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.",
-        "isBreakpointCustomizable": true,
-        "type": "FlexItemWidth",
-      },
-    },
-    "requiredParent": "p-flex",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the main content.",
-      },
-    },
-    "styling": "jss",
-  },
   "p-flyout": {
     "controlledMeta": [
       {
@@ -3256,6 +2549,9 @@ exports[`should match snapshot 1`] = `
       "--p-flyout-width": {
         "defaultValue": "auto",
         "description": "Width of the flyout.",
+      },
+      "--ref-p-flyout-pb": {
+        "description": "Exposes the internally used padding-bottom of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the bottom of the Flyout.",
       },
       "--ref-p-flyout-pt": {
         "description": "Exposes the internally used padding-top of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Flyout.",
@@ -3289,7 +2585,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button",
     ],
@@ -3311,6 +2606,15 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "blur",
         "description": "Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).",
         "type": "FlyoutBackdrop",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+        ],
+        "defaultValue": "canvas",
+        "description": "Defines the background color",
+        "type": "FlyoutBackground",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
@@ -3338,26 +2642,10 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "start",
           "end",
-          "left",
-          "right",
         ],
         "defaultValue": "end",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "The position of the flyout",
         "type": "FlyoutPosition",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the flyout color depending on the theme.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -3376,129 +2664,6 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-grid": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "propsMeta": {
-      "direction": {
-        "allowedValues": [
-          "row",
-          "row-reverse",
-          "column",
-          "column-reverse",
-        ],
-        "defaultValue": "row",
-        "description": "Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.",
-        "isBreakpointCustomizable": true,
-        "type": "GridDirection",
-      },
-      "gutter": {
-        "allowedValues": [
-          16,
-          24,
-          36,
-        ],
-        "defaultValue": {
-          "base": 16,
-          "m": 36,
-          "s": 24,
-        },
-        "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
-        "isBreakpointCustomizable": true,
-        "isDeprecated": true,
-        "type": "GridGutter",
-      },
-      "wrap": {
-        "allowedValues": [
-          "nowrap",
-          "wrap",
-        ],
-        "defaultValue": "wrap",
-        "description": "Handles wrapping behaviour of elements.",
-        "isBreakpointCustomizable": true,
-        "type": "GridWrap",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot to render p-grid-item tags.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-grid-item": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": false,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "propsMeta": {
-      "offset": {
-        "allowedValues": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-        ],
-        "defaultValue": 0,
-        "description": "The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.",
-        "isBreakpointCustomizable": true,
-        "type": "GridItemOffset",
-      },
-      "size": {
-        "allowedValues": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-        ],
-        "defaultValue": 1,
-        "description": "The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.",
-        "isBreakpointCustomizable": true,
-        "type": "GridItemSize",
-      },
-    },
-    "requiredParent": "p-grid",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot to render the content.",
-      },
-    },
-    "styling": "jss",
-  },
   "p-heading": {
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -3509,7 +2674,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "align": {
         "allowedValues": [
@@ -3517,14 +2681,8 @@ exports[`should match snapshot 1`] = `
           "center",
           "end",
           "inherit",
-          "left",
-          "right",
         ],
         "defaultValue": "start",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "Text alignment of the component.",
         "type": "HeadingAlign",
       },
@@ -3534,7 +2692,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "HeadingColor",
       },
       "ellipsis": {
@@ -3571,120 +2729,10 @@ exports[`should match snapshot 1`] = `
         "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
         "type": "HeadingTag",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
         "description": "Default slot to render the heading.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-headline": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-heading" instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "propsMeta": {
-      "align": {
-        "allowedValues": [
-          "start",
-          "center",
-          "end",
-          "inherit",
-          "left",
-          "right",
-        ],
-        "defaultValue": "start",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
-        "description": "Text alignment of the component.",
-        "type": "HeadlineAlign",
-      },
-      "color": {
-        "allowedValues": [
-          "primary",
-          "default",
-          "inherit",
-        ],
-        "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
-        "type": "HeadlineColor",
-      },
-      "ellipsis": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Adds an ellipsis to a single line of text if it overflows.",
-        "type": "boolean",
-      },
-      "tag": {
-        "allowedValues": [
-          null,
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-        ],
-        "defaultValue": null,
-        "description": "Sets a custom HTML tag depending on the usage of the headline component.",
-        "type": "HeadlineTag",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.",
-        "type": "Theme",
-      },
-      "variant": {
-        "allowedValues": [
-          "large-title",
-          "headline-1",
-          "headline-2",
-          "headline-3",
-          "headline-4",
-          "headline-5",
-          "xx-small",
-          "x-small",
-          "small",
-          "medium",
-          "large",
-          "x-large",
-          "inherit",
-        ],
-        "defaultValue": "headline-1",
-        "description": "Predefined style of the headline.",
-        "isBreakpointCustomizable": true,
-        "type": "HeadlineVariant",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot to render the headline.",
       },
     },
     "styling": "jss",
@@ -3699,7 +2747,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -3713,40 +2760,18 @@ exports[`should match snapshot 1`] = `
       "color": {
         "allowedValues": [
           "primary",
-          "contrast-low",
-          "contrast-medium",
           "contrast-high",
-          "notification-success",
-          "notification-warning",
-          "notification-error",
-          "notification-info",
+          "contrast-medium",
+          "contrast-low",
+          "success",
+          "warning",
+          "error",
+          "info",
           "inherit",
-          "brand",
-          "default",
-          "neutral-contrast-low",
-          "neutral-contrast-medium",
-          "neutral-contrast-high",
-          "notification-neutral",
-          "state-disabled",
         ],
         "defaultValue": "primary",
-        "deprecatedValues": [
-          "brand",
-          "default",
-          "neutral-contrast-low",
-          "neutral-contrast-medium",
-          "neutral-contrast-high",
-          "notification-neutral",
-        ],
-        "description": "Basic color variations depending on theme property.",
+        "description": "Basic color variations.",
         "type": "IconColor",
-      },
-      "lazy": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "Has no effect anymore (the component is now using the native \`loading="lazy"\` attribute by default) @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "boolean",
       },
       "name": {
         "allowedValues": [
@@ -4060,16 +3085,6 @@ exports[`should match snapshot 1`] = `
         "description": "Specifies a whole icon path which can be used for custom icons.",
         "type": "string",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.",
-        "type": "Theme",
-      },
     },
     "styling": "jss",
   },
@@ -4099,7 +3114,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
@@ -4442,34 +3456,16 @@ exports[`should match snapshot 1`] = `
         "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
         "type": "InlineNotificationHeadingTag",
       },
-      "persistent": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the inline-notification can be closed/removed by the user.",
-        "isDeprecated": true,
-        "type": "boolean",
-      },
       "state": {
         "allowedValues": [
-          "success",
           "info",
+          "success",
           "warning",
           "error",
-          "neutral",
         ],
         "defaultValue": "info",
         "description": "State of the inline-notification.",
         "type": "InlineNotificationState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the inline-notification color depending on the theme.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -4521,7 +3517,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -4638,16 +3633,6 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the granularity of the date input. This value is given in days. The default is 1 (one day).",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4719,7 +3704,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -4854,16 +3838,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the input component.",
         "type": "InputEmailState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4935,7 +3909,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -5052,16 +4025,6 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -5133,7 +4096,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -5262,16 +4224,6 @@ exports[`should match snapshot 1`] = `
         "description": "The granularity that the value must adhere to.",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -5343,7 +4295,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -5460,16 +4411,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the input component.",
         "type": "InputPasswordState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "toggle": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -5547,7 +4488,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
@@ -5677,16 +4617,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the input component.",
         "type": "InputSearchState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -5758,7 +4688,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -5887,16 +4816,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the input component.",
         "type": "InputTelState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -5968,7 +4887,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "autoComplete": {
         "allowedValues": "string",
@@ -6094,16 +5012,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the input component.",
         "type": "InputTextState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -6175,7 +5083,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -6292,16 +5199,6 @@ exports[`should match snapshot 1`] = `
         "description": "efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -6373,7 +5270,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -6502,16 +5398,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the input component.",
         "type": "InputUrlState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -6583,7 +5469,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -6700,16 +5585,6 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -6758,7 +5633,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -7118,27 +5992,12 @@ exports[`should match snapshot 1`] = `
         "description": "Target attribute where the link should be opened.",
         "type": "LinkTarget",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the link color when used on dark background.",
-        "type": "Theme",
-      },
       "variant": {
         "allowedValues": [
           "primary",
           "secondary",
-          "ghost",
-          "tertiary",
         ],
         "defaultValue": "primary",
-        "deprecatedValues": [
-          "tertiary",
-        ],
         "description": "The style variant of the link.",
         "type": "LinkVariant",
       },
@@ -7166,7 +6025,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -7181,14 +6039,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "start",
           "end",
-          "left",
-          "right",
         ],
         "defaultValue": "end",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "Aligns the label.",
         "isBreakpointCustomizable": true,
         "type": "LinkPureAlignLabel",
@@ -7563,409 +6415,11 @@ exports[`should match snapshot 1`] = `
         "description": "Target attribute where the link should be opened.",
         "type": "LinkPureTarget",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the button color depending on the theme.",
-        "type": "Theme",
-      },
       "underline": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Shows an underline under the label.",
         "type": "boolean",
-      },
-      "weight": {
-        "allowedValues": [
-          "regular",
-          "semi-bold",
-          "bold",
-          "thin",
-          "semibold",
-        ],
-        "defaultValue": "regular",
-        "deprecatedValues": [
-          "thin",
-          "semibold",
-        ],
-        "description": "The weight of the text (only has effect with visible label). @deprecated since v3.0.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "LinkPureWeight",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot to render the link label.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-link-social": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use \`p-link\` with corresponding social icon instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": true,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-icon",
-    ],
-    "propsMeta": {
-      "compact": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Displays as compact version.",
-        "type": "boolean",
-      },
-      "hideLabel": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Show or hide label.",
-        "isBreakpointCustomizable": true,
-        "type": "boolean",
-      },
-      "href": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\`.",
-        "type": "string",
-      },
-      "icon": {
-        "allowedValues": [
-          "",
-          "360",
-          "4-wheel-drive",
-          "accessibility",
-          "active-cabin-ventilation",
-          "add",
-          "adjust",
-          "aggregation",
-          "ai-3d-object",
-          "ai-code",
-          "ai-edit",
-          "ai-image",
-          "ai-scale",
-          "ai-sound",
-          "ai-spark",
-          "ai-spark-filled",
-          "ai-text",
-          "ai-video",
-          "arrow-compact-down",
-          "arrow-compact-left",
-          "arrow-compact-right",
-          "arrow-compact-up",
-          "arrow-double-down",
-          "arrow-double-left",
-          "arrow-double-right",
-          "arrow-double-up",
-          "arrow-down",
-          "arrow-first",
-          "arrow-head-down",
-          "arrow-head-left",
-          "arrow-head-right",
-          "arrow-head-up",
-          "arrow-last",
-          "arrow-left",
-          "arrow-right",
-          "arrow-up",
-          "arrows",
-          "attachment",
-          "augmented-reality",
-          "battery-empty",
-          "battery-empty-co2",
-          "battery-empty-fuel",
-          "battery-full",
-          "battery-half",
-          "battery-one-quarter",
-          "battery-three-quarters",
-          "bell",
-          "bookmark",
-          "bookmark-filled",
-          "brain",
-          "broadcast",
-          "cabriolet",
-          "calculator",
-          "calendar",
-          "camera",
-          "car",
-          "car-battery",
-          "card",
-          "charging-active",
-          "charging-network",
-          "charging-state",
-          "charging-station",
-          "chart",
-          "chat",
-          "check",
-          "city",
-          "climate",
-          "climate-control",
-          "clock",
-          "close",
-          "closed-caption",
-          "cloud",
-          "co2-class",
-          "co2-emission",
-          "color-picker",
-          "compare",
-          "compass",
-          "configurate",
-          "copy",
-          "country-road",
-          "coupe",
-          "cubic-capacity",
-          "cut",
-          "delete",
-          "disable",
-          "dislike",
-          "dislike-filled",
-          "document",
-          "door",
-          "download",
-          "drag",
-          "duration",
-          "ear",
-          "edit",
-          "email",
-          "error",
-          "error-filled",
-          "exclamation",
-          "exclamation-filled",
-          "external",
-          "fast-backward",
-          "fast-forward",
-          "file-csv",
-          "file-excel",
-          "filter",
-          "fingerprint",
-          "flag",
-          "flash",
-          "fuel-station",
-          "garage",
-          "genuine-parts",
-          "geo-localization",
-          "gift",
-          "globe",
-          "grid",
-          "grip",
-          "group",
-          "hand",
-          "heart",
-          "heart-filled",
-          "highway",
-          "highway-filled",
-          "history",
-          "home",
-          "horn",
-          "image",
-          "increase",
-          "information",
-          "information-filled",
-          "key",
-          "laptop",
-          "leaf",
-          "leather",
-          "light",
-          "like",
-          "like-filled",
-          "limousine",
-          "linked",
-          "list",
-          "locate",
-          "lock",
-          "lock-open",
-          "logo-apple-carplay",
-          "logo-apple-music",
-          "logo-apple-podcast",
-          "logo-baidu",
-          "logo-delicious",
-          "logo-digg",
-          "logo-facebook",
-          "logo-foursquare",
-          "logo-gmail",
-          "logo-google",
-          "logo-hatena",
-          "logo-instagram",
-          "logo-kaixin",
-          "logo-kakaotalk",
-          "logo-kununu",
-          "logo-linkedin",
-          "logo-naver",
-          "logo-pinterest",
-          "logo-qq",
-          "logo-qq-share",
-          "logo-reddit",
-          "logo-skyrock",
-          "logo-snapchat",
-          "logo-sohu",
-          "logo-spotify",
-          "logo-tecent",
-          "logo-telegram",
-          "logo-tiktok",
-          "logo-tumblr",
-          "logo-twitter",
-          "logo-viber",
-          "logo-vk",
-          "logo-wechat",
-          "logo-weibo",
-          "logo-whatsapp",
-          "logo-x",
-          "logo-xing",
-          "logo-yahoo",
-          "logo-youku",
-          "logo-youtube",
-          "logout",
-          "map",
-          "menu-dots-horizontal",
-          "menu-dots-vertical",
-          "menu-lines",
-          "microphone",
-          "minus",
-          "mobile",
-          "moon",
-          "new-chat",
-          "news",
-          "north-arrow",
-          "oil-can",
-          "online-search",
-          "parking-brake",
-          "parking-light",
-          "paste",
-          "pause",
-          "phone",
-          "pin",
-          "pin-filled",
-          "pivot",
-          "play",
-          "plug",
-          "plus",
-          "preheating",
-          "price-tag",
-          "printer",
-          "purchase",
-          "push-pin",
-          "push-pin-off",
-          "qr",
-          "qr-off",
-          "question",
-          "question-filled",
-          "racing-flag",
-          "radar",
-          "radio",
-          "refresh",
-          "replay",
-          "reset",
-          "return",
-          "road",
-          "roof-closed",
-          "roof-open",
-          "route",
-          "rss",
-          "save",
-          "screen",
-          "search",
-          "seat",
-          "send",
-          "service-technician",
-          "share",
-          "shopping-bag",
-          "shopping-bag-filled",
-          "shopping-cart",
-          "shopping-cart-filled",
-          "sidebar",
-          "sidelights",
-          "skip-backward",
-          "skip-forward",
-          "snowflake",
-          "sort",
-          "stack",
-          "star",
-          "star-filled",
-          "steering-wheel",
-          "stop",
-          "stopwatch",
-          "subtract",
-          "success",
-          "success-filled",
-          "sun",
-          "suv",
-          "switch",
-          "tablet",
-          "tachometer",
-          "theme",
-          "tire",
-          "trigger-finger",
-          "truck",
-          "turismo",
-          "unlinked",
-          "upload",
-          "user",
-          "user-filled",
-          "user-group",
-          "user-manual",
-          "video",
-          "view",
-          "view-off",
-          "volume-off",
-          "volume-up",
-          "warning",
-          "warning-filled",
-          "weather",
-          "weight",
-          "wifi",
-          "work",
-          "wrench",
-          "wrenches",
-          "zoom-in",
-          "zoom-out",
-        ],
-        "defaultValue": null,
-        "description": "The icon shown.",
-        "type": "LinkSocialIcon",
-      },
-      "iconSource": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "A URL path to a custom icon.",
-        "type": "string",
-      },
-      "rel": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Specifies the relationship of the target object to the link object.",
-        "type": "string",
-      },
-      "target": {
-        "allowedValues": [
-          "_self",
-          "_blank",
-          "_parent",
-          "_top",
-          "string",
-        ],
-        "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
-        "type": "LinkSocialTarget",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the link color when used on dark background.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -7991,10 +6445,8 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-link",
-      "p-link-pure",
     ],
     "propsMeta": {
       "align": {
@@ -8025,33 +6477,12 @@ exports[`should match snapshot 1`] = `
           "3/4",
           "16/9",
           "9/16",
-          "1:1",
-          "4:3",
-          "3:4",
-          "16:9",
-          "9:16",
+          "auto",
         ],
         "defaultValue": "4/3",
-        "deprecatedValues": [
-          "1:1",
-          "4:3",
-          "3:4",
-          "16:9",
-          "9:16",
-        ],
         "description": "Aspect ratio of the link-tile.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileAspectRatio",
-      },
-      "background": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "dark",
-        "description": "Adapts the description and link theme when used on light background image.",
-        "type": "LinkTileBackground",
       },
       "compact": {
         "allowedValues": "boolean",
@@ -8075,7 +6506,7 @@ exports[`should match snapshot 1`] = `
       },
       "gradient": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "Show gradient.",
         "type": "boolean",
       },
@@ -8104,12 +6535,8 @@ exports[`should match snapshot 1`] = `
           "medium",
           "large",
           "inherit",
-          "default",
         ],
         "defaultValue": "medium",
-        "deprecatedValues": [
-          "default",
-        ],
         "description": "Font size of the description.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileSize",
@@ -8130,12 +6557,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "regular",
           "semi-bold",
-          "semibold",
         ],
         "defaultValue": "semi-bold",
-        "deprecatedValues": [
-          "semibold",
-        ],
         "description": "Font weight of the description.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileWeight",
@@ -8150,145 +6573,6 @@ exports[`should match snapshot 1`] = `
       },
       "header": {
         "description": "Renders a header section above the content area.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-link-tile-model-signature": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isInternal": false,
-    "isThemeable": false,
-    "nestedComponents": [
-      "p-model-signature",
-    ],
-    "propsMeta": {
-      "aspectRatio": {
-        "allowedValues": [
-          "1/1",
-          "4/3",
-          "3/4",
-          "16/9",
-          "9/16",
-          "1:1",
-          "4:3",
-          "3:4",
-          "16:9",
-          "9:16",
-        ],
-        "defaultValue": "3/4",
-        "deprecatedValues": [
-          "1:1",
-          "4:3",
-          "3:4",
-          "16:9",
-          "9:16",
-        ],
-        "description": "Aspect ratio of the link-tile-model-signature.",
-        "isBreakpointCustomizable": true,
-        "type": "LinkTileModelSignatureAspectRatio",
-      },
-      "description": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Description text.",
-        "type": "string",
-      },
-      "heading": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Heading text.",
-        "isRequired": true,
-        "type": "string",
-      },
-      "headingTag": {
-        "allowedValues": [
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-        ],
-        "defaultValue": "h2",
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
-        "type": "LinkTileModelSignatureHeadingTag",
-      },
-      "linkDirection": {
-        "allowedValues": [
-          "row",
-          "column",
-        ],
-        "defaultValue": {
-          "base": "column",
-          "xs": "row",
-        },
-        "description": "Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.",
-        "isBreakpointCustomizable": true,
-        "type": "LinkTileModelSignatureLinkDirection",
-      },
-      "model": {
-        "allowedValues": [
-          "718",
-          "911",
-          "boxster",
-          "cayenne",
-          "cayman",
-          "gt3-rs",
-          "gt3",
-          "gts",
-          "macan",
-          "panamera",
-          "taycan",
-          "turbo-s",
-          "turbo",
-        ],
-        "defaultValue": "911",
-        "description": "Adapts the model of the component.",
-        "type": "LinkTileModelSignatureModel",
-      },
-      "weight": {
-        "allowedValues": [
-          "regular",
-          "semi-bold",
-        ],
-        "defaultValue": "semi-bold",
-        "description": "Adapts the font weight of the heading.",
-        "isBreakpointCustomizable": true,
-        "type": "LinkTileModelSignatureWeight",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the img or picture tag.",
-      },
-      "header": {
-        "description": "Renders a header section above the content area.",
-      },
-      "primary": {
-        "allowedTagNames": [
-          "p-link",
-        ],
-        "description": "Renders the primary link. Has to be a p-link tag.",
-        "isRequired": true,
-      },
-      "secondary": {
-        "allowedTagNames": [
-          "p-link",
-        ],
-        "description": "Renders the secondary link. Has to be a p-link tag.",
-        "isRequired": true,
       },
     },
     "styling": "jss",
@@ -8325,17 +6609,16 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
     "propsMeta": {
       "aspectRatio": {
         "allowedValues": [
-          "3:4",
-          "9:16",
+          "3/4",
+          "9/16",
         ],
-        "defaultValue": "3:4",
+        "defaultValue": "3/4",
         "description": "Aspect ratio of the link-tile-product.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileProductAspectRatio",
@@ -8402,16 +6685,6 @@ exports[`should match snapshot 1`] = `
         "description": "Target attribute where the link should be opened.",
         "type": "LinkTileProductTarget",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the link-tile-product color depending on the theme.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -8422,78 +6695,6 @@ exports[`should match snapshot 1`] = `
       },
       "header": {
         "description": "Shows special features about the product like novelty or exclusivity. Although you can pass in anything, it is recommended to use the \`p-tag\` component.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-marque": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.",
-    "hasAriaProp": true,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": false,
-    "isChunked": true,
-    "isDelegatingFocus": true,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "propsMeta": {
-      "aria": {
-        "allowedValues": {
-          "aria-current": "string",
-          "aria-description": "string",
-          "aria-haspopup": "string",
-          "aria-label": "string",
-        },
-        "defaultValue": null,
-        "description": "Add ARIA attributes.",
-        "isAria": true,
-        "type": "MarqueAriaAttribute",
-      },
-      "href": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\`.",
-        "type": "string",
-      },
-      "size": {
-        "allowedValues": [
-          "responsive",
-          "small",
-          "medium",
-        ],
-        "defaultValue": "responsive",
-        "description": "Adapts sizing of marque.",
-        "type": "MarqueSize",
-      },
-      "target": {
-        "allowedValues": [
-          "_self",
-          "_blank",
-          "_parent",
-          "_top",
-          "string",
-        ],
-        "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
-        "type": "MarqueTarget",
-      },
-      "trademark": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show/hide trademark sign (only has effect when variant is set to default).",
-        "type": "boolean",
-      },
-      "variant": {
-        "allowedValues": [
-          "75-years",
-          "default",
-        ],
-        "defaultValue": "default",
-        "description": "Shows marque in special editions",
-        "type": "MarqueVariant",
       },
     },
     "styling": "jss",
@@ -8520,13 +6721,17 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Width of the modal.",
       },
+      "--ref-p-modal-pb": {
+        "description": "Exposes the internally used padding-bottom of the Modal as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the bottom of the Modal.",
+      },
+      "--ref-p-modal-pt": {
+        "description": "Exposes the internally used padding-top of the Modal as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Modal.",
+      },
+      "--ref-p-modal-px": {
+        "description": "Exposes the internally used padding-inline of the Modal as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Modal.",
+      },
     },
     "eventsMeta": {
-      "close": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`dismiss\` event instead. Emitted when the component requests to be dismissed.",
-        "isDeprecated": true,
-        "type": "void",
-      },
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
@@ -8551,7 +6756,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button",
     ],
@@ -8575,17 +6779,19 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).",
         "type": "ModalBackdrop",
       },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+        ],
+        "defaultValue": "canvas",
+        "description": "Defines the background color",
+        "type": "ModalBackground",
+      },
       "disableBackdropClick": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "If true, the modal will not be closable via backdrop click.",
-        "type": "boolean",
-      },
-      "disableCloseButton": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "If true, the modal will not have a dismiss button. @deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead.",
-        "isDeprecated": true,
         "type": "boolean",
       },
       "dismissButton": {
@@ -8601,29 +6807,12 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
-      "heading": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`header\` slot instead The title of the modal",
-        "isDeprecated": true,
-        "type": "string",
-      },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "If true, the modal is open.",
         "isRequired": true,
         "type": "boolean",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the modal color depending on the theme.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -8635,10 +6824,6 @@ exports[`should match snapshot 1`] = `
       },
       "header": {
         "description": "Renders a header section above the content area.",
-      },
-      "heading": {
-        "description": "Renders a heading section above the content area.",
-        "isDeprecated": true,
       },
     },
     "styling": "jss",
@@ -8653,7 +6838,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "color": {
         "allowedValues": [
@@ -8718,16 +6902,6 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the size of the component. When set to \`inherit\` a CSS \`width\` or \`height\` needs to be defined on the host but not both.",
         "type": "ModelSignatureSize",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts color depending on theme.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -8739,7 +6913,7 @@ exports[`should match snapshot 1`] = `
   "p-multi-select": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -8767,12 +6941,6 @@ exports[`should match snapshot 1`] = `
         "type": "MultiSelectToggleEventDetail",
         "typeDetail": "{ open: boolean }",
       },
-      "update": {
-        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
-        "isDeprecated": true,
-        "type": "MultiSelectUpdateEventDetail",
-        "typeDetail": "{ name: string; value: string[] }",
-      },
     },
     "hasAriaProp": false,
     "hasElementInternals": true,
@@ -8783,7 +6951,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
       "p-icon",
@@ -8875,16 +7042,6 @@ exports[`should match snapshot 1`] = `
         "description": "The validation state.",
         "type": "MultiSelectState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the multi-select color depending on the theme.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": [],
@@ -8940,7 +7097,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "disabled": {
         "allowedValues": "boolean",
@@ -8977,7 +7133,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "disabled": {
         "allowedValues": "boolean",
@@ -9014,12 +7169,6 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "pageChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when the page changes.",
-        "isDeprecated": true,
-        "type": "PaginationUpdateEventDetail",
-        "typeDetail": "{ page: number; previousPage: number }",
-      },
       "update": {
         "description": "Emitted when the page changes.",
         "type": "PaginationUpdateEventDetail",
@@ -9035,7 +7184,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -9048,34 +7196,6 @@ exports[`should match snapshot 1`] = `
           "mutable": true,
         },
         "type": "number",
-      },
-      "allyLabel": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`intl.root\` instead. Aria label what the pagination is used for.",
-        "isDeprecated": true,
-        "type": "string",
-      },
-      "allyLabelNext": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`intl.next\` instead. Aria label for next page icon.",
-        "isDeprecated": true,
-        "type": "string",
-      },
-      "allyLabelPage": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`intl.page\` instead. Aria label for page navigation.",
-        "isDeprecated": true,
-        "type": "string",
-      },
-      "allyLabelPrev": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`intl.prev\` instead. Aria label for previous page icon.",
-        "isDeprecated": true,
-        "type": "string",
       },
       "intl": {
         "allowedValues": {
@@ -9100,27 +7220,11 @@ exports[`should match snapshot 1`] = `
         "isRequired": true,
         "type": "number",
       },
-      "maxNumberOfPageLinks": {
-        "defaultValue": null,
-        "description": "Has no effect anymore @deprecated since v3.10.0, will be removed with next major release",
-        "isDeprecated": true,
-        "type": "PaginationMaxNumberOfPageLinks",
-      },
       "showLastPage": {
         "allowedValues": "boolean",
         "defaultValue": true,
         "description": "Show or hide the button to jump to the last page.",
         "type": "boolean",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
       },
       "totalItemsCount": {
         "allowedValues": "number",
@@ -9135,7 +7239,7 @@ exports[`should match snapshot 1`] = `
   "p-pin-code": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -9158,12 +7262,6 @@ exports[`should match snapshot 1`] = `
         "type": "PinCodeChangeEventDetail",
         "typeDetail": "{ value: string; isComplete: boolean }",
       },
-      "update": {
-        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the input is changed.",
-        "isDeprecated": true,
-        "type": "PinCodeUpdateEventDetail",
-        "typeDetail": "{ value: string; isComplete: boolean }",
-      },
     },
     "hasAriaProp": false,
     "hasElementInternals": true,
@@ -9174,7 +7272,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -9273,16 +7370,6 @@ exports[`should match snapshot 1`] = `
         "description": "The validation state.",
         "type": "PinCodeState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
-      },
       "type": {
         "allowedValues": [
           "number",
@@ -9334,7 +7421,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -9365,16 +7451,6 @@ exports[`should match snapshot 1`] = `
         "description": "Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.",
         "type": "PopoverDirection",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the popover color depending on the theme.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -9382,96 +7458,6 @@ exports[`should match snapshot 1`] = `
       },
       "button": {
         "description": "Slot for custom button.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-radio-button-wrapper": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
-    "deprecationMessage": "since v3.30.0, will be removed with next major release. Please use \`p-radio-group\` instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": true,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-spinner",
-      "p-icon",
-    ],
-    "observedAttributes": [
-      "disabled",
-      "required",
-    ],
-    "propsMeta": {
-      "hideLabel": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
-        "isBreakpointCustomizable": true,
-        "type": "boolean",
-      },
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The label text.",
-        "type": "string",
-      },
-      "loading": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "@experimental Disables the radio button and shows a loading indicator.",
-        "isExperimental": true,
-        "type": "boolean",
-      },
-      "message": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The message styled depending on validation state.",
-        "type": "string",
-      },
-      "state": {
-        "allowedValues": [
-          "none",
-          "error",
-          "success",
-        ],
-        "defaultValue": "none",
-        "description": "The validation state.",
-        "type": "RadioButtonWrapperState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
-      },
-    },
-    "requiredChild": "input type=radio",
-    "requiredChildSelector": "input[type=radio]",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the input.",
-      },
-      "label": {
-        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
     },
     "styling": "jss",
@@ -9503,7 +7489,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -9601,16 +7586,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the radio group component.",
         "type": "RadioGroupState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -9653,10 +7628,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "isChunked": true,
+    "isChunked": false,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
     ],
@@ -9710,7 +7684,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button",
     ],
@@ -9733,39 +7706,6 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "ScrollerAriaAttribute",
       },
-      "gradientColor": {
-        "allowedValues": [
-          null,
-          "background-base",
-          "background-surface",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
-        "isDeprecated": true,
-        "type": "ScrollerGradientColor",
-      },
-      "gradientColorScheme": {
-        "allowedValues": [
-          null,
-          "default",
-          "surface",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
-        "isDeprecated": true,
-        "type": "ScrollerGradientColorScheme",
-      },
-      "scrollIndicatorPosition": {
-        "allowedValues": [
-          null,
-          "top",
-          "center",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`alignScrollIndicator\` instead. Sets the vertical position of scroll indicator",
-        "isDeprecated": true,
-        "type": "ScrollerScrollIndicatorPosition",
-      },
       "scrollToPosition": {
         "allowedValues": {
           "isSmooth": "boolean",
@@ -9784,16 +7724,6 @@ exports[`should match snapshot 1`] = `
         "description": "Specifies if scrollbar should be shown.",
         "type": "boolean",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -9805,7 +7735,7 @@ exports[`should match snapshot 1`] = `
   "p-segmented-control": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -9822,18 +7752,6 @@ exports[`should match snapshot 1`] = `
         "type": "SegmentedControlChangeEventDetail",
         "typeDetail": "{ value: string | number }",
       },
-      "segmentedControlChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
-        "isDeprecated": true,
-        "type": "SegmentedControlUpdateEventDetail",
-        "typeDetail": "{ value: string | number }",
-      },
-      "update": {
-        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when selected element changes.",
-        "isDeprecated": true,
-        "type": "SegmentedControlUpdateEventDetail",
-        "typeDetail": "{ value: string | number }",
-      },
     },
     "hasAriaProp": false,
     "hasElementInternals": true,
@@ -9844,22 +7762,10 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
     "propsMeta": {
-      "backgroundColor": {
-        "allowedValues": [
-          null,
-          "background-surface",
-          "background-default",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release. Background color variations",
-        "isDeprecated": true,
-        "type": "SegmentedControlBackgroundColor",
-      },
       "columns": {
         "allowedValues": [
           "auto",
@@ -9968,16 +7874,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the component.",
         "type": "SegmentedControlState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the segmented-control color depending on the theme.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": [
           "string",
@@ -10027,12 +7923,10 @@ exports[`should match snapshot 1`] = `
       "compact": null,
       "selected": null,
       "state": null,
-      "theme": "light",
     },
     "isChunked": false,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -10379,7 +8273,7 @@ exports[`should match snapshot 1`] = `
   "p-select": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -10407,12 +8301,6 @@ exports[`should match snapshot 1`] = `
         "type": "SelectToggleEventDetail",
         "typeDetail": "{ open: boolean }",
       },
-      "update": {
-        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
-        "isDeprecated": true,
-        "type": "SelectUpdateEventDetail",
-        "typeDetail": "{ name: string; value: string }",
-      },
     },
     "hasAriaProp": false,
     "hasElementInternals": true,
@@ -10423,7 +8311,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
       "p-input-search",
@@ -10520,16 +8407,6 @@ exports[`should match snapshot 1`] = `
         "description": "The validation state.",
         "type": "SelectState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the select color depending on the theme.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -10584,7 +8461,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -10613,190 +8489,6 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-select-wrapper": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
-    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-select\` instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": true,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": true,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-icon",
-      "p-select-wrapper-dropdown",
-    ],
-    "observedAttributes": [
-      "disabled",
-      "required",
-    ],
-    "propsMeta": {
-      "description": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The description text.",
-        "type": "string",
-      },
-      "dropdownDirection": {
-        "allowedValues": [
-          "down",
-          "up",
-          "auto",
-        ],
-        "defaultValue": "auto",
-        "description": "Changes the direction to which the dropdown list appears.",
-        "type": "SelectWrapperDropdownDirection",
-      },
-      "filter": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Filters select options by typing a character",
-        "type": "boolean",
-      },
-      "hideLabel": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
-        "isBreakpointCustomizable": true,
-        "type": "boolean",
-      },
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The label text.",
-        "type": "string",
-      },
-      "message": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The message styled depending on validation state.",
-        "type": "string",
-      },
-      "native": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Forces rendering of native browser select dropdown",
-        "type": "boolean",
-      },
-      "state": {
-        "allowedValues": [
-          "none",
-          "error",
-          "success",
-        ],
-        "defaultValue": "none",
-        "description": "The validation state.",
-        "type": "SelectWrapperState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the select color depending on the theme.",
-        "type": "Theme",
-      },
-    },
-    "requiredChild": "select",
-    "requiredChildSelector": "select",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the \`select\` tag.",
-      },
-      "description": {
-        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "label": {
-        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-select-wrapper-dropdown": {
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": true,
-    "hasSlot": false,
-    "isChunked": false,
-    "isDelegatingFocus": true,
-    "isInternal": true,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-icon",
-    ],
-    "propsMeta": {
-      "description": {
-        "defaultValue": null,
-        "type": "string",
-      },
-      "direction": {
-        "defaultValue": "auto",
-        "type": "SelectWrapperDropdownDirection",
-      },
-      "disabled": {
-        "defaultValue": false,
-        "type": "boolean",
-      },
-      "filter": {
-        "defaultValue": false,
-        "type": "boolean",
-      },
-      "isOpenOverride": {
-        "defaultValue": false,
-        "type": "boolean",
-      },
-      "label": {
-        "defaultValue": null,
-        "type": "string",
-      },
-      "message": {
-        "defaultValue": null,
-        "type": "string",
-      },
-      "onOpenChange": {
-        "defaultValue": null,
-        "isRequired": true,
-        "type": "(isOpen: boolean) => void",
-      },
-      "required": {
-        "defaultValue": false,
-        "type": "boolean",
-      },
-      "selectRef": {
-        "defaultValue": null,
-        "type": "HTMLSelectElement",
-      },
-      "state": {
-        "defaultValue": null,
-        "type": "SelectWrapperState",
-      },
-      "theme": {
-        "defaultValue": "light",
-        "type": "Theme",
-      },
-    },
-    "requiredRootNode": [
-      "p-select-wrapper",
-    ],
-    "styling": "jss",
-  },
   "p-sheet": {
     "controlledMeta": [
       {
@@ -10806,6 +8498,17 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--ref-p-sheet-pb": {
+        "description": "Exposes the internally used padding-bottom of the Sheet as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the bottom of the Sheet.",
+      },
+      "--ref-p-sheet-pt": {
+        "description": "Exposes the internally used padding-top of the Sheet as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Sheet.",
+      },
+      "--ref-p-sheet-px": {
+        "description": "Exposes the internally used padding-inline of the Sheet as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Sheet.",
+      },
+    },
     "eventsMeta": {
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
@@ -10831,7 +8534,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button",
     ],
@@ -10845,6 +8547,15 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "SheetAriaAttribute",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+        ],
+        "defaultValue": "canvas",
+        "description": "Defines the background color",
+        "type": "SheetBackground",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
@@ -10864,16 +8575,6 @@ exports[`should match snapshot 1`] = `
         "description": "If true, the sheet is open.",
         "isRequired": true,
         "type": "boolean",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the sheet color depending on the theme.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -10896,7 +8597,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -10919,27 +8619,11 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "SpinnerSize",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the spinner color depending on the theme.",
-        "type": "Theme",
-      },
     },
     "styling": "jss",
   },
   "p-stepper-horizontal": {
     "eventsMeta": {
-      "stepChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active step is changed.",
-        "isDeprecated": true,
-        "type": "StepperHorizontalUpdateEventDetail",
-        "typeDetail": "{ activeStepIndex: number }",
-      },
       "update": {
         "description": "Emitted when active step is changed.",
         "type": "StepperHorizontalUpdateEventDetail",
@@ -10955,7 +8639,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-scroller",
     ],
@@ -10969,16 +8652,6 @@ exports[`should match snapshot 1`] = `
         "description": "The text size.",
         "isBreakpointCustomizable": true,
         "type": "StepperHorizontalSize",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the tag color depending on the theme.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -11004,13 +8677,9 @@ exports[`should match snapshot 1`] = `
     "hostAttributes": {
       "role": "listitem",
     },
-    "internalProps": {
-      "theme": "light",
-    },
     "isChunked": false,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -11057,12 +8726,6 @@ exports[`should match snapshot 1`] = `
       },
     },
     "eventsMeta": {
-      "switchChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when checked status is changed.",
-        "isDeprecated": true,
-        "type": "SwitchUpdateEventDetail",
-        "typeDetail": "{ checked: boolean }",
-      },
       "update": {
         "description": "Emitted when checked status is changed.",
         "type": "SwitchUpdateEventDetail",
@@ -11078,7 +8741,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-spinner",
     ],
@@ -11087,14 +8749,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "start",
           "end",
-          "left",
-          "right",
         ],
         "defaultValue": "end",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "Aligns the label.",
         "isBreakpointCustomizable": true,
         "type": "SwitchAlignLabel",
@@ -11137,16 +8793,6 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the switch color depending on the theme.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -11157,12 +8803,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-table": {
     "eventsMeta": {
-      "sortingChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when sorting is changed.",
-        "isDeprecated": true,
-        "type": "TableUpdateEventDetail",
-        "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
-      },
       "update": {
         "description": "Emitted when sorting is changed.",
         "type": "TableUpdateEventDetail",
@@ -11178,7 +8818,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-scroller",
     ],
@@ -11204,16 +8843,6 @@ exports[`should match snapshot 1`] = `
         "description": "Controls the layout behavior of the table.",
         "type": "TableLayout",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
-      },
     },
     "slotsMeta": {
       "": {
@@ -11238,7 +8867,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-table",
     "slotsMeta": {
       "": {
@@ -11260,7 +8888,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "multiline": {
         "allowedValues": "boolean",
@@ -11290,7 +8917,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-table",
     "slotsMeta": {
       "": {
@@ -11313,7 +8939,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -11369,7 +8994,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-table-head",
     "slotsMeta": {
       "": {
@@ -11391,7 +9015,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": [
       "p-table-body",
       "p-table-head",
@@ -11414,12 +9037,6 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "tabChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
-        "isDeprecated": true,
-        "type": "TabsUpdateEventDetail",
-        "typeDetail": "{ activeTabIndex: number }",
-      },
       "update": {
         "description": "Emitted when active tab is changed.",
         "type": "TabsUpdateEventDetail",
@@ -11435,7 +9052,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-tabs-bar",
     ],
@@ -11449,28 +9065,6 @@ exports[`should match snapshot 1`] = `
         },
         "type": "number",
       },
-      "gradientColor": {
-        "allowedValues": [
-          null,
-          "background-base",
-          "background-surface",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
-        "isDeprecated": true,
-        "type": "TabsGradientColor",
-      },
-      "gradientColorScheme": {
-        "allowedValues": [
-          null,
-          "default",
-          "surface",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`gradientColor\` instead. Adapts the background gradient color of prev and next button.",
-        "isDeprecated": true,
-        "type": "TabsGradientColorScheme",
-      },
       "size": {
         "allowedValues": [
           "small",
@@ -11481,26 +9075,12 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "TabsSize",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
-      },
       "weight": {
         "allowedValues": [
           "regular",
           "semi-bold",
-          "semibold",
         ],
         "defaultValue": "regular",
-        "deprecatedValues": [
-          "semibold",
-        ],
         "description": "The text weight.",
         "type": "TabsWeight",
       },
@@ -11522,12 +9102,6 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "tabChange": {
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
-        "isDeprecated": true,
-        "type": "TabsBarUpdateEventDetail",
-        "typeDetail": "{ activeTabIndex: number }",
-      },
       "update": {
         "description": "Emitted when active tab is changed.",
         "type": "TabsBarUpdateEventDetail",
@@ -11543,7 +9117,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-scroller",
     ],
@@ -11553,28 +9126,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.",
         "type": "number | undefined",
-      },
-      "gradientColor": {
-        "allowedValues": [
-          null,
-          "background-base",
-          "background-surface",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
-        "isDeprecated": true,
-        "type": "TabsBarGradientColor",
-      },
-      "gradientColorScheme": {
-        "allowedValues": [
-          null,
-          "default",
-          "surface",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
-        "isDeprecated": true,
-        "type": "TabsBarGradientColorScheme",
       },
       "size": {
         "allowedValues": [
@@ -11586,26 +9137,12 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "TabsBarSize",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
-      },
       "weight": {
         "allowedValues": [
           "regular",
           "semi-bold",
-          "semibold",
         ],
         "defaultValue": "regular",
-        "deprecatedValues": [
-          "semibold",
-        ],
         "description": "The text weight.",
         "type": "TabsBarWeight",
       },
@@ -11624,13 +9161,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "internalProps": {
-      "theme": "light",
-    },
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "label": {
         "allowedValues": "string",
@@ -11658,40 +9191,10 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
     "propsMeta": {
-      "color": {
-        "allowedValues": [
-          "background-base",
-          "background-surface",
-          "background-default",
-          "background-frosted",
-          "primary",
-          "notification-info-soft",
-          "notification-warning-soft",
-          "notification-success-soft",
-          "notification-error-soft",
-          "neutral-contrast-high",
-          "notification-neutral",
-          "notification-warning",
-          "notification-success",
-          "notification-error",
-        ],
-        "defaultValue": "background-surface",
-        "deprecatedValues": [
-          "neutral-contrast-high",
-          "notification-neutral",
-          "notification-warning",
-          "notification-success",
-          "notification-error",
-          "background-default",
-        ],
-        "description": "Background color variations depending on theme property.",
-        "type": "TagColor",
-      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -11700,7 +9203,6 @@ exports[`should match snapshot 1`] = `
       },
       "icon": {
         "allowedValues": [
-          "",
           "360",
           "4-wheel-drive",
           "accessibility",
@@ -11893,6 +9395,7 @@ exports[`should match snapshot 1`] = `
           "moon",
           "new-chat",
           "news",
+          "none",
           "north-arrow",
           "oil-can",
           "online-search",
@@ -11987,7 +9490,7 @@ exports[`should match snapshot 1`] = `
           "zoom-in",
           "zoom-out",
         ],
-        "defaultValue": null,
+        "defaultValue": "none",
         "description": "The icon shown.",
         "type": "TagIcon",
       },
@@ -11997,15 +9500,18 @@ exports[`should match snapshot 1`] = `
         "description": "A URL path to a custom icon.",
         "type": "string",
       },
-      "theme": {
+      "variant": {
         "allowedValues": [
-          "light",
-          "dark",
-          "auto",
+          "primary",
+          "secondary",
+          "info",
+          "warning",
+          "success",
+          "error",
         ],
-        "defaultValue": "light",
-        "description": "Adapts the tag color depending on the theme.",
-        "type": "Theme",
+        "defaultValue": "secondary",
+        "description": "Background color variations.",
+        "type": "TagVariant",
       },
     },
     "slotsMeta": {
@@ -12031,7 +9537,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -12045,19 +9550,6 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "TagDismissibleAriaAttribute",
       },
-      "color": {
-        "allowedValues": [
-          "background-base",
-          "background-surface",
-          "background-default",
-        ],
-        "defaultValue": "background-surface",
-        "deprecatedValues": [
-          "background-default",
-        ],
-        "description": "Background color variations",
-        "type": "TagDismissibleColor",
-      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -12069,16 +9561,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "The label text.",
         "type": "string",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color when used on dark background.",
-        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -12104,7 +9586,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "align": {
         "allowedValues": [
@@ -12112,45 +9593,25 @@ exports[`should match snapshot 1`] = `
           "center",
           "end",
           "inherit",
-          "left",
-          "right",
         ],
         "defaultValue": "start",
-        "deprecatedValues": [
-          "left",
-          "right",
-        ],
         "description": "Text alignment of the component.",
         "type": "TextAlign",
       },
       "color": {
         "allowedValues": [
           "primary",
-          "contrast-low",
-          "contrast-medium",
           "contrast-high",
-          "notification-success",
-          "notification-warning",
-          "notification-error",
-          "notification-info",
+          "contrast-medium",
+          "contrast-low",
+          "success",
+          "warning",
+          "error",
+          "info",
           "inherit",
-          "brand",
-          "default",
-          "neutral-contrast-low",
-          "neutral-contrast-medium",
-          "neutral-contrast-high",
-          "notification-neutral",
         ],
         "defaultValue": "primary",
-        "deprecatedValues": [
-          "brand",
-          "default",
-          "neutral-contrast-low",
-          "neutral-contrast-medium",
-          "neutral-contrast-high",
-          "notification-neutral",
-        ],
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "TextColor",
       },
       "ellipsis": {
@@ -12190,29 +9651,13 @@ exports[`should match snapshot 1`] = `
         "description": "Sets a custom HTML tag depending on the usage of the text component.",
         "type": "TextTag",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.",
-        "type": "Theme",
-      },
       "weight": {
         "allowedValues": [
           "regular",
           "semi-bold",
           "bold",
-          "thin",
-          "semibold",
         ],
         "defaultValue": "regular",
-        "deprecatedValues": [
-          "thin",
-          "semibold",
-        ],
         "description": "The weight of the text.",
         "type": "TextWeight",
       },
@@ -12220,162 +9665,6 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the text to render.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-text-field-wrapper": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
-    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: \`p-input-date\`, \`p-input-email\`, \`p-input-number\`, \`p-input-password\`, \`p-input-search\`, \`p-input-tel\`, \`p-input-text\`, \`p-input-time\` or \`p-input-url\`.",
-    "eventsMeta": {
-      "action": {
-        "description": "Emitted when the action button is clicked.",
-        "type": "void",
-      },
-    },
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": true,
-    "hasObserveAttributes": true,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-button-pure",
-      "p-icon",
-    ],
-    "observedAttributes": [
-      "disabled",
-      "readonly",
-      "required",
-      "maxlength",
-    ],
-    "propsMeta": {
-      "actionIcon": {
-        "allowedValues": [
-          null,
-          "locate",
-        ],
-        "defaultValue": null,
-        "description": "Action icon can be set to \`locate\` for \`input type="search"\` in order to display an action button.",
-        "type": "TextFieldWrapperActionIcon",
-      },
-      "actionLoading": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.",
-        "type": "boolean",
-      },
-      "description": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The description text.",
-        "type": "string",
-      },
-      "hideLabel": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
-        "isBreakpointCustomizable": true,
-        "type": "boolean",
-      },
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The label text.",
-        "type": "string",
-      },
-      "message": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The message styled depending on validation state.",
-        "type": "string",
-      },
-      "showCharacterCount": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`showCounter\` instead. Show or hide max character count.",
-        "isDeprecated": true,
-        "type": "boolean",
-      },
-      "showCounter": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide max character count.",
-        "type": "boolean",
-      },
-      "showPasswordToggle": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "@experimental Show or hide password toggle for \`input type="password"\`.",
-        "isExperimental": true,
-        "type": "boolean",
-      },
-      "state": {
-        "allowedValues": [
-          "none",
-          "error",
-          "success",
-        ],
-        "defaultValue": "none",
-        "description": "The validation state.",
-        "type": "TextFieldWrapperState",
-      },
-      "submitButton": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show search button if wrapped inside a form.",
-        "type": "boolean",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
-      },
-      "unit": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The unit text.",
-        "type": "string",
-      },
-      "unitPosition": {
-        "allowedValues": [
-          "prefix",
-          "suffix",
-        ],
-        "defaultValue": "prefix",
-        "description": "The unit position.",
-        "type": "TextFieldWrapperUnitPosition",
-      },
-    },
-    "requiredChild": "input type=text",
-    "requiredChildSelector": "input[type=text],input[type=number],input[type=email],input[type=tel],input[type=search],input[type=url],input[type=date],input[type=time],input[type=month],input[type=week],input[type=password]",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the input.",
-      },
-      "description": {
-        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "label": {
-        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
     },
     "styling": "jss",
@@ -12390,40 +9679,7 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
-      "listType": {
-        "allowedValues": [
-          null,
-          "unordered",
-          "ordered",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`type\` instead. The type of the list.",
-        "isDeprecated": true,
-        "type": "TextListListType",
-      },
-      "orderType": {
-        "allowedValues": [
-          null,
-          "numbered",
-          "alphabetically",
-        ],
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`type\` instead. The list style type of ordered list. Only has effect when list type is set to 'ordered'.",
-        "isDeprecated": true,
-        "type": "TextListOrderType",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the text color depending on the theme.",
-        "type": "Theme",
-      },
       "type": {
         "allowedValues": [
           "unordered",
@@ -12455,7 +9711,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-text-list",
     "slotsMeta": {
       "": {
@@ -12517,7 +9772,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
     ],
@@ -12658,16 +9912,6 @@ exports[`should match snapshot 1`] = `
         "description": "Indicates the validation or overall status of the textarea component.",
         "type": "TextareaState",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -12704,112 +9948,6 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-textarea-wrapper": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
-    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-textarea\` instead.",
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": true,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isDeprecated": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-icon",
-    ],
-    "observedAttributes": [
-      "disabled",
-      "readonly",
-      "required",
-      "maxlength",
-    ],
-    "propsMeta": {
-      "description": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The description text.",
-        "type": "string",
-      },
-      "hideLabel": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
-        "isBreakpointCustomizable": true,
-        "type": "boolean",
-      },
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The label text.",
-        "type": "string",
-      },
-      "message": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The message styled depending on validation state.",
-        "type": "string",
-      },
-      "showCharacterCount": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`showCounter\` instead. Show or hide max character count.",
-        "isDeprecated": true,
-        "type": "boolean",
-      },
-      "showCounter": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide max character count.",
-        "type": "boolean",
-      },
-      "state": {
-        "allowedValues": [
-          "none",
-          "error",
-          "success",
-        ],
-        "defaultValue": "none",
-        "description": "The validation state.",
-        "type": "TextareaWrapperState",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
-        "type": "Theme",
-      },
-    },
-    "requiredChild": "textarea",
-    "requiredChildSelector": "textarea",
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the textarea.",
-      },
-      "description": {
-        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "label": {
-        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-      "message": {
-        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
-      },
-    },
-    "styling": "jss",
-  },
   "p-toast": {
     "cssVariablesMeta": {
       "--p-hyphens": {
@@ -12833,22 +9971,9 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-toast-item",
     ],
-    "propsMeta": {
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the toast color depending on the theme.",
-        "type": "Theme",
-      },
-    },
     "styling": "jss",
   },
   "p-toast-item": {
@@ -12870,7 +9995,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": true,
-    "isThemeable": true,
     "nestedComponents": [
       "p-icon",
       "p-button",
@@ -12885,11 +10009,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Text of the toast-item.",
         "type": "string",
-      },
-      "theme": {
-        "defaultValue": "light",
-        "description": "Adapts the toast-item color depending on the theme.",
-        "type": "Theme",
       },
     },
     "requiredRootNode": [
@@ -12907,7 +10026,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -12947,16 +10065,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "_self",
         "description": "Target attribute where the link should be opened.",
         "type": "WordmarkTarget",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts color depending on theme.",
-        "type": "Theme",
       },
     },
     "styling": "jss",

@@ -1,21 +1,15 @@
-import type { Theme } from '../../../types';
-import type { ToastState } from '../toast/toast-utils';
-import { getCss, isThemeDark } from '../../../utils';
+import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/emotion';
+import { addImportantToEachRule, dismissButtonJssStyle, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { colorPrimary } from '../../../styles/css-variables';
+import { getCss } from '../../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
-import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  dismissButtonJssStyle,
-  getThemedColors,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
+import type { ToastState } from '../toast/toast-utils';
 
-export const getComponentCss = (state: ToastState, theme: Theme): string => {
+export const getComponentCss = (state: ToastState): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -32,7 +26,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
           width: 'auto', // ua popover reset
           height: 'auto', // ua popover reset
         }),
-        ...getNotificationRootJssStyle(state, false, true, theme),
+        ...getNotificationRootJssStyle(state, false, true),
         ...dropShadowHighStyle,
         '&::backdrop': {
           display: 'none',
@@ -42,20 +36,11 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
       p: {
         ...textSmallStyle,
         margin: 0,
-        color: getThemedColors(theme).primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: getThemedColors('dark').primaryColor,
-        }),
+        color: colorPrimary,
         ...getNotificationContentJssStyle(),
       },
     },
     icon: getNotificationIconJssStyle(),
-    close: {
-      ...dismissButtonJssStyle,
-      mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        mixBlendMode: 'plus-lighter',
-      }),
-    },
+    close: dismissButtonJssStyle,
   });
 };

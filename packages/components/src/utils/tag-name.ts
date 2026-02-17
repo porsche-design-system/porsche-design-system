@@ -1,4 +1,4 @@
-import { type TagName, type TagNameCamelCase, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES, type TagName, type TagNameCamelCase } from '@porsche-design-system/shared';
 import { paramCaseToCamelCase } from './paramCaseToCamelCase';
 
 // NOTE: these utils are in the same file on purpose
@@ -13,10 +13,10 @@ export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
 };
 
 // prevent internal usage of p-display, p-heading, p-headline and p-text
-type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pDisplay' | 'pHeadline' | 'pHeading' | 'pText'>;
+type AllowedTagNameCamelCase = Exclude<TagNameCamelCase, 'pDisplay' | 'pHeading' | 'pText'>;
 export type PrefixedTagNames = Record<AllowedTagNameCamelCase, string>;
 const tagNamesWithoutTextAndHeadline = TAG_NAMES.filter(
-  (item) => item !== 'p-text' && item !== 'p-heading' && item !== 'p-headline' && item !== 'p-display'
+  (item) => item !== 'p-text' && item !== 'p-heading' && item !== 'p-display'
 );
 
 export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();

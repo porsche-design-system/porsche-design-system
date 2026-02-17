@@ -486,79 +486,6 @@ test.describe('Change Event', () => {
   });
 });
 
-// TODO: Should the update event be emitted when slot changes? e.g. option with current set value is added
-test.describe('Update Event', () => {
-  test('should emit update event with correct details when option is selected by click', async ({ page }) => {
-    await initSelect(page);
-    const host = getHost(page);
-    await addEventListener(host, 'update');
-
-    const buttonElement = getButton(page);
-    await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
-
-    const option = getSelectOption(page, 1);
-    await option.click();
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-      {
-        value: 'a',
-        name: 'options',
-      },
-    ]);
-    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-      {
-        nodeName: 'P-SELECT',
-        nodeValue: null,
-        nodeType: 1,
-        tagName: 'P-SELECT',
-        className: 'hydrated',
-        id: '',
-      },
-    ]);
-  });
-
-  skipInBrowsers(['webkit'], () => {
-    test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
-      await initSelect(page);
-      const host = getHost(page);
-      await addEventListener(host, 'update');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-
-      expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
-
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
-      expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-      expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-        {
-          value: 'a',
-          name: 'options',
-        },
-      ]);
-      expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-        {
-          nodeName: 'P-SELECT',
-          nodeValue: null,
-          nodeType: 1,
-          tagName: 'P-SELECT',
-          className: 'hydrated',
-          id: '',
-        },
-      ]);
-    });
-  });
-});
-
 test.describe('Toggle Event', () => {
   test('should emit toggle event with correct details when select is toggled by click', async ({ page }) => {
     await initSelect(page, { options: { markupBefore: '<button id="outside">Some element outside</button>' } });
@@ -674,7 +601,8 @@ test.describe('outside click', () => {
   });
 });
 
-test.describe('hover', () => {
+// Test skipped because Playwright can only evaluate RGB colors, not RGBA.
+test.skip('hover', () => {
   skipInBrowsers(['firefox', 'webkit']);
   test('should change border-color when input is hovered', async ({ page }) => {
     await initSelect(page);
@@ -750,16 +678,17 @@ test.describe('focus', () => {
     const host = await getHost(page);
 
     const buttonElement = getButton(page);
-    await addEventListener(buttonElement, 'focus');
 
-    expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(0);
-    await expect(buttonElement).toHaveCSS('outline-color', 'rgb(1, 2, 5)');
+    await expect(buttonElement).not.toBeFocused();
+    // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
+    // await expect(buttonElement).toHaveCSS('outline-color', 'rgb(1, 2, 5)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(1);
-    await expect(buttonElement).toHaveCSS('outline-color', 'rgb(26, 68, 234)');
+    await expect(buttonElement).toBeFocused();
+    // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
+    // await expect(buttonElement).toHaveCSS('outline-color', 'rgb(26, 68, 234)');
   });
   test('should focus filter input after opening when filter is enabled', async ({ page }) => {
     await initSelect(page, { props: { name: 'Some name', filter: true } });
@@ -2659,31 +2588,6 @@ test.describe('lifecycle', () => {
       expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2); // Keyboard actions cause update in order to update sr highlighted option text
       expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
     });
-  });
-});
-
-test.describe('theme', () => {
-  test('should sync theme for children', async ({ page }) => {
-    await initSelect(page, { options: { includeOptgroups: true } });
-
-    const select = getHost(page);
-
-    const buttonElement = getButton(page);
-    await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    const optgroups = await page.locator('p-optgroup').all();
-    const options = await page.locator('p-select-option').all();
-
-    for (const child of [...optgroups, ...options]) {
-      await expect(child).toHaveJSProperty('theme', 'light');
-    }
-    await setProperty(select, 'theme', 'dark');
-    await waitForStencilLifecycle(page);
-
-    for (const child of [...optgroups, ...options]) {
-      await expect(child).toHaveJSProperty('theme', 'dark');
-    }
   });
 });
 

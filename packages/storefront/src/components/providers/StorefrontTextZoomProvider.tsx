@@ -1,8 +1,7 @@
 'use client';
 
-import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontTheme } from '@/models/theme';
 import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
+import type { StorefrontTextZoom } from '@/models/textZoom';
 
 interface StorefrontTextZoomContextProps {
   storefrontTextZoom: StorefrontTextZoom;

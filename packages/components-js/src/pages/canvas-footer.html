@@ -1,12 +1,4 @@
 <style>
-  body {
-    overflow-x: hidden;
-  }
-
-  p-canvas > div:not([slot]) {
-    grid-column: 1 / -1;
-  }
-
   span {
     display: block;
     height: 100dvh;
@@ -15,10 +7,8 @@
 </style>
 
 <p-canvas>
-  <div>
-    Content
-    <span></span>
-    Content
-  </div>
-  <div slot="footer">Footer</div>
+  <p-text>Content</p-text>
+  <span></span>
+  <p-text>Content</p-text>
+  <p-text slot="footer">Footer</p-text>
 </p-canvas>

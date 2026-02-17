@@ -1,0 +1,91 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  gridStyle,
+  gridBasic,
+  gridBasicOffset,
+  gridBasicColumnEnd,
+  gridBasicColumnStart,
+  gridBasicOffsetBase,
+  gridBasicOffsetS,
+  gridFull,
+  gridExtended,
+  gridBasicOffsetXXL,
+  gridGap,
+  gridBasicSpanOneHalf,
+  gridBasicSpanOneThird,
+  gridExtendedOffset,
+  gridBasicSpanTwoThirds,
+  gridExtendedColumnEnd,
+  gridExtendedColumnStart,
+  gridExtendedOffsetBase,
+  gridFullOffset,
+  gridNarrow,
+  gridExtendedSpanOneHalf,
+  gridWide,
+  gridNarrowColumnEnd,
+  gridFullColumnStart,
+  gridNarrowOffset,
+  gridWideOffset,
+  gridFullColumnEnd,
+  gridNarrowOffsetBase,
+  gridNarrowSpanOneHalf,
+  gridWideColumnEnd,
+  gridNarrowColumnStart,
+  gridNarrowOffsetXXL,
+  gridWideColumnStart,
+  gridWideOffsetXXL,
+  gridWideOffsetBase,
+  gridExtendedOffsetS,
+  gridExtendedOffsetXXL,
+  gridNarrowOffsetS,
+  gridWideOffsetS,
+} from '@porsche-design-system/components-react/emotion';
+
+export const metadata = {
+  title: 'SCSS: Grid - Porsche Design System',
+  description: 'Detailed API reference for the Grid style.',
+};
+
+# Grid
+
+<TableOfContents headings={['SCSS Mixins', 'SCSS Variables']} />
+
+## SCSS Mixins
+
+| SCSS Mixins         | Description                                                                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `@mixin pds-grid()` | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
+
+## SCSS Variables
+
+| SCSS Variable                      | Description                                                                  | Value                     |
+| ---------------------------------- | ---------------------------------------------------------------------------- | ------------------------- |
+| `$pds-grid-gap`                    | Holds the grid **gap** the Porsche Grid.                                     | {gridGap}                 |
+| `$pds-grid-narrow-column-start`    | Holds the **start** position of the `narrow` area within the Porsche Grid.   | {gridNarrowColumnStart}   |
+| `$pds-grid-narrow-column-end`      | Holds the **end** position of the `narrow` area within the Porsche Grid.     | {gridNarrowColumnEnd}     |
+| `$pds-grid-narrow-span-one-half`   | Holds a **one third** span within the `narrow` area of the Porsche Grid.     | {gridNarrowSpanOneHalf}   |
+| `$pds-grid-narrow-offset-base`     | Holds a **base** offset within the `narrow` area of the Porsche Grid.        | {gridNarrowOffsetBase}    |
+| `$pds-grid-narrow-offset-s`        | Holds a **small** offset within the `narrow` area of the Porsche Grid.       | {gridNarrowOffsetS}       |
+| `$pds-grid-narrow-offset-xxl`      | Holds a **xxl** offset within the `narrow` area of the Porsche Grid.         | {gridNarrowOffsetXXL}     |
+| `$pds-grid-basic-column-start`     | Holds the **start** position of the `basic` area within the Porsche Grid.    | {gridBasicColumnStart}    |
+| `$pds-grid-basic-column-end`       | Holds the **end** position of the `basic` area within the Porsche Grid.      | {gridBasicColumnEnd}      |
+| `$pds-grid-basic-span-one-half`    | Holds a **half** span within the `basic` area of the Porsche Grid.           | {gridBasicSpanOneHalf}    |
+| `$pds-grid-basic-span-one-third`   | Holds a **one third** span within the `basic` area of the Porsche Grid.      | {gridBasicSpanOneThird}   |
+| `$pds-grid-basic-span-two-thirds`  | Holds a **two thirds** span within the `basic` area of the Porsche Grid.     | {gridBasicSpanTwoThirds}  |
+| `$pds-grid-basic-offset-base`      | Holds a **base** offset within the `base` area of the Porsche Grid.          | {gridBasicOffsetBase}     |
+| `$pds-grid-basic-offset-s`         | Holds a **small** offset within the `base` area of the Porsche Grid.         | {gridBasicOffsetS}        |
+| `$pds-grid-basic-offset-xxl`       | Holds a **xxl** offset within the `base` area of the Porsche Grid.           | {gridBasicOffsetXXL}      |
+| `$pds-grid-extended-column-start`  | Holds the **start** position of the `extended` area within the Porsche Grid. | {gridExtendedColumnStart} |
+| `$pds-grid-extended-column-end`    | Holds the **end** position of the `extended` area within the Porsche Grid.   | {gridExtendedColumnEnd}   |
+| `$pds-grid-extended-span-one-half` | Holds a **half** span within the `extended` area of the Porsche Grid.        | {gridExtendedSpanOneHalf} |
+| `$pds-grid-extended-offset-base`   | Holds a **base** offset within the `extended` area of the Porsche Grid.      | {gridExtendedOffsetBase}  |
+| `$pds-grid-extended-offset-s`      | Holds a **small** offset within the `extended` area of the Porsche Grid.     | {gridExtendedOffsetS}     |
+| `$pds-grid-extended-offset-xxl`    | Holds a **xxl** offset within the `extended` area of the Porsche Grid.       | {gridExtendedOffsetXXL}   |
+| `$pds-grid-wide-column-start`      | Holds the **start** position of the `wide` area within the Porsche Grid.     | {gridWideColumnStart}     |
+| `$pds-grid-wide-column-end`        | Holds the **end** position of the `wide` area within the Porsche Grid.       | {gridWideColumnEnd}       |
+| `$pds-grid-wide-offset-base`       | Holds a **base** offset within the `wide` area of the Porsche Grid.          | {gridWideOffsetBase}      |
+| `$pds-grid-wide-offset-s`          | Holds a **small** offset within the `wide` area of the Porsche Grid.         | {gridWideOffsetS}         |
+| `$pds-grid-wide-offset-xxl`        | Holds a **xxl** offset within the `wide` area of the Porsche Grid.           | {gridWideOffsetXXL}       |
+| `$pds-grid-full-column-start`      | Holds the **start** position of the `full` area within the Porsche Grid.     | {gridFullColumnStart}     |
+| `$pds-grid-full-column-end`        | Holds the **end** position of the `full` area within the Porsche Grid.       | {gridFullColumnEnd}       |
+| `$pds-grid-full-offset`            | Holds a **full** offset within the `full` area of the Porsche Grid.          | {gridFullOffset}          |

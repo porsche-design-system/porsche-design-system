@@ -11,15 +11,14 @@ import {
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import {
-  LINK_TILE_WEIGHTS,
   type LinkTileAlign,
   type LinkTileAriaAttribute,
   type LinkTileAspectRatio,
-  type LinkTileBackground,
   type LinkTileSize,
   type LinkTileTarget,
   type LinkTileWeight,
@@ -28,7 +27,7 @@ import {
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
-  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(TILE_WEIGHTS),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,
@@ -54,9 +53,6 @@ export class LinkTile implements ITileProps {
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
-  /** Adapts the description and link theme when used on light background image. */
-  @Prop() public background?: LinkTileBackground = 'dark';
-
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4/3';
 
@@ -70,7 +66,7 @@ export class LinkTile implements ITileProps {
   @Prop() public align?: LinkTileAlign = 'bottom';
 
   /** Show gradient. */
-  @Prop() public gradient?: boolean = true;
+  @Prop() public gradient?: boolean = false;
 
   /** Displays the link-tile as compact version with description and link icon only. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
@@ -107,15 +103,16 @@ export class LinkTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
+    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
     attachComponentCss(
       this.host,
       getComponentCss,
       this.aspectRatio,
       this.size,
       this.weight,
-      this.background,
       this.align,
-      this.compact,
+      parsedCompact,
       this.gradient,
       this.hasFooterSlot
     );
@@ -123,7 +120,6 @@ export class LinkTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const linkProps = {
-      theme: this.background,
       variant: 'secondary',
       aria: this.aria,
     };
@@ -141,17 +137,18 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLink>
     );
 
-    const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure
+    const linkCompact: JSX.Element = (
+      <PrefixedTagNames.pLink
         {...sharedLinkProps}
         {...linkProps}
-        key="link-or-button-pure"
-        class="link-or-button-pure"
         hideLabel={true}
         icon="arrow-right"
+        key="link-or-button-pure"
+        compact={true}
+        class="link-or-button-pure"
       >
         {this.label}
-      </PrefixedTagNames.pLinkPure>
+      </PrefixedTagNames.pLink>
     );
 
     return (
@@ -164,7 +161,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
+          {typeof parsedCompact === 'boolean' ? (parsedCompact ? linkCompact : link) : [linkCompact, link]}
         </div>
       </div>
     );

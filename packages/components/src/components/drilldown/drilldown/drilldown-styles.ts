@@ -7,21 +7,19 @@ import {
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
+import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableTransitionDuration,
-  dismissButtonJssStyle,
   getAnimation,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   motionDurationMap,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss, type Theme } from '../../../utils';
+import { colorBackdrop, colorCanvas, colorPrimary, colorSurface } from '../../../styles/css-variables';
+import { getCss } from '../../../utils';
 
 // public css variables
 export const cssVariableGridTemplate = '--p-drilldown-grid-template';
@@ -45,20 +43,7 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
-export const getComponentCss = (
-  isOpen: boolean,
-  isPrimary: boolean,
-  isSecondaryScrollerVisible: boolean,
-  theme: Theme
-): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    backgroundShadingColor: backgroundShadingColorDark,
-  } = getThemedColors('dark');
-
+export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondaryScrollerVisible: boolean): string => {
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
@@ -75,20 +60,13 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVarColorPrimary]: primaryColor,
-          [cssVarColorBackgroundBase]: backgroundColor,
-          [cssVarColorBackgroundSurface]: backgroundSurfaceColor,
-          [cssVarColorBackgroundShading]: backgroundShadingColor,
-          [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
-          ...colorSchemeStyles,
+          [cssVarColorPrimary]: colorPrimary,
+          [cssVarColorBackgroundBase]: colorCanvas,
+          [cssVarColorBackgroundSurface]: colorSurface,
+          [cssVarColorBackgroundShading]: colorBackdrop,
+          // [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
+          [cssVarColorBackgroundScroller]: 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...hostHiddenStyles,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            [cssVarColorPrimary]: primaryColorDark,
-            [cssVarColorBackgroundBase]: backgroundColorDark,
-            [cssVarColorBackgroundSurface]: backgroundSurfaceColorDark,
-            [cssVarColorBackgroundShading]: backgroundShadingColorDark,
-            [cssVarColorBackgroundScroller]: 'rgba(0,0,0,.01)', // ensures that the scrollbar color is mostly set correctly
-          }),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -261,7 +239,6 @@ export const getComponentCss = (
     },
     'dismiss-mobile': {
       [mediaQueryMobile]: {
-        ...dismissButtonJssStyle,
         width: 'fit-content',
         height: 'fit-content',
         placeSelf: 'start end',
@@ -278,7 +255,10 @@ export const getComponentCss = (
         display: 'none',
       },
       [mediaQueryDesktop]: {
-        '--p-internal-icon-filter': 'invert(1)',
+        // TODO: we need to expose color variables for button-pure to be able to use the correct colors in drilldown
+        '--p-color-primary': colorPrimaryDark,
+        '--p-color-frosted': colorFrostedDark,
+        '--p-color-frosted-soft': colorFrostedSoftDark,
         position: 'absolute',
         insetInlineStart: `calc(100% + ${spacingFluidSmall})`,
         insetBlockStart: spacingFluidSmall,

@@ -1,9 +1,8 @@
-import { PLinkPure, PorscheDesignSystemContext } from '@porsche-design-system/components-react';
+import { PLinkPure } from '@porsche-design-system/components-react';
 import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { useContext } from 'react';
 
 ModuleRegistry.registerModules([AllEnterpriseModule]);
 
@@ -11,7 +10,7 @@ type ColumnDefs = DataAdvanced & {
   active: boolean;
 };
 
-const ImageUrlRendererer = ({ value }: { value: string }) => {
+const ImageUrlRenderer = ({ value }: { value: string }) => {
   return (
     <span
       style={{
@@ -34,8 +33,6 @@ const ImageUrlRendererer = ({ value }: { value: string }) => {
 };
 
 const ButtonRenderer = ({ data }: { data: any }) => {
-  const { theme } = useContext(PorscheDesignSystemContext);
-
   return (
     <span
       style={{
@@ -46,7 +43,6 @@ const ButtonRenderer = ({ data }: { data: any }) => {
     >
       <PLinkPure
         underline={true}
-        theme={theme}
         target="_blank"
         href={'https://www.porsche.com/germany/models/' + data.model.toLowerCase()}
       >
@@ -67,7 +63,7 @@ const columnDefs: ColDef<ColumnDefs>[] = [
   {
     field: 'imageUrl',
     headerName: 'Image',
-    cellRenderer: ImageUrlRendererer,
+    cellRenderer: ImageUrlRenderer,
     editable: false,
     filter: false,
     sortable: false,
@@ -120,10 +116,8 @@ const defaultColDef = {
 };
 
 export const AGGridExamplePage = (): JSX.Element => {
-  const { theme } = useContext(PorscheDesignSystemContext);
-
   return (
-    <div data-ag-theme-mode={theme === 'light' ? null : 'dark'} style={{ height: '80vh' }}>
+    <div style={{ height: '80vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}

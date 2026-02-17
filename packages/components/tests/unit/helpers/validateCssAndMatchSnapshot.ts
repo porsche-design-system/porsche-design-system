@@ -50,11 +50,11 @@ const validateVisibilityStyle = (cssObject: object) => {
 
 // Expect no !important rule on display style of :host selector since it should be overridable
 const validateHostDisplayStyle = (cssObject: any) => {
-  if (cssObject[':host'].display) {
+  if (cssObject[':host']?.display) {
     expect(cssObject[':host'].display).not.toMatch(/!important/);
   } else {
     // some components don't have a display style
-    expect(cssObject[':host'].display).toBeUndefined();
+    expect(cssObject[':host']?.display).toBeUndefined();
   }
 };
 

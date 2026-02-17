@@ -3,5 +3,7 @@
   <span>
     <slot> </slot>
   </span>
-  <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+  <span class="icon">
+    <p-icon aria-hidden="true" class="hydrated"> </p-icon>
+  </span>
 </button>

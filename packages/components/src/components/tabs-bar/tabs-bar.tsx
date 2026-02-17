@@ -1,8 +1,7 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, State, Watch, h } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
@@ -15,34 +14,24 @@ import {
   setAttributes,
   unobserveBreakpointChange,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES, type ScrollerDirection } from '../scroller/scroller-utils';
+import type { ScrollerDirection } from '../scroller/scroller-utils';
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import {
-  TABS_BAR_SIZES,
-  TABS_BAR_WEIGHTS,
-  type TabsBarGradientColor,
-  type TabsBarGradientColorScheme,
-  type TabsBarSize,
-  type TabsBarUpdateEventDetail,
-  type TabsBarWeight,
-  type TabsBarWeightDeprecated,
   getFocusedTabIndex,
   getPrevNextTabIndex,
   sanitizeActiveTabIndex,
   setBarStyle,
+  TABS_BAR_SIZES,
+  TABS_BAR_WEIGHTS,
+  type TabsBarSize,
+  type TabsBarUpdateEventDetail,
+  type TabsBarWeight,
 } from './tabs-bar-utils';
-
-type DeprecationMapType = Record<TabsBarWeightDeprecated, Exclude<TabsBarWeight, TabsBarWeightDeprecated>>;
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
   weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabsBarGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<TabsBarGradientColor>([undefined, ...GRADIENT_COLORS]),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -64,26 +53,8 @@ export class TabsBar {
   /** The text weight. */
   @Prop() public weight?: TabsBarWeight = 'regular';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release.
-   * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabsBarGradientColorScheme;
-
-  /**
-   * @deprecated since v3.29.0, will be removed with next major release.
-   * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: TabsBarGradientColor;
-
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarUpdateEventDetail>;
 
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsBarUpdateEventDetail>;
@@ -148,30 +119,7 @@ export class TabsBar {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
-    warnIfDeprecatedPropIsUsed<typeof TabsBar>(
-      this,
-      'gradientColor',
-      'Prop can be omitted, gradient handling is managed internally.'
-    );
-    const deprecationMap: DeprecationMapType = {
-      semibold: 'semi-bold',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof TabsBar, TabsBarWeightDeprecated, TabsBarWeight>(
-      this,
-      'weight',
-      deprecationMap
-    );
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      (deprecationMap[this.weight as keyof DeprecationMapType] || this.weight) as Exclude<
-        TabsBarWeight,
-        TabsBarWeightDeprecated
-      >,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight);
     this.setAccessibilityAttributes();
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -180,9 +128,6 @@ export class TabsBar {
       <PrefixedTagNames.pScroller
         class="scroller"
         {...(this.areTabsButtons && { aria: { role: 'tablist' } })}
-        theme={this.theme}
-        gradientColorScheme={this.gradientColorScheme}
-        gradientColor={this.gradientColor}
         alignScrollIndicator="top"
         ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         onClick={this.onClick}
@@ -227,7 +172,6 @@ export class TabsBar {
 
   private onTabClick = (newTabIndex: number): void => {
     this.update.emit({ activeTabIndex: newTabIndex });
-    this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private onKeydown = (e: KeyboardEvent & { target: HTMLElement }): void => {

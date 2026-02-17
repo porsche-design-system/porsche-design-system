@@ -1,14 +1,11 @@
-import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { spacingStaticXs, proseTextSmStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
-import {
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../../styles';
-import { buildResponsiveStyles, type Theme } from '../../../utils';
+import { forcedColorsMediaQuery, getHiddenTextJssStyle, getTransition } from '../../../styles';
+import { colorContrastHigh, colorPrimary } from '../../../styles/css-variables';
+import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
+import { typescaleXs } from '@porsche-design-system/tokens';
 
 export const getFunctionalComponentLabelAfterStyles = (
   isDisabledOrLoading: boolean,
@@ -20,7 +17,6 @@ export const getFunctionalComponentLabelAfterStyles = (
       verticalAlign: 'top',
       ...(isDisabledOrLoading && {
         pointerEvents: 'none',
-        opacity: '0.4', // workaround: must be opacity because color tokens would not affect e.g. slotted `popover`
         ...additionalIsDisabledJssStyle,
       }),
     },
@@ -30,18 +26,10 @@ export const getFunctionalComponentLabelAfterStyles = (
 export const getFunctionalComponentLabelStyles = (
   isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
-  theme: Theme,
   additionalDefaultJssStyle?: JssStyle,
   additionalLabelWrapperJssStyle?: JssStyle,
   additionalIsShownJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
-  } = getThemedColors('dark');
-
   return {
     'label-wrapper': {
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
@@ -51,30 +39,30 @@ export const getFunctionalComponentLabelStyles = (
       ...additionalLabelWrapperJssStyle,
     },
     label: {
-      ...textSmallStyle,
+      ...proseTextSmStyle,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
-      transition: getTransition('color'), // for smooth transitions between e.g. disabled state
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
+      ...(isDisabledOrLoading && {
+        pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
+      color: colorPrimary,
+      ...(isDisabledOrLoading &&
+        forcedColorsMediaQuery({
+          color: 'GrayText',
+        })),
+      transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       display: 'inline',
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
       },
+      // styling for the description
       '&:is(span)': {
         cursor: 'unset',
-        fontSize: fontSizeTextXSmall,
-        ...(!isDisabledOrLoading && {
-          color: contrastHighColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastHighColorDark,
-          }),
-        }),
+        fontSize: typescaleXs,
+        color: colorContrastHigh,
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXSmall}` })
+          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXs}` })
         ),
-        marginTop: `-${spacingStaticXSmall}`,
+        marginTop: `-${spacingStaticXs}`,
       },
       ...additionalDefaultJssStyle,
     },

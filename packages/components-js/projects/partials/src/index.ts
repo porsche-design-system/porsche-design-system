@@ -1,2 +1,2 @@
 export * from './lib/partials';
-export type { Cdn, Format, FormatWithCSP } from './shared';
+export type { Cdn, FormatWithCSP } from './shared';

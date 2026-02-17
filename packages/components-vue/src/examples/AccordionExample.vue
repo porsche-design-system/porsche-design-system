@@ -5,11 +5,11 @@ import { ref } from 'vue';
 const isOpen1 = ref(false);
 const isOpen2 = ref(false);
 
-const onUpdate1 = (e: AccordionUpdateEventDetail): void => {
-  isOpen1.value = e.open;
+const onUpdate1 = (e: CustomEvent<AccordionUpdateEventDetail>): void => {
+  isOpen1.value = e.detail.open;
 };
-const onUpdate2 = (e: AccordionUpdateEventDetail): void => {
-  isOpen2.value = e.open;
+const onUpdate2 = (e: CustomEvent<AccordionUpdateEventDetail>): void => {
+  isOpen2.value = e.detail.open;
 };
 
 const content =

@@ -1,8 +1,7 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -20,7 +19,9 @@ import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { getComponentCss } from './sheet-styles';
 import {
   SHEET_ARIA_ATTRIBUTES,
+  SHEET_BACKGROUNDS,
   type SheetAriaAttribute,
+  type SheetBackground,
   type SheetMotionHiddenEndEventDetail,
   type SheetMotionVisibleEndEventDetail,
 } from './sheet-utils';
@@ -29,8 +30,8 @@ const propTypes: PropTypes<typeof Sheet> = {
   open: AllowedTypes.boolean,
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<SheetBackground>(SHEET_BACKGROUNDS),
   aria: AllowedTypes.aria<SheetAriaAttribute>(SHEET_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -55,11 +56,11 @@ export class Sheet {
   /** If true, the sheet will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
 
+  /** Defines the background color */
+  @Prop() public background?: SheetBackground = 'canvas';
+
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
-
-  /** Adapts the sheet color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -99,7 +100,7 @@ export class Sheet {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
     }
 
-    attachComponentCss(this.host, getComponentCss, this.open, this.dismissButton, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, this.background, this.dismissButton);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -124,13 +125,13 @@ export class Sheet {
           <div class="sheet">
             {this.dismissButton && (
               <PrefixedTagNames.pButton
-                variant="ghost"
                 class="dismiss"
+                variant="secondary"
+                compact={true}
                 type="button"
                 hideLabel={true}
                 icon="close"
                 onClick={this.dismissDialog}
-                theme={this.theme}
               >
                 Dismiss sheet
               </PrefixedTagNames.pButton>

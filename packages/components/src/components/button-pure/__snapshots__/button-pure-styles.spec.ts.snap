@@ -1,241 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"underline":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: block;
-  width: 100%;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-@media(min-width:480px) {
-  :host {
-    display: inline-block;
-    width: auto;
-    vertical-align: top;
-  }
-}
-
-@media(min-width:760px) {
-  :host {
-    display: block;
-    width: 100%;
-  }
-}
-
-@media(min-width:1000px) {
-  :host {
-    display: inline-block;
-    width: auto;
-    vertical-align: top;
-  }
-}
-
-@media(min-width:1300px) {
-  :host {
-    display: block;
-    width: 100%;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    display: inline-block;
-    width: auto;
-    vertical-align: top;
-  }
-}
-
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: underline;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 0;
-  justify-content: space-between;
-  align-items: center;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: -1;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(min-width:480px) {
-  .root {
-    gap: 4px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-size: 1rem;
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-    order: 0;
-  }
-}
-
-@media(min-width:760px) {
-  .root {
-    gap: 0;
-    justify-content: space-between;
-    align-items: center;
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  }
-  .root::before {
-    right: -2px;
-    left: -2px;
-  }
-  .label {
-    white-space: nowrap;
-    text-indent: -999999px;
-    overflow: hidden;
-    order: -1;
-  }
-}
-
-@media(min-width:1000px) {
-  .root {
-    gap: 4px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-    order: 0;
-  }
-}
-
-@media(min-width:1300px) {
-  .root {
-    gap: 0;
-    justify-content: space-between;
-    align-items: center;
-    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  }
-  .root::before {
-    right: -2px;
-    left: -2px;
-  }
-  .label {
-    white-space: nowrap;
-    text-indent: -999999px;
-    overflow: hidden;
-    order: -1;
-  }
-}
-
-@media(min-width:1760px) {
-  .root {
-    gap: 4px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    font-size: inherit;
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-    order: 0;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -247,185 +14,11 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
   cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(min-width:480px) {
-  .root {
-    gap: 4px;
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-  }
-}
-
-@media(min-width:760px) {
-  .root {
-    gap: 0;
-  }
-  .root::before {
-    right: -2px;
-    left: -2px;
-  }
-  .label {
-    white-space: nowrap;
-    text-indent: -999999px;
-    overflow: hidden;
-  }
-}
-
-@media(min-width:1000px) {
-  .root {
-    gap: 4px;
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-  }
-}
-
-@media(min-width:1300px) {
-  .root {
-    gap: 0;
-  }
-  .root::before {
-    right: -2px;
-    left: -2px;
-  }
-  .label {
-    white-space: nowrap;
-    text-indent: -999999px;
-    overflow: hidden;
-  }
-}
-
-@media(min-width:1760px) {
-  .root {
-    gap: 4px;
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  color: var(--p-color-primary);
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -434,12 +27,6 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
 }
 .root::before {
   content: "";
@@ -448,1096 +35,26 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .icon {
   position: relative;
   flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":true,"theme":"dark"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #FBFCFF;
-  text-decoration: underline;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"left","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: -1;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"theme":"light"} 2`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #949598;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: not-allowed;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 2`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #949598;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: not-allowed;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"theme":"dark"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: block;
-  width: 100%;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #FBFCFF;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, .18);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: -1;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: block;
-  width: 100%;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, .18);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: -1;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #949598;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: not-allowed;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, .18);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
-  justify-content: flex-start;
-  align-items: flex-start;
   font-size: inherit;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
-}
-.root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
-  position: relative;
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -1549,21 +66,32 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1575,11 +103,11 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  cursor: pointer;
+  color: var(--p-color-primary);
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1588,12 +116,6 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
 }
 .root::before {
   content: "";
@@ -1602,24 +124,26 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
-  position: relative;
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -1631,21 +155,32 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1657,11 +192,11 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  cursor: pointer;
+  color: var(--p-color-primary);
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1669,13 +204,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
+  font-size: 1rem;
 }
 .root::before {
   content: "";
@@ -1684,24 +213,26 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
-  position: relative;
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -1713,33 +244,875 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: not-allowed;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: not-allowed;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: not-allowed;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: var(--p-color-frosted);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: underline;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: var(--p-color-frosted);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: -1;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: var(--p-color-frosted);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: -1;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 10`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 11`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 12`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(min-width:480px) {
   .root {
-    font-size: 1rem;
+    gap: 4px;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
   }
 }
 
 @media(min-width:760px) {
   .root {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    gap: 0;
+  }
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
+  .label {
+    white-space: nowrap;
+    text-indent: -999999px;
+    overflow: hidden;
   }
 }
 
 @media(min-width:1000px) {
   .root {
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+    gap: 4px;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
   }
 }
 
 @media(min-width:1300px) {
   .root {
-    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+    gap: 0;
+  }
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
+  .label {
+    white-space: nowrap;
+    text-indent: -999999px;
+    overflow: hidden;
   }
 }
 
 @media(min-width:1760px) {
   .root {
-    font-size: inherit;
+    gap: 4px;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -1747,17 +1120,236 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":true,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for "arrow-head-right" 13`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+@media(min-width:480px) {
+  :host {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+  }
+}
+
+@media(min-width:760px) {
+  :host {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+  }
+}
+
+@media(min-width:1300px) {
+  :host {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+  }
+}
+
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-contrast-low);
+  text-decoration: underline;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 0;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  font-size: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: -1;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(min-width:480px) {
+  .root {
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1rem;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
+    order: 0;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  }
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
+  .label {
+    white-space: nowrap;
+    text-indent: -999999px;
+    overflow: hidden;
+    order: -1;
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
+    order: 0;
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  }
+  .root::before {
+    right: -2px;
+    left: -2px;
+  }
+  .label {
+    white-space: nowrap;
+    text-indent: -999999px;
+    overflow: hidden;
+    order: -1;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: inherit;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
+    order: 0;
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "none" 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1769,11 +1361,11 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #949598;
+  cursor: not-allowed;
+  color: var(--p-color-primary);
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1782,12 +1374,6 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: not-allowed;
 }
 .root::before {
   content: "";
@@ -1796,21 +1382,12 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .label {
   position: relative;
@@ -1832,5 +1409,254 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "none" 2`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  position: relative;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "none" 3`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-primary);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: inherit;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  position: relative;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for "none" 4`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--p-color-contrast-low);
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.root:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  position: relative;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(min-width:480px) {
+  .root {
+    font-size: 1rem;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    font-size: inherit;
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-strong);
+  }
+}
+"
 `;

@@ -1,0 +1,15 @@
+export * from './deprecated';
+export { proseDisplayLgStyle } from './proseDisplayLgStyle';
+export { proseDisplayMdStyle } from './proseDisplayMdStyle';
+export { proseDisplaySmStyle } from './proseDisplaySmStyle';
+export { proseHeading2XlStyle } from './proseHeading2XlStyle';
+export { proseHeadingLgStyle } from './proseHeadingLgStyle';
+export { proseHeadingMdStyle } from './proseHeadingMdStyle';
+export { proseHeadingSmStyle } from './proseHeadingSmStyle';
+export { proseHeadingXlStyle } from './proseHeadingXlStyle';
+export { proseText2XsStyle } from './proseText2XsStyle';
+export { proseTextLgStyle } from './proseTextLgStyle';
+export { proseTextMdStyle } from './proseTextMdStyle';
+export { proseTextSmStyle } from './proseTextSmStyle';
+export { proseTextXlStyle } from './proseTextXlStyle';
+export { proseTextXsStyle } from './proseTextXsStyle';

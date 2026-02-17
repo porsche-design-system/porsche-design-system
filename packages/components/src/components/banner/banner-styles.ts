@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   dropShadowHighStyle,
   getMediaQueryMin,
   gridExtendedOffsetBase,
@@ -8,17 +7,17 @@ import {
   motionDurationLong,
   motionDurationModerate,
   motionEasingOut,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableTransitionDuration,
   getTransition,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getBannerPopoverResetStyles } from '../../styles/banner-popover-reset-styles';
+import { legacyRadiusMedium, radiusXl } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 /**
@@ -37,13 +36,12 @@ export const getComponentCss = (isOpen: boolean): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          all: 'unset',
           ...getBannerPopoverResetStyles(),
-          bottom: `var(${cssVariableBottom},${topBottomFallback})`,
-          left: gridExtendedOffsetBase,
-          right: gridExtendedOffsetBase,
+          inset: `auto ${gridExtendedOffsetBase} var(${cssVariableBottom},${topBottomFallback})`,
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           ...dropShadowHighStyle,
-          borderRadius: borderRadiusSmall, // needed for rounded box-shadow
+          borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`, // needed for rounded box-shadow
           '&::backdrop': {
             display: 'none',
           },
@@ -69,18 +67,12 @@ export const getComponentCss = (isOpen: boolean): string => {
                 },
               }),
           [getMediaQueryMin('s')]: {
-            top: `var(${cssVariableTop},${topBottomFallback})`,
-            bottom: 'auto',
-            left: gridExtendedOffsetS,
-            right: gridExtendedOffsetS,
-            // space before and after "-" is crucial)
+            inset: `var(${cssVariableTop},${topBottomFallback}) ${gridExtendedOffsetS} auto`,
             ...(!isOpen && { transform: `translate3d(0,calc(-100% - var(${cssVariableTop},${topBottomFallback})),0)` }),
           },
           [getMediaQueryMin('xxl')]: {
-            left: gridExtendedOffsetXXL,
-            right: gridExtendedOffsetXXL,
+            insetInline: gridExtendedOffsetXXL,
           },
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

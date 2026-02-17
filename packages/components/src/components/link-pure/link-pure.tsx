@@ -1,45 +1,38 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
-  LINK_ARIA_ATTRIBUTES,
-  TEXT_SIZES,
-  THEMES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   isSsrHydration,
+  LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
+  TEXT_SIZES,
   throwIfInvalidLinkUsage,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './link-pure-styles';
 import type {
   LinkPureAlignLabel,
-  LinkPureAlignLabelDeprecated,
   LinkPureAriaAttribute,
   LinkPureIcon,
   LinkPureSize,
   LinkPureTarget,
-  LinkPureWeight,
 } from './link-pure-utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<LinkPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   size: AllowedTypes.breakpoint<LinkPureSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<LinkPureWeight>(TYPOGRAPHY_TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
   href: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
@@ -65,12 +58,6 @@ export class LinkPure {
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<LinkPureSize> = 'small';
 
-  /**
-   * The weight of the text (only has effect with visible label).
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public weight?: LinkPureWeight = 'regular';
-
   /** The icon shown. By choosing 'none', no icon is displayed */
   @Prop() public icon?: LinkPureIcon = 'arrow-right';
 
@@ -88,9 +75,6 @@ export class LinkPure {
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkPureTarget = '_self';
@@ -118,20 +102,6 @@ export class LinkPure {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignLabelDeprecationMap: Record<
-      LinkPureAlignLabelDeprecated,
-      Exclude<LinkPureAlignLabel, LinkPureAlignLabelDeprecated>
-    > = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof LinkPure, LinkPureAlignLabelDeprecated, LinkPureAlignLabel>(
-      this,
-      'alignLabel',
-      alignLabelDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -143,8 +113,7 @@ export class LinkPure {
       this.hideLabel,
       this.alignLabel,
       this.underline,
-      !this.href,
-      this.theme
+      !this.href
     );
 
     const TagType = this.href === undefined ? 'span' : 'a';
@@ -166,9 +135,9 @@ export class LinkPure {
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"
+            color="inherit"
             name={this.icon}
             source={this.iconSource}
-            theme={this.theme}
             aria-hidden="true"
           />
         )}

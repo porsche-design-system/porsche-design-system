@@ -1,8 +1,7 @@
 import { camelCase } from 'change-case';
 import fs from 'fs';
 import path from 'path';
-import type { TagName } from '../src';
-import type { Framework, FrameworkMarkup } from '../src/models';
+import type { Framework, FrameworkMarkup, TagName } from '../src';
 
 type SampleName =
   | TagName
@@ -347,6 +346,15 @@ const codeExamples: CodeSample[] = [
           vue: '/InputTextExampleForm.vue',
         },
       },
+      {
+        name: 'InputTextExampleControlled',
+        paths: {
+          'vanilla-js': '/input-text-example-controlled.html',
+          angular: '/input-text-example-controlled.component.ts',
+          react: '/InputTextExampleControlled.tsx',
+          vue: '/InputTextExampleControlled.vue',
+        },
+      },
     ],
   },
   {
@@ -664,20 +672,6 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
-    component: 'p-text-field-wrapper',
-    examples: [
-      {
-        name: 'TextFieldWrapperExampleSearch',
-        paths: {
-          'vanilla-js': '/text-field-wrapper-example-search.html',
-          angular: '/text-field-wrapper-example-search.component.ts',
-          react: '/TextFieldWrapperExampleSearch.tsx',
-          vue: '/TextFieldWrapperExampleSearch.vue',
-        },
-      },
-    ],
-  },
-  {
     component: 'p-toast',
     examples: [
       {
@@ -687,162 +681,6 @@ const codeExamples: CodeSample[] = [
           angular: '/toast-example.component.ts',
           react: '/ToastExample.tsx',
           vue: '/ToastExample.vue',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-border',
-    examples: [
-      {
-        name: 'styles-border',
-        paths: {
-          angular: '/../styles/styles-border-example.component.ts',
-          react: '/../styles/StylesBorderExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-drop-shadow',
-    examples: [
-      {
-        name: 'styles-drop-shadow',
-        paths: {
-          angular: '/../styles/styles-drop-shadow-example.component.ts',
-          react: '/../styles/StylesDropShadowExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-focus',
-    examples: [
-      {
-        name: 'styles-focus',
-        paths: {
-          angular: '/../styles/styles-focus-example.component.ts',
-          react: '/../styles/StylesFocusExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-frosted-glass',
-    examples: [
-      {
-        name: 'styles-frosted-glass',
-        paths: {
-          angular: '/../styles/styles-frosted-glass-example.component.ts',
-          react: '/../styles/StylesFrostedGlassExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-gradient',
-    examples: [
-      {
-        name: 'styles-gradient',
-        paths: {
-          angular: '/../styles/styles-gradient-example.component.ts',
-          react: '/../styles/StylesGradientExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-grid',
-    examples: [
-      {
-        name: 'styles-grid',
-        paths: {
-          angular: '/../components/grid-layout.component.ts',
-          react: '/../components/GridLayout.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-hover',
-    examples: [
-      {
-        name: 'styles-hover',
-        paths: {
-          angular: '/../styles/styles-hover-example.component.ts',
-          react: '/../styles/StylesHoverExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-media-query',
-    examples: [
-      {
-        name: 'styles-media-query',
-        paths: {
-          angular: '/../styles/styles-media-query-example.component.ts',
-          react: '/../styles/StylesMediaQueryExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-motion',
-    examples: [
-      {
-        name: 'styles-motion',
-        paths: {
-          angular: '/../styles/styles-motion-example.component.ts',
-          react: '/../styles/StylesMotionExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-skeleton',
-    examples: [
-      {
-        name: 'styles-skeleton',
-        paths: {
-          angular: '/../styles/styles-skeleton-example.component.ts',
-          react: '/../styles/StylesSkeletonExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-spacing',
-    examples: [
-      {
-        name: 'styles-spacing',
-        paths: {
-          angular: '/../styles/styles-spacing-example.component.ts',
-          react: '/../styles/StylesSpacingExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-theme',
-    examples: [
-      {
-        name: 'styles-theme',
-        paths: {
-          angular: '/../styles/styles-theme-example.component.ts',
-          react: '/../styles/StylesThemeExample.tsx',
-        },
-      },
-    ],
-  },
-  {
-    component: 'styles-typography',
-    examples: [
-      {
-        name: 'styles-typography',
-        paths: {
-          angular: '/../styles/styles-typography-example.component.ts',
-          react: '/../styles/StylesTypographyExample.tsx',
         },
       },
     ],

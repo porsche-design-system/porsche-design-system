@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for state: info and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: error 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -17,9 +17,11 @@ exports[`getComponentCss() > should return correct css for state: info and theme
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #04294E;
-  border-radius: 4px;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: var(--p-color-error-frosted);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
 }
 :host::backdrop {
   display: none;
@@ -32,10 +34,9 @@ p {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   margin: 0;
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   display: grid;
   gap: 4px;
-  max-width: 50rem;
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -47,12 +48,18 @@ p {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
 .icon {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: plus-lighter;
+  --p-internal-button-scaling: 0.5;
 }
 @media(max-width:759px) {
   .icon {
@@ -62,7 +69,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: info and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: info 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -79,9 +86,11 @@ exports[`getComponentCss() > should return correct css for state: info and theme
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #D3E1FF;
-  border-radius: 4px;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: var(--p-color-info-frosted);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
 }
 :host::backdrop {
   display: none;
@@ -94,10 +103,9 @@ p {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   margin: 0;
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   gap: 4px;
-  max-width: 50rem;
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -109,12 +117,18 @@ p {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
 .icon {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: multiply;
+  --p-internal-button-scaling: 0.5;
 }
 @media(max-width:759px) {
   .icon {
@@ -124,7 +138,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: neutral and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: success 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -141,9 +155,11 @@ exports[`getComponentCss() > should return correct css for state: neutral and th
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #04294E;
-  border-radius: 4px;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: var(--p-color-success-frosted);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
 }
 :host::backdrop {
   display: none;
@@ -156,10 +172,9 @@ p {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   margin: 0;
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   display: grid;
   gap: 4px;
-  max-width: 50rem;
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -171,12 +186,18 @@ p {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
 .icon {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: plus-lighter;
+  --p-internal-button-scaling: 0.5;
 }
 @media(max-width:759px) {
   .icon {
@@ -186,7 +207,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: neutral and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: warning 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -203,9 +224,11 @@ exports[`getComponentCss() > should return correct css for state: neutral and th
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #D3E1FF;
-  border-radius: 4px;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: var(--p-color-warning-frosted);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
 }
 :host::backdrop {
   display: none;
@@ -218,10 +241,9 @@ p {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   margin: 0;
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   gap: 4px;
-  max-width: 50rem;
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -233,65 +255,10 @@ p {
   }
 }
 
-.icon {
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: multiply;
-}
-@media(max-width:759px) {
-  .icon {
-    display: none;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for state: success and theme: dark 1`] = `
-":host {
-  display: grid;
-  opacity: 0;
-  max-width: inherit !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  inset: inherit !important;
-  border: 0 !important;
-  outline: 0 !important;
-  overflow: visible !important;
-  width: auto !important;
-  height: auto !important;
-  grid-template-columns: minmax(auto, 1fr) auto;
-  gap: 16px;
-  place-items: start;
-  padding: 16px;
-  background: #003320;
-  border-radius: 4px;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
-}
-:host::backdrop {
-  display: none;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  margin: 0;
-  color: #FBFCFF;
-  display: grid;
-  gap: 4px;
-  max-width: 50rem;
-  margin-top: 2px;
-}
-@media(min-width:760px) {
+@media (forced-colors: active) {
   :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-  p {
-    margin-left: -8px;
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 
@@ -299,70 +266,7 @@ p {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: plus-lighter;
-}
-@media(max-width:759px) {
-  .icon {
-    display: none;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for state: success and theme: light 1`] = `
-":host {
-  display: grid;
-  opacity: 0;
-  max-width: inherit !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  inset: inherit !important;
-  border: 0 !important;
-  outline: 0 !important;
-  overflow: visible !important;
-  width: auto !important;
-  height: auto !important;
-  grid-template-columns: minmax(auto, 1fr) auto;
-  gap: 16px;
-  place-items: start;
-  padding: 16px;
-  background: #E4FFEC;
-  border-radius: 4px;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
-}
-:host::backdrop {
-  display: none;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  margin: 0;
-  color: #010205;
-  display: grid;
-  gap: 4px;
-  max-width: 50rem;
-  margin-top: 2px;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-  p {
-    margin-left: -8px;
-  }
-}
-
-.icon {
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: multiply;
+  --p-internal-button-scaling: 0.5;
 }
 @media(max-width:759px) {
   .icon {

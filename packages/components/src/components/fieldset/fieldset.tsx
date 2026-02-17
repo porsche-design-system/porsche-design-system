@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaRole, Theme } from '../../types';
+import type { PropTypes, SelectedAriaRole } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,7 +7,6 @@ import {
   hasLabel,
   hasMessage,
   hasPropValueChanged,
-  THEMES,
   validateProps,
 } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -29,7 +28,6 @@ const propTypes: PropTypes<typeof Fieldset> = {
   required: AllowedTypes.boolean,
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   // AllowedTypes do not match exactly the @Prop type because the 'aria' function does not allow for key-value pairs.
   aria: AllowedTypes.aria<FieldsetAriaAttribute>(FIELDSET_ARIA_ATTRIBUTES),
 };
@@ -61,9 +59,6 @@ export class Fieldset {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Adapts color depending on theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
 
@@ -73,14 +68,7 @@ export class Fieldset {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.state,
-      this.labelSize,
-      hasLabel(this.host, this.label),
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, hasLabel(this.host, this.label));
 
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
@@ -96,7 +84,7 @@ export class Fieldset {
           </legend>
         )}
         <slot />
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </fieldset>
     );
   }

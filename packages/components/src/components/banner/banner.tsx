@@ -1,29 +1,16 @@
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, Watch, h } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, Watch } from '@stencil/core';
+import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
-  HEADING_TAGS,
-  THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
-  consoleWarn,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  HEADING_TAGS,
   hasNamedSlot,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 import { getComponentCss } from './banner-styles';
-import {
-  BANNER_STATES,
-  type BannerHeadingTag,
-  type BannerState,
-  type BannerStateDeprecated,
-  type BannerWidth,
-} from './banner-utils';
+import { BANNER_STATES, type BannerHeadingTag, type BannerState } from './banner-utils';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
@@ -32,13 +19,10 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
-  persistent: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
  * @slot {"name": "heading", "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.", "hasAltProp": true }
- * @slot {"name": "title", "description": "Please use the heading prop or slot=\"heading\" instead.", "hasAltProp": true, "isDeprecated": true }
  * @slot {"name": "description", "description": "Defines the description used in the banner. Can be used alternatively to the description prop. Can be used for rich content.", "hasAltProp": true }
  *
  * @controlled {"props": ["open"], "event": "dismiss"}
@@ -68,33 +52,15 @@ export class Banner {
   /** If false, the banner will not have a dismiss button. */
   @Prop() public dismissButton?: boolean = true;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
-   * Defines if the banner can be closed/removed by the user. */
-  @Prop() public persistent?: boolean;
-
-  /**
-   * Has no effect anymore
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public width?: BannerWidth;
-
-  /** Adapts the banner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private inlineNotificationElement: HTMLPInlineNotificationElement;
   private closeBtn: HTMLElement;
 
-  private get hasDismissButton(): boolean {
-    return this.persistent ? false : this.dismissButton;
-  }
-
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    if (this.hasDismissButton) {
+    if (this.dismissButton) {
       if (isOpen) {
         document.addEventListener('keydown', this.onKeyboardEvent);
       } else {
@@ -104,8 +70,7 @@ export class Banner {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-    if (this.open && this.hasDismissButton) {
+    if (this.open && this.dismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
   }
@@ -114,37 +79,20 @@ export class Banner {
     // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
     this.setBannerVisibility(this.open);
 
-    if (this.hasDismissButton) {
+    if (this.dismissButton) {
       this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
       this.closeBtn?.focus();
     }
   }
 
   public disconnectedCallback(): void {
-    if (this.open && this.hasDismissButton) {
+    if (this.open && this.dismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerStateDeprecated, BannerState>(this, 'state', {
-      neutral: 'info',
-    });
-    warnIfDeprecatedPropIsUsed<typeof Banner>(this, 'persistent', 'Please use dismissButton prop instead.');
-    warnIfDeprecatedPropIsUsed<typeof Banner>(
-      this,
-      'width',
-      'The component is aligned with Porsche Grid "extended" by default.'
-    );
-    const hasTitleSlot = hasNamedSlot(this.host, 'title');
-
-    if (hasTitleSlot) {
-      consoleWarn(
-        getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="title"'),
-        'Please use the heading prop or slot="heading" instead.'
-      );
-    }
     attachComponentCss(this.host, getComponentCss, this.open);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -157,16 +105,11 @@ export class Banner {
           headingTag={this.headingTag}
           description={this.description}
           state={this.state}
-          dismissButton={this.hasDismissButton}
-          theme={this.theme}
+          dismissButton={this.dismissButton}
           onDismiss={this.onDismiss}
           aria-hidden={this.open ? 'false' : 'true'}
         >
-          {hasNamedSlot(this.host, 'heading') ? (
-            <slot name="heading" slot="heading" />
-          ) : (
-            hasTitleSlot && <slot name="title" slot="heading" />
-          )}
+          {hasNamedSlot(this.host, 'heading') && <slot name="heading" slot="heading" />}
           {hasNamedSlot(this.host, 'description') && <slot name="description" />}
         </PrefixedTagNames.pInlineNotification>
       </Host>
@@ -180,9 +123,8 @@ export class Banner {
   };
 
   private onDismiss = (event?: CustomEvent): void => {
-    if (this.hasDismissButton) {
+    if (this.dismissButton) {
       event?.stopPropagation(); // prevent double event emission because of identical name
-
       this.dismiss.emit();
     }
   };

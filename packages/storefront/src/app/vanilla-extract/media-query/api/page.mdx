@@ -1,0 +1,46 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  breakpoint,
+  breakpointXXL,
+  breakpoints,
+  breakpointXL,
+  breakpointL,
+  breakpointM,
+  breakpointS,
+  breakpointXS,
+  getMediaQueryMax,
+  getMediaQueryMin,
+  getMediaQueryMinMax,
+  breakpointBase,
+} from '@porsche-design-system/components-react/vanilla-extract';
+
+export const metadata = {
+  title: 'Vanilla Extract: Media Query - Porsche Design System',
+  description: 'Detailed API reference for the Media Query style.',
+};
+
+# Media Query
+
+<TableOfContents headings={['JS Functions', 'JS']} />
+
+## JS Functions
+
+| JS Function                                                                                | Description                                                       |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| `getMediaQueryMin('base'\|'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')`                               | Applies a **min** media query with the specified breakpoint.      |
+| `getMediaQueryMax('xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')`                                       | Applies a **max** media query with the specified breakpoint.      |
+| `getMediaQueryMinMax('base'\|'xs'\|'s'\|'m'\|'l'\|'xl', 'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')` | Applies a **min-max** media query with the specified breakpoints. |
+
+## JS
+
+| JS               | Description                               | Value                         |
+| ---------------- | ----------------------------------------- | ----------------------------- |
+| `breakpoints`    | Array containting all breakpoint keys.    | {JSON.stringify(breakpoints)} |
+| `breakpoint`     | Object containting all breakpoint values. | {JSON.stringify(breakpoint)}  |
+| `breakpointBase` | Holds the `base` breakpoint value.        | {breakpointBase}              |
+| `breakpointXS`   | Holds the `xs` breakpoint value.          | {breakpointXS}                |
+| `breakpointS`    | Holds the `sm` breakpoint value.          | {breakpointS}                 |
+| `breakpointM`    | Holds the `md` breakpoint value.          | {breakpointM}                 |
+| `breakpointL`    | Holds the `lg` breakpoint value.          | {breakpointL}                 |
+| `breakpointXL`   | Holds the `xl` breakpoint value.          | {breakpointXL}                |
+| `breakpointXXL`  | Holds the `2xl` breakpoint value.         | {breakpointXXL}               |

@@ -1,4 +1,4 @@
-import { it, expect } from 'vitest';
+import { expect, it } from 'vitest';
 import * as fromIndex from './';
 
 it.each<keyof typeof fromIndex>(Object.keys(fromIndex) as (keyof typeof fromIndex)[])(

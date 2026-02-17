@@ -1,29 +1,37 @@
 import {
-  borderRadiusSmall,
+  fontFamily,
   fontLineHeight,
   fontSizeTextMedium,
   fontSizeTextSmall,
-  fontSizeTextXXSmall,
   fontWeightSemiBold,
+  frostedGlassStyle,
   motionDurationShort,
   spacingStaticSmall,
   textSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableTransitionDuration,
-  getFocusJssStyle,
-  getThemedColors,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import {
+  colorCanvas,
+  colorContrastLower,
+  colorFrostedSoft,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusSm,
+} from '../../styles/css-variables';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import type { AccordionSize } from './accordion-utils';
+
+const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
+const positionStickyTopFallback = '0';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -33,19 +41,8 @@ export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
   open: boolean,
-  theme: Theme,
   sticky: boolean
 ): string => {
-  const { primaryColor, hoverColor, contrastLowColor, backgroundColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    contrastLowColor: contrastLowColorDark,
-    backgroundColor: backgroundColorDark,
-  } = getThemedColors('dark');
-  const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
-  const positionStickyTopFallback = '0';
-
   return getCss({
     '@global': {
       ':host': {
@@ -54,34 +51,24 @@ export const getComponentCss = (
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
             : {
-                borderBottom: `1px solid ${contrastLowColor}`,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  borderColor: contrastLowColorDark,
-                }),
+                borderBottom: `1px solid ${colorContrastLower}`,
               }),
           '&(:only-of-type)': { borderBottom: 0 },
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
+        all: 'unset',
         display: 'flex',
         position: 'relative',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        textDecoration: 'none',
-        border: 0,
-        margin: 0, // Removes default button margin on safari 15
         gap: '24px',
-        background: 'transparent',
         cursor: 'pointer',
-        textAlign: 'start',
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
+        zIndex: 0,
+        color: colorPrimary,
         ...textSmallStyle,
         fontWeight: fontWeightSemiBold,
         ...buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -93,10 +80,10 @@ export const getComponentCss = (
           {
             '&::before': {
               content: '""',
+              zIndex: -1,
               position: 'absolute',
-              borderRadius: borderRadiusSmall,
-              left: '-4px',
-              right: '-4px',
+              borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+              insetInline: '-4px',
               ...(compact
                 ? {
                     top: '2px',
@@ -113,14 +100,12 @@ export const getComponentCss = (
               transition: getTransition('background-color'),
             },
             '&:hover::before': {
-              background: hoverColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: hoverColorDark,
-              }),
+              ...frostedGlassStyle,
+              background: colorFrostedSoft,
             },
           })
         ),
-        ...getFocusJssStyle(theme, { pseudo: true, offset: '-2px' }),
+        '&:focus-visible::before': getFocusBaseStyles(),
       },
     },
     heading: {
@@ -129,31 +114,23 @@ export const getComponentCss = (
         position: 'sticky',
         top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
         zIndex: 1, // to be on top of the collapsible
-        backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: backgroundColorDark,
-        }),
+        background: colorCanvas,
       }),
     },
     'icon-container': {
       height: fontLineHeight,
       width: fontLineHeight,
+      font: `inherit ${fontFamily}`, // needed for correct calculations based on ex-unit
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
     icon: {
-      width: fontLineHeight,
-      height: fontLineHeight,
-      fontSize: fontSizeTextXXSmall,
       transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
     },
     collapsible: {
-      color: primaryColor, // enables color inheritance for slotted content
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-      }),
+      color: colorPrimary, // enables color inheritance for slotted content
       display: 'grid',
       ...(sticky && {
         position: 'relative',

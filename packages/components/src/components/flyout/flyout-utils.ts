@@ -1,15 +1,10 @@
-// 'left' is deprecated and will be mapped to 'start'
-// 'right' is deprecated and will be mapped to 'end'
-
 import type { Backdrop } from '../../styles/dialog-styles';
 import { getHasConstructableStylesheetSupport } from '../../utils';
 
-/** @deprecated */
-export const FLYOUT_POSITIONS_DEPRECATED = ['left', 'right'] as const;
-/** @deprecated */
-export type FlyoutPositionDeprecated = (typeof FLYOUT_POSITIONS_DEPRECATED)[number];
+export const FLYOUT_BACKGROUNDS = ['canvas', 'surface'] as const;
+export type FlyoutBackground = (typeof FLYOUT_BACKGROUNDS)[number];
 
-export const FLYOUT_POSITIONS = ['start', 'end', ...FLYOUT_POSITIONS_DEPRECATED] as const;
+export const FLYOUT_POSITIONS = ['start', 'end'] as const;
 export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
 
 export const FLYOUT_FOOTER_BEHAVIOR = ['sticky', 'fixed'] as const;

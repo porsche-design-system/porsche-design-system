@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       image:
-        description: 'Docker image to be used in workflow.'
+        description: 'Docker image to be used in workflow'
         required: true
         type: string
     secrets:
@@ -94,6 +94,7 @@ jobs:
           artifact: 'build-production'
       - uses: actions/setup-node@v4
         with:
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
@@ -106,7 +107,7 @@ jobs:
     name: 'NPM (Components Angular)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
     container:
@@ -123,6 +124,7 @@ jobs:
           artifact: 'build-production'
       - uses: actions/setup-node@v4
         with:
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
@@ -135,7 +137,7 @@ jobs:
     name: 'NPM (Components React)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
     container:
@@ -152,6 +154,7 @@ jobs:
           artifact: 'build-production'
       - uses: actions/setup-node@v4
         with:
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
@@ -164,7 +167,7 @@ jobs:
     name: 'NPM (Components Vue)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
     container:
@@ -181,6 +184,7 @@ jobs:
           artifact: 'build-production'
       - uses: actions/setup-node@v4
         with:
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh

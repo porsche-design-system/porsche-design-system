@@ -1,24 +1,20 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import { type ToastState, type ToastStateDeprecated, TOAST_STATES } from '../toast/toast-utils';
-import type { IconColor } from '../../icon/icon-utils';
-import type { PropTypes, Theme } from '../../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getHasNativePopoverSupport,
   getPrefixedTagNames,
-  THEMES,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../../utils';
-import { getComponentCss } from './toast-item-styles';
 import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
+import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
+import { getComponentCss } from './toast-item-styles';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
   state: AllowedTypes.oneOf<ToastState>(TOAST_STATES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -33,9 +29,6 @@ export class ToastItem {
 
   /** State of the toast-item. */
   @Prop() public state?: ToastState = 'info';
-
-  /** Adapts the toast-item color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   // Since the event listener is registered on parent p-toast, the event needs to bubble
   /** Emitted when the close button is clicked. */
@@ -53,10 +46,7 @@ export class ToastItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof ToastItem, ToastStateDeprecated, ToastState>(this, 'state', {
-      neutral: 'info',
-    });
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -65,14 +55,12 @@ export class ToastItem {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(this.state)}
-          color={`notification-${this.state}` as IconColor}
-          theme={this.theme}
+          color={this.state}
           aria-hidden="true"
         />
         <p innerHTML={this.text} />
         <PrefixedTagNames.pButton
-          variant="ghost"
-          theme={this.theme}
+          variant="secondary"
           class="close"
           type="button"
           icon="close"

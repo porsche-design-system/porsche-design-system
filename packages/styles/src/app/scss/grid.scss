@@ -1,0 +1,102 @@
+@use '@porsche-design-system/scss' as *;
+
+.scss-grid-template {
+  @include pds-grid;
+  @include pds-text-small;
+  color: $color-primary;
+  text-align: center;
+}
+
+.scss-subgrid {
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: $pds-spacing-fluid-medium;
+}
+
+.scss-padding-small {
+  padding: $pds-spacing-fluid-small;
+}
+
+.scss-border-radius-large {
+  border-radius: $pds-border-radius-large;
+}
+
+.scss-col-full {
+  grid-column: $pds-grid-full-column-start / $pds-grid-full-column-end;
+}
+
+.scss-col-full-bg {
+  background: rgba(0,0,255,.25);
+}
+
+.scss-col-wide {
+  grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
+}
+
+.scss-col-wide-bg {
+  background: rgba(0,255,255,.25);
+}
+
+.scss-col-extended {
+  grid-column: $pds-grid-extended-column-start / $pds-grid-extended-column-end;
+}
+
+.scss-col-extended-bg {
+  background: rgba(0,255,0,.25);
+}
+
+.scss-col-basic {
+  grid-column: $pds-grid-basic-column-start / $pds-grid-basic-column-end;
+}
+
+.scss-col-basic-bg {
+  background: rgba(255,0,255,.25);
+}
+
+.scss-col-narrow {
+  grid-column: $pds-grid-narrow-column-start / $pds-grid-narrow-column-end;
+}
+
+.scss-col-narrow-bg {
+  background: rgba(255,255,0,.25);
+}
+
+// Extended
+.scss-col-extended-span-one-half-start {
+  grid-column: $pds-grid-extended-column-start / $pds-grid-extended-span-one-half;
+}
+.scss-col-extended-span-one-half-end {
+  grid-column: $pds-grid-extended-span-one-half / $pds-grid-extended-column-end;
+}
+
+// Basic
+.scss-col-basic-span-one-half-start {
+  grid-column: $pds-grid-basic-column-start / $pds-grid-basic-span-one-half;
+}
+.scss-col-basic-span-one-half-end {
+  grid-column: $pds-grid-basic-span-one-half / $pds-grid-basic-column-end;
+}
+.scss-col-basic-span-one-third-start {
+  grid-column: $pds-grid-basic-column-start / $pds-grid-basic-span-one-third;
+}
+.scss-col-basic-span-one-third-follow {
+  grid-column: $pds-grid-basic-span-one-third;
+}
+.scss-col-basic-span-one-third-end {
+  grid-column: $pds-grid-basic-span-one-third / $pds-grid-basic-column-end;
+}
+.scss-col-basic-span-two-thirds-start {
+  grid-column: $pds-grid-basic-column-start / $pds-grid-basic-span-two-thirds;
+}
+.scss-col-basic-span-two-thirds-end {
+  grid-column: $pds-grid-basic-span-two-thirds / $pds-grid-basic-column-end;
+}
+
+// Narrow
+.scss-col-narrow-span-one-half-start {
+  grid-column: $pds-grid-narrow-column-start / $pds-grid-narrow-span-one-half;
+}
+.scss-col-narrow-span-one-half-end {
+  grid-column: $pds-grid-narrow-span-one-half / $pds-grid-narrow-column-end;
+}
+

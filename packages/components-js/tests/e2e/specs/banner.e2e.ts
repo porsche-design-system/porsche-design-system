@@ -40,7 +40,7 @@ test('should forward props correctly to p-inline-notification', async ({ page })
   await setContentWithDesignSystem(
     page,
     `
-    <p-banner state="error" dismiss-button="false" theme="dark">
+    <p-banner state="error" dismiss-button="false">
       <span slot="title">Some notification title</span>
       <span slot="description">Some notification description.</span>
     </p-banner>`
@@ -49,7 +49,6 @@ test('should forward props correctly to p-inline-notification', async ({ page })
   const inlineNotification = getInlineNotification(page);
   expect(await getProperty(inlineNotification, 'state')).toBe('error');
   expect(await getProperty(inlineNotification, 'dismissButton')).toBe(false);
-  expect(await getProperty(inlineNotification, 'theme')).toBe('dark');
 });
 
 test('should not show banner by default', async ({ page }) => {

@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css for multiline: false 1`] 
 ":host {
   display: table-cell;
   vertical-align: middle;
-  padding: var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   margin: 0 !important;
   white-space: nowrap !important;
 }
@@ -17,7 +17,7 @@ exports[`getComponentCss() > should return correct css for multiline: true 1`] =
 ":host {
   display: table-cell;
   vertical-align: middle;
-  padding: var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   margin: 0 !important;
   white-space: normal !important;
 }

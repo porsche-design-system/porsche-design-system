@@ -79,7 +79,7 @@ export const MultiSelectExampleSelectedSlot = () => {
             </div>
             <div className="self-center flex gap-fluid-sm">
               {option.tags.map((tag) => (
-                <PTag key={tag} color="notification-info-soft" compact={true}>
+                <PTag key={tag} variant="info" compact={true}>
                   {tag}
                 </PTag>
               ))}

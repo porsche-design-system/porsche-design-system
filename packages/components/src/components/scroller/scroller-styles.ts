@@ -1,15 +1,14 @@
-import { borderRadiusSmall, dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
+import { dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   dismissButtonJssStyle,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isThemeDark } from '../../utils';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import { getCss } from '../../utils';
 import type { ScrollerAlignScrollIndicator } from './scroller-utils';
 
 const prevNextWrapperWidth = `calc(${fontLineHeight} + 24px)`;
@@ -18,8 +17,7 @@ export const getComponentCss = (
   isNextHidden: boolean,
   isPrevHidden: boolean,
   alignScrollIndicator: ScrollerAlignScrollIndicator,
-  hasScrollbar: boolean,
-  theme: Theme
+  hasScrollbar: boolean
 ): string => {
   const actionPrevNextStyles = {
     position: 'absolute',
@@ -38,7 +36,6 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           height: 'inherit',
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -79,13 +76,12 @@ export const getComponentCss = (
       minHeight: '28px',
       minWidth: '100%',
       verticalAlign: 'top',
-      borderRadius: borderRadiusSmall,
-      ...getFocusJssStyle(theme),
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+      '&:focus-visible': getFocusBaseStyles(),
     },
     trigger: {
       position: 'absolute',
-      top: 0,
-      bottom: 0,
+      inset: '0 auto',
       width: '1px',
       visibility: 'hidden',
       '&:first-of-type': {
@@ -123,7 +119,7 @@ export const getComponentCss = (
     },
     'action-button': {
       ...dismissButtonJssStyle,
-      ...(!isThemeDark(theme) && dropShadowLowStyle),
+      ...dropShadowLowStyle,
     },
     icon: {
       '&:dir(rtl)': {

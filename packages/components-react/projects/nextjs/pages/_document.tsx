@@ -1,5 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import { FooterPartials, HeaderPartials } from '../components';
+import { HeaderPartials } from '../components';
 
 const Document = (): JSX.Element => {
   const cdn = 'local';
@@ -13,7 +13,6 @@ const Document = (): JSX.Element => {
       <body>
         <Main />
         <NextScript />
-        <FooterPartials cdn={cdn} />
       </body>
     </Html>
   );

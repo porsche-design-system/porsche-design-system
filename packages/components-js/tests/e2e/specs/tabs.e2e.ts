@@ -208,26 +208,26 @@ test.describe('text selection', () => {
 });
 
 test.describe('events', () => {
-  test('should trigger tabChange event on tab click', async ({ page }) => {
+  test('should trigger update event on tab click', async ({ page }) => {
     await initTabs(page, { activeTabIndex: 1 }); // start with other index than first
     const host = getHost(page);
     const [firstButton, secondButton, thirdButton] = await getAllTabs(page);
-    await addEventListener(host, 'tabChange');
+    await addEventListener(host, 'update');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(host);
 
     await firstButton.click();
-    expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
 
     await secondButton.click();
-    expect((await getEventSummary(host, 'tabChange')).counter).toBe(2);
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
 
     await thirdButton.click();
-    expect((await getEventSummary(host, 'tabChange')).counter).toBe(3);
+    expect((await getEventSummary(host, 'update')).counter).toBe(3);
   });
 
-  test('should not dispatch tabChange event initially', async ({ page }) => {
+  test('should not dispatch update event initially', async ({ page }) => {
     const COUNTER_KEY = 'pdsEventCounter';
     await setContentWithDesignSystem(page, ''); // empty page
 
@@ -244,7 +244,7 @@ test.describe('events', () => {
 
       // count events in browser
       window[COUNTER_KEY] = 0;
-      el.addEventListener('tabChange', () => window[COUNTER_KEY]++);
+      el.addEventListener('update', () => window[COUNTER_KEY]++);
 
       document.body.appendChild(el);
     }, COUNTER_KEY);
@@ -265,21 +265,6 @@ test.describe('events', () => {
     // to be on the safe side
 
     expect(await getCountedEvents()).toBe(1);
-  });
-
-  test('should emit both tabChange and update event', async ({ page }) => {
-    await initTabs(page);
-    const host = getHost(page);
-
-    await addEventListener(host, 'tabChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'tabChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const [, secondButton] = await getAllTabs(page);
-    await secondButton.click();
-    expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 
@@ -341,10 +326,10 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
-    expect(status.componentDidUpdate['p-tabs-item'], 'componentDidUpdate: p-tabs-item').toBe(3);
+    expect(status.componentDidUpdate['p-tabs-item'], 'componentDidUpdate: p-tabs-item').toBe(0);
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });

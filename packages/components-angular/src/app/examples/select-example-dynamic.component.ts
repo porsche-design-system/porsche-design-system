@@ -4,9 +4,7 @@ import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-des
 @Component({
   selector: 'page-select-example-dynamic',
   template: `
-    <p-text-field-wrapper label="Value:">
-      <input name="input-value" type="text" [value]="inputValue" (input)="onChangeInput($event)" placeholder="e.g. 1" />
-    </p-text-field-wrapper>
+    <p-input-text label="Value:" name="input-value" type="text" [value]="inputValue" (input)="onChangeInput($event)" placeholder="e.g. 1"></p-input-text>
     <p-button type="button" (click)="onSetValue()" [compact]="true">Set Value</p-button>
     <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
 

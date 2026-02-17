@@ -1,30 +1,15 @@
 <style>
-  .scaling-0 {
-    --p-internal-input-base-scaling: 0;
-  }
-  .scaling-0-5 {
-    --p-internal-input-base-scaling: 0.5;
-  }
-  .scaling-0-8 {
-    --p-internal-input-base-scaling: 0.8;
-  }
-  .scaling-1 {
-    --p-internal-input-base-scaling: 1;
-  }
-  .scaling-2 {
-    --p-internal-input-base-scaling: 2;
-  }
   .input-button {
     padding: var(--ref-p-input-slotted-padding);
     margin: var(--ref-p-input-slotted-margin);
   }
 </style>
 
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-input-url name="some-name" label="Label"></p-input-url>
 </div>
 
-<div class="playground light" title="should render with label, default value and indicator">
+<div class="playground" title="should render with label, default value and indicator">
   <p-input-url
     name="some-name"
     label="Label"
@@ -34,7 +19,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with label and placeholder">
+<div class="playground" title="should render with label and placeholder">
   <p-input-url
     name="some-name"
     label="Label with placeholder"
@@ -44,7 +29,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with label, description and placeholder">
+<div class="playground" title="should render with label, description and placeholder">
   <p-input-url
     name="some-name"
     label="Label with description and placeholder"
@@ -56,11 +41,11 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with loading indicator">
+<div class="playground" title="should render with loading indicator">
   <p-input-url name="some-name" label="Some label" loading="true" class="a11ytree-snapshot-test"></p-input-url>
 </div>
 
-<div class="playground light" title="should render without label and without description">
+<div class="playground" title="should render without label and without description">
   <p-input-url
     name="some-name"
     label="Some label"
@@ -73,7 +58,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with responsive label and description">
+<div class="playground" title="should render with responsive label and description">
   <p-input-url
     name="some-name"
     label="Label responsive"
@@ -85,7 +70,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render in required state">
+<div class="playground" title="should render in required state">
   <p-input-url
     name="some-name"
     label="Required"
@@ -104,7 +89,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render in disabled state">
+<div class="playground" title="should render in disabled state">
   <p-input-url
     name="some-name"
     label="Disabled"
@@ -116,7 +101,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with placeholder in disabled state">
+<div class="playground" title="should render with placeholder in disabled state">
   <p-input-url
     name="some-name"
     label="Disabled placeholder"
@@ -127,7 +112,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with readonly state">
+<div class="playground" title="should render with readonly state">
   <p-input-url
     name="some-name"
     label="Readonly"
@@ -140,7 +125,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-input-url
     name="some-name"
     label="Error with message"
@@ -151,7 +136,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with error state and no error message">
+<div class="playground" title="should render with error state and no error message">
   <p-input-url
     name="some-name"
     label="Error without message"
@@ -161,7 +146,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-input-url
     name="some-name"
     label="Success with message"
@@ -173,7 +158,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with success state and no success message">
+<div class="playground" title="should render with success state and no success message">
   <p-input-url
     name="some-name"
     label="Success without message"
@@ -183,7 +168,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with default state and no message">
+<div class="playground" title="should render with default state and no message">
   <p-input-url
     name="some-name"
     label="Default without message"
@@ -194,7 +179,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render label, description and message by slotted content with error state">
+<div class="playground" title="should render label, description and message by slotted content with error state">
   <p-input-url name="some-name" state="error" placeholder="https://porsche.com/" indicator="true" max-length="20">
     <span slot="label">
       <span>
@@ -218,7 +203,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render label, description and message by slotted content with success state"
 >
   <p-input-url name="some-name" state="success" placeholder="https://porsche.com/" indicator="true" max-length="20">
@@ -243,7 +228,7 @@
   </p-input-url>
 </div>
 
-<div class="playground light" title="should render with multiline label, description, message and text">
+<div class="playground" title="should render with multiline label, description, message and text">
   <p-input-url
     name="some-name"
     label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
@@ -257,7 +242,7 @@
   ></p-input-url>
 </div>
 
-<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+<div class="playground" title="should render with ellipsis and min-width in a smaller container">
   <div style="width: 0">
     <p-input-url
       label="Some label"
@@ -276,7 +261,7 @@
   </div>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in compact mode">
+<div class="playground auto-layout-inline" title="should render in compact mode">
   <p-input-url
     label="Some label"
     compact="true"
@@ -318,72 +303,7 @@
   <p-input-url label="Some label" compact="true" name="some-name" loading="true"></p-input-url>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-input-url class="scaling-0" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
-  <p-input-url
-    class="scaling-0"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
-  <p-input-url class="scaling-0" label="Some label" name="some-name" loading="true"></p-input-url>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-input-url class="scaling-0-5" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
-  <p-input-url
-    class="scaling-0-5"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
-  <p-input-url class="scaling-0-5" label="Some label" name="some-name" loading="true"></p-input-url>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-input-url class="scaling-0-8" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
-  <p-input-url
-    class="scaling-0-8"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
-  <p-input-url class="scaling-0-8" label="Some label" name="some-name" loading="true"></p-input-url>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-input-url class="scaling-1" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
-  <p-input-url
-    class="scaling-1"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
-  <p-input-url class="scaling-1" label="Some label" name="some-name" loading="true"></p-input-url>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-input-url class="scaling-2" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
-  <p-input-url
-    class="scaling-2"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
-  <p-input-url class="scaling-2" label="Some label" name="some-name" loading="true"></p-input-url>
-</div>
-
-<div class="playground light" title="should render with slot start">
+<div class="playground" title="should render with slot start">
   <p-input-url
     name="some-name"
     label="Label"
@@ -395,13 +315,13 @@
   </p-input-url>
 </div>
 
-<div class="playground light" title="should render with slot end">
+<div class="playground" title="should render with slot end">
   <p-input-url name="some-name" label="Label" value="https://designsystem.porsche.com/">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-url>
 </div>
 
-<div class="playground light" title="should render with slot end, controls and loading indicator">
+<div class="playground" title="should render with slot end, controls and loading indicator">
   <p-input-url
     name="some-name"
     label="Label"
@@ -413,3 +333,16 @@
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-url>
 </div>
+
+<div class="playground" title="should render with label and label-after slot">
+  <p-input-url name="some-name" label="Label" value="https://designsystem.porsche.com/">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-input-url>
+</div>
+
+<div class="playground" title="should render with multiline label and label-after slot">
+  <p-input-url name="some-name" label="Some label dolor sit amet, consetetur" value="https://designsystem.porsche.com/" style="width: 15rem">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-input-url>
+</div>
+

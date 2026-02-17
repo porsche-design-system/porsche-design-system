@@ -1,0 +1,18 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { skeletonScssStory } from '@/app/scss/skeleton/examples/skeleton.stories';
+
+export const metadata = {
+  title: 'SCSS: Skeleton - Porsche Design System',
+  description: 'Learn about the SCSS skeleton style of our design language and how to use it.',
+};
+
+# Skeleton
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides a SCSS Mixins for the skeleton style.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
+
+<ComponentStory story={skeletonScssStory} showCodeBlock={false} />

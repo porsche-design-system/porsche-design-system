@@ -1,162 +1,1601 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" class="bg-surface">
   <head>
     <meta charset="utf-8" />
-    <title>Porsche Design System - Playground</title>
+    <title>Playground</title>
     <base href="/" />
-
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="http://localhost:3001/styles/font-face.css" rel="stylesheet" type="text/css" />
-    <script nomodule src="build/porsche-design-system.js"></script>
-    <script src="build/porsche-design-system.esm.js" type="module"></script>
-    <!-- to pass partial validation via validateGetInitialStylesUsage() -->
-    <style data-pds-initial-styles>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      /* Playground */
-      .playground {
-        /* TODO: we should generate background colors with scss or js styles package */
-        --theme-light-background-base: #fff;
-        --theme-light-background-surface: #eeeff2;
-        --theme-dark-background-base: #0e0e12;
-        --theme-dark-background-surface: #212225;
-        padding: 16px;
-      }
-
-      .playground.light,
-      .playground.auto {
-        background: var(--theme-light-background-base);
-      }
-
-      .playground.light.surface,
-      .playground.auto.surface {
-        background: var(--theme-light-background-surface);
-      }
-
-      .playground.dark {
-        background: var(--theme-dark-background-base);
-      }
-
-      .playground.dark.surface {
-        background: var(--theme-dark-background-surface);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .playground.auto {
-          background: var(--theme-dark-background-base);
-        }
-
-        .playground.auto.surface {
-          background: var(--theme-dark-background-surface);
-        }
-      }
-
-      .playground.auto-layout-inline,
-      .playground.auto-layout-block {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 16px;
-      }
-
-      .playground.auto-layout-inline {
-        flex-direction: row;
-      }
-
-      .playground.auto-layout-block {
-        flex-direction: column;
-      }
-
-      .playground[title]::before {
-        content: attr(title);
-        display: block;
-        width: 100%;
-        font: 12px/16px 'Porsche Next';
-        color: deeppink;
-        text-align: left;
-      }
-
-      .playground:not([class*='auto-layout'])::before {
-        margin-bottom: 16px;
+    <script nomodule src="/build/porsche-design-system.js"></script>
+    <script src="/build/porsche-design-system.esm.js" type="module"></script>
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <style>
+      .legacy {
+        --_p-legacy-radius-small: 4px;
+        --_p-legacy-radius-medium: 8px;
+        --_p-legacy-radius-large: 12px;
       }
     </style>
   </head>
   <body>
-    <header dir="ltr">
-      <h1>Porsche Design System - Playground</h1>
 
-      <select id="theme" onchange="updateRoute({theme: this.value})">
-        <option disabled selected>Select a theme</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-        <option value="auto">Auto</option>
-      </select>
+  <p-canvas sidebar-start-open="true" sidebar-end-open="true">
+    <a slot="title" href="#">Playground</a>
 
-      <select id="dir" onchange="updateRoute({dir: this.value})">
-        <option disabled selected>Select a direction</option>
-        <option value="ltr">LTR (left-to-right)</option>
-        <option value="rtl">RTL (right-to-left)</option>
-        <option value="auto">Auto</option>
-      </select>
-    </header>
+    <p-button
+      slot="header-end"
+      icon="configurate"
+      variant="secondary"
+      compact="true"
+      hide-label="true"
+      onclick="document.querySelector('p-canvas').sidebarEndOpen = true;"
+    >Open sidebar
+    </p-button>
 
-    <main></main>
+    <form slot="sidebar-start" class="grid gap-fluid-sm" onreset="resetComponentVisibility()">
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs">
+        <p-heading tag="h3" size="medium">Brand</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'brand')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Crest" name="crest" data-section="brand"></p-checkbox>
+      <p-checkbox label="Wordmark" name="wordmark" data-section="brand"></p-checkbox>
+      <p-checkbox label="Model Signature" name="model-signature" data-section="brand"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Common</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'common')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Accordion" name="accordion" data-section="common"></p-checkbox>
+      <p-checkbox label="Button" name="button" data-section="common"></p-checkbox>
+      <p-checkbox label="Button Pure" name="button-pure" data-section="common"></p-checkbox>
+      <p-checkbox label="Button Tile" name="button-tile" data-section="common"></p-checkbox>
+      <p-checkbox label="Carousel" name="carousel" data-section="common"></p-checkbox>
+      <p-checkbox label="Divider" name="divider" data-section="common"></p-checkbox>
+      <p-checkbox label="Flag" name="flag" data-section="common"></p-checkbox>
+      <p-checkbox label="Scroller" name="scroller" data-section="common"></p-checkbox>
+      <p-checkbox label="Stepper Horizontal" name="stepper-horizontal" data-section="common"></p-checkbox>
+      <p-checkbox label="Table" name="table" data-section="common"></p-checkbox>
+      <p-checkbox label="Tag" name="tag" data-section="common"></p-checkbox>
+      <p-checkbox label="Tag Dismissible" name="tag-dismissible" data-section="common"></p-checkbox>
+      <p-checkbox label="Text List" name="text-list" data-section="common"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Feedback</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'feedback')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Spinner" name="spinner" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Inline Notification" name="inline-notification" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Toast" name="toast" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Banner" name="banner" data-section="feedback"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Navigation</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'navigation')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Link" name="link" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Link Pure" name="link-pure" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Link Tile" name="link-tile" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Link Tile Product" name="link-tile-product" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Pagination" name="pagination" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Tabs" name="tabs" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Tabs Bar" name="tabs-bar" data-section="navigation"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Dialog</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'dialog')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Drilldown" name="drilldown" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Modal" name="modal" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Flyout" name="flyout" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Sheet" name="sheet" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Popover" name="popover" data-section="dialog"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Typography</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'typography')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Display" name="display" data-section="typography"></p-checkbox>
+      <p-checkbox label="Heading" name="heading" data-section="typography"></p-checkbox>
+      <p-checkbox label="Text" name="text" data-section="typography"></p-checkbox>
+      <p-checkbox label="Icon" name="icon" data-section="typography"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Form</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'form')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Checkbox" name="checkbox" data-section="form"></p-checkbox>
+      <p-checkbox label="Fieldset" name="fieldset" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Date" name="input-date" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Email" name="input-email" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Text" name="input-text" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Tel" name="input-tel" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Month" name="input-month" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Number" name="input-number" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Password" name="input-password" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Search" name="input-search" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Time" name="input-time" data-section="form"></p-checkbox>
+      <p-checkbox label="Input URL" name="input-url" data-section="form"></p-checkbox>
+      <p-checkbox label="Input Week" name="input-week" data-section="form"></p-checkbox>
+      <p-checkbox label="Multi Select" name="multi-select" data-section="form"></p-checkbox>
+      <p-checkbox label="Pin Code" name="pin-code" data-section="form"></p-checkbox>
+      <p-checkbox label="Radio Group" name="radio-group" data-section="form"></p-checkbox>
+      <p-checkbox label="Segmented Control" name="segmented-control" data-section="form"></p-checkbox>
+      <p-checkbox label="Select" name="select" data-section="form"></p-checkbox>
+      <p-checkbox label="Switch" name="switch" data-section="form"></p-checkbox>
+      <p-checkbox label="Textarea" name="textarea" data-section="form"></p-checkbox>
+      <p-button class="mt-fluid-md" type="reset" variant="secondary">Reset</p-button>
+    </form>
+
+    <div id="main" class="grid gap-fluid-md grid-cols-3">
+      <div data-card="crest">
+        <p-crest href="#"></p-crest>
+      </div>
+      <div data-card="wordmark">
+        <p-wordmark class="w-full" href="#"></p-wordmark>
+      </div>
+      <div data-card="model-signature">
+        <p-model-signature model="718" color="primary"></p-model-signature>
+        <p-model-signature model="911" color="contrast-high"></p-model-signature>
+        <p-model-signature model="boxster" color="contrast-medium"></p-model-signature>
+        <p-model-signature model="cayenne" color="contrast-low"></p-model-signature>
+        <p-model-signature model="cayman" color="contrast-low"></p-model-signature>
+        <p-model-signature model="gt3-rs" color="contrast-low"></p-model-signature>
+        <p-model-signature model="gt3" color="contrast-low"></p-model-signature>
+        <p-model-signature model="gts" color="contrast-low"></p-model-signature>
+        <p-model-signature model="macan" color="contrast-low"></p-model-signature>
+        <p-model-signature model="panamera" color="contrast-low"></p-model-signature>
+        <p-model-signature model="taycan" color="contrast-low"></p-model-signature>
+        <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
+        <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
+      </div>
+      <div data-card="accordion">
+        <p-accordion heading="Some heading">
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion heading="Some heading" size="medium">
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion heading="Some heading" size="medium" sticky="true">
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+      </div>
+      <div data-card="button">
+        <p-button variant="primary">Some label</p-button>
+        <p-button variant="secondary">Some label</p-button>
+        <p-button variant="primary" icon="car">Some label</p-button>
+        <p-button variant="secondary" icon="car">Some label</p-button>
+        <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
+        <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
+        <p-button variant="primary" icon="car" loading="true">Some label</p-button>
+        <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
+        <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
+        <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
+      </div>
+      <div data-card="button-pure">
+        <p-button-pure size="x-large" active="true">Some label</p-button-pure>
+        <p-button-pure size="large">Some label</p-button-pure>
+        <p-button-pure size="medium">Some label</p-button-pure>
+        <p-button-pure size="small">Some label</p-button-pure>
+        <p-button-pure size="small" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" icon="copy">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" icon="copy" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" icon="copy" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" stretch="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" stretch="true" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" stretch="true" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="small" icon="like" hide-label="true">Some label</p-button-pure>
+        <p-button-pure size="small" icon="like" hide-label="true" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="x-small">Some label</p-button-pure>
+        <p-button-pure size="xx-small">Some label</p-button-pure>
+      </div>
+      <div data-card="button-tile">
+        <p-button-tile aspect-ratio="3/4" label="Some label" description="Some description">
+          <img src="/assets/cayenne.png" alt="Some image description" />
+        </p-button-tile>
+        <p-button-tile weight="regular" size="large" gradient="true" align="top" aspect-ratio="9/16" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-dark.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+        <p-button-tile gradient="true" aspect-ratio="auto" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+        <p-button-tile disabled="true" gradient="true" aspect-ratio="3/4" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+        <p-button-tile loading="true" gradient="true" aspect-ratio="3/4" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+      </div>
+      <div data-card="carousel">
+        <button class="bg-frosted backdrop-blur-frosted p-fluid-sm rounded-xl transition-colors  cursor-pointer hover:bg-frosted-soft focus-visible:outline outline-focus outline-offset-2" popovertarget="popover-carousel">Show Carousel</button>
+        <div popover id="popover-carousel" class="w-screen h-screen bg-frosted backdrop-blur-frosted space-y-fluid-lg py-fluid-lg">
+          <p-carousel heading="Some heading" description="Some description" pagination="true">
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+          </p-carousel>
+          <p-carousel slides-per-page="2" pagination="true">
+            <p-heading slot="heading" tag="h2" size="x-large">Some heading</p-heading>
+            <p-scroller slot="controls" class="space-x-fluid-sm">
+              <p-tag variant="primary">Some content</p-tag>
+              <p-tag variant="secondary">Some content</p-tag>
+              <p-tag variant="info">Some content</p-tag>
+              <p-tag variant="success">Some content</p-tag>
+              <p-tag variant="warning">Some content</p-tag>
+              <p-tag variant="error">Some content</p-tag>
+            </p-scroller>
+            <p-text slot="description">Some description</p-text>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+          </p-carousel>
+          <p-carousel slides-per-page="3" width="extended" rewind="false" align-header="center" align-controls="center">
+            <p-heading slot="heading" tag="h2" size="x-large">Some heading</p-heading>
+            <p-scroller slot="controls" class="space-x-fluid-sm">
+              <p-tag variant="primary">Some content</p-tag>
+              <p-tag variant="secondary">Some content</p-tag>
+              <p-tag variant="info">Some content</p-tag>
+              <p-tag variant="success">Some content</p-tag>
+              <p-tag variant="warning">Some content</p-tag>
+              <p-tag variant="error">Some content</p-tag>
+            </p-scroller>
+            <p-text slot="description">Some description</p-text>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+          </p-carousel>
+          <p-carousel slides-per-page="4" focus-on-center-slide="true" gradient="true" rewind="true" pagination="true">
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 5</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 6</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 7</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 8</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 9</div>
+          </p-carousel>
+          <p-carousel slides-per-page="auto" pagination="true" trim-space="true">
+            <div class="grid place-content-center w-[10vw] h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center w-[200px] h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center w-[100px] h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center w-[40vw] h-[150px] bg-surface prose-text-sm">Slide 4</div>
+            <div class="grid place-content-center w-[150px] h-[150px] bg-surface prose-text-sm">Slide 5</div>
+            <div class="grid place-content-center w-[50vw] h-[150px] bg-surface prose-text-sm">Slide 6</div>
+          </p-carousel>
+        </div>
+      </div>
+      <div data-card="divider">
+        <p-divider class="w-full" color="contrast-high"></p-divider>
+        <p-divider class="w-full" color="contrast-medium"></p-divider>
+        <p-divider class="w-full" color="contrast-low"></p-divider>
+        <p-divider class="w-full" color="contrast-lower"></p-divider>
+        <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
+      </div>
+      <div data-card="flag">
+        <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="large" name="ch" aria="{'aria-label': 'Flag of Switzerland'}"></p-flag>
+        <p-flag size="medium" name="mc" aria="{'aria-label': 'Flag of Monaco'}"></p-flag>
+        <p-flag size="small" name="es" aria="{'aria-label': 'Flag of Spain'}"></p-flag>
+        <p-flag size="x-small" name="pt" aria="{'aria-label': 'Flag of Portugal'}"></p-flag>
+        <p-flag size="xx-small" name="it" aria="{'aria-label': 'Flag of Italy'}"></p-flag>
+      </div>
+      <div data-card="scroller">
+        <p-scroller class="space-x-fluid-sm">
+          <p-tag variant="primary">Some content</p-tag>
+          <p-tag variant="secondary">Some content</p-tag>
+          <p-tag variant="info">Some content</p-tag>
+          <p-tag variant="success">Some content</p-tag>
+          <p-tag variant="warning">Some content</p-tag>
+          <p-tag variant="error">Some content</p-tag>
+        </p-scroller>
+        <p-scroller class="space-x-fluid-sm" align-scroll-indicator="top">
+          <p-tag variant="primary">Some content</p-tag>
+          <p-tag variant="secondary">Some content</p-tag>
+          <p-tag variant="info">Some content</p-tag>
+          <p-tag variant="success">Some content</p-tag>
+          <p-tag variant="warning">Some content</p-tag>
+          <p-tag variant="error">Some content</p-tag>
+        </p-scroller>
+        <p-scroller class="space-x-fluid-sm" scrollbar="true">
+          <p-tag variant="primary">Some content</p-tag>
+          <p-tag variant="secondary">Some content</p-tag>
+          <p-tag variant="info">Some content</p-tag>
+          <p-tag variant="success">Some content</p-tag>
+          <p-tag variant="warning">Some content</p-tag>
+          <p-tag variant="error">Some content</p-tag>
+        </p-scroller>
+      </div>
+      <div data-card="stepper-horizontal">
+        <p-stepper-horizontal>
+          <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+        </p-stepper-horizontal>
+        <p-stepper-horizontal size="medium">
+          <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+        </p-stepper-horizontal>
+      </div>
+      <div data-card="table">
+        <p-table caption="Some caption">
+          <p-table-head>
+            <p-table-head-row>
+              <p-table-head-cell>Model</p-table-head-cell>
+              <p-table-head-cell>Date</p-table-head-cell>
+              <p-table-head-cell>Purchase Intention</p-table-head-cell>
+              <p-table-head-cell>Status</p-table-head-cell>
+              <p-table-head-cell>Lead ID</p-table-head-cell>
+            </p-table-head-row>
+          </p-table-head>
+          <p-table-body>
+            <p-table-row>
+              <p-table-cell>718 Cayman</p-table-cell>
+              <p-table-cell>23.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Won</p-table-cell>
+              <p-table-cell>0000824402</p-table-cell>
+            </p-table-row>
+            <p-table-row>
+              <p-table-cell>Panamera 4S</p-table-cell>
+              <p-table-cell>19.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Lost</p-table-cell>
+              <p-table-cell>0000824409</p-table-cell>
+            </p-table-row>
+          </p-table-body>
+        </p-table>
+        <p-table>
+          <p-heading slot="caption" size="large">Some caption</p-heading>
+          <p-table-head>
+            <p-table-head-row>
+              <p-table-head-cell>Model</p-table-head-cell>
+              <p-table-head-cell>Date</p-table-head-cell>
+              <p-table-head-cell>Purchase Intention</p-table-head-cell>
+              <p-table-head-cell>Status</p-table-head-cell>
+              <p-table-head-cell>Lead ID</p-table-head-cell>
+            </p-table-head-row>
+          </p-table-head>
+          <p-table-body>
+            <p-table-row>
+              <p-table-cell>718 Cayman</p-table-cell>
+              <p-table-cell>23.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Won</p-table-cell>
+              <p-table-cell>0000824402</p-table-cell>
+            </p-table-row>
+            <p-table-row>
+              <p-table-cell>Panamera 4S</p-table-cell>
+              <p-table-cell>19.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Lost</p-table-cell>
+              <p-table-cell>0000824409</p-table-cell>
+            </p-table-row>
+          </p-table-body>
+        </p-table>
+      </div>
+      <div data-card="tag">
+        <p-tag icon="car" variant="primary">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="secondary">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="info">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="success">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="warning">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="error">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg">
+          Some label
+        </p-tag>
+      </div>
+      <div data-card="tag-dismissible">
+        <p-tag-dismissible>Some label</p-tag-dismissible>
+        <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
+      </div>
+      <div data-card="text-list">
+        <p-text-list type="unordered">
+          <p-text-list-item>ABC</p-text-list-item>
+          <p-text-list-item>
+            ABC
+            <p-text-list>
+              <p-text-list-item>ABC</p-text-list-item>
+              <p-text-list-item>ABC</p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+          <p-text-list-item>ABC</p-text-list-item>
+        </p-text-list>
+        <p-text-list type="numbered">
+          <p-text-list-item>ABC</p-text-list-item>
+          <p-text-list-item>
+            ABC
+            <p-text-list>
+              <p-text-list-item>ABC</p-text-list-item>
+              <p-text-list-item>ABC</p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+          <p-text-list-item>ABC</p-text-list-item>
+        </p-text-list>
+        <p-text-list type="alphabetically">
+          <p-text-list-item>ABC</p-text-list-item>
+          <p-text-list-item>
+            ABC
+            <p-text-list>
+              <p-text-list-item>ABC</p-text-list-item>
+              <p-text-list-item>ABC</p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+          <p-text-list-item>ABC</p-text-list-item>
+        </p-text-list>
+      </div>
+      <div data-card="spinner">
+        <p-spinner aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="medium" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="w-[24px] h-[24px]" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+      </div>
+      <div data-card="inline-notification">
+        <p-inline-notification heading="Some heading" heading-tag="h2" description="Some content"></p-inline-notification>
+        <p-inline-notification dismiss-button="false">
+          <p-heading slot="heading" tag="h2" size="large">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification>
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="success">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="warning">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="error">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car" action-loading="true">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+      </div>
+      <div data-card="banner">
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (Basic)</p-button>
+        <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (without dismiss button)</p-button>
+        <p-banner dismiss-button="false">
+          <p-heading slot="heading" tag="h2" size="large">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with success)</p-button>
+        <p-banner state="success">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with warning)</p-button>
+        <p-banner state="warning">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with error)</p-button>
+        <p-banner state="error">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+      </div>
+      <div data-card="toast">
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content' })">Open Toast (Basic)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'success' })">Open Toast (Success)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'warning' })">Open Toast (Warning)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'error' })">Open Toast (Error)</p-button>
+        <p-toast></p-toast>
+      </div>
+      <div data-card="link">
+        <p-link variant="primary">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="secondary">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="primary" icon="car">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="secondary" icon="car">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="primary" icon="car" hide-label="true">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="secondary" icon="car" hide-label="true">
+          <a href="#">Some label</a>
+        </p-link>
+      </div>
+      <div data-card="link-pure">
+        <p-link-pure size="x-large" underline="true" active="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="large" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="medium" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="small" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="x-small" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="xx-small" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+      </div>
+      <div data-card="link-tile">
+        <p-link-tile aspect-ratio="3/4" href="https://porsche.com" target="_blank" label="Some label" description="Some description">
+          <img src="/assets/cayenne.png" alt="Some image description" />
+        </p-link-tile>
+        <p-link-tile weight="regular" size="large" gradient="true" align="top" aspect-ratio="9/16" href="https://porsche.com" target="_blank" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-dark.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-link-tile>
+        <p-link-tile gradient="true" aspect-ratio="auto" href="https://porsche.com" target="_blank" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-link-tile>
+      </div>
+      <div data-card="link-tile-product">
+        <p-link-tile-product heading="Some heading" price="718,00 €" liked="true" href="https://porsche.com" target="_blank">
+          <img src="/assets/cayenne.png" alt="Some alt text" />
+        </p-link-tile-product>
+        <p-link-tile-product aspect-ratio="9/16" heading="Some heading" price="718,00 €" price-original="911,00 €" description="Some description">
+          <a slot="anchor" href="https://porsche.com" target="_blank">Some label</a>
+          <p-tag slot="header">New</p-tag>
+          <img src="/assets/cayenne.png" alt="Some alt text" />
+        </p-link-tile-product>
+      </div>
+      <div data-card="pagination">
+        <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+        <p-pagination total-items-count="500" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
+      </div>
+      <div data-card="tabs">
+        <p-tabs>
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs size="medium">
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs size="medium" weight="semi-bold">
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+      </div>
+      <div data-card="tabs-bar">
+        <p-tabs-bar>
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+        </p-tabs-bar>
+        <p-tabs-bar size="medium">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+        </p-tabs-bar>
+        <p-tabs-bar size="medium" weight="semi-bold">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+        </p-tabs-bar>
+      </div>
+      <div data-card="modal">
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
+        <p-modal aria="{'aria-label': 'Some heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text>Some content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+        </p-modal>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
+        <p-modal background="surface" aria="{'aria-label': 'Some heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-xl">Some content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+        </p-modal>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
+        <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some heading'}">
+          <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
+            <img class="w-full h-full object-cover rounded-xl" src="/assets/interior.jpg" alt="" />
+          </div>
+        </p-modal>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
+        <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some heading'}" backdrop="shading">
+          <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+        </p-modal>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
+        <p-modal aria="{'aria-label': 'Some heading'}" fullscreen="true">
+          <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+            <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+        </p-modal>
+      </div>
+      <div data-card="flyout">
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
+        <p-flyout aria="{'aria-label': 'Some heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text>Some content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
+        <p-flyout background="surface" aria="{'aria-label': 'Some heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-xl">Some content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
+        <p-flyout class="[--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" backdrop="shading" aria="{'aria-label': 'Some heading'}">
+          <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[320px]">
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
+          <p-heading slot="header" tag="h2">Some Header</p-heading>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" position="start" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
+          <p-heading slot="header" tag="h2">Some Header</p-heading>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+        </p-flyout>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
+        <p-flyout aria="{'aria-label': 'Some heading'}" fullscreen="true">
+          <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[max(240px,40vh)]">
+            <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+      </div>
+      <div data-card="sheet">
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
+        <p-sheet aria="{'aria-label': 'Some heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-sheet>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
+        <p-sheet background="surface" aria="{'aria-label': 'Some heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
+          <p-text class="p-fluid-sm bg-canvas rounded-xl">Some content</p-text>
+        </p-sheet>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
+        <p-sheet aria="{'aria-label': 'Some heading'}">
+          <div slot="header" class="-mt-(--ref-p-sheet-pt) -mx-(--ref-p-sheet-px) h-[320px]">
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-sheet>
+      </div>
+      <div data-card="popover">
+        <p-popover title="bottom">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover title="top" direction="top">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover title="right" direction="right">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover title="left" direction="left">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover>
+          <p-button slot="button" variant="secondary" hide-label="true" icon="car">More information</p-button>
+          <p-text>Some content</p-text>
+        </p-popover>
+      </div>
+      <div data-card="drilldown">
+        <nav aria-label="Main">
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Basic)</p-button>
+          <p-drilldown>
+            <p-drilldown-item identifier="id-1" label="Some label (1)">
+              <p-drilldown-item identifier="id-1-1" label="Some label (1-1)">
+                <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+                <p-drilldown-link>
+                  <a href="#">Some anchor (1-1)</a>
+                </p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-1-2" label="Some label (1-2)">
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-item identifier="id-1-2-1" label="Some label (1-2-1)">
+                  <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
+                  <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
+                </p-drilldown-item>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2" label="Some label (2)">
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-3" label="Some label (3)">
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-4" label="Some label (4)">
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-5" label="Some label (5)">
+              <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
+            </p-drilldown-item>
+          </p-drilldown>
+        </nav>
+
+        <nav aria-label="Main">
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Custom Layout)</p-button>
+          <p-drilldown class="[--p-drilldown-grid-template:repeat(5,auto)_minmax(0,1fr)/auto]" active-identifier="id-1">
+            <p-drilldown-item identifier="id-1" label="Motorsport" class="[--p-drilldown-grid-template:auto/repeat(2,minmax(0,1fr))] [--p-drilldown-gap:0px_16px]">
+              <p-drilldown-item identifier="id-1-1" label="718">
+                <p-model-signature slot="header" model="718"></p-model-signature>
+                <p-button-tile slot="button" gradient="true" label="Some label" description="718" weight="semi-bold" compact="true" aspectRatio="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                  <img src="/assets/interior.jpg" alt="" />
+                </p-button-tile>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-1-2" label="911">
+                <p-model-signature slot="header" model="911"></p-model-signature>
+                <p-button-tile slot="button" gradient="true" label="Some label" description="911" weight="semi-bold" compact="true" aspectRatio="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                  <img src="/assets/interior.jpg" alt="" />
+                </p-button-tile>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#" aria-current="page">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2" label="Some label">
+              <p-drilldown-item identifier="id-2-1" label="Some label">
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-2-2" label="Some label">
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-3" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-4" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-5" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-link href="#" variant="secondary" icon="external" class="self-end">Some external anchor</p-link>
+          </p-drilldown>
+        </nav>
+      </div>
+      <div data-card="display">
+        <p-display tag="h3" size="large">ABC</p-display>
+        <p-display tag="h3" size="medium">ABC</p-display>
+        <p-display tag="h3" size="small">ABC</p-display>
+        <p-display tag="h3" size="small" color="inherit" class="text-[deeppink]">ABC</p-display>
+      </div>
+      <div data-card="heading">
+        <p-heading tag="h3" size="xx-large">ABC</p-heading>
+        <p-heading tag="h3" size="x-large">ABC</p-heading>
+        <p-heading tag="h3" size="large">ABC</p-heading>
+        <p-heading tag="h3" size="medium">ABC</p-heading>
+        <p-heading tag="h3" size="small">ABC</p-heading>
+        <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
+      </div>
+      <div data-card="text">
+        <p-text color="primary" size="x-large">ABC</p-text>
+        <p-text color="contrast-high" size="large">ABC</p-text>
+        <p-text color="contrast-medium" size="medium">ABC</p-text>
+        <p-text color="contrast-low" size="small">ABC</p-text>
+        <p-text color="contrast-low" size="x-small">ABC</p-text>
+        <p-text color="success" size="xx-small">ABC</p-text>
+        <p-text color="warning" size="xx-small">ABC</p-text>
+        <p-text color="error" size="xx-small">ABC</p-text>
+        <p-text color="info" size="xx-small">ABC</p-text>
+        <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
+      </div>
+      <div data-card="icon">
+        <p-icon name="car" size="x-large" color="primary"></p-icon>
+        <p-icon name="car" size="large" color="contrast-high"></p-icon>
+        <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
+        <p-icon name="car" size="small" color="contrast-low"></p-icon>
+        <p-icon name="car" size="x-small" color="success"></p-icon>
+        <p-icon name="car" size="xx-small" color="warning"></p-icon>
+        <p-icon name="car" size="xx-small" color="error"></p-icon>
+        <p-icon name="car" size="xx-small" color="info"></p-icon>
+        <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
+        <p-icon size="large" source="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='black'/></svg>"></p-icon>
+      </div>
+      <div data-card="checkbox">
+        <p-checkbox class="self-start" label="Some label" name="some-name"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" indeterminate="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" loading="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" disabled="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
+        <label onclick="event.preventDefault();">Some wrapped label<p-checkbox class="self-start" name="some-name"></p-checkbox></label>
+      </div>
+      <div data-card="fieldset">
+        <p-fieldset class="w-full" label="Some legend label">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+        <p-fieldset class="w-full" label="Some legend label" label-size="small">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+        <p-fieldset class="w-full" label="Some legend label" state="success" message="Some message.">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+        <p-fieldset class="w-full" label="Some legend label" state="error" message="Some message.">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+      </div>
+      <div data-card="input-date">
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25"></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
+      </div>
+      <div data-card="input-email">
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-email>
+      </div>
+      <div data-card="input-text">
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100"></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" loading="true"></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" disabled="true"></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" read-only="true"></p-input-text>
+      </div>
+      <div data-card="input-tel">
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value"></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" loading="true"></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="success" message="Some message."></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="error" message="Some message."></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" disabled="true"></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" read-only="true"></p-input-tel>
+      </div>
+      <div data-card="input-month">
+        <p-input-month class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2018-05" controls="true"></p-input-month>
+        <p-input-month class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2018-05" controls="true" loading="true"></p-input-month>
+        <p-input-month class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2018-05" controls="true" state="success" message="Some message."></p-input-month>
+        <p-input-month class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2018-05" controls="true" state="error" message="Some message."></p-input-month>
+        <p-input-month class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2018-05" controls="true" disabled="true"></p-input-month>
+        <p-input-month class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2018-05" controls="true" read-only="true"></p-input-month>
+      </div>
+      <div data-card="input-number">
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true"></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" loading="true"></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="success" message="Some message."></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="error" message="Some message."></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" disabled="true"></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" read-only="true"></p-input-number>
+      </div>
+      <div data-card="input-password">
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true"></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" loading="true"></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="success" message="Some message."></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="error" message="Some message."></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" disabled="true"></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" read-only="true"></p-input-password>
+      </div>
+      <div data-card="input-search">
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true"></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" loading="true"></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="success" message="Some message."></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="error" message="Some message."></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" disabled="true"></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" read-only="true"></p-input-search>
+      </div>
+      <div data-card="input-time">
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11"></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" state="success" message="Some message."></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" state="error" message="Some message."></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" disabled="true"></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" read-only="true"></p-input-time>
+      </div>
+      <div data-card="input-url">
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
+      </div>
+      <div data-card="input-week">
+        <p-input-week class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2017-W01" controls="true"></p-input-week>
+        <p-input-week class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2017-W01" controls="true" loading="true"></p-input-week>
+        <p-input-week class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2017-W01" controls="true" state="success" message="Some message."></p-input-week>
+        <p-input-week class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2017-W01" controls="true" state="error" message="Some message."></p-input-week>
+        <p-input-week class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2017-W01" controls="true" disabled="true"></p-input-week>
+        <p-input-week class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="2017-W01" controls="true" read-only="true"></p-input-week>
+      </div>
+      <div data-card="multi-select">
+        <p-multi-select class="w-full" label="Some label" name="some-name">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+        <p-multi-select class="w-full" label="Some label" name="some-name" state="success" message="Some message.">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+        <p-multi-select class="w-full" label="Some label" name="some-name" state="error" message="Some message.">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+        <p-multi-select class="w-full" label="Some label" name="some-name" disabled="true">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+      </div>
+      <div data-card="pin-code">
+        <p-pin-code class="w-full" label="Some label"></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" loading="true"></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" state="success" message="Some message."></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" state="error" message="Some message."></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" disabled="true"></p-pin-code>
+      </div>
+      <div data-card="radio-group">
+        <p-radio-group class="self-start" name="options" value="b" label="Some label">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" loading="true">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" state="success" message="Some message.">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" state="error" message="Some error.">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" disabled="true">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+      </div>
+      <div data-card="segmented-control">
+        <p-segmented-control class="w-full">
+          <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+          <p-segmented-control-item value="2">2</p-segmented-control-item>
+          <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+          <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
+        </p-segmented-control>
+        <p-segmented-control class="w-full" disabled="true">
+          <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+          <p-segmented-control-item value="2">2</p-segmented-control-item>
+          <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+          <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
+        </p-segmented-control>
+        <p-segmented-control class="w-full">
+          <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+          <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
+          <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+          <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
+        </p-segmented-control>
+      </div>
+      <div data-card="select">
+        <p-select class="w-full" label="Some label" name="some-name" filter="true">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+        <p-select class="w-full" label="Some label" name="some-name" filter="true" state="success" message="Some message.">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+        <p-select class="w-full" label="Some label" name="some-name" filter="true" state="error" message="Some message.">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+        <p-select class="w-full" label="Some label" name="some-name" filter="true" disabled="true">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+      </div>
+      <div data-card="switch">
+        <p-switch class="self-start">Some label</p-switch>
+        <p-switch class="self-start" checked="true">Some label</p-switch>
+        <p-switch class="self-start" loading="true">Some label</p-switch>
+        <p-switch class="self-start" checked="true" loading="true">Some label</p-switch>
+        <p-switch class="self-start" disabled="true">Some label</p-switch>
+        <p-switch class="self-start" checked="true" disabled="true">Some label</p-switch>
+      </div>
+      <div data-card="textarea">
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="1" counter="true" max-length="100"></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="error" message="Some message."></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="false" max-length="100" disabled="true"></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="1" counter="false" max-length="100" read-only="true"></p-textarea>
+      </div>
+    </div>
+
+    <!--<p-text slot="footer" size="xx-small" align="center">© 2025 Dr. Ing. h.c. F. Porsche AG</p-text>-->
+
+    <p-heading slot="sidebar-end-header" tag="h2" size="medium">Settings</p-heading>
+
+    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', legacy: 'modern', background: 'gradient', accent: '#3400f0'})">
+      <p-select name="theme" value="scheme-light-dark" label="Theme" onchange="updateRoute({theme: this.value})">
+        <p-select-option value="scheme-light">Light</p-select-option>
+        <p-select-option value="scheme-dark">Dark</p-select-option>
+        <p-select-option value="scheme-light-dark">Light Dark</p-select-option>
+      </p-select>
+      <p-select name="dir" value="ltr" label="Direction" onchange="updateRoute({dir: this.value})">
+        <p-select-option value="ltr">LTR (left-to-right)</p-select-option>
+        <p-select-option value="rtl">RTL (right-to-left)</p-select-option>
+        <p-select-option value="auto">Auto</p-select-option>
+      </p-select>
+      <p-select name="zoom" value="100%" label="Zoom" onchange="updateRoute({zoom: this.value})">
+        <p-select-option value="100%">100%</p-select-option>
+        <p-select-option value="130%">130%</p-select-option>
+        <p-select-option value="150%">150%</p-select-option>
+        <p-select-option value="200%">200%</p-select-option>
+      </p-select>
+      <p-select name="compact" value="false" label="Compact" onchange="updateRoute({compact: this.value})">
+        <p-select-option value="true">Compact</p-select-option>
+        <p-select-option value="false">Normal</p-select-option>
+      </p-select>
+      <p-select name="animation" value="animated" label="Animation" onchange="updateRoute({animation: this.value})">
+        <p-select-option value="animated">Animated</p-select-option>
+        <p-select-option value="none">No Animation</p-select-option>
+      </p-select>
+      <p-select name="legacy" value="modern" label="Legacy" onchange="updateRoute({legacy: this.value})">
+        <p-select-option value="modern">Modern</p-select-option>
+        <p-select-option value="legacy">Legacy</p-select-option>
+      </p-select>
+      <p-select name="background" value="gradient" label="Background" onchange="updateRoute({'background': this.value})">
+        <p-optgroup label="Colors">
+          <p-select-option value="canvas">Canvas</p-select-option>
+          <p-select-option value="surface">Surface</p-select-option>
+        </p-optgroup>
+        <p-optgroup label="Gradients">
+          <p-select-option value="gradient">Gradient</p-select-option>
+        </p-optgroup>
+        <p-optgroup label="Images">
+          <p-select-option value="mountain">Mountain</p-select-option>
+        </p-optgroup>
+      </p-select>
+      <label>
+        <span class="sr-only">Accent Color</span>
+        <input name="accent" value="#3400f0" type="color" oninput="updateRoute({accent: this.value})" />
+      </label>
+      <p-button type="reset" variant="secondary">Reset</p-button>
+    </form>
+
+    <div slot="background"></div>
+  </p-canvas>
 
     <script>
-      <!-- START: keep this snippet to log component lifecycle events -->
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-        window.addEventListener(`stencil_${x}`, (e) => {
-          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-        })
-      );
+      const toggleCard = (cardName, isVisible) => {
+        const currentComponents = getComponents();
+        let updatedComponents;
 
-      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+        if (isVisible) {
+          // Add component if not already in the list
+          updatedComponents = currentComponents.includes(cardName)
+            ? currentComponents
+            : [...currentComponents, cardName];
+        } else {
+          // Remove component from the list
+          updatedComponents = currentComponents.filter(c => c !== cardName);
+        }
+
+        updateRoute({ components: updatedComponents.join(',') });
+      };
+
+      const resetComponentVisibility = () => {
+        const allComponents = [...document.querySelectorAll('[data-card]')].map(el => el.getAttribute('data-card'));
+        updateRoute({ components: allComponents.join(',') });
+      };
+
+      const toggleSection = (button, sectionName) => {
+        const checkboxes = document.querySelectorAll(`p-checkbox[data-section="${sectionName}"]`);
+        const currentComponents = getComponents();
+
+        // Check if all checkboxes in this section are currently checked
+        const sectionCheckboxNames = [...checkboxes].map(cb => cb.name);
+        const allChecked = sectionCheckboxNames.every(name => currentComponents.includes(name));
+
+        let updatedComponents;
+
+        if (allChecked) {
+          // Deselect all checkboxes in this section
+          updatedComponents = currentComponents.filter(name => !sectionCheckboxNames.includes(name));
+          button.textContent = 'Select all';
+        } else {
+          // Select all checkboxes in this section
+          const componentsToAdd = sectionCheckboxNames.filter(name => !currentComponents.includes(name));
+          updatedComponents = [...currentComponents, ...componentsToAdd];
+          button.textContent = 'Deselect all';
+        }
+
+        updateRoute({ components: updatedComponents.join(',') });
+      };
+
+      const updateSectionButtons = () => {
+        const sections = ['brand', 'common', 'navigation', 'dialog', 'typography', 'form'];
+        const currentComponents = getComponents();
+
+        sections.forEach(sectionName => {
+          const checkboxes = document.querySelectorAll(`p-checkbox[data-section="${sectionName}"]`);
+          const sectionCheckboxNames = [...checkboxes].map(cb => cb.name);
+          const allChecked = sectionCheckboxNames.every(name => currentComponents.includes(name));
+
+          const button = document.querySelector(`button[onclick*="${sectionName}"]`);
+          if (button) {
+            button.textContent = allChecked ? 'Deselect all' : 'Select all';
+          }
+        });
+      };
+
+      // ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      //   window.addEventListener(`stencil_${x}`, (e) => {
+      //     const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+      //     console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+      //   })
+      // );
+
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'scheme-light-dark';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
+      const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
+      const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
+      const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'animated';
+      const getLegacy = () => new URL(document.location).searchParams.get('legacy') || 'modern';
+      const getBackground = () => new URL(document.location).searchParams.get('background') || 'gradient';
+      const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
+      const getComponents = () => {
+        const urlParams = new URL(document.location).searchParams;
+        const components = urlParams.get('components');
+
+        // If no 'components' parameter exists at all, default to all components visible
+        if (!urlParams.has('components')) {
+          return [...document.querySelectorAll('[data-card]')].map(el => el.getAttribute('data-card'));
+        }
+
+        // If 'components' parameter exists but is empty, return empty array (all deselected)
+        if (components === '' || components === null) {
+          return [];
+        }
+
+        return components.split(',').filter(Boolean);
+      };
 
       const updateRoute = (opts) => {
         if (opts) {
           const url = new URL(location);
-          if (opts.pathname) {
-            url.pathname = opts.pathname;
-          }
-          if (opts.theme) {
-            url.searchParams.set('theme', opts.theme);
-          }
-          if (opts.dir) {
-            url.searchParams.set('dir', opts.dir);
+          for (const [key, value] of Object.entries(opts)) {
+            if (value !== undefined && value !== null) {
+              url.searchParams.set(key, value);
+            }
           }
           history.pushState(null, '', url);
         }
 
         const theme = getTheme();
         const dir = getDir();
+        const zoom = getZoom();
+        const compact = getCompact();
+        const animation = getAnimation();
+        const legacy = getLegacy();
+        const background = getBackground();
+        const accent = getAccent();
+        const components = getComponents();
 
-        document.querySelector('html').setAttribute('dir', dir);
-        const mainEl = document.querySelector('main');
-        mainEl.querySelectorAll('.playground').forEach((el) => {
-          el.classList.remove('light', 'dark', 'auto');
-          el.classList.add(theme);
-        });
-
-        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
-      };
-
-      const updateSelect = (id, value) => {
-        if (id && value) {
-          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
+        // Theme
+        document.documentElement.classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
+        document.documentElement.classList.add(theme);
+        // Direction
+        document.documentElement.setAttribute('dir', dir);
+        // Zoom
+        document.documentElement.style.setProperty('font-size', zoom);
+        // Compact
+        for(const el of [...document.querySelectorAll('*')].filter(el => el.tagName.startsWith('P-') && !el.tagName.endsWith('-ITEM') && !el.tagName.endsWith('-OPTION'))) {
+          el.setAttribute('compact', compact);
+        }
+        // Animation
+        document.documentElement.style.setProperty('--p-transition-duration', animation === 'none' ? '0s' : '');
+        document.documentElement.style.setProperty('--p-animation-duration', animation === 'none' ? '0s' : '');
+        // Legacy
+        if (legacy === 'legacy') {
+          document.documentElement.classList.add('legacy');
+        } else {
+          document.documentElement.classList.remove('legacy');
+        }
+        // Background
+        const backgroundMap = {
+          canvas: {
+            app: 'w-full h-full bg-canvas',
+            card: 'bg-surface rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+          surface: {
+            app: 'w-full h-full bg-surface',
+            card: 'bg-canvas rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+          gradient: {
+            app: 'w-full h-full relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-canvas))] before:bg-fixed',
+            card: 'bg-frosted backdrop-blur-frosted rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+          mountain: {
+            app: 'w-full h-full bg-[url(/assets/cabin.webp)] bg-fixed bg-cover bg-center',
+            card: 'bg-frosted backdrop-blur-frosted rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+        };
+        document.querySelector('[slot="background"]').setAttribute('class', backgroundMap[background].app);
+        for (const el of document.querySelectorAll('[data-card]')) {
+          el.setAttribute('class', backgroundMap[background].card);
+        }
+        // Accent
+        document.documentElement.style.setProperty('--accent', accent);
+        // Components visibility
+        for (const card of document.querySelectorAll('[data-card]')) {
+          const cardName = card.getAttribute('data-card');
+          card.style.display = components.includes(cardName) ? '' : 'none';
+        }
+        // Update checkboxes
+        for (const checkbox of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
+          checkbox.checked = components.includes(checkbox.name);
+        }
+        // Update section buttons
+        if (typeof updateSectionButtons === 'function') {
+          updateSectionButtons();
         }
       };
 
-      updateSelect('theme', getTheme());
-      updateSelect('dir', getDir());
-      updateRoute();
+      const updateInput = (name, value) => document.querySelector(`[name="${name}"]`).value = value;
+
+      Promise.all([
+        customElements.whenDefined('p-checkbox'),
+        customElements.whenDefined('p-select')
+      ]).then(() => {
+        updateInput('theme', getTheme());
+        updateInput('dir', getDir());
+        updateInput('zoom', getZoom());
+        updateInput('compact', getCompact());
+        updateInput('animation', getAnimation());
+        updateInput('legacy', getLegacy());
+        updateInput('background', getBackground());
+        updateInput('accent', getAccent());
+
+        for (const checkbox of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
+          checkbox.checked = getComponents().includes(checkbox.name);
+        }
+
+        updateRoute();
+        updateSectionButtons();
+      });
     </script>
-    <!-- /END -->
+
+    <script>
+      for (const el of document.querySelectorAll("p-switch")) {
+        el.addEventListener('update', (e) => e.target.checked = e.detail.checked);
+      }
+
+      for (const el of document.querySelectorAll("p-accordion")) {
+        el.addEventListener('update', (e) => e.target.open = e.detail.open);
+      }
+
+      for (const el of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
+        el.addEventListener('change', (e) => {
+          toggleCard(e.target.name, e.target.checked);
+        });
+      }
+
+      document.querySelector('p-canvas').addEventListener('sidebarStartUpdate', (e) => {
+        e.target.sidebarStartOpen = e.detail.open;
+      });
+      document.querySelector('p-canvas').addEventListener('sidebarEndDismiss', (e) => {
+        e.target.sidebarEndOpen = false;
+      });
+
+      for (const el of document.querySelectorAll("p-button[aria=\"{'aria-haspopup': 'dialog'}\"]")) {
+        el.addEventListener('click', () => {
+          el.nextElementSibling.open = true;
+        });
+        el.nextElementSibling.addEventListener('dismiss', (e) => {
+          e.target.open = false;
+        })
+      }
+
+      for (const el of document.querySelectorAll("p-drilldown")) {
+        el.addEventListener('update', (e) => e.target.activeIdentifier = e.detail.activeIdentifier);
+      }
+
+    </script>
+
   </body>
 </html>

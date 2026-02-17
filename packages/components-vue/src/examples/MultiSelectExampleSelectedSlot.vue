@@ -16,7 +16,7 @@
           <p class="prose-text-2xs m-0">{{ option.description }}</p>
         </div>
         <div class="self-center flex gap-fluid-sm">
-          <PTag v-for="tag in option.tags" :key="tag" color="notification-info-soft" :compact="true">
+          <PTag v-for="tag in option.tags" :key="tag" variant="info" :compact="true">
             {{ tag }}
           </PTag>
         </div>
@@ -85,8 +85,8 @@ const value = ref<string[]>([]);
 const options = ref<Option[]>(optionsData);
 const selectedOptions = ref<Option[]>([]);
 
-function onChange(e: MultiSelectChangeEventDetail) {
-  value.value = e.value;
-  selectedOptions.value = options.value.filter((option) => e.value.includes(option.value));
+function onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
+  value.value = e.detail.value;
+  selectedOptions.value = options.value.filter((option) => e.detail.value.includes(option.value));
 }
 </script>

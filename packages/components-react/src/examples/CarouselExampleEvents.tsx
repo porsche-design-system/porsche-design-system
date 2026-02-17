@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
 import { type CarouselUpdateEventDetail, PCarousel, PText } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
 
 export const CarouselExampleEventsPage = (): JSX.Element => {
   const [lastEventDetail, setLastEventDetail] = useState('none');

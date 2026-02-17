@@ -9,9 +9,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
-import { PDSVersionGroup } from '@/models/pdsVersion';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
   acc[section] = false;
@@ -20,9 +20,10 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
 
 type NavigationProps = {
   readonly pdsVersion: PDSVersionGroup;
+  readonly onNavigate: () => void;
 };
 
-export const Navigation = ({ pdsVersion }: NavigationProps) => {
+export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   const pathname = usePathname();
   const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
 
@@ -55,7 +56,7 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
             heading={category.name as string}
             headingTag="h3"
             compact={true}
-            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
+            className={['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
           >
@@ -70,6 +71,7 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
                     icon="none"
                     stretch={true}
                     active={pathname?.includes(`${page.path}/`)}
+                    onClick={() => onNavigate()}
                   >
                     <Link href={link}>{page.name}</Link>
                   </PLinkPure>

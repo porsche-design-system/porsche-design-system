@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should contain correct values for breakpoints 1`] = `
+[
+  "base",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "xxl",
+]
+`;

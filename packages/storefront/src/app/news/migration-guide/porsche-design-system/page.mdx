@@ -3,273 +3,640 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Migration Guide - Porsche Design System',
-  description: 'Learn how to migrate from Porsche Design System v2 to v3.',
+  description: 'Learn how to migrate from Porsche Design System v3 to v4.',
 };
 
 # Migration Guide
 
 <TableOfContents
   headings={[
-    'Migrate from Porsche Design System v2 to v3',
-    'Notable New Features',
+    '📣 New Features',
+    '🛠️ Setup Changes',
+    '⭐ Introducing Color Scheme',
     '👹 Breaking Changes',
-    '🤡 Component deprecations',
-    '🤖 Property deprecations',
-    '👾 Property value deprecations',
+    '❌ Removed Props, Slots and Events (deprecated in v3 already)',
+    '❌ Removed Components (deprecated in v3 already)',
   ]}
 />
 
-## Migrate from Porsche Design System v2 to v3
+The introduction of the new **Porsche Design Language** brings updated layout and design principles. To minimize
+refactoring effort during the migration from `v3` to `v4`, we have avoided **breaking changes** wherever possible.
+However, a few essential breaking changes and deprecations have been introduced to align with the new standards and
+require your attention.
 
-With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
-refactoring efforts as low as possible when upgrading from `v2` to `v3`, **breaking changes** were avoided as far as
-possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
-
-Please follow the migration guide on this page. In addition, we offer a [components overview](/components/introduction)
-which shows all component information including deprecated components/props/values.
-
-<Notification heading="Deprecation hint" headingTag="h3" state="error">
-  Porsche Design System **v2** support will end on **June 30th, 2023** (until EOL date only critical bug fixing takes place).
-
-**Please make sure that upgrading to Porsche Design System v3 is feasible before the EOL date.**
-
-</Notification>
-
-## Notable New Features
+## 📣 New Features
 
 - New design language for all components
-- All components are supporting `theme` light and dark
-- New Components: `Crest`, `Wordmark`, `Model Signature`, `Link Tile Model Signature`, `Button Tile` and `Display`
-- Vue JS documentation for all components
-- Porsche Next font supports Vietnamese charset
-- SSR Support for Remix
+- New color palette based on CSS `light-dark()` and `color-scheme`
+- Redesigned form elements and buttons
+- Redesigned footer of dialog elements
+- All headings use regular as font-weight
+- Design Tokens are exposed as CSS variables, and all component styles are built directly upon them
+  - [Colors](/styles/color/examples/)
+- Theming now works by adding a `scheme-light`, `scheme-dark` or `scheme-light-dark` CSS class to any HTML element
+  - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
+  - [Angular](/developing/angular/advanced/#global-theme)
+  - [React](/developing/react/advanced/#global-theme)
+  - [Vue](/developing/vue/advanced/#global-theme)
+  - [Next.js](/developing/next-js/advanced/#global-theme)
+  - [React Router](/developing/react-router/advanced/#global-theme)
+- Aligned styling solutions with the new design language and color palette.
+  - [Tailwind CSS](/tailwindcss/introduction/)
+  - [SCSS](/scss/introduction/)
+  - [Emotion](/emotion/introduction/)
+  - [Vanilla Extract](/vanilla-extract/introduction/)
+
+## 🛠️ Setup Changes
+
+### Mandatory Global Styles & Theme Logic
+
+Because all components are now built directly upon CSS variables, **Global Styles are mandatory** for using the Porsche
+Design System.
+
+These styles provide the architectural foundation for the system, specifically:
+
+- **Design Tokens:** Defines CSS variables for color (based on `light-dark()` and `color-scheme` logic), typography,
+  spacing, and others.
+- **Normalize Styles:** Ensures consistent cross-browser rendering and base resets.
+- **Font-Face Styles:** Defines the Porsche Next font family, including all weights and styles.
+
+Without these global styles, components will not have access to their required color variables and will fail to render
+correctly. See [Styles](/styles/introduction/) for more information.
+
+```diff
+/* src/global-style.css */
+
++ @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+
+/* Alternative with fonts from China CDN */
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
+```
+
+### Manual FOUC Prevention
+
+In previous versions, **FOUC (Flash of Unstyled Content)** was handled automatically via `getInitialStyles()`. Because
+these JavaScript partials have been removed, you must now implement this logic manually within your global stylesheet.
+
+To ensure components are hidden until the design system is fully initialized, add the following to your **main CSS
+file**:
+
+- [Vanilla JS](/developing/vanilla-js/getting-started/#integration)
+- [Angular](/developing/angular/getting-started/#integration)
+- [React](/developing/react/getting-started/#integration)
+- [Vue](/developing/vue/getting-started/#integration)
+- [Next.js](/developing/next-js/getting-started/#integration)
+- [React Router](/developing/react-router/getting-started/#integration)
+
+```diff
+/* src/global-style.css */
+
+/* Vanilla Js, React, Vue */
++ :not(:defined) {
++   visibility: hidden;
++ }
+
+/* Angular (Uses custom elements which are never defined like app-root, so we need to manually list the components) */
++ :is(p-accordion, p-banner, p-button, prefixed-p-button,...):not(:defined) {
++   visibility: hidden;
++ }
+
+/* Next.js, React Router */
++ :not(:defined,[data-ssr]) {
++   visibility: hidden;
++ }
+```
+
+### Legacy Border-Radius Support (My Porsche App)
+
+If you need to maintain visual consistency with the **My Porsche App** (legacy styles), you can force the previous
+border-radius specifications by importing an optional CSS override.
+
+To enable this, add the following import to your **main CSS file** after the mandatory global styles:
+
+```diff
+/* src/global-style.css */
+
++ @import '@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css';
+```
+
+## ⭐ Introducing Color Scheme
+
+The new color system leverages the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function to
+deliver native, preference-based theming. By adopting this browser-native engine, we have eliminated the need for
+proprietary switching logic, resulting in a more performant and standardized architecture.
+
+### Core Implementation
+
+All colors and styles are now driven by the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
+broad compatibility, our **mandatory global styles** (detailed in the [Setup Changes](#setup-changes) section) include
+utility classes that provide a polyfill for browsers lacking native support for the
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/types/color_light-dark) function (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+
+#### Utility Classes
+
+Apply these classes to the document or any container to control the theme context:
+
+- `.scheme-light` — Forces light mode.
+- `.scheme-dark` — Forces dark mode.
+- `.scheme-light-dark` — Dynamically follows system/OS settings.
+
+#### Usage
+
+- Removed theme prop from PDS Components and Provider since it's handled by CSS `light-dark()` and `color-scheme`.
+
+```html
+<html class="scheme-dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+    <div class="scheme-light">
+      <!-- All components inside will use the light theme -->
+    </div>
+  </body>
+</html>
+```
+
+```diff
+- <p-button theme="light" name="some-name"></p-button>
++ <p-button class="scheme-light" name="some-name"></p-button>
+
+- <p-button theme="dark" name="some-name"></p-button>
++ <p-button class="scheme-dark" name="some-name"></p-button>
+
+- <p-button theme="auto" name="some-name"></p-button>
++ <p-button class="scheme-light-dark" name="some-name"></p-button>
+```
+
+##### Angular
+
+```diff
+// app.module.ts
+@NgModule({
+  declarations: [AppComponent],
+-  imports: [BrowserModule, PorscheDesignSystemModule.load({ theme: 'dark' })],
++  imports: [BrowserModule, PorscheDesignSystemModule.load()],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+```diff
+// index.html
+- <body>
++ <body class="scheme-dark">
+  <app-root></app-root>
+</body>
+```
+
+##### React
+
+```diff
+// src/main.tsx
+- <PorscheDesignSystemProvider theme="dark">
++ <PorscheDesignSystemProvider>
+  <App />
+</PorscheDesignSystemProvider>
+```
+
+```diff
+// index.html
+- <body>
++ <body class="scheme-dark">
+  <div id="app"></div>
+</body>
+```
+
+##### Vue
+
+```diff
+// pages/App.vue
+<template>
+-  <PorscheDesignSystemProvider theme="dark">
++  <PorscheDesignSystemProvider>
+    <AppComponent />
+  </PorscheDesignSystemProvider>
+</template>
+```
+
+```diff
+// index.html
+- <body>
++ <body class="scheme-dark">
+  <div id="app"></div>
+</body>
+```
+
+##### Next.js
+
+```diff
+// app/layout.tsx
+- <body>
++ <body className="scheme-dark">
+-  <PorscheDesignSystemProvider theme="dark">
++  <PorscheDesignSystemProvider>
+    {children}
+  </PorscheDesignSystemProvider>
+</body>
+```
+
+##### React Router
+
+```diff
+// root.tsx
+
+- <body>
++ <body className="scheme-dark">
+  {children}
+  <ScrollRestoration />
+  <Scripts />
+</body>
+
+-  <PorscheDesignSystemProvider theme="dark">
++  <PorscheDesignSystemProvider>
+  <Outlet />
+</PorscheDesignSystemProvider>
+```
 
 ## 👹 Breaking Changes
 
-### Banner:
+### Partials
 
-- It's a controlled component now and its visibility has to be controlled via the `open` prop (similar like
-  **[Modal](/components/modal)**).
+- Removed `getInitialStyles()`, `getFontFaceStyles()` and `getFontFaceStylesheet()` partials. These styles are now
+  included in the mandatory global styles, see [Setup Changes](#setup-changes) for more information.
 
 ```diff
-- <p-banner></p-banner>
-+ <p-banner open="true"></p-banner>
+- import { getInitialStyles, getFontFaceStyles, getFontFaceStylesheet } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
-- Removed global CSS variable.
+- Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
+  `@porsche-design-system/fallbacks` coming soon.
 
 ```diff
-- --p-banner-position-type
+- import { getBrowserSupportFallbackScript, getCookiesFallbackScript } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
-### Button:
-
-- Removed deprecated prop `tabbable`.
+- Removed `getDSRPonyfill()` partial as it is no longer needed.
 
 ```diff
-- <p-button tabbable="false">Some label</p-button>
-+ <p-button tabindex="-1">Some label</p-button>
+- import { getDSRPonyfill } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
-- Default value of prop `icon` has changed from `arrow-head-right` to `none`. Therefore, the `icon` property **must** be
-  set if the component has the `hide-label` property.
+### Common
+
+- Changed event emitting in Vue. All component events now emit the full `CustomEvent` instead of just the event detail.
+  The event detail must be accessed via `event.detail`. Props and other component data can be accessed directly via
+  `event.target`.
 
 ```diff
-- <p-button hide-label="true">Some label</p-button>
-+ <p-button hide-label="true" icon="arrow-right">Some label</p-button>
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-- <p-button hide-label="{ base: true, m: false }">Some label</p-button>
-+ <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
+const isOpen = ref(false);
+
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
+  </PAccordion>
+</template>
 ```
 
-### Button Pure:
-
-- Removed `subline` slot (visually not intended anymore).
+- Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-headline`,
+  `p-inline-notification`, `p-switch`, `p-table`, `p-tabs`, `p-text` and `p-text-list`, use `p-link-pure` instead or an
+  anchor `<a>` with correct styling.
 
 ```diff
-<p-button-pure>
-  Some label
--   <p slot="subline">Some Subline</p>
-</p-button-pure>
+// You can still use <a> inside components, but the default styling for anchors <a> has been removed.
+<p-accordion heading="Some Heading">
+-  <a href="/https://porsche.com">Some label</a>
++  <p-link-pure href="https://porsche.com" icon="none">Some label</p-link-pure>
+</p-accordion>
 ```
 
-- Removed deprecated prop `tabbable`.
+### Text, Icon:
+
+- Changed values `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop
+  `color`, use `'success', 'warning', 'error', 'info'` instead.
 
 ```diff
-- <p-button-pure tabbable="false">Some label</p-button-pure>
-+ <p-button-pure tabindex="-1">Some label</p-button-pure>
+- <p-text color="notification-success">Some text</p-text>
++ <p-text color="success">Some text</p-text>
+
+- <p-text color="notification-warning">Some text</p-text>
++ <p-text color="warning">Some text</p-text>
+
+- <p-text color="notification-error">Some text</p-text>
++ <p-text color="error">Some text</p-text>
+
+- <p-text color="notification-info">Some text</p-text>
++ <p-text color="info">Some text</p-text>
+
+- <p-icon color="notification-success">Some text</p-icon>
++ <p-icon color="success">Some text</p-icon>
+
+- <p-icon color="notification-warning">Some text</p-icon>
++ <p-icon color="warning">Some text</p-icon>
+
+- <p-icon color="notification-error">Some text</p-icon>
++ <p-icon color="error">Some text</p-icon>
+
+- <p-icon color="notification-info">Some text</p-icon>
++ <p-icon color="info">Some text</p-icon>
 ```
 
 ### Icon:
 
-- Value `inherit` for prop `color` works slightly different to the previous major version. A CSS filter is required to
-  apply custom coloring to take advantage of using an SVG embedded in an `<img/>` for better SSR support and loading
-  performance in general.
+- When `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color can be applied directly.
 
 ```diff
-- <p-icon color="inherit" style="color: white;"></p-icon>
-+ <p-icon color="inherit" style="filter: invert(100%);"></p-icon>
+- <p-icon color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-icon>
++ <p-icon color="inherit" class="color: deeppink;"></p-icon>
 ```
 
-- Camel case syntax for `name` prop isn't supported, please use param case syntax instead (TypeScript typings have been
-  updated too).
+- Removed value `'state-disabled'` of prop `color`.
 
 ```diff
-- <p-icon name="arrowRight"></p-icon>
-+ <p-icon name="arrow-right"></p-icon>
+- <p-icon color="state-disabled"></p-icon>
++ <p-icon color="contrast-low"></p-icon>
 ```
 
-### Link:
+### Model Signature:
 
-- Default value of prop `icon` has changed from `arrow-head-right` to `none`. Therefore, the `icon` property **must** be
-  set if the component has the `hide-label` property.
+- When `color="inherit"` is used a CSS color can be applied directly.
 
 ```diff
-- <p-link href="#" hide-label="true">Some label</p-link>
-+ <p-link href="#" hide-label="true" icon="arrow-right">Some label</p-link>
-
-- <p-link href="#" hide-label="{ base: true, m: false }">Some label</p-link>
-+ <p-link href="#" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>
+- <p-model-signature color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-model-signature>
++ <p-model-signature color="inherit" class="color: deeppink;"></p-model-signature>
 ```
 
-### Link Pure:
+### Tag:
 
-- Removed `subline` slot (visually not intended anymore).
+- Removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`, `error`,
+  `info`.
 
 ```diff
-<p-link-pure href="#">
-  Some label
--   <p slot="subline">Some Subline</p>
-</p-link-pure>
+- <p-tag color="neutral-contrast-high">Color label</p-tag>
+- <p-tag color="primary">Some label</p-tag>
++ <p-tag variant="primary">Some label</p-tag>
+
+- <p-tag color="background-default">Color label</p-tag>
+- <p-tag color="background-base">Some label</p-tag>
+- <p-tag color="background-surface">Some label</p-tag>
+- <p-tag color="background-frosted">Some label</p-tag>
++ <p-tag variant="secondary">Some label</p-tag>
+
+- <p-tag color="notification-neutral">Color label</p-tag>
+- <p-tag color="notification-info-soft">Some label</p-tag>
++ <p-tag variant="info">Some label</p-tag>
+
+- <p-tag color="notification-warning">Color label</p-tag>
+- <p-tag color="notification-warning-soft">Some label</p-tag>
++ <p-tag variant="warning">Some label</p-tag>
+
+- <p-tag color="notification-error">Color label</p-tag>
+- <p-tag color="notification-error-soft">Some label</p-tag>
++ <p-tag variant="error">Some label</p-tag>
+
+- <p-tag color="notification-success">Color label</p-tag>
+- <p-tag color="notification-success-soft">Some label</p-tag>
++ <p-tag variant="success">Some label</p-tag>
 ```
 
-### Switch:
+### Tag Dismissible:
 
-- Removed deprecated prop `tabbable`.
+- Removed prop `color`.
 
 ```diff
-- <p-switch tabbable="false">Some label</p-switch>
-+ <p-switch tabindex="-1">Some label</p-switch>
+- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
+- <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
+- <p-tag-dismissible color="background-surface">Color label</p-tag-dismissible>
++ <p-tag-dismissible>Color label</p-tag-dismissible>
 ```
 
-### Partials:
+### Button, Link:
 
-- `getIconLinks()` partial accepts only param-cased icon names.
+- Removed value `ghost` of prop `variant`, use `secondary` instead.
 
 ```diff
-- require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrowRight'] })
-+ require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
+- <p-button variant="ghost">Some label</p-button>
++ <p-button variant="secondary">Some label</p-button>
+
+- <p-link variant="ghost" href="https://porsche.com">Some label</p-link>
++ <p-link variant="secondary" href="https://porsche.com">Some label</p-link>
 ```
 
-### CSS Variables:
+### Button Group:
 
-- Changed naming of global CSS variables.
+- Removed component `p-button-group`, use simple styles instead.
 
 ```diff
-- --p-animation-duration__spinner
-- --p-animation-duration__banner
-+ --p-animation-duration
+// Example using Tailwind CSS:
+- <p-button-group>
++ <div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+  <p-button variant="primary">
+    Some label
+  </p-button>
+  <p-button variant="secondary">
+    Some label
+  </p-button>
+- </p-button-group>
++ </div>
 ```
 
-### Partials:
+### Modal:
 
-- Removed deprecated `withoutTags` option for all partials, please use `format: jsx` instead.
-
-## 🤡 Component deprecations
-
-All deprecated components are refactored to match the new design language, therefor it's technically not breaking, but
-we highly recommend to migrate to the mentioned alternative, since those deprecated components will be removed with next
-major version.
-
-### Content Wrapper:
-
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
-  instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
-  layout needs for a harmonic appearance across all digital Porsche touch-points.
-
-### Fieldset Wrapper:
-
-- Component is deprecated and will be removed with the next major release. Please use the
-  **[Fieldset](/components/fieldset/)** component instead.
+- Removed `.stretch-to-full-modal-width`, use read only CSS variables `--ref-p-modal-pt`, `--ref-p-modal-px` and
+  `--ref-p-modal-pb` instead.
 
 ```diff
-- <p-fieldset-wrapper label="Some legend label">
-+ <p-fieldset label="Some legend label">
-  <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name" />
-  </p-text-field-wrapper>
-- </p-fieldset-wrapper>
-+ </p-fieldset>
+// Example using Tailwind CSS:
+<p-modal>
+-  <img src="assets/porsche-992-carrera-s.jpg" class="stretch-to-full-modal-width" />
++  <img src="assets/porsche-992-carrera-s.jpg" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)" />
+</p-modal>
+
+// Example using CSS:
+<p-modal>
+-  <img src="assets/porsche-992-carrera-s.jpg" class="stretch-to-full-modal-width" />
++  <img src="assets/porsche-992-carrera-s.jpg" style="margin-top: calc(-1 * var(--ref-p-modal-pt)); margin-inline: calc(-1 * var(--ref-p-modal-px)); margin-bottom: calc(-1 * var(--ref-p-modal-pb));" />
+</p-modal>
 ```
 
-### Flex:
+### Flyout:
 
-- Component is deprecated and will be removed with the next major release. In general, please use native
-  [CSS Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox) instead for better performance and more
-  standardized layout technique.
-
-### Grid:
-
-- Component is deprecated and will be removed with the next major release. In general, please use native
-  [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
-
-### Headline:
-
-- Component is deprecated and will be removed with the next major release. Please use the
-  **[Heading](/components/heading/)** component instead.
+- Removed CSS variable `--p-flyout-max-width`, use `--p-flyout-width` with a static value or `min()`, `max()` or
+  `clamp()` instead.
 
 ```diff
-- <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
-+ <p-heading>The quick brown fox jumps over the lazy dog</p-heading>
+// Example using Tailwind CSS:
+- <p-flyout class="[--p-flyout-width:800px] [--p-flyout-max-width:90vw]"></p-flyout>
++ <p-flyout class="[--p-flyout-width:min(800px,90vw)]"></p-flyout>
+
+// Example CSS:
+- <p-flyout style="--p-flyout-width: 800px; --p-flyout-max-width: 90vw"></p-flyout>
++ <p-flyout style="--p-flyout-width: min(800px, 90vw)"></p-flyout>
 ```
 
-### Link Social:
+### Inline Notification:
 
-- Component is deprecated and will be removed with the next major release. Please use the **[Link](/components/link/)**
-  component instead.
-
-```diff
-- <p-link-social href="#" icon="logo-facebook" target="_blank" rel="nofollow noopener"></p-link-social>
-+ <p-link href="#" icon="logo-facebook" target="_blank" rel="nofollow noopener"></p-link>
-```
-
-### Marque:
-
-- Component is deprecated and will be removed with the next major release. Please use the
-  **[Wordmark](/components/wordmark/)** component instead.
+- Removed `max-width` limitation for content.
 
 ```diff
-- <p-marque></p-marque>
-+ <p-wordmark></p-wordmark>
-```
+// Example using Tailwind CSS:
+<p-inline-notification>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span>Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" class="max-w-[50rem]">Some heading</p-heading>
++  <span class="max-w-[50rem]">Some description</span>
+</p-inline-notification>
 
-## 🤖 Property deprecations
-
-All deprecated properties are still present without any effect, therefor it's technically not breaking, but we highly
-recommend to migrate and remove the deprecated props since those ones will be removed with next major version.
-
-### Accordion:
-
-- Event `accordionChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
-+ <PAccordion onUpdate={(e: CustomEvent<AccordionUpdateEvent>) => {}} />
+// Example using CSS:
+<p-inline-notification>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span>Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" style="max-width: 50rem;">Some heading</p-heading>
++  <span style="max-width: 50rem;">Some description</span>
+</p-inline-notification>
 ```
 
 ### Banner:
 
-- Prop `width` is deprecated, instead the component is aligned with the **[Porsche Grid](/styles/grid/)** "extended" by
-  default.
+- Removed `max-width` limitation for content.
 
 ```diff
-- <p-banner width="fluid"></p-banner>
-+ <p-banner></p-banner>
+// Example using Tailwind CSS:
+<p-banner>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span slot="description">Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" class="max-w-[50rem]">Some heading</p-heading>
++  <span slot="description" class="max-w-[50rem]">Some description</span>
+</p-banner>
+
+// Example using CSS:
+<p-banner>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span slot="description">Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" style="max-width: 50rem;">Some heading</p-heading>
++  <span slot="description" style="max-width: 50rem;">Some description</span>
+</p-banner>
 ```
 
-- Named `slot="title"` is deprecated, use new slot or prop `heading`.
+### Carousel:
+
+- Removed prop `gradient-color`, use `gradient="true"` instead.
+
+```diff
+- <p-carousel gradient-color="background-surface">
++ <p-carousel gradient="true"></p-carousel>
+```
+
+- Changed default value of prop `trim-space` from `true` to `false`.
+
+```diff
+- <p-carousel></p-carousel>
++ <p-carousel trim-space="true"></p-carousel>
+```
+
+- Changed default value of prop `pagination` from `true` to `false`.
+
+```diff
+- <p-carousel></p-carousel>
++ <p-carousel pagination="true"></p-carousel>
+```
+
+- Changed default value of prop `rewind` from `true` to `false`.
+
+```diff
+- <p-carousel></p-carousel>
++ <p-carousel rewind="true"></p-carousel>
+```
+
+### Button Tile, Link Tile:
+
+- Changed default value of prop `gradient` from `true` to `false`.
+
+```diff
+- <p-link-tile></p-link-tile>
++ <p-link-tile gradient="true"></p-link-tile>
+
+- <p-button-tile></p-button-tile>
++ <p-button-tile gradient="true"></p-button-tile>
+```
+
+- Removed prop `background`, use CSS class `.light | .dark | .auto` on :host element instead.
+
+```diff
+// dark was the default before
+- <p-link-tile></p-link-tile>
++ <p-link-tile class="dark"></p-link-tile>
+
+- <p-link-tile background="light"></p-link-tile>
++ <p-link-tile class="light"></p-link-tile>
+
+- <p-link-tile background="dark"></p-link-tile>
++ <p-link-tile class="dark"></p-link-tile>
+
+- <p-link-tile background="auto"></p-link-tile>
++ <p-link-tile class="auto"></p-link-tile>
+
+// dark was the default before
+- <p-button-tile></p-button-tile>
++ <p-button-tile class="dark"></p-button-tile>
+
+- <p-button-tile background="light"></p-button-tile>
++ <p-button-tile class="light"></p-button-tile>
+
+- <p-button-tile background="dark"></p-button-tile>
++ <p-button-tile class="dark"></p-button-tile>
+
+- <p-button-tile background="auto"></p-button-tile>
++ <p-button-tile class="auto"></p-button-tile>
+```
+
+### Link Tile Model Signature:
+
+- Removed component `p-link-tile-model-signature`, use `p-link-tile` instead.
+
+### Tailwind CSS
+
+When using Tailwind CSS with the Porsche Design System Tailwind Theme
+(`@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';`)
+
+- Reset all default Tailwind color tokens.
+- Removed `-light` and `-dark` color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only.
+
+## ❌ Removed Props, Slots and Events (deprecated in v3 already)
+
+### Accordion:
+
+- Removed deprecated prop `tag`. Use `heading-tag` instead.
+
+```diff
+- <p-accordion tag="h1"></p-accordion>
++ <p-accordion heading-tag="h1"></p-accordion>
+```
+
+- Removed deprecated event `accordionChange`, use new event `update`.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEventDetail>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUpdateEventDetail>) => {}} />
+```
+
+### Banner
+
+- Removed deprecated named `slot="title"`, use new slot or prop `heading`.
 
 ```diff
 <p-banner>
@@ -277,17 +644,42 @@ recommend to migrate and remove the deprecated props since those ones will be re
 + <span slot="heading">Some heading</span>
   <span slot="description">Some notification description.</span>
 </p-banner>
-
-- <p-banner>
-+ <p-banner heading="Some heading" description="Some notification description.">
--   <span slot="title">Some heading</span>
--   <span slot="description">Some notification description.</span>
-</p-banner>
 ```
 
-### Button Pure:
+- Removed deprecated prop `persistent`, use `dismissButton` instead.
 
-- Prop `weight` is deprecated, only regular font weight will be applied.
+```diff
+- <p-banner persistent="true"></p-banner>
++ <p-banner dismiss-button="false"></p-banner>
+```
+
+- Removed deprecated prop `width`, instead the component is aligned with the **[Porsche Grid](/styles/grid/)**
+  "extended" by default.
+
+```diff
+- <p-banner width="fluid"></p-banner>
++ <p-banner></p-banner>
+```
+
+- Removed deprecated value `neutral` of `state` prop, use new value `info`.
+
+```diff
+- <p-banner state="neutral"></p-banner>
++ <p-banner state="info"></p-banner>
+```
+
+### Button
+
+- Removed deprecated prop `tertiary`
+
+```diff
++ <p-button variant="tertiary">Some label</p-button>
++ <p-button variant="ghost">Some label</p-button>
+```
+
+### Button Pure
+
+- Removed deprecated prop `weight`, only regular font weight will be applied.
 
 ```diff
 - <p-button-pure weight="thin">Some label</p-button-pure>
@@ -297,295 +689,79 @@ recommend to migrate and remove the deprecated props since those ones will be re
 + <p-button-pure>Some label</p-button-pure>
 ```
 
+- Removed deprecated values `left | right` of prop `alignLabel`, use `start | end` instead.
+
+```diff
+- <p-button-pure align-label="left">Some label</p-button-pure>
++ <p-button-pure align-label="start">Some label</p-button-pure>
+- <p-button-pure align-label="right">Some label</p-button-pure>
++ <p-button-pure align-label="end">Some label</p-button-pure>
+```
+
 ### Carousel:
 
-- Prop `wrap-content` is deprecated. The component is always aligned with the **[Porsche Grid](/styles/grid/)** now,
-  adjustable by prop `width`.
+- Removed deprecated prop `wrap-content`. The component is always aligned with the **[Porsche Grid](/styles/grid/)**
+  now, adjustable by prop `width`.
 
 ```diff
 - <p-carousel wrap-content="true"></p-carousel>
 + <p-carousel></p-carousel>
 ```
 
-- Prop `disablePagination` is deprecated, use new prop `pagination`.
+- Removed deprecated prop `disablePagination`, use new prop `pagination`.
 
 ```diff
 - <p-carousel disable-pagination="true"></p-carousel>
 + <p-carousel pagination="false"></p-carousel>
 ```
 
-- Event `carouselChange` is deprecated, use new event `update`.
+- Removed deprecated value `left` of prop `alignHeader`, use `start` instead.
+
+```diff
+- <p-carousel align-header="left"></p-carousel>
++ <p-carousel align-header="start"></p-carousel>
+```
+
+- Removed deprecated event `carouselChange`, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
-+ <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEvent>) => {}} />
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselUpdateEventDetail>) => {}} />
++ <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEventDetail>) => {}} />
 ```
 
-### Content Wrapper (deprecated):
+### Checkbox:
 
-- Prop `theme` and `background-color` are deprecated, has no effect anymore.
+- Removed deprecated event `update`, use new event `change`.
 
 ```diff
-- <p-content-wrapper theme="dark" background-color="default">Some content</p-content-wrapper>
-+ <p-content-wrapper>Some content</p-content-wrapper>
+// Accordingly for other JS frameworks, e.g. React example:
+- <PCheckbox onUpdate={(e: CustomEvent<CheckboxUpdateEventDetail>) => {}}
++ <PCheckbox onChange={(e: CustomEvent<CheckboxChangeEventDetail>) => {}} />
 ```
 
-### Divider:
+### Display:
 
-- Prop `orientation` is deprecated, use new prop `direction`.
+- Removed deprecated values `left | right` of prop `align`, use `start | end` instead.
+
+```diff
+- <p-display align="left"></p-display>
++ <p-display align="start"></p-display>
+- <p-display align="right"></p-display>
++ <p-display align="end"></p-display>
+```
+
+### Divider
+
+- Removed deprecated prop `orientation`, use `direction` instead.
 
 ```diff
 - <p-divider orientation="horizontal"></p-divider>
 + <p-divider direction="horizontal"></p-divider>
 ```
 
-### Grid (deprecated):
-
-- The `gutter` property is deprecated and has no effect anymore. Instead, a fluid gutter depending on the viewport width
-  is used.
-
-```diff
-- <p-grid gutter="16">Some content</p-grid>
-- <p-grid gutter="24">Some content</p-grid>
-- <p-grid gutter="36">Some content</p-grid>
-+ <p-grid>Some content</p-grid>
-```
-
-### Icon:
-
-- Prop `lazy` is deprecated, has no effect anymore.
-
-```diff
-- <p-icon lazy="true"></p-icon>
-+ <p-icon></p-icon>
-```
-
-### Inline Notification:
-
-- Prop `persistent` is deprecated, use new prop `dismissButton`.
-
-```diff
-- <p-inline-notification persistent="true"></p-inline-notification>
-+ <p-inline-notification dismiss-button="false"></p-inline-notification>
-```
-
-### Link Pure:
-
-- Prop `weight` is deprecated, only regular font weight will be applied.
-
-```diff
-- <p-link-pure href="#" weight="thin">Some label</p-link-pure>
-- <p-link-pure href="#" weight="regular">Some label</p-link-pure>
-- <p-link-pure href="#" weight="semibold">Some label</p-link-pure>
-- <p-link-pure href="#" weight="bold">Some label</p-link-pure>
-+ <p-link-pure href="#">Some label</p-link-pure>
-```
-
-### Modal:
-
-- Prop `disableCloseButton` is deprecated, use new prop `dismissButton`.
-
-```diff
-- <p-modal disable-close-button="true"></p-modal>
-+ <p-modal dismiss-button="false"></p-modal>
-```
-
-- Event `close` is deprecated, use new event `dismiss`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PModal onClose={(e: CustomEvent<void>) => {}} />
-+ <PModal onDismiss={(e: CustomEvent<void>) => {}} />
-```
-
-### Pagination:
-
-- Props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` are deprecated, use new prop `intl`.
-
-```diff
-- <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
-+ <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
-```
-
-- Event `pageChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
-+ <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEvent>) => {}} />
-```
-
-### Scroller:
-
-- Prop `gradientColorScheme` is deprecated, use new prop `gradientColor`.
-
-```diff
-- <p-scroller gradient-color-scheme="surface"></p-scroller>
-+ <p-scroller gradient-color="background-surface"></p-scroller>
-```
-
-- Prop `scrollIndicatorPosition` is deprecated, use new prop `alignScrollIndicator`.
-
-```diff
-- <p-scroller scroll-indicator-position="top"></p-scroller>
-+ <p-scroller align-scroll-indicator="top"></p-scroller>
-```
-
-### Segmented Control:
-
-- Prop `background-color` is deprecated, has no effect anymore.
-
-```diff
-- <p-segmented-control background-color="background-surface">
-+ <p-segmented-control>
-  <p-segmented-control-item value="xs">XS</p-segmented-control-item>
-  <p-segmented-control-item value="s">S</p-segmented-control-item>
-</p-segmented-control>
-```
-
-- Event `segmentedControlChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
-+ <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEvent>) => {}} />
-```
-
-### Stepper Horizontal:
-
-- Event `stepChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
-+ <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEvent>) => {}} />
-```
-
-### Switch:
-
-- Event `switchChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
-+ <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEvent>) => {}} />
-```
-
-### Table:
-
-- Event `sortingChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
-+ <PTable onUpdate={(e: CustomEvent<TableUpdateEvent>) => {}} />
-```
-
-### Tabs:
-
-- Prop `gradientColorScheme` is deprecated, use new prop `gradientColor`.
-
-```diff
-- <p-tabs gradient-color-scheme="surface"></p-tabs>
-+ <p-tabs gradient-color="background-surface"></p-tabs>
-```
-
-- Event `tabChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
-+ <PTabs onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
-```
-
-### Tabs Bar:
-
-- Prop `gradientColorScheme` is deprecated, use new prop `gradientColor`.
-
-```diff
-- <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
-+ <p-tabs-bar gradient-color="background-surface"></p-tabs-bar>
-```
-
-- Event `tabChange` is deprecated, use new event `update`.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
-+ <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
-```
-
-### Text Field Wrapper:
-
-- Prop `showCharacterCount` is deprecated, use new prop `showCounter`.
-
-```diff
-- <p-text-field-wrapper show-character-count="false">
-+ <p-text-field-wrapper show-counter="false">
-<input type="text" maxlength="20" />
-p-text-field-wrapper>
-```
-
-### Textarea Wrapper:
-
-- Prop `showCharacterCount` is deprecated, use new prop `showCounter`.
-
-```diff
-- <p-textarea-wrapper show-character-count="false">
-+ <p-textarea-wrapper show-counter="false">
-<textarea maxlength="80"></textarea>
-p-textarea-wrapper>
-```
-
-### Text List
-
-- Props `listType` and `orderType` are deprecated, use new prop `type`.
-
-```diff
-- <p-text-list list-type="unordered"></p-text-list>
-+ <p-text-list type="unordered"></p-text-list>
-
-- <p-text-list list-type="ordered" order-type="numbered"></p-text-list>
-+ <p-text-list type="numbered"></p-text-list>
-
-- <p-text-list list-type="ordered" order-type="alphabetically"></p-text-list>
-+ <p-text-list type="alphabetically"></p-text-list>
-```
-
-## 👾 Property value deprecations
-
-All deprecated values are mapped to new ones, therefor it's technically not breaking, but we highly recommend to migrate
-to the new values since those ones will be removed with next major version.
-
-### Banner:
-
-- Prop value `neutral` of `state` prop is deprecated, use new value `info`.
-
-```diff
-- <p-banner state="neutral">
-<span slot="title">Some banner title</span>
-<span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-p-banner>
-+ <p-banner state="info">
-<span slot="title">Some banner title</span>
-<span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-p-banner>
-```
-
-### Content Wrapper (deprecated):
-
-- Prop value `fluid` of `width` prop is deprecated, use new value `full`.
-
-```diff
-- <p-content-wrapper width="fluid">Some content</p-content-wrapper>
-+ <p-content-wrapper width="full">Some content</p-content-wrapper>
-```
-
-### Divider:
-
-- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated,
-  use new values `contrast-low | contrast-medium | contrast-high`.
+- Removed deprecated values `neutral-contrast-{low|medium|high}` of prop `color`, use `contrast-{low|medium|high}`
+  instead.
 
 ```diff
 - <p-divider color="neutral-contrast-low"></p-divider>
@@ -598,12 +774,40 @@ p-banner>
 + <p-divider color="contrast-high"></p-divider>
 ```
 
+### Flyout:
+
+- Removed deprecated values `left | right` of prop `position`, use `start | end` instead.
+
+```diff
+- <p-flyout position="left"></p-flyout>
++ <p-flyout position="start"></p-flyout>
+- <p-flyout position="right"></p-flyout>
++ <p-flyout position="end"></p-flyout>
+```
+
+### Heading:
+
+- Removed deprecated values `left | right` of prop `align`, use `start | end` instead.
+
+```diff
+- <p-heading align="left">Some Heading</p-heading>
++ <p-heading align="start">Some Heading</p-heading>
+- <p-heading align="right">Some Heading</p-heading>
++ <p-heading align="end">Some Heading</p-heading>
+```
+
 ### Icon:
 
-- Prop values
+- Removed deprecated prop `lazy`
+
+```diff
+- <p-icon lazy="true"></p-icon>
++ <p-icon></p-icon>
+```
+
+- Removed deprecated values
   `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-  `color` prop are deprecated, use new values
-  `primary | contrast-low | contrast-medium | contrast-high | notification-info`.
+  prop `color`, use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead.
 
 ```diff
 - <p-icon color="brand"></p-icon>
@@ -627,92 +831,341 @@ p-banner>
 
 ### Inline Notification:
 
-- Prop value `neutral` of `state` prop is deprecated, use new value `info`.
+- Removed deprecated prop `persistent`, use `dismissButton` instead.
+
+```diff
+- <p-inline-notification persistent="true"></p-inline-notification>
++ <p-inline-notification dismiss-button="false"></p-inline-notification>
+```
+
+- Removed deprecated value `neutral` of prop `state`, use `info` instead.
 
 ```diff
 - <p-inline-notification state="neutral"></p-inline-notification>
 + <p-inline-notification state="info"></p-inline-notification>
 ```
 
-### Link Tile:
+### Link
 
-- Prop value `semibold` of `weight` prop is deprecated, use new value `semi-bold`.
+- Removed deprecated prop `tertiary`
+
+```diff
++ <p-link variant="tertiary">Some label</p-link>
++ <p-link variant="ghost">Some label</p-link>
+```
+
+### Link Pure:
+
+- Removed deprecated prop `weight`, can't be configured anymore.
+
+```diff
+- <p-link-pure href="#" weight="thin">Some label</p-link-pure>
+- <p-link-pure href="#" weight="regular">Some label</p-link-pure>
+- <p-link-pure href="#" weight="semibold">Some label</p-link-pure>
+- <p-link-pure href="#" weight="bold">Some label</p-link-pure>
++ <p-link-pure href="#">Some label</p-link-pure>
+```
+
+- Removed deprecated values `left | right` of prop `alignLabel`, use `start | end` instead.
+
+```diff
+- <p-link-pure href="#" align-label="left">Some label</p-link-p
++ <p-link-pure href="#" align-label="start">Some label</p-link-pure>
+- <p-link-pure href="#" align-label="right">Some label</p-link-p
++ <p-link-pure href="#" align-label="end">Some label</p-link-pure>
+```
+
+### Link Tile, Link Tile Model Signature, Button Tile:
+
+- Removed deprecated values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio`, use `1/1 | 4/3 | 3/4 | 16/9 | 9/16`
+  instead.
+
+```diff
+- <p-link-tile aspect-ratio="1:1 | 4:3 | 3:4 | 16:9 | 9:16"></p-link-tile>
++ <p-link-tile aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-link-tile>
+
+- <p-button-tile aspect-ratio="1:1 | 4:3 | 3:4 | 16:9 | 9:16"></p-button-tile>
++ <p-button-tile aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-button-tile>
+
+- <p-link-tile-model-signature aspect-ratio="1:1 | 4:3 | 3:4 | 16:9 | 9:16"></p-link-tile-model-signature>
++ <p-link-tile-model-signature aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-link-tile-model-signature>
+```
+
+### Link Tile, Button Tile:
+
+- Removed deprecated value `default` of prop `size`, use `medium` instead.
+
+```diff
+- <p-link-tile size="default"></p-link-tile>
++ <p-link-tile size="medium"></p-link-tile>
+
+- <p-button-tile size="default"></p-button-tile>
++ <p-button-tile size="medium"></p-button-tile>
+```
+
+- Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
 
 ```diff
 - <p-link-tile weight="semibold"></p-link-tile>
 + <p-link-tile weight="semi-bold"></p-link-tile>
+
+- <p-button-tile weight="semibold"></p-button-tile>
++ <p-button-tile weight="semi-bold"></p-button-tile>
+```
+
+### Modal:
+
+- Removed deprecated prop `disableCloseButton`, use `dismissButton` instead.
+
+```diff
+- <p-modal disable-close-button="true"></p-modal>
++ <p-modal dismiss-button="false"></p-modal>
+```
+
+- Removed deprecated prop `heading`, use `slot="header"` instead.
+
+```diff
+- <p-modal heading="Some Heading"></p-modal>
++ <p-modal>
++   <p-heading slot="header" size="large" tag="h2">
++     Some Heading
++   </p-heading>
++ </p-modal>
+```
+
+- Removed deprecated slot `heading`, use `slot="header"` instead.
+
+```diff
+<p-modal>
+-  <p-heading slot="heading" size="large" tag="h2">Some Heading</p-heading>
++  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+</p-modal>
+```
+
+- Removed deprecated event `close`, use `dismiss` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PModal onClose={(e: CustomEvent<void>) => {}} />
++ <PModal onDismiss={(e: CustomEvent<void>) => {}} />
+```
+
+### Multi Select:
+
+- Removed deprecated event `update`, use `change` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PMultiSelect onUpdate={(e: CustomEvent<MultiSelectUpdateEventDetail>) => {}} />
++ <PMultiSelect onChange={(e: CustomEvent<MultiSelectChangeEventDetail>) => {}} />
+```
+
+### Pagination:
+
+- Removed deprecated props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel`, use `intl` instead.
+
+```diff
+- <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
++ <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
+```
+
+- Removed deprecated prop `maxNumberOfPageLinks`, has no effect anyway. Instead there is responsive behavior out of the
+  box with full SSR support
+
+```diff
+- <p-pagination max-number-of-page-links="5"></p-pagination>
++ <p-pagination></p-pagination>
+```
+
+- Removed deprecated event `pageChange`, use `update` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PPagination onPageChange={(e: CustomEvent<PaginationUpdateEventDetail>) => {}} />
++ <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEventDetail>) => {}} />
+```
+
+### Pin Code:
+
+- Removed deprecated event `update`, use `change` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PPinCode onUpdate={(e: CustomEvent<PinCodeUpdateEventDetail>) => {}} />
++ <PPinCode onChange={(e: CustomEvent<PinCodeChangeEventDetail>) => {}} />
+```
+
+### Scroller:
+
+- Removed deprecated props `gradientColorScheme`, has no effect anyway.
+
+```diff
+- <p-scroller gradient-color-scheme="surface"></p-scroller>
++ <p-scroller></p-scroller>
+```
+
+- Removed deprecated props `gradientColor`, has no effect anyway.
+
+```diff
+- <p-scroller gradient-color="surface"></p-scroller>
++ <p-scroller></p-scroller>
+```
+
+- Removed deprecated prop `scrollIndicatorPosition`, use `alignScrollIndicator` instead.
+
+```diff
+- <p-scroller scroll-indicator-position="top"></p-scroller>
++ <p-scroller align-scroll-indicator="top"></p-scroller>
+```
+
+### Segmented Control:
+
+- Removed deprecated prop `backgroundColor`, has no effect anyway.
+
+```diff
+- <p-segmented-control background-color="background-surface">
++ <p-segmented-control>
+  <p-segmented-control-item value="xs">XS</p-segmented-control-item>
+  <p-segmented-control-item value="s">S</p-segmented-control-item>
+</p-segmented-control>
+```
+
+- Removed deprecated events `segmentedControlChange` and `update` use `change` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
+- <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
++ <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
+```
+
+### Select:
+
+- Removed deprecated event `update`, use `change` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PSelect onUpdate={(e: CustomEvent<SelectUpdateEventDetail>) => {}} />
++ <PSelect onChange={(e: CustomEvent<SelectChangeEventDetail>) => {}} />
+```
+
+### Stepper Horizontal:
+
+- Removed deprecated event `stepChange`, use `update` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepperHorizontalUpdateEventDetail>) => {}} />
++ <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEventDetail>) => {}} />
+```
+
+### Switch:
+
+- Removed deprecated values `left | right` of prop `alignLabel`, use `start | end` instead.
+
+```diff
+- <p-switch align-label="left"></p-switch>
++ <p-switch align-label="start"></p-switch>
+
+- <p-switch align-label="right"></p-switch>
++ <p-switch align-label="end"></p-switch>
+```
+
+- Removed deprecated event `switchChange`, use `update` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchUpdateEventDetail>) => {}} />
++ <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEventDetail>) => {}} />
+```
+
+### Table:
+
+- Removed deprecated event `sortingChange`, use `update` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PTable onSortingChange={(e: CustomEvent<TableUpdateEventDetail>) => {}} />
++ <PTable onUpdate={(e: CustomEvent<TableUpdateEventDetail>) => {}} />
 ```
 
 ### Tabs:
 
-- Prop value `semibold` of `weight` prop is deprecated, use new value `semi-bold`.
+- Removed deprecated prop `gradientColorScheme`, has no effect anyway.
+
+```diff
+- <p-tabs gradient-color-scheme="surface"></p-tabs>
++ <p-tabs></p-tabs>
+```
+
+- Removed deprecated prop `gradientColor`, has no effect anyway.
+
+```diff
+- <p-tabs gradient-color="surface"></p-tabs>
++ <p-tabs></p-tabs>
+```
+
+- Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
 
 ```diff
 - <p-tabs weight="semibold"></p-tabs>
 + <p-tabs weight="semi-bold"></p-tabs>
 ```
 
+- Removed deprecated event `tabChange`, use `update` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PTabs onTabChange={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
++ <PTabs onUpdate={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
+```
+
 ### Tabs Bar:
 
-- Prop value `semibold` of `weight` prop is deprecated, use new value `semi-bold`.
+- Removed deprecated prop `gradientColorScheme`, has no effect anyway.
 
 ```diff
-- <p-tabs-bar weight="semibold"></p-tabs>
-+ <p-tabs-bar weight="semi-bold"></p-tabs>
+- <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
++ <p-tabs-bar></p-tabs-bar>
 ```
 
-### Tag:
-
-- Prop value
-  `notification-neutral | background-error | background-success | background-warning | neutral-contrast-high | background-default`
-  of `color` prop is deprecated, use new value
-  `notification-info-soft | notification-error-soft | notification-success-soft | notification-warning-soft | primary | background-base`.
+- Removed deprecated prop `gradientColor`, has no effect anyway.
 
 ```diff
-- <p-tag color="notification-neutral">Color label</p-tag>
-+ <p-tag color="notification-info-soft">Color label</p-tag>
-
-- <p-tag color="notification-error">Color label</p-tag>
-+ <p-tag color="notification-error-soft">Color label</p-tag>
-
-- <p-tag color="notification-success">Color label</p-tag>
-+ <p-tag color="notification-success-soft">Color label</p-tag>
-
-- <p-tag color="notification-warning">Color label</p-tag>
-+ <p-tag color="notification-warning-soft">Color label</p-tag>
-
-- <p-tag color="neutral-contrast-high">Color label</p-tag>
-+ <p-tag color="primary">Color label</p-tag>
-
-- <p-tag color="background-default">Color label</p-tag>
-+ <p-tag color="background-base">Color label</p-tag>
+- <p-tabs-bar gradient-color="surface"></p-tabs-bar>
++ <p-tabs-bar></p-tabs-bar>
 ```
 
-### Tag Dismissible:
-
-- Prop value `background-default` of `color` prop is deprecated, use new value `background-base`.
+- Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
 
 ```diff
-- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
-+ <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
+- <p-tabs-bar weight="semibold"></p-tabs-bar>
++ <p-tabs-bar weight="semi-bold"></p-tabs-bar>
+```
+
+- Removed deprecated event `tabChange`, use `update` instead.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PTabsBar onTabChange={(e: CustomEvent<TabsBarUpdateEventDetail>) => {}} />
++ <PTabsBar onUpdate={(e: CustomEvent<TabsBarUpdateEventDetail>) => {}} />
 ```
 
 ### Text:
 
-- Prop value `thin | semibold` of `weight` prop is deprecated (`thin` is mapped to `regular` by default).
+- Removed deprecated values `left | right` of prop `align`, use `start | end` instead.
 
 ```diff
-- <p-text weight="thin">Some text</p-text>
-+ <p-text>Some text</p-text>
+- <p-text align="left"></p-text>
++ <p-text align="start"></p-text>
 
-- <p-text weight="semibold">Some text</p-text>
-+ <p-text weight="semi-bold">Some text</p-text>
+- <p-text align="right"></p-text>
++ <p-text align="end"></p-text>
 ```
 
-- Prop value
+- Removed deprecated values
   `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-  `color` prop is deprecated, use new value
-  `primary | contrast-low | contrast-medium | contrast-high | notification-info`.
+  prop `color`, use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead.
 
 ```diff
 - <p-text color="brand">Some text</p-text>
@@ -731,14 +1184,346 @@ p-banner>
 + <p-text color="contrast-high">Some text</p-text>
 
 - <p-text color="notification-neutral">Some text</p-text>
-+ <p-text color="notification-info">Some text</p-text>
+- <p-text color="notification-info">Some text</p-text>
++ <p-text color="info">Some text</p-text>
 ```
 
-### ToastManager:
+- Removed deprecated values `thin | semibold` of prop `weight`, use `semi-bold` instead. `thin` is mapped to `regular`
+  by default.
 
-- Prop value `neutral` of `state` parameter is deprecated, use new value `info`.
+```diff
+- <p-text weight="thin">Some text</p-text>
++ <p-text>Some text</p-text>
+
+- <p-text weight="semibold">Some text</p-text>
++ <p-text weight="semi-bold">Some text</p-text>
+```
+
+### Text List:
+
+- Removed deprecated props `listType` and `orderType`, use `type` instead.
+
+```diff
+- <p-text-list list-type="unordered"></p-text-list>
++ <p-text-list type="unordered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="numbered"></p-text-list>
++ <p-text-list type="numbered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="alphabetically"></p-text-list>
++ <p-text-list type="alphabetically"></p-text-list>
+```
+
+### Toast:
+
+- Removed deprecated value `neutral` of prop `state`, use `info` instead.
 
 ```diff
 - …addMessage({ text: `Some message`, state: 'neutral' })
 + …addMessage({ text: `Some message`, state: 'info' })
+```
+
+## ❌ Removed Components (deprecated in v3 already)
+
+### Checkbox Wrapper:
+
+- Removed deprecated component `p-checkbox-wrapper`, use `p-checkbox` instead.
+
+```diff
+- <p-checkbox-wrapper label="Some label">
+-   <input type="checkbox" name="some-name" />
+- </p-checkbox-wrapper>
++ <p-checkbox label="Some label" name="some-name"></p-checkbox>
+```
+
+### Radio Button Wrapper:
+
+- Removed deprecated component `p-checkbox-wrapper`, use `p-radio-group` instead.
+
+```diff
+- <p-radio-button-wrapper label="Some label">
+-   <input type="radio" name="some-name" />
+- </p-radio-button-wrapper>
+
+- <p-radio-button-wrapper label="Some label" class="mt-fluid-sm">
+-   <input type="radio" name="some-name" />
+- </p-radio-button-wrapper>
+
++ <p-radio-group name="some-name" label="Some Label">
++   <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
++   <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
++ </p-radio-group>
+```
+
+### Content Wrapper:
+
+- Removed deprecated component `p-content-wrapper`, use [Porsche Grid Style](/tailwindcss/grid/examples/) instead,
+  Tailwind CSS is recommended.
+
+```diff
+- <p-content-wrapper>
+    <div class="example-content">
+      Some content
+    </div>
+- </p-content-wrapper>
+
+// Example using Tailwind CSS:
++ <div class="grid-template">
++   <div class="col-extended">
+      <div class="example-content">
+        Some content
+      </div>
++   </div>
++ </div>
+```
+
+### Fieldset Wrapper
+
+- Removed deprecated component `p-fieldset-wrapper`, use `p-fieldset` instead.
+
+```diff
+- <p-fieldset-wrapper label="Some legend label">
+-   <!-- form elements -->
+- </p-fieldset-wrapper>
++ <p-fieldset label="Some legend label">
++   <!-- form elements -->
++ </p-fieldset>
+```
+
+### Flex
+
+- Removed deprecated component `p-flex`, use CSS Flex instead, Tailwind CSS is recommended.
+
+```diff
+// Example using Tailwind CSS:
+- <p-flex>
+-   <p-flex-item>1</p-flex-item>
+-   <p-flex-item>2</p-flex-item>
+-   <p-flex-item>3</p-flex-item>
+- </p-flex>
++ <div class="flex">
++   <div>1</div>
++   <div>2</div>
++   <div>3</div>
++ </div>
+
+// Example using CSS:
+- <p-flex>
+-   <p-flex-item>1</p-flex-item>
+-   <p-flex-item>2</p-flex-item>
+-   <p-flex-item>3</p-flex-item>
+- </p-flex>
++ <div class="display: flex">
++   <div>1</div>
++   <div>2</div>
++   <div>3</div>
++ </div>
+```
+
+### Grid
+
+- Removed deprecated component `p-grid`, use CSS Grid instead, Tailwind CSS is recommended.
+
+```diff
+// Example using Tailwind CSS:
+- <p-grid>
+-   <p-grid-item size="4">1</p-grid-item>
+-   <p-grid-item size="4">2</p-grid-item>
+-   <p-grid-item size="4">3</p-grid-item>
+- </p-grid>
++ <div class="grid grid-cols-3">
++   <div>1</div>
++   <div>2</div>
++   <div>3</div>
++ </div>
+
+// Example using CSS:
+- <p-grid>
+-   <p-grid-item size="4">1</p-grid-item>
+-   <p-grid-item size="4">2</p-grid-item>
+-   <p-grid-item size="4">3</p-grid-item>
+- </p-grid>
++ <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));">
++   <div>1</div>
++   <div>2</div>
++   <div>3</div>
++ </div>
+```
+
+### Headline
+
+- Removed deprecated component `p-headline`, use `p-heading` instead.
+
+```diff
+- <p-headline>Some Headline</p-headline>
++ <p-heading>Some Headline</p-heading>
+```
+
+### Link Social
+
+- Removed deprecated component `p-link-social`, use `p-link` instead.
+
+```diff
+- <p-link-social href="https://example.com" icon="logo-facebook">
+-   Facebook
+- </p-link-social>
++ <p-link href="https://example.com" icon="logo-facebook">
++   Facebook
++ </p-link>
+```
+
+### Marque
+
+- Removed deprecated component `p-marque`, use `p-wordmark` (recommended) or `p-crest` instead.
+
+```diff
+- <p-marque></p-marque>
++ <p-wordmark></p-wordmark> // preferred over crest
+// or
++ <p-crest></p-crest>
+```
+
+### Select Wrapper
+
+- Removed deprecated component `p-select-wrapper`, use `p-select`, `p-select-option` and `p-optgroup` instead.
+
+```diff
+- <p-select-wrapper label="Some label">
+-   <select name="some-name">
+-     <option value="a">Option A</option>
+-     <option value="b">Option B</option>
+-   </select>
+- </p-select-wrapper>
++ <p-select label="Some label" name="some-name">
++   <p-select-option value="a">Option A</p-select-option>
++   <p-select-option value="b">Option B</p-select-option>
++ </p-select>
+```
+
+### Text Field Wrapper
+
+- Removed deprecated component `p-text-field-wrapper`, use `p-input-date`, `p-input-email`, `p-input-month`,
+  `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time`, `p-input-url`
+  or `p-input-week` depending on `type`.
+
+#### type="date"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="date" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-date label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="email"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="email" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-email label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="month"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="month" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-month label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="number"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="number" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-number label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="password"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="password" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-password label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="search"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="search" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-search label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="tel"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="tel" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-tel label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="text"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="text" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-text label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="time"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="time" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-time label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="url"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="url" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-url label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="week"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="week" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-week label="Some label" name="some-name"></p-input-text>
+```
+
+### Textarea Wrapper
+
+- Removed deprecated component `p-textarea-wrapper`, use `p-textarea` instead.
+
+```diff
+- <p-textarea-wrapper label="Some label">
+-   <textarea name="some-name"></textarea>
+- </p-textarea-wrapper>
+
++ <p-textarea label="Some label" name="some-name"></p-textarea>
 ```

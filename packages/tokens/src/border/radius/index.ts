@@ -1,3 +1,9 @@
-export { borderRadiusLg } from './borderRadiusLg';
-export { borderRadiusMd } from './borderRadiusMd';
-export { borderRadiusSm } from './borderRadiusSm';
+export { radius2Xl } from './radius2Xl';
+export { radius3Xl } from './radius3Xl';
+export { radius4Xl } from './radius4Xl';
+export { radiusFull } from './radiusFull';
+export { radiusLg } from './radiusLg';
+export { radiusMd } from './radiusMd';
+export { radiusSm } from './radiusSm';
+export { radiusXl } from './radiusXl';
+export { radiusXs } from './radiusXs';

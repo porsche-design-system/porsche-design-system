@@ -1,46 +1,7 @@
 import { type Page } from '@playwright/test';
-import { ICON_NAMES } from '@porsche-design-system/assets';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  getComponentChunkLinks,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-} from '@porsche-design-system/components-js/partials';
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { viewportWidthM } from '@porsche-design-system/shared/testing';
-import { type Theme } from '@porsche-design-system/styles';
-import { COMPONENT_CHUNK_NAMES } from '../../../projects/components-wrapper';
-
-const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
-  (tagName) => getComponentMeta(tagName).isThemeable
-);
-
-const isOrContainsPIcon = (tagName: TagName): boolean => {
-  return tagName === 'p-icon' || getComponentMeta(tagName).nestedComponents?.some(isOrContainsPIcon);
-};
-// const iconChildTagNames = (TAG_NAMES as unknown as TagName[]).filter(isOrContainsPIcon);
 
 export const waitForComponentsReady = async (page: Page): Promise<number> => {
-  // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
-  // is called before the markup is initialized, it can resolve early with 0
   await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
-
-  // remove loading="lazy" from icon img elements which might otherwise be missing when a screenshot or pdf is created
-  /* const iconUrls = await page.evaluate((iconChildTagNames) => {
-    const elementsWithIcons = Array.from(document.querySelectorAll(iconChildTagNames.join(',')));
-    const removeIconLazyLoading = (el: HTMLElement): string[] =>
-      el.tagName === 'P-ICON' // optional chaining is needed for toast which does not contain `img` element for unknown reasons 🤷‍
-        ? (el.shadowRoot.querySelector('img')?.removeAttribute('loading'), [el.shadowRoot.querySelector('img')?.src])
-        : Array.from(el.shadowRoot.querySelectorAll(iconChildTagNames.join(',')))
-            .map(removeIconLazyLoading)
-            .flat();
-
-    return elementsWithIcons.map(removeIconLazyLoading).flat();
-  }, iconChildTagNames);
-
-  // NOTE: there is no guarantee that all svg or png assets are already loaded, request interception and something like
-  await Promise.all(iconUrls.map((url) => page.waitForResponse(url)) might be a stable solution*/
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
@@ -48,54 +9,14 @@ export const waitForComponentsReadyWithinIFrames = async (page: Page): Promise<v
   return page.evaluate(() => (window as any).porscheDesignSystem.waitForComponentsReadyWithinIFrames());
 };
 
-const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Theme): Promise<void> => {
-  await page.evaluate(
-    ({ forceComponentTheme, themeableTagNames }) => {
-      window.addEventListener('stencil_componentDidUpdate', (e: Event & { target: Element }) => {
-        const { target } = e;
-        if ((window as any).componentDidUpdateMap.has(target)) {
-          (window as any).componentDidUpdateMap.set(target, true);
-        }
-      });
-
-      const themeableElements = Array.from(
-        document.querySelectorAll<HTMLElement & { theme: Theme }>(themeableTagNames.join())
-      );
-
-      // initialize map to detect theme change via stencil_componentDidUpdate event
-      (window as any).componentDidUpdateMap = new Map(
-        themeableElements.map((el) => [el, el.theme === forceComponentTheme])
-      );
-
-      // tweak components
-      themeableElements.forEach((el) => {
-        el.theme = forceComponentTheme;
-      });
-
-      // tweak playgrounds
-      document.querySelectorAll('.playground').forEach((el) => {
-        el.classList.remove('light', 'dark', 'auto');
-        el.classList.add(forceComponentTheme);
-      });
-    },
-    { forceComponentTheme, themeableTagNames }
-  );
-
-  await page.waitForFunction(
-    () => !Array.from<boolean>((window as any).componentDidUpdateMap.values()).some((didUpdate) => !didUpdate)
-  );
-};
-
 export type PrefersColorScheme = 'light' | 'dark';
-export type Dir = 'ltr' | 'rtl' | 'auto';
 type SetupScenarioOptions = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
-  forceComponentTheme?: Theme;
-  forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
+  forcePseudoState?: 'focus' | 'hover';
 };
 
 export const setupScenario = async (
@@ -109,15 +30,13 @@ export const setupScenario = async (
     forcedColorsEnabled,
     prefersColorScheme,
     scalePageFontSize,
-    forceComponentTheme,
-    forceDirMode,
+    forcePseudoState,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
     prefersColorScheme: undefined,
     scalePageFontSize: false,
-    forceComponentTheme: undefined,
-    forceDirMode: undefined,
+    forcePseudoState: undefined,
     ...options,
   };
   if (javaScriptDisabled) {
@@ -146,15 +65,7 @@ export const setupScenario = async (
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
 
-  const searchParams = new URLSearchParams();
-  if (forceComponentTheme) {
-    searchParams.append('theme', forceComponentTheme);
-  }
-  if (forceDirMode) {
-    searchParams.append('dir', forceDirMode);
-  }
-  const finalUrl = `${url}?${searchParams.toString()}`;
-  await page.goto(finalUrl);
+  await page.goto(url);
 
   // we need to have the full document height containing all iframes, otherwise iframes might get loaded lazy,
   // which causes componentsReadyWithinIFrames() to never resolve
@@ -166,76 +77,90 @@ export const setupScenario = async (
   await waitForComponentsReady(page);
   await waitForComponentsReadyWithinIFrames(page);
 
+  if (forcePseudoState) {
+    const client = await page.context().newCDPSession(page);
+
+    await client.send('DOM.enable');
+    await client.send('CSS.enable');
+
+    // For hover, we target all elements; for focus, only focusable elements
+    const selectors =
+      forcePseudoState === 'focus'
+        ? [
+            'a[href]',
+            'button:not([disabled])',
+            'textarea:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            '[tabindex]:not([tabindex="-1"])',
+          ]
+        : ['*'];
+
+    async function forcePseudoStateInDocument(docNodeId: number): Promise<void> {
+      for (const selector of selectors) {
+        try {
+          const { nodeIds } = await client.send('DOM.querySelectorAll', {
+            nodeId: docNodeId,
+            selector: selector,
+          });
+
+          for (const foundNodeId of nodeIds) {
+            try {
+              await client.send('CSS.forcePseudoState', {
+                nodeId: foundNodeId,
+                forcedPseudoClasses:
+                  forcePseudoState === 'focus'
+                    ? ['focus', 'focus-visible']
+                    : forcePseudoState === 'hover'
+                      ? ['hover']
+                      : [],
+              });
+            } catch (e) {
+              // Element might not support pseudo-states
+            }
+          }
+        } catch (e) {
+          // Selector might not be valid in this context
+        }
+      }
+    }
+
+    async function traverseAndForcePseudoState(node: any): Promise<void> {
+      if (!node) {
+        return;
+      }
+
+      if (node.nodeId) {
+        await forcePseudoStateInDocument(node.nodeId);
+      }
+
+      // Handle content documents (iframes)
+      if (node.contentDocument) {
+        await traverseAndForcePseudoState(node.contentDocument);
+      }
+
+      // Traverse shadow roots
+      if (node.shadowRoots) {
+        for (const shadowRoot of node.shadowRoots) {
+          await traverseAndForcePseudoState(shadowRoot);
+        }
+      }
+
+      // Traverse children
+      if (node.children) {
+        for (const child of node.children) {
+          await traverseAndForcePseudoState(child);
+        }
+      }
+    }
+
+    const { root } = await client.send('DOM.getDocument', { depth: -1, pierce: true });
+    await traverseAndForcePseudoState(root);
+  }
+
   // PDS components have bootstrapped in the meantime which might have changed the document height
   await page.setViewportSize({
     width: viewportWidth,
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
-};
-
-type SetContentWithDesignSystemOptions = {
-  injectIntoHead?: string;
-  prefersColorScheme?: PrefersColorScheme;
-  forceComponentTheme?: Theme;
-};
-
-export const setContentWithDesignSystem = async (
-  page: Page,
-  content: string,
-  opts?: SetContentWithDesignSystemOptions
-): Promise<void> => {
-  const { injectIntoHead, prefersColorScheme, forceComponentTheme }: SetContentWithDesignSystemOptions = {
-    injectIntoHead: '',
-    prefersColorScheme: undefined,
-    forceComponentTheme: undefined,
-    ...opts,
-  };
-
-  if (prefersColorScheme) {
-    await page.emulateMedia({ colorScheme: prefersColorScheme || 'light' });
-  }
-
-  // get rid of spaces as we do during static VRTs
-  content = content.replace(/>(\s)*</g, '><');
-
-  const localhost = 'http://localhost:3001';
-  const headPartials = [
-    getInitialStyles(),
-    getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
-    getIconLinks({ icons: [...ICON_NAMES] }),
-    // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
-    // getFontFaceStylesheet(),
-    '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">',
-    getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
-  ]
-    .join('')
-    .replace(/https:\/\/cdn\.ui\.porsche\.com?(?:\/porsche-design-system)?/g, localhost);
-
-  // TODO: using getLoaderScript() partial to initialize PDS would be much nicer.
-  //  But how to expose componentsReady then `window.porscheDesignSystem.componentsReady = componentsReady;`?
-  // const bodyPartials = [getLoaderScript()]
-  // .join('')
-  // .replace(/"https:\/\/cdn\.ui\.porsche\."\+\("cn"===window\[t\]\?"cn":"com"\)/g, `"${localhost}"`);
-
-  await page.setContent(`<!DOCTYPE html>
-<html>
-  <head>
-    <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-    <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-    <link rel="stylesheet" href="assets/styles.css">
-    ${headPartials}
-    ${injectIntoHead}
-  </head>
-  <body>
-    <div id="app">${content}</div>
-    <script type="text/javascript">porscheDesignSystem.load();</script>
-  </body>
-</html>`);
-  await waitForComponentsReady(page);
-
-  if (forceComponentTheme) {
-    await waitForForcedComponentTheme(page, forceComponentTheme);
-  }
-
-  await page.setViewportSize({ width: viewportWidthM, height: 600 });
 };

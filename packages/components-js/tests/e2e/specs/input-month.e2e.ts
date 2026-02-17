@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
+import { colorContrastLowerLight } from '@porsche-design-system/tokens';
 import {
   addEventListener,
   getConsoleErrorsAmount,
@@ -100,6 +101,36 @@ test.describe('value', () => {
     await expect(host).toHaveJSProperty('value', testInput);
     await expect(inputMonth).toHaveJSProperty('value', testInput);
     await expect(inputMonth).toHaveValue(testInput);
+  });
+
+  test('should allow controlled input via programmatic value updates in input listener', async ({ page }) => {
+    await initInputMonth(page, { props: { name: 'some-name' } });
+    const host = getHost(page);
+    const inputMonth = getInputMonth(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputMonth).toHaveValue('');
+
+    // Add input event listener that always sets value to '2025-05'
+    await page.evaluate(() => {
+      const hostElement = document.querySelector('p-input-month');
+      hostElement.addEventListener('input', () => {
+        hostElement.value = '2025-05';
+      });
+    });
+
+    await inputMonth.focus();
+    await expect(inputMonth).toBeFocused();
+
+    await inputMonth.fill('2019-03');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-05');
+    await expect(inputMonth).toHaveValue('2025-05');
+
+    await inputMonth.fill('2026-08');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-05');
+    await expect(inputMonth).toHaveValue('2025-05');
   });
 });
 
@@ -470,7 +501,7 @@ test.describe('focus state', () => {
 
     await addEventListener(inputMonth, 'focus');
     expect((await getEventSummary(inputMonth, 'focus')).counter).toBe(0);
-    await expect(inputMonthWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(inputMonthWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await host.focus();
     await waitForStencilLifecycle(page);
@@ -551,7 +582,6 @@ test.describe('Event', () => {
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-month when label is hovered', async ({ page }) => {
@@ -561,13 +591,13 @@ test.describe('hover state', () => {
     const inputMonth = getInputMonth(page);
     const inputMonthWrapper = getInputMonthWrapper(page);
 
-    await expect(inputMonthWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputMonthWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
     await inputMonth.hover();
 
     await expect(inputMonthWrapper).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    await expect(inputMonthWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputMonthWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await label.hover();
     await expect(inputMonthWrapper).toHaveCSS('border-color', hoverBorderColor);

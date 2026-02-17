@@ -1,3 +1,12 @@
+import type {
+  AlignLabel,
+  AriaAttributes,
+  ButtonType,
+  LinkButtonIconName,
+  SelectedAriaAttributes,
+  TextSize,
+  TypographyTextWeight,
+} from '../../types';
 import {
   type ButtonAriaAttribute,
   consoleWarn,
@@ -6,22 +15,10 @@ import {
   hasVisibleIcon,
   parseAndGetAriaAttributes,
 } from '../../utils';
-import type {
-  AriaAttributes,
-  LinkButtonIconName,
-  SelectedAriaAttributes,
-  TextSize,
-  AlignLabel,
-  AlignLabelDeprecated,
-  ButtonType,
-  TypographyTextWeight,
-} from '../../types';
 
 export type ButtonPureType = ButtonType;
 export type ButtonPureIcon = LinkButtonIconName;
 export type ButtonPureAriaAttribute = ButtonAriaAttribute;
-/** @deprecated */
-export type ButtonPureAlignLabelDeprecated = AlignLabelDeprecated;
 export type ButtonPureAlignLabel = AlignLabel;
 export type ButtonPureWeight = TypographyTextWeight;
 export type ButtonPureSize = TextSize;

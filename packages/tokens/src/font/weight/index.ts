@@ -1,3 +1,3 @@
 export { fontWeightBold } from './fontWeightBold';
-export { fontWeightRegular } from './fontWeightRegular';
-export { fontWeightSemiBold } from './fontWeightSemiBold';
+export { fontWeightNormal } from './fontWeightNormal';
+export { fontWeightSemibold } from './fontWeightSemibold';

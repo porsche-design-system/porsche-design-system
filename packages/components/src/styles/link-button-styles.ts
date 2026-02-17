@@ -1,71 +1,53 @@
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  frostedGlassStyle,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { fontLineHeight, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import type { Styles } from 'jss';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
-import { buildResponsiveStyles, darken, hasVisibleIcon, isHighContrastMode, lighten } from '../utils';
+import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
+import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
+  addImportantToRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
 } from './';
-
-const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
-const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
+import {
+  colorCanvas,
+  colorContrastHigh,
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+  radiusXl,
+} from './css-variables';
 
 type Colors = {
   textColor: string;
-  borderColor: string;
-  borderColorHover: string;
   backgroundColor: string;
   backgroundColorHover: string;
 };
 
-const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor, backgroundFrostedColor } =
-    getThemedColors(theme);
-  const { canvasColor } = getHighContrastColors();
-
+const getVariantColors = (variant: LinkButtonVariant): Colors => {
   const colors: {
-    [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
+    [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
-      borderColor: primaryColor,
-      borderColorHover: contrastHighColor,
-      backgroundColor: primaryColor,
-      backgroundColorHover: contrastHighColor,
+      textColor: colorCanvas,
+      backgroundColor: colorPrimary,
+      backgroundColorHover: colorContrastHigh,
     },
     secondary: {
-      textColor: primaryColor,
-      borderColor: primaryColor,
-      borderColorHover: contrastMediumColor,
-      backgroundColor: isHighContrastMode ? canvasColor : 'transparent',
-      backgroundColorHover: hoverColor,
-    },
-    ghost: {
-      textColor: primaryColor,
-      borderColor: backgroundFrostedColor,
-      borderColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
-      backgroundColor: backgroundFrostedColor,
-      backgroundColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
+      textColor: colorPrimary,
+      backgroundColor: colorFrostedStrong,
+      backgroundColorHover: colorFrosted,
     },
   };
 
-  return colors[variant === 'tertiary' ? 'secondary' : variant];
+  return colors[variant];
 };
 
 export const getLinkButtonStyles = (
@@ -75,97 +57,81 @@ export const getLinkButtonStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
-  compact: BreakpointCustomizable<boolean>,
-  cssVariableInternalScaling: string,
-  theme: Theme
+  isCompact: BreakpointCustomizable<boolean>,
+  cssVariableInternalScaling: string
 ): Styles => {
-  const isPrimary = variant === 'primary';
-  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
-    variant,
-    theme
-  );
-  const {
-    textColor: textColorDark,
-    borderColor: borderColorDark,
-    borderColorHover: borderColorHoverDark,
-    backgroundColor: backgroundColorDark,
-    backgroundColorHover: backgroundColorHoverDark,
-  } = getVariantColors(variant, 'dark');
+  const { textColor, backgroundColor, backgroundColorHover } = getVariantColors(variant);
 
-  const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const scalingVar = `var(${cssVariableInternalScaling}, var(--p-internal-scaling-factor))`;
-
-  const borderCompensation = variant === 'ghost' && !isHighContrastMode ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
-  const borderStyle = `${borderWidthBase} solid ${borderColor}`;
-  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} ${borderCompensation})`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
-  const paddingInline = `max(calc(${scalingVar} * 1.625 * ${SCALING_BASE_VALUE} ${borderCompensation}), ${variant === 'ghost' ? '6px' : '4px'})`; // 1.625 * SCALING_BASE_VALUE corresponds to 26px
-  const gap = `clamp(2px, calc(${scalingVar} * 0.5 * ${SCALING_BASE_VALUE}), 16px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 8px
-  const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * -0.5 * ${SCALING_BASE_VALUE}), -2px)`; // -0.5 * SCALING_BASE_VALUE corresponds to -8px
+  const paddingBlock = `calc(28px * (var(${cssVariableInternalScaling}) - 0.64285714) + 6px)`;
+  const paddingInline = `calc(33.6px * (var(${cssVariableInternalScaling}) - 0.64285714) + 16px)`;
+  const gap = `calc(11.2px * (var(${cssVariableInternalScaling}) - 0.64285714) + 4px)`;
+  const iconMarginInlineStart = `calc(-1 * (11.2px * (var(${cssVariableInternalScaling}) - 0.64285714) + 4px))`;
 
   return {
     '@global': {
       ':host': {
         display: 'inline-block',
+        verticalAlign: 'top',
+        ...mergeDeep(
+          buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+            [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
+            borderRadius: addImportantToRule(`var(${legacyRadiusSmall}, ${compactValue ? radiusLg : radiusXl})`),
+          })),
+          buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+            ...(hideLabelValue && {
+              borderRadius: addImportantToRule(`var(${legacyRadiusSmall}, ${radiusFull})`),
+            }),
+          }))
+        ),
         ...addImportantToEachRule({
-          verticalAlign: 'top',
-          outline: 0, // custom element is able to delegate the focus
-          borderRadius: borderRadiusSmall,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
+      all: 'unset',
       display: 'flex',
-      alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%', // Allows for setting a width on the host
       minWidth: 'min-content', // Do not shrink beyond icon size + padding + border + label
       boxSizing: 'border-box',
-      textAlign: 'start',
-      WebkitAppearance: 'none', // iOS safari
-      appearance: 'none',
-      textDecoration: 'none',
+      ...frostedGlassStyle,
       ...textSmallStyle,
-      ...(variant === 'ghost'
-        ? {
-            ...frostedGlassStyle,
-            border: isHighContrastMode ? borderStyle : 'none',
-          } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
-        : { border: borderStyle }),
-      borderRadius: borderRadiusSmall,
+      borderRadius: 'inherit',
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
       color: textColor,
-      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
-        '--p-internal-scaling-factor': compactValue ? 'calc(4 / 13)' : 1, // Compact mode needs to have 4px paddingBlock thus this scaling factor
-      })),
+      cursor: 'pointer',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
         gap: hideLabelValue ? 0 : gap,
       })),
-      ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
+      ...forcedColorsMediaQuery({
+        forcedColorAdjust: 'none',
+        background: 'Canvas',
+        color: 'LinkText',
+        boxShadow: 'inset 0 0 0 2px LinkText',
+        '&:is(button)': {
+          boxShadow: 'inset 0 0 0 2px ButtonBorder',
+          color: 'ButtonText',
+        },
+      }),
+      ...(!hasSlottedAnchor && {
+        '&:focus-visible': getFocusBaseStyles(),
+      }),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
             backgroundColor: backgroundColorHover,
-            borderColor: isHighContrastMode ? focusColor : borderColorHover,
-            ...(!isPrimary && frostedGlassStyle),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: backgroundColorHoverDark,
-              borderColor: borderColorHoverDark,
+            ...forcedColorsMediaQuery({
+              background: 'Canvas',
             }),
           },
         })),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: borderColorDark,
-        backgroundColor: backgroundColorDark,
-        color: textColorDark,
-      }),
     },
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {

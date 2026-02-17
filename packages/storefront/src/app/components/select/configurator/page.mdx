@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { selectStory } from '@/app/components/select/select.stories';
+import { selectStory, selectSlotStories } from '@/app/components/select/select.stories';
 import { Notification } from '@/components/common/Notification';
 import Link from 'next/link';
 
@@ -30,4 +30,4 @@ a selected attribute or property. If an option should be visible but not selecta
 render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
 container.
 
-<Configurator tagName="p-select" story={selectStory} />
+<Configurator tagName="p-select" story={selectStory} slotStories={selectSlotStories} />

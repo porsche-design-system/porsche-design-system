@@ -1,10 +1,5 @@
 import type { IconName } from '@porsche-design-system/icons';
-import type { Theme } from '../../../types';
 import { getTagNameWithoutPrefix, throwException } from '../../../utils';
-
-export type StepperHorizontalItemInternalHTMLProps = {
-  theme: Theme;
-};
 
 export const STEPPER_ITEM_STATES = ['current', 'complete', 'warning'] as const;
 export type StepperHorizontalItemState = (typeof STEPPER_ITEM_STATES)[number];

@@ -1,5 +1,4 @@
 import { type FunctionalComponent, h, type JSX } from '@stencil/core';
-import type { Theme } from '../../../types';
 import { getPrefixedTagNames } from '../../../utils';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
@@ -25,7 +24,6 @@ type InputBaseProps = {
   disabled?: boolean;
   state?: InputBaseState;
   message?: string;
-  theme?: Theme;
   readOnly?: boolean;
   name: string;
   form?: string;
@@ -62,7 +60,6 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   disabled,
   state,
   message,
-  theme,
   readOnly,
   type,
   form,
@@ -135,9 +132,9 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         />
         {end}
         <slot name="end" />
-        {loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />}
+        {loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
       </div>
-      <StateMessage state={state} message={message} theme={theme} host={host} />
+      <StateMessage state={state} message={message} host={host} />
       <LoadingMessage loading={loading} initialLoading={initialLoading} />
     </div>
   );

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToastManager, PToast } from '@porsche-design-system/components-vue';
+import { PToast, useToastManager } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const { addMessage } = useToastManager();

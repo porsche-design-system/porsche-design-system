@@ -4,13 +4,13 @@ const prefix =
     : '[Porsche Design System]';
 
 export const consoleWarn = (...messages: (string | object)[]): void => {
-  console.warn(prefix, ...messages); // eslint-disable-line no-console
+  console.warn(prefix, ...messages);
 };
 
 export const consoleError = (...messages: (string | object)[]): void => {
-  console.error(prefix, ...messages); // eslint-disable-line no-console
+  console.error(prefix, ...messages);
 };
 
 export const throwException = (message: string): void => {
-  throw new Error(`${prefix} ${message}`); // eslint-disable-line fp/no-throw
+  throw new Error(`${prefix} ${message}`);
 };

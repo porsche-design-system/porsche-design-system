@@ -2,16 +2,6 @@
 
 exports[`should contain correct value for blurFrosted 1`] = `"blur(32px)"`;
 
-exports[`should contain correct value for borderRadiusLg 1`] = `"12px"`;
-
-exports[`should contain correct value for borderRadiusMd 1`] = `"8px"`;
-
-exports[`should contain correct value for borderRadiusSm 1`] = `"4px"`;
-
-exports[`should contain correct value for borderWidthRegular 1`] = `"2px"`;
-
-exports[`should contain correct value for borderWidthThin 1`] = `"1px"`;
-
 exports[`should contain correct value for breakpoint2Xl 1`] = `1920`;
 
 exports[`should contain correct value for breakpointLg 1`] = `1300`;
@@ -24,131 +14,253 @@ exports[`should contain correct value for breakpointXl 1`] = `1760`;
 
 exports[`should contain correct value for breakpointXs 1`] = `480`;
 
-exports[`should contain correct value for colorActiveDark 1`] = `"rgba(126,127,130,.2)"`;
+exports[`should contain correct value for colorBackdrop 1`] = `"light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 5.3%, 14.9%, 0.500))"`;
 
-exports[`should contain correct value for colorActiveLight 1`] = `"rgba(148,149,152,.2)"`;
+exports[`should contain correct value for colorBackdropDark 1`] = `"hsla(240, 5.3%, 14.9%, 0.500)"`;
 
-exports[`should contain correct value for colorCanvasDark 1`] = `"#0E0E12"`;
+exports[`should contain correct value for colorBackdropLight 1`] = `"hsla(240, 5.3%, 14.9%, 0.500)"`;
 
-exports[`should contain correct value for colorCanvasLight 1`] = `"#FFF"`;
+exports[`should contain correct value for colorCanvas 1`] = `"light-dark(#fff,hsl(225, 66.7%, 1.2%))"`;
 
-exports[`should contain correct value for colorContrastHighDark 1`] = `"#AFB0B3"`;
+exports[`should contain correct value for colorCanvasDark 1`] = `"hsl(225, 66.7%, 1.2%)"`;
 
-exports[`should contain correct value for colorContrastHighLight 1`] = `"#535457"`;
+exports[`should contain correct value for colorCanvasLight 1`] = `"#fff"`;
 
-exports[`should contain correct value for colorContrastLowDark 1`] = `"#404044"`;
+exports[`should contain correct value for colorContrastHigh 1`] = `"light-dark(hsla(240, 7.1%, 11%, 0.700),hsla(240, 12.5%, 96.9%, 0.670))"`;
 
-exports[`should contain correct value for colorContrastLowLight 1`] = `"#D8D8DB"`;
+exports[`should contain correct value for colorContrastHighDark 1`] = `"hsla(240, 12.5%, 96.9%, 0.670)"`;
 
-exports[`should contain correct value for colorContrastMediumDark 1`] = `"#88898C"`;
+exports[`should contain correct value for colorContrastHighLight 1`] = `"hsla(240, 7.1%, 11%, 0.700)"`;
 
-exports[`should contain correct value for colorContrastMediumLight 1`] = `"#6B6D70"`;
+exports[`should contain correct value for colorContrastHigher 1`] = `"light-dark(hsla(240, 8.7%, 9%, 0.800),hsla(240, 12.5%, 96.9%, 0.780))"`;
 
-exports[`should contain correct value for colorDisabledDark 1`] = `"#7E7F82"`;
+exports[`should contain correct value for colorContrastHigherDark 1`] = `"hsla(240, 12.5%, 96.9%, 0.780)"`;
 
-exports[`should contain correct value for colorDisabledLight 1`] = `"#949598"`;
+exports[`should contain correct value for colorContrastHigherLight 1`] = `"hsla(240, 8.7%, 9%, 0.800)"`;
 
-exports[`should contain correct value for colorErrorDark 1`] = `"#FC4040"`;
+exports[`should contain correct value for colorContrastLow 1`] = `"light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450))"`;
 
-exports[`should contain correct value for colorErrorLight 1`] = `"#CC1922"`;
+exports[`should contain correct value for colorContrastLowDark 1`] = `"hsla(240, 12.5%, 96.9%, 0.450)"`;
 
-exports[`should contain correct value for colorErrorSoftDark 1`] = `"#3A0F0F"`;
+exports[`should contain correct value for colorContrastLowLight 1`] = `"hsla(240, 5.3%, 14.9%, 0.500)"`;
 
-exports[`should contain correct value for colorErrorSoftLight 1`] = `"#FFE2E4"`;
+exports[`should contain correct value for colorContrastLower 1`] = `"light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))"`;
+
+exports[`should contain correct value for colorContrastLowerDark 1`] = `"hsla(240, 1.5%, 61.8%, 0.302)"`;
+
+exports[`should contain correct value for colorContrastLowerLight 1`] = `"hsla(234, 6%, 32.9%, 0.324)"`;
+
+exports[`should contain correct value for colorContrastMedium 1`] = `"light-dark(hsla(240, 6.1%, 7%, 0.600),hsla(240, 12.5%, 96.9%, 0.560))"`;
+
+exports[`should contain correct value for colorContrastMediumDark 1`] = `"hsla(240, 12.5%, 96.9%, 0.560)"`;
+
+exports[`should contain correct value for colorContrastMediumLight 1`] = `"hsla(240, 6.1%, 7%, 0.600)"`;
+
+exports[`should contain correct value for colorError 1`] = `"light-dark(hsl(357, 78%, 41%),hsl(0, 96.9%, 62%))"`;
+
+exports[`should contain correct value for colorErrorDark 1`] = `"hsl(0, 96.9%, 62%)"`;
+
+exports[`should contain correct value for colorErrorFrosted 1`] = `"light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.260))"`;
+
+exports[`should contain correct value for colorErrorFrostedDark 1`] = `"hsla(0, 96.9%, 62%, 0.260)"`;
+
+exports[`should contain correct value for colorErrorFrostedLight 1`] = `"hsla(357, 78%, 41%, 0.180)"`;
+
+exports[`should contain correct value for colorErrorFrostedSoft 1`] = `"light-dark(hsla(357, 78%, 41%, 0.100),hsla(0, 96.9%, 62%, 0.100))"`;
+
+exports[`should contain correct value for colorErrorFrostedSoftDark 1`] = `"hsla(0, 96.9%, 62%, 0.100)"`;
+
+exports[`should contain correct value for colorErrorFrostedSoftLight 1`] = `"hsla(357, 78%, 41%, 0.100)"`;
+
+exports[`should contain correct value for colorErrorLight 1`] = `"hsl(357, 78%, 41%)"`;
+
+exports[`should contain correct value for colorErrorLow 1`] = `"light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180))"`;
+
+exports[`should contain correct value for colorErrorLowDark 1`] = `"hsla(0, 96.9%, 62%, 0.180)"`;
+
+exports[`should contain correct value for colorErrorLowLight 1`] = `"hsla(357, 78%, 41%, 0.180)"`;
+
+exports[`should contain correct value for colorErrorMedium 1`] = `"light-dark(hsla(357, 78%, 41%, 0.600),hsla(0, 96.9%, 62%, 0.600))"`;
+
+exports[`should contain correct value for colorErrorMediumDark 1`] = `"hsla(0, 96.9%, 62%, 0.600)"`;
+
+exports[`should contain correct value for colorErrorMediumLight 1`] = `"hsla(357, 78%, 41%, 0.600)"`;
+
+exports[`should contain correct value for colorFocus 1`] = `"light-dark(#1A44EA,#1A44EA)"`;
 
 exports[`should contain correct value for colorFocusDark 1`] = `"#1A44EA"`;
 
 exports[`should contain correct value for colorFocusLight 1`] = `"#1A44EA"`;
 
-exports[`should contain correct value for colorFrostedDark 1`] = `"hsl(240 3% 26%/35%)"`;
+exports[`should contain correct value for colorFrosted 1`] = `"light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))"`;
 
-exports[`should contain correct value for colorFrostedLight 1`] = `"hsl(240 4% 85%/35%)"`;
+exports[`should contain correct value for colorFrostedDark 1`] = `"hsla(240, 2%, 43%, 0.228)"`;
 
-exports[`should contain correct value for colorHoverDark 1`] = `"rgba(148,149,152,.18)"`;
+exports[`should contain correct value for colorFrostedLight 1`] = `"hsla(240, 5%, 70%, 0.148)"`;
 
-exports[`should contain correct value for colorHoverLight 1`] = `"rgba(148,149,152,.18)"`;
+exports[`should contain correct value for colorFrostedSoft 1`] = `"light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))"`;
 
-exports[`should contain correct value for colorInfoDark 1`] = `"#178BFF"`;
+exports[`should contain correct value for colorFrostedSoftDark 1`] = `"hsla(240, 3.7%, 26.5%, 0.154)"`;
 
-exports[`should contain correct value for colorInfoLight 1`] = `"#2762EC"`;
+exports[`should contain correct value for colorFrostedSoftLight 1`] = `"hsla(234, 9.8%, 60%, 0.060)"`;
 
-exports[`should contain correct value for colorInfoSoftDark 1`] = `"#04294E"`;
+exports[`should contain correct value for colorFrostedStrong 1`] = `"light-dark(hsla(236, 6.5%, 42%, 0.236),hsla(240, 1.5%, 61.8%, 0.302))"`;
 
-exports[`should contain correct value for colorInfoSoftLight 1`] = `"#D3E1FF"`;
+exports[`should contain correct value for colorFrostedStrongDark 1`] = `"hsla(240, 1.5%, 61.8%, 0.302)"`;
 
-exports[`should contain correct value for colorPrimaryDark 1`] = `"#FBFCFF"`;
+exports[`should contain correct value for colorFrostedStrongLight 1`] = `"hsla(236, 6.5%, 42%, 0.236)"`;
 
-exports[`should contain correct value for colorPrimaryLight 1`] = `"#010205"`;
+exports[`should contain correct value for colorInfo 1`] = `"light-dark(hsl(228, 83.2%, 51%),hsl(210, 100%, 54.5%))"`;
 
-exports[`should contain correct value for colorShadingDark 1`] = `"rgba(38,38,41,.67)"`;
+exports[`should contain correct value for colorInfoDark 1`] = `"hsl(210, 100%, 54.5%)"`;
 
-exports[`should contain correct value for colorShadingLight 1`] = `"rgba(1,2,5,.67)"`;
+exports[`should contain correct value for colorInfoFrosted 1`] = `"light-dark(hsla(228, 83.2%, 51%, 0.180),hsla(210, 100%, 54.5%, 0.260))"`;
 
-exports[`should contain correct value for colorSuccessDark 1`] = `"#09D087"`;
+exports[`should contain correct value for colorInfoFrostedDark 1`] = `"hsla(210, 100%, 54.5%, 0.260)"`;
 
-exports[`should contain correct value for colorSuccessLight 1`] = `"#197E10"`;
+exports[`should contain correct value for colorInfoFrostedLight 1`] = `"hsla(228, 83.2%, 51%, 0.180)"`;
 
-exports[`should contain correct value for colorSuccessSoftDark 1`] = `"#003320"`;
+exports[`should contain correct value for colorInfoFrostedSoft 1`] = `"light-dark(hsla(228, 83.2%, 51%, 0.100),hsla(210, 100%, 54.5%, 0.100))"`;
 
-exports[`should contain correct value for colorSuccessSoftLight 1`] = `"#E4FFEC"`;
+exports[`should contain correct value for colorInfoFrostedSoftDark 1`] = `"hsla(210, 100%, 54.5%, 0.100)"`;
 
-exports[`should contain correct value for colorSurfaceDark 1`] = `"#212225"`;
+exports[`should contain correct value for colorInfoFrostedSoftLight 1`] = `"hsla(228, 83.2%, 51%, 0.100)"`;
 
-exports[`should contain correct value for colorSurfaceLight 1`] = `"#EEEFF2"`;
+exports[`should contain correct value for colorInfoLight 1`] = `"hsl(228, 83.2%, 51%)"`;
 
-exports[`should contain correct value for colorWarningDark 1`] = `"#F7CB47"`;
+exports[`should contain correct value for colorInfoLow 1`] = `"light-dark(hsla(228, 83.2%, 51%, 0.180),hsla(210, 100%, 54.5%, 0.180))"`;
 
-exports[`should contain correct value for colorWarningLight 1`] = `"#F3BE00"`;
+exports[`should contain correct value for colorInfoLowDark 1`] = `"hsla(210, 100%, 54.5%, 0.180)"`;
 
-exports[`should contain correct value for colorWarningSoftDark 1`] = `"#362B0A"`;
+exports[`should contain correct value for colorInfoLowLight 1`] = `"hsla(228, 83.2%, 51%, 0.180)"`;
 
-exports[`should contain correct value for colorWarningSoftLight 1`] = `"#FFF4D2"`;
+exports[`should contain correct value for colorInfoMedium 1`] = `"light-dark(hsla(228, 83.2%, 51%, 0.600),hsla(210, 100%, 54.5%, 0.600))"`;
 
-exports[`should contain correct value for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
+exports[`should contain correct value for colorInfoMediumDark 1`] = `"hsla(210, 100%, 54.5%, 0.600)"`;
 
-exports[`should contain correct value for fontLineHeight 1`] = `"calc(6px + 2.125ex)"`;
+exports[`should contain correct value for colorInfoMediumLight 1`] = `"hsla(228, 83.2%, 51%, 0.600)"`;
 
-exports[`should contain correct value for fontSize2Xl 1`] = `"clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)"`;
+exports[`should contain correct value for colorPrimary 1`] = `"light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))"`;
 
-exports[`should contain correct value for fontSize2Xs 1`] = `".75rem"`;
+exports[`should contain correct value for colorPrimaryDark 1`] = `"hsl(225, 100%, 99%)"`;
 
-exports[`should contain correct value for fontSizeLg 1`] = `"clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)"`;
+exports[`should contain correct value for colorPrimaryLight 1`] = `"hsl(225, 66.7%, 1.2%)"`;
 
-exports[`should contain correct value for fontSizeMd 1`] = `"clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)"`;
+exports[`should contain correct value for colorSuccess 1`] = `"light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%))"`;
 
-exports[`should contain correct value for fontSizeSm 1`] = `"1rem"`;
+exports[`should contain correct value for colorSuccessDark 1`] = `"hsl(157, 84.9%, 41.6%)"`;
 
-exports[`should contain correct value for fontSizeXl 1`] = `"clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)"`;
+exports[`should contain correct value for colorSuccessFrosted 1`] = `"light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.260))"`;
 
-exports[`should contain correct value for fontSizeXs 1`] = `"clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)"`;
+exports[`should contain correct value for colorSuccessFrostedDark 1`] = `"hsla(157, 84.9%, 41.6%, 0.260)"`;
+
+exports[`should contain correct value for colorSuccessFrostedLight 1`] = `"hsla(115, 77.5%, 27.8%, 0.180)"`;
+
+exports[`should contain correct value for colorSuccessFrostedSoft 1`] = `"light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))"`;
+
+exports[`should contain correct value for colorSuccessFrostedSoftDark 1`] = `"hsla(157, 84.9%, 41.6%, 0.100)"`;
+
+exports[`should contain correct value for colorSuccessFrostedSoftLight 1`] = `"hsla(115, 77.5%, 27.8%, 0.100)"`;
+
+exports[`should contain correct value for colorSuccessLight 1`] = `"hsl(115, 77.5%, 27.8%)"`;
+
+exports[`should contain correct value for colorSuccessLow 1`] = `"light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.180))"`;
+
+exports[`should contain correct value for colorSuccessLowDark 1`] = `"hsla(157, 84.9%, 41.6%, 0.180)"`;
+
+exports[`should contain correct value for colorSuccessLowLight 1`] = `"hsla(115, 77.5%, 27.8%, 0.180)"`;
+
+exports[`should contain correct value for colorSuccessMedium 1`] = `"light-dark(hsla(115, 77.5%, 27.8%, 0.600),hsla(157, 84.9%, 41.6%, 0.600))"`;
+
+exports[`should contain correct value for colorSuccessMediumDark 1`] = `"hsla(157, 84.9%, 41.6%, 0.600)"`;
+
+exports[`should contain correct value for colorSuccessMediumLight 1`] = `"hsla(115, 77.5%, 27.8%, 0.600)"`;
+
+exports[`should contain correct value for colorSurface 1`] = `"light-dark(hsl(240, 10%, 95%),hsl(240, 2%, 10%))"`;
+
+exports[`should contain correct value for colorSurfaceDark 1`] = `"hsl(240, 2%, 10%)"`;
+
+exports[`should contain correct value for colorSurfaceLight 1`] = `"hsl(240, 10%, 95%)"`;
+
+exports[`should contain correct value for colorWarning 1`] = `"light-dark(hsl(28, 97.7%, 34.1%),hsl(28, 90.2%, 56.1%))"`;
+
+exports[`should contain correct value for colorWarningDark 1`] = `"hsl(28, 90.2%, 56.1%)"`;
+
+exports[`should contain correct value for colorWarningFrosted 1`] = `"light-dark(hsla(28, 97.7%, 34.1%, 0.180),hsla(28, 90.2%, 56.1%, 0.260))"`;
+
+exports[`should contain correct value for colorWarningFrostedDark 1`] = `"hsla(28, 90.2%, 56.1%, 0.260)"`;
+
+exports[`should contain correct value for colorWarningFrostedLight 1`] = `"hsla(28, 97.7%, 34.1%, 0.180)"`;
+
+exports[`should contain correct value for colorWarningFrostedSoft 1`] = `"light-dark(hsla(28, 97.7%, 34.1%, 0.100),hsla(28, 90.2%, 56.1%, 0.100))"`;
+
+exports[`should contain correct value for colorWarningFrostedSoftDark 1`] = `"hsla(28, 90.2%, 56.1%, 0.100)"`;
+
+exports[`should contain correct value for colorWarningFrostedSoftLight 1`] = `"hsla(28, 97.7%, 34.1%, 0.100)"`;
+
+exports[`should contain correct value for colorWarningLight 1`] = `"hsl(28, 97.7%, 34.1%)"`;
+
+exports[`should contain correct value for colorWarningLow 1`] = `"light-dark(hsla(28, 97.7%, 34.1%, 0.180),hsla(28, 90.2%, 56.1%, 0.180))"`;
+
+exports[`should contain correct value for colorWarningLowDark 1`] = `"hsla(28, 90.2%, 56.1%, 0.180)"`;
+
+exports[`should contain correct value for colorWarningLowLight 1`] = `"hsla(28, 97.7%, 34.1%, 0.180)"`;
+
+exports[`should contain correct value for colorWarningMedium 1`] = `"light-dark(hsla(28, 97.7%, 34.1%, 0.600),hsla(28, 90.2%, 56.1%, 0.600))"`;
+
+exports[`should contain correct value for colorWarningMediumDark 1`] = `"hsla(28, 90.2%, 56.1%, 0.600)"`;
+
+exports[`should contain correct value for colorWarningMediumLight 1`] = `"hsla(28, 97.7%, 34.1%, 0.600)"`;
+
+exports[`should contain correct value for durationLg 1`] = `".6s"`;
+
+exports[`should contain correct value for durationMd 1`] = `".4s"`;
+
+exports[`should contain correct value for durationSm 1`] = `".25s"`;
+
+exports[`should contain correct value for durationXl 1`] = `"1.2s"`;
+
+exports[`should contain correct value for easeIn 1`] = `"cubic-bezier(0,0,.2,1)"`;
+
+exports[`should contain correct value for easeInOut 1`] = `"cubic-bezier(.25,.1,.25,1)"`;
+
+exports[`should contain correct value for easeOut 1`] = `"cubic-bezier(.4,0,.5,1)"`;
+
+exports[`should contain correct value for fontPorscheNext 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
 
 exports[`should contain correct value for fontWeightBold 1`] = `700`;
 
-exports[`should contain correct value for fontWeightRegular 1`] = `400`;
+exports[`should contain correct value for fontWeightNormal 1`] = `400`;
 
-exports[`should contain correct value for fontWeightSemiBold 1`] = `600`;
+exports[`should contain correct value for fontWeightSemibold 1`] = `600`;
 
-exports[`should contain correct value for gradientFade 1`] = `"hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%"`;
+exports[`should contain correct value for gradientStopsFadeDark 1`] = `"hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%"`;
 
-exports[`should contain correct value for motionDurationLong 1`] = `".6s"`;
+exports[`should contain correct value for leadingNormal 1`] = `"calc(6px + 2.125ex)"`;
 
-exports[`should contain correct value for motionDurationModerate 1`] = `".4s"`;
+exports[`should contain correct value for radius2Xl 1`] = `"16px"`;
 
-exports[`should contain correct value for motionDurationShort 1`] = `".25s"`;
+exports[`should contain correct value for radius3Xl 1`] = `"24px"`;
 
-exports[`should contain correct value for motionDurationVeryLong 1`] = `"1.2s"`;
+exports[`should contain correct value for radius4Xl 1`] = `"32px"`;
 
-exports[`should contain correct value for motionEaseIn 1`] = `"cubic-bezier(0,0,.2,1)"`;
+exports[`should contain correct value for radiusFull 1`] = `"calc(infinity * 1px)"`;
 
-exports[`should contain correct value for motionEaseInOut 1`] = `"cubic-bezier(.25,.1,.25,1)"`;
+exports[`should contain correct value for radiusLg 1`] = `"8px"`;
 
-exports[`should contain correct value for motionEaseOut 1`] = `"cubic-bezier(.4,0,.5,1)"`;
+exports[`should contain correct value for radiusMd 1`] = `"6px"`;
 
-exports[`should contain correct value for shadowHigh 1`] = `"0px 8px 40px rgba(0,0,0,.16)"`;
+exports[`should contain correct value for radiusSm 1`] = `"4px"`;
 
-exports[`should contain correct value for shadowLow 1`] = `"0px 3px 8px rgba(0,0,0,.16)"`;
+exports[`should contain correct value for radiusXl 1`] = `"12px"`;
 
-exports[`should contain correct value for shadowMedium 1`] = `"0px 4px 16px rgba(0,0,0,.16)"`;
+exports[`should contain correct value for radiusXs 1`] = `"2px"`;
+
+exports[`should contain correct value for shadowLg 1`] = `"0px 8px 40px rgba(0,0,0,.16)"`;
+
+exports[`should contain correct value for shadowMd 1`] = `"0px 4px 16px rgba(0,0,0,.16)"`;
+
+exports[`should contain correct value for shadowSm 1`] = `"0px 3px 8px rgba(0,0,0,.16)"`;
 
 exports[`should contain correct value for spacingFluid2Xl 1`] = `"clamp(80px, 7.5vw + 56px, 200px)"`;
 
@@ -173,3 +285,17 @@ exports[`should contain correct value for spacingStaticSm 1`] = `"8px"`;
 exports[`should contain correct value for spacingStaticXl 1`] = `"48px"`;
 
 exports[`should contain correct value for spacingStaticXs 1`] = `"4px"`;
+
+exports[`should contain correct value for typescale2Xl 1`] = `"clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)"`;
+
+exports[`should contain correct value for typescale2Xs 1`] = `".75rem"`;
+
+exports[`should contain correct value for typescaleLg 1`] = `"clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)"`;
+
+exports[`should contain correct value for typescaleMd 1`] = `"clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)"`;
+
+exports[`should contain correct value for typescaleSm 1`] = `"1rem"`;
+
+exports[`should contain correct value for typescaleXl 1`] = `"clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)"`;
+
+exports[`should contain correct value for typescaleXs 1`] = `"clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)"`;

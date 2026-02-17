@@ -3,7 +3,8 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { inputTextStorySlots } from '@/app/components/input-text/input-text.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { inputTextExampleForm } from '@porsche-design-system/shared/examples';
+import { inputTextExampleForm, inputTextExampleControlled } from '@porsche-design-system/shared/examples';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Input Text - Porsche Design System',
@@ -12,7 +13,7 @@ export const metadata = {
 
 # Input Text <ComponentStatus tagName="p-input-text"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Slots']} />
+<TableOfContents headings={['Form', 'Controlled Input (Preventing User Input)', 'Slots']} />
 
 ## Form
 
@@ -34,6 +35,27 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 <ComponentExample codeSample={inputTextExampleForm} />
 
+## Controlled Input (Preventing User Input)
+
+In some cases you may want to fully control the input value (for example to limit or validate user input). In frameworks
+like React, native `<input />` elements behave as controlled components when a `value` is provided. The browser does not
+update the displayed value directly, it only changes when the framework state changes.
+
+Our `p-input-*` components currently do not block user-driven updates of the underlying native `<input>`. Therefore,
+when using them in a controlled setup, you must manually overwrite the host’s value inside the `input` event handler to
+keep it in sync with your state.
+
+We are aware of this limitation and may improve the framework integration in the future. You can find a detailed
+explanation here: [#4202](https://github.com/porsche-design-system/porsche-design-system/issues/4202)
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  We strongly discourage preventing user input. This can feel broken and lead to confusion or frustration. Instead,
+  validate on `input` and provide clear feedback. Use the `state` and `message` props to explain what is allowed and why
+  a value is invalid.
+</Notification>
+
+<ComponentExample codeSample={inputTextExampleControlled} />
+
 ## Slots
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
@@ -42,11 +64,22 @@ named slot is used (because a property definition is preferred over a named slot
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
 
+In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This
+slot must be used to render content after the label which is not directly part of it (e.g. an external link or a
+`popover` component).
+
 If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
 example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
 to avoid being mistaken for a button.
 
 If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
 `--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  If the <code>component</code> is in <code>disabled/loading</code> state
+  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
+  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
+  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+</Notification>
 
 <ComponentStory story={inputTextStorySlots} />

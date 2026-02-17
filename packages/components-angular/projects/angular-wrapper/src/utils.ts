@@ -1,17 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  inject,
-  InjectionToken,
-  type OnChanges,
-  type OnDestroy,
-} from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import type { Theme } from './lib/types';
-
-export const THEME_TOKEN = new InjectionToken<BehaviorSubject<Theme>>('pdsTheme');
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, type OnChanges } from '@angular/core';
 
 @Component({
   template: '',
@@ -29,21 +16,5 @@ export abstract class BaseComponent implements OnChanges {
     for (const prop in props) {
       this.el[prop] = props[prop].currentValue;
     }
-  }
-}
-
-@Component({
-  template: '',
-})
-export abstract class BaseComponentWithTheme extends BaseComponent implements OnDestroy {
-  theme?: Theme;
-  private themeSubscription = inject(THEME_TOKEN).subscribe((theme) => {
-    (this.el as HTMLElement & { theme: Theme }).theme = this.theme || theme;
-  });
-
-  ngOnDestroy(): void {
-    // need to manually unsubscribe or otherwise subscription is still active even after unmount
-    // https://rafaelneto.dev/en/blog/unsubscribing-behaviorsubject-observable-angular/
-    this.themeSubscription.unsubscribe();
   }
 }

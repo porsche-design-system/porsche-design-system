@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  colorVanillaExtractStoryBackgroundColor,
+  colorVanillaExtractStoryBorderColor,
+  colorVanillaExtractStoryTextColor,
+} from '@/app/vanilla-extract/color/examples/color.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Color - Porsche Design System',
+  description: 'Learn about the Vanilla Extract styles of our design language and how to use them.',
+};
+
+# Color
+
+<TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
+
+The Porsche Design System provides multiple JS Variables for color styles to be used in Vanilla Extract.
+
+The colors use the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function. To change the theme, use the utility classes `.scheme-light`, `.scheme-dark` or `.scheme-light-dark`. Learn
+more in the [Color Scheme](/vanilla-extract/introduction#color-scheme) section.
+
+Styles import:
+`import { colorPrimary, colorFrosted, … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';`
+
+## Text Color
+
+<ComponentStory story={colorVanillaExtractStoryTextColor} showCodeBlock={false} />
+
+## Background Color
+
+<ComponentStory story={colorVanillaExtractStoryBackgroundColor} showCodeBlock={false} />
+
+## Border Color
+
+<ComponentStory story={colorVanillaExtractStoryBorderColor} showCodeBlock={false} />

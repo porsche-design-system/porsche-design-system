@@ -1,10 +1,6 @@
 <script type="module">
 
-  const theme = new URL(document.location).searchParams.get('theme') || 'light';
   const grid = document.querySelector('#my-grid');
-
-  grid.setAttribute('data-ag-theme-mode', theme === 'light' ? null : 'dark');
-
 
   class ImageUrlRenderer {
     eGui;
@@ -49,7 +45,6 @@
       linkElement.href = 'https://www.porsche.com/germany/models/' + data.model.toLowerCase();
       linkElement.innerHTML = 'More information';
       linkElement.underline = true;
-      linkElement.theme = theme;
       linkElement.target = '_blank';
 
       spanElement.appendChild(linkElement);

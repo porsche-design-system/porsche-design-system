@@ -16,16 +16,21 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }
-    }
+    },
+    "./scripts/fontFaceStyles": "./scripts/fontFaceStyles.js"
   },
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/",
+    "./scripts/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:font-face && yarn build:lib",
-    "build:font-face": "tsx scripts/buildFontFace.ts",
+    "build:font-face": "yarn typecheck && tsx scripts/buildFontFace.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "typecheck": "tsc --noEmit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },

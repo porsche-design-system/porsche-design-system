@@ -2,7 +2,6 @@
 
 import { visualizeGridConfig } from '@/app/components/grid/grid.stories';
 import type { SlotStories, Story } from '@/models/story';
-import type { CSSProperties } from 'react';
 
 export const modalSlotStories: SlotStories<'p-modal'> = {
   header: {
@@ -36,8 +35,8 @@ export const modalSlotStories: SlotStories<'p-modal'> = {
       name: 'Two Button Footer',
       generator: () => [
         {
-          tag: 'p-button-group',
-          properties: { slot: 'footer' },
+          tag: 'div',
+          properties: { slot: 'footer', role: 'group', className: 'flex flex-wrap gap-fluid-sm max-xs:flex-col' },
           children: [
             { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
             { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
@@ -183,8 +182,8 @@ export const modalStoryGrid: Story<'p-modal'> = {
         },
         visualizeGridConfig,
         {
-          tag: 'p-button-group',
-          properties: { slot: 'footer' },
+          tag: 'div',
+          properties: { slot: 'footer', role: 'group', className: 'flex flex-wrap gap-fluid-sm max-xs:flex-col' },
           children: [
             { tag: 'p-button', properties: { type: 'button' }, children: ['Accept'] },
             { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Deny'] },
@@ -240,8 +239,8 @@ export const modalStoryAlertDialog: Story<'p-modal'> = {
           children: ['Some important Content'],
         },
         {
-          tag: 'p-button-group',
-          properties: { slot: 'footer' },
+          tag: 'div',
+          properties: { slot: 'footer', role: 'group', className: 'flex flex-wrap gap-fluid-sm max-xs:flex-col' },
           children: [
             { tag: 'p-button', properties: { type: 'button' }, children: ['Accept'] },
             { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Deny'] },
@@ -293,7 +292,7 @@ export const modalStoryCustomStyling: Story<'p-modal'> = {
           tag: 'img',
           properties: {
             src: 'assets/porsche-992-carrera-s.jpg',
-            className: 'stretch-to-full-modal-width max-w-none',
+            className: '-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)',
           },
         },
       ],

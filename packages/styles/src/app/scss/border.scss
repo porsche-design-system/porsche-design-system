@@ -1,0 +1,48 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-border {
+  display: flex;
+  flex-direction: column;
+  gap: pds.$pds-spacing-fluid-medium;
+  padding: pds.$pds-spacing-static-medium;
+
+  &__radius-wrapper {
+    @include pds.pds-text-small;
+    display: grid;
+    gap: pds.$pds-spacing-fluid-medium;
+    color: pds.$color-primary;
+  }
+
+  &__radius {
+    border: 1px solid;
+    padding: pds.$pds-spacing-fluid-medium;
+
+    &--xs {
+      border-radius: pds.$radius-xs;
+    }
+    &--sm {
+      border-radius: pds.$radius-sm;
+    }
+    &--md {
+      border-radius: pds.$radius-md;
+    }
+    &--lg {
+      border-radius: pds.$radius-lg;
+    }
+    &--xl {
+      border-radius: pds.$radius-xl;
+    }
+    &--2xl {
+      border-radius: pds.$radius-2xl;
+    }
+    &--3xl {
+      border-radius: pds.$radius-3xl;
+    }
+    &--4xl {
+      border-radius: pds.$radius-4xl;
+    }
+    &--full {
+      border-radius: pds.$radius-full;
+    }
+  }
+}

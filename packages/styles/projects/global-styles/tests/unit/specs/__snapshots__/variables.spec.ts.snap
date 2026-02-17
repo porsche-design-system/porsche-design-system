@@ -1,0 +1,175 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match compiled variables css 1`] = `
+":root {
+  --p-color-focus: light-dark(#1a44ea, #1a44ea);
+  --p-color-canvas: light-dark(#fff, hsl(225, 66.7%, 1.2%));
+  --p-color-surface: light-dark(hsl(240, 10%, 95%), hsl(240, 2%, 10%));
+  --p-color-frosted: light-dark(
+    hsla(240, 5%, 70%, 0.148),
+    hsla(240, 2%, 43%, 0.228)
+  );
+  --p-color-frosted-soft: light-dark(
+    hsla(234, 9.8%, 60%, 0.06),
+    hsla(240, 3.7%, 26.5%, 0.154)
+  );
+  --p-color-frosted-strong: light-dark(
+    hsla(236, 6.5%, 42%, 0.236),
+    hsla(240, 1.5%, 61.8%, 0.302)
+  );
+  --p-color-backdrop: light-dark(
+    hsla(240, 5.3%, 14.9%, 0.5),
+    hsla(240, 5.3%, 14.9%, 0.5)
+  );
+  --p-color-contrast-lower: light-dark(
+    hsla(234, 6%, 32.9%, 0.324),
+    hsla(240, 1.5%, 61.8%, 0.302)
+  );
+  --p-color-contrast-low: light-dark(
+    hsla(240, 5.3%, 14.9%, 0.5),
+    hsla(240, 12.5%, 96.9%, 0.45)
+  );
+  --p-color-contrast-medium: light-dark(
+    hsla(240, 6.1%, 7%, 0.6),
+    hsla(240, 12.5%, 96.9%, 0.56)
+  );
+  --p-color-contrast-high: light-dark(
+    hsla(240, 7.1%, 11%, 0.7),
+    hsla(240, 12.5%, 96.9%, 0.67)
+  );
+  --p-color-contrast-higher: light-dark(
+    hsla(240, 8.7%, 9%, 0.8),
+    hsla(240, 12.5%, 96.9%, 0.78)
+  );
+  --p-color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(225, 100%, 99%));
+  --p-color-success: light-dark(hsl(115, 77.5%, 27.8%), hsl(157, 84.9%, 41.6%));
+  --p-color-success-low: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.18),
+    hsla(157, 84.9%, 41.6%, 0.18)
+  );
+  --p-color-success-medium: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.6),
+    hsla(157, 84.9%, 41.6%, 0.6)
+  );
+  --p-color-success-frosted: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.18),
+    hsla(157, 84.9%, 41.6%, 0.26)
+  );
+  --p-color-success-frosted-soft: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.1),
+    hsla(157, 84.9%, 41.6%, 0.1)
+  );
+  --p-color-warning: light-dark(hsl(28, 97.7%, 34.1%), hsl(28, 90.2%, 56.1%));
+  --p-color-warning-low: light-dark(
+    hsla(28, 97.7%, 34.1%, 0.18),
+    hsla(28, 90.2%, 56.1%, 0.18)
+  );
+  --p-color-warning-medium: light-dark(
+    hsla(28, 97.7%, 34.1%, 0.6),
+    hsla(28, 90.2%, 56.1%, 0.6)
+  );
+  --p-color-warning-frosted: light-dark(
+    hsla(28, 97.7%, 34.1%, 0.18),
+    hsla(28, 90.2%, 56.1%, 0.26)
+  );
+  --p-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+  --p-color-error: light-dark(hsl(357, 78%, 41%), hsl(0, 96.9%, 62%));
+  --p-color-error-low: light-dark(
+    hsla(357, 78%, 41%, 0.18),
+    hsla(0, 96.9%, 62%, 0.18)
+  );
+  --p-color-error-medium: light-dark(
+    hsla(357, 78%, 41%, 0.6),
+    hsla(0, 96.9%, 62%, 0.6)
+  );
+  --p-color-error-frosted: light-dark(
+    hsla(357, 78%, 41%, 0.18),
+    hsla(0, 96.9%, 62%, 0.26)
+  );
+  --p-color-error-frosted-soft: light-dark(
+    hsla(357, 78%, 41%, 0.1),
+    hsla(0, 96.9%, 62%, 0.1)
+  );
+  --p-color-info: light-dark(hsl(228, 83.2%, 51%), hsl(210, 100%, 54.5%));
+  --p-color-info-low: light-dark(
+    hsla(228, 83.2%, 51%, 0.18),
+    hsla(210, 100%, 54.5%, 0.18)
+  );
+  --p-color-info-medium: light-dark(
+    hsla(228, 83.2%, 51%, 0.6),
+    hsla(210, 100%, 54.5%, 0.6)
+  );
+  --p-color-info-frosted: light-dark(
+    hsla(228, 83.2%, 51%, 0.18),
+    hsla(210, 100%, 54.5%, 0.26)
+  );
+  --p-color-info-frosted-soft: light-dark(
+    hsla(228, 83.2%, 51%, 0.1),
+    hsla(210, 100%, 54.5%, 0.1)
+  );
+
+  --p-font-porsche-next:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+
+  --p-font-weight-normal: 400;
+  --p-font-weight-semibold: 600;
+  --p-font-weight-bold: 700;
+
+  --p-leading-normal: calc(6px + 2.125ex);
+
+  --p-typescale-2xs: 0.75rem;
+  --p-typescale-xs: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  --p-typescale-sm: 1rem;
+  --p-typescale-md: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  --p-typescale-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+  --p-typescale-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  --p-typescale-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
+
+  --p-breakpoint-xs: 480px;
+  --p-breakpoint-sm: 760px;
+  --p-breakpoint-md: 1000px;
+  --p-breakpoint-lg: 1300px;
+  --p-breakpoint-xl: 1760px;
+  --p-breakpoint-2xl: 1920px;
+
+  --p-spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
+  --p-spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
+  --p-spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
+  --p-spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
+  --p-spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
+  --p-spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
+
+  --p-spacing-static-xs: 4px;
+  --p-spacing-static-sm: 8px;
+  --p-spacing-static-md: 16px;
+  --p-spacing-static-lg: 32px;
+  --p-spacing-static-xl: 48px;
+  --p-spacing-static-2xl: 80px;
+
+  --p-radius-xs: 2px;
+  --p-radius-sm: 4px;
+  --p-radius-md: 6px;
+  --p-radius-lg: 8px;
+  --p-radius-xl: 12px;
+  --p-radius-2xl: 16px;
+  --p-radius-3xl: 24px;
+  --p-radius-4xl: 32px;
+  --p-radius-full: calc(infinity * 1px);
+
+  --p-blur-frosted: blur(32px);
+
+  --p-shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --p-shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  --p-shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
+
+  --p-ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --p-ease-in: cubic-bezier(0, 0, 0.2, 1);
+  --p-ease-out: cubic-bezier(0.4, 0, 0.5, 1);
+
+  --p-duration-sm: 0.25s;
+  --p-duration-md: 0.4s;
+  --p-duration-lg: 0.6s;
+  --p-duration-xl: 1.2s;
+}
+"
+`;

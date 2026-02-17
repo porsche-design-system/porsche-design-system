@@ -1,4 +1,4 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   LinkAriaAttribute,
@@ -6,18 +6,16 @@ import type {
   LinkVariant,
   PropTypes,
   SelectedAriaAttributes,
-  Theme,
 } from '../../types';
 import {
   AllowedTypes,
-  LINK_ARIA_ATTRIBUTES,
-  LINK_BUTTON_VARIANTS,
-  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   isSsrHydration,
+  LINK_ARIA_ATTRIBUTES,
+  LINK_BUTTON_VARIANTS,
   parseAndGetAriaAttributes,
   throwIfInvalidLinkUsage,
   validateProps,
@@ -35,7 +33,6 @@ const propTypes: PropTypes<typeof Link> = {
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   compact: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
@@ -76,9 +73,6 @@ export class Link {
   /** Displays as compact version. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
@@ -104,8 +98,7 @@ export class Link {
       this.variant,
       this.hideLabel,
       !this.href,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const TagType = this.href === undefined ? 'span' : 'a';
@@ -128,7 +121,7 @@ export class Link {
             size="inherit"
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
-            theme={this.theme}
+            color="inherit"
             aria-hidden="true"
           />
         )}

@@ -1,8 +1,11 @@
-import { ChangeDetectionStrategy, Component, Pipe, PipeTransform, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InjectionToken, inject, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { THEME_TOKEN, type Theme } from '@porsche-design-system/components-angular';
+import { BehaviorSubject } from 'rxjs';
 import { routes } from './app-routing.module';
+
+export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
+export const THEME_TOKEN = new InjectionToken<BehaviorSubject<Theme>>('pdsTheme');
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -30,8 +33,8 @@ export class SafePipe implements PipeTransform {
         }
       </select>
     }
-    
-    <div id="app">
+
+    <div id="app" [class]="theme$.value">
       <router-outlet />
     </div>
     `,
@@ -41,7 +44,7 @@ export class SafePipe implements PipeTransform {
 export class AppComponent {
   public router = inject(Router);
   public routes = routes.filter((route) => !!route.name);
-  public themes: Theme[] = ['light', 'dark', 'auto'];
+  public themes: Theme[] = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
   public theme$ = inject(THEME_TOKEN); // equivalent to @Inject(THEME_TOKEN) in constructor
 
   isWithinIFrame: boolean = window.location !== window.parent.location;

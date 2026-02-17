@@ -1,5 +1,2 @@
-export const PLAYGROUND_THEME_TYPES = ['light', 'dark', 'auto'] as const;
-export type PlaygroundTheme = (typeof PLAYGROUND_THEME_TYPES)[number];
-
-export const STOREFRONT_THEME_TYPES = ['light', 'dark', 'auto'] as const;
-export type StorefrontTheme = (typeof STOREFRONT_THEME_TYPES)[number];
+export const STOREFRONT_COLOR_SCHEME_TYPES = ['scheme-light', 'scheme-dark', 'scheme-light-dark'] as const;
+export type StorefrontColorScheme = (typeof STOREFRONT_COLOR_SCHEME_TYPES)[number];

@@ -1,5 +1,8 @@
 'use client';
 
+import type { Framework } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
@@ -7,17 +10,15 @@ import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackbli
 import type { BackgroundColor } from '@/models/backgroundColor';
 import type { Story } from '@/models/story';
 import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
-import { type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
-import type { Framework } from '@porsche-design-system/shared';
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
-import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { createElements, type HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ComponentExampleProps = {
   story: Story<HTMLTagOrComponent>;
   backgroundColor?: BackgroundColor;
+  showCodeBlock?: boolean;
 };
 
-export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps) => {
+export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }: ComponentExampleProps) => {
   const { storefrontTheme } = useStorefrontTheme();
   const { storefrontFramework } = useStorefrontFramework();
   // State needs to be updated for controlled components
@@ -45,12 +46,13 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
   };
 
   return (
-      <Playground
-        frameworkMarkup={exampleMarkup}
-        backgroundColor={backgroundColor}
-        onOpenInStackblitz={onOpenInStackblitz}
-      >
-        {exampleElement}
-      </Playground>
+    <Playground
+      frameworkMarkup={exampleMarkup}
+      backgroundColor={backgroundColor}
+      onOpenInStackblitz={onOpenInStackblitz}
+      showCodeBlock={showCodeBlock}
+    >
+      {exampleElement}
+    </Playground>
   );
 };

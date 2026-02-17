@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { PCarousel } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
 export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -41,7 +41,7 @@ export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
       onUpdate={(e) => onCarouselUpdate(e.detail.activeIndex)}
       focusOnCenterSlide
       trimSpace={false}
-      gradientColor="background-surface"
+      gradient={true}
       // @ts-expect-error: ignore unknown property (TS2353)
       style={{ '--p-gradient-color-width': '25%' }}
     >

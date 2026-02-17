@@ -1,27 +1,24 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: inherit and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: inherit 1`] = `
 ":host {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
   max-width: 100% !important;
   max-height: 100% !important;
   box-sizing: content-box !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-a, svg {
+a {
+  all: unset;
   display: block;
   max-width: 100%;
   max-height: 100%;
   height: inherit;
-}
-a {
-  text-decoration: none;
+  cursor: pointer;
 }
 a::before {
   content: "";
@@ -29,46 +26,44 @@ a::before {
   inset: 0;
   border-radius: 1px;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
-}
-a:focus-visible {
-  outline: 0;
-}
 a:focus-visible::before {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 svg {
-  fill: #FBFCFF;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: inherit and theme: light 1`] = `
-":host {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  outline: 0 !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  box-sizing: content-box !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-a, svg {
   display: block;
   max-width: 100%;
   max-height: 100%;
   height: inherit;
+  fill: var(--p-color-primary);
+}
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for size: inherit 2`] = `
+":host {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  box-sizing: content-box !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 a {
-  text-decoration: none;
+  all: unset;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit;
+  cursor: pointer;
 }
 a::before {
   content: "";
@@ -76,47 +71,45 @@ a::before {
   inset: 0;
   border-radius: 1px;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
-}
-a:focus-visible {
-  outline: 0;
-}
 a:focus-visible::before {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 svg {
-  fill: #010205;
-}"
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit;
+  fill: var(--p-color-primary);
+}
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: small 1`] = `
 ":host {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
   max-width: 100% !important;
   max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-a, svg {
+a {
+  all: unset;
   display: block;
   max-width: 100%;
   max-height: 100%;
   height: inherit;
-}
-a {
-  text-decoration: none;
+  cursor: pointer;
 }
 a::before {
   content: "";
@@ -124,53 +117,51 @@ a::before {
   inset: 0;
   border-radius: 1px;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
-}
-a:focus-visible {
-  outline: 0;
-}
 a:focus-visible::before {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 svg {
-  fill: #FBFCFF;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit;
+  fill: var(--p-color-primary);
 }
 @supports (height: round(down, 1px, 1px)) {
   :host {
     height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
   }
 }
+
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
 "
 `;
 
-exports[`getComponentCss() > should return correct css for size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: small 2`] = `
 ":host {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
   max-width: 100% !important;
   max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-a, svg {
+a {
+  all: unset;
   display: block;
   max-width: 100%;
   max-height: 100%;
   height: inherit;
-}
-a {
-  text-decoration: none;
+  cursor: pointer;
 }
 a::before {
   content: "";
@@ -178,25 +169,26 @@ a::before {
   inset: 0;
   border-radius: 1px;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
-}
-a:focus-visible {
-  outline: 0;
-}
 a:focus-visible::before {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 svg {
-  fill: #010205;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit;
+  fill: var(--p-color-primary);
 }
 @supports (height: round(down, 1px, 1px)) {
   :host {
     height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 "

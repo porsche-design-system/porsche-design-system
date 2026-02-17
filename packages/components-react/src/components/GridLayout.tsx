@@ -35,9 +35,9 @@ import {
   textXSmallStyle,
   themeLightPrimary,
   themeLightStateHover,
-} from '@porsche-design-system/components-react/styles';
+} from '@porsche-design-system/components-react/emotion';
 import { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 // VisualizeGrid
 const VisualizeGrid = styled.div({
@@ -359,9 +359,9 @@ export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
           <Info>
             <b>Wide Sidebar</b>
           </Info>
-          <PAccordion heading="Some Heading" tag="h3" />
-          <PAccordion heading="Some Heading" tag="h3" />
-          <PAccordion heading="Some Heading" tag="h3" />
+          <PAccordion heading="Some Heading" headingTag="h3" />
+          <PAccordion heading="Some Heading" headingTag="h3" />
+          <PAccordion heading="Some Heading" headingTag="h3" />
         </WideSidebar>
         <WideContent>
           <Info>
@@ -496,13 +496,13 @@ export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
           <Info style={{ marginLeft: spacingStaticSmall, marginTop: spacingStaticSmall }}>
             <b>Narrow</b> for small Components and Content
           </Info>
-          <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onUpdate={onAccordion1Update}>
+          <PAccordion heading="Some Heading" headingTag="h3" open={isAccordion1Open} onUpdate={onAccordion1Update}>
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
               felis, ultricies nec, pellentesque eu. Aenean massa.
             </Text>
           </PAccordion>
-          <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onUpdate={onAccordion2Update}>
+          <PAccordion heading="Some Heading" headingTag="h3" open={isAccordion2Open} onUpdate={onAccordion2Update}>
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
               felis, ultricies nec, pellentesque eu. Aenean massa.

@@ -35,10 +35,10 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Shared'
         run: yarn build:shared
-      - name: 'Assets'
-        run: yarn build:assets
       - name: 'Tokens'
         run: yarn build:tokens
+      - name: 'Assets'
+        run: yarn build:assets
       - name: 'Styles'
         run: yarn build:styles
       - name: 'Utilities'
@@ -69,10 +69,15 @@ jobs:
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
             ./packages/shared/dist/
-            ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/shared-styles/src/generated/
+            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/vanilla-extract/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
@@ -84,7 +89,6 @@ jobs:
             ./packages/assets/projects/crest/dist/
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
-            ./packages/assets/projects/fallbacks/dist/
             ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
@@ -109,8 +113,6 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
-            ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error
   build-production:
     name: 'Production'
@@ -125,12 +127,12 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Shared'
         run: yarn build:shared
-      - name: 'Assets'
-        run: yarn build:assets
       - name: 'Tokens'
         run: yarn build:tokens
+      - name: 'Assets'
+        run: yarn build:assets
       - name: 'Styles'
-        run: yarn build:styles
+        run: yarn build:styles-prod
       - name: 'Utilities'
         run: yarn build:utilities
       - name: 'Component Meta'
@@ -159,10 +161,15 @@ jobs:
             ./packages/components-vue/dist/
             ./packages/component-meta/dist/
             ./packages/shared/dist/
-            ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/shared-styles/src/generated/
+            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/vanilla-extract/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
@@ -174,7 +181,6 @@ jobs:
             ./packages/assets/projects/crest/dist/
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
-            ./packages/assets/projects/fallbacks/dist/
             ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
@@ -198,6 +204,4 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
-            ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error

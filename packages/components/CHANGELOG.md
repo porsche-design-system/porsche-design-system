@@ -14,37 +14,185 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-## [3.32.0] - 2026-02-04
+### Changed
 
-## [3.32.0-rc.2] - 2026-02-03
+Vue: All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must be
+accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
+
+```diff
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
+  </PAccordion>
+</template>
+```
+
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+
+## [4.0.0-beta.0] - 2026-02-12
 
 ### Added
 
-- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
-  New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
-  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
-- `Angular`: Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in
+  positioning a custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
 - `Carousel`:
-  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
-  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+  - `width` prop now supports `wide` and `full` values
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-ps`, `--p-carousel-pe` CSS custom property introduced to control the logical inline start/end padding
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `AG Grid`:
+  - Bumped peer dependency to support AG Grid new major version 35
+    ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+  - Refreshed visuals to reflect new color tokens
+- `Tailwind CSS`:
+  - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
+    `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
+    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`, `--color-frosted-strong`
+- `SCSS`:
+  - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
+  - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
+    `$breakpoint-2xl`
+  - Blur: `$blur-frosted`
+  - Border: `$radius-xs`, `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-2xl`, `$radius-3xl`,
+    `$radius-4xl` and `$radius-full`
+  - Color Scheme: `@mixin color-scheme()`
+  - Color: `$color-focus`,`$color-canvas`, `$color-surface`, `$color-frosted`, `$color-frosted-soft`,
+    `$color-frosted-strong`, `$color-backdrop`, `$color-contrast-lower`, `$color-contrast-low`,
+    `$color-contrast-medium`, `$color-contrast-high`, `$color-contrast-higher`, `$color-primary`, `$color-success`,
+    `$color-success-low`, `$color-success-medium`, `$color-success-frosted`, `$color-success-frosted-soft`,
+    `$color-warning`, `$color-warning-low`, `$color-warning-medium`, `$color-warning-frosted`,
+    `$color-warning-frosted-soft`,`$color-error`, `$color-error-low`, `$color-error-medium`,
+    `$color-error-frosted`,`$color-error-frosted-soft`, `$color-info`, `$color-info-low`, `$color-info-medium`,
+    `$color-info-frosted`, `$color-info-frosted-soft`
+  - Focus: `@mixin focus-visible()`
+  - Gradient: `$gradient-stops-fade-dark`
+  - Skeleton: `@mixin skeleton()`
+  - Media Query: `@mixin media-query-min()`, `@mixin media-query-max()` and `@mixin media-query-min-max()`
+  - Motion: `$duration-sm`, `$duration-md`, `$duration-lg`, `$duration-xl`, `$ease-in-out`, `$ease-in` and `$ease-out`
+  - Shadow: `$shadow-sm`, `$shadow-md` and `$shadow-lg`
+  - Spacing: `$spacing-fluid-xs`, `$spacing-fluid-sm`, `$spacing-fluid-md`, `$spacing-fluid-lg`, `$spacing-fluid-xl`,
+    `$spacing-fluid-2xl`, `$spacing-static-xs`, `$spacing-static-sm`, `$spacing-static-md`, `$spacing-static-lg`,
+    `$spacing-static-xl` and `$spacing-static-2xl`
+  - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`,
+    `@mixin prose-heading-2xl()`, `@mixin prose-heading-xl()`, `@mixin prose-heading-lg()`, `@mixin prose-heading-md()`,
+    `@mixin prose-heading-sm()`, `@mixin prose-text-xl()`, `@mixin prose-text-lg()`, `@mixin prose-text-md()`,
+    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` `@mixin prose-text-2xs()`, `$font-porsche-next`,
+    `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
+    `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
+- Emotion, Vanilla-Extract:
+  - Blur: `blurFrosted`
+  - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
+    `radiusFull`
+  - Color: `colorCanvas`, `colorSurface`, `colorFrosted`, `colorFrostedSoft`, `colorFrostedStrong`,
+    `colorBackdrop`,`colorPrimary`, `colorContrastHigher`, `colorContrastHigh`, `colorContrastMedium`,
+    `colorContrastLow`, `colorContrastLower`, `colorInfo`, `colorInfoMedium`, `colorInfoLow`, `colorInfoFrosted`,
+    `colorInfoFrostedSoft`, `colorSuccess`, `colorSuccessMedium`, `colorSuccessLow`, `colorSuccessFrosted`,
+    `colorSuccessFrostedSoft`, `colorWarning`, `colorWarningMedium`, `colorWarningLow`, `colorWarningFrosted`,
+    `colorWarningFrostedSoft`, `colorError`, `colorErrorMedium`, `colorErrorLow`, `colorErrorFrosted`,
+    `colorErrorFrostedSoft`, `colorFocus`,
+  - Color Scheme: `colorSchemeStyles()`
+  - Focus: `getFocusVisibleStyle()`
+  - Gradient: `gradientStopsFadeDark`,
+  - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
+  - Shadow: `shadowSm`, `shadowMd` and `shadowLg`
+  - Spacing: `spacingFluidXs`, `spacingFluidSm`, `spacingFluidMd`, `spacingFluidLg`, `spacingFluidXl`,
+    `spacingFluid2xl`, `spacingStaticXs`, `spacingStaticSm`, `spacingStaticMd`, `spacingStaticLg`, `spacingStaticXl` and
+    `spacingStatic2xl`
+  - Typography: `proseDisplayLg()`, `proseDisplayMd()`, `proseDisplaySm()`, `proseHeading2Xl()`, `proseHeadingXl()`,
+    `proseHeadingLg()`, `proseHeadingMd()`, `proseHeadingSm()`, `proseTextXl()`, `proseTextLg()`, `proseTextMd()`,
+    `proseTextSm()`, `proseTextXs()`, `proseText2Xs()`, `fontPorscheNext`, `leadingNormal`, `typescale2Xs`,
+    `typescaleXs`, `typescaleSm`, `typescaleMd`, `typescaleLg`, `typescaleXl`, `typescale2xl`, `fontWeightNormal` and
+    `fontWeightSemibold`
 
-## [3.32.0-rc.1] - 2026-01-12
+### Changed
 
-### Added
+- Remove theme prop since it's handled by CSS variables which can be controlled by `.scheme-light`, `.scheme-dark` or
+  `.scheme-light-dark` CSS class, e.g. `<p-button>Some label</p-button>` inside `<div class="scheme-dark">…</div>` will
+  render the dark theme.
+- `Link Tile`, `Button Tile`: uses `color-scheme: dark` by default
+- `Tailwind CSS`:
+  - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
+  - Rename theme CSS classes `.light` to `.scheme-light`, `.dark` to `.scheme-dark` and `.auto` to `.scheme-light-dark`
+- `Canvas`: visual appearance on mobile view
+- `Styles`: Import paths for npm package:
 
-- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
-  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+```
+
+```diff
+- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
 
 ### Fixed
 
+- `Vanilla Extract`: grid style media query not working
 - `Radio Group Option`: missing `delegatesFocus`
   ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
 
-## [3.32.0-rc.0] - 2025-12-16
+### Removed
+
+- Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- Tailwind CSS: `--color-disabled`
+
+- Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```diff
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
+- Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
+  `light-dark()` CSS color function)
+
+```diff
+const skeletonAnimation = keyframes(skeletonKeyframes);
+- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
++ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
+```
+
+## [4.0.0-alpha.0] - 2025-12-12
+
+See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
+and migration steps.
 
 ### Added
 
+- Global Styles: mandatory CSS styles (normalize, font-face and color variables)
+  - `@porsche-design-system/components-{js|angular|react|vue}/index.css`
+  - `@porsche-design-system/components-{js|angular|react|vue}/cn/index.css`
+  - to enable legacy radius styles (aligned with app) import
+    `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
+
+- `Divider`: value `contrast-lower` for prop `color`
 - `Multi Select, Select`:
   - `selected` slot for custom selection rendering and enabling complex options
   - `options-status` slot for loading, error and no results states when using custom filtering
@@ -65,8 +213,214 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
 - `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
   enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
-- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
-  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+### Changed
+
+- In general all headings use regular as font-weight
+- Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
+  class, e.g. `<p-input-text name="some-name"></p-input-text>` inside `<div class="dark">…</div>` will render the dark
+  theme.
+- Remove **slotted** Anchor Styles entirely from all components.
+- `Heading`: Uses a regular instead of semi-bold font-weight
+- `Text` and `Icon`:
+  - value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop `color`
+    (use `'success', 'warning', 'error', 'info'` instead)
+- `Icon`:
+  - when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
+    `p-icon { color: deeppink; }`) can be applied directly
+  - value `'state-disabled'` of prop color is removed
+- `Model Signature`:
+  - when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly
+- `Tag`:
+  - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
+    `error`, `info`
+- `Button`, `Link`:
+  - removed prop value `ghost`, use `secondary` instead
+- `Modal`
+  - visually changed footer slot: becomes frosted when it's sticky
+  - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
+    instead
+  - added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
+  - added prop `background` with value `canvas | surface`
+- `Flyout`
+  - removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
+    `clamp()` instead)
+  - visually changed footer slot: becomes frosted when it's sticky
+  - added read only css variables `--ref-p-flyout-pb`
+  - added prop `background` with value `canvas | surface`
+- `Sheet`:
+  - added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
+  - added prop `background` with value `canvas | surface`
+- `Inline Notification`:
+  - removed max-width limitation for content
+- `Banner`:
+  - added `state="success"`
+  - removed max-width limitation for content
+- `Toast`:
+  - added `state="warning | error"`
+- `Carousel`:
+  - removed CSS variable `--p-carousel-prev-next-filter`
+  - removed prop `gradient-color` (use `gradient="true"` instead)
+  - changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
+    to enable trimming)
+  - changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
+    to enable pagination)
+  - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
+    enable rewind)
+- `Link Tile`, `Button Tile`:
+  - changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>`
+    to enable gradient)
+  - removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
+  - added an optional light gradient when used in light mode and gradient is enabled
+  - added value `auto` for prop `aspect-ratio`
+- `Link Tile Product`:
+  - Values `3:4 | 9:16` of prop `aspect-ratio` (use `3/4 | 9/16` instead)
+
+- Tailwind CSS:
+  - Reset all default Tailwind color tokens
+  - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
+
+- Styles (SCSS, Emotion, Vanilla-Extract)
+  - heading styles use a regular instead of semi-bold font-weight
+  - border-radius large was changed from `12px` to `8px`, since more radius styles are now available
+
+### Removed
+
+- `Partials`:
+  - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
+    `@porsche-design-system/fallbacks`
+  - Removed `getDSRPonyfill()` partial
+  - Removed `getFontFaceStyles()`, `getFontFaceStylesheet()` and `getInitialStyles()` partial in favor of CSS imports
+    from `@porsche-design-system/components-{js|angular|react|vue}`
+  - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now
+  - Automatic FOUC handling in `getInitialStyles()`, must be implemented manually now
+
+- `Accordion`:
+  - prop `tag` (use `heading-tag` instead)
+  - event `accordionChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Banner`:
+  - `slot="title"` (use `slot="heading"` instead)
+  - prop `persistent` (use `dismissButton` instead)
+  - prop `width`
+  - value `neutral` of prop `state` (use `info` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Button`, `Link`:
+  - prop `tertiary`
+- `Button Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Carousel`:
+  - prop `wrapContent` (has no effect anyway)
+  - prop `disablePagination` (use `pagination` instead)
+  - value `left` of prop `alignHeader` (use `start` instead)
+  - event `carouselChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Checkbox`:
+  - event `update` (use `change` instead)
+- `Display`:
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Divider`:
+  - prop `orientation` (use `direction` instead)
+  - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
+- `Flyout`:
+  - value `left | right` of prop `position` (use `start | end` instead)
+- `Heading`:
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Icon`:
+  - prop: `lazy`
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+- `Inline Notification`:
+  - prop `persistent` (use `dismissButton` instead)
+  - value `neutral` of prop `state` (use `info` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Link Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
+  - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` (use `1/1 | 4/3 | 3/4 | 16/9 | 9/16` instead)
+- `Link Tile`, `Button Tile`:
+  - Value `default` of prop `size` (use `medium` instead)
+  - Value `semibold` of prop `weight` (use `semi-bold` instead)
+- `Modal`:
+  - prop `disableCloseButton` (use `dismissButton` instead)
+  - prop `heading` (use `slot="header"` instead)
+  - slot `heading` (use `slot="header"` instead)
+  - event `close` (use `dismiss` instead)
+- `Multi Select`:
+  - event `update` (use `change` instead)
+- `Pagination`:
+  - prop `allyLabel` (use `intl.root` instead)
+  - prop `allyLabelPrev` (use `intl.prev` instead)
+  - prop `allyLabelPage` (use `intl.page` instead)
+  - prop `allyLabelNext` (use `intl.next` instead)
+  - prop `maxNumberOfPageLinks` (has no effect anyway)
+  - event `pageChange` (use `update` instead)
+- `Pin Code`:
+  - event `update` (use `change` instead)
+- `Scroller`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
+- `Segmented Control`:
+  - prop `backgroundColor` (has no effect anyway)
+  - event `segmentedControlChange` (use `change` instead)
+  - event `update` (use `change` instead)
+- `Select`:
+  - event `update` (use `change` instead)
+- `Stepper Horizontal`:
+  - event `stepChange` (use `update` instead)
+- `Switch`:
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+  - event `switchChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Table`:
+  - event `sortingChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Tabs`, `Tabs Bar`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - event `tabChange` (use `update` instead)
+- `Tabs`
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Tag`:
+  - prop `color` (use `variant` instead)
+- `Tag Dismissible`:
+  - prop `color`
+- `Text`
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Text List`
+  - prop `listType` (use `type` instead)
+  - prop `orderType` (use `type` instead)
+  - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
+- `Toast`:
+  - value `neutral` of prop `state` (use `info` instead)
+- Removed Components:
+  - `Button Group` (use Tailwind CSS instead,
+    `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
+  - `Checkbox Wrapper` (use `Checkbox` instead)
+  - `Radio Button Wrapper` (use `Radio Group` instead)
+  - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
+  - `Link Tile Model Signature`
+  - `Fieldset Wrapper` (use `Fieldset` instead)
+  - `Flex` (use CSS Flex instead, Tailwind CSS is recommended)
+  - `Grid` (use CSS Grid instead, Tailwind CSS is recommended)
+  - `Headline` (use `Heading` instead)
+  - `Link Social`
+  - `Marque` (use `Wordmark` (recommended) or `Crest` instead)
+  - `Select Wrapper` (use `Select` instead)
+  - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
+  - `Textarea Wrapper` (use `Textarea` instead)
 
 ### Fixed
 
@@ -76,8 +430,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
+## [3.32.0] - 2026-02-04
+
+## [3.32.0-rc.2] - 2026-02-03
+
+### Added
+
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+
+## [3.32.0-rc.1] - 2026-01-12
+
+### Added
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
+## [3.32.0-rc.0] - 2025-12-16
+
+### Added
+
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
+  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
+
+### Fixed
+
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+### Changed
+
+- `Link Tile`, `Button Tile`: appearance in compact mode
+- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
@@ -1494,7 +1893,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel-pure align-header="start"></p-carousel>
++ <p-carousel align-header="start"></p-carousel>
 ```
 
 ### Fixed

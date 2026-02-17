@@ -1,7 +1,7 @@
-import { borderRadiusSmall } from '@porsche-design-system/styles';
-import { addImportantToEachRule, getFocusJssStyle, getResetInitialStylesForSlottedAnchor } from '../../styles';
+import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
 // CSS Variable defined in fontHyphenationStyle
@@ -17,8 +17,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
-  hasSlottedAnchor: boolean,
-  theme: Theme
+  hasSlottedAnchor: boolean
 ): string => {
   return getCss(
     mergeDeep(
@@ -32,31 +31,24 @@ export const getComponentCss = (
         hideLabel,
         alignLabel,
         underline,
-        hasSlottedAnchor,
-        theme
+        hasSlottedAnchor
       ),
       hasSlottedAnchor && {
         '@global': addImportantToEachRule({
           '::slotted': {
             '&(a)': {
-              ...getResetInitialStylesForSlottedAnchor,
-              textDecoration: underline ? 'underline' : 'none',
-              font: 'inherit',
-              color: 'inherit',
+              all: 'unset',
             },
-            // The clickable area for Safari < ~15 (<= release date: 2021-10-28) is reduced to the slotted anchor itself,
-            // since Safari prior to this major release does not support pseudo-elements in the slotted context
-            // (https://bugs.webkit.org/show_bug.cgi?id=178237)
             '&(a)::before': {
               content: '""',
               position: 'fixed',
               insetBlock: offsetVertical,
-              borderRadius: borderRadiusSmall,
+              borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
               ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
               })),
             },
-            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true, offset: '-2px' }),
+            '&(a:focus-visible)::before': getFocusBaseStyles(),
           },
         }),
       }

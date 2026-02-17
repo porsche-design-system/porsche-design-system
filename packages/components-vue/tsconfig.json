@@ -2,7 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "projects/vue-wrapper/src"],
   "exclude": [
-    "projects/vue-wrapper/src/styles/index.ts",
+    "projects/vue-wrapper/src/emotion/index.ts",
     "projects/vue-wrapper/src/partials/index.ts",
     "projects/vue-wrapper/src/testing/index.ts",
     "projects/vue-wrapper/src/jsdom-polyfill/index.ts"

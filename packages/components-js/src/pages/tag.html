@@ -6,83 +6,83 @@
   }
 </style>
 
-<div class="playground light auto-layout-inline" title="should show default tag">
+<div class="playground auto-layout-inline" title="should show default tag">
   <p-tag class="a11ytree-snapshot-test">Default</p-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show different background colors">
-  <p-tag color="background-default">background-default</p-tag>
-  <p-tag color="background-base">background-base</p-tag>
-  <p-tag color="background-surface">background-surface</p-tag>
-  <p-tag color="background-frosted">background-frosted</p-tag>
-  <p-tag color="neutral-contrast-high">neutral-contrast-high</p-tag>
-  <p-tag color="primary">primary</p-tag>
-  <p-tag color="notification-neutral">notification-neutral</p-tag>
-  <p-tag color="notification-info-soft">notification-info-soft</p-tag>
-  <p-tag color="notification-success-soft">notification-success-soft</p-tag>
-  <p-tag color="notification-error-soft">notification-error-soft</p-tag>
-  <p-tag color="notification-warning-soft">notification-warning-soft</p-tag>
+<div class="playground auto-layout-inline" title="should show different background colors">
+  <p-tag variant="primary">primary</p-tag>
+  <p-tag variant="secondary">secondary</p-tag>
+  <p-tag variant="info">info</p-tag>
+  <p-tag variant="success">success</p-tag>
+  <p-tag variant="error">error</p-tag>
+  <p-tag variant="warning">warning</p-tag>
 </div>
 
 <div
-  class="playground light auto-layout-inline surface"
+  class="playground auto-layout-inline surface"
   title="should show different background colors on surface background"
 >
-  <p-tag color="background-default">background-default</p-tag>
-  <p-tag color="background-base">background-base</p-tag>
-  <p-tag color="background-surface">background-surface</p-tag>
-  <p-tag color="background-frosted">background-frosted</p-tag>
-  <p-tag color="neutral-contrast-high">neutral-contrast-high</p-tag>
-  <p-tag color="primary">primary</p-tag>
-  <p-tag color="notification-neutral">notification-neutral</p-tag>
-  <p-tag color="notification-info-soft">notification-info-soft</p-tag>
-  <p-tag color="notification-success-soft">notification-success-soft</p-tag>
-  <p-tag color="notification-error-soft">notification-error-soft</p-tag>
-  <p-tag color="notification-warning-soft">notification-warning-soft</p-tag>
+  <p-tag variant="primary">primary</p-tag>
+  <p-tag variant="secondary">secondary</p-tag>
+  <p-tag variant="info">info</p-tag>
+  <p-tag variant="success">success</p-tag>
+  <p-tag variant="error">error</p-tag>
+  <p-tag variant="warning">warning</p-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show different background colors and icons">
-  <p-tag icon="car" color="background-default">background-default</p-tag>
-  <p-tag icon="car" color="background-base">background-base</p-tag>
-  <p-tag icon="car" color="background-surface">background-surface</p-tag>
-  <p-tag icon="car" color="background-frosted">background-frosted</p-tag>
-  <p-tag icon="car" color="neutral-contrast-high">neutral-contrast-high</p-tag>
-  <p-tag icon="car" color="primary">primary</p-tag>
-  <p-tag icon="car" color="notification-neutral">notification-neutral</p-tag>
-  <p-tag icon="car" color="notification-info-soft">notification-info-soft</p-tag>
-  <p-tag icon="car" color="notification-success-soft">notification-success-soft</p-tag>
-  <p-tag icon="car" color="notification-error-soft">notification-error-soft</p-tag>
-  <p-tag icon="car" color="notification-warning-soft">notification-warning-soft</p-tag>
-  <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg" color="background-surface">
-    background-surface</p-tag
-  >
+<div class="playground auto-layout-inline" title="should show different background colors and icons">
+  <p-tag icon="car" variant="primary">primary</p-tag>
+  <p-tag icon="car" variant="secondary">secondary</p-tag>
+  <p-tag icon="car" variant="info">info</p-tag>
+  <p-tag icon="car" variant="success">success</p-tag>
+  <p-tag icon="car" variant="error">error</p-tag>
+  <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg" variant="primary">primary</p-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show different background colors with link">
-  <p-tag color="background-base"><a href="#">background-base link</a></p-tag>
-  <p-tag color="background-surface"><a href="#">background-surface link</a></p-tag>
-  <p-tag color="background-frosted"><a href="#">background-frosted link</a></p-tag>
-  <p-tag icon="car" color="background-base"><a href="#">background-base link</a></p-tag>
-  <p-tag icon="highway" color="background-surface"><a href="#">background-surface link</a></p-tag>
-  <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg" color="background-base">
-    <a href="#">background-base link</a>
+<div class="playground auto-layout-inline" title="should show different background colors with link">
+  <p-tag icon="car" variant="primary">
+    <a href="#">primary</a>
+  </p-tag>
+  <p-tag icon="car" variant="secondary">
+    <a href="#">secondary</a>
+  </p-tag>
+  <p-tag icon="car" variant="info">
+    <a href="#">info</a>
+  </p-tag>
+  <p-tag icon="car" variant="success">
+    <a href="#">success</a>
+  </p-tag>
+  <p-tag icon="car" variant="error">
+    <a href="#">error</a>
+  </p-tag>
+  <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg" variant="primary">
+    <a href="#">primary</a>
   </p-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show different background colors with button">
-  <p-tag color="background-base"><button>background-base button</button></p-tag>
-  <p-tag color="background-surface"><button>background-surface button</button></p-tag>
-  <p-tag color="background-frosted"><button>background-frosted button</button></p-tag>
-  <p-tag icon="car" color="background-base"><button>background-base button</button></p-tag>
-  <p-tag icon="highway" color="background-surface">
-    <button>background-surface button</button>
+<div class="playground auto-layout-inline" title="should show different background colors with button">
+  <p-tag icon="car" variant="primary">
+    <button>primary</button>
   </p-tag>
-  <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg" color="background-base">
-    <button>background-base button</button>
+  <p-tag icon="car" variant="secondary">
+    <button>secondary</button>
+  </p-tag>
+  <p-tag icon="car" variant="info">
+    <button>info</button>
+  </p-tag>
+  <p-tag icon="car" variant="success">
+    <button>success</button>
+  </p-tag>
+  <p-tag icon="car" variant="error">
+    <button>error</button>
+  </p-tag>
+  <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg" variant="primary">
+    <button>primary</button>
   </p-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show compact mode in different variations">
+<div class="playground auto-layout-inline" title="should show compact mode in different variations">
   <p-tag compact="true">Some label</p-tag>
   <p-tag compact="true" icon="car">Some label</p-tag>
   <p-tag compact="true" icon="car">
@@ -99,34 +99,34 @@
   </p-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should not render line break">
+<div class="playground auto-layout-inline" title="should not render line break">
   <p-tag>
     Default <br />
     with line break
   </p-tag>
 </div>
 
-<div class="playground light" title="should not break into multiline although not enough space is given">
+<div class="playground" title="should not break into multiline although not enough space is given">
   <div>
-    <p-tag color="primary">Text that is very long</p-tag>
-    <p-tag color="primary" icon="car">Text with icon that is very long</p-tag>
-    <p-tag color="notification-success-soft" icon="car">
+    <p-tag variant="primary">Text that is very long</p-tag>
+    <p-tag variant="primary" icon="car">Text with icon that is very long</p-tag>
+    <p-tag variant="success" icon="car">
       <a href="#">Link with icon that is very long</a>
     </p-tag>
-    <p-tag color="notification-success-soft" icon="car">
+    <p-tag variant="success" icon="car">
       <button>Button with icon that is very long</button>
     </p-tag>
   </div>
 </div>
 
-<div class="playground light" title="should break into multiline if not enough space is given">
+<div class="playground" title="should break into multiline if not enough space is given">
   <div>
-    <p-tag color="primary" style="white-space: normal">Text that is very long</p-tag>
-    <p-tag color="primary" icon="car" style="white-space: normal">Text with icon that is very long</p-tag>
-    <p-tag color="notification-success-soft" icon="car" style="white-space: normal">
+    <p-tag variant="primary" style="white-space: normal">Text that is very long</p-tag>
+    <p-tag variant="primary" icon="car" style="white-space: normal">Text with icon that is very long</p-tag>
+    <p-tag variant="success" icon="car" style="white-space: normal">
       <a href="#">Link with icon that is very long</a>
     </p-tag>
-    <p-tag color="notification-success-soft" icon="car" style="white-space: normal">
+    <p-tag variant="success" icon="car" style="white-space: normal">
       <button>Button with icon that is very long</button>
     </p-tag>
   </div>

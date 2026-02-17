@@ -1,0 +1,20 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { borderRadiusScssStory } from '@/app/scss/border/examples/border.stories';
+
+export const metadata = {
+  title: 'SCSS: Border - Porsche Design System',
+  description: 'Learn about the SCSS border styles of our design language and how to use them.',
+};
+
+# Border
+
+<TableOfContents headings={['Border Radius', 'Border Width']} />
+
+The Porsche Design System provides multiple SCSS Variables for border styles.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
+
+## Border Radius
+
+<ComponentStory story={borderRadiusScssStory} showCodeBlock={false} />

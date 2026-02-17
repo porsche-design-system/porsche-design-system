@@ -94,6 +94,4 @@ export * from './TabsBarExampleBasic';
 export * from './TextareaExample';
 export * from './TextareaExampleControlled';
 export * from './TextareaExampleForm';
-export * from './TextFieldWrapperExampleIMask';
-export * from './TextFieldWrapperExampleSearch';
 export * from './ToastExample';

@@ -73,18 +73,18 @@ test.describe('sorting', () => {
 });
 
 test.describe('events', () => {
-  test('should emit event on sorting change', async ({ page }) => {
+  test('should emit update event on sorting change', async ({ page }) => {
     await initTable(page, { isSortable: true });
 
     const host = getHost(page);
-    await addEventListener(host, 'sortingChange');
+    await addEventListener(host, 'update');
 
     const firstTableHeadCellButton = getFirstTableHeadCellButton(page);
     await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
 
     await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(2);
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
   });
 
   test('should not have clickable button when column is not sortable', async ({ page }) => {
@@ -92,21 +92,6 @@ test.describe('events', () => {
 
     const firstTableHeadCellPButtonPure = getFirstTableHeadCellButton(page);
     await expect(firstTableHeadCellPButtonPure).toHaveCount(0);
-  });
-
-  test('should emit both sortingChange and update event', async ({ page }) => {
-    await initTable(page, { isSortable: true });
-    const host = getHost(page);
-
-    await addEventListener(host, 'sortingChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const firstTableHeadCellButton = getFirstTableHeadCellButton(page);
-    await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

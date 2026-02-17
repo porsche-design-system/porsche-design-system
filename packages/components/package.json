@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "3.32.0",
+  "version": "4.0.0-beta.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -11,9 +11,8 @@
     "patchStencilCore": "yarn patchStencilCoreClient && yarn patchStencilCoreCompiler",
     "prestart": "yarn patchStencilCore && yarn prestart:prepareAriaTypes",
     "prestart:prepareAriaTypes": "tsx scripts/prepareAriaTypes.ts",
-    "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'PDS_IS_STAGING=1 stencil build --watch --serve --dev'",
-    "prebuild": "yarn patchStencilCore && yarn clean:build && yarn prebuild:generateThemesObject && yarn prebuild:generateConstructorMap",
-    "prebuild:generateThemesObject": "tsx scripts/generateThemesObject.ts",
+    "start": "concurrently -k -s 'first' -n 'cdn,tailwindcss,stencil' 'serve-cdn' 'tailwindcss -i ./src/tailwind.css -o ./src/assets/tailwind.css --watch' 'PDS_IS_STAGING=1 stencil build --watch --serve --dev'",
+    "prebuild": "yarn patchStencilCore && yarn clean:build && yarn prebuild:generateConstructorMap",
     "prebuild:generateConstructorMap": "tsx scripts/generateConstructorMap.ts",
     "build": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:cleanReadmes && yarn build:addTableOfContents && yarn build:type && yarn build:wrappers && yarn build:copyCjsBuildToComponentsJs && yarn build:clean",
     "build:wrappers": "yarn build:wrappers:generateWrappers && yarn build:wrappers:generateDSRComponents && yarn build:wrappers:bundleStyles && yarn build:wrappers:bundleUtils",
@@ -45,7 +44,8 @@
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/styles": "0.0.0",
+    "@porsche-design-system/emotion": "0.0.0",
+    "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "~4.23.2"
   },
@@ -57,7 +57,8 @@
     "dts-bundle-generator": "^9.5.1",
     "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.6.1",
-    "happy-dom": "^20.0.10"
+    "happy-dom": "^20.0.10",
+    "@tailwindcss/cli": "^4.1.16"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
@@ -67,7 +68,8 @@
     "jss-plugin-sort-css-media-queries": "*",
     "jss-preset-default": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "tailwindcss": "*"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

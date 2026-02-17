@@ -1,12 +1,4 @@
 <style>
-  body {
-    overflow-x: hidden;
-  }
-
-  p-canvas > div:not([slot]) {
-    grid-column: 1 / -1;
-  }
-
   span {
     display: block;
     height: 100dvh;
@@ -15,14 +7,12 @@
 </style>
 
 <p-canvas sidebar-start-open="true">
-  <div>
-    Content
-    <span></span>
-    Content
-  </div>
-  <div slot="sidebar-start">
+  <p-text>Content</p-text>
+  <span></span>
+  <p-text>Content</p-text>
+  <p-text slot="sidebar-start">
     Sidebar Start
     <span></span>
     Sidebar Start
-  </div>
+  </p-text>
 </p-canvas>

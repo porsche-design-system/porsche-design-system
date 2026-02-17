@@ -1,13 +1,8 @@
+import { fontSizeText, textSmallStyle } from '@porsche-design-system/emotion';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import type { StepperHorizontalSize } from './stepper-horizontal-utils';
-import type { BreakpointCustomizable } from '../../../types';
-import { fontSizeText, textSmallStyle } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
 
 export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSize>): string => {
   return getCss({
@@ -15,7 +10,6 @@ export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSi
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

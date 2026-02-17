@@ -1,18 +1,18 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
-import type { PropTypes, Theme } from '../../types';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../utils';
+import { getComponentCss } from './model-signature-styles';
 import {
-  type ModelSignatureColor,
-  type ModelSignatureFetchPriority,
-  type ModelSignatureModel,
-  type ModelSignatureSize,
   getSvgUrl,
   MODEL_SIGNATURE_COLORS,
   MODEL_SIGNATURE_FETCH_PRIORITY,
   MODEL_SIGNATURE_MODELS,
   MODEL_SIGNATURE_SIZES,
+  type ModelSignatureColor,
+  type ModelSignatureFetchPriority,
+  type ModelSignatureModel,
+  type ModelSignatureSize,
 } from './model-signature-utils';
-import { getComponentCss } from './model-signature-styles';
 
 const propTypes: PropTypes<typeof ModelSignature> = {
   model: AllowedTypes.oneOf<ModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -21,7 +21,6 @@ const propTypes: PropTypes<typeof ModelSignature> = {
   lazy: AllowedTypes.boolean,
   size: AllowedTypes.oneOf<ModelSignatureSize>(MODEL_SIGNATURE_SIZES),
   color: AllowedTypes.oneOf<ModelSignatureColor>(MODEL_SIGNATURE_COLORS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -52,12 +51,9 @@ export class ModelSignature {
   /** Adapts the color of the component. */
   @Prop() public color?: ModelSignatureColor = 'primary';
 
-  /** Adapts color depending on theme. */
-  @Prop() public theme?: Theme = 'light';
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.model, this.safeZone, this.size, this.color, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.model, this.safeZone, this.size, this.color);
 
     const fetchPriority: Exclude<ModelSignatureFetchPriority, 'auto'> | null =
       this.fetchPriority !== 'auto' ? this.fetchPriority : null;

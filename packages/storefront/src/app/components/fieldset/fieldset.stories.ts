@@ -44,9 +44,8 @@ export const fieldsetStory: Story<'p-fieldset'> = {
           slots?.label.name === 'Slotted label' ? { properties: { label: properties?.label } } : undefined
         ) ?? []),
         {
-          tag: 'p-text-field-wrapper',
-          properties: { label: 'Some label' },
-          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
+          tag: 'p-input-text',
+          properties: { label: 'Some label', name: 'some-name' },
         },
         ...(slots?.message?.generator(
           slots?.message.name === 'Slotted message' ? { properties: { message: properties?.message } } : undefined
@@ -64,9 +63,8 @@ export const fieldsetStorySlottedLabel: Story<'p-fieldset'> = {
       children: [
         { tag: 'span', properties: { slot: 'label' }, children: ['Some legend label'] },
         {
-          tag: 'p-text-field-wrapper',
-          properties: { label: 'Some label' },
-          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
+          tag: 'p-input-text',
+          properties: { label: 'Some label', name: 'some-name' },
         },
       ],
     },
@@ -83,9 +81,8 @@ export const fieldsetStorySlottedMessage: Story<'p-fieldset'> = {
       properties,
       children: [
         {
-          tag: 'p-text-field-wrapper',
-          properties: { label: 'Some label' },
-          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
+          tag: 'p-input-text',
+          properties: { label: 'Some label', name: 'some-name' },
         },
         {
           tag: 'span',
@@ -111,19 +108,13 @@ export const fieldsetStoryRequiredRadio: Story<'p-fieldset'> = {
       properties,
       children: [
         {
-          tag: 'p-radio-button-wrapper',
-          properties: { label: 'Some label' },
-          children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name' } }],
-        },
-        {
-          tag: 'p-radio-button-wrapper',
-          properties: { label: 'Some label', className: 'mt-fluid-sm' },
-          children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name' } }],
-        },
-        {
-          tag: 'p-radio-button-wrapper',
-          properties: { label: 'Some label', className: 'mt-fluid-sm' },
-          children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name' } }],
+          tag: 'p-radio-group',
+          properties: { label: 'Some label', name: 'some-name' },
+          children: [
+            { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
+            { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
+            { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
+          ],
         },
       ],
     },
@@ -143,14 +134,12 @@ export const fieldsetStoryRequired: Story<'p-fieldset'> = {
       properties,
       children: [
         {
-          tag: 'p-text-field-wrapper',
-          properties: { label: 'Some label' },
-          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name-1', required: true } }],
+          tag: 'p-input-text',
+          properties: { label: 'Some label', name: 'some-name-1', required: true },
         },
         {
-          tag: 'p-text-field-wrapper',
-          properties: { label: 'Some label' },
-          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name-2', required: true } }],
+          tag: 'p-input-text',
+          properties: { label: 'Some label', name: 'some-name-2', required: true },
         },
       ],
     },

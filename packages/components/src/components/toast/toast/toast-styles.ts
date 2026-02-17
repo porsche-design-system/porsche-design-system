@@ -4,13 +4,12 @@ import {
   motionDurationModerate,
   motionEasingIn,
   motionEasingOut,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { TOAST_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colorSchemeStyles,
   cssVariableAnimationDuration,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -21,7 +20,7 @@ import { getCss } from '../../../utils';
  * @css-variable {"name": "--p-toast-position-bottom", "description": "Defines the spacing between the toast and the bottom edge of its container.", "defaultValue": "56px"}
  */
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
+const cssVariablePositionBottomInternal = '--_p-a';
 
 export const ANIMATION_DURATION = motionDurationModerate;
 const duration =
@@ -59,20 +58,17 @@ export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        position: 'fixed', // fallback for older browsers without native `popover` support
-        insetInline: gridExtendedOffsetBase,
         // Needs a not overridable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
         [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 56px)`,
-        bottom: `var(${cssVariablePositionBottomInternal})`,
+        position: 'fixed', // fallback for older browsers without native `popover` support
+        inset: `auto ${gridExtendedOffsetBase} var(${cssVariablePositionBottomInternal})`,
         zIndex: TOAST_Z_INDEX, // fallback for older browsers without native `popover` support
         [getMediaQueryMin('s')]: {
-          insetInline: '64px auto',
-          maxWidth: 'min(42rem, calc(100vw - 64px * 2))',
           [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 64px)`,
-          bottom: `var(${cssVariablePositionBottomInternal})`,
+          inset: `auto auto var(${cssVariablePositionBottomInternal}) 64px`,
+          maxWidth: 'min(42rem, calc(100vw - 64px * 2))',
         },
-        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       ...preventFoucOfNestedElementsStyles,

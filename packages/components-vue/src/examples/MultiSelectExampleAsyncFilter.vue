@@ -48,7 +48,7 @@
       class="flex gap-static-sm py-static-sm px-[12px]"
       role="alert"
     >
-      <PIcon name="information" color="notification-error" />
+      <PIcon name="information" color="error" />
       <span class="text-error">{{ error }}</span>
     </div>
   </PMultiSelect>
@@ -117,21 +117,21 @@ async function fetchOptions(term?: string, isInitial?: boolean) {
 
 const debouncedFetch = useDebounce((term?: string) => fetchOptions(term), 400);
 
-function onInput(e: InputSearchInputEventDetail) {
+function onInput(e: CustomEvent<InputSearchInputEventDetail>) {
   const term = (e.target as HTMLInputElement).value;
   searchValue.value = term;
   debouncedFetch(term.trim() || undefined);
 }
 
-function onChange(e: MultiSelectChangeEventDetail) {
+function onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
   // Can be called from bubbling onChange event of PInputSearch, ignore those
-  if (e.name) {
-    value.value = e.value;
+  if (e.detail.name) {
+    value.value = e.detail.value;
   }
 }
 
-function onToggle(e: MultiSelectToggleEventDetail) {
-  if (e.open && !hasLoadedOnce.value) {
+function onToggle(e: CustomEvent<MultiSelectToggleEventDetail>) {
+  if (e.detail.open && !hasLoadedOnce.value) {
     fetchOptions(undefined, true);
   }
 }

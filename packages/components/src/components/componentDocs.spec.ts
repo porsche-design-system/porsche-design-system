@@ -47,8 +47,9 @@ describe.each<TagName>(
         (slot) => !slot.includes('internal') && !slot.includes('INTERNAL')
       );
 
-      if (sourceFileContent.includes('<Label') || sourceFileContent.includes('<LegacyLabel')) {
+      if (sourceFileContent.includes('<Label')) {
         namedSlotsUnique.push('label');
+        namedSlotsUnique.push('label-after');
       }
       if (sourceFileContent.includes('<Label')) {
         namedSlotsUnique.push('label-after');

@@ -1,49 +1,36 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
+
 export const metadata = {
   title: 'Styles: Introduction - Porsche Design System',
-  description: 'Learn about the foundational CSS styles of our design language and how to use it.',
-}
+  description: 'Learn about the global styles and how to use them.',
+};
 
 # Introduction
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Setup', 'Optional Separate Imports']} />
 
-## Styles
+## Setup
 
-Styles are the foundational layer of our design language and define basics like colors in different themes, typography
-and other effects that can be applied to objects; or to define the structure and appearance with layout grid and
-spacings.
+Starting with Porsche Design System **v4**, including the global styles in your project is **mandatory**. All necessary
+styles are bundled in a single CSS file:
 
-You should only use the styles whenever you have to build a custom component or pattern that is not yet available in the
-components library or for foundational layout objects like typography, surfaces and boxes.
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+```
 
-The styles are available as JavaScript and SCSS version and available in the Figma library.
+This file includes:
 
-- [Border](/styles/border/)
-- [Drop Shadow](/styles/drop-shadow/)
-- [Focus](/styles/focus/)
-- [Frosted Glass](styles/frosted-glass/)
-- [Gradient](/styles/gradient/)
-- [Grid](/styles/grid/)
-- [Media Query](/styles/media-query/)
-- [Motion](/styles/motion/)
-- [Spacing](/styles/spacing/)
-- [Theme](/styles/theme/)
-- [Typography](/styles/typography/)
+- [CSS color variables](/styles/colors/)
+- [Font-face definitions](/styles/font-face/)
+- [Normalize styles](/styles/normalize/)
 
-### JS
+## Optional Separate Imports
 
-When working with JavaScript styles, the way you import them depends on the library or tool you're using.
+If needed, you can also import the individual style files separately. Important: `variables.css` and `font-face.css`
+must always be included to ensure components render correctly.
 
-For most css-in-js libraries (e.g., `JSS`, `styled-components`...):
-`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
-
-For `vanilla-extract`:
-`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
-
-Make sure to use `"moduleResolution": "bundler"` in the `compilerOptions` of your `tsconfig.json` to ensure the correct
-resolution of the styles.
-
-### SCSS
-
-SCSS styles can be imported by: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *`;
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/variables.css';
+@import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
+@import '@porsche-design-system/components-{js|angular|react|vue}/normalize.css';
+```

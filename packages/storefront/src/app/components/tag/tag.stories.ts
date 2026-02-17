@@ -22,48 +22,33 @@ export const tagStorySlottedButton: Story<'p-tag'> = {
       children: [
         {
           tag: 'p-tag',
-          properties: { icon: 'car', color: 'background-base' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color background-base'] }],
+          properties: { icon: 'car', variant: 'primary' },
+          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant primary'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'background-surface' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color background-surface'] }],
+          properties: { variant: 'secondary' },
+          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant secondary'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'background-default' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color background-default'] }],
+          properties: { variant: 'info' },
+          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant info'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'background-frosted' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color background-frosted'] }],
+          properties: { variant: 'warning' },
+          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant warning'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'primary' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color primary'] }],
+          properties: { variant: 'success' },
+          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant success'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'notification-info-soft' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color notification-info-soft'] }],
-        },
-        {
-          tag: 'p-tag',
-          properties: { color: 'notification-warning-soft' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color notification-warning-soft'] }],
-        },
-        {
-          tag: 'p-tag',
-          properties: { color: 'notification-success-soft' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color notification-success-soft'] }],
-        },
-        {
-          tag: 'p-tag',
-          properties: { color: 'notification-error-soft' },
-          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Color notification-error-soft'] }],
+          properties: { variant: 'error' },
+          children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant error'] }],
         },
       ],
     },
@@ -80,56 +65,33 @@ export const tagStorySlottedLink: Story<'p-tag'> = {
       children: [
         {
           tag: 'p-tag',
-          properties: { icon: 'car', color: 'background-base' },
-          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color background-base'] }],
+          properties: { icon: 'car', variant: 'primary' },
+          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant primary'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'background-surface' },
-          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color background-surface'] }],
+          properties: { variant: 'secondary' },
+          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant secondary'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'background-default' },
-          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color background-default'] }],
+          properties: { variant: 'info' },
+          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant info'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'background-frosted' },
-          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color background-frosted'] }],
+          properties: { variant: 'warning' },
+          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant warning'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'primary' },
-          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color primary'] }],
+          properties: { variant: 'success' },
+          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant success'] }],
         },
         {
           tag: 'p-tag',
-          properties: { color: 'notification-info-soft' },
-          children: [
-            { tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color notification-info-soft'] },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { color: 'notification-warning-soft' },
-          children: [
-            { tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color notification-warning-soft'] },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { color: 'notification-success-soft' },
-          children: [
-            { tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color notification-success-soft'] },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { color: 'notification-error-soft' },
-          children: [
-            { tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Color notification-error-soft'] },
-          ],
+          properties: { variant: 'error' },
+          children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant error'] }],
         },
       ],
     },
@@ -146,7 +108,7 @@ export const tagStoryMultiline: Story<'p-tag'> = {
       children: [
         {
           tag: 'p-tag',
-          properties: { color: 'notification-success-soft', className: 'whitespace-normal' },
+          properties: { variant: 'success', className: 'whitespace-normal' },
           children: ['Some label with longer text wrapped in a narrow container'],
         },
       ],

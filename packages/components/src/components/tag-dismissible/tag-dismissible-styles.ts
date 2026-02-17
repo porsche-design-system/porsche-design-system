@@ -1,115 +1,90 @@
-import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
-import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
-import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
+import {
+  colorContrastHigh,
+  colorFrosted,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+  radiusXl,
+} from '../../styles/css-variables';
+import { getCss } from '../../utils';
 
 export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
-export const getScalingVar = (compact: boolean) =>
-  `var(${cssVarInternalTagDismissibleScaling}, ${compact ? 'calc(4 / 13)' : 1})`;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-export const getComponentCss = (
-  color: Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
-  hasLabel: boolean,
-  compact: boolean,
-  theme: Theme
-): string => {
-  const scalingVar = getScalingVar(compact);
 
-  const iconPadding = '4px';
-  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - ${iconPadding}/2)`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
-  const paddingInline = `max(calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - 1px), 4px)`;
-  const gap = `max(calc(${scalingVar} * 0.75 * ${SCALING_BASE_VALUE}), 2px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 12px
-
-  const themedColors = getThemedColors(theme);
-  const themedColorsDark = getThemedColors('dark');
-  const { primaryColor, hoverColor, contrastHighColor } = themedColors;
-  const {
-    primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    contrastHighColor: contrastHighColorDark,
-  } = themedColorsDark;
-  const backgroundColor = getThemedBackgroundColor(color, themedColors);
-  const backgroundColorDark = getThemedBackgroundColor(color, themedColorsDark);
+export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string => {
+  const buttonPaddingBlock = hasLabel
+    ? `calc(16.8px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`
+    : `calc(28px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 6px)`;
+  const buttonPaddingInline = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
+  const buttonGap = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
+  const iconPadding = `calc(11.2px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`;
+  const iconMargin = `calc(-1 * ${iconPadding})`;
 
   return getCss({
     '@global': {
       ':host': {
+        [`${cssVarInternalTagDismissibleScaling}`]: isCompact ? 0.64285714 : 1,
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          outline: 0,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
+        all: 'unset',
         display: 'flex',
         position: 'relative',
         alignItems: 'center',
-        gap,
-        padding: `${hasLabel ? `calc(${paddingBlock} - 6px)` : paddingBlock} ${paddingInline}`,
-        margin: 0, // Removes default button margin on safari 15
-        borderRadius: borderRadiusSmall,
-        border: 0,
+        gap: buttonGap,
+        padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
+        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         cursor: 'pointer',
-        background: backgroundColor,
-        color: primaryColor,
+        background: colorFrosted,
+        color: colorPrimary,
         textAlign: 'start',
         ...textSmallStyle,
-        ...(isHighContrastMode && {
-          // TODO: using border would increase the dimension but using outline interferes with the focus style
-          outline: '1px solid transparent',
-        }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-          color: primaryColorDark,
-        }),
         ...hoverMediaQuery({
           '&:hover > .icon': {
-            backgroundColor: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
-            }),
+            backgroundColor: colorFrosted,
           },
         }),
-        ...getFocusJssStyle(theme),
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
+        }),
+        '&:focus-visible': getFocusBaseStyles(),
       },
     },
     ...(hasLabel && {
       label: {
         display: 'block',
         marginBottom: '-4px',
-        color: contrastHighColor,
+        color: colorContrastHigh,
         fontSize: fontSizeTextXSmall,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
-        }),
       },
     }),
     icon: {
       padding: iconPadding,
-      marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
+      margin: iconMargin,
       transition: getTransition('background-color'),
-      borderRadius: borderRadiusSmall,
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
     },
     'sr-only': getHiddenTextJssStyle(),
   });

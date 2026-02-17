@@ -14,7 +14,6 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasRegularProps = extendedProps.some(({ isEvent }) => !isEvent);
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
 
     const reactImports = [
       'type ForwardedRef',
@@ -31,7 +30,6 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...(hasEventProps ? ['useEventCallback'] : []),
       'useMergedClass',
       'usePrefix',
-      ...(hasThemeProp ? ['useTheme'] : []),
     ].sort();
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
@@ -69,7 +67,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const wrapperPropsArr: string[] = [
       ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
-        isEvent || defaultValue === undefined || key === 'theme' ? key : `${key} = ${defaultValue}`
+        isEvent || defaultValue === undefined ? key : `${key} = ${defaultValue}`
       ),
       'className',
       '...rest',
@@ -91,19 +89,15 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const componentHooks = componentHooksArr.join('\n    ');
 
     const [firstPropToSync] = propsToSync;
-    const isTheme = firstPropToSync?.key === 'theme';
     const componentEffectsArr: string[] =
       propsToSync.length === 1
         ? [
-            ...(isTheme ? ['const themeValue = useTheme();'] : []),
             `useBrowserLayoutEffect(() => {
-      (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key + (isTheme ? ' || themeValue' : '')};
-    }, [${firstPropToSync.key + (isTheme ? ', themeValue' : '')}]);`,
+      (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key};
+    }, [${firstPropToSync.key}]);`,
           ]
         : [
-            `const propsToSync = [${propsToSync
-              .map(({ key }) => key + (key === 'theme' ? ' || useTheme()' : ''))
-              .join(', ')}];`,
+            `const propsToSync = [${propsToSync.map(({ key }) => key).join(', ')}];`,
             `useBrowserLayoutEffect(() => {
       const { current } = elementRef;
       [${propsToSync.map(({ key }) => `'${key}'`).join(', ')}].forEach(

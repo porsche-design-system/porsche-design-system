@@ -1,5 +1,19 @@
 'use client';
 
+import {
+  type CanvasSidebarStartUpdateEventDetail,
+  componentsReady,
+  PBanner,
+  PButton,
+  PCanvas,
+  PHeading,
+  PLink,
+} from '@porsche-design-system/components-react/ssr';
+import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type React from 'react';
+import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
@@ -10,26 +24,12 @@ import { useDirection } from '@/hooks/useDirection';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { useTextZoom } from '@/hooks/useTextZoom';
 import type { StorefrontDirection } from '@/models/dir';
+import { LEGACY_PDS_VERSIONS, type PDSVersionGroup, type Semver } from '@/models/pdsVersion';
 import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontTheme } from '@/models/theme';
-import {
-  type CanvasSidebarStartUpdateEventDetail,
-  PButton,
-  PCanvas,
-  PHeading,
-  PLink,
-  PBanner,
-} from '@porsche-design-system/components-react/ssr';
-import { componentsReady } from '@porsche-design-system/components-react/ssr';
-import { breakpointS } from '@porsche-design-system/components-react/styles';
-import { breakpointM } from '@porsche-design-system/styles/src/js';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type React from 'react';
-import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { PDSVersionGroup, Semver, LEGACY_PDS_VERSIONS } from '@/models/pdsVersion';
-import { getCurrentPdsVersion, isMajorOnly } from '@/utils/pdsVersion';
+import type { StorefrontColorScheme } from '@/models/theme';
 import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
+import { isDevEnvironment } from '@/utils/isDev';
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 declare global {
   interface Window {
@@ -62,23 +62,20 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [isBannerOpen, setIsBannerOpen] = useState(false);
+  const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointMd}px)`).matches;
 
-  const rawPdsVersion = getCurrentPdsVersion();
   const latestPdsVersion = stablePdsReleases[0] as Semver;
 
-  // Normalize: if only a major (e.g. "3"), uses the latest full semver
-  const currentPdsVersion = rawPdsVersion && isMajorOnly(rawPdsVersion) ? latestPdsVersion : rawPdsVersion;
-
   useEffect(() => {
-    if (!latestPdsVersion || !currentPdsVersion) return;
-    if (currentPdsVersion !== latestPdsVersion) {
+    if (!latestPdsVersion) return;
+    if (!isDevEnvironment && localPorscheDesignSystemVersion !== latestPdsVersion) {
       setIsBannerOpen(true);
     }
-  }, [currentPdsVersion, latestPdsVersion]);
+  }, [latestPdsVersion]);
 
   const pdsVersion: PDSVersionGroup = {
     all: [...stablePdsReleases, ...LEGACY_PDS_VERSIONS],
-    current: currentPdsVersion as Semver,
+    current: localPorscheDesignSystemVersion as Semver,
     latest: latestPdsVersion,
   };
 
@@ -105,14 +102,18 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // initially, sidebar should be closed on mobile and opened on desktop
-    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
+    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointSm}px)`).matches);
   }, []);
 
   useEffect(() => {
-    setIsSidebarEndOpen(
-      (window.matchMedia(`(min-width: ${breakpointM}px)`).matches && pathname?.includes('configurator')) ?? false
-    );
-  }, [pathname]);
+    setIsSidebarEndOpen((isDesktop && pathname?.includes('configurator')) ?? false);
+  }, [pathname, isDesktop]);
+
+  const onNavigationChange = () => {
+    if (!isDesktop && isSidebarStartOpen) {
+      setIsSidebarStartOpen(false);
+    }
+  };
 
   return (
     <PCanvas
@@ -137,7 +138,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PButton
         slot="header-end"
         icon="search"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
@@ -148,7 +149,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PLink
         slot="header-end"
         iconSource="assets/github.svg"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
@@ -159,7 +160,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PButton
         slot="header-end"
         icon="configurate"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         onClick={onSidebarEndOpen}
@@ -167,13 +168,14 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Open sidebar
       </PButton>
 
-      <div className="-p-canvas-grid">
+      <div className="@container grid grid-cols-12 gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
         <Tabs />
         {children}
       </div>
+
       <div slot="sidebar-start">
-        <Navigation pdsVersion={pdsVersion} />
+        <Navigation pdsVersion={pdsVersion} onNavigate={onNavigationChange} />
       </div>
       <div slot="sidebar-end">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
@@ -182,16 +184,16 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           </PHeading>
           <ThemeSelect
             value={storefrontTheme}
-            onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
+            onThemeChange={(e): void => setStorefrontTheme(e.detail.value as StorefrontColorScheme)}
             compact={true}
           />
           <DirectionSelect
             value={storefrontDirection}
-            onUpdate={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+            onDirectionChange={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
           />
           <TextZoomSelect
             value={storefrontTextZoom}
-            onUpdate={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
+            onTextZoomChange={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
           />
         </div>
       </div>

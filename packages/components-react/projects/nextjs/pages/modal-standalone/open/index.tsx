@@ -1,8 +1,9 @@
 'use client';
+
+import { PButton, PHeading, PModal, PText } from '@porsche-design-system/components-react/ssr';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
-import { PModal, PText, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 import ModalStandaloneLayout from './../layout';
 
 const ModalStandaloneOpenPage: NextPage = (): JSX.Element => {
@@ -13,14 +14,15 @@ const ModalStandaloneOpenPage: NextPage = (): JSX.Element => {
 
   return (
     <ModalStandaloneLayout>
-      <PModal heading="Some Heading" open={true} onDismiss={onDismiss}>
+      <PModal open={true} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
         <PText>Some Content</PText>
-        <PButtonGroup className="footer">
-          <PButton>Save</PButton>
-          <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-            Close
-          </PButton>
-        </PButtonGroup>
+        <PButton slot="footer">Save</PButton>
+        <PButton slot="footer" type="button" variant="secondary" icon="close" onClick={onDismiss}>
+          Close
+        </PButton>
       </PModal>
     </ModalStandaloneLayout>
   );

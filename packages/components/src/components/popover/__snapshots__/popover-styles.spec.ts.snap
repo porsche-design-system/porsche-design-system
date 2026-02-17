@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -13,7 +13,6 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
     position: relative;
     display: inline-block;
     vertical-align: top;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -36,18 +35,16 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
     font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     width: calc(6px + 2.125ex);
     height: calc(6px + 2.125ex);
-    border-radius: 50%;
+    border-radius: var(--p-radius-full);
     cursor: pointer;
-  }
-  button::-moz-focus-inner {
-    border: 0;
-  }
-  button:focus {
-    outline: 0;
+    background-color: var(--p-color-frosted);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
   }
   button:focus-visible {
-    outline: 2px solid #1A44EA;
-    outline-offset: 0;
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
   }
   [popover] {
     all: unset;
@@ -55,19 +52,20 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
     pointer-events: none;
     filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
     backdrop-filter: drop-shadow(0 0 transparent);
-    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    animation: var(--p-animation-duration, .25s) fade-in cubic-bezier(.25,.1,.25,1) forwards;
   }
   [popover]:not(:popover-open) {
     display: none;
   }
-@media(hover:hover) {
-    button {
-      transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
+}
+
+@media(hover:hover) {
     button:hover {
-      -webkit-backdrop-filter: blur(32px);
-      backdrop-filter: blur(32px);
-      background-color: rgba(148, 149, 152, .18);
+      background-color: var(--p-color-frosted-soft);
     }
 }
 
@@ -89,7 +87,7 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
     width: 24px;
     height: 12px;
     clip-path: polygon(50% 0, 100% 110%, 0 110%);
-    background: #212225;
+    background: var(--p-color-canvas);
   }
   .content {
     max-width: min(calc(100dvw - 16px), 48ch);
@@ -97,117 +95,21 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
     box-sizing: border-box;
     padding: 8px 16px;
     pointer-events: auto;
-    border-radius: 4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
-    background: #212225;
-    color: #FBFCFF;
-  }"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light 1`] = `
-"@keyframes fade-in {
-  from {
-    opacity: 0;
+    background: var(--p-color-canvas);
+    color: var(--p-color-primary);
   }
-  to {
-    opacity: 1;
-  }
-}
-  :host {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    color-scheme: light dark !important;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  slot[name="button"] {
-    display: block;
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
-  }
-  p {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    margin: 0;
-  }
-  button {
-    all: unset;
-    display: block;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  button::-moz-focus-inner {
-    border: 0;
-  }
-  button:focus {
-    outline: 0;
-  }
-  button:focus-visible {
-    outline: 2px solid #1A44EA;
-    outline-offset: 0;
-  }
-  [popover] {
-    all: unset;
-    position: absolute;
-    pointer-events: none;
-    filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-    backdrop-filter: drop-shadow(0 0 transparent);
-    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
-  }
-  [popover]:not(:popover-open) {
-    display: none;
-  }
-@media(hover:hover) {
-    button {
-      transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+@media (forced-colors: active) {
+    .arrow {
+      background: CanvasText;
     }
-    button:hover {
-      -webkit-backdrop-filter: blur(32px);
-      backdrop-filter: blur(32px);
-      background-color: rgba(148, 149, 152, .18);
+    .content {
+      outline: 2px solid CanvasText;
+      outline-offset: -2px;
     }
 }
-
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    transform: translate3d(0,0,0);
-  }
-  .arrow {
-    position: absolute;
-    width: 24px;
-    height: 12px;
-    clip-path: polygon(50% 0, 100% 110%, 0 110%);
-    background: #FFF;
-  }
-  .content {
-    max-width: min(calc(100dvw - 16px), 48ch);
-    width: max-content;
-    box-sizing: border-box;
-    padding: 8px 16px;
-    pointer-events: auto;
-    border-radius: 4px;
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    background: #FFF;
-    color: #010205;
-  }"
+"
 `;

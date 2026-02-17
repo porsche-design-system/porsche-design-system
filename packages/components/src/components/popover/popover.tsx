@@ -1,6 +1,6 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
 import { Component, Element, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +10,6 @@ import {
   hasPropValueChanged,
   isClickOutside,
   parseAndGetAriaAttributes,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
@@ -26,7 +25,6 @@ const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -49,9 +47,6 @@ export class Popover {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
-
-  /** Adapts the popover color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   @State() private isOpen = false;
 
@@ -92,7 +87,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
@@ -111,7 +106,7 @@ export class Popover {
             })}
             ref={(el) => (this.button = el)}
           >
-            <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
+            <PrefixedTagNames.pIcon class="icon" name="information" />
             <span class="label">More information</span>
           </button>
         )}

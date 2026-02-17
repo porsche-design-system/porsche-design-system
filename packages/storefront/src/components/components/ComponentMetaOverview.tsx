@@ -1,8 +1,7 @@
 'use client';
 
-import { getFlags } from '@/utils/getFlags';
-import { type PropMeta, componentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import { componentMeta, type PropMeta } from '@porsche-design-system/component-meta';
 import type { EventMeta, SlotMeta } from '@porsche-design-system/component-meta/src';
 import {
   PSwitch,
@@ -17,6 +16,7 @@ import {
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { Fragment, type ReactNode, useState } from 'react';
+import { getFlags } from '@/utils/getFlags';
 
 const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 
@@ -179,7 +179,6 @@ export const ComponentMetaOverview = () => {
         </PTableHead>
         <PTableBody>
           {renderBoolean('isDelegatingFocus')}
-          {renderBoolean('isThemeable')}
           {renderProps('props')}
           {renderProps('requiredProps', 'isRequired')}
           {renderComponentMeta('eventNames', (tagName) => Object.entries(componentMeta[tagName].eventsMeta ?? {}))}

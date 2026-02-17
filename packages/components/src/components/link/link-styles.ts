@@ -1,14 +1,8 @@
-import { borderRadiusSmall } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  getFocusJssStyle,
-  getHighContrastColors,
-  getResetInitialStylesForSlottedAnchor,
-} from '../../styles';
+import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
+import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
-import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
+import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
 const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
 
@@ -22,12 +16,8 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
-  compact: BreakpointCustomizable<boolean>,
-  theme: Theme
+  isCompact: BreakpointCustomizable<boolean>
 ): string => {
-  const { linkColor } = getHighContrastColors();
-  const isPrimary = variant === 'primary';
-
   return getCss(
     mergeDeep(
       getLinkButtonStyles(
@@ -37,45 +27,36 @@ export const getComponentCss = (
         hideLabel,
         false,
         hasSlottedAnchor,
-        compact,
-        cssVariableInternalLinkScaling,
-        theme
+        isCompact,
+        cssVariableInternalLinkScaling
       ),
       {
         label: {
           clip: addImportantToRule('unset'), // to overrule breakpoint customizable hide-label style
         },
-        ...(isPrimary &&
-          !isHighContrastMode && {
-            icon: {
-              filter: 'invert(1)',
-            },
-          }),
       },
       hasSlottedAnchor && {
-        ...(isHighContrastMode && {
-          root: {
-            borderColor: linkColor,
-          },
-        }),
         '@global': addImportantToEachRule({
           '::slotted': {
             '&(a)': {
-              ...getResetInitialStylesForSlottedAnchor,
-              textDecoration: 'none',
-              font: 'inherit',
-              color: 'inherit',
+              all: 'unset',
             },
-            // The clickable area for Safari < ~15 (<= release date: 2021-10-28) is reduced to the slotted anchor itself,
-            // since Safari prior to this major release does not support pseudo-elements in the slotted context
-            // (https://bugs.webkit.org/show_bug.cgi?id=178237)
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              inset: variant === 'ghost' ? '0px' : '-2px', // Variant ghost has no border to compensate
-              borderRadius: borderRadiusSmall,
+              inset: 0,
+              ...mergeDeep(
+                buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+                  borderRadius: `var(${legacyRadiusSmall}, ${compactValue ? radiusLg : radiusXl})`,
+                })),
+                buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+                  ...(hideLabelValue && {
+                    borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+                  }),
+                }))
+              ),
             },
-            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
+            '&(a:focus-visible)::before': getFocusBaseStyles(),
           },
         }),
       }

@@ -1,10 +1,11 @@
-import { type JSX, useState } from 'react';
-import type { MetaFunction } from '@remix-run/node';
-import { LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLocation, useNavigate } from '@remix-run/react';
-import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import globalStyles from '@porsche-design-system/components-react/index.css';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import { type JSX } from 'react';
 import { HeadPartials } from '~/head-partials.server';
-import { BodyPartials } from '~/body-partials.server';
-import { routes } from '~/routes';
+
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: globalStyles }];
 
 export const meta: MetaFunction = () => [
   { charset: 'utf-8' },
@@ -16,33 +17,15 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function App(): JSX.Element {
-  const navigate = useNavigate();
-  const [theme, setTheme] = useState<Theme>('light');
-  const themes: Theme[] = ['light', 'dark', 'auto'];
-
   return (
     <html lang="en">
       <head>
         <Meta />
+        <Links />
         {HeadPartials && <HeadPartials />}
       </head>
-      <body>
-        <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)} style={{ width: '200px' }}>
-          <option disabled value="">
-            Select a page
-          </option>
-          {routes.map((route, i) => (
-            <option key={i} value={route.path} children={route.name} />
-          ))}
-        </select>
-
-        <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
-          {themes.map((item) => (
-            <option key={item} value={item} children={item} />
-          ))}
-        </select>
-
-        <PorscheDesignSystemProvider theme={theme}>
+      <body style={{ colorScheme: 'light dark' }}>
+        <PorscheDesignSystemProvider>
           <div id="app">
             <Outlet />
           </div>
@@ -50,7 +33,6 @@ export default function App(): JSX.Element {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
-        {BodyPartials && <BodyPartials />}
       </body>
     </html>
   );

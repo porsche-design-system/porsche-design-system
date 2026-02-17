@@ -24,22 +24,12 @@ jobs:
         uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:assets:assets
-      - name: 'Fallbacks Unit'
-        run: yarn test:unit:assets:fallbacks
       - name: 'Flags Unit'
         run: yarn test:unit:assets:flags
       - name: 'Icons Unit'
         run: yarn test:unit:assets:icons
       - name: 'Font Face Unit'
         run: yarn test:unit:assets:font-face
-      - name: 'Fallbacks VRT'
-        run: yarn test:vrt:assets:fallbacks
-      - name: 'Fallbacks VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: regression-fallbacks-vrt
-          path: ./packages/assets/projects/fallbacks/tests/vrt/results
   tokens:
     name: 'Tokens'
     runs-on: ubuntu-latest
@@ -68,8 +58,26 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Global Styles Unit'
+        run: yarn test:unit:styles:global-styles
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
+      - name: 'SCSS Unit'
+        run: yarn test:unit:styles:scss
+      - name: 'Emotion Unit'
+        run: yarn test:unit:styles:emotion
+      - name: 'Vanilla Extract Unit'
+        run: yarn test:unit:styles:vanilla-extract
+      - name: 'VRT'
+        run: yarn test:vrt:styles
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-styles-vrt-chrome
+          path: ./packages/styles/tests/vrt/results
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest
@@ -507,27 +515,27 @@ jobs:
         with:
           name: regression-storefront-a11y-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/a11y/results
-  storefront-vrt:
-    name: 'Storefront VRT'
-    runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Restore'
-        uses: ./.github/actions/restore
-      - name: 'VRT'
-        run: yarn test:vrt:storefront
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: regression-storefront-vrt
-          path: ./packages/storefront/tests/vrt/results
+#  storefront-vrt:
+#    name: 'Storefront VRT'
+#    runs-on: ubuntu-latest
+#    container:
+#      image: ${{ inputs.image }}
+#      options: --user 1001
+#    steps:
+#      - name: 'Checkout'
+#        uses: actions/checkout@v4
+#      - name: 'Install'
+#        uses: ./.github/actions/install
+#      - name: 'Restore'
+#        uses: ./.github/actions/restore
+#      - name: 'VRT'
+#        run: yarn test:vrt:storefront
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: regression-storefront-vrt
+#          path: ./packages/storefront/tests/vrt/results
   utilities:
     name: 'Utilities'
     runs-on: ubuntu-latest

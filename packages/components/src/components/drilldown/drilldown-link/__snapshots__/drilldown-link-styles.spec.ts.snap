@@ -1,9 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: false 1`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15,24 +14,24 @@ a {
   all: unset;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px);
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: transparent;
   cursor: pointer;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 a:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
@@ -41,10 +40,9 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 1`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -56,24 +54,24 @@ a {
   all: unset;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px);
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 a:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
@@ -82,10 +80,9 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 2`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -97,24 +94,24 @@ a {
   all: unset;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px);
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 a:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
@@ -123,10 +120,9 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 3`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -138,24 +134,24 @@ a {
   all: unset;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px);
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 a:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
@@ -164,10 +160,9 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: false 1`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -179,24 +174,24 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px) !important;
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
-  border-radius: 4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   cursor: pointer !important;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline: 0 !important;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: -2px !important;
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
@@ -205,10 +200,9 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 1`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -220,24 +214,24 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px) !important;
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
-  border-radius: 4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline: 0 !important;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: -2px !important;
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
@@ -246,10 +240,9 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 2`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -261,24 +254,24 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px) !important;
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
-  border-radius: 4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline: 0 !important;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: -2px !important;
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
@@ -287,10 +280,9 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 3`] = `
 ":host {
   display: grid;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -302,24 +294,24 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px) !important;
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
-  border-radius: 4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline: 0 !important;
+  transition: text-decoration-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: -2px !important;
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
