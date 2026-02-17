@@ -3,6 +3,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   cssVariableTransitionDuration,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -113,6 +114,11 @@ export const getComponentCss = (
         background: backgroundMap[background],
         ...(background === 'frosted' && frostedGlassStyle),
         borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
+        ...forcedColorsMediaQuery({
+          outline: '1px solid CanvasText',
+          outlineOffset: background === 'none' ? '0' : '-1px',
+          padding: `var(${cssVarPaddingBlock}, ${paddingBlock}) var(${cssVarPaddingInline}, ${paddingInline})`,
+        }),
         '&::details-content': {
           contentVisibility: addImportantToRule('visible'), // we need to overwrite it to support cross-browser animation, we take care of content-visibility on our own to be a11y compliant
         },
@@ -188,6 +194,9 @@ export const getComponentCss = (
             background: colorPrimary,
             transform: 'rotate3d(0)',
             transition: getTransition('transform', duration, easing),
+            ...forcedColorsMediaQuery({
+              backgroundColor: 'LinkText',
+            }),
             'details[open] &': {
               transform: 'rotate3d(0,0,1,180deg)',
             },
