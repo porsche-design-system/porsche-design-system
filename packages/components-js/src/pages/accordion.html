@@ -4,8 +4,8 @@
   }
 
   .custom-padding {
-    --p-accordion-px: 32px;
-    --p-accordion-py: 24px;
+    --p-accordion-px: 48px;
+    --p-accordion-py: 48px;
   }
 </style>
 
@@ -31,27 +31,33 @@
   </p-accordion>
 </div>
 
-<div class="playground surface" title="should render accordion with different background colors">
-  <p-accordion open="true" background="frosted">
-    <p-heading slot="summary" tag="h3" size="small">Some summary (background=frosted)</p-heading>
+<div class="playground" title="should render opened accordion with deprecated heading">
+  <p-accordion open="true" heading="Some heading" heading-tag="h3">
     <p-text>Some details</p-text>
   </p-accordion>
+</div>
+
+<div class="playground" title="should render accordion with different background colors">
   <p-accordion open="true" background="canvas">
     <p-heading slot="summary" tag="h3" size="small">Some summary (background=canvas)</p-heading>
     <p-text>Some details</p-text>
   </p-accordion>
-  <p-accordion open="true" background="none">
-    <p-heading slot="summary" tag="h3" size="small">Some summary (background=none)</p-heading>
+  <p-accordion open="true" background="surface">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (background=surface)</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion open="true" background="frosted">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (background=frosted)</p-heading>
     <p-text>Some details</p-text>
   </p-accordion>
 </div>
 
 <div class="playground" title="should render accordion with different align-icon">
-  <p-accordion open="true" background="frosted" align-icon="start">
+  <p-accordion open="true" background="surface" align-icon="start">
     <p-heading slot="summary" tag="h3" size="small">Some summary (align-icon="start")</p-heading>
     <p-text>Some details</p-text>
   </p-accordion>
-  <p-accordion open="true" background="frosted" align-icon="end">
+  <p-accordion open="true" background="surface" align-icon="end">
     <p-heading slot="summary" tag="h3" size="small">Some summary (align-icon="end")</p-heading>
     <p-text>Some details</p-text>
   </p-accordion>
@@ -67,7 +73,7 @@
 
 
 <div class="playground" title="should render single accordion with slotted heading and custom padding">
-  <p-accordion class="custom-padding">
+  <p-accordion background="surface" class="custom-padding">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
@@ -82,46 +88,46 @@
 </div>
 
 <div class="playground" title="should render multiple accordions with one open">
-  <p-accordion>
+  <p-accordion background="surface">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
-  <p-accordion open="true" class="a11ytree-snapshot-test">
+  <p-accordion background="surface" open="true" class="a11ytree-snapshot-test">
     <span slot="summary">Some summary</span>
     Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-accordion>
-  <p-accordion>
+  <p-accordion background="surface">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
 </div>
 
 <div class="playground" title="should render multiple compact accordions with one open">
-  <p-accordion compact="true">
+  <p-accordion background="surface" compact="true">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
-  <p-accordion compact="true" open="true" class="a11ytree-snapshot-test">
+  <p-accordion background="surface" compact="true" open="true" class="a11ytree-snapshot-test">
     <span slot="summary">Some summary</span>
     Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-accordion>
-  <p-accordion compact="true">
+  <p-accordion background="surface" compact="true">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
 </div>
 
 <div class="playground" title="should render navigation like accordion">
-  <p-accordion compact="true">
-    <span slot="summary">Some summary (background="frosted")</span>
+  <p-accordion background="frosted" compact="true">
+    <span slot="summary">Some summary (background="surface")</span>
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
     <br />
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
   </p-accordion>
-  <p-accordion compact="true" open="true">
-    <span slot="summary">Some summary (background="frosted")</span>
+  <p-accordion background="frosted" compact="true" open="true">
+    <span slot="summary">Some summary (background="surface")</span>
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
     <br />
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
@@ -153,7 +159,7 @@
   title="should render multiple accordions in open state with overlapping content"
   style="padding-bottom: 200px"
 >
-  <p-accordion open="true">
+  <p-accordion background="surface" open="true">
     <span slot="summary">Some summary</span>
     Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -175,7 +181,7 @@
       </div>
     </div>
   </p-accordion>
-  <p-accordion>
+  <p-accordion background="surface">
     <span slot="summary">Some summary</span>
     Some details
   </p-accordion>
