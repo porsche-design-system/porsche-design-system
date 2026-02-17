@@ -34,9 +34,6 @@ export const getComponentCss = (
       },
       ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
-      ...(disabled && {
-        '::slotted(*:not([slot]))': addImportantToEachRule(getDisabledBaseStyles()),
-      }),
       'slot:not([name])': {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height

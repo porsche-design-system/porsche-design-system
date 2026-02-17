@@ -64,7 +64,6 @@ export const getComponentCss = (
         [`${cssVarInternalTextareaScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...getFunctionalComponentLabelAfterStyles(),
@@ -114,6 +113,7 @@ export const getComponentCss = (
     },
     wrapper: {
       display: 'grid',
+      ...(isDisabled && getDisabledBaseStyles()),
     },
     ...(hasCounter && {
       counter: {

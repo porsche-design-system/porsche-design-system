@@ -51,7 +51,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         display: 'block',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(disabledOrLoading && getDisabledBaseStyles()),
         }),
       },
       ...getFunctionalComponentLabelAfterStyles(),
@@ -109,6 +108,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       alignSelf: 'flex-start',
       minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      ...(disabled && getDisabledBaseStyles()),
     },
     ...(loading && {
       spinner: {

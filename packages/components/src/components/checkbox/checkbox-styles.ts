@@ -52,7 +52,6 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
@@ -87,6 +86,7 @@ export const getComponentCss = (
       alignSelf: 'flex-start',
       minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      ...(isDisabled && getDisabledBaseStyles()),
     },
     ...(isLoading && {
       spinner: {

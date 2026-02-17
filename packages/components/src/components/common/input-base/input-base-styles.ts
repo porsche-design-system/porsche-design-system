@@ -61,7 +61,6 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPurePadding}`]: buttonPadding,
           [`${cssVarButtonPureMargin}`]: buttonMargin,
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...getFunctionalComponentLabelAfterStyles(),
@@ -103,6 +102,7 @@ export const getFunctionalComponentInputBaseStyles = (
       '&:focus-within': {
         borderColor: formStateBorderHoverColor,
       },
+      ...(isDisabled && getDisabledBaseStyles()),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&

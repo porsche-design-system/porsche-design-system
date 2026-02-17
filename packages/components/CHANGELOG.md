@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  Slot `label-after` is not affected by `disbaled` states anymore
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+
 ## [4.0.0-beta.0] - 2026-02-12
 
 ### Added
