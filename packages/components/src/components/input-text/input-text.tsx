@@ -142,7 +142,9 @@ export class InputText {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.inputElement.value = newValue;
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
