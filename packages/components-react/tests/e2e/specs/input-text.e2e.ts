@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -58,5 +58,27 @@ test.describe('form', () => {
 
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-name')).toBe(testValue);
+  });
+});
+
+test.describe('controlled input', () => {
+  test('should be possible to prevent user input by setting host value', async ({ page }) => {
+    await goto(page, 'input-text-example-controlled');
+    const host = getHost(page);
+    const input = getInputText(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(input).toHaveValue('');
+
+    await input.fill('abcde');
+
+    // Input is limited to three characters in example
+    await expect(host).toHaveJSProperty('value', 'abc');
+    await expect(input).toHaveValue('abc');
+
+    await page.keyboard.press('d');
+
+    await expect(host).toHaveJSProperty('value', 'abc');
+    await expect(input).toHaveValue('abc');
   });
 });

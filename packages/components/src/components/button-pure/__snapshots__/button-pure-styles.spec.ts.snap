@@ -73,6 +73,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -153,6 +159,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -239,6 +251,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -321,6 +339,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
     height: round(down, calc(6px + 2.125ex), 1px);
   }
 }
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
 "
 `;
 
@@ -394,6 +418,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 "
@@ -474,6 +504,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
     height: round(down, calc(6px + 2.125ex), 1px);
   }
 }
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
 "
 `;
 
@@ -547,6 +583,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -635,6 +677,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -717,6 +765,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -803,6 +857,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -883,6 +943,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -1046,6 +1112,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     white-space: inherit;
     text-indent: 0;
     overflow: visible;
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -1269,6 +1341,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1341,7 +1419,13 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for "none" 2`] = `
@@ -1399,6 +1483,12 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1464,6 +1554,12 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1556,6 +1652,12 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 @media(min-width:1760px) {
   .root {
     font-size: inherit;
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 

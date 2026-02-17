@@ -48,7 +48,18 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
 }
 .icon {
   margin-inline-start: auto;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true 1`] = `
@@ -69,6 +80,13 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .option {
   display: flex;
   gap: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
@@ -100,5 +118,16 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
 }
 .icon {
   margin-inline-start: auto;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;

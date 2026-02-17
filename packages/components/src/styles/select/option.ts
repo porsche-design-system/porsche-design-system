@@ -2,6 +2,7 @@ import { fontLineHeight, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { getTransition } from '../common-styles';
 import { colorContrastHigh, colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../css-variables';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getOptionJssStyle = (
   componentName: 'select-option' | 'multi-select-option',
@@ -27,12 +28,20 @@ export const getOptionJssStyle = (
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
       background: colorFrosted,
+      ...forcedColorsMediaQuery({
+        forcedColorAdjust: 'none',
+        outline: '2px solid Highlight',
+        outlineOffset: '-2px',
+      }),
     },
     '&--highlighted, &--selected': {
       color: colorPrimary,
     },
     '&--disabled': {
       cursor: 'not-allowed',
+      ...forcedColorsMediaQuery({
+        color: 'GrayText',
+      }),
     },
     '&--hidden': {
       display: 'none',

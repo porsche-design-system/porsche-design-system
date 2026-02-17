@@ -45,6 +45,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -141,6 +147,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -238,6 +250,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -334,6 +352,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -430,6 +454,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -532,6 +562,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -634,6 +670,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -731,6 +773,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -827,6 +875,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -924,6 +978,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1021,6 +1081,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1117,6 +1183,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1246,6 +1318,12 @@ button:focus-visible::before {
   button {
     font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
     padding: 20px 0;
+  }
+}
+
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 

@@ -43,15 +43,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -259,6 +274,12 @@ input:checked::before {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
 "
 `;
 
@@ -304,15 +325,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-error));
@@ -445,15 +474,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-error));
@@ -587,15 +624,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -680,7 +732,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and compact false 2`] = `
@@ -726,15 +784,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -819,7 +892,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and compact false 1`] = `
@@ -864,15 +943,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
@@ -1004,15 +1091,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
@@ -1145,15 +1240,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -1237,7 +1347,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and compact false 2`] = `
@@ -1283,15 +1399,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -1375,7 +1506,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and compact false 1`] = `
@@ -1420,15 +1557,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-success));
@@ -1561,15 +1706,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-success));
@@ -1703,15 +1856,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -1796,7 +1964,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and compact false 2`] = `
@@ -1842,15 +2016,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -1935,7 +2124,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and compact false 1`] = `
@@ -1980,15 +2175,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-error));
@@ -2118,15 +2321,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-error));
@@ -2257,15 +2468,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -2347,7 +2573,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and compact false 2`] = `
@@ -2393,15 +2625,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -2483,7 +2730,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and compact false 1`] = `
@@ -2528,15 +2781,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
@@ -2665,15 +2926,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
@@ -2802,6 +3071,15 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -2890,7 +3168,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and compact true 1`] = `
@@ -2935,6 +3219,15 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -3023,7 +3316,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and compact false 1`] = `
@@ -3069,15 +3368,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -3158,7 +3472,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and compact false 2`] = `
@@ -3204,15 +3524,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -3293,7 +3628,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and compact false 1`] = `
@@ -3338,6 +3679,19 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -3427,7 +3781,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and compact true 1`] = `
@@ -3472,6 +3832,19 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -3561,7 +3934,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and compact false 1`] = `
@@ -3606,15 +3985,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-success));
@@ -3744,15 +4131,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-success));
@@ -3883,15 +4278,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -3973,7 +4383,13 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and compact false 2`] = `
@@ -4019,15 +4435,30 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   row-gap: 4px;
@@ -4109,5 +4540,11 @@ input:checked::before {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;

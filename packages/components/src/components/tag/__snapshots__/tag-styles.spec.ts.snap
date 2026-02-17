@@ -45,6 +45,17 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   span:hover {
     background: var(--p-color-error-frosted-soft);
@@ -101,6 +112,17 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .icon {
   margin-inline-start: -2px;
 }"
@@ -151,6 +173,17 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   span:hover {
     background: var(--p-color-contrast-high);
@@ -207,6 +240,17 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .icon {
   margin-inline-start: -2px;
 }"
@@ -256,5 +300,16 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}"
+}
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+"
 `;

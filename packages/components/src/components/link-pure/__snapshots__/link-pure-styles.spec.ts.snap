@@ -200,6 +200,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -353,6 +359,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -423,6 +435,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -499,6 +517,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -536,6 +560,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -655,6 +685,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -725,6 +761,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -801,6 +843,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -871,6 +919,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -947,6 +1001,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -984,6 +1044,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -1105,6 +1171,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1180,6 +1252,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1235,6 +1313,12 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 .label {
   position: relative;
 }
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1290,6 +1374,12 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 .label {
   position: relative;
 }
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
