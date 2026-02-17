@@ -6,13 +6,10 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "patchStencilCoreCompiler": "tsx scripts/patch-stencil-core/patchStencilCoreCompiler.ts",
-    "patchStencilCoreClient": "tsx scripts/patch-stencil-core/patchStencilCoreClient.ts",
-    "patchStencilCore": "yarn patchStencilCoreClient && yarn patchStencilCoreCompiler",
-    "prestart": "yarn patchStencilCore && yarn prestart:prepareAriaTypes",
+    "prestart": "yarn prestart:prepareAriaTypes",
     "prestart:prepareAriaTypes": "tsx scripts/prepareAriaTypes.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,tailwindcss,stencil' 'serve-cdn' 'tailwindcss -i ./src/tailwind.css -o ./src/assets/tailwind.css --watch' 'PDS_IS_STAGING=1 stencil build --watch --serve --dev'",
-    "prebuild": "yarn patchStencilCore && yarn clean:build && yarn prebuild:generateConstructorMap",
+    "prebuild": "yarn clean:build && yarn prebuild:generateConstructorMap",
     "prebuild:generateConstructorMap": "tsx scripts/generateConstructorMap.ts",
     "build": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:cleanReadmes && yarn build:addTableOfContents && yarn build:type && yarn build:wrappers && yarn build:copyCjsBuildToComponentsJs && yarn build:clean",
     "build:wrappers": "yarn build:wrappers:generateWrappers && yarn build:wrappers:generateDSRComponents && yarn build:wrappers:bundleStyles && yarn build:wrappers:bundleUtils",
@@ -47,7 +44,7 @@
     "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@stencil/core": "~4.23.2"
+    "@stencil/core": "^4.43.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.2",
