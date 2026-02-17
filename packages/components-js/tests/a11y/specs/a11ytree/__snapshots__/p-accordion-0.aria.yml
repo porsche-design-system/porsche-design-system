@@ -1,2 +1,2 @@
-- heading "Heading" [level=2]:
-  - button "Heading"
+- group:
+  - heading "Some summary" [level=3]
