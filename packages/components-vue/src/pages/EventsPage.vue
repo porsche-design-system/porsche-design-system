@@ -310,7 +310,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputDate
-      v-model="inputDateValue"
+      :value="inputDateValue"
       @input="onInputDateInput"
       @blur="onInputDateBlur"
       @change="onInputDateChange"
@@ -324,7 +324,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputMonth
-      v-model="inputMonthValue"
+      :value="inputMonthValue"
       @input="onInputMonthInput"
       @blur="onInputMonthBlur"
       @change="onInputMonthChange"
@@ -338,7 +338,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputWeek
-      v-model="inputWeekValue"
+      :value="inputWeekValue"
       @input="onInputWeekInput"
       @blur="onInputWeekBlur"
       @change="onInputWeekChange"
@@ -352,7 +352,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputEmail
-      v-model="inputEmailValue"
+      :value="inputEmailValue"
       @input="onInputEmailInput"
       @blur="onInputEmailBlur"
       @change="onInputEmailChange"
@@ -366,7 +366,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputNumber
-      v-model="inputNumberValue"
+      :value="inputNumberValue"
       @input="onInputNumberInput"
       @blur="onInputNumberBlur"
       @change="onInputNumberChange"
@@ -381,7 +381,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputPassword
-      v-model="inputPasswordValue"
+      :value="inputPasswordValue"
       @input="onInputPasswordInput"
       @blur="onInputPasswordBlur"
       @change="onInputPasswordChange"
@@ -396,7 +396,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputSearch
-      v-model="inputSearchValue"
+      :value="inputSearchValue"
       @input="onInputSearchInput"
       @blur="onInputSearchBlur"
       @change="onInputSearchChange"
@@ -411,7 +411,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputTel
-      v-model="inputTelValue"
+      :value="inputTelValue"
       @input="onInputTelInput"
       @blur="onInputTelBlur"
       @change="onInputTelChange"
@@ -425,7 +425,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputText
-      v-model="inputTextValue"
+      :value="inputTextValue"
       @input="onInputTextInput"
       @blur="onInputTextBlur"
       @change="onInputTextChange"
@@ -440,7 +440,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputTime
-      v-model="inputTimeValue"
+      :value="inputTimeValue"
       @input="onInputTimeInput"
       @blur="onInputTimeBlur"
       @change="onInputTimeChange"
@@ -454,7 +454,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PInputUrl
-      v-model="inputUrlValue"
+      :value="inputUrlValue"
       @input="onInputUrlInput"
       @blur="onInputUrlBlur"
       @change="onInputUrlChange"
@@ -469,7 +469,7 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
   <div class="playground">
     <PTextarea
-      v-model="textareaValue"
+      :value="textareaValue"
       @input="onTextareaInput"
       @blur="onTextareaBlur"
       @change="onTextareaChange"
