@@ -1,6 +1,6 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { InputTextInputEventDetail } from '@porsche-design-system/components-react';
-import { PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
 import type { ConfiguratorTagNames, ElementConfig } from '@/utils/generator/generator';
@@ -30,20 +30,20 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
+      <PHeading slot="summary" tag="h2" size="small">
         CSS Variables
-        {amountOfConfiguredCssVariables > 0 && (
-          <>
-            <PTag variant="secondary" compact={true}>
-              {amountOfConfiguredCssVariables}
-            </PTag>
-            <PTag variant="secondary" compact={true}>
-              {/*// TODO: Implement */}
-              <button type="button">Reset all</button>
-            </PTag>
-          </>
-        )}
-      </span>
+      </PHeading>
+      {amountOfConfiguredCssVariables > 0 && (
+        <>
+          <PTag slot="summary" variant="secondary" compact={true}>
+            {amountOfConfiguredCssVariables}
+          </PTag>
+          <PTag slot="summary" variant="secondary" compact={true}>
+            {/*// TODO: Implement */}
+            <button type="button">Reset all</button>
+          </PTag>
+        </>
+      )}
       <div className="flex flex-col gap-fluid-sm">
         {Object.entries(componentCssVariables ?? {})
           .filter(([cssVariableName]) => !cssVariableName.startsWith('--ref'))

@@ -1,5 +1,5 @@
 import type { SlotMeta } from '@porsche-design-system/component-meta';
-import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
 import React from 'react';
 import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
@@ -22,9 +22,9 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
 }: ConfigureSlotsProps<T>) => {
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
+      <PHeading slot="summary" tag="h2" size="small">
         Slots
-      </span>
+      </PHeading>
       <div className="flex flex-col gap-fluid-sm">
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
@@ -47,7 +47,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   onUpdate={(e) =>
                     onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
                   }
-                  disabled={slotName === 'default'}
+                  disabled={slotName === 'default' || slotName === 'summary'}
                 >
                   {`Toggle slot: ${slotName}`}
                 </PSwitch>

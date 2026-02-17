@@ -149,7 +149,7 @@ export const getComponentCss = (
             gridTemplateRows: '1fr',
             visibility: 'inherit', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
             // as soon as all browsers are supporting `allow-discrete` reliable, visibility transition shouldn't be necessary anymore
-            transition: `visibility 0s linear 0s, ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', 'long', easing)}`,
+            transition: `visibility 0s linear 0s, ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
           },
         },
       },

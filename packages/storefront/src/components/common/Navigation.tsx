@@ -2,6 +2,7 @@ import {
   type AccordionUpdateEventDetail,
   PAccordion,
   PDivider,
+  PHeading,
   PLinkPure,
   PText,
 } from '@porsche-design-system/components-react/ssr';
@@ -53,20 +54,20 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
         {Object.entries(sitemap).map(([path, category]) => (
           <PAccordion
             key={path}
-            heading={category.name as string}
-            headingTag="h3"
-            background="none"
-            className={['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md' : ''}
+            compact={true}
+            className={`${['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md ' : ''}[&>:not([slot]):not(:last-child)]:mb-static-sm`}
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
           >
+            <PHeading slot="summary" tag="h3" size="small">
+              {category.name as string}
+            </PHeading>
             {category.subPaths &&
               Object.entries(category.subPaths).map(([_, page]) => {
                 // If page has subPaths (tabs) link to first tab
                 const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
                 return (
                   <PLinkPure
-                    className="my-static-xs inline-block"
                     key={link}
                     icon="none"
                     stretch={true}
