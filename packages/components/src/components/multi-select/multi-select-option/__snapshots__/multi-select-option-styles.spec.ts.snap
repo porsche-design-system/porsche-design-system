@@ -55,6 +55,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -122,6 +123,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -194,6 +196,7 @@ slot {
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -263,6 +266,7 @@ slot {
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";

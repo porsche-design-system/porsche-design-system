@@ -1779,7 +1779,6 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2014,7 +2013,6 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
