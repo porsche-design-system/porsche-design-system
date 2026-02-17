@@ -14,11 +14,15 @@ exports[`should match snapshot 1`] = `
     "cssVariablesMeta": {
       "--p-accordion-px": {
         "defaultValue": "16px",
-        "description": "Defines the logical block start and end padding of the accordion.",
+        "description": "Horizontal padding of the accordion.",
+      },
+      "--p-accordion-py": {
+        "defaultValue": "16px",
+        "description": "Vertical padding of the accordion.",
       },
       "--p-accordion-summary-top": {
-        "defaultValue": "0",
-        "description": "In case prop \`sticky\` is set to true, it's possible to control the sticky top position of the internally used \`<summary>\` element.",
+        "defaultValue": "0px",
+        "description": "Controls the sticky top position when \`sticky\` is enabled.",
       },
       "--p-hyphens": {
         "defaultValue": "auto",
@@ -54,39 +58,65 @@ exports[`should match snapshot 1`] = `
       "background": {
         "allowedValues": [
           "canvas",
+          "surface",
           "frosted",
           "none",
         ],
-        "defaultValue": "frosted",
-        "description": "Defines the background color",
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images or gradients.",
         "type": "AccordionBackground",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays the Accordion as compact version.",
+        "description": "Displays the accordion in compact mode.",
         "type": "boolean",
+      },
+      "heading": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "@deprecated, will be removed with next major release, use slot \`summary\` instead. Sets the heading text within the summary section.",
+        "isDeprecated": true,
+        "type": "string",
+      },
+      "headingTag": {
+        "allowedValues": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+        ],
+        "defaultValue": "h2",
+        "description": "@deprecated, will be removed with next major release, use slot \`summary\` instead. Sets the heading tag for proper semantic structure within the page.",
+        "isDeprecated": true,
+        "type": "AccordionHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Sets the open/closed state of the Accordion.",
+        "description": "Controls whether the accordion is open or closed.",
         "type": "boolean",
       },
       "sticky": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "@experimental Sticks the Accordion heading at the top, fixed while scrolling. Only works in combination with \`background="canvas"\`.",
+        "description": "@experimental Makes the summary section sticky at the top while scrolling. Only works with \`background="canvas"\` or \`background="surface"\`.",
         "isExperimental": true,
         "type": "boolean",
       },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot for the internally used \`<details>\` content.",
+        "description": "Main content displayed when the accordion is expanded.",
+      },
+      "heading": {
+        "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.",
+        "isDeprecated": true,
       },
       "summary": {
-        "description": "Specifies a summary, caption, or legend for the internally used \`<details>\` element's disclosure box. Clicking the summary toggles the state of the parent \`<details>\` element open and closed.",
+        "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed.",
       },
     },
     "styling": "jss",
