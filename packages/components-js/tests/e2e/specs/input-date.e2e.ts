@@ -101,6 +101,36 @@ test.describe('value', () => {
     await expect(inputDate).toHaveJSProperty('value', testInput);
     await expect(inputDate).toHaveValue(testInput);
   });
+
+  test('should allow controlled input via programmatic value updates in input listener', async ({ page }) => {
+    await initInputDate(page, { props: { name: 'some-name' } });
+    const host = getHost(page);
+    const inputDate = getInputDate(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputDate).toHaveValue('');
+
+    // Add input event listener that always sets value to '2018-07-22'
+    await page.evaluate(() => {
+      const hostElement = document.querySelector('p-input-date');
+      hostElement.addEventListener('input', () => {
+        hostElement.value = '2018-07-22';
+      });
+    });
+
+    await inputDate.focus();
+    await expect(inputDate).toBeFocused();
+
+    await inputDate.fill('2019-08-23');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2018-07-22');
+    await expect(inputDate).toHaveValue('2018-07-22');
+
+    await inputDate.fill('2014-02-27');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2018-07-22');
+    await expect(inputDate).toHaveValue('2018-07-22');
+  });
 });
 
 test.describe('form', () => {
