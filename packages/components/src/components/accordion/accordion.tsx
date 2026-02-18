@@ -3,9 +3,9 @@ import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, HEADING_TAGS, hasNamedSlot, validateProps } from '../../utils';
 import { getComponentCss } from './accordion-styles';
 import {
-  ACCORDION_ALIGN_ICONS,
+  ACCORDION_ALIGN_INDICATORS,
   ACCORDIONS_BACKGROUNDS,
-  type AccordionAlignIcon,
+  type AccordionAlignIndicator,
   type AccordionBackground,
   type AccordionHeadingTag,
   type AccordionUpdateEventDetail,
@@ -13,7 +13,7 @@ import {
 
 const propTypes: PropTypes<typeof Accordion> = {
   open: AllowedTypes.boolean,
-  alignIcon: AllowedTypes.oneOf<AccordionAlignIcon>(ACCORDION_ALIGN_ICONS),
+  alignIndicator: AllowedTypes.oneOf<AccordionAlignIndicator>(ACCORDION_ALIGN_INDICATORS),
   background: AllowedTypes.oneOf<AccordionBackground>(ACCORDIONS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
   sticky: AllowedTypes.boolean,
@@ -40,10 +40,10 @@ export class Accordion {
   /** Controls whether the accordion is open or closed. */
   @Prop() public open?: boolean;
 
-  /** Aligns the icon within the summary section. */
-  @Prop() public alignIcon?: AccordionAlignIcon = 'end';
+  /** Aligns the indicator within the summary section. */
+  @Prop() public alignIndicator?: AccordionAlignIndicator = 'end';
 
-  /** Defines the background color. Use `frosted` only on images or gradients. */
+  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
   @Prop() public background?: AccordionBackground = 'none';
 
   /** Displays the accordion in compact mode. */
@@ -81,7 +81,7 @@ export class Accordion {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.alignIcon,
+      this.alignIndicator,
       this.background,
       this.compact,
       this.open,

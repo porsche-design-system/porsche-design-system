@@ -24,7 +24,7 @@ import {
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import type { AccordionAlignIcon, AccordionBackground } from './accordion-utils';
+import type { AccordionAlignIndicator, AccordionBackground } from './accordion-utils';
 
 /**
  * @css-variable {"name": "--p-accordion-summary-top", "description": "Controls the sticky top position when `sticky` is enabled.", "defaultValue": "0px"}
@@ -60,7 +60,7 @@ const backgroundMap: Record<AccordionBackground, string> = {
 
 // as soon as CSS selector `:has-slotted` works cross-browser we can simplify the styles a lot and remove all the complexity regarding the summary-before and summary-after slots
 export const getComponentCss = (
-  alignIcon: AccordionAlignIcon,
+  alignIndicator: AccordionAlignIndicator,
   background: AccordionBackground,
   isCompact: boolean,
   isOpen: boolean,
@@ -78,7 +78,7 @@ export const getComponentCss = (
   const gap = `calc(11.2px * (${compactFactor} - 0.64285714) + 4px)`;
   const marginTop = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
 
-  const isIconAlignedStart = alignIcon === 'start';
+  const isIconAlignedStart = alignIndicator === 'start';
 
   return getCss({
     '@global': {
