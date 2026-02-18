@@ -12,6 +12,7 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
+      marginInlineStart: spacingStaticXs,
     },
   };
 };
