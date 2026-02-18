@@ -3,9 +3,9 @@ import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, HEADING_TAGS, hasNamedSlot, validateProps } from '../../utils';
 import { getComponentCss } from './accordion-styles';
 import {
-  ACCORDION_ALIGN_INDICATORS,
+  ACCORDION_ALIGN_MARKERS,
   ACCORDIONS_BACKGROUNDS,
-  type AccordionAlignIndicator,
+  type AccordionAlignMarker,
   type AccordionBackground,
   type AccordionHeadingTag,
   type AccordionUpdateEventDetail,
@@ -13,7 +13,7 @@ import {
 
 const propTypes: PropTypes<typeof Accordion> = {
   open: AllowedTypes.boolean,
-  alignIndicator: AllowedTypes.oneOf<AccordionAlignIndicator>(ACCORDION_ALIGN_INDICATORS),
+  alignMarker: AllowedTypes.oneOf<AccordionAlignMarker>(ACCORDION_ALIGN_MARKERS),
   background: AllowedTypes.oneOf<AccordionBackground>(ACCORDIONS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
   sticky: AllowedTypes.boolean,
@@ -40,8 +40,8 @@ export class Accordion {
   /** Controls whether the accordion is open or closed. */
   @Prop() public open?: boolean;
 
-  /** Aligns the indicator within the summary section. */
-  @Prop() public alignIndicator?: AccordionAlignIndicator = 'end';
+  /** Aligns the marker within the summary section. */
+  @Prop() public alignMarker?: AccordionAlignMarker = 'end';
 
   /** Defines the background color. Use `frosted` only on images, videos or gradients. */
   @Prop() public background?: AccordionBackground = 'none';
@@ -81,7 +81,7 @@ export class Accordion {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.alignIndicator,
+      this.alignMarker,
       this.background,
       this.compact,
       this.open,
