@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for alignIcon: end, background: frosted, isCompact: true, isOpen: true and isSticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: end, background: frosted, isCompact: true, isOpen: true, isSticky: true, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -15,11 +15,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/1;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/1;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/2;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -31,6 +42,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/1;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -38,7 +50,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / minmax(0, 1fr) auto;
+    column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: blur(32px);
@@ -46,10 +61,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
-    position: relative;
+    grid-area: 2/1/auto/-1;
     z-index: 0;
     display: grid;
     opacity: 0;
@@ -67,42 +83,44 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
   }
   summary {
     all: unset;
-    position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    grid-area: 1/1/auto/-1;
     z-index: 1;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/2;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/2;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -111,20 +129,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: end, backg
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: canvas, isCompact: false, isOpen: false and isSticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: canvas, isCompact: false, isOpen: false, isSticky: false, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -139,11 +163,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -155,6 +190,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -162,134 +198,20 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
-    display: grid;
-    opacity: 0;
-    margin-top: 0px;
-    grid-template-rows: 0fr;
-    visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
-  }
-  details[open] > div {
-    opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
-    grid-template-rows: 1fr;
-    visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
-  }
-  summary {
-    all: unset;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
-    cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
-  }
-  summary:focus-visible > span {
-    outline: 2px solid var(--p-color-focus);
-    outline-offset: 2px;
-  }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: var(--p-radius-full);
-    background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  summary > span::before {
-    content: "";
-    width: 1rem;
-    height: 1rem;
-    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
-    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
-    background: var(--p-color-primary);
-    transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
-  }
-  details[open] summary > span::before {
-    transform: rotate3d(0,0,1,180deg);
-  }
-@media (forced-colors: active) {
-    details {
-      outline: 1px solid CanvasText;
-      outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    }
-    summary > span::before {
-      background-color: LinkText;
-    }
-}
-
-@media(hover:hover) {
-    summary:hover > span {
-      background: var(--p-color-frosted);
-    }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: canvas, isCompact: false, isOpen: false and isSticky: true 1`] = `
-"@keyframes overflow-hidden {
-  from {
-    overflow: hidden;
-  }
-  to {
-    overflow: hidden;
-  }
-}
-  :host {
-    display: block;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  slot[name="summary"] {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
-  }
-  slot:not([name]) {
-    display: block;
-    overflow: hidden;
-  }
-  details[open] slot:not([name]) {
-    overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
-  }
-  h1,h2,h3,h4,h5,h6 {
-    all: unset;
-    font: inherit;
-    font-weight: var(--p-font-weight-semibold);
-  }
-  details {
-    all: unset;
-    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-color-primary);
-    display: block;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    background: var(--p-color-canvas);
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  }
-  details::details-content {
-    content-visibility: visible !important;
-  }
-  details > div {
-    position: relative;
+    grid-area: 2/1/auto/-1;
     z-index: 0;
     display: grid;
     opacity: 0;
@@ -307,45 +229,194 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    grid-area: 1/1/auto/-1;
     z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible::before {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary::after {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary::after {
+      background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
+    }
+}
+
+@media(hover:hover) {
+    summary:hover::before {
+      background: var(--p-color-frosted);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: canvas, isCompact: false, isOpen: false, isSticky: true, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
+"@keyframes overflow-hidden {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
+  }
+  slot:not([name]) {
+    display: block;
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    grid-area: 1/2;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    background: var(--p-color-canvas);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    display: contents !important;
+    content-visibility: visible !important;
+  }
+  details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    position: sticky;
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -354,20 +425,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: canvas, isCompact: false, isOpen: true and isSticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: canvas, isCompact: false, isOpen: true, isSticky: true, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -382,11 +459,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -398,6 +486,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -405,16 +494,20 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
-    position: relative;
+    grid-area: 2/1/auto/-1;
     z-index: 0;
     display: grid;
     opacity: 0;
@@ -432,45 +525,48 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    grid-area: 1/1/auto/-1;
     z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    position: sticky;
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -479,20 +575,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: false, isOpen: false and isSticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: false, isOpen: false, isSticky: false, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -507,11 +609,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -523,6 +636,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -530,7 +644,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: blur(32px);
@@ -538,9 +655,12 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
     display: grid;
     opacity: 0;
     margin-top: 0px;
@@ -557,40 +677,44 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -599,20 +723,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: false, isOpen: false and isSticky: false 2`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: false, isOpen: false, isSticky: false, hasSummaryBefore: false, hasSummaryAfter: false 2`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -627,11 +757,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -643,6 +784,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -650,7 +792,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: blur(32px);
@@ -658,9 +803,12 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
     display: grid;
     opacity: 0;
     margin-top: 0px;
@@ -677,40 +825,44 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -719,20 +871,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: true, isOpen: false and isSticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: true, isOpen: false, isSticky: false, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -747,11 +905,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -763,6 +932,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -770,7 +940,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: blur(32px);
@@ -778,9 +951,12 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
     display: grid;
     opacity: 0;
     margin-top: 0px;
@@ -797,40 +973,44 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -839,20 +1019,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: true, isOpen: true and isSticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: true, isOpen: true, isSticky: false, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -867,11 +1053,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -883,6 +1080,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -890,7 +1088,10 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: blur(32px);
@@ -898,130 +1099,11 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
-    display: grid;
-    opacity: 0;
-    margin-top: 0px;
-    grid-template-rows: 0fr;
-    visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
-  }
-  details[open] > div {
-    opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    grid-template-rows: 1fr;
-    visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
-  }
-  summary {
-    all: unset;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
-    cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
-  }
-  summary:focus-visible > span {
-    outline: 2px solid var(--p-color-focus);
-    outline-offset: 2px;
-  }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: var(--p-radius-full);
-    background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  summary > span::before {
-    content: "";
-    width: 1rem;
-    height: 1rem;
-    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
-    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
-    background: var(--p-color-primary);
-    transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
-  }
-  details[open] summary > span::before {
-    transform: rotate3d(0,0,1,180deg);
-  }
-@media (forced-colors: active) {
-    details {
-      outline: 1px solid CanvasText;
-      outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    }
-    summary > span::before {
-      background-color: LinkText;
-    }
-}
-
-@media(hover:hover) {
-    summary:hover > span {
-      background: var(--p-color-frosted);
-    }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: frosted, isCompact: true, isOpen: true and isSticky: true 1`] = `
-"@keyframes overflow-hidden {
-  from {
-    overflow: hidden;
-  }
-  to {
-    overflow: hidden;
-  }
-}
-  :host {
-    display: block;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  slot[name="summary"] {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
-  }
-  slot:not([name]) {
-    display: block;
-    overflow: hidden;
-  }
-  details[open] slot:not([name]) {
-    overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
-  }
-  h1,h2,h3,h4,h5,h6 {
-    all: unset;
-    font: inherit;
-    font-weight: var(--p-font-weight-semibold);
-  }
-  details {
-    all: unset;
-    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-color-primary);
-    display: block;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  }
-  details::details-content {
-    content-visibility: visible !important;
-  }
-  details > div {
-    position: relative;
+    grid-area: 2/1/auto/-1;
     z-index: 0;
     display: grid;
     opacity: 0;
@@ -1039,43 +1121,44 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    grid-area: 1/1/auto/-1;
     z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -1084,20 +1167,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: none, isCompact: false, isOpen: false and isSticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: true, isOpen: true, isSticky: true, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -1112,11 +1201,466 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
   slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
+  }
+  slot:not([name]) {
+    display: block;
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    grid-area: 1/2;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    align-items: center;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    display: contents !important;
+    content-visibility: visible !important;
+  }
+  details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible::before {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary::after {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary::after {
+      background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
+    }
+}
+
+@media(hover:hover) {
+    summary:hover::before {
+      background: var(--p-color-frosted);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: true, isOpen: true, isSticky: true, hasSummaryBefore: true, hasSummaryAfter: false 1`] = `
+"@keyframes overflow-hidden {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/3;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/4;
+    z-index: 2;
+  }
+  slot:not([name]) {
+    display: block;
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    grid-area: 1/3;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: grid;
+    grid-template: repeat(2, auto) / auto auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    align-items: center;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    display: contents !important;
+    content-visibility: visible !important;
+  }
+  details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible::before {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary::after {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary::after {
+      background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
+    }
+}
+
+@media(hover:hover) {
+    summary:hover::before {
+      background: var(--p-color-frosted);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: frosted, isCompact: true, isOpen: true, isSticky: true, hasSummaryBefore: true, hasSummaryAfter: true 1`] = `
+"@keyframes overflow-hidden {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/3;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/4;
+    z-index: 2;
+  }
+  slot:not([name]) {
+    display: block;
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.4s);
+  }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    grid-area: 1/3;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: grid;
+    grid-template: repeat(2, auto) / auto auto minmax(0, 1fr) auto ;
+    column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
+    align-items: center;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    background: var(--p-color-frosted);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    display: contents !important;
+    content-visibility: visible !important;
+  }
+  details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] > div {
+    opacity: 1;
+    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  summary {
+    all: unset;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+  }
+  summary:focus-visible::before {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+  }
+  details[open] summary::after {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: -1px;
+      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    }
+    summary::after {
+      background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
+    }
+}
+
+@media(hover:hover) {
+    summary:hover::before {
+      background: var(--p-color-frosted);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: none, isCompact: false, isOpen: false, isSticky: false, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
+"@keyframes overflow-hidden {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -1128,6 +1672,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -1135,15 +1680,21 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
     background: transparent;
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
     display: grid;
     opacity: 0;
     margin-top: 0px;
@@ -1160,40 +1711,44 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
     margin: calc(-1 * var(--p-accordion-py, 0)) calc(-1 * var(--p-accordion-px, 0));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -1202,20 +1757,26 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: 0;
       padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for alignIcon: start, background: surface, isCompact: false, isOpen: true and isSticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for alignMarker: start, background: surface, isCompact: false, isOpen: true, isSticky: true, hasSummaryBefore: false, hasSummaryAfter: false 1`] = `
 "@keyframes overflow-hidden {
   from {
     overflow: hidden;
@@ -1230,11 +1791,22 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   :host([hidden]) {
     display: none !important;
   }
-  slot[name="summary"] {
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/2;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/3;
+    z-index: 2;
   }
   slot:not([name]) {
     display: block;
@@ -1246,6 +1818,7 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
+    grid-area: 1/2;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
   }
@@ -1253,16 +1826,20 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
     all: unset;
     font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
-    display: block;
+    display: grid;
+    grid-template: repeat(2, auto) / auto minmax(0, 1fr);
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-surface);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
+    display: contents !important;
     content-visibility: visible !important;
   }
   details > div {
-    position: relative;
+    grid-area: 2/1/auto/-1;
     z-index: 0;
     display: grid;
     opacity: 0;
@@ -1280,45 +1857,48 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
   }
   summary {
     all: unset;
-    position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    grid-area: 1/1/auto/-1;
     z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: calc(11.2px * (1 - 0.64285714) + 4px);
     cursor: pointer;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    position: sticky;
+    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
     background: linear-gradient(180deg,var(--p-color-surface) 0%,var(--p-color-surface) 90%,transparent 100%);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
-  summary:focus-visible > span {
+  summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
     outline-offset: 2px;
   }
-  summary > span {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
+  summary::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
     width: 1.5rem;
     height: 1.5rem;
+    pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
-  summary > span::before {
+  summary::after {
+    grid-area: 1/1;
+    place-self: center;
     content: "";
     width: 1rem;
     height: 1rem;
+    pointer-events: none;
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
     transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
-  details[open] summary > span::before {
+  details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
 @media (forced-colors: active) {
@@ -1327,13 +1907,19 @@ exports[`getComponentCss() > should return correct css for alignIcon: start, bac
       outline-offset: -1px;
       padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary > span::before {
+    summary::after {
       background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
     }
 }
 
 @media(hover:hover) {
-    summary:hover > span {
+    summary:hover::before {
       background: var(--p-color-frosted);
     }
 }
