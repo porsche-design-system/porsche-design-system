@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import { execSync } from 'node:child_process';
 import {
-  sourceDir,
-  outputDir,
-  FRAMEWORKS,
   CHANGELOG_MAX_VERSIONS,
-  MIN_PAGE_CONTENT_BYTES,
-  SKIP_DIRECTORIES,
   componentDescriptions,
+  FRAMEWORKS,
+  MIN_PAGE_CONTENT_BYTES,
+  outputDir,
   rawExamplesContent,
   rawStoriesContent,
+  SKIP_DIRECTORIES,
+  sourceDir,
 } from './config.js';
-import { loadComponentMeta, processContent } from './transform.js';
+import { formatAllowedValues, loadComponentMeta, processContent } from './transform.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Step 1 — Walk source and copy page.mdx files (skip configurator dirs)
@@ -200,7 +200,7 @@ async function generateQuickRefs() {
 
       for (const [propName, propMeta] of Object.entries(meta.propsMeta) as [string, any][]) {
         if (propMeta.isDeprecated) continue;
-        const type = propMeta.type || 'unknown';
+        const { type } = formatAllowedValues(propMeta);
         const defaultValue = propMeta.defaultValue !== null ? `\`${JSON.stringify(propMeta.defaultValue)}\`` : '-';
         lines.push(`| \`${propName}\` | \`${type}\` | ${defaultValue} |`);
       }
@@ -242,7 +242,46 @@ async function generateQuickRefs() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 6 — Truncate changelog to the last N versions
+// Step 6 — Generate shared reference pages (icon names, flag names)
+// ──────────────────────────────────────────────────────────────────────────────
+
+async function generateSharedReferences() {
+  const componentMeta = await loadComponentMeta();
+  const sharedDir = path.join(outputDir, 'components', '_shared');
+
+  // Collect icon names from p-icon's `name` prop
+  const iconMeta = componentMeta['p-icon'];
+  if (iconMeta?.propsMeta?.name?.allowedValues && Array.isArray(iconMeta.propsMeta.name.allowedValues)) {
+    const iconNames: string[] = iconMeta.propsMeta.name.allowedValues;
+    const sorted = [...iconNames].sort();
+    const iconDir = path.join(sharedDir, 'icon-names');
+    await fs.mkdir(iconDir, { recursive: true });
+    await fs.writeFile(
+      path.join(iconDir, 'page.mdx'),
+      `# Available Icon Names\n\n${sorted.length} icons available for any \`IconName\` prop (e.g. \`icon\` on p-button, \`name\` on p-icon).\n\n${sorted.join(', ')}\n`,
+      'utf-8'
+    );
+    console.log(`  gen: components/_shared/icon-names (${sorted.length} icons)`);
+  }
+
+  // Collect flag names from p-flag's `name` prop
+  const flagMeta = componentMeta['p-flag'];
+  if (flagMeta?.propsMeta?.name?.allowedValues && Array.isArray(flagMeta.propsMeta.name.allowedValues)) {
+    const flagNames: string[] = flagMeta.propsMeta.name.allowedValues;
+    const sorted = [...flagNames].sort();
+    const flagDir = path.join(sharedDir, 'flag-names');
+    await fs.mkdir(flagDir, { recursive: true });
+    await fs.writeFile(
+      path.join(flagDir, 'page.mdx'),
+      `# Available Flag Names\n\n${sorted.length} country flags available for the \`name\` prop on p-flag.\n\n${sorted.join(', ')}\n`,
+      'utf-8'
+    );
+    console.log(`  gen: components/_shared/flag-names (${sorted.length} flags)`);
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Step 7 — Truncate changelog to the last N versions (was Step 6)
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function truncateChangelog() {
@@ -273,7 +312,7 @@ async function truncateChangelog() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 7 — Remove stub / near-empty pages
+// Step 8 — Remove stub / near-empty pages
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function removeStubPages() {
@@ -320,7 +359,7 @@ async function removeStubPages() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 8 — Generate snapshot metadata
+// Step 9 — Generate snapshot metadata
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function generateSnapshotMeta() {
@@ -366,7 +405,7 @@ async function generateSnapshotMeta() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Main — orchestrate all 8 steps
+// Main — orchestrate all 9 steps
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function prepareContextSnapshots() {
@@ -379,28 +418,31 @@ async function prepareContextSnapshots() {
   }
   await fs.mkdir(outputDir, { recursive: true });
 
-  console.log('Step 1/8: Copying source files...');
+  console.log('Step 1/9: Copying source files...');
   await walkAndCopy(sourceDir, '');
 
-  console.log('\nStep 2/8: Processing MDX → Markdown (vanilla-js)...');
+  console.log('\nStep 2/9: Processing MDX → Markdown (vanilla-js)...');
   await processAllFiles();
 
-  console.log('\nStep 3/8: Generating framework-specific examples...');
+  console.log('\nStep 3/9: Generating framework-specific examples...');
   await generateFrameworkExamples();
 
-  console.log('\nStep 4/8: Generating framework-specific interactive stories...');
+  console.log('\nStep 4/9: Generating framework-specific interactive stories...');
   await generateFrameworkStories();
 
-  console.log('\nStep 5/8: Generating quick-reference pages...');
+  console.log('\nStep 5/9: Generating quick-reference pages...');
   await generateQuickRefs();
 
-  console.log('\nStep 6/8: Truncating changelog...');
+  console.log('\nStep 6/9: Generating shared reference pages...');
+  await generateSharedReferences();
+
+  console.log('\nStep 7/9: Truncating changelog...');
   await truncateChangelog();
 
-  console.log('\nStep 7/8: Removing stub pages...');
+  console.log('\nStep 8/9: Removing stub pages...');
   await removeStubPages();
 
-  console.log('\nStep 8/8: Writing snapshot metadata...');
+  console.log('\nStep 9/9: Writing snapshot metadata...');
   await generateSnapshotMeta();
 
   console.log('\nDone! Context snapshots ready.');

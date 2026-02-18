@@ -9,6 +9,7 @@ import {
   examplesDir,
   storiesCache,
   storefrontSrcDir,
+  LARGE_ENUM_THRESHOLD,
 } from './config.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -174,6 +175,68 @@ export async function loadStoryMarkup(
 // Formatters
 // ──────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Known large-enum prop types that get their own shared reference page.
+ * Maps the type name to the reference path and a human label.
+ */
+const SHARED_ENUM_REFS: Record<string, { path: string; label: string }> = {
+  IconName: { path: '/components/_shared/icon-names', label: 'available icons' },
+  ButtonIcon: { path: '/components/_shared/icon-names', label: 'available icons' },
+  FlagName: { path: '/components/_shared/flag-names', label: 'available flags' },
+};
+
+/**
+ * Format the allowed values for a prop into a token-efficient string.
+ * Returns { type: string, descSuffix: string } where descSuffix is appended
+ * to the description (used for large enum references).
+ */
+export function formatAllowedValues(propMeta: any): { type: string; descSuffix: string } {
+  const { allowedValues, type } = propMeta;
+
+  // No allowed values metadata — keep the raw type name
+  if (allowedValues === undefined || allowedValues === null) {
+    return { type: type || 'unknown', descSuffix: '' };
+  }
+
+  // Primitive types
+  if (allowedValues === 'string' || allowedValues === 'boolean' || allowedValues === 'number') {
+    return { type: allowedValues, descSuffix: '' };
+  }
+
+  // Array of allowed values
+  if (Array.isArray(allowedValues)) {
+    // Large enum — reference shared page
+    if (allowedValues.length > LARGE_ENUM_THRESHOLD) {
+      const ref = SHARED_ENUM_REFS[type];
+      if (ref) {
+        return {
+          type: type || 'string',
+          descSuffix: ` See [${ref.label}](${ref.path}) for all ${allowedValues.length} values.`,
+        };
+      }
+      // Unknown large enum — just show count
+      return {
+        type: type || 'string',
+        descSuffix: ` ${allowedValues.length} allowed values.`,
+      };
+    }
+    // Small enum — inline values
+    const formatted = allowedValues
+      .map((v: any) => (v === null ? 'null' : typeof v === 'string' ? `"${v}"` : String(v)))
+      .join(' \\| ');
+    return { type: formatted, descSuffix: '' };
+  }
+
+  // Object shape (e.g. aria attributes)
+  if (typeof allowedValues === 'object') {
+    const entries = Object.entries(allowedValues as Record<string, string>);
+    const shape = entries.map(([key, val]) => `${key}: ${val}`).join(', ');
+    return { type: `{ ${shape} }`, descSuffix: '' };
+  }
+
+  return { type: type || 'unknown', descSuffix: '' };
+}
+
 export function formatComponentApi(tagName: string, meta: any): string {
   if (!meta) return '';
 
@@ -195,12 +258,12 @@ export function formatComponentApi(tagName: string, meta: any): string {
 
     for (const [propName, propMeta] of Object.entries(meta.propsMeta) as [string, any][]) {
       if (propMeta.isDeprecated) continue;
-      const type = propMeta.type || 'unknown';
+      const { type, descSuffix } = formatAllowedValues(propMeta);
       const defaultValue = propMeta.defaultValue !== null ? `\`${JSON.stringify(propMeta.defaultValue)}\`` : '-';
       const description = (propMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
       const required = propMeta.isRequired ? ' **(required)**' : '';
       const breakpoint = propMeta.isBreakpointCustomizable ? ' *(breakpoint customizable)*' : '';
-      lines.push(`| \`${propName}\` | \`${type}\` | ${defaultValue} | ${description}${required}${breakpoint} |`);
+      lines.push(`| \`${propName}\` | \`${type}\` | ${defaultValue} | ${description}${required}${breakpoint}${descSuffix} |`);
     }
     lines.push('');
   }

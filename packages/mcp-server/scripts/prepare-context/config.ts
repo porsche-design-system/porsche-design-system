@@ -27,6 +27,9 @@ export const CHANGELOG_MAX_VERSIONS = 10;
 /** Pages with less meaningful content (bytes) than this are removed */
 export const MIN_PAGE_CONTENT_BYTES = 100;
 
+/** Props with more allowed values than this get a shared reference page instead of inline values */
+export const LARGE_ENUM_THRESHOLD = 20;
+
 /** Directories to skip entirely during source traversal */
 export const SKIP_DIRECTORIES = ['templates', 'patterns', 'partials', '-', '[component]', 'developing'];
 
