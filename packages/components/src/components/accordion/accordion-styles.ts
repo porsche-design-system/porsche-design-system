@@ -93,7 +93,12 @@ export const getComponentCss = (
         }),
       },
       slot: {
-        display: 'block',
+        '&[name="summary-before"], &[name="summary"], &[name="summary-after"]': {
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap,
+        },
         '&[name="summary-before"]': {
           gridArea: `1/${isIconAlignedStart ? '2' : '1'}`,
           zIndex: 2, // ensures stacking to be above the summary section
@@ -106,6 +111,7 @@ export const getComponentCss = (
           zIndex: 2, // ensures stacking to be above the summary section
         },
         '&:not([name])': {
+          display: 'block',
           // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the overflow rule and animation
           overflow: 'hidden',
           'details[open] &': {
