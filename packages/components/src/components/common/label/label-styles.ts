@@ -12,7 +12,7 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
-      marginInlineStart: spacingStaticXs,
+      marginInlineStart: spacingStaticXs, // TODO: this produces always a margin because the slot is always rendered, even if no content is provided. It should be adapted if `:has-slotted` gets supported by all browsers: https://caniuse.com/?search=%3Ahas-slotted
     },
   };
 };
