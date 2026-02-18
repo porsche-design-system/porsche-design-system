@@ -13,6 +13,7 @@ import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import { alphaDisabled } from './alpha-disabled';
 import { colorFocus } from './css-variables';
+import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -92,12 +93,19 @@ export const getFocusBaseStyles = () => {
   return {
     outline: `${borderWidthBase} solid ${colorFocus}`,
     outlineOffset: '2px',
+    ...forcedColorsMediaQuery({
+      outlineColor: 'Highlight',
+    }),
   } as const;
 };
 
 export const getDisabledBaseStyles = () => {
   return {
     opacity: alphaDisabled,
+    ...forcedColorsMediaQuery({
+      opacity: 1,
+      color: 'GrayText',
+    }),
   } as const;
 };
 

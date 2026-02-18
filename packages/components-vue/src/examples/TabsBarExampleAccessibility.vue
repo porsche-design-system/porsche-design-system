@@ -5,8 +5,8 @@ import { ref } from 'vue';
 const tabIndex = ref(0);
 const tabPanels: string[] = ['One', 'Two', 'Three'];
 
-const onUpdate = (e: TabsBarUpdateEventDetail): void => {
-  tabIndex.value = e.activeTabIndex;
+const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>): void => {
+  tabIndex.value = e.detail.activeTabIndex;
 };
 </script>
 

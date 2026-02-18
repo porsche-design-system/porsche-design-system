@@ -97,6 +97,12 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, var(--p-color-primary));
@@ -221,6 +227,17 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     opacity: 0;
     position: absolute;
   }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+
     </style>
     <div
       class="root"
@@ -271,6 +288,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -345,7 +368,7 @@ input::-webkit-search-cancel-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -413,6 +436,13 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -477,6 +507,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -580,6 +616,12 @@ img {
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -628,6 +670,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -776,6 +824,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -862,6 +921,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -948,6 +1018,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1034,6 +1115,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1120,6 +1212,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1206,6 +1309,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1552,6 +1666,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
       </style>
       <button
         aria-pressed="true"
@@ -1607,6 +1727,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1750,6 +1876,12 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -1858,10 +1990,32 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -1907,6 +2061,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -2011,10 +2171,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -2060,6 +2242,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -2131,6 +2319,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: inherit;
@@ -2252,6 +2450,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: inherit;
@@ -2388,6 +2596,15 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -2430,6 +2647,12 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     visibility: hidden;
   }
 }
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+
     </style>
     <p-scroller
       class="scroller"
@@ -2530,6 +2753,12 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -2637,10 +2866,32 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -2686,6 +2937,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -2790,10 +3047,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -2839,6 +3118,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -2962,6 +3247,15 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -3004,6 +3298,12 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     visibility: hidden;
   }
 }
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+
         </style>
         <p-scroller
           class="scroller"
@@ -3104,6 +3404,12 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -3211,10 +3517,32 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                     </style>
@@ -3260,6 +3588,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -3364,10 +3698,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                     </style>
@@ -3413,6 +3769,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -3485,6 +3847,12 @@ img {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  :host(:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
       </style>
       <slot />
     </template>
@@ -3510,6 +3878,12 @@ img {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  :host(:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
       </style>
       <slot />
     </template>
@@ -3686,6 +4060,12 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button::before {
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -3786,6 +4166,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -3917,6 +4303,13 @@ slot[name="heading"] {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
+  }
+}
+
 .heading {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
@@ -3988,6 +4381,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -4088,10 +4487,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -4134,6 +4555,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -4236,10 +4663,32 @@ exports[`should render dsr component for PButton 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
@@ -4345,6 +4794,12 @@ exports[`should render dsr component for PButtonPure 1`] = `
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -4396,6 +4851,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
           </style>
           <img
             alt=""
@@ -4626,10 +5087,32 @@ p {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -4723,6 +5206,12 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+@media (forced-colors: active) {
+  slot[name="title"]::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   display: grid;
   grid-template: auto minmax(0,1fr) auto / min(100vw,var(--p-canvas-sidebar-start-width,320px)) 100vw min(100vw,var(--p-canvas-sidebar-end-width,320px));
@@ -5049,10 +5538,32 @@ h2 {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
               </style>
@@ -5096,6 +5607,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -5174,6 +5691,12 @@ img {
   width: auto;
   height: auto;
 }
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
             </style>
             <picture>
               <source
@@ -5239,6 +5762,12 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
             </style>
             <svg
               viewBox="0 0 4500 300"
@@ -5344,10 +5873,32 @@ svg {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
               </style>
@@ -5391,6 +5942,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -5544,6 +6101,12 @@ exports[`should render dsr component for PCarousel 1`] = `
   }
 }
 
+@media (forced-colors: active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
     </style>
     <div
       class="header"
@@ -5631,15 +6194,23 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
@@ -5811,6 +6382,12 @@ img {
   width: auto;
   height: auto;
 }
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
     </style>
     <picture>
       <source
@@ -6176,6 +6753,12 @@ exports[`should render dsr component for PDrilldown 1`] = `
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -6227,6 +6810,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -6325,10 +6914,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -6371,6 +6982,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -6469,10 +7086,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -6515,6 +7154,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -6719,6 +7364,12 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -6771,6 +7422,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -6890,6 +7547,12 @@ img {
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -6941,6 +7604,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -7014,6 +7683,12 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
@@ -7235,6 +7910,12 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+
     </style>
     <dialog
       aria-label="Flyout"
@@ -7321,10 +8002,32 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
               </style>
@@ -7367,6 +8070,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -7478,6 +8187,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
     </style>
     <img
       alt=""
@@ -7527,6 +8242,13 @@ slot[name="heading"] {
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
   }
 }
 
@@ -7601,6 +8323,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
         </style>
         <img
           alt=""
@@ -7701,10 +8429,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
         </style>
@@ -7747,6 +8497,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -7831,7 +8587,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -7900,6 +8656,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -7995,7 +8758,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -8060,6 +8823,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -8159,7 +8929,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -8228,6 +8998,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -8327,7 +9104,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -8392,6 +9169,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -8488,7 +9272,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -8553,6 +9337,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -8651,7 +9442,7 @@ input::-webkit-search-cancel-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -8716,6 +9507,13 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -8811,7 +9609,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -8876,6 +9674,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -8971,7 +9776,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -9036,6 +9841,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -9134,7 +9946,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -9203,6 +10015,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -9298,7 +10117,7 @@ input {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -9363,6 +10182,13 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -9462,7 +10288,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -9531,6 +10357,13 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -9609,6 +10442,12 @@ exports[`should render dsr component for PLink 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -9640,10 +10479,29 @@ exports[`should render dsr component for PLink 1`] = `
   clip: unset !important;
   white-space: normal;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
@@ -9697,6 +10555,12 @@ exports[`should render dsr component for PLinkPure 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -9793,6 +10657,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
           </style>
           <img
             alt=""
@@ -9986,6 +10856,12 @@ p {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -10017,10 +10893,29 @@ p {
   clip: unset !important;
   white-space: normal;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -10089,6 +10984,12 @@ slot[name="header"] {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
   overflow: hidden !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a[slot='anchor']:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   display: flex;
   flex-direction: column;
@@ -10246,6 +11147,12 @@ slot[name="header"] {
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -10294,6 +11201,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -10448,6 +11361,13 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
+@media (forced-colors: active) {
+  .modal {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
     </style>
     <dialog
       aria-modal="true"
@@ -10534,10 +11454,32 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
               </style>
@@ -10580,6 +11522,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -10649,6 +11597,12 @@ img {
   width: 1px;
   height: 1px;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
     </style>
     <slot />
     <img
@@ -10757,6 +11711,12 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, var(--p-color-primary));
@@ -10881,6 +11841,17 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     opacity: 0;
     position: absolute;
   }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+
     </style>
     <div
       class="root"
@@ -10931,6 +11902,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -11005,7 +11982,7 @@ input::-webkit-search-cancel-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -11073,6 +12050,13 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -11137,6 +12121,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -11240,6 +12230,12 @@ img {
   }
 }
 
+@media (forced-colors: active) {
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -11288,6 +12284,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -11441,6 +12443,17 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -11582,6 +12595,16 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
+@media (forced-colors: active) {
+  span:not(.ellipsis):focus-visible {
+    outline-color: Highlight;
+  }
+  span[aria-disabled] {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
@@ -11647,6 +12670,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                 </style>
                 <img
                   alt=""
@@ -11716,6 +12745,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                 </style>
                 <img
                   alt=""
@@ -11984,6 +13019,12 @@ exports[`should render dsr component for PPopover 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover {
       background-color: var(--p-color-frosted-soft);
@@ -12023,6 +13064,16 @@ exports[`should render dsr component for PPopover 1`] = `
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
   }
+@media (forced-colors: active) {
+    .arrow {
+      background: CanvasText;
+    }
+    .content {
+      outline: 2px solid CanvasText;
+      outline-offset: -2px;
+    }
+}
+
     </style>
     <button
       type="button"
@@ -12061,6 +13112,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
           </style>
           <img
             alt=""
@@ -12264,6 +13321,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
 }
@@ -12272,6 +13330,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
 }
 
@@ -12463,6 +13527,12 @@ exports[`should render dsr component for PScroller 1`] = `
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -12570,10 +13640,32 @@ exports[`should render dsr component for PScroller 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -12619,6 +13711,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -12723,10 +13821,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
             </style>
@@ -12772,6 +13892,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -12949,6 +14075,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -13069,6 +14201,12 @@ exports[`should render dsr component for PSelect 1`] = `
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -13193,6 +14331,17 @@ exports[`should render dsr component for PSelect 1`] = `
     opacity: 0;
     position: absolute;
   }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+
     </style>
     <div
       class="root"
@@ -13243,6 +14392,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -13341,6 +14496,17 @@ exports[`should render dsr component for PSelectOption 1`] = `
 .icon {
   margin-inline-start: auto;
 }
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -13471,6 +14637,12 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
+@media (forced-colors: active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+}
+
     </style>
     <dialog
       aria-modal="true"
@@ -13557,10 +14729,32 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
               </style>
@@ -13603,6 +14797,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -13858,6 +15058,12 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -13966,10 +15172,32 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -14015,6 +15243,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -14119,10 +15353,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -14168,6 +15424,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -14244,6 +15506,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: inherit;
@@ -14397,6 +15669,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -14404,6 +15682,7 @@ label {
 }
 
 .toggle {
+  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -14583,6 +15862,12 @@ exports[`should render dsr component for PTable 1`] = `
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -14690,10 +15975,32 @@ exports[`should render dsr component for PTable 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -14739,6 +16046,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -14843,10 +16156,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -14892,6 +16227,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -15173,6 +16514,15 @@ exports[`should render dsr component for PTabs 1`] = `
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -15215,6 +16565,12 @@ exports[`should render dsr component for PTabs 1`] = `
     visibility: hidden;
   }
 }
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+
         </style>
         <p-scroller
           class="scroller"
@@ -15315,6 +16671,12 @@ exports[`should render dsr component for PTabs 1`] = `
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -15422,10 +16784,32 @@ exports[`should render dsr component for PTabs 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                     </style>
@@ -15471,6 +16855,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -15575,10 +16965,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                     </style>
@@ -15624,6 +17036,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -15727,6 +17145,15 @@ exports[`should render dsr component for PTabsBar 1`] = `
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -15769,6 +17196,12 @@ exports[`should render dsr component for PTabsBar 1`] = `
     visibility: hidden;
   }
 }
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+
     </style>
     <p-scroller
       class="scroller"
@@ -15869,6 +17302,12 @@ exports[`should render dsr component for PTabsBar 1`] = `
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -15976,10 +17415,32 @@ exports[`should render dsr component for PTabsBar 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -16025,6 +17486,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -16129,10 +17596,32 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 
                 </style>
@@ -16178,6 +17667,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
                       </style>
                       <img
                         alt=""
@@ -16236,6 +17731,12 @@ exports[`should render dsr component for PTabsItem 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  :host(:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
     </style>
     <slot />
   </template>
@@ -16296,6 +17797,17 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
     </style>
     <span>
       <slot />
@@ -16346,6 +17858,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover &gt; .icon {
     background-color: var(--p-color-frosted);
@@ -16417,6 +17939,12 @@ img {
   height: 1px;
   pointer-events: none;
 }
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -16767,6 +18295,12 @@ svg {
 @supports (height: round(down, 1px, 1px)) {
   :host {
     height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 

@@ -94,7 +94,7 @@ for (const component of components) {
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-${scheme}.png`); // screenshot is aliased since result has to be equal
       });
 
-      test.fixme(`hcm ${scheme}`, async ({ page }) => {
+      test(`hcm ${scheme}`, async ({ page }) => {
         // test.skip(component === 'select', 'This component is flaky in HC mode');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {

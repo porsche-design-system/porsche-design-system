@@ -287,6 +287,31 @@ export class AppModule {}
 
 ### Common
 
+- Changed event emitting in Vue. All component events now emit the full `CustomEvent` instead of just the event detail.
+  The event detail must be accessed via `event.detail`. Props and other component data can be accessed directly via
+  `event.target`.
+
+```diff
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
+  </PAccordion>
+</template>
+```
+
 - Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-headline`,
   `p-inline-notification`, `p-switch`, `p-table`, `p-tabs`, `p-text` and `p-text-list`, use `p-link-pure` instead or an
   anchor `<a>` with correct styling.

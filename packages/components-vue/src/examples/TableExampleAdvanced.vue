@@ -117,8 +117,8 @@ const dataAdvanced: DataAdvanced[] = [
 const head = ref(headAdvanced);
 const data = ref(dataAdvanced);
 
-const onUpdate = (e: TableUpdateEventDetail): void => {
-  const { id, direction } = e as TableUpdateEventDetail & { id: keyof DataAdvanced };
+const onUpdate = (e: CustomEvent<TableUpdateEventDetail>): void => {
+  const { id, direction } = e.detail as TableUpdateEventDetail & { id: keyof DataAdvanced };
   head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
   data.value = [...data.value].sort((a, b) =>
     direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])

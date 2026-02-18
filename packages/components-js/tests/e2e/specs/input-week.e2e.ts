@@ -101,6 +101,36 @@ test.describe('value', () => {
     await expect(inputWeek).toHaveJSProperty('value', testInput);
     await expect(inputWeek).toHaveValue(testInput);
   });
+
+  test('should allow controlled input via programmatic value updates in input listener', async ({ page }) => {
+    await initInputWeek(page, { props: { name: 'some-name' } });
+    const host = getHost(page);
+    const inputWeek = getInputWeek(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputWeek).toHaveValue('');
+
+    // Add input event listener that always sets value to '2025-W26'
+    await page.evaluate(() => {
+      const hostElement = document.querySelector('p-input-week');
+      hostElement.addEventListener('input', () => {
+        hostElement.value = '2025-W26';
+      });
+    });
+
+    await inputWeek.focus();
+    await expect(inputWeek).toBeFocused();
+
+    await inputWeek.fill('2021-W12');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-W26');
+    await expect(inputWeek).toHaveValue('2025-W26');
+
+    await inputWeek.fill('2035-W16');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-W26');
+    await expect(inputWeek).toHaveValue('2025-W26');
+  });
 });
 
 test.describe('form', () => {

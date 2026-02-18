@@ -462,7 +462,13 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
 }
 .required {
   user-select: none;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
@@ -506,5 +512,11 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
 }
 .required {
   user-select: none;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;

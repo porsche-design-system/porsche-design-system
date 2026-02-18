@@ -7,6 +7,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
+  forcedColorsMediaQuery,
 } from '../../../styles';
 import {
   colorContrastMedium,
@@ -98,9 +99,17 @@ export const getFunctionalComponentInputBaseStyles = (
         background: colorFrosted,
         color: colorContrastMedium,
       }),
-      '&:focus-within': {
+      '&:not(:has(input:disabled)):focus-within': {
         borderColor: formStateBorderHoverColor,
+        ...forcedColorsMediaQuery({
+          outline: '2px solid Highlight',
+          outlineOffset: '2px',
+        }),
       },
+      ...(isDisabled &&
+        forcedColorsMediaQuery({
+          borderColor: 'GrayText',
+        })),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&

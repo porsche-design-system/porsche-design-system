@@ -1,6 +1,7 @@
 import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -104,6 +105,11 @@ export const getComponentCss = (
               background: backgroundHoverColor,
             },
           })),
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
+          backgroundColor: 'Canvas',
+        }),
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {
