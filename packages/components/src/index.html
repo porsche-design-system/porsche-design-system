@@ -228,9 +228,6 @@
           <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some heading" heading-tag="h3">
-          Some details
-        </p-accordion>
         <p-accordion background="surface">
           <p-heading slot="summary" tag="h3" size="large">Summary</p-heading>
           <p-heading slot="summary" tag="h4" size="small">Summary</p-heading>
@@ -239,6 +236,35 @@
           <p-popover slot="summary-after">Some content</p-popover>
           <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <span slot="heading">Some heading</span>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <span slot="heading">Some heading</span>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface" open="true">
+          <span slot="heading">Some heading</span>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface" open="true">
+          <span slot="heading">Some heading</span>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface" open="true">
+          <span slot="heading">Some heading</span>
+          <span slot="heading">Some heading</span>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-popover slot="summary-before">Some content</p-popover>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Some details</p-text>
         </p-accordion>
       </div>
       <div data-card="button">

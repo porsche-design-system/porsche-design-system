@@ -122,8 +122,8 @@ export const getComponentCss = (
         },
       },
       'h1,h2,h3,h4,h5,h6': {
-        gridArea: `1/${hasSummaryBefore && isIconAlignedStart ? '3' : hasSummaryBefore || isIconAlignedStart ? '2' : '1'}`,
         all: 'unset',
+        gridArea: `1/${hasSummaryBefore && isIconAlignedStart ? '3' : hasSummaryBefore || isIconAlignedStart ? '2' : '1'}`,
         font: 'inherit',
         fontWeight: fontWeightSemibold,
       },

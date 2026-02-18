@@ -298,3 +298,35 @@
     <p-text>Some details</p-text>
   </p-accordion>
 </div>
+
+<div class="playground" title="should render with deprecated heading slot">
+  <p-accordion background="surface">
+    <span slot="heading">Some heading</span>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface">
+    <span slot="heading">Some heading</span>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="heading">Some heading</span>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="heading">Some heading</span>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="heading">Some heading</span>
+    <span slot="heading">Some heading</span>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-before">Some content</p-popover>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
