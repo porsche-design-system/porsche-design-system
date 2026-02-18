@@ -184,7 +184,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // adjust named slot conditions
         newFileContent = newFileContent
           .replace(
-            /has(?:Heading|Label|Description|Summary)\(this\.props\.host, (this\.props\.(heading|label|description|summary))\)/g,
+            /has(?:Heading|Label|Description|Summary|SummaryBefore|SummaryAfter)\(this\.props\.host, (this\.props\.(heading|label|description|summary|summaryBefore|summaryAfter))\)/g,
             `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
           )
           .replace(
@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(summary|caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(summary|summary-before|summary-after|caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -392,7 +392,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/hasHeader =/, 'const $&')
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-accordion') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasSummary)/g, '$1').replace(/hasSummary =/, 'const $&');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasSummary)/g, '$1')
+          .replace(/hasSummary =/, 'const $&')
+          .replace(/this\.props\.(hasSummaryBefore)/g, '$1')
+          .replace(/hasSummaryBefore =/, 'const $&')
+          .replace(/this\.props\.(hasSummaryAfter)/g, '$1')
+          .replace(/hasSummaryAfter =/, 'const $&');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
