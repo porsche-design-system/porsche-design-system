@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsx src/index.ts",
-    "prepare-context": "tsx scripts/prepare-context/index.ts",
+    "prepare-context": "TSX_TSCONFIG_PATH=../storefront/tsconfig.json tsx scripts/prepare-context/index.ts",
     "start": "node dist/index.js"
   },
   "dependencies": {
