@@ -7,6 +7,8 @@ import {
   componentMetaPath,
   examplesCache,
   examplesDir,
+  storiesCache,
+  storefrontSrcDir,
 } from './config.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -45,6 +47,127 @@ export async function loadExample(exampleName: string): Promise<{ frameworkMarku
     // File not found — expected for some examples
   }
   return null;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Story loading — resolve imports, execute generators, produce framework markup
+// ──────────────────────────────────────────────────────────────────────────────
+
+/** Cache for the createFrameworkMarkup function (loaded once from storefront) */
+let createFrameworkMarkupFn: ((
+  config: any[],
+  state: any,
+  theme: string,
+) => Record<string, string>) | null = null;
+
+async function getCreateFrameworkMarkup() {
+  if (createFrameworkMarkupFn) return createFrameworkMarkupFn;
+  try {
+    const mod = await import(
+      path.join(storefrontSrcDir, 'utils/generator/createFrameworkMarkup.ts')
+    );
+    createFrameworkMarkupFn = mod.default?.createFrameworkMarkup ?? mod.createFrameworkMarkup;
+    return createFrameworkMarkupFn;
+  } catch (error) {
+    console.warn('Could not load createFrameworkMarkup:', error);
+    return null;
+  }
+}
+
+/**
+ * Parse the raw MDX content to build a map of story variable names to their
+ * module paths (resolved to absolute filesystem paths).
+ *
+ * E.g. `import { fooStory } from '@/app/components/foo/foo.stories';`
+ *   → { fooStory: '/abs/path/storefront/src/app/components/foo/foo.stories.ts' }
+ */
+function parseStoryImports(rawMdx: string): Record<string, string> {
+  const map: Record<string, string> = {};
+  const importRegex = /^import\s+{([^}]+)}\s+from\s+['"]([^'"]+\.stor(?:ies|y))['"];?\s*$/gm;
+  let match: RegExpExecArray | null;
+
+  while ((match = importRegex.exec(rawMdx)) !== null) {
+    const names = match[1].split(',').map((n) => n.trim()).filter(Boolean);
+    const modulePath = match[2];
+
+    // Resolve @/ alias to absolute storefront src path
+    let absPath: string;
+    if (modulePath.startsWith('@/')) {
+      absPath = path.join(storefrontSrcDir, modulePath.slice(2));
+    } else {
+      absPath = modulePath;
+    }
+    // Ensure .ts extension
+    if (!absPath.endsWith('.ts') && !absPath.endsWith('.tsx')) {
+      absPath += '.ts';
+    }
+
+    for (const name of names) {
+      map[name] = absPath;
+    }
+  }
+
+  return map;
+}
+
+/**
+ * Strip the HTML document wrapper that getVanillaJsCode adds,
+ * keeping only the meaningful body content (markup + script).
+ */
+function stripVanillaJsWrapper(code: string): string {
+  // Extract content between <body ...> and </body>
+  const bodyMatch = code.match(/<body[^>]*>\n?([\s\S]*?)\n?<\/body>/);
+  if (!bodyMatch) return code;
+
+  let body = bodyMatch[1].trim();
+
+  // Remove empty <script> blocks
+  body = body.replace(/<script>\s*\n?\s*<\/script>/g, '').trim();
+
+  return body;
+}
+
+/**
+ * Load a story by variable name, execute its generator, and produce
+ * framework-specific markup. Returns a Record<framework, code> or null.
+ */
+export async function loadStoryMarkup(
+  storyVarName: string,
+  storyImports: Record<string, string>,
+): Promise<Record<string, string> | null> {
+  // Check cache first
+  if (storiesCache[storyVarName]) return storiesCache[storyVarName];
+
+  const modulePath = storyImports[storyVarName];
+  if (!modulePath) return null;
+
+  try {
+    const storyModule = await import(modulePath);
+    // Handle both direct exports and default-wrapped exports
+    const exports = storyModule.default ?? storyModule;
+    const story = exports[storyVarName];
+    if (!story?.generator) return null;
+
+    const config = story.generator(story.state);
+    const createMarkup = await getCreateFrameworkMarkup();
+    if (!createMarkup) return null;
+
+    const markup = createMarkup(config, story.state, 'light');
+
+    // Post-process: strip the HTML wrapper from vanilla-js
+    const result: Record<string, string> = {
+      'vanilla-js': stripVanillaJsWrapper(markup['vanilla-js'] ?? ''),
+      react: markup.react ?? '',
+      angular: markup.angular ?? '',
+      vue: markup.vue ?? '',
+    };
+
+    storiesCache[storyVarName] = result;
+    return result;
+  } catch (error) {
+    console.warn(`  warn: could not load story "${storyVarName}" from ${modulePath}:`, (error as Error).message);
+    return null;
+  }
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -158,12 +281,50 @@ export function formatCodeExample(
   return lines.join('\n');
 }
 
+export function formatStoryCode(
+  storyName: string,
+  frameworkMarkup: Record<string, string>,
+  framework: Framework = 'vanilla-js',
+): string {
+  const lines: string[] = [];
+  lines.push(`\n### Interactive Story: \`${storyName}\`\n`);
+
+  if (framework === 'vanilla-js') {
+    if (frameworkMarkup['vanilla-js']) {
+      lines.push('```html');
+      lines.push(frameworkMarkup['vanilla-js']);
+      lines.push('```\n');
+    } else {
+      lines.push(`> No vanilla JS story available for \`${storyName}\`.\n`);
+    }
+  } else {
+    const code = frameworkMarkup[framework];
+    if (!code) {
+      lines.push(`> No ${framework} story available for \`${storyName}\`.\n`);
+      return lines.join('\n');
+    }
+    const langMap: Record<string, string> = { react: 'tsx', angular: 'typescript', vue: 'vue' };
+    lines.push(`\`\`\`${langMap[framework] || 'html'}`);
+    lines.push(code);
+    lines.push('```\n');
+  }
+
+  return lines.join('\n');
+}
+
 // ──────────────────────────────────────────────────────────────────────────────
 // Content processing — framework-aware MDX → Markdown
 // ──────────────────────────────────────────────────────────────────────────────
 
-export async function processContent(content: string, framework: Framework = 'vanilla-js'): Promise<string> {
+export async function processContent(
+  content: string,
+  framework: Framework = 'vanilla-js',
+  rawMdx?: string,
+): Promise<string> {
   const componentMeta = await loadComponentMeta();
+
+  // Parse story imports from the original MDX source (before imports are stripped)
+  const storyImports = parseStoryImports(rawMdx ?? content);
 
   // Remove imports
   content = content.replace(/^import\s+.*?from\s+['"].*?['"];?\s*$/gm, '');
@@ -183,13 +344,23 @@ export async function processContent(content: string, framework: Framework = 'va
     }
   );
 
-  // ComponentStory → note
-  content = content.replace(
+  // ComponentStory → inject framework-specific code
+  const storyMatches = content.matchAll(
     /<ComponentStory\s+story={([^}]+)}\s*(?:backgroundColor={[^}]+})?\s*\/>/g,
-    (_match, storyName) => {
-      return `\n> **Interactive Story**: The \`${storyName}\` story provides an interactive demonstration. View the live documentation to explore this component dynamically.\n`;
-    }
   );
+  for (const match of Array.from(storyMatches)) {
+    const [fullMatch, storyName] = match;
+    const markup = await loadStoryMarkup(storyName, storyImports);
+    if (markup) {
+      const codeBlock = formatStoryCode(storyName, markup, framework);
+      content = content.replace(fullMatch, codeBlock);
+    } else {
+      content = content.replace(
+        fullMatch,
+        `\n> **Interactive Story**: The \`${storyName}\` story provides an interactive demonstration. View the live documentation to explore this component dynamically.\n`,
+      );
+    }
+  }
 
   // ComponentExample → inject code for the target framework only
   const exampleMatches = content.matchAll(/<ComponentExample\s+codeSample={([^}]+)}\s*(?:[^/]*)?\/>/g);

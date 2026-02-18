@@ -12,6 +12,7 @@ export const sourceDir = path.join(monorepoRoot, 'packages/storefront/src/app/')
 export const outputDir = path.join(monorepoRoot, 'packages/mcp-server/context-snapshots');
 export const examplesDir = path.join(monorepoRoot, 'packages/shared/src/examples');
 export const componentMetaPath = path.join(monorepoRoot, 'packages/component-meta/src/lib/componentMeta.ts');
+export const storefrontSrcDir = path.join(monorepoRoot, 'packages/storefront/src');
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Constants
@@ -47,3 +48,9 @@ export const componentDescriptions: Record<string, string> = {};
 
 /** Raw MDX source for every examples/page.mdx — needed to re-process per framework */
 export const rawExamplesContent: Record<string, string> = {};
+
+/** Raw MDX source for pages containing ComponentStory — needed to re-process per framework */
+export const rawStoriesContent: Record<string, string> = {};
+
+/** Caches generated story framework markup to avoid re-importing story modules */
+export const storiesCache: Record<string, Record<string, string>> = {};

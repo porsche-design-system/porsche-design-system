@@ -12,6 +12,7 @@ import {
   SKIP_DIRECTORIES,
   componentDescriptions,
   rawExamplesContent,
+  rawStoriesContent,
 } from './config.js';
 import { loadComponentMeta, processContent } from './transform.js';
 
@@ -53,8 +54,14 @@ async function walkAndCopy(dir: string, relative: string = '') {
       await fs.mkdir(targetDir, { recursive: true });
       await fs.copyFile(fullPath, targetFile);
 
+      const fileContent = await fs.readFile(fullPath, 'utf-8');
+
       if (relative.endsWith('examples')) {
-        rawExamplesContent[targetFile] = await fs.readFile(fullPath, 'utf-8');
+        rawExamplesContent[targetFile] = fileContent;
+      }
+
+      if (fileContent.includes('<ComponentStory')) {
+        rawStoriesContent[targetFile] = fileContent;
       }
 
       console.log(`  copy: ${newRelativePath}`);
@@ -75,7 +82,9 @@ async function processAllFiles() {
         await walk(fullPath);
       } else if (entry.isFile() && entry.name === 'page.mdx') {
         const rawContent = await fs.readFile(fullPath, 'utf-8');
-        const processed = await processContent(rawContent, 'vanilla-js');
+        // Pass original MDX (from rawStoriesContent) so story imports can be parsed
+        const originalMdx = rawStoriesContent[fullPath] ?? rawExamplesContent[fullPath];
+        const processed = await processContent(rawContent, 'vanilla-js', originalMdx);
         await fs.writeFile(fullPath, processed, 'utf-8');
         console.log(`  parse: ${path.relative(outputDir, fullPath)}`);
       }
@@ -98,7 +107,7 @@ async function generateFrameworkExamples() {
       const fwDir = path.join(componentDir, `examples-${framework}`);
       const fwFile = path.join(fwDir, 'page.mdx');
 
-      const processed = await processContent(rawContent, framework);
+      const processed = await processContent(rawContent, framework, rawContent);
 
       if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_BYTES) {
         await fs.mkdir(fwDir, { recursive: true });
@@ -110,7 +119,36 @@ async function generateFrameworkExamples() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 4 — Generate quick-reference pages for each component
+// Step 4 — Generate per-framework interactive story pages
+// ──────────────────────────────────────────────────────────────────────────────
+
+async function generateFrameworkStories() {
+  // Only process pages that have stories but are NOT already handled by examples
+  // (pages in examples/ dirs are already covered by generateFrameworkExamples)
+  for (const [filePath, rawContent] of Object.entries(rawStoriesContent)) {
+    if (rawExamplesContent[filePath]) continue; // already handled by examples step
+
+    const pageDir = path.dirname(filePath);
+    const parentDir = path.dirname(pageDir);
+    const dirName = path.basename(pageDir);
+
+    for (const framework of FRAMEWORKS) {
+      const fwDir = path.join(parentDir, `${dirName}-${framework}`);
+      const fwFile = path.join(fwDir, 'page.mdx');
+
+      const processed = await processContent(rawContent, framework, rawContent);
+
+      if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_BYTES) {
+        await fs.mkdir(fwDir, { recursive: true });
+        await fs.writeFile(fwFile, processed, 'utf-8');
+        console.log(`  gen: ${path.relative(outputDir, fwFile)}`);
+      }
+    }
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Step 5 — Generate quick-reference pages for each component (was Step 4)
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function generateQuickRefs() {
@@ -204,7 +242,7 @@ async function generateQuickRefs() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 5 — Truncate changelog to the last N versions
+// Step 6 — Truncate changelog to the last N versions
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function truncateChangelog() {
@@ -235,7 +273,7 @@ async function truncateChangelog() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 6 — Remove stub / near-empty pages
+// Step 7 — Remove stub / near-empty pages
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function removeStubPages() {
@@ -282,7 +320,7 @@ async function removeStubPages() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 7 — Generate snapshot metadata
+// Step 8 — Generate snapshot metadata
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function generateSnapshotMeta() {
@@ -328,7 +366,7 @@ async function generateSnapshotMeta() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Main — orchestrate all 7 steps
+// Main — orchestrate all 8 steps
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function prepareContextSnapshots() {
@@ -341,25 +379,28 @@ async function prepareContextSnapshots() {
   }
   await fs.mkdir(outputDir, { recursive: true });
 
-  console.log('Step 1/7: Copying source files...');
+  console.log('Step 1/8: Copying source files...');
   await walkAndCopy(sourceDir, '');
 
-  console.log('\nStep 2/7: Processing MDX → Markdown (vanilla-js)...');
+  console.log('\nStep 2/8: Processing MDX → Markdown (vanilla-js)...');
   await processAllFiles();
 
-  console.log('\nStep 3/7: Generating framework-specific examples...');
+  console.log('\nStep 3/8: Generating framework-specific examples...');
   await generateFrameworkExamples();
 
-  console.log('\nStep 4/7: Generating quick-reference pages...');
+  console.log('\nStep 4/8: Generating framework-specific interactive stories...');
+  await generateFrameworkStories();
+
+  console.log('\nStep 5/8: Generating quick-reference pages...');
   await generateQuickRefs();
 
-  console.log('\nStep 5/7: Truncating changelog...');
+  console.log('\nStep 6/8: Truncating changelog...');
   await truncateChangelog();
 
-  console.log('\nStep 6/7: Removing stub pages...');
+  console.log('\nStep 7/8: Removing stub pages...');
   await removeStubPages();
 
-  console.log('\nStep 7/7: Writing snapshot metadata...');
+  console.log('\nStep 8/8: Writing snapshot metadata...');
   await generateSnapshotMeta();
 
   console.log('\nDone! Context snapshots ready.');
