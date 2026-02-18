@@ -71,7 +71,7 @@ export const getComponentCss = (
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', cssVarInternalMultiSelectScaling),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
   });

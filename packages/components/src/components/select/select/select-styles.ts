@@ -73,7 +73,7 @@ export const getComponentCss = (
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('select-option', cssVarInternalSelectScaling),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
   });

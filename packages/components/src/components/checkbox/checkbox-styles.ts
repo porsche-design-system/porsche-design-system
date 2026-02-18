@@ -101,7 +101,8 @@ export const getComponentCss = (
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
-      isDisabled || isLoading,
+      isDisabled,
+      isLoading,
       hideLabel,
       {
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',

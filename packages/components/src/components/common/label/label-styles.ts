@@ -18,12 +18,14 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
 };
 
 export const getFunctionalComponentLabelStyles = (
-  isDisabledOrLoading: boolean,
+  isDisabled: boolean,
+  isLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   additionalDefaultJssStyle?: JssStyle,
   additionalLabelWrapperJssStyle?: JssStyle,
   additionalIsShownJssStyle?: JssStyle
 ): Styles => {
+  const isDisabledOrLoading = isDisabled || isLoading;
   return {
     'label-wrapper': {
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
@@ -38,6 +40,8 @@ export const getFunctionalComponentLabelStyles = (
       color: colorPrimary,
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
+      }),
+      ...(isDisabled && {
         ...getDisabledBaseStyles(),
       }),
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state

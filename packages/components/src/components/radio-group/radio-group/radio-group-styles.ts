@@ -95,7 +95,7 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, {
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel, {
       ...(isDisabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message

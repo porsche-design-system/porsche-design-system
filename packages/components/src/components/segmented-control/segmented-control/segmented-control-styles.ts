@@ -52,7 +52,7 @@ export const getComponentCss = (
       gap: spacingStaticXSmall,
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
+    ...getFunctionalComponentLabelStyles(disabled, false, hideLabel, {
       ...(disabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message
