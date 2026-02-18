@@ -93,6 +93,7 @@ export const setupScenario = async (
             'input:not([disabled])',
             'select:not([disabled])',
             '[tabindex]:not([tabindex="-1"])',
+            'summary',
           ]
         : ['*'];
 
