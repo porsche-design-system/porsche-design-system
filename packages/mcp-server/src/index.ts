@@ -197,80 +197,89 @@ function handleGetSnapshotVersion() {
 
 const TOOLS = [
   {
-    name: 'list-docs',
-    description:
-      'List all available Porsche Design System documentation pages, organized by category. Returns the full tree of documentation paths that can be fetched with get-doc.',
-    inputSchema: {
-      type: 'object' as const,
-      properties: {
-        category: {
-          type: 'string',
-          description:
-            'Optional category filter. e.g. "components", "styles", "must-know". Omit to list all categories.',
-        },
-      },
-    },
-  },
-  {
     name: 'get-doc',
     description:
-      'Get the full content of a Porsche Design System documentation page. Use list-docs first to discover available paths.',
+      'Get documentation for a specific topic. Works with component names ' +
+      '(e.g. "button", "tabs"), style topics (e.g. "typography", "colors"), ' +
+      'or specific sub-pages (e.g. "button/api", "button/examples"). ' +
+      'Use the sections parameter to request only what you need.',
     inputSchema: {
       type: 'object' as const,
       properties: {
-        path: {
+        topic: {
           type: 'string',
-          description: 'Documentation path, e.g. "components/button/usage" or "styles/typography"',
+          description:
+            'What to look up. Component name ("button"), style topic ("typography"), ' +
+            'or a specific sub-page ("button/api", "button/accessibility").',
+        },
+        sections: {
+          type: 'array',
+          items: { type: 'string' },
+          description:
+            'Which sections to include. Options: "quick-ref", "usage", "examples", ' +
+            '"api", "accessibility". Omit for all sections. ' +
+            'Use ["quick-ref"] for a brief overview.',
+        },
+        framework: {
+          type: 'string',
+          enum: ['vanilla-js', 'react', 'angular', 'vue'],
+          description:
+            'Which framework examples to include. Defaults to vanilla-js. ' + 'Only affects the examples section.',
         },
       },
-      required: ['path'],
+      required: ['topic'],
     },
   },
   {
     name: 'search-docs',
     description:
-      'Full-text search across all Porsche Design System documentation. Returns matching excerpts with their document paths. Use this to find relevant components, styles, or guidelines.',
+      'Search across all documentation. Returns matching content directly — ' +
+      'no need to call get-doc afterward for simple questions.',
     inputSchema: {
       type: 'object' as const,
       properties: {
         query: {
           type: 'string',
-          description: 'Search query. Matches against document content (case-insensitive).',
+          description: 'Search query (case-insensitive).',
         },
         max_results: {
           type: 'number',
-          description: 'Maximum number of results to return. Defaults to 10.',
+          description: 'Maximum results. Default: 5.',
+        },
+        include_content: {
+          type: 'boolean',
+          description:
+            'If true, includes the first ~200 words of each matching doc. ' +
+            'Default: true. Set to false to get just titles and paths.',
         },
       },
       required: ['query'],
     },
   },
   {
-    name: 'get-component-overview',
+    name: 'list-docs',
     description:
-      'Get a comprehensive overview of a specific Porsche Design System component, combining all available documentation sections (usage, examples, API, accessibility) into a single response.',
+      'List available documentation pages. Returns names and categories, ' +
+      'not full content. Use to discover what exists.',
     inputSchema: {
       type: 'object' as const,
       properties: {
-        component: {
+        category: {
           type: 'string',
-          description: 'Component name, e.g. "button", "input-text", "tabs"',
+          description: 'Filter by category: "components", "styles", "must-know". ' + 'Omit to list all categories.',
         },
       },
-      required: ['component'],
     },
   },
   {
-    name: 'get-snapshot-version',
-    description:
-      'Get metadata about the current documentation snapshot, including version, generation timestamp, and source commit.',
+    name: 'get-version',
+    description: 'Get the current documentation version and metadata.',
     inputSchema: {
       type: 'object' as const,
       properties: {},
     },
   },
 ];
-
 // --- MCP Server setup ---
 
 const server = new Server({ name: 'porsche-design-system-docs', version: '1.0.0' }, { capabilities: { tools: {} } });
