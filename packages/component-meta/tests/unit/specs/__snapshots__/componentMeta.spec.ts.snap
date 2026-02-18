@@ -46,14 +46,14 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "propsMeta": {
-      "alignIcon": {
+      "alignMarker": {
         "allowedValues": [
           "start",
           "end",
         ],
         "defaultValue": "end",
-        "description": "Aligns the icon within the summary section.",
-        "type": "AccordionAlignIcon",
+        "description": "Aligns the marker within the summary section.",
+        "type": "AccordionAlignMarker",
       },
       "background": {
         "allowedValues": [
@@ -63,7 +63,7 @@ exports[`should match snapshot 1`] = `
           "none",
         ],
         "defaultValue": "none",
-        "description": "Defines the background color. Use \`frosted\` only on images or gradients.",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
         "type": "AccordionBackground",
       },
       "compact": {
@@ -102,7 +102,7 @@ exports[`should match snapshot 1`] = `
       "sticky": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "@experimental Makes the summary section sticky at the top while scrolling. Only works with \`background="canvas"\` or \`background="surface"\`.",
+        "description": "@experimental Makes the summary section sticky at the top while scrolling. Only works with \`background="canvas"\` or \`background="surface"\`. Not compatible with \`summary-before\` or \`summary-after\` slots.",
         "isExperimental": true,
         "type": "boolean",
       },
@@ -117,6 +117,12 @@ exports[`should match snapshot 1`] = `
       },
       "summary": {
         "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed.",
+      },
+      "summary-after": {
+        "description": "Content or interactive elements placed after the accordion's summary section.",
+      },
+      "summary-before": {
+        "description": "Content or interactive elements placed before the accordion's summary section.",
       },
     },
     "styling": "jss",
