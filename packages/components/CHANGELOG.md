@@ -18,9 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Accordion`:
   - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
-  - Prop `background` with values `canvas | frosted (default) | none`
+  - Slot `summary-before` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-after` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `background` with values `canvas | surface | frosted | none (default)`
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
-  - Prop `align-icon` with values `start | end (default)`
+  - Prop `align-marker` with values `start | end (default)`
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
   - CSS Variable `--p-accordion-px` to control the horizontal padding
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
@@ -66,7 +68,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
         <p-text>Some details</p-text>
     </p-accordion>
     ```
-  - Slot `heading` in favor of `slot="summary"`, enabling semantic slots and more flexibility
+  - Slot `heading` in favor of `slot="summary"`
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
     ```diff
     <p-acccordion>
