@@ -3,7 +3,6 @@
     <h2>
       <slot name="heading"> </slot>
     </h2>
-    <span> </span>
   </summary>
   <div>
     <slot> </slot>
