@@ -11,6 +11,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -55,10 +56,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -100,9 +97,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -276,7 +273,12 @@ input:checked::before {
 }
 
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -294,6 +296,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -443,6 +446,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -592,6 +596,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -636,10 +641,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -684,9 +685,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -734,7 +735,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -752,6 +758,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -796,10 +803,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -844,9 +847,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -894,7 +897,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -912,6 +920,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1060,6 +1069,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1208,6 +1218,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1252,10 +1263,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1300,9 +1307,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1349,7 +1356,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1367,6 +1379,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1411,10 +1424,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1459,9 +1468,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1508,7 +1517,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1526,6 +1540,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1675,6 +1690,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1824,6 +1840,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1868,10 +1885,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1916,9 +1929,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1966,7 +1979,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1984,6 +2002,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2028,10 +2047,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2076,9 +2091,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2126,7 +2141,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2144,6 +2164,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2290,6 +2311,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2436,6 +2458,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2480,10 +2503,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2525,9 +2544,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2575,7 +2594,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2593,6 +2617,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2637,10 +2662,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2682,9 +2703,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2732,7 +2753,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2750,6 +2776,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2895,6 +2922,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3040,6 +3068,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3121,9 +3150,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3171,6 +3200,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3188,6 +3218,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3269,9 +3300,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3319,6 +3350,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3336,6 +3368,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3380,10 +3413,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -3425,9 +3454,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3474,7 +3503,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3492,6 +3526,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3536,10 +3571,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -3581,9 +3612,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3630,7 +3661,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3648,6 +3684,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3680,10 +3717,6 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -3734,9 +3767,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3783,7 +3816,12 @@ input:focus-visible {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3801,6 +3839,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3833,10 +3872,6 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -3887,9 +3922,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3936,7 +3971,12 @@ input:focus-visible {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3954,6 +3994,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -4100,6 +4141,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -4246,6 +4288,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -4290,10 +4333,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -4335,9 +4374,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -4385,7 +4424,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -4403,6 +4447,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -4447,10 +4492,6 @@ input:checked::before {
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -4492,9 +4533,9 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -4542,7 +4583,12 @@ input:checked::before {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .input-wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }

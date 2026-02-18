@@ -11,6 +11,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -236,6 +237,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -461,6 +463,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -567,6 +570,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -673,6 +677,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -802,6 +807,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -931,6 +937,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1037,6 +1044,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1167,6 +1175,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1272,6 +1281,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1377,6 +1387,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1505,6 +1516,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1633,6 +1645,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1738,6 +1751,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1843,6 +1857,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1967,6 +1982,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1994,13 +2010,6 @@ textarea {
 textarea:focus {
   border-color: var(--p-color-error);
 }
-@media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
-}
-
 .root {
   display: grid;
   gap: 4px;
@@ -2024,9 +2033,9 @@ textarea:focus {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2064,7 +2073,12 @@ textarea:focus {
   position: absolute;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }

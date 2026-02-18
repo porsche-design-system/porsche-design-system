@@ -438,9 +438,9 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -466,6 +466,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -489,9 +490,9 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -517,6 +518,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }

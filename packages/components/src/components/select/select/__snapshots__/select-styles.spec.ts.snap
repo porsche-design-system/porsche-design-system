@@ -21,6 +21,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -258,6 +259,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -496,6 +498,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -733,6 +736,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -970,6 +974,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1041,7 +1046,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -1129,9 +1134,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1178,6 +1183,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -1205,6 +1211,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1276,7 +1283,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -1364,9 +1371,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1412,6 +1419,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -1439,6 +1447,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1510,7 +1519,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -1598,9 +1607,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1646,6 +1655,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -1673,6 +1683,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1744,7 +1755,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -1832,9 +1843,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1880,6 +1891,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -1907,6 +1919,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1978,7 +1991,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -2066,9 +2079,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2115,6 +2128,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -2142,6 +2156,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2213,7 +2228,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -2300,9 +2315,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2349,6 +2364,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -2376,6 +2392,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2447,7 +2464,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -2534,9 +2551,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2582,6 +2599,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -2609,6 +2627,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2680,7 +2699,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -2767,9 +2786,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2816,6 +2835,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -2843,6 +2863,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3081,6 +3102,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3318,6 +3340,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3555,6 +3578,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3792,6 +3816,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4029,6 +4054,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4265,6 +4291,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4502,6 +4529,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4739,6 +4767,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4810,7 +4839,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -4898,9 +4927,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4947,6 +4976,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -4974,6 +5004,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5045,7 +5076,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -5133,9 +5164,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5181,6 +5212,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -5208,6 +5240,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5279,7 +5312,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -5367,9 +5400,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5416,6 +5449,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -5443,6 +5477,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5514,7 +5549,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -5602,9 +5637,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5651,6 +5686,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -5678,6 +5714,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5749,7 +5786,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -5836,9 +5873,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5885,6 +5922,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }
@@ -5912,6 +5950,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+    margin-inline-start: 4px;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5983,7 +6022,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden;
   }
 @media (forced-colors: active) {
-    :host {
+    button {
       opacity: 1;
       color: GrayText;
     }
@@ -6070,9 +6109,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
+    color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -6118,6 +6157,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
       outline-offset: -2px;
     }
     .label {
+      opacity: 1;
       color: GrayText;
     }
 }

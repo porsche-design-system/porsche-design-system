@@ -13,6 +13,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -147,6 +148,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -281,6 +283,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -410,6 +413,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -539,6 +543,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -668,6 +673,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -798,6 +804,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -928,6 +935,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1057,6 +1065,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1190,6 +1199,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1318,6 +1328,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1446,6 +1457,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1574,6 +1586,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1702,6 +1715,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1950,6 +1964,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1968,13 +1983,6 @@ input {
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   display: none;
 }
-@media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
-}
-
 .root {
   display: grid;
   gap: 4px;
@@ -2012,9 +2020,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2183,6 +2191,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 
 @media (forced-colors: active) {
   .wrapper {
+    opacity: 1;
+    color: GrayText;
     border-color: GrayText;
   }
   .wrapper:not(:has(input:disabled)):focus-within {
@@ -2190,6 +2200,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     outline-offset: 2px;
   }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2209,6 +2220,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  margin-inline-start: 4px;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2227,13 +2239,6 @@ input {
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   display: none;
 }
-@media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
-}
-
 .root {
   display: grid;
   gap: 4px;
@@ -2276,9 +2281,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2327,6 +2332,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 @media (forced-colors: active) {
   .wrapper {
+    opacity: 1;
+    color: GrayText;
     border-color: GrayText;
   }
   .wrapper:not(:has(input:disabled)):focus-within {
@@ -2334,6 +2341,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     outline-offset: 2px;
   }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
