@@ -159,7 +159,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`.
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
     }
@@ -3794,7 +3794,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`.
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
     }

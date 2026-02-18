@@ -23,6 +23,8 @@ const propTypes: PropTypes<typeof Accordion> = {
 
 /**
  * @slot {"name": "summary", "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed." }
+ * @slot {"name": "summary-before", "description": "Content or interactive elements placed before the accordion's summary section." }
+ * @slot {"name": "summary-after", "description": "Content or interactive elements placed after the accordion's summary section." }
  * @slot {"name": "heading", "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.", "isDeprecated": true }
  * @slot {"name": "", "description": "Main content displayed when the accordion is expanded." }
  *
@@ -58,7 +60,7 @@ export class Accordion {
   @Prop() public headingTag?: AccordionHeadingTag = 'h2';
 
   /**
-   * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`.
+   * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
    */
   @Prop() public sticky?: boolean;
 
@@ -66,9 +68,16 @@ export class Accordion {
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
   private hasSummary: boolean;
+  private hasSummaryBefore: boolean;
+  private hasSummaryAfter: boolean;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+
+    this.hasSummary = hasNamedSlot(this.host, 'summary');
+    this.hasSummaryBefore = hasNamedSlot(this.host, 'summary-before');
+    this.hasSummaryAfter = hasNamedSlot(this.host, 'summary-after');
+
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -76,10 +85,10 @@ export class Accordion {
       this.background,
       this.compact,
       this.open,
-      this.sticky
+      this.sticky,
+      this.hasSummaryBefore,
+      this.hasSummaryAfter
     );
-
-    this.hasSummary = hasNamedSlot(this.host, 'summary');
 
     const Heading = this.headingTag;
 
@@ -88,8 +97,9 @@ export class Accordion {
         {/** biome-ignore lint/a11y/noStaticElementInteractions: necessary to enable a controlled state */}
         <summary onClick={this.onSummaryClick}>
           {this.hasSummary ? <slot name="summary" /> : <Heading>{this.heading || <slot name="heading" />}</Heading>}
-          <span></span>
         </summary>
+        {this.hasSummaryBefore && <slot name="summary-before" />}
+        {this.hasSummaryAfter && <slot name="summary-after" />}
         <div>
           <slot />
         </div>
