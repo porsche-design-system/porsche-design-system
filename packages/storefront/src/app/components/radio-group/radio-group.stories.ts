@@ -10,7 +10,7 @@ export const radioGroupSlotStories: SlotStories<'p-radio-group'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -65,7 +65,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover description'],
         },
         {
@@ -115,7 +115,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             },
             {
               tag: 'p-popover',
-              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              properties: { slot: 'label-after' },
               children: ['Option A with slotted label and a popover '],
             },
           ],
@@ -150,7 +150,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             },
             {
               tag: 'p-popover',
-              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              properties: { slot: 'label-after' },
               children: ['Some information about the disabled state.'],
             },
           ],

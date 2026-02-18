@@ -114,7 +114,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label">
             <span id={`${propName}-id`}>{capitalCase(propName)}</span>
           </span>
-          <span slot="label-after" className="inline-flex gap-static-xs ms-static-xs">
+          <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
@@ -145,7 +145,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label">
             <span>{capitalCase(propName)}</span>
           </span>
-          <span slot="label-after" className="inline-flex gap-static-xs ms-static-xs">
+          <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
@@ -171,7 +171,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           onChange={(e) => onUpdateProps(propName, e.detail.value)}
         >
           <span slot="label">{capitalCase(propName)}</span>
-          <span slot="label-after" className="inline-flex gap-static-xs ms-static-xs">
+          <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton

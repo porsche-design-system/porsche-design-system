@@ -33,7 +33,7 @@ export const ThemeSelect = ({
   return (
     <PSelect name={name} value={value} onChange={onThemeChange} hideLabel={hideLabel} {...rest}>
       <span slot="label">{label}</span>
-      <PPopover slot="label-after" className="ms-static-xs">
+      <PPopover slot="label-after">
         All color tokens use the{' '}
         <PLinkPure
           icon="none"

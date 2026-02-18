@@ -9,7 +9,7 @@ export const checkboxSlotStories: SlotStories<'p-checkbox'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -75,7 +75,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
             },
             {
               tag: 'p-popover',
-              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              properties: { slot: 'label-after' },
               children: [
                 'Some label with a ',
                 {
@@ -117,7 +117,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
             },
             {
               tag: 'p-popover',
-              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              properties: { slot: 'label-after' },
               children: ['Some information about the disabled state.'],
             },
           ],
