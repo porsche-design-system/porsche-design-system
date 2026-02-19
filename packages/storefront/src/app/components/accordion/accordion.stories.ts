@@ -3,6 +3,63 @@
 import type { SlotStories, Story } from '@/models/story';
 
 export const accordionSlotStories: SlotStories<'p-accordion'> = {
+  'summary-before': {
+    checkbox: {
+      name: 'Checkbox',
+      generator: () => [
+        {
+          tag: 'p-checkbox',
+          properties: {
+            slot: 'summary-before',
+            name: 'some-name',
+            label: 'Some label',
+            hideLabel: true,
+          },
+        },
+      ],
+    },
+  },
+  'summary-after': {
+    popover: {
+      name: 'Popover',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: {
+            slot: 'summary-after',
+          },
+          children: ['Some content'],
+        },
+      ],
+    },
+    tags: {
+      name: 'Tags',
+      generator: () => [
+        {
+          tag: 'p-tag',
+          properties: {
+            slot: 'summary-after',
+          },
+          children: ['3'],
+        },
+        {
+          tag: 'p-tag',
+          properties: {
+            slot: 'summary-after',
+          },
+          children: [
+            {
+              tag: 'button',
+              properties: {
+                type: 'button',
+              },
+              children: ['Reset'],
+            },
+          ],
+        },
+      ],
+    },
+  },
   summary: {
     basic: {
       name: 'Basic',
