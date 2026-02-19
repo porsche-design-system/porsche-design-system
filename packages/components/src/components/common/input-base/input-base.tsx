@@ -119,7 +119,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           form={form}
           type={type}
           required={required}
-          placeholder={placeholder}
+          placeholder={placeholder || null}
           maxlength={maxLength}
           minlength={minLength}
           spellcheck={spellCheck}
@@ -132,6 +132,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           disabled={disabled}
           pattern={pattern}
           multiple={multiple}
+          dir="auto"
         />
         {end}
         <slot name="end" />

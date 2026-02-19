@@ -25,13 +25,27 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
-      '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-        WebkitAppearance: 'none',
+    ...getFunctionalComponentInputBaseStyles(
+      disabled,
+      loading,
+      hideLabel,
+      state,
+      compact,
+      readOnly,
+      theme,
+      {
+        textOverflow: 'ellipsis',
+        MozAppearance: 'textfield',
+        '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+          WebkitAppearance: 'none',
+        },
       },
-    }),
+      {
+        '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
+          direction: 'ltr',
+        },
+      }
+    ),
     'sr-only': getHiddenTextJssStyle(),
   });
 };

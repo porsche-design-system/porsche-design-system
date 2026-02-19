@@ -47,7 +47,8 @@ export const getFunctionalComponentInputBaseStyles = (
   compact: boolean,
   readOnly: boolean,
   theme: Theme,
-  additionalInputJssStyle?: JssStyle
+  additionalInputJssStyle?: JssStyle,
+  additionalHostJssStyle?: JssStyle
 ): Styles => {
   const scalingVar = getScalingVar(compact);
 
@@ -91,6 +92,11 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
           [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
         }),
+        '&(:dir(rtl)) input::placeholder': {
+          direction: 'rtl',
+          textAlign: 'end',
+        },
+        ...additionalHostJssStyle,
       },
       ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
