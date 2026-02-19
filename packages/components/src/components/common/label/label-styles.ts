@@ -1,6 +1,6 @@
 import { spacingStaticXs, proseTextSmStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
-import { getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
+import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { colorContrastHigh, colorPrimary } from '../../../styles/css-variables';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
@@ -12,7 +12,11 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
-      marginInlineStart: spacingStaticXs, // TODO: this produces always a margin because the slot is always rendered, even if no content is provided. It should be adapted if `:has-slotted` gets supported by all browsers: https://caniuse.com/?search=%3Ahas-slotted
+      '&::slotted(*)': {
+        ...addImportantToEachRule({
+          marginInlineStart: spacingStaticXs,
+        })
+      },
     },
   };
 };
