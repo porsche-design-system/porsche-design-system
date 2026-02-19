@@ -1,6 +1,14 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, HEADING_TAGS, hasNamedSlot, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  HEADING_TAGS,
+  hasNamedSlot,
+  observeChildren,
+  unobserveChildren,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './accordion-styles';
 import {
   ACCORDION_ALIGN_MARKERS,
@@ -70,6 +78,23 @@ export class Accordion {
   private hasSummary: boolean;
   private hasSummaryBefore: boolean;
   private hasSummaryAfter: boolean;
+
+  public connectedCallback(): void {
+    // Observe dynamic slot changes. As soon as CSS selector :has-slotted has better browser support, we can remove this
+    // and use that selector in getComponentCss instead.
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+  }
+
+  public disconnectedCallback(): void {
+    unobserveChildren(this.host);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
