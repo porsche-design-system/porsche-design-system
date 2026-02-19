@@ -10,7 +10,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -136,7 +138,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -262,7 +266,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -388,7 +394,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -514,7 +522,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -640,7 +650,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -766,7 +778,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -855,7 +869,6 @@ input::after {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -888,14 +901,7 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    opacity: 1;
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
@@ -908,7 +914,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -997,7 +1005,6 @@ input::after {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1030,14 +1037,7 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    opacity: 1;
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
@@ -1050,7 +1050,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1139,7 +1141,6 @@ input::after {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1172,14 +1173,7 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    opacity: 1;
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
@@ -1192,7 +1186,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1281,7 +1277,6 @@ input::after {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1314,14 +1309,7 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    opacity: 1;
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
@@ -1334,7 +1322,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1423,7 +1413,6 @@ input::after {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1456,14 +1445,7 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    opacity: 1;
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
@@ -1476,7 +1458,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1565,7 +1549,6 @@ input::after {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1598,14 +1581,7 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    opacity: 1;
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
@@ -1618,7 +1594,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1756,7 +1734,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1894,7 +1874,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2032,7 +2014,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2170,7 +2154,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2308,7 +2294,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2446,7 +2434,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2593,7 +2583,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2740,7 +2732,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2887,7 +2881,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3034,7 +3030,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3181,7 +3179,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

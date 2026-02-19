@@ -7,7 +7,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 36, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -205,7 +207,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -310,7 +314,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -387,7 +393,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

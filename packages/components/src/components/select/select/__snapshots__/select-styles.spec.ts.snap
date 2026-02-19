@@ -21,7 +21,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -259,7 +261,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -498,7 +502,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -736,7 +742,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -974,7 +982,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1211,7 +1221,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1447,7 +1459,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1683,7 +1697,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1919,7 +1935,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2156,7 +2174,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2392,7 +2412,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2627,7 +2649,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2863,7 +2887,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3102,7 +3128,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3340,7 +3368,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3578,7 +3608,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3816,7 +3848,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4054,7 +4088,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4291,7 +4327,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4529,7 +4567,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4767,7 +4807,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5004,7 +5046,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5240,7 +5284,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5477,7 +5523,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5714,7 +5762,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5950,7 +6000,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;

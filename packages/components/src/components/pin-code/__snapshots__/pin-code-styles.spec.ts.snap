@@ -11,7 +11,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -252,7 +254,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -372,7 +376,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -492,7 +498,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -612,7 +620,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -732,7 +742,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -852,7 +864,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -972,7 +986,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1043,8 +1059,9 @@ input:focus-visible {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
+  cursor: not-allowed;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1103,7 +1120,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1234,7 +1253,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1365,7 +1386,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1496,7 +1519,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1627,7 +1652,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1758,7 +1785,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1889,7 +1918,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

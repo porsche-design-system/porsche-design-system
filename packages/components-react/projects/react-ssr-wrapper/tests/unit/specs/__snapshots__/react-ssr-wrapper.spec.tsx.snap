@@ -30,7 +30,9 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -336,7 +338,9 @@ img {
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1367,7 +1371,9 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1551,7 +1557,9 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -6183,7 +6191,9 @@ exports[`should render dsr component for PCheckbox 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -8580,7 +8590,9 @@ exports[`should render dsr component for PInputDate 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -8757,7 +8769,9 @@ exports[`should render dsr component for PInputEmail 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -8927,7 +8941,9 @@ exports[`should render dsr component for PInputMonth 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -9105,7 +9121,9 @@ exports[`should render dsr component for PInputNumber 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -9280,7 +9298,9 @@ exports[`should render dsr component for PInputPassword 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -9450,7 +9470,9 @@ exports[`should render dsr component for PInputSearch 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -9623,7 +9645,9 @@ exports[`should render dsr component for PInputTel 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -9793,7 +9817,9 @@ exports[`should render dsr component for PInputText 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -9963,7 +9989,9 @@ exports[`should render dsr component for PInputTime 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -10140,7 +10168,9 @@ exports[`should render dsr component for PInputUrl 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -10310,7 +10340,9 @@ exports[`should render dsr component for PInputWeek 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -11706,7 +11738,9 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -12012,7 +12046,9 @@ img {
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -12856,7 +12892,9 @@ exports[`should render dsr component for PPinCode 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -13227,7 +13265,9 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -13365,7 +13405,9 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -14015,7 +14057,9 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -14200,7 +14244,9 @@ exports[`should render dsr component for PSelect 1`] = `
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    margin-inline-start: 4px;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -18184,7 +18230,9 @@ exports[`should render dsr component for PTextarea 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: 4px;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
