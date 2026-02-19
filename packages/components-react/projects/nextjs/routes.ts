@@ -838,6 +838,10 @@ export const sitemap = {
     path: '/modal-standalone',
     name: 'Modal Page',
   },
+  streaming: {
+    path: '/streaming',
+    name: 'Streaming Test Page',
+  },
 };
 
 export const routes = Object.values(sitemap).sort((a, b) => a.name.localeCompare(b.name));

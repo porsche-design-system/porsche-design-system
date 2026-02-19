@@ -52,7 +52,7 @@ const patchStencilSSRHydration = (fileContent: string): string => {
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
-        /(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {\s+if \(BUILD[0-9]{2}\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
+        /(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {\s+)([\s\S]+?;\n)/,
         `$1${extractSnippet}$2${applySnippetPart1}$3${applySnippetPart2}`
       )
       // inject cleanup snippet
