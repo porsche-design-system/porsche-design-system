@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   HEADING_TAGS,
   hasNamedSlot,
+  hasPropValueChanged,
   observeChildren,
   unobserveChildren,
   validateProps,
@@ -102,6 +103,10 @@ export class Accordion {
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
