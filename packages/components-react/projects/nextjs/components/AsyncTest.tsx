@@ -6,27 +6,22 @@ const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export default async function AsyncTest() {
   // force dynamic rendering
+  // @ts-ignore
   const _ = await headers();
-  await wait(3000);
+  await wait(5000);
 
   return (
     <>
-      Async Data
+      Streamed content after 5 seconds
       <PTabs>
         <PTabsItem label="Tab One">
-          <PText>
-            Tab Content One
-          </PText>
+          <PText>Tab Content One</PText>
         </PTabsItem>
         <PTabsItem label="Tab Two">
-          <PText>
-            Tab Content Two
-          </PText>
+          <PText>Tab Content Two</PText>
         </PTabsItem>
         <PTabsItem label="Tab Three">
-          <PText>
-            Tab Content Three
-          </PText>
+          <PText>Tab Content Three</PText>
         </PTabsItem>
       </PTabs>
     </>
