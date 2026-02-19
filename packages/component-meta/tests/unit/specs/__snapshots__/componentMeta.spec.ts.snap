@@ -75,7 +75,7 @@ exports[`should match snapshot 1`] = `
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "@deprecated, will be removed with next major release, use slot \`summary\` instead. Sets the heading text within the summary section.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading text within the summary section.",
         "isDeprecated": true,
         "type": "string",
       },
@@ -89,7 +89,7 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": "h2",
-        "description": "@deprecated, will be removed with next major release, use slot \`summary\` instead. Sets the heading tag for proper semantic structure within the page.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading tag for proper semantic structure within the page.",
         "isDeprecated": true,
         "type": "AccordionHeadingTag",
       },
@@ -98,6 +98,17 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Controls whether the accordion is open or closed.",
         "type": "boolean",
+      },
+      "size": {
+        "allowedValues": [
+          "small",
+          "medium",
+        ],
+        "defaultValue": "small",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Controls the heading size in the summary section (only applies when using the \`heading\` prop or \`heading\` slot).",
+        "isBreakpointCustomizable": true,
+        "isDeprecated": true,
+        "type": "AccordionSize",
       },
       "sticky": {
         "allowedValues": "boolean",
