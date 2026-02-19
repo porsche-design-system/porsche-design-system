@@ -1,4 +1,4 @@
-import { test, expect, type Locator } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
 
 const getCounterValue = async (el: Locator): Promise<string> => {
@@ -183,16 +183,16 @@ test.describe('accordion', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const accordionButton = page.locator('p-accordion').getByRole('button');
+    const accordionSummary = page.locator('p-accordion').getByRole('group');
     const accordionUpdateEventCounter = page.locator('p-accordion + p');
 
-    await accordionButton.click();
+    await accordionSummary.click();
     await expect.poll(async () => await getCounterValue(accordionUpdateEventCounter)).toBe('1');
 
-    await accordionButton.click();
+    await accordionSummary.click();
     await expect.poll(async () => await getCounterValue(accordionUpdateEventCounter)).toBe('2');
 
-    await accordionButton.click();
+    await accordionSummary.click();
     await expect.poll(async () => await getCounterValue(accordionUpdateEventCounter)).toBe('3');
   });
 });

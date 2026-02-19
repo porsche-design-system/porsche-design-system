@@ -14,10 +14,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Accordion`:
+  - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-before` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-after` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `background` with values `canvas | surface | frosted | none (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `align-marker` with values `start | end (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-px` to control the horizontal padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-py` to control the vertical padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-summary-top` to control the optional sticky top position
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
 ### Changed
 
-Vue: All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must be
-accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
+- `Accordion`:
+  - Modernize visual appearance ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Use semantic HTML element `<details>` and `<summary>` internally (instead of divs and buttons) for better
+    accessibility and native behavior
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+- **Vue:** All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must
+  be accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
 
 ```diff
 <script setup lang="ts">
@@ -40,8 +64,49 @@ const isOpen = ref(false);
 </template>
 ```
 
-- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
-  `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+### Removed
+
+- `Accordion`:
+  - Prop `tag` use `heading-tag` (deprecated with v4 now) instead or make use of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" tag="h3">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+
+### Deprecated
+
+- `Accordion`:
+  - Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" heading-tag="h3" size="small">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - Slot `heading` in favor of `slot="summary"`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    <p-acccordion>
+    - <span slot="heading">Some summary</span>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    <p-accordion>
+    + <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
 
 ## [4.0.0-beta.0] - 2026-02-12
 

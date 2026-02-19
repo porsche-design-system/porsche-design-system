@@ -2,6 +2,8 @@
 
 exports[`should call validateProps() with correct parameters via render for p-accordion > propTypes with ValidatorFunctions 1`] = `
 {
+  "alignMarker": "oneOf",
+  "background": "oneOf",
   "compact": "boolean",
   "heading": "string",
   "headingTag": "oneOf",

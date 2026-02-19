@@ -4016,98 +4016,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     shadowrootmode="open"
   >
     <style>
-      :host {
-  display: block;
-  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  all: unset;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 24px;
-  cursor: pointer;
-  z-index: 0;
-  color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 15px 0;
-}
-button::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  inset-inline: -4px;
-  top: 6px;
-  bottom: 6px;
-}
-button:focus-visible::before {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-@media (forced-colors: active) {
-  button:focus-visible::before {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  }
-  button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: var(--p-color-frosted-soft);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.collapsible {
-  color: var(--p-color-primary);
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
+      @keyframes overflow-hidden {
   from {
     overflow: hidden;
   }
@@ -4115,86 +4024,155 @@ button:focus-visible::before {
     overflow: hidden;
   }
 }
-    </style>
-    <h2
-      class="heading"
-    >
-      <button
-        aria-controls="accordion-panel"
-        aria-expanded="false"
-        id="accordion-control"
-        type="button"
-      >
-        <slot
-          name="heading"
-        />
-        <span
-          class="icon-container"
-        >
-          <p-icon
-            aria-hidden="true"
-            class="icon"
-            data-ssr=""
-          >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: .75rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/plus.319993e.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/plus.319993e.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
   :host {
-    background: CanvasText !important;
+    display: block;
   }
+  :host([hidden]) {
+    display: none !important;
+  }
+  slot[name="summary-before"], slot[name="summary"], slot[name="summary-after"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(11.2px * (1 - 0.64285714) + 4px);
+  }
+  slot[name="summary-before"] {
+    grid-area: 1/1;
+    z-index: 2;
+  }
+  slot[name="summary"] {
+    grid-area: 1/1;
+  }
+  slot[name="summary-after"] {
+    grid-area: 1/2;
+    z-index: 2;
+  }
+  slot:not([name]) {
+    display: block;
+    overflow: hidden;
+  }
+  details[open] slot:not([name]) {
+    overflow: visible;
+    animation: overflow-hidden var(--p-transition-duration,.25s);
+  }
+  h1,h2,h3,h4,h5,h6 {
+    all: unset;
+    grid-area: 1/1;
+    font: inherit;
+    font-weight: var(--p-font-weight-semibold);
+    font-size: var(--p-typescale-sm);
+  }
+  details {
+    all: unset;
+    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    color: var(--p-color-primary);
+    display: grid;
+    grid-template: repeat(2, auto) / minmax(0, 1fr) auto;
+    column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
+    align-items: center;
+    padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
+    background: transparent;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  }
+  details::details-content {
+    display: contents !important;
+    content-visibility: visible !important;
+  }
+  details &gt; div {
+    grid-area: 2/1/auto/-1;
+    z-index: 0;
+    display: grid;
+    opacity: 0;
+    margin-top: 0px;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] &gt; div {
+    opacity: 1;
+    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    grid-template-rows: 1fr;
+    visibility: inherit;
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  summary {
+    all: unset;
+    grid-area: 1/1/auto/-1;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
+    margin: calc(-1 * var(--p-accordion-py, 0)) calc(-1 * var(--p-accordion-px, 0));
+  }
+  summary:focus-visible::before {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+  summary::before {
+    grid-area: 1/2;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    border-radius: var(--p-radius-full);
+    background: transparent;
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  summary::after {
+    grid-area: 1/2;
+    place-self: center;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+    background: var(--p-color-primary);
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+  }
+  details[open] summary::after {
+    transform: rotate3d(0,0,1,180deg);
+  }
+@media (forced-colors: active) {
+    details {
+      outline: 1px solid CanvasText;
+      outline-offset: 0;
+      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    }
+    summary::after {
+      background-color: LinkText;
+    }
+    summary::before {
+      background-color: LinkText;
+    }
+    summary:focus-visible::before {
+      outline-color: Highlight;
+    }
 }
 
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/plus.319993e.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
-        </span>
-      </button>
-    </h2>
-    <div
-      aria-labelledby="accordion-control"
-      class="collapsible"
-      id="accordion-panel"
-      role="region"
-    >
+@media(hover:hover) {
+    summary:hover::before {
+      background: var(--p-color-frosted);
+    }
+}
+
+    </style>
+    <details>
+      <summary>
+        <h2>
+          <slot
+            name="heading"
+          />
+        </h2>
+      </summary>
       <div>
         <slot />
       </div>
-    </div>
+    </details>
   </template>
   Some child
 </p-accordion>

@@ -1,103 +1,157 @@
-<div class="playground" title="should render single accordion">
-  <p-accordion heading="Heading" class="a11ytree-snapshot-test"></p-accordion>
-</div>
+<style>
+  p-accordion ~ p-accordion {
+    margin-block: 16px;
+  }
 
-<div class="playground" title="should render single accordion with slotted heading">
-  <p-accordion>
-    <span slot="heading">Slotted heading</span>
+  .custom-padding {
+    --p-accordion-px: 48px;
+    --p-accordion-py: 48px;
+  }
+</style>
+
+
+<div class="playground" title="should render closed accordion with rich text">
+  <p-accordion class="a11ytree-snapshot-test">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-text>Some details</p-text>
   </p-accordion>
 </div>
+
+<div class="playground" title="should render opened accordion with rich text">
+  <p-accordion open="true" class="a11ytree-snapshot-test">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render opened accordion with text node">
+  <p-accordion open="true">
+    <span slot="summary">Some summary</span>
+    Some details
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render opened accordion with deprecated heading">
+  <p-accordion open="true" heading="Some heading" heading-tag="h3">
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render accordion with different background colors">
+  <p-accordion open="true" background="canvas">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (background=canvas)</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion open="true" background="surface">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (background=surface)</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion open="true" background="frosted">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (background=frosted)</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render accordion with different align-marker">
+  <p-accordion open="true" background="surface" align-marker="start">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (align-marker="start")</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion open="true" background="surface" align-marker="end">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (align-marker="end")</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion open="true" background="none" align-marker="start">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (align-marker="start")</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion open="true" background="none" align-marker="end">
+    <p-heading slot="summary" tag="h3" size="small">Some summary (align-marker="end")</p-heading>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
 
 <div class="playground" title="should render single accordion with slotted heading and custom padding">
-  <p-accordion>
-    <span slot="heading" style="padding: 20px">Slotted heading</span>
+  <p-accordion background="surface" class="custom-padding">
+    <span slot="summary">Some summary</span>
+    Some details
   </p-accordion>
-</div>
-
-<div class="playground" title="should render single accordion size medium">
-  <p-accordion heading="Heading (size=medium)" size="medium"></p-accordion>
-</div>
-
-<div class="playground" title="should render single accordion with breakpoint customizable size">
-  <p-accordion
-    heading="Heading (size=responsive)"
-    size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
-  ></p-accordion>
 </div>
 
 <div class="playground" title="should render single accordion with long heading that breaks to second line">
   <p-accordion style="max-width: 400px">
-    <span slot="heading">Multiline heading, some extra long heading that should break to the second line</span>
+    <span slot="summary">Some summary. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</span>
+    Some details
   </p-accordion>
 </div>
 
 <div class="playground" title="should render multiple accordions with one open">
-  <p-accordion heading="Heading">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+  <p-accordion background="surface">
+    <span slot="summary">Some summary</span>
+    Some details
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="summary">Some summary</span>
+    Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-accordion>
-  <p-accordion heading="Heading (open=true)" open="true" class="a11ytree-snapshot-test">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-  </p-accordion>
-  <p-accordion heading="Heading">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  <p-accordion background="surface">
+    <span slot="summary">Some summary</span>
+    Some details
   </p-accordion>
 </div>
 
 <div class="playground" title="should render multiple compact accordions with one open">
-  <p-accordion heading="Heading (compact=true)" compact="true">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+  <p-accordion background="surface" compact="true">
+    <span slot="summary">Some summary</span>
+    Some details
+  </p-accordion>
+  <p-accordion background="surface" compact="true" open="true">
+    <span slot="summary">Some summary</span>
+    Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
   </p-accordion>
-  <p-accordion heading="Heading (compact=true open=true)" compact="true" open="true">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-  </p-accordion>
-  <p-accordion heading="Heading (compact=true)" compact="true">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  <p-accordion background="surface" compact="true">
+    <span slot="summary">Some summary</span>
+    Some details
   </p-accordion>
 </div>
 
 <div class="playground" title="should render navigation like accordion">
-  <p-accordion heading="Navigation Category (compact=true)" compact="true">
+  <p-accordion background="frosted" compact="true">
+    <span slot="summary">Some summary (background="surface")</span>
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
     <br />
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
   </p-accordion>
-  <p-accordion heading="Navigation Category (compact=true open=true)" compact="true" open="true">
+  <p-accordion background="frosted" compact="true" open="true">
+    <span slot="summary">Some summary (background="surface")</span>
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
     <br />
     <p-link-pure href="https://porsche.com">Some link</p-link-pure>
   </p-accordion>
-</div>
-
-<div class="playground" title="should render compact accordion with size medium">
-  <p-accordion heading="Heading (compact=true size=medium)" compact="true" size="medium"></p-accordion>
-</div>
-
-<div class="playground" title="should render compact accordion with breakpoint customizable size">
-  <p-accordion
-    heading="Heading (compact=true size=responsive)"
-    compact="true"
-    size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
-  ></p-accordion>
-</div>
-
-<div class="playground" title="should render single accordion with slotted and deeply nested anchor">
-  <p-accordion heading="Heading" open="true">
-    <span>
-      Some slotted and deeply nested <a href="#" class="skip-axe-core-test">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-      <em>emphasized</em> and <i>italic</i> text.
-    </span>
+  <p-accordion background="none" compact="true">
+    <span slot="summary">Some summary (background="none")</span>
+    <p-link-pure href="https://porsche.com">Some link</p-link-pure>
+    <br />
+    <p-link-pure href="https://porsche.com">Some link</p-link-pure>
+  </p-accordion>
+  <p-accordion background="none" compact="true" open="true">
+    <span slot="summary">Some summary (background="none")</span>
+    <p-link-pure href="https://porsche.com">Some link</p-link-pure>
+    <br />
+    <p-link-pure href="https://porsche.com">Some link</p-link-pure>
   </p-accordion>
 </div>
 
 <div class="playground" title="should show correct alignment of single accordion icon and link-pure icon">
   <p-link-pure stretch="true" align-label="start" href="https://porsche.com">Some label</p-link-pure>
-  <p-accordion heading="Heading"></p-accordion>
+  <p-accordion background="none">
+    <span slot="summary">Some summary</span>
+    Some details
+  </p-accordion>
 </div>
 
 <div
@@ -105,8 +159,9 @@
   title="should render multiple accordions in open state with overlapping content"
   style="padding-bottom: 200px"
 >
-  <p-accordion heading="Heading" open="true">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+  <p-accordion background="surface" open="true">
+    <span slot="summary">Some summary</span>
+    Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
     <div style="position: relative">
       <div
@@ -126,5 +181,166 @@
       </div>
     </div>
   </p-accordion>
-  <p-accordion heading="Heading"></p-accordion>
+  <p-accordion background="surface">
+    <span slot="summary">Some summary</span>
+    Some details
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render with summary-before slot">
+  <p-accordion background="surface">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start" open="true">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render with summary-after slot">
+  <p-accordion background="surface">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start" open="true">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render with summary-before and summary-after slot">
+  <p-accordion background="surface">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start" open="true">
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render with multiple slots">
+  <p-accordion background="surface">
+    <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-before">Some content</p-popover>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-before">Some content</p-popover>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start">
+    <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-before">Some content</p-popover>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" align-marker="start" open="true">
+    <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
+    <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-before">Some content</p-popover>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render with deprecated heading slot">
+  <p-accordion background="surface">
+    <span slot="heading">Some heading</span>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface">
+    <span slot="heading">Some heading</span>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="heading">Some heading</span>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="heading">Some heading</span>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+  <p-accordion background="surface" open="true">
+    <span slot="heading">Some heading</span>
+    <span slot="heading">Some heading</span>
+    <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-popover slot="summary-before">Some content</p-popover>
+    <p-popover slot="summary-after">Some content</p-popover>
+    <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+    <p-text>Some details</p-text>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render single accordion size medium">
+  <p-accordion heading="Heading (size=medium)" size="medium"></p-accordion>
+  <p-accordion size="medium">
+    <span slot="heading">Heading (size=medium)</span>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render single accordion with breakpoint customizable size">
+  <p-accordion
+    heading="Heading (size=responsive)"
+    size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
+  ></p-accordion>
 </div>

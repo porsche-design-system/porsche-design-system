@@ -246,13 +246,14 @@ solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
 ```tsx
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
 
-it('should work for PAccordion', async () => {
-  render(<PAccordion heading="Heading">Content</PAccordion>);
+it('should work for PInputText', async () => {
+  render(<PInputText label="Some label" name="some-name" />);
   await componentsReady();
 
-  const el = getByTextShadowed('Heading');
-  expect(el).toBeInTheDocument();
-  expect(el.tagName).toBe('BUTTON');
+  const shadowedInput: HTMLInputElement = getByRoleShadowed('textbox', { name: 'Some label' });
+
+  expect(shadowedInput).toBeInTheDocument();
+  expect(shadowedInput.tagName).toBe('INPUT');
 });
 ```
 

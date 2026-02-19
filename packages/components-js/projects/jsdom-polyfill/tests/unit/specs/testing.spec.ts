@@ -5,7 +5,7 @@ import {
 } from '@porsche-design-system/components-js/testing';
 import '@porsche-design-system/components-js/jsdom-polyfill';
 import { componentsReady } from '@porsche-design-system/components-js';
-import {fireEvent, getByRole, waitFor} from '@testing-library/dom';
+import { fireEvent, getByRole, waitFor } from '@testing-library/dom';
 import { vi } from 'vitest';
 
 describe('getByRoleShadowed()', () => {
@@ -69,12 +69,12 @@ describe('getByTextShadowed()', () => {
   });
 
   it('should work for p-accordion', async () => {
-    document.body.innerHTML = `<p-accordion heading="Headline">Content</p-accordion>`;
+    document.body.innerHTML = `<p-accordion><h3 slot="summary">Some summary</h3><p>Some details</p></p-accordion>`;
     await componentsReady();
 
-    const el = getByTextShadowed('Headline');
+    const el = getByTextShadowed('Some summary');
     expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('BUTTON');
+    expect(el.tagName).toBe('H3');
   });
 });
 

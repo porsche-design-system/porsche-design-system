@@ -12,6 +12,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-accordion-px": {
+        "defaultValue": "16px",
+        "description": "Horizontal padding of the accordion.",
+      },
+      "--p-accordion-py": {
+        "defaultValue": "16px",
+        "description": "Vertical padding of the accordion.",
+      },
+      "--p-accordion-summary-top": {
+        "defaultValue": "0px",
+        "description": "Controls the sticky top position when \`sticky\` is enabled.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -28,25 +40,43 @@ exports[`should match snapshot 1`] = `
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-icon",
-    ],
     "propsMeta": {
+      "alignMarker": {
+        "allowedValues": [
+          "start",
+          "end",
+        ],
+        "defaultValue": "end",
+        "description": "Aligns the marker within the summary section.",
+        "type": "AccordionAlignMarker",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "AccordionBackground",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays the Accordion as compact version with thinner border and smaller paddings.",
+        "description": "Displays the accordion in compact mode.",
         "type": "boolean",
       },
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines the heading used in accordion.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading text within the summary section.",
+        "isDeprecated": true,
         "type": "string",
       },
       "headingTag": {
@@ -59,13 +89,14 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": "h2",
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading tag for proper semantic structure within the page.",
+        "isDeprecated": true,
         "type": "AccordionHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Defines if accordion is open.",
+        "description": "Controls whether the accordion is open or closed.",
         "type": "boolean",
       },
       "size": {
@@ -74,24 +105,35 @@ exports[`should match snapshot 1`] = `
           "medium",
         ],
         "defaultValue": "small",
-        "description": "The text size.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Controls the heading size in the summary section (only applies when using the \`heading\` prop or \`heading\` slot).",
         "isBreakpointCustomizable": true,
+        "isDeprecated": true,
         "type": "AccordionSize",
       },
       "sticky": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "@experimental Sticks the Accordion heading at the top, fixed while scrolling",
+        "description": "@experimental Makes the summary section sticky at the top while scrolling. Only works with \`background="canvas"\` or \`background="surface"\`. Not compatible with \`summary-before\` or \`summary-after\` slots.",
         "isExperimental": true,
         "type": "boolean",
       },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot for the main content",
+        "description": "Main content displayed when the accordion is expanded.",
       },
       "heading": {
-        "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup.",
+        "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.",
+        "isDeprecated": true,
+      },
+      "summary": {
+        "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed.",
+      },
+      "summary-after": {
+        "description": "Content or interactive elements placed after the accordion's summary section.",
+      },
+      "summary-before": {
+        "description": "Content or interactive elements placed before the accordion's summary section.",
       },
     },
     "styling": "jss",

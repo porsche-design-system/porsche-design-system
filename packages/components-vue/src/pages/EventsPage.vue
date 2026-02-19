@@ -48,6 +48,7 @@ import {
   PAccordion,
   PBanner,
   PCarousel,
+  PHeading,
   PInputDate,
   PInputEmail,
   PInputMonth,
@@ -244,7 +245,9 @@ const onTextareaChange = (_: CustomEvent<TextareaChangeEventDetail>) => textarea
 
 <template>
   <div class="playground">
-    <PAccordion :heading="'Some heading'" @update="onAccordionUpdate" />
+    <PAccordion @update="onAccordionUpdate">
+      <PHeading slot="summary" tag="h3" size="small">Some summary</PHeading>
+    </PAccordion>
     <p>{{ accordionUpdateEventCounter }}</p>
   </div>
 

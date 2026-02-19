@@ -33,8 +33,8 @@ type TagNameRelevant = Exclude<
 
 export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-accordion': `<p-accordion>
-  <span slot="heading">Some Slotted Heading</span>
-  <p>Some Text</p>
+  <h3 slot="summary">Some summary</h3>
+  <p>Some details</p>
 </p-accordion>`,
   'p-sheet': `<p-sheet open="true"><h2 slot="header">Some Heading</h2></p-sheet>`,
   'p-banner': `<p-banner heading="Some heading">
