@@ -68,7 +68,7 @@ export const accordionSlotStories: SlotStories<'p-accordion'> = {
           tag: 'p-heading',
           properties: {
             slot: 'summary',
-            tag: 'h3',
+            tag: 'h2',
             size: 'small',
           },
           children: ['Some summary'],
