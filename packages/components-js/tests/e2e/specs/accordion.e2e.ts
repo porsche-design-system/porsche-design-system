@@ -2,8 +2,6 @@ import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
 import {
   addEventListener,
-  getAttribute,
-  getElementStyle,
   getEventSummary,
   getLifecycleStatus,
   hasFocus,
@@ -44,47 +42,54 @@ ${otherSlottedMarkup}
 
 const getHost = (page: Page) => page.locator('p-accordion');
 const getSummary = (page: Page) => page.locator('p-accordion summary');
+const getSummaryBefore = (page: Page) => page.locator('p-accordion details slot[name="summary-before"]');
+const getSummaryAfter = (page: Page) => page.locator('p-accordion details slot[name="summary-after"]');
 const getDetails = (page: Page) => page.locator('p-accordion details');
 const getInput = (page: Page) => page.locator('input');
 const getCollapsible = (page: Page) => page.locator('p-accordion details > div');
 const getBody = (page: Page) => page.locator('body');
-const getCollapseVisibility = async (page: Page) => getElementStyle(getCollapsible(page), 'visibility');
-const getCollapseGridTemplateRows = async (page: Page) => getElementStyle(getCollapsible(page), 'gridTemplateRows');
+const getCollapsibleHeight = async (page: Page): Promise<number> => {
+  return await getCollapsible(page)
+    .boundingBox()
+    .then((box) => box?.height);
+};
 
 test('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async ({
   page,
 }) => {
   await initAccordion(page, { isOpen: true });
-  expect(await getCollapseGridTemplateRows(page)).not.toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('visible');
+
+  expect(await getCollapsibleHeight(page)).toBeGreaterThan(0);
+  await expect(getCollapsible(page)).toBeVisible();
 });
 
 test('should set "gridTemplateRows: 0fr" (0px) and "visibility: hidden" on collapsible on initial close', async ({
   page,
 }) => {
   await initAccordion(page);
-  expect(await getCollapseGridTemplateRows(page)).toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('hidden');
+
+  expect(await getCollapsibleHeight(page)).toBe(0);
+  await expect(getCollapsible(page)).toBeHidden();
 });
 
 test('should set correct gridTemplateRows and visibility on collapsible on open change', async ({ page }) => {
   await initAccordion(page);
   const host = getHost(page);
 
-  expect(await getCollapseGridTemplateRows(page), 'initially').toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('hidden');
+  expect(await getCollapsibleHeight(page), 'initially').toBe(0);
+  await expect(getCollapsible(page)).toBeHidden();
 
   await setProperty(host, 'open', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(page), 'after open=true').not.toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('visible');
+  expect(await getCollapsibleHeight(page), 'after open=true').toBeGreaterThan(0);
+  await expect(getCollapsible(page)).toBeVisible();
 
   await setProperty(host, 'open', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(page), 'after open=false').toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('hidden');
+  expect(await getCollapsibleHeight(page), 'after open=false').toBe(0);
+  await expect(getCollapsible(page)).toBeHidden();
 });
 
 test('should have correct gridTemplateRows and visibility after fast open/close re-trigger', async ({ page }) => {
@@ -97,8 +102,8 @@ test('should have correct gridTemplateRows and visibility after fast open/close 
   await summary.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(page)).not.toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('visible');
+  expect(await getCollapsibleHeight(page)).toBeGreaterThan(0);
+  await expect(getCollapsible(page)).toBeVisible();
 });
 
 test('should have correct gridTemplateRows and visibility after fast close/open re-trigger', async ({ page }) => {
@@ -111,26 +116,56 @@ test('should have correct gridTemplateRows and visibility after fast close/open 
   await summary.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(page)).toBe('0px');
-  expect(await getCollapseVisibility(page)).toBe('hidden');
+  expect(await getCollapsibleHeight(page)).toBe(0);
+  await expect(getCollapsible(page)).toBeHidden();
 });
 
-test('should show add attribute open when opened', async ({ page }) => {
+test('should add attribute "open" when opened', async ({ page }) => {
   await initAccordion(page, { otherPostMarkup: clickHandlerScript });
   const details = getDetails(page);
   const summary = getSummary(page);
 
-  expect(await getAttribute(details, 'open'), 'initial when closed').toBe(null);
+  await expect(details, 'initial when closed').not.toHaveAttribute('open', '');
 
   await summary.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getAttribute(details, 'open'), 'after click to open').toBe('');
+  await expect(details, 'after click to open').toHaveAttribute('open', '');
 
   await summary.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getAttribute(details, 'open'), 'after click to close').toBe(null);
+  await expect(details, 'after click to close').not.toHaveAttribute('open', '');
+});
+
+test.describe('after dynamic slot change', () => {
+  skipInBrowsers(['webkit', 'firefox']);
+
+  test('should show summary-before', async ({ page }) => {
+    await initAccordion(page);
+    const host = getHost(page);
+    const summaryBeforeText = 'Some slotted summary-before content';
+
+    await host.evaluate((el, summaryBeforeText) => {
+      el.innerHTML = `<div slot="summary-before">${summaryBeforeText}</div>`;
+    }, summaryBeforeText);
+
+    await expect(page.getByText(summaryBeforeText)).toBeVisible();
+    await expect(getSummaryBefore(page)).toBeVisible();
+  });
+
+  test('should show summary-after', async ({ page }) => {
+    await initAccordion(page);
+    const host = getHost(page);
+    const summaryAfterText = 'Some slotted summary-after content';
+
+    await host.evaluate((el, summaryAfterText) => {
+      el.innerHTML = `<div slot="summary-after">${summaryAfterText}</div>`;
+    }, summaryAfterText);
+
+    await expect(page.getByText(summaryAfterText)).toBeVisible();
+    await expect(getSummaryAfter(page)).toBeVisible();
+  });
 });
 
 test.describe('events', () => {
