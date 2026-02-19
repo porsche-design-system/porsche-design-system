@@ -82,10 +82,10 @@ const isOpen = ref(false);
 ### Deprecated
 
 - `Accordion`:
-  - Prop `heading` and `heading-tag` in favor of `slot="summary"` for more flexibility
+  - Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
     ```diff
-    - <p-acccordion heading="Some summary" heading-tag="h3">
+    - <p-acccordion heading="Some summary" heading-tag="h3" size="small">
         <p-text>Some details</p-text>
     </p-accordion>
     + <p-accordion>
