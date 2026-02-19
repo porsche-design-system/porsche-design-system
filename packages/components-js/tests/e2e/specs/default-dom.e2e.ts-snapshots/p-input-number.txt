@@ -9,8 +9,8 @@
       id="input-number"
       name="value"
       type="number"
-      placeholder=""
       step="1"
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

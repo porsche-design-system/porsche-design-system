@@ -9,7 +9,7 @@
       id="input-text"
       name="value"
       type="text"
-      placeholder=""
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

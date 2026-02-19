@@ -10,6 +10,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -126,6 +130,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -244,6 +252,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -359,6 +371,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -476,6 +492,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -591,6 +611,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -709,6 +733,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -825,6 +853,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -943,6 +975,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1059,6 +1095,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1173,6 +1213,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1289,6 +1333,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1397,6 +1445,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1503,6 +1555,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1745,6 +1801,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1972,6 +2032,10 @@ exports[`getFunctionalComponentInputBaseStyles() > should return correct css for
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
