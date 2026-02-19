@@ -25,6 +25,7 @@ import { Label } from '../../common/label/label';
 import { descriptionId, labelId } from '../../common/label/label-utils';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 import { getComponentCss } from './radio-group-styles';
 import {
   findNextEnabledIndex,
@@ -39,7 +40,6 @@ import {
   syncRadioGroupChildrenProps,
   updateRadioGroupOptions,
 } from './radio-group-utils';
-import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof RadioGroup> = {
   label: AllowedTypes.string,
@@ -306,7 +306,7 @@ export class RadioGroup {
     this.radioGroupOptions.forEach((opt, i) => {
       const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
       if (input) {
-        input.tabIndex = i === focusIndex ? 0 : -1;
+        input.setAttribute('tabIndex', i === focusIndex ? '0' : '-1');
       }
     });
   }
