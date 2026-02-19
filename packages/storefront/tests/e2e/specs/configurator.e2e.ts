@@ -43,24 +43,30 @@ test.describe('properties > select', () => {
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
       const accordion = page.locator('.demo p-accordion');
+      const backgroundSelect = page.locator('p-select[name="background"]');
 
       await expect(accordion).toBeVisible();
-      await expect(accordion).toHaveJSProperty('background', 'none');
-      await expect(markup).toContainText(expectedTag);
-
-      const backgroundSelect = page.locator('p-select[name="background"]');
       await expect(backgroundSelect).toBeVisible();
+      await expect(markup).toBeVisible();
+
+      await expect(accordion).toHaveJSProperty('background', 'none');
       await expect(backgroundSelect).toHaveJSProperty('value', 'none');
+      await expect(markup).toContainText(expectedTag);
       await expect(markup).not.toContainText(backgroundPropText);
 
       await backgroundSelect.click();
       await backgroundSelect.locator('p-select-option').nth(2).click();
-      await expect(markup).toContainText(backgroundPropText);
+
       await expect(accordion).toHaveJSProperty('background', 'frosted');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'frosted');
+      await expect(markup).toContainText(expectedTag);
+      await expect(markup).toContainText(backgroundPropText);
 
       await backgroundSelect.locator('p-tag button').click();
-      // TODO: shouldn't the expected value be 'none'?
-      await expect(backgroundSelect).toHaveJSProperty('background', undefined);
+
+      await expect(accordion).toHaveJSProperty('background', 'none');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'none');
+      await expect(markup).toContainText(expectedTag);
       await expect(markup).not.toContainText(backgroundPropText);
     });
   }
