@@ -8,6 +8,7 @@ exports[`should call validateProps() with correct parameters via render for p-ac
   "heading": "string",
   "headingTag": "oneOf",
   "open": "boolean",
+  "size": "breakpoint",
   "sticky": "boolean",
 }
 `;

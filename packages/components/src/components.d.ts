@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
+import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -67,9 +67,9 @@ import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventD
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
+export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -147,17 +147,21 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading text within the summary section.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading tag for proper semantic structure within the page.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
           * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
+        /**
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
+         */
+        "size"?: BreakpointCustomizable<AccordionSize>;
         /**
           * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
@@ -3778,11 +3782,11 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading text within the summary section.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * @deprecated , will be removed with next major release, use slot `summary` instead. Sets the heading tag for proper semantic structure within the page.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -3793,6 +3797,10 @@ declare namespace LocalJSX {
           * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
+        /**
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
+         */
+        "size"?: BreakpointCustomizable<AccordionSize>;
         /**
           * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
