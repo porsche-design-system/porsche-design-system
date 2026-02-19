@@ -4060,6 +4060,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     grid-area: 1/1;
     font: inherit;
     font-weight: var(--p-font-weight-semibold);
+    font-size: var(--p-typescale-sm);
   }
   details {
     all: unset;
