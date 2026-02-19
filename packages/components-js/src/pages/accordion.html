@@ -330,3 +330,17 @@
     <p-text>Some details</p-text>
   </p-accordion>
 </div>
+
+<div class="playground" title="should render single accordion size medium">
+  <p-accordion heading="Heading (size=medium)" size="medium"></p-accordion>
+  <p-accordion size="medium">
+    <span slot="heading">Heading (size=medium)</span>
+  </p-accordion>
+</div>
+
+<div class="playground" title="should render single accordion with breakpoint customizable size">
+  <p-accordion
+    heading="Heading (size=responsive)"
+    size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
+  ></p-accordion>
+</div>
