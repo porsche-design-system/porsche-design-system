@@ -20,11 +20,13 @@ import {
   legacyRadiusSmall,
   radiusFull,
   radiusXl,
+  typescaleMd,
   typescaleSm,
 } from '../../styles/css-variables';
-import { getCss } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import type { AccordionAlignMarker, AccordionBackground } from './accordion-utils';
+import type { AccordionAlignMarker, AccordionBackground, AccordionSize } from './accordion-utils';
 
 /**
  * @css-variable {"name": "--p-accordion-summary-top", "description": "Controls the sticky top position when `sticky` is enabled.", "defaultValue": "0px"}
@@ -66,7 +68,8 @@ export const getComponentCss = (
   isOpen: boolean,
   isSticky: boolean,
   hasSummaryBefore: boolean,
-  hasSummaryAfter: boolean
+  hasSummaryAfter: boolean,
+  size: BreakpointCustomizable<AccordionSize>
 ): string => {
   const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
@@ -126,6 +129,9 @@ export const getComponentCss = (
         gridArea: `1/${hasSummaryBefore && isIconAlignedStart ? '3' : hasSummaryBefore || isIconAlignedStart ? '2' : '1'}`,
         font: 'inherit',
         fontWeight: fontWeightSemibold,
+        ...buildResponsiveStyles(size, (sizeValue: AccordionSize) => ({
+          fontSize: sizeValue === 'medium' ? typescaleMd : typescaleSm,
+        })),
       },
       details: {
         all: 'unset',

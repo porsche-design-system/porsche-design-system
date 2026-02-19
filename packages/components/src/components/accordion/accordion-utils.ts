@@ -10,3 +10,7 @@ export type AccordionUpdateEventDetail = { open: boolean };
 
 /** @deprecated */
 export type AccordionHeadingTag = HeadingTag;
+
+export const ACCORDION_SIZES = ['small', 'medium'] as const;
+/** @deprecated */
+export type AccordionSize = (typeof ACCORDION_SIZES)[number];

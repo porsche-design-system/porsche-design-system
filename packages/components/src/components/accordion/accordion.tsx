@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -12,10 +12,12 @@ import {
 import { getComponentCss } from './accordion-styles';
 import {
   ACCORDION_ALIGN_MARKERS,
+  ACCORDION_SIZES,
   ACCORDIONS_BACKGROUNDS,
   type AccordionAlignMarker,
   type AccordionBackground,
   type AccordionHeadingTag,
+  type AccordionSize,
   type AccordionUpdateEventDetail,
 } from './accordion-utils';
 
@@ -25,6 +27,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   background: AllowedTypes.oneOf<AccordionBackground>(ACCORDIONS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
   sticky: AllowedTypes.boolean,
+  size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
 };
@@ -58,12 +61,17 @@ export class Accordion {
   @Prop() public compact?: boolean;
 
   /**
-   * @deprecated, will be removed with next major release, use slot `summary` instead.
+   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot). */
+  @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
+
+  /**
+   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
    * Sets the heading text within the summary section. */
   @Prop() public heading?: string;
 
   /**
-   * @deprecated, will be removed with next major release, use slot `summary` instead.
+   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
    * Sets the heading tag for proper semantic structure within the page. */
   @Prop() public headingTag?: AccordionHeadingTag = 'h2';
 
@@ -112,7 +120,8 @@ export class Accordion {
       this.open,
       this.sticky,
       this.hasSummaryBefore,
-      this.hasSummaryAfter
+      this.hasSummaryAfter,
+      this.size
     );
 
     const Heading = this.headingTag;
