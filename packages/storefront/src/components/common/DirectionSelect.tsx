@@ -25,7 +25,7 @@ export const DirectionSelect = ({
   return (
     <PSelect name="direction" value={value} hideLabel={hideLabel} compact={true} onChange={onDirectionChange}>
       <span slot="label">{label}</span>
-      <PPopover slot="label-after" className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+      <PPopover slot="label-after" onClick={(e) => e.preventDefault()}>
         The <code>dir</code> global attribute in HTML changes the direction of text and other content within an element.
         It's most often used on the{' '}
         <code>

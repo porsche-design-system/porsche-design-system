@@ -52,11 +52,10 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
@@ -87,6 +86,7 @@ export const getComponentCss = (
       alignSelf: 'flex-start',
       minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      ...(isDisabled && getDisabledBaseStyles()),
     },
     ...(isLoading && {
       spinner: {
@@ -101,7 +101,8 @@ export const getComponentCss = (
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
-      isDisabled || isLoading,
+      isDisabled,
+      isLoading,
       hideLabel,
       {
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',

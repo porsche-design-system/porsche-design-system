@@ -11,6 +11,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -135,6 +138,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -261,6 +267,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -385,6 +394,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -511,6 +523,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -636,6 +651,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -753,7 +771,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -761,7 +778,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -800,10 +819,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -852,8 +867,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -886,19 +901,12 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -906,7 +914,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -945,10 +955,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -997,8 +1003,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1031,19 +1037,12 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1051,7 +1050,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1090,10 +1091,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1142,8 +1139,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1176,19 +1173,12 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1196,7 +1186,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1235,10 +1227,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1287,8 +1275,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1321,19 +1309,12 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1341,7 +1322,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1380,10 +1363,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1432,8 +1411,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1466,19 +1445,12 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1486,7 +1458,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1525,10 +1499,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1577,8 +1547,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1611,19 +1581,12 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .label {
-    color: GrayText;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1631,7 +1594,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1670,10 +1635,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1694,6 +1655,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1713,8 +1675,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1749,7 +1712,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1759,7 +1727,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1767,7 +1734,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1806,10 +1775,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1830,6 +1795,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1849,8 +1815,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1885,7 +1852,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1895,7 +1867,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1903,7 +1874,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1942,10 +1915,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -1966,6 +1935,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1985,8 +1955,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2021,7 +1992,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2031,7 +2007,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2039,7 +2014,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2078,10 +2055,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2102,6 +2075,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2121,8 +2095,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2157,7 +2132,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2167,7 +2147,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2175,7 +2154,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2214,10 +2195,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2238,6 +2215,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2257,8 +2235,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2293,7 +2272,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2303,7 +2287,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2311,7 +2294,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2350,10 +2335,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2374,6 +2355,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2393,8 +2375,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2429,7 +2412,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2439,7 +2427,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2447,7 +2434,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2486,10 +2475,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2510,6 +2495,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -2538,8 +2524,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2574,7 +2561,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2584,7 +2576,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2592,7 +2583,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2631,10 +2624,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2655,6 +2644,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -2683,8 +2673,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2719,7 +2710,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2729,7 +2725,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2737,7 +2732,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2776,10 +2773,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2800,6 +2793,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -2828,8 +2822,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2864,7 +2859,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -2874,7 +2874,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2882,7 +2881,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2921,10 +2922,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -2945,6 +2942,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -2973,8 +2971,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3009,7 +3008,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3019,7 +3023,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3027,7 +3030,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3066,10 +3071,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -3090,6 +3091,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -3118,8 +3120,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3154,7 +3157,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -3164,7 +3172,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3172,7 +3179,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3211,10 +3220,6 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
-  }
   input {
     border-color: GrayText;
   }
@@ -3235,6 +3240,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
   position: absolute;
@@ -3263,8 +3269,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -3299,7 +3306,12 @@ input::after {
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }

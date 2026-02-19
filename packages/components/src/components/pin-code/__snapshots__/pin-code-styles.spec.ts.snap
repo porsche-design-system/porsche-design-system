@@ -12,6 +12,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -252,6 +255,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -370,6 +376,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -490,6 +499,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -608,6 +620,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -728,6 +743,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -846,6 +864,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -966,6 +987,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1035,8 +1059,9 @@ input:focus-visible {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
+  cursor: not-allowed;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1088,7 +1113,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 ":host {
   display: block;
   --p-internal-pin-code-scaling: 1;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1096,7 +1120,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1119,14 +1145,15 @@ input {
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
+  opacity: 0.4;
 }
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
@@ -1158,8 +1185,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1207,6 +1235,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1217,7 +1246,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 ":host {
   display: block;
   --p-internal-pin-code-scaling: 1;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1225,7 +1253,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1248,14 +1278,15 @@ input {
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
+  opacity: 0.4;
 }
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
@@ -1287,8 +1318,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1336,6 +1368,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1346,7 +1379,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 ":host {
   display: block;
   --p-internal-pin-code-scaling: 1;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1354,7 +1386,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1377,14 +1411,15 @@ input {
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
+  opacity: 0.4;
 }
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
@@ -1416,8 +1451,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1465,6 +1501,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1475,7 +1512,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 ":host {
   display: block;
   --p-internal-pin-code-scaling: 1;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1483,7 +1519,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1506,14 +1544,15 @@ input {
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
+  opacity: 0.4;
 }
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
@@ -1545,8 +1584,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1594,6 +1634,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1604,7 +1645,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 ":host {
   display: block;
   --p-internal-pin-code-scaling: 1;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1612,7 +1652,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1635,14 +1677,15 @@ input {
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
+  opacity: 0.4;
 }
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
@@ -1674,8 +1717,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1723,6 +1767,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1733,7 +1778,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 ":host {
   display: block;
   --p-internal-pin-code-scaling: 0.64285714;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1741,7 +1785,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1764,14 +1810,15 @@ input {
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
+  opacity: 0.4;
 }
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media (forced-colors: active) {
-  :host {
-    opacity: 1 !important;
-    color: GrayText !important;
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
@@ -1803,8 +1850,9 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1852,6 +1900,7 @@ input:focus-visible {
 }
 @media (forced-colors: active) {
   .label {
+    opacity: 1;
     color: GrayText;
   }
 }
@@ -1869,6 +1918,9 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

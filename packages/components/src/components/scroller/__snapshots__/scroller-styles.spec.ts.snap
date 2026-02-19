@@ -89,9 +89,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -197,9 +194,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .action-button {
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
 }
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
@@ -307,9 +301,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -416,9 +407,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -519,9 +507,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .action-button {
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
 }
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
@@ -624,9 +609,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -728,9 +710,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -830,9 +809,6 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
 .action-button {
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
 }
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {

@@ -1,35 +1,35 @@
 import { spacingStaticXs, proseTextSmStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
-import { forcedColorsMediaQuery, getHiddenTextJssStyle, getTransition } from '../../../styles';
+import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { colorContrastHigh, colorPrimary } from '../../../styles/css-variables';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 import { typescaleXs } from '@porsche-design-system/tokens';
 
-export const getFunctionalComponentLabelAfterStyles = (
-  isDisabledOrLoading: boolean,
-  additionalIsDisabledJssStyle?: JssStyle
-): Styles => {
+export const getFunctionalComponentLabelAfterStyles = (): Styles => {
   return {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
-      ...(isDisabledOrLoading && {
-        pointerEvents: 'none',
-        ...additionalIsDisabledJssStyle,
-      }),
+      '&::slotted(*)': {
+        ...addImportantToEachRule({
+          marginInlineStart: spacingStaticXs,
+        })
+      },
     },
   };
 };
 
 export const getFunctionalComponentLabelStyles = (
-  isDisabledOrLoading: boolean,
+  isDisabled: boolean,
+  isLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   additionalDefaultJssStyle?: JssStyle,
   additionalLabelWrapperJssStyle?: JssStyle,
   additionalIsShownJssStyle?: JssStyle
 ): Styles => {
+  const isDisabledOrLoading = isDisabled || isLoading;
   return {
     'label-wrapper': {
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
@@ -41,14 +41,13 @@ export const getFunctionalComponentLabelStyles = (
     label: {
       ...proseTextSmStyle,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+      color: colorPrimary,
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
-      color: colorPrimary,
-      ...(isDisabledOrLoading &&
-        forcedColorsMediaQuery({
-          color: 'GrayText',
-        })),
+      ...(isDisabled && {
+        ...getDisabledBaseStyles(),
+      }),
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       display: 'inline',
       '&:empty': {

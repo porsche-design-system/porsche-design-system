@@ -42,6 +42,9 @@ const isOpen = ref(false);
 
 - `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
   `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  Slot `label-after` is not affected by `disbaled` states anymore
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
 
 ## [4.0.0-beta.0] - 2026-02-12
 

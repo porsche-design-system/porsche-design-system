@@ -37,7 +37,10 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
     option: getOptionJssStyle('multi-select-option', cssVarInternalMultiSelectOptionScaling),
     checkbox: mergeDeep(
       getCheckboxBaseStyles(isDisabled, false, true, 'none'),
-      selected ? getCheckboxCheckedBaseStyles(false, 'none') : {}
+      selected ? getCheckboxCheckedBaseStyles(false, 'none') : {},
+      {
+        flexShrink: 0,
+      }
     ),
   });
 };

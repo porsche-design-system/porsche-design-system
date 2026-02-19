@@ -50,10 +50,9 @@ export const getComponentCss = (
         [`${cssVarInternalPinCodeScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -73,7 +72,7 @@ export const getComponentCss = (
         textOverflow: 'ellipsis',
         cursor: isDisabled || isLoading ? 'not-allowed' : 'text',
         textAlign: 'center',
-        ...(isLoading && getDisabledBaseStyles()),
+        ...((isDisabled || isLoading) && getDisabledBaseStyles()),
         '&:focus-visible': {
           borderColor: formStateBorderHoverColor,
         },
@@ -110,7 +109,7 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

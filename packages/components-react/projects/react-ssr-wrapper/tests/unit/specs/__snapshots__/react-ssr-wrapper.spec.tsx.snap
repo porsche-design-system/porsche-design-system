@@ -31,6 +31,9 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -336,12 +339,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -578,7 +586,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -814,6 +822,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -911,6 +920,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -1008,6 +1018,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -1105,6 +1116,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -1202,6 +1214,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -1299,6 +1312,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -1357,6 +1371,9 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1540,6 +1557,9 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1873,9 +1893,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -1917,6 +1934,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -1930,7 +1948,8 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2098,6 +2117,7 @@ img {
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -2111,7 +2131,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2750,9 +2771,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -2793,6 +2811,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -2806,7 +2825,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2974,6 +2994,7 @@ img {
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -2987,7 +3008,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3401,9 +3423,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -3444,6 +3463,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
                 <p-button
                   class="action-button"
                   data-ssr=""
+                  dir="ltr"
                   hide-label="true"
                   tabindex="-1"
                 >
@@ -3457,7 +3477,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3625,6 +3646,7 @@ img {
                 <p-button
                   class="action-button"
                   data-ssr=""
+                  dir="ltr"
                   hide-label="true"
                   tabindex="-1"
                 >
@@ -3638,7 +3660,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4427,6 +4450,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
+  --p-internal-border-radius: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -4606,7 +4630,8 @@ exports[`should render dsr component for PButton 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5030,7 +5055,8 @@ p {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5478,7 +5504,8 @@ h2 {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
+  --p-internal-border-radius: var(--p-radius-lg);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5813,7 +5840,8 @@ svg {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
+  --p-internal-border-radius: var(--p-radius-lg);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6163,6 +6191,9 @@ exports[`should render dsr component for PCheckbox 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -6715,7 +6746,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -6854,6 +6885,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -7026,6 +7058,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
+  --p-internal-border-radius: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -7494,7 +7527,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -7539,6 +7572,7 @@ img {
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -7942,6 +7976,7 @@ dialog::backdrop {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -8369,6 +8404,7 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
+  --p-internal-border-radius: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -8555,12 +8591,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8729,12 +8770,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8896,12 +8942,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9071,12 +9122,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9243,12 +9299,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9410,12 +9471,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9580,12 +9646,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9747,12 +9818,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -9914,12 +9990,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -10088,12 +10169,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -10255,12 +10341,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -10421,7 +10512,8 @@ exports[`should render dsr component for PLink 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-link-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -10835,7 +10927,8 @@ p {
   display: inline-block;
   vertical-align: top;
   --p-internal-link-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -11109,7 +11202,7 @@ slot[name="header"] {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -11394,6 +11487,7 @@ dialog::backdrop {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -11644,6 +11738,9 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -11950,12 +12047,17 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
   all: unset;
+  display: flex;
   flex: 1;
+  align-items: center;
   width: max(100%, 2ch);
   height: 100%;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -12192,7 +12294,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -12433,6 +12535,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -12789,6 +12892,9 @@ exports[`should render dsr component for PPinCode 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -13160,6 +13266,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -13296,6 +13405,9 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -13524,9 +13636,6 @@ exports[`should render dsr component for PScroller 1`] = `
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -13567,6 +13676,7 @@ exports[`should render dsr component for PScroller 1`] = `
         <p-button
           class="action-button"
           data-ssr=""
+          dir="ltr"
           hide-label="true"
           tabindex="-1"
         >
@@ -13580,7 +13690,8 @@ exports[`should render dsr component for PScroller 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13748,6 +13859,7 @@ img {
         <p-button
           class="action-button"
           data-ssr=""
+          dir="ltr"
           hide-label="true"
           tabindex="-1"
         >
@@ -13761,7 +13873,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13944,6 +14057,9 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -14128,6 +14244,9 @@ exports[`should render dsr component for PSelect 1`] = `
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -14669,6 +14788,7 @@ dialog::backdrop {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -15055,9 +15175,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -15099,6 +15216,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -15112,7 +15230,8 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15280,6 +15399,7 @@ img {
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -15293,7 +15413,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15859,9 +15980,6 @@ exports[`should render dsr component for PTable 1`] = `
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -15902,6 +16020,7 @@ exports[`should render dsr component for PTable 1`] = `
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -15915,7 +16034,8 @@ exports[`should render dsr component for PTable 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -16083,6 +16203,7 @@ img {
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -16096,7 +16217,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -16668,9 +16790,6 @@ exports[`should render dsr component for PTabs 1`] = `
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -16711,6 +16830,7 @@ exports[`should render dsr component for PTabs 1`] = `
                 <p-button
                   class="action-button"
                   data-ssr=""
+                  dir="ltr"
                   hide-label="true"
                   tabindex="-1"
                 >
@@ -16724,7 +16844,8 @@ exports[`should render dsr component for PTabs 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -16892,6 +17013,7 @@ img {
                 <p-button
                   class="action-button"
                   data-ssr=""
+                  dir="ltr"
                   hide-label="true"
                   tabindex="-1"
                 >
@@ -16905,7 +17027,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -17299,9 +17422,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   --p-internal-button-scaling: 0.5;
   box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
 @media (forced-colors: active) {
   .scroll-wrapper:focus-visible {
     outline-color: Highlight;
@@ -17342,6 +17462,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -17355,7 +17476,8 @@ exports[`should render dsr component for PTabsBar 1`] = `
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -17523,6 +17645,7 @@ img {
             <p-button
               class="action-button"
               data-ssr=""
+              dir="ltr"
               hide-label="true"
               tabindex="-1"
             >
@@ -17536,7 +17659,8 @@ img {
   display: inline-block;
   vertical-align: top;
   --p-internal-button-scaling: 1;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+  --p-internal-border-radius: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -17769,7 +17893,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -18106,6 +18230,9 @@ exports[`should render dsr component for PTextarea 1`] = `
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
