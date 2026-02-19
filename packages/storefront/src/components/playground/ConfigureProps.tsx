@@ -265,10 +265,10 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
       </PHeading>
       {amountOfConfiguredProps > 0 && (
         <>
-          <PTag slot="summary" variant="secondary" compact={true}>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
             {amountOfConfiguredProps}
           </PTag>
-          <PTag slot="summary" variant="secondary" compact={true} onClick={(e) => e.preventDefault()}>
+          <PTag slot="summary-after" variant="secondary" compact={true} onClick={(e) => e.preventDefault()}>
             <button
               type="button"
               onClick={() => {

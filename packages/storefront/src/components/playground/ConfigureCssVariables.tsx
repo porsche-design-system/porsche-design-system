@@ -35,10 +35,10 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
       </PHeading>
       {amountOfConfiguredCssVariables > 0 && (
         <>
-          <PTag slot="summary" variant="secondary" compact={true}>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
             {amountOfConfiguredCssVariables}
           </PTag>
-          <PTag slot="summary" variant="secondary" compact={true}>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
             {/*// TODO: Implement */}
             <button type="button">Reset all</button>
           </PTag>
