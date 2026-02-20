@@ -195,6 +195,7 @@ export class RadioGroup {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
+    this.updateTabStops();
   }
 
   public render(): JSX.Element {
