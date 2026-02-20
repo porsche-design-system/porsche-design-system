@@ -30,7 +30,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.32.0",
+    "@porsche-design-system/components-vue": "3.32.1-rc.0",
     "vue": "^3.5.22",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.1"
