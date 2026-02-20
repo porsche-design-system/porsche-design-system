@@ -9,7 +9,7 @@
       id="input-search"
       name="value"
       type="search"
-      placeholder=""
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

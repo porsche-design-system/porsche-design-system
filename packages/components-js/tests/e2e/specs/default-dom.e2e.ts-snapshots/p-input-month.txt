@@ -10,6 +10,7 @@
       name="value"
       type="month"
       step="1"
+      dir="auto"
     />
     <p-button-pure class="button hydrated"> Open date picker</p-button-pure>
     <slot name="end"> </slot>
