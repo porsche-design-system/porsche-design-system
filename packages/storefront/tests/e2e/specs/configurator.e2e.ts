@@ -133,8 +133,7 @@ test.describe('properties > input-text', () => {
     await expect(markup).toContainText('name=""');
 
     await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for react', async ({ page }) => {
@@ -163,8 +162,7 @@ test.describe('properties > input-text', () => {
     await expect(markup).toContainText('name=""');
 
     await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for angular', async ({ page }) => {
@@ -193,8 +191,7 @@ test.describe('properties > input-text', () => {
     await expect(markup).toContainText('name=""');
 
     await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
-    await expect(button).toHaveJSProperty('name', null);
+    await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for vue', async ({ page }) => {
