@@ -5,7 +5,6 @@ export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) =
 
 export const goto = async (page: Page, url: string): Promise<void> => {
   await page.goto(url);
-  await page.locator('html.hydrated').waitFor();
   await waitForComponentsReady(page);
 
   // it looks like vue event binding is a bit unreliable and happens after onMounted
