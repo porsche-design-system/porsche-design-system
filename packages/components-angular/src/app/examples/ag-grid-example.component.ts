@@ -80,7 +80,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
-  imports: [PorscheDesignSystemModule, AsyncPipe, NgClass],
+  imports: [PorscheDesignSystemModule],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
