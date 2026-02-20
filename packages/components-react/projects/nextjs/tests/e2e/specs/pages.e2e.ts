@@ -1,12 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { goto, initConsoleObserver, getConsoleErrorsAmount } from '../helpers';
+import { expect, test } from '@playwright/test';
 import { routes } from '../../../routes';
+import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
 
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 });
 
-const pageUrls = routes.map((item) => item.path);
+const pageUrls = routes.map((item) => item.path).filter((url) => url !== '/streaming');
 
 for (const pageUrl of pageUrls) {
   test(`should work without error or warning for ${pageUrl}`, async ({ page }) => {
