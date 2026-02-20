@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `SCSS`, `Emotion`, `Vanilla Extract`: bring back PDS v3 import paths for better DX and backward compatibility.
 - `Accordion`:
   - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
   - Slot `summary-before` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
@@ -80,6 +81,27 @@ const isOpen = ref(false);
     ```
 
 ### Deprecated
+
+- `SCSS`: Import path for npm package:
+
+```diff
+- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
+
+- `Emotion`: Import path for npm package:
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
+
+- `Vanilla Extract`: Import path for npm package:
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+```
 
 - `Accordion`:
   - Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility
