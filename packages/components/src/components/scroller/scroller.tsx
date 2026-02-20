@@ -123,7 +123,7 @@ export class Scroller {
             hide-label="true"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             type="button"
-            tabIndex="-1"
+            tabindex="-1"
             onClick={() => this.scrollOnPrevNextClick(direction)}
           >
             {direction}
