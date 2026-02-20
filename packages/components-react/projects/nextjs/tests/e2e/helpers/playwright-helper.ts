@@ -9,7 +9,6 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
 
 export const goto = async (page: Page, url: string) => {
   await page.goto(url);
-  await page.locator('html.hydrated').waitFor({ state: 'attached' });
   await waitForComponentsReady(page);
 };
 
