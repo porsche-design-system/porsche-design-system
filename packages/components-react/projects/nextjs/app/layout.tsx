@@ -2,6 +2,7 @@ import NextScript from 'next/script';
 import type { PropsWithChildren } from 'react';
 import { HeaderPartials } from '../components';
 import { Providers } from './providers';
+import './globals.css';
 
 export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Element {
   const cdn = 'local';
