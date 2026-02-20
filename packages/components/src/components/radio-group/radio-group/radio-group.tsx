@@ -306,7 +306,7 @@ export class RadioGroup {
     this.radioGroupOptions.forEach((opt, i) => {
       const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
       if (input) {
-        input.setAttribute('tabIndex', i === focusIndex ? '0' : '-1');
+        input.setAttribute('tabindex', i === focusIndex ? '0' : '-1');
       }
     });
   }
