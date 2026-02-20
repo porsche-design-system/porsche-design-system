@@ -107,13 +107,6 @@ export const App = () => {
 
 ## 👹 Breaking Changes
 
-- Changed import path for Emotion styles.
-
-```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
-```
-
 - Removed `getHoverStyle` since it did not work reliable.
 
 - Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
@@ -128,6 +121,15 @@ export const App = () => {
 
 Please transition to the new styles as soon as possible. All legacy styles are currently deprecated and are scheduled
 for removal in the next major release.
+
+### Import path
+
+Changed import path for Emotion styles.
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
 
 ### Blur
 
