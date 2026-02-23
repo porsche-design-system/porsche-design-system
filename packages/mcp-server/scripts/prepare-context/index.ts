@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { execSync } from 'node:child_process';
+import type { Dirent } from 'node:fs';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import {
@@ -14,6 +15,7 @@ import {
   SKIP_DIRECTORIES,
   sourceDir,
 } from './config.js';
+import { buildAllItems } from './db-seed.js';
 import { formatAllowedValues, loadComponentMeta, processContent } from './transform.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -153,7 +155,7 @@ async function generateFrameworkStories() {
 
 async function generateQuickRefs() {
   const componentsDir = path.join(outputDir, 'components');
-  let entries: Awaited<ReturnType<typeof fs.readdir>>;
+  let entries: Dirent[];
   try {
     entries = await fs.readdir(componentsDir, { withFileTypes: true });
   } catch {
@@ -165,7 +167,7 @@ async function generateQuickRefs() {
   for (const entry of entries) {
     if (!entry.isDirectory()) continue;
 
-    const componentName = entry.name;
+    const componentName = entry.name as string;
     const componentDir = path.join(componentsDir, componentName);
     const tagName = `p-${componentName}`;
     const meta = componentMeta[tagName];
@@ -291,7 +293,7 @@ async function truncateChangelog() {
 
     const versionRegex = /^## \[/gm;
     const indices: number[] = [];
-    let match;
+    let match: RegExpExecArray | null;
     while ((match = versionRegex.exec(content)) !== null) {
       indices.push(match.index);
     }
@@ -339,7 +341,11 @@ async function removeStubPages() {
 
         const meaningful = content
           .replace(/^#.*$/gm, '')
-          .replace(/[⚠️🧪🚫✅ℹ️]/gu, '')
+          .replace(/⚠️/g, '')
+          .replace(/🧪/g, '')
+          .replace(/🚫/g, '')
+          .replace(/✅/g, '')
+          .replace(/ℹ️/g, '')
           .replace(/Deprecated/g, '')
           .replace(/Experimental/g, '')
           .replace(/>\s*\*\*Interactive (?:Story|Configurator)\*\*.*$/gm, '')
@@ -405,7 +411,29 @@ async function generateSnapshotMeta() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Main — orchestrate all 9 steps
+// Step 10 — prepare txt file with paths and content for BatchWriteItem (to avoid re-traversing the output dir during upload)
+// ──────────────────────────────────────────────────────────────────────────────
+
+async function prepareDynamoEntries() {
+  let sourceCommit: string | undefined;
+  try {
+    sourceCommit = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim();
+  } catch {
+    // not in a git repo
+  }
+
+  const items = await buildAllItems({
+    version: '3.32.0',
+    outputDir,
+    sourceCommit,
+  });
+
+  await fs.writeFile(path.join(outputDir, 'docs-index.json'), JSON.stringify(items, null, 2), 'utf-8');
+  console.log(`  ${items.length} DynamoDB items prepared`);
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Main — orchestrate all 10 steps
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function prepareContextSnapshots() {
@@ -418,34 +446,37 @@ async function prepareContextSnapshots() {
   }
   await fs.mkdir(outputDir, { recursive: true });
 
-  console.log('Step 1/9: Copying source files...');
+  console.log('Step 1/10: Copying source files...');
   await walkAndCopy(sourceDir, '');
 
-  console.log('\nStep 2/9: Processing MDX → Markdown (vanilla-js)...');
+  console.log('\nStep 2/10: Processing MDX → Markdown (vanilla-js)...');
   await processAllFiles();
 
-  console.log('\nStep 3/9: Generating framework-specific examples...');
+  console.log('\nStep 3/10: Generating framework-specific examples...');
   await generateFrameworkExamples();
 
-  console.log('\nStep 4/9: Generating framework-specific interactive stories...');
+  console.log('\nStep 4/10: Generating framework-specific interactive stories...');
   await generateFrameworkStories();
 
-  console.log('\nStep 5/9: Generating quick-reference pages...');
+  console.log('\nStep 5/10: Generating quick-reference pages...');
   await generateQuickRefs();
 
-  console.log('\nStep 6/9: Generating shared reference pages...');
+  console.log('\nStep 6/10: Generating shared reference pages...');
   await generateSharedReferences();
 
-  console.log('\nStep 7/9: Truncating changelog...');
+  console.log('\nStep 7/10: Truncating changelog...');
   await truncateChangelog();
 
-  console.log('\nStep 8/9: Removing stub pages...');
+  console.log('\nStep 8/10: Removing stub pages...');
   await removeStubPages();
 
-  console.log('\nStep 9/9: Writing snapshot metadata...');
+  console.log('\nStep 9/10: Writing snapshot metadata...');
   await generateSnapshotMeta();
+
+  console.log('\nStep 10/10: Preparing for BatchWriteItem');
+  await prepareDynamoEntries();
 
   console.log('\nDone! Context snapshots ready.');
 }
 
-prepareContextSnapshots();
+prepareContextSnapshots().catch(console.warn);

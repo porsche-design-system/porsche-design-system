@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
-import * as semver from 'semver';
 import { globbySync } from 'globby';
+import * as semver from 'semver';
 
 const pkgVersion = process.argv[2];
 

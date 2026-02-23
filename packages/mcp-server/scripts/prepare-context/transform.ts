@@ -1,15 +1,15 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import {
-  type Framework,
   componentMetaCache,
-  setComponentMetaCache,
   componentMetaPath,
   examplesCache,
   examplesDir,
-  storiesCache,
-  storefrontSrcDir,
+  type Framework,
   LARGE_ENUM_THRESHOLD,
+  setComponentMetaCache,
+  storefrontSrcDir,
+  storiesCache,
 } from './config.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -55,18 +55,12 @@ export async function loadExample(exampleName: string): Promise<{ frameworkMarku
 // ──────────────────────────────────────────────────────────────────────────────
 
 /** Cache for the createFrameworkMarkup function (loaded once from storefront) */
-let createFrameworkMarkupFn: ((
-  config: any[],
-  state: any,
-  theme: string,
-) => Record<string, string>) | null = null;
+let createFrameworkMarkupFn: ((config: any[], state: any, theme: string) => Record<string, string>) | null = null;
 
 async function getCreateFrameworkMarkup() {
   if (createFrameworkMarkupFn) return createFrameworkMarkupFn;
   try {
-    const mod = await import(
-      path.join(storefrontSrcDir, 'utils/generator/createFrameworkMarkup.ts')
-    );
+    const mod = await import(path.join(storefrontSrcDir, 'utils/generator/createFrameworkMarkup.ts'));
     createFrameworkMarkupFn = mod.default?.createFrameworkMarkup ?? mod.createFrameworkMarkup;
     return createFrameworkMarkupFn;
   } catch (error) {
@@ -88,7 +82,10 @@ function parseStoryImports(rawMdx: string): Record<string, string> {
   let match: RegExpExecArray | null;
 
   while ((match = importRegex.exec(rawMdx)) !== null) {
-    const names = match[1].split(',').map((n) => n.trim()).filter(Boolean);
+    const names = match[1]
+      .split(',')
+      .map((n) => n.trim())
+      .filter(Boolean);
     const modulePath = match[2];
 
     // Resolve @/ alias to absolute storefront src path
@@ -134,7 +131,7 @@ function stripVanillaJsWrapper(code: string): string {
  */
 export async function loadStoryMarkup(
   storyVarName: string,
-  storyImports: Record<string, string>,
+  storyImports: Record<string, string>
 ): Promise<Record<string, string> | null> {
   // Check cache first
   if (storiesCache[storyVarName]) return storiesCache[storyVarName];
@@ -263,7 +260,9 @@ export function formatComponentApi(tagName: string, meta: any): string {
       const description = (propMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
       const required = propMeta.isRequired ? ' **(required)**' : '';
       const breakpoint = propMeta.isBreakpointCustomizable ? ' *(breakpoint customizable)*' : '';
-      lines.push(`| \`${propName}\` | \`${type}\` | ${defaultValue} | ${description}${required}${breakpoint}${descSuffix} |`);
+      lines.push(
+        `| \`${propName}\` | \`${type}\` | ${defaultValue} | ${description}${required}${breakpoint}${descSuffix} |`
+      );
     }
     lines.push('');
   }
@@ -347,7 +346,7 @@ export function formatCodeExample(
 export function formatStoryCode(
   storyName: string,
   frameworkMarkup: Record<string, string>,
-  framework: Framework = 'vanilla-js',
+  framework: Framework = 'vanilla-js'
 ): string {
   const lines: string[] = [];
   lines.push(`\n### Interactive Story: \`${storyName}\`\n`);
@@ -382,7 +381,7 @@ export function formatStoryCode(
 export async function processContent(
   content: string,
   framework: Framework = 'vanilla-js',
-  rawMdx?: string,
+  rawMdx?: string
 ): Promise<string> {
   const componentMeta = await loadComponentMeta();
 
@@ -408,9 +407,7 @@ export async function processContent(
   );
 
   // ComponentStory → inject framework-specific code
-  const storyMatches = content.matchAll(
-    /<ComponentStory\s+story={([^}]+)}\s*(?:backgroundColor={[^}]+})?\s*\/>/g,
-  );
+  const storyMatches = content.matchAll(/<ComponentStory\s+story={([^}]+)}\s*(?:backgroundColor={[^}]+})?\s*\/>/g);
   for (const match of Array.from(storyMatches)) {
     const [fullMatch, storyName] = match;
     const markup = await loadStoryMarkup(storyName, storyImports);
@@ -420,7 +417,7 @@ export async function processContent(
     } else {
       content = content.replace(
         fullMatch,
-        `\n> **Interactive Story**: The \`${storyName}\` story provides an interactive demonstration. View the live documentation to explore this component dynamically.\n`,
+        `\n> **Interactive Story**: The \`${storyName}\` story provides an interactive demonstration. View the live documentation to explore this component dynamically.\n`
       );
     }
   }
