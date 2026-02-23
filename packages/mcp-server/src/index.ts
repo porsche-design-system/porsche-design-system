@@ -1,333 +1,141 @@
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+#!/usr/bin/env node
+
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
+import { z } from 'zod';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SNAPSHOTS_DIR = path.resolve(__dirname, '..', 'context-snapshots');
-const META_PATH = path.join(SNAPSHOTS_DIR, 'snapshot-meta.json');
+// ── Config ────────────────────────────────────────────────────────
 
-// In-memory index built at startup for fast search
-interface DocEntry {
-  /** Relative path like "components/button/usage" */
-  path: string;
-  /** File content */
-  content: string;
-}
+const API_BASE = process.env.PDS_MCP_API_URL;
 
-interface SnapshotMeta {
-  version: string;
-  generatedAt: string;
-  documentCount: number;
-  categories: string[];
-}
+// ── API helper ────────────────────────────────────────────────────
 
-let docsIndex: DocEntry[] = [];
-let snapshotMeta: SnapshotMeta | null = null;
+async function api<T = unknown>(method: 'GET' | 'POST', path: string, body?: Record<string, unknown>): Promise<T> {
+  const url = `${API_BASE}${path}`;
 
-async function loadMeta(): Promise<SnapshotMeta | null> {
-  try {
-    const raw = await fs.readFile(META_PATH, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
+  const res = await fetch(url, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    ...(body && { body: JSON.stringify(body) }),
+  });
 
-async function buildIndex(dir: string, relative = ''): Promise<void> {
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    const relPath = relative ? `${relative}/${entry.name}` : entry.name;
-
-    if (entry.isDirectory()) {
-      await buildIndex(fullPath, relPath);
-    } else if (entry.isFile() && entry.name === 'page.mdx') {
-      const content = await fs.readFile(fullPath, 'utf-8');
-      const docPath = relative;
-      docsIndex.push({ path: docPath, content });
-    }
-  }
-}
-
-function buildCategoryTree(): Record<string, string[]> {
-  const tree: Record<string, string[]> = {};
-
-  for (const doc of docsIndex) {
-    const parts = doc.path.split('/');
-    const category = parts[0];
-    if (!tree[category]) {
-      tree[category] = [];
-    }
-    tree[category].push(doc.path);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`API ${res.status}: ${text}`);
   }
 
-  for (const key of Object.keys(tree)) {
-    tree[key].sort();
-  }
-
-  return tree;
+  return res.json() as T;
 }
 
-// --- Tool handlers ---
-
-function handleListDocs(args: Record<string, unknown>) {
-  const category = args.category as string | undefined;
-  const tree = buildCategoryTree();
-
-  if (category) {
-    const entries = tree[category];
-    if (!entries) {
-      const available = Object.keys(tree).join(', ');
-      return {
-        content: [{ type: 'text', text: `Category "${category}" not found. Available categories: ${available}` }],
-      };
-    }
-    return { content: [{ type: 'text', text: JSON.stringify({ [category]: entries }, null, 2) }] };
-  }
-
-  const summary = Object.entries(tree).map(([cat, paths]) => `${cat} (${paths.length} pages)`);
+function textResult(data: unknown) {
   return {
-    content: [
-      {
-        type: 'text',
-        text: `Available documentation categories:\n${summary.join('\n')}\n\n${JSON.stringify(tree, null, 2)}`,
-      },
-    ],
+    content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
   };
 }
 
-function handleGetDoc(args: Record<string, unknown>) {
-  const docPath = (args.path as string).replace(/^\/+|\/+$/g, '');
-
-  const doc = docsIndex.find((d) => d.path === docPath);
-  if (!doc) {
-    const candidates = docsIndex.filter((d) => d.path.includes(docPath)).map((d) => d.path);
-    if (candidates.length > 0) {
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Document "${docPath}" not found. Did you mean one of these?\n${candidates.join('\n')}`,
-          },
-        ],
-      };
-    }
-    return {
-      content: [{ type: 'text', text: `Document "${docPath}" not found. Use list-docs to see available pages.` }],
-    };
-  }
-
-  return { content: [{ type: 'text', text: doc.content }] };
-}
-
-function handleSearchDocs(args: Record<string, unknown>) {
-  const query = args.query as string;
-  const maxResults = (args.max_results as number) ?? 10;
-  const queryLower = query.toLowerCase();
-  const results: { path: string; excerpt: string }[] = [];
-
-  for (const doc of docsIndex) {
-    const contentLower = doc.content.toLowerCase();
-    const idx = contentLower.indexOf(queryLower);
-    if (idx === -1) continue;
-
-    const start = Math.max(0, idx - 100);
-    const end = Math.min(doc.content.length, idx + query.length + 200);
-    const excerpt =
-      (start > 0 ? '...' : '') + doc.content.slice(start, end).trim() + (end < doc.content.length ? '...' : '');
-
-    results.push({ path: doc.path, excerpt });
-    if (results.length >= maxResults) break;
-  }
-
-  if (results.length === 0) {
-    return { content: [{ type: 'text', text: `No results found for "${query}".` }] };
-  }
-
-  const formatted = results.map((r) => `### ${r.path}\n${r.excerpt}`).join('\n\n---\n\n');
-  return { content: [{ type: 'text', text: `Found ${results.length} result(s) for "${query}":\n\n${formatted}` }] };
-}
-
-function handleGetComponentOverview(args: Record<string, unknown>) {
-  const component = (args.component as string).toLowerCase().replace(/^p-/, '');
-  const prefix = `components/${component}`;
-  const sections = docsIndex.filter((d) => d.path.startsWith(prefix));
-
-  if (sections.length === 0) {
-    const components = [
-      ...new Set(docsIndex.filter((d) => d.path.startsWith('components/')).map((d) => d.path.split('/')[1])),
-    ];
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Component "${component}" not found. Available components:\n${components.sort().join(', ')}`,
-        },
-      ],
-    };
-  }
-
-  const sectionOrder = ['usage', 'examples', 'api', 'configurator', 'accessibility'];
-  const sorted = sections.sort((a, b) => {
-    const aSection = a.path.split('/').pop() || '';
-    const bSection = b.path.split('/').pop() || '';
-    return sectionOrder.indexOf(aSection) - sectionOrder.indexOf(bSection);
-  });
-
-  const combined = sorted.map((s) => {
-    const section = s.path.split('/').pop() || 'overview';
-    return `${'='.repeat(60)}\n## ${section.toUpperCase()}\n${'='.repeat(60)}\n\n${s.content}`;
-  });
-
-  return { content: [{ type: 'text', text: `# Component: ${component}\n\n${combined.join('\n\n')}` }] };
-}
-
-function handleGetSnapshotVersion() {
-  if (!snapshotMeta) {
-    return { content: [{ type: 'text', text: 'No snapshot metadata available. Run prepare-context to generate it.' }] };
-  }
-  return { content: [{ type: 'text', text: JSON.stringify(snapshotMeta, null, 2) }] };
-}
-
-// --- Tool definitions (plain JSON Schema, no Zod) ---
-
-const TOOLS = [
-  {
-    name: 'get-doc',
-    description:
-      'Get documentation for a specific topic. Works with component names ' +
-      '(e.g. "button", "tabs"), style topics (e.g. "typography", "colors"), ' +
-      'or specific sub-pages (e.g. "button/api", "button/examples"). ' +
-      'Use the sections parameter to request only what you need.',
-    inputSchema: {
-      type: 'object' as const,
-      properties: {
-        topic: {
-          type: 'string',
-          description:
-            'What to look up. Component name ("button"), style topic ("typography"), ' +
-            'or a specific sub-page ("button/api", "button/accessibility").',
-        },
-        sections: {
-          type: 'array',
-          items: { type: 'string' },
-          description:
-            'Which sections to include. Options: "quick-ref", "usage", "examples", ' +
-            '"api", "accessibility". Omit for all sections. ' +
-            'Use ["quick-ref"] for a brief overview.',
-        },
-        framework: {
-          type: 'string',
-          enum: ['vanilla-js', 'react', 'angular', 'vue'],
-          description:
-            'Which framework examples to include. Defaults to vanilla-js. ' + 'Only affects the examples section.',
-        },
-      },
-      required: ['topic'],
-    },
-  },
-  {
-    name: 'search-docs',
-    description:
-      'Search across all documentation. Returns matching content directly — ' +
-      'no need to call get-doc afterward for simple questions.',
-    inputSchema: {
-      type: 'object' as const,
-      properties: {
-        query: {
-          type: 'string',
-          description: 'Search query (case-insensitive).',
-        },
-        max_results: {
-          type: 'number',
-          description: 'Maximum results. Default: 5.',
-        },
-        include_content: {
-          type: 'boolean',
-          description:
-            'If true, includes the first ~200 words of each matching doc. ' +
-            'Default: true. Set to false to get just titles and paths.',
-        },
-      },
-      required: ['query'],
-    },
-  },
-  {
-    name: 'list-docs',
-    description:
-      'List available documentation pages. Returns names and categories, ' +
-      'not full content. Use to discover what exists.',
-    inputSchema: {
-      type: 'object' as const,
-      properties: {
-        category: {
-          type: 'string',
-          description: 'Filter by category: "components", "styles", "must-know". ' + 'Omit to list all categories.',
-        },
-      },
-    },
-  },
-  {
-    name: 'get-version',
-    description: 'Get the current documentation version and metadata.',
-    inputSchema: {
-      type: 'object' as const,
-      properties: {},
-    },
-  },
-];
-// --- MCP Server setup ---
-
-const server = new Server({ name: 'porsche-design-system-docs', version: '1.0.0' }, { capabilities: { tools: {} } });
-
-server.setRequestHandler(ListToolsRequestSchema, async () => {
-  return { tools: TOOLS };
+const server = new McpServer({
+  name: 'pds-mcp',
+  version: '1.0.0',
 });
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  const { name, arguments: args = {} } = request.params;
-
-  switch (name) {
-    case 'list-docs':
-      return handleListDocs(args);
-    case 'get-doc':
-      return handleGetDoc(args);
-    case 'search-docs':
-      return handleSearchDocs(args);
-    case 'get-component-overview':
-      return handleGetComponentOverview(args);
-    case 'get-snapshot-version':
-      return handleGetSnapshotVersion();
-    default:
-      return { content: [{ type: 'text', text: `Unknown tool: ${name}` }], isError: true };
+server.registerTool(
+  'get-version',
+  {
+    description:
+      'Returns the current Porsche Design System documentation version, build timestamp, and total doc count.',
+  },
+  async () => {
+    const data = await api('GET', '/version');
+    return textResult(data);
   }
-});
+);
 
-// --- Start server ---
+server.registerTool(
+  'list-docs',
+  {
+    description:
+      'Lists available documentation pages with their sections and frameworks. ' +
+      'Use to discover what components, styles, and guides exist before calling get-doc.',
+    inputSchema: z.object({
+      category: z
+        .string()
+        .optional()
+        .describe('Filter by category: "components", "styles", "must-know". Omit to list all.'),
+    }),
+  },
+  async ({ category }) => {
+    const query = category ? `?category=${encodeURIComponent(category)}` : '';
+    const data = await api('GET', `/docs${query}`);
+    return textResult(data);
+  }
+);
+
+server.registerTool(
+  'get-doc',
+  {
+    description:
+      'Get documentation for a specific topic. Returns quick-ref by default (~500 tokens). ' +
+      'Pass sections to get more detail, or sections: ["all"] for everything. ' +
+      'Every response includes availableSections and availableFrameworks so you know what to request next.',
+    inputSchema: z.object({
+      topic: z.string().describe('Component or topic name: "button", "typography", "tabs", "form/input-text".'),
+      sections: z
+        .array(z.string())
+        .optional()
+        .describe(
+          'Sections to fetch: ["quick-ref"], ["usage", "api"], ["all"]. ' +
+            'Omit for quick-ref only. Options: quick-ref, usage, api, examples, accessibility.'
+        ),
+      framework: z
+        .enum(['vanilla-js', 'react', 'angular', 'vue'])
+        .optional()
+        .describe('Framework for examples section. Only affects examples. Defaults to vanilla-js.'),
+    }),
+  },
+  async ({ topic, sections, framework }) => {
+    const body: Record<string, unknown> = { topic };
+    if (sections) body.sections = sections;
+    if (framework) body.framework = framework;
+
+    const data = await api('POST', '/docs/get', body);
+    return textResult(data);
+  }
+);
+
+// ── Tool: search-docs ─────────────────────────────────────────────
+
+server.registerTool(
+  'search-docs',
+  {
+    description:
+      'Full-text search across all documentation. Returns matching docs with optional content excerpts. ' +
+      "Use for finding topics when you don't know the exact component name.",
+    inputSchema: z.object({
+      query: z.string().describe('Search query (case-insensitive).'),
+      max_results: z.number().int().min(1).max(20).optional().describe('Maximum results to return. Default: 5.'),
+      include_content: z
+        .boolean()
+        .optional()
+        .describe('Include first ~200 words of each match. Default: true. Set false for titles only.'),
+    }),
+  },
+  async ({ query, max_results, include_content }) => {
+    const body: Record<string, unknown> = { query };
+    if (max_results !== undefined) body.max_results = max_results;
+    if (include_content !== undefined) body.include_content = include_content;
+
+    const data = await api('POST', '/docs/search', body);
+    return textResult(data);
+  }
+);
 
 async function main() {
-  try {
-    await buildIndex(SNAPSHOTS_DIR);
-    docsIndex = docsIndex.filter((d) => d.path !== '');
-  } catch (err) {
-    console.error(`Failed to build docs index from ${SNAPSHOTS_DIR}:`, err);
-    console.error('Run "yarn prepare-context" first to generate the documentation snapshots.');
-    process.exit(1);
-  }
-
-  snapshotMeta = await loadMeta();
-
-  console.error(
-    `PDS MCP Server loaded ${docsIndex.length} docs` +
-      (snapshotMeta ? ` (snapshot v${snapshotMeta.version}, ${snapshotMeta.generatedAt})` : '')
-  );
-
   const transport = new StdioServerTransport();
   await server.connect(transport);
+  console.error(`PDS MCP client connected → ${API_BASE}`);
 }
 
-main();
+main().catch((err) => {
+  console.error('Fatal:', err);
+  process.exit(1);
+});

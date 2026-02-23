@@ -5112,7 +5112,7 @@
     zod "^3.25 || ^4.0"
     zod-to-json-schema "^3.25.0"
 
-"@modelcontextprotocol/sdk@^1.12.1":
+"@modelcontextprotocol/sdk@^1.26.0":
   version "1.26.0"
   resolved "https://registry.yarnpkg.com/@modelcontextprotocol/sdk/-/sdk-1.26.0.tgz#5b35d73062125f126cc70b0be83cbab53bcdde74"
   integrity sha512-Y5RmPncpiDtTXDbLKswIJzTqu2hyBKxTNsgKqKclDbhIgg1wgtf1fRuvxgTnRfcnxtvvgbIEcqUOzZrJ6iSReg==
