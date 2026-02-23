@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
-import { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -67,8 +67,8 @@ import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventD
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
+export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
-export { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -135,27 +135,35 @@ export namespace Components {
      */
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings.
+          * Aligns the marker within the summary section.
+         */
+        "alignMarker"?: AccordionAlignMarker;
+        /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: AccordionBackground;
+        /**
+          * Displays the accordion in compact mode.
          */
         "compact"?: boolean;
         /**
-          * Defines the heading used in accordion.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
-          * Defines if accordion is open.
+          * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
         /**
-          * The text size.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
     }
@@ -3762,15 +3770,23 @@ declare namespace LocalJSX {
      */
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings.
+          * Aligns the marker within the summary section.
+         */
+        "alignMarker"?: AccordionAlignMarker;
+        /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: AccordionBackground;
+        /**
+          * Displays the accordion in compact mode.
          */
         "compact"?: boolean;
         /**
-          * Defines the heading used in accordion.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -3778,15 +3794,15 @@ declare namespace LocalJSX {
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
-          * Defines if accordion is open.
+          * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
         /**
-          * The text size.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
     }

@@ -8,7 +8,9 @@ export const metadata = {
 
 # Migration Guide
 
-<TableOfContents headings={['⭐ Introducing Color Scheme', '👹 Breaking Changes', '🤡 Deprecations']} />
+<TableOfContents
+  headings={['⭐ Introducing Color Scheme', '👹 Breaking Changes', '🤡 Deprecations (will be removed in v5)']}
+/>
 
 ## ⭐ Introducing Color Scheme
 
@@ -85,20 +87,22 @@ The defined theme context will cascade to all child elements.
 
 ## 👹 Breaking Changes
 
-- Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds` to easily identify pds styles. The
-  new SCSS styles don't include a prefix like `$pds-`.
+- Removed `@mixin pds-hover()` since it did not work reliable.
+
+## 🤡 Deprecations (will be removed in v5)
+
+Please transition to the new styles as soon as possible. All legacy styles are currently deprecated and are scheduled
+for removal in the next major release.
+
+### Import path
+
+Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds` to easily identify pds styles. The new
+SCSS styles don't include a prefix like `$pds-`.
 
 ```diff
 - @use '@porsche-design-system/components-{js\|angular\|react\|vue}/styles' as *;
 + @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
 ```
-
-- Removed `@mixin pds-hover()` since it did not work reliable.
-
-## 🤡 Deprecations
-
-Please transition to the new styles as soon as possible. All legacy styles are currently deprecated and are scheduled
-for removal in the next major release.
 
 ### Blur
 

@@ -16,6 +16,7 @@ export const metadata = {
     '👹 Breaking Changes',
     '❌ Removed Props, Slots and Events (deprecated in v3 already)',
     '❌ Removed Components (deprecated in v3 already)',
+    '🤡 Deprecations (will be removed in v5)',
   ]}
 />
 
@@ -320,6 +321,20 @@ const isOpen = ref(false);
 <p-accordion heading="Some Heading">
 -  <a href="/https://porsche.com">Some label</a>
 +  <p-link-pure href="https://porsche.com" icon="none">Some label</p-link-pure>
+</p-accordion>
+```
+
+### Accordion:
+
+- Removed prop `tag`, use `heading-tag` (deprecated with v4 now) instead or make use of `slot="summary"` for more
+  flexibility.
+
+```diff
+- <p-acccordion heading="Some summary" tag="h3">
+  <p-text>Some details</p-text>
+</p-accordion>
+- <p-acccordion heading="Some summary" heading-tag="h3">
+  <p-text>Some details</p-text>
 </p-accordion>
 ```
 
@@ -1527,3 +1542,34 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 + <p-textarea label="Some label" name="some-name"></p-textarea>
 ```
+
+## 🤡 Deprecations (will be removed in v5)
+
+### Accordion:
+
+- Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility.
+
+```diff
+- <p-acccordion heading="Some summary" heading-tag="h3" size="small">
+  <p-text>Some details</p-text>
+</p-accordion>
++ <p-accordion>
++   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+  <p-text>Some details</p-text>
+</p-accordion>
+```
+
+- Slot `heading` in favor of `slot="summary"`, enabling semantic slots and more flexibility
+
+```diff
+<p-acccordion>
+- <span slot="heading">Some summary</span>
+  <p-text>Some details</p-text>
+</p-accordion>
+<p-accordion>
++ <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+  <p-text>Some details</p-text>
+</p-accordion>
+```
+
+- CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
