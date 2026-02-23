@@ -92,6 +92,7 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
           [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
         }),
+        // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
         '&(:dir(rtl)) input::placeholder': {
           direction: 'rtl',
           textAlign: 'end',

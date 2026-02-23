@@ -132,7 +132,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           disabled={disabled}
           pattern={pattern}
           multiple={multiple}
-          dir="auto"
+          dir="auto" // This is the default: let the browser decide in which direction the value should be placed.
         />
         {end}
         <slot name="end" />

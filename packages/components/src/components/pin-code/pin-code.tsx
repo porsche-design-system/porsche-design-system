@@ -214,6 +214,7 @@ export class PinCode {
           isLoading={this.loading}
           isDisabled={this.disabled}
         />
+        {/* dir overwrites default behavior in RTL mode, because pin codes are always numeric and should be treated in ltr direction. */}
         {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput} dir="ltr">
           {Array.from(new Array(this.length), (_, index) => (
