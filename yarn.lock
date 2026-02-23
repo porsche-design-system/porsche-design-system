@@ -6945,10 +6945,10 @@
   resolved "https://registry.yarnpkg.com/@standard-schema/spec/-/spec-1.1.0.tgz#a79b55dbaf8604812f52d140b2c9ab41bc150bb8"
   integrity sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==
 
-"@stencil/core@^4.43.0":
-  version "4.43.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-4.43.0.tgz#d78c24f90615efd125a0d6420aad657b2c40201b"
-  integrity sha512-6Uj2Z3lzLuufYAE7asZ6NLKgSwsB9uxl84Eh34PASnUjfj32GkrP4DtKK7fNeh1WFGGyffsTDka3gwtl+4reUg==
+"@stencil/core@4.37.1":
+  version "4.37.1"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-4.37.1.tgz#179efdb676d623ced8d9ad78edd39bcfeb0ad633"
+  integrity sha512-s4ZroxdYc2HU0b7V3n59RVtMKdNlTvWWBN8KofaP64eCzvg1qRh6SKMet7MJ069F1lx/FxDvsYfOv7pZRiMWmQ==
   optionalDependencies:
     "@rollup/rollup-darwin-arm64" "4.34.9"
     "@rollup/rollup-darwin-x64" "4.34.9"
