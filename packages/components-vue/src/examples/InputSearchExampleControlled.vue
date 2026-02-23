@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 
 const value = ref<string>('');
 
-const onInput = (e: InputSearchInputEventDetail) => {
+const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;
 };
 

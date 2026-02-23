@@ -1,6 +1,7 @@
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import type { InputNumberInputEventDetail, InputSearchInputEventDetail } from '@porsche-design-system/components-react';
 import {
+  PHeading,
   PInputNumber,
   PInputText,
   PPopover,
@@ -82,15 +83,15 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             <span className="inline-flex gap-static-xs">
               {capitalCase(propName)}
               <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+              {getFlags(propMeta)}
+              <ResetButton
+                propName={propName}
+                configuredProps={configuredProps}
+                defaultProps={defaultProps}
+                onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
+              />
             </span>
           </PSwitch>
-          {getFlags(propMeta)}
-          <ResetButton
-            propName={propName}
-            configuredProps={configuredProps}
-            defaultProps={defaultProps}
-            onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-          />
         </div>
       );
     }
@@ -259,26 +260,26 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
-        Properties{' '}
-        {amountOfConfiguredProps > 0 && (
-          <>
-            <PTag variant="secondary" compact={true}>
-              {amountOfConfiguredProps}
-            </PTag>
-            <PTag variant="secondary" compact={true} onClick={(e) => e.preventDefault()}>
-              <button
-                type="button"
-                onClick={() => {
-                  onResetAllProps();
-                }}
-              >
-                Reset all
-              </button>
-            </PTag>
-          </>
-        )}
-      </span>
+      <PHeading slot="summary" tag="h2" size="small">
+        Properties
+      </PHeading>
+      {amountOfConfiguredProps > 0 && (
+        <>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
+            {amountOfConfiguredProps}
+          </PTag>
+          <PTag slot="summary-after" variant="secondary" compact={true} onClick={(e) => e.preventDefault()}>
+            <button
+              type="button"
+              onClick={() => {
+                onResetAllProps();
+              }}
+            >
+              Reset all
+            </button>
+          </PTag>
+        </>
+      )}
       <div className="flex flex-col gap-fluid-sm">
         {filteredComponentProps.map(([propName, propMeta]) =>
           renderInput(propName as keyof ElementConfig<T>['properties'], propMeta)

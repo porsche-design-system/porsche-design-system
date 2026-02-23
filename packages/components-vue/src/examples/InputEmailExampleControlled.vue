@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 
 const value = ref<string>('abc');
 
-const onInput = (e: InputEmailInputEventDetail) => {
+const onInput = (e: CustomEvent<InputEmailInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;
 };
 

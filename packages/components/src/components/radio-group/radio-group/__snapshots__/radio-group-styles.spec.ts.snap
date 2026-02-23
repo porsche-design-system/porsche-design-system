@@ -1359,6 +1359,13 @@ slot[name="label-after"] {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+@media (forced-colors: active) {
+  ::slotted(*:not([slot])) {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1593,6 +1600,13 @@ slot[name="label-after"] {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+@media (forced-colors: active) {
+  slot[name="label-after"] {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1800,6 +1814,13 @@ slot[name="label-after"] {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
 "
 `;
 
@@ -1823,6 +1844,17 @@ slot[name="label-after"] {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+@media (forced-colors: active) {
+  slot[name="label-after"] {
+    opacity: 1;
+    color: GrayText;
+  }
+  ::slotted(*:not([slot])) {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1919,5 +1951,12 @@ slot[name="label-after"] {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;

@@ -57,7 +57,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
         codeTagProps={{
           tabIndex: 0,
           className:
-            'max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1',
+            'max-h-96 overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1',
         }}
       >
         {frameworkMarkup[selectedFramework]}

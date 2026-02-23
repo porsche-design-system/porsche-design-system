@@ -15,6 +15,7 @@ export const getCheckboxIndeterminateBaseStyles = (isLoading: boolean, state: Fo
 
   return {
     '&::before': {
+      forcedColorAdjust: 'none',
       WebkitMask: `${indeterminateIcon} center/contain no-repeat`,
       mask: `${indeterminateIcon} center/contain no-repeat`,
       backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,

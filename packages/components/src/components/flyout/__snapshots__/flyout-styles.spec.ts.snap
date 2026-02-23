@@ -115,7 +115,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -252,7 +258,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -374,7 +386,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -486,7 +504,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
@@ -604,7 +628,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -741,7 +771,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -853,7 +889,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -964,7 +1006,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 2`] = `
@@ -1075,7 +1123,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
@@ -1192,7 +1246,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
@@ -1322,7 +1382,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -1458,7 +1524,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -1604,7 +1676,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -1715,7 +1793,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 2`] = `
@@ -1826,7 +1910,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
@@ -1956,7 +2046,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: false 2`] = `
@@ -2086,7 +2182,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -2222,7 +2324,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-end: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -2331,7 +2439,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
@@ -2459,7 +2573,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -2571,7 +2691,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
@@ -2689,7 +2815,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
@@ -2820,7 +2952,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -2957,7 +3095,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: false 1`] = `
@@ -3079,7 +3223,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: true 1`] = `
@@ -3207,7 +3357,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: false 1`] = `
@@ -3348,7 +3504,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: true 1`] = `
@@ -3495,5 +3657,11 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .flyout {
+    border-inline-start: 2px solid CanvasText;
+  }
+}
+"
 `;

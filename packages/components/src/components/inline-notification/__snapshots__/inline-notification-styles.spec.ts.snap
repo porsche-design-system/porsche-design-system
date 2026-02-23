@@ -32,6 +32,13 @@ slot[name="heading"] {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
+  }
+}
+
 .heading {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
@@ -98,6 +105,13 @@ slot[name="heading"] {
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
   }
 }
 
@@ -170,6 +184,13 @@ slot[name="heading"] {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
+  }
+}
+
 .heading {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
@@ -236,6 +257,13 @@ slot[name="heading"] {
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
   }
 }
 
@@ -314,6 +342,13 @@ slot[name="heading"] {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
+  }
+}
+
 .heading {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
@@ -389,6 +424,13 @@ slot[name="heading"] {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
+  }
+}
+
 .heading {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
@@ -455,6 +497,13 @@ slot[name="heading"] {
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText !important;
+    outline-offset: -2px !important;
   }
 }
 

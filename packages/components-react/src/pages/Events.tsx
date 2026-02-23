@@ -1,4 +1,4 @@
-import type {
+import {
   AccordionUpdateEventDetail,
   CarouselUpdateEventDetail,
   InputDateBlurEventDetail,
@@ -34,18 +34,11 @@ import type {
   InputWeekBlurEventDetail,
   InputWeekChangeEventDetail,
   InputWeekInputEventDetail,
-  PaginationUpdateEventDetail,
-  SwitchUpdateEventDetail,
-  TableUpdateEventDetail,
-  TabsBarUpdateEventDetail,
-  TextareaBlurEventDetail,
-  TextareaChangeEventDetail,
-  TextareaInputEventDetail,
-} from '@porsche-design-system/components-react';
-import {
   PAccordion,
+  PaginationUpdateEventDetail,
   PBanner,
   PCarousel,
+  PHeading,
   PInputDate,
   PInputEmail,
   PInputMonth,
@@ -68,6 +61,12 @@ import {
   PTabsBar,
   PTabsItem,
   PTextarea,
+  SwitchUpdateEventDetail,
+  TableUpdateEventDetail,
+  TabsBarUpdateEventDetail,
+  TextareaBlurEventDetail,
+  TextareaChangeEventDetail,
+  TextareaInputEventDetail,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
@@ -356,7 +355,11 @@ export const EventsPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light">
-        <PAccordion heading="Some heading" onUpdate={onAccordionUpdate} />
+        <PAccordion onUpdate={onAccordionUpdate}>
+          <PHeading slot="summary" tag="h3" size="small">
+            Some summary
+          </PHeading>
+        </PAccordion>
         <p>{accordionUpdateEventCounter}</p>
       </div>
 

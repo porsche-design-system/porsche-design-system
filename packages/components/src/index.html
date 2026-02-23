@@ -157,15 +157,114 @@
         <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
         <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
       </div>
-      <div data-card="accordion">
-        <p-accordion heading="Some heading">
+      <div data-card="accordion" style="grid-column: span 2;">
+        <p-accordion>
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some heading" size="medium">
+        <p-accordion align-marker="start">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some heading" size="medium" sticky="true">
+        <p-accordion background="canvas">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="frosted">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="small">Some summary with a longer description</p-heading>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="small">Summary</p-heading>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="small">Summary</p-heading>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="small">Summary</p-heading>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface" align-marker="start">
+          <p-heading slot="summary" tag="h3" size="small">Summary</p-heading>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface" align-marker="start">
+          <p-heading slot="summary" tag="h3" size="small">Summary</p-heading>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface" align-marker="start">
+          <p-heading slot="summary" tag="h3" size="small">Summary</p-heading>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface" style="--p-accordion-px: 32px; --p-accordion-py: 32px;">
+          <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion sticky="true" background="surface" style="--p-accordion-summary-top: 20px;">
+          <p-heading slot="summary" tag="h3" size="large">Some summary</p-heading>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <p-heading slot="summary" tag="h3" size="large">Summary</p-heading>
+          <p-heading slot="summary" tag="h4" size="small">Summary</p-heading>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-popover slot="summary-before">Some content</p-popover>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <span slot="heading">Some heading</span>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface">
+          <span slot="heading">Some heading</span>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface" open="true">
+          <span slot="heading">Some heading</span>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface" open="true">
+          <span slot="heading">Some heading</span>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Some details</p-text>
+        </p-accordion>
+        <p-accordion background="surface" open="true">
+          <span slot="heading">Some heading</span>
+          <span slot="heading">Some heading</span>
+          <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-popover slot="summary-before">Some content</p-popover>
+          <p-popover slot="summary-after">Some content</p-popover>
+          <p-checkbox slot="summary-after" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+          <p-text>Some details</p-text>
         </p-accordion>
       </div>
       <div data-card="button">
@@ -609,7 +708,7 @@
           <img src="/assets/cayenne.png" alt="Some alt text" />
         </p-link-tile-product>
       </div>
-      <div data-card="pagination">
+      <div data-card="pagination" style="grid-column: 1 / -1;">
         <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
         <p-pagination total-items-count="500" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
       </div>
@@ -1500,19 +1599,19 @@
         const backgroundMap = {
           canvas: {
             app: 'w-full h-full bg-canvas',
-            card: 'bg-surface rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+            card: 'bg-surface rounded-4xl p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
           },
           surface: {
             app: 'w-full h-full bg-surface',
-            card: 'bg-canvas rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+            card: 'bg-canvas rounded-4xl p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
           },
           gradient: {
             app: 'w-full h-full relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-canvas))] before:bg-fixed',
-            card: 'bg-frosted backdrop-blur-frosted rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+            card: 'bg-frosted backdrop-blur-frosted rounded-4xl p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
           },
           mountain: {
             app: 'w-full h-full bg-[url(/assets/cabin.webp)] bg-fixed bg-cover bg-center',
-            card: 'bg-frosted backdrop-blur-frosted rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+            card: 'bg-frosted backdrop-blur-frosted rounded-4xl p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
           },
         };
         document.querySelector('[slot="background"]').setAttribute('class', backgroundMap[background].app);

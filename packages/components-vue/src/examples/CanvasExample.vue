@@ -1,29 +1,29 @@
 <script setup lang="ts">
-  import {
-    type CanvasSidebarStartUpdateEventDetail,
-    PButton,
-    PCanvas,
-    PHeading,
-    PText,
-  } from '@porsche-design-system/components-vue';
-  import { breakpointS } from '@porsche-design-system/components-vue/emotion';
-  import { ref } from 'vue';
+import {
+  type CanvasSidebarStartUpdateEventDetail,
+  PButton,
+  PCanvas,
+  PHeading,
+  PText,
+} from '@porsche-design-system/components-vue';
+import { breakpointS } from '@porsche-design-system/components-vue/emotion';
+import { ref } from 'vue';
 
-  // initially, sidebar should be closed on mobile and opened on desktop
-  const isSidebarStartOpen = ref(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
-  const isSidebarEndOpen = ref(false);
+// initially, sidebar should be closed on mobile and opened on desktop
+const isSidebarStartOpen = ref(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
+const isSidebarEndOpen = ref(false);
 
-  const onSidebarStartUpdate = (e: CanvasSidebarStartUpdateEventDetail): void => {
-    isSidebarStartOpen.value = e.open;
-  };
+const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>): void => {
+  isSidebarStartOpen.value = e.detail.open;
+};
 
-  const onSidebarEndOpen = (): void => {
-    isSidebarEndOpen.value = true;
-  };
+const onSidebarEndOpen = (): void => {
+  isSidebarEndOpen.value = true;
+};
 
-  const onSidebarEndDismiss = (): void => {
-    isSidebarEndOpen.value = false;
-  };
+const onSidebarEndDismiss = (): void => {
+  isSidebarEndOpen.value = false;
+};
 </script>
 
 <template>

@@ -194,9 +194,9 @@ const OverviewComponentsPage = (): JSX.Element => {
         </div>
 
         <div className="playground" title="should render default accordion">
-          <PAccordion heading="Some accordion heading">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          <PAccordion>
+            <PHeading slot="summary" tag="h3" size="small">Some summary</PHeading>
+            <PText>Some details</PText>
           </PAccordion>
         </div>
 
@@ -512,9 +512,9 @@ const OverviewComponentsPage = (): JSX.Element => {
           </div>
 
           <div className="playground" title="should render default accordion with custom prefix">
-            <PAccordion heading="Some accordion heading">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-              dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            <PAccordion>
+              <PHeading slot="summary" tag="h3" size="small">Some summary</PHeading>
+              <PText>Some details</PText>
             </PAccordion>
           </div>
 

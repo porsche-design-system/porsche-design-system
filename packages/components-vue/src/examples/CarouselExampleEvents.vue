@@ -3,8 +3,8 @@ import { type CarouselUpdateEventDetail, PCarousel, PText } from '@porsche-desig
 import { ref } from 'vue';
 
 const lastEventDetail = ref('none');
-const onUpdate = (e: CarouselUpdateEventDetail): void => {
-  lastEventDetail.value = JSON.stringify(e);
+const onUpdate = (e: CustomEvent<CarouselUpdateEventDetail>): void => {
+  lastEventDetail.value = JSON.stringify(e.detail);
 };
 </script>
 

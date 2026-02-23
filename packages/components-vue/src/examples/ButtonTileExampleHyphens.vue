@@ -9,8 +9,8 @@ import { ref } from 'vue';
 
 const selectedValue = ref('auto');
 
-const onChange = (e: SelectChangeEventDetail) => {
-  selectedValue.value = e.value;
+const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  selectedValue.value = e.detail.value;
 };
 </script>
 

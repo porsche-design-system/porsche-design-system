@@ -53,11 +53,11 @@ const props = defineProps({
 const isAccordion1Open = ref(false);
 const isAccordion2Open = ref(false);
 
-const onAccordion1Update = (e: AccordionUpdateEventDetail) => {
-  isAccordion1Open.value = e.open;
+const onAccordion1Update = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+  isAccordion1Open.value = e.detail.open;
 };
-const onAccordion2Update = (e: AccordionUpdateEventDetail) => {
-  isAccordion2Open.value = e.open;
+const onAccordion2Update = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+  isAccordion2Open.value = e.detail.open;
 };
 </script>
 

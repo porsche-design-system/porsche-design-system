@@ -51,8 +51,8 @@ const onNextPrevStep = (direction: 'next' | 'prev'): void => {
   steps.value = newState;
 };
 
-const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
-  const { activeStepIndex } = e;
+const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEventDetail>): void => {
+  const { activeStepIndex } = e.detail;
 
   const newState = [...steps.value];
   for (let i = activeStepIndex + 1; i < newState.length; i++) {

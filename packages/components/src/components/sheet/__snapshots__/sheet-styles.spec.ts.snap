@@ -90,7 +90,13 @@ dialog::backdrop {
 }
 .sheet:dir(rtl) {
   transform: translateY(25vh);
-}"
+}
+@media (forced-colors: active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, background: canvas and dismissButton: true 1`] = `
@@ -202,7 +208,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, background: canvas and dismissButton: true 1`] = `
@@ -311,7 +323,13 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, background: surface and dismissButton: true 1`] = `
@@ -420,5 +438,11 @@ dialog::backdrop {
   z-index: -1;
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
+}
+@media (forced-colors: active) {
+  .sheet {
+    border-top: 2px solid CanvasText;
+  }
+}
+"
 `;

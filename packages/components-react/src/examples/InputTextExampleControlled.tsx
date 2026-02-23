@@ -10,7 +10,15 @@ export const InputTextControlledExamplePage = (): JSX.Element => {
   const [value, setValue] = useState<PInputTextProps['value']>('');
 
   const onInput = (e: CustomEvent<InputTextInputEventDetail>) => {
-    setValue((e.detail.target as HTMLInputElement).value);
+    const target = e.target as HTMLElement & { value: string };
+
+    if (target.value.length > 3) {
+      const newValue = target.value.slice(0, 3);
+      setValue(newValue);
+      // The web component doesn't prevent native input, so we must manually reset the input element's value.
+      // React won't re-render since setState with the truncated value doesn't trigger a change when it's already set.
+      target.value = newValue;
+    }
   };
 
   return (
@@ -21,7 +29,7 @@ export const InputTextControlledExamplePage = (): JSX.Element => {
         value={value}
         onInput={(e) => onInput(e as CustomEvent<InputTextInputEventDetail>)}
       />
-      <PText>Value: {value}</PText>
+      <PText>PInputText Value: {value}</PText>
     </>
   );
 };

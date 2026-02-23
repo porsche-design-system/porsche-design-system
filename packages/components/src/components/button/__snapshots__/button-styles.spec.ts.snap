@@ -186,6 +186,22 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
   }
 }
+
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
 "
 `;
 
@@ -254,10 +270,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -327,10 +365,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -400,10 +460,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -473,10 +555,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -546,10 +650,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -619,10 +745,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -703,7 +851,23 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: true and loading: false 1`] = `
@@ -771,7 +935,23 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false and loading: false 1`] = `
@@ -839,10 +1019,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -912,10 +1114,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -985,10 +1209,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1058,10 +1304,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1131,10 +1399,32 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
+@media (forced-colors: active) {
+    .root:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1212,5 +1502,21 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+    background: Canvas;
+    color: LinkText;
+    box-shadow: inset 0 0 0 2px LinkText;
+  }
+  .root:is(button) {
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
 `;

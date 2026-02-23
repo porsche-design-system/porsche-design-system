@@ -4,8 +4,8 @@ import { computed, ref } from 'vue';
 
 const selectedValue = ref<string>('a');
 
-const onChange = (e: SelectChangeEventDetail) => {
-  selectedValue.value = e.value;
+const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  selectedValue.value = e.detail.value;
 };
 
 const debugText = computed(() => {

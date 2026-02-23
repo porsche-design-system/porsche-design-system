@@ -111,8 +111,8 @@ const optgroups: Record<string, Option[]> = options.value.reduce(
   {} as Record<string, Option[]>
 );
 
-function onChange(e: SelectChangeEventDetail) {
-  value.value = e.value;
-  selectedOption.value = options.value.find((option) => option.code === e.value);
+function onChange(e: CustomEvent<SelectChangeEventDetail>) {
+  value.value = e.detail.value;
+  selectedOption.value = options.value.find((option) => option.code === e.detail.value);
 }
 </script>
