@@ -1,11 +1,10 @@
-import { expect, type Page, test } from '@playwright/test';
-import { viewportWidthXXL } from '@porsche-design-system/shared/testing';
-import { waitForComponentsReady } from '../helpers';
+import {expect, test} from '@playwright/test';
+import {viewportWidthXXL} from '@porsche-design-system/shared/testing';
 
 test.describe('overview', async () => {
   test('components', async ({ page }) => {
     await page.goto('/overview-components');
-    await waitForComponentsReady(page);
+    await page.waitForLoadState('load');
     await page.setViewportSize({
       width: viewportWidthXXL,
       height: await page.evaluate(() => document.body.clientHeight),
