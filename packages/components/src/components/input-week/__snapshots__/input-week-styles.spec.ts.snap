@@ -1260,6 +1260,9 @@ input::-webkit-calendar-picker-indicator {
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
+.wrapper > * {
+  opacity: 0.4;
+}
 .label-wrapper {
   position: absolute;
   width: 1px;
@@ -1454,6 +1457,10 @@ input::-webkit-calendar-picker-indicator {
     color: GrayText;
     border-color: GrayText;
   }
+  .wrapper > * {
+    opacity: 1;
+    color: GrayText;
+  }
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1521,6 +1528,9 @@ input::-webkit-calendar-picker-indicator {
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
+}
+.wrapper > * {
+  opacity: 0.4;
 }
 .spinner {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1600,6 +1610,10 @@ input::-webkit-calendar-picker-indicator {
     opacity: 1;
     color: GrayText;
     border-color: GrayText;
+  }
+  .wrapper > * {
+    opacity: 1;
+    color: GrayText;
   }
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;

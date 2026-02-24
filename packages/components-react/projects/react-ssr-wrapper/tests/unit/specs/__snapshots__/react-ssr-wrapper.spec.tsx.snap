@@ -14967,6 +14967,7 @@ exports[`should render dsr component for PSpinner 1`] = `
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -14982,7 +14983,7 @@ exports[`should render dsr component for PSpinner 1`] = `
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 57);
     stroke-linecap: round;
   }

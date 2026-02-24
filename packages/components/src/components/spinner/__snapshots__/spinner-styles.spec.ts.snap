@@ -25,6 +25,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 1`] =
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -40,7 +41,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 1`] =
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -87,6 +88,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 2`] =
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -102,7 +104,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 2`] =
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -149,6 +151,7 @@ exports[`getComponentCss() > should return correct css for size: "large" 1`] = `
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -164,7 +167,7 @@ exports[`getComponentCss() > should return correct css for size: "large" 1`] = `
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -211,6 +214,7 @@ exports[`getComponentCss() > should return correct css for size: "large" 2`] = `
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -226,7 +230,7 @@ exports[`getComponentCss() > should return correct css for size: "large" 2`] = `
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -273,6 +277,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -288,7 +293,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -335,6 +340,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 2`] = 
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -350,7 +356,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 2`] = 
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -397,6 +403,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -412,7 +419,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -459,6 +466,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 2`] = `
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -474,7 +482,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 2`] = `
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -521,6 +529,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -536,7 +545,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
@@ -618,6 +627,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
 }
   :host {
     display: inline-flex;
+    color: var(--p-color-primary);
     vertical-align: top !important;
   }
   :host([hidden]) {
@@ -633,7 +643,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
   }
   circle:last-child {
     animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: var(--p-color-primary);
+    stroke: currentcolor;
     stroke-dasharray: 57;
     stroke-linecap: round;
   }
