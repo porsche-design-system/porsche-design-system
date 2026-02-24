@@ -40,6 +40,9 @@ export const getComponentCss = (
           WebkitAppearance: 'none',
         },
       },
+      // Overwrites direction to ltr for rtl languages to prevent issues with the email input, e.g. cursor jumping to the
+      // end of the input when typing in the middle of the text. This is necessary because email addresses are assumed
+      // to be always written in ltr direction and the input needs to accommodate that, even in rtl contexts.
       {
         '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
           direction: 'ltr',
