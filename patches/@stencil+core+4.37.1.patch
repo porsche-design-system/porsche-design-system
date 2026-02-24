@@ -1,0 +1,97 @@
+diff --git a/node_modules/@stencil/core/compiler/stencil.js b/node_modules/@stencil/core/compiler/stencil.js
+index a0c4198..0ead7ff 100644
+--- a/node_modules/@stencil/core/compiler/stencil.js
++++ b/node_modules/@stencil/core/compiler/stencil.js
+@@ -236416,7 +236416,7 @@ function createLazyAttachInternalsBinding(cmp) {
+                       import_typescript4.default.factory.createIdentifier(HOST_REF_ARG),
+                       import_typescript4.default.factory.createIdentifier("$hostElement$")
+                     ),
+-                    import_typescript4.default.factory.createIdentifier("attachInternals")
++                    import_typescript4.default.factory.createIdentifier("attachInternals?.")
+                   ),
+                   void 0,
+                   []
+@@ -253688,7 +253688,7 @@ function createNativeAttachInternalsBinding(cmp) {
+           import_typescript26.default.factory.createCallExpression(
+             import_typescript26.default.factory.createPropertyAccessExpression(
+               import_typescript26.default.factory.createThis(),
+-              import_typescript26.default.factory.createIdentifier("attachInternals")
++              import_typescript26.default.factory.createIdentifier("attachInternals?.")
+             ),
+             void 0,
+             []
+diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
+index d2cd381..42a5828 100644
+--- a/node_modules/@stencil/core/internal/client/index.js
++++ b/node_modules/@stencil/core/internal/client/index.js
+@@ -3191,6 +3191,16 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
+   if (BUILD21.isDev) {
+     hostRef.$flags$ |= 1024 /* devOnRender */;
+   }
++
++  //========= PDS PATCH START
++  // In the SSR case we added the innerHTML of the DSR component to bridge the gap between the server and client component render.
++  // We need to clear that out before we render the component on the client.
++  if (elm.hasDSR) {
++    elm.shadowRoot.innerHTML = '';
++    delete elm.hasDSR;
++  }
++  //========= PDS PATCH END
++
+   if (BUILD21.hydrateServerSide) {
+     await callRender(hostRef, instance, elm, isInitialLoad);
+   } else {
+@@ -3818,7 +3828,13 @@ var connectedCallback = (elm) => {
+       if (BUILD25.initializeNextTick) {
+         nextTick(() => initializeComponent(elm, hostRef, cmpMeta));
+       } else {
+-        initializeComponent(elm, hostRef, cmpMeta);
++        //========= PDS PATCH START
++        // Delay for SSR streaming where the template needs some time to be upgraded by the browser to a shadowRoot.
++        // Wihout the delay this is executed before the HTML parser is finished and thus when the upgrade of the <template> happens a shadowRoot was already attached leading to the error: A second declarative shadow root cannot be created on a host.
++        writeTask(() => {
++          initializeComponent(elm, hostRef, cmpMeta);
++        });
++        //========= PDS PATCH END
+       }
+     } else {
+       addHostEventListeners(elm, hostRef, cmpMeta.$listeners$, false);
+@@ -4073,15 +4089,30 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+           registerHost(self, cmpMeta);
+           if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
+             if (supportsShadow) {
+-              if (!self.shadowRoot) {
+-                createShadowRoot.call(self, cmpMeta);
+-              } else {
+-                if (self.shadowRoot.mode !== "open") {
+-                  throw new Error(
+-                    `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self.shadowRoot.mode} but Stencil only supports open shadow roots.`
+-                  );
++              //========= PDS PATCH START
++              // Delay for SSR streaming where the template needs some time to be upgraded by the browser to a shadowRoot.
++              // Wihout the delay this is executed before the HTML parser is finished and thus when the upgrade of the <template> happens a shadowRoot was already attached leading to the error: A second declarative shadow root cannot be created on a host.
++              writeTask(() => {
++                // Save the innerHTML of the SSR rendered shadowRoot to re-apply it after creating the new shadowRoot to fix flickering until the client component renders.
++                let ssrInnerHTML = '';
++                if (self.shadowRoot) {
++                  ssrInnerHTML = self.shadowRoot.innerHTML;
++                  self.hasDSR = true;
+                 }
+-              }
++
++                if (!self.shadowRoot) {
++                  createShadowRoot.call(self, cmpMeta);
++                  // Apply the SSR rendered innerHTML to the new shadowRoot to avoid flickering until the client component renders.
++                  self.shadowRoot.innerHTML = ssrInnerHTML;
++                } else {
++                  if (self.shadowRoot.mode !== "open") {
++                    throw new Error(
++                      `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self.shadowRoot.mode} but Stencil only supports open shadow roots.`
++                    );
++                  }
++                }
++              //========= PDS PATCH END
++              });
+             } else if (!BUILD28.hydrateServerSide && !("shadowRoot" in self)) {
+               self.shadowRoot = self;
+             }

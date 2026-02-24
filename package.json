@@ -65,6 +65,7 @@
     "preinstall:components-react": "TARGET=./packages/components-react/dist/react-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/react-wrapper/package.json $TARGET && mkdir -p $TARGET/bin && touch $TARGET/bin/patchRemixRunProcessBrowserGlobalIdentifier.js",
     "preinstall:components-vue": "TARGET=./packages/components-vue/dist/vue-wrapper && mkdir -p $TARGET && cp ./packages/components-vue/projects/vue-wrapper/package.json $TARGET",
     "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s^shared^@porsche-design-system/shared^\" ./packages/shared/package.json > $TARGET/package.json && mkdir -p ./packages/shared/bin && touch ./packages/shared/bin/serve-dummyassets.js && touch ./packages/shared/bin/prepareVRTSnapshots.js",
+    "postinstall": "patch-package",
     "start:components": "yarn --cwd ./packages/components start",
     "start:components-js": "yarn --cwd ./packages/components-js start",
     "start:components-angular": "yarn --cwd ./packages/components-angular start",
@@ -262,7 +263,9 @@
     "@vanilla-extract/css": "^1.17.4",
     "@vanilla-extract/vite-plugin": "^5.1.1",
     "@vanilla-extract/rollup-plugin": "^1.4.1",
-    "webpack": "^5.102.1"
+    "webpack": "^5.102.1",
+    "patch-package": "^8.0.1",
+    "postinstall-postinstall": "^2.1.0"
   },
   "resolutions": {
     "**/vite/rollup": "^4.52.4",
