@@ -21,7 +21,7 @@ index a0c4198..0ead7ff 100644
              void 0,
              []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index d2cd381..42a5828 100644
+index d2cd381..8c7e04f 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
 @@ -3191,6 +3191,16 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
@@ -41,7 +41,7 @@ index d2cd381..42a5828 100644
    if (BUILD21.hydrateServerSide) {
      await callRender(hostRef, instance, elm, isInitialLoad);
    } else {
-@@ -3818,7 +3828,13 @@ var connectedCallback = (elm) => {
+@@ -3818,7 +3828,17 @@ var connectedCallback = (elm) => {
        if (BUILD25.initializeNextTick) {
          nextTick(() => initializeComponent(elm, hostRef, cmpMeta));
        } else {
@@ -49,14 +49,18 @@ index d2cd381..42a5828 100644
 +        //========= PDS PATCH START
 +        // Delay for SSR streaming where the template needs some time to be upgraded by the browser to a shadowRoot.
 +        // Wihout the delay this is executed before the HTML parser is finished and thus when the upgrade of the <template> happens a shadowRoot was already attached leading to the error: A second declarative shadow root cannot be created on a host.
-+        writeTask(() => {
++        if (document.readyState === 'loading') {
++          writeTask(() => {
++            initializeComponent(elm, hostRef, cmpMeta);
++          });
++        } else {
 +          initializeComponent(elm, hostRef, cmpMeta);
-+        });
++        }
 +        //========= PDS PATCH END
        }
      } else {
        addHostEventListeners(elm, hostRef, cmpMeta.$listeners$, false);
-@@ -4073,15 +4089,30 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -4073,15 +4093,36 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
            registerHost(self, cmpMeta);
            if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
              if (supportsShadow) {
@@ -68,16 +72,13 @@ index d2cd381..42a5828 100644
 -                    `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self.shadowRoot.mode} but Stencil only supports open shadow roots.`
 -                  );
 +              //========= PDS PATCH START
-+              // Delay for SSR streaming where the template needs some time to be upgraded by the browser to a shadowRoot.
-+              // Wihout the delay this is executed before the HTML parser is finished and thus when the upgrade of the <template> happens a shadowRoot was already attached leading to the error: A second declarative shadow root cannot be created on a host.
-+              writeTask(() => {
++              const initHost = () => {
 +                // Save the innerHTML of the SSR rendered shadowRoot to re-apply it after creating the new shadowRoot to fix flickering until the client component renders.
 +                let ssrInnerHTML = '';
 +                if (self.shadowRoot) {
 +                  ssrInnerHTML = self.shadowRoot.innerHTML;
 +                  self.hasDSR = true;
                  }
--              }
 +
 +                if (!self.shadowRoot) {
 +                  createShadowRoot.call(self, cmpMeta);
@@ -90,8 +91,16 @@ index d2cd381..42a5828 100644
 +                    );
 +                  }
 +                }
++              }
++
++              // Delay for SSR streaming where the template needs some time to be upgraded by the browser to a shadowRoot.
++              // Wihout the delay this is executed before the HTML parser is finished and thus when the upgrade of the <template> happens a shadowRoot was already attached leading to the error: A second declarative shadow root cannot be created on a host.
++              if (document.readyState === 'loading') {
++                writeTask(() => initHost());
++              } else {
++                initHost();
+               }
 +              //========= PDS PATCH END
-+              });
              } else if (!BUILD28.hydrateServerSide && !("shadowRoot" in self)) {
                self.shadowRoot = self;
              }
