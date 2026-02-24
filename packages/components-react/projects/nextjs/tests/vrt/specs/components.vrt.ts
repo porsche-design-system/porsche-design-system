@@ -1,9 +1,10 @@
 import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import {viewportWidthL, viewportWidths, viewportWidthXS} from '@porsche-design-system/shared/testing';
+import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
 import path from 'path';
+import { waitForComponentsReady } from '../helpers';
 
 const sourceDirectory = path.resolve('../../../components-js/src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
@@ -34,6 +35,7 @@ for (const component of components) {
     for (const viewportWidth of [viewportWidthXS, viewportWidthL]) {
       test(`viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(`/${component}`);
+        await waitForComponentsReady(page);
         // Remove selects in iframes
         await page.evaluate(() => {
           document.querySelectorAll('iframe').forEach((iframe) => {
