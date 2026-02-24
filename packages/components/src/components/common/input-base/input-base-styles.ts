@@ -109,11 +109,17 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       },
       ...(isDisabled && {
-        ...mergeDeep({ ...getDisabledBaseStyles() }, {
-          ...forcedColorsMediaQuery({
-            borderColor: 'GrayText',
-          }),
-        }),
+        ...mergeDeep(
+          { ...getDisabledBaseStyles() },
+          {
+            ...forcedColorsMediaQuery({
+              borderColor: 'GrayText',
+            }),
+          }
+        ),
+        '& > *': {
+          ...getDisabledBaseStyles(),
+        },
       }),
       ...(!isDisabled &&
         !readOnly &&

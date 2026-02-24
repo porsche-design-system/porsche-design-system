@@ -1,6 +1,5 @@
 import { fontLineHeight } from '@porsche-design-system/emotion';
-import { getTransition } from '../../styles';
-import { colorContrastLow, colorFrostedSoft } from '../../styles/css-variables';
+import { getDisabledBaseStyles, getTransition } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName } from '../../types';
 import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
@@ -39,9 +38,9 @@ export const getComponentCss = (
         root: {
           ...(disabledOrLoading && {
             cursor: 'not-allowed',
-            backgroundColor: colorFrostedSoft,
-            borderColor: colorFrostedSoft,
-            color: colorContrastLow,
+          }),
+          ...(isDisabled && {
+            ...getDisabledBaseStyles(),
           }),
         },
         ...(isLoading && {
@@ -53,6 +52,7 @@ export const getComponentCss = (
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
+            color: 'inherit',
           },
         }),
         label: {
@@ -60,11 +60,17 @@ export const getComponentCss = (
           ...(isLoading && {
             opacity: 0, // use opacity for smooth transition between states
           }),
+          ...(isDisabled && {
+            ...getDisabledBaseStyles(),
+          }),
         },
         icon: {
           transition: getTransition('opacity'),
           ...(isLoading && {
             opacity: 0, // use opacity for smooth transition between states
+          }),
+          ...(isDisabled && {
+            ...getDisabledBaseStyles(),
           }),
         },
         // .loading
