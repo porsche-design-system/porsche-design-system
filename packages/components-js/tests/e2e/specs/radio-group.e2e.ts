@@ -489,7 +489,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-radio-group-option'], 'componentDidLoad: p-radio-group-option').toBe(3);
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     const option1 = getRadioGroupOption(page, 2);
     await option1.click();
@@ -506,7 +506,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidUpdate: p-radio-group-option',
         }
       )
-      .toBe(6);
+      .toBe(5);
     await expect
       .poll(
         async () => {
@@ -528,7 +528,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidUpdate: all',
         }
       )
-      .toBe(7);
+      .toBe(6);
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -545,15 +545,15 @@ test.describe('lifecycle', () => {
       expect(status1.componentDidLoad['p-radio-group-option'], 'componentDidLoad: p-radio-group-option').toBe(3);
 
       expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       const status2 = await getLifecycleStatus(page);
-      expect(status2.componentDidUpdate['p-radio-group-option'], 'componentDidUpdate: p-radio-group-option').toBe(6);
+      expect(status2.componentDidUpdate['p-radio-group-option'], 'componentDidUpdate: p-radio-group-option').toBe(5);
       expect(status2.componentDidUpdate['p-radio-group'], 'componentDidUpdate: p-radio-group').toBe(1);
-      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(7);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(6);
     });
   });
 });
