@@ -335,6 +335,10 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -534,9 +538,9 @@ img {
                 <input
                   aria-describedby="description message"
                   autocomplete="off"
+                  dir="auto"
                   id="input-search"
                   name="filter"
-                  placeholder=""
                   type="search"
                   value=""
                 />
@@ -1488,6 +1492,7 @@ input:focus-visible {
     >
       <div
         class="wrapper"
+        dir="ltr"
       >
         <input
           aria-describedby="label description message"
@@ -8565,6 +8570,10 @@ exports[`should render dsr component for PInputDate 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -8700,6 +8709,7 @@ input::-webkit-calendar-picker-indicator {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-date"
           step="1"
           type="date"
@@ -8743,6 +8753,13 @@ exports[`should render dsr component for PInputEmail 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -8872,8 +8889,8 @@ input {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-email"
-          placeholder=""
           type="email"
           value=""
         />
@@ -8915,6 +8932,10 @@ exports[`should render dsr component for PInputMonth 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -9052,6 +9073,7 @@ input::-webkit-calendar-picker-indicator {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-month"
           step="1"
           type="month"
@@ -9095,6 +9117,10 @@ exports[`should render dsr component for PInputNumber 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -9228,8 +9254,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-number"
-          placeholder=""
           step="1"
           type="number"
           value=""
@@ -9272,6 +9298,10 @@ exports[`should render dsr component for PInputPassword 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -9401,8 +9431,8 @@ input {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-password"
-          placeholder=""
           type="password"
           value=""
         />
@@ -9444,6 +9474,10 @@ exports[`should render dsr component for PInputSearch 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -9576,8 +9610,8 @@ input::-webkit-search-cancel-button {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-search"
-          placeholder=""
           type="search"
           value=""
         />
@@ -9620,6 +9654,13 @@ exports[`should render dsr component for PInputTel 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -9748,8 +9789,8 @@ input {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-tel"
-          placeholder=""
           type="tel"
           value=""
         />
@@ -9792,6 +9833,10 @@ exports[`should render dsr component for PInputText 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -9920,8 +9965,8 @@ input {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-text"
-          placeholder=""
           type="text"
           value=""
         />
@@ -9963,6 +10008,10 @@ exports[`should render dsr component for PInputTime 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -10099,6 +10148,7 @@ input::-webkit-calendar-picker-indicator {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-time"
           step="60"
           type="time"
@@ -10142,6 +10192,13 @@ exports[`should render dsr component for PInputUrl 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -10271,8 +10328,8 @@ input {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-url"
-          placeholder=""
           type="url"
           value=""
         />
@@ -10314,6 +10371,10 @@ exports[`should render dsr component for PInputWeek 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -10451,6 +10512,7 @@ input::-webkit-calendar-picker-indicator {
         />
         <input
           aria-describedby="description message"
+          dir="auto"
           id="input-week"
           step="1"
           type="week"
@@ -12021,6 +12083,10 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -12220,9 +12286,9 @@ img {
                 <input
                   aria-describedby="description message"
                   autocomplete="off"
+                  dir="auto"
                   id="input-search"
                   name="filter"
-                  placeholder=""
                   type="search"
                   value=""
                 />
@@ -12987,6 +13053,7 @@ input:focus-visible {
     >
       <div
         class="wrapper"
+        dir="ltr"
       >
         <input
           aria-describedby="label description message"
