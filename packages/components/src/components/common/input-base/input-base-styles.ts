@@ -43,7 +43,8 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   isCompact: boolean,
   readOnly: boolean,
-  additionalInputJssStyle?: JssStyle
+  additionalInputJssStyle?: JssStyle,
+  additionalHostJssStyle?: JssStyle
 ): Styles => {
   const wrapperBorderWidth = borderWidthThin;
   const wrapperHeight = `calc(var(${cssVarInternalInputBaseScaling}) * 3.5rem)`;
@@ -64,6 +65,12 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPureMargin}`]: buttonMargin,
           ...hostHiddenStyles,
         }),
+        // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
+        '&(:dir(rtl)) input::placeholder': {
+          direction: 'rtl',
+          textAlign: 'end',
+        },
+        ...additionalHostJssStyle,
       },
       ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,

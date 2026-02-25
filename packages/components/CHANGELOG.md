@@ -521,6 +521,15 @@ and migration steps.
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 
+## [3.32.1] - 2026-02-24
+
+## [3.32.1-rc.0] - 2026-02-20
+
+### Fixed
+
+- `Input Email`, `Input Password`, `Input Tel`, `Pin Code`: optimize input direction and behavior in RTL mode
+  ([#4209](https://github.com/porsche-design-system/porsche-design-system/pull/4209))
+
 ## [3.32.0] - 2026-02-04
 
 ## [3.32.0-rc.2] - 2026-02-03
