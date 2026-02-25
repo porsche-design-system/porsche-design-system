@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 });
 
-const pageUrls = routes.map((item) => item.path).filter((url) => url !== '/streaming');
+const pageUrls = routes.map((item) => item.path);
 
 for (const pageUrl of pageUrls) {
   test(`should work without error or warning for ${pageUrl}`, async ({ page }) => {
