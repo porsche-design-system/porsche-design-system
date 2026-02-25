@@ -9,7 +9,7 @@
       id="input-tel"
       name="value"
       type="tel"
-      placeholder=""
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

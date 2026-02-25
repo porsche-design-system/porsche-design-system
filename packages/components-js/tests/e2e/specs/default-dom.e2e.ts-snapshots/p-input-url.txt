@@ -9,7 +9,7 @@
       id="input-url"
       name="value"
       type="url"
-      placeholder=""
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

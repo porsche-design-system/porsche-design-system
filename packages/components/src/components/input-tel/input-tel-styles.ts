@@ -25,13 +25,30 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
-      '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-        WebkitAppearance: 'none',
+    ...getFunctionalComponentInputBaseStyles(
+      disabled,
+      loading,
+      hideLabel,
+      state,
+      compact,
+      readOnly,
+      theme,
+      {
+        textOverflow: 'ellipsis',
+        MozAppearance: 'textfield',
+        '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+          WebkitAppearance: 'none',
+        },
       },
-    }),
+      // Overwrites direction to ltr for rtl languages to prevent issues with the tel input, e.g. cursor jumping to the
+      // end of the input when typing in the middle of the text. This is necessary because tel values are assumed
+      // to be always written in ltr direction and the input needs to accommodate that, even in rtl contexts.
+      {
+        '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
+          direction: 'ltr',
+        },
+      }
+    ),
     'sr-only': getHiddenTextJssStyle(),
   });
 };

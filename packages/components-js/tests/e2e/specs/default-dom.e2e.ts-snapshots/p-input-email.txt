@@ -9,7 +9,7 @@
       id="input-email"
       name="value"
       type="email"
-      placeholder=""
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

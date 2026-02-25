@@ -10,6 +10,7 @@
       name="value"
       type="time"
       step="60"
+      dir="auto"
     />
     <p-button-pure class="button hydrated"> Open time picker</p-button-pure>
     <slot name="end"> </slot>
