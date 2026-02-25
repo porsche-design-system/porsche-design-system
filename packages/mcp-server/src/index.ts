@@ -6,7 +6,12 @@ import { z } from 'zod';
 
 // ── Config ────────────────────────────────────────────────────────
 
-const API_BASE = process.env.PDS_MCP_API_URL;
+const API_BASE = process.env.PDS_MCP_API_BASE;
+
+if (!API_BASE) {
+  console.error('Missing required env variable PDS_MCP_API_BASE');
+  process.exit(1);
+}
 
 // ── API helper ────────────────────────────────────────────────────
 
@@ -33,98 +38,37 @@ function textResult(data: unknown) {
   };
 }
 
-const server = new McpServer({
-  name: 'pds-mcp',
-  version: '1.0.0',
-});
-
-server.registerTool(
-  'get-version',
+const server = new McpServer(
   {
-    description:
-      'Returns the current Porsche Design System documentation version, build timestamp, and total doc count.',
+    name: 'pds-mcp',
+    version: '1.0.0',
   },
-  async () => {
-    const data = await api('GET', '/version');
-    return textResult(data);
+  {
+    instructions:
+      'Porsche Design System (PDS) documentation server. Use the query tool to search 670+ docs covering components, styles, patterns, framework guides, and more.',
   }
 );
 
 server.registerTool(
-  'list-docs',
+  'query',
   {
+    title: 'Query documentation',
     description:
-      'Lists available documentation pages with their sections and frameworks. ' +
-      'Use to discover what components, styles, and guides exist before calling get-doc.',
+      'Semantic search over Porsche Design System (PDS) documentation (670+ docs). ' +
+      'Use for any question about PDS components, styles, patterns, or guides.\n\n' +
+      'Categories: components (73, e.g. button, tabs, modal, select, carousel…), ' +
+      'styles (border, typography, spacing…), patterns (forms, header, footer…), ' +
+      'must-know (accessibility, performance, versioning…), developing (React, Angular, Vue, Next.js…), ' +
+      'partials, Tailwind CSS utilities, AG Grid theme, help/FAQ, news/changelog.\n\n' +
+      'Pass a natural-language query. Returns the most relevant doc chunks.',
     inputSchema: z.object({
-      category: z
-        .string()
-        .optional()
-        .describe('Filter by category: "components", "styles", "must-know". Omit to list all.'),
+      query: z.string().describe('The name of the topic to retrieve. E.g. "button" or "form/checkbox".'),
     }),
   },
-  async ({ category }) => {
-    const query = category ? `?category=${encodeURIComponent(category)}` : '';
-    const data = await api('GET', `/docs${query}`);
-    return textResult(data);
-  }
-);
-
-server.registerTool(
-  'get-doc',
-  {
-    description:
-      'Get documentation for a specific topic. Returns quick-ref by default (~500 tokens). ' +
-      'Pass sections to get more detail, or sections: ["all"] for everything. ' +
-      'Every response includes availableSections and availableFrameworks so you know what to request next.',
-    inputSchema: z.object({
-      topic: z.string().describe('Component or topic name: "button", "typography", "tabs", "form/input-text".'),
-      sections: z
-        .array(z.string())
-        .optional()
-        .describe(
-          'Sections to fetch: ["quick-ref"], ["usage", "api"], ["all"]. ' +
-            'Omit for quick-ref only. Options: quick-ref, usage, api, examples, accessibility.'
-        ),
-      framework: z
-        .enum(['vanilla-js', 'react', 'angular', 'vue'])
-        .optional()
-        .describe('Framework for examples section. Only affects examples. Defaults to vanilla-js.'),
-    }),
-  },
-  async ({ topic, sections, framework }) => {
-    const body: Record<string, unknown> = { topic };
-    if (sections) body.sections = sections;
-    if (framework) body.framework = framework;
-
-    const data = await api('POST', '/docs/get', body);
-    return textResult(data);
-  }
-);
-
-// ── Tool: search-docs ─────────────────────────────────────────────
-
-server.registerTool(
-  'search-docs',
-  {
-    description:
-      'Full-text search across all documentation. Returns matching docs with optional content excerpts. ' +
-      "Use for finding topics when you don't know the exact component name.",
-    inputSchema: z.object({
-      query: z.string().describe('Search query (case-insensitive).'),
-      max_results: z.number().int().min(1).max(20).optional().describe('Maximum results to return. Default: 5.'),
-      include_content: z
-        .boolean()
-        .optional()
-        .describe('Include first ~200 words of each match. Default: true. Set false for titles only.'),
-    }),
-  },
-  async ({ query, max_results, include_content }) => {
+  async ({ query }) => {
     const body: Record<string, unknown> = { query };
-    if (max_results !== undefined) body.max_results = max_results;
-    if (include_content !== undefined) body.include_content = include_content;
 
-    const data = await api('POST', '/docs/search', body);
+    const data = await api('POST', '/query', body);
     return textResult(data);
   }
 );
