@@ -10,6 +10,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -133,6 +140,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -258,6 +272,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -380,6 +401,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -504,6 +532,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -626,6 +661,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -751,6 +793,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -875,6 +924,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -997,6 +1053,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1121,6 +1184,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1242,6 +1312,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1365,6 +1442,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1483,6 +1567,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
+}
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
@@ -1600,6 +1691,13 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1843,6 +1941,13 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2096,6 +2201,13 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:dir(rtl)) input::placeholder {
+  direction: rtl;
+  text-align: end;
+}
+:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+  direction: ltr;
 }
 slot[name="label-after"] {
   display: inline-block;
