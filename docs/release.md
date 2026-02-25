@@ -64,8 +64,12 @@ release can be published.
 
 ### Deploy
 
-1. Create pull request from `main` into `v3` branch
-2. Merge into `v3` branch (then CI/CD will trigger a Storefront deployment automatically)
+1. Create a new housekeeping branch from `main` e.g. `git checkout -b housekeeping/components-v3.0.0`
+2. Adapt PDS version in Stackblitz framework `package.json` files, e.g.
+   `/storefront/projects/stackblitz/src/(js/angular/react/vue)/package.json` to the newly released stable version.
+3. Create new pull request from e.g. `housekeeping/components-v3.0.0` into `main` branch and merge
+4. Create pull request from `main` into `v3` branch
+5. Merge into `v3` branch (then CI/CD will trigger a Storefront deployment automatically)
 
 ### Communicate
 
