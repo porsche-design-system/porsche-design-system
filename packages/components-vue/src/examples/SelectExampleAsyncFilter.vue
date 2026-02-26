@@ -117,21 +117,21 @@ async function fetchOptions(term?: string, isInitial?: boolean) {
 
 const debouncedFetch = useDebounce((term?: string) => fetchOptions(term), 400);
 
-function onInput(e: InputSearchInputEventDetail) {
+function onInput(e: CustomEvent<InputSearchInputEventDetail>) {
   const term = (e.target as HTMLInputElement).value;
   searchValue.value = term;
   debouncedFetch(term.trim() || undefined);
 }
 
-function onChange(e: SelectChangeEventDetail) {
+function onChange(e: CustomEvent<SelectChangeEventDetail>) {
   // Can be called from bubbling onChange event of PInputSearch, ignore those
-  if (e.name) {
-    value.value = e.value;
+  if (e.detail.name) {
+    value.value = e.detail.value;
   }
 }
 
-function onToggle(e: SelectToggleEventDetail) {
-  if (e.open && !hasLoadedOnce.value) {
+function onToggle(e: CustomEvent<SelectToggleEventDetail>) {
+  if (e.detail.open && !hasLoadedOnce.value) {
     fetchOptions(undefined, true);
   }
 }

@@ -14,6 +14,122 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `SCSS`, `Emotion`, `Vanilla Extract`: bring back PDS v3 import paths for better DX and backward compatibility.
+- `Accordion`:
+  - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-before` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-after` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `background` with values `canvas | surface | frosted | none (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `align-marker` with values `start | end (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-px` to control the horizontal padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-py` to control the vertical padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-summary-top` to control the optional sticky top position
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
+### Changed
+
+- `Accordion`:
+  - Modernize visual appearance ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Use semantic HTML element `<details>` and `<summary>` internally (instead of divs and buttons) for better
+    accessibility and native behavior
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+- **Vue:** All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must
+  be accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
+
+```diff
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
+  </PAccordion>
+</template>
+```
+
+### Removed
+
+- `Accordion`:
+  - Prop `tag` use `heading-tag` (deprecated with v4 now) instead or make use of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" tag="h3">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+
+### Deprecated
+
+- `SCSS`: Import path for npm package:
+
+```diff
+- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
+
+- `Emotion`: Import path for npm package:
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
+
+- `Vanilla Extract`: Import path for npm package:
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+```
+
+- `Accordion`:
+  - Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" heading-tag="h3" size="small">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - Slot `heading` in favor of `slot="summary"`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    <p-acccordion>
+    - <span slot="heading">Some summary</span>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    <p-accordion>
+    + <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
 ## [4.0.0-beta.0] - 2026-02-12
 
 ### Added
@@ -401,6 +517,17 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+- `Multi Select`: trim whitespace of selected options text
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.32.1] - 2026-02-24
+
+## [3.32.1-rc.0] - 2026-02-20
+
+### Fixed
+
+- `Input Email`, `Input Password`, `Input Tel`, `Pin Code`: optimize input direction and behavior in RTL mode
+  ([#4209](https://github.com/porsche-design-system/porsche-design-system/pull/4209))
 
 ## [3.32.0] - 2026-02-04
 
@@ -435,12 +562,37 @@ and migration steps.
 
 ### Added
 
+- `Multi Select, Select`:
+  - `selected` slot for custom selection rendering and enabling complex options
+  - `options-status` slot for loading, error and no results states when using custom filtering
+    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
+- `Multi Select, Select`:
+  - `filter` slot to allow custom asynchronous filtering
+  - `toggle` event when opening/closing the dropdown
+    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
+- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
+- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 - `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
   intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-- `Canvas`: prop `background` to set the background color to `canvas | surface`
 
 ### Fixed
 
+- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
+- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
+  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
+  ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 

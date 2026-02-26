@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 
 const value = ref<string>('');
 
-const onInput = (e: TextareaInputEventDetail) => {
+const onInput = (e: CustomEvent<TextareaInputEventDetail>) => {
   value.value = (e.target as HTMLTextAreaElement).value;
 };
 

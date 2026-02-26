@@ -14,6 +14,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
+  forcedColorsMediaQuery,
 } from '../../styles';
 import {
   colorContrastLow,
@@ -64,7 +65,7 @@ export const getComponentCss = (
 ): string => {
   const { buttonBorderColor, buttonBorderColorHover, buttonBackgroundColor, toggleBackgroundColor, textColor } =
     getColors(isChecked, isLoading);
-
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
   const gap = `calc(11.2px * (var(${cssVarInternalSwitchScaling}) - 0.64285714) + 4px)`;
   const buttonBorderWidth = borderWidthThin;
   const buttonWidth = `calc(var(${cssVarInternalSwitchScaling}) * 3rem)`;
@@ -111,9 +112,13 @@ export const getComponentCss = (
         border: `${buttonBorderWidth} solid ${buttonBorderColor}`,
         borderRadius: radiusFull,
         background: buttonBackgroundColor,
-        cursor: isDisabledOrLoading(isDisabled, isLoading) ? 'not-allowed' : 'pointer',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        ...(!isDisabledOrLoading(isDisabled, isLoading) &&
+        ...(disabledOrLoading &&
+          forcedColorsMediaQuery({
+            borderColor: 'GrayText',
+          })),
+        ...(!disabledOrLoading &&
           hoverMediaQuery({
             '&:hover': {
               borderColor: buttonBorderColorHover,
@@ -132,8 +137,12 @@ export const getComponentCss = (
         ...textSmallStyle,
         minWidth: 0, // prevents flex child to overflow max available parent size
         minHeight: 0, // prevents flex child to overflow max available parent size
-        cursor: isDisabledOrLoading(isDisabled, isLoading) ? 'not-allowed' : 'pointer',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         color: textColor,
+        ...(disabledOrLoading &&
+          forcedColorsMediaQuery({
+            color: 'GrayText',
+          })),
         ...mergeDeep(
           buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
             order: alignLabelValue === 'start' ? -1 : 0,
@@ -147,6 +156,7 @@ export const getComponentCss = (
       },
     },
     toggle: {
+      forcedColorAdjust: 'none',
       display: 'flex',
       placeItems: 'center',
       placeContent: 'center',

@@ -346,6 +346,15 @@ const codeExamples: CodeSample[] = [
           vue: '/InputTextExampleForm.vue',
         },
       },
+      {
+        name: 'InputTextExampleControlled',
+        paths: {
+          'vanilla-js': '/input-text-example-controlled.html',
+          angular: '/input-text-example-controlled.component.ts',
+          react: '/InputTextExampleControlled.tsx',
+          vue: '/InputTextExampleControlled.vue',
+        },
+      },
     ],
   },
   {

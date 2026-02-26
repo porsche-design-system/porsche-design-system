@@ -136,6 +136,9 @@ export class InputEmail {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 

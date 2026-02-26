@@ -8,8 +8,8 @@ import {
 import { ref } from 'vue';
 
 const currentValue = ref(1);
-const onChange = (e: SegmentedControlChangeEventDetail): void => {
-  currentValue.value = e.value as number;
+const onChange = (e: CustomEvent<SegmentedControlChangeEventDetail>): void => {
+  currentValue.value = e.detail.value as number;
 };
 </script>
 

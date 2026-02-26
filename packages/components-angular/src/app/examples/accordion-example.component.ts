@@ -4,10 +4,12 @@ import { AccordionUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-
 @Component({
   selector: 'page-accordion-example',
   template: `
-    <p-accordion [heading]="'Some Heading'" [headingTag]="'h3'" [open]="isOpen1" (update)="onUpdate1($event)">
+    <p-accordion [open]="isOpen1" (update)="onUpdate1($event)">
+      <p-heading slot="summary" tag="h3" size="small">{{ summary }}</p-heading>
       <p-text>{{ content }}</p-text>
     </p-accordion>
-    <p-accordion [heading]="'Some Heading'" [headingTag]="'h3'" [open]="isOpen2" (update)="onUpdate2($event)">
+    <p-accordion [open]="isOpen2" (update)="onUpdate2($event)">
+      <p-heading slot="summary" tag="h3" size="small">{{ summary }}</p-heading>
       <p-text>{{ content }}</p-text>
     </p-accordion>
   `,
@@ -19,8 +21,9 @@ import { AccordionUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-
 export class AccordionExampleComponent {
   isOpen1 = false;
   isOpen2 = false;
+  summary = 'Some summary';
   content =
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
+    'Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
     'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
 
   onUpdate1(e: CustomEvent<AccordionUpdateEventDetail>) {

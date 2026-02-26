@@ -92,6 +92,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: inherit;
@@ -195,6 +201,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: inherit;
@@ -298,6 +310,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: inherit;
@@ -401,6 +419,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: inherit;
@@ -499,6 +523,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: inherit;
@@ -597,6 +627,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;
@@ -695,6 +731,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: inherit;
@@ -792,6 +834,12 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
+@media (forced-colors: active) {
+  .scroll-wrapper:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .action-prev .action-button {
     visibility: hidden;

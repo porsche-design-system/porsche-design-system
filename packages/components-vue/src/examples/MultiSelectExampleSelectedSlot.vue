@@ -85,8 +85,8 @@ const value = ref<string[]>([]);
 const options = ref<Option[]>(optionsData);
 const selectedOptions = ref<Option[]>([]);
 
-function onChange(e: MultiSelectChangeEventDetail) {
-  value.value = e.value;
-  selectedOptions.value = options.value.filter((option) => e.value.includes(option.value));
+function onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
+  value.value = e.detail.value;
+  selectedOptions.value = options.value.filter((option) => e.detail.value.includes(option.value));
 }
 </script>

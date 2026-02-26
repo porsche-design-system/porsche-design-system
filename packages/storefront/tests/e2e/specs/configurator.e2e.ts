@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { FRAMEWORK_TYPES, type Framework } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'change-case';
 
@@ -28,40 +28,46 @@ const selectMarkupFramework = async (page: Page, framework: Framework) => {
 };
 
 // Tests select input of type string[] and checks if default is handled (Accordion)
-const selectStringProperty: { framework: Framework; expectedTag: string; sizePropText: string }[] = [
-  { framework: 'vanilla-js', expectedTag: 'p-accordion', sizePropText: 'size="medium"' },
-  { framework: 'react', expectedTag: 'PAccordion', sizePropText: 'size="medium"' },
-  { framework: 'angular', expectedTag: 'p-accordion', sizePropText: 'size="medium"' },
-  { framework: 'vue', expectedTag: 'PAccordion', sizePropText: 'size="medium"' },
+const selectStringProperty: { framework: Framework; expectedTag: string; backgroundPropText: string }[] = [
+  { framework: 'vanilla-js', expectedTag: 'p-accordion', backgroundPropText: 'background="frosted"' },
+  { framework: 'react', expectedTag: 'PAccordion', backgroundPropText: 'background="frosted"' },
+  { framework: 'angular', expectedTag: 'p-accordion', backgroundPropText: 'background="frosted"' },
+  { framework: 'vue', expectedTag: 'PAccordion', backgroundPropText: 'background="frosted"' },
 ];
 
 test.describe('properties > select', () => {
-  for (const { framework, expectedTag, sizePropText } of selectStringProperty) {
+  for (const { framework, expectedTag, backgroundPropText } of selectStringProperty) {
     test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
       await page.goto('/components/accordion/configurator');
 
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
       const accordion = page.locator('.demo p-accordion');
+      const backgroundSelect = page.locator('p-select[name="background"]');
 
       await expect(accordion).toBeVisible();
-      await expect(accordion).toHaveJSProperty('size', 'small');
+      await expect(backgroundSelect).toBeVisible();
+      await expect(markup).toBeVisible();
+
+      await expect(accordion).toHaveJSProperty('background', 'none');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'none');
       await expect(markup).toContainText(expectedTag);
+      await expect(markup).not.toContainText(backgroundPropText);
 
-      const sizeSelect = page.locator('p-select[name="size"]');
-      await expect(sizeSelect).toBeVisible();
-      await expect(sizeSelect).toHaveJSProperty('value', 'small');
-      await expect(markup).not.toContainText('size');
+      await backgroundSelect.click();
+      await backgroundSelect.locator('p-select-option').nth(2).click();
 
-      await sizeSelect.click();
-      await sizeSelect.locator('p-select-option').last().click();
-      await expect(markup).toContainText(sizePropText);
-      await expect(accordion).toHaveJSProperty('size', 'medium');
+      await expect(accordion).toHaveJSProperty('background', 'frosted');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'frosted');
+      await expect(markup).toContainText(expectedTag);
+      await expect(markup).toContainText(backgroundPropText);
 
-      await sizeSelect.getByText('Reset').click();
-      await expect(sizeSelect).toHaveJSProperty('value', 'small');
-      await expect(accordion).toHaveJSProperty('size', 'small');
-      await expect(markup).not.toContainText('size');
+      await backgroundSelect.locator('p-tag button').click();
+
+      await expect(accordion).toHaveJSProperty('background', 'none');
+      await expect(backgroundSelect).toHaveJSProperty('value', 'none');
+      await expect(markup).toContainText(expectedTag);
+      await expect(markup).not.toContainText(backgroundPropText);
     });
   }
 });
@@ -99,7 +105,7 @@ test.describe('properties > switch', () => {
       await expect(accordion).toHaveJSProperty('compact', true);
 
       // Reset prop
-      await page.locator('p-switch + p-tag button').click();
+      await page.locator('p-switch p-tag button').click();
       await expect(compactSwitch).toHaveJSProperty('checked', false);
       await expect(accordion).toHaveJSProperty('compact', undefined);
       await expect(markup).not.toContainText('compact');

@@ -1,22 +1,20 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { accordionSlotStories, accordionStory } from "@/app/components/accordion/accordion.stories";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
+import { accordionSlotStories, accordionStory } from '@/app/components/accordion/accordion.stories';
 
 export const metadata = {
   title: 'Accordion - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Accordion component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Accordion component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-The `p-accordion` is a component that reveals or hides associated sections of content.
-Accordions are flexible in the context and can include other components of the Porsche Design System.
+The `p-accordion` is a component that reveals or hides associated sections of content. Accordions are flexible in the
+context and can include other components of the Porsche Design System.
 
 It is a controlled component. This means it does not contain any internal state, and you got full control over its
 behavior.
 
 <Configurator tagName="p-accordion" story={accordionStory} slotStories={accordionSlotStories} />
-
-
-

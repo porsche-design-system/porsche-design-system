@@ -1,6 +1,6 @@
 import { spacingStaticXs, proseTextSmStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
-import { getHiddenTextJssStyle, getTransition } from '../../../styles';
+import { forcedColorsMediaQuery, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { colorContrastHigh, colorPrimary } from '../../../styles/css-variables';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
@@ -45,6 +45,10 @@ export const getFunctionalComponentLabelStyles = (
         pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
       color: colorPrimary,
+      ...(isDisabledOrLoading &&
+        forcedColorsMediaQuery({
+          color: 'GrayText',
+        })),
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       display: 'inline',
       '&:empty': {

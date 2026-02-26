@@ -21,9 +21,9 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onChange = (e: SelectChangeEventDetail) => {
-  selectedValue.value = e.value;
-  inputValue.value = e.value;
+const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  selectedValue.value = e.detail.value;
+  inputValue.value = e.detail.value;
 };
 
 const onAddOption = () => {

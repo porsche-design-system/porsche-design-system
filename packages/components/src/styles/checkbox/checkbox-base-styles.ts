@@ -10,6 +10,7 @@ import {
   cssVarCheckboxBorderColor,
   cssVarInternalCheckboxScaling,
 } from './checkbox-css-vars';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getCheckboxBaseStyles = (
   isDisabled: boolean,
@@ -37,6 +38,10 @@ export const getCheckboxBaseStyles = (
     background: `var(${cssVarCheckboxBackgroundColor},${formStateBackgroundColor})`,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${checkboxBorderWidth} solid var(${cssVarCheckboxBorderColor},${formStateBorderColor})`,
+    ...(disabledOrLoading &&
+      forcedColorsMediaQuery({
+        borderColor: 'GrayText',
+      })),
     borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusMd : radiusLg})`,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable

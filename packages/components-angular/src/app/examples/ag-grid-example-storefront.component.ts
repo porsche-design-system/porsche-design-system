@@ -33,7 +33,7 @@ type ColumnDefs = DataAdvanced & {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
+  imports: [PorscheDesignSystemModule, AgGridAngular],
 })
 export class AgGridExampleStorefrontComponent {
   protected readonly agGridTheme = pdsTheme;

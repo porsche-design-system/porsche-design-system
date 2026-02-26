@@ -7,6 +7,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
+  forcedColorsMediaQuery,
 } from '../../../styles';
 import {
   colorContrastMedium,
@@ -41,7 +42,8 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   isCompact: boolean,
   readOnly: boolean,
-  additionalInputJssStyle?: JssStyle
+  additionalInputJssStyle?: JssStyle,
+  additionalHostJssStyle?: JssStyle
 ): Styles => {
   const wrapperBorderWidth = borderWidthThin;
   const wrapperHeight = `calc(var(${cssVarInternalInputBaseScaling}) * 3.5rem)`;
@@ -63,6 +65,12 @@ export const getFunctionalComponentInputBaseStyles = (
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),
+        // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
+        '&(:dir(rtl)) input::placeholder': {
+          direction: 'rtl',
+          textAlign: 'end',
+        },
+        ...additionalHostJssStyle,
       },
       ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
@@ -98,9 +106,17 @@ export const getFunctionalComponentInputBaseStyles = (
         background: colorFrosted,
         color: colorContrastMedium,
       }),
-      '&:focus-within': {
+      '&:not(:has(input:disabled)):focus-within': {
         borderColor: formStateBorderHoverColor,
+        ...forcedColorsMediaQuery({
+          outline: '2px solid Highlight',
+          outlineOffset: '2px',
+        }),
       },
+      ...(isDisabled &&
+        forcedColorsMediaQuery({
+          borderColor: 'GrayText',
+        })),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&

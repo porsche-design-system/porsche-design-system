@@ -102,6 +102,36 @@ test.describe('value', () => {
     await expect(inputNumber).toHaveJSProperty('value', testInput);
     await expect(inputNumber).toHaveValue(testInput);
   });
+
+  test('should allow controlled input via programmatic value updates in input listener', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'some-name' } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputNumber).toHaveValue('');
+
+    // Add input event listener that always sets value to '1'
+    await page.evaluate(() => {
+      const hostElement = document.querySelector('p-input-number');
+      hostElement.addEventListener('input', () => {
+        hostElement.value = '1';
+      });
+    });
+
+    await inputNumber.focus();
+    await expect(inputNumber).toBeFocused();
+
+    await page.keyboard.press('2');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '1');
+    await expect(inputNumber).toHaveValue('1');
+
+    await page.keyboard.press('7');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '1');
+    await expect(inputNumber).toHaveValue('1');
+  });
 });
 
 test.describe('form', () => {

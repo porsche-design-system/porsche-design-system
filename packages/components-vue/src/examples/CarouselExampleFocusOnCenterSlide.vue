@@ -13,8 +13,8 @@ const getSlideClass = (index: number) => {
   };
 };
 
-const onCarouselUpdate = (event: CarouselUpdateEventDetail) => {
-  activeSlideIndex.value = event.activeIndex;
+const onCarouselUpdate = (event: CustomEvent<CarouselUpdateEventDetail>) => {
+  activeSlideIndex.value = event.detail.activeIndex;
 };
 </script>
 

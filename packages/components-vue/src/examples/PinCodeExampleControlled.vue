@@ -5,9 +5,9 @@ import { ref } from 'vue';
 const value = ref('');
 const isComplete = ref(false);
 
-const onUpdate = (e: PinCodeChangeEventDetail): void => {
-  value.value = e.value;
-  isComplete.value = e.isComplete;
+const onUpdate = (e: CustomEvent<PinCodeChangeEventDetail>): void => {
+  value.value = e.detail.value;
+  isComplete.value = e.detail.isComplete;
 };
 </script>
 

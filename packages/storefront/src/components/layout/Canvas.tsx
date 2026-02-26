@@ -177,7 +177,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-start">
         <Navigation pdsVersion={pdsVersion} onNavigate={onNavigationChange} />
       </div>
-      <div slot="sidebar-end">
+      <div slot="sidebar-end" className="flex flex-col gap-fluid-sm">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
           <PHeading size="small" tag="h2">
             Global settings
