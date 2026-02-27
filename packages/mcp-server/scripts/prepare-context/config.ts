@@ -31,7 +31,7 @@ export const MIN_PAGE_CONTENT_BYTES = 100;
 export const LARGE_ENUM_THRESHOLD = 20;
 
 /** Directories to skip entirely during source traversal */
-export const SKIP_DIRECTORIES = ['templates', 'patterns', 'partials', '-', '[component]', 'developing'];
+export const SKIP_DIRECTORIES = ['-', '[component]'];
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Shared mutable state (populated during the pipeline)
