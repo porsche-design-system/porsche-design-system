@@ -2,7 +2,7 @@
 
 import React, { createContext, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
-import type { StorefrontColorScheme } from '@/models/theme';
+import { STOREFRONT_COLOR_SCHEME_TYPES, type StorefrontColorScheme } from '@/models/theme';
 
 interface StorefrontThemeContextProps {
   storefrontTheme: StorefrontColorScheme;
@@ -21,13 +21,16 @@ export const StorefrontThemeProvider = ({ children }: PropsWithChildren) => {
   // Load initial state from localStorage once component mounts
   // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
-    const storedTheme = localStorage.getItem(storefrontThemeLocalStorageKey) as StorefrontColorScheme | null;
-    if (storedTheme) {
+    const storedTheme = localStorage.getItem(storefrontThemeLocalStorageKey) as StorefrontTheme | null;
+    if (storedTheme && STOREFRONT_COLOR_SCHEME_TYPES.includes(storedTheme)) {
       setStorefrontTheme(storedTheme);
     }
   }, []);
 
   const setStorefrontTheme = (storefrontTheme: StorefrontColorScheme) => {
+    if (!STOREFRONT_COLOR_SCHEME_TYPES.includes(storefrontTheme)) {
+      return;
+    }
     setSelectedTheme(storefrontTheme);
     document.documentElement.classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
     document.documentElement.classList.add(storefrontTheme);
