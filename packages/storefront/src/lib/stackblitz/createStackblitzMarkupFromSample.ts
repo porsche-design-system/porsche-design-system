@@ -1,5 +1,5 @@
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
-import type { StorefrontColorScheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
 

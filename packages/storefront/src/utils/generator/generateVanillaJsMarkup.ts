@@ -1,7 +1,7 @@
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
-import type { StorefrontColorScheme } from '@/models/theme';
 import type {
   ElementConfig,
   EventConfig,

@@ -4,7 +4,7 @@ import { PHeading, PLink, PLinkPure, PLinkTile, PText } from '@porsche-design-sy
 import { kebabCase } from 'change-case';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import {
   localPorscheDesignSystemMajorVersion,
   localPorscheDesignSystemVersion,
@@ -12,7 +12,7 @@ import {
 import AppearAnimation from './appearAnimation';
 
 export const Home = () => {
-  const { isDark } = useStorefrontTheme();
+  const { isDark } = useStorefrontColorScheme();
 
   return (
     <>

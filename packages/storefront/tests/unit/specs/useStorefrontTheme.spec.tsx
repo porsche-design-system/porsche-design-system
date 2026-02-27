@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { StorefrontColorSchemeProvider } from '@/components/providers/StorefrontColorSchemeProvider';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 
 vi.stubGlobal('localStorage', {
   getItem: vi.fn(),
@@ -18,18 +18,18 @@ vi.mock('@/hooks/usePreferredColorScheme', () => ({
 }));
 
 const TestComponent = () => {
-  const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
+  const { storefrontColorScheme, setStorefrontColorScheme } = useStorefrontColorScheme();
 
   return (
     <>
-      <div data-testid="theme">{storefrontTheme}</div>
-      <button type="button" onClick={() => setStorefrontTheme('scheme-light')}>
+      <div data-testid="theme">{storefrontColorScheme}</div>
+      <button type="button" onClick={() => setStorefrontColorScheme('scheme-light')}>
         Set Light
       </button>
-      <button type="button" onClick={() => setStorefrontTheme('scheme-dark')}>
+      <button type="button" onClick={() => setStorefrontColorScheme('scheme-dark')}>
         Set Dark
       </button>
-      <button type="button" onClick={() => setStorefrontTheme('scheme-light-dark')}>
+      <button type="button" onClick={() => setStorefrontColorScheme('scheme-light-dark')}>
         Set Light Dark
       </button>
     </>
@@ -46,9 +46,9 @@ describe('StorefrontThemeProvider', () => {
     (localStorage.getItem as any).mockReturnValue(null);
 
     render(
-      <StorefrontThemeProvider>
+      <StorefrontColorSchemeProvider>
         <TestComponent />
-      </StorefrontThemeProvider>
+      </StorefrontColorSchemeProvider>
     );
 
     expect(screen.getByTestId('theme')).toHaveTextContent('scheme-light-dark');
@@ -58,9 +58,9 @@ describe('StorefrontThemeProvider', () => {
     (localStorage.getItem as any).mockReturnValue('scheme-dark');
 
     render(
-      <StorefrontThemeProvider>
+      <StorefrontColorSchemeProvider>
         <TestComponent />
-      </StorefrontThemeProvider>
+      </StorefrontColorSchemeProvider>
     );
 
     expect(screen.getByTestId('theme')).toHaveTextContent('scheme-dark');
@@ -68,9 +68,9 @@ describe('StorefrontThemeProvider', () => {
 
   it('should update theme, call localStorage.setItem, and update body class', async () => {
     render(
-      <StorefrontThemeProvider>
+      <StorefrontColorSchemeProvider>
         <TestComponent />
-      </StorefrontThemeProvider>
+      </StorefrontColorSchemeProvider>
     );
 
     screen.getByText('Set Dark').click();
@@ -87,9 +87,9 @@ describe('StorefrontThemeProvider', () => {
 
   it('should update theme, call localStorage.setItem, and update body class when changing theme back and forth', async () => {
     render(
-      <StorefrontThemeProvider>
+      <StorefrontColorSchemeProvider>
         <TestComponent />
-      </StorefrontThemeProvider>
+      </StorefrontColorSchemeProvider>
     );
 
     screen.getByText('Set Light').click();
