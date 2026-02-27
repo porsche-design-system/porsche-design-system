@@ -6,7 +6,7 @@ import { StorefrontColorSchemeContext } from '@/components/providers/StorefrontC
 export const useStorefrontColorScheme = () => {
   const context = useContext(StorefrontColorSchemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error('useStorefrontColorScheme must be used within a StorefrontColorSchemeProvider');
   }
   return context;
 };
