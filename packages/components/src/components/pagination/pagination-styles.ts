@@ -101,7 +101,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
               }),
         },
       },
-      span: {
+      'span, a': {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -114,6 +114,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: colorPrimary,
+        textDecoration: 'none',
         borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style

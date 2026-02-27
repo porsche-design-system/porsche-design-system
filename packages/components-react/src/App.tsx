@@ -33,7 +33,7 @@ export const App = (): JSX.Element => {
         </>
       )}
 
-      <div id="app" className={theme}>
+      <div id="app" className={`${theme} bg-canvas`}>
         <Routes>
           {routes
             .filter((route) => !route.isDisabled)
