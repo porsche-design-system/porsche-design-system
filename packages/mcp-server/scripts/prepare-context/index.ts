@@ -285,7 +285,7 @@ async function generateSharedReferences() {
 // ──────────────────────────────────────────────────────────────────────────────
 // Step 7 — Truncate changelog to the last N versions (was Step 6)
 // ──────────────────────────────────────────────────────────────────────────────
-
+// TODO: Currently going from the bottom up, needs to gather from newest to oldest.
 async function truncateChangelog() {
   const changelogPath = path.join(outputDir, 'news', 'changelog', 'page.mdx');
   try {
