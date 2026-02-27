@@ -1,7 +1,7 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
-// ── Types (from our DB schema) ────────────────────────────────────
+// ── Types ─────────────────────────────────────────────────────────
 
 interface BaseItem {
   PK: string;
@@ -25,7 +25,6 @@ export interface VersionMeta extends BaseItem {
 export interface CategoryItemEntry {
   name: string;
   sections: string[];
-  frameworks: string[];
 }
 
 export interface CategoryIndex extends BaseItem {
@@ -59,18 +58,11 @@ const KNOWN_SECTIONS = new Set([
   'accessibility',
 ]);
 
-const FRAMEWORK_SECTIONS: Record<string, string> = {
-  'examples-react': 'react',
-  'examples-angular': 'angular',
-  'examples-vue': 'vue',
-  examples: 'vanilla-js',
-};
-
-// ── Parsing ───────────────────────────────────────────────────────
+// ── Parsing helpers ───────────────────────────────────────────────
 
 export interface SeedConfig {
-  version: string; // "3.32.0"
-  outputDir: string; // root dir of prepared context
+  version: string;
+  outputDir: string;
   sourceCommit?: string;
 }
 
@@ -82,7 +74,6 @@ function parseDocPath(docPath: string): {
   const segments = docPath.split('/');
   const category = segments[0];
 
-  // Components can have nested names (form/input-text) and known sections
   if (segments.length >= 3) {
     const lastSegment = segments[segments.length - 1];
     if (KNOWN_SECTIONS.has(lastSegment)) {
@@ -94,7 +85,6 @@ function parseDocPath(docPath: string): {
     }
   }
 
-  // Single-page doc or unknown section → no section
   return {
     category,
     name: segments.slice(1).join('/'),
@@ -109,8 +99,8 @@ function extractTitle(content: string, fallbackName: string): string {
 
 function buildSearchText(title: string, name: string, category: string, section: string, content: string): string {
   const stripped = content
-    .replace(/```[\s\S]*?```/g, '') // remove code blocks
-    .replace(/[#*`[\]()>|_~-]/g, '') // remove markdown syntax
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/[#*`[\]()>|_~-]/g, '')
     .substring(0, 500);
 
   return [title, name, category, section, stripped].join(' ').toLowerCase().replace(/\s+/g, ' ').trim();
@@ -166,51 +156,38 @@ async function collectDocEntries(dir: string, config: SeedConfig): Promise<DocEn
   return entries;
 }
 
-// ── Build all 4 item types from DocEntries ─────────────────────────
+// ── Build CAT# items ──────────────────────────────────────────────
 
 function buildCategoryIndexes(docs: DocEntry[], versionKey: string): CategoryIndex[] {
-  // Group docs by category → name
-  const categoryMap = new Map<string, Map<string, { sections: Set<string>; frameworks: Set<string> }>>();
+  const categoryMap = new Map<string, Map<string, Set<string>>>();
 
   for (const doc of docs) {
     if (!categoryMap.has(doc.category)) {
       categoryMap.set(doc.category, new Map());
     }
-    const nameMap = categoryMap.get(doc.category);
-    if (!nameMap) continue;
+    const nameMap = categoryMap.get(doc.category)!;
 
     if (!nameMap.has(doc.name)) {
-      nameMap.set(doc.name, { sections: new Set(), frameworks: new Set() });
+      nameMap.set(doc.name, new Set());
     }
-    const entry = nameMap.get(doc.name);
-    if (!entry) continue;
 
     if (doc.section) {
-      entry.sections.add(doc.section);
-    }
-
-    // Derive framework from section name
-    const framework = FRAMEWORK_SECTIONS[doc.section];
-    if (framework) {
-      entry.frameworks.add(framework);
+      nameMap.get(doc.name)!.add(doc.section);
     }
   }
 
-  // Convert to CategoryIndex items
   const indexes: CategoryIndex[] = [];
 
-  for (const [category, nameMap] of Array.from(categoryMap.entries())) {
+  for (const [category, nameMap] of categoryMap) {
     const items: CategoryItemEntry[] = [];
 
-    for (const [name, data] of Array.from(nameMap.entries())) {
+    for (const [name, sections] of nameMap) {
       items.push({
         name,
-        sections: [...data.sections].sort(),
-        frameworks: [...data.frameworks].sort(),
+        sections: [...sections].sort(),
       });
     }
 
-    // Sort items by name for consistent output
     items.sort((a, b) => a.name.localeCompare(b.name));
 
     indexes.push({
@@ -224,18 +201,18 @@ function buildCategoryIndexes(docs: DocEntry[], versionKey: string): CategoryInd
   return indexes;
 }
 
+// ── Main entry point ──────────────────────────────────────────────
+
 export async function buildAllItems(config: SeedConfig): Promise<PdsDocsItem[]> {
   const versionKey = `v${config.version}`;
   const docs = await collectDocEntries(config.outputDir, config);
 
-  // 1. LATEST pointer
   const latest: LatestPointer = {
     PK: 'LATEST',
     SK: 'POINTER',
     version: config.version,
   };
 
-  // 2. Version metadata
   const meta: VersionMeta = {
     PK: versionKey,
     SK: 'META',
@@ -245,9 +222,7 @@ export async function buildAllItems(config: SeedConfig): Promise<PdsDocsItem[]> 
     ...(config.sourceCommit && { sourceCommit: config.sourceCommit }),
   };
 
-  // 3. Category indexes (aggregated from docs)
   const categoryIndexes = buildCategoryIndexes(docs, versionKey);
 
-  // 4. Doc entries (already built)
   return [latest, meta, ...categoryIndexes, ...docs];
 }
