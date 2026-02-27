@@ -6,4 +6,6 @@ export default defineConfig({
   target: 'node20',
   outDir: 'dist',
   clean: true,
+  banner: { js: '#!/usr/bin/env node' },
+  noExternal: [/.*/],
 });
