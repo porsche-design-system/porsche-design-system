@@ -229,7 +229,7 @@ test.describe('properties > input-text', () => {
     await expect(markup).toContainText('name=""');
 
     await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
-    // This is a stencil bug; when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
+    // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
     await expect(button).toHaveJSProperty('name', null);
     await expect(markup).not.toContainText('name');
   });

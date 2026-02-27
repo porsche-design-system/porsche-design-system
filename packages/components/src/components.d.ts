@@ -136,10 +136,12 @@ export namespace Components {
     interface PAccordion {
         /**
           * Aligns the marker within the summary section.
+          * @default 'end'
          */
         "alignMarker"?: AccordionAlignMarker;
         /**
           * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * @default 'none'
          */
         "background"?: AccordionBackground;
         /**
@@ -152,6 +154,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
+          * @default 'h2'
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -160,6 +163,7 @@ export namespace Components {
         "open"?: boolean;
         /**
           * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
@@ -173,26 +177,32 @@ export namespace Components {
     interface PBanner {
         /**
           * Description of the banner.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the banner will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the banner.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: BannerHeadingTag;
         /**
           * If true, the banner is open.
+          * @default false
          */
         "open": boolean;
         /**
           * State of the banner.
+          * @default 'info'
          */
         "state"?: BannerState;
     }
@@ -203,10 +213,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -215,10 +227,12 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonIcon;
         /**
@@ -227,6 +241,7 @@ export namespace Components {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -235,6 +250,7 @@ export namespace Components {
         "name"?: string;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonType;
         /**
@@ -243,16 +259,19 @@ export namespace Components {
         "value"?: string;
         /**
           * The style variant of the button.
+          * @default 'primary'
          */
         "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
           * Display button in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
@@ -261,6 +280,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -269,10 +289,12 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown.
+          * @default 'arrow-right'
          */
         "icon"?: ButtonPureIcon;
         /**
@@ -281,6 +303,7 @@ export namespace Components {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -289,18 +312,22 @@ export namespace Components {
         "name"?: string;
         /**
           * Size of the button.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonPureType;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
         /**
@@ -311,6 +338,7 @@ export namespace Components {
     interface PButtonTile {
         /**
           * Alignment of button and description.
+          * @default 'bottom'
          */
         "align"?: ButtonTileAlign;
         /**
@@ -319,10 +347,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
           * Aspect ratio of the button-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
           * Displays the button-tile as compact version with description and button icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -331,14 +361,17 @@ export namespace Components {
         "description": string;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show gradient.
+          * @default false
          */
         "gradient"?: boolean;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonTileIcon;
         /**
@@ -351,18 +384,22 @@ export namespace Components {
         "label": string;
         /**
           * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonTileType;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
@@ -372,14 +409,17 @@ export namespace Components {
     interface PCanvas {
         /**
           * Defines the background color of the main section and auto adjust it for the sidebar
+          * @default 'canvas'
          */
         "background"?: CanvasBackground;
         /**
           * Open the sidebar on the end side
+          * @default false
          */
         "sidebarEndOpen"?: boolean;
         /**
           * Open the sidebar on the start side
+          * @default false
          */
         "sidebarStartOpen"?: boolean;
     }
@@ -389,14 +429,17 @@ export namespace Components {
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
+          * @default 0
          */
         "activeSlideIndex"?: number;
         /**
           * Alignment of slotted controls
+          * @default 'auto'
          */
         "alignControls"?: CarouselAlignControls;
         /**
           * Alignment of heading and description
+          * @default 'start'
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
@@ -409,10 +452,12 @@ export namespace Components {
         "description"?: string;
         /**
           * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+          * @default false
          */
         "focusOnCenterSlide"?: boolean;
         /**
           * Fades the slides out.
+          * @default false
          */
         "gradient"?: boolean;
         /**
@@ -421,6 +466,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * Defines the heading size used in the carousel.
+          * @default 'x-large'
          */
         "headingSize"?: CarouselHeadingSize;
         /**
@@ -429,10 +475,12 @@ export namespace Components {
         "intl"?: CarouselInternationalization;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
+          * @default false
          */
         "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
+          * @default false
          */
         "rewind"?: boolean;
         /**
@@ -441,28 +489,34 @@ export namespace Components {
         "skipLinkTarget"?: string;
         /**
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
+          * @default 1
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+          * @default false
          */
         "trimSpace"?: boolean;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
+          * @default 'basic'
          */
         "width"?: CarouselWidth;
     }
     interface PCheckbox {
         /**
           * Reflects the checkbox current checked state and allows setting the initial checked state.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Marks the checkbox as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -471,38 +525,47 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility, it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Marks the checkbox as indeterminate.
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the checkbox and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The name of the checkbox.
+          * @default ''
          */
         "name"?: string;
         /**
           * Marks the checkbox as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: CheckboxState;
         /**
           * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+          * @default 'on'
          */
         "value"?: string;
     }
@@ -517,24 +580,29 @@ export namespace Components {
         "href"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: DisplayAlign;
         /**
           * Basic text color variations.
+          * @default 'primary'
          */
         "color"?: DisplayColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+          * @default 'large'
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
@@ -545,10 +613,12 @@ export namespace Components {
     interface PDivider {
         /**
           * Defines color.
+          * @default 'contrast-lower'
          */
         "color"?: DividerColor;
         /**
           * Defines direction.
+          * @default 'horizontal'
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
     }
@@ -568,6 +638,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
           * If true, the drilldown is visualized as opened.
+          * @default false
          */
         "open"?: boolean;
     }
@@ -577,6 +648,7 @@ export namespace Components {
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "cascade"?: boolean;
         /**
@@ -589,10 +661,12 @@ export namespace Components {
         "label"?: string;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "primary"?: boolean;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "secondary"?: boolean;
     }
@@ -602,6 +676,7 @@ export namespace Components {
     interface PDrilldownLink {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -622,6 +697,7 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+          * @default '_self'
          */
         "target"?: DrilldownLinkTarget;
     }
@@ -632,22 +708,27 @@ export namespace Components {
         "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The size of the label text.
+          * @default 'medium'
          */
         "labelSize"?: FieldsetLabelSize;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Marks the Fieldset as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: FieldsetState;
     }
@@ -658,10 +739,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
         /**
           * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
+          * @default 'de'
          */
         "name"?: FlagName;
         /**
           * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+          * @default 'small'
          */
         "size"?: FlagSize;
     }
@@ -675,44 +758,54 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
           * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+          * @default 'blur'
          */
         "backdrop"?: FlyoutBackdrop;
         /**
           * Defines the background color
+          * @default 'canvas'
          */
         "background"?: FlyoutBackground;
         /**
           * If true, the flyout will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+          * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
           * If true, the flyout is open.
+          * @default false
          */
         "open": boolean;
         /**
           * The position of the flyout
+          * @default 'end'
          */
         "position"?: FlyoutPosition;
     }
     interface PHeading {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: HeadingAlign;
         /**
           * Basic text color variations.
+          * @default 'primary'
          */
         "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'xx-large'
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
@@ -727,14 +820,17 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations.
+          * @default 'primary'
          */
         "color"?: IconColor;
         /**
           * Specifies which icon to use.
+          * @default 'arrow-right'
          */
         "name"?: IconName;
         /**
           * The size of the icon.
+          * @default 'small'
          */
         "size"?: IconSize;
         /**
@@ -745,6 +841,7 @@ export namespace Components {
     interface PInlineNotification {
         /**
           * Action icon of the inline-notification.
+          * @default 'arrow-right'
          */
         "actionIcon"?: InlineNotificationActionIcon;
         /**
@@ -753,26 +850,32 @@ export namespace Components {
         "actionLabel"?: string;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "actionLoading"?: boolean;
         /**
           * Description of the inline-notification.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the inline-notification will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the inline-notification.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
           * State of the inline-notification.
+          * @default 'info'
          */
         "state"?: InlineNotificationState;
     }
@@ -783,14 +886,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -799,14 +905,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -815,6 +924,7 @@ export namespace Components {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -827,22 +937,27 @@ export namespace Components {
         "name": string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputDateState;
         /**
           * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * @default 1
          */
         "step"?: number;
         /**
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+          * @default ''
          */
         "value"?: string;
     }
@@ -853,14 +968,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -869,18 +987,22 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Controls the visibility of the email icon.
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -889,6 +1011,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -897,6 +1020,7 @@ export namespace Components {
         "minLength"?: number;
         /**
           * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+          * @default false
          */
         "multiple"?: boolean;
         /**
@@ -909,22 +1033,27 @@ export namespace Components {
         "pattern"?: string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputEmailState;
         /**
           * The default email address (or comma-separated list of addresses) for the input.
+          * @default ''
          */
         "value"?: string;
     }
@@ -935,14 +1064,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -951,14 +1083,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -967,6 +1102,7 @@ export namespace Components {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -979,22 +1115,27 @@ export namespace Components {
         "name": string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputMonthState;
         /**
           * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+          * @default 1
          */
         "step"?: number;
         /**
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+          * @default ''
          */
         "value"?: string;
     }
@@ -1005,18 +1146,22 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the increment/decrement stepper controls.
+          * @default false
          */
         "controls"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1025,14 +1170,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1041,6 +1189,7 @@ export namespace Components {
         "max"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1053,26 +1202,32 @@ export namespace Components {
         "name": string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputNumberState;
         /**
           * The granularity that the value must adhere to.
+          * @default 1
          */
         "step"?: number;
         /**
           * The number input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1083,14 +1238,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1099,14 +1257,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1115,6 +1276,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1127,26 +1289,32 @@ export namespace Components {
         "name": string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
           * Show or hide password toggle for `input type="password"`.
+          * @default false
          */
         "toggle"?: boolean;
         /**
           * The password input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1157,18 +1325,22 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * Show clear input value button
+          * @default false
          */
         "clear"?: boolean;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1177,18 +1349,22 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Show search indicator icon
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1197,6 +1373,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1209,22 +1386,27 @@ export namespace Components {
         "name": string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputSearchState;
         /**
           * The search input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1235,14 +1417,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1251,18 +1436,22 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Controls the visibility of the phone icon.
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1271,6 +1460,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1287,22 +1477,27 @@ export namespace Components {
         "pattern"?: string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputTelState;
         /**
           * The tel input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1313,18 +1508,22 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1333,14 +1532,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1349,6 +1551,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1361,14 +1564,17 @@ export namespace Components {
         "name": string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -1377,10 +1583,12 @@ export namespace Components {
         "spellCheck"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputTextState;
         /**
           * The text input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1391,14 +1599,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1407,14 +1618,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1423,6 +1637,7 @@ export namespace Components {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1435,22 +1650,27 @@ export namespace Components {
         "name": string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputTimeState;
         /**
           * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * @default 60
          */
         "step"?: number;
         /**
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+          * @default ''
          */
         "value"?: string;
     }
@@ -1461,14 +1681,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1477,18 +1700,22 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Controls the visibility of the url icon.
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1497,6 +1724,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1513,22 +1741,27 @@ export namespace Components {
         "pattern"?: string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputUrlState;
         /**
           * The url input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1539,14 +1772,17 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1555,14 +1791,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1571,6 +1810,7 @@ export namespace Components {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1583,22 +1823,27 @@ export namespace Components {
         "name": string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputWeekState;
         /**
           * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
+          * @default 1
          */
         "step"?: number;
         /**
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
+          * @default ''
          */
         "value"?: string;
     }
@@ -1609,6 +1854,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -1617,6 +1863,7 @@ export namespace Components {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1625,6 +1872,7 @@ export namespace Components {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: LinkIcon;
         /**
@@ -1637,20 +1885,24 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTarget;
         /**
           * The style variant of the link.
+          * @default 'primary'
          */
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
@@ -1663,6 +1915,7 @@ export namespace Components {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1671,6 +1924,7 @@ export namespace Components {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed
+          * @default 'arrow-right'
          */
         "icon"?: LinkPureIcon;
         /**
@@ -1683,24 +1937,29 @@ export namespace Components {
         "rel"?: string;
         /**
           * Size of the link.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<LinkPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkPureTarget;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
     }
     interface PLinkTile {
         /**
           * Alignment of link and description.
+          * @default 'bottom'
          */
         "align"?: LinkTileAlign;
         /**
@@ -1709,10 +1968,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the link-tile as compact version with description and link icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -1725,6 +1986,7 @@ export namespace Components {
         "download"?: string;
         /**
           * Show gradient.
+          * @default false
          */
         "gradient"?: boolean;
         /**
@@ -1741,14 +2003,17 @@ export namespace Components {
         "rel"?: string;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileTarget;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
@@ -1759,6 +2024,7 @@ export namespace Components {
     interface PLinkTileProduct {
         /**
           * Aspect ratio of the link-tile-product.
+          * @default '3/4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
@@ -1775,10 +2041,12 @@ export namespace Components {
         "href"?: string;
         /**
           * A Boolean attribute indicating that a like button should be shown.
+          * @default true
          */
         "likeButton"?: boolean;
         /**
           * A Boolean attribute indicating that a product is liked.
+          * @default false
          */
         "liked"?: boolean;
         /**
@@ -1795,6 +2063,7 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileProductTarget;
     }
@@ -1808,52 +2077,64 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+          * @default 'blur'
          */
         "backdrop"?: ModalBackdrop;
         /**
           * Defines the background color
+          * @default 'canvas'
          */
         "background"?: ModalBackground;
         /**
           * If true, the modal will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * If false, the modal will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
+          * @default false
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * If true, the modal is open.
+          * @default false
          */
         "open": boolean;
     }
     interface PModelSignature {
         /**
           * Adapts the color of the component.
+          * @default 'primary'
          */
         "color"?: ModelSignatureColor;
         /**
           * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+          * @default 'auto'
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
           * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+          * @default false
          */
         "lazy"?: boolean;
         /**
           * Adapts the model of the component.
+          * @default '911'
          */
         "model"?: ModelSignatureModel;
         /**
           * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+          * @default true
          */
         "safeZone"?: boolean;
         /**
           * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @default 'small'
          */
         "size"?: ModelSignatureSize;
     }
@@ -1863,18 +2144,22 @@ export namespace Components {
     interface PMultiSelect {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the multi-select
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
@@ -1883,14 +2168,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1899,20 +2187,24 @@ export namespace Components {
         "name": string;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: MultiSelectState;
         /**
           * The selected values.
+          * @default []
          */
         "value"?: string[];
     }
     interface PMultiSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1923,6 +2215,7 @@ export namespace Components {
     interface POptgroup {
         /**
           * Disables the optgroup.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1936,22 +2229,27 @@ export namespace Components {
     interface PPagination {
         /**
           * Index of the currently active page.
+          * @default 1
          */
         "activePage"?: number;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+          * @default {     root: 'Pagination',     prev: 'Previous page',     next: 'Next page',     page: 'Page',   }
          */
         "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
+          * @default 1
          */
         "itemsPerPage": number;
         /**
           * Show or hide the button to jump to the last page.
+          * @default true
          */
         "showLastPage"?: boolean;
         /**
           * The total count of items.
+          * @default 1
          */
         "totalItemsCount": number;
     }
@@ -1961,14 +2259,17 @@ export namespace Components {
     interface PPinCode {
         /**
           * A boolean value that, if present, renders the pin-code as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the Pin Code. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1977,22 +2278,27 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * Number of characters of the Pin Code.
+          * @default 4
          */
         "length"?: PinCodeLength;
         /**
           * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2001,18 +2307,22 @@ export namespace Components {
         "name"?: string;
         /**
           * Marks the Pin Code as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: PinCodeState;
         /**
           * Pin Code type.
+          * @default 'number'
          */
         "type"?: PinCodeType;
         /**
           * Sets the initial value of the Pin Code.
+          * @default ''
          */
         "value"?: string;
     }
@@ -2027,24 +2337,29 @@ export namespace Components {
         "description"?: string;
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
+          * @default 'bottom'
          */
         "direction"?: PopoverDirection;
     }
     interface PRadioGroup {
         /**
           * A boolean value that, if present, renders the radio group as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the radio group.
+          * @default ''
          */
         "description"?: string;
         /**
           * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+          * @default 'column'
          */
         "direction"?: BreakpointCustomizable<RadioGroupDirection>;
         /**
           * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2053,18 +2368,22 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2073,20 +2392,24 @@ export namespace Components {
         "name": string;
         /**
           * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the radio group component.
+          * @default 'none'
          */
         "state"?: RadioGroupState;
         /**
           * The default value for the radio-group.
+          * @default ''
          */
         "value"?: string;
     }
     interface PRadioGroupOption {
         /**
           * A boolean value that, if present, makes the radio group option unusable and unclickable.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2095,6 +2418,7 @@ export namespace Components {
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -2105,6 +2429,7 @@ export namespace Components {
     interface PScroller {
         /**
           * Sets the vertical position of scroll indicator.
+          * @default 'center'
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
@@ -2117,6 +2442,7 @@ export namespace Components {
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
+          * @default false
          */
         "scrollbar"?: boolean;
     }
@@ -2126,18 +2452,22 @@ export namespace Components {
     interface PSegmentedControl {
         /**
           * Sets the amount of columns.
+          * @default 'auto'
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
           * A boolean value that, if present, renders the segmented-control as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the segmented-control.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the segmented-control.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2146,14 +2476,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2162,10 +2495,12 @@ export namespace Components {
         "name"?: string;
         /**
           * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the component.
+          * @default 'none'
          */
         "state"?: SegmentedControlState;
         /**
@@ -2180,6 +2515,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2205,22 +2541,27 @@ export namespace Components {
     interface PSelect {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the select.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
+          * @default false
          */
         "filter"?: boolean;
         /**
@@ -2229,14 +2570,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2245,10 +2589,12 @@ export namespace Components {
         "name": string;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: SelectState;
         /**
@@ -2259,6 +2605,7 @@ export namespace Components {
     interface PSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2276,18 +2623,22 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
           * Defines the background color
+          * @default 'canvas'
          */
         "background"?: SheetBackground;
         /**
           * If true, the sheet will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * If false, the sheet will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * If true, the sheet is open.
+          * @default false
          */
         "open": boolean;
     }
@@ -2298,18 +2649,21 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }
     interface PStepperHorizontal {
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
     }
     interface PStepperHorizontalItem {
         /**
           * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2323,30 +2677,37 @@ export namespace Components {
     interface PSwitch {
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
           * Visualize the switch with on/off status.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Stretches the contents to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
     }
@@ -2357,10 +2718,12 @@ export namespace Components {
         "caption"?: string;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Controls the layout behavior of the table.
+          * @default 'auto'
          */
         "layout"?: TableLayout;
     }
@@ -2369,6 +2732,7 @@ export namespace Components {
     interface PTableCell {
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
     }
@@ -2377,10 +2741,12 @@ export namespace Components {
     interface PTableHeadCell {
         /**
           * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
         /**
@@ -2398,14 +2764,17 @@ export namespace Components {
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
+          * @default 0
          */
         "activeTabIndex"?: number;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsWeight;
     }
@@ -2419,10 +2788,12 @@ export namespace Components {
         "activeTabIndex"?: number | undefined;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsBarWeight;
     }
@@ -2435,10 +2806,12 @@ export namespace Components {
     interface PTag {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The icon shown.
+          * @default 'none'
          */
         "icon"?: TagIcon;
         /**
@@ -2447,6 +2820,7 @@ export namespace Components {
         "iconSource"?: string;
         /**
           * Background color variations.
+          * @default 'secondary'
          */
         "variant"?: TagVariant;
     }
@@ -2457,6 +2831,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
           * A boolean value that, if present, renders the tag dismissible as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
@@ -2467,32 +2842,39 @@ export namespace Components {
     interface PText {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: TextAlign;
         /**
           * Basic text color variations.
+          * @default 'primary'
          */
         "color"?: TextColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
           * Sets a custom HTML tag depending on the usage of the text component.
+          * @default 'p'
          */
         "tag"?: TextTag;
         /**
           * The weight of the text.
+          * @default 'regular'
          */
         "weight"?: TextWeight;
     }
     interface PTextList {
         /**
           * The list style type.
+          * @default 'unordered'
          */
         "type"?: TextListType;
     }
@@ -2505,18 +2887,22 @@ export namespace Components {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the textarea as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the textarea.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2525,10 +2911,12 @@ export namespace Components {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -2537,6 +2925,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2549,22 +2938,27 @@ export namespace Components {
         "name": string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Controls whether the textarea is resizable and in which direction.
+          * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
           * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
+          * @default 7
          */
         "rows"?: number;
         /**
@@ -2573,14 +2967,17 @@ export namespace Components {
         "spellCheck"?: boolean;
         /**
           * Indicates the validation or overall status of the textarea component.
+          * @default 'none'
          */
         "state"?: TextareaState;
         /**
           * The textarea value.
+          * @default ''
          */
         "value"?: string;
         /**
           * Handles wrapping behavior of elements.
+          * @default 'soft'
          */
         "wrap"?: TextareaWrap;
     }
@@ -2590,10 +2987,12 @@ export namespace Components {
     interface PToastItem {
         /**
           * State of the toast-item.
+          * @default 'info'
          */
         "state"?: ToastState;
         /**
           * Text of the toast-item.
+          * @default ''
          */
         "text"?: string;
     }
@@ -2608,10 +3007,12 @@ export namespace Components {
         "href"?: string;
         /**
           * Adapts sizing of wordmark.
+          * @default 'small'
          */
         "size"?: WordmarkSize;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: WordmarkTarget;
     }
@@ -3771,10 +4172,12 @@ declare namespace LocalJSX {
     interface PAccordion {
         /**
           * Aligns the marker within the summary section.
+          * @default 'end'
          */
         "alignMarker"?: AccordionAlignMarker;
         /**
           * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * @default 'none'
          */
         "background"?: AccordionBackground;
         /**
@@ -3787,6 +4190,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
+          * @default 'h2'
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -3799,6 +4203,7 @@ declare namespace LocalJSX {
         "open"?: boolean;
         /**
           * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
@@ -3812,18 +4217,22 @@ declare namespace LocalJSX {
     interface PBanner {
         /**
           * Description of the banner.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the banner will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the banner.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: BannerHeadingTag;
         /**
@@ -3832,10 +4241,12 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
           * If true, the banner is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * State of the banner.
+          * @default 'info'
          */
         "state"?: BannerState;
     }
@@ -3846,10 +4257,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3858,10 +4271,12 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonIcon;
         /**
@@ -3870,6 +4285,7 @@ declare namespace LocalJSX {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -3878,6 +4294,7 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonType;
         /**
@@ -3886,16 +4303,19 @@ declare namespace LocalJSX {
         "value"?: string;
         /**
           * The style variant of the button.
+          * @default 'primary'
          */
         "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
           * Display button in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
@@ -3904,6 +4324,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3912,10 +4333,12 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown.
+          * @default 'arrow-right'
          */
         "icon"?: ButtonPureIcon;
         /**
@@ -3924,6 +4347,7 @@ declare namespace LocalJSX {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -3932,18 +4356,22 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Size of the button.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonPureType;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
         /**
@@ -3954,6 +4382,7 @@ declare namespace LocalJSX {
     interface PButtonTile {
         /**
           * Alignment of button and description.
+          * @default 'bottom'
          */
         "align"?: ButtonTileAlign;
         /**
@@ -3962,10 +4391,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
           * Aspect ratio of the button-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
           * Displays the button-tile as compact version with description and button icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -3974,14 +4405,17 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show gradient.
+          * @default false
          */
         "gradient"?: boolean;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonTileIcon;
         /**
@@ -3994,18 +4428,22 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonTileType;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
@@ -4015,6 +4453,7 @@ declare namespace LocalJSX {
     interface PCanvas {
         /**
           * Defines the background color of the main section and auto adjust it for the sidebar
+          * @default 'canvas'
          */
         "background"?: CanvasBackground;
         /**
@@ -4027,10 +4466,12 @@ declare namespace LocalJSX {
         "onSidebarStartUpdate"?: (event: PCanvasCustomEvent<CanvasSidebarStartUpdateEventDetail>) => void;
         /**
           * Open the sidebar on the end side
+          * @default false
          */
         "sidebarEndOpen"?: boolean;
         /**
           * Open the sidebar on the start side
+          * @default false
          */
         "sidebarStartOpen"?: boolean;
     }
@@ -4040,14 +4481,17 @@ declare namespace LocalJSX {
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
+          * @default 0
          */
         "activeSlideIndex"?: number;
         /**
           * Alignment of slotted controls
+          * @default 'auto'
          */
         "alignControls"?: CarouselAlignControls;
         /**
           * Alignment of heading and description
+          * @default 'start'
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
@@ -4060,10 +4504,12 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+          * @default false
          */
         "focusOnCenterSlide"?: boolean;
         /**
           * Fades the slides out.
+          * @default false
          */
         "gradient"?: boolean;
         /**
@@ -4072,6 +4518,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * Defines the heading size used in the carousel.
+          * @default 'x-large'
          */
         "headingSize"?: CarouselHeadingSize;
         /**
@@ -4084,10 +4531,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEventDetail>) => void;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
+          * @default false
          */
         "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
+          * @default false
          */
         "rewind"?: boolean;
         /**
@@ -4096,28 +4545,34 @@ declare namespace LocalJSX {
         "skipLinkTarget"?: string;
         /**
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
+          * @default 1
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+          * @default false
          */
         "trimSpace"?: boolean;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
+          * @default 'basic'
          */
         "width"?: CarouselWidth;
     }
     interface PCheckbox {
         /**
           * Reflects the checkbox current checked state and allows setting the initial checked state.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Marks the checkbox as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4126,26 +4581,32 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility, it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Marks the checkbox as indeterminate.
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the checkbox and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The name of the checkbox.
+          * @default ''
          */
         "name"?: string;
         /**
@@ -4158,14 +4619,17 @@ declare namespace LocalJSX {
         "onChange"?: (event: PCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
         /**
           * Marks the checkbox as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: CheckboxState;
         /**
           * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+          * @default 'on'
          */
         "value"?: string;
     }
@@ -4180,24 +4644,29 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: DisplayAlign;
         /**
           * Basic text color variations.
+          * @default 'primary'
          */
         "color"?: DisplayColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+          * @default 'large'
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
@@ -4208,10 +4677,12 @@ declare namespace LocalJSX {
     interface PDivider {
         /**
           * Defines color.
+          * @default 'contrast-lower'
          */
         "color"?: DividerColor;
         /**
           * Defines direction.
+          * @default 'horizontal'
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
     }
@@ -4239,6 +4710,7 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PDrilldownCustomEvent<DrilldownUpdateEventDetail>) => void;
         /**
           * If true, the drilldown is visualized as opened.
+          * @default false
          */
         "open"?: boolean;
     }
@@ -4248,6 +4720,7 @@ declare namespace LocalJSX {
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "cascade"?: boolean;
         /**
@@ -4260,10 +4733,12 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "primary"?: boolean;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "secondary"?: boolean;
     }
@@ -4273,6 +4748,7 @@ declare namespace LocalJSX {
     interface PDrilldownLink {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -4293,6 +4769,7 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+          * @default '_self'
          */
         "target"?: DrilldownLinkTarget;
     }
@@ -4303,22 +4780,27 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The size of the label text.
+          * @default 'medium'
          */
         "labelSize"?: FieldsetLabelSize;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Marks the Fieldset as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: FieldsetState;
     }
@@ -4329,10 +4811,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
         /**
           * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
+          * @default 'de'
          */
         "name"?: FlagName;
         /**
           * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+          * @default 'small'
          */
         "size"?: FlagSize;
     }
@@ -4346,18 +4830,22 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
           * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+          * @default 'blur'
          */
         "backdrop"?: FlyoutBackdrop;
         /**
           * Defines the background color
+          * @default 'canvas'
          */
         "background"?: FlyoutBackground;
         /**
           * If true, the flyout will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+          * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
@@ -4374,28 +4862,34 @@ declare namespace LocalJSX {
         "onMotionVisibleEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionVisibleEndEventDetail>) => void;
         /**
           * If true, the flyout is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * The position of the flyout
+          * @default 'end'
          */
         "position"?: FlyoutPosition;
     }
     interface PHeading {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: HeadingAlign;
         /**
           * Basic text color variations.
+          * @default 'primary'
          */
         "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'xx-large'
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
@@ -4410,14 +4904,17 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations.
+          * @default 'primary'
          */
         "color"?: IconColor;
         /**
           * Specifies which icon to use.
+          * @default 'arrow-right'
          */
         "name"?: IconName;
         /**
           * The size of the icon.
+          * @default 'small'
          */
         "size"?: IconSize;
         /**
@@ -4428,6 +4925,7 @@ declare namespace LocalJSX {
     interface PInlineNotification {
         /**
           * Action icon of the inline-notification.
+          * @default 'arrow-right'
          */
         "actionIcon"?: InlineNotificationActionIcon;
         /**
@@ -4436,22 +4934,27 @@ declare namespace LocalJSX {
         "actionLabel"?: string;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "actionLoading"?: boolean;
         /**
           * Description of the inline-notification.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the inline-notification will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the inline-notification.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
@@ -4464,6 +4967,7 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
           * State of the inline-notification.
+          * @default 'info'
          */
         "state"?: InlineNotificationState;
     }
@@ -4474,14 +4978,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4490,14 +4997,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4506,6 +5016,7 @@ declare namespace LocalJSX {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4530,22 +5041,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputDateCustomEvent<InputDateInputEventDetail>) => void;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputDateState;
         /**
           * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * @default 1
          */
         "step"?: number;
         /**
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+          * @default ''
          */
         "value"?: string;
     }
@@ -4556,14 +5072,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4572,18 +5091,22 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Controls the visibility of the email icon.
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4592,6 +5115,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4600,6 +5124,7 @@ declare namespace LocalJSX {
         "minLength"?: number;
         /**
           * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+          * @default false
          */
         "multiple"?: boolean;
         /**
@@ -4624,22 +5149,27 @@ declare namespace LocalJSX {
         "pattern"?: string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputEmailState;
         /**
           * The default email address (or comma-separated list of addresses) for the input.
+          * @default ''
          */
         "value"?: string;
     }
@@ -4650,14 +5180,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4666,14 +5199,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4682,6 +5218,7 @@ declare namespace LocalJSX {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4706,22 +5243,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputMonthCustomEvent<InputMonthInputEventDetail>) => void;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputMonthState;
         /**
           * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+          * @default 1
          */
         "step"?: number;
         /**
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+          * @default ''
          */
         "value"?: string;
     }
@@ -4732,18 +5274,22 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the increment/decrement stepper controls.
+          * @default false
          */
         "controls"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4752,14 +5298,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4768,6 +5317,7 @@ declare namespace LocalJSX {
         "max"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4792,26 +5342,32 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputNumberState;
         /**
           * The granularity that the value must adhere to.
+          * @default 1
          */
         "step"?: number;
         /**
           * The number input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -4822,14 +5378,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4838,14 +5397,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4854,6 +5416,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4878,26 +5441,32 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
           * Show or hide password toggle for `input type="password"`.
+          * @default false
          */
         "toggle"?: boolean;
         /**
           * The password input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -4908,18 +5477,22 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * Show clear input value button
+          * @default false
          */
         "clear"?: boolean;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4928,18 +5501,22 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Show search indicator icon
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4948,6 +5525,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4972,22 +5550,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputSearchState;
         /**
           * The search input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -4998,14 +5581,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5014,18 +5600,22 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Controls the visibility of the phone icon.
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5034,6 +5624,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5062,22 +5653,27 @@ declare namespace LocalJSX {
         "pattern"?: string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputTelState;
         /**
           * The tel input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5088,18 +5684,22 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5108,14 +5708,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5124,6 +5727,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5148,14 +5752,17 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -5164,10 +5771,12 @@ declare namespace LocalJSX {
         "spellCheck"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputTextState;
         /**
           * The text input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5178,14 +5787,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5194,14 +5806,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5210,6 +5825,7 @@ declare namespace LocalJSX {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5234,22 +5850,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputTimeCustomEvent<InputTimeInputEventDetail>) => void;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputTimeState;
         /**
           * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * @default 60
          */
         "step"?: number;
         /**
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+          * @default ''
          */
         "value"?: string;
     }
@@ -5260,14 +5881,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5276,18 +5900,22 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Controls the visibility of the url icon.
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5296,6 +5924,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5324,22 +5953,27 @@ declare namespace LocalJSX {
         "pattern"?: string;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputUrlState;
         /**
           * The url input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5350,14 +5984,17 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the input field as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the input.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5366,14 +6003,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5382,6 +6022,7 @@ declare namespace LocalJSX {
         "max"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5406,22 +6047,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputWeekCustomEvent<InputWeekInputEventDetail>) => void;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the input component.
+          * @default 'none'
          */
         "state"?: InputWeekState;
         /**
           * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
+          * @default 1
          */
         "step"?: number;
         /**
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
+          * @default ''
          */
         "value"?: string;
     }
@@ -5432,6 +6078,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -5440,6 +6087,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5448,6 +6096,7 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: LinkIcon;
         /**
@@ -5460,20 +6109,24 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTarget;
         /**
           * The style variant of the link.
+          * @default 'primary'
          */
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
@@ -5486,6 +6139,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5494,6 +6148,7 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed
+          * @default 'arrow-right'
          */
         "icon"?: LinkPureIcon;
         /**
@@ -5506,24 +6161,29 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Size of the link.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<LinkPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkPureTarget;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
     }
     interface PLinkTile {
         /**
           * Alignment of link and description.
+          * @default 'bottom'
          */
         "align"?: LinkTileAlign;
         /**
@@ -5532,10 +6192,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the link-tile as compact version with description and link icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -5548,6 +6210,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Show gradient.
+          * @default false
          */
         "gradient"?: boolean;
         /**
@@ -5564,14 +6227,17 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileTarget;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
@@ -5582,6 +6248,7 @@ declare namespace LocalJSX {
     interface PLinkTileProduct {
         /**
           * Aspect ratio of the link-tile-product.
+          * @default '3/4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
@@ -5598,10 +6265,12 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * A Boolean attribute indicating that a like button should be shown.
+          * @default true
          */
         "likeButton"?: boolean;
         /**
           * A Boolean attribute indicating that a product is liked.
+          * @default false
          */
         "liked"?: boolean;
         /**
@@ -5622,6 +6291,7 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileProductTarget;
     }
@@ -5635,22 +6305,27 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+          * @default 'blur'
          */
         "backdrop"?: ModalBackdrop;
         /**
           * Defines the background color
+          * @default 'canvas'
          */
         "background"?: ModalBackground;
         /**
           * If true, the modal will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * If false, the modal will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
+          * @default false
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
@@ -5667,32 +6342,39 @@ declare namespace LocalJSX {
         "onMotionVisibleEnd"?: (event: PModalCustomEvent<ModalMotionVisibleEndEventDetail>) => void;
         /**
           * If true, the modal is open.
+          * @default false
          */
         "open"?: boolean;
     }
     interface PModelSignature {
         /**
           * Adapts the color of the component.
+          * @default 'primary'
          */
         "color"?: ModelSignatureColor;
         /**
           * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+          * @default 'auto'
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
           * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+          * @default false
          */
         "lazy"?: boolean;
         /**
           * Adapts the model of the component.
+          * @default '911'
          */
         "model"?: ModelSignatureModel;
         /**
           * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+          * @default true
          */
         "safeZone"?: boolean;
         /**
           * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @default 'small'
          */
         "size"?: ModelSignatureSize;
     }
@@ -5702,18 +6384,22 @@ declare namespace LocalJSX {
     interface PMultiSelect {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the multi-select
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
@@ -5722,14 +6408,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5750,20 +6439,24 @@ declare namespace LocalJSX {
         "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: MultiSelectState;
         /**
           * The selected values.
+          * @default []
          */
         "value"?: string[];
     }
     interface PMultiSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5774,6 +6467,7 @@ declare namespace LocalJSX {
     interface POptgroup {
         /**
           * Disables the optgroup.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5787,14 +6481,17 @@ declare namespace LocalJSX {
     interface PPagination {
         /**
           * Index of the currently active page.
+          * @default 1
          */
         "activePage"?: number;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+          * @default {     root: 'Pagination',     prev: 'Previous page',     next: 'Next page',     page: 'Page',   }
          */
         "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
+          * @default 1
          */
         "itemsPerPage"?: number;
         /**
@@ -5803,10 +6500,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEventDetail>) => void;
         /**
           * Show or hide the button to jump to the last page.
+          * @default true
          */
         "showLastPage"?: boolean;
         /**
           * The total count of items.
+          * @default 1
          */
         "totalItemsCount"?: number;
     }
@@ -5816,14 +6515,17 @@ declare namespace LocalJSX {
     interface PPinCode {
         /**
           * A boolean value that, if present, renders the pin-code as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the Pin Code. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5832,22 +6534,27 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * Number of characters of the Pin Code.
+          * @default 4
          */
         "length"?: PinCodeLength;
         /**
           * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5864,18 +6571,22 @@ declare namespace LocalJSX {
         "onChange"?: (event: PPinCodeCustomEvent<PinCodeChangeEventDetail>) => void;
         /**
           * Marks the Pin Code as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: PinCodeState;
         /**
           * Pin Code type.
+          * @default 'number'
          */
         "type"?: PinCodeType;
         /**
           * Sets the initial value of the Pin Code.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5890,24 +6601,29 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
+          * @default 'bottom'
          */
         "direction"?: PopoverDirection;
     }
     interface PRadioGroup {
         /**
           * A boolean value that, if present, renders the radio group as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the radio group.
+          * @default ''
          */
         "description"?: string;
         /**
           * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+          * @default 'column'
          */
         "direction"?: BreakpointCustomizable<RadioGroupDirection>;
         /**
           * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5916,18 +6632,22 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5944,20 +6664,24 @@ declare namespace LocalJSX {
         "onChange"?: (event: PRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
         /**
           * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the radio group component.
+          * @default 'none'
          */
         "state"?: RadioGroupState;
         /**
           * The default value for the radio-group.
+          * @default ''
          */
         "value"?: string;
     }
     interface PRadioGroupOption {
         /**
           * A boolean value that, if present, makes the radio group option unusable and unclickable.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5966,6 +6690,7 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5976,6 +6701,7 @@ declare namespace LocalJSX {
     interface PScroller {
         /**
           * Sets the vertical position of scroll indicator.
+          * @default 'center'
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
@@ -5988,6 +6714,7 @@ declare namespace LocalJSX {
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
+          * @default false
          */
         "scrollbar"?: boolean;
     }
@@ -5997,18 +6724,22 @@ declare namespace LocalJSX {
     interface PSegmentedControl {
         /**
           * Sets the amount of columns.
+          * @default 'auto'
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
           * A boolean value that, if present, renders the segmented-control as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the segmented-control.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the segmented-control.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6017,14 +6748,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -6041,10 +6775,12 @@ declare namespace LocalJSX {
         "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEventDetail>) => void;
         /**
           * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Indicates the validation or overall status of the component.
+          * @default 'none'
          */
         "state"?: SegmentedControlState;
         /**
@@ -6059,6 +6795,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6084,22 +6821,27 @@ declare namespace LocalJSX {
     interface PSelect {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the select.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
+          * @default false
          */
         "filter"?: boolean;
         /**
@@ -6108,14 +6850,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -6136,10 +6881,12 @@ declare namespace LocalJSX {
         "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: SelectState;
         /**
@@ -6150,6 +6897,7 @@ declare namespace LocalJSX {
     interface PSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6167,14 +6915,17 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
           * Defines the background color
+          * @default 'canvas'
          */
         "background"?: SheetBackground;
         /**
           * If true, the sheet will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * If false, the sheet will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
@@ -6191,6 +6942,7 @@ declare namespace LocalJSX {
         "onMotionVisibleEnd"?: (event: PSheetCustomEvent<SheetMotionVisibleEndEventDetail>) => void;
         /**
           * If true, the sheet is open.
+          * @default false
          */
         "open"?: boolean;
     }
@@ -6201,6 +6953,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }
@@ -6211,12 +6964,14 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEventDetail>) => void;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
     }
     interface PStepperHorizontalItem {
         /**
           * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6230,26 +6985,32 @@ declare namespace LocalJSX {
     interface PSwitch {
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
           * Visualize the switch with on/off status.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -6258,6 +7019,7 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
         /**
           * Stretches the contents to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
     }
@@ -6268,10 +7030,12 @@ declare namespace LocalJSX {
         "caption"?: string;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Controls the layout behavior of the table.
+          * @default 'auto'
          */
         "layout"?: TableLayout;
         /**
@@ -6284,6 +7048,7 @@ declare namespace LocalJSX {
     interface PTableCell {
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
     }
@@ -6292,10 +7057,12 @@ declare namespace LocalJSX {
     interface PTableHeadCell {
         /**
           * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
         /**
@@ -6313,6 +7080,7 @@ declare namespace LocalJSX {
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
+          * @default 0
          */
         "activeTabIndex"?: number;
         /**
@@ -6321,10 +7089,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsWeight;
     }
@@ -6342,10 +7112,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsBarWeight;
     }
@@ -6358,10 +7130,12 @@ declare namespace LocalJSX {
     interface PTag {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The icon shown.
+          * @default 'none'
          */
         "icon"?: TagIcon;
         /**
@@ -6370,6 +7144,7 @@ declare namespace LocalJSX {
         "iconSource"?: string;
         /**
           * Background color variations.
+          * @default 'secondary'
          */
         "variant"?: TagVariant;
     }
@@ -6380,6 +7155,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
           * A boolean value that, if present, renders the tag dismissible as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
@@ -6390,32 +7166,39 @@ declare namespace LocalJSX {
     interface PText {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: TextAlign;
         /**
           * Basic text color variations.
+          * @default 'primary'
          */
         "color"?: TextColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
           * Sets a custom HTML tag depending on the usage of the text component.
+          * @default 'p'
          */
         "tag"?: TextTag;
         /**
           * The weight of the text.
+          * @default 'regular'
          */
         "weight"?: TextWeight;
     }
     interface PTextList {
         /**
           * The list style type.
+          * @default 'unordered'
          */
         "type"?: TextListType;
     }
@@ -6428,18 +7211,22 @@ declare namespace LocalJSX {
         "autoComplete"?: string;
         /**
           * A boolean value that, if present, renders the textarea as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * Supplementary text providing more context or explanation for the textarea.
+          * @default ''
          */
         "description"?: string;
         /**
           * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6448,10 +7235,12 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Controls the visibility of the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Text content for a user-facing label.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -6460,6 +7249,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * Dynamic feedback text for validation or status.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -6484,22 +7274,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
           * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Controls whether the textarea is resizable and in which direction.
+          * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
           * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
+          * @default 7
          */
         "rows"?: number;
         /**
@@ -6508,14 +7303,17 @@ declare namespace LocalJSX {
         "spellCheck"?: boolean;
         /**
           * Indicates the validation or overall status of the textarea component.
+          * @default 'none'
          */
         "state"?: TextareaState;
         /**
           * The textarea value.
+          * @default ''
          */
         "value"?: string;
         /**
           * Handles wrapping behavior of elements.
+          * @default 'soft'
          */
         "wrap"?: TextareaWrap;
     }
@@ -6528,10 +7326,12 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: PToastItemCustomEvent<void>) => void;
         /**
           * State of the toast-item.
+          * @default 'info'
          */
         "state"?: ToastState;
         /**
           * Text of the toast-item.
+          * @default ''
          */
         "text"?: string;
     }
@@ -6546,10 +7346,12 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Adapts sizing of wordmark.
+          * @default 'small'
          */
         "size"?: WordmarkSize;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: WordmarkTarget;
     }

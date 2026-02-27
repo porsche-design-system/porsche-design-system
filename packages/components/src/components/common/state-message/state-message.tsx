@@ -1,4 +1,4 @@
-import { type FunctionalComponent, h } from '@stencil/core';
+import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { getPrefixedTagNames, hasMessage } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 
@@ -17,14 +17,16 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, me
   return (
     // needs to be rendered always to have correct behaviour for screen readers
     <span id={messageId} class="message" role={state === 'success' ? 'status' : 'alert'}>
-      {hasMessage(host, message, state) && [
-        <PrefixedTagNames.pIcon
-          name={isErrorState ? 'exclamation' : 'check'}
-          color={isErrorState ? 'error' : 'success'}
-          aria-hidden="true"
-        />,
-        message || <slot name="message" />,
-      ]}
+      {hasMessage(host, message, state) && (
+        <Fragment>
+          <PrefixedTagNames.pIcon
+            name={isErrorState ? 'exclamation' : 'check'}
+            color={isErrorState ? 'error' : 'success'}
+            aria-hidden="true"
+          />
+          {message || <slot name="message" />}
+        </Fragment>
+      )}
     </span>
   );
 };

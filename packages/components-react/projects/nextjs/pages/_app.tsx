@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import type { JSX } from 'react';
 import { Providers } from '../app/providers';
+import '../app/globals.css';
 
 // NOTE: mostly unused since we are using app directory for generated pages
 // this is only used for custom pages in pages directory
