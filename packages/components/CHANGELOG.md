@@ -43,6 +43,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
 - `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
   `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  Slot `label-after` is not affected by `disbaled` states anymore
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
 - **Vue:** All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must
   be accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
 

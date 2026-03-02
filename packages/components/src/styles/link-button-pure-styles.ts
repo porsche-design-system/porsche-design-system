@@ -10,7 +10,14 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import { colorFrosted, colorFrostedStrong, colorPrimary, legacyRadiusSmall, radiusLg } from './css-variables';
+import {
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+} from './css-variables';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -88,8 +95,8 @@ export const getLinkButtonPureStyles = (
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
+          borderRadius: `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : radiusLg})`,
         })),
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
         transition: getTransition('background-color'),
         ...(active && {
           ...frostedGlassStyle,

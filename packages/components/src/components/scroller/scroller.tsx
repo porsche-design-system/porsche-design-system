@@ -125,6 +125,7 @@ export class Scroller {
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
+            dir="ltr" // Otherwise icon will be flipped which doesn't make sense in this use case
           >
             {direction}
           </PrefixedTagNames.pButton>
