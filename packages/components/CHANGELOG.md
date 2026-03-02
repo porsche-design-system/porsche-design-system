@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.0.0-beta.1] - 2026-03-02
+
 ### Added
 
 - `SCSS`, `Emotion`, `Vanilla Extract`: bring back PDS v3 import paths for better DX and backward compatibility.

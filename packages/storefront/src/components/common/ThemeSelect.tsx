@@ -9,7 +9,7 @@ import {
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
-import type { StorefrontColorScheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 
 type ThemeSelectProps = {
   value: StorefrontColorScheme;
