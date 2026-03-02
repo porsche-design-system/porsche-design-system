@@ -1,27 +1,18 @@
-import { type ScrollerDirection, getScrollerElements } from '../components/scroller/scroller-utils';
+import { getHTMLElements } from './dom';
 
-export const scrollElementTo = (el: HTMLElement, amount: number): void => {
-  el.scrollTo({
-    left: amount,
-    behavior: 'smooth', // TODO: make conditional so we don't need to wait in e2e or vrt tests
-  });
+const FOCUS_PADDING_WIDTH = 4;
+
+const getScrollerElements = (scrollerElement: HTMLElement): [HTMLElement, HTMLElement] => {
+  return getHTMLElements(scrollerElement.shadowRoot, `.scroll,.prev`) as [HTMLElement, HTMLElement];
 };
 
-export const scrollElementBy = (el: HTMLElement, amount: number): void => {
-  el.scrollBy({ left: amount, top: 0, behavior: 'smooth' }); // TODO: make conditional so we don't need to wait in e2e or vrt tests
-};
-
-export const getScrollByX = (scrollAreaElement: HTMLElement): number => {
-  return Math.round(scrollAreaElement.offsetWidth * 0.2);
-};
-
-export const FOCUS_PADDING_WIDTH = 4;
+export type ScrollerDirection = 'prev' | 'next';
 
 export const getScrollActivePosition = (
   elements: HTMLElement[],
   direction: ScrollerDirection,
   activeElementIndex: number,
-  scrollerElement: HTMLPScrollerElement
+  scrollerElement: HTMLElement
 ): number => {
   const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
     elements[activeElementIndex <= 0 ? 0 : activeElementIndex] || {}; // empty object fallback for tabs without children

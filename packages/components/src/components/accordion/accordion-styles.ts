@@ -49,7 +49,7 @@ const cssVarPaddingBlock = '--p-accordion-py';
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
 
-const icon = getInlineSVGBackgroundImage(
+const iconMarker = getInlineSVGBackgroundImage(
   `<path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/>`
 );
 
@@ -221,8 +221,8 @@ export const getComponentCss = (
           width: '1rem',
           height: '1rem',
           pointerEvents: 'none',
-          WebkitMask: `${icon} center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `${icon} center/contain no-repeat`,
+          WebkitMask: `${iconMarker} center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${iconMarker} center/contain no-repeat`,
           background: colorPrimary,
           transform: 'rotate3d(0)',
           transition: getTransition('transform', duration, easing),

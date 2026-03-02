@@ -1,35 +1,18 @@
-import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, type JSX, Method, Prop, State } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getHTMLElements,
-  getPrefixedTagNames,
-  hasPropValueChanged,
-  parseAndGetAriaAttributes,
-  parseJSONAttribute,
-  scrollAreaClass,
-  scrollElementTo,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './scroller-styles';
 import {
-  getScrollPositionAfterPrevNextClick,
-  isScrollable,
-  SCROLL_INDICATOR_POSITIONS,
   SCROLLER_ARIA_ATTRIBUTES,
-  type ScrollerAlignScrollIndicator,
+  SCROLLER_INDICATOR_POSITIONS,
   type ScrollerAriaAttribute,
   type ScrollerDirection,
-  type ScrollerScrollToPosition,
+  type ScrollerIndicatorPosition,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
-  scrollToPosition: AllowedTypes.shape<ScrollerScrollToPosition>({
-    scrollPosition: AllowedTypes.number,
-    isSmooth: AllowedTypes.boolean,
-  }),
-  alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
+  indicatorPosition: AllowedTypes.oneOf<ScrollerIndicatorPosition>(SCROLLER_INDICATOR_POSITIONS),
+  indicatorSticky: AllowedTypes.boolean,
   scrollbar: AllowedTypes.boolean,
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
 };
@@ -44,11 +27,13 @@ const propTypes: PropTypes<typeof Scroller> = {
 export class Scroller {
   @Element() public host!: HTMLElement;
 
-  /** Scrolls the scroll area to the left either smooth or immediately. */
-  @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
-
   /** Sets the vertical position of scroll indicator. */
-  @Prop() public alignScrollIndicator?: ScrollerAlignScrollIndicator = 'center';
+  @Prop() public indicatorPosition?: ScrollerIndicatorPosition = 'center';
+
+  /**
+   * @experimental Makes the indicator sticky at the top while scrolling.
+   */
+  @Prop() public indicatorSticky?: boolean = false;
 
   /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
@@ -56,50 +41,30 @@ export class Scroller {
   /** Add ARIA role. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
-  @State() private isPrevHidden = true;
-  @State() private isNextHidden = true;
+  @Method()
+  async scrollTo(options: ScrollToOptions): Promise<void> {
+    this.scrollArea?.scrollTo(options);
+  }
+
+  @Method()
+  async scrollBy(options: ScrollToOptions): Promise<void> {
+    this.scrollArea?.scrollBy(options);
+  }
+
+  @State() private isIndicatorPrevHidden = true;
+  @State() private isIndicatorNextHidden = true;
 
   private intersectionObserver: IntersectionObserver;
-  private scrollAreaElement: HTMLElement;
-
-  @Watch('scrollToPosition')
-  public scrollToPositionHandler(): void {
-    // TODO: does this.scrollToPosition already have the new value? or why aren't we using the first parameter of this function
-    this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
-
-    // watcher might trigger before ref is defined with ssr
-    if (this.scrollAreaElement) {
-      const { scrollPosition, isSmooth } = this.scrollToPosition;
-      if (isSmooth) {
-        scrollElementTo(this.scrollAreaElement, scrollPosition);
-      } else {
-        this.scrollAreaElement.scrollLeft = scrollPosition;
-      }
-    }
-  }
-
-  public connectedCallback(): void {
-    if (this.scrollAreaElement) {
-      this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
-    }
-  }
+  private scrollArea: HTMLElement;
+  private sentinelLeft: HTMLElement;
+  private sentinelRight: HTMLElement;
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
-    if (this.scrollToPosition) {
-      this.scrollToPositionHandler();
-    }
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Scroller>
-  ): boolean {
-    return (
-      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden)) && // should only update if scrollable
-      hasPropValueChanged(newVal, oldVal)
-    );
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
@@ -107,76 +72,60 @@ export class Scroller {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.isNextHidden,
-      this.isPrevHidden,
-      this.alignScrollIndicator,
+      this.isIndicatorPrevHidden,
+      this.isIndicatorNextHidden,
+      this.indicatorPosition,
+      this.indicatorSticky,
       this.scrollbar
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
-      return (
-        <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
-          <PrefixedTagNames.pButton
-            class="action-button"
-            variant="secondary"
-            hide-label="true"
-            icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-            type="button"
-            tabIndex={-1}
-            onClick={() => this.scrollOnPrevNextClick(direction)}
-          >
-            {direction}
-          </PrefixedTagNames.pButton>
-        </div>
-      );
-    };
-
     return (
       <div class="root">
-        <div class={scrollAreaClass} ref={(el) => (this.scrollAreaElement = el)}>
-          <div
-            class="scroll-wrapper"
-            role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
-            tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}
-          >
-            <slot />
-            <div class="trigger" />
-            <div class="trigger" />
-          </div>
+        {/** biome-ignore lint/a11y/noStaticElementInteractions: mainly a visual scroll indicator, a11y compliance is given by native scroll container */}
+        <span class="prev" onClick={() => this.scroll('prev')} />
+        {/** biome-ignore lint/a11y/noStaticElementInteractions: mainly a visual scroll indicator, a11y compliance is given by native scroll container */}
+        <span class="next" onClick={() => this.scroll('next')} />
+        <div
+          class="scroll"
+          ref={(el) => (this.scrollArea = el)}
+          tabIndex={this.isIndicatorPrevHidden && this.isIndicatorNextHidden ? null : 0}
+        >
+          <span class="sentinel" ref={(el) => (this.sentinelLeft = el)} />
+          <slot />
+          <span class="sentinel" ref={(el) => (this.sentinelRight = el)} />
         </div>
-        {(['prev', 'next'] satisfies ScrollerDirection[]).map(renderPrevNextButton)}
       </div>
     );
   }
 
   private initIntersectionObserver = (): void => {
-    const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.trigger');
-
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const { target, isIntersecting } of entries) {
-          if (target === firstTrigger) {
-            this.isPrevHidden = isIntersecting;
-          } else if (target === lastTrigger) {
-            this.isNextHidden = isIntersecting;
+          if (target === this.sentinelLeft) {
+            this.isIndicatorPrevHidden = isIntersecting;
+          } else if (target === this.sentinelRight) {
+            this.isIndicatorNextHidden = isIntersecting;
           }
         }
       },
       {
-        root: this.scrollAreaElement,
-        // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
+        root: this.scrollArea,
+        // Defines the percentage of how much of the target (sentinel) is visible within the element specified (this.host).
         // In this case 0.9px of the trigger have to be hidden to show the gradient
         threshold: 0.1,
       }
     );
 
-    this.intersectionObserver.observe(firstTrigger);
-    this.intersectionObserver.observe(lastTrigger);
+    this.intersectionObserver.observe(this.sentinelLeft);
+    this.intersectionObserver.observe(this.sentinelRight);
   };
 
-  private scrollOnPrevNextClick = (direction: ScrollerDirection): void => {
-    const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
-    scrollElementTo(this.scrollAreaElement, scrollPosition);
+  private scroll = (direction: ScrollerDirection): void => {
+    const left = this.scrollArea.offsetWidth * 0.5;
+    this.scrollArea?.scrollBy({
+      left: direction === 'prev' ? -left : left,
+      behavior: 'smooth',
+    });
   };
 }
