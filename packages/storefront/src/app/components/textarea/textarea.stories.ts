@@ -9,7 +9,7 @@ export const textareaSlotStories: SlotStories<'p-textarea'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -54,7 +54,7 @@ export const textareaStorySlots: Story<'p-textarea'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: [
             'Some Popover content with a ',
             {

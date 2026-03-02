@@ -61,7 +61,7 @@ export const getComponentCss = (
         [`${cssVarInternalRadioGroupScaling}`]: isCompact ? 0.64285714 : 1,
         [`${cssVarInternalRadioGroupOptionScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled, getDisabledBaseStyles()),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...(isLoading && {
         '::slotted(*:not([slot]))': {
           ...addImportantToEachRule(getDisabledBaseStyles()),
@@ -95,7 +95,7 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, {
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel, {
       ...(isDisabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message

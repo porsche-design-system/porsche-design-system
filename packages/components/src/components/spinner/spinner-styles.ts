@@ -54,6 +54,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
       },
       ':host': {
         display: 'inline-flex',
+        color: colorPrimary,
         ...addImportantToEachRule({
           verticalAlign: 'top',
           ...hostHiddenStyles,
@@ -70,7 +71,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
         },
         '&:last-child': {
           animation: `$dash ${animationDuration} steps(50) infinite`,
-          stroke: colorPrimary,
+          stroke: 'currentcolor', // necessary for proper color inheritance
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray

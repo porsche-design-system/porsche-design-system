@@ -23,6 +23,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
+import { mergeDeep } from '../../../utils';
 
 /**
  * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
@@ -63,7 +64,6 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPurePadding}`]: buttonPadding,
           [`${cssVarButtonPureMargin}`]: buttonMargin,
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
         // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
         '&(:dir(rtl)) input::placeholder': {
@@ -72,11 +72,13 @@ export const getFunctionalComponentInputBaseStyles = (
         },
         ...additionalHostJssStyle,
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
+        display: 'flex',
         flex: 1,
+        alignItems: 'center',
         width: 'max(100%, 2ch)', // show at least 2 characters in very narrow containers
         height: '100%',
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
@@ -113,10 +115,19 @@ export const getFunctionalComponentInputBaseStyles = (
           outlineOffset: '2px',
         }),
       },
-      ...(isDisabled &&
-        forcedColorsMediaQuery({
-          borderColor: 'GrayText',
-        })),
+      ...(isDisabled && {
+        ...mergeDeep(
+          { ...getDisabledBaseStyles() },
+          {
+            ...forcedColorsMediaQuery({
+              borderColor: 'GrayText',
+            }),
+          }
+        ),
+        '& > *': {
+          ...getDisabledBaseStyles(),
+        },
+      }),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&
@@ -134,7 +145,7 @@ export const getFunctionalComponentInputBaseStyles = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

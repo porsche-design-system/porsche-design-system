@@ -121,10 +121,5 @@ export const getComponentCss = (
       ...dismissButtonJssStyle,
       ...dropShadowLowStyle,
     },
-    icon: {
-      '&:dir(rtl)': {
-        transform: 'scaleX(-1)',
-      },
-    },
   });
 };

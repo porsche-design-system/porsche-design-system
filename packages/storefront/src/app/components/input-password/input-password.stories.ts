@@ -59,7 +59,7 @@ export const inputPasswordSlotStories: SlotStories<'p-input-password'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -114,7 +114,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: [
             'Some Popover content with a ',
             {
