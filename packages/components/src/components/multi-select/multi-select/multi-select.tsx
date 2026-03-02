@@ -392,6 +392,7 @@ export class MultiSelect {
       hoveredOption &&
       isElementOfKind(hoveredOption, 'p-multi-select-option') &&
       !hoveredOption.disabled &&
+      !hoveredOption.disabledParent &&
       hoveredOption !== this.currentlyHighlightedOption
     ) {
       this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
