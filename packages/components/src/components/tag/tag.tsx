@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { type TagColor, type TagColorDeprecated, type TagIcon, TAG_COLORS } from './tag-utils';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,13 +10,22 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
-import type { PropTypes, Theme } from '../../types';
+import {
+  TAG_COLORS,
+  TAG_VARIANTS,
+  type TagColor,
+  type TagColorDeprecated,
+  type TagIcon,
+  type TagVariant,
+  VARIANT_TO_COLOR_MAP,
+} from './tag-utils';
 
 type DeprecationMapType = Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>>;
 
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  variant: AllowedTypes.oneOf<TagVariant>([undefined, ...TAG_VARIANTS]),
   icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   iconSource: AllowedTypes.string,
   compact: AllowedTypes.boolean,
@@ -35,8 +44,14 @@ export class Tag {
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Background color variations depending on theme property. */
+  /**
+   * @deprecated since v3.33.0, will be removed with next major release. Use `variant` prop instead.
+   * Background color variations depending on theme property.
+   */
   @Prop() public color?: TagColor = 'background-surface';
+
+  /** Style variant of the tag. */
+  @Prop() public variant?: TagVariant;
 
   /** The icon shown. */
   @Prop() public icon?: TagIcon; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
@@ -59,10 +74,19 @@ export class Tag {
       'notification-error': 'notification-error-soft',
     };
     warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', deprecationMap);
+
+    // Resolve effective color: variant takes precedence over color
+    const resolvedColor: Exclude<TagColor, TagColorDeprecated> = this.variant
+      ? VARIANT_TO_COLOR_MAP[this.variant]
+      : ((deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<
+          TagColor,
+          TagColorDeprecated
+        >);
+
     attachComponentCss(
       this.host,
       getComponentCss,
-      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<TagColor, TagColorDeprecated>,
+      resolvedColor,
       this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       hasIcon,
