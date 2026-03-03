@@ -3147,7 +3147,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Style variant of the tag.
+          * Background color variations.
          */
         "variant"?: TagVariant;
     }
@@ -8130,7 +8130,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Style variant of the tag.
+          * Background color variations.
          */
         "variant"?: TagVariant;
     }

@@ -50,7 +50,7 @@ export class Tag {
    */
   @Prop() public color?: TagColor = 'background-surface';
 
-  /** Style variant of the tag. */
+  /** Background color variations. */
   @Prop() public variant?: TagVariant;
 
   /** The icon shown. */
