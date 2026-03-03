@@ -2,8 +2,8 @@ import { vi } from 'vitest';
 import * as tabsBarUtils from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
-  getPrevNextTabIndex,
   getTransformation,
+  getUpcomingActiveElementIndex,
   sanitizeActiveTabIndex,
   setBarStyle,
 } from './tabs-bar-utils';
@@ -41,15 +41,15 @@ describe('getTransformation()', () => {
   });
 });
 
-describe('getPrevNextTabIndex()', () => {
+describe('getUpcomingActiveElementIndex()', () => {
   it('should return correct index for prev direction', () => {
-    expect(getPrevNextTabIndex('prev', 5, 1)).toBe(0);
-    expect(getPrevNextTabIndex('prev', 6, 2)).toBe(1);
+    expect(getUpcomingActiveElementIndex('prev', 5, 1)).toBe(0);
+    expect(getUpcomingActiveElementIndex('prev', 6, 2)).toBe(1);
   });
 
   it('should return correct index for next direction', () => {
-    expect(getPrevNextTabIndex('next', 5, 1)).toBe(2);
-    expect(getPrevNextTabIndex('next', 6, 2)).toBe(3);
+    expect(getUpcomingActiveElementIndex('next', 5, 1)).toBe(2);
+    expect(getUpcomingActiveElementIndex('next', 6, 2)).toBe(3);
   });
 });
 
