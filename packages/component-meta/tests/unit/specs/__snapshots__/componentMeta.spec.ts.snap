@@ -12019,7 +12019,7 @@ exports[`should match snapshot 1`] = `
           "error",
         ],
         "defaultValue": null,
-        "description": "Style variant of the tag.",
+        "description": "Background color variations.",
         "type": "TagVariant",
       },
     },
