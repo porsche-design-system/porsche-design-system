@@ -411,6 +411,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.MultiSelectExampleSelectedSlot />,
   },
   {
+    name: 'Pagination Example',
+    path: '/pagination-example',
+    element: <fromExamples.PaginationExamplePage />,
+  },
+  {
     name: 'Pin Code Example',
     path: '/pin-code-example',
     element: <fromExamples.PinCodeExamplePage />,
@@ -544,5 +549,5 @@ export const routes: RouteType[] = [
     name: 'Toast Example',
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,
-  }
+  },
 ];

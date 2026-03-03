@@ -1,5 +1,7 @@
 export type PaginationUpdateEventDetail = { page: number; previousPage: number };
 
+export type PaginationHrefBuilder = (page: number) => string;
+
 export type PaginationInternationalization = Partial<Record<'root' | 'prev' | 'next' | 'page', string>> | string; // string to support attribute, gets removed via InputParser
 
 export type PaginationOptions = {

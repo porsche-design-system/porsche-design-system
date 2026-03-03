@@ -43,7 +43,7 @@ import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
-import { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
+import { PaginationHrefBuilder, PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
@@ -105,7 +105,7 @@ export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
-export { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
+export { PaginationHrefBuilder, PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
@@ -367,7 +367,7 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface PCanvas {
         /**
@@ -555,7 +555,7 @@ export namespace Components {
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
      * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental 
+     * @experimental
      */
     interface PDrilldown {
         /**
@@ -572,7 +572,7 @@ export namespace Components {
         "open"?: boolean;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface PDrilldownItem {
         /**
@@ -597,7 +597,7 @@ export namespace Components {
         "secondary"?: boolean;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface PDrilldownLink {
         /**
@@ -1754,7 +1754,7 @@ export namespace Components {
     }
     /**
      * @controlled {"props": ["liked"], "event": "like"}
-     * @experimental 
+     * @experimental
      */
     interface PLinkTileProduct {
         /**
@@ -1938,6 +1938,10 @@ export namespace Components {
           * Index of the currently active page.
          */
         "activePage"?: number;
+        /**
+          * A callback function that returns the href for a given page number. When provided, pagination items are rendered as `<a>` tags instead of `<span>` elements, enabling native link behavior, SEO indexing, and framework router integration.
+         */
+        "hrefBuilder"?: PaginationHrefBuilder;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
          */
@@ -2820,7 +2824,7 @@ declare global {
         "sidebarEndDismiss": void;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2899,7 +2903,7 @@ declare global {
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
      * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental 
+     * @experimental
      */
     interface HTMLPDrilldownElement extends Components.PDrilldown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPDrilldownElementEventMap>(type: K, listener: (this: HTMLPDrilldownElement, ev: PDrilldownCustomEvent<HTMLPDrilldownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2916,7 +2920,7 @@ declare global {
         new (): HTMLPDrilldownElement;
     };
     /**
-     * @experimental 
+     * @experimental
      */
     interface HTMLPDrilldownItemElement extends Components.PDrilldownItem, HTMLStencilElement {
     }
@@ -2925,7 +2929,7 @@ declare global {
         new (): HTMLPDrilldownItemElement;
     };
     /**
-     * @experimental 
+     * @experimental
      */
     interface HTMLPDrilldownLinkElement extends Components.PDrilldownLink, HTMLStencilElement {
     }
@@ -3229,7 +3233,7 @@ declare global {
     }
     /**
      * @controlled {"props": ["liked"], "event": "like"}
-     * @experimental 
+     * @experimental
      */
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4010,7 +4014,7 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface PCanvas {
         /**
@@ -4218,7 +4222,7 @@ declare namespace LocalJSX {
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
      * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental 
+     * @experimental
      */
     interface PDrilldown {
         /**
@@ -4243,7 +4247,7 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface PDrilldownItem {
         /**
@@ -4268,7 +4272,7 @@ declare namespace LocalJSX {
         "secondary"?: boolean;
     }
     /**
-     * @experimental 
+     * @experimental
      */
     interface PDrilldownLink {
         /**
@@ -5577,7 +5581,7 @@ declare namespace LocalJSX {
     }
     /**
      * @controlled {"props": ["liked"], "event": "like"}
-     * @experimental 
+     * @experimental
      */
     interface PLinkTileProduct {
         /**
@@ -5789,6 +5793,10 @@ declare namespace LocalJSX {
           * Index of the currently active page.
          */
         "activePage"?: number;
+        /**
+          * A callback function that returns the href for a given page number. When provided, pagination items are rendered as `<a>` tags instead of `<span>` elements, enabling native link behavior, SEO indexing, and framework router integration.
+         */
+        "hrefBuilder"?: PaginationHrefBuilder;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
          */
@@ -6646,7 +6654,7 @@ declare module "@stencil/core" {
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             /**
-             * @experimental 
+             * @experimental
              */
             "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
             /**
@@ -6660,15 +6668,15 @@ declare module "@stencil/core" {
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              * @controlled {"props": ["activeIdentifier"], "event": "update"}
-             * @experimental 
+             * @experimental
              */
             "p-drilldown": LocalJSX.PDrilldown & JSXBase.HTMLAttributes<HTMLPDrilldownElement>;
             /**
-             * @experimental 
+             * @experimental
              */
             "p-drilldown-item": LocalJSX.PDrilldownItem & JSXBase.HTMLAttributes<HTMLPDrilldownItemElement>;
             /**
-             * @experimental 
+             * @experimental
              */
             "p-drilldown-link": LocalJSX.PDrilldownLink & JSXBase.HTMLAttributes<HTMLPDrilldownLinkElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
@@ -6696,7 +6704,7 @@ declare module "@stencil/core" {
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             /**
              * @controlled {"props": ["liked"], "event": "like"}
-             * @experimental 
+             * @experimental
              */
             "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
             /**

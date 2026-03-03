@@ -15,6 +15,7 @@ import {
   getCurrentActivePage,
   getTotalPages,
   ItemType,
+  type PaginationHrefBuilder,
   type PaginationInternationalization,
   type PaginationUpdateEventDetail,
 } from './pagination-utils';
@@ -62,6 +63,9 @@ export class Pagination {
     page: 'Page',
   };
 
+  /** A callback function that returns the href for a given page number. When provided, pagination items are rendered as `<a>` tags instead of `<span>` elements, enabling native link behavior, SEO indexing, and framework router integration. */
+  @Prop() public hrefBuilder?: PaginationHrefBuilder;
+
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEventDetail>;
 
@@ -100,19 +104,28 @@ export class Pagination {
               isBeforeBeforeCurrent,
               isAfterAfterCurrent,
             } = pageModel;
-            const spanProps = {
-              role: 'button',
-              tabIndex: isActive ? 0 : null,
-              onClick: () => this.onClick(value),
-              onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e, value),
-            };
+            const useAnchor = !!this.hrefBuilder;
             const iconProps = {
               color: 'primary',
               'aria-hidden': 'true',
             };
 
             switch (type) {
-              case ItemType.PREVIOUS:
+              case ItemType.PREVIOUS: {
+                if (useAnchor && isActive) {
+                  return (
+                    <li key="prev" class="prev">
+                      <a
+                        href={this.hrefBuilder(value)}
+                        aria-label={parsedIntl.prev}
+                        onClick={(e: MouseEvent) => this.onAnchorClick(e, value)}
+                      >
+                        <PrefixedTagNames.pIcon {...iconProps} name="arrow-left" />
+                      </a>
+                    </li>
+                  );
+                }
+                const spanProps = this.getSpanProps(isActive, value);
                 return (
                   <li key="prev" class="prev">
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
@@ -121,6 +134,7 @@ export class Pagination {
                     </span>
                   </li>
                 );
+              }
 
               case ItemType.ELLIPSIS:
                 return (
@@ -129,18 +143,32 @@ export class Pagination {
                   </li>
                 );
 
-              case ItemType.PAGE:
+              case ItemType.PAGE: {
+                const liClasses = {
+                  current: isActive,
+                  'current-1': isBeforeCurrent,
+                  'current+1': isAfterCurrent,
+                  'current-2': isBeforeBeforeCurrent,
+                  'current+2': isAfterAfterCurrent,
+                };
+                if (useAnchor) {
+                  return (
+                    <li key={value} class={liClasses}>
+                      <a
+                        href={this.hrefBuilder(value)}
+                        tabIndex={0}
+                        aria-label={`${parsedIntl.page} ${value}`}
+                        aria-current={isActive ? 'page' : null}
+                        onClick={(e: MouseEvent) => this.onAnchorClick(e, value)}
+                      >
+                        {value}
+                      </a>
+                    </li>
+                  );
+                }
+                const spanProps = this.getSpanProps(isActive, value);
                 return (
-                  <li
-                    key={value}
-                    class={{
-                      current: isActive,
-                      'current-1': isBeforeCurrent,
-                      'current+1': isAfterCurrent,
-                      'current-2': isBeforeBeforeCurrent,
-                      'current+2': isAfterAfterCurrent,
-                    }}
-                  >
+                  <li key={value} class={liClasses}>
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
                     <span
                       {...spanProps}
@@ -152,8 +180,23 @@ export class Pagination {
                     </span>
                   </li>
                 );
+              }
 
-              case ItemType.NEXT:
+              case ItemType.NEXT: {
+                if (useAnchor && isActive) {
+                  return (
+                    <li key="next" class="next">
+                      <a
+                        href={this.hrefBuilder(value)}
+                        aria-label={parsedIntl.next}
+                        onClick={(e: MouseEvent) => this.onAnchorClick(e, value)}
+                      >
+                        <PrefixedTagNames.pIcon {...iconProps} name="arrow-right" />
+                      </a>
+                    </li>
+                  );
+                }
+                const spanProps = this.getSpanProps(isActive, value);
                 return (
                   <li key="next" class="next">
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
@@ -162,6 +205,7 @@ export class Pagination {
                     </span>
                   </li>
                 );
+              }
               default:
                 return null;
             }
@@ -171,6 +215,15 @@ export class Pagination {
     );
   }
 
+  private getSpanProps(isActive: boolean, value: number): Record<string, unknown> {
+    return {
+      role: 'button',
+      tabIndex: isActive ? 0 : null,
+      onClick: () => this.onClick(value),
+      onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e, value),
+    };
+  }
+
   private onKeyDown(event: KeyboardEvent, page: number): void {
     // from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
     const { key } = event;
@@ -178,6 +231,11 @@ export class Pagination {
       event.preventDefault(); // prevent the default action to stop scrolling when space is pressed
       this.onClick(page);
     }
+  }
+
+  private onAnchorClick(event: MouseEvent, page: number): void {
+    event.preventDefault(); // prevent native navigation, let consumer handle via update event
+    this.onClick(page);
   }
 
   private onClick(page: number): void {
