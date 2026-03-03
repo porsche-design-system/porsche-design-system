@@ -1,6 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
-import { multiSelectStory } from '@/app/components/multi-select/multi-select.stories';
+import { multiSelectStory, multiSelectSlotStories } from '@/app/components/multi-select/multi-select.stories';
 import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
@@ -28,4 +28,4 @@ disabled by using the `disabled` attribute.
 to render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
 container.
 
-<Configurator tagName="p-multi-select" story={multiSelectStory} />
+<Configurator tagName="p-multi-select" story={multiSelectStory} slotStories={multiSelectSlotStories} />

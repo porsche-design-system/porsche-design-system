@@ -28,7 +28,6 @@ import type {
   ButtonTileAlign,
   ButtonTileAriaAttribute,
   ButtonTileAspectRatio,
-  ButtonTileBackground,
   ButtonTileIcon,
   ButtonTileSize,
   ButtonTileType,
@@ -64,9 +63,6 @@ export class ButtonTile implements ITileProps {
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
 
-  /** Adapts the description and button theme when used on light background image. */
-  @Prop() public background?: ButtonTileBackground = 'dark';
-
   /** Aspect ratio of the button-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4/3';
 
@@ -80,7 +76,7 @@ export class ButtonTile implements ITileProps {
   @Prop() public align?: ButtonTileAlign = 'bottom';
 
   /** Show gradient. */
-  @Prop() public gradient?: boolean = true;
+  @Prop() public gradient?: boolean = false;
 
   /** Displays the button-tile as compact version with description and button icon only. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
@@ -127,6 +123,9 @@ export class ButtonTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
+    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
+
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -134,9 +133,8 @@ export class ButtonTile implements ITileProps {
       this.aspectRatio,
       this.size,
       this.weight,
-      this.background,
       this.align,
-      this.compact,
+      parsedCompact,
       this.gradient,
       this.hasFooterSlot,
       this.disabled
@@ -145,7 +143,6 @@ export class ButtonTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const buttonProps = {
-      theme: this.background,
       variant: 'secondary',
       iconSource: this.iconSource,
       type: this.type,
@@ -160,16 +157,17 @@ export class ButtonTile implements ITileProps {
       </PrefixedTagNames.pButton>
     );
 
-    const buttonPure: JSX.Element = (
-      <PrefixedTagNames.pButtonPure
+    const buttonCompact: JSX.Element = (
+      <PrefixedTagNames.pButton
         {...buttonProps}
         key="link-or-button-pure"
         class="link-or-button-pure"
         hideLabel={true}
+        compact={true}
         icon={this.icon === 'none' ? 'arrow-right' : this.icon}
       >
         {this.label}
-      </PrefixedTagNames.pButtonPure>
+      </PrefixedTagNames.pButton>
     );
 
     return (
@@ -181,7 +179,7 @@ export class ButtonTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
+          {typeof parsedCompact === 'boolean' ? (parsedCompact ? buttonCompact : button) : [buttonCompact, button]}
         </div>
       </div>
     );

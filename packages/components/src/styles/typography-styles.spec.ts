@@ -2,18 +2,11 @@ import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from './typog
 
 describe('getTypographyRootJssStyle()', () => {
   it.each<Parameters<typeof getTypographyRootJssStyle>>([
-    [
-      { font: 'some font styles' },
-      { fontSize: 'some breakpoint customizable font styles' },
-      'left',
-      'primary',
-      false,
-      'light',
-    ],
-    [{}, {}, 'right', 'contrast-high', true, 'light'],
-    [{}, {}, 'center', 'contrast-high', false, 'dark'],
+    [{ font: 'some font styles' }, { fontSize: 'some breakpoint customizable font styles' }, 'start', 'primary', false],
+    [{}, {}, 'end', 'contrast-high', true],
+    [{}, {}, 'center', 'contrast-high', false],
   ])(
-    'should return correct css for baseTextStyle: %s, responsiveStyle: %s, align: %s, color: %s, ellipsis: %s and theme: %s',
+    'should return correct css for baseTextStyle: %s, responsiveStyle: %s, align: %s, color: %s and ellipsis: %s',
     (...args) => {
       expect(getTypographyRootJssStyle(...args)).toMatchSnapshot();
     }

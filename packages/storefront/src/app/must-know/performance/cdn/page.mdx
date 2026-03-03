@@ -144,6 +144,15 @@ root.render(
 </template>
 ```
 
+### Styles
+
+In order to use the Chinese CDN for the Font-face definitions, the `/cn` import needs to be used, e.g.:
+
+```diff
+- @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
+```
+
 ### Partials
 
 Also, all CDN related partials of the `@porsche-design-system/components-{js|angular|react|vue}/partials` packages have

@@ -2,9 +2,7 @@
   <div class="drawer">
     <p-button-pure class="back hydrated"> Back</p-button-pure>
     <p-button class="dismiss-mobile hydrated"> Dismiss drilldown</p-button>
-    <p-button-pure class="dismiss-desktop hydrated">
-      Dismiss drilldown</p-button-pure
-    >
+    <p-button class="dismiss-desktop hydrated"> Dismiss drilldown</p-button>
     <div class="scroller">
       <slot> </slot>
     </div>

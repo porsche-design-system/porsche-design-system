@@ -1,4 +1,4 @@
-import { type Breakpoint, breakpoint, breakpoints } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { mediaQueryLists } from './breakpoint-observer';
 

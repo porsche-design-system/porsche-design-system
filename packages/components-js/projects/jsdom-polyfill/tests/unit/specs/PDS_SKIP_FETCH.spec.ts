@@ -23,15 +23,6 @@ describe('window.PDS_SKIP_FETCH = true', () => {
     expect(link).toBeNull();
   });
 
-  it('should not fetch marque asset', async () => {
-    document.body.innerHTML = '<p-marque></p-marque>';
-    expect(await componentsReady()).toBe(1);
-
-    const picture = document.querySelector('p-marque').shadowRoot.querySelector('picture');
-
-    expect(picture).toBeNull();
-  });
-
   it('should not fetch crest asset', async () => {
     document.body.innerHTML = '<p-crest></p-crest>';
     expect(await componentsReady()).toBe(1);
@@ -65,15 +56,6 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     console.log(link);
 
     expect(link).not.toBeNull();
-  });
-
-  it('should fetch marque asset', async () => {
-    document.body.innerHTML = '<p-marque></p-marque>';
-    expect(await componentsReady()).toBe(1);
-
-    const picture = document.querySelector('p-marque').shadowRoot.querySelector('picture');
-
-    expect(picture).not.toBeNull();
   });
 
   it('should fetch crest asset', async () => {

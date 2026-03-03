@@ -13,7 +13,7 @@ test('overview should work without errors', async ({ page }) => {
 });
 
 test('should stringify object props correctly', async ({ page }) => {
-  await goto(page, 'overview');
+  await goto(page, 'overview-components');
 
   const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
 
@@ -24,9 +24,9 @@ test('should stringify object props correctly', async ({ page }) => {
 
 test('should initialize component deterministically', async ({ page }) => {
   await goto(page, 'core-initializer');
-  await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
+  await page.waitForFunction(() => document.querySelectorAll('p-input-text').length === 2);
 
-  const [component1, component2] = await page.locator('p-text-field-wrapper').all();
+  const [component1, component2] = await page.locator('p-input-text').all();
 
   const component1HTML = await getOuterHTML(component1);
   const component2HTML = await getOuterHTML(component2);

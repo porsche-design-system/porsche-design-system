@@ -22,27 +22,25 @@ import {
       }
     }
 
-    <p-button-group>
-      <p-button
-        type="button"
-        [icon]="'arrow-head-left'"
-        [variant]="'tertiary'"
-        [disabled]="getActiveStepIndex(steps) === 0"
-        (click)="onNextPrevStep('prev')"
-        >
-        Previous Step
-      </p-button>
+    <p-button
+      type="button"
+      [icon]="'arrow-head-left'"
+      [variant]="'secondary'"
+      [disabled]="getActiveStepIndex(steps) === 0"
+      (click)="onNextPrevStep('prev')"
+    >
+      Previous Step
+    </p-button>
 
-      <p-button
-        type="button"
-        [variant]="'primary'"
-        [disabled]="getActiveStepIndex(steps) === steps.length - 1"
-        (click)="onNextPrevStep('next')"
-        >
-        Next Step
-      </p-button>
-    </p-button-group>
-    `,
+    <p-button
+      type="button"
+      [variant]="'primary'"
+      [disabled]="getActiveStepIndex(steps) === steps.length - 1"
+      (click)="onNextPrevStep('next')"
+    >
+      Next Step
+    </p-button>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule],

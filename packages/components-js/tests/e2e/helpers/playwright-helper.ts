@@ -1,6 +1,5 @@
-import { type Locator, expect } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ConsoleMessage, Page } from 'playwright';
 import { waitForComponentsReady } from './stencil';
@@ -48,8 +47,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
         <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">
+        <link rel="stylesheet" href="assets/index.css">
         <link rel="stylesheet" href="assets/styles.css">
-        ${getInitialStyles()}
         ${options.injectIntoHead}
       </head>
       <body>
@@ -407,7 +406,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
       .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   const childMarkup = buildChildMarkup(requiredChild, requiredNamedSlots, hasSlot && '' in slotsMeta);
-  const label = childMarkup === undefined && propsMeta['label'] ? 'label="Some label"' : '';
+  const label = childMarkup === undefined && propsMeta?.label ? 'label="Some label"' : '';
   const componentMarkup = `<${tagName}${attributes} ${label}>${childMarkup ?? ''}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);

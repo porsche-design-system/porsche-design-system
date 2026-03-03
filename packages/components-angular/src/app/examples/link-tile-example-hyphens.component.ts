@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-link-tile-example-hyphens',
   template: `
-    <p-select name="hyphens" label="Select hyphens" [value]="selectedValue" (update)="onUpdate($event)">
+    <p-select name="hyphens" label="Select hyphens" [value]="selectedValue" (change)="onChange($event)">
       <p-select-option value="auto">style="hyphens: auto;"</p-select-option>
       <p-select-option value="manual">style="hyphens: manual;"</p-select-option>
       <p-select-option value="none">style="hyphens: none;"</p-select-option>
@@ -28,7 +28,7 @@ import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-des
 export class LinkTileExampleHyphensComponent {
   selectedValue: string = 'auto';
 
-  onUpdate(e: CustomEvent<SelectUpdateEventDetail>) {
+  onChange(e: CustomEvent<SelectChangeEventDetail>) {
     this.selectedValue = e.detail.value;
   }
 }

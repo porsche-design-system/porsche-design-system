@@ -1,11 +1,10 @@
 // This file shall only contain imports that will be forced to be bundle into main chunk of components bundle
-export * from './colors';
+
+export * from './alpha-disabled';
 export * from './common-styles';
-export * from './host-hidden-styles';
-export * from './color-scheme-styles';
-export * from './hover-media-query';
-export * from './prefers-color-scheme-dark-media-query';
-export * from './prevent-fouc-of-nested-elements-styles';
-export * from './schemed-high-contrast-media-query';
-export * from './forced-colors-media-query';
 export * from './global';
+export * from './host/host-hidden-styles';
+export * from './host/prevent-fouc-of-nested-elements-styles';
+export * from './media-query/forced-colors-media-query';
+export * from './media-query/hover-media-query';
+export * from './media-query/schemed-high-contrast-media-query';

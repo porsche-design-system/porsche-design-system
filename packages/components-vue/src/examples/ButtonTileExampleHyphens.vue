@@ -3,19 +3,19 @@ import {
   PButtonTile,
   PSelect,
   PSelectOption,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const selectedValue = ref('auto');
 
-const onUpdate = (e: SelectUpdateEventDetail) => {
-  selectedValue.value = e.value;
+const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  selectedValue.value = e.detail.value;
 };
 </script>
 
 <template>
-  <PSelect label="Select hyphens" name="hyphens" :value="selectedValue" @update="onUpdate">
+  <PSelect label="Select hyphens" name="hyphens" :value="selectedValue" @change="onChange">
     <PSelectOption value="auto">style="hyphens: auto;"</PSelectOption>
     <PSelectOption value="manual">style="hyphens: manual;"</PSelectOption>
     <PSelectOption value="none">style="hyphens: none;"</PSelectOption>

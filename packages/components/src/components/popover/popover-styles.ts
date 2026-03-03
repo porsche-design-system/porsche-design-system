@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -9,39 +8,36 @@ import {
   spacingStaticMedium,
   spacingStaticSmall,
   textSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableAnimationDuration,
-  getFocusJssStyle,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
+import {
+  colorCanvas,
+  colorFrosted,
+  colorFrostedSoft,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+} from '../../styles/css-variables';
+import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
-
-const { canvasTextColor } = getHighContrastColors();
 
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-export const getComponentCss = (theme: Theme): string => {
-  const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    hoverColor: hoverColorDark,
-    primaryColor: primaryColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
 
+export const getComponentCss = (): string => {
   const shadowColor = 'rgba(0,0,0,0.3)';
 
   return getCss({
@@ -59,7 +55,6 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -77,19 +72,17 @@ export const getComponentCss = (theme: Theme): string => {
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width/height definition based on ex-unit
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
-        borderRadius: '50%',
+        borderRadius: radiusFull,
         cursor: 'pointer',
+        backgroundColor: colorFrosted,
+        transition: getTransition('background-color'),
+        ...frostedGlassStyle,
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
           '&:hover': {
-            ...frostedGlassStyle,
-            backgroundColor: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
-            }),
+            backgroundColor: colorFrostedSoft,
           },
         }),
-        ...getFocusJssStyle(theme, { offset: 0 }),
+        '&:focus-visible': getFocusBaseStyles(),
       },
       '[popover]': {
         all: 'unset',
@@ -112,16 +105,10 @@ export const getComponentCss = (theme: Theme): string => {
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      ...(isHighContrastMode
-        ? {
-            background: canvasTextColor,
-          }
-        : {
-            background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundSurfaceColorDark,
-            }),
-          }),
+      background: colorCanvas,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
     },
     content: {
       maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
@@ -129,16 +116,13 @@ export const getComponentCss = (theme: Theme): string => {
       boxSizing: 'border-box',
       padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
       pointerEvents: 'auto',
-      borderRadius: borderRadiusSmall,
-      ...(isHighContrastMode && {
-        outline: `1px solid ${canvasTextColor}`,
-      }),
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
       ...textSmallStyle,
-      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-      color: primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundSurfaceColorDark,
-        color: primaryColorDark,
+      background: colorCanvas,
+      color: colorPrimary,
+      ...forcedColorsMediaQuery({
+        outline: '2px solid CanvasText',
+        outlineOffset: '-2px',
       }),
     },
   });

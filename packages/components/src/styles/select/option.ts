@@ -1,27 +1,16 @@
-import { borderRadiusSmall, fontLineHeight, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { fontLineHeight, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { isHighContrastMode, type Theme } from '../../utils';
-import { getHighContrastColors, getThemedColors } from '../colors';
 import { getTransition } from '../common-styles';
-import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
+import { colorContrastHigh, colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../css-variables';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getOptionJssStyle = (
-  componentName: 'select-wrapper' | 'select-option' | 'multi-select-option',
-  cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
-  theme: Theme
+  componentName: 'select-option' | 'multi-select-option',
+  cssVarScalingName: string
 ): JssStyle => {
-  const {
-    primaryColor: primaryColorDark,
-    contrastHighColor: contrastHighColorDark,
-    disabledColor: disabledColorDark,
-    contrastLowColor: contrastLowColorDark,
-  } = getThemedColors('dark');
-  const { primaryColor, contrastLowColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { highlightColor } = getHighContrastColors();
-
-  const gap = `max(4px, ${cssVarScaling} * 12px)`;
-  const paddingBlock = `max(2px, ${cssVarScaling} * ${spacingStaticSmall})`;
-  const paddingInline = `max(4px, ${cssVarScaling} * var(--p-internal-${componentName}-padding-left, 12px)) max(4px, ${cssVarScaling} * 12px)`;
+  const gap = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
+  const paddingBlock = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
+  const paddingInline = `var(--p-internal-${componentName}-padding-left, calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)) calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)`;
 
   return {
     display: 'flex',
@@ -30,33 +19,28 @@ export const getOptionJssStyle = (
     paddingInline,
     minHeight: fontLineHeight, // preserves height for empty option
     ...textSmallStyle,
-    color: contrastHighColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: contrastHighColorDark,
-    }),
+    color: colorContrastHigh,
     cursor: 'pointer',
     textAlign: 'start',
     wordBreak: 'break-word',
     boxSizing: 'content-box',
-    borderRadius: borderRadiusSmall,
+    borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: contrastLowColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: contrastLowColorDark,
+      background: colorFrosted,
+      ...forcedColorsMediaQuery({
+        forcedColorAdjust: 'none',
+        outline: '2px solid Highlight',
+        outlineOffset: '-2px',
       }),
     },
     '&--highlighted, &--selected': {
-      color: isHighContrastMode ? highlightColor : primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isHighContrastMode ? highlightColor : primaryColorDark,
-      }),
+      color: colorPrimary,
     },
     '&--disabled': {
       cursor: 'not-allowed',
-      color: disabledColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: disabledColorDark,
+      ...forcedColorsMediaQuery({
+        color: 'GrayText',
       }),
     },
     '&--hidden': {

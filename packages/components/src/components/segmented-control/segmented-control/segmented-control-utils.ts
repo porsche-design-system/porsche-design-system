@@ -1,6 +1,5 @@
-import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
+import { borderWidthBase, fontFamily } from '@porsche-design-system/emotion';
 import { forceUpdate } from '@stencil/core';
-import type { Theme } from '../../../types';
 import { hasDocument } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
@@ -13,14 +12,7 @@ import {
 } from '../segmented-control-item/segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 
-export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const; // 'background-color' prop is deprecated
-export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROUND_COLORS)[number]; // 'background-color' prop is deprecated
-
-/** @deprecated */
-export type SegmentedControlUpdateEvent = { value: string | number };
-/** @deprecated */
-export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
-export type SegmentedControlChangeEventDetail = SegmentedControlUpdateEventDetail;
+export type SegmentedControlChangeEventDetail = { value: string | number };
 
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
@@ -63,7 +55,9 @@ export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: 
   );
 
   const widths = Array.from(host.children)
-    .filter((el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description')
+    .filter(
+      (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'message' && el.slot !== 'description'
+    )
     .map((item: HTMLElement & SegmentedControlItem) => {
       tempDiv.innerHTML = item.innerHTML;
       tempDiv.style.minWidth = dimension;
@@ -93,14 +87,12 @@ export const syncSegmentedControlItemsProps = (
   disabled: boolean,
   state: SegmentedControlState,
   message: string,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): void => {
   for (const item of Array.from(host.children).filter(
-    (el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description'
+    (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'message' && el.slot !== 'description'
   )) {
     (item as Item).selected = (item as Item).value === value;
-    (item as Item).theme = theme;
     (item as Item).state = state;
     (item as Item).message = message;
     (item as Item).compact = compact;

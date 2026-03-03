@@ -1,35 +1,17 @@
-import type { BreakpointCustomizable, PropTypes, TextSize, Theme } from '../../types';
-import {
-  type TextTag,
-  type TextAlign,
-  type TextAlignDeprecated,
-  type TextColor,
-  type TextColorDeprecated,
-  type TextWeight,
-  type TextWeightDeprecated,
-  getTextTagType,
-  TEXT_TAGS,
-} from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, TextSize } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TYPOGRAPHY_TEXT_COLORS,
   TEXT_SIZES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
-  THEMES,
   TYPOGRAPHY_ALIGNS,
+  TYPOGRAPHY_TEXT_COLORS,
+  TYPOGRAPHY_TEXT_WEIGHTS,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
-  applyConstructableStylesheetStyles,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type WeightDeprecationMapType = Record<TextWeightDeprecated, Exclude<TextWeight, TextWeightDeprecated>>;
-type AlignDeprecationMapType = Record<TextAlignDeprecated, Exclude<TextAlign, TextAlignDeprecated>>;
-type ColorDeprecationMapType = Record<TextColorDeprecated, Exclude<TextColor, TextColorDeprecated>>;
+import { getTextTagType, TEXT_TAGS, type TextAlign, type TextColor, type TextTag, type TextWeight } from './text-utils';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -38,7 +20,6 @@ const propTypes: PropTypes<typeof Text> = {
   align: AllowedTypes.oneOf<TextAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<TextColor>(TYPOGRAPHY_TEXT_COLORS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -63,66 +44,19 @@ export class Text {
   /** Text alignment of the component. */
   @Prop() public align?: TextAlign = 'start';
 
-  /** Basic text color variations depending on theme property. */
+  /** Basic text color variations. */
   @Prop() public color?: TextColor = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const colorDeprecationMap: ColorDeprecationMapType = {
-      brand: 'primary',
-      default: 'primary',
-      'neutral-contrast-low': 'contrast-low',
-      'neutral-contrast-medium': 'contrast-medium',
-      'neutral-contrast-high': 'contrast-high',
-      'notification-neutral': 'notification-info',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Text, TextColorDeprecated, TextColor>(this, 'color', colorDeprecationMap);
-    const weightDeprecationMap: WeightDeprecationMapType = {
-      thin: 'regular',
-      semibold: 'semi-bold',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Text, TextWeightDeprecated, TextWeight>(
-      this,
-      'weight',
-      weightDeprecationMap
-    );
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Text, TextAlignDeprecated, TextAlign>(this, 'align', alignDeprecationMap);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      (weightDeprecationMap[this.weight as keyof WeightDeprecationMapType] || this.weight) as Exclude<
-        TextWeight,
-        TextWeightDeprecated
-      >,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        TextAlign,
-        TextAlignDeprecated
-      >,
-      (colorDeprecationMap[this.color as keyof ColorDeprecationMapType] || this.color) as Exclude<
-        TextColor,
-        TextColorDeprecated
-      >,
-      this.ellipsis,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.align, this.color, this.ellipsis);
 
     const TagType = getTextTagType(this.host, this.tag);
 

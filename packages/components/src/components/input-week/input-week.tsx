@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,7 +8,6 @@ import {
   hasPropValueChanged,
   hasShowPickerSupport,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -38,7 +37,6 @@ const propTypes: PropTypes<typeof InputWeek> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -110,9 +108,6 @@ export class InputWeek {
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the number input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputWeekChangeEventDetail>;
 
@@ -130,6 +125,9 @@ export class InputWeek {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -190,8 +188,7 @@ export class InputWeek {
       this.hideLabel,
       this.state,
       this.compact,
-      this.readOnly,
-      this.theme
+      this.readOnly
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -219,15 +216,14 @@ export class InputWeek {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
         {...(hasShowPickerSupport() && {
           end: (
             <PrefixedTagNames.pButtonPure
+              tabIndex={this.disabled ? -1 : null}
               hideLabel={true}
-              theme={this.theme}
               class="button"
               type="button"
               icon="calendar"

@@ -1,6 +1,4 @@
 import {
-  borderRadiusLarge,
-  borderRadiusMedium,
   fontHyphenationStyle,
   getMediaQueryMin,
   headingSmallStyle,
@@ -9,21 +7,27 @@ import {
   spacingFluidXSmall,
   textXSmallStyle,
   textXXSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
+import {
+  colorContrastHigh,
+  colorContrastMedium,
+  colorPrimary,
+  colorSurface,
+  legacyRadiusLarge,
+  radius2Xl,
+  radius4Xl,
+} from '../../styles/css-variables';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
 
@@ -33,7 +37,7 @@ const anchorJssStyle: JssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
-  borderRadius: borderRadiusMedium,
+  borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
 };
 
 const getMultilineEllipsis = (lineClamp: number): JssStyle => {
@@ -49,29 +53,20 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
+
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
   hasPriceOriginal: boolean,
   hasDescription: boolean,
-  aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
-  theme: Theme
+  aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>
 ): string => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastHighColor: contrastHighColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
-
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         position: 'relative', // needed for ::slotted(a) to overlay correctly
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -86,29 +81,26 @@ export const getComponentCss = (
               ...anchorJssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
-            ...getFocusJssStyle(theme, { slotted: slottedAnchorSelector }),
+            [`&(${slottedAnchorSelector}:focus-visible)`]: getFocusBaseStyles(),
           }),
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
             flexWrap: 'wrap',
             gap: spacingFluidXSmall,
           },
-          '&(img), &(picture)': {
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            borderRadius: borderRadiusLarge,
-            overflow: 'hidden', // needed for picture > img to have correct border-radius
-          },
+        },
+        '::slotted(:is(img,picture))': {
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          borderRadius: `var(${legacyRadiusLarge}, ${radius2Xl})`,
+          overflow: 'hidden', // needed for picture > img to have correct border-radius
         },
       }),
       ...(hasPriceOriginal && {
         s: {
-          color: contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastMediumColorDark,
-          }),
+          color: colorContrastMedium,
         },
       }),
     },
@@ -118,22 +110,18 @@ export const getComponentCss = (
       aspectRatio: '3/4',
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
-      borderRadius: borderRadiusMedium,
+      borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
       padding: spacingFluidSmall,
-      color: primaryColor,
-      backgroundColor: backgroundSurfaceColor,
+      color: colorPrimary,
+      backgroundColor: colorSurface,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
-        aspectRatio: ratio.replace(':', '/'),
+        aspectRatio: ratio,
       })),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-        backgroundColor: backgroundSurfaceColorDark,
-      }),
     },
     ...(!hasSlottedAnchor && {
       anchor: {
         ...anchorJssStyle,
-        ...getFocusJssStyle(theme),
+        '&:focus-visible': getFocusBaseStyles(),
       },
     }),
     header: {
@@ -189,10 +177,7 @@ export const getComponentCss = (
         margin: 0, // ua-style reset
         ...textXXSmallStyle,
         ...getMultilineEllipsis(2),
-        color: contrastHighColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
-        }),
+        color: colorContrastHigh,
       },
     }),
     ...(hasPriceOriginal && {

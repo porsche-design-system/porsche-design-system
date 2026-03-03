@@ -1,22 +1,4 @@
-<style>
-  .scaling-0 {
-    --p-internal-radio-group-scaling: 0;
-  }
-  .scaling-0-5 {
-    --p-internal-radio-group-scaling: 0.5;
-  }
-  .scaling-0-8 {
-    --p-internal-radio-group-scaling: 0.8;
-  }
-  .scaling-1 {
-    --p-internal-radio-group-scaling: 1;
-  }
-  .scaling-2 {
-    --p-internal-radio-group-scaling: 2;
-  }
-</style>
-
-<div class="playground light auto-layout-inline" title="should render with label">
+<div class="playground auto-layout-inline" title="should render with label">
   <p-radio-group label="Some label" name="some-name" value="b" class="a11ytree-snapshot-test">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -24,7 +6,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with label and description">
+<div class="playground auto-layout-inline" title="should render with label and description">
   <p-radio-group
     label="Some label"
     description="Some description"
@@ -38,7 +20,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render without label">
+<div class="playground auto-layout-inline" title="should render without label">
   <p-radio-group label="Some label" hide-label="true" name="some-name" value="b" class="a11ytree-snapshot-test">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -46,7 +28,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with responsive label">
+<div class="playground auto-layout-inline" title="should render with responsive label">
   <p-radio-group
     label="Some label"
     hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
@@ -60,7 +42,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with responsive direction">
+<div class="playground auto-layout-inline" title="should render with responsive direction">
   <p-radio-group
     label="Some label"
     direction="{ base: 'row', xs: 'column', s: 'column', m: 'row', l: 'row', xl: 'row' }"
@@ -74,7 +56,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with direction row">
+<div class="playground auto-layout-inline" title="should render with direction row">
   <p-radio-group label="Some label" name="some-name" value="b" direction="row">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -88,7 +70,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in required state">
+<div class="playground auto-layout-inline" title="should render in required state">
   <p-radio-group label="Some label" required="true" name="some-name" value="b" class="a11ytree-snapshot-test">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -119,7 +101,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in disabled state">
+<div class="playground auto-layout-inline" title="should render in disabled state">
   <p-radio-group label="Some label" disabled="true" name="some-name" value="b" class="a11ytree-snapshot-test">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -137,7 +119,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in loading state">
+<div class="playground auto-layout-inline" title="should render in loading state">
   <p-radio-group label="Some label" loading="true" name="some-name" value="b" class="a11ytree-snapshot-test">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -159,7 +141,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with success state and success message">
+<div class="playground auto-layout-inline" title="should render with success state and success message">
   <p-radio-group label="Some label" name="some-name" state="success" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -193,7 +175,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with error state and error message">
+<div class="playground auto-layout-inline" title="should render with error state and error message">
   <p-radio-group label="Some label" name="some-name" state="error" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -228,7 +210,7 @@
 </div>
 
 <div
-  class="playground light auto-layout-inline"
+  class="playground auto-layout-inline"
   title="should render with slotted content with error state and message"
 >
   <p-radio-group label="Some label" name="some-name" state="error" value="b">
@@ -256,7 +238,7 @@
 </div>
 
 <div
-  class="playground light auto-layout-inline"
+  class="playground auto-layout-inline"
   title="should render with slotted content with success state and message"
 >
   <p-radio-group label="Some label" name="some-name" state="success" value="b">
@@ -283,7 +265,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with multiline label">
+<div class="playground auto-layout-inline" title="should render with multiline label">
   <p-radio-group
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     name="some-name"
@@ -345,7 +327,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with compact mode">
+<div class="playground auto-layout-inline" title="should render with compact mode">
   <p-radio-group label="Some label" description="Some description" name="some-name" compact="true" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
@@ -397,267 +379,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-radio-group class="scaling-0" label="Some label" description="Some description" name="some-name" value="b">
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-0"
-    label="Some label"
-    loading="true"
-    description="Some description"
-    name="some-name"
-    value="b"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-0"
-    label="Some label"
-    description="Some description"
-    name="some-name"
-    value="b"
-    direction="row"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-radio-group class="scaling-0-5" label="Some label" description="Some description" name="some-name" value="b">
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-0-5"
-    label="Some label"
-    loading="true"
-    description="Some description"
-    name="some-name"
-    value="b"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-0-5"
-    label="Some label"
-    description="Some description"
-    name="some-name"
-    value="b"
-    direction="row"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-radio-group class="scaling-0-8" label="Some label" description="Some description" name="some-name" value="b">
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-0-8"
-    label="Some label"
-    loading="true"
-    description="Some description"
-    name="some-name"
-    value="b"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-0-8"
-    label="Some label"
-    description="Some description"
-    name="some-name"
-    value="b"
-    direction="row"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-radio-group class="scaling-1" label="Some label" description="Some description" name="some-name" value="b">
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-1"
-    label="Some label"
-    loading="true"
-    description="Some description"
-    name="some-name"
-    value="b"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-1"
-    label="Some label"
-    description="Some description"
-    name="some-name"
-    value="b"
-    direction="row"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-radio-group class="scaling-2" label="Some label" description="Some description" name="some-name" value="b">
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-2"
-    label="Some label"
-    loading="true"
-    description="Some description"
-    name="some-name"
-    value="b"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-
-  <p-radio-group
-    class="scaling-2"
-    label="Some label"
-    description="Some description"
-    name="some-name"
-    value="b"
-    direction="row"
-  >
-    <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
-    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
-    <p-radio-group-option
-      label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-      value="e"
-      style="width: 15rem"
-    ></p-radio-group-option>
-  </p-radio-group>
-</div>
-
-<div class="playground light" title="should render with min-width when viewport is too small">
+<div class="playground" title="should render with min-width when viewport is too small">
   <div style="width: 0">
     <p-radio-group label="Some label" name="some-name" value="b" class="a11ytree-snapshot-test">
       <p-radio-group-option label="A" value="a"></p-radio-group-option>
@@ -667,7 +389,8 @@
   </div>
 </div>
 
-<div class="playground light" title="should render with label and label-after slots">
+
+<div class="playground" title="should render with label and label-after slots">
   <p-radio-group label="Some label" name="some-name" value="b">
     <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Some label A" value="a">
@@ -678,13 +401,8 @@
   </p-radio-group>
 </div>
 
-<div class="playground light" title="should render with multiline label and label-after slots">
-  <p-radio-group
-    label="Some label dolor sit amet, consetetur"
-    name="some-name"
-    value="b"
-    style="display: block; width: 15rem"
-  >
+<div class="playground" title="should render with multiline label and label-after slots">
+  <p-radio-group label="Some label dolor sit amet, consetetur" name="some-name" value="b" style="display: block; width: 15rem">
     <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Lorem ipsum dolor sit amet, consetetur" value="a">
       <p-popover slot="label-after">Some popover content</p-popover>
@@ -694,7 +412,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light" title="should render with direction row, label and label-after slots">
+<div class="playground" title="should render with direction row, label and label-after slots">
   <p-radio-group label="Some label" name="some-name" value="b" direction="row">
     <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Lorem ipsum dolor sit amet, consetetur sadipscing" value="a">
@@ -705,7 +423,7 @@
   </p-radio-group>
 </div>
 
-<div class="playground light" title="should render with label and label-after slots in disabled state">
+<div class="playground" title="should render with label and label-after slots in disabled state">
   <p-radio-group label="Some label" name="some-name" value="b" disabled="true">
     <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Some label A" value="a">

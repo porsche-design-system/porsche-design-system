@@ -1,9 +1,9 @@
-import type { AlgoliaRecord, AlgoliaResult } from '@/components/search/Search';
 import { PHeading } from '@porsche-design-system/components-react/ssr';
 import type { Hit as AlgoliaHit } from 'instantsearch.js/es/types/results';
 import Link from 'next/link';
 import React from 'react';
 import { type UseHitsProps, useHits } from 'react-instantsearch';
+import type { AlgoliaRecord, AlgoliaResult } from '@/components/search/Search';
 import { SearchRecommendations } from './SearchRecommendations';
 
 const transformItems = (items: AlgoliaRecord[]) => {

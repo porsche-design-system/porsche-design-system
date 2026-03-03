@@ -9,8 +9,8 @@ import { computed, ref } from 'vue';
 
 const selectedValues = ref<string[]>([]);
 
-const onChange = (e: MultiSelectChangeEventDetail) => {
-  selectedValues.value = e.value;
+const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+  selectedValues.value = e.detail.value;
 };
 
 const debugText = computed(() => {

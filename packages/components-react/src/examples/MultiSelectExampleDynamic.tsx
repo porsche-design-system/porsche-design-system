@@ -1,20 +1,21 @@
 import {
+  type InputTextInputEventDetail,
   type MultiSelectChangeEventDetail,
   PButton,
+  PInputText,
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
-  PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
-import { type ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 export const MultiSelectExampleDynamicPage = (): JSX.Element => {
   const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
 
-  const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const onChangeInput = (e: CustomEvent<InputTextInputEventDetail>) => {
+    setInputValue((e.detail.target as HTMLInputElement).value);
   };
 
   const onSetValue = () => {
@@ -43,9 +44,13 @@ export const MultiSelectExampleDynamicPage = (): JSX.Element => {
 
   return (
     <>
-      <PTextFieldWrapper label="Value:">
-        <input name="input-value" type="text" value={inputValue} onChange={onChangeInput} placeholder="e.g. 1,2" />
-      </PTextFieldWrapper>
+      <PInputText
+        name="input-value"
+        label="Value:"
+        placeholder="e.g. 1,2"
+        value={inputValue}
+        onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
+      />
       <PButton type="button" onClick={onSetValue} compact={true}>
         Set Value
       </PButton>

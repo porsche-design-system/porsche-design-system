@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false 1`] = `
 ":host {
   scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
@@ -12,48 +12,59 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   width: auto !important;
   height: calc(6px + 2.125ex) !important;
-  border-radius: 4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 .option {
   display: flex;
-  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  gap: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
+  padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: #404044;
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #7E7F82;
 }
 .option--hidden {
   display: none;
 }
 .icon {
   margin-inline-start: auto;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true 1`] = `
 ":host {
+  opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
@@ -64,42 +75,59 @@ exports[`getComponentCss() > should return correct css for theme: light 1`] = `
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   width: auto !important;
   height: calc(6px + 2.125ex) !important;
-  border-radius: 4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .option {
   display: flex;
-  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  gap: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
+  padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #535457;
+  color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: #D8D8DB;
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
-  color: #010205;
+  color: var(--p-color-primary);
 }
 .option--disabled {
   cursor: not-allowed;
-  color: #949598;
 }
 .option--hidden {
   display: none;
 }
 .icon {
   margin-inline-start: auto;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;

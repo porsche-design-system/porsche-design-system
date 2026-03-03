@@ -80,7 +80,7 @@ describe('componentDidLoad', () => {
 describe('componentShouldUpdate', () => {
   it('should return true if prop name does not match scrollToPosition', () => {
     const component = new Scroller();
-    expect(component.componentShouldUpdate(1, 0, 'theme')).toBe(true);
+    expect(component.componentShouldUpdate(1, 0, 'scrollbar')).toBe(true);
   });
 
   it('should return true if prop name matches "scrollToPosition", value of "scrollToPosition" changed and isPrevHidden and isNextHidden are false', () => {

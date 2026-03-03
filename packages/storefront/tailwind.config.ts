@@ -16,7 +16,7 @@ import {
   spacingStaticXXLarge,
   themeDark,
   themeLight,
-} from '@porsche-design-system/components-react/styles';
+} from '@porsche-design-system/components-react/emotion';
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 

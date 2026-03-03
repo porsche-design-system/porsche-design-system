@@ -1,26 +1,26 @@
-import { getComponentCss } from './model-signature-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './model-signature-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['911', true, 'small', 'primary', 'light'],
-    ['cayenne', true, 'small', 'primary', 'light'],
-    ['cayenne', false, 'small', 'primary', 'light'],
-    ['cayenne', false, 'small', 'primary', 'auto'],
-    ['911', true, 'small', 'contrast-low', 'light'],
-    ['911', true, 'small', 'contrast-medium', 'light'],
-    ['911', true, 'small', 'contrast-high', 'light'],
-    ['911', true, 'small', 'inherit', 'light'],
-    ['911', true, 'inherit', 'primary', 'light'],
-    ['911', true, 'inherit', 'inherit', 'light'],
-    ['911', true, 'small', 'primary', 'dark'],
-    ['911', true, 'small', 'contrast-low', 'dark'],
-    ['911', true, 'small', 'contrast-medium', 'dark'],
-    ['911', true, 'small', 'contrast-high', 'dark'],
-    ['911', true, 'small', 'inherit', 'dark'],
-    ['911', true, 'inherit', 'primary', 'dark'],
-    ['911', true, 'inherit', 'inherit', 'dark'],
-  ])('should return correct css for model: %s, safe-zone: %s, size: %s, color: %s and theme: %s', (...args) => {
+    ['911', true, 'small', 'primary'],
+    ['cayenne', true, 'small', 'primary'],
+    ['cayenne', false, 'small', 'primary'],
+    ['cayenne', false, 'small', 'primary'],
+    ['911', true, 'small', 'contrast-low'],
+    ['911', true, 'small', 'contrast-medium'],
+    ['911', true, 'small', 'contrast-high'],
+    ['911', true, 'small', 'inherit'],
+    ['911', true, 'inherit', 'primary'],
+    ['911', true, 'inherit', 'inherit'],
+    ['911', true, 'small', 'primary'],
+    ['911', true, 'small', 'contrast-low'],
+    ['911', true, 'small', 'contrast-medium'],
+    ['911', true, 'small', 'contrast-high'],
+    ['911', true, 'small', 'inherit'],
+    ['911', true, 'inherit', 'primary'],
+    ['911', true, 'inherit', 'inherit'],
+  ])('should return correct css for model: %s, safe-zone: %s, size: %s and color: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -11,7 +11,7 @@ test('should open stackblitz with correct theme and framework', async ({ page })
   const selectedTheme = await page
     .locator('#main-content p-select[name="theme"]')
     .evaluate((select) => (select as any).value);
-  await expect(page.locator('#main-content').getByRole('combobox', { name: 'Theme' })).toBeVisible();
+  await expect(page.locator('#main-content p-select[name="theme"]')).toBeVisible();
 
   const stackBlitzButton = page.getByText('Open template in StackBlitz');
   const stackBlitzPagePromise = page.waitForEvent('popup');

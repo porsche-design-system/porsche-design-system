@@ -1,31 +1,22 @@
-<div class="playground light auto-layout-inline" title="should render with label">
+<div class="playground auto-layout-inline" title="should render with label">
   <p-link-pure href="https://porsche.com" class="a11ytree-snapshot-test">Label default</p-link-pure>
   <p-link-pure><a href="https://porsche.com">Label slotted</a></p-link-pure>
   <p-link-pure underline="true" href="https://porsche.com">Label default</p-link-pure>
   <p-link-pure underline="true"><a href="https://porsche.com">Label slotted</a></p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render without label">
+<div class="playground auto-layout-inline" title="should render without label">
   <p-link-pure href="https://porsche.com" hide-label="true" class="a11ytree-snapshot-test">Some label</p-link-pure>
   <p-link-pure hide-label="true"><a href="https://porsche.com">Some label</a></p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with responsive label">
+<div class="playground auto-layout-inline" title="should render with responsive label">
   <p-link-pure href="https://porsche.com" hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
     Label responsive
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should not render with different weight">
-  <p-link-pure href="https://porsche.com" weight="regular">Label weight regular</p-link-pure>
-  <p-link-pure weight="regular"><a href="https://porsche.com">Label slotted weight regular</a></p-link-pure>
-  <p-link-pure href="https://porsche.com" weight="semi-bold">Label weight semi-bold</p-link-pure>
-  <p-link-pure weight="semi-bold"><a href="https://porsche.com">Label slotted weight semi-bold</a></p-link-pure>
-  <p-link-pure href="https://porsche.com" weight="bold">Label weight bold</p-link-pure>
-  <p-link-pure weight="bold"><a href="https://porsche.com">Label slotted weight bold</a></p-link-pure>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with active state">
+<div class="playground auto-layout-inline" title="should render with active state">
   <p-link-pure href="https://porsche.com" active="true">Label active</p-link-pure>
   <p-link-pure active="true"><a href="https://porsche.com">Label slotted active</a></p-link-pure>
   <p-link-pure href="https://porsche.com" active="true" icon="none">Label active</p-link-pure>
@@ -35,14 +26,14 @@
   <p-link-pure href="https://porsche.com" active="true" underline="true">Label active underline</p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with specific icon">
+<div class="playground auto-layout-inline" title="should render with specific icon">
   <p-link-pure href="https://porsche.com" icon="phone">Label with specific icon</p-link-pure>
   <p-link-pure href="https://porsche.com" icon-source="http://localhost:3002/icon-custom-kaixin.svg">
     Label with iconSource
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with multiline label">
+<div class="playground auto-layout-inline" title="should render with multiline label">
   <p-link-pure href="https://porsche.com" style="width: 15rem">
     Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
   </p-link-pure>
@@ -57,7 +48,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with custom clickable area">
+<div class="playground auto-layout-inline" title="should render with custom clickable area">
   <p-link-pure href="https://porsche.com" style="padding: 1rem">Label with custom click-area</p-link-pure>
   <p-link-pure href="https://porsche.com" hide-label="true" style="padding: 1rem">
     Label with custom click-area
@@ -70,13 +61,13 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with no icon">
+<div class="playground auto-layout-inline" title="should render with no icon">
   <p-link-pure href="https://porsche.com" icon="none">Label icon none</p-link-pure>
   <p-link-pure icon="none"><a href="https://porsche.com">Label slotted icon none</a></p-link-pure>
 </div>
 
 <div
-  class="playground light auto-layout-inline"
+  class="playground auto-layout-inline"
   title="should render label if hide-label is set to true and icon none is set"
 >
   <p-link-pure href="https://porsche.com" hide-label="true" icon="none">Label hide-label icon none</p-link-pure>
@@ -85,34 +76,23 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should align label to start">
-  <p-link-pure href="https://porsche.com" align-label="left">Label align left (deprecated)</p-link-pure>
+<div class="playground auto-layout-inline" title="should align label to start">
   <p-link-pure href="https://porsche.com" align-label="start">Label align start</p-link-pure>
-  <p-link-pure align-label="left"><a href="https://porsche.com">Label slotted align left (deprecated)</a></p-link-pure>
   <p-link-pure align-label="start"><a href="https://porsche.com">Label slotted align start</a></p-link-pure>
 </div>
-<div class="playground light auto-layout-inline" title="should align label to the start or end depending on viewport">
-  <p-link-pure
-    href="https://porsche.com"
-    align-label="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
-  >
-    Label align responsive
-  </p-link-pure>
+<div class="playground auto-layout-inline" title="should align label to the start or end depending on viewport">
   <p-link-pure
     href="https://porsche.com"
     align-label="{ base: 'start', xs: 'end', s: 'start', m: 'end', l: 'start', xl: 'end' }"
   >
     Label align responsive
   </p-link-pure>
-  <p-link-pure align-label="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
-    <a href="https://porsche.com">Label slotted align responsive</a>
-  </p-link-pure>
   <p-link-pure align-label="{ base: 'start', xs: 'end', s: 'start', m: 'end', l: 'start', xl: 'end' }">
     <a href="https://porsche.com">Label slotted align responsive</a>
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with stretched label">
+<div class="playground auto-layout-inline" title="should render with stretched label">
   <p-link-pure href="https://porsche.com" stretch="true">Label stretch</p-link-pure>
   <p-link-pure href="https://porsche.com" stretch="true" align-label="start">Label stretch align start</p-link-pure>
   <p-link-pure stretch="true"><a href="https://porsche.com">Label slotted stretch</a></p-link-pure>
@@ -121,7 +101,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with stretched label and underline">
+<div class="playground auto-layout-inline" title="should render with stretched label and underline">
   <p-link-pure href="https://porsche.com" stretch="true" underline="true">Label stretch</p-link-pure>
   <p-link-pure href="https://porsche.com" stretch="true" align-label="start" underline="true"
     >Label stretch align start</p-link-pure
@@ -132,7 +112,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with stretched label depending on viewport">
+<div class="playground auto-layout-inline" title="should render with stretched label depending on viewport">
   <p-link-pure href="https://porsche.com" stretch="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
     Label stretch responsive
   </p-link-pure>
@@ -142,7 +122,7 @@
 </div>
 
 <div
-  class="playground light auto-layout-inline"
+  class="playground auto-layout-inline"
   title="should render with interplay of breakpoint-customizable depending on viewport"
 >
   <p-link-pure
@@ -164,7 +144,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with different size">
+<div class="playground auto-layout-block" title="should render with different size">
   <p-link-pure href="https://porsche.com" size="xx-small">Label size xx-small</p-link-pure>
   <p-link-pure size="xx-small"><a href="https://porsche.com">Label slotted size xx-small</a></p-link-pure>
   <p-link-pure href="https://porsche.com" size="x-small">Label size x-small</p-link-pure>
@@ -183,7 +163,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with responsive size">
+<div class="playground auto-layout-inline" title="should render with responsive size">
   <p-link-pure
     href="https://porsche.com"
     size="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
@@ -193,7 +173,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with no icon and size inherit">
+<div class="playground auto-layout-block" title="should render with no icon and size inherit">
   <p-link-pure href="https://porsche.com" icon="none" size="inherit" style="font-size: 48px"
     >Label icon none size inherit</p-link-pure
   >

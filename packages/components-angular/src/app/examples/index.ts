@@ -108,7 +108,6 @@ import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
 import { TabsBarExampleAccessibilityComponent } from './tabs-bar-example-accessibility.component';
 import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component';
-import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { TextareaExampleComponent } from './textarea-example.component';
 import { TextareaExampleControlledComponent } from './textarea-example-controlled.component';
 import { TextareaExampleFormComponent } from './textarea-example-form.component';
@@ -230,7 +229,6 @@ export const examples = [
   TextareaExampleControlledComponent,
   TextareaExampleFormComponent,
   TextareaExampleReactiveFormComponent,
-  TextFieldWrapperExampleSearchComponent,
   ToastExampleComponent,
 ];
 
@@ -277,14 +275,20 @@ export * from './input-email-example-controlled.component';
 export * from './input-email-example-form.component';
 export * from './input-email-example-reactive-form.component';
 export * from './input-number-example.component';
+export * from './input-number-example.component';
+export * from './input-number-example-controlled.component';
 export * from './input-number-example-controlled.component';
 export * from './input-number-example-form.component';
 export * from './input-number-example-reactive-form.component';
 export * from './input-password-example.component';
+export * from './input-password-example.component';
+export * from './input-password-example-controlled.component';
 export * from './input-password-example-controlled.component';
 export * from './input-password-example-form.component';
 export * from './input-password-example-reactive-form.component';
 export * from './input-search-example.component';
+export * from './input-search-example.component';
+export * from './input-search-example-controlled.component';
 export * from './input-search-example-controlled.component';
 export * from './input-search-example-form.component';
 export * from './input-search-example-reactive-form.component';
@@ -293,10 +297,14 @@ export * from './input-tel-example-controlled.component';
 export * from './input-tel-example-form.component';
 export * from './input-tel-example-reactive-form.component';
 export * from './input-text-example.component';
+export * from './input-text-example.component';
+export * from './input-text-example-controlled.component';
 export * from './input-text-example-controlled.component';
 export * from './input-text-example-form.component';
 export * from './input-text-example-reactive-form.component';
 export * from './input-time-example.component';
+export * from './input-time-example.component';
+export * from './input-time-example-controlled.component';
 export * from './input-time-example-controlled.component';
 export * from './input-time-example-form.component';
 export * from './input-time-example-reactive-form.component';
@@ -319,11 +327,15 @@ export * from './pin-code-example-controlled.component';
 export * from './pin-code-example-form.component';
 export * from './pin-code-example-reactive-form.component';
 export * from './radio-group-example.component';
+export * from './radio-group-example.component';
+export * from './radio-group-example-controlled.component';
 export * from './radio-group-example-controlled.component';
 export * from './radio-group-example-form.component';
 export * from './radio-group-example-reactive-form.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example.component';
+export * from './segmented-control-example.component';
+export * from './segmented-control-example-controlled.component';
 export * from './segmented-control-example-controlled.component';
 export * from './segmented-control-example-form.component';
 export * from './segmented-control-example-reactive-form.component';
@@ -344,7 +356,6 @@ export * from './table-example-basic.component';
 export * from './table-example-sorting.component';
 export * from './tabs-bar-example-accessibility.component';
 export * from './tabs-bar-example-basic.component';
-export * from './text-field-wrapper-example-search.component';
 export * from './textarea-example.component';
 export * from './textarea-example-controlled.component';
 export * from './textarea-example-form.component';

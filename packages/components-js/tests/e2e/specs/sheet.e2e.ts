@@ -18,7 +18,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
+const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 
 const getHost = (page: Page) => page.locator('p-sheet');
 const getHeader = (page: Page) => page.locator('p-sheet slot[name="header"]');
@@ -430,7 +430,6 @@ skipInBrowsers(['firefox', 'webkit'], () => {
         'p-button-pure',
         'p-link',
         'p-link-pure',
-        'p-link-social',
         'p-switch',
         'p-accordion',
         'input',

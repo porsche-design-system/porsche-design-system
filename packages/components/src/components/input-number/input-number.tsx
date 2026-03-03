@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,7 +18,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -50,7 +49,6 @@ const propTypes: PropTypes<typeof InputNumber> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -125,9 +123,6 @@ export class InputNumber {
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Show or hide the increment/decrement stepper controls. */
   @Prop() public controls?: boolean = false;
 
@@ -148,6 +143,9 @@ export class InputNumber {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -209,7 +207,6 @@ export class InputNumber {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
       this.controls
     );
 
@@ -240,7 +237,6 @@ export class InputNumber {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
@@ -250,7 +246,6 @@ export class InputNumber {
               <PrefixedTagNames.pButtonPure
                 tabIndex={-1}
                 hideLabel={true}
-                theme={this.theme}
                 class="button"
                 type="button"
                 icon="minus"
@@ -262,7 +257,6 @@ export class InputNumber {
               <PrefixedTagNames.pButtonPure
                 tabIndex={-1}
                 hideLabel={true}
-                theme={this.theme}
                 class="button"
                 type="button"
                 icon="plus"

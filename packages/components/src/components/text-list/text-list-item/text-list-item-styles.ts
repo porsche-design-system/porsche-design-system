@@ -1,12 +1,12 @@
-import { getCss } from '../../../utils';
+import { spacingStaticMedium } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { spacingStaticMedium } from '@porsche-design-system/styles';
+import { getCss } from '../../../utils';
 import {
-  cssVariableUnorderedPseudoContent,
   cssVariableOrderedGridColumn,
-  cssVariablePseudoSpace,
   cssVariableOrderedPseudoSuffix,
+  cssVariablePseudoSpace,
   cssVariableUnorderedGridColumn,
+  cssVariableUnorderedPseudoContent,
 } from '../text-list/text-list-styles';
 
 export const getComponentCss = (): string => {
@@ -21,6 +21,9 @@ export const getComponentCss = (): string => {
           color: 'inherit', // ensures style can't be overwritten from outside
           ...hostHiddenStyles,
         }),
+      },
+      slot: {
+        display: 'inline',
       },
       ...addImportantToEachRule({
         '::slotted(*)': {

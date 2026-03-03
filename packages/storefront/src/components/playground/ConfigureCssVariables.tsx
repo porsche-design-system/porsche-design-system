@@ -1,10 +1,10 @@
-import type { ConfiguratorTagNames, ElementConfig } from '@/utils/generator/generator';
-import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import { PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
+import type { InputTextInputEventDetail } from '@porsche-design-system/components-react';
+import { PHeading, PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
-import type { InputTextInputEventDetail } from '@porsche-design-system/components-react';
+import type { ConfiguratorTagNames, ElementConfig } from '@/utils/generator/generator';
+import { getFlags } from '@/utils/getFlags';
 
 type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;
@@ -30,18 +30,20 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
+      <PHeading slot="summary" tag="h2" size="small">
         CSS Variables
-        {amountOfConfiguredCssVariables > 0 && (
-          <>
-            <PTag compact={true}>{amountOfConfiguredCssVariables}</PTag>
-            <PTag compact={true}>
-              {/*// TODO: Implement */}
-              <button type="button">Reset all</button>
-            </PTag>
-          </>
-        )}
-      </span>
+      </PHeading>
+      {amountOfConfiguredCssVariables > 0 && (
+        <>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
+            {amountOfConfiguredCssVariables}
+          </PTag>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
+            {/*// TODO: Implement */}
+            <button type="button">Reset all</button>
+          </PTag>
+        </>
+      )}
       <div className="flex flex-col gap-fluid-sm">
         {Object.entries(componentCssVariables ?? {})
           .filter(([cssVariableName]) => !cssVariableName.startsWith('--ref'))
@@ -58,13 +60,13 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
                 )
               }
             >
-              <span slot="label" className="inline-flex gap-static-xs">
-                {cssVariableName}
+              <span slot="label">{cssVariableName}</span>
+              <span slot="label-after" className="inline-flex gap-static-xs">
                 <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
                 {getFlags(cssVariableMeta)}
                 {/* TODO: Fix typing */}
                 {cssVariables[cssVariableName] !== (defaultCssVariables as any)?.[cssVariableName] && (
-                  <PTag compact={true}>
+                  <PTag variant="secondary" compact={true}>
                     <button type="button" onClick={() => onUpdateCssVariables(cssVariableName, undefined)}>
                       Reset
                     </button>

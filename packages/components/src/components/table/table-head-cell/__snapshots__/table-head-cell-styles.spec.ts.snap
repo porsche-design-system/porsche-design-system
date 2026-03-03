@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -35,28 +35,25 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
     opacity: 1;
@@ -64,18 +61,17 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 0;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
-  filter: var(--p-internal-table-head-cell-icon-filter);
 }"
 `;
 
 exports[`getComponentCss() > should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -107,28 +103,25 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
     opacity: 1;
@@ -136,18 +129,17 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 0;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
-  filter: var(--p-internal-table-head-cell-icon-filter);
 }"
 `;
 
 exports[`getComponentCss() > should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -179,28 +171,25 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
     opacity: 1;
@@ -208,18 +197,17 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 1;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
-  filter: var(--p-internal-table-head-cell-icon-filter);
 }"
 `;
 
 exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -251,28 +239,25 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
     opacity: 1;
@@ -280,18 +265,17 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
-  filter: var(--p-internal-table-head-cell-icon-filter);
 }"
 `;
 
 exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: normal !important;
 }
@@ -323,28 +307,25 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: 4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
     opacity: 1;
@@ -352,18 +333,17 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
-  filter: var(--p-internal-table-head-cell-icon-filter);
 }"
 `;
 
 exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -378,7 +358,7 @@ exports[`getComponentCss() > should return correct css for active: undefined, di
 exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }

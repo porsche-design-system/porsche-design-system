@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { radioGroupStory } from '@/app/components/radio-group/radio-group.stories';
+import { radioGroupStory, radioGroupSlotStories } from '@/app/components/radio-group/radio-group.stories';
 import { Notification } from '@/components/common/Notification';
 import Link from 'next/link';
 
@@ -31,4 +31,4 @@ A `label` is a caption which informs the user what information a particular form
 accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for
 screen readers.
 
-<Configurator tagName="p-radio-group" story={radioGroupStory} />
+<Configurator tagName="p-radio-group" story={radioGroupStory} slotStories={radioGroupSlotStories} />

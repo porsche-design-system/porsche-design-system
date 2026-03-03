@@ -1,6 +1,5 @@
-import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AgGridAngular, type ICellRendererAngularComp } from 'ag-grid-angular';
@@ -9,8 +8,9 @@ import {
   type ColDef,
   type ICellRendererParams,
   ModuleRegistry,
-  ValidationModule /* Development Only */,
+  ValidationModule,
 } from 'ag-grid-enterprise';
+
 ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
 type ColumnDefs = DataAdvanced & {
@@ -60,7 +60,6 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
     <span class="cell-centered'">
       <p-link-pure
         [underline]="true"
-        [theme]="(theme$ | async) ?? undefined"
         target="_blank"
         [href]="'https://www.porsche.com/germany/models/' + data.model.toLowerCase()"
       >
@@ -80,12 +79,11 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
-  imports: [PorscheDesignSystemModule, AsyncPipe],
+  imports: [PorscheDesignSystemModule],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
   public data!: any;
-  protected readonly theme$ = inject(THEME_TOKEN);
 
   agInit(params: ICellRendererParams): void {
     this.data = params.data;
@@ -101,7 +99,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
 @Component({
   selector: 'ag-grid-example',
   template: `
-  <div [attr.data-ag-theme-mode]="(theme$ | async) === 'light' ? null : 'dark'">
+  <div>
     <ag-grid-angular
       style="width: 100%; height: 550px;"
       [rowData]="rowData"
@@ -115,10 +113,9 @@ class ButtonRenderer implements ICellRendererAngularComp {
   </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
+  imports: [PorscheDesignSystemModule, AgGridAngular],
 })
 export class AgGridExampleComponent {
-  protected readonly theme$ = inject(THEME_TOKEN);
   protected readonly agGridTheme = pdsTheme;
 
   rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));

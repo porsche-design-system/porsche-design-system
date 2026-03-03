@@ -28,9 +28,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
             )
           ) || [];
 
-        if (prop === 'theme') {
-          expect(type).toBe('Theme');
-        } else if (
+        if (
           type === 'string' ||
           type === 'string[]' ||
           type === 'boolean' ||
@@ -63,20 +61,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
           [];
 
         // Skip @deprecated events since naming pattern doesn't apply there
-        if (
-          [
-            'accordionChange',
-            'carouselChange',
-            'stepChange',
-            'segmentedControlChange',
-            'switchChange',
-            'sortingChange',
-            'tabChange',
-            'pageChange',
-          ].includes(eventName) ||
-          type === 'void' ||
-          type === 'LinkTileProductLikeEventDetail'
-        ) {
+        if (['sortingChange'].includes(eventName) || type === 'void' || type === 'LinkTileProductLikeEventDetail') {
           expect(true).toBe(true);
         } else {
           expect(type).toMatch(new RegExp(`^${pascalCase(componentName)}${pascalCase(eventName)}EventDetail$`));

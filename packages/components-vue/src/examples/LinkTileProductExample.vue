@@ -4,8 +4,8 @@ import { ref } from 'vue';
 
 const liked = ref(false);
 
-const handleLike = (e: LinkTileProductLikeEventDetail): void => {
-  liked.value = !e.liked;
+const handleLike = (e: CustomEvent<LinkTileProductLikeEventDetail>): void => {
+  liked.value = !e.detail.liked;
 };
 </script>
 

@@ -57,7 +57,6 @@ export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
   state: {
     properties: {
       activeTabIndex: 0,
-      gradientColor: 'background-surface',
     },
   },
   generator: ({ properties } = {}) => [

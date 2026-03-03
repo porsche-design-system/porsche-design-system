@@ -2,18 +2,18 @@
 
 exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 ":where(.some-class-name) {
-	--ag-accent-color: var(--ag-inherited-accent-color, #2762EC);
+	--ag-accent-color: var(--ag-inherited-accent-color, light-dark(hsl(228, 83.2%, 51%),hsl(210, 100%, 54.5%)));
 	--ag-advanced-filter-builder-button-bar-border: var(--ag-inherited-advanced-filter-builder-button-bar-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #a6e194);
 	--ag-advanced-filter-builder-indent-size: var(--ag-inherited-advanced-filter-builder-indent-size, calc( var(--ag-spacing)   *  2  +   var(--ag-icon-size) ));
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #f08e8d);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #f3c08b);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #85c0e4);
-	--ag-background-color: var(--ag-inherited-background-color, #FFF);
-	--ag-border-color: var(--ag-inherited-border-color, #D8D8DB);
+	--ag-background-color: var(--ag-inherited-background-color, light-dark(#fff,hsl(225, 66.7%, 1.2%)));
+	--ag-border-color: var(--ag-inherited-border-color, light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450)));
 	--ag-border-radius: var(--ag-inherited-border-radius, 4px);
 	--ag-border-width: var(--ag-inherited-border-width, 1px);
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, light);
+	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, inherit);
 	--ag-button-active-background-color: var(--ag-inherited-button-active-background-color, var(--ag-button-hover-background-color));
 	--ag-button-active-border: var(--ag-inherited-button-active-border, solid var(--ag-border-width) var(--ag-accent-color));
 	--ag-button-active-text-color: var(--ag-inherited-button-active-text-color, var(--ag-button-hover-text-color));
@@ -44,20 +44,20 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-chart-menu-panel-width: var(--ag-inherited-chart-menu-panel-width, 260px);
 	--ag-checkbox-border-radius: var(--ag-inherited-checkbox-border-radius, 4px);
 	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 2px);
-	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, #010205);
-	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, #010205);
-	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, #535457);
-	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, #535457);
-	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, var(--ag-background-color));
+	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
+	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
+	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
+	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
+	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, #949598);
-	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, #FFF);
-	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, #6B6D70);
-	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, #010205);
+	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302)));
+	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
+	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
+	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, var(--ag-background-color));
-	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #6B6D70);
-	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #010205);
+	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
+	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
+	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
 	--ag-color-picker-color-border-radius: var(--ag-inherited-color-picker-color-border-radius, 4px);
 	--ag-color-picker-thumb-border-width: var(--ag-inherited-color-picker-thumb-border-width, 3px);
@@ -71,7 +71,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
 	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
 	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
-	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
+	--ag-column-hover-color: var(--ag-inherited-column-hover-color, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228)));
 	--ag-column-select-indent-size: var(--ag-inherited-column-select-indent-size, var(--ag-icon-size));
 	--ag-data-background-color: var(--ag-inherited-data-background-color, var(--ag-background-color));
 	--ag-data-font-size: var(--ag-inherited-data-font-size, var(--ag-font-size));
@@ -97,9 +97,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-font-family: var(--ag-inherited-font-family, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
 	--ag-font-size: var(--ag-inherited-font-size, 1rem);
 	--ag-footer-row-border: var(--ag-inherited-footer-row-border, var(--ag-row-border));
-	--ag-foreground-color: var(--ag-inherited-foreground-color, #010205);
+	--ag-foreground-color: var(--ag-inherited-foreground-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-full-row-edit-invalid-background-color: var(--ag-inherited-full-row-edit-invalid-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 25%));
-	--ag-header-background-color: var(--ag-inherited-header-background-color, #EEEFF2);
+	--ag-header-background-color: var(--ag-inherited-header-background-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
 	--ag-header-cell-background-transition-duration: var(--ag-inherited-header-cell-background-transition-duration, 0.2s);
 	--ag-header-cell-hover-background-color: var(--ag-inherited-header-cell-hover-background-color, transparent);
 	--ag-header-cell-moving-background-color: var(--ag-inherited-header-cell-moving-background-color, var(--ag-header-cell-hover-background-color));
@@ -127,32 +127,32 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-icon-color: var(--ag-inherited-icon-color, inherit);
 	--ag-icon-size: var(--ag-inherited-icon-size, 24px);
 	--ag-input-background-color: var(--ag-inherited-input-background-color, var(--ag-background-color));
-	--ag-input-border: var(--ag-inherited-input-border, 1px solid #6B6D70);
+	--ag-input-border: var(--ag-inherited-input-border, solid 1px light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
 	--ag-input-border-radius: var(--ag-inherited-input-border-radius, var(--ag-border-radius));
-	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, #FFF);
-	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, 1px solid #949598);
+	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, light-dark(#fff,hsl(225, 66.7%, 1.2%)));
+	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, solid 1px light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302)));
 	--ag-input-disabled-text-color: var(--ag-inherited-input-disabled-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
 	--ag-input-focus-background-color: var(--ag-inherited-input-focus-background-color, var(--ag-input-background-color));
-	--ag-input-focus-border: var(--ag-inherited-input-focus-border, 1px solid #010205);
+	--ag-input-focus-border: var(--ag-inherited-input-focus-border, solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-input-focus-shadow: var(--ag-inherited-input-focus-shadow, none);
 	--ag-input-focus-text-color: var(--ag-inherited-input-focus-text-color, var(--ag-input-text-color));
 	--ag-input-height: var(--ag-inherited-input-height, calc(max( var(--ag-icon-size) ,  var(--ag-font-size) )  +   var(--ag-spacing)   *  2));
 	--ag-input-icon-color: var(--ag-inherited-input-icon-color, var(--ag-input-text-color));
 	--ag-input-invalid-background-color: var(--ag-inherited-input-invalid-background-color, var(--ag-input-background-color));
-	--ag-input-invalid-border: var(--ag-inherited-input-invalid-border, 1px solid #CC1922);
+	--ag-input-invalid-border: var(--ag-inherited-input-invalid-border, solid 1px light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180)));
 	--ag-input-invalid-text-color: var(--ag-inherited-input-invalid-text-color, var(--ag-input-text-color));
 	--ag-input-padding-start: var(--ag-inherited-input-padding-start, var(--ag-spacing));
 	--ag-input-placeholder-text-color: var(--ag-inherited-input-placeholder-text-color, color-mix(in srgb, transparent, var(--ag-input-text-color) 50%));
 	--ag-input-text-color: var(--ag-inherited-input-text-color, var(--ag-text-color));
-	--ag-invalid-color: var(--ag-inherited-invalid-color, #CC1922);
+	--ag-invalid-color: var(--ag-inherited-invalid-color, light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180)));
 	--ag-list-item-height: var(--ag-inherited-list-item-height, calc(max( var(--ag-icon-size) ,  var(--ag-data-font-size) )  +   var(--ag-widget-vertical-spacing) ));
 	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 3%));
 	--ag-menu-border: var(--ag-inherited-menu-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 20%));
 	--ag-menu-separator-color: var(--ag-inherited-menu-separator-color, var(--ag-border-color));
 	--ag-menu-shadow: var(--ag-inherited-menu-shadow, var(--ag-popup-shadow));
 	--ag-menu-text-color: var(--ag-inherited-menu-text-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 95%));
-	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, hsl(240 4% 85%/35%));
-	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, #EEEFF2);
+	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228)));
+	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, light-dark(hsl(240, 10%, 95%),hsl(240, 2%, 10%)));
 	--ag-pagination-panel-height: var(--ag-inherited-pagination-panel-height, calc(max( var(--ag-row-height) , 22px)));
 	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
 	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
@@ -179,7 +179,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-radio-checked-shape-image: var(--ag-inherited-radio-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%226%22%2F%3E%3C%2Fsvg%3E"));
 	--ag-range-header-highlight-color: var(--ag-inherited-range-header-highlight-color, color-mix(in srgb, var(--ag-header-background-color), var(--ag-foreground-color) 8%));
 	--ag-range-selection-background-color: var(--ag-inherited-range-selection-background-color, color-mix(in srgb, transparent, var(--ag-accent-color) 20%));
-	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, #1A44EA);
+	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, light-dark(#1A44EA,#1A44EA));
 	--ag-range-selection-border-style: var(--ag-inherited-range-selection-border-style, solid);
 	--ag-range-selection-chart-background-color: var(--ag-inherited-range-selection-chart-background-color, #0058FF1A);
 	--ag-range-selection-chart-category-background-color: var(--ag-inherited-range-selection-chart-category-background-color, #00FF841A);
@@ -191,13 +191,13 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-row-drag-indicator-width: var(--ag-inherited-row-drag-indicator-width, 2px);
 	--ag-row-group-indent-size: var(--ag-inherited-row-group-indent-size, calc( var(--ag-cell-widget-spacing)   +   var(--ag-icon-size) ));
 	--ag-row-height: var(--ag-inherited-row-height, calc(var(--ag-font-size) + var(--ag-spacing) * 4));
-	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
+	--ag-row-hover-color: var(--ag-inherited-row-hover-color, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228)));
 	--ag-row-loading-skeleton-effect-color: var(--ag-inherited-row-loading-skeleton-effect-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 15%));
 	--ag-row-numbers-selected-color: var(--ag-inherited-row-numbers-selected-color, color-mix(in srgb, transparent, var(--ag-accent-color) 50%));
 	--ag-row-vertical-padding-scale: var(--ag-inherited-row-vertical-padding-scale, 1);
 	--ag-select-cell-background-color: var(--ag-inherited-select-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
 	--ag-select-cell-border: var(--ag-inherited-select-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
-	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, #CBCED7);
+	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, light-dark(hsla(228, 83.2%, 51%, 0.180),hsla(210, 100%, 54.5%, 0.180)));
 	--ag-set-filter-indent-size: var(--ag-inherited-set-filter-indent-size, var(--ag-icon-size));
 	--ag-side-bar-background-color: var(--ag-inherited-side-bar-background-color, var(--ag-chrome-background-color));
 	--ag-side-bar-panel-width: var(--ag-inherited-side-bar-panel-width, 250px);
@@ -244,16 +244,16 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-tab-text-color: var(--ag-inherited-tab-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 70%));
 	--ag-tab-top-padding: var(--ag-inherited-tab-top-padding, var(--ag-spacing));
 	--ag-text-color: var(--ag-inherited-text-color, var(--ag-foreground-color));
-	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, #949598);
+	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302)));
 	--ag-toggle-button-height: var(--ag-inherited-toggle-button-height, 28px);
-	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, #FFF);
-	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, #6B6D70);
-	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, #010205);
-	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, #197E10);
-	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, #197E10);
-	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, #0E4809);
-	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, #0E4809);
-	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, #010205);
+	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
+	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
+	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
+	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100)));
+	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.180)));
+	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100)));
+	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%)));
+	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-toggle-button-switch-inset: var(--ag-inherited-toggle-button-switch-inset, 3px);
 	--ag-toggle-button-width: var(--ag-inherited-toggle-button-width, 48px);
 	--ag-tool-panel-separator-border: var(--ag-inherited-tool-panel-separator-border, solid var(--ag-border-width) var(--ag-border-color));
@@ -271,68 +271,26 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-widget-horizontal-spacing: var(--ag-inherited-widget-horizontal-spacing, calc( var(--ag-spacing)   *  1.5));
 	--ag-widget-vertical-spacing: var(--ag-inherited-widget-vertical-spacing, var(--ag-spacing));
 	--ag-wrapper-border: var(--ag-inherited-wrapper-border, solid var(--ag-border-width) var(--ag-border-color));
-	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 8px);
+	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 6px);
 :where([data-ag-theme-mode="light"]) & {
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
 }
 :where([data-ag-theme-mode="dark"]) & {
-	--ag-accent-color: var(--ag-inherited-accent-color, #178BFF);
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #355f2d);
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
-	--ag-background-color: var(--ag-inherited-background-color, #0E0E12);
-	--ag-border-color: var(--ag-inherited-border-color, #404044);
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, dark);
 	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
 	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
-	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, #FBFCFF);
-	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, #FBFCFF);
-	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, #AFB0B3);
-	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, #AFB0B3);
-	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, var(--ag-background-color));
-	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, #7E7F82);
-	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, #0E0E12);
-	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, #88898C);
-	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, #FBFCFF);
-	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, var(--ag-background-color));
-	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #88898C);
-	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #FBFCFF);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
-	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
 	--ag-filter-panel-apply-button-color: var(--ag-inherited-filter-panel-apply-button-color, var(--ag-foreground-color));
 	--ag-find-active-match-color: var(--ag-inherited-find-active-match-color, var(--ag-background-color));
 	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-background-color));
-	--ag-foreground-color: var(--ag-inherited-foreground-color, #FBFCFF);
-	--ag-header-background-color: var(--ag-inherited-header-background-color, #212225);
-	--ag-input-border: var(--ag-inherited-input-border, 1px solid #88898C);
-	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, #0E0E12);
-	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, 1px solid #7E7F82);
-	--ag-input-focus-border: var(--ag-inherited-input-focus-border, 1px solid #FBFCFF);
-	--ag-input-invalid-border: var(--ag-inherited-input-invalid-border, 1px solid #FC4040);
-	--ag-invalid-color: var(--ag-inherited-invalid-color, #FC4040);
 	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
-	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, hsl(240 3% 26%/35%));
-	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, #212225);
 	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
-	--ag-radio-checked-shape-image: var(--ag-inherited-radio-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%226%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, #1A44EA);
 	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
 	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
-	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
-	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, #040405);
-	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, #7E7F82);
-	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, #0E0E12);
-	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, #88898C);
-	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, #FBFCFF);
-	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, #09D087);
-	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, #09D087);
-	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, #069561);
-	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, #069561);
-	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, #FBFCFF);
 }
 :where([data-ag-theme-mode="dark-blue"]) & {
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #355f2d);
@@ -627,63 +585,21 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
 }
 :where([data-ag-theme-mode="dark"]) & {
-	--ag-inherited-accent-color: var(--ag-accent-color);
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
-	--ag-inherited-background-color: var(--ag-background-color);
-	--ag-inherited-border-color: var(--ag-border-color);
-	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
 	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
-	--ag-inherited-checkbox-checked-background-color: var(--ag-checkbox-checked-background-color);
-	--ag-inherited-checkbox-checked-border-color: var(--ag-checkbox-checked-border-color);
-	--ag-inherited-checkbox-checked-hover-background-color: var(--ag-checkbox-checked-hover-background-color);
-	--ag-inherited-checkbox-checked-hover-border-color: var(--ag-checkbox-checked-hover-border-color);
-	--ag-inherited-checkbox-checked-shape-color: var(--ag-checkbox-checked-shape-color);
-	--ag-inherited-checkbox-checked-shape-image: var(--ag-checkbox-checked-shape-image);
-	--ag-inherited-checkbox-disabled-color: var(--ag-checkbox-disabled-color);
-	--ag-inherited-checkbox-indeterminate-background-color: var(--ag-checkbox-indeterminate-background-color);
-	--ag-inherited-checkbox-indeterminate-border-color: var(--ag-checkbox-indeterminate-border-color);
-	--ag-inherited-checkbox-indeterminate-shape-color: var(--ag-checkbox-indeterminate-shape-color);
-	--ag-inherited-checkbox-indeterminate-shape-image: var(--ag-checkbox-indeterminate-shape-image);
-	--ag-inherited-checkbox-unchecked-background-color: var(--ag-checkbox-unchecked-background-color);
-	--ag-inherited-checkbox-unchecked-border-color: var(--ag-checkbox-unchecked-border-color);
-	--ag-inherited-checkbox-unchecked-hover-border-color: var(--ag-checkbox-unchecked-hover-border-color);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
-	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
 	--ag-inherited-filter-panel-apply-button-color: var(--ag-filter-panel-apply-button-color);
 	--ag-inherited-find-active-match-color: var(--ag-find-active-match-color);
 	--ag-inherited-find-match-color: var(--ag-find-match-color);
-	--ag-inherited-foreground-color: var(--ag-foreground-color);
-	--ag-inherited-header-background-color: var(--ag-header-background-color);
-	--ag-inherited-input-border: var(--ag-input-border);
-	--ag-inherited-input-disabled-background-color: var(--ag-input-disabled-background-color);
-	--ag-inherited-input-disabled-border: var(--ag-input-disabled-border);
-	--ag-inherited-input-focus-border: var(--ag-input-focus-border);
-	--ag-inherited-input-invalid-border: var(--ag-input-invalid-border);
-	--ag-inherited-invalid-color: var(--ag-invalid-color);
 	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
-	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
-	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
 	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
-	--ag-inherited-radio-checked-shape-image: var(--ag-radio-checked-shape-image);
-	--ag-inherited-range-selection-border-color: var(--ag-range-selection-border-color);
 	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
 	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
-	--ag-inherited-row-hover-color: var(--ag-row-hover-color);
-	--ag-inherited-selected-row-background-color: var(--ag-selected-row-background-color);
-	--ag-inherited-toggle-button-disabled-color: var(--ag-toggle-button-disabled-color);
-	--ag-inherited-toggle-button-off-background-color: var(--ag-toggle-button-off-background-color);
-	--ag-inherited-toggle-button-off-border-color: var(--ag-toggle-button-off-border-color);
-	--ag-inherited-toggle-button-off-hover-border-color: var(--ag-toggle-button-off-hover-border-color);
-	--ag-inherited-toggle-button-on-background-color: var(--ag-toggle-button-on-background-color);
-	--ag-inherited-toggle-button-on-border-color: var(--ag-toggle-button-on-border-color);
-	--ag-inherited-toggle-button-on-hover-background-color: var(--ag-toggle-button-on-hover-background-color);
-	--ag-inherited-toggle-button-on-hover-border-color: var(--ag-toggle-button-on-hover-border-color);
-	--ag-inherited-toggle-button-switch-background-color: var(--ag-toggle-button-switch-background-color);
 }
 :where([data-ag-theme-mode="dark-blue"]) & {
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
@@ -706,7 +622,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 "
 `;
 
-exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-batchEditStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9"`;
+exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-batchEditStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9 ag-theme-inputStyles-10"`;
 
 exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 "
@@ -717,7 +633,7 @@ exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
         width: var(--ag-icon-size);
         height: var(--ag-icon-size);
         background-color: var(--ag-checkbox-unchecked-background-color);
-        border: solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);
+        border: solid 1px var(--ag-checkbox-unchecked-border-color);
 
         :where(input) {
             cursor: pointer;
@@ -767,6 +683,7 @@ exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
             }
         }
 
+        /* Hover styling for enabled items */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-checkbox-unchecked-hover-border-color) !important;
         }
@@ -778,7 +695,7 @@ exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
     }
 
     .ag-checkbox-input-wrapper {
-        border-radius: var(--ag-checkbox-border-radius);
+        border-radius: 8px;
 
         &.ag-checked::after {
             mask-image: var(--ag-checkbox-checked-shape-image);
@@ -808,7 +725,7 @@ exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 exports[`pdsTheme > should match the snapshot for mode params 1`] = `
 {
   "$default": {
-    "accentColor": "#2762EC",
+    "accentColor": "light-dark(hsl(228, 83.2%, 51%),hsl(210, 100%, 54.5%))",
     "advancedFilterBuilderButtonBarBorder": true,
     "advancedFilterBuilderColumnPillColor": "#a6e194",
     "advancedFilterBuilderIndentSize": {
@@ -817,11 +734,11 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderJoinPillColor": "#f08e8d",
     "advancedFilterBuilderOptionPillColor": "#f3c08b",
     "advancedFilterBuilderValuePillColor": "#85c0e4",
-    "backgroundColor": "#FFF",
-    "borderColor": "#D8D8DB",
+    "backgroundColor": "light-dark(#fff,hsl(225, 66.7%, 1.2%))",
+    "borderColor": "light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450))",
     "borderRadius": "4px",
     "borderWidth": 1,
-    "browserColorScheme": "light",
+    "browserColorScheme": "inherit",
     "buttonActiveBackgroundColor": {
       "ref": "buttonHoverBackgroundColor",
     },
@@ -897,28 +814,24 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "chartMenuPanelWidth": 260,
     "checkboxBorderRadius": "4px",
     "checkboxBorderWidth": 2,
-    "checkboxCheckedBackgroundColor": "#010205",
-    "checkboxCheckedBorderColor": "#010205",
-    "checkboxCheckedHoverBackgroundColor": "#535457",
-    "checkboxCheckedHoverBorderColor": "#535457",
-    "checkboxCheckedShapeColor": {
-      "ref": "backgroundColor",
-    },
+    "checkboxCheckedBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+    "checkboxCheckedBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+    "checkboxCheckedHoverBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+    "checkboxCheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+    "checkboxCheckedShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "checkboxCheckedShapeImage": {
       "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
     },
-    "checkboxDisabledColor": "#949598",
-    "checkboxIndeterminateBackgroundColor": "#FFF",
-    "checkboxIndeterminateBorderColor": "#6B6D70",
-    "checkboxIndeterminateShapeColor": "#010205",
+    "checkboxDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+    "checkboxIndeterminateBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+    "checkboxIndeterminateBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+    "checkboxIndeterminateShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "checkboxIndeterminateShapeImage": {
       "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
     },
-    "checkboxUncheckedBackgroundColor": {
-      "ref": "backgroundColor",
-    },
-    "checkboxUncheckedBorderColor": "#6B6D70",
-    "checkboxUncheckedHoverBorderColor": "#010205",
+    "checkboxUncheckedBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+    "checkboxUncheckedBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+    "checkboxUncheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "chromeBackgroundColor": {
       "mix": 0.02,
       "onto": "backgroundColor",
@@ -954,7 +867,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "columnDropCellTextColor": {
       "ref": "textColor",
     },
-    "columnHoverColor": "rgba(148, 149, 152, .18)",
+    "columnHoverColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
     "columnSelectIndentSize": {
       "ref": "iconSize",
     },
@@ -1032,13 +945,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "footerRowBorder": {
       "ref": "rowBorder",
     },
-    "foregroundColor": "#010205",
+    "foregroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "fullRowEditInvalidBackgroundColor": {
       "mix": 0.25,
       "onto": "backgroundColor",
       "ref": "invalidColor",
     },
-    "headerBackgroundColor": "#EEEFF2",
+    "headerBackgroundColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
     "headerCellBackgroundTransitionDuration": "0.2s",
     "headerCellHoverBackgroundColor": "transparent",
     "headerCellMovingBackgroundColor": {
@@ -1090,12 +1003,12 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "inputBackgroundColor": {
       "ref": "backgroundColor",
     },
-    "inputBorder": "1px solid #6B6D70",
+    "inputBorder": "solid 1px light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
     "inputBorderRadius": {
       "ref": "borderRadius",
     },
-    "inputDisabledBackgroundColor": "#FFF",
-    "inputDisabledBorder": "1px solid #949598",
+    "inputDisabledBackgroundColor": "light-dark(#fff,hsl(225, 66.7%, 1.2%))",
+    "inputDisabledBorder": "solid 1px light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
     "inputDisabledTextColor": {
       "mix": 0.5,
       "ref": "textColor",
@@ -1103,7 +1016,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "inputFocusBackgroundColor": {
       "ref": "inputBackgroundColor",
     },
-    "inputFocusBorder": "1px solid #010205",
+    "inputFocusBorder": "solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "inputFocusShadow": "none",
     "inputFocusTextColor": {
       "ref": "inputTextColor",
@@ -1117,7 +1030,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "inputInvalidBackgroundColor": {
       "ref": "inputBackgroundColor",
     },
-    "inputInvalidBorder": "1px solid #CC1922",
+    "inputInvalidBorder": "solid 1px light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180))",
     "inputInvalidTextColor": {
       "ref": "inputTextColor",
     },
@@ -1131,7 +1044,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "inputTextColor": {
       "ref": "textColor",
     },
-    "invalidColor": "#CC1922",
+    "invalidColor": "light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180))",
     "listItemHeight": {
       "calc": "max(iconSize, dataFontSize) + widgetVerticalSpacing",
     },
@@ -1157,8 +1070,8 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
-    "modalOverlayBackgroundColor": "hsl(240 4% 85%/35%)",
-    "oddRowBackgroundColor": "#EEEFF2",
+    "modalOverlayBackgroundColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
+    "oddRowBackgroundColor": "light-dark(hsl(240, 10%, 95%),hsl(240, 2%, 10%))",
     "paginationPanelHeight": {
       "calc": "max(rowHeight, 22px)",
       "ref": "rowHeight",
@@ -1225,7 +1138,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "mix": 0.2,
       "ref": "accentColor",
     },
-    "rangeSelectionBorderColor": "#1A44EA",
+    "rangeSelectionBorderColor": "light-dark(#1A44EA,#1A44EA)",
     "rangeSelectionBorderStyle": "solid",
     "rangeSelectionChartBackgroundColor": "#0058FF1A",
     "rangeSelectionChartCategoryBackgroundColor": "#00FF841A",
@@ -1248,7 +1161,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "calc": "cellWidgetSpacing + iconSize",
     },
     "rowHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 4)",
-    "rowHoverColor": "rgba(148, 149, 152, .18)",
+    "rowHoverColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
     "rowLoadingSkeletonEffectColor": {
       "mix": 0.15,
       "ref": "foregroundColor",
@@ -1268,7 +1181,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
         "ref": "foregroundColor",
       },
     },
-    "selectedRowBackgroundColor": "#CBCED7",
+    "selectedRowBackgroundColor": "light-dark(hsla(228, 83.2%, 51%, 0.180),hsla(210, 100%, 54.5%, 0.180))",
     "setFilterIndentSize": {
       "ref": "iconSize",
     },
@@ -1370,16 +1283,16 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "textColor": {
       "ref": "foregroundColor",
     },
-    "toggleButtonDisabledColor": "#949598",
+    "toggleButtonDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
     "toggleButtonHeight": 28,
-    "toggleButtonOffBackgroundColor": "#FFF",
-    "toggleButtonOffBorderColor": "#6B6D70",
-    "toggleButtonOffHoverBorderColor": "#010205",
-    "toggleButtonOnBackgroundColor": "#197E10",
-    "toggleButtonOnBorderColor": "#197E10",
-    "toggleButtonOnHoverBackgroundColor": "#0E4809",
-    "toggleButtonOnHoverBorderColor": "#0E4809",
-    "toggleButtonSwitchBackgroundColor": "#010205",
+    "toggleButtonOffBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
+    "toggleButtonOffBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
+    "toggleButtonOffHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+    "toggleButtonOnBackgroundColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))",
+    "toggleButtonOnBorderColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.180))",
+    "toggleButtonOnHoverBackgroundColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))",
+    "toggleButtonOnHoverBorderColor": "light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%))",
+    "toggleButtonSwitchBackgroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "toggleButtonSwitchInset": 3,
     "toggleButtonWidth": 48,
     "toolPanelSeparatorBorder": true,
@@ -1421,48 +1334,21 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "spacing",
     },
     "wrapperBorder": true,
-    "wrapperBorderRadius": "8px",
+    "wrapperBorderRadius": "6px",
   },
   "dark": {
-    "accentColor": "#178BFF",
     "advancedFilterBuilderColumnPillColor": "#355f2d",
     "advancedFilterBuilderJoinPillColor": "#7a3a37",
     "advancedFilterBuilderOptionPillColor": "#5a3168",
     "advancedFilterBuilderValuePillColor": "#374c86",
-    "backgroundColor": "#0E0E12",
-    "borderColor": "#404044",
-    "browserColorScheme": "dark",
     "cardShadow": "0 1px 4px 1px #000A",
     "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
     "cellBatchEditTextColor": "#f3d0b3",
-    "checkboxCheckedBackgroundColor": "#FBFCFF",
-    "checkboxCheckedBorderColor": "#FBFCFF",
-    "checkboxCheckedHoverBackgroundColor": "#AFB0B3",
-    "checkboxCheckedHoverBorderColor": "#AFB0B3",
-    "checkboxCheckedShapeColor": {
-      "ref": "backgroundColor",
-    },
-    "checkboxCheckedShapeImage": {
-      "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
-    },
-    "checkboxDisabledColor": "#7E7F82",
-    "checkboxIndeterminateBackgroundColor": "#0E0E12",
-    "checkboxIndeterminateBorderColor": "#88898C",
-    "checkboxIndeterminateShapeColor": "#FBFCFF",
-    "checkboxIndeterminateShapeImage": {
-      "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
-    },
-    "checkboxUncheckedBackgroundColor": {
-      "ref": "backgroundColor",
-    },
-    "checkboxUncheckedBorderColor": "#88898C",
-    "checkboxUncheckedHoverBorderColor": "#FBFCFF",
     "chromeBackgroundColor": {
       "mix": 0.05,
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
-    "columnHoverColor": "rgba(148, 149, 152, .18)",
     "filterPanelApplyButtonColor": {
       "ref": "foregroundColor",
     },
@@ -1472,26 +1358,12 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "findMatchColor": {
       "ref": "backgroundColor",
     },
-    "foregroundColor": "#FBFCFF",
-    "headerBackgroundColor": "#212225",
-    "inputBorder": "1px solid #88898C",
-    "inputDisabledBackgroundColor": "#0E0E12",
-    "inputDisabledBorder": "1px solid #7E7F82",
-    "inputFocusBorder": "1px solid #FBFCFF",
-    "inputInvalidBorder": "1px solid #FC4040",
-    "invalidColor": "#FC4040",
     "menuBackgroundColor": {
       "mix": 0.1,
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
-    "modalOverlayBackgroundColor": "hsl(240 3% 26%/35%)",
-    "oddRowBackgroundColor": "#212225",
     "popupShadow": "0 0px 20px #000A",
-    "radioCheckedShapeImage": {
-      "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
-    },
-    "rangeSelectionBorderColor": "#1A44EA",
     "rowBatchEditBackgroundColor": {
       "mix": 0.1,
       "onto": "backgroundColor",
@@ -1500,17 +1372,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "rowBatchEditTextColor": {
       "ref": "cellBatchEditTextColor",
     },
-    "rowHoverColor": "rgba(148, 149, 152, .18)",
-    "selectedRowBackgroundColor": "#040405",
-    "toggleButtonDisabledColor": "#7E7F82",
-    "toggleButtonOffBackgroundColor": "#0E0E12",
-    "toggleButtonOffBorderColor": "#88898C",
-    "toggleButtonOffHoverBorderColor": "#FBFCFF",
-    "toggleButtonOnBackgroundColor": "#09D087",
-    "toggleButtonOnBorderColor": "#09D087",
-    "toggleButtonOnHoverBackgroundColor": "#069561",
-    "toggleButtonOnHoverBorderColor": "#069561",
-    "toggleButtonSwitchBackgroundColor": "#FBFCFF",
   },
   "dark-blue": {
     "advancedFilterBuilderColumnPillColor": "#355f2d",
@@ -1616,35 +1477,40 @@ exports[`pdsTheme > should match the snapshot for pdsSvgIcons CSS 1`] = `
 exports[`pdsTheme > should match the snapshot for toggleButtonStyle CSS 1`] = `
 "
     .ag-toggle-button-input-wrapper {
-        border: 2px solid var(--ag-toggle-button-off-border-color);
+        border: 1px solid var(--ag-toggle-button-off-border-color);
         position: relative;
 
+        /* Inner circle (switch) - default OFF state */
         &::before {
             height: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
             width: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
-            top: calc(4px - 2px) !important;
-            left: calc(4px - 2px) !important;
+            top: calc(4px - 1px) !important;
+            left: calc(4px - 1px) !important;
+            background-color: var(--ag-toggle-button-switch-background-color);
         }
 
+        /* ON state - inner circle becomes success color and moves to the right */
         &.ag-checked {
             border-color: var(--ag-toggle-button-on-border-color);
 
             &::before {
-                --ag-toggle-button-switch-background-color: #FFF;
-                --ag-toggle-button-on-border-color: #FFF;
+                background-color: light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%));
                 left: calc(100% - var(--ag-toggle-button-height) + 6px) !important;
             }
         }
 
+        /* Hover state (unchecked) */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-off-hover-border-color);
         }
 
+        /* Hover state (checked) */
         &.ag-checked:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-on-hover-border-color);
             background-color: var(--ag-toggle-button-on-hover-background-color);
         }
 
+        /* Disabled state styling */
         &.ag-disabled {
             opacity: 1 !important;
             border-color: var(--ag-toggle-button-disabled-color);

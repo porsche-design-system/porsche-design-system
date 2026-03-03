@@ -1,44 +1,11 @@
-import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
-import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import { fontLineHeight } from '@porsche-design-system/emotion';
+import { getDisabledBaseStyles, getTransition } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
-import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName } from '../../types';
+import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
-
-type Colors = {
-  textColor: string;
-  borderColor: string;
-  backgroundColor: string;
-};
-const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: Theme): Colors => {
-  const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor, backgroundFrostedColor } =
-    getThemedColors(theme);
-  const { canvasColor } = getHighContrastColors();
-
-  const colors: {
-    [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
-  } = {
-    primary: {
-      textColor: isHighContrastMode ? disabledColor : contrastHighColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? contrastHighColor : disabledColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? contrastHighColor : disabledColor,
-    },
-    secondary: {
-      textColor: disabledColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? contrastMediumColor : disabledColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? hoverColor : 'transparent',
-    },
-    ghost: {
-      textColor: disabledColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
-    },
-  };
-
-  return colors[variant === 'tertiary' ? 'secondary' : variant];
-};
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -49,19 +16,11 @@ export const getComponentCss = (
   iconSource: string,
   variant: ButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
-  disabled: boolean,
-  loading: boolean,
-  compact: BreakpointCustomizable<boolean>,
-  theme: Theme
+  isDisabled: boolean,
+  isLoading: boolean,
+  isCompact: BreakpointCustomizable<boolean>
 ): string => {
-  const disabledOrLoading = isDisabledOrLoading(disabled, loading);
-  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, theme);
-  const {
-    textColor: textColorDark,
-    borderColor: borderColorDark,
-    backgroundColor: backgroundColorDark,
-  } = getDisabledColors(variant, loading, 'dark');
-  const isPrimary = variant === 'primary';
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   return getCss(
     mergeDeep(
@@ -72,27 +31,19 @@ export const getComponentCss = (
         hideLabel,
         disabledOrLoading,
         false,
-        compact,
-        cssVariableInternalButtonScaling,
-        theme
+        isCompact,
+        cssVariableInternalButtonScaling
       ),
       {
         root: {
-          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
           ...(disabledOrLoading && {
-            backgroundColor,
-            borderColor,
-            color: textColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: backgroundColorDark,
-              borderColor: borderColorDark,
-              color: textColorDark,
-            }),
+            cursor: 'not-allowed',
           }),
-          ...(loading && !isPrimary && frostedGlassStyle),
-          margin: 0, // Removes default button margin on safari 15
+          ...(isDisabled && {
+            ...getDisabledBaseStyles(),
+          }),
         },
-        ...(loading && {
+        ...(isLoading && {
           spinner: {
             width: fontLineHeight,
             height: fontLineHeight,
@@ -101,24 +52,25 @@ export const getComponentCss = (
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            ...(isPrimary && !isHighContrastMode && { filter: 'invert(1)' }),
+            color: 'inherit',
           },
         }),
         label: {
           transition: getTransition('opacity'),
-          ...(loading && {
+          ...(isLoading && {
             opacity: 0, // use opacity for smooth transition between states
+          }),
+          ...(isDisabled && {
+            ...getDisabledBaseStyles(),
           }),
         },
         icon: {
           transition: getTransition('opacity'),
-          ...(!disabled &&
-            isPrimary &&
-            !isHighContrastMode && {
-              filter: 'invert(1)',
-            }),
-          ...(loading && {
+          ...(isLoading && {
             opacity: 0, // use opacity for smooth transition between states
+          }),
+          ...(isDisabled && {
+            ...getDisabledBaseStyles(),
           }),
         },
         // .loading

@@ -1,31 +1,12 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  hasPropValueChanged,
-  THEMES,
-  validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
-} from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import {
-  type DividerColor,
-  type DividerColorDeprecated,
-  type DividerDirection,
-  type DividerOrientation,
-  DIVIDER_COLORS,
-  DIVIDER_DIRECTIONS,
-} from './divider-utils';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './divider-styles';
-
-type DeprecationMapType = Record<DividerColorDeprecated, Exclude<DividerColor, DividerColorDeprecated>>;
+import { DIVIDER_COLORS, DIVIDER_DIRECTIONS, type DividerColor, type DividerDirection } from './divider-utils';
 
 const propTypes: PropTypes<typeof Divider> = {
   color: AllowedTypes.oneOf<DividerColor>(DIVIDER_COLORS),
-  orientation: AllowedTypes.breakpoint<DividerOrientation>([undefined, ...DIVIDER_DIRECTIONS]),
   direction: AllowedTypes.breakpoint<DividerDirection>(DIVIDER_DIRECTIONS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -35,19 +16,11 @@ const propTypes: PropTypes<typeof Divider> = {
 export class Divider {
   @Element() public host!: HTMLElement;
 
-  /** Defines color depending on theme. */
-  @Prop() public color?: DividerColor = 'contrast-low';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead.
-   * Defines orientation. */
-  @Prop() public orientation?: BreakpointCustomizable<DividerOrientation>;
+  /** Defines color. */
+  @Prop() public color?: DividerColor = 'contrast-lower';
 
   /** Defines direction. */
   @Prop() public direction?: BreakpointCustomizable<DividerDirection> = 'horizontal';
-
-  /** Adapts color depending on theme. */
-  @Prop() public theme?: Theme = 'light';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -55,27 +28,7 @@ export class Divider {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecationMap: DeprecationMapType = {
-      'neutral-contrast-low': 'contrast-low',
-      'neutral-contrast-medium': 'contrast-medium',
-      'neutral-contrast-high': 'contrast-high',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Divider, DividerColorDeprecated, DividerColor>(
-      this,
-      'color',
-      deprecationMap
-    );
-    warnIfDeprecatedPropIsUsed<typeof Divider>(this, 'orientation', 'Please use direction prop instead.');
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<
-        DividerColor,
-        DividerColorDeprecated
-      >,
-      this.orientation || this.direction,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.color, this.direction);
 
     return <hr />;
   }

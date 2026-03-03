@@ -1,6 +1,7 @@
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
-import type { InputSearchInputEventDetail, InputNumberInputEventDetail } from '@porsche-design-system/components-react';
+import type { InputNumberInputEventDetail, InputSearchInputEventDetail } from '@porsche-design-system/components-react';
 import {
+  PHeading,
   PInputNumber,
   PInputText,
   PPopover,
@@ -55,10 +56,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   };
 
   const getCurrentValue = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta): string | undefined => {
-    if (propName === 'theme') {
-      return configuredProps?.[propName];
-    }
-
     const value = configuredProps?.[propName] ?? (propMeta.defaultValue === null ? undefined : propMeta.defaultValue);
 
     if (typeof value === 'string') {
@@ -86,15 +83,15 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             <span className="inline-flex gap-static-xs">
               {capitalCase(propName)}
               <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+              {getFlags(propMeta)}
+              <ResetButton
+                propName={propName}
+                configuredProps={configuredProps}
+                defaultProps={defaultProps}
+                onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
+              />
             </span>
           </PSwitch>
-          {getFlags(propMeta)}
-          <ResetButton
-            propName={propName}
-            configuredProps={configuredProps}
-            defaultProps={defaultProps}
-            onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-          />
         </div>
       );
     }
@@ -115,8 +112,10 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             );
           }}
         >
-          <span slot="label" className="inline-flex gap-static-xs">
+          <span slot="label">
             <span id={`${propName}-id`}>{capitalCase(propName)}</span>
+          </span>
+          <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
@@ -144,8 +143,10 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           compact={true}
           controls={true}
         >
-          <span slot="label" className="inline-flex gap-static-xs">
+          <span slot="label">
             <span>{capitalCase(propName)}</span>
+          </span>
+          <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
@@ -168,10 +169,10 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           value={getCurrentValue(propName, propMeta)}
           compact={true}
           required={propMeta.isRequired}
-          onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
+          onChange={(e) => onUpdateProps(propName, e.detail.value)}
         >
-          <span slot="label" className="inline-flex gap-static-xs">
-            {capitalCase(propName)}
+          <span slot="label">{capitalCase(propName)}</span>
+          <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
@@ -208,13 +209,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             label: option,
           };
         });
-      } else if (tagName === 'p-link-social' && propName === 'icon') {
-        options = propMeta.allowedValues.map((option) => {
-          return {
-            value: option === '' ? undefined : option,
-            label: option === '' ? undefined : option,
-          };
-        });
       } else if (tagName === 'p-segmented-control' && propName === 'value') {
         options = [1, 2, 3, 4, 5].map((option) => {
           return {
@@ -240,19 +234,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
               label: option,
             };
           });
-      } else if (propName === 'theme') {
-        options = [
-          {
-            value: undefined,
-            label: '',
-          },
-          ...propMeta.allowedValues.map((option) => {
-            return {
-              value: option,
-              label: option,
-            };
-          }),
-        ];
       } else {
         options = propMeta.allowedValues
           .filter((prop) => !propMeta?.deprecatedValues?.includes(prop))
@@ -265,8 +246,8 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
       }
 
       return options.map((option) => {
-        const sanitizedOptionValue = propName === 'theme' ? option.value : getSanitizedArrayValue(option.value);
-        const sanitizedOptionLabel = propName === 'theme' ? option.label : getSanitizedArrayValue(option.label);
+        const sanitizedOptionValue = getSanitizedArrayValue(option.value);
+        const sanitizedOptionLabel = getSanitizedArrayValue(option.label);
         return (
           <PSelectOption key={option.value === undefined ? 'default' : option.value} value={sanitizedOptionValue}>
             {sanitizedOptionLabel}
@@ -279,24 +260,26 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
-        Properties{' '}
-        {amountOfConfiguredProps > 0 && (
-          <>
-            <PTag compact={true}>{amountOfConfiguredProps}</PTag>
-            <PTag compact={true} onClick={(e) => e.preventDefault()}>
-              <button
-                type="button"
-                onClick={() => {
-                  onResetAllProps();
-                }}
-              >
-                Reset all
-              </button>
-            </PTag>
-          </>
-        )}
-      </span>
+      <PHeading slot="summary" tag="h2" size="small">
+        Properties
+      </PHeading>
+      {amountOfConfiguredProps > 0 && (
+        <>
+          <PTag slot="summary-after" variant="secondary" compact={true}>
+            {amountOfConfiguredProps}
+          </PTag>
+          <PTag slot="summary-after" variant="secondary" compact={true} onClick={(e) => e.preventDefault()}>
+            <button
+              type="button"
+              onClick={() => {
+                onResetAllProps();
+              }}
+            >
+              Reset all
+            </button>
+          </PTag>
+        </>
+      )}
       <div className="flex flex-col gap-fluid-sm">
         {filteredComponentProps.map(([propName, propMeta]) =>
           renderInput(propName as keyof ElementConfig<T>['properties'], propMeta)
@@ -322,7 +305,7 @@ const ResetButton = <T extends ConfiguratorTagNames>({
   return (
     <>
       {configuredProps?.[propName] !== defaultProps?.[propName] && (
-        <PTag compact={true}>
+        <PTag variant="secondary" compact={true}>
           <button
             type="button"
             onClick={(e) => {

@@ -1,5 +1,5 @@
 import type { SlotMeta } from '@porsche-design-system/component-meta';
-import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
 import React from 'react';
 import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
@@ -22,13 +22,13 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
 }: ConfigureSlotsProps<T>) => {
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
+      <PHeading slot="summary" tag="h2" size="small">
         Slots
-      </span>
+      </PHeading>
       <div className="flex flex-col gap-fluid-sm">
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
-            <div key={slotName} className="flex flex-col gap-fluid-sm bg-surface p-fluid-sm rounded-md">
+            <div key={slotName} className="flex flex-col gap-fluid-sm">
               <div className="w-full flex justify-between">
                 <div className="w-full flex gap-static-xs">
                   {capitalCase(slotName)}
@@ -38,6 +38,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   </PPopover>
                 </div>
                 <PSwitch
+                  hideLabel={true}
                   className="flex-1"
                   checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   alignLabel="start"
@@ -46,19 +47,21 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   onUpdate={(e) =>
                     onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
                   }
-                  disabled={slotName === 'default'}
-                />
+                  disabled={slotName === 'default' || slotName === 'summary'}
+                >
+                  {`Toggle slot: ${slotName}`}
+                </PSwitch>
               </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect
-                  className="[--p-select-background-color:bg-shading]"
+                  className="[--p-select-background-color:bg-scrim]"
                   name={slotName}
                   value={configuredSlots?.slots?.[slotName]?.name}
                   disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   hideLabel={true}
                   label="Select slot to be configured"
                   compact={true}
-                  onUpdate={(e) =>
+                  onChange={(e) =>
                     onUpdateSlots(
                       slotName,
                       Object.values(slotExamples).find((slot) => slot.name === e.detail.value)

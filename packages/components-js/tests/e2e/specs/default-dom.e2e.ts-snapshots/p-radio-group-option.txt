@@ -9,6 +9,7 @@
   </div>
   <div class="label-wrapper">
     <label class="label" id="label" for="radio-group-option"> Some label</label>
+    <slot name="label-after"> </slot>
   </div>
   <span id="loading" class="loading" role="status"> </span>
 </div>

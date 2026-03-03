@@ -1,15 +1,13 @@
+import { pascalCase } from 'change-case';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
 import type {
-  ConfiguratorTagNames,
   ElementConfig,
   EventConfig,
-  EventsConfig,
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
-import { pascalCase } from 'change-case';
 
 export const getReactCode = ({
   imports,

@@ -1,0 +1,37 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  breakpointMd,
+  breakpointLg,
+  breakpointSm,
+  breakpointXl,
+  breakpoint2Xl,
+  breakpointXs,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'SCSS: Media Query - Porsche Design System',
+  description: 'Detailed API reference for the Media Query style.',
+};
+
+# Media Query
+
+<TableOfContents headings={['SCSS Mixins', 'SCSS Variables']} />
+
+## SCSS Mixins
+
+| SCSS Mixins                                                                                            | Description                                                       |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| `@mixin media-query-min('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')`                                          | Applies a **min** media query with the specified breakpoint.      |
+| `@mixin media-query-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')`                                          | Applies a **max** media query with the specified breakpoint.      |
+| `@mixin media-query-min-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl', 'xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')` | Applies a **min-max** media query with the specified breakpoints. |
+
+## SCSS Variables
+
+| SCSS Variable     | Description                       | Value           |
+| ----------------- | --------------------------------- | --------------- |
+| `$breakpoint-xs`  | Holds the `xs` breakpoint value.  | {breakpointXs}  |
+| `$breakpoint-sm`  | Holds the `sm` breakpoint value.  | {breakpointSm}  |
+| `$breakpoint-md`  | Holds the `md` breakpoint value.  | {breakpointMd}  |
+| `$breakpoint-lg`  | Holds the `lg` breakpoint value.  | {breakpointLg}  |
+| `$breakpoint-xl`  | Holds the `xl` breakpoint value.  | {breakpointXl}  |
+| `$breakpoint-2xl` | Holds the `2xl` breakpoint value. | {breakpoint2Xl} |

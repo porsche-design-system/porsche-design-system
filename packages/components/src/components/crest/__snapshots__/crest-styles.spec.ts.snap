@@ -5,24 +5,18 @@ exports[`getComponentCss() > should return correct css 1`] = `
   position: relative;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
   box-sizing: content-box !important;
   max-width: 30px !important;
   max-height: 40px !important;
   width: inherit !important;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
-  display: block;
-  text-decoration: none;
-  max-width: 30px;
-  max-height: 40px;
-  width: inherit;
-  height: inherit;
+  all: unset;
+  cursor: pointer;
 }
 a::before {
   content: "";
@@ -30,17 +24,8 @@ a::before {
   inset: 0;
   border-radius: 1px;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a:focus {
-  outline: 0;
-}
-a:focus-visible {
-  outline: 0;
-}
 a:focus-visible::before {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 picture {
@@ -54,5 +39,11 @@ img {
   max-height: 100%;
   width: auto;
   height: auto;
-}"
+}
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
 `;

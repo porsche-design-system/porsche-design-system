@@ -221,11 +221,12 @@ describe('validateProps()', () => {
 
   it('should call printErrorMessage() for each validation error', () => {
     const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'printErrorMessage').mockReturnValue();
-    const error1: ValidationError & { componentName: string } = {
+    const error1: ValidationError & { componentName: string; instance: any } = {
       propName: 'prop1',
       propValue: 'value1',
       propType: 'string',
       componentName: 'p-button',
+      instance,
     };
     const error2: ValidationError = { ...error1, propName: 'prop2', propValue: 'value2' };
 
@@ -633,10 +634,14 @@ describe('formatArrayOutput()', () => {
 
 describe('printErrorMessage()', () => {
   it('should call consoleError() util with correct parameter', () => {
+    const instance = {
+      href: 'a',
+      host: document.createElement('p-link'),
+    };
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
-    printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link' });
+    printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link', instance });
 
-    expect(spy).toHaveBeenCalledWith(expect.any(String));
+    expect(spy).toHaveBeenCalledWith(expect.any(String), instance.host);
     expect(spy.mock.calls[0][0]).toMatchSnapshot();
   });
 });

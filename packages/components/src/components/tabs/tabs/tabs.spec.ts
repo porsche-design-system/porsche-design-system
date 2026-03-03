@@ -1,7 +1,6 @@
 import { vi } from 'vitest';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { Tabs } from './tabs';
-import * as tabsUtils from './tabs-utils';
 
 describe('componentWillLoad', () => {
   it('should call this.defineTabsItemElements()', () => {
@@ -12,22 +11,6 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith();
-  });
-});
-
-describe('render', () => {
-  it('should call syncTabsItemsProps() with correct parameters', () => {
-    const spy = vi.spyOn(tabsUtils, 'syncTabsItemsProps');
-
-    const component = new Tabs();
-    component.host = document.createElement('p-tabs');
-    component.host.attachShadow({ mode: 'open' });
-    component['tabsItemElements'] = [document.createElement('p-tabs-item'), document.createElement('p-tabs-item')];
-    component.theme = 'dark';
-
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith((component as any).tabsItemElements, component.theme);
   });
 });
 

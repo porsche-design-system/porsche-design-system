@@ -4,7 +4,7 @@ import {
   PButton,
   PDrilldown,
   PDrilldownItem,
-  PDrilldownLink
+  PDrilldownLink,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -16,8 +16,8 @@ const onOpen = (): void => {
 const onDismiss = (): void => {
   isDrilldownOpen.value = false;
 };
-const onUpdate = (e: DrilldownUpdateEventDetail): void => {
-  drilldownActiveIdentifier.value = e.activeIdentifier;
+const onUpdate = (e: CustomEvent<DrilldownUpdateEventDetail>): void => {
+  drilldownActiveIdentifier.value = e.detail.activeIdentifier;
 };
 </script>
 

@@ -1,6 +1,6 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
 import { getComponentCss } from './table-cell-styles';
 
 const propTypes: PropTypes<typeof TableCell> = {

@@ -4,141 +4,108 @@
   }
 </style>
 
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-fieldset label="Some label" class="a11ytree-snapshot-test"></p-fieldset>
 </div>
 
-<div class="playground light" title="should render with label and text-field-wrapper with defined spacing">
+<div class="playground" title="should render with label and textfield with defined spacing">
   <p-fieldset label="Some label">
-    <p-text-field-wrapper label="Some label">
-      <input type="text" name="some-name" />
-    </p-text-field-wrapper>
+    <p-input-text name="some-name" label="Some label"></p-input-text>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with required">
+<div class="playground" title="should render with required">
   <p-fieldset label="Some label" required="true" class="a11ytree-snapshot-test">
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name-1" />
-    </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name-1" />
-    </p-checkbox-wrapper>
+    <p-checkbox name="some-name" label="Some label"></p-checkbox>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with slotted label">
+<div class="playground" title="should render with slotted label">
   <p-fieldset>
     <span slot="label">Some slotted label</span>
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name-1" />
-    </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name-1" />
-    </p-checkbox-wrapper>
+    <p-checkbox name="some-name" label="Some label"></p-checkbox>
+    <p-checkbox name="some-name" label="Some label"></p-checkbox>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with label size small">
+<div class="playground" title="should render with label size small">
   <p-fieldset label="Some label" label-size="small">
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
+    <p-radio-group name="some-name" label="Some Label">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+      <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with label size small and required">
+<div class="playground" title="should render with label size small and required">
   <p-fieldset label="Some label" label-size="small" required="true">
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
+    <p-radio-group name="some-name" label="Some Label">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+      <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-fieldset label="Some label" state="error" message="Some error message" class="a11ytree-snapshot-test">
-    <p-radio-button-wrapper state="error" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper state="error" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
+    <p-radio-group name="some-name" label="Some Label" state="error">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+      <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with error state and slotted error message">
+<div class="playground" title="should render with error state and slotted error message">
   <p-fieldset label="Some label" state="error">
-    <p-radio-button-wrapper state="error" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper state="error" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
+    <p-radio-group name="some-name" label="Some Label" state="error">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+      <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
     <span slot="message">Some slotted error message</span>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-fieldset label="Some label" state="success" message="Some success message" class="a11ytree-snapshot-test">
-    <p-radio-button-wrapper state="success" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper state="success" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
+    <p-radio-group name="some-name" label="Some Label" state="success">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+      <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with success state and slotted success message">
+<div class="playground" title="should render with success state and slotted success message">
   <p-fieldset label="Some label" state="success">
-    <p-radio-button-wrapper state="success" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper state="success" label="Some label">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
+    <p-radio-group name="some-name" label="Some Label" state="success">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+      <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
     <span slot="message">Some slotted success message</span>
   </p-fieldset>
 </div>
-<div class="playground light" title="should render fieldset in fieldset as section">
+<div class="playground" title="should render fieldset in fieldset as section">
   <p-fieldset label="Some label">
     <p-fieldset label="Some label" label-size="small">
-      <p-radio-button-wrapper label="Some label">
-        <input type="radio" name="some-name-1" />
-      </p-radio-button-wrapper>
-      <p-radio-button-wrapper label="Some label">
-        <input type="radio" name="some-name-1" />
-      </p-radio-button-wrapper>
+      <p-radio-group name="some-name" label="Some Label" state="success">
+        <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+        <p-radio-group-option value="b" label="Some Label"></p-radio-group-option>
+      </p-radio-group>
     </p-fieldset>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render required only on fieldset">
+<div class="playground" title="should render required only on fieldset">
   <p-fieldset label="Some label" label-size="small" required="true">
-    <p-text-field-wrapper label="Some label" state="error">
-      <input type="text" name="some-name" required />
-    </p-text-field-wrapper>
-    <p-textarea-wrapper label="Some label" hide-label="false">
-      <textarea name="some-name" required></textarea>
-    </p-textarea-wrapper>
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name-1" required />
-    </p-radio-button-wrapper>
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name-1" required />
-    </p-checkbox-wrapper>
-    <p-select-wrapper label="Some label">
-      <select name="some-name" required>
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>
+    <p-input-text name="some-name" label="Some label" required="true"></p-input-text>
+    <p-textarea name="some-name" label="Some label" hide-label="false" required="true"></p-textarea>
+    <p-radio-group name="some-name" label="Some Label" required="true">
+      <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
+    </p-radio-group>
+    <p-checkbox name="some-name" label="Some label" required="true"></p-checkbox>
+    <p-select name="some-name" label="Some label" required="true">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+    </p-select>
   </p-fieldset>
 </div>

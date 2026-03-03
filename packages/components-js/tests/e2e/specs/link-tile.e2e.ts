@@ -65,11 +65,10 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link').toBe(1);
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
+    expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -78,8 +77,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link').toBe(1);
+    expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
@@ -90,13 +88,19 @@ test.describe('lifecycle', () => {
     await initLinkTile(page, { img: true });
     const host = getHost(page);
 
+    const statusBefore = await getLifecycleStatus(page);
+    expect(statusBefore.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
+    expect(statusBefore.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
     await setProperty(host, 'compact', 'true');
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
+    const statusAfter = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1); // changes the rendered link when compact changes
-    expect(status.componentDidUpdate['p-link-tile'], 'componentDidUpdate: p-link-tile').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(statusAfter.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(2);
+    expect(statusAfter.componentDidUpdate['p-link-tile'], 'componentDidUpdate: p-link-tile').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 

@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  colorEmotionStoryBackgroundColor,
+  colorEmotionStoryBorderColor,
+  colorEmotionStoryTextColor,
+} from '@/app/emotion/color/examples/color.stories';
+
+export const metadata = {
+  title: 'Emotion: Color - Porsche Design System',
+  description: 'Learn about the Emotion styles of our design language and how to use them.',
+};
+
+# Color
+
+<TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
+
+The Porsche Design System provides multiple JS Variables for color styles to be used in Emotion.
+
+The colors use the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function. To change the theme, use the utility classes `.scheme-light`, `.scheme-dark` or `.scheme-light-dark`. Learn
+more in the [Color Scheme](/emotion/introduction#color-scheme) section.
+
+Styles import:
+`import { colorPrimary, colorFrosted, … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+
+## Text Color
+
+<ComponentStory story={colorEmotionStoryTextColor} showCodeBlock={false} />
+
+## Background Color
+
+<ComponentStory story={colorEmotionStoryBackgroundColor} showCodeBlock={false} />
+
+## Border Color
+
+<ComponentStory story={colorEmotionStoryBorderColor} showCodeBlock={false} />

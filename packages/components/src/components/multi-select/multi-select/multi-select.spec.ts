@@ -69,15 +69,6 @@ describe('disconnectedCallback', () => {
   });
 });
 
-describe('render', () => {
-  it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
-    const spy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
-    const component = initComponent();
-    component.render();
-    expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
-  });
-});
-
 describe('formResetCallback', () => {
   it('should reset value to defaultValue', () => {
     const component = initComponent();

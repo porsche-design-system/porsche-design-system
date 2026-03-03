@@ -1,9 +1,8 @@
-import { breakpointS } from '@porsche-design-system/styles';
-import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import { breakpointS } from '@porsche-design-system/emotion';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getHTMLElementOfKind,
   getPrefixedTagNames,
@@ -20,7 +19,6 @@ import {
   type DrilldownUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   type Item,
-  syncThemeToItems,
   updateDrilldownItemState,
   validateActiveIdentifier,
 } from './drilldown-utils';
@@ -28,7 +26,6 @@ import {
 const propTypes: PropTypes<typeof Drilldown> = {
   activeIdentifier: AllowedTypes.string,
   open: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<DrilldownAriaAttribute>(DRILLDOWN_ARIA_ATTRIBUTES),
 };
 
@@ -56,9 +53,6 @@ export class Drilldown {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownAriaAttribute>;
 
-  /** Adapts the drilldown color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
@@ -84,11 +78,6 @@ export class Drilldown {
     await this.updateDrilldownState(oldVal, newVal);
   }
 
-  @Watch('theme')
-  public themeChangeHandler(theme: Theme): void {
-    syncThemeToItems(theme, this.drilldownItemElements);
-  }
-
   @Listen(INTERNAL_UPDATE_EVENT_NAME)
   public onInternalUpdate(e: CustomEvent<DrilldownUpdateEventDetail>): void {
     e.stopPropagation(); // prevents internal event from bubbling further
@@ -103,7 +92,6 @@ export class Drilldown {
 
   public async componentWillLoad(): Promise<void> {
     this.defineDrilldownItemElements();
-    syncThemeToItems(this.theme, this.drilldownItemElements);
     const activeItem = this.drilldownItemElements.find((item: Item) => item.identifier === this.activeIdentifier);
     activeItem && updateDrilldownItemState(activeItem, true); // Set item state
     this.primary = !activeItem || activeItem.parentElement === this.host;
@@ -134,7 +122,7 @@ export class Drilldown {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.drilldownItemElements, this.activeIdentifier);
-    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -154,7 +142,6 @@ export class Drilldown {
             alignLabel="end"
             stretch={true}
             icon="arrow-left"
-            theme={this.theme}
             hideLabel={true}
             onClick={() => this.emitCloseSecondaryUpdate()}
           >
@@ -163,25 +150,24 @@ export class Drilldown {
           <PrefixedTagNames.pButton
             class="dismiss-mobile"
             type="button"
-            variant="ghost"
-            hideLabel={true}
             icon="close"
-            theme={this.theme}
+            compact={true}
+            variant="secondary"
+            hideLabel={true}
             onClick={this.dismissDialog}
           >
             Dismiss drilldown
           </PrefixedTagNames.pButton>
-          <PrefixedTagNames.pButtonPure
+          <PrefixedTagNames.pButton
             class="dismiss-desktop"
             type="button"
-            size="medium"
             icon="close"
+            variant="secondary"
             hideLabel={true}
-            theme={this.theme}
             onClick={this.dismissDialog}
           >
             Dismiss drilldown
-          </PrefixedTagNames.pButtonPure>
+          </PrefixedTagNames.pButton>
           <div class="scroller">
             <slot />
           </div>

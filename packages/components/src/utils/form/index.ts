@@ -7,6 +7,5 @@ export { hasMessage } from './hasMessage';
 export { implicitSubmit } from './implicitSubmit';
 export { isParentFieldsetRequired } from './isParentFieldsetRequired';
 export { isRequired } from './isRequired';
-export { isRequiredAndParentNotRequired } from './isRequiredAndParentNotRequired';
 export { isVisibleFormState } from './isVisibleFormState';
 export { isWithinForm } from './isWithinForm';

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
   PButton,
-  PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
@@ -52,8 +51,8 @@ const onNextPrevStep = (direction: 'next' | 'prev'): void => {
   steps.value = newState;
 };
 
-const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
-  const { activeStepIndex } = e;
+const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEventDetail>): void => {
+  const { activeStepIndex } = e.detail;
 
   const newState = [...steps.value];
   for (let i = activeStepIndex + 1; i < newState.length; i++) {
@@ -74,24 +73,22 @@ const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
 
   <PText :key="getActiveStepIndex(steps)">{{ stepContent[getActiveStepIndex(steps)] }}</PText>
 
-  <PButtonGroup>
-    <PButton
-      type="button"
-      :icon="'arrow-head-left'"
-      :variant="'tertiary'"
-      @click="onNextPrevStep('prev')"
-      :disabled="getActiveStepIndex(steps) === 0"
-    >
-      Previous Step
-    </PButton>
+  <PButton
+    type="button"
+    :icon="'arrow-head-left'"
+    :variant="'secondary'"
+    @click="onNextPrevStep('prev')"
+    :disabled="getActiveStepIndex(steps) === 0"
+  >
+    Previous Step
+  </PButton>
 
-    <PButton
-      type="button"
-      :variant="'primary'"
-      :disabled="getActiveStepIndex(steps) === steps.length - 1"
-      @click="onNextPrevStep('next')"
-    >
-      Next Step
-    </PButton>
-  </PButtonGroup>
+  <PButton
+    type="button"
+    :variant="'primary'"
+    :disabled="getActiveStepIndex(steps) === steps.length - 1"
+    @click="onNextPrevStep('next')"
+  >
+    Next Step
+  </PButton>
 </template>

@@ -1,79 +1,80 @@
-import { type Part, createPart } from 'ag-grid-community';
+import { createPart, type Part } from 'ag-grid-community';
 import {
-  borderWidthBase,
-  spacingStaticXSmall,
-  themeDarkBackgroundBase,
-  themeDarkContrastMedium,
-  themeDarkNotificationSuccess,
-  themeDarkPrimary,
-  themeDarkStateDisabled,
-  themeDarkSuccessColorDarken,
-  themeLightBackgroundBase,
-  themeLightContrastMedium,
-  themeLightNotificationSuccess,
-  themeLightPrimary,
-  themeLightStateDisabled,
-  themeLightSuccessColorDarken,
+  borderWidthThin,
+  colorContrastLower,
+  colorFrostedSoft,
+  colorPrimary,
+  colorSuccess,
+  colorSuccessFrostedSoft,
+  colorSuccessLow,
+  spacingStaticXs,
 } from '../styles';
-import { pdsThemeModeDark } from '../types/theme-mode';
+
+/**
+ * Toggle button styles for AG Grid following v35 standards
+ *
+ * Provides custom styling for toggle buttons with Porsche Design System colors.
+ * Supports both light and dark theme via CSS `color-scheme`.
+ *
+ * Color behavior:
+ * - OFF state: Inner circle uses colorPrimary (Light/Dark)
+ * - ON state: Inner circle uses colorSuccess (Light/Dark)
+ */
 
 export const toggleButtonStyle: Part = createPart({
   feature: 'toggleButtonStyle',
   params: {
-    toggleButtonOnBackgroundColor: themeLightNotificationSuccess,
-    toggleButtonOffBackgroundColor: themeLightBackgroundBase,
-    toggleButtonSwitchBackgroundColor: themeLightPrimary,
-    toggleButtonOnHoverBackgroundColor: themeLightSuccessColorDarken,
-    toggleButtonOnBorderColor: themeLightNotificationSuccess,
-    toggleButtonOnHoverBorderColor: themeLightSuccessColorDarken,
-    toggleButtonOffHoverBorderColor: themeLightPrimary,
-    toggleButtonOffBorderColor: themeLightContrastMedium,
-    toggleButtonDisabledColor: themeLightStateDisabled,
-  },
-  modeParams: {
-    [pdsThemeModeDark]: {
-      toggleButtonOnBackgroundColor: themeDarkNotificationSuccess,
-      toggleButtonOffBackgroundColor: themeDarkBackgroundBase,
-      toggleButtonSwitchBackgroundColor: themeDarkPrimary,
-      toggleButtonOnHoverBackgroundColor: themeDarkSuccessColorDarken,
-      toggleButtonOnBorderColor: themeDarkNotificationSuccess,
-      toggleButtonOnHoverBorderColor: themeDarkSuccessColorDarken,
-      toggleButtonOffHoverBorderColor: themeDarkPrimary,
-      toggleButtonOffBorderColor: themeDarkContrastMedium,
-      toggleButtonDisabledColor: themeDarkStateDisabled,
-    },
+    // On state (when toggle is checked)
+    toggleButtonOnBackgroundColor: colorSuccessFrostedSoft,
+    toggleButtonOnBorderColor: colorSuccessLow,
+    toggleButtonOnHoverBackgroundColor: colorSuccessFrostedSoft,
+    toggleButtonOnHoverBorderColor: colorSuccess,
+
+    // Off state (when toggle is unchecked)
+    toggleButtonOffBackgroundColor: colorFrostedSoft,
+    toggleButtonOffBorderColor: colorContrastLower,
+    toggleButtonOffHoverBorderColor: colorPrimary,
+    toggleButtonSwitchBackgroundColor: colorPrimary, // Inner circle color when OFF
+
+    // Disabled state
+    toggleButtonDisabledColor: 'light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))',
   },
   css: `
     .ag-toggle-button-input-wrapper {
-        border: ${borderWidthBase} solid var(--ag-toggle-button-off-border-color);
+        border: ${borderWidthThin} solid var(--ag-toggle-button-off-border-color);
         position: relative;
 
+        /* Inner circle (switch) - default OFF state */
         &::before {
-            height: calc(var(--ag-toggle-button-height) - ${spacingStaticXSmall} * 2) !important;
-            width: calc(var(--ag-toggle-button-height) - ${spacingStaticXSmall} * 2) !important;
-            top: calc(${spacingStaticXSmall} - ${borderWidthBase}) !important;
-            left: calc(${spacingStaticXSmall} - ${borderWidthBase}) !important;
+            height: calc(var(--ag-toggle-button-height) - ${spacingStaticXs} * 2) !important;
+            width: calc(var(--ag-toggle-button-height) - ${spacingStaticXs} * 2) !important;
+            top: calc(${spacingStaticXs} - ${borderWidthThin}) !important;
+            left: calc(${spacingStaticXs} - ${borderWidthThin}) !important;
+            background-color: var(--ag-toggle-button-switch-background-color);
         }
 
+        /* ON state - inner circle becomes success color and moves to the right */
         &.ag-checked {
             border-color: var(--ag-toggle-button-on-border-color);
 
             &::before {
-                --ag-toggle-button-switch-background-color: ${themeLightBackgroundBase};
-                --ag-toggle-button-on-border-color: ${themeLightBackgroundBase};
+                background-color: ${colorSuccess};
                 left: calc(100% - var(--ag-toggle-button-height) + 6px) !important;
             }
         }
 
+        /* Hover state (unchecked) */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-off-hover-border-color);
         }
 
+        /* Hover state (checked) */
         &.ag-checked:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-on-hover-border-color);
             background-color: var(--ag-toggle-button-on-hover-background-color);
         }
 
+        /* Disabled state styling */
         &.ag-disabled {
             opacity: 1 !important;
             border-color: var(--ag-toggle-button-disabled-color);

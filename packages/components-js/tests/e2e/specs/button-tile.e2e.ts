@@ -29,7 +29,7 @@ const initButtonTile = (
 
   return setContentWithDesignSystem(
     page,
-    `<p-button-tile label="Some label" description="Some description" ${compact ? 'compact="' + compact + '"' : ''}>
+    `<p-button-tile label="Some label" description="Some description" gradient="true" compact="${compact}" style="color-scheme: dark">
   ${img ? imageTag : ''}
   ${video ? videoTag : ''}
 </p-button-tile>`
@@ -65,11 +65,10 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-button-tile'], 'componentDidLoad: p-button-tile').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -78,8 +77,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-button-tile'], 'componentDidLoad: p-button-tile').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button').toBe(1);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
@@ -89,14 +87,19 @@ test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initButtonTile(page), { img: true };
     const host = getHost(page);
+    const statusBefore = await getLifecycleStatus(page);
+    expect(statusBefore.componentDidLoad['p-button-tile'], 'componentDidLoad: p-button-tile').toBe(1);
+    expect(statusBefore.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await setProperty(host, 'compact', 'true');
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
+    const statusAfter = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // changes the rendered button when compact changes
-    expect(status.componentDidUpdate['p-button-tile'], 'componentDidUpdate: p-button-tile').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(statusAfter.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
+    expect(statusAfter.componentDidUpdate['p-button-tile'], 'componentDidUpdate: p-button-tile').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 

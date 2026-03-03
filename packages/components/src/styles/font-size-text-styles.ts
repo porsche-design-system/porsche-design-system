@@ -1,12 +1,12 @@
-import type { TextSize } from '../types';
 import {
-  fontSizeTextXSmall,
-  fontSizeTextSmall,
-  fontSizeTextMedium,
   fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
   fontSizeTextXLarge,
+  fontSizeTextXSmall,
   fontSizeTextXXSmall,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
+import type { TextSize } from '../types';
 
 const fontSizeTextMap: { [textSize in TextSize]: string } = {
   'xx-small': fontSizeTextXXSmall,

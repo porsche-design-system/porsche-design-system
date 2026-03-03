@@ -13,7 +13,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -35,7 +35,6 @@ import {
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
   setHighlightedSelectOption,
-  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
   updateHighlightedOption,
@@ -54,11 +53,9 @@ import {
   type MultiSelectOption,
   type MultiSelectState,
   type MultiSelectToggleEventDetail,
-  type MultiSelectUpdateEventDetail,
   resetSelectedOptions,
   selectOptionsByValue,
   setSelectedMultiSelectOption,
-  syncMultiSelectChildrenProps,
 } from './multi-select-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -74,7 +71,6 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -87,7 +83,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-multi-select',
@@ -132,9 +128,6 @@ export class MultiSelect {
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the multi-select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** The id of a form element the multi-select should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
@@ -146,11 +139,6 @@ export class MultiSelect {
 
   /** Emitted when the dropdown is toggled. */
   @Event({ bubbles: false }) public toggle: EventEmitter<MultiSelectToggleEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
@@ -294,10 +282,8 @@ export class MultiSelect {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.compact,
-      this.theme
+      this.compact
     );
-    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
     const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
@@ -342,7 +328,6 @@ export class MultiSelect {
               class="button"
               icon="close"
               hideLabel={true}
-              theme={this.theme}
               onClick={this.onResetClick}
               onKeyDown={(e: KeyboardEvent) => e.key === 'Tab' && (this.isOpen = false)}
               disabled={this.disabled}
@@ -351,13 +336,7 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name="arrow-head-down"
-            theme={this.theme}
-            color={this.disabled ? 'state-disabled' : 'primary'}
-            aria-hidden="true"
-          />
+          <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
         <div
           id={popoverId}
@@ -382,7 +361,6 @@ export class MultiSelect {
               clear={true}
               indicator={true}
               compact={true}
-              theme={this.theme}
               onInput={this.onFilterInput}
               onBlur={(e: any) => e.stopPropagation()}
               onChange={(e: any) => e.stopPropagation()}
@@ -403,7 +381,7 @@ export class MultiSelect {
             <slot />
           </div>
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }
@@ -422,7 +400,6 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
     const selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value, !!this.filterSlot);
     // Add new matching options if there is any but still keep the old ones as selected
     selectedOptions.forEach((option) => {
@@ -542,6 +519,7 @@ export class MultiSelect {
       (el) =>
         el.tagName !== 'SELECT' &&
         el.slot !== 'label' &&
+        el.slot !== 'label-after' &&
         el.slot !== 'description' &&
         el.slot !== 'message' &&
         el.slot !== 'filter'
@@ -593,10 +571,6 @@ export class MultiSelect {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
-      name: this.name,
-    });
-    this.update.emit({
       value: this.value,
       name: this.name,
     });

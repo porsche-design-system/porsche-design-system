@@ -1,6 +1,6 @@
-import { getComponentCss } from './link-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import type { AlignLabel, BreakpointCustomizable, TextSize } from '../../types';
+import { getComponentCss } from './link-pure-styles';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
@@ -21,215 +21,36 @@ describe('getComponentCss()', () => {
     xl: 'end',
   };
 
-  it.each<{
-    icon: LinkButtonIconName;
-    iconSource: string;
-    active: boolean;
-    stretch: BreakpointCustomizable<boolean>;
-    size: BreakpointCustomizable<TextSize>;
-    hideLabel: BreakpointCustomizable<boolean>;
-    alignLabel: BreakpointCustomizable<AlignLabel>;
-    underline: boolean;
-    hasSlottedAnchor: boolean;
-    theme: Theme;
-  }>([
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'right',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'left',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'end',
-      underline: true,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'dark',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: true,
-      stretch: true,
-      size: 'x-large',
-      hideLabel: false,
-      alignLabel: 'start',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: true,
-      stretch: true,
-      size: 'x-large',
-      hideLabel: false,
-      alignLabel: 'start',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'dark',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: true,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: true,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: breakpointCustomizableBoolean,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'none',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'none',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'inherit',
-      hideLabel: false,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: false,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: true,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: false,
-      size: 'small',
-      hideLabel: true,
-      alignLabel: 'end',
-      underline: false,
-      hasSlottedAnchor: true,
-      theme: 'light',
-    },
-    {
-      icon: 'arrow-head-right',
-      iconSource: '',
-      active: false,
-      stretch: breakpointCustomizableBoolean,
-      size: breakpointCustomizableSize,
-      hideLabel: breakpointCustomizableBoolean,
-      alignLabel: breakpointCustomizableAlignLabel,
-      underline: false,
-      hasSlottedAnchor: false,
-      theme: 'light',
-    },
+  it.each<Parameters<typeof getComponentCss>>([
+    ['arrow-head-right', '', false, false, 'small', false, 'end', false, false],
+    ['arrow-head-right', '', false, false, 'small', false, 'right', false, false],
+    ['arrow-head-right', '', false, false, 'small', false, 'left', false, false],
+    ['arrow-head-right', '', false, false, 'small', false, 'end', true, false],
+    ['arrow-head-right', '', false, false, 'small', false, 'end', false, false],
+    ['arrow-head-right', '', true, true, 'x-large', false, 'start', false, false],
+    ['arrow-head-right', '', true, true, 'x-large', false, 'start', false, false],
+    ['arrow-head-right', '', false, false, 'small', true, 'end', false, false],
+    ['arrow-head-right', '', false, false, 'small', true, 'end', false, false],
+    ['arrow-head-right', '', false, false, 'small', breakpointCustomizableBoolean, 'end', false, false],
+    ['none', '', false, false, 'small', false, 'end', false, false],
+    ['none', '', false, false, 'inherit', false, 'end', false, false],
+    ['arrow-head-right', '', false, false, 'small', false, 'end', false, true],
+    ['arrow-head-right', '', false, false, 'small', true, 'end', false, true],
+    [
+      'arrow-head-right',
+      '',
+      false,
+      breakpointCustomizableBoolean,
+      breakpointCustomizableSize,
+      breakpointCustomizableBoolean,
+      breakpointCustomizableAlignLabel,
+      false,
+      false,
+    ],
   ])(
-    'should return correct css for %j',
-    ({ icon, iconSource, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme }) => {
-      validateCssAndMatchSnapshot(
-        getComponentCss(
-          icon,
-          iconSource,
-          active,
-          stretch,
-          size,
-          hideLabel,
-          alignLabel,
-          underline,
-          hasSlottedAnchor,
-          theme
-        )
-      );
+    'should return correct css for icon: %s, iconSource: %s, active: %s, stretch: %s, size: %s, hideLabel: %s, alignLabel: %s, underline: %s and hasSlottedAnchor: %s',
+    (...args) => {
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -18,13 +18,10 @@ export const metadata = {
 The Porsche Design System Tailwind theme customizes Tailwind variables such as `--color-*`, which affect multiple
 Tailwind classes including `bg-*`, `text-*`, `border-*` and others.
 
-By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
-settings, add the `.dark` or `.auto` CSS class to the `<html>` element or any HTML element. This applies the selected
-theme to all child elements.
-
-Instead of dynamic colors like `.text-primary` or `.bg-surface`, you can also use fixed theme variants such as
-`.text-primary-light`, `.bg-surface-light`, `.text-primary-dark`, or `.bg-surface-dark`, which remain constant
-regardless of theme.
+The colors use the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function. To change the theme, use the utility classes `.scheme-light`, `.scheme-dark` or `.scheme-light-dark`. Learn
+more in the [Color Scheme](/tailwindcss/introduction#color-scheme) section.
 
 ## Text Color
 

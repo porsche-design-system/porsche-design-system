@@ -2,6 +2,7 @@ import {
   type AccordionUpdateEventDetail,
   PAccordion,
   PDivider,
+  PHeading,
   PLinkPure,
   PText,
 } from '@porsche-design-system/components-react/ssr';
@@ -9,9 +10,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
-import { PDSVersionGroup } from '@/models/pdsVersion';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
   acc[section] = false;
@@ -20,9 +21,10 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
 
 type NavigationProps = {
   readonly pdsVersion: PDSVersionGroup;
+  readonly onNavigate: () => void;
 };
 
-export const Navigation = ({ pdsVersion }: NavigationProps) => {
+export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   const pathname = usePathname();
   const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
 
@@ -48,28 +50,29 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
 
   return (
     <>
-      <nav aria-label="Main">
+      <nav aria-label="Main" className="flex flex-col gap-static-sm">
         {Object.entries(sitemap).map(([path, category]) => (
           <PAccordion
             key={path}
-            heading={category.name as string}
-            headingTag="h3"
             compact={true}
-            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
+            className={`${['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md ' : ''}[&>:not([slot]):not(:last-child)]:mb-static-sm`}
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
           >
+            <PHeading slot="summary" tag="h3" size="small">
+              {category.name as string}
+            </PHeading>
             {category.subPaths &&
               Object.entries(category.subPaths).map(([_, page]) => {
                 // If page has subPaths (tabs) link to first tab
                 const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
                 return (
                   <PLinkPure
-                    className="my-static-xs inline-block"
                     key={link}
                     icon="none"
                     stretch={true}
                     active={pathname?.includes(`${page.path}/`)}
+                    onClick={() => onNavigate()}
                   >
                     <Link href={link}>{page.name}</Link>
                   </PLinkPure>

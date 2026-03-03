@@ -1,0 +1,41 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { gridScssStoryArea, gridScssStoryDivision } from '@/app/scss/grid/examples/grid.stories';
+
+export const metadata = {
+  title: 'SCSS: Grid - Porsche Design System',
+  description: 'Learn about the SCSS grid styles of our design language and how to use them.',
+};
+
+# Grid
+
+<TableOfContents headings={['Area', 'Division']} />
+
+The Porsche Design System SCSS styles include the custom `@mixin pds-grid()` and multiple variables, which together form
+a generic layout system called the "Porsche Grid". This system ensures consistent content placement and alignment across
+multiple Porsche applications.
+
+The Porsche Grid is based on native [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid), changing its
+available columns on mobile (6 content columns + 2 safe zone columns) and desktop view >= 760px viewport width
+(8-narrow/12-basic/14-extended/16-wide content columns + 2 safe zone columns). It has a size range between 320px and
+2560px, using fluid sized columns and gaps.
+
+The Porsche Grid must be applied once at the top level, **span the full viewport width**, and cannot be nested.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
+
+## Area
+
+`@include pds-grid;` defines a new instance of the Porsche Grid. Although content placement is flexible across any CSS
+grid column, predefined areas `full`, `wide`, `extended`, `basic` and `narrow` are provided for consistency. Apply the
+mixin `@include pds-grid;` to your wrapper element and use the SCSS variables to assign the desired area to your content
+elements.
+
+<ComponentStory story={gridScssStoryArea} showCodeBlock={false} />
+
+## Division
+
+Predefined areas can inherit the Porsche Grid using CSS subgrid, enabling layout divisions such as `one-half`,
+`one-third` (`basic` area only) and `two-thirds` (`basic` area only).
+
+<ComponentStory story={gridScssStoryDivision} showCodeBlock={false} />

@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { segmentedControlStory } from '@/app/components/segmented-control/segmented-control.stories';
+import { segmentedControlStory, segmentedControlSlotStories } from '@/app/components/segmented-control/segmented-control.stories';
 import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
@@ -23,4 +23,4 @@ Visually the `p-segmented-control` displays all options in equal size based on i
 Each option needs to be rendered by using a `p-segmented-control-item` child component where the `value` property is
 **mandatory** in order to emit a useful change event.
 
-<Configurator tagName="p-segmented-control" story={segmentedControlStory} />
+<Configurator tagName="p-segmented-control" story={segmentedControlStory} slotStories={segmentedControlSlotStories} />

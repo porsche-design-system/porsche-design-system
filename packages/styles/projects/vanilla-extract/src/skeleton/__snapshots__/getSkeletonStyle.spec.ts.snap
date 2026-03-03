@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getSkeletonStyle() > should return correct css for opts: animationName 1`] = `
+{
+  "animation": "animationName 1.2s cubic-bezier(.25,.1,.25,1) infinite",
+  "background": "transparent linear-gradient(to right, var(--_color-frosted, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))) 0%, var(--_color-frosted-strong, light-dark(hsla(236, 6.5%, 42%, 0.236),hsla(240, 1.5%, 61.8%, 0.302))) 50%, var(--_color-frosted, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))) 100%) 0 0 / 200% 100%",
+  "borderRadius": "4px",
+  "display": "block",
+}
+`;
+
+exports[`getSkeletonStyle() > should return correct css for opts: animationName 2`] = `
+{
+  "animation": "animationName 1.2s cubic-bezier(.25,.1,.25,1) infinite",
+  "background": "transparent linear-gradient(to right, var(--_color-frosted, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))) 0%, var(--_color-frosted-strong, light-dark(hsla(236, 6.5%, 42%, 0.236),hsla(240, 1.5%, 61.8%, 0.302))) 50%, var(--_color-frosted, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))) 100%) 0 0 / 200% 100%",
+  "borderRadius": "4px",
+  "display": "block",
+}
+`;
+
+exports[`should return correct keyframes 1`] = `
+{
+  "from": {
+    "backgroundPositionX": "100%",
+  },
+  "to": {
+    "backgroundPositionX": "-100%",
+  },
+}
+`;

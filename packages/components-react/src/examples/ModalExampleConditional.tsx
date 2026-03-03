@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
 import { PButton, PHeading, PModal, PText } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
 
 export const ModalExampleConditionalPage = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);

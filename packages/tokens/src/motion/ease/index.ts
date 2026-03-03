@@ -1,3 +1,3 @@
-export { motionEaseIn } from './motionEaseIn';
-export { motionEaseInOut } from './motionEaseInOut';
-export { motionEaseOut } from './motionEaseOut';
+export { easeIn } from './easeIn';
+export { easeInOut } from './easeInOut';
+export { easeOut } from './easeOut';

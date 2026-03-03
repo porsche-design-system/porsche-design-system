@@ -101,6 +101,36 @@ test.describe('value', () => {
     await expect(inputWeek).toHaveJSProperty('value', testInput);
     await expect(inputWeek).toHaveValue(testInput);
   });
+
+  test('should allow controlled input via programmatic value updates in input listener', async ({ page }) => {
+    await initInputWeek(page, { props: { name: 'some-name' } });
+    const host = getHost(page);
+    const inputWeek = getInputWeek(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputWeek).toHaveValue('');
+
+    // Add input event listener that always sets value to '2025-W26'
+    await page.evaluate(() => {
+      const hostElement = document.querySelector('p-input-week');
+      hostElement.addEventListener('input', () => {
+        hostElement.value = '2025-W26';
+      });
+    });
+
+    await inputWeek.focus();
+    await expect(inputWeek).toBeFocused();
+
+    await inputWeek.fill('2021-W12');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-W26');
+    await expect(inputWeek).toHaveValue('2025-W26');
+
+    await inputWeek.fill('2035-W16');
+    // Value is overwritten in the input event listener
+    await expect(host).toHaveJSProperty('value', '2025-W26');
+    await expect(inputWeek).toHaveValue('2025-W26');
+  });
 });
 
 test.describe('form', () => {
@@ -470,7 +500,7 @@ test.describe('focus state', () => {
 
     await addEventListener(inputWeek, 'focus');
     expect((await getEventSummary(inputWeek, 'focus')).counter).toBe(0);
-    await expect(inputWeekWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(inputWeekWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await host.focus();
     await waitForStencilLifecycle(page);
@@ -551,7 +581,6 @@ test.describe('Event', () => {
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-week when label is hovered', async ({ page }) => {
@@ -561,13 +590,14 @@ test.describe('hover state', () => {
     const inputWeek = getInputWeek(page);
     const inputWeekWrapper = getInputWeekWrapper(page);
 
-    await expect(inputWeekWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputWeekWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
+
     await inputWeek.hover();
 
     await expect(inputWeekWrapper).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    await expect(inputWeekWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputWeekWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await label.hover();
     await expect(inputWeekWrapper).toHaveCSS('border-color', hoverBorderColor);

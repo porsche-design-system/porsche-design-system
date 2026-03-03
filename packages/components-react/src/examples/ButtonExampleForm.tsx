@@ -1,5 +1,5 @@
-import { type FormEvent, useState } from 'react';
 import { PButton, PText } from '@porsche-design-system/components-react';
+import { type FormEvent, useState } from 'react';
 
 export const ButtonExampleFormPage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');

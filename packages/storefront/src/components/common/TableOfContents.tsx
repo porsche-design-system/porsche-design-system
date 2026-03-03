@@ -1,6 +1,6 @@
 import { PHeading, PLinkPure } from '@porsche-design-system/components-react/ssr';
-import { kebabCase } from 'change-case';
 import Link from 'next/link';
+import { getChangelogAnchorId } from '@/utils/extractChangelogVersion';
 
 type TableOfContentsProps = {
   headings: string[];
@@ -20,7 +20,7 @@ export const TableOfContents = ({ headings }: TableOfContentsProps) => {
         {headings.map((heading) => (
           <li key={heading}>
             <PLinkPure iconSource="assets/icon-return.svg">
-              <Link href={`#${kebabCase(heading)}`}>{heading}</Link>
+              <Link href={`#${getChangelogAnchorId(heading)}`}>{heading}</Link>
             </PLinkPure>
           </li>
         ))}
