@@ -401,7 +401,27 @@
         <p-flag size="xx-small" name="it" aria="{'aria-label': 'Flag of Italy'}"></p-flag>
       </div>
       <div data-card="scroller">
-        <p-scroller class="space-x-fluid-sm">
+        <p-scroller>
+          <p-tag variant="primary">
+            <button type="button">Some content</button>
+          </p-tag>
+          <p-tag variant="secondary">
+            <button type="button">Some content</button>
+          </p-tag>
+          <p-tag variant="info">
+            <button type="button">Some content</button>
+          </p-tag>
+          <p-tag variant="success">
+            <button type="button">Some content</button>
+          </p-tag>
+          <p-tag variant="warning">
+            <button type="button">Some content</button>
+          </p-tag>
+          <p-tag variant="error">
+            <button type="button">Some content</button>
+          </p-tag>
+        </p-scroller>
+        <p-scroller indicator-position="top">
           <p-tag variant="primary">Some content</p-tag>
           <p-tag variant="secondary">Some content</p-tag>
           <p-tag variant="info">Some content</p-tag>
@@ -409,7 +429,7 @@
           <p-tag variant="warning">Some content</p-tag>
           <p-tag variant="error">Some content</p-tag>
         </p-scroller>
-        <p-scroller class="space-x-fluid-sm" align-scroll-indicator="top">
+        <p-scroller scrollbar="true" indicator-position="top">
           <p-tag variant="primary">Some content</p-tag>
           <p-tag variant="secondary">Some content</p-tag>
           <p-tag variant="info">Some content</p-tag>
@@ -417,16 +437,41 @@
           <p-tag variant="warning">Some content</p-tag>
           <p-tag variant="error">Some content</p-tag>
         </p-scroller>
-        <p-scroller class="space-x-fluid-sm" scrollbar="true">
+        <p-scroller scrollbar="true" indicator-position="center">
           <p-tag variant="primary">Some content</p-tag>
           <p-tag variant="secondary">Some content</p-tag>
           <p-tag variant="info">Some content</p-tag>
           <p-tag variant="success">Some content</p-tag>
           <p-tag variant="warning">Some content</p-tag>
           <p-tag variant="error">Some content</p-tag>
+        </p-scroller>
+        <p-scroller indicator-sticky="true" style="--p-scroller-indicator-top: 64px; --p-scroller-indicator-bottom: 20px;">
+          <div class="bg-[deeppink] w-[600px] h-[400px]"></div>
         </p-scroller>
       </div>
-      <div data-card="stepper-horizontal">
+      <div data-card="stepper-horizontal" style="grid-column: span 2; align-items: flex-start; justify-content: flex-start;">
+        <p-stepper-horizontal>
+          <p-stepper-horizontal-item state="current">Enter personal details</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item>Confirm e-mail</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item>Set password</p-stepper-horizontal-item>
+        </p-stepper-horizontal>
+
+        <div id="step-content-0">
+          <p-text>A form with personal details could be displayed here.</p-text>
+        </div>
+        <div id="step-content-1" hidden>
+          <p-text>A form with a verification code input field could be displayed here.</p-text>
+        </div>
+        <div id="step-content-2" hidden>
+          <p-text>A form with a password input field could be displayed here.</p-text>
+        </div>
+
+        <div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+          <p-button type="button" id="prev-button" icon="arrow-head-left" variant="secondary" disabled="true"
+          >Previous Step</p-button
+          >
+          <p-button type="button" id="next-button" variant="primary">Next Step</p-button>
+        </div>
         <p-stepper-horizontal>
           <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
           <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
@@ -468,7 +513,7 @@
             </p-table-row>
           </p-table-body>
         </p-table>
-        <p-table>
+        <p-table scroll-indicator-sticky="true" style="--p-table-scroll-indicator-top: 64px; --p-table-scroll-indicator-bottom: 20px;">
           <p-heading slot="caption" size="large">Some caption</p-heading>
           <p-table-head>
             <p-table-head-row>
@@ -712,8 +757,41 @@
         <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
         <p-pagination total-items-count="500" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
       </div>
-      <div data-card="tabs">
+      <div data-card="tabs" style="grid-column: span 2; align-items: flex-start;">
         <p-tabs>
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs background="canvas">
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs background="surface">
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs background="frosted">
           <p-tabs-item label="Some label (1)">
             <p-text>Some content (1)</p-text>
           </p-tabs-item>
@@ -735,33 +813,47 @@
             <p-text>Some content (3)</p-text>
           </p-tabs-item>
         </p-tabs>
-        <p-tabs size="medium" weight="semi-bold">
-          <p-tabs-item label="Some label (1)">
-            <p-text>Some content (1)</p-text>
-          </p-tabs-item>
-          <p-tabs-item label="Some label (2)">
-            <p-text>Some content (2)</p-text>
-          </p-tabs-item>
-          <p-tabs-item label="Some label (3)">
-            <p-text>Some content (3)</p-text>
-          </p-tabs-item>
-        </p-tabs>
       </div>
-      <div data-card="tabs-bar">
+      <div data-card="tabs-bar" style="grid-column: span 2; align-items: flex-start;">
         <p-tabs-bar>
           <button type="button">Some label (1)</button>
           <button type="button">Some label (2)</button>
           <button type="button">Some label (3)</button>
         </p-tabs-bar>
-        <p-tabs-bar size="medium">
+        <p-tabs-bar active-tab-index="2" background="canvas">
           <button type="button">Some label (1)</button>
           <button type="button">Some label (2)</button>
           <button type="button">Some label (3)</button>
         </p-tabs-bar>
-        <p-tabs-bar size="medium" weight="semi-bold">
+        <p-tabs-bar active-tab-index="1" background="surface">
           <button type="button">Some label (1)</button>
           <button type="button">Some label (2)</button>
           <button type="button">Some label (3)</button>
+        </p-tabs-bar>
+        <p-tabs-bar active-tab-index="5" background="frosted">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+          <button type="button">Some label (4)</button>
+          <button type="button">Some</button>
+          <button type="button">Some World</button>
+          <button type="button">Some label (7)</button>
+        </p-tabs-bar>
+        <p-tabs-bar active-tab-index="99" size="medium">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+          <button type="button">Some label (4)</button>
+          <button type="button">Some label (5)</button>
+          <button type="button">Some label (6)</button>
+        </p-tabs-bar>
+        <p-tabs-bar active-tab-index="0" size="medium">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+          <button type="button">Some label (4)</button>
+          <button type="button">Some label (5)</button>
+          <button type="button">Some label (6)</button>
         </p-tabs-bar>
       </div>
       <div data-card="modal">
@@ -1667,6 +1759,71 @@
       for (const el of document.querySelectorAll("p-accordion")) {
         el.addEventListener('update', (e) => e.target.open = e.detail.open);
       }
+
+      for (const el of document.querySelectorAll("p-tabs-bar")) {
+        el.addEventListener('update', (e) => e.target.activeTabIndex = e.detail.activeTabIndex);
+      }
+
+      const stepper = document.querySelector('p-stepper-horizontal');
+      const stepElements = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
+      const prevButton = document.querySelector('#prev-button');
+      const nextButton = document.querySelector('#next-button');
+      const panels = document.querySelectorAll('[id^="step-content"]');
+
+      function getActiveStepIndex(steps) {
+        return steps.findIndex((step) => step.state === 'current');
+      }
+
+      function manageContent(activeStepIndex) {
+        if (activeStepIndex === 0) {
+          prevButton.setAttribute('disabled', 'true');
+        } else {
+          prevButton.removeAttribute('disabled');
+        }
+
+        if (activeStepIndex === stepElements.length - 1) {
+          nextButton.setAttribute('disabled', 'true');
+        } else {
+          nextButton.removeAttribute('disabled');
+        }
+
+        panels.forEach((panel, i) => {
+          if (i === activeStepIndex) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      }
+
+      function onNextPrevStep(direction) {
+        const activeStepIndex = getActiveStepIndex(stepElements);
+
+        if (direction === 'next') {
+          stepElements[activeStepIndex].state = 'complete';
+          stepElements[activeStepIndex + 1].state = 'current';
+          manageContent(activeStepIndex + 1);
+        } else {
+          stepElements[activeStepIndex].state = undefined;
+          stepElements[activeStepIndex - 1].state = 'current';
+          manageContent(activeStepIndex - 1);
+        }
+      }
+
+      prevButton.addEventListener('click', () => onNextPrevStep('prev'));
+      nextButton.addEventListener('click', () => onNextPrevStep('next'));
+
+      stepper.addEventListener('update', (e) => {
+        const { activeStepIndex } = e.detail;
+
+        for (let i = activeStepIndex + 1; i < stepElements.length; i++) {
+          // reset step state when going back via stepper horizontal item click
+          stepElements[i].state = undefined;
+        }
+        stepElements[activeStepIndex].state = 'current';
+
+        manageContent(activeStepIndex);
+      });
 
       for (const el of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
         el.addEventListener('change', (e) => {
