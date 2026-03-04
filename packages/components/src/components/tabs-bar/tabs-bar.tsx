@@ -96,7 +96,7 @@ export class TabsBar {
   }
 
   public componentWillLoad(): void {
-    this.setTabs();
+    this.defineTabs();
   }
 
   public componentDidLoad(): void {
@@ -120,6 +120,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
+        compact={this.compact}
         {...(this.isTabList && { aria: { role: 'tablist' } })}
         ref={(el: HTMLElement) => (this.scroller = el)}
         onClick={this.onClick}
@@ -150,13 +151,13 @@ export class TabsBar {
     }
   };
 
-  private setTabs = (): void => {
+  private defineTabs = (): void => {
     this.tabs = getOnlyChildrenOfKindHTMLElementOrThrow(this.host, 'a,button');
     this.isTabList = isTabList(this.tabs);
   };
 
   private onSlotChange = (): void => {
-    this.setTabs();
+    this.defineTabs();
     scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
   };
 
