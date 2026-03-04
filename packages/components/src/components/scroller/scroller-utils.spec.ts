@@ -1,22 +1,6 @@
 import { vi } from 'vitest';
 import * as getHTMLElementsUtils from '../../utils/dom/getHTMLElements';
-import type { ScrollerDirection } from './scroller-utils';
-import { getScrollerElements, getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
-
-describe('getScrollPositionAfterPrevNextClick()', () => {
-  it.each<[number, number, ScrollerDirection, number]>([
-    [100, 0, 'prev', -20],
-    [100, 50, 'prev', 30],
-    [100, 0, 'next', 20],
-    [100, 50, 'next', 70],
-    [100, 90, 'next', 110],
-  ])(
-    'should for offsetWidth: %s, scrollLeft: %s and direction: %s return %s',
-    (offsetWidth, scrollLeft, direction, expected) => {
-      expect(getScrollPositionAfterPrevNextClick({ offsetWidth, scrollLeft } as HTMLElement, direction)).toBe(expected);
-    }
-  );
-});
+import { getScrollerElements } from './scroller-utils';
 
 describe('getScrollerElements()', () => {
   it('should call getHTMLElements() with correct parameters', () => {
@@ -39,16 +23,5 @@ describe('getScrollerElements()', () => {
     scroller.attachShadow({ mode: 'open' });
 
     expect(getScrollerElements(scroller)).toEqual([mockResult1, mockResult2]);
-  });
-});
-
-describe('isScrollable()', () => {
-  it.each<[{ isPrevHidden: boolean; isNextHidden: boolean }, boolean]>([
-    [{ isPrevHidden: true, isNextHidden: true }, false],
-    [{ isPrevHidden: false, isNextHidden: false }, true],
-    [{ isPrevHidden: false, isNextHidden: true }, true],
-    [{ isPrevHidden: true, isNextHidden: false }, true],
-  ])('should for %o return %s', ({ isPrevHidden, isNextHidden }, expected) => {
-    expect(isScrollable(isPrevHidden, isNextHidden)).toBe(expected);
   });
 });

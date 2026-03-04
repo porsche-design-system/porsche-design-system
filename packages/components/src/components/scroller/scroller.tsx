@@ -13,6 +13,7 @@ import {
 const propTypes: PropTypes<typeof Scroller> = {
   indicatorPosition: AllowedTypes.oneOf<ScrollerIndicatorPosition>(SCROLLER_INDICATOR_POSITIONS),
   indicatorSticky: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   scrollbar: AllowedTypes.boolean,
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
 };
@@ -37,6 +38,9 @@ export class Scroller {
 
   /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
+
+  /** Displays in compact mode. */
+  @Prop() public compact?: boolean;
 
   /** Add ARIA role. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
@@ -76,7 +80,8 @@ export class Scroller {
       this.isIndicatorNextHidden,
       this.indicatorPosition,
       this.indicatorSticky,
-      this.scrollbar
+      this.scrollbar,
+      this.compact
     );
 
     return (

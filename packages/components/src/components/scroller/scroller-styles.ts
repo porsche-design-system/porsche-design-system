@@ -50,7 +50,8 @@ const getScrollIndicatorStyles = (
   indicatorPosition: ScrollerIndicatorPosition,
   isIndicatorVisible: boolean,
   isIndicatorSticky: boolean,
-  hasScrollbar: boolean
+  hasScrollbar: boolean,
+  isCompact: boolean
 ): JssStyle => {
   const isPrev = direction === 'prev';
   const iconMask = `${isPrev ? iconPrev : iconNext} center/contain no-repeat`;
@@ -71,7 +72,9 @@ const getScrollIndicatorStyles = (
     alignSelf: indicatorPosition === 'center' ? 'center' : 'flex-start',
     width: '1.5rem',
     height: '1.5rem',
-    padding: spacingStaticXs,
+    ...(!isCompact && {
+      padding: spacingStaticXs,
+    }),
     cursor: 'pointer',
     opacity: isIndicatorVisible ? 1 : 0,
     visibility: isIndicatorVisible ? 'inherit' : 'hidden',
@@ -101,7 +104,8 @@ export const getComponentCss = (
   isIndicatorNextHidden: boolean,
   indicatorPosition: ScrollerIndicatorPosition,
   isIndicatorSticky: boolean,
-  hasScrollbar: boolean
+  hasScrollbar: boolean,
+  isCompact: boolean
 ): string => {
   const fadeEdges =
     isIndicatorPrevHidden && isIndicatorNextHidden
@@ -127,7 +131,7 @@ export const getComponentCss = (
         gridArea: '1/2',
         position: 'relative', // necessary for tabs bar animation
         display: 'inline-flex',
-        gap: `var(${cssVarGap},${spacingStaticSm})`,
+        gap: `var(${cssVarGap},${isCompact ? spacingStaticXs : spacingStaticSm})`,
       },
     },
     root: {
@@ -161,7 +165,21 @@ export const getComponentCss = (
         gridArea: '1/1',
       },
     },
-    prev: getScrollIndicatorStyles('prev', indicatorPosition, !isIndicatorPrevHidden, isIndicatorSticky, hasScrollbar),
-    next: getScrollIndicatorStyles('next', indicatorPosition, !isIndicatorNextHidden, isIndicatorSticky, hasScrollbar),
+    prev: getScrollIndicatorStyles(
+      'prev',
+      indicatorPosition,
+      !isIndicatorPrevHidden,
+      isIndicatorSticky,
+      hasScrollbar,
+      isCompact
+    ),
+    next: getScrollIndicatorStyles(
+      'next',
+      indicatorPosition,
+      !isIndicatorNextHidden,
+      isIndicatorSticky,
+      hasScrollbar,
+      isCompact
+    ),
   });
 };
