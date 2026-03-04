@@ -47,7 +47,7 @@ import { PaginationInternationalization, PaginationUpdateEventDetail } from "./c
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { ScrollerAriaAttribute, ScrollerIndicatorPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
@@ -57,8 +57,8 @@ import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./com
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
-import { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-import { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
@@ -109,7 +109,7 @@ export { PaginationInternationalization, PaginationUpdateEventDetail } from "./c
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+export { ScrollerAriaAttribute, ScrollerIndicatorPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
@@ -119,8 +119,8 @@ export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./com
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
-export { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-export { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+export { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+export { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
@@ -2104,17 +2104,23 @@ export namespace Components {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator.
-         */
-        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
-        /**
           * Add ARIA role.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately.
+          * Displays in compact mode.
          */
-        "scrollToPosition"?: ScrollerScrollToPosition;
+        "compact"?: boolean;
+        /**
+          * Sets the vertical position of scroll indicator.
+         */
+        "indicatorPosition"?: ScrollerIndicatorPosition;
+        /**
+          * @experimental Makes the indicator sticky at the top while scrolling.
+         */
+        "indicatorSticky"?: boolean;
+        "scrollBy": (options: ScrollToOptions) => Promise<void>;
+        "scrollTo": (options: ScrollToOptions) => Promise<void>;
         /**
           * Specifies if scrollbar should be shown.
          */
@@ -2363,6 +2369,10 @@ export namespace Components {
           * Controls the layout behavior of the table.
          */
         "layout"?: TableLayout;
+        /**
+          * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "scrollIndicatorSticky"?: boolean;
     }
     interface PTableBody {
     }
@@ -2401,11 +2411,19 @@ export namespace Components {
          */
         "activeTabIndex"?: number;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBackground;
+        /**
+          * Displays the tabs-bar in compact mode.
+         */
+        "compact"?: boolean;
+        /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsWeight;
     }
@@ -2418,11 +2436,19 @@ export namespace Components {
          */
         "activeTabIndex"?: number | undefined;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBarBackground;
+        /**
+          * Displays the tabs-bar in compact mode.
+         */
+        "compact"?: boolean;
+        /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsBarWeight;
     }
@@ -5975,17 +6001,21 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator.
-         */
-        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
-        /**
           * Add ARIA role.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately.
+          * Displays in compact mode.
          */
-        "scrollToPosition"?: ScrollerScrollToPosition;
+        "compact"?: boolean;
+        /**
+          * Sets the vertical position of scroll indicator.
+         */
+        "indicatorPosition"?: ScrollerIndicatorPosition;
+        /**
+          * @experimental Makes the indicator sticky at the top while scrolling.
+         */
+        "indicatorSticky"?: boolean;
         /**
           * Specifies if scrollbar should be shown.
          */
@@ -6278,6 +6308,10 @@ declare namespace LocalJSX {
           * Emitted when sorting is changed.
          */
         "onUpdate"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
+        /**
+          * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "scrollIndicatorSticky"?: boolean;
     }
     interface PTableBody {
     }
@@ -6316,6 +6350,14 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBackground;
+        /**
+          * Displays the tabs-bar in compact mode.
+         */
+        "compact"?: boolean;
+        /**
           * Emitted when active tab is changed.
          */
         "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
@@ -6324,7 +6366,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsWeight;
     }
@@ -6337,6 +6379,14 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number | undefined;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBarBackground;
+        /**
+          * Displays the tabs-bar in compact mode.
+         */
+        "compact"?: boolean;
+        /**
           * Emitted when active tab is changed.
          */
         "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
@@ -6345,7 +6395,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsBarWeight;
     }
