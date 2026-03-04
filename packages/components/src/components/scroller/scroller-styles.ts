@@ -135,7 +135,7 @@ export const getComponentCss = (
       },
     },
     root: {
-      display: 'grid',
+      display: 'inline-grid',
       gridTemplateColumns: `auto minmax(0,1fr) auto`,
       alignItems: 'center',
       borderRadius: 'inherit',
