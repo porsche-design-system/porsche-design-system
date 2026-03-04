@@ -1,13 +1,16 @@
-import { Component, Element, h, type JSX, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, parseJSONAttribute, validateProps } from '../../utils';
 import { getComponentCss } from './scroller-styles';
 import {
+  isScrollable,
   SCROLLER_ARIA_ATTRIBUTES,
   SCROLLER_INDICATOR_POSITIONS,
+  type ScrollerAlignScrollIndicator,
   type ScrollerAriaAttribute,
   type ScrollerDirection,
   type ScrollerIndicatorPosition,
+  type ScrollerScrollToPosition,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
@@ -16,6 +19,11 @@ const propTypes: PropTypes<typeof Scroller> = {
   compact: AllowedTypes.boolean,
   scrollbar: AllowedTypes.boolean,
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
+  scrollToPosition: AllowedTypes.shape<ScrollerScrollToPosition>({
+    scrollPosition: AllowedTypes.number,
+    isSmooth: AllowedTypes.boolean,
+  }),
+  alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLLER_INDICATOR_POSITIONS),
 };
 
 /**
@@ -45,15 +53,11 @@ export class Scroller {
   /** Add ARIA role. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
-  @Method()
-  async scrollTo(options: ScrollToOptions): Promise<void> {
-    this.scrollArea?.scrollTo(options);
-  }
+  /** @deprecated since v4.0.0, will be removed with next major release, use `indicatorPosition` instead. */
+  @Prop() public alignScrollIndicator?: ScrollerIndicatorPosition = 'center';
 
-  @Method()
-  async scrollBy(options: ScrollToOptions): Promise<void> {
-    this.scrollArea?.scrollBy(options);
-  }
+  /** @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself. */
+  @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
 
   @State() private isIndicatorPrevHidden = true;
   @State() private isIndicatorNextHidden = true;
@@ -63,12 +67,40 @@ export class Scroller {
   private sentinelLeft: HTMLElement;
   private sentinelRight: HTMLElement;
 
-  public componentDidLoad(): void {
-    this.initIntersectionObserver();
+  @Watch('scrollToPosition')
+  public scrollToPositionHandler(): void {
+    // TODO: does this.scrollToPosition already have the new value? or why aren't we using the first parameter of this function
+    this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
+
+    // watcher might trigger before ref is defined with ssr
+    if (this.scrollArea) {
+      const { scrollPosition, isSmooth } = this.scrollToPosition;
+      this.scrollArea.scrollTo({ left: scrollPosition, behavior: isSmooth ? 'smooth' : 'instant' });
+    }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public connectedCallback(): void {
+    if (this.scrollArea) {
+      this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
+    }
+  }
+
+  public componentDidLoad(): void {
+    this.initIntersectionObserver();
+    if (this.scrollToPosition) {
+      this.scrollToPositionHandler();
+    }
+  }
+
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Scroller>
+  ): boolean {
+    return (
+      !(propName === 'scrollToPosition' && !isScrollable(this.isIndicatorNextHidden, this.isIndicatorPrevHidden)) && // should only update if scrollable
+      hasPropValueChanged(newVal, oldVal)
+    );
   }
 
   public render(): JSX.Element {

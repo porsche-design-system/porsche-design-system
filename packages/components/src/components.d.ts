@@ -47,7 +47,7 @@ import { PaginationInternationalization, PaginationUpdateEventDetail } from "./c
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-import { ScrollerAriaAttribute, ScrollerIndicatorPosition } from "./components/scroller/scroller-utils";
+import { ScrollerAriaAttribute, ScrollerIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
@@ -109,7 +109,7 @@ export { PaginationInternationalization, PaginationUpdateEventDetail } from "./c
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-export { ScrollerAriaAttribute, ScrollerIndicatorPosition } from "./components/scroller/scroller-utils";
+export { ScrollerAriaAttribute, ScrollerIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
@@ -2104,6 +2104,10 @@ export namespace Components {
     }
     interface PScroller {
         /**
+          * @deprecated since v4.0.0, will be removed with next major release, use `indicatorPosition` instead.
+         */
+        "alignScrollIndicator"?: ScrollerIndicatorPosition;
+        /**
           * Add ARIA role.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
@@ -2119,8 +2123,10 @@ export namespace Components {
           * @experimental Makes the indicator sticky at the top while scrolling.
          */
         "indicatorSticky"?: boolean;
-        "scrollBy": (options: ScrollToOptions) => Promise<void>;
-        "scrollTo": (options: ScrollToOptions) => Promise<void>;
+        /**
+          * @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself.
+         */
+        "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
          */
@@ -6001,6 +6007,10 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
+          * @deprecated since v4.0.0, will be removed with next major release, use `indicatorPosition` instead.
+         */
+        "alignScrollIndicator"?: ScrollerIndicatorPosition;
+        /**
           * Add ARIA role.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
@@ -6016,6 +6026,10 @@ declare namespace LocalJSX {
           * @experimental Makes the indicator sticky at the top while scrolling.
          */
         "indicatorSticky"?: boolean;
+        /**
+          * @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself.
+         */
+        "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
          */
