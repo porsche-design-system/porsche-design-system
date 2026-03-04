@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   hasPropValueChanged,
   removeAttribute,
   setAttribute,
@@ -13,12 +12,22 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './tabs-styles';
-import { TABS_SIZES, TABS_WEIGHTS, type TabsSize, type TabsUpdateEventDetail, type TabsWeight } from './tabs-utils';
+import {
+  TABS_BACKGROUNDS,
+  TABS_SIZES,
+  TABS_WEIGHTS,
+  type TabsBackground,
+  type TabsSize,
+  type TabsUpdateEventDetail,
+  type TabsWeight,
+} from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_SIZES),
-  weight: AllowedTypes.oneOf<TabsWeight>(TABS_WEIGHTS),
   activeTabIndex: AllowedTypes.number,
+  background: AllowedTypes.oneOf<TabsBackground>(TABS_BACKGROUNDS),
+  compact: AllowedTypes.boolean,
+  weight: AllowedTypes.oneOf<TabsWeight>(TABS_WEIGHTS),
 };
 
 /**
@@ -36,29 +45,43 @@ export class Tabs {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<TabsSize> = 'small';
 
-  /** The text weight. */
-  @Prop() public weight?: TabsWeight = 'regular';
-
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
+
+  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
+  @Prop() public background?: TabsBackground = 'none';
+
+  /** Displays the tabs-bar in compact mode. */
+  @Prop() public compact?: boolean;
+
+  /**
+   * @deprecated Will be removed in the next major release.
+   * Has no effect anymore. */
+  @Prop() public weight?: TabsWeight = 'regular';
 
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEventDetail>;
 
-  @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
+  @State() private tabsItems: HTMLPTabsItemElement[] = [];
+
+  private slot: HTMLSlotElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
-    this.setAccessibilityAttributes();
     this.update.emit({ activeTabIndex: newValue });
   }
 
+  public disconnectedCallback(): void {
+    this.slot?.removeEventListener('slotchange', this.defineTabsItems);
+  }
+
   public componentWillLoad(): void {
-    this.defineTabsItemElements();
+    this.defineTabsItems();
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineTabsItemElements);
+    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
+    this.slot.addEventListener('slotchange', this.defineTabsItems);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -80,29 +103,29 @@ export class Tabs {
         <PrefixedTagNames.pTabsBar
           class="root"
           size={this.size}
-          weight={this.weight}
+          background={this.background}
+          compact={this.compact}
           activeTabIndex={this.activeTabIndex}
           onUpdate={this.onTabsBarUpdate}
-          onTabChange={(e: Event) => e.stopPropagation()} // prevent double event emission because of identical name
         >
-          {this.tabsItemElements.map((tab, index) => (
+          {this.tabsItems.map((tab, index) => (
             <button key={index} type="button">
               {tab.label}
             </button>
           ))}
         </PrefixedTagNames.pTabsBar>
-        <slot />
+        <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
       </Host>
     );
   }
 
-  private defineTabsItemElements = (): void => {
+  private defineTabsItems = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-tabs-item');
-    this.tabsItemElements = Array.from(this.host.children) as HTMLPTabsItemElement[];
+    this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
   private setAccessibilityAttributes = (): void => {
-    this.tabsItemElements.forEach((tab, index) => {
+    for (const [index, tab] of this.tabsItems.entries()) {
       const attrs = {
         role: 'tabpanel',
         'aria-label': tab.label,
@@ -116,7 +139,7 @@ export class Tabs {
         setAttribute(tab, 'hidden');
         removeAttribute(tab, 'tabindex');
       }
-    });
+    }
   };
 
   private onTabsBarUpdate = (e: CustomEvent<TabsUpdateEventDetail>): void => {
