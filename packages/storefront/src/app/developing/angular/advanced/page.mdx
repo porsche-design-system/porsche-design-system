@@ -36,7 +36,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(PorscheDesignSystemModule.load({ theme: 'dark' }))],
+  providers: [importProvidersFrom(PorscheDesignSystemModule.load())],
 }).catch((err) => console.error(err));
 ```
 

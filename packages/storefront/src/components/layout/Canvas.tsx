@@ -21,12 +21,12 @@ import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { Search } from '@/components/search/Search';
 import { useDirection } from '@/hooks/useDirection';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useTextZoom } from '@/hooks/useTextZoom';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { StorefrontDirection } from '@/models/dir';
 import { LEGACY_PDS_VERSIONS, type PDSVersionGroup, type Semver } from '@/models/pdsVersion';
 import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontColorScheme } from '@/models/theme';
 import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 import { isDevEnvironment } from '@/utils/isDev';
 import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
@@ -53,7 +53,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
     load();
   }, []);
 
-  const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
+  const { storefrontColorScheme, setStorefrontColorScheme } = useStorefrontColorScheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
@@ -183,8 +183,8 @@ export const Canvas = ({ children }: PropsWithChildren) => {
             Global settings
           </PHeading>
           <ThemeSelect
-            value={storefrontTheme}
-            onThemeChange={(e): void => setStorefrontTheme(e.detail.value as StorefrontColorScheme)}
+            value={storefrontColorScheme}
+            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as StorefrontColorScheme)}
             compact={true}
           />
           <DirectionSelect

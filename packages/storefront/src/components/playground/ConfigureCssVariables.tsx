@@ -61,7 +61,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
               }
             >
               <span slot="label">{cssVariableName}</span>
-              <span slot="label-after" className="inline-flex gap-static-xs ms-static-xs">
+              <span slot="label-after" className="inline-flex gap-static-xs">
                 <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
                 {getFlags(cssVariableMeta)}
                 {/* TODO: Fix typing */}
