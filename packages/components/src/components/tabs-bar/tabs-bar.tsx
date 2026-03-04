@@ -139,7 +139,7 @@ export class TabsBar {
   private setAccessibilityAttributes = (): void => {
     const hasActiveTabIndex = this.activeTabIndex !== undefined;
 
-    for (const [index, tab] of this.tabs.entries()) {
+    this.tabs.forEach((tab, index) => {
       const isActiveTabIndex = this.activeTabIndex === index;
       const attrs = this.isTabList
         ? {
@@ -152,7 +152,7 @@ export class TabsBar {
           };
 
       setAttributes(tab, attrs);
-    }
+    });
   };
 
   private defineTabs = (): void => {

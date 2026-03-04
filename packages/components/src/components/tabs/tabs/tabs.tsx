@@ -125,7 +125,7 @@ export class Tabs {
   };
 
   private setAccessibilityAttributes = (): void => {
-    for (const [index, tab] of this.tabsItems.entries()) {
+    this.tabsItems.forEach((tab, index) => {
       const attrs = {
         role: 'tabpanel',
         'aria-label': tab.label,
@@ -139,7 +139,7 @@ export class Tabs {
         setAttribute(tab, 'hidden');
         removeAttribute(tab, 'tabindex');
       }
-    }
+    });
   };
 
   private onTabsBarUpdate = (e: CustomEvent<TabsUpdateEventDetail>): void => {
