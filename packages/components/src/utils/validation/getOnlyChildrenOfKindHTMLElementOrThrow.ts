@@ -1,13 +1,10 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { getTagNameWithoutPrefix, throwException } from '..';
-import { getDirectChildHTMLElements } from '../dom/getDirectChildHTMLElements';
+import { getDirectChildHTMLElements } from '../dom';
 
-// prettier-ignore
 export function getOnlyChildrenOfKindHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(
   element: HTMLElement,
   selector: K
 ): HTMLElementTagNameMap[K] | null;
-// prettier-ignore
 export function getOnlyChildrenOfKindHTMLElementOrThrow<E extends Element = Element>(
   element: HTMLElement,
   selector: string
