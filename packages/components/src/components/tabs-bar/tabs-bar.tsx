@@ -79,6 +79,7 @@ export class TabsBar {
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
     // animateBar() only needs to be called for animation between two different tabs while active state itself is handled in styles directly
     animateBar(newValue, oldValue, this.scroller, this.tabs, this.bar);
+    // scroll the new active tab into view
     scrollTabIntoView(newValue, this.scroller, this.tabs);
   }
 
@@ -87,8 +88,8 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    this.resizeObserver?.disconnect();
     this.slot?.removeEventListener('slotchange', this.onSlotChange);
+    this.resizeObserver?.disconnect();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -100,10 +101,13 @@ export class TabsBar {
   }
 
   public componentDidLoad(): void {
+    // scroll active tab into view initially
+    scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
+
     // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
     this.slot.addEventListener('slotchange', this.onSlotChange);
-    scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
     this.resizeObserver = new ResizeObserver(() => {
+      // scroll into view in case the active tab is not centered after resize
       scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
     });
     this.resizeObserver.observe(this.scroller);
@@ -158,6 +162,7 @@ export class TabsBar {
 
   private onSlotChange = (): void => {
     this.defineTabs();
+    // scroll the active tab into view after slot change in case the active tab has changed or is not centered anymore
     scrollTabIntoView(this.activeTabIndex, this.scroller, this.tabs, false);
   };
 

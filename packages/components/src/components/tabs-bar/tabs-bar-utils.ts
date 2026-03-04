@@ -165,7 +165,7 @@ export const animateBar = (
 
 export const scrollTabIntoView = (
   newTabIndex: number | undefined,
-  scroller: HTMLElement,
+  scroller: HTMLElement | undefined,
   tabs: HTMLElement[],
   isSmooth = true
 ): void => {
