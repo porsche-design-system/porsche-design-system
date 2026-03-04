@@ -1,9 +1,12 @@
-import type { IconName, Theme } from '../../types';
 import type { ThemedColors } from '../../styles'; // deep import needed since barrel contains MutationObserver and causes VRT to fail because of TAG_COLORS import
-import { TAG_DISMISSIBLE_COLORS, type TagDismissibleColorDeprecated } from '../tag-dismissible/tag-dismissible-utils';
+import type { IconName, Theme } from '../../types';
 import { darken, isThemeDark, lighten } from '../../utils';
+import { TAG_DISMISSIBLE_COLORS, type TagDismissibleColorDeprecated } from '../tag-dismissible/tag-dismissible-utils';
 
 export type TagIcon = IconName;
+
+export const TAG_VARIANTS = ['primary', 'secondary', 'info', 'warning', 'success', 'error'] as const;
+export type TagVariant = (typeof TAG_VARIANTS)[number];
 
 /** @deprecated */
 export const TAG_COLORS_DEPRECATED = [
@@ -15,6 +18,7 @@ export const TAG_COLORS_DEPRECATED = [
 ] as const;
 /** @deprecated */
 export type TagColorDeprecated = (typeof TAG_COLORS_DEPRECATED)[number] | TagDismissibleColorDeprecated;
+/** @deprecated */
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
   'background-frosted',
@@ -25,7 +29,17 @@ export const TAG_COLORS = [
   'notification-error-soft',
   ...TAG_COLORS_DEPRECATED,
 ] as const;
+/** @deprecated */
 export type TagColor = (typeof TAG_COLORS)[number];
+
+export const VARIANT_TO_COLOR_MAP: Record<TagVariant, Exclude<TagColor, TagColorDeprecated>> = {
+  primary: 'primary',
+  secondary: 'background-frosted',
+  info: 'notification-info-soft',
+  warning: 'notification-warning-soft',
+  success: 'notification-success-soft',
+  error: 'notification-error-soft',
+};
 
 export const getThemedBackgroundHoverColor = (
   tagColor: Exclude<TagColor, TagColorDeprecated>,

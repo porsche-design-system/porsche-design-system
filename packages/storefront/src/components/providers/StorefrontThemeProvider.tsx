@@ -1,8 +1,8 @@
 'use client';
 
-import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
-import type { StorefrontTheme } from '@/models/theme';
 import React, { createContext, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
+import { STOREFRONT_THEME_TYPES, type StorefrontTheme } from '@/models/theme';
 
 interface StorefrontThemeContextProps {
   storefrontTheme: StorefrontTheme;
@@ -22,12 +22,15 @@ export const StorefrontThemeProvider = ({ children }: PropsWithChildren) => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedTheme = localStorage.getItem(storefrontThemeLocalStorageKey) as StorefrontTheme | null;
-    if (storedTheme) {
+    if (storedTheme && STOREFRONT_THEME_TYPES.includes(storedTheme)) {
       setStorefrontTheme(storedTheme);
     }
   }, []);
 
   const setStorefrontTheme = (storefrontTheme: StorefrontTheme) => {
+    if (!STOREFRONT_THEME_TYPES.includes(storefrontTheme)) {
+      return;
+    }
     setSelectedTheme(storefrontTheme);
     document.documentElement.classList.remove('light', 'dark', 'auto');
     document.documentElement.classList.add(storefrontTheme);
