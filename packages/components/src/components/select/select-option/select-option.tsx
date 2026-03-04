@@ -41,7 +41,7 @@ export class SelectOption {
     validateProps(this, propTypes);
     const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
-    attachComponentCss(this.host, getComponentCss, this.disabled);
+    attachComponentCss(this.host, getComponentCss, isDisabled);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
