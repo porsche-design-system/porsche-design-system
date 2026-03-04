@@ -74,7 +74,7 @@ import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/s
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
-import { TagColor, TagIcon } from "./components/tag/tag-utils";
+import { TagColor, TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
@@ -153,7 +153,7 @@ export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/s
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
-export { TagColor, TagIcon } from "./components/tag/tag-utils";
+export { TagColor, TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
@@ -3127,7 +3127,7 @@ export namespace Components {
     }
     interface PTag {
         /**
-          * Background color variations depending on theme property.
+          * @deprecated since v3.33.0, will be removed with next major release. Use `variant` prop instead. Background color variations depending on theme property.
          */
         "color"?: TagColor;
         /**
@@ -3146,6 +3146,10 @@ export namespace Components {
           * Adapts the tag color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Background color variations.
+         */
+        "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**
@@ -8106,7 +8110,7 @@ declare namespace LocalJSX {
     }
     interface PTag {
         /**
-          * Background color variations depending on theme property.
+          * @deprecated since v3.33.0, will be removed with next major release. Use `variant` prop instead. Background color variations depending on theme property.
          */
         "color"?: TagColor;
         /**
@@ -8125,6 +8129,10 @@ declare namespace LocalJSX {
           * Adapts the tag color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Background color variations.
+         */
+        "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**

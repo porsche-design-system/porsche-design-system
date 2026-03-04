@@ -14,6 +14,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.33.0-rc.0] - 2026-03-04
+
+### Added
+
+- `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
+  ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+
+### Changed
+
+- `Tag`: deprecated `color` property, use `variant` property instead to define background colors which complies now with
+  PDS `v4` ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+
 ## [3.32.1] - 2026-02-24
 
 ## [3.32.1-rc.0] - 2026-02-20
