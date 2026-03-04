@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.33.0-rc.0] - 2026-03-04
+
 ### Added
 
 - `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
