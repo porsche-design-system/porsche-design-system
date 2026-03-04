@@ -4,20 +4,34 @@ import { colorContrastLow, colorFrosted, colorPrimary } from '../../../styles/cs
 import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
+/**
+ * @css-variable {"name": "--p-table-scroll-indicator-top", "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and `scroll-indicator-sticky` is enabled.", "defaultValue": "0px"}
+ */
+const cssVarScrollIndicatorTop = '--p-table-scroll-indicator-top';
+
+/**
+ * @css-variable {"name": "--p-table-scroll-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and `scroll-indicator-sticky` is enabled.", "defaultValue": "0px"}
+ */
+const cssVarScrollIndicatorBottom = '--p-table-scroll-indicator-bottom';
+
 export const cssVariableTablePadding = '--_a';
 export const cssVariableTableHoverColor = '--_b';
 export const cssVariableTableBorderColor = '--_c';
 export const cssVariableTableBorderWidth = '--_d';
 
-export const getComponentCss = (compact: boolean, layout: TableLayout): string => {
+export const getComponentCss = (isCompact: boolean, layout: TableLayout): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          '--p-scroller-indicator-top': `var(${cssVarScrollIndicatorTop},0px)`,
+          '--p-scroller-indicator-bottom': `var(${cssVarScrollIndicatorBottom},0px)`,
           [cssVariableTableHoverColor]: colorFrosted,
           [cssVariableTableBorderColor]: colorContrastLow,
-          ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
+          ...(isCompact && {
+            [cssVariableTablePadding]: spacingStaticSmall,
+          }),
           ...hostHiddenStyles,
           ...textSmallStyle,
           color: colorPrimary,
