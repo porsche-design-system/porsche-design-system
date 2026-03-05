@@ -8,7 +8,7 @@ export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSi
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'grid',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
         }),
