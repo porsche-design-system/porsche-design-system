@@ -47,7 +47,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'grid',
         ...addImportantToEachRule({
           position: 'relative', // necessary for the bar animation to calculate the tab items position correctly
           ...hostHiddenStyles,
@@ -87,7 +87,8 @@ export const getComponentCss = (
       }),
     },
     scroller: {
-      borderRadius: radiusFull,
+      placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
       ...(background !== 'none' && {
         background: backgroundMap[background],
         padding: spacingStaticXs,

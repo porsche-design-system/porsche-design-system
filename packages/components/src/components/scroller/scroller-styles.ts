@@ -135,7 +135,7 @@ export const getComponentCss = (
       },
     },
     root: {
-      display: 'inline-grid',
+      display: 'grid',
       gridTemplateColumns: `auto minmax(0,1fr) auto`,
       alignItems: 'center',
       borderRadius: 'inherit',
@@ -150,8 +150,10 @@ export const getComponentCss = (
       padding: `${safeZone} 0px${hasScrollbar ? ` calc(${safeZone} + ${scrollbarWidth})` : ''}`, // ensure enough space is available for focus ring of slotted elements (horizontal space is given by `.sentinel`)
       outline: 'none', // focus ring is applied to `.root`, it would be cut off by the mask if applied to `.scroll`
       overflow: 'auto hidden',
-      WebkitMask: mask, // necessary for Sogou browser support :-)
-      mask,
+      ...(fadeEdges !== 'none' && {
+        WebkitMask: mask, // necessary for Sogou browser support :-)
+        mask,
+      }),
       scrollbarWidth: hasScrollbar ? 'thin' : 'none',
     },
     // as soon as `@container scroll-state(scrollable: left)` has better browser support we can get rid of sentinel and IntersectionObserver

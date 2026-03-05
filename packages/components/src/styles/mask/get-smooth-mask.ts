@@ -6,7 +6,7 @@
  * @param edgeLength - Size of the fully transparent area at the edge (px).
  * @param fadeLength - Size of the transition area (px).
  * @param steps - Number of gradient stops (more = smoother, 8–12 is plenty).
- * @returns CSS linear-gradient string, or 'none'.
+ * @returns CSS linear-gradient string.
  */
 export const getSmoothMask = (
   fadeEdges: 'left' | 'right' | 'both' | 'none',
@@ -15,7 +15,7 @@ export const getSmoothMask = (
   steps = 20
 ): string => {
   if (fadeEdges === 'none') {
-    return 'none';
+    return 'linear-gradient(black,black)';
   }
 
   const fullLength = edgeLength + fadeLength;
