@@ -43,7 +43,7 @@ const iconNext = getInlineSVGBackgroundImage(
   `<path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/>`
 );
 const scrollbarWidth = '12px';
-const safeZone = spacingStaticXs;
+const safeZone = '4px';
 
 const getScrollIndicatorStyles = (
   direction: ScrollerDirection,
@@ -145,7 +145,7 @@ export const getComponentCss = (
       gridArea: '1/1/1/-1',
       zIndex: 0, // ensure that scroll area is behind the indicators
       display: 'grid',
-      gridTemplateColumns: 'repeat(3,auto)',
+      gridTemplateColumns: `${safeZone} minmax(auto,1fr) ${safeZone}`,
       margin: `calc(-1 * ${safeZone})`, // compensate padding to ensure that `:host` is aligned with other elements
       padding: `${safeZone} 0px${hasScrollbar ? ` calc(${safeZone} + ${scrollbarWidth})` : ''}`, // ensure enough space is available for focus ring of slotted elements (horizontal space is given by `.sentinel`)
       outline: 'none', // focus ring is applied to `.root`, it would be cut off by the mask if applied to `.scroll`

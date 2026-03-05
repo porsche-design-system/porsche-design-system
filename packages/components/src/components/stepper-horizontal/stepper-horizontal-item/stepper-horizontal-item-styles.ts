@@ -45,9 +45,6 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           fontSize: 'inherit',
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
-          '&(:not(:last-of-type))': {
-            marginInlineEnd: spacingFluidXSmall,
-          },
         }),
       },
       ...preventFoucOfNestedElementsStyles,
