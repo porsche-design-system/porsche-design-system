@@ -61,21 +61,29 @@ const getTabMetrics = (
   tab: HTMLElement | undefined
 ): { start: number; width: number; rtl: boolean } => {
   const scrollerStyles = window.getComputedStyle(scroller);
+  const safeZone = parseFloat(scrollerStyles.paddingInlineStart) || 0;
   const rtl = scrollerStyles.direction === 'rtl';
 
   if (!tab) {
     return { start: 0, width: 0, rtl };
   }
 
-  const scrollerPaddingInlineStart = parseFloat(scrollerStyles.paddingInlineStart) || 0;
+  const tabRect = tab.getBoundingClientRect();
+  const scrollerRect = scroller.getBoundingClientRect();
+  const tabWidth = tabRect.width;
+
+  // TODO: would be better to use p-scroller making accessing shadow DOM not necessary or expose scrollLeft as mutable prop (ideally as getter / setter which would make it necessary to refactor component and dsr generator)
+  const scrollArea = scroller.shadowRoot?.querySelector('.scroll') as HTMLElement | null;
+  const scrollLeft = scrollArea?.scrollLeft ?? 0;
+
   const start = Math.max(
     rtl
-      ? scroller.clientWidth - tab.offsetLeft - tab.offsetWidth - scrollerPaddingInlineStart
-      : tab.offsetLeft - scrollerPaddingInlineStart,
+      ? scrollerRect.right - tabRect.right - scrollLeft - safeZone // scrollLeft is negative in RTL
+      : tabRect.left - scrollerRect.left + scrollLeft - safeZone,
     0
   );
-  const width = tab.getBoundingClientRect().width;
-  return { start, width, rtl };
+
+  return { start, width: tabWidth, rtl };
 };
 
 /**
