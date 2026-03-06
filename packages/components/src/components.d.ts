@@ -47,7 +47,7 @@ import { PaginationInternationalization, PaginationUpdateEventDetail } from "./c
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-import { ScrollerAriaAttribute, ScrollerIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
@@ -109,7 +109,7 @@ export { PaginationInternationalization, PaginationUpdateEventDetail } from "./c
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-export { ScrollerAriaAttribute, ScrollerIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
@@ -2104,9 +2104,9 @@ export namespace Components {
     }
     interface PScroller {
         /**
-          * @deprecated since v4.0.0, will be removed with next major release, use `indicatorPosition` instead.
+          * @deprecated since v4.0.0, will be removed with next major release, has no effect anymore.
          */
-        "alignScrollIndicator"?: ScrollerIndicatorPosition;
+        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
           * Add ARIA role.
          */
@@ -2116,14 +2116,6 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
-          * Sets the vertical position of scroll indicator.
-         */
-        "indicatorPosition"?: ScrollerIndicatorPosition;
-        /**
-          * @experimental Makes the indicator sticky at the top while scrolling.
-         */
-        "indicatorSticky"?: boolean;
-        /**
           * @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
@@ -2131,6 +2123,10 @@ export namespace Components {
           * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
+        /**
+          * @experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "sticky"?: boolean;
     }
     /**
      * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
@@ -2378,7 +2374,7 @@ export namespace Components {
         /**
           * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
          */
-        "scrollIndicatorSticky"?: boolean;
+        "sticky"?: boolean;
     }
     interface PTableBody {
     }
@@ -6007,9 +6003,9 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
-          * @deprecated since v4.0.0, will be removed with next major release, use `indicatorPosition` instead.
+          * @deprecated since v4.0.0, will be removed with next major release, has no effect anymore.
          */
-        "alignScrollIndicator"?: ScrollerIndicatorPosition;
+        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
           * Add ARIA role.
          */
@@ -6019,14 +6015,6 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
-          * Sets the vertical position of scroll indicator.
-         */
-        "indicatorPosition"?: ScrollerIndicatorPosition;
-        /**
-          * @experimental Makes the indicator sticky at the top while scrolling.
-         */
-        "indicatorSticky"?: boolean;
-        /**
           * @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
@@ -6034,6 +6022,10 @@ declare namespace LocalJSX {
           * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
+        /**
+          * @experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "sticky"?: boolean;
     }
     /**
      * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
@@ -6325,7 +6317,7 @@ declare namespace LocalJSX {
         /**
           * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
          */
-        "scrollIndicatorSticky"?: boolean;
+        "sticky"?: boolean;
     }
     interface PTableBody {
     }

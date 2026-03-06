@@ -4,18 +4,16 @@ import { AllowedTypes, attachComponentCss, hasPropValueChanged, parseJSONAttribu
 import { getComponentCss } from './scroller-styles';
 import {
   isScrollable,
+  SCROLLER_ALIGN_SCROLL_INDICATORS,
   SCROLLER_ARIA_ATTRIBUTES,
-  SCROLLER_INDICATOR_POSITIONS,
   type ScrollerAlignScrollIndicator,
   type ScrollerAriaAttribute,
   type ScrollerDirection,
-  type ScrollerIndicatorPosition,
   type ScrollerScrollToPosition,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
-  indicatorPosition: AllowedTypes.oneOf<ScrollerIndicatorPosition>(SCROLLER_INDICATOR_POSITIONS),
-  indicatorSticky: AllowedTypes.boolean,
+  sticky: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   scrollbar: AllowedTypes.boolean,
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
@@ -23,7 +21,7 @@ const propTypes: PropTypes<typeof Scroller> = {
     scrollPosition: AllowedTypes.number,
     isSmooth: AllowedTypes.boolean,
   }),
-  alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLLER_INDICATOR_POSITIONS),
+  alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLLER_ALIGN_SCROLL_INDICATORS),
 };
 
 /**
@@ -36,14 +34,6 @@ const propTypes: PropTypes<typeof Scroller> = {
 export class Scroller {
   @Element() public host!: HTMLElement;
 
-  /** Sets the vertical position of scroll indicator. */
-  @Prop() public indicatorPosition?: ScrollerIndicatorPosition = 'center';
-
-  /**
-   * @experimental Makes the indicator sticky at the top while scrolling.
-   */
-  @Prop() public indicatorSticky?: boolean = false;
-
   /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
 
@@ -53,8 +43,13 @@ export class Scroller {
   /** Add ARIA role. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
-  /** @deprecated since v4.0.0, will be removed with next major release, use `indicatorPosition` instead. */
-  @Prop() public alignScrollIndicator?: ScrollerIndicatorPosition = 'center';
+  /**
+   * @experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+   */
+  @Prop() public sticky?: boolean = false;
+
+  /** @deprecated since v4.0.0, will be removed with next major release, has no effect anymore. */
+  @Prop() public alignScrollIndicator?: ScrollerAlignScrollIndicator = 'center';
 
   /** @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
@@ -110,8 +105,7 @@ export class Scroller {
       getComponentCss,
       this.isIndicatorPrevHidden,
       this.isIndicatorNextHidden,
-      this.indicatorPosition,
-      this.indicatorSticky,
+      this.sticky,
       this.scrollbar,
       this.compact
     );

@@ -19,7 +19,7 @@ import {
 import { getSmoothMask } from '../../styles/mask';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import type { ScrollerDirection, ScrollerIndicatorPosition } from './scroller-utils';
+import type { ScrollerDirection } from './scroller-utils';
 
 /**
  * @css-variable {"name": "--p-scroller-gap", "description": "Controls the gap between slotted nodes.", "defaultValue": "8px"}
@@ -47,9 +47,8 @@ const safeZone = '4px';
 
 const getScrollIndicatorStyles = (
   direction: ScrollerDirection,
-  indicatorPosition: ScrollerIndicatorPosition,
-  isIndicatorVisible: boolean,
-  isIndicatorSticky: boolean,
+  isVisible: boolean,
+  isSticky: boolean,
   hasScrollbar: boolean,
   isCompact: boolean
 ): JssStyle => {
@@ -59,27 +58,26 @@ const getScrollIndicatorStyles = (
   return {
     gridArea: isPrev ? '1/1' : '1/3',
     zIndex: 1, // ensure that indicators are above the scroll area
-    ...(isIndicatorSticky && {
+    ...(isSticky && {
       position: 'sticky',
       top: `var(${cssVarIndicatorTop},0px)`,
       bottom: `var(${cssVarIndicatorBottom},0px)`,
     }),
-    ...(hasScrollbar &&
-      indicatorPosition === 'center' && {
-        marginTop: `calc(-1 * ${scrollbarWidth})`,
-      }),
+    ...(hasScrollbar && {
+      marginTop: `calc(-1 * ${scrollbarWidth})`,
+    }),
     display: 'grid',
-    alignSelf: indicatorPosition === 'center' ? 'center' : 'flex-start',
+    alignSelf: 'center',
     width: '1.5rem',
     height: '1.5rem',
     ...(!isCompact && {
       padding: spacingStaticXs,
     }),
     cursor: 'pointer',
-    opacity: isIndicatorVisible ? 1 : 0,
-    visibility: isIndicatorVisible ? 'inherit' : 'hidden',
-    transform: `translate3d(${isIndicatorVisible ? '0' : `${isPrev ? `calc(-1 * ${spacingStaticSm})` : spacingStaticSm}`},0,0)`,
-    transition: `${getTransition('transform')},${getTransition('opacity')},visibility 0s linear ${isIndicatorVisible ? '0s' : `var(${cssVariableTransitionDuration},${durationSm})`}`,
+    opacity: isVisible ? 1 : 0,
+    visibility: isVisible ? 'inherit' : 'hidden',
+    transform: `translate3d(${isVisible ? '0' : `${isPrev ? `calc(-1 * ${spacingStaticSm})` : spacingStaticSm}`},0,0)`,
+    transition: `${getTransition('transform')},${getTransition('opacity')},visibility 0s linear ${isVisible ? '0s' : `var(${cssVariableTransitionDuration},${durationSm})`}`,
     '&:dir(rtl)': {
       gridArea: isPrev ? '1/3' : '1/1',
     },
@@ -102,8 +100,7 @@ const getScrollIndicatorStyles = (
 export const getComponentCss = (
   isIndicatorPrevHidden: boolean,
   isIndicatorNextHidden: boolean,
-  indicatorPosition: ScrollerIndicatorPosition,
-  isIndicatorSticky: boolean,
+  isSticky: boolean,
   hasScrollbar: boolean,
   isCompact: boolean
 ): string => {
@@ -167,21 +164,7 @@ export const getComponentCss = (
         gridArea: '1/1',
       },
     },
-    prev: getScrollIndicatorStyles(
-      'prev',
-      indicatorPosition,
-      !isIndicatorPrevHidden,
-      isIndicatorSticky,
-      hasScrollbar,
-      isCompact
-    ),
-    next: getScrollIndicatorStyles(
-      'next',
-      indicatorPosition,
-      !isIndicatorNextHidden,
-      isIndicatorSticky,
-      hasScrollbar,
-      isCompact
-    ),
+    prev: getScrollIndicatorStyles('prev', !isIndicatorPrevHidden, isSticky, hasScrollbar, isCompact),
+    next: getScrollIndicatorStyles('next', !isIndicatorNextHidden, isSticky, hasScrollbar, isCompact),
   });
 };
