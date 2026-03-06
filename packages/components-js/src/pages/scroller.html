@@ -3,15 +3,22 @@
     max-width: 600px;
   }
 
-  .playground > div {
-    height: 3rem;
-    border: 1px solid deeppink;
-    max-width: 600px;
+  button {
+    padding: 8px;
+  }
+
+  .custom-sticky {
+    --p-scroller-indicator-top: 10px;
+    --p-scroller-indicator-bottom: 10px;
+  }
+
+  .custom-scroller-gap {
+    --p-scroller-gap: 32px
   }
 </style>
 
-<div class="playground" title="should render scroller">
-  <p-scroller class="a11ytree-snapshot-test">
+<div class="playground" title="default">
+  <p-scroller class="a11ytree-snapshot-test" style="max-width: none;">
     <button>Button</button>
     <button>Button</button>
     <button>Button</button>
@@ -29,8 +36,8 @@
   </p-scroller>
 </div>
 
-<div class="playground surface" title="should render scroller on surface background">
-  <p-scroller>
+<div class="playground" title="@deprecated scroll-to-position={scrollPosition: 100}">
+  <p-scroller scroll-to-position="{scrollPosition: 100}">
     <button>Button</button>
     <button>Button</button>
     <button>Button</button>
@@ -48,78 +55,59 @@
   </p-scroller>
 </div>
 
-<div class="playground" title="should render scroller with alignScrollIndicator center">
-  <div>
-    <p-scroller align-scroll-indicator="center">
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
+<div class="playground" title="scrollbar=true">
+  <p-scroller scrollbar="true">
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+  </p-scroller>
+</div>
+
+<div class="playground" title="compact=true">
+  <p-scroller compact="true">
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+    <button>Button</button>
+  </p-scroller>
+</div>
+
+<div class="playground auto-layout-block" title="sticky=true, --p-scroller-indicator-top: 10px, --p-scroller-indicator-bottom: 10px">
+  <div class="scroll-down" style="max-width: 400px; height: 100px; overflow: hidden scroll; background: deeppink">
+    <p-scroller class="custom-sticky" sticky="true" scroll-to-position="{scrollPosition: 100}">
+      <div style="height: 300px; width: 600px; background: lightpink"></div>
+    </p-scroller>
+  </div>
+  <div style="max-width: 400px; height: 100px; overflow: hidden scroll; background: deeppink">
+    <p-scroller class="custom-sticky" sticky="true" scroll-to-position="{scrollPosition: 100}">
+      <div style="height: 300px; width: 600px; background: lightpink"></div>
     </p-scroller>
   </div>
 </div>
 
-<div class="playground" title="should render scroller with alignScrollIndicator top">
-  <div>
-    <p-scroller align-scroll-indicator="top">
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-    </p-scroller>
-  </div>
-</div>
-
-<div class="playground" title="should render scroller only on screen size too small to show all buttons at once">
-  <p-scroller style="max-width: none">
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-  </p-scroller>
-</div>
-
-<div class="playground" title="should render scroller items with linebreaks">
-  <p-scroller>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-    <button>Button with line break</button>
-  </p-scroller>
-</div>
-
-<div class="playground" title="should render scroller with initial scroll position">
-  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 100}">
+<div class="playground" title="--p-scroller-gap: 32px">
+  <p-scroller class="custom-scroller-gap">
     <button>Button</button>
     <button>Button</button>
     <button>Button</button>
@@ -137,23 +125,10 @@
   </p-scroller>
 </div>
 
-<div class="playground" title="should render scroller with scrollbar">
-  <div>
-    <p-scroller scrollbar="true">
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-      <button>Button</button>
-    </p-scroller>
-  </div>
-</div>
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('.scroll-down').scrollTo({
+      top: 999,
+    });
+  });
+</script>
