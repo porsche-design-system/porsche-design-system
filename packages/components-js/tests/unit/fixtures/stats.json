@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 79270,
-    "gzipSize": 25389
+    "size": 79156,
+    "gzipSize": 25359
   },
   {
     "chunkShortName": "modal",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 6652,
-    "gzipSize": 2860
+    "size": 6487,
+    "gzipSize": 2814
   },
   {
     "chunkShortName": "segmented-control",
@@ -246,8 +246,8 @@
   },
   {
     "chunkShortName": "table",
-    "size": 9647,
-    "gzipSize": 3874
+    "size": 9593,
+    "gzipSize": 3868
   },
   {
     "chunkShortName": "tabs",
