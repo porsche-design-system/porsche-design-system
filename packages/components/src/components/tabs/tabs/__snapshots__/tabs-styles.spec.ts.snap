@@ -11,6 +11,6 @@ exports[`getComponentCss() > should return correct css 1`] = `
   visibility: hidden;
 }
 .root {
-  margin-bottom: 8px;
+  margin-bottom: var(--p-spacing-static-sm);
 }"
 `;

@@ -1,5 +1,5 @@
-import { spacingStaticSmall } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { spacingStaticSm } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 
 export const getComponentCss = (): string => {
@@ -14,7 +14,7 @@ export const getComponentCss = (): string => {
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
-      marginBottom: spacingStaticSmall,
+      marginBottom: spacingStaticSm,
     },
   });
 };

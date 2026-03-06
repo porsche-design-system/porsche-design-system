@@ -3,16 +3,15 @@ import { getComponentCss } from './scroller-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [false, false, 'center', false],
-    [false, false, 'center', false],
-    [false, false, 'center', false],
-    [false, false, 'center', false],
-    [false, false, 'top', true],
-    [true, false, undefined, true],
-    [false, true, undefined, true],
-    [true, true, undefined, true],
+    [false, false, false, false, false],
+    [true, false, false, false, false],
+    [false, true, false, false, false],
+    [true, true, false, false, false],
+    [true, true, true, false, false],
+    [true, true, true, true, false],
+    [true, true, true, true, true],
   ])(
-    'should return correct css for isNextHidden: %s, isPrevHidden: %s, scrollIndicatorPosition: %s and hasScrollbar: %s',
+    'should return correct css for isIndicatorPrevHidden: %s, isIndicatorNextHidden: %s, isSticky: %s, hasScrollbar: %s, isCompact: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

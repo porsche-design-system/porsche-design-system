@@ -89,10 +89,10 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-export const getFocusBaseStyles = () => {
+export const getFocusBaseStyles = (offset: number = 2) => {
   return {
     outline: `${borderWidthBase} solid ${colorFocus}`,
-    outlineOffset: '2px',
+    outlineOffset: `${offset}px`,
     ...forcedColorsMediaQuery({
       outlineColor: 'Highlight',
     }),

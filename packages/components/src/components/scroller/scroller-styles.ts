@@ -1,125 +1,170 @@
-import { dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/emotion';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  dismissButtonJssStyle,
+  cssVariableTransitionDuration,
   getFocusBaseStyles,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import {
+  colorPrimary,
+  durationSm,
+  legacyRadiusSmall,
+  radiusLg,
+  spacingStaticSm,
+  spacingStaticXs,
+} from '../../styles/css-variables';
+import { getSmoothMask } from '../../styles/mask';
 import { getCss } from '../../utils';
-import type { ScrollerAlignScrollIndicator } from './scroller-utils';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import type { ScrollerDirection } from './scroller-utils';
 
-const prevNextWrapperWidth = `calc(${fontLineHeight} + 24px)`;
+/**
+ * @css-variable {"name": "--p-scroller-gap", "description": "Controls the gap between slotted nodes.", "defaultValue": "8px"}
+ */
+const cssVarGap = '--p-scroller-gap';
+
+/**
+ * @css-variable {"name": "--p-scroller-indicator-top", "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and `indicator-sticky` is enabled.", "defaultValue": "0px"}
+ */
+const cssVarIndicatorTop = '--p-scroller-indicator-top';
+
+/**
+ * @css-variable {"name": "--p-scroller-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and `indicator-sticky` is enabled.", "defaultValue": "0px"}
+ */
+const cssVarIndicatorBottom = '--p-scroller-indicator-bottom';
+
+const iconPrev = getInlineSVGBackgroundImage(
+  `<path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/>`
+);
+const iconNext = getInlineSVGBackgroundImage(
+  `<path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/>`
+);
+const scrollbarWidth = '12px';
+const safeZone = '4px';
+
+const getScrollIndicatorStyles = (
+  direction: ScrollerDirection,
+  isVisible: boolean,
+  isSticky: boolean,
+  hasScrollbar: boolean,
+  isCompact: boolean
+): JssStyle => {
+  const isPrev = direction === 'prev';
+  const iconMask = `${isPrev ? iconPrev : iconNext} center/contain no-repeat`;
+
+  return {
+    gridArea: isPrev ? '1/1' : '1/3',
+    zIndex: 1, // ensure that indicators are above the scroll area
+    ...(isSticky && {
+      position: 'sticky',
+      top: `var(${cssVarIndicatorTop},0px)`,
+      bottom: `var(${cssVarIndicatorBottom},0px)`,
+    }),
+    ...(hasScrollbar && {
+      marginTop: `calc(-1 * ${scrollbarWidth})`,
+    }),
+    display: 'grid',
+    alignSelf: 'center',
+    width: '1.5rem',
+    height: '1.5rem',
+    ...(!isCompact && {
+      padding: spacingStaticXs,
+    }),
+    cursor: 'pointer',
+    opacity: isVisible ? 1 : 0,
+    visibility: isVisible ? 'inherit' : 'hidden',
+    transform: `translate3d(${isVisible ? '0' : `${isPrev ? `calc(-1 * ${spacingStaticSm})` : spacingStaticSm}`},0,0)`,
+    transition: `${getTransition('transform')},${getTransition('opacity')},visibility 0s linear ${isVisible ? '0s' : `var(${cssVariableTransitionDuration},${durationSm})`}`,
+    '&:dir(rtl)': {
+      gridArea: isPrev ? '1/3' : '1/1',
+    },
+    ...hoverMediaQuery({
+      '&:hover::after': {
+        // do the transform on the pseudo-element to prevent the click area from moving when hovered
+        transform: `translate3d(${isPrev ? `calc(-1 * ${spacingStaticXs})` : spacingStaticXs},0,0)`,
+      },
+    }),
+    '&::after': {
+      content: '""',
+      WebkitMask: iconMask, // necessary for Sogou browser support :-)
+      mask: iconMask,
+      background: colorPrimary,
+      transition: getTransition('transform'),
+    },
+  };
+};
 
 export const getComponentCss = (
-  isNextHidden: boolean,
-  isPrevHidden: boolean,
-  alignScrollIndicator: ScrollerAlignScrollIndicator,
-  hasScrollbar: boolean
+  isIndicatorPrevHidden: boolean,
+  isIndicatorNextHidden: boolean,
+  isSticky: boolean,
+  hasScrollbar: boolean,
+  isCompact: boolean
 ): string => {
-  const actionPrevNextStyles = {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    direction: 'ltr',
-    width: prevNextWrapperWidth,
-    padding: '4px 0',
-    display: 'flex',
-    alignItems: alignScrollIndicator === 'center' ? 'center' : 'flex-start',
-  };
+  const fadeEdges =
+    isIndicatorPrevHidden && isIndicatorNextHidden
+      ? 'none'
+      : isIndicatorPrevHidden
+        ? 'right'
+        : isIndicatorNextHidden
+          ? 'left'
+          : 'both';
+  const mask = `${getSmoothMask(fadeEdges)} 0 0/auto no-repeat${hasScrollbar ? `,linear-gradient(black,black) 0 bottom/auto ${scrollbarWidth} no-repeat` : ''}`;
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
+        borderRadius: `var(${legacyRadiusSmall},${radiusLg})`, // needs to be overwritable by tabs-bar to improve focus appearance
         ...addImportantToEachRule({
-          height: 'inherit',
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      slot: {
+        gridArea: '1/2',
+        position: 'relative', // necessary for tabs bar animation
+        display: 'inline-flex',
+        gap: `var(${cssVarGap},${isCompact ? spacingStaticXs : spacingStaticSm})`,
+      },
     },
     root: {
-      position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `${prevNextWrapperWidth} minmax(0, 1fr) ${prevNextWrapperWidth}`,
-      margin: '0 -4px',
-      height: 'inherit',
+      gridTemplateColumns: `auto minmax(0,1fr) auto`,
+      alignItems: 'center',
+      borderRadius: 'inherit',
+      '&:has(.scroll:focus-visible)': getFocusBaseStyles(), // delegating the focus ensures mask does not cut off the focus ring
     },
-    'scroll-area': {
-      gridArea: '1 / 1 / 1 / -1',
-      padding: '4px',
+    scroll: {
+      gridArea: '1/1/1/-1',
+      zIndex: 0, // ensure that scroll area is behind the indicators
+      display: 'grid',
+      gridTemplateColumns: `${safeZone} minmax(auto,1fr) ${safeZone}`,
+      margin: `calc(-1 * ${safeZone})`, // compensate padding to ensure that `:host` is aligned with other elements
+      padding: `${safeZone} 0px${hasScrollbar ? ` calc(${safeZone} + ${scrollbarWidth})` : ''}`, // ensure enough space is available for focus ring of slotted elements (horizontal space is given by `.sentinel`)
+      outline: 'none', // focus ring is applied to `.root`, it would be cut off by the mask if applied to `.scroll`
       overflow: 'auto hidden',
-      ...((!isPrevHidden || !isNextHidden) && {
-        mask: isNextHidden
-          ? 'linear-gradient(90deg,#0000 8px,#000 40px) alpha'
-          : isPrevHidden
-            ? 'linear-gradient(90deg,#000 calc(100% - 40px), #0000 calc(100% - 8px)) alpha'
-            : 'linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha',
+      ...(fadeEdges !== 'none' && {
+        WebkitMask: mask, // necessary for Sogou browser support :-)
+        mask,
       }),
-      ...(!hasScrollbar && {
-        // If scrollbar is disabled - hide scrollbar
-        msOverflowStyle: 'none' /* IE and Edge */,
-        scrollbarWidth: 'none' /* Firefox */,
-        '&::-webkit-scrollbar': {
-          display: 'none',
-        },
-      }),
+      scrollbarWidth: hasScrollbar ? 'thin' : 'none',
     },
-    // Extra wrapper needed to compensate different offset parent calculation depending on browser.
-    // Needed for position of status bar.
-    'scroll-wrapper': {
-      position: 'relative',
-      display: 'inline-flex',
-      minHeight: '28px',
-      minWidth: '100%',
-      verticalAlign: 'top',
-      borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
-      '&:focus-visible': getFocusBaseStyles(),
-    },
-    trigger: {
-      position: 'absolute',
-      inset: '0 auto',
-      width: '1px',
+    // as soon as `@container scroll-state(scrollable: left)` has better browser support we can get rid of sentinel and IntersectionObserver
+    sentinel: {
+      width: safeZone,
       visibility: 'hidden',
-      '&:first-of-type': {
-        left: 0,
+      '&:first-of-type:dir(rtl)': {
+        gridArea: '1/3',
       },
-      '&:last-of-type': {
-        right: 0,
-      },
-    },
-    'action-prev': {
-      ...actionPrevNextStyles,
-      left: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
-      justifyContent: 'flex-start',
-      visibility: isPrevHidden ? 'hidden' : 'inherit',
-      '& .action-button': {
-        marginLeft: '8px',
-        // hide buttons on mobile (actually devices not supporting hover)
-        ...hoverMediaQuery({
-          visibility: isPrevHidden ? 'hidden' : 'inherit',
-        }),
+      '&:last-of-type:dir(rtl)': {
+        gridArea: '1/1',
       },
     },
-    'action-next': {
-      ...actionPrevNextStyles,
-      right: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
-      justifyContent: 'flex-end',
-      visibility: isNextHidden ? 'hidden' : 'inherit',
-      '& .action-button': {
-        marginRight: '8px',
-        // hide buttons on mobile (actually devices not supporting hover)
-        ...hoverMediaQuery({
-          visibility: isNextHidden ? 'hidden' : 'inherit',
-        }),
-      },
-    },
-    'action-button': {
-      ...dismissButtonJssStyle,
-      ...dropShadowLowStyle,
-    },
+    prev: getScrollIndicatorStyles('prev', !isIndicatorPrevHidden, isSticky, hasScrollbar, isCompact),
+    next: getScrollIndicatorStyles('next', !isIndicatorNextHidden, isSticky, hasScrollbar, isCompact),
   });
 };

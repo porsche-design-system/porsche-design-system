@@ -1,4 +1,11 @@
-<div class="playground" title="should render table">
+<style>
+  .custom-sticky {
+    --p-table-scroll-indicator-top: 10px;
+    --p-table-scroll-indicator-bottom: 10px;
+  }
+</style>
+
+<div class="playground" title="default">
   <p-table caption="Some caption" class="a11ytree-snapshot-test">
     <p-table-head>
       <p-table-head-row>
@@ -25,11 +32,7 @@
               style="margin-inline-end: 8px"
               alt="911 vehicle"
             />
-            <span>
-              <a href="#" class="skip-axe-core-test">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
-                >emphasized</em
-              >
-            </span>
+            Some text
           </div>
         </p-table-cell>
         <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
@@ -45,7 +48,7 @@
   </p-table>
 </div>
 
-<div class="playground" title="should render table with compact: true">
+<div class="playground" title="compact=true">
   <p-table caption="Some caption" compact="true">
     <p-table-head>
       <p-table-head-row>
@@ -72,11 +75,7 @@
               style="margin-inline-end: 8px"
               alt="911 vehicle"
             />
-            <span>
-              <a href="#" class="skip-axe-core-test">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
-                >emphasized</em
-              >
-            </span>
+            Some text
           </div>
         </p-table-cell>
         <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
@@ -92,7 +91,7 @@
   </p-table>
 </div>
 
-<div class="playground" title="should render table with layout: fixed and relative width">
+<div class="playground" title="layout=fixed (relative width)">
   <p-table caption="Some caption" layout="fixed">
     <p-table-head>
       <p-table-head-row>
@@ -116,7 +115,7 @@
   </p-table>
 </div>
 
-<div class="playground" title="should render table with layout: fixed and relative min-width">
+<div class="playground" title="layout=fixed (relative min-width)">
   <p-table caption="Some caption" layout="fixed">
     <p-table-head>
       <p-table-head-row>
@@ -140,7 +139,7 @@
   </p-table>
 </div>
 
-<div class="playground" title="should render table with layout: fixed and relative max-width + width">
+<div class="playground" title="layout=fixed (relative max-width + width)">
   <p-table caption="Some caption" layout="fixed">
     <p-table-head>
       <p-table-head-row>
@@ -191,11 +190,7 @@
               style="margin-inline-end: 8px"
               alt="911 vehicle"
             />
-            <span>
-              <a href="#" class="skip-axe-core-test">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
-                >emphasized</em
-              >
-            </span>
+            Some text
           </div>
         </p-table-cell>
         <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
@@ -213,7 +208,7 @@
 
 <div class="playground" title="should render table with unstyled slotted caption and without table-body">
   <p-table>
-    <span slot="caption">Some unstyled caption <a href="#" class="skip-axe-core-test">with a link</a></span>
+    <span slot="caption">Some unstyled caption</span>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell>Column 1</p-table-head-cell>
@@ -222,3 +217,98 @@
     </p-table-head>
   </p-table>
 </div>
+
+<div class="playground auto-layout-block" title="sticky=true, --p-table-scroll-indicator-top: 10px, --p-table-scroll-indicator-bottom: 10px">
+  <div class="scroll-down" style="max-width: 400px; height: 100px; overflow: hidden scroll; background: deeppink">
+    <p-table class="custom-sticky" caption="Some caption" sticky="true">
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell>Slotted Styles</p-table-head-cell>
+          <p-table-head-cell>Multiline text</p-table-head-cell>
+          <p-table-head-cell style="min-width: 250px">Min width cell</p-table-head-cell>
+          <p-table-head-cell>
+            Forced Multiline<br />
+            header<br />
+            cell
+          </p-table-head-cell>
+          <p-table-head-cell multiline="true">Natural multiline header cell</p-table-head-cell>
+          <p-table-head-cell>Hide header cell</p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+      <p-table-body>
+        <p-table-row>
+          <p-table-cell>
+            <div style="display: flex; align-items: center">
+              <img
+                src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
+                width="80"
+                height="48"
+                style="margin-inline-end: 8px"
+                alt="911 vehicle"
+              />
+              Some text
+            </div>
+          </p-table-cell>
+          <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
+          <p-table-cell>Some text</p-table-cell>
+          <p-table-cell>Some text</p-table-cell>
+          <p-table-cell>Some text</p-table-cell>
+          <p-table-cell>
+            <p-button-pure icon="edit" style="padding: 8px">Edit</p-button-pure>
+            <p-button-pure icon="delete" style="padding: 8px">Delete</p-button-pure>
+          </p-table-cell>
+        </p-table-row>
+      </p-table-body>
+    </p-table>
+  </div>
+  <div style="max-width: 400px; height: 100px; overflow: hidden scroll; background: deeppink">
+    <p-table class="custom-sticky" caption="Some caption" sticky="true">
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell>Slotted Styles</p-table-head-cell>
+          <p-table-head-cell>Multiline text</p-table-head-cell>
+          <p-table-head-cell style="min-width: 250px">Min width cell</p-table-head-cell>
+          <p-table-head-cell>
+            Forced Multiline<br />
+            header<br />
+            cell
+          </p-table-head-cell>
+          <p-table-head-cell multiline="true">Natural multiline header cell</p-table-head-cell>
+          <p-table-head-cell>Hide header cell</p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+      <p-table-body>
+        <p-table-row>
+          <p-table-cell>
+            <div style="display: flex; align-items: center">
+              <img
+                src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
+                width="80"
+                height="48"
+                style="margin-inline-end: 8px"
+                alt="911 vehicle"
+              />
+              Some text
+            </div>
+          </p-table-cell>
+          <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
+          <p-table-cell>Some text</p-table-cell>
+          <p-table-cell>Some text</p-table-cell>
+          <p-table-cell>Some text</p-table-cell>
+          <p-table-cell>
+            <p-button-pure icon="edit" style="padding: 8px">Edit</p-button-pure>
+            <p-button-pure icon="delete" style="padding: 8px">Delete</p-button-pure>
+          </p-table-cell>
+        </p-table-row>
+      </p-table-body>
+    </p-table>
+  </div>
+</div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('.scroll-down').scrollTo({
+      top: 999,
+    });
+  });
+</script>

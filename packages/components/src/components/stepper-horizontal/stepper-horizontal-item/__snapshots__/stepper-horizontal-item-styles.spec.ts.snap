@@ -7,9 +7,6 @@ exports[`getComponentCss() > should return correct css for state: complete, isDi
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -74,9 +71,6 @@ exports[`getComponentCss() > should return correct css for state: complete, isDi
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -132,9 +126,6 @@ exports[`getComponentCss() > should return correct css for state: current, isDis
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -253,9 +244,6 @@ exports[`getComponentCss() > should return correct css for state: current, isDis
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -366,9 +354,6 @@ exports[`getComponentCss() > should return correct css for state: undefined, isD
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -476,9 +461,6 @@ exports[`getComponentCss() > should return correct css for state: undefined, isD
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -585,9 +567,6 @@ exports[`getComponentCss() > should return correct css for state: warning, isDis
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -651,9 +630,6 @@ exports[`getComponentCss() > should return correct css for state: warning, isDis
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

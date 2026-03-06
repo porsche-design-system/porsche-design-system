@@ -7717,6 +7717,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-scroller": {
+    "cssVariablesMeta": {
+      "--p-scroller-gap": {
+        "defaultValue": "8px",
+        "description": "Controls the gap between slotted nodes.",
+      },
+      "--p-scroller-indicator-bottom": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and \`indicator-sticky\` is enabled.",
+      },
+      "--p-scroller-indicator-top": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and \`indicator-sticky\` is enabled.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7726,9 +7740,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "alignScrollIndicator": {
         "allowedValues": [
@@ -7736,7 +7747,8 @@ exports[`should match snapshot 1`] = `
           "center",
         ],
         "defaultValue": "center",
-        "description": "Sets the vertical position of scroll indicator.",
+        "description": "@deprecated since v4.0.0, will be removed with next major release, has no effect anymore.",
+        "isDeprecated": true,
         "type": "ScrollerAlignScrollIndicator",
       },
       "aria": {
@@ -7748,13 +7760,20 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "ScrollerAriaAttribute",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays in compact mode.",
+        "type": "boolean",
+      },
       "scrollToPosition": {
         "allowedValues": {
           "isSmooth": "boolean",
           "scrollPosition": "number",
         },
         "defaultValue": null,
-        "description": "Scrolls the scroll area to the left either smooth or immediately.",
+        "description": "@deprecated since v4.0.0, use native \`scrollIntoView()\` on the slotted element itself.",
+        "isDeprecated": true,
         "propOptions": {
           "mutable": true,
         },
@@ -7764,6 +7783,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Specifies if scrollbar should be shown.",
+        "type": "boolean",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.",
+        "isExperimental": true,
         "type": "boolean",
       },
     },
@@ -8844,6 +8870,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-table": {
+    "cssVariablesMeta": {
+      "--p-table-scroll-indicator-bottom": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and \`scroll-indicator-sticky\` is enabled.",
+      },
+      "--p-table-scroll-indicator-top": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and \`scroll-indicator-sticky\` is enabled.",
+      },
+    },
     "eventsMeta": {
       "update": {
         "description": "Emitted when sorting is changed.",
@@ -8884,6 +8920,13 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Controls the layout behavior of the table.",
         "type": "TableLayout",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.",
+        "isExperimental": true,
+        "type": "boolean",
       },
     },
     "slotsMeta": {
@@ -9107,6 +9150,23 @@ exports[`should match snapshot 1`] = `
         },
         "type": "number",
       },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "TabsBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays the tabs-bar in compact mode.",
+        "type": "boolean",
+      },
       "size": {
         "allowedValues": [
           "small",
@@ -9123,7 +9183,8 @@ exports[`should match snapshot 1`] = `
           "semi-bold",
         ],
         "defaultValue": "regular",
-        "description": "The text weight.",
+        "description": "@deprecated Will be removed in the next major release. Has no effect anymore.",
+        "isDeprecated": true,
         "type": "TabsWeight",
       },
     },
@@ -9169,6 +9230,23 @@ exports[`should match snapshot 1`] = `
         "description": "Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.",
         "type": "number | undefined",
       },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "TabsBarBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays the tabs-bar in compact mode.",
+        "type": "boolean",
+      },
       "size": {
         "allowedValues": [
           "small",
@@ -9185,7 +9263,8 @@ exports[`should match snapshot 1`] = `
           "semi-bold",
         ],
         "defaultValue": "regular",
-        "description": "The text weight.",
+        "description": "@deprecated Will be removed in the next major release. Has no effect anymore.",
+        "isDeprecated": true,
         "type": "TabsBarWeight",
       },
     },

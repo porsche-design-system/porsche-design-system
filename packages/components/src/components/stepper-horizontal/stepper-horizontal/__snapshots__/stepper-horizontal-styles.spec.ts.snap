@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() > should return correct css for size: "medium" 1`] = `
 ":host {
-  display: block;
+  display: grid;
 }
 :host([hidden]) {
   display: none !important;
@@ -11,6 +11,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
   visibility: hidden;
 }
 .scroller {
+  place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -20,7 +21,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
 
 exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 ":host {
-  display: block;
+  display: grid;
 }
 :host([hidden]) {
   display: none !important;
@@ -29,6 +30,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
   visibility: hidden;
 }
 .scroller {
+  place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -38,7 +40,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 
 exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
 ":host {
-  display: block;
+  display: grid;
 }
 :host([hidden]) {
   display: none !important;
@@ -47,6 +49,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
   visibility: hidden;
 }
 .scroller {
+  place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);

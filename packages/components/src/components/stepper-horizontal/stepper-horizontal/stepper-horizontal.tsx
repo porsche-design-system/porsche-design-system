@@ -4,14 +4,9 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getScrollActivePosition,
-  getShadowRootHTMLElement,
   hasPropValueChanged,
-  observeBreakpointChange,
-  parseJSON,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
-  unobserveBreakpointChange,
   validateProps,
 } from '../../../utils';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
@@ -21,6 +16,7 @@ import {
   STEPPER_HORIZONTAL_SIZES,
   type StepperHorizontalSize,
   type StepperHorizontalUpdateEventDetail,
+  scrollStepperHorizontalItemIntoView,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 
@@ -44,59 +40,63 @@ export class StepperHorizontal {
   /** Emitted when active step is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalUpdateEventDetail>;
 
+  private scroller: HTMLElement;
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-  private scrollerElement: HTMLPScrollerElement;
-  private currentStepIndex: number;
+  private slot: HTMLSlotElement;
+  private resizeObserver: ResizeObserver;
 
-  public connectedCallback(): void {
-    this.validateComponent(); // on every reconnect
-    this.observeBreakpointChange();
-  }
-
-  public componentWillLoad(): void {
-    // Initial validation
-    this.validateComponent();
+  public disconnectedCallback(): void {
+    this.resizeObserver?.disconnect();
+    this.slot?.removeEventListener('slotchange', this.onSlotChange);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentWillLoad(): void {
+    this.defineStepperHorizontalItems();
+  }
+
   public componentDidLoad(): void {
-    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+    // scroll current step into view initially
+    scrollStepperHorizontalItemIntoView(
+      getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+      this.scroller,
+      this.stepperHorizontalItems,
+      false
+    );
 
-    this.observeBreakpointChange();
-
-    // Sometimes lifecycle gets called after disconnectedCallback()
-    if (this.scrollerElement) {
-      // Initial scroll current into view
-      this.scrollerElement.scrollToPosition = {
-        scrollPosition: getScrollActivePosition(
-          this.stepperHorizontalItems,
-          'next',
-          this.currentStepIndex,
-          this.scrollerElement
-        ),
-        isSmooth: false,
-      };
-    }
-
-    // TODO: would be great to use this in jsx but that doesn't work reliable and causes jsdom-polyfill unit test to fail
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotChange);
+    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
+    this.slot.addEventListener('slotchange', this.onSlotChange);
+    this.resizeObserver = new ResizeObserver(() => {
+      // scroll into view in case the current step is not centered after resize
+      scrollStepperHorizontalItemIntoView(
+        getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+        this.scroller,
+        this.stepperHorizontalItems,
+        false
+      );
+    });
+    this.resizeObserver.observe(this.scroller);
   }
 
   public componentDidUpdate(): void {
-    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-    this.scrollIntoView();
-  }
-
-  public disconnectedCallback(): void {
-    unobserveBreakpointChange(this.host);
+    // scroll the new current step into view
+    scrollStepperHorizontalItemIntoView(
+      getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+      this.scroller,
+      this.stepperHorizontalItems
+    );
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
+
+    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
+    throwIfChildCountIsExceeded(this.host, 9);
+    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -106,13 +106,17 @@ export class StepperHorizontal {
           class="scroller"
           aria={{ role: 'list' }}
           onClick={this.onClickScroller}
-          ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
+          ref={(el: HTMLElement) => (this.scroller = el)}
         >
-          <slot />
+          <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
         </PrefixedTagNames.pScroller>
       </Host>
     );
   }
+
+  private defineStepperHorizontalItems = (): void => {
+    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+  };
 
   private onClickScroller = (e: MouseEvent): void => {
     const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
@@ -122,48 +126,17 @@ export class StepperHorizontal {
     );
 
     if (target) {
-      const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
-
-      this.update.emit({ activeStepIndex: clickedStepIndex });
-    }
-  };
-
-  private validateComponent = (): void => {
-    throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
-    throwIfChildCountIsExceeded(this.host, 9);
-    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
-    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-  };
-
-  private scrollIntoView = (): void => {
-    const newStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-    // If state is set to undefined index is -1
-    if (newStepIndex !== -1) {
-      const scrollActivePosition = getScrollActivePosition(
-        this.stepperHorizontalItems,
-        newStepIndex > this.currentStepIndex ? 'next' : 'prev',
-        newStepIndex,
-        this.scrollerElement
-      );
-
-      this.currentStepIndex = newStepIndex;
-
-      this.scrollerElement.scrollToPosition = {
-        scrollPosition: scrollActivePosition,
-        isSmooth: true,
-      };
-    }
-  };
-
-  private observeBreakpointChange = (): void => {
-    if (typeof parseJSON(this.size) === 'object') {
-      observeBreakpointChange(this.host, this.scrollIntoView);
+      this.update.emit({ activeStepIndex: this.stepperHorizontalItems.indexOf(target) });
     }
   };
 
   private onSlotChange = (): void => {
-    this.validateComponent();
-    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-    this.scrollIntoView();
+    this.defineStepperHorizontalItems();
+    // scroll the current step into view after slot change in case the current step has changed or is not centered anymore
+    scrollStepperHorizontalItemIntoView(
+      getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+      this.scroller,
+      this.stepperHorizontalItems
+    );
   };
 }

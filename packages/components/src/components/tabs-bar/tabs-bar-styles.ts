@@ -1,139 +1,112 @@
 import {
-  fontSizeText,
-  frostedGlassStyle,
-  motionDurationModerate,
-  spacingStaticMedium,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
-import { spacingStaticXs } from '@porsche-design-system/tokens';
-import type { JssStyle } from 'jss';
-import {
   addImportantToEachRule,
-  addImportantToRule,
-  cssVariableAnimationDuration,
-  cssVariableTransitionDuration,
-  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
-import { getFontWeight } from '../../styles/font-weight-styles';
+import {
+  blurFrosted,
+  colorCanvas,
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  colorSurface,
+  durationMd,
+  fontPorscheNext,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusFull,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleMd,
+  typescaleSm,
+} from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
-import type { TabsBarSize, TabsBarWeight } from './tabs-bar-utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { TabsBarBackground, TabsBarSize } from './tabs-bar-utils';
 
-export const scrollerAnimatedCssClass = 'scroller--animated';
-
-const targetSelectors = ['a', 'button'];
-const transformSelector = (selector: string): string =>
-  targetSelectors.map((tag) => selector.replace(/\[role]/g, tag)).join();
-
-const barJssStyle: JssStyle = {
-  position: 'absolute',
-  height: '2px',
-  left: 0,
-  background: colorPrimary,
-  ...forcedColorsMediaQuery({
-    background: 'ActiveBorder',
-  }),
+const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
+  canvas: colorCanvas,
+  surface: colorSurface,
+  frosted: colorFrosted,
 };
 
-export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weight: TabsBarWeight): string => {
+const fontSizeText = {
+  small: typescaleSm,
+  medium: typescaleMd,
+};
+
+export const getComponentCss = (
+  background: TabsBarBackground,
+  size: BreakpointCustomizable<TabsBarSize>,
+  isCompact: boolean
+): string => {
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'grid',
         ...addImportantToEachRule({
-          position: 'relative',
+          position: 'relative', // necessary for the bar animation to calculate the tab items position correctly
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       ...addImportantToEachRule({
-        '::slotted(:is(a,button):focus-visible)': getFocusBaseStyles(),
-        // would be nice to use shared selector like '::slotted([role])'
-        // but this doesn't work reliably when rendering in browser
-        // TODO: might work with ::slotted(:is(a,button)) in the meantime?
-        [transformSelector('::slotted([role])')]: {
-          all: 'unset',
-          display: 'inline-block',
-          position: 'relative',
-          margin: `0 0 ${spacingStaticXs} 0`,
-          verticalAlign: 'top',
-          whiteSpace: 'nowrap',
-          boxSizing: 'border-box',
-          textAlign: 'start',
-          color: colorPrimary,
-          cursor: 'pointer',
-          borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
-          zIndex: 0, // needed for ::before pseudo-element to be visible
+        '::slotted': {
+          '&(a),&(button)': {
+            all: 'unset',
+            padding: isCompact ? `2px ${spacingStaticSm}` : `12px ${spacingStaticMd}`,
+            whiteSpace: 'nowrap',
+            cursor: 'pointer',
+            borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+            ...(background === 'none' && {
+              background: colorFrosted,
+            }),
+            font: `${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+            ...buildResponsiveStyles(size, (sizeValue: TabsBarSize) => ({
+              fontSize: fontSizeText[sizeValue],
+            })),
+            color: colorPrimary,
+            transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
+          },
+          '&(a:focus-visible),&(button:focus-visible)': getFocusBaseStyles(),
           ...hoverMediaQuery({
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              inset: '-2px -4px',
-              borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
-              zIndex: -1, // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
-              transition: getTransition('background-color'),
+            '&(a:not([aria-current="true"]):hover),&(button:not([aria-selected="true"]):hover)': {
+              background: colorFrostedStrong,
             },
           }),
-        },
-        ...hoverMediaQuery({
-          [transformSelector('::slotted([role]:hover)::before')]: {
-            ...frostedGlassStyle,
-            background: colorFrosted,
+          '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
+            color: colorCanvas,
+            background: colorPrimary,
+            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`, // the background shall be changed immediately after the bar transition has finished
           },
-        }),
-        // basic invisible bar, that will be delayed via transition: visibility
-        [transformSelector('::slotted([role])::after')]: {
-          content: '""',
-          visibility: 'hidden',
-        },
-        // visible bar for selected tab
-        [transformSelector(
-          '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
-        )]: {
-          ...barJssStyle,
-          right: '0px',
-          bottom: isHighContrastMode ? '-4px' : '-6px',
-          visibility: 'inherit',
-        },
-        [transformSelector('::slotted([role]:not(:last-child))')]: {
-          marginInlineEnd: spacingStaticMedium,
         },
       }),
     },
     scroller: {
-      ...textSmallStyle,
-      fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabsBarSize) => ({ fontSize: fontSizeText[s] })),
+      placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+      ...(background !== 'none' && {
+        background: backgroundMap[background],
+        padding: spacingStaticXs,
+      }),
+      ...(background === 'frosted' && {
+        WebkitBackdropFilter: blurFrosted,
+        backdropFilter: blurFrosted,
+      }),
     },
-    // conditionally applied and removed based on if activeTabIndex exists
-    [scrollerAnimatedCssClass]: {
-      [`& ${transformSelector(
-        '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
-      )}`]: {
-        transition: addImportantToRule(
-          `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationModerate})`
-        ), // bar appears after transition
-      },
-    },
-    // moving bar
     bar: {
-      ...barJssStyle,
-      width: 0, // actual width and transform is set via inline css
-      bottom: isHighContrastMode ? '0' : '-2px',
-      visibility: 'inherit',
-      transition: `${getTransition('transform', 'moderate')}, ${getTransition('width', 'moderate')}`,
-      animation: `$hide 0s var(${cssVariableAnimationDuration},0.5s) forwards`, // auto hide bar after transition, needs to be a little longer in Safari
-    },
-    '@keyframes hide': {
-      to: {
-        visibility: 'hidden',
-      },
+      position: 'absolute',
+      insetInlineStart: 0, // necessary for the bar animation to calculate the tab items position correctly in rtl mode
+      width: '0px', // ensures element is not visible after `.animate()` has finished
+      height: '100%',
+      zIndex: -1,
+      pointerEvents: 'none',
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+      background: colorPrimary,
     },
   });
 };

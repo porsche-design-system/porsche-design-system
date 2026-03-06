@@ -14,6 +14,7 @@ const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
   compact: AllowedTypes.boolean,
   layout: AllowedTypes.oneOf<TableLayout>(TABLE_LAYOUTS),
+  sticky: AllowedTypes.boolean,
 };
 
 /**
@@ -36,6 +37,11 @@ export class Table {
 
   /** Controls the layout behavior of the table. */
   @Prop() public layout?: TableLayout = 'auto';
+
+  /**
+   * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+   */
+  @Prop() public sticky?: boolean = false;
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
@@ -66,8 +72,7 @@ export class Table {
             <slot name="caption" />
           </div>
         )}
-
-        <PrefixedTagNames.pScroller scrollbar={true}>
+        <PrefixedTagNames.pScroller scrollbar={true} compact={this.compact} sticky={this.sticky}>
           <div class="table" role="table" {...tableAttr}>
             <slot />
           </div>

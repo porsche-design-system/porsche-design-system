@@ -689,8 +689,10 @@ exports[`should call validateProps() with correct parameters via render for p-sc
 {
   "alignScrollIndicator": "oneOf",
   "aria": "aria",
+  "compact": "boolean",
   "scrollToPosition": "shape",
   "scrollbar": "boolean",
+  "sticky": "boolean",
 }
 `;
 
@@ -794,6 +796,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "caption": "string",
   "compact": "boolean",
   "layout": "oneOf",
+  "sticky": "boolean",
 }
 `;
 
@@ -814,6 +817,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
   "weight": "oneOf",
 }
@@ -822,6 +827,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
   "weight": "oneOf",
 }
