@@ -1,4 +1,4 @@
-<div class="playground" title="should render tabs">
+<div class="playground" title="default">
   <p-tabs class="a11ytree-snapshot-test">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -11,7 +11,7 @@
   </p-tabs>
 </div>
 
-<div class="playground surface" title="should render tabs with background canvas">
+<div class="playground surface" title="background=canvas, active-tab-index=1">
   <p-tabs background="canvas" active-tab-index="1">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -24,7 +24,7 @@
   </p-tabs>
 </div>
 
-<div class="playground" title="should render tabs with background surface">
+<div class="playground" title="background=surface, active-tab-index=2">
   <p-tabs background="surface" active-tab-index="2">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -37,7 +37,7 @@
   </p-tabs>
 </div>
 
-<div class="playground" title="should render tabs with background frosted">
+<div class="playground" title="background=frosted, active-tab-index=3">
   <p-tabs background="frosted" active-tab-index="3">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -50,7 +50,7 @@
   </p-tabs>
 </div>
 
-<div class="playground" title="should render tabs with size medium">
+<div class="playground" title="size=medium, active-tab-index=4">
   <p-tabs size="medium" active-tab-index="4">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -63,7 +63,7 @@
   </p-tabs>
 </div>
 
-<div class="playground surface" title="should render tabs with background canvas and size medium">
+<div class="playground surface" title="size=medium, background=canvas, active-tab-index=5">
   <p-tabs background="canvas" size="medium" active-tab-index="5">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -76,7 +76,7 @@
   </p-tabs>
 </div>
 
-<div class="playground" title="should render tabs with background surface and size medium">
+<div class="playground" title="size=medium, background=surface, active-tab-index=6">
   <p-tabs background="surface" size="medium" active-tab-index="6">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -89,7 +89,7 @@
   </p-tabs>
 </div>
 
-<div class="playground" title="should render tabs with background frosted and size medium">
+<div class="playground" title="size=medium, background=frosted, active-tab-index=7">
   <p-tabs background="frosted" size="medium" active-tab-index="7">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -102,7 +102,7 @@
   </p-tabs>
 </div>
 
-<div class="playground" title="should render tabs size BreakpointCustomizable with selected tab in viewport">
+<div class="playground" title="size={ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }">
   <p-tabs
     active-tab-index="9"
     size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
@@ -130,7 +130,7 @@
   </p-tabs>
 </div>
 
-<div class="playground auto-layout-block" title="should render tabs in compact mode">
+<div class="playground auto-layout-block" title="compact=true">
   <p-tabs active-tab-index="0" compact="true">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -153,7 +153,7 @@
   </p-tabs>
 </div>
 
-<div class="playground auto-layout-block" title="should render tabs in compact mode with size medium">
+<div class="playground auto-layout-block" title="size=medium, compact=true">
   <p-tabs active-tab-index="0" size="medium" compact="true">
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
@@ -165,19 +165,6 @@
     <p-tabs-item label="Some tab (8)">Some tab content (8)</p-tabs-item>
   </p-tabs>
   <p-tabs active-tab-index="0" background="surface" size="medium" compact="true">
-    <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
-    <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
-    <p-tabs-item label="Some tab (3)">Some tab content (3)</p-tabs-item>
-    <p-tabs-item label="Some tab (4)">Some tab content (4)</p-tabs-item>
-    <p-tabs-item label="Some tab (5)">Some tab content (5)</p-tabs-item>
-    <p-tabs-item label="Some tab (6)">Some tab content (6)</p-tabs-item>
-    <p-tabs-item label="Some tab (7)">Some tab content (7)</p-tabs-item>
-    <p-tabs-item label="Some tab (8)">Some tab content (8)</p-tabs-item>
-  </p-tabs>
-</div>
-
-<div class="playground" title="should render first tab selected when active-tab-index is not set">
-  <p-tabs>
     <p-tabs-item label="Some tab (1)">Some tab content (1)</p-tabs-item>
     <p-tabs-item label="Some tab (2)">Some tab content (2)</p-tabs-item>
     <p-tabs-item label="Some tab (3)">Some tab content (3)</p-tabs-item>
