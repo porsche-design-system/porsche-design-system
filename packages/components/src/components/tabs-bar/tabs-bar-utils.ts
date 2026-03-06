@@ -20,7 +20,10 @@ type ScrollerDirection = 'prev' | 'next';
  * Returns `undefined` if the index is out of range or invalid.
  * @internal
  */
-const getSanitizedActiveTabIndex = (tabIndex: number | null | undefined, tabs: HTMLElement[]): number | undefined => {
+export const getSanitizedActiveTabIndex = (
+  tabIndex: number | null | undefined,
+  tabs: HTMLElement[]
+): number | undefined => {
   const maxIndex = tabs.length - 1; // can be -1 without children
   if (
     tabIndex === undefined ||
@@ -56,7 +59,7 @@ export const getUpcomingActiveElementIndex = (
  * Accounts for RTL layout and scroller padding.
  * @internal
  */
-const getTabMetrics = (
+export const getTabMetrics = (
   scroller: HTMLElement,
   tab: HTMLElement | undefined
 ): { start: number; width: number; rtl: boolean } => {
@@ -91,7 +94,7 @@ const getTabMetrics = (
  * based on the previously active tab (or the center of the new tab if no prior tab existed).
  * @internal
  */
-const getStartMetrics = (
+export const getStartMetrics = (
   sanitizedNewTabIndex: number | undefined,
   sanitizedOldTabIndex: number | undefined,
   scroller: HTMLElement,
@@ -112,7 +115,7 @@ const getStartMetrics = (
  * based on the newly active tab (or the center of the old tab if the active tab is cleared).
  * @internal
  */
-const getEndMetrics = (
+export const getEndMetrics = (
   sanitizedNewTabIndex: number | undefined,
   sanitizedOldTabIndex: number | undefined,
   scroller: HTMLElement,

@@ -1,5 +1,5 @@
-import { getComponentCss } from './stepper-horizontal-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
+import { getComponentCss } from './stepper-horizontal-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([

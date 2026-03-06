@@ -3,11 +3,11 @@ import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/thr
 import { Tabs } from './tabs';
 
 describe('componentWillLoad', () => {
-  it('should call this.defineTabsItemElements()', () => {
+  it('should call this.defineTabsItems()', () => {
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
     component.host.attachShadow({ mode: 'open' });
-    const spy = vi.spyOn(component, 'defineTabsItemElements' as any);
+    const spy = vi.spyOn(component, 'defineTabsItems' as any);
 
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -24,13 +24,13 @@ describe('componentDidRender', () => {
   });
 });
 
-describe('this.defineTabsItemElements()', () => {
+describe('this.defineTabsItems()', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
 
-    component['defineTabsItemElements']();
+    component['defineTabsItems']();
     expect(spy).toHaveBeenCalledWith(component.host, 'p-tabs-item');
   });
 
@@ -43,7 +43,7 @@ describe('this.defineTabsItemElements()', () => {
     child2.id = 'child2';
     component.host.append(child1, child2);
 
-    component['defineTabsItemElements']();
+    component['defineTabsItems']();
     expect(component['tabsItemElements']).toEqual([child1, child2]);
   });
 });
