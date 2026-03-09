@@ -1,6 +1,13 @@
 import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, parseJSONAttribute, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  parseAndGetAriaAttributes,
+  parseJSONAttribute,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './scroller-styles';
 import {
   isScrollable,
@@ -119,6 +126,7 @@ export class Scroller {
         <div
           class="scroll"
           ref={(el) => (this.scrollArea = el)}
+          role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
           tabIndex={this.isIndicatorPrevHidden && this.isIndicatorNextHidden ? null : 0}
         >
           <span class="sentinel" ref={(el) => (this.sentinelLeft = el)} />
