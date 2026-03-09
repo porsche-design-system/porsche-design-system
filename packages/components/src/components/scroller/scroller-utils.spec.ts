@@ -1,27 +1,19 @@
-import { vi } from 'vitest';
-import * as getHTMLElementsUtils from '../../utils/dom/getHTMLElements';
-import { getScrollerElements } from './scroller-utils';
+import { isScrollable } from './scroller-utils';
 
-describe('getScrollerElements()', () => {
-  it('should call getHTMLElements() with correct parameters', () => {
-    const spy = vi.spyOn(getHTMLElementsUtils, 'getHTMLElements');
-    const scroller = document.createElement('p-scroller');
-    scroller.attachShadow({ mode: 'open' });
-
-    getScrollerElements(scroller);
-    expect(spy).toHaveBeenCalledWith(scroller.shadowRoot, '.scroll-area,.action-prev');
+describe('isScrollable()', () => {
+  it('should return false when both prev and next are hidden', () => {
+    expect(isScrollable(true, true)).toBe(false);
   });
 
-  it('should return tuple result of getHTMLElements()', () => {
-    const mockResult1 = document.createElement('div');
-    mockResult1.id = 'mock-result-1';
-    const mockResult2 = document.createElement('div');
-    mockResult2.id = 'mock-result-2';
-    vi.spyOn(getHTMLElementsUtils, 'getHTMLElements').mockReturnValue([mockResult1, mockResult2]);
+  it('should return true when only prev is hidden', () => {
+    expect(isScrollable(true, false)).toBe(true);
+  });
 
-    const scroller = document.createElement('p-scroller');
-    scroller.attachShadow({ mode: 'open' });
+  it('should return true when only next is hidden', () => {
+    expect(isScrollable(false, true)).toBe(true);
+  });
 
-    expect(getScrollerElements(scroller)).toEqual([mockResult1, mockResult2]);
+  it('should return true when neither prev nor next is hidden', () => {
+    expect(isScrollable(false, false)).toBe(true);
   });
 });

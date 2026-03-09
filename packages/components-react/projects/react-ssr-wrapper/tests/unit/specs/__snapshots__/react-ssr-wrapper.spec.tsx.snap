@@ -1787,7 +1787,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   >
     <style>
       :host {
-  display: block;
+  display: grid;
 }
 :host([hidden]) {
   display: none !important;
@@ -1796,6 +1796,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   visibility: hidden;
 }
 .scroller {
+  place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1813,103 +1814,110 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
         <style>
           :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -1917,387 +1925,23 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
         <div
           class="root"
         >
+          <span
+            class="prev"
+          />
+          <span
+            class="next"
+          />
           <div
-            class="scroll-area"
+            class="scroll"
+            tabindex="0"
           >
-            <div
-              class="scroll-wrapper"
-              role="list"
-            >
-              <slot />
-              <div
-                class="trigger"
-              />
-              <div
-                class="trigger"
-              />
-            </div>
-          </div>
-          <div
-            class="action-prev"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
-          </div>
-          <div
-            class="action-next"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+            <span
+              class="sentinel"
+            />
+            <slot />
+            <span
+              class="sentinel"
+            />
           </div>
         </div>
       </template>
@@ -2320,9 +1964,6 @@ img {
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2451,9 +2092,6 @@ button:focus-visible {
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2579,7 +2217,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   >
     <style>
       :host {
-  display: block;
+  display: grid;
   position: relative !important;
 }
 :host([hidden]) {
@@ -2588,97 +2226,53 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(:is(a,button):focus-visible) {
+::slotted(a), ::slotted(button) {
+  all: unset !important;
+  padding: 12px var(--p-spacing-static-md) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  background: var(--p-color-frosted) !important;
+  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font-size: var(--p-typescale-sm) !important;
+  color: var(--p-color-primary) !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+}
+::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a),::slotted(button) {
-  all: unset !important;
-  display: inline-block !important;
-  position: relative !important;
-  margin: 0 0 4px 0 !important;
-  vertical-align: top !important;
-  white-space: nowrap !important;
-  box-sizing: border-box !important;
-  text-align: start !important;
-  color: var(--p-color-primary) !important;
-  cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-  z-index: 0 !important;
-}
-::slotted(a)::after,::slotted(button)::after {
-  content: "" !important;
-  visibility: hidden !important;
-}
-::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-  position: absolute !important;
-  height: 2px !important;
-  left: 0 !important;
+::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  right: 0px !important;
-  bottom: -6px !important;
-  visibility: inherit !important;
-}
-::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-inline-end: 16px !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
-  ::slotted(:is(a,button):focus-visible) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
-  }
-  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-    background: ActiveBorder !important;
   }
 }
 
 @media(hover:hover) {
-  ::slotted(a)::before, ::slotted(button)::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: -2px -4px !important;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-    z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
-  }
-  ::slotted(a:hover)::before,::slotted(button:hover)::before {
-    -webkit-backdrop-filter: blur(32px) !important;
-    backdrop-filter: blur(32px) !important;
-    background: var(--p-color-frosted) !important;
+  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 400;
-  font-size: 1rem;
-}
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear var(--p-transition-duration, .4s) !important;
+  place-self: flex-start;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .bar {
   position: absolute;
-  height: 2px;
-  left: 0;
+  inset-inline-start: 0;
+  width: 0px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-  width: 0;
-  bottom: -2px;
-  visibility: inherit;
-  transition: transform var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), width var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
-@keyframes keyframes-hide {
-  to {
-    visibility: hidden;
-  }
-}
-@media (forced-colors: active) {
-    .bar {
-      background: ActiveBorder;
-    }
-}
-
     </style>
     <p-scroller
       class="scroller"
@@ -2691,103 +2285,110 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
         <style>
           :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -2795,386 +2396,23 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
         <div
           class="root"
         >
+          <span
+            class="prev"
+          />
+          <span
+            class="next"
+          />
           <div
-            class="scroll-area"
+            class="scroll"
+            tabindex="0"
           >
-            <div
-              class="scroll-wrapper"
-            >
-              <slot />
-              <div
-                class="trigger"
-              />
-              <div
-                class="trigger"
-              />
-            </div>
-          </div>
-          <div
-            class="action-prev"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
-          </div>
-          <div
-            class="action-next"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+            <span
+              class="sentinel"
+            />
+            <slot />
+            <span
+              class="sentinel"
+            />
           </div>
         </div>
       </template>
@@ -3218,7 +2456,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   visibility: hidden;
 }
 .root {
-  margin-bottom: 8px;
+  margin-bottom: var(--p-spacing-static-sm);
 }
     </style>
     <p-tabs-bar
@@ -3231,7 +2469,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
       >
         <style>
           :host {
-  display: block;
+  display: grid;
   position: relative !important;
 }
 :host([hidden]) {
@@ -3240,97 +2478,53 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(:is(a,button):focus-visible) {
+::slotted(a), ::slotted(button) {
+  all: unset !important;
+  padding: 12px var(--p-spacing-static-md) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  background: var(--p-color-frosted) !important;
+  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font-size: var(--p-typescale-sm) !important;
+  color: var(--p-color-primary) !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+}
+::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a),::slotted(button) {
-  all: unset !important;
-  display: inline-block !important;
-  position: relative !important;
-  margin: 0 0 4px 0 !important;
-  vertical-align: top !important;
-  white-space: nowrap !important;
-  box-sizing: border-box !important;
-  text-align: start !important;
-  color: var(--p-color-primary) !important;
-  cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-  z-index: 0 !important;
-}
-::slotted(a)::after,::slotted(button)::after {
-  content: "" !important;
-  visibility: hidden !important;
-}
-::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-  position: absolute !important;
-  height: 2px !important;
-  left: 0 !important;
+::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  right: 0px !important;
-  bottom: -6px !important;
-  visibility: inherit !important;
-}
-::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-inline-end: 16px !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
-  ::slotted(:is(a,button):focus-visible) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
-  }
-  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-    background: ActiveBorder !important;
   }
 }
 
 @media(hover:hover) {
-  ::slotted(a)::before, ::slotted(button)::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: -2px -4px !important;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-    z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
-  }
-  ::slotted(a:hover)::before,::slotted(button:hover)::before {
-    -webkit-backdrop-filter: blur(32px) !important;
-    backdrop-filter: blur(32px) !important;
-    background: var(--p-color-frosted) !important;
+  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 400;
-  font-size: 1rem;
-}
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear var(--p-transition-duration, .4s) !important;
+  place-self: flex-start;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .bar {
   position: absolute;
-  height: 2px;
-  left: 0;
+  inset-inline-start: 0;
+  width: 0px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-  width: 0;
-  bottom: -2px;
-  visibility: inherit;
-  transition: transform var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), width var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
-@keyframes keyframes-hide {
-  to {
-    visibility: hidden;
-  }
-}
-@media (forced-colors: active) {
-    .bar {
-      background: ActiveBorder;
-    }
-}
-
         </style>
         <p-scroller
           class="scroller"
@@ -3343,103 +2537,110 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
             <style>
               :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -3447,386 +2648,23 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
             <div
               class="root"
             >
+              <span
+                class="prev"
+              />
+              <span
+                class="next"
+              />
               <div
-                class="scroll-area"
+                class="scroll"
+                tabindex="0"
               >
-                <div
-                  class="scroll-wrapper"
-                >
-                  <slot />
-                  <div
-                    class="trigger"
-                  />
-                  <div
-                    class="trigger"
-                  />
-                </div>
-              </div>
-              <div
-                class="action-prev"
-              >
-                <p-button
-                  class="action-button"
-                  data-ssr=""
-                  dir="ltr"
-                  hide-label="true"
-                  tabindex="-1"
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
-                    >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon"
-                        data-ssr=""
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  prev
-                </p-button>
-              </div>
-              <div
-                class="action-next"
-              >
-                <p-button
-                  class="action-button"
-                  data-ssr=""
-                  dir="ltr"
-                  hide-label="true"
-                  tabindex="-1"
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
-                    >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon"
-                        data-ssr=""
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  next
-                </p-button>
+                <span
+                  class="sentinel"
+                />
+                <slot />
+                <span
+                  class="sentinel"
+                />
               </div>
             </div>
           </template>
@@ -13596,103 +12434,110 @@ exports[`should render dsr component for PScroller 1`] = `
     <style>
       :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -13700,386 +12545,23 @@ exports[`should render dsr component for PScroller 1`] = `
     <div
       class="root"
     >
+      <span
+        class="prev"
+      />
+      <span
+        class="next"
+      />
       <div
-        class="scroll-area"
+        class="scroll"
+        tabindex="0"
       >
-        <div
-          class="scroll-wrapper"
-        >
-          <slot />
-          <div
-            class="trigger"
-          />
-          <div
-            class="trigger"
-          />
-        </div>
-      </div>
-      <div
-        class="action-prev"
-      >
-        <p-button
-          class="action-button"
-          data-ssr=""
-          dir="ltr"
-          hide-label="true"
-          tabindex="-1"
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-            </style>
-            <button
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          prev
-        </p-button>
-      </div>
-      <div
-        class="action-next"
-      >
-        <p-button
-          class="action-button"
-          data-ssr=""
-          dir="ltr"
-          hide-label="true"
-          tabindex="-1"
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-            </style>
-            <button
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          next
-        </p-button>
+        <span
+          class="sentinel"
+        />
+        <slot />
+        <span
+          class="sentinel"
+        />
       </div>
     </div>
   </template>
@@ -15110,7 +13592,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: grid;
 }
 :host([hidden]) {
   display: none !important;
@@ -15119,6 +13601,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   visibility: hidden;
 }
 .scroller {
+  place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -15136,103 +13619,110 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
         <style>
           :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -15240,387 +13730,23 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
         <div
           class="root"
         >
+          <span
+            class="prev"
+          />
+          <span
+            class="next"
+          />
           <div
-            class="scroll-area"
+            class="scroll"
+            tabindex="0"
           >
-            <div
-              class="scroll-wrapper"
-              role="list"
-            >
-              <slot />
-              <div
-                class="trigger"
-              />
-              <div
-                class="trigger"
-              />
-            </div>
-          </div>
-          <div
-            class="action-prev"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
-          </div>
-          <div
-            class="action-next"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+            <span
+              class="sentinel"
+            />
+            <slot />
+            <span
+              class="sentinel"
+            />
           </div>
         </div>
       </template>
@@ -15648,9 +13774,6 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -15912,6 +14035,8 @@ exports[`should render dsr component for PTable 1`] = `
     <style>
       :host {
   display: block;
+  --p-scroller-indicator-top: var(--p-table-scroll-indicator-top,0px) !important;
+  --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -15946,98 +14071,112 @@ exports[`should render dsr component for PTable 1`] = `
         <style>
           :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px calc(4px + 12px);
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat,linear-gradient(black,black) 0 bottom/auto 12px no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat,linear-gradient(black,black) 0 bottom/auto 12px no-repeat;
+  scrollbar-width: thin;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  margin-top: calc(-1 * 12px);
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  margin-top: calc(-1 * 12px);
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -16045,386 +14184,23 @@ exports[`should render dsr component for PTable 1`] = `
         <div
           class="root"
         >
+          <span
+            class="prev"
+          />
+          <span
+            class="next"
+          />
           <div
-            class="scroll-area"
+            class="scroll"
+            tabindex="0"
           >
-            <div
-              class="scroll-wrapper"
-            >
-              <slot />
-              <div
-                class="trigger"
-              />
-              <div
-                class="trigger"
-              />
-            </div>
-          </div>
-          <div
-            class="action-prev"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
-          </div>
-          <div
-            class="action-next"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+            <span
+              class="sentinel"
+            />
+            <slot />
+            <span
+              class="sentinel"
+            />
           </div>
         </div>
       </template>
@@ -16626,7 +14402,7 @@ exports[`should render dsr component for PTabs 1`] = `
   visibility: hidden;
 }
 .root {
-  margin-bottom: 8px;
+  margin-bottom: var(--p-spacing-static-sm);
 }
     </style>
     <p-tabs-bar
@@ -16639,7 +14415,7 @@ exports[`should render dsr component for PTabs 1`] = `
       >
         <style>
           :host {
-  display: block;
+  display: grid;
   position: relative !important;
 }
 :host([hidden]) {
@@ -16648,97 +14424,53 @@ exports[`should render dsr component for PTabs 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(:is(a,button):focus-visible) {
+::slotted(a), ::slotted(button) {
+  all: unset !important;
+  padding: 12px var(--p-spacing-static-md) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  background: var(--p-color-frosted) !important;
+  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font-size: var(--p-typescale-sm) !important;
+  color: var(--p-color-primary) !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+}
+::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a),::slotted(button) {
-  all: unset !important;
-  display: inline-block !important;
-  position: relative !important;
-  margin: 0 0 4px 0 !important;
-  vertical-align: top !important;
-  white-space: nowrap !important;
-  box-sizing: border-box !important;
-  text-align: start !important;
-  color: var(--p-color-primary) !important;
-  cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-  z-index: 0 !important;
-}
-::slotted(a)::after,::slotted(button)::after {
-  content: "" !important;
-  visibility: hidden !important;
-}
-::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-  position: absolute !important;
-  height: 2px !important;
-  left: 0 !important;
+::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  right: 0px !important;
-  bottom: -6px !important;
-  visibility: inherit !important;
-}
-::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-inline-end: 16px !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
-  ::slotted(:is(a,button):focus-visible) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
-  }
-  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-    background: ActiveBorder !important;
   }
 }
 
 @media(hover:hover) {
-  ::slotted(a)::before, ::slotted(button)::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: -2px -4px !important;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-    z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
-  }
-  ::slotted(a:hover)::before,::slotted(button:hover)::before {
-    -webkit-backdrop-filter: blur(32px) !important;
-    backdrop-filter: blur(32px) !important;
-    background: var(--p-color-frosted) !important;
+  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 400;
-  font-size: 1rem;
-}
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear var(--p-transition-duration, .4s) !important;
+  place-self: flex-start;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .bar {
   position: absolute;
-  height: 2px;
-  left: 0;
+  inset-inline-start: 0;
+  width: 0px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-  width: 0;
-  bottom: -2px;
-  visibility: inherit;
-  transition: transform var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), width var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
-@keyframes keyframes-hide {
-  to {
-    visibility: hidden;
-  }
-}
-@media (forced-colors: active) {
-    .bar {
-      background: ActiveBorder;
-    }
-}
-
         </style>
         <p-scroller
           class="scroller"
@@ -16751,103 +14483,110 @@ exports[`should render dsr component for PTabs 1`] = `
             <style>
               :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -16855,386 +14594,23 @@ exports[`should render dsr component for PTabs 1`] = `
             <div
               class="root"
             >
+              <span
+                class="prev"
+              />
+              <span
+                class="next"
+              />
               <div
-                class="scroll-area"
+                class="scroll"
+                tabindex="0"
               >
-                <div
-                  class="scroll-wrapper"
-                >
-                  <slot />
-                  <div
-                    class="trigger"
-                  />
-                  <div
-                    class="trigger"
-                  />
-                </div>
-              </div>
-              <div
-                class="action-prev"
-              >
-                <p-button
-                  class="action-button"
-                  data-ssr=""
-                  dir="ltr"
-                  hide-label="true"
-                  tabindex="-1"
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
-                    >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon"
-                        data-ssr=""
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  prev
-                </p-button>
-              </div>
-              <div
-                class="action-next"
-              >
-                <p-button
-                  class="action-button"
-                  data-ssr=""
-                  dir="ltr"
-                  hide-label="true"
-                  tabindex="-1"
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
-                    >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon"
-                        data-ssr=""
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  next
-                </p-button>
+                <span
+                  class="sentinel"
+                />
+                <slot />
+                <span
+                  class="sentinel"
+                />
               </div>
             </div>
           </template>
@@ -17271,7 +14647,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: grid;
   position: relative !important;
 }
 :host([hidden]) {
@@ -17280,97 +14656,53 @@ exports[`should render dsr component for PTabsBar 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(:is(a,button):focus-visible) {
+::slotted(a), ::slotted(button) {
+  all: unset !important;
+  padding: 12px var(--p-spacing-static-md) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  background: var(--p-color-frosted) !important;
+  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font-size: var(--p-typescale-sm) !important;
+  color: var(--p-color-primary) !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+}
+::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a),::slotted(button) {
-  all: unset !important;
-  display: inline-block !important;
-  position: relative !important;
-  margin: 0 0 4px 0 !important;
-  vertical-align: top !important;
-  white-space: nowrap !important;
-  box-sizing: border-box !important;
-  text-align: start !important;
-  color: var(--p-color-primary) !important;
-  cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-  z-index: 0 !important;
-}
-::slotted(a)::after,::slotted(button)::after {
-  content: "" !important;
-  visibility: hidden !important;
-}
-::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-  position: absolute !important;
-  height: 2px !important;
-  left: 0 !important;
+::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  right: 0px !important;
-  bottom: -6px !important;
-  visibility: inherit !important;
-}
-::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-inline-end: 16px !important;
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
-  ::slotted(:is(a,button):focus-visible) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
-  }
-  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
-    background: ActiveBorder !important;
   }
 }
 
 @media(hover:hover) {
-  ::slotted(a)::before, ::slotted(button)::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: -2px -4px !important;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
-    z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
-  }
-  ::slotted(a:hover)::before,::slotted(button:hover)::before {
-    -webkit-backdrop-filter: blur(32px) !important;
-    backdrop-filter: blur(32px) !important;
-    background: var(--p-color-frosted) !important;
+  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 400;
-  font-size: 1rem;
-}
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear var(--p-transition-duration, .4s) !important;
+  place-self: flex-start;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .bar {
   position: absolute;
-  height: 2px;
-  left: 0;
+  inset-inline-start: 0;
+  width: 0px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-  width: 0;
-  bottom: -2px;
-  visibility: inherit;
-  transition: transform var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), width var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
-@keyframes keyframes-hide {
-  to {
-    visibility: hidden;
-  }
-}
-@media (forced-colors: active) {
-    .bar {
-      background: ActiveBorder;
-    }
-}
-
     </style>
     <p-scroller
       class="scroller"
@@ -17383,103 +14715,110 @@ exports[`should render dsr component for PTabsBar 1`] = `
         <style>
           :host {
   display: block;
-  height: inherit !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
 }
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
+slot {
+  grid-area: 1/2;
   position: relative;
   display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  gap: var(--p-scroller-gap,var(--p-spacing-static-sm));
 }
-.scroll-wrapper:focus-visible {
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  border-radius: inherit;
+}
+.root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-.trigger {
-  position: absolute;
-  inset: 0 auto;
-  width: 1px;
+.scroll {
+  grid-area: 1/1/1/-1;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 4px minmax(auto,1fr) 4px;
+  margin: calc(-1 * 4px);
+  padding: 4px 0px;
+  outline: none;
+  overflow: auto hidden;
+  -webkit-mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  mask: linear-gradient(to right,transparent 0px,transparent 24px,rgb(0 0 0/0.001) 29px,rgb(0 0 0/0.009) 34px,rgb(0 0 0/0.027) 38px,rgb(0 0 0/0.058) 43px,rgb(0 0 0/0.104) 48px,rgb(0 0 0/0.163) 53px,rgb(0 0 0/0.235) 58px,rgb(0 0 0/0.317) 62px,rgb(0 0 0/0.407) 67px,rgb(0 0 0/0.500) 72px,rgb(0 0 0/0.593) 77px,rgb(0 0 0/0.683) 82px,rgb(0 0 0/0.765) 86px,rgb(0 0 0/0.837) 91px,rgb(0 0 0/0.896) 96px,rgb(0 0 0/0.942) 101px,rgb(0 0 0/0.973) 106px,rgb(0 0 0/0.991) 110px,rgb(0 0 0/0.999) 115px,black 120px,black calc(100% - 120px),rgb(0 0 0/0.999) calc(100% - 115px),rgb(0 0 0/0.991) calc(100% - 110px),rgb(0 0 0/0.973) calc(100% - 106px),rgb(0 0 0/0.942) calc(100% - 101px),rgb(0 0 0/0.896) calc(100% - 96px),rgb(0 0 0/0.837) calc(100% - 91px),rgb(0 0 0/0.765) calc(100% - 86px),rgb(0 0 0/0.683) calc(100% - 82px),rgb(0 0 0/0.593) calc(100% - 77px),rgb(0 0 0/0.500) calc(100% - 72px),rgb(0 0 0/0.407) calc(100% - 67px),rgb(0 0 0/0.317) calc(100% - 62px),rgb(0 0 0/0.235) calc(100% - 58px),rgb(0 0 0/0.163) calc(100% - 53px),rgb(0 0 0/0.104) calc(100% - 48px),rgb(0 0 0/0.058) calc(100% - 43px),rgb(0 0 0/0.027) calc(100% - 38px),rgb(0 0 0/0.009) calc(100% - 34px),rgb(0 0 0/0.001) calc(100% - 29px),transparent calc(100% - 24px),transparent 100%) 0 0/auto no-repeat;
+  scrollbar-width: none;
+}
+.sentinel {
+  width: 4px;
   visibility: hidden;
 }
-.trigger:first-of-type {
-  left: 0;
+.sentinel:first-of-type:dir(rtl) {
+  grid-area: 1/3;
 }
-.trigger:last-of-type {
-  right: 0;
+.sentinel:last-of-type:dir(rtl) {
+  grid-area: 1/1;
 }
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  visibility: hidden;
+.prev {
+  grid-area: 1/1;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-prev .action-button {
-  margin-left: 8px;
+.prev:dir(rtl) {
+  grid-area: 1/3;
 }
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  visibility: hidden;
+.prev::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.action-next .action-button {
-  margin-right: 8px;
+.next {
+  grid-area: 1/3;
+  z-index: 1;
+  display: grid;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--p-spacing-static-xs);
+  cursor: pointer;
+  opacity: 1;
+  visibility: inherit;
+  transform: translate3d(0,0,0);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
 }
-.action-button {
-  --p-internal-button-scaling: 0.5;
-  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
+.next:dir(rtl) {
+  grid-area: 1/1;
+}
+.next::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (forced-colors: active) {
-  .scroll-wrapper:focus-visible {
+  .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
 }
 
 @media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
   }
-  .action-next .action-button {
-    visibility: hidden;
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
 
@@ -17487,386 +14826,23 @@ exports[`should render dsr component for PTabsBar 1`] = `
         <div
           class="root"
         >
+          <span
+            class="prev"
+          />
+          <span
+            class="next"
+          />
           <div
-            class="scroll-area"
+            class="scroll"
+            tabindex="0"
           >
-            <div
-              class="scroll-wrapper"
-            >
-              <slot />
-              <div
-                class="trigger"
-              />
-              <div
-                class="trigger"
-              />
-            </div>
-          </div>
-          <div
-            class="action-prev"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
-          </div>
-          <div
-            class="action-next"
-          >
-            <p-button
-              class="action-button"
-              data-ssr=""
-              dir="ltr"
-              hide-label="true"
-              tabindex="-1"
-            >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media (forced-colors: active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media (forced-colors: active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
-                >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon"
-                    data-ssr=""
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+            <span
+              class="sentinel"
+            />
+            <slot />
+            <span
+              class="sentinel"
+            />
           </div>
         </div>
       </template>
