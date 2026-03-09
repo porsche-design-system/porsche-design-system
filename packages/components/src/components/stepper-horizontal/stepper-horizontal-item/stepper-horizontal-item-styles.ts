@@ -3,6 +3,7 @@ import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens'
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -74,6 +75,15 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
             },
           })),
         '&:focus-visible': getFocusBaseStyles(),
+        ...forcedColorsMediaQuery({
+          ...(isStateCurrent && {
+            outline: '1px solid CanvasText',
+          }),
+          ...(isDisabled && {
+            color: 'GrayText',
+            borderColor: 'GrayText',
+          }),
+        }),
       },
     },
     icon: {
@@ -81,9 +91,15 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
       fontSize: 'inherit', // necessary because of all: unset
       width: fontLineHeight,
       height: fontLineHeight,
+      forcedColorAdjust: 'none',
       ...(isStateCurrentOrUndefined && {
         display: 'grid',
         backgroundImage: `radial-gradient(circle, ${colorPrimary} 60%, transparent 62%)`,
+        ...(isDisabled && {
+          ...forcedColorsMediaQuery({
+            backgroundImage: 'radial-gradient(circle, GrayText 60%, transparent 62%)',
+          }),
+        }),
         '&::before': {
           content: '""',
           ...Array.from(new Array(9)).reduce(

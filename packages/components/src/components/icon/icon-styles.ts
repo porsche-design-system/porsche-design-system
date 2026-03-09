@@ -8,7 +8,7 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   colorContrastHigh,
   colorContrastLow,
@@ -89,9 +89,7 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
           mask: `url("${buildIconUrl(source || name)}") center/contain no-repeat`,
           aspectRatio: '1/1',
           background: 'currentcolor', // necessary for proper color inheritance
-          ...forcedColorsMediaQuery({
-            background: 'CanvasText',
-          }),
+          forcedColorAdjust: 'none',
           ...(isFlippableIcon(name, source) && {
             '&(:dir(rtl))': {
               transform: 'scaleX(-1)',

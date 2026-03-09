@@ -40,7 +40,11 @@ export const getComponentCss = (
             cursor: 'not-allowed',
           }),
           ...(isDisabled && {
-            ...getDisabledBaseStyles(),
+            ...getDisabledBaseStyles({
+              '&': {
+                boxShadow: 'inset 0 0 0 2px GrayText !important',
+              },
+            }),
           }),
         },
         ...(isLoading && {

@@ -11,6 +11,7 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -38,6 +39,10 @@ const anchorJssStyle: JssStyle = {
   inset: 0,
   zIndex: 1, // necessary to be on top of img
   borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
+  ...forcedColorsMediaQuery({
+    forcedColorAdjust: 'none',
+    boxShadow: 'inset 0 0 0 2px LinkText',
+  }),
 };
 
 const getMultilineEllipsis = (lineClamp: number): JssStyle => {

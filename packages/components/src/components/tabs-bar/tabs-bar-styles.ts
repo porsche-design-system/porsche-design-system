@@ -1,5 +1,6 @@
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -83,6 +84,23 @@ export const getComponentCss = (
             background: colorPrimary,
             transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`, // the background shall be changed immediately after the bar transition has finished
           },
+          ...forcedColorsMediaQuery({
+            '&(a),&(button)': {
+              forcedColorAdjust: 'none',
+              background: 'Canvas',
+            },
+            '&(a)': {
+              color: 'LinkText',
+              boxShadow: 'inset 0 0 0 2px LinkText',
+            },
+            '&(button)': {
+              color: 'ButtonText',
+              boxShadow: 'inset 0 0 0 2px ButtonBorder',
+            },
+            '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
+              transition: 'unset',
+            },
+          }),
         },
       }),
     },
@@ -92,6 +110,10 @@ export const getComponentCss = (
       ...(background !== 'none' && {
         background: backgroundMap[background],
         padding: spacingStaticXs,
+        ...forcedColorsMediaQuery({
+          forcedColorAdjust: 'none',
+          outline: '1px solid CanvasText',
+        }),
       }),
       ...(background === 'frosted' && {
         WebkitBackdropFilter: blurFrosted,

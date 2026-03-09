@@ -210,9 +210,6 @@ export const getComponentCss = (
           borderRadius: radiusFull,
           background: 'transparent',
           transition: getTransition('background-color'),
-          ...forcedColorsMediaQuery({
-            backgroundColor: 'LinkText',
-          }),
         },
         '&::after': {
           gridArea: `1/${isIconAlignedStart ? '1' : hasSummaryBefore && hasSummaryAfter ? '4' : hasSummaryBefore || hasSummaryAfter ? '3' : '2'}`,

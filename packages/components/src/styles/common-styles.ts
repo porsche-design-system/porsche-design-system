@@ -99,12 +99,13 @@ export const getFocusBaseStyles = (offset: number = 2) => {
   } as const;
 };
 
-export const getDisabledBaseStyles = () => {
+export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: JssStyle) => {
   return {
     opacity: alphaDisabled,
     ...forcedColorsMediaQuery({
       opacity: 1,
       color: 'GrayText',
+      ...addForcedColorsDisabledStyles,
     }),
   } as const;
 };
