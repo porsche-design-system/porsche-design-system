@@ -6,7 +6,6 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   colorPrimary,
@@ -123,7 +122,6 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
         gridArea: '1/2',
         position: 'relative', // necessary for tabs bar animation
