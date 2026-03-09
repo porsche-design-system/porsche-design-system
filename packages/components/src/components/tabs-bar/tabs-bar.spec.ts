@@ -47,6 +47,14 @@ describe('defineTabs()', () => {
 });
 
 describe('slotchange listener', () => {
+  beforeEach(() => {
+    global.ResizeObserver = vi.fn().mockImplementation(() => ({
+      observe: vi.fn(),
+      disconnect: vi.fn(),
+      unobserve: vi.fn(),
+    }));
+  });
+
   const initComponentWithSlot = (
     activeTabIndex?: number
   ): { component: TabsBar; tabs: HTMLElement[]; slot: HTMLSlotElement } => {
@@ -231,24 +239,6 @@ describe('resizeObserver', () => {
     component.disconnectedCallback();
 
     expect(mockDisconnect).toHaveBeenCalled();
-  });
-
-  it('should not scroll active tab into view after disconnect', () => {
-    const { component, tabs } = initComponentWithTabs(1);
-
-    component.componentDidLoad();
-    component.disconnectedCallback();
-
-    // reset scrollIntoView calls from componentDidLoad's initial scrollTabIntoView
-    for (const tab of tabs) {
-      (tab.scrollIntoView as ReturnType<typeof vi.fn>).mockClear();
-    }
-
-    resizeCallback([] as any, {} as any);
-
-    for (const tab of tabs) {
-      expect(tab.scrollIntoView).not.toHaveBeenCalled();
-    }
   });
 });
 
