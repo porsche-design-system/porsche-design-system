@@ -61,8 +61,8 @@ export class Scroller {
   /** @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
 
-  @State() private isIndicatorPrevVisible: boolean;
-  @State() private isIndicatorNextVisible: boolean;
+  @State() private isIndicatorPrevVisible: boolean = false;
+  @State() private isIndicatorNextVisible: boolean = false;
 
   private intersectionObserver: IntersectionObserver;
   private scrollArea: HTMLElement;

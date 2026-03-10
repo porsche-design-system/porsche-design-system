@@ -97,8 +97,8 @@ const getScrollIndicatorStyles = (
 };
 
 export const getComponentCss = (
-  isIndicatorPrevVisible: boolean | undefined,
-  isIndicatorNextVisible: boolean | undefined,
+  isIndicatorPrevVisible: boolean | undefined, // can be undefined in ssr context
+  isIndicatorNextVisible: boolean | undefined, // can be undefined in ssr context
   isSticky: boolean,
   hasScrollbar: boolean,
   isCompact: boolean
