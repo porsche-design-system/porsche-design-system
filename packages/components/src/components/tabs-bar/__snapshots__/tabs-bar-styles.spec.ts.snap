@@ -32,6 +32,21 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -58,7 +73,14 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   pointer-events: none;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-}"
+}
+@media (forced-colors: active) {
+  .scroller {
+    forced-color-adjust: none;
+    outline: 1px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for background: frosted, size: "medium", isCompact: false 1`] = `
@@ -93,6 +115,21 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -121,7 +158,14 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   pointer-events: none;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-}"
+}
+@media (forced-colors: active) {
+  .scroller {
+    forced-color-adjust: none;
+    outline: 1px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for background: frosted, size: "medium", isCompact: true 1`] = `
@@ -156,6 +200,21 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -184,7 +243,14 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   pointer-events: none;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-}"
+}
+@media (forced-colors: active) {
+  .scroller {
+    forced-color-adjust: none;
+    outline: 1px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for background: frosted, size: "small", isCompact: false 1`] = `
@@ -219,6 +285,21 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -247,7 +328,14 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   pointer-events: none;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-}"
+}
+@media (forced-colors: active) {
+  .scroller {
+    forced-color-adjust: none;
+    outline: 1px solid CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for background: none, size: "small", isCompact: false 1`] = `
@@ -283,6 +371,21 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -373,6 +476,21 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -432,6 +550,21 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -458,5 +591,12 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   pointer-events: none;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
-}"
+}
+@media (forced-colors: active) {
+  .scroller {
+    forced-color-adjust: none;
+    outline: 1px solid CanvasText;
+  }
+}
+"
 `;

@@ -279,6 +279,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -291,12 +292,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
             </style>
             <img
               alt=""
@@ -507,6 +502,7 @@ input::-webkit-search-cancel-button {
   mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -519,12 +515,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -629,6 +619,12 @@ img {
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -670,6 +666,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -682,12 +679,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                           </style>
                           <img
                             alt=""
@@ -1933,6 +1924,7 @@ slot {
           />
           <div
             class="scroll"
+            role="list"
             tabindex="0"
           >
             <span
@@ -1991,6 +1983,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -2001,6 +1997,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -2062,6 +2059,12 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .icon {
+    background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
+  }
+}
+
       </style>
       <button
         aria-disabled="true"
@@ -2119,6 +2122,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -2129,6 +2136,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -2190,6 +2198,12 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .icon {
+    background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
+  }
+}
+
       </style>
       <button
         aria-disabled="true"
@@ -2248,6 +2262,21 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -2500,6 +2529,21 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -3012,9 +3056,6 @@ exports[`should render dsr component for PAccordion 1`] = `
     summary::after {
       background-color: LinkText;
     }
-    summary::before {
-      background-color: LinkText;
-    }
     summary:focus-visible::before {
       outline-color: Highlight;
     }
@@ -3213,6 +3254,7 @@ slot[name="heading"] {
   mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3225,12 +3267,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
             </style>
             <img
               alt=""
@@ -3388,6 +3424,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3400,12 +3437,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                   </style>
                   <img
                     alt=""
@@ -3641,6 +3672,12 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -3682,6 +3719,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -3697,12 +3735,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
           </style>
           <img
             alt=""
@@ -4443,6 +4475,7 @@ h2 {
   mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4455,12 +4488,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -4779,6 +4806,7 @@ svg {
   mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4791,12 +4819,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -5606,6 +5628,12 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -5647,6 +5675,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -5662,12 +5691,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                   </style>
                   <img
                     alt=""
@@ -5823,6 +5846,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5835,12 +5859,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                   </style>
                   <img
                     alt=""
@@ -5996,6 +6014,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6008,12 +6027,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                   </style>
                   <img
                     alt=""
@@ -6219,6 +6232,12 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -6261,6 +6280,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -6276,12 +6296,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
               </style>
               <img
                 alt=""
@@ -6403,6 +6417,12 @@ img {
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -6444,6 +6464,7 @@ img {
   mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -6459,12 +6480,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
               </style>
               <img
                 alt=""
@@ -6914,6 +6929,7 @@ dialog::backdrop {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6926,12 +6942,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -7028,6 +7038,7 @@ exports[`should render dsr component for PIcon 1`] = `
   mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -7043,12 +7054,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
     </style>
     <img
       alt=""
@@ -7167,6 +7172,7 @@ slot[name="heading"] {
   mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -7179,12 +7185,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
         </style>
         <img
           alt=""
@@ -7342,6 +7342,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -7354,12 +7355,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
               </style>
               <img
                 alt=""
@@ -9577,6 +9572,15 @@ exports[`should render dsr component for PLinkPure 1`] = `
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -9612,6 +9616,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -9627,12 +9632,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
           </style>
           <img
             alt=""
@@ -9959,6 +9958,10 @@ slot[name="header"] {
   ::slotted(a[slot='anchor']:focus-visible) {
     outline-color: Highlight !important;
   }
+  ::slotted(a[slot='anchor']) {
+    forced-color-adjust: none !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
 }
 
 .root {
@@ -10119,6 +10122,12 @@ slot[name="header"] {
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -10160,6 +10169,7 @@ slot[name="header"] {
   mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -10172,12 +10182,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                   </style>
                   <img
                     alt=""
@@ -10482,6 +10486,7 @@ dialog::backdrop {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -10494,12 +10499,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -10865,6 +10864,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -10877,12 +10877,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
             </style>
             <img
               alt=""
@@ -11093,6 +11087,7 @@ input::-webkit-search-cancel-button {
   mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -11105,12 +11100,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -11215,6 +11204,12 @@ img {
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -11256,6 +11251,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -11268,12 +11264,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                           </style>
                           <img
                             alt=""
@@ -11640,6 +11630,7 @@ span:not(.ellipsis):focus-visible {
   mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -11655,12 +11646,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                 </style>
                 <img
                   alt=""
@@ -11715,6 +11700,7 @@ img {
   mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host(:dir(rtl)) {
   transform: scaleX(-1) !important;
@@ -11730,12 +11716,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                 </style>
                 <img
                   alt=""
@@ -12089,6 +12069,7 @@ exports[`should render dsr component for PPopover 1`] = `
   mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12101,12 +12082,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
           </style>
           <img
             alt=""
@@ -13026,6 +13001,7 @@ exports[`should render dsr component for PSelect 1`] = `
   mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13038,12 +13014,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
             </style>
             <img
               alt=""
@@ -13432,6 +13402,7 @@ dialog::backdrop {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13444,12 +13415,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
                     </style>
                     <img
                       alt=""
@@ -13738,6 +13703,7 @@ slot {
           />
           <div
             class="scroll"
+            role="list"
             tabindex="0"
           >
             <span
@@ -13801,6 +13767,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -13811,6 +13781,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -13872,6 +13843,12 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .icon {
+    background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
+  }
+}
+
     </style>
     <button
       aria-disabled="true"
@@ -14446,6 +14423,21 @@ exports[`should render dsr component for PTabs 1`] = `
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -14678,6 +14670,21 @@ exports[`should render dsr component for PTabsBar 1`] = `
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media (forced-colors: active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+    transition: unset !important;
+  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -14948,6 +14955,7 @@ span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
     background-color: Canvas;
+    color: CanvasText;
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
@@ -15073,6 +15081,7 @@ button:focus-visible {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
   aspect-ratio: 1/1 !important;
   background: currentcolor !important;
+  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15085,12 +15094,6 @@ img {
   height: 1px;
   pointer-events: none;
 }
-@media (forced-colors: active) {
-  :host {
-    background: CanvasText !important;
-  }
-}
-
             </style>
             <img
               alt=""

@@ -74,6 +74,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -163,6 +169,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -252,6 +264,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -341,6 +359,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -422,6 +446,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -506,6 +536,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -587,6 +623,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -678,6 +720,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -769,6 +817,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -858,6 +912,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -947,6 +1007,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1116,6 +1182,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1342,6 +1414,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1421,6 +1499,12 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1484,6 +1568,12 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1555,6 +1645,12 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   white-space: nowrap;
 }
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1656,6 +1752,12 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }

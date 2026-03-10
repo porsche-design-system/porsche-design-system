@@ -211,6 +211,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     box-shadow: inset 0 0 0 2px ButtonBorder;
     color: ButtonText;
   }
+  .root {
+    box-shadow: inset 0 0 0 2px GrayText !important;
+  }
   .root:focus-visible {
     outline-color: Highlight;
   }
@@ -979,6 +982,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     box-shadow: inset 0 0 0 2px ButtonBorder;
     color: ButtonText;
   }
+  .root {
+    box-shadow: inset 0 0 0 2px GrayText !important;
+  }
   .root:focus-visible {
     outline-color: Highlight;
   }
@@ -1561,6 +1567,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   .root:is(button) {
     box-shadow: inset 0 0 0 2px ButtonBorder;
     color: ButtonText;
+  }
+  .root {
+    box-shadow: inset 0 0 0 2px GrayText !important;
   }
   .root:focus-visible {
     outline-color: Highlight;
