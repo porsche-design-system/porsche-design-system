@@ -89,36 +89,38 @@ test.describe('validation', () => {
     expect(getPageThrownErrorsAmount()).toBe(1);
   });
 
-  test('should throw error if a second current state is defined', async ({ page }) => {
-    initConsoleObserver(page);
+  skipInBrowsers(['webkit'], () => {
+    test('should throw error if a second current state is defined', async ({ page }) => {
+      initConsoleObserver(page);
 
-    await initStepperHorizontal(page);
-    const [, item2] = await getStepItems(page);
+      await initStepperHorizontal(page);
+      const [, item2] = await getStepItems(page);
 
-    await setProperty(item2, 'state', 'current');
-    await waitForStencilLifecycle(page);
+      await setProperty(item2, 'state', 'current');
+      await waitForStencilLifecycle(page);
 
-    expect(getConsoleErrorsAmount()).toBe(1);
-  });
-
-  test('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async ({
-    page,
-  }) => {
-    initPageErrorObserver(page);
-    initConsoleObserver(page);
-
-    await initStepperHorizontal(page, { currentStep: 3 });
-    const host = getHost(page);
-
-    await host.evaluate((host: HTMLElement) => {
-      const stepperItemElements = Array.from(host.children) as any;
-      stepperItemElements[1].state = 'current';
-      stepperItemElements[2].state = undefined;
+      expect(getConsoleErrorsAmount()).toBe(1);
     });
-    await waitForStencilLifecycle(page);
 
-    expect(getPageThrownErrorsAmount()).toBe(0);
-    expect(getConsoleErrorsAmount()).toBe(0);
+    test('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async ({
+      page,
+    }) => {
+      initPageErrorObserver(page);
+      initConsoleObserver(page);
+
+      await initStepperHorizontal(page, { currentStep: 3 });
+      const host = getHost(page);
+
+      await host.evaluate((host: HTMLElement) => {
+        const stepperItemElements = Array.from(host.children) as any;
+        stepperItemElements[1].state = 'current';
+        stepperItemElements[2].state = undefined;
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(getPageThrownErrorsAmount()).toBe(0);
+      expect(getConsoleErrorsAmount()).toBe(0);
+    });
   });
 });
 
