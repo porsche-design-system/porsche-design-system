@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
   ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+- `Checkbox`: add warning for Firefox form restore bug
 
 ### Changed
 
