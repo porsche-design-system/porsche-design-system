@@ -63,9 +63,9 @@ describe('initIntersectionObserver()', () => {
     expect(mockObserve).toHaveBeenCalledWith(component['sentinelRight']);
   });
 
-  it('should set isIndicatorPrevHidden to true when sentinelLeft is intersecting', () => {
+  it('should set isIndicatorPrevVisible to false when sentinelLeft is intersecting', () => {
     const component = initComponent();
-    component['isIndicatorPrevHidden'] = false;
+    component['isIndicatorPrevVisible'] = true;
 
     component['initIntersectionObserver']();
 
@@ -74,12 +74,12 @@ describe('initIntersectionObserver()', () => {
       {} as IntersectionObserver
     );
 
-    expect(component['isIndicatorPrevHidden']).toBe(true);
+    expect(component['isIndicatorPrevVisible']).toBe(false);
   });
 
-  it('should set isIndicatorPrevHidden to false when sentinelLeft is not intersecting', () => {
+  it('should set isIndicatorPrevVisible to true when sentinelLeft is not intersecting', () => {
     const component = initComponent();
-    component['isIndicatorPrevHidden'] = true;
+    component['isIndicatorPrevVisible'] = false;
 
     component['initIntersectionObserver']();
 
@@ -88,12 +88,12 @@ describe('initIntersectionObserver()', () => {
       {} as IntersectionObserver
     );
 
-    expect(component['isIndicatorPrevHidden']).toBe(false);
+    expect(component['isIndicatorPrevVisible']).toBe(true);
   });
 
-  it('should set isIndicatorNextHidden to true when sentinelRight is intersecting', () => {
+  it('should set isIndicatorNextVisible to false when sentinelRight is intersecting', () => {
     const component = initComponent();
-    component['isIndicatorNextHidden'] = false;
+    component['isIndicatorNextVisible'] = true;
 
     component['initIntersectionObserver']();
 
@@ -102,12 +102,12 @@ describe('initIntersectionObserver()', () => {
       {} as IntersectionObserver
     );
 
-    expect(component['isIndicatorNextHidden']).toBe(true);
+    expect(component['isIndicatorNextVisible']).toBe(false);
   });
 
-  it('should set isIndicatorNextHidden to false when sentinelRight is not intersecting', () => {
+  it('should set isIndicatorNextVisible to true when sentinelRight is not intersecting', () => {
     const component = initComponent();
-    component['isIndicatorNextHidden'] = true;
+    component['isIndicatorNextVisible'] = false;
 
     component['initIntersectionObserver']();
 
@@ -116,7 +116,7 @@ describe('initIntersectionObserver()', () => {
       {} as IntersectionObserver
     );
 
-    expect(component['isIndicatorNextHidden']).toBe(false);
+    expect(component['isIndicatorNextVisible']).toBe(true);
   });
 
   it('should handle both sentinels in a single callback invocation', () => {
@@ -132,8 +132,8 @@ describe('initIntersectionObserver()', () => {
       {} as IntersectionObserver
     );
 
-    expect(component['isIndicatorPrevHidden']).toBe(false);
-    expect(component['isIndicatorNextHidden']).toBe(true);
+    expect(component['isIndicatorPrevVisible']).toBe(true);
+    expect(component['isIndicatorNextVisible']).toBe(false);
   });
 
   it('should store the IntersectionObserver instance', () => {

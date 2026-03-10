@@ -97,18 +97,18 @@ const getScrollIndicatorStyles = (
 };
 
 export const getComponentCss = (
-  isIndicatorPrevHidden: boolean,
-  isIndicatorNextHidden: boolean,
+  isIndicatorPrevVisible: boolean | undefined,
+  isIndicatorNextVisible: boolean | undefined,
   isSticky: boolean,
   hasScrollbar: boolean,
   isCompact: boolean
 ): string => {
   const fadeEdges =
-    isIndicatorPrevHidden && isIndicatorNextHidden
+    !isIndicatorPrevVisible && !isIndicatorNextVisible
       ? 'none'
-      : isIndicatorPrevHidden
+      : !isIndicatorPrevVisible
         ? 'right'
-        : isIndicatorNextHidden
+        : !isIndicatorNextVisible
           ? 'left'
           : 'both';
   const mask = `${getSmoothMask(fadeEdges)} 0 0/auto no-repeat${hasScrollbar ? `,linear-gradient(black,black) 0 bottom/auto ${scrollbarWidth} no-repeat` : ''}`;
@@ -162,7 +162,7 @@ export const getComponentCss = (
         gridArea: '1/1',
       },
     },
-    prev: getScrollIndicatorStyles('prev', !isIndicatorPrevHidden, isSticky, hasScrollbar, isCompact),
-    next: getScrollIndicatorStyles('next', !isIndicatorNextHidden, isSticky, hasScrollbar, isCompact),
+    prev: getScrollIndicatorStyles('prev', !!isIndicatorPrevVisible, isSticky, hasScrollbar, isCompact),
+    next: getScrollIndicatorStyles('next', !!isIndicatorNextVisible, isSticky, hasScrollbar, isCompact),
   });
 };

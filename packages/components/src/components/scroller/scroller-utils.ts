@@ -11,6 +11,6 @@ export type ScrollerAriaAttribute = (typeof SCROLLER_ARIA_ATTRIBUTES)[number];
 /** @deprecated */
 export type ScrollerScrollToPosition = { scrollPosition: number; isSmooth?: boolean } | string; // string to support attribute, gets removed via InputParser
 
-export const isScrollable = (isPrevHidden: boolean, isNextHidden: boolean): boolean => {
-  return !(isPrevHidden && isNextHidden);
+export const isScrollable = (isPrevVisible: boolean | undefined, isNextVisible: boolean | undefined): boolean => {
+  return !!(isPrevVisible || isNextVisible);
 };

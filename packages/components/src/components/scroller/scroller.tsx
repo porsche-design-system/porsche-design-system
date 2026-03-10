@@ -61,8 +61,8 @@ export class Scroller {
   /** @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
 
-  @State() private isIndicatorPrevHidden = true;
-  @State() private isIndicatorNextHidden = true;
+  @State() private isIndicatorPrevVisible: boolean;
+  @State() private isIndicatorNextVisible: boolean;
 
   private intersectionObserver: IntersectionObserver;
   private scrollArea: HTMLElement;
@@ -100,7 +100,7 @@ export class Scroller {
     propName: keyof InstanceType<typeof Scroller>
   ): boolean {
     return (
-      !(propName === 'scrollToPosition' && !isScrollable(this.isIndicatorNextHidden, this.isIndicatorPrevHidden)) && // should only update if scrollable
+      !(propName === 'scrollToPosition' && !isScrollable(this.isIndicatorPrevVisible, this.isIndicatorNextVisible)) && // should only update if scrollable
       hasPropValueChanged(newVal, oldVal)
     );
   }
@@ -110,8 +110,8 @@ export class Scroller {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.isIndicatorPrevHidden,
-      this.isIndicatorNextHidden,
+      this.isIndicatorPrevVisible,
+      this.isIndicatorNextVisible,
       this.sticky,
       this.scrollbar,
       this.compact
@@ -127,7 +127,7 @@ export class Scroller {
           class="scroll"
           ref={(el) => (this.scrollArea = el)}
           role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
-          tabIndex={this.isIndicatorPrevHidden && this.isIndicatorNextHidden ? null : 0}
+          tabIndex={this.isIndicatorPrevVisible || this.isIndicatorNextVisible ? 0 : null}
         >
           <span class="sentinel" ref={(el) => (this.sentinelLeft = el)} />
           <slot />
@@ -142,9 +142,9 @@ export class Scroller {
       (entries) => {
         for (const { target, isIntersecting } of entries) {
           if (target === this.sentinelLeft) {
-            this.isIndicatorPrevHidden = isIntersecting;
+            this.isIndicatorPrevVisible = !isIntersecting;
           } else if (target === this.sentinelRight) {
-            this.isIndicatorNextHidden = isIntersecting;
+            this.isIndicatorNextVisible = !isIntersecting;
           }
         }
       },
