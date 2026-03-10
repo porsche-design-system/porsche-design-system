@@ -21,17 +21,17 @@ import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgro
 import type { ScrollerDirection } from './scroller-utils';
 
 /**
- * @css-variable {"name": "--p-scroller-gap", "description": "Controls the gap between slotted nodes.", "defaultValue": "8px"}
+ * @css-variable {"name": "--p-scroller-gap", "description": "Defines the gap between slotted nodes.", "defaultValue": "8px"}
  */
 const cssVarGap = '--p-scroller-gap';
 
 /**
- * @css-variable {"name": "--p-scroller-indicator-top", "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and `indicator-sticky` is enabled.", "defaultValue": "0px"}
+ * @css-variable {"name": "--p-scroller-indicator-top", "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarIndicatorTop = '--p-scroller-indicator-top';
 
 /**
- * @css-variable {"name": "--p-scroller-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and `indicator-sticky` is enabled.", "defaultValue": "0px"}
+ * @css-variable {"name": "--p-scroller-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarIndicatorBottom = '--p-scroller-indicator-bottom';
 
