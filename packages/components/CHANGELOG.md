@@ -14,6 +14,52 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Tabs Bar`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Prop `sticky`: Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll
+    direction. ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-top`: Defines the distance from the top of the viewport at which the scroll
+    indicator sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    scroll indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Changed
+
+- `Scroller`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Stepper Horizontal`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Deprecated
+
+- `Tabs Bar`:
+  - Prop `weight`: Has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `weight`: Has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
 ## [4.0.0-beta.1] - 2026-03-02
 
 ### Added
