@@ -7720,15 +7720,15 @@ exports[`should match snapshot 1`] = `
     "cssVariablesMeta": {
       "--p-scroller-gap": {
         "defaultValue": "8px",
-        "description": "Controls the gap between slotted nodes.",
+        "description": "Defines the gap between slotted nodes.",
       },
       "--p-scroller-indicator-bottom": {
         "defaultValue": "0px",
-        "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and \`indicator-sticky\` is enabled.",
+        "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and \`sticky\` is enabled.",
       },
       "--p-scroller-indicator-top": {
         "defaultValue": "0px",
-        "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and \`indicator-sticky\` is enabled.",
+        "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and \`sticky\` is enabled.",
       },
     },
     "hasAriaProp": true,
@@ -7763,7 +7763,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays in compact mode.",
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
         "type": "boolean",
       },
       "scrollToPosition": {
@@ -8873,11 +8873,11 @@ exports[`should match snapshot 1`] = `
     "cssVariablesMeta": {
       "--p-table-scroll-indicator-bottom": {
         "defaultValue": "0px",
-        "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and \`scroll-indicator-sticky\` is enabled.",
+        "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and \`sticky\` is enabled.",
       },
       "--p-table-scroll-indicator-top": {
         "defaultValue": "0px",
-        "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and \`scroll-indicator-sticky\` is enabled.",
+        "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and \`sticky\` is enabled.",
       },
     },
     "eventsMeta": {
@@ -8909,7 +8909,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
         "type": "boolean",
       },
       "layout": {
@@ -9164,7 +9164,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays the tabs-bar in compact mode.",
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
         "type": "boolean",
       },
       "size": {
@@ -9244,7 +9244,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays the tabs-bar in compact mode.",
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
         "type": "boolean",
       },
       "size": {
