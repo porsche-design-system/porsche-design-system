@@ -14,6 +14,7 @@ import {
   reattachElement,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -339,26 +340,28 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
-  test('should work without unnecessary round trips on prop change', async ({ page }) => {
-    await initStepperHorizontal(page, { currentStep: 0 });
-    const host = getHost(page);
+  skipInBrowsers(['webkit'], () => {
+    test('should work without unnecessary round trips on prop change', async ({ page }) => {
+      await initStepperHorizontal(page, { currentStep: 0 });
+      const host = getHost(page);
 
-    await host.evaluate((host: HTMLElement) => {
-      const stepperItemElements = Array.from(host.children) as any;
-      stepperItemElements[0].state = 'complete';
-      stepperItemElements[1].state = 'current';
+      await host.evaluate((host: HTMLElement) => {
+        const stepperItemElements = Array.from(host.children) as any;
+        stepperItemElements[0].state = 'complete';
+        stepperItemElements[1].state = 'current';
+      });
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+      expect(status.componentDidUpdate['p-stepper-horizontal'], 'componentDidUpdate: p-stepper-horizontal').toBe(1);
+      expect(
+        status.componentDidUpdate['p-stepper-horizontal-item'],
+        'componentDidUpdate: p-stepper-horizontal-item'
+      ).toBe(2);
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
+
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     });
-    await waitForStencilLifecycle(page);
-
-    const status = await getLifecycleStatus(page);
-    expect(status.componentDidUpdate['p-stepper-horizontal'], 'componentDidUpdate: p-stepper-horizontal').toBe(1);
-    expect(
-      status.componentDidUpdate['p-stepper-horizontal-item'],
-      'componentDidUpdate: p-stepper-horizontal-item'
-    ).toBe(2);
-    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 });

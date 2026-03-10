@@ -2112,7 +2112,7 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Displays in compact mode.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -2364,7 +2364,7 @@ export namespace Components {
          */
         "caption"?: string;
         /**
-          * Displays as compact version.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -2417,7 +2417,7 @@ export namespace Components {
          */
         "background"?: TabsBackground;
         /**
-          * Displays the tabs-bar in compact mode.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -2442,7 +2442,7 @@ export namespace Components {
          */
         "background"?: TabsBarBackground;
         /**
-          * Displays the tabs-bar in compact mode.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -6011,7 +6011,7 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Displays in compact mode.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -6303,7 +6303,7 @@ declare namespace LocalJSX {
          */
         "caption"?: string;
         /**
-          * Displays as compact version.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -6360,7 +6360,7 @@ declare namespace LocalJSX {
          */
         "background"?: TabsBackground;
         /**
-          * Displays the tabs-bar in compact mode.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -6389,7 +6389,7 @@ declare namespace LocalJSX {
          */
         "background"?: TabsBarBackground;
         /**
-          * Displays the tabs-bar in compact mode.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
