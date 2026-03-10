@@ -32,7 +32,7 @@ export class Table {
    * Use an element with an attribute of `slot="caption"` for a visible caption. */
   @Prop() public caption?: string;
 
-  /** Displays as compact version. */
+  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
   @Prop() public compact?: boolean = false;
 
   /** Controls the layout behavior of the table. */

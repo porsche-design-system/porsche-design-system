@@ -5,12 +5,12 @@ import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
 /**
- * @css-variable {"name": "--p-table-scroll-indicator-top", "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and `scroll-indicator-sticky` is enabled.", "defaultValue": "0px"}
+ * @css-variable {"name": "--p-table-scroll-indicator-top", "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarScrollIndicatorTop = '--p-table-scroll-indicator-top';
 
 /**
- * @css-variable {"name": "--p-table-scroll-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and `scroll-indicator-sticky` is enabled.", "defaultValue": "0px"}
+ * @css-variable {"name": "--p-table-scroll-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarScrollIndicatorBottom = '--p-table-scroll-indicator-bottom';
 

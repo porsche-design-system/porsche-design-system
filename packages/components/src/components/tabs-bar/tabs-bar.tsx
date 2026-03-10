@@ -56,7 +56,7 @@ export class TabsBar {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<TabsBarSize> = 'small';
 
-  /** Displays the tabs-bar in compact mode. */
+  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
   @Prop() public compact?: boolean;
 
   /**

@@ -51,7 +51,7 @@ export class Tabs {
   /** Defines the background color. Use `frosted` only on images, videos or gradients. */
   @Prop() public background?: TabsBackground = 'none';
 
-  /** Displays the tabs-bar in compact mode. */
+  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
   @Prop() public compact?: boolean;
 
   /**

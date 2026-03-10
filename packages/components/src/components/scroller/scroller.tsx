@@ -44,7 +44,7 @@ export class Scroller {
   /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
 
-  /** Displays in compact mode. */
+  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
   @Prop() public compact?: boolean;
 
   /** Add ARIA role. */
