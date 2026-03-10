@@ -308,7 +308,7 @@ describe('setAccessibilityAttributes()', () => {
     }
   });
 
-  it('should set aria-selected="false" on all buttons when activeTabIndex is out of range', () => {
+  it('should set tabindex="0" on first button and aria-selected="false" on all when activeTabIndex is out of range', () => {
     const component = initComponent();
     const tabs = appendChildren(component.host, 'button');
     component['defineTabs']();
@@ -316,6 +316,9 @@ describe('setAccessibilityAttributes()', () => {
 
     component['setAccessibilityAttributes']();
 
+    expect(tabs[0].getAttribute('tabindex')).toBe('0');
+    expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[2].getAttribute('tabindex')).toBe('-1');
     for (const tab of tabs) {
       expect(tab.getAttribute('aria-selected')).toBe('false');
     }

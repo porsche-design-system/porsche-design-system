@@ -14,6 +14,7 @@ import { getComponentCss } from './tabs-bar-styles';
 import {
   animateBar,
   getActiveElementIndex,
+  getSanitizedActiveTabIndex,
   getUpcomingActiveElementIndex,
   isTabList,
   scrollTabIntoView,
@@ -137,10 +138,13 @@ export class TabsBar {
   }
 
   private setAccessibilityAttributes = (): void => {
-    const hasActiveTabIndex = this.activeTabIndex !== undefined;
+    // activeTabIndex can be out of range after slot changes (e.g. tab removal), treat it as undefined
+    // so the first tab gets tabindex="0" as a keyboard accessibility fallback (roving tabindex pattern)
+    const sanitizedActiveTabIndex = getSanitizedActiveTabIndex(this.activeTabIndex, this.tabs);
+    const hasActiveTabIndex = sanitizedActiveTabIndex !== undefined;
 
     this.tabs.forEach((tab, index) => {
-      const isActiveTabIndex = this.activeTabIndex === index;
+      const isActiveTabIndex = sanitizedActiveTabIndex === index;
       const attrs = this.isTabList
         ? {
             role: 'tab',
