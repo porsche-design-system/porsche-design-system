@@ -1,4 +1,4 @@
-import { borderWidthBase, fontFamily } from '@porsche-design-system/emotion';
+import { fontFamily } from '@porsche-design-system/emotion';
 import { forceUpdate } from '@stencil/core';
 import { hasDocument } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
@@ -28,7 +28,7 @@ export const tempDiv = hasDocument ? document.createElement('div') : undefined;
 if (tempDiv) {
   tempDiv.style.position = 'absolute';
   tempDiv.style.visibility = 'hidden';
-  tempDiv.style.border = `${borderWidthBase} solid`;
+  tempDiv.style.border = '2px solid';
   tempDiv.style.boxSizing = 'border-box';
   tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
 }
