@@ -4,9 +4,10 @@ import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../u
 import { getComponentCss } from './ai-tag-styles';
 import {
   AI_TAG_ICONS,
-  AI_TAG_DEFAULT_LOCALE,
   AI_TAG_TEXT_VARIANTS,
+  AI_TAG_TRANSLATIONS,
   type AiTagIcon,
+  type AiTagLocale,
   type AiTagTextVariant,
   getAiTagText,
 } from './ai-tag-utils';
@@ -14,7 +15,7 @@ import {
 const propTypes: PropTypes<typeof AiTag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   icon: AllowedTypes.oneOf<AiTagIcon>(AI_TAG_ICONS),
-  locale: AllowedTypes.string,
+  locale: AllowedTypes.oneOf<AiTagLocale>(Object.keys(AI_TAG_TRANSLATIONS) as AiTagLocale[]),
   textVariant: AllowedTypes.oneOf<AiTagTextVariant>(AI_TAG_TEXT_VARIANTS),
 };
 
@@ -32,7 +33,7 @@ export class AiTag {
   @Prop() public icon?: AiTagIcon = 'ai-spark';
 
   /** Locale for the AI text (ISO format, e.g. "de_DE"). */
-  @Prop() public locale?: string = AI_TAG_DEFAULT_LOCALE;
+  @Prop() public locale?: AiTagLocale = 'en_US';
 
   /** Text variant to display: 'abbreviation' (e.g. "AI") or 'long-form' (e.g. "Artificial Intelligence"). */
   @Prop() public textVariant?: AiTagTextVariant = 'abbreviation';

@@ -40,7 +40,7 @@ export const AI_TAG_TEXT_VARIANTS = ['abbreviation', 'long-form'] as const;
 export type AiTagTextVariant = (typeof AI_TAG_TEXT_VARIANTS)[number];
 
 // ISO locale code to AI text mapping (abbreviation + spelled-out word)
-export const AI_TAG_TRANSLATIONS: Record<string, { abbreviation: string; 'long-form': string }> = {
+export const AI_TAG_TRANSLATIONS = {
   de_DE: { abbreviation: 'KI', 'long-form': 'Künstliche Intelligenz' },
   en_US: { abbreviation: 'AI', 'long-form': 'Artificial Intelligence' },
   en_GB: { abbreviation: 'AI', 'long-form': 'Artificial Intelligence' },
@@ -67,11 +67,11 @@ export const AI_TAG_TRANSLATIONS: Record<string, { abbreviation: string; 'long-f
   et_EE: { abbreviation: 'TI', 'long-form': 'Tehisintellekt' },
   lv_LV: { abbreviation: 'MI', 'long-form': 'Mākslīgais intelekts' },
   lt_LT: { abbreviation: 'DI', 'long-form': 'Dirbtinis intelektas' },
-};
+} satisfies Record<string, { abbreviation: string; 'long-form': string }>;
 
-export const AI_TAG_DEFAULT_LOCALE = 'en_US';
+export type AiTagLocale = keyof typeof AI_TAG_TRANSLATIONS;
 
 export const getAiTagText = (locale: string, textVariant: AiTagTextVariant = 'abbreviation'): string => {
-  const entry = AI_TAG_TRANSLATIONS[locale] ?? AI_TAG_TRANSLATIONS[AI_TAG_DEFAULT_LOCALE];
+  const entry = AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS['en_US'];
   return entry[textVariant];
 };
