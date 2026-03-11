@@ -4,6 +4,10 @@ const generatedRoutes = {
     "path": "/accordion",
     "name": "Accordion"
   },
+  "aiTag": {
+    "path": "/ai-tag",
+    "name": "AiTag"
+  },
   "banner": {
     "path": "/banner",
     "name": "Banner"

@@ -14,6 +14,7 @@ export * from './Utilities';
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
+import { AiTagPage } from './generated/AiTag';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
 import { BannerErrorPage } from './generated/BannerError';
@@ -248,6 +249,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Accordion',
     path: '/accordion',
     element: <AccordionPage />,
+  },
+  {
+    name: 'Ai Tag',
+    path: '/ai-tag',
+    element: <AiTagPage />,
   },
   {
     name: 'Banner',
