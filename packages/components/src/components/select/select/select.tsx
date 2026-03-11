@@ -383,6 +383,7 @@ export class Select {
       hoveredOption &&
       isElementOfKind(hoveredOption, 'p-select-option') &&
       !hoveredOption.disabled &&
+      !hoveredOption.disabledParent &&
       hoveredOption !== this.currentlyHighlightedOption
     ) {
       this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
