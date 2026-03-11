@@ -3,10 +3,8 @@ import type { PropTypes, Theme } from '../../types';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './ai-tag-styles';
 import {
-  AI_TAG_ICONS,
   AI_TAG_TEXT_VARIANTS,
   AI_TAG_TRANSLATIONS,
-  type AiTagIcon,
   type AiTagLocale,
   type AiTagTextVariant,
   getAiTagText,
@@ -14,7 +12,6 @@ import {
 
 const propTypes: PropTypes<typeof AiTag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  icon: AllowedTypes.oneOf<AiTagIcon>(AI_TAG_ICONS),
   locale: AllowedTypes.oneOf<AiTagLocale>(Object.keys(AI_TAG_TRANSLATIONS) as AiTagLocale[]),
   textVariant: AllowedTypes.oneOf<AiTagTextVariant>(AI_TAG_TEXT_VARIANTS),
 };
@@ -29,9 +26,6 @@ export class AiTag {
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** The AI icon shown. */
-  @Prop() public icon?: AiTagIcon = 'ai-spark';
-
   /** Locale for the AI text (ISO format, e.g. "de_DE"). */
   @Prop() public locale?: AiTagLocale = 'en_US';
 
@@ -41,7 +35,7 @@ export class AiTag {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    attachComponentCss(this.host, getComponentCss, this.icon, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.theme);
 
     const text = getAiTagText(this.locale, this.textVariant);
     const longFormText = getAiTagText(this.locale, 'long-form');

@@ -1,4 +1,4 @@
-import { borderRadiusSmall, frostedGlassStyle, textXSmallStyle } from '@porsche-design-system/styles';
+import { borderRadiusSmall, frostedGlassStyle, textXXSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,18 +10,14 @@ import {
 import type { Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { AI_TAG_ICON_PATHS, type AiTagIcon } from './ai-tag-utils';
+import { AI_TAG_ICON_PATH } from './ai-tag-utils';
 
-const getIconMask = (icon: AiTagIcon): string => {
-  return `${getInlineSVGBackgroundImage(AI_TAG_ICON_PATHS[icon])} center/contain no-repeat`;
-};
-
-export const getComponentCss = (icon: AiTagIcon, theme: Theme): string => {
-  const { primaryColor, backgroundFrostedColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundFrostedColor: backgroundFrostedColorDark } =
+export const getComponentCss = (theme: Theme): string => {
+  const { backgroundFrostedColor, contrastHighColor } = getThemedColors(theme);
+  const { backgroundFrostedColor: backgroundFrostedColorDark, contrastHighColor: contrastHighColorDark } =
     getThemedColors('dark');
 
-  const iconMask = getIconMask(icon);
+  const iconMask = `${getInlineSVGBackgroundImage(AI_TAG_ICON_PATH)} center/contain no-repeat`;
 
   return getCss({
     '@global': {
@@ -38,10 +34,10 @@ export const getComponentCss = (icon: AiTagIcon, theme: Theme): string => {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
-        padding: '1px 6px',
+        padding: '1px 6px 1px 4px',
         borderRadius: borderRadiusSmall,
-        font: textXSmallStyle.font,
-        color: primaryColor,
+        font: textXXSmallStyle.font,
+        color: contrastHighColor,
         background: backgroundFrostedColor,
         ...frostedGlassStyle,
         ...(isHighContrastMode && {
@@ -49,7 +45,7 @@ export const getComponentCss = (icon: AiTagIcon, theme: Theme): string => {
         }),
         transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
+          color: contrastHighColorDark,
           background: backgroundFrostedColorDark,
         }),
       },
@@ -61,12 +57,12 @@ export const getComponentCss = (icon: AiTagIcon, theme: Theme): string => {
       display: 'inline-block',
       width: '1rem',
       height: '1rem',
-      backgroundColor: primaryColor,
+      backgroundColor: contrastHighColor,
       mask: iconMask,
       WebkitMask: iconMask,
       flexShrink: 0,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: primaryColorDark,
+        backgroundColor: contrastHighColorDark,
       }),
     },
   });

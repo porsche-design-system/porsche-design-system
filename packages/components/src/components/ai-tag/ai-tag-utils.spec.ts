@@ -1,17 +1,9 @@
-import { AI_TAG_ICONS, AI_TAG_ICON_PATHS, AI_TAG_TRANSLATIONS, getAiTagText } from './ai-tag-utils';
+import { AI_TAG_ICON_PATH, AI_TAG_TRANSLATIONS, getAiTagText } from './ai-tag-utils';
 
-describe('AI_TAG_ICONS', () => {
-  it('should contain 10 icons', () => {
-    expect(AI_TAG_ICONS).toHaveLength(10);
-  });
-});
-
-describe('AI_TAG_ICON_PATHS', () => {
-  it('should have a path entry for each icon', () => {
-    for (const icon of AI_TAG_ICONS) {
-      expect(AI_TAG_ICON_PATHS[icon]).toBeDefined();
-      expect(AI_TAG_ICON_PATHS[icon]).toContain('<path');
-    }
+describe('AI_TAG_ICON_PATH', () => {
+  it('should contain a valid SVG path', () => {
+    expect(AI_TAG_ICON_PATH).toBeDefined();
+    expect(AI_TAG_ICON_PATH).toContain('<path');
   });
 });
 

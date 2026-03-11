@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-import { AiTagIcon, AiTagLocale, AiTagTextVariant } from "./components/ai-tag/ai-tag-utils";
+import { AiTagLocale, AiTagTextVariant } from "./components/ai-tag/ai-tag-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -87,7 +87,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-export { AiTagIcon, AiTagLocale, AiTagTextVariant } from "./components/ai-tag/ai-tag-utils";
+export { AiTagLocale, AiTagTextVariant } from "./components/ai-tag/ai-tag-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -204,10 +204,6 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PAiTag {
-        /**
-          * The AI icon shown.
-         */
-        "icon"?: AiTagIcon;
         /**
           * Locale for the AI text (ISO format, e.g. "de_DE").
          */
@@ -4871,10 +4867,6 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PAiTag {
-        /**
-          * The AI icon shown.
-         */
-        "icon"?: AiTagIcon;
         /**
           * Locale for the AI text (ISO format, e.g. "de_DE").
          */
