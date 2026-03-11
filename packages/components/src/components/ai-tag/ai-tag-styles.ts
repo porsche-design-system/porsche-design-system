@@ -53,6 +53,9 @@ export const getComponentCss = (icon: AiTagIcon, theme: Theme): string => {
           background: backgroundFrostedColorDark,
         }),
       },
+      abbr: {
+        textDecoration: 'none',
+      },
     },
     icon: {
       display: 'inline-block',

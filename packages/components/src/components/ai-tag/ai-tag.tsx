@@ -44,11 +44,12 @@ export class AiTag {
     attachComponentCss(this.host, getComponentCss, this.icon, this.theme);
 
     const text = getAiTagText(this.locale, this.textVariant);
+    const longFormText = getAiTagText(this.locale, 'long-form');
 
     return (
       <span>
         <span class="icon" aria-hidden="true"></span>
-        {text}
+        {this.textVariant === 'abbreviation' ? <abbr title={longFormText}>{text}</abbr> : text}
       </span>
     );
   }

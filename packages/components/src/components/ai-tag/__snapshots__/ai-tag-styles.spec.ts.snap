@@ -23,6 +23,9 @@ span:not(.icon) {
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
+abbr {
+  text-decoration: none;
+}
 .icon {
   display: inline-block;
   width: 1rem;
@@ -56,6 +59,9 @@ span:not(.icon) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+abbr {
+  text-decoration: none;
 }
 .icon {
   display: inline-block;
@@ -91,6 +97,9 @@ span:not(.icon) {
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
+abbr {
+  text-decoration: none;
+}
 .icon {
   display: inline-block;
   width: 1rem;
@@ -124,6 +133,9 @@ span:not(.icon) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+abbr {
+  text-decoration: none;
 }
 .icon {
   display: inline-block;
@@ -159,6 +171,9 @@ span:not(.icon) {
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
+abbr {
+  text-decoration: none;
+}
 .icon {
   display: inline-block;
   width: 1rem;
@@ -192,6 +207,9 @@ span:not(.icon) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+abbr {
+  text-decoration: none;
 }
 .icon {
   display: inline-block;
