@@ -591,6 +591,21 @@ and migration steps.
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
+## [3.33.0] - 2026-03-09
+
+## [3.33.0-rc.0] - 2026-03-04
+
+### Added
+
+- `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
+  ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+- `Checkbox`: add warning for Firefox form restore bug
+
+### Changed
+
+- `Tag`: deprecated `color` property, use `variant` property instead to define background colors which complies now with
+  PDS `v4` ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+
 ## [3.32.1] - 2026-02-24
 
 ## [3.32.1-rc.0] - 2026-02-20
@@ -666,11 +681,6 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-
-### Changed
-
-- `Link Tile`, `Button Tile`: appearance in compact mode
-- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
@@ -2087,7 +2097,7 @@ and migration steps.
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel align-header="start"></p-carousel>
++ <p-carousel-pure align-header="start"></p-carousel>
 ```
 
 ### Fixed
