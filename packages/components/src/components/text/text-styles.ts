@@ -1,13 +1,15 @@
-import {
-  fontSizeTextLarge,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXLarge,
-  fontSizeTextXSmall,
-  fontSizeTextXXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
+} from '../../styles/css-variables';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import type { BreakpointCustomizable, TextSize } from '../../types';
@@ -15,12 +17,12 @@ import { buildResponsiveStyles, getCss } from '../../utils';
 import { TEXT_TAGS, type TextAlign, type TextColor, type TextWeight } from './text-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
-  'xx-small': fontSizeTextXXSmall,
-  'x-small': fontSizeTextXSmall,
-  small: fontSizeTextSmall,
-  medium: fontSizeTextMedium,
-  large: fontSizeTextLarge,
-  'x-large': fontSizeTextXLarge,
+  'xx-small': typescale2Xs,
+  'x-small': typescaleXs,
+  small: typescaleSm,
+  medium: typescaleMd,
+  large: typescaleLg,
+  'x-large': typescaleXl,
 };
 
 // CSS Variable defined in fontHyphenationStyle
@@ -45,7 +47,9 @@ export const getComponentCss = (
       [`::slotted(:is(${TEXT_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
     },
     root: getTypographyRootJssStyle(
-      textSmallStyle,
+      {
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
+      },
       buildResponsiveStyles(size, (sizeValue: TextSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
         fontWeight: getFontWeight(weight),

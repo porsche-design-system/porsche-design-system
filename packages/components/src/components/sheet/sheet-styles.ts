@@ -1,10 +1,10 @@
-import { spacingFluidLarge } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { spacingFluidLg } from '../../styles/css-variables';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -67,7 +67,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',
-      marginBlockStart: spacingFluidLarge, // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
+      marginBlockStart: spacingFluidLg, // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
       borderTopLeftRadius: dialogBorderRadius,
       borderTopRightRadius: dialogBorderRadius,
       ...forcedColorsMediaQuery({

@@ -1,4 +1,3 @@
-import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -11,6 +10,7 @@ import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-style
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
 import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
+import { fontPorscheNext, leadingNormal, spacingStaticXs, typescaleSm } from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss, isDisabledOrLoading } from '../../utils';
@@ -43,7 +43,7 @@ export const getComponentCss = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
-  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${leadingNormal}) / 2))`;
   const labelPaddingInlineStart = `calc(11.2px * (var(${cssVarInternalCheckboxScaling}) - 0.64285714) + 4px)`;
 
   return getCss({
@@ -72,7 +72,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      rowGap: spacingStaticXSmall,
+      rowGap: spacingStaticXs,
     },
     wrapper: {
       position: 'relative',
@@ -84,7 +84,7 @@ export const getComponentCss = (
       alignItems: 'center',
       display: 'grid',
       alignSelf: 'flex-start',
-      minHeight: fontLineHeight, // necessary for compact mode
+      minHeight: leadingNormal, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       ...(isDisabled && getDisabledBaseStyles()),
     },
@@ -96,7 +96,7 @@ export const getComponentCss = (
         transform: 'translate(-50%,-50%)',
         width: checkboxDimension,
         height: checkboxDimension,
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+        font: `${typescaleSm}/${leadingNormal} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
       },
     }),
     // .label / .required

@@ -1,13 +1,4 @@
-import {
-  fontHyphenationStyle,
-  getMediaQueryMin,
-  headingSmallStyle,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXSmall,
-  textXSmallStyle,
-  textXXSmallStyle,
-} from '@porsche-design-system/emotion';
+import { fontHyphenationStyle, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -24,9 +15,18 @@ import {
   colorContrastMedium,
   colorPrimary,
   colorSurface,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusLarge,
   radius2Xl,
   radius4Xl,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXs,
+  typescale2Xs,
+  typescaleSm,
+  typescaleXs,
 } from '../../styles/css-variables';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
@@ -91,7 +91,7 @@ export const getComponentCss = (
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
             flexWrap: 'wrap',
-            gap: spacingFluidXSmall,
+            gap: spacingFluidXs,
           },
         },
         '::slotted(:is(img,picture))': {
@@ -116,7 +116,7 @@ export const getComponentCss = (
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
       borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
-      padding: spacingFluidSmall,
+      padding: spacingFluidSm,
       color: colorPrimary,
       backgroundColor: colorSurface,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
@@ -131,7 +131,7 @@ export const getComponentCss = (
     }),
     header: {
       display: 'flex',
-      gap: spacingFluidSmall,
+      gap: spacingFluidSm,
       justifyContent: 'space-between',
       alignItems: 'flex-start',
     },
@@ -143,11 +143,11 @@ export const getComponentCss = (
     }),
     image: {
       aspectRatio: '8/9',
-      margin: `${spacingFluidSmall} auto ${spacingFluidXSmall}`,
+      margin: `${spacingFluidSm} auto ${spacingFluidXs}`,
       overflow: 'hidden',
       transition: getTransition('transform', 'moderate'),
       [getMediaQueryMin('s')]: {
-        padding: `0 ${spacingFluidMedium}`, // ensures image is not getting to large
+        padding: `0 ${spacingFluidMd}`, // ensures image is not getting to large
       },
       ...hoverMediaQuery({
         '.root:hover &': {
@@ -163,24 +163,24 @@ export const getComponentCss = (
     },
     heading: {
       margin: '0 0 2px', // ua-style reset
-      ...headingSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       ...fontHyphenationStyle,
       ...getMultilineEllipsis(3),
     },
     price: {
       margin: 0, // ua-style reset
-      ...textXSmallStyle,
+      font: `${fontWeightNormal} ${typescaleXs}/${leadingNormal} ${fontPorscheNext}`,
       ...(hasPriceOriginal && {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        columnGap: spacingFluidXSmall,
+        columnGap: spacingFluidXs,
       }),
     },
     ...(hasDescription && {
       description: {
         margin: 0, // ua-style reset
-        ...textXXSmallStyle,
+        font: `${fontWeightNormal} ${typescale2Xs}/${leadingNormal} ${fontPorscheNext}`,
         ...getMultilineEllipsis(2),
         color: colorContrastHigh,
       },

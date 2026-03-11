@@ -1,6 +1,13 @@
-import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { colorPrimary } from '../../../styles/css-variables';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  spacingStaticMd,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
@@ -26,7 +33,7 @@ export const getComponentCss = (type: TextListType): string => {
         }),
       },
       'ol,ul': {
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         margin: 0,
         padding: `var(${cssVariablePaddingTop},0) 0 var(${cssVariablePaddingBottom},0) 0`,
         listStyleType: 'none',
@@ -34,8 +41,8 @@ export const getComponentCss = (type: TextListType): string => {
       },
       // css selector for text-list-item
       '::slotted(*)': addImportantToEachRule({
-        [cssVariablePaddingTop]: spacingStaticXSmall, // padding top for nested list
-        [cssVariablePaddingBottom]: spacingStaticMedium, // padding bottom for nested list, TODO: in case it's last root list item with a nested list it would result in outer spacing which is not desired
+        [cssVariablePaddingTop]: spacingStaticXs, // padding top for nested list
+        [cssVariablePaddingBottom]: spacingStaticMd, // padding bottom for nested list, TODO: in case it's last root list item with a nested list it would result in outer spacing which is not desired
         [cssVariablePseudoSpace]: isOrderedList
           ? `var(${cssVariableOrderedGridColumn},1.5rem)`
           : `var(${cssVariableUnorderedGridColumn},.375rem)`,

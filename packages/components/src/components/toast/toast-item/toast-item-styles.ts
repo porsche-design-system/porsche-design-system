@@ -1,6 +1,12 @@
-import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, dismissButtonJssStyle, preventFoucOfNestedElementsStyles } from '../../../styles';
-import { colorPrimary } from '../../../styles/css-variables';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  shadowLg,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   getNotificationContentJssStyle,
@@ -27,14 +33,14 @@ export const getComponentCss = (state: ToastState): string => {
           height: 'auto', // ua popover reset
         }),
         ...getNotificationRootJssStyle(state, false, true),
-        ...dropShadowHighStyle,
+        boxShadow: shadowLg,
         '&::backdrop': {
           display: 'none',
         },
       },
       ...preventFoucOfNestedElementsStyles,
       p: {
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         margin: 0,
         color: colorPrimary,
         ...getNotificationContentJssStyle(),

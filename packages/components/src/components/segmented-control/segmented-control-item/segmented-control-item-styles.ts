@@ -1,10 +1,4 @@
-import {
-  borderWidthBase,
-  borderWidthThin,
-  fontLineHeight,
-  textSmallStyle,
-  textXSmallStyle,
-} from '@porsche-design-system/emotion';
+import { textSmallStyle, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -18,6 +12,7 @@ import {
 import {
   colorContrastMedium,
   colorPrimary,
+  leadingNormal,
   legacyRadiusSmall,
   radiusLg,
   radiusXl,
@@ -51,7 +46,7 @@ export const getScalableItemStyles = (
     ? `${verticalPadding} ${horizontalPadding} ${verticalPadding} ${verticalPadding}`
     : `${verticalPadding} ${horizontalPadding}`;
 
-  const dimension = `calc(max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px)) + (${verticalPadding} + ${borderWidthBase}) * 2)`;
+  const dimension = `calc(max(${leadingNormal}, ${scalingVar} * (${leadingNormal} + 10px)) + (${verticalPadding} + 2px) * 2)`;
 
   return { padding, dimension };
 };
@@ -91,7 +86,7 @@ export const getComponentCss = (
         minHeight: dimension,
         minWidth: dimension,
         padding: padding,
-        border: `${borderWidthThin} solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
+        border: `1px solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: colorPrimary,

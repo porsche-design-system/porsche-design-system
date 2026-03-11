@@ -1,8 +1,8 @@
 import {
-  displayLargeStyle,
   fontSizeDisplayLarge,
   fontSizeDisplayMedium,
   fontSizeDisplaySmall,
+  proseDisplayLgStyle,
 } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
@@ -33,7 +33,7 @@ export const getComponentCss = (
       [`::slotted(:is(${DISPLAY_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
     },
     root: getTypographyRootJssStyle(
-      displayLargeStyle,
+      proseDisplayLgStyle,
       buildResponsiveStyles(size, (sizeValue: DisplaySize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
       })),

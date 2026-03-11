@@ -1,11 +1,17 @@
-import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/emotion';
+import { getMediaQueryMax } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorPrimary } from '../../styles/css-variables';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  typescaleSm,
+} from '../../styles/css-variables';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getCss, HEADING_TAGS } from '../../utils';
 import {
@@ -23,7 +29,7 @@ const getTextJssStyle = {
 };
 
 const getHeadingJssStyle = {
-  ...headingSmallStyle,
+  font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
   ...getTextJssStyle,
 };
 
@@ -48,14 +54,14 @@ export const getComponentCss = (state: InlineNotificationState, hasAction: boole
     },
     heading: getHeadingJssStyle,
     description: {
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       ...getTextJssStyle,
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
-        marginTop: borderWidthBase, // To visually align with close button
+        marginTop: '2px', // To visually align with close button
         [mediaQueryMaxS]: {
           gridRowStart: 2,
         },

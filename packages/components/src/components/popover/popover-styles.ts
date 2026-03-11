@@ -1,15 +1,4 @@
 import {
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  frostedGlassStyle,
-  motionDurationShort,
-  motionEasingBase,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
-import {
   addImportantToEachRule,
   cssVariableAnimationDuration,
   forcedColorsMediaQuery,
@@ -21,13 +10,22 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
+  blurFrosted,
   colorCanvas,
   colorFrosted,
   colorFrostedSoft,
   colorPrimary,
+  durationSm,
+  easeInOut,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  typescaleSm,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
@@ -63,20 +61,21 @@ export const getComponentCss = (): string => {
       },
       ...preventFoucOfNestedElementsStyles,
       p: {
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         margin: 0,
       },
       button: {
         all: 'unset',
         display: 'block',
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width/height definition based on ex-unit
-        width: fontLineHeight, // width needed to improve ssr support
-        height: fontLineHeight, // height needed to improve ssr support
+        font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width/height definition based on ex-unit
+        width: leadingNormal, // width needed to improve ssr support
+        height: leadingNormal, // height needed to improve ssr support
         borderRadius: radiusFull,
         cursor: 'pointer',
         backgroundColor: colorFrosted,
         transition: getTransition('background-color'),
-        ...frostedGlassStyle,
+        WebkitBackdropFilter: blurFrosted,
+        backdropFilter: blurFrosted,
         ...hoverMediaQuery({
           '&:hover': {
             backgroundColor: colorFrostedSoft,
@@ -90,7 +89,7 @@ export const getComponentCss = (): string => {
         pointerEvents: 'none',
         filter: `drop-shadow(0 0 16px ${shadowColor})`,
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
-        animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
+        animation: `var(${cssVariableAnimationDuration}, ${durationSm}) fade-in ${easeInOut} forwards`,
         '&:not(:popover-open)': {
           display: 'none', // ensures popover is not flickering when closed in some situations
         },
@@ -114,10 +113,10 @@ export const getComponentCss = (): string => {
       maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
       width: 'max-content', // ensures in older browsers correct width
       boxSizing: 'border-box',
-      padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
+      padding: `${spacingStaticSm} ${spacingStaticMd}`,
       pointerEvents: 'auto',
       borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       background: colorCanvas,
       color: colorPrimary,
       ...forcedColorsMediaQuery({

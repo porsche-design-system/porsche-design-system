@@ -1,5 +1,5 @@
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { spacingStaticXs } from '../../../styles/css-variables';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
   getButtonImageJssStyle,
@@ -63,9 +63,9 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
-      minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
+      minWidth: `calc(1rem + ${formElementPaddingHorizontal} + 2px * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
     filter: getFilterJssStyle(cssVarInternalSelectScaling),
     options: getOptionsJssStyle(cssVarInternalSelectScaling),

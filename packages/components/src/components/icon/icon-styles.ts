@@ -1,13 +1,3 @@
-import {
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextLarge,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXLarge,
-  fontSizeTextXSmall,
-  fontSizeTextXXSmall,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   colorContrastHigh,
@@ -18,6 +8,14 @@ import {
   colorPrimary,
   colorSuccess,
   colorWarning,
+  fontPorscheNext,
+  leadingNormal,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
 } from '../../styles/css-variables';
 import type { IconName, TextSize } from '../../types';
 import { getCss } from '../../utils';
@@ -36,12 +34,12 @@ const colorMap: Record<IconColor, string> = {
 };
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
-  'xx-small': fontSizeTextXXSmall,
-  'x-small': fontSizeTextXSmall,
-  small: fontSizeTextSmall,
-  medium: fontSizeTextMedium,
-  large: fontSizeTextLarge,
-  'x-large': fontSizeTextXLarge,
+  'xx-small': typescale2Xs,
+  'x-small': typescaleXs,
+  small: typescaleSm,
+  medium: typescaleMd,
+  large: typescaleLg,
+  'x-large': typescaleXl,
 };
 
 const isFlippableIcon = (name: IconName, source: string): boolean => {
@@ -71,7 +69,7 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
 
 export const getComponentCss = (name: IconName, source: string, color: IconColor, size: TextSize): string => {
   const isSizeInherit = size === 'inherit';
-  const dimension = isSizeInherit ? 'inherit' : fontLineHeight;
+  const dimension = isSizeInherit ? 'inherit' : leadingNormal;
 
   return getCss({
     '@global': {
@@ -82,7 +80,7 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
         maxHeight: '100%',
         width: dimension,
         height: dimension,
-        font: `${isSizeInherit ? sizeMap.small : sizeMap[size]} ${fontFamily}`,
+        font: `${isSizeInherit ? sizeMap.small : sizeMap[size]} ${fontPorscheNext}`,
         color: colorMap[color],
         ...addImportantToEachRule({
           WebkitMask: `url("${buildIconUrl(source || name)}") center/contain no-repeat`, // necessary for Sogou browser support :-)

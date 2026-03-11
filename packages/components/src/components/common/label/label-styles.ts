@@ -1,11 +1,18 @@
-import { spacingStaticXs, proseTextSmStyle } from '@porsche-design-system/emotion';
+import { typescaleXs } from '@porsche-design-system/tokens';
 import type { JssStyle, Styles } from 'jss';
 import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
-import { colorContrastHigh, colorPrimary } from '../../../styles/css-variables';
+import {
+  colorContrastHigh,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
-import { typescaleXs } from '@porsche-design-system/tokens';
 
 export const getFunctionalComponentLabelAfterStyles = (): Styles => {
   return {
@@ -15,7 +22,7 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
       '&::slotted(*)': {
         ...addImportantToEachRule({
           marginInlineStart: spacingStaticXs,
-        })
+        }),
       },
     },
   };
@@ -39,7 +46,7 @@ export const getFunctionalComponentLabelStyles = (
       ...additionalLabelWrapperJssStyle,
     },
     label: {
-      ...proseTextSmStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       color: colorPrimary,
       ...(isDisabledOrLoading && {

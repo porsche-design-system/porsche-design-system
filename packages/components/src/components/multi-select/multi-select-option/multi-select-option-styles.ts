@@ -1,8 +1,8 @@
-import { fontLineHeight } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../../styles';
 import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
 import { cssVarInternalCheckboxScaling } from '../../../styles/checkbox/checkbox-css-vars';
+import { leadingNormal } from '../../../styles/css-variables';
 import { getOptionJssStyle } from '../../../styles/select';
 import { getCss, mergeDeep } from '../../../utils';
 
@@ -15,7 +15,7 @@ export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select
 
 export const getComponentCss = (isDisabled: boolean, selected: boolean): string => {
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
-  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${leadingNormal}) / 2))`;
 
   return getCss({
     '@global': {

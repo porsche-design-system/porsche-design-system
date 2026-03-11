@@ -1,5 +1,3 @@
-import { fontLineHeight, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/emotion';
-import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -12,7 +10,20 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { colorCanvas, colorFrosted, colorPrimary, legacyRadiusSmall, radiusFull } from '../../../styles/css-variables';
+import {
+  blurFrosted,
+  colorCanvas,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusFull,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
@@ -59,18 +70,20 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         paddingBlock: '6px',
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
-        font: textSmallStyle.font,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         fontSize: 'inherit', // necessary because of all: unset
         borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         ...(isStateCurrent && {
-          ...frostedGlassStyle,
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
           background: colorFrosted,
         }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
-              ...frostedGlassStyle,
+              WebkitBackdropFilter: blurFrosted,
+              backdropFilter: blurFrosted,
               background: colorFrosted,
             },
           })),
@@ -87,10 +100,10 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
       },
     },
     icon: {
-      font: textSmallStyle.font,
+      font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
       fontSize: 'inherit', // necessary because of all: unset
-      width: fontLineHeight,
-      height: fontLineHeight,
+      width: leadingNormal,
+      height: leadingNormal,
       forcedColorAdjust: 'none',
       ...(isStateCurrentOrUndefined && {
         display: 'grid',

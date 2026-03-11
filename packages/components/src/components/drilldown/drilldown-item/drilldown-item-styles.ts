@@ -1,17 +1,20 @@
 import {
-  headingSmallStyle,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXSmall,
-  spacingStaticMedium,
-} from '@porsche-design-system/emotion';
-import {
   addImportantToEachRule,
   getAnimation,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXs,
+  spacingStaticMd,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   cssVarColorBackgroundBase,
@@ -28,15 +31,15 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
-        from: { transform: `translate3d(0,${spacingFluidMedium},0)` },
+        from: { transform: `translate3d(0,${spacingFluidMd},0)` },
         to: { transform: 'translate3d(0,0,0)' },
       },
       '@keyframes slide-up-desktop-primary': {
-        from: { marginBlockStart: spacingFluidMedium },
+        from: { marginBlockStart: spacingFluidMd },
         to: { marginBlockStart: '0px' },
       },
       '@keyframes slide-up-desktop-secondary': {
-        from: { marginBlockStart: spacingFluidMedium },
+        from: { marginBlockStart: spacingFluidMd },
         to: { marginBlockStart: '0px' },
       },
       ':host': {
@@ -76,13 +79,13 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
               zIndex: 0,
               display: 'grid',
               gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-              gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+              gap: `var(${cssVariableGap},${spacingFluidXs})`,
               alignContent: 'start',
               alignItems: 'start',
               boxSizing: 'border-box',
               minHeight: '100%',
               height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-              paddingBlockEnd: spacingFluidLarge,
+              paddingBlockEnd: spacingFluidLg,
               animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
             }),
             ...((isPrimary || isCascade) && {
@@ -94,18 +97,18 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
               gridArea: '3/2/auto/-2',
               display: 'grid',
               gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-              gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+              gap: `var(${cssVariableGap},${spacingFluidXs})`,
               alignContent: 'start',
               alignItems: 'start',
               boxSizing: 'border-box',
               minHeight: '100%',
               height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-              paddingBlockEnd: spacingFluidLarge,
+              paddingBlockEnd: spacingFluidLg,
               animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
             }),
             ...(isSecondary && {
               gridArea: '2/2/auto/-2',
-              paddingBlockEnd: spacingFluidLarge,
+              paddingBlockEnd: spacingFluidLg,
             }),
             ...(isCascade && {
               display: 'contents',
@@ -117,13 +120,13 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         display: 'none',
         [mediaQueryMobile]: {
           ...(isSecondary && {
-            ...headingSmallStyle,
+            font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
             display: 'block',
             gridArea: '2/3',
             placeSelf: 'center',
             zIndex: 2,
             margin: 0,
-            paddingInline: spacingStaticMedium,
+            paddingInline: spacingStaticMd,
             maxWidth: '100%',
             boxSizing: 'border-box',
             whiteSpace: 'nowrap',
@@ -148,7 +151,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       }),
       '::slotted(*)': {
         [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
-        [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
+        [cssVariableGap]: spacingFluidXs, // reset css variable to prevent inheritance
       },
     },
     // drawer subgrid in combination with scroller grid ensures no content squeezing during slide up animation, potentially caused by scrollbar
@@ -166,7 +169,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           inset: 0,
           insetInlineStart: scrollerWidthDesktop,
           display: 'grid',
-          gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge}`,
+          gridTemplate: `${spacingFluidMd} minmax(0, 1fr)/${spacingFluidLg} minmax(0, 1fr) ${spacingFluidLg}`,
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',
@@ -225,8 +228,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           // TODO: not sure if this is ideal, since the consumer won't be able to change it when used with a custom
           //  grid-template, maybe <p-drilldown-button slot="button" /> would be an option, similar to <p-drilldown-link />
           gridColumn: '1/-1',
-          padding: spacingFluidSmall,
-          margin: `0 calc(${spacingFluidSmall} * -1)`,
+          padding: spacingFluidSm,
+          margin: `0 calc(${spacingFluidSm} * -1)`,
         }),
     },
     back: {
@@ -244,7 +247,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         },
         [mediaQueryDesktop]: {
           gridArea: '2/2',
-          marginBottom: spacingFluidMedium,
+          marginBottom: spacingFluidMd,
           width: 'fit-content',
           height: 'fit-content',
           marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon

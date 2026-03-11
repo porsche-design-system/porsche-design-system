@@ -1,4 +1,3 @@
-import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -13,10 +12,15 @@ import {
   colorContrastHigh,
   colorFrosted,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusLg,
   radiusXl,
+  typescaleSm,
+  typescaleXs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
@@ -59,7 +63,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         background: colorFrosted,
         color: colorPrimary,
         textAlign: 'start',
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         ...hoverMediaQuery({
           '&:hover > .icon': {
             backgroundColor: colorFrosted,
@@ -77,7 +81,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         display: 'block',
         marginBottom: '-4px',
         color: colorContrastHigh,
-        fontSize: fontSizeTextXSmall,
+        fontSize: typescaleXs,
       },
     }),
     icon: {

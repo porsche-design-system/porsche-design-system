@@ -1,4 +1,3 @@
-import { spacingStaticXSmall } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -7,6 +6,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { spacingStaticXs } from '../../../styles/css-variables';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
@@ -73,7 +73,7 @@ export const getComponentCss = (
       all: 'unset',
       display: 'grid',
       justifySelf: 'flex-start',
-      rowGap: spacingStaticXSmall,
+      rowGap: spacingStaticXs,
     },
     wrapper: {
       alignItems: 'start',

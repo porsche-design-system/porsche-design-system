@@ -1,4 +1,3 @@
-import { frostedGlassStyle, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getFocusBaseStyles,
@@ -8,7 +7,14 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { colorFrosted, legacyRadiusSmall, radiusSm } from '../../../styles/css-variables';
+import {
+  blurFrosted,
+  colorFrosted,
+  legacyRadiusSmall,
+  radiusSm,
+  spacingFluidSm,
+  spacingStaticXs,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
@@ -30,7 +36,7 @@ export const getComponentCss = (
       ':host': {
         display: 'table-cell',
         ...addImportantToEachRule({
-          padding: `2px var(${cssVariableTablePadding}, ${spacingFluidSmall}) var(${cssVariableTablePadding}, ${spacingFluidSmall})`,
+          padding: `2px var(${cssVariableTablePadding}, ${spacingFluidSm}) var(${cssVariableTablePadding}, ${spacingFluidSm})`,
           verticalAlign: 'bottom',
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
@@ -42,7 +48,7 @@ export const getComponentCss = (
             button: {
               position: 'relative',
               display: 'flex',
-              gap: spacingStaticXSmall,
+              gap: spacingStaticXs,
               width: 'auto',
               margin: 0, // Removes default button margin on safari 15
               padding: 0,
@@ -72,7 +78,8 @@ export const getComponentCss = (
                   },
                 },
                 '&:hover::before': {
-                  ...frostedGlassStyle,
+                  WebkitBackdropFilter: blurFrosted,
+                  backdropFilter: blurFrosted,
                   backgroundColor: colorFrosted,
                 },
               }),

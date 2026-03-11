@@ -1,6 +1,11 @@
-import { fontWeightSemiBold, textXSmallStyle } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../styles';
-import { colorPrimary } from '../../styles/css-variables';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightSemibold,
+  leadingNormal,
+  typescaleXs,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
@@ -28,7 +33,7 @@ export const getComponentCss = (isDisabled: boolean): string => {
       '[role="presentation"]': {
         paddingBlock,
         paddingInline,
-        font: textXSmallStyle.font.replace(' 400 ', ` ${fontWeightSemiBold} `),
+        font: `${fontWeightSemibold} ${typescaleXs}/${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary,
         ...(isDisabled && getDisabledBaseStyles()),
       },

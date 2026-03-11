@@ -1,24 +1,24 @@
-import {
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextLarge,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXLarge,
-  fontSizeTextXSmall,
-  fontSizeTextXXSmall,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  fontPorscheNext,
+  leadingNormal,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { FlagSize } from './flag-utils';
 
 const sizeMap: Record<Exclude<FlagSize, 'inherit'>, string> = {
-  'xx-small': fontSizeTextXXSmall,
-  'x-small': fontSizeTextXSmall,
-  small: fontSizeTextSmall,
-  medium: fontSizeTextMedium,
-  large: fontSizeTextLarge,
-  'x-large': fontSizeTextXLarge,
+  'xx-small': typescale2Xs,
+  'x-small': typescaleXs,
+  small: typescaleSm,
+  medium: typescaleMd,
+  large: typescaleLg,
+  'x-large': typescaleXl,
 };
 
 export const getComponentCss = (size: FlagSize): string => {
@@ -43,9 +43,9 @@ export const getComponentCss = (size: FlagSize): string => {
               height: size,
             }
           : {
-              width: fontLineHeight,
-              height: fontLineHeight,
-              font: `${sizeMap[size]} ${fontFamily}`,
+              width: leadingNormal,
+              height: leadingNormal,
+              font: `${sizeMap[size]} ${fontPorscheNext}`,
             }),
       },
     },

@@ -1,4 +1,3 @@
-import { motionDurationVeryLong } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -6,7 +5,7 @@ import {
   getHiddenTextJssStyle,
   hostHiddenStyles,
 } from '../../styles';
-import { colorContrastLower, colorPrimary } from '../../styles/css-variables';
+import { colorContrastLower, colorPrimary, durationXl } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { SpinnerSize } from './spinner-utils';
@@ -24,7 +23,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
   const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
+  const animationDuration = `var(${cssVariableAnimationDuration}, ${durationXl})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
 
   return getCss({

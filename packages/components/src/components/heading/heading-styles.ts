@@ -1,25 +1,26 @@
-import {
-  fontSizeHeadingLarge,
-  fontSizeHeadingMedium,
-  fontSizeHeadingSmall,
-  fontSizeHeadingXLarge,
-  fontSizeHeadingXXLarge,
-  fontWeightRegular,
-  fontWeightSemiBold,
-  headingXXLargeStyle,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  leadingNormal,
+  typescale2Xl,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+} from '../../styles/css-variables';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
 import type { HeadingAlign, HeadingColor } from './heading-utils';
 
 export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
-  small: fontSizeHeadingSmall,
-  medium: fontSizeHeadingMedium,
-  large: fontSizeHeadingLarge,
-  'x-large': fontSizeHeadingXLarge,
-  'xx-large': fontSizeHeadingXXLarge,
+  small: typescaleSm,
+  medium: typescaleMd,
+  large: typescaleLg,
+  'x-large': typescaleXl,
+  'xx-large': typescale2Xl,
 };
 
 export const getComponentCss = (
@@ -39,10 +40,12 @@ export const getComponentCss = (
       [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
     },
     root: getTypographyRootJssStyle(
-      headingXXLargeStyle,
+      {
+        font: `${fontWeightNormal} ${typescale2Xl}/${leadingNormal} ${fontPorscheNext}`,
+      },
       buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-        fontWeight: sizeValue === 'small' ? fontWeightSemiBold : fontWeightRegular,
+        fontWeight: sizeValue === 'small' ? fontWeightSemibold : fontWeightNormal,
       })),
       align,
       color,

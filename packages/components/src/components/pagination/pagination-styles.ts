@@ -1,13 +1,4 @@
-import {
-  borderWidthBase,
-  fontLineHeight,
-  frostedGlassStyle,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
+import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -18,7 +9,19 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import {
+  blurFrosted,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusSm,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -26,7 +29,7 @@ const mediaQueryMaxS = getMediaQueryMax('s');
 
 // button size needs to be fluid between 320px and 360px viewport width, so that the pagination fits into 320px viewport
 // and text scale 200% works (almost) on mobile viewports too
-const buttonSize = `clamp(36px, calc(${fontLineHeight} + 10vw - 20px), 40px)`;
+const buttonSize = `clamp(36px, calc(${leadingNormal} + 10vw - 20px), 40px)`;
 
 const disabledCursorStyle: JssStyle = {
   cursor: 'default',
@@ -52,11 +55,11 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
       },
       ul: {
         display: 'flex',
-        gap: spacingStaticXSmall,
+        gap: spacingStaticXs,
         margin: 0,
         padding: 0,
         [mediaQueryMinS]: {
-          gap: spacingStaticSmall,
+          gap: spacingStaticSm,
         },
       },
       li: {
@@ -85,9 +88,9 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         }),
         [mediaQueryMinS]: {
           // prev
-          '&:first-child': { marginInlineEnd: spacingStaticSmall },
+          '&:first-child': { marginInlineEnd: spacingStaticSm },
           // next
-          '&:last-child': { marginInlineStart: spacingStaticSmall },
+          '&:last-child': { marginInlineStart: spacingStaticSm },
           ...(pageTotal < 8
             ? { '&.ellip': hiddenStyle }
             : // max 7 items including ellipsis at the same time on tablet
@@ -110,7 +113,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         width: buttonSize,
         height: buttonSize,
         boxSizing: 'border-box',
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: colorPrimary,
@@ -119,14 +122,15 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
-            ...frostedGlassStyle,
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
             background: colorFrosted,
           },
         }),
         '&[aria-current]': {
           ...disabledCursorStyle,
           color: colorPrimary,
-          border: `${borderWidthBase} solid ${colorPrimary}`,
+          border: `2px solid ${colorPrimary}`,
         },
         '&[aria-disabled]': {
           ...getDisabledBaseStyles(),

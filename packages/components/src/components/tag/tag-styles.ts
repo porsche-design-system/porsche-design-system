@@ -1,10 +1,4 @@
 import {
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textXSmallStyle,
-} from '@porsche-design-system/emotion';
-import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
@@ -14,6 +8,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
+  blurFrosted,
   colorCanvas,
   colorContrastHigh,
   colorErrorFrosted,
@@ -27,8 +22,13 @@ import {
   colorSuccessFrostedSoft,
   colorWarningFrosted,
   colorWarningFrostedSoft,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
+  spacingStaticXs,
+  typescaleXs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { TagVariant } from './tag-utils';
@@ -97,10 +97,11 @@ export const getComponentCss = (
         position: 'relative', // necessary as relative anchor to ensure click area of optional slotted focusable element is in sync
         display: 'flex',
         gap: '2px',
-        padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
-        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXSmall} + (${fontLineHeight} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
-        font: textXSmallStyle.font,
-        ...frostedGlassStyle,
+        padding: compact ? '1px 6px' : `${spacingStaticXs} 9px`,
+        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
+        font: `${fontWeightNormal} ${typescaleXs}/${leadingNormal} ${fontPorscheNext}`,
+        WebkitBackdropFilter: blurFrosted,
+        backdropFilter: blurFrosted,
         color: textColor,
         background: backgroundColor,
         transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`, // transition style should always be applied to have a smooth color change in case color prop gets updated during runtime

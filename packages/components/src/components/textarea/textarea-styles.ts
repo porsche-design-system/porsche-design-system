@@ -1,4 +1,3 @@
-import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -12,9 +11,14 @@ import {
   colorContrastMedium,
   colorFrosted,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusLg,
   radiusXl,
+  spacingStaticXs,
+  typescaleSm,
 } from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { getUnitCounterJssStyle } from '../../styles/form-styles';
@@ -52,7 +56,7 @@ export const getComponentCss = (
   const textareaMinHeight = `calc(var(${cssVarInternalTextareaScaling}) * 3.5rem)`;
   const textareaPaddingBlock = `calc(28px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 5px)`;
   const textareaPaddingInline = `calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 8px)`;
-  const textareaPaddingBottom = `calc(${fontLineHeight} + calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px))`;
+  const textareaPaddingBottom = `calc(${leadingNormal} + calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px))`;
   const counterMarginBottom = `calc(11.2px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px)`;
 
   const { formStateBorderColor, formStateBackgroundColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
@@ -78,14 +82,14 @@ export const getComponentCss = (
         maxWidth: 'var(--p-textarea-max-width, unset)',
         minHeight: `var(--p-textarea-min-height, ${textareaMinHeight})`,
         maxHeight: 'var(--p-textarea-max-height, unset)',
-        border: `${borderWidthThin} solid ${formStateBorderColor}`,
+        border: `1px solid ${formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: colorPrimary,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
         boxSizing: 'border-box',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        font: textSmallStyle.font,
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
         padding: hasCounter
           ? `${textareaPaddingBlock} ${textareaPaddingInline} ${textareaPaddingBottom}`
           : `${textareaPaddingBlock} ${textareaPaddingInline}`,
@@ -109,7 +113,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
     },
     wrapper: {
       display: 'grid',
