@@ -20,12 +20,12 @@ describe('AI_TAG_TRANSLATIONS', () => {
     expect(Object.keys(AI_TAG_TRANSLATIONS).length).toBeGreaterThanOrEqual(26);
   });
 
-  it('should have abbreviation and longdesc text for each locale', () => {
+  it('should have abbreviation and long-form text for each locale', () => {
     for (const entry of Object.values(AI_TAG_TRANSLATIONS)) {
       expect(entry).toHaveProperty('abbreviation');
-      expect(entry).toHaveProperty('longdesc');
+      expect(entry).toHaveProperty('long-form');
       expect(entry.abbreviation.length).toBeGreaterThan(0);
-      expect(entry.longdesc.length).toBeGreaterThan(0);
+      expect(entry['long-form'].length).toBeGreaterThan(0);
     }
   });
 
@@ -87,8 +87,8 @@ describe('AI_TAG_TRANSLATIONS', () => {
     ['et_EE', 'Tehisintellekt'],
     ['lv_LV', 'Mākslīgais intelekts'],
     ['lt_LT', 'Dirbtinis intelektas'],
-  ])('should return correct longdesc text for locale: %s → %s', (locale, expected) => {
-    expect(AI_TAG_TRANSLATIONS[locale].longdesc).toBe(expected);
+  ])('should return correct long-form text for locale: %s → %s', (locale, expected) => {
+    expect(AI_TAG_TRANSLATIONS[locale]['long-form']).toBe(expected);
   });
 });
 
@@ -182,8 +182,8 @@ describe('getAiTagText()', () => {
     ['et_EE', 'Tehisintellekt'],
     ['lv_LV', 'Mākslīgais intelekts'],
     ['lt_LT', 'Dirbtinis intelektas'],
-  ])('should return longdesc for locale: %s → %s', (locale, expected) => {
-    expect(getAiTagText(locale, 'longdesc')).toBe(expected);
+  ])('should return long-form for locale: %s → %s', (locale, expected) => {
+    expect(getAiTagText(locale, 'long-form')).toBe(expected);
   });
 
   it('should return default "AI" for unknown locale', () => {
@@ -191,7 +191,7 @@ describe('getAiTagText()', () => {
     expect(getAiTagText('')).toBe('AI');
   });
 
-  it('should return default longdesc text for unknown locale', () => {
-    expect(getAiTagText('xx_XX', 'longdesc')).toBe('Artificial Intelligence');
+  it('should return default long-form text for unknown locale', () => {
+    expect(getAiTagText('xx_XX', 'long-form')).toBe('Artificial Intelligence');
   });
 });

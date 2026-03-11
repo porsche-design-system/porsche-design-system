@@ -36,37 +36,37 @@ export const AI_TAG_ICON_PATHS: Record<AiTagIcon, string> = {
     '<path d="M10.5 5c.28 0 .5.22.5.5s-.22.5-.5.5H4a1 1 0 0 0-1 1v10c0 .5.58 1 1 1h16a1 1 0 0 0 1-1V9.99c0-.28.22-.5.5-.5s.5.22.5.5V17a2 2 0 0 1-2 2H4c-1.08 0-2-1-1.99-2V7C2 6.15 3 5 4 5zm1.07 9.03L14 12.01 18.53 17h-1.36l-3.28-3.6-1.65 1.38L14.26 17H12.9l-6.01-6.61L4 12.8v-1.3L7 9zm5.72-11.8c.1-.3.31-.3.42 0 .32 1.7.48 2.56 1 3.07.5.5 1.35.67 3.06 1 .3.1.3.3 0 .4-1.7.33-2.55.5-3.06.99-.51.5-.67 1.36-1 3.08-.1.3-.31.3-.42 0-.32-1.7-.49-2.56-1-3.07-.5-.5-1.35-.67-3.06-1-.3-.1-.3-.3 0-.4 1.7-.33 2.56-.5 3.07-1s.67-1.36 1-3.07"/>',
 };
 
-export const AI_TAG_TEXT_VARIANTS = ['abbreviation', 'longdesc'] as const;
+export const AI_TAG_TEXT_VARIANTS = ['abbreviation', 'long-form'] as const;
 export type AiTagTextVariant = (typeof AI_TAG_TEXT_VARIANTS)[number];
 
 // ISO locale code to AI text mapping (abbreviation + spelled-out word)
-export const AI_TAG_TRANSLATIONS: Record<string, { abbreviation: string; longdesc: string }> = {
-  de_DE: { abbreviation: 'KI', longdesc: 'Künstliche Intelligenz' },
-  en_US: { abbreviation: 'AI', longdesc: 'Artificial Intelligence' },
-  en_GB: { abbreviation: 'AI', longdesc: 'Artificial Intelligence' },
-  da_DK: { abbreviation: 'KI', longdesc: 'Kunstig intelligens' },
-  fi_FI: { abbreviation: 'AI', longdesc: 'Tekoäly' },
-  fr_FR: { abbreviation: 'IA', longdesc: 'Intelligence artificielle' },
-  el_GR: { abbreviation: 'ΤΝ', longdesc: 'Τεχνητή νοημοσύνη' },
-  it_IT: { abbreviation: 'IA', longdesc: 'Intelligenza artificiale' },
-  hr_HR: { abbreviation: 'UI', longdesc: 'Umjetna inteligencija' },
-  nl_NL: { abbreviation: 'AI', longdesc: 'Kunstmatige intelligentie' },
-  nb_NO: { abbreviation: 'KI', longdesc: 'Kunstig intelligens' },
-  pl_PL: { abbreviation: 'SI', longdesc: 'Sztuczna inteligencja' },
-  pt_PT: { abbreviation: 'IA', longdesc: 'Inteligência artificial' },
-  ro_RO: { abbreviation: 'IA', longdesc: 'Inteligență artificială' },
-  sv_SE: { abbreviation: 'AI', longdesc: 'Artificiell intelligens' },
-  sk_SK: { abbreviation: 'UI', longdesc: 'Umelá inteligencia' },
-  sl_SI: { abbreviation: 'UI', longdesc: 'Umetna inteligenca' },
-  es_ES: { abbreviation: 'IA', longdesc: 'Inteligencia artificial' },
-  cs_CZ: { abbreviation: 'UI', longdesc: 'Umělá inteligence' },
-  hu_HU: { abbreviation: 'MI', longdesc: 'Mesterséges intelligencia' },
-  mt_MT: { abbreviation: 'AI', longdesc: 'Artificial Intelligence' },
-  bg_BG: { abbreviation: 'ИИ', longdesc: 'Изкуствен интелект' },
-  en_CY: { abbreviation: 'AI', longdesc: 'Artificial Intelligence' },
-  et_EE: { abbreviation: 'TI', longdesc: 'Tehisintellekt' },
-  lv_LV: { abbreviation: 'MI', longdesc: 'Mākslīgais intelekts' },
-  lt_LT: { abbreviation: 'DI', longdesc: 'Dirbtinis intelektas' },
+export const AI_TAG_TRANSLATIONS: Record<string, { abbreviation: string; 'long-form': string }> = {
+  de_DE: { abbreviation: 'KI', 'long-form': 'Künstliche Intelligenz' },
+  en_US: { abbreviation: 'AI', 'long-form': 'Artificial Intelligence' },
+  en_GB: { abbreviation: 'AI', 'long-form': 'Artificial Intelligence' },
+  da_DK: { abbreviation: 'KI', 'long-form': 'Kunstig intelligens' },
+  fi_FI: { abbreviation: 'AI', 'long-form': 'Tekoäly' },
+  fr_FR: { abbreviation: 'IA', 'long-form': 'Intelligence artificielle' },
+  el_GR: { abbreviation: 'ΤΝ', 'long-form': 'Τεχνητή νοημοσύνη' },
+  it_IT: { abbreviation: 'IA', 'long-form': 'Intelligenza artificiale' },
+  hr_HR: { abbreviation: 'UI', 'long-form': 'Umjetna inteligencija' },
+  nl_NL: { abbreviation: 'AI', 'long-form': 'Kunstmatige intelligentie' },
+  nb_NO: { abbreviation: 'KI', 'long-form': 'Kunstig intelligens' },
+  pl_PL: { abbreviation: 'SI', 'long-form': 'Sztuczna inteligencja' },
+  pt_PT: { abbreviation: 'IA', 'long-form': 'Inteligência artificial' },
+  ro_RO: { abbreviation: 'IA', 'long-form': 'Inteligență artificială' },
+  sv_SE: { abbreviation: 'AI', 'long-form': 'Artificiell intelligens' },
+  sk_SK: { abbreviation: 'UI', 'long-form': 'Umelá inteligencia' },
+  sl_SI: { abbreviation: 'UI', 'long-form': 'Umetna inteligenca' },
+  es_ES: { abbreviation: 'IA', 'long-form': 'Inteligencia artificial' },
+  cs_CZ: { abbreviation: 'UI', 'long-form': 'Umělá inteligence' },
+  hu_HU: { abbreviation: 'MI', 'long-form': 'Mesterséges intelligencia' },
+  mt_MT: { abbreviation: 'AI', 'long-form': 'Artificial Intelligence' },
+  bg_BG: { abbreviation: 'ИИ', 'long-form': 'Изкуствен интелект' },
+  en_CY: { abbreviation: 'AI', 'long-form': 'Artificial Intelligence' },
+  et_EE: { abbreviation: 'TI', 'long-form': 'Tehisintellekt' },
+  lv_LV: { abbreviation: 'MI', 'long-form': 'Mākslīgais intelekts' },
+  lt_LT: { abbreviation: 'DI', 'long-form': 'Dirbtinis intelektas' },
 };
 
 export const AI_TAG_DEFAULT_LOCALE = 'en_US';

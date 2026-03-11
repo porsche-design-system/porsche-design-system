@@ -34,7 +34,7 @@ export class AiTag {
   /** Locale for the AI text (ISO format, e.g. "de_DE"). */
   @Prop() public locale?: string = AI_TAG_DEFAULT_LOCALE;
 
-  /** Text variant to display: 'abbreviation' (e.g. "AI") or 'longdesc' (e.g. "Artificial Intelligence"). */
+  /** Text variant to display: 'abbreviation' (e.g. "AI") or 'long-form' (e.g. "Artificial Intelligence"). */
   @Prop() public textVariant?: AiTagTextVariant = 'abbreviation';
 
   public render(): JSX.Element {
