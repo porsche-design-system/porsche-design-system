@@ -89,22 +89,23 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-export const getFocusBaseStyles = () => {
+export const getFocusBaseStyles = (offset: number = 2) => {
   return {
     outline: `${borderWidthBase} solid ${colorFocus}`,
-    outlineOffset: '2px',
+    outlineOffset: `${offset}px`,
     ...forcedColorsMediaQuery({
       outlineColor: 'Highlight',
     }),
   } as const;
 };
 
-export const getDisabledBaseStyles = () => {
+export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: JssStyle) => {
   return {
     opacity: alphaDisabled,
     ...forcedColorsMediaQuery({
       opacity: 1,
       color: 'GrayText',
+      ...addForcedColorsDisabledStyles,
     }),
   } as const;
 };

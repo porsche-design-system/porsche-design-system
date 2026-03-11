@@ -4,6 +4,7 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize }
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -87,6 +88,12 @@ export const getLinkButtonPureStyles = (
           fontSize: getFontSizeText(sizeValue),
         }))
       ),
+      ...forcedColorsMediaQuery({
+        color: 'LinkText',
+        '&:is(button)': {
+          color: 'ButtonText',
+        },
+      }),
       '&::before': {
         content: '""',
         position: 'absolute', // mobile Safari -> prevent lagging active state

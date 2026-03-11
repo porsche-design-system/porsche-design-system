@@ -8,13 +8,9 @@
       - columnheader "Natural multiline header cell"
       - columnheader "Hide header cell"
   - rowgroup:
-    - row /\d+ vehicle link bold italic strong emphasized Lorem ipsum dolor sit amet, consetetur sadipscing elitr Some text Some text Some text Edit Delete/:
-      - cell /\d+ vehicle link bold italic strong emphasized/:
+    - row /\d+ vehicle Some text Lorem ipsum dolor sit amet, consetetur sadipscing elitr Some text Some text Some text Edit Delete/:
+      - cell /\d+ vehicle Some text/:
         - img /\d+ vehicle/
-        - link "link":
-          - /url: "#"
-        - strong: strong
-        - emphasis: emphasized
       - cell "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
       - cell "Some text"
       - cell "Some text"
@@ -24,5 +20,3 @@
         - status
         - button "Delete"
         - status
-- button "next"
-- status
