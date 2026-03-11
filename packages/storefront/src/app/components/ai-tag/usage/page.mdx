@@ -1,0 +1,31 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'AI Tag - Porsche Design System',
+  description:
+    'Learn how to properly use the AI Tag component with best practices and guidelines for effective design and user experience.',
+};
+
+# AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+## Usage
+
+Use the AI tag to indicate that content has been generated or assisted by artificial intelligence.
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to indicate AI-generated or AI-assisted content.
+- Use the appropriate `locale` to match the user's language.
+- Use the `abbreviation` text variant for compact contexts where space is limited.
+- Use the `long-form` text variant when an explicit label improves clarity.
+
+### Don't:
+
+- Don't use as a general-purpose tag — use `p-tag` instead.
+- Don't use for non-AI-related labeling or categorization.
