@@ -1,4 +1,3 @@
-import { fontLineHeight, frostedGlassStyle, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
@@ -12,12 +11,18 @@ import {
   preventFoucOfNestedElementsStyles,
 } from './';
 import {
+  blurFrosted,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusLg,
+  spacingStaticXs,
+  typescaleSm,
 } from './css-variables';
 import { getFontSizeText } from './font-size-text-styles';
 
@@ -75,10 +80,10 @@ export const getLinkButtonPureStyles = (
       cursor: 'pointer',
       color: colorPrimary,
       textDecoration: underline ? 'underline' : 'none',
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       ...mergeDeep(
         buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
-          gap: hidelabelValue ? 0 : spacingStaticXSmall,
+          gap: hidelabelValue ? 0 : spacingStaticXs,
         })),
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
@@ -106,14 +111,16 @@ export const getLinkButtonPureStyles = (
         })),
         transition: getTransition('background-color'),
         ...(active && {
-          ...frostedGlassStyle,
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
           backgroundColor: colorFrosted,
         }),
       },
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover::before': {
-            ...frostedGlassStyle,
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
             backgroundColor: colorFrostedStrong,
           },
         })),
@@ -127,13 +134,13 @@ export const getLinkButtonPureStyles = (
             position: 'relative',
             flexShrink: '0',
             fontSize: 'inherit', // inherit font size from root
-            width: fontLineHeight,
-            height: fontLineHeight,
+            width: leadingNormal,
+            height: leadingNormal,
             // workaround for Safari to optimize vertical alignment of icons
             // TODO: check if this is still needed after optimized icons are included
             '@supports (width: round(down, 1px, 1px))': {
-              width: `round(down, ${fontLineHeight}, 1px)`,
-              height: `round(down, ${fontLineHeight}, 1px)`,
+              width: `round(down, ${leadingNormal}, 1px)`,
+              height: `round(down, ${leadingNormal}, 1px)`,
             },
           },
           label: mergeDeep(

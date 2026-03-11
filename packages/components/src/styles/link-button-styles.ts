@@ -1,4 +1,3 @@
-import { fontLineHeight, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
@@ -14,15 +13,20 @@ import {
   preventFoucOfNestedElementsStyles,
 } from './';
 import {
+  blurFrosted,
   colorCanvas,
   colorContrastHigh,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusLg,
   radiusXl,
+  typescaleSm,
 } from './css-variables';
 
 type Colors = {
@@ -98,8 +102,9 @@ export const getLinkButtonStyles = (
       width: '100%', // Allows for setting a width on the host
       minWidth: 'min-content', // Do not shrink beyond icon size + padding + border + label
       boxSizing: 'border-box',
-      ...frostedGlassStyle,
-      ...textSmallStyle,
+      WebkitBackdropFilter: blurFrosted,
+      backdropFilter: blurFrosted,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       borderRadius: 'inherit',
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
@@ -136,8 +141,8 @@ export const getLinkButtonStyles = (
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
-        width: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
-        height: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
+        width: leadingNormal, // ensure space is already reserved until icon component is loaded (ssr)
+        height: leadingNormal, // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : iconMarginInlineStart, // compensate white space of svg icon and optimize visual alignment
         })),

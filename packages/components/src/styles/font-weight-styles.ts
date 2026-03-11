@@ -1,9 +1,9 @@
-import { fontWeightBold, fontWeightRegular, fontWeightSemiBold } from '@porsche-design-system/emotion';
+import { fontWeightBold, fontWeightNormal, fontWeightSemibold } from '@porsche-design-system/tokens';
 import type { TypographyTextWeight } from '../types';
 
 const fontWeightMap: Record<TypographyTextWeight, number> = {
-  regular: fontWeightRegular,
-  'semi-bold': fontWeightSemiBold,
+  regular: fontWeightNormal,
+  'semi-bold': fontWeightSemibold,
   bold: fontWeightBold,
 };
 

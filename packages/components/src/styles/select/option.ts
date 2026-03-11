@@ -1,7 +1,16 @@
-import { fontLineHeight, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { getTransition } from '../common-styles';
-import { colorContrastHigh, colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../css-variables';
+import {
+  colorContrastHigh,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusSm,
+  typescaleSm,
+} from '../css-variables';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getOptionJssStyle = (
@@ -17,8 +26,8 @@ export const getOptionJssStyle = (
     gap,
     paddingBlock,
     paddingInline,
-    minHeight: fontLineHeight, // preserves height for empty option
-    ...textSmallStyle,
+    minHeight: leadingNormal, // preserves height for empty option
+    font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
     color: colorContrastHigh,
     cursor: 'pointer',
     textAlign: 'start',
