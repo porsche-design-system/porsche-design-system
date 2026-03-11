@@ -15,6 +15,7 @@ import {
   colorPrimary,
   colorSurface,
   fontPorscheNext,
+  fontWeightNormal,
   fontWeightSemibold,
   leadingNormal,
   legacyRadiusSmall,
@@ -135,7 +136,7 @@ export const getComponentCss = (
       },
       details: {
         all: 'unset',
-        font: `${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`, // enables font inheritance for slotted content
+        font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`, // enables font inheritance for slotted content
         color: colorPrimary, // enables color inheritance for slotted content
         display: 'grid',
         gridTemplate: `repeat(2, auto) / ${hasSummaryBefore ? 'auto ' : ''}${isIconAlignedStart ? 'auto minmax(0, 1fr)' : 'minmax(0, 1fr) auto'}${hasSummaryAfter ? ' auto ' : ''}`,
