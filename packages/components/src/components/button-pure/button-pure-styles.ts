@@ -1,5 +1,4 @@
-import { fontLineHeight } from '@porsche-design-system/emotion';
-import { colorContrastLow } from '../../styles/css-variables';
+import { colorContrastLow, leadingNormal } from '../../styles/css-variables';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
@@ -55,9 +54,9 @@ export const getComponentCss = (
             icon: {
               position: 'absolute',
               top: 0,
-              left: `calc(50% - ${fontLineHeight} / 2)`,
-              width: fontLineHeight,
-              height: fontLineHeight,
+              left: `calc(50% - ${leadingNormal} / 2)`,
+              width: leadingNormal,
+              height: leadingNormal,
             },
           }),
         // .loading
