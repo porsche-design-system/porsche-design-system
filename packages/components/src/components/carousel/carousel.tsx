@@ -1,4 +1,5 @@
-import { gridGap, motionEasingBase } from '@porsche-design-system/emotion';
+import { gridGap } from '@porsche-design-system/emotion';
+import { durationMd, easeInOut } from '@porsche-design-system/tokens';
 import { Splide } from '@splidejs/splide';
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
@@ -21,7 +22,7 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
-import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
+import { getComponentCss } from './carousel-styles';
 import {
   CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
@@ -205,7 +206,7 @@ export class Carousel {
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
       arrows: false,
-      easing: motionEasingBase,
+      easing: easeInOut,
       focus: this.focusOnCenterSlide ? 'center' : undefined,
       trimSpace: this.trimSpace,
       pagination: false,
@@ -214,7 +215,7 @@ export class Carousel {
       drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
-      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
+      speed: Number.parseFloat(durationMd) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(
