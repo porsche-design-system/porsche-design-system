@@ -7,9 +7,6 @@ exports[`getComponentCss() > should return correct css for state: complete, isDi
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -53,6 +50,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
 }
 .sr-only {
   position: absolute;
@@ -73,9 +71,6 @@ exports[`getComponentCss() > should return correct css for state: complete, isDi
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -103,6 +98,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -113,6 +112,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
 }
 .sr-only {
   position: absolute;
@@ -132,9 +132,6 @@ exports[`getComponentCss() > should return correct css for state: current, isDis
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -161,6 +158,9 @@ button:focus-visible {
   outline-offset: 2px;
 }
 @media (forced-colors: active) {
+  button {
+    outline: 1px solid CanvasText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -182,6 +182,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -253,9 +254,6 @@ exports[`getComponentCss() > should return correct css for state: current, isDis
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -285,6 +283,11 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    outline: 1px solid CanvasText;
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -295,6 +298,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -355,7 +359,13 @@ button:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .icon {
+    background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: false 1`] = `
@@ -366,9 +376,6 @@ exports[`getComponentCss() > should return correct css for state: undefined, isD
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -395,6 +402,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -405,6 +416,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -465,7 +477,13 @@ button:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .icon {
+    background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: true 1`] = `
@@ -476,9 +494,6 @@ exports[`getComponentCss() > should return correct css for state: undefined, isD
 :host([hidden]) {
   display: none !important;
 }
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
-}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -505,6 +520,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -515,6 +534,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
   display: grid;
   background-image: radial-gradient(circle, var(--p-color-primary) 60%, transparent 62%);
 }
@@ -575,7 +595,13 @@ button:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .icon {
+    background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for state: warning, isDisabled: false 1`] = `
@@ -584,9 +610,6 @@ exports[`getComponentCss() > should return correct css for state: warning, isDis
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -631,6 +654,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
 }
 .sr-only {
   position: absolute;
@@ -651,9 +675,6 @@ exports[`getComponentCss() > should return correct css for state: warning, isDis
 }
 :host([hidden]) {
   display: none !important;
-}
-:host(:not(:last-of-type)) {
-  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -681,6 +702,10 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -691,6 +716,7 @@ button:focus-visible {
   font-size: inherit;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  forced-color-adjust: none;
 }
 .sr-only {
   position: absolute;

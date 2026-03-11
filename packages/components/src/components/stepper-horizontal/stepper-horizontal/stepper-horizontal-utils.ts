@@ -20,3 +20,25 @@ export const throwIfMultipleCurrentStates = (
     );
   }
 };
+
+export const scrollStepperHorizontalItemIntoView = (
+  stepIndex: number | undefined,
+  scroller: HTMLElement | undefined,
+  stepperHorizontalItems: HTMLElement[],
+  isSmooth = true
+): void => {
+  if (!scroller || !stepperHorizontalItems.length) {
+    return;
+  }
+
+  if (stepIndex === undefined || stepIndex < 0 || stepIndex >= stepperHorizontalItems.length) {
+    return;
+  }
+
+  stepperHorizontalItems[stepIndex]?.scrollIntoView({
+    behavior: isSmooth ? 'smooth' : 'instant',
+    block: 'nearest',
+    inline: 'center',
+    container: 'nearest',
+  } as ScrollIntoViewOptions);
+};

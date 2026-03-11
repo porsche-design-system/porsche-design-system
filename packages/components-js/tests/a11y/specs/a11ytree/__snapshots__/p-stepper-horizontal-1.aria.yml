@@ -11,5 +11,3 @@
     - 'button "complete: Complete Disabled small" [disabled]'
   - listitem:
     - button "Default small" [disabled]
-- button "next"
-- status

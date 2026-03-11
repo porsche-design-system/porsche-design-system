@@ -14,6 +14,72 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Scroller`:
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `sticky`: Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-indicator-top`: Defines the distance from the top of the viewport at which the indicator
+    sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-gap`: Defines the gap between slotted nodes.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Prop `sticky`: Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll
+    direction. ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-top`: Defines the distance from the top of the viewport at which the scroll
+    indicator sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    scroll indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Changed
+
+- `Scroller`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Stepper Horizontal`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Deprecated
+
+- `Scroller`:
+  - Prop `alignScrollIndicator`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `scrollToPosition`: Will be removed with next major release, use native `scrollIntoView()` on the slotted
+    element itself, e.g.
+    `el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center', container: 'nearest' })`.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Prop `weight`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `weight`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
 ## [4.0.0-beta.1] - 2026-03-02
 
 ### Added
@@ -525,6 +591,21 @@ and migration steps.
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
+## [3.33.0] - 2026-03-09
+
+## [3.33.0-rc.0] - 2026-03-04
+
+### Added
+
+- `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
+  ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+- `Checkbox`: add warning for Firefox form restore bug
+
+### Changed
+
+- `Tag`: deprecated `color` property, use `variant` property instead to define background colors which complies now with
+  PDS `v4` ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+
 ## [3.32.1] - 2026-02-24
 
 ## [3.32.1-rc.0] - 2026-02-20
@@ -600,11 +681,6 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-
-### Changed
-
-- `Link Tile`, `Button Tile`: appearance in compact mode
-- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
@@ -2021,7 +2097,7 @@ and migration steps.
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel align-header="start"></p-carousel>
++ <p-carousel-pure align-header="start"></p-carousel>
 ```
 
 ### Fixed

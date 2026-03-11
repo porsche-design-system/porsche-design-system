@@ -114,6 +114,7 @@ export const getComponentCss = (
           outline: '2px solid CanvasText',
           outlineOffset: '-2px',
           backgroundColor: 'Canvas',
+          color: 'CanvasText',
         }),
       },
       '::slotted': addImportantToEachRule({

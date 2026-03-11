@@ -201,6 +201,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -360,6 +366,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -439,6 +451,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -518,6 +536,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -612,6 +636,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -686,6 +719,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -765,6 +804,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -844,6 +889,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -923,6 +974,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1002,6 +1059,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1096,6 +1159,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1172,6 +1244,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1253,6 +1331,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
 }
 
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1314,6 +1398,12 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   position: relative;
 }
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }
@@ -1375,6 +1465,12 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   position: relative;
 }
 @media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
   .root:focus-visible::before {
     outline-color: Highlight;
   }

@@ -28,8 +28,6 @@ export * from './link-button-tile/link-button-tile-utils';
 export * from './log';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';
-export * from './scroller-popover-utils';
-export * from './scrolling';
 export * from './select';
 export * from './setScrollLock';
 export * from './supportsChromiumMediaQuery';
