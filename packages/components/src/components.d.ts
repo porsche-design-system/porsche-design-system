@@ -209,7 +209,7 @@ export namespace Components {
          */
         "locale"?: AiTagLocale;
         /**
-          * Text variant to display: 'abbreviation' (e.g. "AI") or 'long-form' (e.g. "Artificial Intelligence").
+          * Text variant to display: 'abbreviation' (e.g. "AI"), 'ai-generated', or 'ai-modified'.
          */
         "textVariant"?: AiTagTextVariant;
         /**
@@ -4872,7 +4872,7 @@ declare namespace LocalJSX {
          */
         "locale"?: AiTagLocale;
         /**
-          * Text variant to display: 'abbreviation' (e.g. "AI") or 'long-form' (e.g. "Artificial Intelligence").
+          * Text variant to display: 'abbreviation' (e.g. "AI"), 'ai-generated', or 'ai-modified'.
          */
         "textVariant"?: AiTagTextVariant;
         /**

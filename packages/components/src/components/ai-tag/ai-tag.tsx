@@ -7,6 +7,7 @@ import {
   AI_TAG_TRANSLATIONS,
   type AiTagLocale,
   type AiTagTextVariant,
+  getAiTagLongForm,
   getAiTagText,
 } from './ai-tag-utils';
 
@@ -29,8 +30,8 @@ export class AiTag {
   /** Locale for the AI text (ISO format, e.g. "de_DE"). */
   @Prop() public locale?: AiTagLocale = 'en_US';
 
-  /** Text variant to display: 'abbreviation' (e.g. "AI") or 'long-form' (e.g. "Artificial Intelligence"). */
-  @Prop() public textVariant?: AiTagTextVariant = 'abbreviation';
+  /** Text variant to display: 'abbreviation' (e.g. "AI"), 'ai-generated', or 'ai-modified'. */
+  @Prop() public textVariant?: AiTagTextVariant = 'ai-generated';
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
@@ -38,12 +39,11 @@ export class AiTag {
     attachComponentCss(this.host, getComponentCss, this.theme);
 
     const text = getAiTagText(this.locale, this.textVariant);
-    const longFormText = getAiTagText(this.locale, 'long-form');
 
     return (
       <span>
-        <span class="icon" aria-hidden="true"></span>
-        {this.textVariant === 'abbreviation' ? <abbr title={longFormText}>{text}</abbr> : text}
+        <span class="icon"></span>
+        {this.textVariant === 'abbreviation' ? <abbr title={getAiTagLongForm(this.locale)}>{text}</abbr> : text}
       </span>
     );
   }
