@@ -1,5 +1,5 @@
-import { fontLineHeight } from '@porsche-design-system/emotion';
 import { getDisabledBaseStyles, getTransition } from '../../styles';
+import { leadingNormal } from '../../styles/css-variables';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName } from '../../types';
 import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
@@ -49,8 +49,8 @@ export const getComponentCss = (
         },
         ...(isLoading && {
           spinner: {
-            width: fontLineHeight,
-            height: fontLineHeight,
+            width: leadingNormal,
+            height: leadingNormal,
             pointerEvents: 'none',
             position: 'absolute',
             top: '50%',
