@@ -14,6 +14,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Spinner`:
+  - Prop `size` with values: `'xx-small' | 'x-small' | 'x-large' | 'xx-large'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-size`: Defines the width and height of the spinner. Overrides the `size` property when
+    set. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+### Changed
+
+- `Spinner`:
+  - Prop `size` with updated values `'small' | 'medium' | 'large'`: Defines the size of the spinner, aligned with the
+    typographic scale used by components such as p-icon, p-flag, p-text and p-heading. When set to `inherit`, the size
+    is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on
+    `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
 ## [4.0.0-beta.2] - 2026-03-11
 
 ### Added
