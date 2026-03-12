@@ -25,11 +25,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - `Spinner`:
-  - Prop `size` with updated values `'small' | 'medium' | 'large'`: Defines the size of the spinner, aligned with the
-    typographic scale used by components such as p-icon, p-flag, p-text and p-heading. When set to `inherit`, the size
-    is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on
-    `ex`-unit) to remain visually consistent with other typographic-scale-based components.
-    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - The `size` values are now aligned with the typographic scale used by components such as `p-icon`, `p-flag`, `p-text`
+    and `p-heading`. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against
+    the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based
+    components. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+    ```diff
+    - <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
+
+    // The size will be calculated by the internally used global line-height (`ex`-unit) based on the inherited font-size.
+    + <p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
+
+    // Alternatively, it's possible to control the exact size by using a CSS variable.
+    + <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+    ```
 
 ## [4.0.0-beta.2] - 2026-03-11
 
