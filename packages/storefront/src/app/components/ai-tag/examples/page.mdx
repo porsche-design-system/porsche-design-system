@@ -10,6 +10,7 @@ import {
   aiTagStoryWithText,
   aiTagStoryWithSelect,
   aiTagStoryWithInputSearch,
+  aiTagStoryWithImage,
 } from '@/app/components/ai-tag/ai-tag.stories';
 
 export const metadata = {
@@ -19,7 +20,17 @@ export const metadata = {
 
 # AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
 
-<TableOfContents headings={['Within Checkbox', 'Within Radio Group', 'Within Tag', 'Within Text', 'Within Select', 'Within Input Search']} />
+<TableOfContents
+  headings={[
+    'Within Checkbox',
+    'Within Radio Group',
+    'Within Input Search',
+    'Within Select',
+    'Within Tag',
+    'Within Text',
+    'Within Image',
+  ]}
+/>
 
 ## Within Checkbox
 
@@ -61,3 +72,9 @@ The `p-ai-tag` can be placed inline within a `p-text` to indicate that the surro
 
 <ComponentStory story={aiTagStoryWithText} />
 
+## Within Image
+
+The `p-ai-tag` can be positioned as an overlay on images to indicate that the image content has been generated or
+modified by AI.
+
+<ComponentStory story={aiTagStoryWithImage} />
