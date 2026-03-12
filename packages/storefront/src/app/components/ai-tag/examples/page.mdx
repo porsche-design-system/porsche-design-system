@@ -1,7 +1,16 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import { aiTagStoryTextVariants, aiTagStoryLocales } from '@/app/components/ai-tag/ai-tag.stories';
+import {
+  aiTagStoryTextVariants,
+  aiTagStoryLocales,
+  aiTagStoryWithCheckbox,
+  aiTagStoryWithRadioButton,
+  aiTagStoryWithTag,
+  aiTagStoryWithText,
+  aiTagStoryWithSelect,
+  aiTagStoryWithInputSearch,
+} from '@/app/components/ai-tag/ai-tag.stories';
 
 export const metadata = {
   title: 'AI Tag - Porsche Design System',
@@ -10,4 +19,45 @@ export const metadata = {
 
 # AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
 
-<TableOfContents headings={['Text variants', 'Locales']} />
+<TableOfContents headings={['Within Checkbox', 'Within Radio Group', 'Within Tag', 'Within Text', 'Within Select', 'Within Input Search']} />
+
+## Within Checkbox
+
+The `p-ai-tag` can be used inline with other form components. In this example, it is placed within the slotted label of
+a `p-checkbox` to indicate AI-generated or AI-related content for individual options.
+
+<ComponentStory story={aiTagStoryWithCheckbox} />
+
+## Within Radio Group
+
+The `p-ai-tag` can also be placed within the slotted label of a `p-radio-button-wrapper` to indicate AI-related content
+for individual radio options.
+
+<ComponentStory story={aiTagStoryWithRadioButton} />
+
+## Within Input Search
+
+The `p-ai-tag` can be placed in the `end` slot of a `p-input-search` to indicate that the search results are AI-powered.
+
+<ComponentStory story={aiTagStoryWithInputSearch} />
+
+## Within Select
+
+The `p-ai-tag` can be placed within `p-select-option` children inside `p-optgroup` to indicate AI-related content for
+individual options in a grouped select.
+
+<ComponentStory story={aiTagStoryWithSelect} />
+
+## Within Tag
+
+The `p-ai-tag` can be placed alongside the text content of a `p-tag` to indicate AI-related context. This works with
+both compact and default sizes, as well as static and interactive (button-slotted) variants.
+
+<ComponentStory story={aiTagStoryWithTag} />
+
+## Within Text
+
+The `p-ai-tag` can be placed inline within a `p-text` to indicate that the surrounding text content is AI-related.
+
+<ComponentStory story={aiTagStoryWithText} />
+
