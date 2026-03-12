@@ -26,7 +26,8 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
 const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
   designing: 'Get Started', // designing, developing
   components: 'Core', // components, styles, tokens, patterns, templates, partials
-  tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract, ag-grid
+  tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract
+  'ag-grid': 'Integrations', // ag-grid
   'must-know': 'Resources', // must-know, help
 };
 
@@ -62,37 +63,48 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   return (
     <>
       <nav aria-label="Main" className="flex flex-col gap-static-sm">
-        {Object.entries(sitemap).map(([path, category]) => (
-          <PAccordion
-            key={path}
-            compact={true}
-            background={'frosted'}
-            className={`${['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md ' : ''}[&>:not([slot]):not(:last-child)]:mb-static-sm`}
-            open={openSections[path]}
-            onUpdate={handleAccordionUpdate(path)}
-          >
-            <PHeading slot="summary" tag="h3" size="small">
-              {category.name as string}
-            </PHeading>
-            {category.subPaths &&
-              Object.entries(category.subPaths).map(([_, page]) => {
-                // If page has subPaths (tabs) link to first tab
-                const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
-                return (
-                  <PLinkPure
-                    key={link}
-                    icon="none"
-                    // stretch={true}
-                    active={pathname?.includes(`${page.path}/`)}
-                    onClick={() => onNavigate()}
-                    className={'w-full pl-static-md'}
-                  >
-                    <Link href={link}>{page.name}</Link>
-                  </PLinkPure>
-                );
-              })}
-          </PAccordion>
-        ))}
+        {Object.entries(sitemap).map(([path, category]) => {
+          const groupLabel = SECTION_GROUP_HEADERS[path];
+
+          return (
+            <React.Fragment key={path}>
+              {groupLabel && (
+                <div className="flex items-center gap-static-sm mt-static-md first:mt-0">
+                  <PText size="xx-small" color="contrast-high" weight="bold" className="uppercase">
+                    {groupLabel}
+                  </PText>
+                  <PDivider className="grow" />
+                </div>
+              )}
+              <PAccordion
+                compact={true}
+                className="[&>:not([slot]):not(:last-child)]:mb-static-sm"
+                open={openSections[path]}
+                onUpdate={handleAccordionUpdate(path)}
+              >
+                <PHeading slot="summary" tag="h3" size="small">
+                  {category.name as string}
+                </PHeading>
+                {category.subPaths &&
+                  Object.entries(category.subPaths).map(([_, page]) => {
+                    // If page has subPaths (tabs) link to first tab
+                    const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
+                    return (
+                      <PLinkPure
+                        key={link}
+                        icon="none"
+                        active={pathname?.includes(`${page.path}/`)}
+                        onClick={() => onNavigate()}
+                        className={'w-full pl-static-md'}
+                      >
+                        <Link href={link}>{page.name}</Link>
+                      </PLinkPure>
+                    );
+                  })}
+              </PAccordion>
+            </React.Fragment>
+          );
+        })}
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
