@@ -2305,7 +2305,7 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
-          * Size of the spinner.
+          * Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }
@@ -6236,7 +6236,7 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
-          * Size of the spinner.
+          * Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }

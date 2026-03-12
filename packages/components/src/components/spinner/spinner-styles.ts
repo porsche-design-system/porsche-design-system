@@ -1,30 +1,46 @@
-import { motionDurationVeryLong } from '@porsche-design-system/emotion';
-import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   hostHiddenStyles,
 } from '../../styles';
-import { colorContrastLower, colorPrimary } from '../../styles/css-variables';
+import {
+  colorContrastLower,
+  colorPrimary,
+  durationXl,
+  fontPorscheNext,
+  leadingNormal,
+  typescale2Xl,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
+} from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { SpinnerSize } from './spinner-utils';
 
-const sizeSmall = '48px';
-const sizeMedium = '72px';
-const sizeLarge = '104px';
+/**
+ * @css-variable {"name": "--p-spinner-size", "description": "Defines the width and height of the spinner. Overrides the `size` property when set.", "defaultValue": ""}
+ */
+const cssVarSize = '--p-spinner-size';
 
-const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
-  small: { height: sizeSmall, width: sizeSmall },
-  medium: { height: sizeMedium, width: sizeMedium },
-  large: { height: sizeLarge, width: sizeLarge },
-  inherit: { height: 'inherit', width: 'inherit' },
+const sizeMap: Record<SpinnerSize, string> = {
+  'xx-small': typescale2Xs,
+  'x-small': typescaleXs,
+  small: typescaleSm,
+  medium: typescaleMd,
+  large: typescaleLg,
+  'x-large': typescaleXl,
+  'xx-large': typescale2Xl,
+  inherit: 'inherit',
 };
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
   const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
+  const animationDuration = `var(${cssVariableAnimationDuration}, ${durationXl})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
 
   return getCss({
@@ -54,15 +70,22 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
       },
       ':host': {
         display: 'inline-flex',
-        color: colorPrimary,
+        verticalAlign: 'top',
         ...addImportantToEachRule({
-          verticalAlign: 'top',
           ...hostHiddenStyles,
         }),
+      },
+      div: {
+        width: `var(${cssVarSize},${leadingNormal})`,
+        height: `var(${cssVarSize},${leadingNormal})`,
+        ...buildResponsiveStyles(size, (s: SpinnerSize) => ({
+          font: `${sizeMap[s]} ${fontPorscheNext}`, // needed for correct width/height definition based on ex-unit
+        })),
       },
       svg: {
         display: 'block', // for correct vertical alignment
         fill: 'none',
+        strokeWidth: 1.5,
         animation: `$rotate ${animationDuration} steps(50) infinite`,
       },
       circle: {
@@ -70,20 +93,15 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
           stroke: colorContrastLower,
         },
         '&:last-child': {
-          animation: `$dash ${animationDuration} steps(50) infinite`,
-          stroke: 'currentcolor', // necessary for proper color inheritance
+          stroke: colorPrimary,
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray
               : strokeDasharrayVar,
           strokeLinecap: 'round',
+          animation: `$dash ${animationDuration} steps(50) infinite`,
         },
       },
-    },
-    root: {
-      display: 'block',
-      ...buildResponsiveStyles(size, (s: SpinnerSize) => sizeMap[s]),
-      strokeWidth: 1.5,
     },
     'sr-only': getHiddenTextJssStyle(),
   });

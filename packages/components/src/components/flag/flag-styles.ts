@@ -25,7 +25,7 @@ export const getComponentCss = (size: FlagSize): string => {
   return getCss({
     '@global': {
       ':host': {
-        display: 'inline-block',
+        display: 'inline-flex',
         verticalAlign: 'top',
         ...addImportantToEachRule({
           ...hostHiddenStyles,

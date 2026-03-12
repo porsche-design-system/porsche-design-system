@@ -22,7 +22,7 @@ const propTypes: PropTypes<typeof Spinner> = {
 export class Spinner {
   @Element() public host!: HTMLElement;
 
-  /** Size of the spinner. */
+  /** Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
   @Prop() public size?: BreakpointCustomizable<SpinnerSize> = 'small';
 
   /** Add ARIA attributes. */
@@ -37,14 +37,14 @@ export class Spinner {
     attachComponentCss(this.host, getComponentCss, this.size);
 
     return (
-      <span class="root" role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>
+      <div role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>
         {/* empty element needed to announce aria-label in screen readers */}
         <span class="sr-only">&nbsp;</span>
         <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false" aria-hidden="true">
-          <circle r="9" />
-          <circle r="9" />
+          <circle r="11" />
+          <circle r="11" />
         </svg>
-      </span>
+      </div>
     );
   }
 }
