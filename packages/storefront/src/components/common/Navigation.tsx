@@ -19,6 +19,17 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
   return acc;
 }, {});
 
+/**
+ * Maps the first section key of each logical group to its group label.
+ * Sections without an entry belong to the preceding group (no extra header rendered).
+ */
+const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
+  designing: 'Get Started', // designing, developing
+  components: 'Core', // components, styles, tokens, patterns, templates, partials
+  tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract, ag-grid
+  'must-know': 'Resources', // must-know, help
+};
+
 type NavigationProps = {
   readonly pdsVersion: PDSVersionGroup;
   readonly onNavigate: () => void;
@@ -55,6 +66,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           <PAccordion
             key={path}
             compact={true}
+            background={'frosted'}
             className={`${['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md ' : ''}[&>:not([slot]):not(:last-child)]:mb-static-sm`}
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
@@ -70,9 +82,10 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                   <PLinkPure
                     key={link}
                     icon="none"
-                    stretch={true}
+                    // stretch={true}
                     active={pathname?.includes(`${page.path}/`)}
                     onClick={() => onNavigate()}
+                    className={'w-full pl-static-md'}
                   >
                     <Link href={link}>{page.name}</Link>
                   </PLinkPure>
