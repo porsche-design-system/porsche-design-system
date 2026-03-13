@@ -6625,7 +6625,7 @@ exports[`should render dsr component for PFlag 1`] = `
   >
     <style>
       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -13455,45 +13455,44 @@ exports[`should render dsr component for PSpinner 1`] = `
 }
 @keyframes dash {
   0% {
-    stroke-dashoffset: 57;
+    stroke-dashoffset: 69;
     transform: rotateZ(0);
   }
   50%, 75% {
-    stroke-dashoffset: 20;
+    stroke-dashoffset: 24;
     transform: rotateZ(80deg);
   }
   100% {
-    stroke-dashoffset: 57;
+    stroke-dashoffset: 69;
     transform: rotateZ(360deg);
   }
 }
   :host {
     display: inline-flex;
-    color: var(--p-color-primary);
-    vertical-align: top !important;
+    vertical-align: top;
   }
   :host([hidden]) {
     display: none !important;
   }
+  div {
+    width: var(--p-spinner-size,var(--p-leading-normal));
+    height: var(--p-spinner-size,var(--p-leading-normal));
+    font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  }
   svg {
     display: block;
     fill: none;
-    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke-width: 1.5;
+    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
-    stroke: var(--p-color-contrast-lower);
+    stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: currentcolor;
-    stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 57);
+    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 69);
     stroke-linecap: round;
-  }
-  .root {
-    display: block;
-    height: 48px;
-    width: 48px;
-    stroke-width: 1.5;
+    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
   .sr-only {
     position: absolute;
@@ -13506,9 +13505,8 @@ exports[`should render dsr component for PSpinner 1`] = `
     white-space: nowrap;
   }
     </style>
-    <span
+    <div
       aria-live="assertive"
-      class="root"
       role="alert"
     >
       <span
@@ -13524,13 +13522,13 @@ exports[`should render dsr component for PSpinner 1`] = `
         width="100%"
       >
         <circle
-          r="9"
+          r="11"
         />
         <circle
-          r="9"
+          r="11"
         />
       </svg>
-    </span>
+    </div>
   </template>
 </p-spinner>
 `;
