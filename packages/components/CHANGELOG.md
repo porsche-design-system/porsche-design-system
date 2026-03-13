@@ -37,12 +37,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
     ```diff
     - <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
-
-    // The size will be calculated by the internally used global line-height (`ex`-unit) based on the inherited font-size.
-    + <p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
-
-    // Alternatively, it's possible to control the exact size by using a CSS variable.
     + <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+
+    // When using size="inherit" with a defined font-size, the spinner size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
     ```
 
 ## [4.0.0-beta.2] - 2026-03-11
