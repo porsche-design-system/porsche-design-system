@@ -841,13 +841,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -977,13 +975,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1113,13 +1109,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1249,13 +1243,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1385,13 +1377,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1521,13 +1511,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2498,13 +2486,11 @@ input::after {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2647,13 +2633,11 @@ input::after {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2796,13 +2780,11 @@ input::after {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2945,13 +2927,11 @@ input::after {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -3094,13 +3074,11 @@ input::after {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -3243,13 +3221,11 @@ input::after {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;

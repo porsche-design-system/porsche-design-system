@@ -3167,13 +3167,11 @@ input:focus-visible {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -3311,13 +3309,11 @@ input:focus-visible {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -3776,13 +3772,11 @@ input:focus-visible {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -3933,13 +3927,11 @@ input:focus-visible {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;

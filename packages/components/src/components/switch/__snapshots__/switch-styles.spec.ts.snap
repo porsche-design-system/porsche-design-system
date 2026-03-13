@@ -497,8 +497,7 @@ label {
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  --p-spinner-size: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -606,8 +605,7 @@ label {
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  --p-spinner-size: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -715,8 +713,7 @@ label {
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  --p-spinner-size: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
