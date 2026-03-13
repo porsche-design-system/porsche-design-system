@@ -435,6 +435,19 @@ SCSS:
 + <p-icon color="contrast-low"></p-icon>
 ```
 
+### Flag:
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-flag size="inherit" style="width: 100px; height: 100px;"></p-flag>
++ <p-flag style="--p-flag-size: 100px;"></p-flag>
+
+// When using size="inherit" with a defined font-size, the flag size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-flag size="inherit" style="font-size: 100px;"></p-flag>
+```
+
 ### Spinner:
 
 - The size values are now aligned with the typographic scale used by components such as `p-icon`, `p-flag`, `p-text` and
@@ -878,6 +891,17 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```
 
 ### Icon:
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-icon size="inherit" style="width: 100px; height: 100px;"></p-icon>
++ <p-icon style="--p-icon-size: 100px;"></p-icon>
+
+// When using size="inherit" with a defined font-size, the icon size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-icon size="inherit" style="font-size: 100px;"></p-icon>
+```
 
 - Removed deprecated prop `lazy`
 
