@@ -100,10 +100,13 @@ export const getComponentCss = (
       },
       // the <img /> is needed for a11y compliance because of alt text and to handle the fetch priority
       img: {
-        all: 'unset',
         display: 'block', // without display, img tag gets some extra spacing
-        objectPosition: '-9999px -9999px', // hide the actual image content, the mask + background still renders the icon
+        margin: 0,
+        padding: 0,
+        border: 0,
+        outline: 0,
         overflow: 'hidden', // clip the image
+        objectPosition: '-9999px -9999px', // hide the actual image content, the mask + background still renders the icon
         pointerEvents: 'none', // disable dragging/ghosting of images
         width: dimension,
         height: dimension,

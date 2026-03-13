@@ -44,9 +44,12 @@ export const getComponentCss = (size: BreakpointCustomizable<FlagSize>): string 
         }),
       },
       img: {
-        all: 'unset',
         display: 'block', // without display, img tag gets some extra spacing
+        margin: 0,
         padding: '1px', // add safe-zone to be visually in sync with <p-icon />
+        border: 0,
+        outline: 0,
+        overflow: 'hidden', // clip the image
         boxSizing: 'border-box',
         pointerEvents: 'none', // disable dragging/ghosting of images
         width: dimension,
