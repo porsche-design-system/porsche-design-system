@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
   - CSS Variable `--p-spinner-size`: Defines the width and height of the spinner. Overrides the `size` property when
     set. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-color`: Defines the foreground color.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-track-color`: Defines the track/background color.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
 
 ### Changed
 
