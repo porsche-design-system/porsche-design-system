@@ -116,9 +116,7 @@ export class Switch {
           onClick={this.onSwitchClick}
         >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
-          <span class="toggle">
-            {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
-          </span>
+          <span class="toggle">{this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}</span>
         </button>
         <label id="label" htmlFor={id}>
           <slot />

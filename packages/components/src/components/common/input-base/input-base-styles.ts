@@ -1,13 +1,13 @@
-import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
+import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  forcedColorsMediaQuery,
 } from '../../../styles';
 import {
   colorContrastMedium,
@@ -19,11 +19,11 @@ import {
 } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
+import { mergeDeep } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
-import { mergeDeep } from '../../../utils';
 
 /**
  * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
@@ -137,13 +137,6 @@ export const getFunctionalComponentInputBaseStyles = (
           },
         })),
     },
-    ...(isLoading && {
-      spinner: {
-        font: textSmallStyle.font,
-        width: fontLineHeight,
-        height: fontLineHeight,
-      },
-    }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel),
     // .message
