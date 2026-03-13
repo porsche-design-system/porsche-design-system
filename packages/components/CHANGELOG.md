@@ -41,8 +41,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - `Spinner`, `Flag`, `Icon`:
-  - The `size` values are now aligned with the typographic scale used by components such as `p-text` and `p-heading`.
-    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - The `size` is breakpoint customizable and values are aligned with the typographic scale used by components such as
+    `p-text` and `p-heading`. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
   - When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against
     the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based
     components. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))

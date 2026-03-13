@@ -6,15 +6,14 @@ import {
   attachComponentCss,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
-  TEXT_SIZES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './flag-styles';
-import { buildFlagUrl, FLAG_ARIA_ATTRIBUTES, type FlagAriaAttribute, type FlagSize } from './flag-utils';
+import { buildFlagUrl, FLAG_ARIA_ATTRIBUTES, FLAG_SIZES, type FlagAriaAttribute, type FlagSize } from './flag-utils';
 
 const propTypes: PropTypes<typeof Flag> = {
   name: AllowedTypes.oneOf<FlagName>(Object.keys(FLAGS_MANIFEST) as FlagName[]),
-  size: AllowedTypes.breakpoint<FlagSize>(TEXT_SIZES),
+  size: AllowedTypes.breakpoint<FlagSize>(FLAG_SIZES),
   aria: AllowedTypes.aria<FlagAriaAttribute>(FLAG_ARIA_ATTRIBUTES),
 };
 
