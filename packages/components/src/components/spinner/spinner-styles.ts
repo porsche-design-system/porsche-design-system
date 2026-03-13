@@ -20,7 +20,7 @@ import {
 } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import type { SpinnerSize } from './spinner-utils';
+import type { SpinnerColor, SpinnerSize } from './spinner-utils';
 
 /**
  * @css-variable {"name": "--p-spinner-size", "description": "Defines the width and height of the spinner. Overrides the `size` property when set.", "defaultValue": ""}
@@ -37,6 +37,11 @@ const cssVarColor = '--p-spinner-color';
  */
 const cssVarTrackColor = '--p-spinner-track-color';
 
+const colorMap: Record<SpinnerColor, string> = {
+  primary: colorPrimary,
+  inherit: 'currentcolor',
+};
+
 const sizeMap: Record<SpinnerSize, string> = {
   'xx-small': typescale2Xs,
   'x-small': typescaleXs,
@@ -48,7 +53,8 @@ const sizeMap: Record<SpinnerSize, string> = {
   inherit: 'inherit',
 };
 
-export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
+export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizable<SpinnerSize>): string => {
+  const dimension = `var(${cssVarSize},${leadingNormal})`;
   const strokeDasharray = '69'; // C = 2πR
   const animationDuration = `var(${cssVariableAnimationDuration}, ${durationXl})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
@@ -85,30 +91,34 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
         }),
       },
       div: {
-        width: `var(${cssVarSize},${leadingNormal})`,
-        height: `var(${cssVarSize},${leadingNormal})`,
+        width: dimension,
+        height: dimension,
+        fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
         ...buildResponsiveStyles(size, (s: SpinnerSize) => ({
-          font: `${sizeMap[s]} ${fontPorscheNext}`, // needed for correct width/height definition based on ex-unit
+          fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
         })),
       },
       svg: {
         display: 'block', // for correct vertical alignment
         fill: 'none',
         strokeWidth: 1.5,
-        animation: `$rotate ${animationDuration} steps(50) infinite`,
+        animation: `rotate ${animationDuration} steps(50) infinite`,
       },
       circle: {
         '&:first-child': {
           stroke: `var(${cssVarTrackColor},${colorContrastLower})`,
+          '@supports (color: oklch(from red l c h))': {
+            stroke: `var(${cssVarTrackColor},oklch(from var(${cssVarColor},${colorMap[color]}) l c h/.2))`,
+          },
         },
         '&:last-child': {
-          stroke: `var(${cssVarColor},${colorPrimary})`,
+          stroke: `var(${cssVarColor},${colorMap[color]})`,
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray
               : strokeDasharrayVar,
           strokeLinecap: 'round',
-          animation: `$dash ${animationDuration} steps(50) infinite`,
+          animation: `dash ${animationDuration} steps(50) infinite`,
         },
       },
     },

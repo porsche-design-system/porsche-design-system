@@ -392,14 +392,6 @@
         <p-divider class="w-full" color="contrast-lower"></p-divider>
         <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
       </div>
-      <div data-card="flag">
-        <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        <p-flag size="large" name="ch" aria="{'aria-label': 'Flag of Switzerland'}"></p-flag>
-        <p-flag size="medium" name="mc" aria="{'aria-label': 'Flag of Monaco'}"></p-flag>
-        <p-flag size="small" name="es" aria="{'aria-label': 'Flag of Spain'}"></p-flag>
-        <p-flag size="x-small" name="pt" aria="{'aria-label': 'Flag of Portugal'}"></p-flag>
-        <p-flag size="xx-small" name="it" aria="{'aria-label': 'Flag of Italy'}"></p-flag>
-      </div>
       <div data-card="scroller">
         <p-scroller>
           <p-tag variant="primary">
@@ -615,17 +607,6 @@
           </p-text-list-item>
           <p-text-list-item>ABC</p-text-list-item>
         </p-text-list>
-      </div>
-      <div data-card="spinner">
-        <p-spinner size="xx-large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner size="x-large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner size="large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner size="medium" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner size="small" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner size="x-small" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner size="xx-small" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner class="text-[99px]" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
-        <p-spinner aria="{'aria-label': 'Loading page content'}" style="--p-spinner-size: 99px;"></p-spinner>
       </div>
       <div data-card="inline-notification">
         <p-inline-notification heading="Some heading" heading-tag="h2" description="Some content"></p-inline-notification>
@@ -1201,16 +1182,42 @@
         <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
       </div>
       <div data-card="icon">
+        <p-icon name="car" size="xx-large" color="primary"></p-icon>
         <p-icon name="car" size="x-large" color="primary"></p-icon>
         <p-icon name="car" size="large" color="contrast-high"></p-icon>
         <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
         <p-icon name="car" size="small" color="contrast-low"></p-icon>
         <p-icon name="car" size="x-small" color="success"></p-icon>
         <p-icon name="car" size="xx-small" color="warning"></p-icon>
-        <p-icon name="car" size="xx-small" color="error"></p-icon>
-        <p-icon name="car" size="xx-small" color="info"></p-icon>
-        <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
+        <p-icon class="text-[99px]" name="car" size="inherit" color="error"></p-icon>
+        <p-icon class="[--p-icon-size:99px]" name="car" color="info"></p-icon>
+        <p-icon class="[--p-icon-color:deeppink]" name="car"></p-icon>
+        <p-icon class="text-[deeppink]" name="car" color="inherit"></p-icon>
         <p-icon size="large" source="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='black'/></svg>"></p-icon>
+      </div>
+      <div data-card="spinner">
+        <p-spinner size="xx-large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="x-large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="medium" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="small" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="x-small" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="xx-small" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="text-[99px]" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="[--p-spinner-size:99px]" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="[--p-spinner-color:deeppink] [--p-spinner-track-color:lightpink]" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="text-[deeppink]" color="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+      </div>
+      <div data-card="flag">
+        <p-flag size="xx-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="x-large" name="at" aria="{'aria-label': 'Flag of Austria'}"></p-flag>
+        <p-flag size="large" name="ch" aria="{'aria-label': 'Flag of Switzerland'}"></p-flag>
+        <p-flag size="medium" name="mc" aria="{'aria-label': 'Flag of Monaco'}"></p-flag>
+        <p-flag size="small" name="es" aria="{'aria-label': 'Flag of Spain'}"></p-flag>
+        <p-flag size="x-small" name="pt" aria="{'aria-label': 'Flag of Portugal'}"></p-flag>
+        <p-flag size="xx-small" name="it" aria="{'aria-label': 'Flag of Italy'}"></p-flag>
+        <p-flag class="text-[99px]" size="inherit" name="fr" aria="{'aria-label': 'Flag of France'}"></p-flag>
+        <p-flag class="[--p-flag-size:99px]" name="za" aria="{'aria-label': 'Flag of South Africa'}"></p-flag>
       </div>
       <div data-card="checkbox">
         <p-checkbox class="self-start" label="Some label" name="some-name"></p-checkbox>

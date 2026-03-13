@@ -1,11 +1,21 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { IconName, TextSize } from '../../types';
+import type { IconName } from '../../types';
 import { getCDNBaseURL, TYPOGRAPHY_TEXT_COLORS } from '../../utils';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type IconAriaAttribute = (typeof ICON_ARIA_ATTRIBUTES)[number];
 
-export type IconSize = TextSize;
+export const ICON_SIZES = [
+  'xx-small',
+  'x-small',
+  'small',
+  'medium',
+  'large',
+  'x-large',
+  'xx-large',
+  'inherit',
+] as const;
+export type IconSize = (typeof ICON_SIZES)[number];
 
 export const ICON_COLORS = TYPOGRAPHY_TEXT_COLORS;
 export type IconColor = (typeof ICON_COLORS)[number];

@@ -1,13 +1,3 @@
-import {
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextLarge,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXLarge,
-  fontSizeTextXSmall,
-  fontSizeTextXXSmall,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   colorContrastHigh,
@@ -18,10 +8,29 @@ import {
   colorPrimary,
   colorSuccess,
   colorWarning,
+  fontPorscheNext,
+  leadingNormal,
+  typescale2Xl,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
 } from '../../styles/css-variables';
-import type { IconName, TextSize } from '../../types';
-import { getCss } from '../../utils';
-import { buildIconUrl, type IconColor } from './icon-utils';
+import type { BreakpointCustomizable, IconName } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildIconUrl, type IconColor, type IconSize } from './icon-utils';
+
+/**
+ * @css-variable {"name": "--p-icon-size", "description": "Defines the width and height of the icon. Overrides the `size` property when set.", "defaultValue": ""}
+ */
+const cssVarSize = '--p-icon-size';
+
+/**
+ * @css-variable {"name": "--p-icon-color", "description": "Defines the icon color.", "defaultValue": ""}
+ */
+const cssVarColor = '--p-icon-color';
 
 const colorMap: Record<IconColor, string> = {
   primary: colorPrimary,
@@ -32,16 +41,18 @@ const colorMap: Record<IconColor, string> = {
   warning: colorWarning,
   error: colorError,
   info: colorInfo,
-  inherit: 'inherit',
+  inherit: 'currentcolor',
 };
 
-const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
-  'xx-small': fontSizeTextXXSmall,
-  'x-small': fontSizeTextXSmall,
-  small: fontSizeTextSmall,
-  medium: fontSizeTextMedium,
-  large: fontSizeTextLarge,
-  'x-large': fontSizeTextXLarge,
+const sizeMap: Record<IconSize, string> = {
+  'xx-small': typescale2Xs,
+  'x-small': typescaleXs,
+  small: typescaleSm,
+  medium: typescaleMd,
+  large: typescaleLg,
+  'x-large': typescaleXl,
+  'xx-large': typescale2Xl,
+  inherit: 'inherit',
 };
 
 const isFlippableIcon = (name: IconName, source: string): boolean => {
@@ -69,43 +80,46 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
   );
 };
 
-export const getComponentCss = (name: IconName, source: string, color: IconColor, size: TextSize): string => {
-  const isSizeInherit = size === 'inherit';
-  const dimension = isSizeInherit ? 'inherit' : fontLineHeight;
+export const getComponentCss = (
+  name: IconName,
+  source: string,
+  color: IconColor,
+  size: BreakpointCustomizable<IconSize>
+): string => {
+  const dimension = `var(${cssVarSize},${leadingNormal})`;
+  const mask = `url("${buildIconUrl(source || name)}") center/contain no-repeat`;
 
   return getCss({
     '@global': {
       ':host': {
-        display: 'inline-block',
+        display: 'inline-flex',
         verticalAlign: 'top',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        width: dimension,
-        height: dimension,
-        font: `${isSizeInherit ? sizeMap.small : sizeMap[size]} ${fontFamily}`,
-        color: colorMap[color],
         ...addImportantToEachRule({
-          WebkitMask: `url("${buildIconUrl(source || name)}") center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `url("${buildIconUrl(source || name)}") center/contain no-repeat`,
-          aspectRatio: '1/1',
-          background: 'currentcolor', // necessary for proper color inheritance
-          forcedColorAdjust: 'none',
-          ...(isFlippableIcon(name, source) && {
-            '&(:dir(rtl))': {
-              transform: 'scaleX(-1)',
-            },
-          }),
           ...hostHiddenStyles,
         }),
       },
-      // the <img /> is only needed for a11y compliance because of alt text and to handle the fetch priority
+      // the <img /> is needed for a11y compliance because of alt text and to handle the fetch priority
       img: {
         all: 'unset',
-        position: 'absolute', // prevents unintended bottom white-space
-        opacity: 0,
-        width: '1px',
-        height: '1px',
+        display: 'block', // without display, img tag gets some extra spacing
+        objectPosition: '-9999px -9999px', // hide the actual image content, the mask + background still renders the icon
+        overflow: 'hidden', // clip the image
         pointerEvents: 'none', // disable dragging/ghosting of images
+        width: dimension,
+        height: dimension,
+        fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
+        ...buildResponsiveStyles(size, (s: IconSize) => ({
+          fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
+        })),
+        WebkitMask: mask, // necessary for Sogou browser support :-)
+        mask,
+        background: `var(${cssVarColor},${colorMap[color]})`,
+        forcedColorAdjust: 'none',
+        ...(isFlippableIcon(name, source) && {
+          '&(:dir(rtl))': {
+            transform: 'scaleX(-1)',
+          },
+        }),
       },
     },
   });

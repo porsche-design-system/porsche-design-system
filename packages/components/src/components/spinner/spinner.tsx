@@ -8,9 +8,17 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './spinner-styles';
-import { SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES, type SpinnerAriaAttribute, type SpinnerSize } from './spinner-utils';
+import {
+  SPINNER_ARIA_ATTRIBUTES,
+  SPINNER_COLORS,
+  SPINNER_SIZES,
+  type SpinnerAriaAttribute,
+  type SpinnerColor,
+  type SpinnerSize,
+} from './spinner-utils';
 
 const propTypes: PropTypes<typeof Spinner> = {
+  color: AllowedTypes.oneOf<SpinnerColor>(SPINNER_COLORS),
   size: AllowedTypes.breakpoint<SpinnerSize>(SPINNER_SIZES),
   aria: AllowedTypes.aria<SpinnerAriaAttribute>(SPINNER_ARIA_ATTRIBUTES),
 };
@@ -21,6 +29,9 @@ const propTypes: PropTypes<typeof Spinner> = {
 })
 export class Spinner {
   @Element() public host!: HTMLElement;
+
+  /** Basic color variations. */
+  @Prop() public color?: SpinnerColor = 'primary';
 
   /** Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
   @Prop() public size?: BreakpointCustomizable<SpinnerSize> = 'small';
@@ -34,7 +45,7 @@ export class Spinner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size);
+    attachComponentCss(this.host, getComponentCss, this.color, this.size);
 
     return (
       <div role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>
