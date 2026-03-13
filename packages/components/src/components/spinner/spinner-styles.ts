@@ -28,12 +28,12 @@ import type { SpinnerColor, SpinnerSize } from './spinner-utils';
 const cssVarSize = '--p-spinner-size';
 
 /**
- * @css-variable {"name": "--p-spinner-color", "description": "Defines the foreground color.", "defaultValue": ""}
+ * @css-variable {"name": "--p-spinner-color", "description": "Defines the foreground color. Overrides the `color` property when set.", "defaultValue": ""}
  */
 const cssVarColor = '--p-spinner-color';
 
 /**
- * @css-variable {"name": "--p-spinner-track-color", "description": "Defines the track/background color.", "defaultValue": ""}
+ * @css-variable {"name": "--p-spinner-track-color", "description": "Defines the track/background color. Overrides the `color` property when set.", "defaultValue": ""}
  */
 const cssVarTrackColor = '--p-spinner-track-color';
 

@@ -28,7 +28,7 @@ import { buildIconUrl, type IconColor, type IconSize } from './icon-utils';
 const cssVarSize = '--p-icon-size';
 
 /**
- * @css-variable {"name": "--p-icon-color", "description": "Defines the icon color.", "defaultValue": ""}
+ * @css-variable {"name": "--p-icon-color", "description": "Defines the icon color. Overrides the `color` property when set.", "defaultValue": ""}
  */
 const cssVarColor = '--p-icon-color';
 
