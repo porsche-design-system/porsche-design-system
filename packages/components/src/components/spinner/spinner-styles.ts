@@ -49,7 +49,7 @@ const sizeMap: Record<SpinnerSize, string> = {
 };
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
-  const strokeDasharray = '57'; // C = 2πR
+  const strokeDasharray = '69'; // C = 2πR
   const animationDuration = `var(${cssVariableAnimationDuration}, ${durationXl})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
 
@@ -65,16 +65,15 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
       },
       '@keyframes dash': {
         '0%': {
-          strokeDashoffset: 57,
+          strokeDashoffset: 69,
           transform: 'rotateZ(0)',
         },
         '50%, 75%': {
-          strokeDashoffset: 20,
+          strokeDashoffset: 24,
           transform: 'rotateZ(80deg)',
         },
-
         '100%': {
-          strokeDashoffset: 57,
+          strokeDashoffset: 69,
           transform: 'rotateZ(360deg)',
         },
       },
