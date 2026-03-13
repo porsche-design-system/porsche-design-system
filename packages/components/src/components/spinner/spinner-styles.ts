@@ -27,6 +27,16 @@ import type { SpinnerSize } from './spinner-utils';
  */
 const cssVarSize = '--p-spinner-size';
 
+/**
+ * @css-variable {"name": "--p-spinner-color", "description": "Defines the foreground color.", "defaultValue": ""}
+ */
+const cssVarColor = '--p-spinner-color';
+
+/**
+ * @css-variable {"name": "--p-spinner-track-color", "description": "Defines the track/background color.", "defaultValue": ""}
+ */
+const cssVarTrackColor = '--p-spinner-track-color';
+
 const sizeMap: Record<SpinnerSize, string> = {
   'xx-small': typescale2Xs,
   'x-small': typescaleXs,
@@ -90,10 +100,10 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
       },
       circle: {
         '&:first-child': {
-          stroke: colorContrastLower,
+          stroke: `var(${cssVarTrackColor},${colorContrastLower})`,
         },
         '&:last-child': {
-          stroke: colorPrimary,
+          stroke: `var(${cssVarColor},${colorPrimary})`,
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray
