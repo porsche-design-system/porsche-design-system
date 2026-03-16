@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Pagination`: Modernize visual appearance ([#4241](https://github.com/porsche-design-system/porsche-design-system/pull/4241))
+
 ## [4.0.0-beta.2] - 2026-03-11
 
 ### Added
