@@ -3,6 +3,7 @@ import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { colorPrimary } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 import { cssVarCheckboxIconColor } from './checkbox-css-vars';
 
 const checkedIcon = getInlineSVGBackgroundImage(
@@ -18,10 +19,12 @@ export const getCheckboxCheckedBaseStyles = (isLoading: boolean, state: FormStat
 
   return {
     '&::before': {
-      forcedColorAdjust: 'none',
       WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
       mask: `${checkedIcon} center/contain no-repeat`,
       backgroundColor: `var(${cssVarCheckboxIconColor}, ${state === 'none' ? colorPrimary : formStateBorderColor})`,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
     },
   };
 };

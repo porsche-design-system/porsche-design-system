@@ -319,23 +319,73 @@ const isOpen = ref(false);
 ```diff
 // You can still use <a> inside components, but the default styling for anchors <a> has been removed.
 <p-accordion heading="Some Heading">
--  <a href="/https://porsche.com">Some label</a>
+-  <a href="https://porsche.com">Some label</a>
 +  <p-link-pure href="https://porsche.com" icon="none">Some label</p-link-pure>
 </p-accordion>
 ```
 
-### Accordion:
+Alternatively, apply custom styles directly using PDS Design Tokens:
 
-- Removed prop `tag`, use `heading-tag` (deprecated with v4 now) instead or make use of `slot="summary"` for more
-  flexibility.
+Tailwind CSS:
 
-```diff
-- <p-acccordion heading="Some summary" tag="h3">
-  <p-text>Some details</p-text>
+```html
+<p-accordion heading="Some heading">
+  <a
+    class="text-current underline rounded-lg transition-colors -mx-static-xs px-static-xs outline-focus outline-offset-2 focus-visible:outline hover:backdrop-blur-frosted hover:bg-frosted-strong"
+    href="https://porsche.com"
+    >Some label</a
+  >
 </p-accordion>
-- <p-acccordion heading="Some summary" heading-tag="h3">
-  <p-text>Some details</p-text>
-</p-accordion>
+```
+
+Pure CSS:
+
+```css
+/* Adjust the `:is()` selector with the components you want to target and apply the following styles to your global stylesheet (see browser support for native CSS `&` selector: https://caniuse.com/css-nesting): */
+:is(p-accordion, p-table) a {
+  color: currentcolor;
+  text-decoration: underline;
+  border-radius: var(--p-radius-lg);
+  transition: background-color var(--p-duration-sm) var(--p-ease-in-out);
+  margin-inline: calc(-1 * var(--p-spacing-static-xs));
+  padding-inline: var(--p-spacing-static-xs);
+
+  &:focus-visible {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      backdrop-filter: var(--p-blur-frosted);
+      background-color: var(--p-color-frosted-strong);
+    }
+  }
+}
+```
+
+SCSS:
+
+```scss
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+
+/* Adjust the `:is()` selector with the components you want to target and apply the following styles to your global stylesheet (see browser support for native CSS `&` selector: https://caniuse.com/css-nesting): */
+:is(p-accordion, p-table) a {
+  @include pds.focus-visible();
+  color: currentcolor;
+  text-decoration: underline;
+  border-radius: pds.$radius-lg;
+  transition: background-color pds.$duration-sm pds.$ease-in-out;
+  margin-inline: calc(-1 * #{pds.$spacing-static-xs});
+  padding-inline: pds.$spacing-static-xs;
+
+  @media (hover: hover) {
+    &:hover {
+      backdrop-filter: pds.$blur-frosted;
+      background: pds.$color-frosted;
+    }
+  }
+}
 ```
 
 ### Text, Icon:
@@ -383,6 +433,35 @@ const isOpen = ref(false);
 ```diff
 - <p-icon color="state-disabled"></p-icon>
 + <p-icon color="contrast-low"></p-icon>
+```
+
+### Flag:
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-flag size="inherit" style="width: 100px; height: 100px;"></p-flag>
++ <p-flag style="--p-flag-size: 100px;"></p-flag>
+
+// When using size="inherit" with a defined font-size, the flag size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-flag size="inherit" style="font-size: 100px;"></p-flag>
+```
+
+### Spinner:
+
+- The size values are now aligned with the typographic scale used by components such as `p-icon`, `p-flag`, `p-text` and
+  `p-heading`.
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
++ <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+
+// When using size="inherit" with a defined font-size, the spinner size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
 ```
 
 ### Model Signature:
@@ -812,6 +891,17 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```
 
 ### Icon:
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-icon size="inherit" style="width: 100px; height: 100px;"></p-icon>
++ <p-icon style="--p-icon-size: 100px;"></p-icon>
+
+// When using size="inherit" with a defined font-size, the icon size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-icon size="inherit" style="font-size: 100px;"></p-icon>
+```
 
 - Removed deprecated prop `lazy`
 

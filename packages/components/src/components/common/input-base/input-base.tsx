@@ -133,7 +133,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         />
         {end}
         <slot name="end" />
-        {loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
+        {loading && <PrefixedTagNames.pSpinner aria-hidden="true" />}
       </div>
       <StateMessage state={state} message={message} host={host} />
       <LoadingMessage loading={loading} initialLoading={initialLoading} />

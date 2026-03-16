@@ -151,6 +151,7 @@ import { MultiSelectOpenedWithOptgroupsPage } from './generated/MultiSelectOpene
 import { MultiSelectOpenedWithOptgroupsDisabledPage } from './generated/MultiSelectOpenedWithOptgroupsDisabled';
 import { OverviewComponentsPage } from './generated/OverviewComponents';
 import { OverviewFormsPage } from './generated/OverviewForms';
+import { OverviewTypescalePage } from './generated/OverviewTypescale';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
@@ -918,6 +919,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Overview Forms',
     path: '/overview-forms',
     element: <OverviewFormsPage />,
+  },
+  {
+    name: 'Overview Typescale',
+    path: '/overview-typescale',
+    element: <OverviewTypescalePage />,
   },
   {
     name: 'Pagination',

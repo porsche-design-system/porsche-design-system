@@ -1040,8 +1040,6 @@ input:focus-visible {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
   pointer-events: none;
 }
 .label-wrapper {

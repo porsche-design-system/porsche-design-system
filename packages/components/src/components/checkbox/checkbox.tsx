@@ -238,7 +238,7 @@ export class Checkbox {
               disabled={this.disabled}
               ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
             />
-            {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
+            {this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}
           </div>
           <Label
             host={this.host}
