@@ -33,7 +33,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 1`] =
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: inherit var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -45,11 +45,26 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 1`] =
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,currentcolor);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,currentcolor) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -95,7 +110,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 2`] =
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: inherit var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -107,11 +122,26 @@ exports[`getComponentCss() > should return correct css for size: "inherit" 2`] =
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,currentcolor);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,currentcolor) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -157,7 +187,7 @@ exports[`getComponentCss() > should return correct css for size: "large" 1`] = `
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-lg) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -169,11 +199,26 @@ exports[`getComponentCss() > should return correct css for size: "large" 1`] = `
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -219,7 +264,7 @@ exports[`getComponentCss() > should return correct css for size: "large" 2`] = `
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-lg) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -231,11 +276,26 @@ exports[`getComponentCss() > should return correct css for size: "large" 2`] = `
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -281,7 +341,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-md) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -293,11 +353,26 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -343,7 +418,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 2`] = 
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-md) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -355,11 +430,26 @@ exports[`getComponentCss() > should return correct css for size: "medium" 2`] = 
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -405,7 +495,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-sm) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -417,11 +507,26 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -467,7 +572,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 2`] = `
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-sm) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -479,11 +584,26 @@ exports[`getComponentCss() > should return correct css for size: "small" 2`] = `
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -529,7 +649,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-md) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -541,38 +661,23 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
-@media(min-width:480px) {
-    div {
-      font: var(--p-typescale-sm) var(--p-font-porsche-next);
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
     }
 }
 
-@media(min-width:760px) {
-    div {
-      font: var(--p-typescale-md) var(--p-font-porsche-next);
-    }
-}
-
-@media(min-width:1000px) {
-    div {
-      font: var(--p-typescale-sm) var(--p-font-porsche-next);
-    }
-}
-
-@media(min-width:1300px) {
-    div {
-      font: var(--p-typescale-md) var(--p-font-porsche-next);
-    }
-}
-
-@media(min-width:1760px) {
-    div {
-      font: var(--p-typescale-sm) var(--p-font-porsche-next);
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
     }
 }
 
@@ -621,7 +726,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
   div {
     width: var(--p-spinner-size,var(--p-leading-normal));
     height: var(--p-spinner-size,var(--p-leading-normal));
-    font: var(--p-typescale-md) var(--p-font-porsche-next);
+    font-family: var(--p-font-porsche-next);
   }
   svg {
     display: block;
@@ -633,38 +738,23 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke: var(--p-spinner-color,undefined);
     stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
-@media(min-width:480px) {
-    div {
-      font: var(--p-typescale-sm) var(--p-font-porsche-next);
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
     }
 }
 
-@media(min-width:760px) {
-    div {
-      font: var(--p-typescale-md) var(--p-font-porsche-next);
-    }
-}
-
-@media(min-width:1000px) {
-    div {
-      font: var(--p-typescale-sm) var(--p-font-porsche-next);
-    }
-}
-
-@media(min-width:1300px) {
-    div {
-      font: var(--p-typescale-md) var(--p-font-porsche-next);
-    }
-}
-
-@media(min-width:1760px) {
-    div {
-      font: var(--p-typescale-sm) var(--p-font-porsche-next);
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,undefined) l c h/.2));
     }
 }
 

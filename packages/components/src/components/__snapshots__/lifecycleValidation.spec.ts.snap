@@ -196,7 +196,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
 }
 `;
 
@@ -227,7 +227,7 @@ exports[`should call validateProps() with correct parameters via render for p-ic
   "aria": "aria",
   "color": "oneOf",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
   "source": "string",
 }
 `;
@@ -762,6 +762,7 @@ exports[`should call validateProps() with correct parameters via render for p-sh
 exports[`should call validateProps() with correct parameters via render for p-spinner > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "color": "oneOf",
   "size": "breakpoint",
 }
 `;
