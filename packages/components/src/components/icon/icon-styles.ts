@@ -119,7 +119,7 @@ export const getComponentCss = (
         background: `var(${cssVarColor},${colorMap[color]})`,
         forcedColorAdjust: 'none',
         ...(isFlippableIcon(name, source) && {
-          '&(:dir(rtl))': {
+          '&:dir(rtl)': {
             transform: 'scaleX(-1)',
           },
         }),
