@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Accordion`: missing `delegatesFocus`
+  ([#4238](https://github.com/porsche-design-system/porsche-design-system/pull/4238))
+
 ## [3.33.0] - 2026-03-09
 
 ## [3.33.0-rc.0] - 2026-03-04
