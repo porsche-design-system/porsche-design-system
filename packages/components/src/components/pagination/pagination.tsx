@@ -117,7 +117,7 @@ export class Pagination {
                   <li key="prev" class="prev">
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
                     <span {...spanProps} aria-label={parsedIntl.prev} aria-disabled={isActive ? null : 'true'}>
-                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-left" class="icon" />
+                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-left" />
                     </span>
                   </li>
                 );
@@ -158,7 +158,7 @@ export class Pagination {
                   <li key="next" class="next">
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
                     <span {...spanProps} aria-label={parsedIntl.next} aria-disabled={isActive ? null : 'true'}>
-                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-right" class="icon" />
+                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-right" />
                     </span>
                   </li>
                 );
