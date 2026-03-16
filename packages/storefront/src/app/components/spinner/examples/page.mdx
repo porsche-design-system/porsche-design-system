@@ -1,7 +1,14 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { spinnerStory, spinnerStoryResponsiveSize, spinnerStorySize } from '@/app/components/spinner/spinner.stories';
+import {
+  spinnerStory,
+  spinnerStoryColor,
+  spinnerStoryColorCSSVar,
+  spinnerStoryResponsiveSize,
+  spinnerStorySize,
+  spinnerStorySizeCSSVar,
+} from '@/app/components/spinner/spinner.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
@@ -11,20 +18,41 @@ export const metadata = {
 
 # Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
 
-<TableOfContents headings={['Size', 'Technical notes']} />
+<TableOfContents headings={['Size', 'Color', 'Technical notes']} />
 
 ## Size
 
 There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
-the size can be set to `inherit` to specify the text size from outside.
+the `size` property can be set to `inherit` to derive the spinner's dimensions from the font-size of a parent element
+(e.g. a `p-text`). The calculation is based on the `ex`-unit relative to the inherited font-size and the global
+line-height, ensuring the spinner stays visually consistent with surrounding typographic-scale-based components.
 
 <ComponentStory story={spinnerStorySize} />
 
-### Responsive
+Alternatively, the size can be controlled via the custom CSS variable `--p-spinner-size`, which accepts any valid CSS
+length value. This approach is particularly useful when the spinner is placed independently of typographic-scale-based
+components and a precise, fixed size is required.
 
-The `size` property can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+<ComponentStory story={spinnerStorySizeCSSVar} />
+
+The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major
+breakpoint (`xs`, `s`, `m`, `l`, `xl`). This makes it easy to adapt the spinner's appearance responsively without
+additional CSS.
 
 <ComponentStory story={spinnerStoryResponsiveSize} />
+
+## Color
+
+The `color` property can be set to `inherit` to derive the spinner's color from the `currentcolor` of a parent element
+(e.g. a `p-text`). This ensures the spinner matches the surrounding text color automatically.
+
+<ComponentStory story={spinnerStoryColor} />
+
+Alternatively, the colors can be controlled via the custom CSS variables `--p-spinner-color` and
+`--p-spinner-track-color`, which accept any valid CSS color value. This allows full control over both the foreground and
+track color independently.
+
+<ComponentStory story={spinnerStoryColorCSSVar} />
 
 ## Technical notes
 
