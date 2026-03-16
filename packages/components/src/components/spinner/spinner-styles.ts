@@ -1,6 +1,8 @@
 import {
   addImportantToEachRule,
+  addImportantToRule,
   cssVariableAnimationDuration,
+  forcedColorsMediaQuery,
   getHiddenTextJssStyle,
   hostHiddenStyles,
 } from '../../styles';
@@ -110,9 +112,15 @@ export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizabl
           '@supports (color: oklch(from red l c h))': {
             stroke: `var(${cssVarTrackColor},oklch(from var(${cssVarColor},${colorMap[color]}) l c h/.2))`,
           },
+          ...forcedColorsMediaQuery({
+            stroke: addImportantToRule('none'),
+          }),
         },
         '&:last-child': {
           stroke: `var(${cssVarColor},${colorMap[color]})`,
+          ...forcedColorsMediaQuery({
+            stroke: 'CanvasText',
+          }),
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray

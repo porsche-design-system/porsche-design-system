@@ -1,4 +1,4 @@
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import {
   colorContrastHigh,
   colorContrastLow,
@@ -117,7 +117,9 @@ export const getComponentCss = (
         WebkitMask: mask, // necessary for Sogou browser support :-)
         mask,
         background: `var(${cssVarColor},${colorMap[color]})`,
-        forcedColorAdjust: 'none',
+        ...forcedColorsMediaQuery({
+          background: 'CanvasText',
+        }),
         ...(isFlippableIcon(name, source) && {
           '&:dir(rtl)': {
             transform: 'scaleX(-1)',

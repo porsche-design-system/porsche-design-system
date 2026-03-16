@@ -1,4 +1,4 @@
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import {
   colorContrastHigh,
   colorContrastLow,
@@ -29,6 +29,9 @@ export const getComponentCss = (color: DividerColor, orientation: BreakpointCust
         all: 'unset',
         display: 'block',
         background: colorMap[color],
+        ...forcedColorsMediaQuery({
+          background: 'CanvasText',
+        }),
         ...buildResponsiveStyles(orientation, (o: DividerDirection) =>
           o === 'horizontal' ? { height: '1px', width: '100%' } : { height: '100%', width: '1px' }
         ),

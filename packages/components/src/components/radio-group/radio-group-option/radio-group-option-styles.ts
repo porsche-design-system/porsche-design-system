@@ -87,10 +87,12 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           gridArea: '1/1',
         },
         '&:checked::before': {
-          forcedColorAdjust: 'none',
           WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${checkedIcon} center/contain no-repeat`,
           backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
         },
         '&::after': {
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.

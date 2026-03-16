@@ -2,6 +2,7 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -92,6 +93,9 @@ const getScrollIndicatorStyles = (
       mask: iconMask,
       background: colorPrimary,
       transition: getTransition('transform'),
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
     },
   };
 };

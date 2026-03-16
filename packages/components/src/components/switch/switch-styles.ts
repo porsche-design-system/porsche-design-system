@@ -155,7 +155,6 @@ export const getComponentCss = (
       },
     },
     toggle: {
-      forcedColorAdjust: 'none',
       display: 'flex',
       placeItems: 'center',
       placeContent: 'center',
@@ -165,6 +164,9 @@ export const getComponentCss = (
       background: toggleBackgroundColor,
       transition: getTransition('transform'),
       transform: `translate3d(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX}, 0, 0)`,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
       '&:dir(rtl)': {
         transform: `translate3d(calc(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX} * -1), 0, 0)`,
       },
