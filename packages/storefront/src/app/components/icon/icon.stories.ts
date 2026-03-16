@@ -26,8 +26,8 @@ export const iconStorySize: Story<'p-icon'> = {
   state: {
     properties: {
       className: 'me-static-sm',
-      name: 'highway',
       size: 'inherit',
+      name: 'highway',
       aria: { 'aria-label': 'Highway icon' },
     },
   },
@@ -49,8 +49,8 @@ export const iconStorySize: Story<'p-icon'> = {
 export const iconStorySizeCSSVar: Story<'p-icon'> = {
   state: {
     properties: {
-      name: 'highway',
       className: '[--p-icon-size:48px]',
+      name: 'highway',
       aria: { 'aria-label': 'Highway icon' },
     },
   },
@@ -65,8 +65,8 @@ export const iconStorySizeCSSVar: Story<'p-icon'> = {
 export const iconStoryResponsiveSize: Story<'p-icon'> = {
   state: {
     properties: {
-      name: 'highway',
       size: { base: 'small', l: 'xx-large' },
+      name: 'highway',
       aria: { 'aria-label': 'Highway icon' },
     },
   },
@@ -82,8 +82,8 @@ export const iconStoryColor: Story<'p-icon'> = {
   state: {
     properties: {
       className: 'me-static-sm',
-      name: 'highway',
       color: 'inherit',
+      name: 'highway',
       aria: { 'aria-label': 'Highway icon' },
     },
   },
@@ -108,8 +108,8 @@ export const iconStoryColor: Story<'p-icon'> = {
 export const iconStoryColorCSSVar: Story<'p-icon'> = {
   state: {
     properties: {
-      name: 'highway',
       className: '[--p-icon-color:deeppink]',
+      name: 'highway',
       aria: { 'aria-label': 'Highway icon' },
     },
   },
