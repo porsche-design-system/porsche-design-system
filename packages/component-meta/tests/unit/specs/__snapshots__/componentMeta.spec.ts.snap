@@ -2418,6 +2418,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flag": {
+    "cssVariablesMeta": {
+      "--p-flag-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the flag. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2569,10 +2575,12 @@ exports[`should match snapshot 1`] = `
           "medium",
           "large",
           "x-large",
+          "xx-large",
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are \`small\`, \`medium\`, \`large\`, etc.",
+        "description": "Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
+        "isBreakpointCustomizable": true,
         "type": "FlagSize",
       },
     },
@@ -2780,6 +2788,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-icon": {
+    "cssVariablesMeta": {
+      "--p-icon-color": {
+        "defaultValue": "",
+        "description": "Defines the icon color. Overrides the \`color\` property when set.",
+      },
+      "--p-icon-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the icon. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -3115,10 +3133,12 @@ exports[`should match snapshot 1`] = `
           "medium",
           "large",
           "x-large",
+          "xx-large",
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "The size of the icon.",
+        "description": "Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
+        "isBreakpointCustomizable": true,
         "type": "IconSize",
       },
       "source": {
@@ -8659,7 +8679,7 @@ exports[`should match snapshot 1`] = `
     "cssVariablesMeta": {
       "--p-spinner-color": {
         "defaultValue": "",
-        "description": "Defines the foreground color.",
+        "description": "Defines the foreground color. Overrides the \`color\` property when set.",
       },
       "--p-spinner-size": {
         "defaultValue": "",
@@ -8667,7 +8687,7 @@ exports[`should match snapshot 1`] = `
       },
       "--p-spinner-track-color": {
         "defaultValue": "",
-        "description": "Defines the track/background color.",
+        "description": "Defines the track/background color. Overrides the \`color\` property when set.",
       },
     },
     "hasAriaProp": true,
@@ -8688,6 +8708,15 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "SpinnerAriaAttribute",
+      },
+      "color": {
+        "allowedValues": [
+          "primary",
+          "inherit",
+        ],
+        "defaultValue": "primary",
+        "description": "Basic color variations.",
+        "type": "SpinnerColor",
       },
       "size": {
         "allowedValues": [
