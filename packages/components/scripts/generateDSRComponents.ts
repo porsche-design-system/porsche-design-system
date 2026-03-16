@@ -822,6 +822,11 @@ $&`
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
       } else if (tagName === 'p-button-pure') {
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
+      } else if (tagName === 'p-tag') {
+        newFileContent = newFileContent.replace(
+          /VARIANT_TO_COLOR_MAP\[this\.props\.variant]/,
+          'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
+        );
       }
 
       return newFileContent;
