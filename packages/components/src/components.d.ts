@@ -2751,6 +2751,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+         */
+        "noWrap"?: boolean;
+        /**
           * A boolean value that specifies a selection must be made from the group before the form can be submitted.
          */
         "required"?: boolean;
@@ -2766,10 +2770,6 @@ export namespace Components {
           * Sets the initial value of the segmented-control.
          */
         "value"?: string | number;
-        /**
-          * Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false).
-         */
-        "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
         /**
@@ -7654,6 +7654,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+         */
+        "noWrap"?: boolean;
+        /**
           * Emitted when the segmented-control has lost focus.
          */
         "onBlur"?: (event: PSegmentedControlCustomEvent<void>) => void;
@@ -7685,10 +7689,6 @@ declare namespace LocalJSX {
           * Sets the initial value of the segmented-control.
          */
         "value"?: string | number;
-        /**
-          * Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false).
-         */
-        "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
         /**

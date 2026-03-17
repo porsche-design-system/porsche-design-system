@@ -25,7 +25,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: SegmentedControlState,
   theme: Theme,
-  wrap: boolean
+  noWrap: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -41,14 +41,14 @@ export const getComponentCss = (
       'slot:not([name])': {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
-        ...(wrap
-          ? buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
+        ...(noWrap
+          ? { gridAutoFlow: 'column', gridAutoColumns: 'max-content' }
+          : buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
               gridTemplateColumns:
                 col === 'auto'
                   ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
                   : `repeat(${col}, minmax(0, 1fr))`,
-            }))
-          : { gridAutoFlow: 'column', gridAutoColumns: 'max-content' }),
+            }))),
         gap: '6px',
       },
     },

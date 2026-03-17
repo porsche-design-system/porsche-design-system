@@ -9953,6 +9953,12 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "noWrap": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.",
+        "type": "boolean",
+      },
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9990,12 +9996,6 @@ exports[`should match snapshot 1`] = `
           "mutable": true,
         },
         "type": "string | number",
-      },
-      "wrap": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false).",
-        "type": "boolean",
       },
     },
     "slotsMeta": {

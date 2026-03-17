@@ -60,7 +60,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  wrap: AllowedTypes.boolean,
+  noWrap: AllowedTypes.boolean,
 };
 
 /**
@@ -124,8 +124,8 @@ export class SegmentedControl {
   /** Disables the segmented-control. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false). */
-  @Prop() public wrap?: boolean = true;
+  /** If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead. */
+  @Prop() public noWrap?: boolean = false;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -220,7 +220,7 @@ export class SegmentedControl {
       this.hideLabel,
       this.state,
       this.theme,
-      this.wrap
+      this.noWrap
     );
     syncSegmentedControlItemsProps(
       this.host,
@@ -233,7 +233,7 @@ export class SegmentedControl {
     );
 
     let slotContent: JSX.Element;
-    if (this.wrap === false) {
+    if (this.noWrap) {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       slotContent = (
         <PrefixedTagNames.pScroller theme={this.theme}>

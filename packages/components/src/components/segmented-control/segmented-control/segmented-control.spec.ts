@@ -153,24 +153,24 @@ describe('componentDidLoad', () => {
   });
 });
 
-describe('wrap prop', () => {
-  it('should default wrap to true', () => {
+describe('noWrap prop', () => {
+  it('should default noWrap to false', () => {
     const component = initComponent();
-    expect(component.wrap).toBe(true);
+    expect(component.noWrap).toBe(false);
   });
 
-  it('should call getPrefixedTagNames when wrap is false', () => {
+  it('should call getPrefixedTagNames when noWrap is true', () => {
     const spy = vi.spyOn(utils, 'getPrefixedTagNames');
     const component = initComponent();
-    component.wrap = false;
+    component.noWrap = true;
     component.render();
     expect(spy).toHaveBeenCalledWith(component.host);
   });
 
-  it('should not call getPrefixedTagNames when wrap is true', () => {
+  it('should not call getPrefixedTagNames when noWrap is false', () => {
     const spy = vi.spyOn(utils, 'getPrefixedTagNames');
     const component = initComponent();
-    component.wrap = true;
+    component.noWrap = false;
     component.render();
     expect(spy).not.toHaveBeenCalled();
   });
