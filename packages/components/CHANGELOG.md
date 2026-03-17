@@ -14,6 +14,63 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Spinner`, `Flag`, `Icon`:
+  - Prop `size` supports all typographic scale values:
+    `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Spinner`:
+  - Prop `color` with values: `'primary' | 'inherit'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-size`: Defines the width and height of the spinner. Overrides the `size` property when
+    set. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-color`: Defines the foreground color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-track-color`: Defines the track/background color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Flag`:
+  - CSS Variable `--p-flag-size`: Defines the width and height of the flag. Overrides the `size` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Icon`:
+  - CSS Variable `--p-icon-size`: Defines the width and height of the icon. Overrides the `size` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-icon-color`: Defines the icon color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+### Changed
+
+- `Spinner`, `Flag`, `Icon`:
+  - The `size` is breakpoint customizable and values are aligned with the typographic scale used by components such as
+    `p-text` and `p-heading`. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against
+    the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based
+    components. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+    ```diff
+    - <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
+    + <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+
+    // When using size="inherit" with a defined font-size, the spinner size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
+    ```
+
+    ```diff
+    - <p-icon size="inherit" style="width: 100px; height: 100px;"></p-icon>
+    + <p-icon style="--p-icon-size: 100px;"></p-icon>
+
+    // When using size="inherit" with a defined font-size, the icon size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-icon size="inherit" style="font-size: 100px;"></p-icon>
+    ```
+
+    ```diff
+    - <p-flag size="inherit" style="width: 100px; height: 100px;"></p-flag>
+    + <p-flag style="--p-flag-size: 100px;"></p-flag>
+
+    // When using size="inherit" with a defined font-size, the flag size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-flag size="inherit" style="font-size: 100px;"></p-flag>
+    ```
+
 ## [4.0.0-beta.2] - 2026-03-11
 
 ### Added
@@ -525,7 +582,6 @@ and migration steps.
 - `Scroller`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
-  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
 - `Segmented Control`:
   - prop `backgroundColor` (has no effect anyway)
   - event `segmentedControlChange` (use `change` instead)

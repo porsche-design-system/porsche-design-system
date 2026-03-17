@@ -101,7 +101,7 @@ export class RadioGroupOption {
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
             {isOptionLoading && !this.host.loadingParent && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
+              <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />
             )}
           </div>
           <Label

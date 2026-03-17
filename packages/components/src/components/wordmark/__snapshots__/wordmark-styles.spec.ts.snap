@@ -41,6 +41,9 @@ svg {
   a:focus-visible::before {
     outline-color: Highlight;
   }
+  svg {
+    fill: CanvasText;
+  }
 }
 "
 `;
@@ -85,6 +88,9 @@ svg {
 @media (forced-colors: active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 "
@@ -138,6 +144,9 @@ svg {
   a:focus-visible::before {
     outline-color: Highlight;
   }
+  svg {
+    fill: CanvasText;
+  }
 }
 "
 `;
@@ -189,6 +198,9 @@ svg {
 @media (forced-colors: active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 "

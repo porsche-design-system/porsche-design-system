@@ -2,757 +2,861 @@
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-high);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-high));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-high);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-high));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-low);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-low));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-low);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-low));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-medium));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-medium));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-error);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-error));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-error);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-error));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-info);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-info));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-info);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-info));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: inherit 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: large 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-lg);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: medium 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-md);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: x-large 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-xl);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: x-small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-xs);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: xx-small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: .75rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-2xs);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-success);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-success));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-success);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-success));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-warning);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-warning));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: small 2`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-warning);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-warning));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: , color: primary and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.cf1395d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: some-custom.svg, color: primary and size: small 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
-}"
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
 `;

@@ -871,7 +871,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: inherit;
+  --p-spinner-color: currentcolor;
 }
 .loading {
   position: absolute;
@@ -1540,7 +1540,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: inherit;
+  --p-spinner-color: currentcolor;
 }
 .icon {
   transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);

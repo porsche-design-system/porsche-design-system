@@ -7,6 +7,7 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -14,7 +15,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  forcedColorsMediaQuery,
 } from '../../styles';
 import {
   colorContrastLow,
@@ -75,7 +75,6 @@ export const getComponentCss = (
   const labelPaddingTop = `max(0px, calc((${buttonHeight} - ${fontLineHeight}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
   const toggleDimension = `calc(var(${cssVarInternalSwitchScaling}) * 1.25rem)`;
   const toggleTranslateX = `calc(var(${cssVarInternalSwitchScaling}) * .1875rem)`;
-  const spinnerDimension = buttonHeight;
 
   return getCss({
     '@global': {
@@ -156,7 +155,6 @@ export const getComponentCss = (
       },
     },
     toggle: {
-      forcedColorAdjust: 'none',
       display: 'flex',
       placeItems: 'center',
       placeContent: 'center',
@@ -166,14 +164,16 @@ export const getComponentCss = (
       background: toggleBackgroundColor,
       transition: getTransition('transform'),
       transform: `translate3d(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX}, 0, 0)`,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
       '&:dir(rtl)': {
         transform: `translate3d(calc(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX} * -1), 0, 0)`,
       },
     },
     ...(isLoading && {
       spinner: {
-        width: spinnerDimension,
-        height: spinnerDimension,
+        '--p-spinner-size': buttonHeight,
       },
     }),
     // .loading

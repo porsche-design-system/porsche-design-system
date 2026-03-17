@@ -7,13 +7,13 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  forcedColorsMediaQuery,
 } from '../../../styles';
 import { colorPrimary, radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
@@ -87,10 +87,12 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           gridArea: '1/1',
         },
         '&:checked::before': {
-          forcedColorAdjust: 'none',
           WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${checkedIcon} center/contain no-repeat`,
           backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
         },
         '&::after': {
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
@@ -117,13 +119,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     },
     ...(loading && {
       spinner: {
+        '--p-spinner-size': `calc(${radioDimension} - 2px)`, // compensates the 1px border of the radio button
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: radioDimension,
-        height: radioDimension,
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
     // .label / .required

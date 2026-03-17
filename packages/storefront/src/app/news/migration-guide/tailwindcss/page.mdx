@@ -76,10 +76,20 @@ The defined theme context will cascade to all child elements.
 ```css
 @theme {
   --color-*: initial;
+  --text-*: initial;
+  --breakpoint-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
 }
 ```
 
 - Removed `--color-disabled`, use `--color-contrast-lower` instead.
+
+```diff
+- <div class="text-disabled">…</div>
++ <div class="text-contrast-lower">…</div>
+```
+
 - Removed `--color-*-light` and `--color-*-dark` color variables, use `--color-*` or the corresponding CSS utility
   classes, e.g. `bg-frosted` or `text-primary` instead. The new variables automatically resolve to the correct value
   based on the active theme.
@@ -99,6 +109,9 @@ See [Tailwind CSS Border Examples](/tailwindcss/border/examples) for more detail
 - .border-regular
 + .border
 ```
+
+The CSS variables `--border-width-thin` and `--border-width-regular` are deprecated. The default border width is now
+`1px` via `--default-border-width`.
 
 ### Shadow
 

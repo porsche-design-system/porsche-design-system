@@ -56,7 +56,9 @@ export const getComponentCss = (
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            color: 'inherit',
+            ...(variant === 'primary' && {
+              '--p-spinner-color': 'currentcolor',
+            }),
           },
         }),
         label: {

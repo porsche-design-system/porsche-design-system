@@ -1427,8 +1427,6 @@ slot[name="label-after"]::slotted(*) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
   pointer-events: none;
 }
 .label-wrapper {
@@ -1908,8 +1906,6 @@ slot[name="label-after"]::slotted(*) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
   pointer-events: none;
 }
 .label-wrapper {
