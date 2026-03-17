@@ -2766,6 +2766,10 @@ export namespace Components {
           * Sets the initial value of the segmented-control.
          */
         "value"?: string | number;
+        /**
+          * Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false).
+         */
+        "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
         /**
@@ -7681,6 +7685,10 @@ declare namespace LocalJSX {
           * Sets the initial value of the segmented-control.
          */
         "value"?: string | number;
+        /**
+          * Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false).
+         */
+        "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
         /**

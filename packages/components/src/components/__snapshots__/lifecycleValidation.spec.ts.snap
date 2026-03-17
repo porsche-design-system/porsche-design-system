@@ -892,6 +892,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "state": "oneOf",
   "theme": "oneOf",
   "value": "oneOf",
+  "wrap": "boolean",
 }
 `;
 

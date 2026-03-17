@@ -16,6 +16,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getPrefixedTagNames,
   hasPropValueChanged,
   observeChildren,
   THEMES,
@@ -59,6 +60,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  wrap: AllowedTypes.boolean,
 };
 
 /**
@@ -121,6 +123,9 @@ export class SegmentedControl {
 
   /** Disables the segmented-control. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
+
+  /** Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false). */
+  @Prop() public wrap?: boolean = true;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -214,7 +219,8 @@ export class SegmentedControl {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.theme
+      this.theme,
+      this.wrap
     );
     syncSegmentedControlItemsProps(
       this.host,
@@ -225,6 +231,18 @@ export class SegmentedControl {
       this.compact,
       this.theme
     );
+
+    let slotContent: JSX.Element;
+    if (this.wrap === false) {
+      const PrefixedTagNames = getPrefixedTagNames(this.host);
+      slotContent = (
+        <PrefixedTagNames.pScroller theme={this.theme}>
+          <slot />
+        </PrefixedTagNames.pScroller>
+      );
+    } else {
+      slotContent = <slot />;
+    }
 
     return (
       <fieldset
@@ -243,7 +261,7 @@ export class SegmentedControl {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <slot />
+        {slotContent}
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </fieldset>
     );

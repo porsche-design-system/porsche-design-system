@@ -9846,6 +9846,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
+      "p-scroller",
       "p-icon",
     ],
     "propsMeta": {
@@ -9989,6 +9990,12 @@ exports[`should match snapshot 1`] = `
           "mutable": true,
         },
         "type": "string | number",
+      },
+      "wrap": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "Controls whether items wrap to multiple rows (true) or render inline in a single scrollable row (false).",
+        "type": "boolean",
       },
     },
     "slotsMeta": {
