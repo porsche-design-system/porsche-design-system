@@ -24,7 +24,7 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
  * Sections without an entry belong to the preceding group (no extra header rendered).
  */
 const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
-  designing: 'Get Started', // designing, developing
+  news: 'Get Started', // designing, developing
   components: 'Core', // components, styles, tokens, patterns, templates, partials
   tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract
   'ag-grid': 'Integrations', // ag-grid
@@ -69,12 +69,14 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           return (
             <React.Fragment key={path}>
               {groupLabel && (
-                <div className="flex items-center gap-static-sm mt-static-md first:mt-0">
-                  <PText size="xx-small" color="contrast-high" weight="bold" className="uppercase">
-                    {groupLabel}
-                  </PText>
-                  <PDivider className="grow" />
-                </div>
+                <PHeading
+                  tag="h3"
+                  size="inherit"
+                  color="inherit"
+                  className="text-2xs text-contrast-medium mt-static-md first:mt-0"
+                >
+                  {groupLabel}
+                </PHeading>
               )}
               <PAccordion
                 compact={true}
@@ -95,7 +97,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                         icon="none"
                         active={pathname?.includes(`${page.path}/`)}
                         onClick={() => onNavigate()}
-                        className={'w-full pl-static-md'}
+                        className={'w-full'}
                       >
                         <Link href={link}>{page.name}</Link>
                       </PLinkPure>

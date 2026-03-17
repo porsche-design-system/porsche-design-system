@@ -33,7 +33,7 @@ require your attention.
 - Redesigned footer of dialog elements
 - All headings use regular as font-weight
 - Design Tokens are exposed as CSS variables, and all component styles are built directly upon them
-  - [Colors](/styles/color/examples/)
+  - [Colors](/stylesheets/color/examples/)
 - Theming now works by adding a `scheme-light`, `scheme-dark` or `scheme-light-dark` CSS class to any HTML element
   - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
   - [Angular](/developing/angular/advanced/#global-theme)
@@ -62,7 +62,7 @@ These styles provide the architectural foundation for the system, specifically:
 - **Font-Face Styles:** Defines the Porsche Next font family, including all weights and styles.
 
 Without these global styles, components will not have access to their required color variables and will fail to render
-correctly. See [Styles](/styles/introduction/) for more information.
+correctly. See [Styles](/stylesheets/introduction/) for more information.
 
 ```diff
 /* src/global-style.css */
@@ -751,7 +751,7 @@ SCSS:
 + <p-banner dismiss-button="false"></p-banner>
 ```
 
-- Removed deprecated prop `width`, instead the component is aligned with the **[Porsche Grid](/styles/grid/)**
+- Removed deprecated prop `width`, instead the component is aligned with the **[Porsche Grid](/stylesheets/grid/)**
   "extended" by default.
 
 ```diff
@@ -798,8 +798,8 @@ SCSS:
 
 ### Carousel:
 
-- Removed deprecated prop `wrap-content`. The component is always aligned with the **[Porsche Grid](/styles/grid/)**
-  now, adjustable by prop `width`.
+- Removed deprecated prop `wrap-content`. The component is always aligned with the
+  **[Porsche Grid](/stylesheets/grid/)** now, adjustable by prop `width`.
 
 ```diff
 - <p-carousel wrap-content="true"></p-carousel>
