@@ -11691,9 +11691,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]&gt;* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }

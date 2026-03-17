@@ -135,12 +135,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
-          ...getDisabledBaseStyles({
-            // overwrites the icon/span color
-            '&>*': {
-              color: 'GrayText',
-            },
-          }),
+          ...getDisabledBaseStyles(),
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
         '&:not(.ellipsis):focus-visible': getFocusBaseStyles(),

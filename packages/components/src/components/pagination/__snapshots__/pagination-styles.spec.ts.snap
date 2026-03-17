@@ -76,9 +76,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -184,9 +181,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -290,9 +284,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -406,9 +397,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -518,9 +506,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -634,9 +619,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -746,9 +728,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -862,9 +841,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -974,9 +950,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -1090,9 +1063,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -1202,9 +1172,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -1318,9 +1285,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -1432,9 +1396,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -1541,9 +1502,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -1657,9 +1615,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -1766,9 +1721,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -1880,9 +1832,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
@@ -1999,9 +1948,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -2116,9 +2062,6 @@ span:not(.ellipsis):focus-visible {
     opacity: 1;
     color: GrayText;
   }
-  span[aria-disabled]>* {
-    color: GrayText;
-  }
   span[aria-current] {
     border: 2px solid CanvasText;
   }
@@ -2231,9 +2174,6 @@ span:not(.ellipsis):focus-visible {
   }
   span[aria-disabled] {
     opacity: 1;
-    color: GrayText;
-  }
-  span[aria-disabled]>* {
     color: GrayText;
   }
   span[aria-current] {
