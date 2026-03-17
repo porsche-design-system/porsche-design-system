@@ -1,14 +1,14 @@
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  HEADING_TAGS,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
+  HEADING_TAGS,
   hasPropValueChanged,
+  THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -40,7 +40,7 @@ const propTypes: PropTypes<typeof Accordion> = {
  */
 @Component({
   tag: 'p-accordion',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Accordion {
   @Element() public host!: HTMLElement;
