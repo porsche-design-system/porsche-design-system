@@ -1116,13 +1116,6 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-scroller></p-scroller>
 ```
 
-- Removed deprecated prop `scrollIndicatorPosition`, use `alignScrollIndicator` instead.
-
-```diff
-- <p-scroller scroll-indicator-position="top"></p-scroller>
-+ <p-scroller align-scroll-indicator="top"></p-scroller>
-```
-
 ### Segmented Control:
 
 - Removed deprecated prop `backgroundColor`, has no effect anyway.
@@ -1663,3 +1656,15 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```
 
 - CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
+
+### Scroller:
+
+- Deprecated prop `alignScrollIndicator`, has no effect anyway.
+
+```diff
+- <p-scroller align-scroll-indicator="top"></p-scroller>
++ <p-scroller></p-scroller>
+```
+
+- Deprecated prop `scrollToPosition`, use native `scrollIntoView()` on the slotted element itself, e.g.
+  `el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center', container: 'nearest' })`.
