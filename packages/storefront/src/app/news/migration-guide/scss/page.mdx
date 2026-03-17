@@ -87,7 +87,12 @@ The defined theme context will cascade to all child elements.
 
 ## 👹 Breaking Changes
 
-- Removed `@mixin pds-hover()` since it did not work reliable.
+- Removed `@mixin pds-hover()` since it did not work reliably. There is no replacement.
+- **Heading font-weight changed:** All heading typography mixins (`prose-heading-*` / formerly `pds-heading-*`) now use
+  `font-weight: normal` (regular) instead of `semi-bold`. This is a visual change that applies automatically when
+  upgrading.
+- **Border-radius `large` value changed:** `$pds-border-radius-large` / `$radius-lg` was changed from `12px` to `8px`,
+  since more radius sizes are now available (`$radius-xl` through `$radius-4xl` and `$radius-full`).
 
 ## 🤡 Deprecations (will be removed in v5)
 
@@ -323,6 +328,9 @@ See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
 
 See [SCSS Typography Examples](/scss/typography/examples) for more details.
 
+> **Note:** All heading mixins now use `font-weight: normal` (regular) instead of `semi-bold`. This change is applied
+> automatically through the new mixins.
+
 ```diff
 - @include pds-display-large;
 + @include prose-display-lg;
@@ -352,6 +360,43 @@ See [SCSS Typography Examples](/scss/typography/examples) for more details.
 + @include prose-text-xs;
 - @include pds-text-xx-small;
 + @include prose-text-2xs;
+```
+
+Font variables:
+
+```diff
+- $pds-font-family;
++ $font-porsche-next;
+- $pds-font-line-height;
++ $leading-normal;
+- $pds-font-weight-regular;
++ $font-weight-normal;
+- $pds-font-weight-semi-bold;
++ $font-weight-semibold;
+- $pds-font-weight-bold;
++ $font-weight-bold;
+- $pds-font-size-text-xx-small;
++ $typescale-2xs;
+- $pds-font-size-text-x-small;
++ $typescale-xs;
+- $pds-font-size-text-small;
++ $typescale-sm;
+- $pds-font-size-text-medium;
++ $typescale-md;
+- $pds-font-size-text-large;
++ $typescale-lg;
+- $pds-font-size-text-x-large;
++ $typescale-xl;
+- $pds-font-size-heading-small;
++ $typescale-sm;
+- $pds-font-size-heading-medium;
++ $typescale-md;
+- $pds-font-size-heading-large;
++ $typescale-lg;
+- $pds-font-size-heading-x-large;
++ $typescale-xl;
+- $pds-font-size-heading-xx-large;
++ $typescale-2xl;
 ```
 
 ### Skeleton

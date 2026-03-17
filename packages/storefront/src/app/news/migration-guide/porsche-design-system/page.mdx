@@ -312,7 +312,7 @@ const isOpen = ref(false);
 </template>
 ```
 
-- Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-headline`,
+- Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-heading`,
   `p-inline-notification`, `p-switch`, `p-table`, `p-tabs`, `p-text` and `p-text-list`, use `p-link-pure` instead or an
   anchor `<a>` with correct styling.
 
@@ -425,7 +425,7 @@ SCSS:
 
 ```diff
 - <p-icon color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-icon>
-+ <p-icon color="inherit" class="color: deeppink;"></p-icon>
++ <p-icon color="inherit" style="color: deeppink;"></p-icon>
 ```
 
 - Removed value `'state-disabled'` of prop `color`.
@@ -470,7 +470,7 @@ SCSS:
 
 ```diff
 - <p-model-signature color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-model-signature>
-+ <p-model-signature color="inherit" class="color: deeppink;"></p-model-signature>
++ <p-model-signature color="inherit" style="color: deeppink;"></p-model-signature>
 ```
 
 ### Tag:
@@ -627,6 +627,8 @@ SCSS:
 
 ### Carousel:
 
+- Removed CSS variable `--p-carousel-prev-next-filter`.
+
 - Removed prop `gradient-color`, use `gradient="true"` instead.
 
 ```diff
@@ -667,47 +669,49 @@ SCSS:
 + <p-button-tile gradient="true"></p-button-tile>
 ```
 
-- Removed prop `background`, use CSS class `.light | .dark | .auto` on :host element instead.
+- Removed prop `background`, use CSS class `.scheme-light | .scheme-dark | .scheme-light-dark` on :host element instead.
 
 ```diff
-// dark was the default before
 - <p-link-tile></p-link-tile>
-+ <p-link-tile class="dark"></p-link-tile>
++ <p-link-tile class="scheme-dark"></p-link-tile>
 
 - <p-link-tile background="light"></p-link-tile>
-+ <p-link-tile class="light"></p-link-tile>
++ <p-link-tile class="scheme-light"></p-link-tile>
 
 - <p-link-tile background="dark"></p-link-tile>
-+ <p-link-tile class="dark"></p-link-tile>
++ <p-link-tile class="scheme-dark"></p-link-tile>
 
 - <p-link-tile background="auto"></p-link-tile>
-+ <p-link-tile class="auto"></p-link-tile>
++ <p-link-tile class="scheme-light-dark"></p-link-tile>
 
-// dark was the default before
 - <p-button-tile></p-button-tile>
-+ <p-button-tile class="dark"></p-button-tile>
++ <p-button-tile class="scheme-dark"></p-button-tile>
 
 - <p-button-tile background="light"></p-button-tile>
-+ <p-button-tile class="light"></p-button-tile>
++ <p-button-tile class="scheme-light"></p-button-tile>
 
 - <p-button-tile background="dark"></p-button-tile>
-+ <p-button-tile class="dark"></p-button-tile>
++ <p-button-tile class="scheme-dark"></p-button-tile>
 
 - <p-button-tile background="auto"></p-button-tile>
-+ <p-button-tile class="auto"></p-button-tile>
++ <p-button-tile class="scheme-light-dark"></p-button-tile>
 ```
 
 ### Link Tile Model Signature:
 
 - Removed component `p-link-tile-model-signature`, use `p-link-tile` instead.
 
-### Tailwind CSS
+### Link Tile Product:
 
-When using Tailwind CSS with the Porsche Design System Tailwind Theme
-(`@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';`)
+- Changed values `3:4 | 9:16` of prop `aspect-ratio`, use `3/4 | 9/16` instead.
 
-- Reset all default Tailwind color tokens.
-- Removed `-light` and `-dark` color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only.
+```diff
+- <p-link-tile-product aspect-ratio="3:4"></p-link-tile-product>
++ <p-link-tile-product aspect-ratio="3/4"></p-link-tile-product>
+
+- <p-link-tile-product aspect-ratio="9:16"></p-link-tile-product>
++ <p-link-tile-product aspect-ratio="9/16"></p-link-tile-product>
+```
 
 ## ❌ Removed Props, Slots and Events (deprecated in v3 already)
 
@@ -764,11 +768,11 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Button
 
-- Removed deprecated prop `tertiary`
+- Removed deprecated prop `tertiary`, use `variant="secondary"` instead.
 
 ```diff
-+ <p-button variant="tertiary">Some label</p-button>
-+ <p-button variant="ghost">Some label</p-button>
+- <p-button variant="tertiary">Some label</p-button>
++ <p-button variant="secondary">Some label</p-button>
 ```
 
 ### Button Pure
@@ -931,7 +935,16 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-icon color="contrast-high"></p-icon>
 
 - <p-icon color="notification-neutral"></p-icon>
-+ <p-icon color="notification-info"></p-icon>
++ <p-icon color="info"></p-icon>
+
+- <p-icon color="notification-success"></p-icon>
++ <p-icon color="success"></p-icon>
+
+- <p-icon color="notification-warning"></p-icon>
++ <p-icon color="warning"></p-icon>
+
+- <p-icon color="notification-error"></p-icon>
++ <p-icon color="error"></p-icon>
 ```
 
 ### Inline Notification:
@@ -952,11 +965,11 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Link
 
-- Removed deprecated prop `tertiary`
+- Removed deprecated prop `tertiary`, use `variant="secondary"` instead.
 
 ```diff
-+ <p-link variant="tertiary">Some label</p-link>
-+ <p-link variant="ghost">Some label</p-link>
+- <p-link variant="tertiary">Some label</p-link>
++ <p-link variant="secondary">Some label</p-link>
 ```
 
 ### Link Pure:
@@ -974,9 +987,9 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 - Removed deprecated values `left | right` of prop `alignLabel`, use `start | end` instead.
 
 ```diff
-- <p-link-pure href="#" align-label="left">Some label</p-link-p
+- <p-link-pure href="#" align-label="left">Some label</p-link-pure>
 + <p-link-pure href="#" align-label="start">Some label</p-link-pure>
-- <p-link-pure href="#" align-label="right">Some label</p-link-p
+- <p-link-pure href="#" align-label="right">Some label</p-link-pure>
 + <p-link-pure href="#" align-label="end">Some label</p-link-pure>
 ```
 
@@ -1336,7 +1349,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Radio Button Wrapper:
 
-- Removed deprecated component `p-checkbox-wrapper`, use `p-radio-group` instead.
+- Removed deprecated component `p-radio-button-wrapper`, use `p-radio-group` instead.
 
 ```diff
 - <p-radio-button-wrapper label="Some label">
@@ -1411,7 +1424,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <p-flex-item>2</p-flex-item>
 -   <p-flex-item>3</p-flex-item>
 - </p-flex>
-+ <div class="display: flex">
++ <div style="display: flex">
 +   <div>1</div>
 +   <div>2</div>
 +   <div>3</div>
@@ -1511,7 +1524,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="date" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-date label="Some label" name="some-name"></p-input-text>
++ <p-input-date label="Some label" name="some-name"></p-input-date>
 ```
 
 #### type="email"
@@ -1521,7 +1534,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="email" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-email label="Some label" name="some-name"></p-input-text>
++ <p-input-email label="Some label" name="some-name"></p-input-email>
 ```
 
 #### type="month"
@@ -1531,7 +1544,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="month" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-month label="Some label" name="some-name"></p-input-text>
++ <p-input-month label="Some label" name="some-name"></p-input-month>
 ```
 
 #### type="number"
@@ -1541,7 +1554,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="number" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-number label="Some label" name="some-name"></p-input-text>
++ <p-input-number label="Some label" name="some-name"></p-input-number>
 ```
 
 #### type="password"
@@ -1551,7 +1564,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="password" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-password label="Some label" name="some-name"></p-input-text>
++ <p-input-password label="Some label" name="some-name"></p-input-password>
 ```
 
 #### type="search"
@@ -1561,7 +1574,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="search" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-search label="Some label" name="some-name"></p-input-text>
++ <p-input-search label="Some label" name="some-name"></p-input-search>
 ```
 
 #### type="tel"
@@ -1571,7 +1584,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="tel" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-tel label="Some label" name="some-name"></p-input-text>
++ <p-input-tel label="Some label" name="some-name"></p-input-tel>
 ```
 
 #### type="text"
@@ -1591,7 +1604,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="time" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-time label="Some label" name="some-name"></p-input-text>
++ <p-input-time label="Some label" name="some-name"></p-input-time>
 ```
 
 #### type="url"
@@ -1601,7 +1614,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="url" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-url label="Some label" name="some-name"></p-input-text>
++ <p-input-url label="Some label" name="some-name"></p-input-url>
 ```
 
 #### type="week"
@@ -1611,7 +1624,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="week" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-week label="Some label" name="some-name"></p-input-text>
++ <p-input-week label="Some label" name="some-name"></p-input-week>
 ```
 
 ### Textarea Wrapper
@@ -1668,3 +1681,21 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 - Deprecated prop `scrollToPosition`, use native `scrollIntoView()` on the slotted element itself, e.g.
   `el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center', container: 'nearest' })`.
+
+### Tabs Bar:
+
+- Deprecated prop `weight`, has no effect anymore.
+
+```diff
+- <p-tabs-bar weight="semi-bold"></p-tabs-bar>
++ <p-tabs-bar></p-tabs-bar>
+```
+
+### Tabs:
+
+- Deprecated prop `weight`, has no effect anymore.
+
+```diff
+- <p-tabs weight="semi-bold"></p-tabs>
++ <p-tabs></p-tabs>
+```

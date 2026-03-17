@@ -582,7 +582,6 @@ and migration steps.
 - `Scroller`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
-  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
 - `Segmented Control`:
   - prop `backgroundColor` (has no effect anyway)
   - event `segmentedControlChange` (use `change` instead)
