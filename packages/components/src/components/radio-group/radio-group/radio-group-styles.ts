@@ -48,7 +48,6 @@ export const getComponentCss = (
   isCompact: boolean,
   direction: BreakpointCustomizable<GroupDirection>
 ): string => {
-  const radioDimension = `calc(var(${cssVarInternalRadioGroupScaling}) * 1.75rem)`;
   const columnGap = `calc(22.4px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 8px)`;
   const rowGap = `calc(11.2px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 4px)`;
 
@@ -89,8 +88,6 @@ export const getComponentCss = (
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: radioDimension,
-        height: radioDimension,
         pointerEvents: 'none',
       },
     }),

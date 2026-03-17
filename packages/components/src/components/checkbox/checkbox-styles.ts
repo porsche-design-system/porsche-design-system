@@ -1,4 +1,4 @@
-import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
+import { fontLineHeight, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -90,13 +90,11 @@ export const getComponentCss = (
     },
     ...(isLoading && {
       spinner: {
+        '--p-spinner-size': `calc(${checkboxDimension} - 2px)`, // compensates the 1px border of the checkbox
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: checkboxDimension,
-        height: checkboxDimension,
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
     // .label / .required

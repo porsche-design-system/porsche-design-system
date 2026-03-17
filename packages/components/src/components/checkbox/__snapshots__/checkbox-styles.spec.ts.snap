@@ -46,13 +46,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -63,6 +61,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -332,13 +336,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -346,6 +348,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -484,13 +492,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -498,6 +504,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -637,13 +649,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -654,6 +664,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -801,13 +817,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -818,6 +832,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -964,13 +984,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -978,6 +996,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -1115,13 +1139,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -1129,6 +1151,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -1267,13 +1295,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -1284,6 +1310,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -1430,13 +1462,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -1447,6 +1477,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -1592,13 +1628,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -1606,6 +1640,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -1744,13 +1784,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -1758,6 +1796,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -1897,13 +1941,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -1914,6 +1956,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2061,13 +2109,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -2078,6 +2124,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2224,13 +2276,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -2238,6 +2288,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2373,13 +2429,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -2387,6 +2441,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2523,13 +2583,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -2540,6 +2598,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2684,13 +2748,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-error));
@@ -2701,6 +2763,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2844,13 +2912,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -2858,6 +2924,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -2992,13 +3064,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -3006,6 +3076,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -3167,13 +3243,11 @@ input:focus-visible {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -3311,13 +3385,11 @@ input:focus-visible {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -3429,13 +3501,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -3446,6 +3516,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -3589,13 +3665,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -3606,6 +3680,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -3776,13 +3856,11 @@ input:focus-visible {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -3933,13 +4011,11 @@ input:focus-visible {
   opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--__p-checkbox-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   position: absolute;
@@ -4062,13 +4138,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -4076,6 +4150,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -4211,13 +4291,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -4225,6 +4303,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -4361,13 +4445,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -4378,6 +4460,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -4522,13 +4610,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-success));
@@ -4539,6 +4625,12 @@ input:checked::before {
   }
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 

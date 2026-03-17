@@ -267,31 +267,35 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
           >
             <style>
               :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -490,31 +494,35 @@ input::-webkit-search-cancel-button {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
-  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -654,31 +662,35 @@ img {
                         >
                           <style>
                             :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -1899,6 +1911,12 @@ slot {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
+  }
 }
 
 @media(hover:hover) {
@@ -2405,6 +2423,12 @@ slot {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
+  }
 }
 
 @media(hover:hover) {
@@ -2668,6 +2692,12 @@ slot {
 @media (forced-colors: active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
+  }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
   }
 }
 
@@ -3233,31 +3263,35 @@ slot[name="heading"] {
           >
             <style>
               :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-info);
-  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-info));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -3403,31 +3437,35 @@ img {
                 >
                   <style>
                     :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -3698,34 +3736,38 @@ exports[`should render dsr component for PButtonPure 1`] = `
         >
           <style>
             :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
           </style>
           <img
             alt=""
@@ -4454,31 +4496,35 @@ h2 {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -4631,6 +4677,9 @@ svg {
 @media (forced-colors: active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 
@@ -4785,31 +4834,35 @@ svg {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -5059,13 +5112,11 @@ input:focus-visible {
   outline-offset: 2px;
 }
 input:indeterminate::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
@@ -5073,6 +5124,12 @@ input:checked::before {
 @media (forced-colors: active) {
   input:focus-visible {
     outline-color: Highlight;
+  }
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
   }
 }
 
@@ -5336,6 +5393,12 @@ hr {
   height: 1px;
   width: 100%;
 }
+@media (forced-colors: active) {
+  hr {
+    background: CanvasText;
+  }
+}
+
     </style>
     <hr />
   </template>
@@ -5654,34 +5717,38 @@ exports[`should render dsr component for PDrilldown 1`] = `
                 >
                   <style>
                     :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -5825,31 +5892,35 @@ img {
                 >
                   <style>
                     :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -5993,31 +6064,35 @@ img {
                 >
                   <style>
                     :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -6259,34 +6334,38 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
             >
               <style>
                 :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -6443,34 +6522,38 @@ img {
             >
               <style>
                 :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -6625,21 +6708,25 @@ exports[`should render dsr component for PFlag 1`] = `
   >
     <style>
       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
   display: block;
+  margin: 0;
   padding: 1px;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
   box-sizing: border-box;
   pointer-events: none;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: var(--p-flag-size,var(--p-leading-normal));
+  height: var(--p-flag-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
 }
     </style>
     <img
@@ -6908,31 +6995,35 @@ dialog::backdrop {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -7017,34 +7108,38 @@ exports[`should render dsr component for PIcon 1`] = `
   >
     <style>
       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
     </style>
     <img
       alt=""
@@ -7151,31 +7246,35 @@ slot[name="heading"] {
       >
         <style>
           :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-info);
-  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-info));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
         </style>
         <img
           alt=""
@@ -7321,31 +7420,35 @@ img {
             >
               <style>
                 :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
               </style>
               <img
                 alt=""
@@ -9595,34 +9698,38 @@ exports[`should render dsr component for PLinkPure 1`] = `
         >
           <style>
             :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
           </style>
           <img
             alt=""
@@ -10148,31 +10255,35 @@ slot[name="header"] {
                 >
                   <style>
                     :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                   </style>
                   <img
                     alt=""
@@ -10465,31 +10576,35 @@ dialog::backdrop {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -10843,31 +10958,35 @@ exports[`should render dsr component for PMultiSelect 1`] = `
           >
             <style>
               :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -11066,31 +11185,35 @@ input::-webkit-search-cancel-button {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
-  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -11230,31 +11353,35 @@ img {
                         >
                           <style>
                             :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                           </style>
                           <img
                             alt=""
@@ -11617,34 +11744,38 @@ span:not(.ellipsis):focus-visible {
               >
                 <style>
                   :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                 </style>
                 <img
                   alt=""
@@ -11687,34 +11818,38 @@ img {
               >
                 <style>
                   :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
-}
-:host(:dir(rtl)) {
-  transform: scaleX(-1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                 </style>
                 <img
                   alt=""
@@ -12056,31 +12191,35 @@ exports[`should render dsr component for PPopover 1`] = `
         >
           <style>
             :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
           </style>
           <img
             alt=""
@@ -12290,7 +12429,6 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
-  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
 }
@@ -12300,6 +12438,9 @@ input::after {
   grid-area: 1/1;
 }
 @media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
   input:focus-visible {
     outline-color: Highlight;
   }
@@ -12501,6 +12642,12 @@ slot {
 @media (forced-colors: active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
+  }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
   }
 }
 
@@ -12985,31 +13132,35 @@ exports[`should render dsr component for PSelect 1`] = `
           >
             <style>
               :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -13386,31 +13537,35 @@ dialog::backdrop {
                   >
                     <style>
                       :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: inherit;
-  height: inherit;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: inherit;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,currentcolor);
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
                     </style>
                     <img
                       alt=""
@@ -13463,46 +13618,61 @@ exports[`should render dsr component for PSpinner 1`] = `
 }
 @keyframes dash {
   0% {
-    stroke-dashoffset: 57;
+    stroke-dashoffset: 69;
     transform: rotateZ(0);
   }
   50%, 75% {
-    stroke-dashoffset: 20;
+    stroke-dashoffset: 24;
     transform: rotateZ(80deg);
   }
   100% {
-    stroke-dashoffset: 57;
+    stroke-dashoffset: 69;
     transform: rotateZ(360deg);
   }
 }
   :host {
     display: inline-flex;
-    color: var(--p-color-primary);
-    vertical-align: top !important;
+    vertical-align: top;
   }
   :host([hidden]) {
     display: none !important;
   }
+  div {
+    width: var(--p-spinner-size,var(--p-leading-normal));
+    height: var(--p-spinner-size,var(--p-leading-normal));
+    font-family: var(--p-font-porsche-next);
+    font-size: var(--p-typescale-sm);
+  }
   svg {
     display: block;
     fill: none;
-    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke-width: 1.5;
+    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
-    stroke: var(--p-color-contrast-lower);
+    stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
   }
   circle:last-child {
-    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-    stroke: currentcolor;
-    stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 57);
+    stroke: var(--p-spinner-color,var(--p-color-primary));
+    stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 69);
     stroke-linecap: round;
+    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
-  .root {
-    display: block;
-    height: 48px;
-    width: 48px;
-    stroke-width: 1.5;
-  }
+@media (forced-colors: active) {
+    circle:last-child {
+      stroke: CanvasText;
+    }
+    circle:first-child {
+      stroke: none !important;
+    }
+}
+
+@supports (color: oklch(from red l c h)) {
+    circle:first-child {
+      stroke: var(--p-spinner-track-color,oklch(from var(--p-spinner-color,var(--p-color-primary)) l c h/.2));
+    }
+}
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -13514,9 +13684,8 @@ exports[`should render dsr component for PSpinner 1`] = `
     white-space: nowrap;
   }
     </style>
-    <span
+    <div
       aria-live="assertive"
-      class="root"
       role="alert"
     >
       <span
@@ -13532,13 +13701,13 @@ exports[`should render dsr component for PSpinner 1`] = `
         width="100%"
       >
         <circle
-          r="9"
+          r="11"
         />
         <circle
-          r="9"
+          r="11"
         />
       </svg>
-    </span>
+    </div>
   </template>
 </p-spinner>
 `;
@@ -13673,6 +13842,12 @@ slot {
 @media (forced-colors: active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
+  }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
   }
 }
 
@@ -13942,7 +14117,6 @@ label {
 }
 
 .toggle {
-  forced-color-adjust: none;
   display: flex;
   place-items: center;
   place-content: center;
@@ -13966,6 +14140,12 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+
     </style>
     <button
       aria-checked="false"
@@ -14136,6 +14316,12 @@ slot {
 @media (forced-colors: active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
+  }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
   }
 }
 
@@ -14559,6 +14745,12 @@ slot {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
+  }
 }
 
 @media(hover:hover) {
@@ -14802,6 +14994,12 @@ slot {
 @media (forced-colors: active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
+  }
+  .prev::after {
+    background: CanvasText;
+  }
+  .next::after {
+    background: CanvasText;
   }
 }
 
@@ -15053,31 +15251,35 @@ button:focus-visible {
           >
             <style>
               :host {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
-  max-width: 100%;
-  max-height: 100%;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat !important;
-  aspect-ratio: 1/1 !important;
-  background: currentcolor !important;
-  forced-color-adjust: none !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
-  all: unset;
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
   pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
 }
+@media (forced-colors: active) {
+  img {
+    background: CanvasText;
+  }
+}
+
             </style>
             <img
               alt=""
@@ -15437,6 +15639,9 @@ svg {
 @media (forced-colors: active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 
