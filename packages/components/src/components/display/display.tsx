@@ -1,6 +1,13 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, TYPOGRAPHY_ALIGNS, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  TYPOGRAPHY_ALIGNS,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../utils';
 import { getComponentCss } from './display-styles';
 import {
   DISPLAY_COLORS,
@@ -23,6 +30,8 @@ const propTypes: PropTypes<typeof Display> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the display text." }
+ *
+ * @deprecated since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
  */
 @Component({
   tag: 'p-display',
@@ -52,6 +61,7 @@ export class Display {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use p-heading component instead.');
     attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis);
 
     const TagType = getDisplayTagType(this.host, this.size, this.tag);
