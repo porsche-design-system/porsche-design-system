@@ -52,15 +52,9 @@ but the checkbox still keeps its `checked` state. You can find more details in
 
 ## Slots
 
-Sometimes it is useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
-**not** to define the corresponding property on the host element when a named slot is used (because a property
-definition is preferred over a named slot). For named slots only
-[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
-allowed.
+Use named slots when `label` or `message` need markup such as a link. Do **not** set the corresponding host property at the same time, because properties take precedence. Named slots only accept [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
 
-In addition to the named slots `label` and `message`, there is also a `label-after` slot available. This slot must be
-used to render content after the label which is not directly part of it (e.g. an external link or a `popover`
-component).
+Alongside `label` and `message`, you can also use `label-after` for content that should appear after the label but is not part of the label itself, such as an external link or `popover`.
 
 <Notification heading="Attention" heading-tag="h3" state="warning">
   In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive keyboard focus. Add <code>tabindex="-1"</code> to those UI elements.
