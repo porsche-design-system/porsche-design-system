@@ -93,6 +93,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Deprecated
 
+- `Display` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+```diff
+- <p-display size="large">…</p-display>
++ <p-heading size="5xl">…</p-heading>
+
+- <p-display size="medium">…</p-display>
++ <p-heading size="4xl">…</p-heading>
+
+- <p-display size="small">…</p-display>
++ <p-heading size="3xl">…</p-heading>
+```
+
 - `Tailwind CSS`: `.prose-display-lg`, `.prose-display-md`, `.prose-display-sm`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
