@@ -594,12 +594,12 @@ export const getTailwindcssTheme = () => {
 
 /* Typography: Display */
 @utility prose-display-sm {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(1.8rem,2.41vw+1.32rem,4.21rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-3xl;
 }
 @utility prose-display-md {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.03rem,3.58vw+1.31rem,5.61rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-4xl;
 }
 @utility prose-display-lg {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-5xl;
 }`;
 };
