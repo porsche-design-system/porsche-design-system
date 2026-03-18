@@ -67,9 +67,16 @@ correctly. See [Styles](/stylesheets/introduction/) for more information.
 ```diff
 /* src/global-style.css */
 
-+ @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
++ @import '@porsche-design-system/components-{js|angular|react|vue}';
 
 /* Alternative with fonts from China CDN */
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
+
+
+/* Alternative: If your bundler requires an explicit .css extension, use this path instead */
++ @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+
+/* Alternative with fonts from China CDN: If your bundler requires an explicit .css extension, use this path instead */
 + @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
 ```
 
