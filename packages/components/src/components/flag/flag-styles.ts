@@ -1,15 +1,6 @@
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import {
-  fontPorscheNext,
-  leadingNormal,
-  typescale2Xl,
-  typescale2Xs,
-  typescaleLg,
-  typescaleMd,
-  typescaleSm,
-  typescaleXl,
-  typescaleXs,
-} from '../../styles/css-variables';
+import { fontPorscheNext, leadingNormal } from '../../styles/css-variables';
+import { sizeMap } from '../../styles/maps';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import type { FlagSize } from './flag-utils';
@@ -18,17 +9,6 @@ import type { FlagSize } from './flag-utils';
  * @css-variable {"name": "--p-flag-size", "description": "Defines the width and height of the flag. Overrides the `size` property when set.", "defaultValue": ""}
  */
 const cssVarSize = '--p-flag-size';
-
-const sizeMap: Record<FlagSize, string> = {
-  'xx-small': typescale2Xs,
-  'x-small': typescaleXs,
-  small: typescaleSm,
-  medium: typescaleMd,
-  large: typescaleLg,
-  'x-large': typescaleXl,
-  'xx-large': typescale2Xl,
-  inherit: 'inherit',
-};
 
 export const getComponentCss = (size: BreakpointCustomizable<FlagSize>): string => {
   const dimension = `var(${cssVarSize},${leadingNormal})`;

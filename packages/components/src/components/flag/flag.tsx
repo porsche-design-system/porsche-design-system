@@ -28,7 +28,7 @@ export class Flag {
   @Prop() public name?: FlagName = 'de';
 
   /** Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
-  @Prop() public size?: BreakpointCustomizable<FlagSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<FlagSize> = 'sm';
 
   /** A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<FlagAriaAttribute>;

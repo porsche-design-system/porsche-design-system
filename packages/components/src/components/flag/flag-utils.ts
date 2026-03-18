@@ -5,7 +5,8 @@ import { getCDNBaseURL } from '../../utils';
 export const FLAG_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlagAriaAttribute = (typeof FLAG_ARIA_ATTRIBUTES)[number];
 
-export const FLAG_SIZES = [
+/** @deprecated */
+export const FLAG_SIZES_DEPRECATED = [
   'xx-small',
   'x-small',
   'small',
@@ -13,7 +14,20 @@ export const FLAG_SIZES = [
   'large',
   'x-large',
   'xx-large',
+] as const;
+export const FLAG_SIZES = [
+  '2xs',
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
   'inherit',
+  ...FLAG_SIZES_DEPRECATED,
 ] as const;
 export type FlagSize = (typeof FLAG_SIZES)[number];
 
