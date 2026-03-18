@@ -28,8 +28,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `Spinner`, `Flag`, `Icon`:
   - Prop `size` supports all typographic scale values:
-    `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large'`
-    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234),
+    [#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `Spinner`:
   - Prop `color` with values: `'primary' | 'inherit'`
     ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
@@ -47,12 +48,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
   - CSS Variable `--p-icon-color`: Defines the icon color. Overrides the `color` property when set.
     ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - Prop `color` supports new value `'contrast-higher'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Button Pure`, `Link Pure`:
+  - Prop `size` supports new typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `color` supports new values `'contrast-higher' | 'contrast-high' | 'contrast-medium'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Text`:
+  - Prop `size` supports new typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `weight` supports new value `'bold'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `color` supports new value `'contrast-higher'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Heading`:
+  - Prop `size` supports new typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `weight` supports new value `'bold'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `color` supports new values `'contrast-higher' | 'contrast-high' | 'contrast-medium'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
 ### Changed
 
 - `Spinner`, `Flag`, `Icon`:
-  - The `size` is breakpoint customizable and values are aligned with the typographic scale used by components such as
-    `p-text` and `p-heading`. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - The `size` prop is breakpoint customizable.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234),
+    [#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
   - When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against
     the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based
     components. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
@@ -93,60 +119,189 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Deprecated
 
+- `Text`:
+  - Values `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large'` of prop `size` (use
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-text size="xx-small">…</p-text>
+    + <p-text size="2xs">…</p-text>
+
+    - <p-text size="x-small">…</p-text>
+    + <p-text size="xs">…</p-text>
+
+    - <p-text size="small">…</p-text>
+    + <p-text size="sm">…</p-text>
+
+    - <p-text size="medium">…</p-text>
+    + <p-text size="md">…</p-text>
+
+    - <p-text size="large">…</p-text>
+    + <p-text size="lg">…</p-text>
+
+    - <p-text size="x-large">…</p-text>
+    + <p-text size="xl">…</p-text>
+    ```
+
+  - Values `'regular' | 'semi-bold'` of prop `weight` (use `'normal' | 'semibold'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-text weight="regular">…</p-text>
+    + <p-text weight="normal">…</p-text>
+
+    - <p-text weight="semi-bold">…</p-text>
+    + <p-text weight="semibold">…</p-text>
+    ```
+
+- `Heading`:
+  - Values `'small' | 'medium' | 'large' | 'x-large' | 'xx-large'` of prop `size` (use
+    `'sm' | 'md' | 'lg' | 'xl' | '2xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-heading size="small">…</p-heading>
+    + <p-heading size="sm">…</p-heading>
+
+    - <p-heading size="medium">…</p-heading>
+    + <p-heading size="md">…</p-heading>
+
+    - <p-heading size="large">…</p-heading>
+    + <p-heading size="lg">…</p-heading>
+
+    - <p-heading size="x-large">…</p-heading>
+    + <p-heading size="xl">…</p-heading>
+
+    - <p-heading size="xx-large">…</p-heading>
+    + <p-heading size="2xl">…</p-heading>
+    ```
+
+  - Values `'regular' | 'semi-bold'` of prop `weight` (use `'normal' | 'semibold'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+- `Icon`:
+  - Values `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large'` of prop `size` (use
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-icon size="xx-small">…</p-icon>
+    + <p-icon size="2xs">…</p-icon>
+
+    - <p-icon size="x-small">…</p-icon>
+    + <p-icon size="xs">…</p-icon>
+
+    - <p-icon size="small">…</p-icon>
+    + <p-icon size="sm">…</p-icon>
+
+    - <p-icon size="medium">…</p-icon>
+    + <p-icon size="md">…</p-icon>
+
+    - <p-icon size="large">…</p-icon>
+    + <p-icon size="lg">…</p-icon>
+
+    - <p-icon size="x-large">…</p-icon>
+    + <p-icon size="xl">…</p-icon>
+
+    - <p-icon size="xx-large">…</p-icon>
+    + <p-icon size="2xl">…</p-icon>
+    ```
+
+- `Spinner`:
+  - Values `'small' | 'medium' | 'large'` of prop `size` (use `'sm' | 'md' | 'lg'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-spinner size="small">…</p-spinner>
+    + <p-spinner size="sm">…</p-spinner>
+
+    - <p-spinner size="medium">…</p-spinner>
+    + <p-spinner size="md">…</p-spinner>
+
+    - <p-spinner size="large">…</p-spinner>
+    + <p-spinner size="lg">…</p-spinner>
+    ```
+
+- `Button Pure`, `Link Pure`:
+  - Values `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large'` of prop `size` (use
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-button-pure size="xx-small">…</p-button-pure>
+    + <p-button-pure size="2xs">…</p-button-pure>
+
+    - <p-button-pure size="x-small">…</p-button-pure>
+    + <p-button-pure size="xs">…</p-button-pure>
+
+    - <p-button-pure size="small">…</p-button-pure>
+    + <p-button-pure size="sm">…</p-button-pure>
+
+    - <p-button-pure size="medium">…</p-button-pure>
+    + <p-button-pure size="md">…</p-button-pure>
+
+    - <p-button-pure size="large">…</p-button-pure>
+    + <p-button-pure size="lg">…</p-button-pure>
+
+    - <p-button-pure size="x-large">…</p-button-pure>
+    + <p-button-pure size="xl">…</p-button-pure>
+    ```
+
 - `Display` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
-```diff
-- <p-display size="large">…</p-display>
-+ <p-heading size="5xl">…</p-heading>
+  ```diff
+  - <p-display size="large">…</p-display>
+  + <p-heading size="5xl">…</p-heading>
 
-- <p-display size="medium">…</p-display>
-+ <p-heading size="4xl">…</p-heading>
+  - <p-display size="medium">…</p-display>
+  + <p-heading size="4xl">…</p-heading>
 
-- <p-display size="small">…</p-display>
-+ <p-heading size="3xl">…</p-heading>
-```
+  - <p-display size="small">…</p-display>
+  + <p-heading size="3xl">…</p-heading>
+  ```
 
 - `Tailwind CSS`: `.prose-display-lg`, `.prose-display-md`, `.prose-display-sm`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
-```diff
-- <h1 class="prose-display-lg">…</h1>
-+ <h1 class="prose-heading-5xl">…</h1>
+  ```diff
+  - <h1 class="prose-display-lg">…</h1>
+  + <h1 class="prose-heading-5xl">…</h1>
 
-- <h1 class="prose-display-md">…</h1>
-+ <h1 class="prose-heading-4xl">…</h1>
+  - <h1 class="prose-display-md">…</h1>
+  + <h1 class="prose-heading-4xl">…</h1>
 
-- <h1 class="prose-display-sm">…</h1>
-+ <h1 class="prose-heading-3xl">…</h1>
-```
+  - <h1 class="prose-display-sm">…</h1>
+  + <h1 class="prose-heading-3xl">…</h1>
+  ```
 
 - `SCSS`: `@mixin pds-display-large`, `@mixin pds-display-medium`, `@mixin pds-display-small`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
-```diff
-- @include pds-display-large;
-+ @include prose-heading-5xl;
+  ```diff
+  - @include pds-display-large;
+  + @include prose-heading-5xl;
 
-- @include pds-display-medium;
-+ @include prose-heading-4xl;
+  - @include pds-display-medium;
+  + @include prose-heading-4xl;
 
-- @include pds-display-small;
-+ @include prose-heading-3xl;
-```
+  - @include pds-display-small;
+  + @include prose-heading-3xl;
+  ```
 
 - `Emotion, Vanilla Extract`: `displayLargeStyle`, `displayMediumStyle`, `displaySmallStyle`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
-```diff
-- ...displayLargeStyle,
-+ ...proseHeading5XlStyle,
+  ```diff
+  - ...displayLargeStyle,
+  + ...proseHeading5XlStyle,
 
-- ...displayMediumStyle,
-+ ...proseHeading4XlStyle,
+  - ...displayMediumStyle,
+  + ...proseHeading4XlStyle,
 
-- ...displaySmallStyle,
-+ ...proseHeading3XlStyle,
-```
+  - ...displaySmallStyle,
+  + ...proseHeading3XlStyle,
+  ```
 
 ## [4.0.0-beta.2] - 2026-03-11
 
