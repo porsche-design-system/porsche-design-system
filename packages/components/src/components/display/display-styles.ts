@@ -1,19 +1,15 @@
-import {
-  displayLargeStyle,
-  fontSizeDisplayLarge,
-  fontSizeDisplayMedium,
-  fontSizeDisplaySmall,
-} from '@porsche-design-system/emotion';
+import { displayLargeStyle } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { typescale3Xl, typescale4Xl, typescale5Xl } from '../../styles/css-variables';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { DISPLAY_TAGS, type DisplayAlign, type DisplayColor, type DisplaySize } from './display-utils';
 
 const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
-  small: fontSizeDisplaySmall,
-  medium: fontSizeDisplayMedium,
-  large: fontSizeDisplayLarge,
+  small: typescale3Xl,
+  medium: typescale4Xl,
+  large: typescale5Xl,
 };
 
 export const getComponentCss = (
