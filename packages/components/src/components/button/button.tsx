@@ -74,13 +74,13 @@ export class Button {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Displays as compact version. */
+  /** Displays the button in compact mode. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
   /** The id of a form element the button should be associated with. */

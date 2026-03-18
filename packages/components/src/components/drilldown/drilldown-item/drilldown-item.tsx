@@ -25,8 +25,8 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the main content." }
- * @slot {"name": "button", "description": "Shows a custom button to reach a deeper level of the navigation structure." } *
- * @slot {"name": "header", "description": "Shows a custom header section on mobile view" } *
+ * @slot {"name": "button", "description": "Shows a custom button to reach a deeper level of the navigation structure." }
+ * @slot {"name": "header", "description": "Shows a custom header section on mobile view." }
  * @experimental
  */
 @Component({

@@ -50,7 +50,7 @@ const propTypes: PropTypes<typeof Flyout> = {
  * @slot {"name": "header", "description": "Renders a sticky header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the main content." }
  * @slot {"name": "footer", "description": "Shows a sticky footer section, flowing under the content area when scrollable." }
- * @slot {"name": "sub-footer", "description": "Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content." }
+ * @slot {"name": "sub-footer", "description": "Renders additional content below the footer, such as legal information or FAQs. It appears when the flyout has enough space or when the user scrolls to the end." }
  *
  * @controlled {"props": ["open"], "event": "dismiss"}
  */
@@ -79,7 +79,7 @@ export class Flyout {
   /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
   @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */

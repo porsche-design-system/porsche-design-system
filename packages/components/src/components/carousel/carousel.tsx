@@ -78,8 +78,8 @@ const propTypes: PropTypes<typeof Carousel> = {
 
 /**
  * @slot {"name": "heading", "description": "Renders a heading above the carousel." }
- * @slot {"name": "description", "description": "Shows a footer section, flowing under the content area when scrollable." }
- * @slot {"name": "controls", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "description", "description": "Renders descriptive content below the heading." }
+ * @slot {"name": "controls", "description": "Renders custom controls such as navigation buttons or indicators." }
  * @slot {"name": "", "description": "Default slot for the carousel slides." }
  *
  * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -100,10 +100,10 @@ export class Carousel {
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
 
-  /** Alignment of heading and description */
+  /** Aligns the heading and description. */
   @Prop() public alignHeader?: CarouselAlignHeader = 'start';
 
-  /** Alignment of slotted controls */
+  /** Aligns the slotted controls. */
   @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
   /** Whether the slides should rewind from last to first slide and vice versa. */
@@ -118,16 +118,16 @@ export class Carousel {
   /** If false, the carousel will not show pagination bullets at the bottom. */
   @Prop() public pagination?: BreakpointCustomizable<boolean> = false;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public intl?: CarouselInternationalization;
 
-  /** Defines which slide to be active (zero-based numbering). */
+  /** Defines which slide is active (zero-based numbering). */
   @Prop() public activeSlideIndex?: number = 0;
 
-  /** Defines target of skip link (to skip carousel entries). */
+  /** Defines the skip link target used to skip carousel entries. */
   @Prop() public skipLinkTarget?: string;
 
   /**

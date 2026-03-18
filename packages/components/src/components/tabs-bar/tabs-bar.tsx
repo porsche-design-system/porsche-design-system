@@ -47,7 +47,7 @@ const propTypes: PropTypes<typeof TabsBar> = {
 export class TabsBar {
   @Element() public host!: HTMLElement;
 
-  /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
+  /** Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
 
   /** Defines the background color. Use `frosted` only on images, videos or gradients. */
