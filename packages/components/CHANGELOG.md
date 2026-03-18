@@ -20,7 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `Tailwind CSS`: `--text-3xl`, `--text-4xl`, `--text-5xl`, `.prose-heading-3xl`, `.prose-heading-4xl`,
   `.prose-heading-5xl` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
-- `SCSS`: `$typescale-3xl`, `$typescale-4xl`, `$typescale-5xl`
+- `SCSS`: `$typescale-3xl`, `$typescale-4xl`, `$typescale-5xl`, `@mixin prose-heading-3xl()`,
+  `@mixin prose-heading-4xl()`, `@mixin prose-heading-5xl()`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `Emotion`, `Vanilla Extract`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))

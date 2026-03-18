@@ -1,5 +1,14 @@
 @use 'font';
 
+@mixin prose-heading-5xl {
+  font: normal normal font.$font-weight-normal font.$typescale-5xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-4xl {
+  font: normal normal font.$font-weight-normal font.$typescale-4xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-3xl {
+  font: normal normal font.$font-weight-normal font.$typescale-3xl / font.$leading-normal font.$font-porsche-next;
+}
 @mixin prose-heading-2xl {
   font: normal normal font.$font-weight-normal font.$typescale-2xl / font.$leading-normal font.$font-porsche-next;
 }
