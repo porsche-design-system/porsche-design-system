@@ -23,7 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `SCSS`: `$typescale-3xl`, `$typescale-4xl`, `$typescale-5xl`, `@mixin prose-heading-3xl()`,
   `@mixin prose-heading-4xl()`, `@mixin prose-heading-5xl()`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
-- `Emotion`, `Vanilla Extract`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`
+- `Emotion`, `Vanilla Extract`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`, `proseHeading3XlStyle`,
+  `proseHeading4XlStyle`, `proseHeading5XlStyle`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `Spinner`, `Flag`, `Icon`:
   - Prop `size` supports all typographic scale values:
