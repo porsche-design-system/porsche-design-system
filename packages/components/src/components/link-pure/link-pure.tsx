@@ -15,18 +15,21 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-pure-styles';
-import type {
-  LinkPureAlignLabel,
-  LinkPureAriaAttribute,
-  LinkPureIcon,
-  LinkPureSize,
-  LinkPureTarget,
+import {
+  LINK_PURE_COLORS,
+  type LinkPureAlignLabel,
+  type LinkPureAriaAttribute,
+  type LinkPureColor,
+  type LinkPureIcon,
+  type LinkPureSize,
+  type LinkPureTarget,
 } from './link-pure-utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<LinkPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   size: AllowedTypes.breakpoint<LinkPureSize>(TEXT_SIZES),
+  color: AllowedTypes.oneOf<LinkPureColor>(LINK_PURE_COLORS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
@@ -56,7 +59,10 @@ export class LinkPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Size of the link. */
-  @Prop() public size?: BreakpointCustomizable<LinkPureSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<LinkPureSize> = 'sm';
+
+  /** The color. */
+  @Prop() public color?: LinkPureColor = 'primary';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
   @Prop() public icon?: LinkPureIcon = 'arrow-right';
@@ -110,6 +116,7 @@ export class LinkPure {
       this.active,
       this.stretch,
       this.size,
+      this.color,
       this.hideLabel,
       this.alignLabel,
       this.underline,
