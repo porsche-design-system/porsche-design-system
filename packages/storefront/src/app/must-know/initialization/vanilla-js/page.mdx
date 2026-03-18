@@ -21,8 +21,7 @@ export const metadata = {
   ]}
 />
 
-First, we need to understand how a web component works before we can look at how to optimize its bootstrapping
-behavior.
+First, we need to understand how a web component works before we can look at how to optimize its bootstrapping behavior.
 
 ## Setup
 
@@ -229,7 +228,7 @@ necessary http communication, like request and response headers. Also [component
 isn't part of `getLoaderScript()`.
 
 <Notification heading="Hint" headingTag="h4" state="warning">
-  This works especially well in a plain HTML and Vanilla JS setup, since the `index.js` would otherwise be bundled by the
-  JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined in the `script`
-  tag.
+  This works especially well in a plain HTML and Vanilla JS setup, since the `index.js` would otherwise be bundled by
+  the JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined in the
+  `script` tag.
 </Notification>

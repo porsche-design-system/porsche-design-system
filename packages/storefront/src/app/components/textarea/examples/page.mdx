@@ -24,8 +24,8 @@ In the **controlled** approach, the textarea state is externally managed using t
 keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
 that the component will still always update its internal value automatically when interacted with.
 
-In the **uncontrolled** approach, the textarea behaves similarly to a native `<textarea>`, automatically managing its own
-state and including its value in form submissions through the
+In the **uncontrolled** approach, the textarea behaves similarly to a native `<textarea>`, automatically managing its
+own state and including its value in form submissions through the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
 smaller forms or simple submissions.
 
@@ -37,9 +37,12 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 ## Slots
 
-Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding host property at the same time, because properties take precedence. Named slots only accept [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
 
-Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the label but is not part of the label itself, such as an external link or `popover`.
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
 
 <Notification heading="Attention" heading-tag="h3" state="warning">
   In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive keyboard focus. Add <code>tabindex="-1"</code> to those UI elements.
