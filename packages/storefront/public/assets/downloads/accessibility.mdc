@@ -81,7 +81,7 @@ When using Porsche Design System (PDS) components:
 - Use `@porsche-design-system/components-{react|angular|vue}` for UI primitives instead of building custom widgets.
 - If a PDS component needs extra ARIA, use the `aria` prop according to PDS documentation.
 - Preserve PDS focus styling; don't override focus rings unless absolutely required.
-- Never place `aria` attributes on PDS components `:host` elements directly.
+- Never place native `aria` HTML attributes on PDS components `:host` elements directly.
 - Check PDS component documentation for accessibility best practices.
 
 ## Output expectations

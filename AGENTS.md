@@ -170,6 +170,11 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 Each major package has its own `AGENTS.md` with detailed guidance:
 
 - [`packages/components/AGENTS.md`](packages/components/AGENTS.md) — Stencil web components
+- [`packages/component-meta/AGENTS.md`](packages/component-meta/AGENTS.md) — Component metadata generation
+- [`packages/shared/AGENTS.md`](packages/shared/AGENTS.md) — Internal shared utilities and generated lookups
+- [`packages/styles/AGENTS.md`](packages/styles/AGENTS.md) — Style libraries and preview app
+- [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
+- [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
