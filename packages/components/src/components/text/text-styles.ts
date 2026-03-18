@@ -1,9 +1,9 @@
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { fontPorscheNext, leadingNormal, typescaleSm } from '../../styles/css-variables';
 import { colorMap, sizeMap, weightMap } from '../../styles/maps';
-import type { BreakpointCustomizable, TextSize } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { TEXT_TAGS, type TextAlign, type TextColor, type TextWeight } from './text-utils';
+import { TEXT_TAGS, type TextAlign, type TextColor, type TextSize, type TextWeight } from './text-utils';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
