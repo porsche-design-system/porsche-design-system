@@ -34,22 +34,22 @@ const propTypes: PropTypes<typeof Text> = {
 export class Text {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending on the usage of the text component. */
+  /** Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes). */
   @Prop() public tag?: TextTag = 'p';
 
-  /** Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}. You always need to provide a base value when doing this. */
+  /** Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'sm';
 
-  /** The weight of the text. */
+  /** The font weight of the text. */
   @Prop() public weight?: TextWeight = 'normal';
 
-  /** Text alignment of the component. */
+  /** Text alignment of the text. */
   @Prop() public align?: TextAlign = 'start';
 
-  /** Basic text color variations. */
+  /** Text color of the text. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color. */
   @Prop() public color?: TextColor = 'primary';
 
-  /** Adds an ellipsis to a single line of text if it overflows. */
+  /** Adds an ellipsis to a single line of text if it overflows the container width. */
   @Prop() public ellipsis?: boolean = false;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
