@@ -5,8 +5,6 @@ export type { FlagName } from '@porsche-design-system/flags';
 export type { IconName } from '@porsche-design-system/icons';
 export type { ButtonAriaAttribute, LinkAriaAttribute } from '../utils';
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
-export type { HeadingSize } from '../utils/typography/heading-size';
-export type { HeadingTag } from '../utils/typography/heading-tag';
 export type { PropTypes, ValidatorFunction } from '../utils/validation/validateProps';
 
 export type LinkButtonIconName = IconName | 'none';

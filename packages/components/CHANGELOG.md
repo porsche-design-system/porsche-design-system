@@ -116,6 +116,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `proseDisplaySmStyle` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `SCSS` (added in `v4.0.0-beta.0`): `@mixin prose-display-lg()`, `@mixin prose-display-md()`,
   `@mixin prose-display-sm()` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Text`: Value `contrast-low` for `color` prop since it's not a11y compliant. Use `contrast-medium` instead.
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 
 ### Deprecated
 
