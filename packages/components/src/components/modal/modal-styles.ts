@@ -1,5 +1,10 @@
 import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -101,6 +106,10 @@ export const getComponentCss = (
               placeSelf: 'center',
               margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
               borderRadius: dialogBorderRadius,
+              ...forcedColorsMediaQuery({
+                outline: '2px solid CanvasText',
+                outlineOffset: '-2px',
+              }),
             }
       ),
     },

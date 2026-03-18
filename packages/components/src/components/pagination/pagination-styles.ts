@@ -1,6 +1,4 @@
 import {
-  borderWidthBase,
-  fontLineHeight,
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
@@ -11,6 +9,7 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
@@ -18,15 +17,17 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import {
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
-
-// button size needs to be fluid between 320px and 360px viewport width, so that the pagination fits into 320px viewport
-// and text scale 200% works (almost) on mobile viewports too
-const buttonSize = `clamp(36px, calc(${fontLineHeight} + 10vw - 20px), 40px)`;
 
 const disabledCursorStyle: JssStyle = {
   cursor: 'default',
@@ -84,10 +85,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
           },
         }),
         [mediaQueryMinS]: {
-          // prev
-          '&:first-child': { marginInlineEnd: spacingStaticSmall },
-          // next
-          '&:last-child': { marginInlineStart: spacingStaticSmall },
           ...(pageTotal < 8
             ? { '&.ellip': hiddenStyle }
             : // max 7 items including ellipsis at the same time on tablet
@@ -105,32 +102,40 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transition between states
+        transition: `${getTransition('background-color')}, ${getTransition('color')}`, // for smooth transition between states
         position: 'relative',
-        width: buttonSize,
-        height: buttonSize,
+        padding: '0 6px',
+        minWidth: '2.25rem',
+        height: '2.25rem',
         boxSizing: 'border-box',
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
+        backgroundColor: 'transparent',
         color: colorPrimary,
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
             background: colorFrosted,
+            ...forcedColorsMediaQuery({
+              outline: '2px solid CanvasText',
+              outlineOffset: '-2px',
+            }),
           },
         }),
         '&[aria-current]': {
           ...disabledCursorStyle,
-          color: colorPrimary,
-          border: `${borderWidthBase} solid ${colorPrimary}`,
+          backgroundColor: colorFrostedStrong,
+          ...forcedColorsMediaQuery({
+            border: '2px solid CanvasText',
+          }),
         },
         '&[aria-disabled]': {
-          ...getDisabledBaseStyles(),
           ...disabledCursorStyle,
+          ...getDisabledBaseStyles(),
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
         '&:not(.ellipsis):focus-visible': getFocusBaseStyles(),

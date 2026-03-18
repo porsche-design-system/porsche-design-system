@@ -62,6 +62,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -91,7 +97,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":true} 1`] = `
@@ -156,6 +168,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -185,7 +203,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"compact":false} 1`] = `
@@ -251,6 +275,22 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
   display: flex;
   place-items: center;
@@ -274,7 +314,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -338,6 +384,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -367,7 +419,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"compact":false} 1`] = `
@@ -431,6 +489,18 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
   display: flex;
   place-items: center;
@@ -446,8 +516,7 @@ label {
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  --p-spinner-size: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -458,7 +527,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 1`] = `
@@ -523,6 +598,22 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
   display: flex;
   place-items: center;
@@ -538,8 +629,7 @@ label {
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  --p-spinner-size: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -550,7 +640,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 2`] = `
@@ -615,6 +711,22 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  label {
+    color: GrayText;
+  }
+}
+
 .toggle {
   display: flex;
   place-items: center;
@@ -630,8 +742,7 @@ label {
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  --p-spinner-size: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -642,7 +753,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -706,6 +823,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-success);
@@ -735,7 +858,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -800,6 +929,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -829,7 +964,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -894,6 +1035,12 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -923,7 +1070,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -987,6 +1140,12 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -1016,7 +1175,13 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -1175,6 +1340,12 @@ label {
   }
 }
 
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
@@ -1204,5 +1375,11 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .toggle {
+    background: CanvasText;
+  }
+}
+"
 `;

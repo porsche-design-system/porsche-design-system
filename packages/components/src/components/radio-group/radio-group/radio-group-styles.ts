@@ -48,7 +48,6 @@ export const getComponentCss = (
   isCompact: boolean,
   direction: BreakpointCustomizable<GroupDirection>
 ): string => {
-  const radioDimension = `calc(var(${cssVarInternalRadioGroupScaling}) * 1.75rem)`;
   const columnGap = `calc(22.4px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 8px)`;
   const rowGap = `calc(11.2px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 4px)`;
 
@@ -61,7 +60,7 @@ export const getComponentCss = (
         [`${cssVarInternalRadioGroupScaling}`]: isCompact ? 0.64285714 : 1,
         [`${cssVarInternalRadioGroupOptionScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled, getDisabledBaseStyles()),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...(isLoading && {
         '::slotted(*:not([slot]))': {
           ...addImportantToEachRule(getDisabledBaseStyles()),
@@ -89,13 +88,11 @@ export const getComponentCss = (
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: radioDimension,
-        height: radioDimension,
         pointerEvents: 'none',
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, {
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel, {
       ...(isDisabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message

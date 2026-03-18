@@ -11,6 +11,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -45,6 +48,15 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-error);
@@ -129,6 +141,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -163,6 +178,15 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-error);
@@ -247,6 +271,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -281,6 +308,15 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-primary);
@@ -365,6 +401,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -399,6 +438,15 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-primary);
@@ -483,6 +531,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -517,6 +568,15 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-success);
@@ -601,6 +661,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -635,6 +698,15 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-success);
@@ -711,7 +783,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -719,7 +790,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -756,6 +829,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -770,13 +855,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -796,8 +879,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -836,7 +919,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -844,7 +926,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -881,6 +965,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -895,13 +991,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -921,8 +1015,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -961,7 +1055,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -969,7 +1062,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1006,6 +1101,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1020,13 +1127,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1046,8 +1151,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1086,7 +1191,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1094,7 +1198,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1131,6 +1237,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1145,13 +1263,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1171,8 +1287,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1211,7 +1327,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1219,7 +1334,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1256,6 +1373,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1270,13 +1399,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1296,8 +1423,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1336,7 +1463,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1344,7 +1470,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1381,6 +1509,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1395,13 +1535,11 @@ input::after {
   cursor: not-allowed;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1421,8 +1559,8 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1461,7 +1599,6 @@ input::after {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1469,7 +1606,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1506,6 +1645,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1518,6 +1669,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1537,8 +1689,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1571,13 +1724,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1585,7 +1748,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1622,6 +1787,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1634,6 +1811,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1653,8 +1831,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1687,13 +1866,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1701,7 +1890,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1738,6 +1929,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1750,6 +1953,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1769,8 +1973,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1803,13 +2008,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1817,7 +2032,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1854,6 +2071,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1866,6 +2095,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1885,8 +2115,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -1919,13 +2150,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1933,7 +2174,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1970,6 +2213,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1982,6 +2237,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2001,8 +2257,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2035,13 +2292,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2049,7 +2316,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2086,6 +2355,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2098,6 +2379,7 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2117,8 +2399,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2151,13 +2434,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2165,7 +2458,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2202,6 +2497,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2214,15 +2521,14 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2242,8 +2548,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2276,13 +2583,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2290,7 +2607,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2327,6 +2646,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2339,15 +2670,14 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2367,8 +2697,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2401,13 +2732,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2415,7 +2756,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2452,6 +2795,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2464,15 +2819,14 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2492,8 +2846,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2526,13 +2881,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2540,7 +2905,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2577,6 +2944,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2589,15 +2968,14 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2617,8 +2995,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2651,13 +3030,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2665,7 +3054,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2702,6 +3093,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2714,15 +3117,14 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2742,8 +3144,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2776,13 +3179,23 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
 ":host {
   display: block;
-  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2790,7 +3203,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2827,6 +3242,18 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2839,15 +3266,14 @@ input::after {
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 .spinner {
+  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2867,8 +3293,9 @@ input::after {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
 }
@@ -2901,5 +3328,16 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;

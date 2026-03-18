@@ -8,6 +8,9 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -204,14 +207,12 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*:not([slot])) {
-  opacity: 0.4 !important;
 }
 slot:not([name]) {
   display: grid;
@@ -258,11 +259,11 @@ slot:not([name]) {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  pointer-events: none;
   color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   display: inline;
-  opacity: 0.4;
 }
 .label:empty {
   display: none;
@@ -296,7 +297,14 @@ slot:not([name]) {
 .message:empty {
   opacity: 0;
   position: absolute;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: auto, disabled: false, hideLabel: false and state: none 1`] = `
@@ -306,6 +314,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -382,6 +393,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: 4px !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

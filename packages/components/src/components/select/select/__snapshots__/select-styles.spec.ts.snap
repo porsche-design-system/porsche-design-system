@@ -22,6 +22,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -94,6 +97,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -217,7 +226,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success and compact: false 1`] = `
@@ -242,6 +262,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -314,6 +337,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -438,7 +467,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
@@ -463,6 +503,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -535,6 +578,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-error));
@@ -658,7 +707,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
@@ -683,6 +743,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -755,6 +818,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -878,7 +947,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
@@ -895,7 +975,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -903,7 +982,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -923,6 +1004,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -973,6 +1055,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1055,8 +1144,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1092,7 +1182,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
@@ -1109,7 +1214,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -1117,7 +1221,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1137,6 +1243,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -1187,6 +1294,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1269,8 +1383,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1305,7 +1420,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 2`] = `
@@ -1322,7 +1452,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -1330,7 +1459,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1350,6 +1481,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -1400,6 +1532,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1482,8 +1621,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1518,7 +1658,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: true 1`] = `
@@ -1535,7 +1690,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 0.64285714 !important;
     --p-internal-select-option-scaling: 0.64285714 !important;
     --p-internal-optgroup-scaling: 0.64285714 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -1543,7 +1697,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1563,6 +1719,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -1613,6 +1770,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1695,8 +1859,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1731,7 +1896,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
@@ -1748,7 +1928,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -1756,7 +1935,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1776,6 +1957,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -1826,6 +2008,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1908,8 +2097,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1945,7 +2135,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
@@ -1962,7 +2167,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -1970,7 +2174,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1990,6 +2196,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -2040,6 +2247,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -2121,8 +2335,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2158,7 +2373,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
@@ -2175,7 +2405,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -2183,7 +2412,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2203,6 +2434,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -2253,6 +2485,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -2334,8 +2573,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2370,7 +2610,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success and compact: false 1`] = `
@@ -2387,7 +2642,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -2395,7 +2649,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2415,6 +2671,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -2465,6 +2722,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -2546,8 +2810,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -2583,7 +2848,22 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error and compact: false 1`] = `
@@ -2608,6 +2888,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2680,6 +2963,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-error));
@@ -2804,7 +3093,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
@@ -2829,6 +3129,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2901,6 +3204,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3024,7 +3333,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 2`] = `
@@ -3049,6 +3369,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3121,6 +3444,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3244,7 +3573,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 3`] = `
@@ -3269,6 +3609,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3341,6 +3684,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3464,7 +3813,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
@@ -3488,6 +3848,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3561,6 +3924,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-error));
@@ -3684,7 +4053,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none and compact: false 1`] = `
@@ -3708,6 +4088,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3781,6 +4164,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3903,7 +4292,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
@@ -3928,6 +4328,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4000,6 +4403,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -4123,7 +4532,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 2`] = `
@@ -4148,6 +4568,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: inline-block;
     vertical-align: top;
   }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4220,6 +4643,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -4343,7 +4772,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
@@ -4360,7 +4800,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -4368,7 +4807,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4388,6 +4829,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -4438,6 +4880,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -4520,8 +4969,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4557,7 +5007,22 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
@@ -4574,7 +5039,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -4582,7 +5046,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4602,6 +5068,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -4652,6 +5119,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -4734,8 +5208,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4770,7 +5245,22 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
@@ -4787,7 +5277,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -4795,7 +5284,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4815,6 +5306,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -4865,6 +5357,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -4947,8 +5446,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4984,7 +5484,22 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: true 1`] = `
@@ -5001,7 +5516,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-select-scaling: 0.64285714 !important;
     --p-internal-select-option-scaling: 0.64285714 !important;
     --p-internal-optgroup-scaling: 0.64285714 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -5009,7 +5523,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5029,6 +5545,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -5079,6 +5596,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -5161,8 +5685,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5198,7 +5723,22 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
@@ -5215,7 +5755,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -5223,7 +5762,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5243,6 +5784,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -5293,6 +5835,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -5374,8 +5923,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5411,7 +5961,22 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
@@ -5428,7 +5993,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     --p-internal-select-scaling: 1 !important;
     --p-internal-select-option-scaling: 1 !important;
     --p-internal-optgroup-scaling: 1 !important;
-    opacity: 0.4;
   }
   :host([hidden]) {
     display: none !important;
@@ -5436,7 +6000,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-    pointer-events: none;
+  }
+  slot[name="label-after"]::slotted(*) {
+    margin-inline-start: 4px !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -5456,6 +6022,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
+    opacity: 0.4;
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button img {
@@ -5506,6 +6073,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -5587,8 +6161,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow-wrap: break-word;
     hyphens: var(--p-hyphens, auto);
     cursor: not-allowed;
-    pointer-events: none;
     color: var(--p-color-primary);
+    pointer-events: none;
+    opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -5623,5 +6198,20 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+"
 `;

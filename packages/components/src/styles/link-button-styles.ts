@@ -5,6 +5,7 @@ import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -76,12 +77,12 @@ export const getLinkButtonStyles = (
         ...mergeDeep(
           buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
             [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
-            borderRadius: addImportantToRule(`var(${legacyRadiusSmall}, ${compactValue ? radiusLg : radiusXl})`),
+            '--p-internal-border-radius': compactValue ? radiusLg : radiusXl,
           })),
           buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-            ...(hideLabelValue && {
-              borderRadius: addImportantToRule(`var(${legacyRadiusSmall}, ${radiusFull})`),
-            }),
+            borderRadius: addImportantToRule(
+              `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : 'var(--p-internal-border-radius)'})`
+            ),
           }))
         ),
         ...addImportantToEachRule({
@@ -109,6 +110,16 @@ export const getLinkButtonStyles = (
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
         gap: hideLabelValue ? 0 : gap,
       })),
+      ...forcedColorsMediaQuery({
+        forcedColorAdjust: 'none',
+        background: 'Canvas',
+        color: 'LinkText',
+        boxShadow: 'inset 0 0 0 2px LinkText',
+        '&:is(button)': {
+          boxShadow: 'inset 0 0 0 2px ButtonBorder',
+          color: 'ButtonText',
+        },
+      }),
       ...(!hasSlottedAnchor && {
         '&:focus-visible': getFocusBaseStyles(),
       }),
@@ -116,6 +127,9 @@ export const getLinkButtonStyles = (
         hoverMediaQuery({
           '&:hover': {
             backgroundColor: backgroundColorHover,
+            ...forcedColorsMediaQuery({
+              background: 'Canvas',
+            }),
           },
         })),
     },

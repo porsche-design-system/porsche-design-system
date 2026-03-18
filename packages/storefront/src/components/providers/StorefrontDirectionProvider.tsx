@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
-import type { StorefrontDirection } from '@/models/dir';
+import { STOREFRONT_DIRECTION_TYPES, type StorefrontDirection } from '@/models/dir';
 
 interface StorefrontDirectionContextProps {
   storefrontDirection: StorefrontDirection;
@@ -19,12 +19,15 @@ export const StorefrontDirectionProvider = ({ children }: PropsWithChildren) => 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedDirection = localStorage.getItem(storefrontDirectionLocalStorageKey) as StorefrontDirection | null;
-    if (storedDirection) {
+    if (storedDirection && STOREFRONT_DIRECTION_TYPES.includes(storedDirection)) {
       setStorefrontDirection(storedDirection);
     }
   }, []);
 
   const setStorefrontDirection = (direction: StorefrontDirection) => {
+    if (!STOREFRONT_DIRECTION_TYPES.includes(direction)) {
+      return;
+    }
     setSelectedDirection(direction);
     document.documentElement.dir = direction;
     localStorage.setItem(storefrontDirectionLocalStorageKey, direction);

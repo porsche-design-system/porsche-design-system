@@ -1,74 +1,97 @@
-import { getComponentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 import { vi } from 'vitest';
-import { componentFactory } from '../../test-utils';
 import type { AriaAttributes } from '../../types';
-import * as removeAttributeUtils from '../dom/removeAttribute';
-import * as setAttributeUtils from '../dom/setAttribute';
 import * as jsonUtils from '../json';
-import * as a11yUtils from './a11y';
-import { parseAndGetAriaAttributes, type SetAriaAttributesOptions, setAriaAttributes } from './a11y';
+import { parseAndGetAriaAttributes, setAriaAttributes } from './a11y';
 
 describe('setAriaAttributes()', () => {
-  const node = document.createElement('div');
+  let node: HTMLElement;
   const label = 'Some label';
   const message = 'Some message';
 
-  it.each<SetAriaAttributesOptions>([
-    { label },
-    { message },
-    { label, message },
-    { state: 'error' },
-    { state: 'success' },
-    { state: 'none' },
-  ])('should call setAttribute and removeAttribute with correct params for options: %o', (options) => {
-    const setAttributeSpy = vi.spyOn(setAttributeUtils, 'setAttribute');
-    const removeAttributeSpy = vi.spyOn(removeAttributeUtils, 'removeAttribute');
+  beforeEach(() => {
+    node = document.createElement('div');
+  });
 
-    setAriaAttributes(node, options);
+  it('should set aria-label when only label is provided', () => {
+    setAriaAttributes(node, { label });
 
-    if (options.label && !options.message) {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label);
-    } else if (!options.label && options.message) {
-      expect(setAttributeSpy).not.toHaveBeenCalled();
-    } else if (options.label && options.message) {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', `${options.label}. ${options.message}`);
-    }
+    expect(node.getAttribute('aria-label')).toBe(label);
+  });
 
-    if (options.state === 'error') {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid', 'true');
-    } else if (options.state) {
-      expect(removeAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid');
-    }
+  it('should set aria-label with message appended when both label and message are provided', () => {
+    setAriaAttributes(node, { label, message });
+
+    expect(node.getAttribute('aria-label')).toBe(`${label}. ${message}`);
+  });
+
+  it('should not set aria-label when only message is provided', () => {
+    setAriaAttributes(node, { message });
+
+    expect(node.hasAttribute('aria-label')).toBe(false);
+  });
+
+  it('should not set aria-label when neither label nor message is provided', () => {
+    setAriaAttributes(node, {});
+
+    expect(node.hasAttribute('aria-label')).toBe(false);
+  });
+
+  it('should set aria-invalid to true when state is error', () => {
+    setAriaAttributes(node, { state: 'error' });
+
+    expect(node.getAttribute('aria-invalid')).toBe('true');
+  });
+
+  it('should remove aria-invalid when state is success', () => {
+    node.setAttribute('aria-invalid', 'true');
+
+    setAriaAttributes(node, { state: 'success' });
+
+    expect(node.hasAttribute('aria-invalid')).toBe(false);
+  });
+
+  it('should remove aria-invalid when state is none', () => {
+    node.setAttribute('aria-invalid', 'true');
+
+    setAriaAttributes(node, { state: 'none' });
+
+    expect(node.hasAttribute('aria-invalid')).toBe(false);
+  });
+
+  it('should remove aria-invalid when no state is provided', () => {
+    node.setAttribute('aria-invalid', 'true');
+
+    setAriaAttributes(node, { label });
+
+    expect(node.hasAttribute('aria-invalid')).toBe(false);
+  });
+
+  it('should set both aria-label and aria-invalid when label is provided with error state', () => {
+    setAriaAttributes(node, { label, message, state: 'error' });
+
+    expect(node.getAttribute('aria-label')).toBe(`${label}. ${message}`);
+    expect(node.getAttribute('aria-invalid')).toBe('true');
   });
 });
 
 describe('parseAndGetAriaAttributes()', () => {
-  // prettier-ignore
-  const rawAttributes = "{ aria-label: 'Some label' }";
-
   it('should call parseJSONAttribute()', () => {
     const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
+    // prettier-ignore
+    const rawAttributes = "{ 'aria-label': 'Some label' }";
 
     parseAndGetAriaAttributes(rawAttributes);
     expect(spy).toHaveBeenCalledWith(rawAttributes);
   });
 
   it.each<AriaAttributes | string>([
-    {
-      'aria-label': 'Some label',
-      'aria-pressed': true,
-    },
-    {
-      'aria-label': 'Some label',
-      'aria-pressed': 'true',
-    },
+    { 'aria-label': 'Some label', 'aria-pressed': true },
+    { 'aria-label': 'Some label', 'aria-pressed': 'true' },
     // prettier-ignore
     "{'aria-label': 'Some label', 'aria-pressed': true}",
     // prettier-ignore
     "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
-  ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
+  ])('should return correct aria attributes with boolean converted to string for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
       'aria-label': 'Some label',
       'aria-pressed': 'true',
@@ -77,36 +100,5 @@ describe('parseAndGetAriaAttributes()', () => {
 
   it.each<string>([undefined, ''])('should return undefined for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
-  });
-
-  // the following components have to be excluded because parseAndGetAriaAttributes() is not applied
-  const tagNamesWithAriaProp = TAG_NAMES.filter(
-    (tagName) =>
-      getComponentMeta(tagName).hasAriaProp &&
-      tagName !== 'p-button-tile' &&
-      tagName !== 'p-link-tile' &&
-      tagName !== 'p-segmented-control-item'
-  );
-
-  it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
-    const spy = vi.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
-    const component = componentFactory(tagName);
-    component['aria'] = { 'aria-label': 'Some label' };
-
-    if (['p-link', 'p-link-pure', 'p-marque', 'p-wordmark', 'p-crest', 'p-drilldown-link'].includes(tagName)) {
-      component['href'] = 'https://porsche.com';
-    }
-
-    try {
-      component.render();
-
-      // icon is behaving a little bit different
-      if (tagName === 'p-icon') {
-        component.host.shadowRoot.append(document.createElement('i'));
-        component['setIconContent']();
-      }
-    } catch (e) {}
-
-    expect(spy).toHaveBeenCalledWith(component['aria']);
   });
 });

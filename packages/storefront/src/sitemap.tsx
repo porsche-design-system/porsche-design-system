@@ -15,7 +15,6 @@ const getComponents = (): Routes => {
   const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
     'p-canvas',
     'p-pagination',
-    'p-flag',
     'p-switch',
     'p-sheet',
     'p-tag-dismissible',

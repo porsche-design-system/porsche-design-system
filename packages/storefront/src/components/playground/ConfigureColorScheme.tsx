@@ -1,4 +1,9 @@
-import { PSelect, PSelectOption, type SelectChangeEventDetail } from '@porsche-design-system/components-react/ssr';
+import {
+  PHeading,
+  PSelect,
+  PSelectOption,
+  type SelectChangeEventDetail,
+} from '@porsche-design-system/components-react/ssr';
 
 import React, { type CSSProperties } from 'react';
 
@@ -21,9 +26,9 @@ export const ConfigureColorScheme = ({ style, handleUpdateColorScheme }: Configu
 
   return (
     <>
-      <span slot="heading" className="flex gap-fluid-xs">
-        Color Scheme{' '}
-      </span>
+      <PHeading slot="summary" tag="h2" size="small">
+        Color Scheme
+      </PHeading>
       <div className="flex flex-col gap-fluid-sm">
         <PSelect name="theme" value={style.colorScheme} onChange={onChange} label="Color Scheme" compact={true}>
           <PSelectOption></PSelectOption>

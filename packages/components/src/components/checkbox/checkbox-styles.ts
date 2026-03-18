@@ -1,4 +1,4 @@
-import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
+import { fontLineHeight, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -52,11 +52,10 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
@@ -87,21 +86,21 @@ export const getComponentCss = (
       alignSelf: 'flex-start',
       minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      ...(isDisabled && getDisabledBaseStyles()),
     },
     ...(isLoading && {
       spinner: {
+        '--p-spinner-size': `calc(${checkboxDimension} - 2px)`, // compensates the 1px border of the checkbox
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: checkboxDimension,
-        height: checkboxDimension,
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
-      isDisabled || isLoading,
+      isDisabled,
+      isLoading,
       hideLabel,
       {
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',

@@ -7,6 +7,7 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -64,7 +65,7 @@ export const getComponentCss = (
 ): string => {
   const { buttonBorderColor, buttonBorderColorHover, buttonBackgroundColor, toggleBackgroundColor, textColor } =
     getColors(isChecked, isLoading);
-
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
   const gap = `calc(11.2px * (var(${cssVarInternalSwitchScaling}) - 0.64285714) + 4px)`;
   const buttonBorderWidth = borderWidthThin;
   const buttonWidth = `calc(var(${cssVarInternalSwitchScaling}) * 3rem)`;
@@ -74,7 +75,6 @@ export const getComponentCss = (
   const labelPaddingTop = `max(0px, calc((${buttonHeight} - ${fontLineHeight}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
   const toggleDimension = `calc(var(${cssVarInternalSwitchScaling}) * 1.25rem)`;
   const toggleTranslateX = `calc(var(${cssVarInternalSwitchScaling}) * .1875rem)`;
-  const spinnerDimension = buttonHeight;
 
   return getCss({
     '@global': {
@@ -111,9 +111,13 @@ export const getComponentCss = (
         border: `${buttonBorderWidth} solid ${buttonBorderColor}`,
         borderRadius: radiusFull,
         background: buttonBackgroundColor,
-        cursor: isDisabledOrLoading(isDisabled, isLoading) ? 'not-allowed' : 'pointer',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        ...(!isDisabledOrLoading(isDisabled, isLoading) &&
+        ...(disabledOrLoading &&
+          forcedColorsMediaQuery({
+            borderColor: 'GrayText',
+          })),
+        ...(!disabledOrLoading &&
           hoverMediaQuery({
             '&:hover': {
               borderColor: buttonBorderColorHover,
@@ -132,8 +136,12 @@ export const getComponentCss = (
         ...textSmallStyle,
         minWidth: 0, // prevents flex child to overflow max available parent size
         minHeight: 0, // prevents flex child to overflow max available parent size
-        cursor: isDisabledOrLoading(isDisabled, isLoading) ? 'not-allowed' : 'pointer',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         color: textColor,
+        ...(disabledOrLoading &&
+          forcedColorsMediaQuery({
+            color: 'GrayText',
+          })),
         ...mergeDeep(
           buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
             order: alignLabelValue === 'start' ? -1 : 0,
@@ -156,14 +164,16 @@ export const getComponentCss = (
       background: toggleBackgroundColor,
       transition: getTransition('transform'),
       transform: `translate3d(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX}, 0, 0)`,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
       '&:dir(rtl)': {
         transform: `translate3d(calc(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX} * -1), 0, 0)`,
       },
     },
     ...(isLoading && {
       spinner: {
-        width: spinnerDimension,
-        height: spinnerDimension,
+        '--p-spinner-size': buttonHeight,
       },
     }),
     // .loading

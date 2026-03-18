@@ -42,7 +42,18 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .no-results--disabled {
+    color: GrayText;
+  }
+  .no-results--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
 exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option and cssVarScaling: var(--p-internal-multi-select-scaling, 1) 2`] = `
@@ -87,7 +98,18 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .no-results--disabled {
+    color: GrayText;
+  }
+  .no-results--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
 exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: var(--p-internal-select-scaling, 1) 1`] = `
@@ -132,7 +154,18 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .no-results--disabled {
+    color: GrayText;
+  }
+  .no-results--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
 exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: var(--p-internal-select-scaling, 1) 2`] = `
@@ -177,5 +210,16 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .no-results--disabled {
+    color: GrayText;
+  }
+  .no-results--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;

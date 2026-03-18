@@ -26,7 +26,7 @@ export const addEventListenerToElementRef = <T extends HTMLElement, E extends st
   cb?: (event: CustomEvent) => void
 ): void => {
   elementRef.value!.addEventListener(eventName, (e) => {
-    emit(eventName, (e as CustomEvent).detail);
+    emit(eventName, e as CustomEvent);
     cb?.(e as CustomEvent);
   });
 };

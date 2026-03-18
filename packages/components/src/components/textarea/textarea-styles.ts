@@ -64,10 +64,9 @@ export const getComponentCss = (
         [`${cssVarInternalTextareaScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         all: 'unset',
@@ -114,6 +113,7 @@ export const getComponentCss = (
     },
     wrapper: {
       display: 'grid',
+      ...(isDisabled && getDisabledBaseStyles()),
     },
     ...(hasCounter && {
       counter: {
@@ -126,7 +126,7 @@ export const getComponentCss = (
       'sr-only': getHiddenTextJssStyle(),
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
   });

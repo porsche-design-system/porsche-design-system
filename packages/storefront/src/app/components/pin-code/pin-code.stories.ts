@@ -9,7 +9,7 @@ export const pinCodeSlotStories: SlotStories<'p-pin-code'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -51,7 +51,7 @@ export const pinCodeStorySlots: Story<'p-pin-code'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: [
             'Some Popover content with a ',
             {

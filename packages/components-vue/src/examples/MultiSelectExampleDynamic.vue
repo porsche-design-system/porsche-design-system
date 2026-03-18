@@ -21,9 +21,9 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onChange = (e: MultiSelectChangeEventDetail) => {
-  selectedValues.value = e.value;
-  inputValue.value = e.value.join(',');
+const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+  selectedValues.value = e.detail.value;
+  inputValue.value = e.detail.value.join(',');
 };
 
 const onAddOption = () => {

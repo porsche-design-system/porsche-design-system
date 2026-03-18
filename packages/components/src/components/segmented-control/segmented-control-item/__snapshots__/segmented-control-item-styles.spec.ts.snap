@@ -38,6 +38,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -87,6 +93,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -136,6 +148,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -189,6 +207,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -242,6 +266,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -296,6 +326,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -339,7 +375,13 @@ span {
   overflow-wrap: normal;
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
-}"
+}
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -380,6 +422,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -424,6 +472,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -469,6 +523,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -513,7 +573,24 @@ span {
   overflow-wrap: normal;
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
-}"
+}
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  span {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -555,6 +632,23 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  span {
+    color: GrayText;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -598,7 +692,13 @@ span {
   overflow-wrap: normal;
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
-}"
+}
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -639,6 +739,12 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -683,7 +789,24 @@ span {
   overflow-wrap: normal;
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
-}"
+}
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  span {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -725,6 +848,23 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  button {
+    color: GrayText;
+    border-color: GrayText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  span {
+    color: GrayText;
+  }
+}
+
 .icon {
   height: 1.5rem;
   width: 1.5rem;

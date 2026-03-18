@@ -16,6 +16,7 @@ export const metadata = {
     '👹 Breaking Changes',
     '❌ Removed Props, Slots and Events (deprecated in v3 already)',
     '❌ Removed Components (deprecated in v3 already)',
+    '🤡 Deprecations (will be removed in v5)',
   ]}
 />
 
@@ -286,16 +287,105 @@ export class AppModule {}
 
 ### Common
 
-- Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-headline`,
+- Changed event emitting in Vue. All component events now emit the full `CustomEvent` instead of just the event detail.
+  The event detail must be accessed via `event.detail`. Props and other component data can be accessed directly via
+  `event.target`.
+
+```diff
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
+  </PAccordion>
+</template>
+```
+
+- Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-heading`,
   `p-inline-notification`, `p-switch`, `p-table`, `p-tabs`, `p-text` and `p-text-list`, use `p-link-pure` instead or an
   anchor `<a>` with correct styling.
 
 ```diff
 // You can still use <a> inside components, but the default styling for anchors <a> has been removed.
 <p-accordion heading="Some Heading">
--  <a href="/https://porsche.com">Some label</a>
+-  <a href="https://porsche.com">Some label</a>
 +  <p-link-pure href="https://porsche.com" icon="none">Some label</p-link-pure>
 </p-accordion>
+```
+
+Alternatively, apply custom styles directly using PDS Design Tokens:
+
+Tailwind CSS:
+
+```html
+<p-accordion heading="Some heading">
+  <a
+    class="text-current underline rounded-lg transition-colors -mx-static-xs px-static-xs outline-focus outline-offset-2 focus-visible:outline hover:backdrop-blur-frosted hover:bg-frosted-strong"
+    href="https://porsche.com"
+    >Some label</a
+  >
+</p-accordion>
+```
+
+Pure CSS:
+
+```css
+/* Adjust the `:is()` selector with the components you want to target and apply the following styles to your global stylesheet (see browser support for native CSS `&` selector: https://caniuse.com/css-nesting): */
+:is(p-accordion, p-table) a {
+  color: currentcolor;
+  text-decoration: underline;
+  border-radius: var(--p-radius-lg);
+  transition: background-color var(--p-duration-sm) var(--p-ease-in-out);
+  margin-inline: calc(-1 * var(--p-spacing-static-xs));
+  padding-inline: var(--p-spacing-static-xs);
+
+  &:focus-visible {
+    outline: 2px solid var(--p-color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      backdrop-filter: var(--p-blur-frosted);
+      background-color: var(--p-color-frosted-strong);
+    }
+  }
+}
+```
+
+SCSS:
+
+```scss
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+
+/* Adjust the `:is()` selector with the components you want to target and apply the following styles to your global stylesheet (see browser support for native CSS `&` selector: https://caniuse.com/css-nesting): */
+:is(p-accordion, p-table) a {
+  @include pds.focus-visible();
+  color: currentcolor;
+  text-decoration: underline;
+  border-radius: pds.$radius-lg;
+  transition: background-color pds.$duration-sm pds.$ease-in-out;
+  margin-inline: calc(-1 * #{pds.$spacing-static-xs});
+  padding-inline: pds.$spacing-static-xs;
+
+  @media (hover: hover) {
+    &:hover {
+      backdrop-filter: pds.$blur-frosted;
+      background: pds.$color-frosted;
+    }
+  }
+}
 ```
 
 ### Text, Icon:
@@ -335,7 +425,7 @@ export class AppModule {}
 
 ```diff
 - <p-icon color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-icon>
-+ <p-icon color="inherit" class="color: deeppink;"></p-icon>
++ <p-icon color="inherit" style="color: deeppink;"></p-icon>
 ```
 
 - Removed value `'state-disabled'` of prop `color`.
@@ -345,13 +435,42 @@ export class AppModule {}
 + <p-icon color="contrast-low"></p-icon>
 ```
 
+### Flag:
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-flag size="inherit" style="width: 100px; height: 100px;"></p-flag>
++ <p-flag style="--p-flag-size: 100px;"></p-flag>
+
+// When using size="inherit" with a defined font-size, the flag size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-flag size="inherit" style="font-size: 100px;"></p-flag>
+```
+
+### Spinner:
+
+- The size values are now aligned with the typographic scale used by components such as `p-icon`, `p-flag`, `p-text` and
+  `p-heading`.
+
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
++ <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+
+// When using size="inherit" with a defined font-size, the spinner size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
+```
+
 ### Model Signature:
 
 - When `color="inherit"` is used a CSS color can be applied directly.
 
 ```diff
 - <p-model-signature color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-model-signature>
-+ <p-model-signature color="inherit" class="color: deeppink;"></p-model-signature>
++ <p-model-signature color="inherit" style="color: deeppink;"></p-model-signature>
 ```
 
 ### Tag:
@@ -508,6 +627,8 @@ export class AppModule {}
 
 ### Carousel:
 
+- Removed CSS variable `--p-carousel-prev-next-filter`.
+
 - Removed prop `gradient-color`, use `gradient="true"` instead.
 
 ```diff
@@ -548,47 +669,49 @@ export class AppModule {}
 + <p-button-tile gradient="true"></p-button-tile>
 ```
 
-- Removed prop `background`, use CSS class `.light | .dark | .auto` on :host element instead.
+- Removed prop `background`, use CSS class `.scheme-light | .scheme-dark | .scheme-light-dark` on :host element instead.
 
 ```diff
-// dark was the default before
 - <p-link-tile></p-link-tile>
-+ <p-link-tile class="dark"></p-link-tile>
++ <p-link-tile class="scheme-dark"></p-link-tile>
 
 - <p-link-tile background="light"></p-link-tile>
-+ <p-link-tile class="light"></p-link-tile>
++ <p-link-tile class="scheme-light"></p-link-tile>
 
 - <p-link-tile background="dark"></p-link-tile>
-+ <p-link-tile class="dark"></p-link-tile>
++ <p-link-tile class="scheme-dark"></p-link-tile>
 
 - <p-link-tile background="auto"></p-link-tile>
-+ <p-link-tile class="auto"></p-link-tile>
++ <p-link-tile class="scheme-light-dark"></p-link-tile>
 
-// dark was the default before
 - <p-button-tile></p-button-tile>
-+ <p-button-tile class="dark"></p-button-tile>
++ <p-button-tile class="scheme-dark"></p-button-tile>
 
 - <p-button-tile background="light"></p-button-tile>
-+ <p-button-tile class="light"></p-button-tile>
++ <p-button-tile class="scheme-light"></p-button-tile>
 
 - <p-button-tile background="dark"></p-button-tile>
-+ <p-button-tile class="dark"></p-button-tile>
++ <p-button-tile class="scheme-dark"></p-button-tile>
 
 - <p-button-tile background="auto"></p-button-tile>
-+ <p-button-tile class="auto"></p-button-tile>
++ <p-button-tile class="scheme-light-dark"></p-button-tile>
 ```
 
 ### Link Tile Model Signature:
 
 - Removed component `p-link-tile-model-signature`, use `p-link-tile` instead.
 
-### Tailwind CSS
+### Link Tile Product:
 
-When using Tailwind CSS with the Porsche Design System Tailwind Theme
-(`@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';`)
+- Changed values `3:4 | 9:16` of prop `aspect-ratio`, use `3/4 | 9/16` instead.
 
-- Reset all default Tailwind color tokens.
-- Removed `-light` and `-dark` color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only.
+```diff
+- <p-link-tile-product aspect-ratio="3:4"></p-link-tile-product>
++ <p-link-tile-product aspect-ratio="3/4"></p-link-tile-product>
+
+- <p-link-tile-product aspect-ratio="9:16"></p-link-tile-product>
++ <p-link-tile-product aspect-ratio="9/16"></p-link-tile-product>
+```
 
 ## ❌ Removed Props, Slots and Events (deprecated in v3 already)
 
@@ -645,11 +768,11 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Button
 
-- Removed deprecated prop `tertiary`
+- Removed deprecated prop `tertiary`, use `variant="secondary"` instead.
 
 ```diff
-+ <p-button variant="tertiary">Some label</p-button>
-+ <p-button variant="ghost">Some label</p-button>
+- <p-button variant="tertiary">Some label</p-button>
++ <p-button variant="secondary">Some label</p-button>
 ```
 
 ### Button Pure
@@ -773,6 +896,17 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Icon:
 
+- When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the
+  global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+
+```diff
+- <p-icon size="inherit" style="width: 100px; height: 100px;"></p-icon>
++ <p-icon style="--p-icon-size: 100px;"></p-icon>
+
+// When using size="inherit" with a defined font-size, the icon size is calculated from the global line-height (ex-unit) based on that font-size."
+<p-icon size="inherit" style="font-size: 100px;"></p-icon>
+```
+
 - Removed deprecated prop `lazy`
 
 ```diff
@@ -801,7 +935,16 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-icon color="contrast-high"></p-icon>
 
 - <p-icon color="notification-neutral"></p-icon>
-+ <p-icon color="notification-info"></p-icon>
++ <p-icon color="info"></p-icon>
+
+- <p-icon color="notification-success"></p-icon>
++ <p-icon color="success"></p-icon>
+
+- <p-icon color="notification-warning"></p-icon>
++ <p-icon color="warning"></p-icon>
+
+- <p-icon color="notification-error"></p-icon>
++ <p-icon color="error"></p-icon>
 ```
 
 ### Inline Notification:
@@ -822,11 +965,11 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Link
 
-- Removed deprecated prop `tertiary`
+- Removed deprecated prop `tertiary`, use `variant="secondary"` instead.
 
 ```diff
-+ <p-link variant="tertiary">Some label</p-link>
-+ <p-link variant="ghost">Some label</p-link>
+- <p-link variant="tertiary">Some label</p-link>
++ <p-link variant="secondary">Some label</p-link>
 ```
 
 ### Link Pure:
@@ -844,9 +987,9 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 - Removed deprecated values `left | right` of prop `alignLabel`, use `start | end` instead.
 
 ```diff
-- <p-link-pure href="#" align-label="left">Some label</p-link-p
+- <p-link-pure href="#" align-label="left">Some label</p-link-pure>
 + <p-link-pure href="#" align-label="start">Some label</p-link-pure>
-- <p-link-pure href="#" align-label="right">Some label</p-link-p
+- <p-link-pure href="#" align-label="right">Some label</p-link-pure>
 + <p-link-pure href="#" align-label="end">Some label</p-link-pure>
 ```
 
@@ -984,13 +1127,6 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```diff
 - <p-scroller gradient-color="surface"></p-scroller>
 + <p-scroller></p-scroller>
-```
-
-- Removed deprecated prop `scrollIndicatorPosition`, use `alignScrollIndicator` instead.
-
-```diff
-- <p-scroller scroll-indicator-position="top"></p-scroller>
-+ <p-scroller align-scroll-indicator="top"></p-scroller>
 ```
 
 ### Segmented Control:
@@ -1213,7 +1349,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Radio Button Wrapper:
 
-- Removed deprecated component `p-checkbox-wrapper`, use `p-radio-group` instead.
+- Removed deprecated component `p-radio-button-wrapper`, use `p-radio-group` instead.
 
 ```diff
 - <p-radio-button-wrapper label="Some label">
@@ -1288,7 +1424,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <p-flex-item>2</p-flex-item>
 -   <p-flex-item>3</p-flex-item>
 - </p-flex>
-+ <div class="display: flex">
++ <div style="display: flex">
 +   <div>1</div>
 +   <div>2</div>
 +   <div>3</div>
@@ -1388,7 +1524,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="date" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-date label="Some label" name="some-name"></p-input-text>
++ <p-input-date label="Some label" name="some-name"></p-input-date>
 ```
 
 #### type="email"
@@ -1398,7 +1534,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="email" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-email label="Some label" name="some-name"></p-input-text>
++ <p-input-email label="Some label" name="some-name"></p-input-email>
 ```
 
 #### type="month"
@@ -1408,7 +1544,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="month" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-month label="Some label" name="some-name"></p-input-text>
++ <p-input-month label="Some label" name="some-name"></p-input-month>
 ```
 
 #### type="number"
@@ -1418,7 +1554,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="number" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-number label="Some label" name="some-name"></p-input-text>
++ <p-input-number label="Some label" name="some-name"></p-input-number>
 ```
 
 #### type="password"
@@ -1428,7 +1564,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="password" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-password label="Some label" name="some-name"></p-input-text>
++ <p-input-password label="Some label" name="some-name"></p-input-password>
 ```
 
 #### type="search"
@@ -1438,7 +1574,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="search" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-search label="Some label" name="some-name"></p-input-text>
++ <p-input-search label="Some label" name="some-name"></p-input-search>
 ```
 
 #### type="tel"
@@ -1448,7 +1584,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="tel" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-tel label="Some label" name="some-name"></p-input-text>
++ <p-input-tel label="Some label" name="some-name"></p-input-tel>
 ```
 
 #### type="text"
@@ -1468,7 +1604,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="time" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-time label="Some label" name="some-name"></p-input-text>
++ <p-input-time label="Some label" name="some-name"></p-input-time>
 ```
 
 #### type="url"
@@ -1478,7 +1614,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="url" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-url label="Some label" name="some-name"></p-input-text>
++ <p-input-url label="Some label" name="some-name"></p-input-url>
 ```
 
 #### type="week"
@@ -1488,7 +1624,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 -   <input type="week" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-week label="Some label" name="some-name"></p-input-text>
++ <p-input-week label="Some label" name="some-name"></p-input-week>
 ```
 
 ### Textarea Wrapper
@@ -1501,4 +1637,65 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 - </p-textarea-wrapper>
 
 + <p-textarea label="Some label" name="some-name"></p-textarea>
+```
+
+## 🤡 Deprecations (will be removed in v5)
+
+### Accordion:
+
+- Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility.
+
+```diff
+- <p-acccordion heading="Some summary" heading-tag="h3" size="small">
+  <p-text>Some details</p-text>
+</p-accordion>
++ <p-accordion>
++   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+  <p-text>Some details</p-text>
+</p-accordion>
+```
+
+- Slot `heading` in favor of `slot="summary"`, enabling semantic slots and more flexibility
+
+```diff
+<p-acccordion>
+- <span slot="heading">Some summary</span>
+  <p-text>Some details</p-text>
+</p-accordion>
+<p-accordion>
++ <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+  <p-text>Some details</p-text>
+</p-accordion>
+```
+
+- CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
+
+### Scroller:
+
+- Deprecated prop `alignScrollIndicator`, has no effect anyway.
+
+```diff
+- <p-scroller align-scroll-indicator="top"></p-scroller>
++ <p-scroller></p-scroller>
+```
+
+- Deprecated prop `scrollToPosition`, use native `scrollIntoView()` on the slotted element itself, e.g.
+  `el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center', container: 'nearest' })`.
+
+### Tabs Bar:
+
+- Deprecated prop `weight`, has no effect anymore.
+
+```diff
+- <p-tabs-bar weight="semi-bold"></p-tabs-bar>
++ <p-tabs-bar></p-tabs-bar>
+```
+
+### Tabs:
+
+- Deprecated prop `weight`, has no effect anymore.
+
+```diff
+- <p-tabs weight="semi-bold"></p-tabs>
++ <p-tabs></p-tabs>
 ```

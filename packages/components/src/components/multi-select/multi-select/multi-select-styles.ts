@@ -1,10 +1,5 @@
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  getDisabledBaseStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
   getButtonJssStyle,
@@ -52,10 +47,9 @@ export const getComponentCss = (
           [`${cssVarInternalMultiSelectOptionScaling}`]: isCompact ? 0.64285714 : 1,
           [`${cssVarInternalOptgroupScaling}`]: isCompact ? 0.64285714 : 1,
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, isCompact, cssVarInternalMultiSelectScaling),
@@ -77,7 +71,7 @@ export const getComponentCss = (
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', cssVarInternalMultiSelectScaling),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
   });

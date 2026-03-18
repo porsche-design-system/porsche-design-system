@@ -9,7 +9,7 @@ export const multiSelectSlotStories: SlotStories<'p-multi-select'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -94,7 +94,7 @@ export const multiSelectStorySlots: Story<'p-multi-select'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: [
             'Some Popover content with a ',
             {

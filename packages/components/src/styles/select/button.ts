@@ -1,7 +1,7 @@
 import { borderWidthThin, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
-import { getFocusBaseStyles, getTransition } from '../common-styles';
+import { getDisabledBaseStyles, getFocusBaseStyles, getTransition } from '../common-styles';
 import { colorPrimary, legacyRadiusSmall, radiusLg, radiusXl } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
@@ -40,6 +40,7 @@ export const getButtonJssStyle = (
     font: textSmallStyle.font,
     color: `var(${cssVarTextColor}, ${colorPrimary})`,
     cursor: isDisabled ? 'not-allowed' : 'pointer',
+    ...(isDisabled && getDisabledBaseStyles()),
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     ...(!isDisabled && {
       ...hoverMediaQuery({

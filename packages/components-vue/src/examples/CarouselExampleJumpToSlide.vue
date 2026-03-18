@@ -4,8 +4,8 @@ import { ref } from 'vue';
 
 const activeSlideIndex = ref(1);
 
-const onUpdate = (e: CarouselUpdateEventDetail): void => {
-  activeSlideIndex.value = e.activeIndex;
+const onUpdate = (e: CustomEvent<CarouselUpdateEventDetail>): void => {
+  activeSlideIndex.value = e.detail.activeIndex;
 };
 const onButtonClick = (e: MouseEvent): void => {
   activeSlideIndex.value = parseInt((e.target as HTMLButtonElement).innerText) - 1;

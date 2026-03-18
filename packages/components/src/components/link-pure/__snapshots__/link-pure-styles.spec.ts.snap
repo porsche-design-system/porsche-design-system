@@ -72,7 +72,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -110,6 +110,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -129,6 +130,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -148,6 +150,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -167,6 +170,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -186,12 +190,25 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
     text-indent: 0;
     overflow: visible;
     order: 0;
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -240,7 +257,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -275,6 +292,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -290,6 +308,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -305,6 +324,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -320,6 +340,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -335,11 +356,24 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
     text-indent: 0;
     overflow: visible;
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -416,6 +450,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -489,6 +535,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -526,6 +584,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -569,6 +633,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
   }
 }
 
@@ -645,6 +718,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -715,6 +800,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -791,6 +888,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -836,7 +945,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -861,6 +970,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -909,7 +1030,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .root:focus-visible::before {
@@ -934,6 +1055,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -974,6 +1107,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(a:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .root {
   all: unset;
   display: flex;
@@ -996,7 +1135,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
@@ -1017,6 +1156,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
     height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
   }
 }
 
@@ -1095,6 +1243,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1170,6 +1330,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   }
 }
 
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1225,6 +1397,18 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 .label {
   position: relative;
 }
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1280,6 +1464,18 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 .label {
   position: relative;
 }
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+  .root:is(button) {
+    color: ButtonText;
+  }
+  .root:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);

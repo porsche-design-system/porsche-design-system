@@ -76,7 +76,7 @@ integration with any form library.
 ...
 const value = ref<string>('');
 
-const onInput = (e: InputTextInputEventDetail) => {
+const onInput = (e: CustomEvent<InputTextInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;
 };
 ```

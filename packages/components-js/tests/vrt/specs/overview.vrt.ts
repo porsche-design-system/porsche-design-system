@@ -35,4 +35,10 @@ test.describe('overview', () => {
       });
     }
   });
+
+  test('typescale', async ({ page }) => {
+    await setupScenario(page, '/overview-typescale', viewportWidthXXL);
+    await page.mouse.click(0, 0);
+    await expect(page.locator('#app')).toHaveScreenshot(`overview-typescale-${viewportWidthXXL}.png`);
+  });
 });

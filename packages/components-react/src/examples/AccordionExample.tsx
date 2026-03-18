@@ -1,4 +1,4 @@
-import { type AccordionUpdateEventDetail, PAccordion, PText } from '@porsche-design-system/components-react';
+import { type AccordionUpdateEventDetail, PAccordion, PHeading, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const AccordionExamplePage = (): JSX.Element => {
@@ -12,17 +12,24 @@ export const AccordionExamplePage = (): JSX.Element => {
     setIsOpen2(e.detail.open);
   }, []);
 
-  const content =
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
+  const summary = 'Some summary';
+  const details =
+    'Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
     'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
 
   return (
     <>
-      <PAccordion heading="Some Heading" headingTag="h3" open={isOpen1} onUpdate={onUpdate1}>
-        <PText>{content}</PText>
+      <PAccordion open={isOpen1} onUpdate={onUpdate1}>
+        <PHeading slot="summary" tag="h3" size="small">
+          {summary}
+        </PHeading>
+        <PText>{details}</PText>
       </PAccordion>
-      <PAccordion heading="Some Heading" headingTag="h3" open={isOpen2} onUpdate={onUpdate2}>
-        <PText>{content}</PText>
+      <PAccordion open={isOpen2} onUpdate={onUpdate2}>
+        <PHeading slot="summary" tag="h3" size="small">
+          {summary}
+        </PHeading>
+        <PText>{details}</PText>
       </PAccordion>
     </>
   );

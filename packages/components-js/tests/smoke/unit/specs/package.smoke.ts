@@ -46,6 +46,17 @@ const packageJsonExports = {
     types: './testing/index.d.ts',
     default: './testing/index.cjs',
   },
+  './styles': {
+    sass: './scss/_index.scss',
+    types: './emotion/esm/index.d.ts',
+    import: './emotion/esm/index.mjs',
+    default: './emotion/cjs/index.cjs',
+  },
+  './styles/vanilla-extract': {
+    types: './vanilla-extract/esm/index.d.ts',
+    import: './vanilla-extract/esm/index.mjs',
+    default: './vanilla-extract/cjs/index.cjs',
+  },
   './tailwindcss': './tailwindcss/index.css',
   './tailwindcss/index.css': './tailwindcss/index.css',
   './tailwindcss/index': './tailwindcss/index.css',
@@ -162,6 +173,8 @@ describe('package.json files', () => {
                   prob.entrypoint === './emotion' ||
                   prob.entrypoint === './vanilla-extract' ||
                   prob.entrypoint === './ssr' ||
+                  prob.entrypoint === './styles' ||
+                  prob.entrypoint === './styles/vanilla-extract' ||
                   prob.entrypoint.includes('tailwindcss') ||
                   prob.entrypoint.includes('font-face') ||
                   prob.entrypoint.includes('normalize') ||

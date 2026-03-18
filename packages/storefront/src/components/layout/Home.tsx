@@ -4,7 +4,7 @@ import { PHeading, PLink, PLinkPure, PLinkTile, PText } from '@porsche-design-sy
 import { kebabCase } from 'change-case';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import {
   localPorscheDesignSystemMajorVersion,
   localPorscheDesignSystemVersion,
@@ -12,11 +12,11 @@ import {
 import AppearAnimation from './appearAnimation';
 
 export const Home = () => {
-  const { isDark } = useStorefrontTheme();
+  const { isDark } = useStorefrontColorScheme();
 
   return (
     <>
-      <div className="dark relative min-h-[90vh] p-fluid-xl -mx-[clamp(16px,12px+1.25vw,24px)] -mt-[70px] col-span-full grid grid-rows-[minmax(0,1fr)_auto] gap-fluid-xl">
+      <div className="scheme-dark relative min-h-[90vh] p-fluid-xl -mx-[clamp(16px,12px+1.25vw,24px)] -mt-[70px] col-span-full grid grid-rows-[minmax(0,1fr)_auto] gap-fluid-xl">
         <video
           key={isDark ? 'dark' : 'light'}
           className="absolute inset-0 w-full h-full object-cover"

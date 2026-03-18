@@ -11,7 +11,7 @@ import type { ReactNode } from 'react';
 import { prefetchDNS, preload } from 'react-dom';
 import { Canvas } from '@/components/layout/Canvas';
 import { Providers } from '@/components/providers/Providers';
-import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
+import { StorefrontColorSchemeProvider } from '@/components/providers/StorefrontColorSchemeProvider';
 import { getBasePath } from '@/utils/getBasePath';
 import { isDevEnvironment } from '@/utils/isDev';
 
@@ -115,11 +115,11 @@ export default function RootLayout({
         <meta name="twitter:image" content="/assets/og-image.png" />
       </head>
       <body>
-        <StorefrontThemeProvider>
+        <StorefrontColorSchemeProvider>
           <Providers>
             <Canvas>{children}</Canvas>
           </Providers>
-        </StorefrontThemeProvider>
+        </StorefrontColorSchemeProvider>
         {/* Framebuster script see: https://en.wikipedia.org/wiki/Framekiller?utm_source=chatgpt.com */}
         <Script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: ok

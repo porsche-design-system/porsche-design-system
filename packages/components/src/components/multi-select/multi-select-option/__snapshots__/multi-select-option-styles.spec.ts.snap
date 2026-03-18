@@ -55,6 +55,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -64,7 +65,18 @@ slot {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false and selected: true 1`] = `
@@ -122,6 +134,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -134,7 +147,21 @@ slot {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .checkbox::before {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true and selected: false 1`] = `
@@ -152,6 +179,13 @@ slot {
   display: block;
   padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .option {
   display: flex;
   gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
@@ -194,6 +228,7 @@ slot {
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -203,7 +238,21 @@ slot {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .checkbox {
+    border-color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true and selected: true 1`] = `
@@ -221,6 +270,13 @@ slot {
   display: block;
   padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .option {
   display: flex;
   gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
@@ -263,6 +319,7 @@ slot {
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
+  flex-shrink: 0;
 }
 .checkbox::before {
   content: "";
@@ -275,5 +332,22 @@ slot {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
-}"
+}
+@media (forced-colors: active) {
+  .option--disabled {
+    color: GrayText;
+  }
+  .option--highlighted {
+    forced-color-adjust: none;
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .checkbox {
+    border-color: GrayText;
+  }
+  .checkbox::before {
+    background: CanvasText;
+  }
+}
+"
 `;

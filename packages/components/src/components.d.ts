@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
-import { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -52,13 +52,13 @@ import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedCo
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
 import { SheetAriaAttribute, SheetBackground, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
-import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
+import { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
-import { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-import { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
@@ -67,8 +67,8 @@ import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventD
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
+export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
-export { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -114,13 +114,13 @@ export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedCo
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
 export { SheetAriaAttribute, SheetBackground, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
-export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
+export { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
-export { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-export { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+export { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+export { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
@@ -135,27 +135,35 @@ export namespace Components {
      */
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings.
+          * Aligns the marker within the summary section.
+         */
+        "alignMarker"?: AccordionAlignMarker;
+        /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: AccordionBackground;
+        /**
+          * Displays the accordion in compact mode.
          */
         "compact"?: boolean;
         /**
-          * Defines the heading used in accordion.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
-          * Defines if accordion is open.
+          * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
         /**
-          * The text size.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
     }
@@ -653,9 +661,9 @@ export namespace Components {
          */
         "name"?: FlagName;
         /**
-          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+          * Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
-        "size"?: FlagSize;
+        "size"?: BreakpointCustomizable<FlagSize>;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -726,9 +734,9 @@ export namespace Components {
          */
         "name"?: IconName;
         /**
-          * The size of the icon.
+          * Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
-        "size"?: IconSize;
+        "size"?: BreakpointCustomizable<IconSize>;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -2096,7 +2104,7 @@ export namespace Components {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator.
+          * @deprecated since v4.0.0, will be removed with next major release, has no effect anymore.
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
@@ -2104,13 +2112,21 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
+         */
+        "compact"?: boolean;
+        /**
+          * @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
+        /**
+          * @experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "sticky"?: boolean;
     }
     /**
      * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
@@ -2289,7 +2305,11 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
-          * Size of the spinner.
+          * Basic color variations.
+         */
+        "color"?: SpinnerColor;
+        /**
+          * Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }
@@ -2348,13 +2368,17 @@ export namespace Components {
          */
         "caption"?: string;
         /**
-          * Displays as compact version.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
           * Controls the layout behavior of the table.
          */
         "layout"?: TableLayout;
+        /**
+          * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "sticky"?: boolean;
     }
     interface PTableBody {
     }
@@ -2393,11 +2417,19 @@ export namespace Components {
          */
         "activeTabIndex"?: number;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBackground;
+        /**
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
+         */
+        "compact"?: boolean;
+        /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsWeight;
     }
@@ -2410,11 +2442,19 @@ export namespace Components {
          */
         "activeTabIndex"?: number | undefined;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBarBackground;
+        /**
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
+         */
+        "compact"?: boolean;
+        /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsBarWeight;
     }
@@ -3762,15 +3802,23 @@ declare namespace LocalJSX {
      */
     interface PAccordion {
         /**
-          * Displays the Accordion as compact version with thinner border and smaller paddings.
+          * Aligns the marker within the summary section.
+         */
+        "alignMarker"?: AccordionAlignMarker;
+        /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: AccordionBackground;
+        /**
+          * Displays the accordion in compact mode.
          */
         "compact"?: boolean;
         /**
-          * Defines the heading used in accordion.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -3778,15 +3826,15 @@ declare namespace LocalJSX {
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
-          * Defines if accordion is open.
+          * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
         /**
-          * The text size.
+          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+          * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
     }
@@ -4316,9 +4364,9 @@ declare namespace LocalJSX {
          */
         "name"?: FlagName;
         /**
-          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+          * Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
-        "size"?: FlagSize;
+        "size"?: BreakpointCustomizable<FlagSize>;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -4401,9 +4449,9 @@ declare namespace LocalJSX {
          */
         "name"?: IconName;
         /**
-          * The size of the icon.
+          * Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
-        "size"?: IconSize;
+        "size"?: BreakpointCustomizable<IconSize>;
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -5959,7 +6007,7 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator.
+          * @deprecated since v4.0.0, will be removed with next major release, has no effect anymore.
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
@@ -5967,13 +6015,21 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
+         */
+        "compact"?: boolean;
+        /**
+          * @deprecated since v4.0.0, use native `scrollIntoView()` on the slotted element itself.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
+        /**
+          * @experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "sticky"?: boolean;
     }
     /**
      * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
@@ -6184,7 +6240,11 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
-          * Size of the spinner.
+          * Basic color variations.
+         */
+        "color"?: SpinnerColor;
+        /**
+          * Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }
@@ -6251,7 +6311,7 @@ declare namespace LocalJSX {
          */
         "caption"?: string;
         /**
-          * Displays as compact version.
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
          */
         "compact"?: boolean;
         /**
@@ -6262,6 +6322,10 @@ declare namespace LocalJSX {
           * Emitted when sorting is changed.
          */
         "onUpdate"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
+        /**
+          * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+         */
+        "sticky"?: boolean;
     }
     interface PTableBody {
     }
@@ -6300,6 +6364,14 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBackground;
+        /**
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
+         */
+        "compact"?: boolean;
+        /**
           * Emitted when active tab is changed.
          */
         "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
@@ -6308,7 +6380,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsWeight;
     }
@@ -6321,6 +6393,14 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number | undefined;
         /**
+          * Defines the background color. Use `frosted` only on images, videos or gradients.
+         */
+        "background"?: TabsBarBackground;
+        /**
+          * Displays with reduced spacing and smaller padding for a more condensed layout.
+         */
+        "compact"?: boolean;
+        /**
           * Emitted when active tab is changed.
          */
         "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
@@ -6329,7 +6409,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
-          * The text weight.
+          * @deprecated Will be removed in the next major release. Has no effect anymore.
          */
         "weight"?: TabsBarWeight;
     }

@@ -1,6 +1,12 @@
-import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
+import {
+  fontLineHeight,
+  frostedGlassStyle,
+  spacingStaticXSmall,
+  textXSmallStyle,
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -92,7 +98,7 @@ export const getComponentCss = (
         display: 'flex',
         gap: '2px',
         padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXSmall} + (${fontLineHeight} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
         font: textXSmallStyle.font,
         ...frostedGlassStyle,
         color: textColor,
@@ -104,6 +110,12 @@ export const getComponentCss = (
               background: backgroundHoverColor,
             },
           })),
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
+          backgroundColor: 'Canvas',
+          color: 'CanvasText',
+        }),
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {

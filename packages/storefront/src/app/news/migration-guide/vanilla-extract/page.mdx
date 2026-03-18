@@ -8,7 +8,9 @@ export const metadata = {
 
 # Migration Guide
 
-<TableOfContents headings={['⭐ Introducing Color Scheme', '👹 Breaking Changes', '🤡 Deprecations']} />
+<TableOfContents
+  headings={['⭐ Introducing Color Scheme', '👹 Breaking Changes', '🤡 Deprecations (will be removed in v5)']}
+/>
 
 ## ⭐ Introducing Color Scheme
 
@@ -89,13 +91,6 @@ export const App = () => {
 
 ## 👹 Breaking Changes
 
-- Changed import path for Vanilla Extract styles.
-
-```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
-```
-
 - Removed `getHoverStyle` since it did not work reliable.
 
 - Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
@@ -107,10 +102,19 @@ const skeletonAnimation = keyframes(skeletonKeyframes);
 + const Skeleton = style(getSkeletonStyle(skeletonAnimation));
 ```
 
-## 🤡 Deprecations
+## 🤡 Deprecations (will be removed in v5)
 
 Please transition to the new styles as soon as possible. All legacy styles are currently deprecated and are scheduled
 for removal in the next major release.
+
+### Import path
+
+Changed import path for Vanilla Extract styles.
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+```
 
 ### Blur
 

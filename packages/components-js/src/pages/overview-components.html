@@ -186,9 +186,9 @@
   </div>
 
   <div class="playground" title="should render default accordion">
-    <p-accordion heading="Some accordion heading">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    <p-accordion>
+      <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+      <p-text>Some details</p-text>
     </p-accordion>
   </div>
 
@@ -503,9 +503,9 @@
   </div>
 
   <div class="playground" title="should render default accordion with custom prefix">
-    <my-prefix-p-accordion heading="Some accordion heading">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    <my-prefix-p-accordion>
+      <my-prefix-p-heading slot="summary" tag="h3" size="small">Some summary</my-prefix-p-heading>
+      <my-prefix-p-text>Some details</my-prefix-p-text>
     </my-prefix-p-accordion>
   </div>
 

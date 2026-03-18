@@ -1,14 +1,42 @@
-<div class="playground" title="should show spinner">
+<style>
+  .custom-size {
+    --p-spinner-size: 99px;
+  }
+
+  .custom-color {
+    --p-spinner-color: deeppink;
+    --p-spinner-track-color: lightpink;
+  }
+</style>
+
+<div class="playground" title="default">
   <p-spinner class="a11ytree-snapshot-test"></p-spinner>
 </div>
 
-<div class="playground" title="should show spinner in different sizes">
+<div class="playground" title="size=xx-small, x-small, small, medium, large, x-large, xx-large, inherit">
+  <p-spinner size="xx-small"></p-spinner>
+  <p-spinner size="x-small"></p-spinner>
   <p-spinner size="small"></p-spinner>
   <p-spinner size="medium"></p-spinner>
   <p-spinner size="large"></p-spinner>
-  <p-spinner size="inherit" style="width: 24px"></p-spinner>
+  <p-spinner size="x-large"></p-spinner>
+  <p-spinner size="xx-large"></p-spinner>
+  <p-spinner size="inherit" style="font-size: 99px"></p-spinner>
 </div>
 
-<div class="playground" title="should show spinner in different sizes on different viewports">
-  <p-spinner size="{ base: 'small', m: 'medium', l: 'large' }"></p-spinner>
+<div class="playground" title="size={ base: 'xx-small', xs: 'x-small', s: 'small', m: 'medium', l: 'large', xl: 'x-large' }">
+  <p-spinner size="{ base: 'xx-small', xs: 'x-small', s: 'small', m: 'medium', l: 'large', xl: 'x-large' }"></p-spinner>
+</div>
+
+<div class="playground" title="--p-spinner-size: 99px">
+  <p-spinner class="custom-size"></p-spinner>
+</div>
+
+<div class="playground" title="color=primary, inherit">
+  <p-spinner color="primary"></p-spinner>
+  <p-spinner color="inherit" style="color: deeppink"></p-spinner>
+</div>
+
+<div class="playground" title="--p-spinner-color: deeppink, --p-spinner-track-color: lightpink">
+  <p-spinner class="custom-color"></p-spinner>
 </div>

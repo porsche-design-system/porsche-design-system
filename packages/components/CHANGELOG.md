@@ -18,6 +18,250 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
   to generate accessible code that follows WCAG 2.2 AA standards. ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
+- `Spinner`, `Flag`, `Icon`:
+  - Prop `size` supports all typographic scale values:
+    `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Spinner`:
+  - Prop `color` with values: `'primary' | 'inherit'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-size`: Defines the width and height of the spinner. Overrides the `size` property when
+    set. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-color`: Defines the foreground color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-track-color`: Defines the track/background color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Flag`:
+  - CSS Variable `--p-flag-size`: Defines the width and height of the flag. Overrides the `size` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Icon`:
+  - CSS Variable `--p-icon-size`: Defines the width and height of the icon. Overrides the `size` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-icon-color`: Defines the icon color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+### Changed
+
+- `Spinner`, `Flag`, `Icon`:
+  - The `size` is breakpoint customizable and values are aligned with the typographic scale used by components such as
+    `p-text` and `p-heading`. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against
+    the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based
+    components. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+    ```diff
+    - <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
+    + <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+
+    // When using size="inherit" with a defined font-size, the spinner size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
+    ```
+
+    ```diff
+    - <p-icon size="inherit" style="width: 100px; height: 100px;"></p-icon>
+    + <p-icon style="--p-icon-size: 100px;"></p-icon>
+
+    // When using size="inherit" with a defined font-size, the icon size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-icon size="inherit" style="font-size: 100px;"></p-icon>
+    ```
+
+    ```diff
+    - <p-flag size="inherit" style="width: 100px; height: 100px;"></p-flag>
+    + <p-flag style="--p-flag-size: 100px;"></p-flag>
+
+    // When using size="inherit" with a defined font-size, the flag size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-flag size="inherit" style="font-size: 100px;"></p-flag>
+    ```
+- `Pagination`: Modernize visual appearance ([#4241](https://github.com/porsche-design-system/porsche-design-system/pull/4241))
+
+## [4.0.0-beta.2] - 2026-03-11
+
+### Added
+
+- `Scroller`:
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `sticky`: Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-indicator-top`: Defines the distance from the top of the viewport at which the indicator
+    sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-gap`: Defines the gap between slotted nodes.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Prop `sticky`: Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll
+    direction. ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-top`: Defines the distance from the top of the viewport at which the scroll
+    indicator sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    scroll indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Changed
+
+- `Scroller`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Stepper Horizontal`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Deprecated
+
+- `Scroller`:
+  - Prop `alignScrollIndicator`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `scrollToPosition`: Will be removed with next major release, use native `scrollIntoView()` on the slotted
+    element itself, e.g.
+    `el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center', container: 'nearest' })`.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Prop `weight`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `weight`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+## [4.0.0-beta.1] - 2026-03-02
+
+### Added
+
+- `SCSS`, `Emotion`, `Vanilla Extract`: bring back PDS v3 import paths for better DX and backward compatibility.
+- `Accordion`:
+  - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-before` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Slot `summary-after` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `background` with values `canvas | surface | frosted | none (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Prop `align-marker` with values `start | end (default)`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-px` to control the horizontal padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-py` to control the vertical padding
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - CSS Variable `--p-accordion-summary-top` to control the optional sticky top position
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+
+### Changed
+
+- `Accordion`:
+  - Modernize visual appearance ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+  - Use semantic HTML element `<details>` and `<summary>` internally (instead of divs and buttons) for better
+    accessibility and native behavior
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  Slot `label-after` is not affected by `disbaled` states anymore
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- **Vue:** All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must
+  be accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
+
+```diff
+<script setup lang="ts">
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
+- const onUpdate = (event: AccordionUpdateEventDetail): void => {
++ const onUpdate = (event: CustomEvent<AccordionUpdateEventDetail>): void => {
+-  isOpen1.value = event.open;
++  isOpen1.value = event.detail.open; // You can also access the value from the component itself via e.target, e.g. e.target.open
+};
+</script>
+
+<template>
+  <PAccordion :open="isOpen" @update="onUpdate">
+    ...
+  </PAccordion>
+</template>
+```
+
+### Removed
+
+- `Accordion`:
+  - Prop `tag` use `heading-tag` (deprecated with v4 now) instead or make use of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" tag="h3">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+
+### Deprecated
+
+- `SCSS`: Import path for npm package:
+
+```diff
+- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
+
+- `Emotion`: Import path for npm package:
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
+
+- `Vanilla Extract`: Import path for npm package:
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+```
+
+- `Accordion`:
+  - Prop `heading`, `heading-tag` and `size` in favor of `slot="summary"` for more flexibility
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    - <p-acccordion heading="Some summary" heading-tag="h3" size="small">
+        <p-text>Some details</p-text>
+    </p-accordion>
+    + <p-accordion>
+    +   <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+        <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - Slot `heading` in favor of `slot="summary"`
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
+    ```diff
+    <p-acccordion>
+    - <span slot="heading">Some summary</span>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    <p-accordion>
+    + <p-heading slot="summary" tag="h3" size="small">Some summary</p-heading>
+      <p-text>Some details</p-text>
+    </p-accordion>
+    ```
+  - CSS Variable `--p-accordion-position-sticky-top`, use `--p-accordion-summary-top` instead
+    ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
 
 ## [4.0.0-beta.0] - 2026-02-12
 
@@ -341,7 +585,6 @@ and migration steps.
 - `Scroller`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
-  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
 - `Segmented Control`:
   - prop `backgroundColor` (has no effect anyway)
   - event `segmentedControlChange` (use `change` instead)
@@ -406,6 +649,32 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+- `Multi Select`: trim whitespace of selected options text
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.33.0] - 2026-03-09
+
+## [3.33.0-rc.0] - 2026-03-04
+
+### Added
+
+- `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
+  ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+- `Checkbox`: add warning for Firefox form restore bug
+
+### Changed
+
+- `Tag`: deprecated `color` property, use `variant` property instead to define background colors which complies now with
+  PDS `v4` ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+
+## [3.32.1] - 2026-02-24
+
+## [3.32.1-rc.0] - 2026-02-20
+
+### Fixed
+
+- `Input Email`, `Input Password`, `Input Tel`, `Pin Code`: optimize input direction and behavior in RTL mode
+  ([#4209](https://github.com/porsche-design-system/porsche-design-system/pull/4209))
 
 ## [3.32.0] - 2026-02-04
 
@@ -440,19 +709,39 @@ and migration steps.
 
 ### Added
 
+- `Multi Select, Select`:
+  - `selected` slot for custom selection rendering and enabling complex options
+  - `options-status` slot for loading, error and no results states when using custom filtering
+    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
+- `Multi Select, Select`:
+  - `filter` slot to allow custom asynchronous filtering
+  - `toggle` event when opening/closing the dropdown
+    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
+- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
+- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 - `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
   intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-- `Canvas`: prop `background` to set the background color to `canvas | surface`
 
 ### Fixed
 
+- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
+- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
+  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
+  ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-
-### Changed
-
-- `Link Tile`, `Button Tile`: appearance in compact mode
-- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
@@ -1869,7 +2158,7 @@ and migration steps.
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel align-header="start"></p-carousel>
++ <p-carousel-pure align-header="start"></p-carousel>
 ```
 
 ### Fixed

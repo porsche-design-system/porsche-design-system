@@ -39,5 +39,11 @@ img {
   max-height: 100%;
   width: auto;
   height: auto;
-}"
+}
+@media (forced-colors: active) {
+  a:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
 `;

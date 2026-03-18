@@ -25,6 +25,7 @@ import { Label } from '../../common/label/label';
 import { descriptionId, labelId } from '../../common/label/label-utils';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 import { getComponentCss } from './radio-group-styles';
 import {
   findNextEnabledIndex,
@@ -39,7 +40,6 @@ import {
   syncRadioGroupChildrenProps,
   updateRadioGroupOptions,
 } from './radio-group-utils';
-import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof RadioGroup> = {
   label: AllowedTypes.string,
@@ -234,7 +234,7 @@ export class RadioGroup {
         />
         <div class="wrapper">
           <slot onSlotchange={this.onSlotChange} />
-          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />

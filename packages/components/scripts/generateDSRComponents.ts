@@ -1,7 +1,7 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { breakpoint } from '@porsche-design-system/emotion';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { breakpoint } from '@porsche-design-system/emotion';
 import { kebabCase, pascalCase } from 'change-case';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
@@ -152,7 +152,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|inputElements)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItems|slides|inputElements)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
@@ -184,7 +184,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // adjust named slot conditions
         newFileContent = newFileContent
           .replace(
-            /has(?:Heading|Label|Description)\(this\.props\.host, (this\.props\.(heading|label|description))\)/g,
+            /has(?:Heading|Label|Description|Summary|SummaryBefore|SummaryAfter)\(this\.props\.host, (this\.props\.(heading|label|description|summary|summaryBefore|summaryAfter))\)/g,
             `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
           )
           .replace(
@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(summary|summary-before|summary-after|caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -391,6 +391,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
+      } else if (tagName === 'p-accordion') {
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasSummary)/g, '$1')
+          .replace(/hasSummary =/, 'const $&')
+          .replace(/this\.props\.(hasSummaryBefore)/g, '$1')
+          .replace(/hasSummaryBefore =/, 'const $&')
+          .replace(/this\.props\.(hasSummaryAfter)/g, '$1')
+          .replace(/hasSummaryAfter =/, 'const $&');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
@@ -415,7 +423,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
-          .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
+          .replace(/this\.tabsItems(\.map)/, `otherChildren$1`)
           .replace(
             /(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g,
             "$1{typeof tab === 'object' && 'props' in tab && tab.props.label}$2"
@@ -703,6 +711,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
       } else if (tagName === 'p-button-pure') {
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
+      } else if (tagName === 'p-tag') {
+        newFileContent = newFileContent.replace(
+          /VARIANT_TO_COLOR_MAP\[this\.props\.variant]/,
+          'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
+        );
       }
 
       return newFileContent;

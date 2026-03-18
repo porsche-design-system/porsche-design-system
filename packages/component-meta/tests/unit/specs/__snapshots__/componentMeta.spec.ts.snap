@@ -12,6 +12,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-accordion-px": {
+        "defaultValue": "16px",
+        "description": "Horizontal padding of the accordion.",
+      },
+      "--p-accordion-py": {
+        "defaultValue": "16px",
+        "description": "Vertical padding of the accordion.",
+      },
+      "--p-accordion-summary-top": {
+        "defaultValue": "0px",
+        "description": "Controls the sticky top position when \`sticky\` is enabled.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -28,25 +40,43 @@ exports[`should match snapshot 1`] = `
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-icon",
-    ],
     "propsMeta": {
+      "alignMarker": {
+        "allowedValues": [
+          "start",
+          "end",
+        ],
+        "defaultValue": "end",
+        "description": "Aligns the marker within the summary section.",
+        "type": "AccordionAlignMarker",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "AccordionBackground",
+      },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Displays the Accordion as compact version with thinner border and smaller paddings.",
+        "description": "Displays the accordion in compact mode.",
         "type": "boolean",
       },
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines the heading used in accordion.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading text within the summary section.",
+        "isDeprecated": true,
         "type": "string",
       },
       "headingTag": {
@@ -59,13 +89,14 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": "h2",
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading tag for proper semantic structure within the page.",
+        "isDeprecated": true,
         "type": "AccordionHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Defines if accordion is open.",
+        "description": "Controls whether the accordion is open or closed.",
         "type": "boolean",
       },
       "size": {
@@ -74,24 +105,35 @@ exports[`should match snapshot 1`] = `
           "medium",
         ],
         "defaultValue": "small",
-        "description": "The text size.",
+        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Controls the heading size in the summary section (only applies when using the \`heading\` prop or \`heading\` slot).",
         "isBreakpointCustomizable": true,
+        "isDeprecated": true,
         "type": "AccordionSize",
       },
       "sticky": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "@experimental Sticks the Accordion heading at the top, fixed while scrolling",
+        "description": "@experimental Makes the summary section sticky at the top while scrolling. Only works with \`background="canvas"\` or \`background="surface"\`. Not compatible with \`summary-before\` or \`summary-after\` slots.",
         "isExperimental": true,
         "type": "boolean",
       },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot for the main content",
+        "description": "Main content displayed when the accordion is expanded.",
       },
       "heading": {
-        "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup.",
+        "description": "Content for the accordion's heading section. Clicking toggles the accordion open and closed.",
+        "isDeprecated": true,
+      },
+      "summary": {
+        "description": "Content for the accordion's summary section. Clicking toggles the accordion open and closed.",
+      },
+      "summary-after": {
+        "description": "Content or interactive elements placed after the accordion's summary section.",
+      },
+      "summary-before": {
+        "description": "Content or interactive elements placed before the accordion's summary section.",
       },
     },
     "styling": "jss",
@@ -2376,6 +2418,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flag": {
+    "cssVariablesMeta": {
+      "--p-flag-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the flag. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2527,10 +2575,12 @@ exports[`should match snapshot 1`] = `
           "medium",
           "large",
           "x-large",
+          "xx-large",
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are \`small\`, \`medium\`, \`large\`, etc.",
+        "description": "Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
+        "isBreakpointCustomizable": true,
         "type": "FlagSize",
       },
     },
@@ -2738,6 +2788,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-icon": {
+    "cssVariablesMeta": {
+      "--p-icon-color": {
+        "defaultValue": "",
+        "description": "Defines the icon color. Overrides the \`color\` property when set.",
+      },
+      "--p-icon-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the icon. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -3073,10 +3133,12 @@ exports[`should match snapshot 1`] = `
           "medium",
           "large",
           "x-large",
+          "xx-large",
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "The size of the icon.",
+        "description": "Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
+        "isBreakpointCustomizable": true,
         "type": "IconSize",
       },
       "source": {
@@ -7675,6 +7737,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-scroller": {
+    "cssVariablesMeta": {
+      "--p-scroller-gap": {
+        "defaultValue": "8px",
+        "description": "Defines the gap between slotted nodes.",
+      },
+      "--p-scroller-indicator-bottom": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and \`sticky\` is enabled.",
+      },
+      "--p-scroller-indicator-top": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and \`sticky\` is enabled.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7684,9 +7760,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "alignScrollIndicator": {
         "allowedValues": [
@@ -7694,7 +7767,8 @@ exports[`should match snapshot 1`] = `
           "center",
         ],
         "defaultValue": "center",
-        "description": "Sets the vertical position of scroll indicator.",
+        "description": "@deprecated since v4.0.0, will be removed with next major release, has no effect anymore.",
+        "isDeprecated": true,
         "type": "ScrollerAlignScrollIndicator",
       },
       "aria": {
@@ -7706,13 +7780,20 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "ScrollerAriaAttribute",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
+        "type": "boolean",
+      },
       "scrollToPosition": {
         "allowedValues": {
           "isSmooth": "boolean",
           "scrollPosition": "number",
         },
         "defaultValue": null,
-        "description": "Scrolls the scroll area to the left either smooth or immediately.",
+        "description": "@deprecated since v4.0.0, use native \`scrollIntoView()\` on the slotted element itself.",
+        "isDeprecated": true,
         "propOptions": {
           "mutable": true,
         },
@@ -7722,6 +7803,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Specifies if scrollbar should be shown.",
+        "type": "boolean",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.",
+        "isExperimental": true,
         "type": "boolean",
       },
     },
@@ -8588,6 +8676,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-spinner": {
+    "cssVariablesMeta": {
+      "--p-spinner-color": {
+        "defaultValue": "",
+        "description": "Defines the foreground color. Overrides the \`color\` property when set.",
+      },
+      "--p-spinner-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the spinner. Overrides the \`size\` property when set.",
+      },
+      "--p-spinner-track-color": {
+        "defaultValue": "",
+        "description": "Defines the track/background color. Overrides the \`color\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8607,15 +8709,28 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "SpinnerAriaAttribute",
       },
+      "color": {
+        "allowedValues": [
+          "primary",
+          "inherit",
+        ],
+        "defaultValue": "primary",
+        "description": "Basic color variations.",
+        "type": "SpinnerColor",
+      },
       "size": {
         "allowedValues": [
+          "xx-small",
+          "x-small",
           "small",
           "medium",
           "large",
+          "x-large",
+          "xx-large",
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "Size of the spinner.",
+        "description": "Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
         "isBreakpointCustomizable": true,
         "type": "SpinnerSize",
       },
@@ -8802,6 +8917,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-table": {
+    "cssVariablesMeta": {
+      "--p-table-scroll-indicator-bottom": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and \`sticky\` is enabled.",
+      },
+      "--p-table-scroll-indicator-top": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and \`sticky\` is enabled.",
+      },
+    },
     "eventsMeta": {
       "update": {
         "description": "Emitted when sorting is changed.",
@@ -8831,7 +8956,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
         "type": "boolean",
       },
       "layout": {
@@ -8842,6 +8967,13 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Controls the layout behavior of the table.",
         "type": "TableLayout",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.",
+        "isExperimental": true,
+        "type": "boolean",
       },
     },
     "slotsMeta": {
@@ -9065,6 +9197,23 @@ exports[`should match snapshot 1`] = `
         },
         "type": "number",
       },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "TabsBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
+        "type": "boolean",
+      },
       "size": {
         "allowedValues": [
           "small",
@@ -9081,7 +9230,8 @@ exports[`should match snapshot 1`] = `
           "semi-bold",
         ],
         "defaultValue": "regular",
-        "description": "The text weight.",
+        "description": "@deprecated Will be removed in the next major release. Has no effect anymore.",
+        "isDeprecated": true,
         "type": "TabsWeight",
       },
     },
@@ -9127,6 +9277,23 @@ exports[`should match snapshot 1`] = `
         "description": "Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.",
         "type": "number | undefined",
       },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "TabsBarBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
+        "type": "boolean",
+      },
       "size": {
         "allowedValues": [
           "small",
@@ -9143,7 +9310,8 @@ exports[`should match snapshot 1`] = `
           "semi-bold",
         ],
         "defaultValue": "regular",
-        "description": "The text weight.",
+        "description": "@deprecated Will be removed in the next major release. Has no effect anymore.",
+        "isDeprecated": true,
         "type": "TabsBarWeight",
       },
     },

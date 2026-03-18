@@ -1,5 +1,4 @@
-import { AsyncPipe, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
@@ -9,7 +8,7 @@ import {
   type ColDef,
   type ICellRendererParams,
   ModuleRegistry,
-  ValidationModule /* Development Only */,
+  ValidationModule,
 } from 'ag-grid-enterprise';
 
 ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
@@ -80,7 +79,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
-  imports: [PorscheDesignSystemModule, AsyncPipe, NgClass],
+  imports: [PorscheDesignSystemModule],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
@@ -114,7 +113,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
   </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
+  imports: [PorscheDesignSystemModule, AgGridAngular],
 })
 export class AgGridExampleComponent {
   protected readonly agGridTheme = pdsTheme;

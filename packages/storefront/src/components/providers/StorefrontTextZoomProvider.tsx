@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
-import type { StorefrontTextZoom } from '@/models/textZoom';
+import { STOREFRONT_TEXT_ZOOM_TYPES, type StorefrontTextZoom } from '@/models/textZoom';
 
 interface StorefrontTextZoomContextProps {
   storefrontTextZoom: StorefrontTextZoom;
@@ -19,12 +19,15 @@ export const StorefrontTextZoomProvider = ({ children }: PropsWithChildren) => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedTextZoom = localStorage.getItem(storefrontTextZoomLocalStorageKey) as StorefrontTextZoom | null;
-    if (storedTextZoom) {
+    if (storedTextZoom && STOREFRONT_TEXT_ZOOM_TYPES.includes(storedTextZoom)) {
       setStorefrontTextZoom(storedTextZoom);
     }
   }, []);
 
   const setStorefrontTextZoom = (textZoom: StorefrontTextZoom) => {
+    if (!STOREFRONT_TEXT_ZOOM_TYPES.includes(textZoom)) {
+      return;
+    }
     setSelectedTextZoom(textZoom);
     document.documentElement.style.fontSize = textZoom;
     localStorage.setItem(storefrontTextZoomLocalStorageKey, textZoom);

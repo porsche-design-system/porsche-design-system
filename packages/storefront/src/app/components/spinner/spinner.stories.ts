@@ -17,8 +17,74 @@ export const spinnerStory: Story<'p-spinner'> = {
 export const spinnerStorySize: Story<'p-spinner'> = {
   state: {
     properties: {
-      className: 'w-[96px] h-[96px]',
+      className: 'me-static-sm',
       size: 'inherit',
+      aria: { 'aria-label': 'Loading page content' },
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-text',
+      properties: {
+        className: 'text-[48px]',
+        size: 'inherit',
+      },
+      children: [
+        {
+          tag: 'p-spinner',
+          properties,
+        },
+        'Some text',
+      ],
+    },
+  ],
+};
+
+export const spinnerStorySizeCSSVar: Story<'p-spinner'> = {
+  state: {
+    properties: {
+      className: '[--p-spinner-size:48px]',
+      aria: { 'aria-label': 'Loading page content' },
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-spinner',
+      properties,
+    },
+  ],
+};
+
+export const spinnerStoryColor: Story<'p-spinner'> = {
+  state: {
+    properties: {
+      className: 'me-static-sm',
+      color: 'inherit',
+      aria: { 'aria-label': 'Loading page content' },
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-text',
+      properties: {
+        style: { color: 'light-dark(mediumvioletred, deeppink)' },
+        color: 'inherit',
+      },
+      children: [
+        {
+          tag: 'p-spinner',
+          properties,
+        },
+        'Some text',
+      ],
+    },
+  ],
+};
+
+export const spinnerStoryColorCSSVar: Story<'p-spinner'> = {
+  state: {
+    properties: {
+      className: '[--p-spinner-color:deeppink] [--p-spinner-track-color:lightpink]',
       aria: { 'aria-label': 'Loading page content' },
     },
   },
@@ -33,7 +99,7 @@ export const spinnerStorySize: Story<'p-spinner'> = {
 export const spinnerStoryResponsiveSize: Story<'p-spinner'> = {
   state: {
     properties: {
-      size: { base: 'small', l: 'medium' },
+      size: { base: 'small', l: 'xx-large' },
       aria: { 'aria-label': 'Loading page content' },
     },
   },

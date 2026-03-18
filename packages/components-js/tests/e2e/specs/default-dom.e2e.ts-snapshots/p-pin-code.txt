@@ -7,7 +7,7 @@
     <label class="label" id="label" for="current-input"> Some label</label>
     <slot name="label-after"> </slot>
   </div>
-  <div class="wrapper">
+  <div class="wrapper" dir="ltr">
     <input
       id="current-input"
       type="text"

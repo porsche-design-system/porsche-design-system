@@ -97,7 +97,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
   ${hasVModelSupport ? `(e: 'update:${vModelValue}', value: ${meta.propsMeta[vModelValue].type}): void;\n  ` : ''}${eventNamesAndTypes
     .map(
       ({ eventName, type, isDeprecated }) =>
-        (isDeprecated ? '/** @deprecated */\n  ' : '') + `(e: '${eventName}', value: ${type}): void;`
+        (isDeprecated ? '/** @deprecated */\n  ' : '') + `(e: '${eventName}', value: CustomEvent<${type}>): void;`
     )
     .join('\n  ')}
 }>();`

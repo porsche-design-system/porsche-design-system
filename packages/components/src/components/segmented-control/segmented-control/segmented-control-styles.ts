@@ -32,12 +32,8 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(disabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
-      ...getFunctionalComponentLabelAfterStyles(disabled, getDisabledBaseStyles()),
-      ...(disabled && {
-        '::slotted(*:not([slot]))': addImportantToEachRule(getDisabledBaseStyles()),
-      }),
       'slot:not([name])': {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
@@ -56,7 +52,7 @@ export const getComponentCss = (
       gap: spacingStaticXSmall,
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
+    ...getFunctionalComponentLabelStyles(disabled, false, hideLabel, {
       ...(disabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message

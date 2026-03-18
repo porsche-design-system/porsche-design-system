@@ -6,7 +6,10 @@ export const buttonStory: Story<'p-button'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-button',
-      properties,
+      properties: {
+        ...properties,
+        ...(properties?.hideLabel && !properties?.icon && { icon: 'arrow-right' }),
+      },
       children: ['Some label'],
     },
   ],

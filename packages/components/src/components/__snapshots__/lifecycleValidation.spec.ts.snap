@@ -2,6 +2,8 @@
 
 exports[`should call validateProps() with correct parameters via render for p-accordion > propTypes with ValidatorFunctions 1`] = `
 {
+  "alignMarker": "oneOf",
+  "background": "oneOf",
   "compact": "boolean",
   "heading": "string",
   "headingTag": "oneOf",
@@ -194,7 +196,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
 }
 `;
 
@@ -225,7 +227,7 @@ exports[`should call validateProps() with correct parameters via render for p-ic
   "aria": "aria",
   "color": "oneOf",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
   "source": "string",
 }
 `;
@@ -687,8 +689,10 @@ exports[`should call validateProps() with correct parameters via render for p-sc
 {
   "alignScrollIndicator": "oneOf",
   "aria": "aria",
+  "compact": "boolean",
   "scrollToPosition": "shape",
   "scrollbar": "boolean",
+  "sticky": "boolean",
 }
 `;
 
@@ -758,6 +762,7 @@ exports[`should call validateProps() with correct parameters via render for p-sh
 exports[`should call validateProps() with correct parameters via render for p-spinner > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "color": "oneOf",
   "size": "breakpoint",
 }
 `;
@@ -792,6 +797,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "caption": "string",
   "compact": "boolean",
   "layout": "oneOf",
+  "sticky": "boolean",
 }
 `;
 
@@ -812,6 +818,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
   "weight": "oneOf",
 }
@@ -820,6 +828,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
   "weight": "oneOf",
 }

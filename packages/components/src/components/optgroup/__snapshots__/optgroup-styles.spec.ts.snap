@@ -43,10 +43,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 2`]
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true 1`] = `
-":host {
-  opacity: 0.4 !important;
-}
-:host([hidden]) {
+":host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
@@ -63,14 +60,19 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
   font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
-}"
+  opacity: 0.4;
+}
+@media (forced-colors: active) {
+  [role="presentation"] {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true 2`] = `
-":host {
-  opacity: 0.4 !important;
-}
-:host([hidden]) {
+":host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
@@ -87,5 +89,13 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 2`] 
   padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
   font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
-}"
+  opacity: 0.4;
+}
+@media (forced-colors: active) {
+  [role="presentation"] {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;

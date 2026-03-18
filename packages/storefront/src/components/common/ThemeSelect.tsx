@@ -9,7 +9,7 @@ import {
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
-import type { StorefrontColorScheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 
 type ThemeSelectProps = {
   value: StorefrontColorScheme;
@@ -33,7 +33,7 @@ export const ThemeSelect = ({
   return (
     <PSelect name={name} value={value} onChange={onThemeChange} hideLabel={hideLabel} {...rest}>
       <span slot="label">{label}</span>
-      <PPopover slot="label-after" className="ms-static-xs">
+      <PPopover slot="label-after">
         All color tokens use the{' '}
         <PLinkPure
           icon="none"

@@ -17,7 +17,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -45,6 +45,18 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   span:hover {
     background: var(--p-color-error-frosted-soft);
@@ -73,7 +85,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 1px 6px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small, calc(1px + (calc(6px + 2.125ex) / 2)));
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -101,6 +113,18 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .icon {
   margin-inline-start: -2px;
 }"
@@ -123,7 +147,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -151,6 +175,18 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 @media(hover:hover) {
   span:hover {
     background: var(--p-color-contrast-high);
@@ -179,7 +215,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -207,6 +243,18 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+
 .icon {
   margin-inline-start: -2px;
 }"
@@ -229,7 +277,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 1px 6px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small, calc(1px + (calc(6px + 2.125ex) / 2)));
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -256,5 +304,17 @@ span {
 }
 ::slotted(br) {
   display: none !important;
-}"
+}
+@media (forced-colors: active) {
+  span {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+    outline-color: Highlight !important;
+  }
+}
+"
 `;

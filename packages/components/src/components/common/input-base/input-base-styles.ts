@@ -1,7 +1,8 @@
-import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
+import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -18,6 +19,7 @@ import {
 } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
+import { mergeDeep } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
@@ -41,7 +43,8 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   isCompact: boolean,
   readOnly: boolean,
-  additionalInputJssStyle?: JssStyle
+  additionalInputJssStyle?: JssStyle,
+  additionalHostJssStyle?: JssStyle
 ): Styles => {
   const wrapperBorderWidth = borderWidthThin;
   const wrapperHeight = `calc(var(${cssVarInternalInputBaseScaling}) * 3.5rem)`;
@@ -61,14 +64,21 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPurePadding}`]: buttonPadding,
           [`${cssVarButtonPureMargin}`]: buttonMargin,
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
+        // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
+        '&(:dir(rtl)) input::placeholder': {
+          direction: 'rtl',
+          textAlign: 'end',
+        },
+        ...additionalHostJssStyle,
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
+        display: 'flex',
         flex: 1,
+        alignItems: 'center',
         width: 'max(100%, 2ch)', // show at least 2 characters in very narrow containers
         height: '100%',
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
@@ -98,9 +108,26 @@ export const getFunctionalComponentInputBaseStyles = (
         background: colorFrosted,
         color: colorContrastMedium,
       }),
-      '&:focus-within': {
+      '&:not(:has(input:disabled)):focus-within': {
         borderColor: formStateBorderHoverColor,
+        ...forcedColorsMediaQuery({
+          outline: '2px solid Highlight',
+          outlineOffset: '2px',
+        }),
       },
+      ...(isDisabled && {
+        ...mergeDeep(
+          { ...getDisabledBaseStyles() },
+          {
+            ...forcedColorsMediaQuery({
+              borderColor: 'GrayText',
+            }),
+          }
+        ),
+        '& > *': {
+          ...getDisabledBaseStyles(),
+        },
+      }),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&
@@ -110,15 +137,8 @@ export const getFunctionalComponentInputBaseStyles = (
           },
         })),
     },
-    ...(isLoading && {
-      spinner: {
-        font: textSmallStyle.font,
-        width: fontLineHeight,
-        height: fontLineHeight,
-      },
-    }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

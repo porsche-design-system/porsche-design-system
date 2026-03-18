@@ -7,6 +7,7 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
@@ -51,10 +52,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         display: 'block',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(disabledOrLoading && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -70,6 +70,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         borderRadius: radiusFull,
         ...(disabledOrLoading && {
           pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+          ...forcedColorsMediaQuery({
+            borderColor: 'GrayText',
+          }),
         }),
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
@@ -87,6 +90,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${checkedIcon} center/contain no-repeat`,
           backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
         },
         '&::after': {
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
@@ -109,20 +115,19 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       alignSelf: 'flex-start',
       minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      ...(disabled && getDisabledBaseStyles()),
     },
     ...(loading && {
       spinner: {
+        '--p-spinner-size': `calc(${radioDimension} - 2px)`, // compensates the 1px border of the radio button
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: radioDimension,
-        height: radioDimension,
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled || loading, false, null, {
+    ...getFunctionalComponentLabelStyles(disabled, loading, false, null, {
       paddingTop: labelPaddingTop,
       paddingInlineStart: labelPaddingInlineStart,
     }),

@@ -1,5 +1,4 @@
 import { expect, Locator, test } from '@playwright/test';
-import { Theme } from '@porsche-design-system/components';
 import type { Components } from '@porsche-design-system/components/src/components';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
 import type { Page } from 'playwright';
@@ -2624,9 +2623,10 @@ test.describe('optgroups', () => {
 
     for (const child of children) {
       const value = await getProperty<string>(child, 'value');
-      const disabled = await getProperty<boolean>(child, 'disabled');
       const item = group.find((item) => item.value === value);
-      expect(disabled).toEqual(!!item.disabled);
+      // The option's own disabled state should be preserved
+      expect(await getProperty<boolean>(child, 'disabled')).toEqual(!!item.disabled);
+      // The parent's disabled state should be propagated
       expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
 
@@ -2662,8 +2662,9 @@ test.describe('optgroups', () => {
     expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
+      // The option's own disabled state should remain unchanged
       expect(await getProperty<boolean>(child, 'disabled')).toBeFalsy();
-      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
   });
 
