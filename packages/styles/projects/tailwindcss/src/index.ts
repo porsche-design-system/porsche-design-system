@@ -582,6 +582,15 @@ export const getTailwindcssTheme = () => {
 @utility prose-heading-2xl {
   @apply font-porsche-next not-italic font-normal text-2xl text-primary;
 }
+@utility prose-heading-3xl {
+  @apply font-porsche-next not-italic font-normal text-3xl text-primary;
+}
+@utility prose-heading-4xl {
+  @apply font-porsche-next not-italic font-normal text-4xl text-primary;
+}
+@utility prose-heading-5xl {
+  @apply font-porsche-next not-italic font-normal text-5xl text-primary;
+}
 
 /* Typography: Display */
 @utility prose-display-sm {
