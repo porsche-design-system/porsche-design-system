@@ -97,7 +97,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                         icon="none"
                         active={pathname?.includes(`${page.path}/`)}
                         onClick={() => onNavigate()}
-                        className={'w-full'}
+                        className={'w-full ps-static-sm'}
                       >
                         <Link href={link}>{page.name}</Link>
                       </PLinkPure>
