@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "inherit", align: center, color: inherit and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "2xl", align: normal, color: start and ellipsis: primary 1`] = `
 ":host {
   display: block;
 }
@@ -13,48 +13,38 @@ exports[`getComponentCss() > should return correct css for size: "inherit", alig
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
-  text-align: center;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-2xl);
+  color: var(--p-color-primary);
+  text-align: start;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for size: "inherit", align: normal, color: center and ellipsis: inherit 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
   font-size: inherit;
-  font-weight: 400;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: "large", align: center, color: inherit and ellipsis: true 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
-}
-.root {
-  all: unset;
-  display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
+  color: currentcolor;
   text-align: center;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-  font-weight: 400;
+  white-space: nowrap;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", align: center, color: inherit and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "lg", align: normal, color: center and ellipsis: inherit 1`] = `
 ":host {
   display: block;
 }
@@ -67,21 +57,18 @@ exports[`getComponentCss() > should return correct css for size: "medium", align
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-lg);
+  color: currentcolor;
   text-align: center;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  font-weight: 400;
+  white-space: nowrap;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: center, color: inherit and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "md", align: normal, color: center and ellipsis: inherit 1`] = `
 ":host {
   display: block;
 }
@@ -94,21 +81,18 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-md);
+  color: currentcolor;
   text-align: center;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 1rem;
-  font-weight: 600;
+  white-space: nowrap;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: inherit, color: inherit and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", align: normal, color: center and ellipsis: inherit 1`] = `
 ":host {
   display: block;
 }
@@ -121,21 +105,42 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  color: currentcolor;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for size: "sm", align: normal, color: inherit and ellipsis: inherit 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  color: currentcolor;
   text-align: inherit;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 1rem;
-  font-weight: 600;
+  white-space: nowrap;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "x-large", align: end, color: primary and ellipsis: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "xl", align: normal, color: end and ellipsis: primary 1`] = `
 ":host {
   display: block;
 }
@@ -148,18 +153,14 @@ exports[`getComponentCss() > should return correct css for size: "x-large", alig
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-xl);
   color: var(--p-color-primary);
   text-align: end;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  font-weight: 400;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "x-large", align: start, color: primary and ellipsis: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "xl", align: normal, color: start and ellipsis: primary 1`] = `
 ":host {
   display: block;
 }
@@ -172,18 +173,14 @@ exports[`getComponentCss() > should return correct css for size: "x-large", alig
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-xl);
   color: var(--p-color-primary);
   text-align: start;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  font-weight: 400;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "xx-large", align: start, color: primary and ellipsis: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"sm","xs":"md","s":"lg","m":"xl","l":"2xl","xl":"lg"}, align: normal, color: end and ellipsis: inherit 1`] = `
 ":host {
   display: block;
 }
@@ -196,71 +193,38 @@ exports[`getComponentCss() > should return correct css for size: "xx-large", ali
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-primary);
-  text-align: start;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
-  font-weight: 400;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"large","m":"x-large","l":"xx-large","xl":"large"}, align: end, color: inherit and ellipsis: false 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
-}
-.root {
-  all: unset;
-  display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+  color: currentcolor;
   text-align: end;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: 1rem;
-  font-weight: 600;
 }
 @media(min-width:480px) {
   .root {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-md);
   }
 }
 
 @media(min-width:760px) {
   .root {
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-lg);
   }
 }
 
 @media(min-width:1000px) {
   .root {
-    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-xl);
   }
 }
 
 @media(min-width:1300px) {
   .root {
-    font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-2xl);
   }
 }
 
 @media(min-width:1760px) {
   .root {
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-lg);
   }
 }
 "

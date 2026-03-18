@@ -152,12 +152,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -174,6 +168,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -329,12 +329,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -351,6 +345,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -538,12 +538,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -560,6 +554,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -687,7 +687,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -820,7 +820,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1040,12 +1040,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1062,6 +1056,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1191,7 +1191,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1325,7 +1325,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1481,12 +1481,6 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1503,6 +1497,12 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1649,7 +1649,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1836,12 +1836,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1858,6 +1852,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -2051,12 +2051,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2073,6 +2067,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -2238,12 +2238,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2260,6 +2254,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -2458,12 +2458,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2480,6 +2474,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 

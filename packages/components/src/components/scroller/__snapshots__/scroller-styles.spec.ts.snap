@@ -93,7 +93,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -211,7 +211,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -329,7 +329,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -447,7 +447,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -571,7 +571,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -697,7 +697,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -821,7 +821,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -937,7 +937,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }

@@ -43,7 +43,7 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -111,7 +111,7 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -179,7 +179,7 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -247,7 +247,7 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -315,7 +315,7 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }

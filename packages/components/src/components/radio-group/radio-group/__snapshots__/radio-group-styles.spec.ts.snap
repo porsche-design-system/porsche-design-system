@@ -1401,7 +1401,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(*:not([slot])) {
     opacity: 1 !important;
     color: GrayText !important;
@@ -1850,7 +1850,7 @@ slot[name="label-after"]::slotted(*) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -1880,7 +1880,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(*:not([slot])) {
     opacity: 1 !important;
     color: GrayText !important;
@@ -1982,7 +1982,7 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;

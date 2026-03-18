@@ -107,7 +107,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -441,7 +441,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -760,7 +760,7 @@ dialog::backdrop {
 .modal:dir(rtl) {
   transform: translateY(25vh);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -880,7 +880,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -1277,7 +1277,7 @@ dialog::backdrop {
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -1392,7 +1392,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -1806,7 +1806,7 @@ dialog::backdrop {
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
     border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .modal {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1835,7 +1835,7 @@ dialog::backdrop {
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
     border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .modal {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1864,7 +1864,7 @@ dialog::backdrop {
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
     border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .modal {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1981,7 +1981,7 @@ dialog::backdrop {
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -2100,7 +2100,7 @@ dialog::backdrop {
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -2219,7 +2219,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
