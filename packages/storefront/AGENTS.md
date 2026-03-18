@@ -25,6 +25,11 @@ yarn build:storefront
 
 # Run unit tests
 yarn test:unit:storefront
+
+# Run end-to-end, accessibility, and visual regression tests
+yarn test:e2e:storefront
+yarn test:a11y:storefront
+yarn test:vrt:storefront
 ```
 
 ## Prefer PDS Components

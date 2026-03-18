@@ -33,15 +33,30 @@ yarn test:unit:components-vue
 
 ## Usage
 
-### Plugin Registration
+### App-Level Provider
+
+```vue
+<script setup lang="ts">
+import { PorscheDesignSystemProvider, PButton, PLink } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+    <PButton>Click me</PButton>
+    <PLink href="/path">Link</PLink>
+  </PorscheDesignSystemProvider>
+</template>
+```
+
+### Optional Plugin Helper
 
 ```typescript
 import { createApp } from 'vue';
-import { PorscheDesignSystemPlugin } from '@porsche-design-system/components-vue';
+import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
 import App from './App.vue';
 
 const app = createApp(App);
-app.use(PorscheDesignSystemPlugin);
+app.use(createPorscheDesignSystem());
 app.mount('#app');
 ```
 

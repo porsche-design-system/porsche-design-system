@@ -27,34 +27,34 @@ yarn start:components-angular
 # Build wrapper
 yarn build:components-angular
 
-# Run unit tests (Karma)
+# Run unit tests
 yarn test:unit:components-angular
 ```
 
 ## Usage
 
-### Module Import
+### NgModule Setup
 
 ```typescript
+import { BrowserModule } from '@angular/platform-browser';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @NgModule({
-  imports: [PorscheDesignSystemModule],
+  imports: [BrowserModule, PorscheDesignSystemModule.load()],
 })
 export class AppModule {}
 ```
 
-### Standalone Components (Angular 14+)
+### Standalone App Setup
 
 ```typescript
-import { PButton, PLink } from '@porsche-design-system/components-angular';
+import { importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
-@Component({
-  standalone: true,
-  imports: [PButton, PLink],
-  // ...
-})
-export class MyComponent {}
+bootstrapApplication(AppComponent, {
+  providers: [importProvidersFrom(PorscheDesignSystemModule.load())],
+});
 ```
 
 ## Accessibility
@@ -68,7 +68,7 @@ All accessibility requirements from the root [`AGENTS.md`](../../AGENTS.md) appl
 
 ## Testing
 
-Tests use Karma and Jasmine. When modifying wrapper behavior:
+Tests use Vitest for wrapper logic and Karma/Jasmine for Angular integration. When modifying wrapper behavior:
 
 - Ensure wrapped components maintain accessibility
 - Verify ARIA attribute passthrough works correctly

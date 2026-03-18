@@ -1,7 +1,7 @@
 # AGENTS.md
 
-> This file provides context for AI coding assistants working in this repository.
-> See [agents.md](https://agents.md/) for the specification.
+> This file provides context for AI coding assistants working in this repository. See [agents.md](https://agents.md/)
+> for the specification.
 
 ## Overview
 
@@ -82,4 +82,3 @@ All UI code must:
 ## Quick Reference
 
 <!-- Add quick reference commands for common tasks -->
-

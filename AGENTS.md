@@ -12,10 +12,10 @@ The **Porsche Design System (PDS)** is a monorepo providing design tokens, web c
 | Layer              | Technology                                 |
 | ------------------ | ------------------------------------------ |
 | Package Manager    | Yarn 1.22 (workspaces)                     |
-| Node               | v22 (use Volta)                            |
+| Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
 | Styling            | JSS (CSS-in-JS), Tailwind CSS              |
-| Frameworks         | Angular 20, React 19, Vue 3, Next.js 15    |
+| Frameworks         | Angular 21, React 19, Vue 3, Next.js 15    |
 | Build              | Rollup, Vite, Webpack                      |
 | Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
 | Linting/Formatting | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
@@ -174,6 +174,15 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper
+
+## Agent Guidance Priority
+
+When multiple guidance files exist, prefer them in this order:
+
+1. The nearest package- or folder-level `AGENTS.md`
+2. Applicable Cursor rules from `.cursor/rules/`
+3. Root-level `AGENTS.md`
+4. `.github/instructions/*.instructions.md` for GitHub/Copilot-oriented guidance
 
 ## Quick Reference
 
