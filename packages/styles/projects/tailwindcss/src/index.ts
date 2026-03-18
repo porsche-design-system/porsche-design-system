@@ -143,6 +143,9 @@ import {
   spacingStaticXs,
   typescale2Xl,
   typescale2Xs,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
   typescaleLg,
   typescaleMd,
   typescaleSm,
@@ -223,6 +226,12 @@ export const getTailwindcssTheme = () => {
   --text-xl--line-height: ${leadingNormal};
   --text-2xl: ${typescale2Xl};
   --text-2xl--line-height: ${leadingNormal};
+  --text-3xl: ${typescale3Xl};
+  --text-3xl--line-height: ${leadingNormal};
+  --text-4xl: ${typescale4Xl};
+  --text-4xl--line-height: ${leadingNormal};
+  --text-5xl: ${typescale5Xl};
+  --text-5xl--line-height: ${leadingNormal};
 
   /* Breakpoint */
   --breakpoint-xs: ${breakpointXs}px;
