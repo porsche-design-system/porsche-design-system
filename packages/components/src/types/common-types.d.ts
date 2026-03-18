@@ -8,8 +8,6 @@ export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
 export type { HeadingSize } from '../utils/typography/heading-size';
 export type { HeadingTag } from '../utils/typography/heading-tag';
 export type { TextSize } from '../utils/typography/text-size';
-export type { TypographyAlign } from '../utils/typography/typography-align';
-export type { TypographyTextColor } from '../utils/typography/typography-text-color';
 export type { TypographyTextWeight } from '../utils/typography/typography-text-weight';
 export type { PropTypes, ValidatorFunction } from '../utils/validation/validateProps';
 

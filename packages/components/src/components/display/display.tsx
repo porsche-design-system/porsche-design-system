@@ -4,12 +4,12 @@ import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
 import { getComponentCss } from './display-styles';
 import {
+  DISPLAY_ALIGNS,
   DISPLAY_COLORS,
   DISPLAY_SIZES,
   DISPLAY_TAGS,
@@ -23,7 +23,7 @@ import {
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
-  align: AllowedTypes.oneOf<DisplayAlign>(TYPOGRAPHY_ALIGNS),
+  align: AllowedTypes.oneOf<DisplayAlign>(DISPLAY_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
   ellipsis: AllowedTypes.boolean,
 };
