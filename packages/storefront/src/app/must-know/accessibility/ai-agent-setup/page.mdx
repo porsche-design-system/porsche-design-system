@@ -14,7 +14,7 @@ export const metadata = {
     'AGENTS.md overview',
     'GitHub Copilot Instructions',
     'Cursor Rules',
-    'Accessibility rules template',
+    'Accessibility specific instructions',
     'Download instruction files',
     'Installation steps',
   ]}
@@ -34,7 +34,7 @@ Learn more at [agents.md](https://agents.md/).
 
 Recommended structure (monorepo example):
 
-```
+```markdown
 AGENTS.md
 packages/
 ├── package1/AGENTS.md
@@ -58,7 +58,7 @@ GitHub Copilot supports **custom instructions** through Markdown files in your r
 Create a file at `.github/copilot-instructions.md` in your repository root. This file applies to **all** Copilot
 interactions in your project.
 
-```
+```markdown
 .github/
 └── copilot-instructions.md
 ```
@@ -68,7 +68,7 @@ interactions in your project.
 For more granular control, add instruction files to `.github/instructions/` and include frontmatter specifying the
 target files using glob patterns:
 
-```
+```markdown
 .github/
 └── instructions/
     ├── accessibility.instructions.md    # Applies to all frontend files
