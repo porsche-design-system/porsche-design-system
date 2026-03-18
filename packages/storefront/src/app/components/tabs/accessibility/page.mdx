@@ -30,12 +30,12 @@ export const metadata = {
 | `role="tab"`              | Indicates the button serves as a tab control.                                           |
 | `role="tabpanel"`         | Indicates the `tabs-item` serves as a container for tabpanel content.                   |
 | `aria-label="STRING"`     | Adds accessible name to the `tabs-item`.                                                |
-| `aria-selected="BOOLEAN"` | Indicates the tab is selected/deselected and its associated tabpanel is visible/hidden. |
+| `aria-selected="BOOLEAN"` | Indicates whether the tab is selected and whether its associated tabpanel is visible. |
 
 ## Limitations
 
-Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
-attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
+define relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
 
 | ARIA            | Support |
 | --------------- | ------- |

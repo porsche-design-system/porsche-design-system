@@ -25,7 +25,7 @@ In the **controlled** approach, the `p-radio-group` state is externally managed 
 event to keep it in sync with your application logic. This approach is ideal for complex forms or when using a form
 library. Note that the component will still always update its internal value automatically when interacted with.
 
-In the **uncontrolled** approach, the `p-radio-group` automatically managing its own state and includes its value in
+In the **uncontrolled** approach, the `p-radio-group` automatically manages its own state and includes its value in
 form submissions through the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API.
 This is convenient for smaller forms or simple submissions.
 
@@ -39,7 +39,7 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 ## Slots
 
-Sometimes it's useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
+Sometimes it is useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
 **not** to define the corresponding property on the host element when a named slot is used (because a property
 definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is

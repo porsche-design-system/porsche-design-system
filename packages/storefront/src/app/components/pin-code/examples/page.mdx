@@ -23,7 +23,7 @@ In the **controlled** approach, the input state is externally managed using the 
 keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
 that the component will still always update its internal value automatically when interacted with.
 
-In the **uncontrolled** approach, the input behaves similar to a single native `<input type="text" />`, automatically
+In the **uncontrolled** approach, the input behaves similarly to a single native `<input type="text" />`, automatically
 managing its own state and including its value in form submissions through the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API.
 
@@ -47,17 +47,17 @@ value and OTP auto-suggestion on mobile.
 
 The `p-pin-code` component performs basic validation of the pasted value:
 
-- If the pasted string is too long the `p-pin-code` attempts to fill in the other inputs.
-- If the pasted value contains whitespaces, these will be removed.
-- If the value contains other characters than digits, the value can not be pasted.
+- If the pasted string is too long, `p-pin-code` attempts to fill the other inputs.
+- If the pasted value contains whitespace, it will be removed.
+- If the value contains characters other than digits, it cannot be pasted.
 
-Try copy+paste `1234` into any of the inputs in the example below.
+Try copying and pasting `1234` into any of the inputs in the example below.
 
 <ComponentStory story={pinCodeStory} />
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Sometimes it is useful to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
 Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
 named slot is used (because a property definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is

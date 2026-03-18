@@ -37,7 +37,7 @@ export const metadata = {
 | ------------------------- | --------------------------------------------------------------------------------------- |
 | `role="tablist"`          | Indicates that the element serves as a container for a set of tabs.                     |
 | `role="tab"`              | Indicates the button serves as a tab control.                                           |
-| `aria-selected="BOOLEAN"` | Indicates the tab is selected/deselected and its associated tabpanel is visible/hidden. |
+| `aria-selected="BOOLEAN"` | Indicates whether the tab is selected and whether its associated tabpanel is visible. |
 
 ## Development considerations
 
@@ -48,7 +48,7 @@ accessible you need to provide additional ARIA attributes, because every tab (`b
 attribute which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"`
 and the attribute `aria-labelledby` which points to the unique `id` of the corresponding tab (`button`).
 
-You must also take care of the **focus handling** of the `tabpanel`. Therefor the active tab panel must have an
+You must also take care of the **focus handling** of the `tabpanel`. Therefore, the active tab panel must have a
 `tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided focus
 style like this:
 
@@ -81,7 +81,7 @@ p-tabs-bar ~ [tabindex='0'][role='tabpanel'] {
 
 If the `p-tabs-bar` is used as a link list, the semantic of that UI component changes completely - from a **tabbed
 interface** where content changes happen **on-site** to a normal **list of links** where content changes are
-**route-based**. Therefor additional ARIA attributes **must not** be provided for tab identification! The `p-tabs-bar`
+**route-based**. Therefore, additional ARIA attributes **must not** be provided for tab identification. The `p-tabs-bar`
 component manages this also internally.
 
 To enhance accessibility even further, an `aria-current="page"` attribute should be provided to the active link.

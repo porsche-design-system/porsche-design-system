@@ -27,7 +27,7 @@ In the **controlled** approach, the checkbox state is externally managed using t
 to keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library.
 Note that the component will still always update its internal value automatically when interacted with.
 
-In the **uncontrolled** approach, the checkbox behaves similar to a native `<input type="checkbox" />`, automatically
+In the **uncontrolled** approach, the checkbox behaves similarly to a native `<input type="checkbox" />`, automatically
 managing its own state and including its value in form submissions through the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
 smaller forms or simple submissions.
@@ -45,14 +45,14 @@ for a checkbox that is used to set the state of a group of checkboxes at once. H
 state. In this case we recommend to use `checked=false` and `indeterminate=true`.
 
 **Note: The `indeterminate` attribute only affects how the checkbox is shown. The current value is hidden from the user,
-but the checkbox still keeps it's `checked` state. You can find more details in
+but the checkbox still keeps its `checked` state. You can find more details in
 [the specification](https://w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
 
 <ComponentStory story={checkboxStoryIndeterminate} />
 
 ## Slots
 
-Sometimes it's useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
+Sometimes it is useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
 **not** to define the corresponding property on the host element when a named slot is used (because a property
 definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
@@ -73,7 +73,7 @@ The <code>label-after</code> slot is not affected by a <code>disabled/loading</c
 
 ## Custom wrapped label (🧪Experimental)
 
-The `p-checkbox` component also supports a custom wrapped `label` by just wrapping the component within a `label` tag.
+The `p-checkbox` component also supports a custom wrapped `label` by wrapping the component in a `label` tag.
 This approach can be used if the `label` must be placed individually. The contents of the wrapping `label` must only
 contain raw text elements. If using this approach, the **styling and click functionality of the `label` must be
 controlled by the integrating team**. To prevent the `p-checkbox` from receiving focus when the wrapping label is
