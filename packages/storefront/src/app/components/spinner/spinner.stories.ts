@@ -67,7 +67,7 @@ export const spinnerStoryColor: Story<'p-spinner'> = {
     {
       tag: 'p-text',
       properties: {
-        className: 'text-[deeppink]',
+        style: { color: 'light-dark(mediumvioletred, deeppink)' },
         color: 'inherit',
       },
       children: [

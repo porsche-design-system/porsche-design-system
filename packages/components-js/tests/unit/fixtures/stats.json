@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 79158,
-    "gzipSize": 25369
+    "gzipSize": 25370
   },
   {
     "chunkShortName": "modal",
@@ -191,8 +191,8 @@
   },
   {
     "chunkShortName": "pagination",
-    "size": 6933,
-    "gzipSize": 3030
+    "size": 7036,
+    "gzipSize": 3043
   },
   {
     "chunkShortName": "pin-code",
