@@ -177,13 +177,6 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-typescale-4xl: ${typescale4Xl};
   --p-typescale-5xl: ${typescale5Xl};
 
-  --p-breakpoint-xs: ${breakpointXs}px;
-  --p-breakpoint-sm: ${breakpointSm}px;
-  --p-breakpoint-md: ${breakpointMd}px;
-  --p-breakpoint-lg: ${breakpointLg}px;
-  --p-breakpoint-xl: ${breakpointXl}px;
-  --p-breakpoint-2xl: ${breakpoint2Xl}px;
-
   --p-spacing-fluid-xs: ${spacingFluidXs};
   --p-spacing-fluid-sm: ${spacingFluidSm};
   --p-spacing-fluid-md: ${spacingFluidMd};
