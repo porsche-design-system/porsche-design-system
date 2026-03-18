@@ -84,6 +84,57 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Pagination`: Modernize visual appearance
   ([#4241](https://github.com/porsche-design-system/porsche-design-system/pull/4241))
 
+### Removed
+
+- `Emotion, Vanilla Extract` (added in `v4.0.0-beta.0`): `proseDisplayLgStyle`, `proseDisplayMdStyle`,
+  `proseDisplaySmStyle` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `SCSS` (added in `v4.0.0-beta.0`): `@mixin prose-display-lg()`, `@mixin prose-display-md()`,
+  `@mixin prose-display-sm()` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+### Deprecated
+
+- `Tailwind CSS`: `.prose-display-lg`, `.prose-display-md`, `.prose-display-sm`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+```diff
+- <h1 class="prose-display-lg">…</h1>
++ <h1 class="prose-heading-5xl">…</h1>
+
+- <h1 class="prose-display-md">…</h1>
++ <h1 class="prose-heading-4xl">…</h1>
+
+- <h1 class="prose-display-sm">…</h1>
++ <h1 class="prose-heading-3xl">…</h1>
+```
+
+- `SCSS`: `@mixin pds-display-large`, `@mixin pds-display-medium`, `@mixin pds-display-small`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+```diff
+- @include pds-display-large;
++ @include prose-heading-5xl;
+
+- @include pds-display-medium;
++ @include prose-heading-4xl;
+
+- @include pds-display-small;
++ @include prose-heading-3xl;
+```
+
+- `Emotion, Vanilla Extract`: `displayLargeStyle`, `displayMediumStyle`, `displaySmallStyle`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+```diff
+- ...displayLargeStyle,
++ ...proseHeading5XlStyle,
+
+- ...displayMediumStyle,
++ ...proseHeading4XlStyle,
+
+- ...displaySmallStyle,
++ ...proseHeading3XlStyle,
+```
+
 ## [4.0.0-beta.2] - 2026-03-11
 
 ### Added
