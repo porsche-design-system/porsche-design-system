@@ -35,22 +35,22 @@ const propTypes: PropTypes<typeof Heading> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  /** Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property. */
   @Prop() public tag?: HeadingTag;
 
-  /** Size of the component. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. */
+  /** Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. */
   @Prop() public size?: BreakpointCustomizable<HeadingSize> = '2xl';
 
-  /** The weight of the heading. */
+  /** The font weight of the heading. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability. */
   @Prop() public weight?: HeadingWeight = 'normal';
 
-  /** Text alignment of the component. */
+  /** Text alignment of the heading. */
   @Prop() public align?: HeadingAlign = 'start';
 
-  /** Basic text color variations. */
+  /** Text color of the heading. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, or 'inherit' to adopt the parent's color. */
   @Prop() public color?: HeadingColor = 'primary';
 
-  /** Adds an ellipsis to a single line of text if it overflows. */
+  /** Adds an ellipsis to a single line of text if it overflows the container width. */
   @Prop() public ellipsis?: boolean = false;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
