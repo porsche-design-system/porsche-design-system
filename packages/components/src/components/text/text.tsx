@@ -1,11 +1,12 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_SIZES, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './text-styles';
 import {
   getTextTagType,
   TEXT_ALIGNS,
   TEXT_COLORS,
+  TEXT_SIZES,
   TEXT_TAGS,
   TEXT_WEIGHTS,
   type TextAlign,

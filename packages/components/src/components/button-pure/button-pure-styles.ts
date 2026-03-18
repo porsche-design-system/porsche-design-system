@@ -1,9 +1,9 @@
 import { colorContrastLow, leadingNormal } from '../../styles/css-variables';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
-import type { ButtonPureColor } from './button-pure-utils';
+import type { ButtonPureColor, ButtonPureSize } from './button-pure-utils';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -17,7 +17,7 @@ export const getComponentCss = (
   isLoading: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<ButtonPureSize>,
   color: ButtonPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,

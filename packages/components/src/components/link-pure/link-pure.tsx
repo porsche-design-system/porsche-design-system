@@ -10,13 +10,13 @@ import {
   isSsrHydration,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
-  TEXT_SIZES,
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-pure-styles';
 import {
   LINK_PURE_COLORS,
+  LINK_PURE_SIZES,
   type LinkPureAlignLabel,
   type LinkPureAriaAttribute,
   type LinkPureColor,
@@ -28,7 +28,7 @@ import {
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<LinkPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  size: AllowedTypes.breakpoint<LinkPureSize>(TEXT_SIZES),
+  size: AllowedTypes.breakpoint<LinkPureSize>(LINK_PURE_SIZES),
   color: AllowedTypes.oneOf<LinkPureColor>(LINK_PURE_COLORS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
