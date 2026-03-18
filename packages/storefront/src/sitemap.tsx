@@ -424,46 +424,46 @@ export const sitemap: Routes = {
       ...getComponents(),
     }, // Assuming this is dynamically fetched or implemented elsewhere.
   },
-  styles: {
-    name: 'Styles',
-    path: '/styles',
+  stylesheets: {
+    name: 'Stylesheets',
+    path: '/stylesheets',
     type: 'CATEGORY',
     subPaths: {
       introduction: {
         name: 'Introduction',
-        path: '/styles/introduction',
+        path: '/stylesheets/introduction',
         type: 'PAGE',
       },
       color: {
         name: 'Color',
-        path: '/styles/color',
+        path: '/stylesheets/color',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/styles/color/examples',
+            path: '/stylesheets/color/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/styles/color/usage',
+            path: '/stylesheets/color/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/styles/color/api',
+            path: '/stylesheets/color/api',
             type: 'TAB',
           },
         },
       },
       'font-face': {
         name: 'Font Face',
-        path: '/styles/font-face',
+        path: '/stylesheets/font-face',
         type: 'PAGE',
       },
       normalize: {
         name: 'Normalize',
-        path: '/styles/normalize',
+        path: '/stylesheets/normalize',
         type: 'PAGE',
       },
     },
