@@ -6,7 +6,6 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { colorPrimary } from '../../styles/css-variables';
-import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getCss, HEADING_TAGS } from '../../utils';
 import {
   getNotificationContentJssStyle,
@@ -43,7 +42,9 @@ export const getComponentCss = (state: InlineNotificationState, hasAction: boole
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule({
+        all: 'unset',
+      }),
       'slot[name="heading"]': getHeadingJssStyle,
     },
     heading: getHeadingJssStyle,
