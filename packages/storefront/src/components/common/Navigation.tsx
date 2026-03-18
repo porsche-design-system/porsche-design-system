@@ -115,7 +115,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
-          © 2025 Dr. Ing. h.c. F. Porsche AG.
+          © {new Date().getFullYear()} Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
