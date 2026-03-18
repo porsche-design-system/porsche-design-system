@@ -1,35 +1,56 @@
-<div class="playground" title="should show whole text in thin and bold">
-  <p-text weight="regular" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text weight="semi-bold">The quick brown fox jumps over the lazy dog</p-text>
+<div class="playground" title="default">
+  <p-text>The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="size=2xs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, inherit">
+  <p-text size="2xs">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="xs">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="sm">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="md">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="lg">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="2xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="3xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="4xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="5xl">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="inherit" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="size={ base: '2xs', xs: 'xs', s: 'sm', m: 'md', l: 'lg', xl: 'xl' }">
+  <p-text size="{ base: '2xs', xs: 'xs', s: 'sm', m: 'md', l: 'lg', xl: 'xl' }">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+</div>
+
+<div class="playground" title="color=primary, contrast-higher, contrast-high, contrast-medium, success, warning, error, info, inherit">
+  <p-text color="primary">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="contrast-higher">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="contrast-high">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="contrast-medium">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="success">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="warning" class="skip-axe-core-test"
+  >The quick brown fox jumps over the lazy dog</p-text
+  >
+  <p-text color="error">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text color="info">The quick brown fox jumps over the lazy dog</p-text>
+  <!-- skip this axe-core test because it is just needed for vrt -->
+  <p-text color="inherit" class="skip-axe-core-test" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="weight=normal, semibold, bold">
+  <p-text weight="normal" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text weight="semibold">The quick brown fox jumps over the lazy dog</p-text>
   <p-text weight="bold">The quick brown fox jumps over the lazy dog</p-text>
 </div>
 
-<div class="playground" title="should show text with different color variants">
-  <p-text color="primary" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="contrast-high" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="contrast-medium" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="success" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="warning" class="skip-axe-core-test" style="color: deeppink"
-    >The quick brown fox jumps over the lazy dog</p-text
-  >
-  <p-text color="error" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text color="info" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
-  <!-- skip this axe-core test because it is just needed for vrt -->
-  <p-text color="inherit" class="skip-axe-core-test" style="color: deeppink"
-    >The quick brown fox jumps over the lazy dog</p-text
-  >
-</div>
-
-<div class="playground" title="should show text with different alignments">
-  <div style="text-align: center">
-    <p-text align="inherit">Inherit</p-text>
-  </div>
+<div class="playground" title="align=start, center, end, inherit">
   <p-text align="start">Start</p-text>
   <p-text align="center">Center</p-text>
   <p-text align="end">End</p-text>
+  <p-text align="inherit" style="text-align: center">Inherit</p-text>
 </div>
 
-<div class="playground" title="should cut off too long text">
+<div class="playground" title="ellipsis=true">
   <p-text ellipsis="true">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -44,20 +65,4 @@
   <p-text><cite>The quick brown fox jumps over the lazy dog</cite></p-text>
   <p-text><time>The quick brown fox jumps over the lazy dog</time></p-text>
   <p-text><legend>The quick brown fox jumps over the lazy dog</legend></p-text>
-</div>
-
-<div class="playground" title="should show text in different sizes">
-  <p-text size="xx-small">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="x-small">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text>The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="medium">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="large">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="x-large">The quick brown fox jumps over the lazy dog</p-text>
-  <p-text size="inherit" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
-</div>
-
-<div class="playground" title="should show text in different sizes on different viewports">
-  <p-text size="{ base: 'small', m: 'inherit', l: 'medium' }" style="font-size: 80px">
-    The quick brown fox jumps over the lazy dog
-  </p-text>
 </div>
