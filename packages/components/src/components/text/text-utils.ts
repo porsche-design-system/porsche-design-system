@@ -5,6 +5,7 @@ export type TextTag = (typeof TEXT_TAGS)[number];
 
 export const TEXT_COLORS = [
   'primary',
+  'contrast-higher',
   'contrast-high',
   'contrast-medium',
   'success',

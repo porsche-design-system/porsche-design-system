@@ -12,7 +12,6 @@ import {
 } from '../../styles/css-variables';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import type { IconSize } from '../icon/icon-utils';
 import type { FlagSize } from './flag-utils';
 
 /**
@@ -55,7 +54,7 @@ export const getComponentCss = (size: BreakpointCustomizable<FlagSize>): string 
         width: dimension,
         height: dimension,
         fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
-        ...buildResponsiveStyles(size, (s: IconSize) => ({
+        ...buildResponsiveStyles(size, (s: FlagSize) => ({
           fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
         })),
       },

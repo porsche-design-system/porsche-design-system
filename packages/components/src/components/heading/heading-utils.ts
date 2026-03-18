@@ -4,7 +4,7 @@ import { hasSpecificDirectChildTag } from '../../utils';
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingTag = (typeof HEADING_TAGS)[number];
 
-export const HEADING_COLORS = ['primary', 'contrast-high', 'contrast-medium', 'inherit'] as const;
+export const HEADING_COLORS = ['primary', 'contrast-higher', 'contrast-high', 'contrast-medium', 'inherit'] as const;
 export type HeadingColor = (typeof HEADING_COLORS)[number];
 
 /** @deprecated */

@@ -1,6 +1,8 @@
 import {
   colorContrastHigh,
+  colorContrastHigher,
   colorContrastLow,
+  colorContrastLower,
   colorContrastMedium,
   colorError,
   colorInfo,
@@ -11,12 +13,14 @@ import {
 
 export const colorMap = {
   primary: colorPrimary,
+  'contrast-higher': colorContrastHigher,
   'contrast-high': colorContrastHigh,
   'contrast-medium': colorContrastMedium,
   'contrast-low': colorContrastLow,
+  'contrast-lower': colorContrastLower,
   success: colorSuccess,
   warning: colorWarning,
   error: colorError,
   info: colorInfo,
-  inherit: 'inherit',
+  inherit: 'currentcolor',
 } as const;
