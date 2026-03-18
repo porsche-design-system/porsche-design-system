@@ -568,7 +568,7 @@ export const getTailwindcssTheme = () => {
 
 /* Typography: Heading */
 @utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
+  @apply font-porsche-next not-italic font-semibold text-sm text-primary;
 }
 @utility prose-heading-md {
   @apply font-porsche-next not-italic font-normal text-md text-primary;
