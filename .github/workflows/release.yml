@@ -23,7 +23,7 @@ on:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write
 
 jobs:
   check-publication-status:
@@ -80,9 +80,6 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for OIDC
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -108,9 +105,6 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for OIDC
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -136,9 +130,6 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for OIDC
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -164,9 +155,6 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for OIDC
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
