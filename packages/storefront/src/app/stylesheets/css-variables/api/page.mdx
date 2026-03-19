@@ -1,0 +1,253 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  colorCanvas,
+  colorSurface,
+  colorFrosted,
+  colorFrostedSoft,
+  colorBackdrop,
+  colorPrimary,
+  colorContrastHigher,
+  colorContrastHigh,
+  colorContrastMedium,
+  colorContrastLow,
+  colorContrastLower,
+  colorInfo,
+  colorInfoMedium,
+  colorInfoLow,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
+  colorSuccess,
+  colorSuccessMedium,
+  colorSuccessLow,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
+  colorWarning,
+  colorWarningMedium,
+  colorWarningLow,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
+  colorError,
+  colorErrorMedium,
+  colorErrorLow,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
+  colorFocus,
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  fontWeightBold,
+  leadingNormal,
+  typescale2Xs,
+  typescaleXs,
+  typescaleSm,
+  typescaleMd,
+  typescaleLg,
+  typescaleXl,
+  typescale2Xl,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
+  spacingFluidXs,
+  spacingFluidSm,
+  spacingFluidMd,
+  spacingFluidLg,
+  spacingFluidXl,
+  spacingFluid2Xl,
+  spacingStaticXs,
+  spacingStaticSm,
+  spacingStaticMd,
+  spacingStaticLg,
+  spacingStaticXl,
+  spacingStatic2Xl,
+  radiusXs,
+  radiusSm,
+  radiusMd,
+  radiusLg,
+  radiusXl,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  blurFrosted,
+  shadowSm,
+  shadowMd,
+  shadowLg,
+  easeInOut,
+  easeIn,
+  easeOut,
+  durationSm,
+  durationMd,
+  durationLg,
+  durationXl,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'Styles: CSS Variables - Porsche Design System',
+  description: 'Detailed API reference for all CSS variables.',
+};
+
+# CSS Variables
+
+<TableOfContents headings={['Color', 'Typography', 'Spacing', 'Border Radius', 'Blur', 'Shadow', 'Motion']} />
+
+## Color
+
+### Background
+
+| Color                                                                                               | CSS variable                                                      | Description                                                                                      | Value                                                   |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| <div className="bg-(--p-color-canvas) w-10 h-10 rounded-md border border-contrast-low"></div>       | <code className="whitespace-nowrap">--p-color-canvas</code>       | Applies the **canvas** color, typically used for surfaces.                                       | <code className="select-none">{colorCanvas}</code>      |
+| <div className="bg-(--p-color-surface) w-10 h-10 rounded-md border border-contrast-low"></div>      | <code className="whitespace-nowrap">--p-color-surface</code>      | Applies the **surface** color, typically used for surfaces.                                      | <code className="select-none">{colorSurface}</code>     |
+| <div className="bg-(--p-color-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | <code className="whitespace-nowrap">--p-color-frosted</code>      | Applies the **frosted** color, typically used as a background in combination with a blur effect. | <code className="select-none">{colorFrosted}</code>     |
+| <div className="bg-(--p-color-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | <code className="whitespace-nowrap">--p-color-frosted-soft</code> | Applies the **frosted** color, typically used as a background `:hover`.                          | <code className="select-none">{colorFrostedSoft}</code> |
+| <div className="bg-(--p-color-backdrop) w-10 h-10 rounded-md border border-contrast-low"></div>     | <code className="whitespace-nowrap">--p-color-backdrop</code>     | Applies the **backdrop** color, typically used for backdrops.                                    | <code className="select-none">{colorBackdrop}</code>    |
+
+### Foreground
+
+| Color                                                                                                  | CSS variable                                                         | Description                                                                                                        | Value                                                      |
+| ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| <div className="bg-(--p-color-primary) w-10 h-10 rounded-md border border-contrast-low"></div>         | <code className="whitespace-nowrap">--p-color-primary</code>         | Applies the **primary** color, typically used for text.                                                            | <code className="select-none">{colorPrimary}</code>        |
+| <div className="bg-(--p-color-contrast-higher) w-10 h-10 rounded-md border border-contrast-low"></div> | <code className="whitespace-nowrap">--p-color-contrast-higher</code> | Applies the **contrast-higher** color, typically used for text.                                                    | <code className="select-none">{colorContrastHigher}</code> |
+| <div className="bg-(--p-color-contrast-high) w-10 h-10 rounded-md border border-contrast-low"></div>   | <code className="whitespace-nowrap">--p-color-contrast-high</code>   | Applies the **contrast-high** color, typically used for text.                                                      | <code className="select-none">{colorContrastHigh}</code>   |
+| <div className="bg-(--p-color-contrast-medium) w-10 h-10 rounded-md border border-contrast-low"></div> | <code className="whitespace-nowrap">--p-color-contrast-medium</code> | Applies the **contrast-medium** color, typically used for text.                                                    | <code className="select-none">{colorContrastMedium}</code> |
+| <div className="bg-(--p-color-contrast-low) w-10 h-10 rounded-md border border-contrast-low"></div>    | <code className="whitespace-nowrap">--p-color-contrast-low</code>    | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | <code className="select-none">{colorContrastLow}</code>    |
+| <div className="bg-(--p-color-contrast-lower) w-10 h-10 rounded-md border border-contrast-low"></div>  | <code className="whitespace-nowrap">--p-color-contrast-lower</code>  | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | <code className="select-none">{colorContrastLower}</code>  |
+
+### Semantic
+
+| Color                                                                                                       | CSS variable                                                              | Description                                                                                            | Value                                                          |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| <div className="bg-(--p-color-info) w-10 h-10 rounded-md border border-contrast-low"></div>                 | <code className="whitespace-nowrap">--p-color-info</code>                 | Applies the **info** color, typically used for text.                                                   | <code className="select-none">{colorInfo}</code>               |
+| <div className="bg-(--p-color-info-medium) w-10 h-10 rounded-md border border-contrast-low"></div>          | <code className="whitespace-nowrap">--p-color-info-medium</code>          | Applies the **info** color, typically used for text or border.                                         | <code className="select-none">{colorInfoMedium}</code>         |
+| <div className="bg-(--p-color-info-low) w-10 h-10 rounded-md border border-contrast-low"></div>             | <code className="whitespace-nowrap">--p-color-info-low</code>             | Applies the **info** color, typically used for text or border.                                         | <code className="select-none">{colorInfoLow}</code>            |
+| <div className="bg-(--p-color-info-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>         | <code className="whitespace-nowrap">--p-color-info-frosted</code>         | Applies the **info-frosted** color, typically used as background in combination with a blur effect.    | <code className="select-none">{colorInfoFrosted}</code>        |
+| <div className="bg-(--p-color-info-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div>    | <code className="whitespace-nowrap">--p-color-info-frosted-soft</code>    | Applies the **info-frosted-soft** color, typically used as background `:hover`.                        | <code className="select-none">{colorInfoFrostedSoft}</code>    |
+| <div className="bg-(--p-color-success) w-10 h-10 rounded-md border border-contrast-low"></div>              | <code className="whitespace-nowrap">--p-color-success</code>              | Applies the **success** color, typically used for text.                                                | <code className="select-none">{colorSuccess}</code>            |
+| <div className="bg-(--p-color-success-medium) w-10 h-10 rounded-md border border-contrast-low"></div>       | <code className="whitespace-nowrap">--p-color-success-medium</code>       | Applies the **success** color, typically used for text or border.                                      | <code className="select-none">{colorSuccessMedium}</code>      |
+| <div className="bg-(--p-color-success-low) w-10 h-10 rounded-md border border-contrast-low"></div>          | <code className="whitespace-nowrap">--p-color-success-low</code>          | Applies the **success** color, typically used for text or border.                                      | <code className="select-none">{colorSuccessLow}</code>         |
+| <div className="bg-(--p-color-success-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | <code className="whitespace-nowrap">--p-color-success-frosted</code>      | Applies the **success-frosted** color, typically used as background in combination with a blur effect. | <code className="select-none">{colorSuccessFrosted}</code>     |
+| <div className="bg-(--p-color-success-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | <code className="whitespace-nowrap">--p-color-success-frosted-soft</code> | Applies the **success-frosted-soft** color, typically used as background `:hover`.                     | <code className="select-none">{colorSuccessFrostedSoft}</code> |
+| <div className="bg-(--p-color-warning) w-10 h-10 rounded-md border border-contrast-low"></div>              | <code className="whitespace-nowrap">--p-color-warning</code>              | Applies the **warning** color, typically used for text.                                                | <code className="select-none">{colorWarning}</code>            |
+| <div className="bg-(--p-color-warning-medium) w-10 h-10 rounded-md border border-contrast-low"></div>       | <code className="whitespace-nowrap">--p-color-warning-medium</code>       | Applies the **warning** color, typically used for text or border.                                      | <code className="select-none">{colorWarningMedium}</code>      |
+| <div className="bg-(--p-color-warning-low) w-10 h-10 rounded-md border border-contrast-low"></div>          | <code className="whitespace-nowrap">--p-color-warning-low</code>          | Applies the **warning** color, typically used for text or border.                                      | <code className="select-none">{colorWarningLow}</code>         |
+| <div className="bg-(--p-color-warning-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | <code className="whitespace-nowrap">--p-color-warning-frosted</code>      | Applies the **warning-frosted** color, typically used as background in combination with a blur effect. | <code className="select-none">{colorWarningFrosted}</code>     |
+| <div className="bg-(--p-color-warning-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | <code className="whitespace-nowrap">--p-color-warning-frosted-soft</code> | Applies the **warning-frosted-soft** color, typically used as background `:hover`.                     | <code className="select-none">{colorWarningFrostedSoft}</code> |
+| <div className="bg-(--p-color-error) w-10 h-10 rounded-md border border-contrast-low"></div>                | <code className="whitespace-nowrap">--p-color-error</code>                | Applies the **error** color, typically used for text.                                                  | <code className="select-none">{colorError}</code>              |
+| <div className="bg-(--p-color-error-medium) w-10 h-10 rounded-md border border-contrast-low"></div>         | <code className="whitespace-nowrap">--p-color-error-medium</code>         | Applies the **error** color, typically used for text or border.                                        | <code className="select-none">{colorErrorMedium}</code>        |
+| <div className="bg-(--p-color-error-low) w-10 h-10 rounded-md border border-contrast-low"></div>            | <code className="whitespace-nowrap">--p-color-error-low</code>            | Applies the **error** color, typically used for text or border.                                        | <code className="select-none">{colorErrorLow}</code>           |
+| <div className="bg-(--p-color-error-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>        | <code className="whitespace-nowrap">--p-color-error-frosted</code>        | Applies the **error-frosted** color, typically used as background in combination with a blur effect .  | <code className="select-none">{colorErrorFrosted}</code>       |
+| <div className="bg-(--p-color-error-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div>   | <code className="whitespace-nowrap">--p-color-error-frosted-soft</code>   | Applies the **error-frosted-soft** color, typically used as background `:hover`.                       | <code className="select-none">{colorErrorFrostedSoft}</code>   |
+
+### A11y
+
+| Color                                                                                        | CSS variable                                               | Description                                                                             | Value                                             |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| <div className="bg-(--p-color-focus) w-10 h-10 rounded-md border border-contrast-low"></div> | <code className="whitespace-nowrap">--p-color-focus</code> | Applies the **focus** color, typically used as the outline for `:focus-visible` states. | <code className="select-none">{colorFocus}</code> |
+
+## Typography
+
+### Font Family
+
+| CSS variable                                                     | Description                                                         | Value                                                  |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
+| <code className="whitespace-nowrap">--p-font-porsche-next</code> | Applies the **Porsche Next** font family along with fallback fonts. | <code className="select-none">{fontPorscheNext}</code> |
+
+### Font Weight
+
+| CSS variable                                                        | Description                                                                    | Value                                                     |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-font-weight-normal</code>   | Applies the **regular** font weight optimized for the Porsche Next typeface.   | <code className="select-none">{fontWeightNormal}</code>   |
+| <code className="whitespace-nowrap">--p-font-weight-semibold</code> | Applies the **semi-bold** font weight optimized for the Porsche Next typeface. | <code className="select-none">{fontWeightSemibold}</code> |
+| <code className="whitespace-nowrap">--p-font-weight-bold</code>     | Applies the **bold** font weight optimized for the Porsche Next typeface.      | <code className="select-none">{fontWeightBold}</code>     |
+
+### Line Height
+
+| CSS variable                                                  | Description                                                                                 | Value                                                |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-leading-normal</code> | Applies a dynamic default line height specifically optimized for the Porsche Next typeface. | <code className="select-none">{leadingNormal}</code> |
+
+### Typescale
+
+| CSS variable                                                 | Description                                                       | Value                                               |
+| ------------------------------------------------------------ | ----------------------------------------------------------------- | --------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-typescale-2xs</code> | Applies the **2x-small** font size for the Porsche Next typeface. | <code className="select-none">{typescale2Xs}</code> |
+| <code className="whitespace-nowrap">--p-typescale-xs</code>  | Applies the **x-small** font size for the Porsche Next typeface.  | <code className="select-none">{typescaleXs}</code>  |
+| <code className="whitespace-nowrap">--p-typescale-sm</code>  | Applies the **small** font size for the Porsche Next typeface.    | <code className="select-none">{typescaleSm}</code>  |
+| <code className="whitespace-nowrap">--p-typescale-md</code>  | Applies the **medium** font size for the Porsche Next typeface.   | <code className="select-none">{typescaleMd}</code>  |
+| <code className="whitespace-nowrap">--p-typescale-lg</code>  | Applies the **large** font size for the Porsche Next typeface.    | <code className="select-none">{typescaleLg}</code>  |
+| <code className="whitespace-nowrap">--p-typescale-xl</code>  | Applies the **x-large** font size for the Porsche Next typeface.  | <code className="select-none">{typescaleXl}</code>  |
+| <code className="whitespace-nowrap">--p-typescale-2xl</code> | Applies the **2x-large** font size for the Porsche Next typeface. | <code className="select-none">{typescale2Xl}</code> |
+| <code className="whitespace-nowrap">--p-typescale-3xl</code> | Applies the **3x-large** font size for the Porsche Next typeface. | <code className="select-none">{typescale3Xl}</code> |
+| <code className="whitespace-nowrap">--p-typescale-4xl</code> | Applies the **4x-large** font size for the Porsche Next typeface. | <code className="select-none">{typescale4Xl}</code> |
+| <code className="whitespace-nowrap">--p-typescale-5xl</code> | Applies the **5x-large** font size for the Porsche Next typeface. | <code className="select-none">{typescale5Xl}</code> |
+
+## Spacing
+
+### Fluid
+
+| CSS variable                                                     | Description                             | Value                                                  |
+| ---------------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------ |
+| <code className="whitespace-nowrap">--p-spacing-fluid-xs</code>  | Applies the **x-small** fluid spacing.  | <code className="select-none">{spacingFluidXs}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-fluid-sm</code>  | Applies the **small** fluid spacing.    | <code className="select-none">{spacingFluidSm}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-fluid-md</code>  | Applies the **medium** fluid spacing.   | <code className="select-none">{spacingFluidMd}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-fluid-lg</code>  | Applies the **large** fluid spacing.    | <code className="select-none">{spacingFluidLg}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-fluid-xl</code>  | Applies the **x-large** fluid spacing.  | <code className="select-none">{spacingFluidXl}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-fluid-2xl</code> | Applies the **2x-large** fluid spacing. | <code className="select-none">{spacingFluid2Xl}</code> |
+
+### Static
+
+| CSS variable                                                      | Description                              | Value                                                   |
+| ----------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-spacing-static-xs</code>  | Applies the **x-small** static spacing.  | <code className="select-none">{spacingStaticXs}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-static-sm</code>  | Applies the **small** static spacing.    | <code className="select-none">{spacingStaticSm}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-static-md</code>  | Applies the **medium** static spacing.   | <code className="select-none">{spacingStaticMd}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-static-lg</code>  | Applies the **large** static spacing.    | <code className="select-none">{spacingStaticLg}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-static-xl</code>  | Applies the **x-large** static spacing.  | <code className="select-none">{spacingStaticXl}</code>  |
+| <code className="whitespace-nowrap">--p-spacing-static-2xl</code> | Applies the **2x-large** static spacing. | <code className="select-none">{spacingStatic2Xl}</code> |
+
+## Border Radius
+
+| CSS variable                                               | Description                                  | Value                                             |
+| ---------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-radius-xs</code>   | Applies a **x-small** `border-radius`.       | <code className="select-none">{radiusXs}</code>   |
+| <code className="whitespace-nowrap">--p-radius-sm</code>   | Applies a **small** `border-radius`.         | <code className="select-none">{radiusSm}</code>   |
+| <code className="whitespace-nowrap">--p-radius-md</code>   | Applies a **medium** `border-radius`.        | <code className="select-none">{radiusMd}</code>   |
+| <code className="whitespace-nowrap">--p-radius-lg</code>   | Applies a **large** `border-radius`.         | <code className="select-none">{radiusLg}</code>   |
+| <code className="whitespace-nowrap">--p-radius-xl</code>   | Applies a **x-large** `border-radius`.       | <code className="select-none">{radiusXl}</code>   |
+| <code className="whitespace-nowrap">--p-radius-2xl</code>  | Applies a **2x-large** `border-radius`.      | <code className="select-none">{radius2Xl}</code>  |
+| <code className="whitespace-nowrap">--p-radius-3xl</code>  | Applies a **3x-large** `border-radius`.      | <code className="select-none">{radius3Xl}</code>  |
+| <code className="whitespace-nowrap">--p-radius-4xl</code>  | Applies a **4x-large** `border-radius`.      | <code className="select-none">{radius4Xl}</code>  |
+| <code className="whitespace-nowrap">--p-radius-full</code> | Applies a **fully** rounded `border-radius`. | <code className="select-none">{radiusFull}</code> |
+
+## Blur
+
+| CSS variable                                                | Description                                                                                                                    | Value                                              |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-blur-frosted</code> | Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color. | <code className="select-none">{blurFrosted}</code> |
+
+## Shadow
+
+| CSS variable                                             | Description                        | Value                                           |
+| -------------------------------------------------------- | ---------------------------------- | ----------------------------------------------- |
+| <code className="whitespace-nowrap">--p-shadow-sm</code> | Applies a **small** `box-shadow`.  | <code className="select-none">{shadowSm}</code> |
+| <code className="whitespace-nowrap">--p-shadow-md</code> | Applies a **medium** `box-shadow`. | <code className="select-none">{shadowMd}</code> |
+| <code className="whitespace-nowrap">--p-shadow-lg</code> | Applies a **large** `box-shadow`.  | <code className="select-none">{shadowLg}</code> |
+
+## Motion
+
+### Duration
+
+| CSS variable                                               | Description                                    | Value                                             |
+| ---------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| <code className="whitespace-nowrap">--p-duration-sm</code> | Applies a **short** `transition-duration`.     | <code className="select-none">{durationSm}</code> |
+| <code className="whitespace-nowrap">--p-duration-md</code> | Applies a **moderate** `transition-duration`.  | <code className="select-none">{durationMd}</code> |
+| <code className="whitespace-nowrap">--p-duration-lg</code> | Applies a **long** `transition-duration`.      | <code className="select-none">{durationLg}</code> |
+| <code className="whitespace-nowrap">--p-duration-xl</code> | Applies a **very long** `transition-duration`. | <code className="select-none">{durationXl}</code> |
+
+### Easing
+
+| CSS variable                                               | Description                                         | Value                                            |
+| ---------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------ |
+| <code className="whitespace-nowrap">--p-ease-in-out</code> | Applies an **in-out** `transition-timing-function`. | <code className="select-none">{easeInOut}</code> |
+| <code className="whitespace-nowrap">--p-ease-in</code>     | Applies an **in** `transition-timing-function`.     | <code className="select-none">{easeIn}</code>    |
+| <code className="whitespace-nowrap">--p-ease-out</code>    | Applies an **out** `transition-timing-function`.    | <code className="select-none">{easeOut}</code>   |

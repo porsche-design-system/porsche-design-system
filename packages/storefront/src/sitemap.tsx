@@ -434,24 +434,36 @@ export const sitemap: Routes = {
         path: '/stylesheets/introduction',
         type: 'PAGE',
       },
-      color: {
-        name: 'Color',
-        path: '/stylesheets/color',
+      'css-variables': {
+        name: 'CSS Variables',
+        path: '/stylesheets/css-variables',
         type: 'PAGE',
         subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/stylesheets/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/stylesheets/color/usage',
+          introduction: {
+            name: 'Introduction',
+            path: '/stylesheets/css-variables/introduction',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/stylesheets/color/api',
+            path: '/stylesheets/css-variables/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'color-scheme': {
+        name: 'Color Scheme',
+        path: '/stylesheets/color-scheme',
+        type: 'PAGE',
+        subPaths: {
+          introduction: {
+            name: 'Introduction',
+            path: '/stylesheets/color-scheme/introduction',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/stylesheets/color-scheme/api',
             type: 'TAB',
           },
         },
