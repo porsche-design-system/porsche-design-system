@@ -234,12 +234,6 @@ export function formatAllowedValues(propMeta: any): { type: string; descSuffix: 
   return { type: type || 'unknown', descSuffix: '' };
 }
 
-function escapeMarkdownTableCell(text: string): string {
-  return (text || '')
-    .replace(/\\/g, '\\\\')
-    .replace(/\n/g, ' ')
-    .replace(/\|/g, '\\|');
-}
 
 export function formatComponentApi(tagName: string, meta: any): string {
   if (!meta) return '';
@@ -264,58 +258,46 @@ export function formatComponentApi(tagName: string, meta: any): string {
 
   if (meta.propsMeta && Object.keys(meta.propsMeta).length > 0) {
     lines.push('#### Properties\n');
-      const description = escapeMarkdownTableCell(propMeta.description || '');
+    lines.push('| Property | Type | Default | Description |');
     lines.push('|----------|------|---------|-------------|');
 
     for (const [propName, propMeta] of Object.entries(meta.propsMeta) as [string, any][]) {
       if (propMeta.isDeprecated) continue;
       const { type, descSuffix } = formatAllowedValues(propMeta);
       const defaultValue = propMeta.defaultValue !== null ? `\`${JSON.stringify(propMeta.defaultValue)}\`` : '-';
-      const description = (propMeta.description || '')
-        .replace(/\\/g, '\\\\')
-        .replace(/\n/g, ' ')
-        .replace(/\|/g, '\\|');
-      const description = (eventMeta.description || '')
-        .replace(/\n/g, ' ')
-        .replace(/\\/g, '\\\\')
-        .replace(/\|/g, '\\|');
+      const description = escapeMarkdownTableCell(propMeta.description || '');
+      const required = propMeta.isRequired ? ' **(required)**' : '';
       const breakpoint = propMeta.isBreakpointCustomizable ? ' *(breakpoint customizable)*' : '';
       lines.push(
         `| \`${propName}\` | \`${type}\` | ${defaultValue} | ${description}${required}${breakpoint}${descSuffix} |`
       );
     }
     lines.push('');
-      const description = escapeMarkdownTableCell(eventMeta.description || '');
+  }
 
   if (meta.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
     lines.push('#### Events\n');
     lines.push('| Event | Type | Description |');
     lines.push('|-------|------|-------------|');
 
-      const description = (slotMeta.description || '')
-        .replace(/\n/g, ' ')
-        .replace(/\\/g, '\\\\')
-        .replace(/\|/g, '\\|');
+    for (const [eventName, eventMeta] of Object.entries(meta.eventsMeta) as [string, any][]) {
       if (eventMeta.isDeprecated) continue;
       const type = eventMeta.typeDetail || eventMeta.type || 'void';
-      const description = (eventMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
+      const description = escapeMarkdownTableCell(eventMeta.description || '');
       lines.push(`| \`${eventName}\` | \`${type}\` | ${description} |`);
     }
     lines.push('');
-      const description = escapeMarkdownTableCell(slotMeta.description || '');
+  }
 
   if (meta.slotsMeta && Object.keys(meta.slotsMeta).length > 0) {
     lines.push('#### Slots\n');
     lines.push('| Slot | Description |');
     lines.push('|------|-------------|');
 
-      const description = (varMeta.description || '')
-        .replace(/\n/g, ' ')
-        .replace(/\\/g, '\\\\')
-        .replace(/\|/g, '\\|');
+    for (const [slotName, slotMeta] of Object.entries(meta.slotsMeta) as [string, any][]) {
       if (slotMeta.isDeprecated) continue;
       const name = slotName === '' ? '(default)' : `\`${slotName}\``;
-      const description = (slotMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
+      const description = escapeMarkdownTableCell(slotMeta.description || '');
       const required = slotMeta.isRequired ? ' **(required)**' : '';
       lines.push(`| ${name} | ${description}${required} |`);
     }
@@ -326,10 +308,10 @@ export function formatComponentApi(tagName: string, meta: any): string {
     lines.push('#### CSS Custom Properties\n');
     lines.push('| Variable | Default | Description |');
     lines.push('|----------|---------|-------------|');
-      const description = escapeMarkdownTableCell(varMeta.description || '');
+
     for (const [varName, varMeta] of Object.entries(meta.cssVariablesMeta) as [string, any][]) {
       const defaultValue = varMeta.defaultValue ? `\`${varMeta.defaultValue}\`` : '-';
-      const description = (varMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
+      const description = escapeMarkdownTableCell(varMeta.description || '');
       lines.push(`| \`${varName}\` | ${defaultValue} | ${description} |`);
     }
     lines.push('');
