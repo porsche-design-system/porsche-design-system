@@ -15,11 +15,10 @@ import {
   SKIP_DIRECTORIES,
   sourceDir,
 } from './config.js';
-import { buildAllItems } from './db-seed.js';
 import { formatAllowedValues, loadComponentMeta, processContent } from './transform.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 1 — Walk source and copy page.mdx files (skip configurator dirs)
+// Step 1 — Walk source and copy page.mdx files
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function walkAndCopy(dir: string, relative: string = '') {
@@ -35,18 +34,18 @@ async function walkAndCopy(dir: string, relative: string = '') {
         continue;
       }
 
-      if (entry.name === 'configurator') {
-        const pagePath = path.join(fullPath, 'page.mdx');
-        try {
-          const content = await fs.readFile(pagePath, 'utf-8');
-          const componentName = path.basename(path.dirname(fullPath));
-          componentDescriptions[componentName] = content;
-          console.log(`  desc: ${componentName} (from configurator)`);
-        } catch {
-          // No page.mdx in configurator
-        }
-        continue;
-      }
+      // if (entry.name === 'configurator') {
+      //   const pagePath = path.join(fullPath, 'page.mdx');
+      //   try {
+      //     const content = await fs.readFile(pagePath, 'utf-8');
+      //     const componentName = path.basename(path.dirname(fullPath));
+      //     componentDescriptions[componentName] = content;
+      //     console.log(`  desc: ${componentName} (from configurator)`);
+      //   } catch {
+      //     // No page.mdx in configurator
+      //   }
+      //   continue;
+      // }
 
       await walkAndCopy(fullPath, newRelativePath);
     } else if (entry.isFile() && entry.name === 'page.mdx') {
@@ -150,7 +149,7 @@ async function generateFrameworkStories() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 5 — Generate quick-reference pages for each component (was Step 4)
+// Step 5 — Generate quick-reference pages for each component
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function generateQuickRefs() {
@@ -283,86 +282,86 @@ async function generateSharedReferences() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 7 — Truncate changelog to the last N versions (was Step 6)
+// Step 7 — Truncate changelog to the last N versions
 // ──────────────────────────────────────────────────────────────────────────────
 // TODO: Currently going from the bottom up, needs to gather from newest to oldest.
-async function truncateChangelog() {
-  const changelogPath = path.join(outputDir, 'news', 'changelog', 'page.mdx');
-  try {
-    const content = await fs.readFile(changelogPath, 'utf-8');
-
-    const versionRegex = /^## \[/gm;
-    const indices: number[] = [];
-    let match: RegExpExecArray | null;
-    while ((match = versionRegex.exec(content)) !== null) {
-      indices.push(match.index);
-    }
-
-    if (indices.length > CHANGELOG_MAX_VERSIONS) {
-      const cutoff = indices[CHANGELOG_MAX_VERSIONS];
-      const truncated =
-        content.slice(0, cutoff).trim() +
-        `\n\n---\n\n> *Showing last ${CHANGELOG_MAX_VERSIONS} versions. See the full changelog in the repository.*\n`;
-      await fs.writeFile(changelogPath, truncated, 'utf-8');
-      console.log(`  changelog: kept ${CHANGELOG_MAX_VERSIONS} of ${indices.length} versions`);
-    } else {
-      console.log(`  changelog: ${indices.length} versions (no truncation needed)`);
-    }
-  } catch {
-    console.log('  changelog: not found — skipping');
-  }
-}
+// async function truncateChangelog() {
+//   const changelogPath = path.join(outputDir, 'news', 'changelog', 'page.mdx');
+//   try {
+//     const content = await fs.readFile(changelogPath, 'utf-8');
+//
+//     const versionRegex = /^## \[/gm;
+//     const indices: number[] = [];
+//     let match: RegExpExecArray | null;
+//     while ((match = versionRegex.exec(content)) !== null) {
+//       indices.push(match.index);
+//     }
+//
+//     if (indices.length > CHANGELOG_MAX_VERSIONS) {
+//       const cutoff = indices[CHANGELOG_MAX_VERSIONS];
+//       const truncated =
+//         content.slice(0, cutoff).trim() +
+//         `\n\n---\n\n> *Showing last ${CHANGELOG_MAX_VERSIONS} versions. See the full changelog in the repository.*\n`;
+//       await fs.writeFile(changelogPath, truncated, 'utf-8');
+//       console.log(`  changelog: kept ${CHANGELOG_MAX_VERSIONS} of ${indices.length} versions`);
+//     } else {
+//       console.log(`  changelog: ${indices.length} versions (no truncation needed)`);
+//     }
+//   } catch {
+//     console.log('  changelog: not found — skipping');
+//   }
+// }
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Step 8 — Remove stub / near-empty pages
 // ──────────────────────────────────────────────────────────────────────────────
 
-async function removeStubPages() {
-  let removed = 0;
-
-  async function walk(dir: string) {
-    const entries = await fs.readdir(dir, { withFileTypes: true });
-
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-
-      if (entry.isDirectory()) {
-        await walk(fullPath);
-        try {
-          const remaining = await fs.readdir(fullPath);
-          if (remaining.length === 0) {
-            await fs.rmdir(fullPath);
-          }
-        } catch {
-          // directory may already be gone
-        }
-      } else if (entry.isFile() && entry.name === 'page.mdx') {
-        const content = await fs.readFile(fullPath, 'utf-8');
-
-        const meaningful = content
-          .replace(/^#.*$/gm, '')
-          .replace(/⚠️/g, '')
-          .replace(/🧪/g, '')
-          .replace(/🚫/g, '')
-          .replace(/✅/g, '')
-          .replace(/ℹ️/g, '')
-          .replace(/Deprecated/g, '')
-          .replace(/Experimental/g, '')
-          .replace(/>\s*\*\*Interactive (?:Story|Configurator)\*\*.*$/gm, '')
-          .trim();
-
-        if (meaningful.length < MIN_PAGE_CONTENT_BYTES) {
-          await fs.unlink(fullPath);
-          removed++;
-          console.log(`  drop: ${path.relative(outputDir, fullPath)} (${meaningful.length}b)`);
-        }
-      }
-    }
-  }
-
-  await walk(outputDir);
-  console.log(`  total removed: ${removed}`);
-}
+// async function removeStubPages() {
+//   let removed = 0;
+//
+//   async function walk(dir: string) {
+//     const entries = await fs.readdir(dir, { withFileTypes: true });
+//
+//     for (const entry of entries) {
+//       const fullPath = path.join(dir, entry.name);
+//
+//       if (entry.isDirectory()) {
+//         await walk(fullPath);
+//         try {
+//           const remaining = await fs.readdir(fullPath);
+//           if (remaining.length === 0) {
+//             await fs.rmdir(fullPath);
+//           }
+//         } catch {
+//           // directory may already be gone
+//         }
+//       } else if (entry.isFile() && entry.name === 'page.mdx') {
+//         const content = await fs.readFile(fullPath, 'utf-8');
+//
+//         const meaningful = content
+//           .replace(/^#.*$/gm, '')
+//           .replace(/⚠️/g, '')
+//           .replace(/🧪/g, '')
+//           .replace(/🚫/g, '')
+//           .replace(/✅/g, '')
+//           .replace(/ℹ️/g, '')
+//           .replace(/Deprecated/g, '')
+//           .replace(/Experimental/g, '')
+//           .replace(/>\s*\*\*Interactive (?:Story|Configurator)\*\*.*$/gm, '')
+//           .trim();
+//
+//         if (meaningful.length < MIN_PAGE_CONTENT_BYTES) {
+//           await fs.unlink(fullPath);
+//           removed++;
+//           console.log(`  drop: ${path.relative(outputDir, fullPath)} (${meaningful.length}b)`);
+//         }
+//       }
+//     }
+//   }
+//
+//   await walk(outputDir);
+//   console.log(`  total removed: ${removed}`);
+// }
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Step 9 — Generate snapshot metadata
@@ -411,28 +410,6 @@ async function generateSnapshotMeta() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 10 — prepare txt file with paths and content for BatchWriteItem (to avoid re-traversing the output dir during upload)
-// ──────────────────────────────────────────────────────────────────────────────
-
-async function prepareDynamoEntries() {
-  let sourceCommit: string | undefined;
-  try {
-    sourceCommit = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim();
-  } catch {
-    // not in a git repo
-  }
-
-  const items = await buildAllItems({
-    version: '3.32.0',
-    outputDir,
-    sourceCommit,
-  });
-
-  await fs.writeFile(path.join(outputDir, 'docs-index.json'), JSON.stringify(items, null, 2), 'utf-8');
-  console.log(`  ${items.length} DynamoDB items prepared`);
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
 // Main — orchestrate all 10 steps
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -464,17 +441,17 @@ async function prepareContextSnapshots() {
   console.log('\nStep 6/10: Generating shared reference pages...');
   await generateSharedReferences();
 
-  console.log('\nStep 7/10: Truncating changelog...');
-  await truncateChangelog();
-
-  console.log('\nStep 8/10: Removing stub pages...');
-  await removeStubPages();
+  // console.log('\nStep 7/10: Truncating changelog...');
+  // await truncateChangelog();
+  //
+  // console.log('\nStep 8/10: Removing stub pages...');
+  // await removeStubPages();
 
   console.log('\nStep 9/10: Writing snapshot metadata...');
   await generateSnapshotMeta();
 
-  console.log('\nStep 10/10: Preparing for BatchWriteItem');
-  await prepareDynamoEntries();
+  // console.log('\nStep 10/10: Preparing for BatchWriteItem');
+  // await prepareDynamoEntries();
 
   console.log('\nDone! Context snapshots ready.');
 }
