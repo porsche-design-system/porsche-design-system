@@ -6,20 +6,8 @@ import {
   getHiddenTextJssStyle,
   hostHiddenStyles,
 } from '../../styles';
-import {
-  colorContrastLower,
-  colorPrimary,
-  durationXl,
-  fontPorscheNext,
-  leadingNormal,
-  typescale2Xl,
-  typescale2Xs,
-  typescaleLg,
-  typescaleMd,
-  typescaleSm,
-  typescaleXl,
-  typescaleXs,
-} from '../../styles/css-variables';
+import { colorContrastLower, durationXl, fontPorscheNext, leadingNormal } from '../../styles/css-variables';
+import { colorMap, sizeMap } from '../../styles/maps';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { SpinnerColor, SpinnerSize } from './spinner-utils';
@@ -38,22 +26,6 @@ const cssVarColor = '--p-spinner-color';
  * @css-variable {"name": "--p-spinner-track-color", "description": "Defines the track/background color. Overrides the `color` property when set.", "defaultValue": ""}
  */
 const cssVarTrackColor = '--p-spinner-track-color';
-
-const colorMap: Record<SpinnerColor, string> = {
-  primary: colorPrimary,
-  inherit: 'currentcolor',
-};
-
-const sizeMap: Record<SpinnerSize, string> = {
-  'xx-small': typescale2Xs,
-  'x-small': typescaleXs,
-  small: typescaleSm,
-  medium: typescaleMd,
-  large: typescaleLg,
-  'x-large': typescaleXl,
-  'xx-large': typescale2Xl,
-  inherit: 'inherit',
-};
 
 export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizable<SpinnerSize>): string => {
   const dimension = `var(${cssVarSize},${leadingNormal})`;

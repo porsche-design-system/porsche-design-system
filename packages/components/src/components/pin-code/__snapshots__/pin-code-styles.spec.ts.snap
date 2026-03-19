@@ -1016,7 +1016,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1148,7 +1148,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1231,7 +1231,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -1281,7 +1281,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1364,7 +1364,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -1414,7 +1414,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1497,7 +1497,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -1547,7 +1547,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1630,7 +1630,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -1680,7 +1680,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1763,7 +1763,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -1813,7 +1813,7 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     opacity: 1;
     color: GrayText;
@@ -1896,7 +1896,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;

@@ -26,7 +26,7 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible {
     outline-color: Highlight;
   }
@@ -66,7 +66,7 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible {
     outline-color: Highlight;
   }
@@ -106,7 +106,7 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible {
     outline-color: Highlight;
   }
@@ -146,7 +146,7 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible {
     outline-color: Highlight;
   }
@@ -186,7 +186,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -226,7 +226,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -266,7 +266,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -306,7 +306,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible) {
     outline-color: Highlight !important;
   }

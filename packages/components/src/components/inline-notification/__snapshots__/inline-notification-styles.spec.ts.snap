@@ -32,7 +32,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -108,7 +108,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -184,7 +184,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -260,7 +260,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -342,7 +342,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -424,7 +424,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -500,7 +500,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;

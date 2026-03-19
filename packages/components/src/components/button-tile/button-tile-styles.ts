@@ -14,8 +14,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { colorCanvas, colorPrimary, legacyRadiusLarge, radius4Xl } from '../../styles/css-variables';
-import { getFontSizeText } from '../../styles/font-size-text-styles';
-import { getFontWeight } from '../../styles/font-weight-styles';
+import { sizeMap, weightMap } from '../../styles/maps';
 import {
   buildResponsiveStyles,
   getCss,
@@ -98,11 +97,11 @@ export const getComponentCss = (
         color: colorPrimary,
         hyphens: 'inherit',
         ...mergeDeep(
-          buildResponsiveStyles(size, (sizeValue: TileSize) => ({
-            fontSize: getFontSizeText(sizeValue),
+          buildResponsiveStyles(size, (v: TileSize) => ({
+            fontSize: sizeMap[v],
           })),
-          buildResponsiveStyles(weight, (weightValue: TileWeight) => ({
-            fontWeight: getFontWeight(weightValue),
+          buildResponsiveStyles(weight, (v: TileWeight) => ({
+            fontWeight: weightMap[v],
           }))
         ),
       },

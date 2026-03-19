@@ -69,12 +69,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           return (
             <React.Fragment key={path}>
               {groupLabel && (
-                <PHeading
-                  tag="h3"
-                  size="inherit"
-                  color="inherit"
-                  className="text-2xs text-contrast-medium mt-static-md first:mt-0"
-                >
+                <PHeading tag="h3" size="2xs" color="contrast-medium" className="mt-static-md first:mt-0">
                   {groupLabel}
                 </PHeading>
               )}
@@ -84,7 +79,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 open={openSections[path]}
                 onUpdate={handleAccordionUpdate(path)}
               >
-                <PHeading slot="summary" tag="h3" size="small">
+                <PHeading slot="summary" tag="h3" size="small" weight="semibold">
                   {category.name as string}
                 </PHeading>
                 {category.subPaths &&

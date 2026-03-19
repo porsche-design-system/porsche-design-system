@@ -14,7 +14,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -36,7 +36,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -58,7 +58,7 @@ hr {
   height: 100%;
   width: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -80,7 +80,7 @@ hr {
   height: 100%;
   width: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -102,7 +102,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -124,7 +124,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -146,7 +146,7 @@ hr {
   height: 100%;
   width: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -168,7 +168,7 @@ hr {
   height: 100%;
   width: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -225,7 +225,7 @@ hr {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -247,7 +247,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -269,7 +269,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -291,7 +291,7 @@ hr {
   height: 100%;
   width: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -313,7 +313,7 @@ hr {
   height: 100%;
   width: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }

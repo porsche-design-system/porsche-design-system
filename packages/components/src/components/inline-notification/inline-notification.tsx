@@ -1,17 +1,11 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  HEADING_TAGS,
-  hasHeading,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasHeading, validateProps } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
   getContentAriaAttributes,
   getInlineNotificationIconName,
+  INLINE_NOTIFICATION_HEADING_TAGS,
   INLINE_NOTIFICATION_STATES,
   type InlineNotificationActionIcon,
   type InlineNotificationHeadingTag,
@@ -20,7 +14,7 @@ import {
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
-  headingTag: AllowedTypes.oneOf<InlineNotificationHeadingTag>(HEADING_TAGS),
+  headingTag: AllowedTypes.oneOf<InlineNotificationHeadingTag>(INLINE_NOTIFICATION_HEADING_TAGS),
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
   dismissButton: AllowedTypes.boolean,

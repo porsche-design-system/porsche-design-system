@@ -97,7 +97,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -227,7 +227,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -337,7 +337,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -468,7 +468,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -578,7 +578,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -708,7 +708,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -818,7 +818,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -948,7 +948,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -1055,7 +1055,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -1183,7 +1183,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -1294,7 +1294,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -1421,7 +1421,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -1532,7 +1532,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -1659,7 +1659,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -1770,7 +1770,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -1897,7 +1897,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -2008,7 +2008,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -2136,7 +2136,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -2247,7 +2247,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -2374,7 +2374,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -2485,7 +2485,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -2611,7 +2611,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -2722,7 +2722,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -2849,7 +2849,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -2963,7 +2963,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -3094,7 +3094,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -3204,7 +3204,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -3334,7 +3334,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -3444,7 +3444,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -3574,7 +3574,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -3684,7 +3684,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -3814,7 +3814,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -3924,7 +3924,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -4054,7 +4054,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -4164,7 +4164,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -4293,7 +4293,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -4403,7 +4403,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -4533,7 +4533,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -4643,7 +4643,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -4773,7 +4773,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -4880,7 +4880,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -5008,7 +5008,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -5119,7 +5119,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -5246,7 +5246,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -5357,7 +5357,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -5485,7 +5485,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -5596,7 +5596,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -5724,7 +5724,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -5835,7 +5835,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -5962,7 +5962,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -6073,7 +6073,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button {
       opacity: 1;
       color: GrayText;
@@ -6199,7 +6199,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }

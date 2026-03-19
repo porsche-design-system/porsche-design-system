@@ -26,6 +26,7 @@ import {
   CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
+  CAROUSEL_HEADING_SIZES,
   CAROUSEL_SLIDES_PER_PAGE,
   CAROUSEL_WIDTHS,
   type CarouselAlignControls,
@@ -50,7 +51,7 @@ import {
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
-  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(['x-large', 'xx-large']),
+  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(CAROUSEL_HEADING_SIZES),
   description: AllowedTypes.string,
   alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,

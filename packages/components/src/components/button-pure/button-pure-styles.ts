@@ -1,9 +1,9 @@
-import { fontLineHeight } from '@porsche-design-system/emotion';
-import { colorContrastLow } from '../../styles/css-variables';
+import { colorContrastLow, leadingNormal } from '../../styles/css-variables';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import type { ButtonPureColor, ButtonPureSize } from './button-pure-utils';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -17,7 +17,8 @@ export const getComponentCss = (
   isLoading: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<ButtonPureSize>,
+  color: ButtonPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean
@@ -33,6 +34,7 @@ export const getComponentCss = (
         isDisabledOrLoading,
         stretch,
         size,
+        color,
         hideLabel,
         alignLabel,
         underline,
@@ -55,9 +57,7 @@ export const getComponentCss = (
             icon: {
               position: 'absolute',
               top: 0,
-              left: `calc(50% - ${fontLineHeight} / 2)`,
-              width: fontLineHeight,
-              height: fontLineHeight,
+              left: `calc(50% - ${leadingNormal} / 2)`,
             },
           }),
         // .loading

@@ -50,8 +50,8 @@ p {
   overflow-wrap: break-word;
   hyphens: inherit;
   color: var(--p-color-primary);
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  font-weight: 600;
+  font-size: var(--p-typescale-md);
+  font-weight: var(--p-font-weight-semibold);
 }
 @supports (-webkit-hyphens: auto) {
   :host {
@@ -166,8 +166,8 @@ p {
   overflow-wrap: break-word;
   hyphens: inherit;
   color: var(--p-color-primary);
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  font-weight: 600;
+  font-size: var(--p-typescale-md);
+  font-weight: var(--p-font-weight-semibold);
 }
 @supports (-webkit-hyphens: auto) {
   :host {
@@ -274,7 +274,7 @@ p {
   hyphens: inherit;
   color: var(--p-color-primary);
   font-size: inherit;
-  font-weight: 400;
+  font-weight: var(--p-font-weight-normal);
 }
 @supports (-webkit-hyphens: auto) {
   :host {
@@ -381,40 +381,40 @@ p {
   hyphens: inherit;
   color: var(--p-color-primary);
   font-size: inherit;
-  font-weight: 600;
+  font-weight: var(--p-font-weight-semibold);
 }
 @media(min-width:480px) {
   p {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-md);
+    font-weight: var(--p-font-weight-normal);
   }
 }
 
 @media(min-width:760px) {
   p {
     font-size: inherit;
-    font-weight: 600;
+    font-weight: var(--p-font-weight-semibold);
   }
 }
 
 @media(min-width:1000px) {
   p {
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-lg);
+    font-weight: var(--p-font-weight-normal);
   }
 }
 
 @media(min-width:1300px) {
   p {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    font-weight: 600;
+    font-size: var(--p-typescale-md);
+    font-weight: var(--p-font-weight-semibold);
   }
 }
 
 @media(min-width:1760px) {
   p {
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-    font-weight: 400;
+    font-size: var(--p-typescale-lg);
+    font-weight: var(--p-font-weight-normal);
   }
 }
 
@@ -617,7 +617,7 @@ p {
   hyphens: inherit;
   color: var(--p-color-primary);
   font-size: inherit;
-  font-weight: 400;
+  font-weight: var(--p-font-weight-normal);
 }
 @supports (-webkit-hyphens: auto) {
   :host {
@@ -732,8 +732,8 @@ p {
   overflow-wrap: break-word;
   hyphens: inherit;
   color: var(--p-color-primary);
-  font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-  font-weight: 600;
+  font-size: var(--p-typescale-lg);
+  font-weight: var(--p-font-weight-semibold);
 }
 @supports (-webkit-hyphens: auto) {
   :host {

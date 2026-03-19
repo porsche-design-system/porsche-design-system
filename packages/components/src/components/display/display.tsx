@@ -1,8 +1,15 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, TYPOGRAPHY_ALIGNS, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../utils';
 import { getComponentCss } from './display-styles';
 import {
+  DISPLAY_ALIGNS,
   DISPLAY_COLORS,
   DISPLAY_SIZES,
   DISPLAY_TAGS,
@@ -16,13 +23,15 @@ import {
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
-  align: AllowedTypes.oneOf<DisplayAlign>(TYPOGRAPHY_ALIGNS),
+  align: AllowedTypes.oneOf<DisplayAlign>(DISPLAY_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
   ellipsis: AllowedTypes.boolean,
 };
 
 /**
  * @slot {"name": "", "description": "Default slot for the display text." }
+ *
+ * @deprecated since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
  */
 @Component({
   tag: 'p-display',
@@ -52,6 +61,7 @@ export class Display {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use p-heading component instead.');
     attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis);
 
     const TagType = getDisplayTagType(this.host, this.size, this.tag);

@@ -125,7 +125,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -264,7 +264,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -403,7 +403,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -543,7 +543,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -682,7 +682,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -820,7 +820,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -960,7 +960,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1214,7 +1214,7 @@ input::-webkit-calendar-picker-indicator {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1473,7 +1473,7 @@ input::-webkit-calendar-picker-indicator {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -1625,7 +1625,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;

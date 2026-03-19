@@ -6,14 +6,13 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { colorPrimary } from '../../styles/css-variables';
-import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import { getCss, HEADING_TAGS } from '../../utils';
+import { getCss } from '../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
-import type { InlineNotificationState } from './inline-notification-utils';
+import { INLINE_NOTIFICATION_HEADING_TAGS, type InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
 
@@ -43,7 +42,9 @@ export const getComponentCss = (state: InlineNotificationState, hasAction: boole
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${INLINE_NOTIFICATION_HEADING_TAGS.join()}))`]: addImportantToEachRule({
+        all: 'unset',
+      }),
       'slot[name="heading"]': getHeadingJssStyle,
     },
     heading: getHeadingJssStyle,

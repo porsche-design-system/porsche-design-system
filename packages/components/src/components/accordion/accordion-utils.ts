@@ -1,5 +1,3 @@
-import type { HeadingTag } from '../../utils';
-
 export const ACCORDIONS_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
 export type AccordionBackground = (typeof ACCORDIONS_BACKGROUNDS)[number];
 
@@ -9,7 +7,9 @@ export type AccordionAlignMarker = (typeof ACCORDION_ALIGN_MARKERS)[number];
 export type AccordionUpdateEventDetail = { open: boolean };
 
 /** @deprecated */
-export type AccordionHeadingTag = HeadingTag;
+export const ACCORDION_HEADINGS_DEPRECATED = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+/** @deprecated */
+export type AccordionHeadingTag = (typeof ACCORDION_HEADINGS_DEPRECATED)[number];
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;
 /** @deprecated */

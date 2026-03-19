@@ -118,7 +118,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -251,7 +251,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -383,7 +383,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -515,7 +515,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -647,7 +647,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -780,7 +780,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -913,7 +913,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1047,7 +1047,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1179,7 +1179,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1310,7 +1310,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1441,7 +1441,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1576,7 +1576,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1703,7 +1703,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1950,7 +1950,7 @@ input {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -2202,7 +2202,7 @@ input {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2347,7 +2347,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;

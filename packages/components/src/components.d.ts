@@ -6,10 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
 import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
-import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
+import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
@@ -22,7 +22,7 @@ import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/dr
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
+import { HeadingAlign, HeadingColor, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
@@ -37,7 +37,7 @@ import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEve
 import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 import { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
 import { LinkIcon } from "./components/link/link-utils";
-import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
+import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
@@ -61,17 +61,17 @@ import { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./c
 import { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
-import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
+import { TextAlign, TextColor, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
 import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
 export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
-export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
+export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
@@ -84,7 +84,7 @@ export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/dr
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
+export { HeadingAlign, HeadingColor, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
@@ -99,7 +99,7 @@ export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEve
 export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 export { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
 export { LinkIcon } from "./components/link/link-utils";
-export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
+export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
@@ -123,7 +123,7 @@ export { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./c
 export { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
-export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
+export { TextAlign, TextColor, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
 export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -259,6 +259,10 @@ export namespace Components {
           * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
+        /**
+          * The color.
+         */
+        "color"?: ButtonPureColor;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -520,6 +524,9 @@ export namespace Components {
          */
         "target"?: CrestTarget;
     }
+    /**
+     * @deprecated since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
+     */
     interface PDisplay {
         /**
           * Text alignment of the component.
@@ -700,25 +707,29 @@ export namespace Components {
     }
     interface PHeading {
         /**
-          * Text alignment of the component.
+          * Text alignment of the heading.
          */
         "align"?: HeadingAlign;
         /**
-          * Basic text color variations.
+          * Text color of the heading. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, or 'inherit' to adopt the parent's color.
          */
         "color"?: HeadingColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows.
+          * Adds an ellipsis to a single line of text if it overflows the container width.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}.
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property.
          */
         "tag"?: HeadingTag;
+        /**
+          * The font weight of the heading. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
+         */
+        "weight"?: HeadingWeight;
     }
     interface PIcon {
         /**
@@ -1658,6 +1669,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
         /**
+          * The color.
+         */
+        "color"?: LinkPureColor;
+        /**
           * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
@@ -2498,27 +2513,27 @@ export namespace Components {
     }
     interface PText {
         /**
-          * Text alignment of the component.
+          * Text alignment of the text.
          */
         "align"?: TextAlign;
         /**
-          * Basic text color variations.
+          * Text color of the text. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.
          */
         "color"?: TextColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows.
+          * Adds an ellipsis to a single line of text if it overflows the container width.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}.
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the text component.
+          * Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes).
          */
         "tag"?: TextTag;
         /**
-          * The weight of the text.
+          * The font weight of the text.
          */
         "weight"?: TextWeight;
     }
@@ -2912,6 +2927,9 @@ declare global {
         prototype: HTMLPCrestElement;
         new (): HTMLPCrestElement;
     };
+    /**
+     * @deprecated since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
+     */
     interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
     }
     var HTMLPDisplayElement: {
@@ -3935,6 +3953,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
+          * The color.
+         */
+        "color"?: ButtonPureColor;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -4215,6 +4237,9 @@ declare namespace LocalJSX {
          */
         "target"?: CrestTarget;
     }
+    /**
+     * @deprecated since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
+     */
     interface PDisplay {
         /**
           * Text alignment of the component.
@@ -4415,25 +4440,29 @@ declare namespace LocalJSX {
     }
     interface PHeading {
         /**
-          * Text alignment of the component.
+          * Text alignment of the heading.
          */
         "align"?: HeadingAlign;
         /**
-          * Basic text color variations.
+          * Text color of the heading. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, or 'inherit' to adopt the parent's color.
          */
         "color"?: HeadingColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows.
+          * Adds an ellipsis to a single line of text if it overflows the container width.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}.
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property.
          */
         "tag"?: HeadingTag;
+        /**
+          * The font weight of the heading. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
+         */
+        "weight"?: HeadingWeight;
     }
     interface PIcon {
         /**
@@ -5513,6 +5542,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
         /**
+          * The color.
+         */
+        "color"?: LinkPureColor;
+        /**
           * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
@@ -6453,27 +6486,27 @@ declare namespace LocalJSX {
     }
     interface PText {
         /**
-          * Text alignment of the component.
+          * Text alignment of the text.
          */
         "align"?: TextAlign;
         /**
-          * Basic text color variations.
+          * Text color of the text. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.
          */
         "color"?: TextColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows.
+          * Adds an ellipsis to a single line of text if it overflows the container width.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}.
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the text component.
+          * Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes).
          */
         "tag"?: TextTag;
         /**
-          * The weight of the text.
+          * The font weight of the text.
          */
         "weight"?: TextWeight;
     }
@@ -6719,6 +6752,9 @@ declare module "@stencil/core" {
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox": LocalJSX.PCheckbox & JSXBase.HTMLAttributes<HTMLPCheckboxElement>;
             "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
+            /**
+             * @deprecated since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
+             */
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             /**

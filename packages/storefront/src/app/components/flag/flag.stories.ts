@@ -62,7 +62,7 @@ export const flagStoryResponsiveSize: Story<'p-flag'> = {
   state: {
     properties: {
       name: 'de',
-      size: { base: 'small', l: 'xx-large' },
+      size: { base: 'sm', l: '2xl' },
       aria: { 'aria-label': 'Flag of Germany' },
     },
   },

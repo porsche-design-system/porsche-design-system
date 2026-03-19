@@ -3,7 +3,6 @@ import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  HEADING_TAGS,
   hasNamedSlot,
   hasPropValueChanged,
   observeChildren,
@@ -13,6 +12,7 @@ import {
 import { getComponentCss } from './accordion-styles';
 import {
   ACCORDION_ALIGN_MARKERS,
+  ACCORDION_HEADINGS_DEPRECATED,
   ACCORDION_SIZES,
   ACCORDIONS_BACKGROUNDS,
   type AccordionAlignMarker,
@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   sticky: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   heading: AllowedTypes.string,
-  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
+  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(ACCORDION_HEADINGS_DEPRECATED),
 };
 
 /**

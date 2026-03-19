@@ -100,7 +100,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -230,7 +230,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -290,7 +290,7 @@ img {
   mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -447,7 +447,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -517,7 +517,7 @@ img {
   mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -573,13 +573,11 @@ img {
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -598,9 +596,6 @@ img {
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -619,14 +614,7 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -640,8 +628,8 @@ img {
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -685,7 +673,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -840,7 +828,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -938,7 +926,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -1036,7 +1024,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -1134,7 +1122,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -1232,7 +1220,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -1330,7 +1318,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -1694,7 +1682,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -1755,7 +1743,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -1907,7 +1895,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -1993,7 +1981,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -2074,7 +2062,7 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
@@ -2132,7 +2120,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -2213,7 +2201,7 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
@@ -2276,7 +2264,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -2419,7 +2407,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -2546,7 +2534,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -2689,7 +2677,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -2778,7 +2766,7 @@ slot {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host(:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -2809,7 +2797,7 @@ slot {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host(:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -3068,7 +3056,7 @@ exports[`should render dsr component for PAccordion 1`] = `
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: 0;
@@ -3213,7 +3201,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -3290,7 +3278,7 @@ img {
   mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-info));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -3397,7 +3385,7 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -3417,7 +3405,7 @@ img {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -3464,7 +3452,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -3573,7 +3561,7 @@ exports[`should render dsr component for PButton 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -3593,7 +3581,7 @@ exports[`should render dsr component for PButton 1`] = `
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -3651,13 +3639,11 @@ exports[`should render dsr component for PButtonPure 1`] = `
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -3676,9 +3662,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -3697,14 +3680,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -3718,8 +3694,8 @@ exports[`should render dsr component for PButtonPure 1`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -3766,7 +3742,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -3857,8 +3833,8 @@ p {
   overflow-wrap: break-word;
   hyphens: inherit;
   color: var(--p-color-primary);
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  font-weight: 600;
+  font-size: var(--p-typescale-md);
+  font-weight: var(--p-font-weight-semibold);
 }
 @supports (-webkit-hyphens: auto) {
   :host {
@@ -4003,7 +3979,7 @@ p {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -4023,7 +3999,7 @@ p {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -4122,7 +4098,7 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   slot[name="title"]::slotted(a:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -4455,7 +4431,7 @@ h2 {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -4475,7 +4451,7 @@ h2 {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -4523,7 +4499,7 @@ img {
   mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -4607,7 +4583,7 @@ img {
   width: auto;
   height: auto;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
   }
@@ -4678,7 +4654,7 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
   }
@@ -4793,7 +4769,7 @@ svg {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -4813,7 +4789,7 @@ svg {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -4861,7 +4837,7 @@ img {
   mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -5020,7 +4996,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -5125,7 +5101,7 @@ input:checked::before {
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:focus-visible {
     outline-color: Highlight;
   }
@@ -5308,7 +5284,7 @@ img {
   width: auto;
   height: auto;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
   }
@@ -5356,13 +5332,10 @@ exports[`should render dsr component for PDisplay 1`] = `
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
   color: var(--p-color-primary);
   text-align: start;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }
     </style>
     <h1
@@ -5397,7 +5370,7 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   hr {
     background: CanvasText;
   }
@@ -5632,13 +5605,11 @@ exports[`should render dsr component for PDrilldown 1`] = `
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -5657,9 +5628,6 @@ exports[`should render dsr component for PDrilldown 1`] = `
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -5678,14 +5646,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -5699,8 +5660,8 @@ exports[`should render dsr component for PDrilldown 1`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -5747,7 +5708,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -5852,7 +5813,7 @@ img:dir(rtl) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -5872,7 +5833,7 @@ img:dir(rtl) {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -5919,7 +5880,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -6024,7 +5985,7 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -6044,7 +6005,7 @@ img {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -6091,7 +6052,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -6248,13 +6209,11 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: space-between;
   align-items: center;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  font-size: var(--p-typescale-md);
 }
 .root::before {
   content: "";
@@ -6273,9 +6232,6 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -6294,14 +6250,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -6315,8 +6264,8 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -6364,7 +6313,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -6421,13 +6370,11 @@ img:dir(rtl) {
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -6446,9 +6393,6 @@ img:dir(rtl) {
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -6467,16 +6411,9 @@ img:dir(rtl) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 @media(min-width:760px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
   }
   .root::before {
     right: -4px;
@@ -6490,7 +6427,7 @@ img:dir(rtl) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -6504,8 +6441,8 @@ img:dir(rtl) {
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -6552,7 +6489,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -6631,7 +6568,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -6862,7 +6799,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -6955,7 +6892,7 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -6975,7 +6912,7 @@ dialog::backdrop {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -7022,7 +6959,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -7082,14 +7019,10 @@ exports[`should render dsr component for PHeading 1`] = `
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-2xl);
   color: var(--p-color-primary);
   text-align: start;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
-  font-weight: 400;
 }
     </style>
     <h2
@@ -7138,7 +7071,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -7196,7 +7129,7 @@ slot[name="heading"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText !important;
     outline-offset: -2px !important;
@@ -7273,7 +7206,7 @@ img {
   mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-info));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -7380,7 +7313,7 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -7400,7 +7333,7 @@ img {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -7447,7 +7380,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -7615,7 +7548,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -7795,7 +7728,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -7979,7 +7912,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -8160,7 +8093,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -8337,7 +8270,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -8516,7 +8449,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -8695,7 +8628,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -8871,7 +8804,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -9054,7 +8987,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -9234,7 +9167,7 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -9418,7 +9351,7 @@ input::-webkit-calendar-picker-indicator {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -9505,7 +9438,7 @@ exports[`should render dsr component for PLink 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -9542,7 +9475,7 @@ exports[`should render dsr component for PLink 1`] = `
   clip: unset !important;
   white-space: normal;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -9559,7 +9492,7 @@ exports[`should render dsr component for PLink 1`] = `
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -9618,7 +9551,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -9631,13 +9564,11 @@ exports[`should render dsr component for PLinkPure 1`] = `
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -9652,9 +9583,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -9663,14 +9591,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   overflow: visible;
   order: 0;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -9681,8 +9602,8 @@ exports[`should render dsr component for PLinkPure 1`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -9728,7 +9649,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -9814,8 +9735,8 @@ p {
   overflow-wrap: break-word;
   hyphens: inherit;
   color: var(--p-color-primary);
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  font-weight: 600;
+  font-size: var(--p-typescale-md);
+  font-weight: var(--p-font-weight-semibold);
 }
 @supports (-webkit-hyphens: auto) {
   :host {
@@ -9928,7 +9849,7 @@ p {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -9965,7 +9886,7 @@ p {
   clip: unset !important;
   white-space: normal;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -9982,7 +9903,7 @@ p {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -10056,7 +9977,7 @@ slot[name="header"] {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
   overflow: hidden !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a[slot='anchor']:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -10170,13 +10091,11 @@ slot[name="header"] {
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -10195,9 +10114,6 @@ slot[name="header"] {
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -10216,14 +10132,7 @@ slot[name="header"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -10237,8 +10146,8 @@ slot[name="header"] {
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -10282,7 +10191,7 @@ img {
   mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -10442,7 +10351,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -10536,7 +10445,7 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -10556,7 +10465,7 @@ dialog::backdrop {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -10603,7 +10512,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -10678,7 +10587,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -10795,7 +10704,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -10925,7 +10834,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -10985,7 +10894,7 @@ img {
   mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -11142,7 +11051,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -11212,7 +11121,7 @@ img {
   mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -11268,13 +11177,11 @@ img {
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -11293,9 +11200,6 @@ img {
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -11314,14 +11218,7 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -11335,8 +11232,8 @@ img {
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -11380,7 +11277,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -11540,7 +11437,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -11687,7 +11584,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -11706,7 +11603,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -11771,7 +11668,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -11845,7 +11742,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -12123,7 +12020,7 @@ exports[`should render dsr component for PPopover 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -12168,7 +12065,7 @@ exports[`should render dsr component for PPopover 1`] = `
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .arrow {
       background: CanvasText;
     }
@@ -12215,7 +12112,7 @@ img {
   mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -12438,7 +12335,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -12640,7 +12537,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -12837,7 +12734,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -12966,7 +12863,7 @@ exports[`should render dsr component for PSelect 1`] = `
     flex-grow: 1;
     overflow: hidden;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -13096,7 +12993,7 @@ exports[`should render dsr component for PSelect 1`] = `
     opacity: 0;
     position: absolute;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .no-results--disabled {
       color: GrayText;
     }
@@ -13156,7 +13053,7 @@ img {
   mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -13260,7 +13157,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
 .icon {
   margin-inline-start: auto;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -13401,7 +13298,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .sheet {
     border-top: 2px solid CanvasText;
   }
@@ -13494,7 +13391,7 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -13514,7 +13411,7 @@ dialog::backdrop {
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -13561,7 +13458,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -13659,7 +13556,7 @@ exports[`should render dsr component for PSpinner 1`] = `
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     circle:last-child {
       stroke: CanvasText;
     }
@@ -13840,7 +13737,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -13931,7 +13828,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -14012,7 +13909,7 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
@@ -14105,7 +14002,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -14141,7 +14038,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -14314,7 +14211,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -14599,7 +14496,7 @@ exports[`should render dsr component for PTabs 1`] = `
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -14742,7 +14639,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -14849,7 +14746,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -14992,7 +14889,7 @@ slot {
   background: var(--p-color-primary);
   transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
     outline-color: Highlight;
   }
@@ -15067,7 +14964,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host(:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -15133,7 +15030,7 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -15195,7 +15092,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -15275,7 +15172,7 @@ img {
   mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -15319,16 +15216,10 @@ exports[`should render dsr component for PText 1`] = `
 .root {
   all: unset;
   display: block;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
   color: var(--p-color-primary);
   text-align: start;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: 1rem;
-  font-weight: 400;
 }
     </style>
     <p
@@ -15637,7 +15528,7 @@ svg {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
   }

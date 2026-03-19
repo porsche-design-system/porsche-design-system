@@ -49,7 +49,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
 .icon {
   margin-inline-start: auto;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -80,7 +80,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -119,7 +119,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
 .icon {
   margin-inline-start: auto;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }

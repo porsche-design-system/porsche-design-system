@@ -22,7 +22,7 @@ exports[`getNotificationIconJssStyle() > should return correct JssStyle 1`] = `
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: error 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -42,7 +42,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: error 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -62,7 +62,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -82,7 +82,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -102,7 +102,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 3`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -122,7 +122,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 4`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -142,7 +142,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 5`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -162,7 +162,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: success 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -182,7 +182,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: success 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -202,7 +202,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: warning 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
@@ -222,7 +222,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: warning 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },

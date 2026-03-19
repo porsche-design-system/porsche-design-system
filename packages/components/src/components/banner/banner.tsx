@@ -5,17 +5,16 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
-  HEADING_TAGS,
   hasNamedSlot,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
-import { BANNER_STATES, type BannerHeadingTag, type BannerState } from './banner-utils';
+import { BANNER_HEADING_TAGS, BANNER_STATES, type BannerHeadingTag, type BannerState } from './banner-utils';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
   heading: AllowedTypes.string,
-  headingTag: AllowedTypes.oneOf<BannerHeadingTag>(HEADING_TAGS),
+  headingTag: AllowedTypes.oneOf<BannerHeadingTag>(BANNER_HEADING_TAGS),
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
