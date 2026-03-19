@@ -43,7 +43,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .no-results--disabled {
     color: GrayText;
   }
@@ -99,7 +99,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .no-results--disabled {
     color: GrayText;
   }
@@ -155,7 +155,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .no-results--disabled {
     color: GrayText;
   }
@@ -211,7 +211,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .no-results--disabled {
     color: GrayText;
   }

@@ -62,7 +62,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -98,7 +98,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -168,7 +168,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -204,7 +204,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -275,7 +275,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -315,7 +315,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -384,7 +384,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -420,7 +420,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -489,7 +489,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     border-color: GrayText;
   }
@@ -528,7 +528,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -598,7 +598,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -641,7 +641,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -711,7 +711,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -754,7 +754,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -823,7 +823,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -859,7 +859,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -929,7 +929,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -965,7 +965,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -1035,7 +1035,7 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -1071,7 +1071,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -1140,7 +1140,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -1176,7 +1176,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }
@@ -1340,7 +1340,7 @@ label {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -1376,7 +1376,7 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .toggle {
     background: CanvasText;
   }

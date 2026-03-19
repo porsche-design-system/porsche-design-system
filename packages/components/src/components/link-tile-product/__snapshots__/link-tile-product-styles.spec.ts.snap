@@ -88,7 +88,7 @@ slot[name="header"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .anchor {
     forced-color-adjust: none;
     box-shadow: inset 0 0 0 2px LinkText;
@@ -198,7 +198,7 @@ slot[name="header"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .anchor {
     forced-color-adjust: none;
     box-shadow: inset 0 0 0 2px LinkText;
@@ -308,7 +308,7 @@ slot[name="header"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .anchor {
     forced-color-adjust: none;
     box-shadow: inset 0 0 0 2px LinkText;
@@ -424,7 +424,7 @@ slot[name="header"] {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .anchor {
     forced-color-adjust: none;
     box-shadow: inset 0 0 0 2px LinkText;
@@ -480,7 +480,7 @@ slot[name="header"] {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
   overflow: hidden !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a[slot='anchor']:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -594,7 +594,7 @@ slot[name="header"] {
 s {
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a[slot='anchor']:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -722,7 +722,7 @@ slot[name="header"] {
 s {
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a[slot='anchor']:focus-visible) {
     outline-color: Highlight !important;
   }

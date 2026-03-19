@@ -124,13 +124,9 @@ exports[`should match compiled variables css 1`] = `
   --p-typescale-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
   --p-typescale-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
   --p-typescale-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
-
-  --p-breakpoint-xs: 480px;
-  --p-breakpoint-sm: 760px;
-  --p-breakpoint-md: 1000px;
-  --p-breakpoint-lg: 1300px;
-  --p-breakpoint-xl: 1760px;
-  --p-breakpoint-2xl: 1920px;
+  --p-typescale-3xl: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
+  --p-typescale-4xl: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
+  --p-typescale-5xl: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 
   --p-spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
   --p-spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);

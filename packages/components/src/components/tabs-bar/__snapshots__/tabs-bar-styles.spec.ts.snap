@@ -31,7 +31,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -74,7 +74,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .scroller {
     forced-color-adjust: none;
     outline: 1px solid CanvasText;
@@ -114,7 +114,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -159,7 +159,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .scroller {
     forced-color-adjust: none;
     outline: 1px solid CanvasText;
@@ -199,7 +199,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -244,7 +244,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .scroller {
     forced-color-adjust: none;
     outline: 1px solid CanvasText;
@@ -284,7 +284,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -329,7 +329,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .scroller {
     forced-color-adjust: none;
     outline: 1px solid CanvasText;
@@ -370,7 +370,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -475,7 +475,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -549,7 +549,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   background: var(--p-color-primary) !important;
   transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -592,7 +592,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
   background: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .scroller {
     forced-color-adjust: none;
     outline: 1px solid CanvasText;

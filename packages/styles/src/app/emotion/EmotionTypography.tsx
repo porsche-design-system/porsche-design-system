@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import {
-  proseDisplayLgStyle,
-  proseDisplayMdStyle,
-  proseDisplaySmStyle,
   proseHeading2XlStyle,
+  proseHeading3XlStyle,
+  proseHeading4XlStyle,
+  proseHeading5XlStyle,
   proseHeadingLgStyle,
   proseHeadingMdStyle,
   proseHeadingSmStyle,
@@ -26,18 +26,18 @@ const EmotionTypographyWrapper = styled.div(({ theme }) => ({
   color: theme.primary,
 }));
 
-const DisplayLarge = styled.h1({
-  ...proseDisplayLgStyle,
+const Heading5XLarge = styled.h2({
+  ...proseHeading5XlStyle,
   margin: 0,
 });
 
-const DisplayMedium = styled.h2({
-  ...proseDisplayMdStyle,
+const Heading4XLarge = styled.h2({
+  ...proseHeading4XlStyle,
   margin: 0,
 });
 
-const DisplaySmall = styled.h2({
-  ...proseDisplaySmStyle,
+const Heading3XLarge = styled.h2({
+  ...proseHeading3XlStyle,
   margin: 0,
 });
 
@@ -100,11 +100,9 @@ export const EmotionTypography = () => {
   return (
     <>
       <EmotionTypographyWrapper>
-        <DisplayLarge>Display lg</DisplayLarge>
-        <DisplayMedium>Display md</DisplayMedium>
-        <DisplaySmall>Display sm</DisplaySmall>
-      </EmotionTypographyWrapper>
-      <EmotionTypographyWrapper>
+        <Heading5XLarge>Heading 5xl</Heading5XLarge>
+        <Heading4XLarge>Heading 4xl</Heading4XLarge>
+        <Heading3XLarge>Heading 3xl</Heading3XLarge>
         <Heading2XLarge>Heading 2xl</Heading2XLarge>
         <HeadingXLarge>Heading xl</HeadingXLarge>
         <HeadingLarge>Heading lg</HeadingLarge>

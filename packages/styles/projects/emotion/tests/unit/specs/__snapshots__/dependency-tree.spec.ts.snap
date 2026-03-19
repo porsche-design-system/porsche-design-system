@@ -411,9 +411,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/deprecated/fontSizeText.cjs",
   ],
   "font/deprecated/fontSizeDisplay.cjs": [
-    "font/fontSizeDisplayLarge.cjs",
-    "font/fontSizeDisplayMedium.cjs",
-    "font/fontSizeDisplaySmall.cjs",
+    "font/typescale3Xl.cjs",
+    "font/typescale4Xl.cjs",
+    "font/typescale5Xl.cjs",
   ],
   "font/deprecated/fontSizeHeading.cjs": [
     "font/deprecated/fontSizeHeadingLarge.cjs",
@@ -485,9 +485,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "font/fontPorscheNext.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
   ],
-  "font/fontSizeDisplayLarge.cjs": [],
-  "font/fontSizeDisplayMedium.cjs": [],
-  "font/fontSizeDisplaySmall.cjs": [],
   "font/fontWeightBold.cjs": [
     "tokens/dist/esm/font/weight/fontWeightBold.cjs",
   ],
@@ -505,6 +502,15 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "font/typescale2Xs.cjs": [
     "tokens/dist/esm/font/size/typescale2Xs.cjs",
+  ],
+  "font/typescale3Xl.cjs": [
+    "tokens/dist/esm/font/size/typescale3Xl.cjs",
+  ],
+  "font/typescale4Xl.cjs": [
+    "tokens/dist/esm/font/size/typescale4Xl.cjs",
+  ],
+  "font/typescale5Xl.cjs": [
+    "tokens/dist/esm/font/size/typescale5Xl.cjs",
   ],
   "font/typescaleLg.cjs": [
     "tokens/dist/esm/font/size/typescaleLg.cjs",
@@ -794,15 +800,15 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/deprecated/fontWeightSemiBold.cjs",
     "font/fontHyphenationStyle.cjs",
     "font/fontPorscheNext.cjs",
-    "font/fontSizeDisplayLarge.cjs",
-    "font/fontSizeDisplayMedium.cjs",
-    "font/fontSizeDisplaySmall.cjs",
     "font/fontWeightBold.cjs",
     "font/fontWeightNormal.cjs",
     "font/fontWeightSemibold.cjs",
     "font/leadingNormal.cjs",
     "font/typescale2Xl.cjs",
     "font/typescale2Xs.cjs",
+    "font/typescale3Xl.cjs",
+    "font/typescale4Xl.cjs",
+    "font/typescale5Xl.cjs",
     "font/typescaleLg.cjs",
     "font/typescaleMd.cjs",
     "font/typescaleSm.cjs",
@@ -926,10 +932,10 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "typography/deprecated/text/textXLargeStyle.cjs",
     "typography/deprecated/text/textXSmallStyle.cjs",
     "typography/deprecated/text/textXXSmallStyle.cjs",
-    "typography/proseDisplayLgStyle.cjs",
-    "typography/proseDisplayMdStyle.cjs",
-    "typography/proseDisplaySmStyle.cjs",
     "typography/proseHeading2XlStyle.cjs",
+    "typography/proseHeading3XlStyle.cjs",
+    "typography/proseHeading4XlStyle.cjs",
+    "typography/proseHeading5XlStyle.cjs",
     "typography/proseHeadingLgStyle.cjs",
     "typography/proseHeadingMdStyle.cjs",
     "typography/proseHeadingSmStyle.cjs",
@@ -1483,6 +1489,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/font/lineHeight/leadingNormal.cjs": [],
   "tokens/dist/esm/font/size/typescale2Xl.cjs": [],
   "tokens/dist/esm/font/size/typescale2Xs.cjs": [],
+  "tokens/dist/esm/font/size/typescale3Xl.cjs": [],
+  "tokens/dist/esm/font/size/typescale4Xl.cjs": [],
+  "tokens/dist/esm/font/size/typescale5Xl.cjs": [],
   "tokens/dist/esm/font/size/typescaleLg.cjs": [],
   "tokens/dist/esm/font/size/typescaleMd.cjs": [],
   "tokens/dist/esm/font/size/typescaleSm.cjs": [],
@@ -1515,11 +1524,11 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/spacing/static/spacingStaticXl.cjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticXs.cjs": [],
   "typography/deprecated/display/displayLargeStyle.cjs": [
-    "font/fontSizeDisplayLarge.cjs",
+    "font/typescale5Xl.cjs",
     "typography/deprecated/display/displayShared.cjs",
   ],
   "typography/deprecated/display/displayMediumStyle.cjs": [
-    "font/fontSizeDisplayMedium.cjs",
+    "font/typescale4Xl.cjs",
     "typography/deprecated/display/displayShared.cjs",
   ],
   "typography/deprecated/display/displayShared.cjs": [
@@ -1530,7 +1539,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/deprecated/fontWeightRegular.cjs",
   ],
   "typography/deprecated/display/displaySmallStyle.cjs": [
-    "font/fontSizeDisplaySmall.cjs",
+    "font/typescale3Xl.cjs",
     "typography/deprecated/display/displayShared.cjs",
   ],
   "typography/deprecated/heading/headingLargeStyle.cjs": [
@@ -1597,25 +1606,28 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontHyphenationStyle.cjs",
     "typography/deprecated/text/textShared.cjs",
   ],
-  "typography/proseDisplayLgStyle.cjs": [
-    "tokens/dist/esm/font/family/fontPorscheNext.cjs",
-    "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
-  ],
-  "typography/proseDisplayMdStyle.cjs": [
-    "tokens/dist/esm/font/family/fontPorscheNext.cjs",
-    "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
-  ],
-  "typography/proseDisplaySmStyle.cjs": [
-    "tokens/dist/esm/font/family/fontPorscheNext.cjs",
-    "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
-  ],
   "typography/proseHeading2XlStyle.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
     "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
     "tokens/dist/esm/font/size/typescale2Xl.cjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
+  ],
+  "typography/proseHeading3XlStyle.cjs": [
+    "tokens/dist/esm/font/family/fontPorscheNext.cjs",
+    "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
+    "tokens/dist/esm/font/size/typescale3Xl.cjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
+  ],
+  "typography/proseHeading4XlStyle.cjs": [
+    "tokens/dist/esm/font/family/fontPorscheNext.cjs",
+    "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
+    "tokens/dist/esm/font/size/typescale4Xl.cjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
+  ],
+  "typography/proseHeading5XlStyle.cjs": [
+    "tokens/dist/esm/font/family/fontPorscheNext.cjs",
+    "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
+    "tokens/dist/esm/font/size/typescale5Xl.cjs",
     "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
   ],
   "typography/proseHeadingLgStyle.cjs": [
@@ -1634,7 +1646,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
     "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
     "tokens/dist/esm/font/size/typescaleSm.cjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
+    "tokens/dist/esm/font/weight/fontWeightSemibold.cjs",
   ],
   "typography/proseHeadingXlStyle.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
@@ -2098,9 +2110,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/deprecated/fontSizeText.mjs",
   ],
   "font/deprecated/fontSizeDisplay.mjs": [
-    "font/fontSizeDisplayLarge.mjs",
-    "font/fontSizeDisplayMedium.mjs",
-    "font/fontSizeDisplaySmall.mjs",
+    "font/typescale3Xl.mjs",
+    "font/typescale4Xl.mjs",
+    "font/typescale5Xl.mjs",
   ],
   "font/deprecated/fontSizeHeading.mjs": [
     "font/deprecated/fontSizeHeadingLarge.mjs",
@@ -2172,9 +2184,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "font/fontPorscheNext.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",
   ],
-  "font/fontSizeDisplayLarge.mjs": [],
-  "font/fontSizeDisplayMedium.mjs": [],
-  "font/fontSizeDisplaySmall.mjs": [],
   "font/fontWeightBold.mjs": [
     "tokens/dist/esm/font/weight/fontWeightBold.mjs",
   ],
@@ -2192,6 +2201,15 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "font/typescale2Xs.mjs": [
     "tokens/dist/esm/font/size/typescale2Xs.mjs",
+  ],
+  "font/typescale3Xl.mjs": [
+    "tokens/dist/esm/font/size/typescale3Xl.mjs",
+  ],
+  "font/typescale4Xl.mjs": [
+    "tokens/dist/esm/font/size/typescale4Xl.mjs",
+  ],
+  "font/typescale5Xl.mjs": [
+    "tokens/dist/esm/font/size/typescale5Xl.mjs",
   ],
   "font/typescaleLg.mjs": [
     "tokens/dist/esm/font/size/typescaleLg.mjs",
@@ -2481,15 +2499,15 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/deprecated/fontWeightSemiBold.mjs",
     "font/fontHyphenationStyle.mjs",
     "font/fontPorscheNext.mjs",
-    "font/fontSizeDisplayLarge.mjs",
-    "font/fontSizeDisplayMedium.mjs",
-    "font/fontSizeDisplaySmall.mjs",
     "font/fontWeightBold.mjs",
     "font/fontWeightNormal.mjs",
     "font/fontWeightSemibold.mjs",
     "font/leadingNormal.mjs",
     "font/typescale2Xl.mjs",
     "font/typescale2Xs.mjs",
+    "font/typescale3Xl.mjs",
+    "font/typescale4Xl.mjs",
+    "font/typescale5Xl.mjs",
     "font/typescaleLg.mjs",
     "font/typescaleMd.mjs",
     "font/typescaleSm.mjs",
@@ -2613,10 +2631,10 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "typography/deprecated/text/textXLargeStyle.mjs",
     "typography/deprecated/text/textXSmallStyle.mjs",
     "typography/deprecated/text/textXXSmallStyle.mjs",
-    "typography/proseDisplayLgStyle.mjs",
-    "typography/proseDisplayMdStyle.mjs",
-    "typography/proseDisplaySmStyle.mjs",
     "typography/proseHeading2XlStyle.mjs",
+    "typography/proseHeading3XlStyle.mjs",
+    "typography/proseHeading4XlStyle.mjs",
+    "typography/proseHeading5XlStyle.mjs",
     "typography/proseHeadingLgStyle.mjs",
     "typography/proseHeadingMdStyle.mjs",
     "typography/proseHeadingSmStyle.mjs",
@@ -3170,6 +3188,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/font/lineHeight/leadingNormal.mjs": [],
   "tokens/dist/esm/font/size/typescale2Xl.mjs": [],
   "tokens/dist/esm/font/size/typescale2Xs.mjs": [],
+  "tokens/dist/esm/font/size/typescale3Xl.mjs": [],
+  "tokens/dist/esm/font/size/typescale4Xl.mjs": [],
+  "tokens/dist/esm/font/size/typescale5Xl.mjs": [],
   "tokens/dist/esm/font/size/typescaleLg.mjs": [],
   "tokens/dist/esm/font/size/typescaleMd.mjs": [],
   "tokens/dist/esm/font/size/typescaleSm.mjs": [],
@@ -3202,11 +3223,11 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/spacing/static/spacingStaticXl.mjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticXs.mjs": [],
   "typography/deprecated/display/displayLargeStyle.mjs": [
-    "font/fontSizeDisplayLarge.mjs",
+    "font/typescale5Xl.mjs",
     "typography/deprecated/display/displayShared.mjs",
   ],
   "typography/deprecated/display/displayMediumStyle.mjs": [
-    "font/fontSizeDisplayMedium.mjs",
+    "font/typescale4Xl.mjs",
     "typography/deprecated/display/displayShared.mjs",
   ],
   "typography/deprecated/display/displayShared.mjs": [
@@ -3217,7 +3238,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/deprecated/fontWeightRegular.mjs",
   ],
   "typography/deprecated/display/displaySmallStyle.mjs": [
-    "font/fontSizeDisplaySmall.mjs",
+    "font/typescale3Xl.mjs",
     "typography/deprecated/display/displayShared.mjs",
   ],
   "typography/deprecated/heading/headingLargeStyle.mjs": [
@@ -3284,25 +3305,28 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontHyphenationStyle.mjs",
     "typography/deprecated/text/textShared.mjs",
   ],
-  "typography/proseDisplayLgStyle.mjs": [
-    "tokens/dist/esm/font/family/fontPorscheNext.mjs",
-    "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
-  ],
-  "typography/proseDisplayMdStyle.mjs": [
-    "tokens/dist/esm/font/family/fontPorscheNext.mjs",
-    "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
-  ],
-  "typography/proseDisplaySmStyle.mjs": [
-    "tokens/dist/esm/font/family/fontPorscheNext.mjs",
-    "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
-  ],
   "typography/proseHeading2XlStyle.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",
     "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
     "tokens/dist/esm/font/size/typescale2Xl.mjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
+  ],
+  "typography/proseHeading3XlStyle.mjs": [
+    "tokens/dist/esm/font/family/fontPorscheNext.mjs",
+    "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
+    "tokens/dist/esm/font/size/typescale3Xl.mjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
+  ],
+  "typography/proseHeading4XlStyle.mjs": [
+    "tokens/dist/esm/font/family/fontPorscheNext.mjs",
+    "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
+    "tokens/dist/esm/font/size/typescale4Xl.mjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
+  ],
+  "typography/proseHeading5XlStyle.mjs": [
+    "tokens/dist/esm/font/family/fontPorscheNext.mjs",
+    "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
+    "tokens/dist/esm/font/size/typescale5Xl.mjs",
     "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
   ],
   "typography/proseHeadingLgStyle.mjs": [
@@ -3321,7 +3345,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",
     "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
     "tokens/dist/esm/font/size/typescaleSm.mjs",
-    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
+    "tokens/dist/esm/font/weight/fontWeightSemibold.mjs",
   ],
   "typography/proseHeadingXlStyle.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",

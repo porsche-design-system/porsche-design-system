@@ -19,6 +19,18 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
   return acc;
 }, {});
 
+/**
+ * Maps the first section key of each logical group to its group label.
+ * Sections without an entry belong to the preceding group (no extra header rendered).
+ */
+const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
+  news: 'Get Started', // designing, developing
+  components: 'Core', // components, styles, tokens, patterns, templates, partials
+  tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract
+  'ag-grid': 'Integrations', // ag-grid
+  'must-know': 'Resources', // must-know, help
+};
+
 type NavigationProps = {
   readonly pdsVersion: PDSVersionGroup;
   readonly onNavigate: () => void;
@@ -51,35 +63,45 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   return (
     <>
       <nav aria-label="Main" className="flex flex-col gap-static-sm">
-        {Object.entries(sitemap).map(([path, category]) => (
-          <PAccordion
-            key={path}
-            compact={true}
-            className={`${['Components', 'Tokens', 'Must Know'].includes(category.name as string) ? 'mt-static-md ' : ''}[&>:not([slot]):not(:last-child)]:mb-static-sm`}
-            open={openSections[path]}
-            onUpdate={handleAccordionUpdate(path)}
-          >
-            <PHeading slot="summary" tag="h3" size="small">
-              {category.name as string}
-            </PHeading>
-            {category.subPaths &&
-              Object.entries(category.subPaths).map(([_, page]) => {
-                // If page has subPaths (tabs) link to first tab
-                const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
-                return (
-                  <PLinkPure
-                    key={link}
-                    icon="none"
-                    stretch={true}
-                    active={pathname?.includes(`${page.path}/`)}
-                    onClick={() => onNavigate()}
-                  >
-                    <Link href={link}>{page.name}</Link>
-                  </PLinkPure>
-                );
-              })}
-          </PAccordion>
-        ))}
+        {Object.entries(sitemap).map(([path, category]) => {
+          const groupLabel = SECTION_GROUP_HEADERS[path];
+
+          return (
+            <React.Fragment key={path}>
+              {groupLabel && (
+                <PHeading tag="h3" size="2xs" color="contrast-medium" className="mt-static-md first:mt-0">
+                  {groupLabel}
+                </PHeading>
+              )}
+              <PAccordion
+                compact={true}
+                className="[&>:not([slot]):not(:last-child)]:mb-static-sm"
+                open={openSections[path]}
+                onUpdate={handleAccordionUpdate(path)}
+              >
+                <PHeading slot="summary" tag="h3" size="small" weight="semibold">
+                  {category.name as string}
+                </PHeading>
+                {category.subPaths &&
+                  Object.entries(category.subPaths).map(([_, page]) => {
+                    // If page has subPaths (tabs) link to first tab
+                    const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
+                    return (
+                      <PLinkPure
+                        key={link}
+                        icon="none"
+                        active={pathname?.includes(`${page.path}/`)}
+                        onClick={() => onNavigate()}
+                        className={'w-full ps-static-sm'}
+                      >
+                        <Link href={link}>{page.name}</Link>
+                      </PLinkPure>
+                    );
+                  })}
+              </PAccordion>
+            </React.Fragment>
+          );
+        })}
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
@@ -88,7 +110,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
-          © 2025 Dr. Ing. h.c. F. Porsche AG.
+          © {new Date().getFullYear()} Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>

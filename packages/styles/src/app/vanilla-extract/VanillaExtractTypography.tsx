@@ -1,12 +1,12 @@
 import {
-  displayLarge,
-  displayMedium,
-  displaySmall,
+  heading2Xl,
+  heading3Xl,
+  heading4Xl,
+  heading5Xl,
   headingLarge,
   headingMedium,
   headingSmall,
-  headingXLarge,
-  headingXXLarge,
+  headingXl,
   textLarge,
   textMedium,
   textSmall,
@@ -20,13 +20,11 @@ export const VanillaExtractTypography = () => {
   return (
     <>
       <div className={vanillaExtractTypographyWrapper}>
-        <h1 className={displayLarge}>Display lg</h1>
-        <h2 className={displayMedium}>Display md</h2>
-        <h2 className={displaySmall}>Display sm</h2>
-      </div>
-      <div className={vanillaExtractTypographyWrapper}>
-        <h2 className={headingXXLarge}>Heading 2xl</h2>
-        <h3 className={headingXLarge}>Heading xl</h3>
+        <h2 className={heading5Xl}>Heading 5xl</h2>
+        <h2 className={heading4Xl}>Heading 4xl</h2>
+        <h2 className={heading3Xl}>Heading 3xl</h2>
+        <h2 className={heading2Xl}>Heading 2xl</h2>
+        <h3 className={headingXl}>Heading xl</h3>
         <h4 className={headingLarge}>Heading lg</h4>
         <h5 className={headingMedium}>Heading md</h5>
         <h6 className={headingSmall}>Heading sm</h6>

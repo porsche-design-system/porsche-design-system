@@ -28,7 +28,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -64,7 +64,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -100,7 +100,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -136,7 +136,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -172,7 +172,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -208,7 +208,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -244,7 +244,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -280,7 +280,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -316,7 +316,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -352,7 +352,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -388,7 +388,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -424,7 +424,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -460,7 +460,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -496,7 +496,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -532,7 +532,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -568,7 +568,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }
@@ -604,7 +604,7 @@ img {
   width: 1px;
   height: 1px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     background: CanvasText !important;
   }

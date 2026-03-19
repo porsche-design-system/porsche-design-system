@@ -184,7 +184,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -204,7 +204,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -268,7 +268,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   height: calc(6px + 2.125ex);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -288,7 +288,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -325,7 +325,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -367,7 +367,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   height: calc(6px + 2.125ex);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -384,7 +384,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -421,7 +421,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -463,7 +463,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   height: calc(6px + 2.125ex);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -480,7 +480,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -517,7 +517,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -559,7 +559,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   height: calc(6px + 2.125ex);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -576,7 +576,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -613,7 +613,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -655,7 +655,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   height: calc(6px + 2.125ex);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -672,7 +672,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -709,7 +709,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -751,7 +751,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   height: calc(6px + 2.125ex);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -768,7 +768,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -805,7 +805,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   ::slotted(a:focus-visible)::before {
     outline-color: Highlight !important;
   }
@@ -842,7 +842,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   clip: unset !important;
   white-space: normal;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -859,7 +859,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }

@@ -38,7 +38,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -93,7 +93,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -148,7 +148,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -207,7 +207,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -266,7 +266,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -326,7 +326,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -376,7 +376,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -422,7 +422,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -472,7 +472,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -523,7 +523,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -574,7 +574,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -632,7 +632,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -693,7 +693,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -739,7 +739,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -790,7 +790,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -848,7 +848,7 @@ span {
   hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;

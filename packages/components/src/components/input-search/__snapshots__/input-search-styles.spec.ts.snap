@@ -121,7 +121,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -261,7 +261,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -396,7 +396,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -531,7 +531,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -670,7 +670,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -810,7 +810,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -950,7 +950,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1085,7 +1085,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1220,7 +1220,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1358,7 +1358,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1496,7 +1496,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1636,7 +1636,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -1770,7 +1770,7 @@ input::-webkit-search-cancel-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -2020,7 +2020,7 @@ input::-webkit-search-cancel-button {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
@@ -2275,7 +2275,7 @@ input::-webkit-search-cancel-button {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2423,7 +2423,7 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;

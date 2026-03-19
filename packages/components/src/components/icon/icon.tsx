@@ -44,7 +44,7 @@ export class Icon {
   @Prop() public color?: IconColor = 'primary';
 
   /** Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
-  @Prop() public size?: BreakpointCustomizable<IconSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<IconSize> = 'sm';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;

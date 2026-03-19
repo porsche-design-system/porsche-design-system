@@ -62,7 +62,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   color: var(--p-color-primary);
   opacity: 0.4;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   [role="presentation"] {
     opacity: 1;
     color: GrayText;
@@ -91,7 +91,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 2`] 
   color: var(--p-color-primary);
   opacity: 0.4;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   [role="presentation"] {
     opacity: 1;
     color: GrayText;

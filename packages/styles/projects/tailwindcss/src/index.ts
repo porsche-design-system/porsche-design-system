@@ -143,6 +143,9 @@ import {
   spacingStaticXs,
   typescale2Xl,
   typescale2Xs,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
   typescaleLg,
   typescaleMd,
   typescaleSm,
@@ -223,6 +226,12 @@ export const getTailwindcssTheme = () => {
   --text-xl--line-height: ${leadingNormal};
   --text-2xl: ${typescale2Xl};
   --text-2xl--line-height: ${leadingNormal};
+  --text-3xl: ${typescale3Xl};
+  --text-3xl--line-height: ${leadingNormal};
+  --text-4xl: ${typescale4Xl};
+  --text-4xl--line-height: ${leadingNormal};
+  --text-5xl: ${typescale5Xl};
+  --text-5xl--line-height: ${leadingNormal};
 
   /* Breakpoint */
   --breakpoint-xs: ${breakpointXs}px;
@@ -559,7 +568,7 @@ export const getTailwindcssTheme = () => {
 
 /* Typography: Heading */
 @utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
+  @apply font-porsche-next not-italic font-semibold text-sm text-primary;
 }
 @utility prose-heading-md {
   @apply font-porsche-next not-italic font-normal text-md text-primary;
@@ -573,15 +582,24 @@ export const getTailwindcssTheme = () => {
 @utility prose-heading-2xl {
   @apply font-porsche-next not-italic font-normal text-2xl text-primary;
 }
+@utility prose-heading-3xl {
+  @apply font-porsche-next not-italic font-normal text-3xl text-primary;
+}
+@utility prose-heading-4xl {
+  @apply font-porsche-next not-italic font-normal text-4xl text-primary;
+}
+@utility prose-heading-5xl {
+  @apply font-porsche-next not-italic font-normal text-5xl text-primary;
+}
 
 /* Typography: Display */
 @utility prose-display-sm {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(1.8rem,2.41vw+1.32rem,4.21rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-3xl;
 }
 @utility prose-display-md {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.03rem,3.58vw+1.31rem,5.61rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-4xl;
 }
 @utility prose-display-lg {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-5xl;
 }`;
 };

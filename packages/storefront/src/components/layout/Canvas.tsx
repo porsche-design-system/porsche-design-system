@@ -179,7 +179,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end" className="flex flex-col gap-fluid-sm">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
-          <PHeading size="small" tag="h2">
+          <PHeading size="small" tag="h2" weight="semibold">
             Global settings
           </PHeading>
           <ThemeSelect

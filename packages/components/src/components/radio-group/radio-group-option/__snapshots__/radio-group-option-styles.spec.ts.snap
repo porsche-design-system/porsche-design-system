@@ -48,7 +48,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -178,7 +178,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -308,7 +308,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -438,7 +438,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -568,7 +568,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -698,7 +698,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input:checked::before {
     background: CanvasText;
   }
@@ -829,7 +829,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -965,7 +965,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1101,7 +1101,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1237,7 +1237,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1373,7 +1373,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1509,7 +1509,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1645,7 +1645,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1725,7 +1725,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -1787,7 +1787,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -1867,7 +1867,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -1929,7 +1929,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2009,7 +2009,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2071,7 +2071,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2151,7 +2151,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2213,7 +2213,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2293,7 +2293,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2355,7 +2355,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2435,7 +2435,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2497,7 +2497,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2584,7 +2584,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2646,7 +2646,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2733,7 +2733,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2795,7 +2795,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -2882,7 +2882,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -2944,7 +2944,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -3031,7 +3031,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -3093,7 +3093,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -3180,7 +3180,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -3242,7 +3242,7 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   input {
     border-color: GrayText;
   }
@@ -3329,7 +3329,7 @@ input::after {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;

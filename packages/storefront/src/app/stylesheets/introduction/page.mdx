@@ -1,0 +1,40 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Styles: Introduction - Porsche Design System',
+  description: 'Learn how to set up and use global styles in the Porsche Design System.',
+};
+
+# Introduction
+
+<TableOfContents headings={['Setup', 'Individual Imports']} />
+
+## Setup
+
+As of Porsche Design System **v4**, global styles are **required**. All styles are bundled in a single CSS file:
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}';
+
+/* Alternative: If your bundler requires an explicit .css extension, use this path instead */
+@import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+```
+
+This includes:
+
+- [CSS color variables](/stylesheets/colors/)
+- [Font-face definitions](/stylesheets/font-face/)
+- [Normalize styles](/stylesheets/normalize/)
+- Color Scheme / light-dark() polyfill
+
+## Individual Imports
+
+You can also import each stylesheet separately for more granular control. Note that `variables.css` and `font-face.css`
+are **required** — components won't render correctly without them.
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/variables.css';
+@import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
+@import '@porsche-design-system/components-{js|angular|react|vue}/normalize.css';
+@import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
+```

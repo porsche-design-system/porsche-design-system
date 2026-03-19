@@ -1,29 +1,19 @@
-import {
-  fontSizeHeadingLarge,
-  fontSizeHeadingMedium,
-  fontSizeHeadingSmall,
-  fontSizeHeadingXLarge,
-  fontSizeHeadingXXLarge,
-  fontWeightRegular,
-  fontWeightSemiBold,
-  headingXXLargeStyle,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { BreakpointCustomizable, HeadingSize } from '../../types';
-import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import type { HeadingAlign, HeadingColor } from './heading-utils';
-
-export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
-  small: fontSizeHeadingSmall,
-  medium: fontSizeHeadingMedium,
-  large: fontSizeHeadingLarge,
-  'x-large': fontSizeHeadingXLarge,
-  'xx-large': fontSizeHeadingXXLarge,
-};
+import { fontPorscheNext, leadingNormal, typescale2Xl } from '../../styles/css-variables';
+import { colorMap, sizeMap, weightMap } from '../../styles/maps';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import {
+  HEADING_TAGS,
+  type HeadingAlign,
+  type HeadingColor,
+  type HeadingSize,
+  type HeadingWeight,
+} from './heading-utils';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<HeadingSize>,
+  weight: HeadingWeight,
   align: HeadingAlign,
   color: HeadingColor,
   ellipsis: boolean
@@ -36,17 +26,25 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule({
+        all: 'unset',
+      }),
     },
-    root: getTypographyRootJssStyle(
-      headingXXLargeStyle,
-      buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-        fontWeight: sizeValue === 'small' ? fontWeightSemiBold : fontWeightRegular,
+    root: {
+      all: 'unset',
+      display: 'block',
+      font: `${weightMap[weight]} ${typescale2Xl}/${leadingNormal} ${fontPorscheNext}`,
+      ...buildResponsiveStyles(size, (v: HeadingSize) => ({
+        fontSize: sizeMap[v],
       })),
-      align,
-      color,
-      ellipsis
-    ),
+      color: colorMap[color],
+      textAlign: align,
+      ...(ellipsis && {
+        maxWidth: '100%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }),
+    },
   });
 };

@@ -199,7 +199,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -295,7 +295,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -315,7 +315,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -391,7 +391,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -411,7 +411,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -487,7 +487,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -507,7 +507,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -583,7 +583,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -603,7 +603,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -679,7 +679,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -699,7 +699,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -775,7 +775,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -795,7 +795,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-contrast-high);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -883,7 +883,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -970,7 +970,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -1066,7 +1066,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -1086,7 +1086,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -1162,7 +1162,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -1182,7 +1182,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -1258,7 +1258,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -1278,7 +1278,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -1354,7 +1354,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -1374,7 +1374,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -1450,7 +1450,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;
@@ -1470,7 +1470,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   .root:hover {
     background-color: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .root:hover {
       background: Canvas;
     }
@@ -1556,7 +1556,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     forced-color-adjust: none;
     background: Canvas;

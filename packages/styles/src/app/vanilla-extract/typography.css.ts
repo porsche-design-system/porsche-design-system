@@ -1,8 +1,8 @@
 import {
-  proseDisplayLgStyle,
-  proseDisplayMdStyle,
-  proseDisplaySmStyle,
   proseHeading2XlStyle,
+  proseHeading3XlStyle,
+  proseHeading4XlStyle,
+  proseHeading5XlStyle,
   proseHeadingLgStyle,
   proseHeadingMdStyle,
   proseHeadingSmStyle,
@@ -27,27 +27,27 @@ export const vanillaExtractTypographyWrapper = style({
   color: vars.primary,
 });
 
-export const displayLarge = style({
-  ...proseDisplayLgStyle,
+export const heading5Xl = style({
+  ...proseHeading5XlStyle,
   margin: 0,
 });
 
-export const displayMedium = style({
-  ...proseDisplayMdStyle,
+export const heading4Xl = style({
+  ...proseHeading4XlStyle,
   margin: 0,
 });
 
-export const displaySmall = style({
-  ...proseDisplaySmStyle,
+export const heading3Xl = style({
+  ...proseHeading3XlStyle,
   margin: 0,
 });
 
-export const headingXXLarge = style({
+export const heading2Xl = style({
   ...proseHeading2XlStyle,
   margin: 0,
 });
 
-export const headingXLarge = style({
+export const headingXl = style({
   ...proseHeadingXlStyle,
   margin: 0,
 });

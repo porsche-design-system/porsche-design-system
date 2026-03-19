@@ -1,12 +1,10 @@
 export const ScssTypography = () => {
   return (
     <>
-      <div className="scss-typography scss-typography--display">
-        <h1 className="scss-display-lg">Display lg</h1>
-        <h2 className="scss-display-md">Display md</h2>
-        <h2 className="scss-display-sm">Display sm</h2>
-      </div>
       <div className="scss-typography scss-typography--heading">
+        <h2 className="scss-heading-5xl">Heading 5xl</h2>
+        <h2 className="scss-heading-4xl">Heading 4xl</h2>
+        <h2 className="scss-heading-3xl">Heading 3xl</h2>
         <h2 className="scss-heading-2xl">Heading 2xl</h2>
         <h3 className="scss-heading-xl">Heading xl</h3>
         <h4 className="scss-heading-lg">Heading lg</h4>

@@ -2,11 +2,9 @@ export const TailwindcssTypography = () => {
   return (
     <>
       <div className="flex flex-col items-start gap-fluid-md p-fluid-md">
-        <h1 className="prose-display-lg m-0">Display lg</h1>
-        <h2 className="prose-display-md m-0">Display md</h2>
-        <h2 className="prose-display-sm m-0">Display sm</h2>
-      </div>
-      <div className="flex flex-col items-start gap-fluid-md p-fluid-md">
+        <h2 className="prose-heading-5xl m-0">Heading 5xl</h2>
+        <h2 className="prose-heading-4xl m-0">Heading 4xl</h2>
+        <h2 className="prose-heading-3xl m-0">Heading 3xl</h2>
         <h2 className="prose-heading-2xl m-0">Heading 2xl</h2>
         <h3 className="prose-heading-xl m-0">Heading xl</h3>
         <h4 className="prose-heading-lg m-0">Heading lg</h4>

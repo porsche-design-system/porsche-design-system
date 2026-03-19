@@ -32,7 +32,7 @@ export const textStorySize: Story<'p-text'> = {
 export const textStorySizeResponsive: Story<'p-text'> = {
   state: {
     properties: {
-      size: { base: 'small', l: 'medium' },
+      size: { base: 'sm', l: '2xl' },
     },
   },
   generator: ({ properties } = {}) => [

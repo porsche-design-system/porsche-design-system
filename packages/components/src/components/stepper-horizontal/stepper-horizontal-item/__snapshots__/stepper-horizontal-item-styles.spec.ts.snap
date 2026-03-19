@@ -28,7 +28,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -93,7 +93,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -157,7 +157,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 1px solid CanvasText;
   }
@@ -278,7 +278,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -360,7 +360,7 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
@@ -397,7 +397,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -478,7 +478,7 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
@@ -515,7 +515,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -596,7 +596,7 @@ button:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
@@ -632,7 +632,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -697,7 +697,7 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;

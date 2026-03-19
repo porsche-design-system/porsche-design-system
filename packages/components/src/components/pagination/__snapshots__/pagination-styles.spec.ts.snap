@@ -68,7 +68,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -87,7 +87,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -173,7 +173,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -192,7 +192,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -278,7 +278,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -297,7 +297,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -389,7 +389,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -408,7 +408,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -500,7 +500,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -519,7 +519,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -611,7 +611,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -630,7 +630,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -722,7 +722,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -741,7 +741,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -833,7 +833,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -852,7 +852,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -944,7 +944,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -963,7 +963,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1055,7 +1055,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1074,7 +1074,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1166,7 +1166,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1185,7 +1185,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1277,7 +1277,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1296,7 +1296,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1388,7 +1388,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1407,7 +1407,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1496,7 +1496,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1515,7 +1515,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1607,7 +1607,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1626,7 +1626,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1715,7 +1715,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1734,7 +1734,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1826,7 +1826,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1845,7 +1845,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -1940,7 +1940,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -1959,7 +1959,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -2054,7 +2054,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -2073,7 +2073,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
@@ -2168,7 +2168,7 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span:not(.ellipsis):focus-visible {
     outline-color: Highlight;
   }
@@ -2187,7 +2187,7 @@ span:not(.ellipsis):focus-visible {
     backdrop-filter: blur(32px);
     background: var(--p-color-frosted);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     span:not([aria-disabled]):not(.ellipsis):hover {
       outline: 2px solid CanvasText;
       outline-offset: -2px;

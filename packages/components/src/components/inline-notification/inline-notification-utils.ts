@@ -1,11 +1,13 @@
 import type { AriaAttributes } from 'react';
-import type { HeadingTag, IconName } from '../../types';
+import type { IconName } from '../../types';
 
 export const INLINE_NOTIFICATION_STATES = ['info', 'success', 'warning', 'error'] as const;
 export type InlineNotificationState = (typeof INLINE_NOTIFICATION_STATES)[number];
 
 export type InlineNotificationActionIcon = IconName;
-export type InlineNotificationHeadingTag = HeadingTag;
+
+export const INLINE_NOTIFICATION_HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export type InlineNotificationHeadingTag = (typeof INLINE_NOTIFICATION_HEADING_TAGS)[number];
 
 export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
   const iconMap: Record<InlineNotificationState, IconName> = {

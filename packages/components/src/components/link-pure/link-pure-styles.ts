@@ -1,8 +1,9 @@
 import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
 import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { LinkPureColor, LinkPureSize } from './link-pure-utils';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -13,7 +14,8 @@ export const getComponentCss = (
   iconSource: string,
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<LinkPureSize>,
+  color: LinkPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
@@ -28,6 +30,7 @@ export const getComponentCss = (
         false,
         stretch,
         size,
+        color,
         hideLabel,
         alignLabel,
         underline,

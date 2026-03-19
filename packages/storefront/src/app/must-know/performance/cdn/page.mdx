@@ -149,6 +149,10 @@ root.render(
 In order to use the Chinese CDN for the Font-face definitions, the `/cn` import needs to be used, e.g.:
 
 ```diff
+- @import '@porsche-design-system/components-{js|angular|react|vue}';
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
+
+// Alternative: If your bundler requires an explicit .css extension, use this path instead
 - @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
 + @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
 ```
