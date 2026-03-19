@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.0.0-beta.3] - 2026-03-19
+
 ### Added
 
 - `Tokens`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`
