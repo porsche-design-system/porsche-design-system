@@ -42,7 +42,7 @@ import { PButton, PLink } from '@porsche-design-system/components-react/ssr';
 <div onClick={handleClick} role="button">Click me</div>
 ```
 
-- Use `@porsche-design-system/components-react` (or `/ssr` variant) for UI primitives
+- Use `@porsche-design-system/components-react/ssr` for UI primitives
 - When you must use native HTML, maintain semantic correctness and match PDS behavior
 
 ## Keyboard Accessibility (Mandatory)
@@ -98,6 +98,60 @@ src/
 ├── lib/                    # Utilities and helpers
 └── styles/                 # Global styles
 ```
+
+## Generating Configurator and Example Stories
+
+When adding or updating documentation pages for a component in `src/app/components/{component}/`, keep the configurator
+and examples pages driven by a colocated `{component}.stories.ts` file whenever possible.
+
+### Story file rules
+
+- Create or extend `src/app/components/{component}/{component}.stories.ts`.
+- Add `'use client';` at the top because storefront stories power interactive playgrounds.
+- Export `Story<'p-component'>` objects for configurator-ready examples.
+- Export `SlotStories<'p-component'>` when slot content must be selectable in the configurator.
+- Put additional story variants for the examples page in the same story file using clear names such as
+  `{component}Story`, `{component}StoryGrid`, or `{component}StoryCustomStyling`.
+- For controlled components, model interactivity with `events` in the returned `ElementConfig` instead of embedding
+  ad-hoc JavaScript in MDX.
+
+### Configurator page recipe
+
+Use the configurator page when the component should expose a playground UI.
+
+```mdx
+import { componentSlotStories, componentStory } from '@/app/components/component/component.stories';
+import { Configurator } from '@/components/playground/Configurator';
+
+<Configurator tagName="p-component" story={componentStory} slotStories={componentSlotStories} />
+```
+
+- Keep `export const metadata = { ... }` in the page.
+- Keep the page heading with `ComponentStatus`.
+- Pass `slotStories` only when the component actually has configurable slots.
+- Reuse the base `{component}Story` export for the configurator; avoid defining inline configs inside the MDX page.
+
+### Examples page recipe
+
+Use the examples page to showcase curated use cases:
+
+- `ComponentStory`: preferred for examples that can be expressed with the configurator story system.
+- `ComponentExample`: required for advanced examples that need custom logic or framework-specific source files.
+
+```mdx
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { componentStoryAdvanced } from '@/app/components/component/component.stories';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { componentExampleCustomLogic } from '@porsche-design-system/shared/examples';
+```
+
+- Put story-backed examples in `{component}.stories.ts` and render them with `ComponentStory`.
+- Use `ComponentExample` only after registering the cross-framework example in
+  `packages/shared/scripts/generateCodeExamples.ts` and generating the shared export.
+- Preserve `metadata` and `ComponentStatus` imports on the page.
+- Add `TableOfContents` when the page contains multiple example sections.
+- Keep example copy and generated markup accessible by default: meaningful headings, visible focus, keyboard support,
+  and proper accessible names.
 
 ## Testing Expectations
 

@@ -6,6 +6,7 @@
 ## Overview
 
 This package is the source of truth for design tokens used throughout the design system. It publishes typed token exports for color, typography, spacing, motion, border, blur, gradient, breakpoint, and shadow values.
+Tokens are used in the `../styles/` package to define style declarations for Emotion, Tailwind, SCSS amd Vanilla-Extract.
 
 ## Structure
 

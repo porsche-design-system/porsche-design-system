@@ -161,9 +161,8 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 ## Known Constraints
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds
-2. **Jest limitations**: Some packages use Vitest due to Jest/ESM incompatibilities
-3. **Stencil + npm**: A fake npm script exists at `packages/components/scripts/fakenpm/` to prevent Stencil from corrupting yarn workspaces
-4. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
+2. **Stencil + npm**: A fake npm script exists at `packages/components/scripts/fakenpm/` to prevent Stencil from corrupting yarn workspaces
+3. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
 
 ## Package-Specific Instructions
 
