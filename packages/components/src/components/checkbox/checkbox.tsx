@@ -82,7 +82,7 @@ export class Checkbox {
    */
   @Prop() public value?: string = 'on';
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
   /** The validation state. */
@@ -91,13 +91,13 @@ export class Checkbox {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility, it's recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** @experimental Disables the checkbox and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Displays as a compact version. */
+  /** Displays the checkbox in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** Emitted when checkbox checked property is changed. */

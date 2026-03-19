@@ -88,10 +88,10 @@ export class ButtonPure {
   /** Shows an underline under the label. */
   @Prop() public underline?: boolean = false;
 
-  /** Display button in active state. */
+  /** Displays the button in its active state. */
   @Prop() public active?: boolean = false;
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
@@ -100,7 +100,7 @@ export class ButtonPure {
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
   /** The id of a form element the button should be associated with. */

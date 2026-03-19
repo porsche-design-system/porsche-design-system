@@ -39,7 +39,7 @@ export class ModelSignature {
   /** When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone. */
   @Prop() public safeZone?: boolean = true;
 
-  /** Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own. */
+  /** Sets the browser's fetch priority hint for the model signature asset. */
   @Prop() public fetchPriority?: ModelSignatureFetchPriority = 'auto';
 
   /** Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably). */

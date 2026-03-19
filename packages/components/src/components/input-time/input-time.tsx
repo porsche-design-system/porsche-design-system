@@ -58,13 +58,13 @@ export class InputTime {
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds). */
+  /** Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds). */
   @Prop() public step?: number = 60;
 
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the input field, used when submitting the form data. */
@@ -75,7 +75,7 @@ export class InputTime {
   /** The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00'). */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on'). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
@@ -90,7 +90,7 @@ export class InputTime {
   /** Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00'). */
   @Prop() public min?: string;
 
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
@@ -105,13 +105,13 @@ export class InputTime {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Emitted when the number input loses focus after its value was changed. */
+  /** Emitted when the time input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTimeChangeEventDetail>;
 
-  /** Emitted when the number input has lost focus. */
+  /** Emitted when the time input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputTimeBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */

@@ -22,8 +22,8 @@ export const metadata = {
 
 ## Scrollable modal with sticky footer
 
-If the modal's content does not fit into the current boundaries the content becomes scrollable and the footer area
-sticky.
+If the modal's content does not fit within the available space, the content becomes scrollable and the footer area
+remains sticky.
 
 <ComponentStory story={modalStoryScrollable} />
 
@@ -36,14 +36,14 @@ draw attention to an important message and requires a response.
 
 ## Custom styling
 
-The modal component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables). This might be
-useful for e.g. a "Cookie Consent Dialog" to reserve certain space when used with `backdrop: 'shading'` to always have
-the Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) visible in the background of the page.
+The modal component has some values that can be overridden via CSS custom properties (aka CSS variables). This might be
+useful, for example, for a "Cookie Consent Dialog" to reserve space when used with `backdrop: 'shading'` so that the
+Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) remains visible in the background of the page.
 Since the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will
 act like a safe zone.
 
-In addition, it's possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by
-adding the <code v-text="stretchClassName"></code> CSS class.
+In addition, it is possible to make containers or elements (e.g. `div`, `img`, etc.) stretch into the padding safe zone
+by adding the <code v-text="stretchClassName"></code> CSS class.
 
 ```scss
 // the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined

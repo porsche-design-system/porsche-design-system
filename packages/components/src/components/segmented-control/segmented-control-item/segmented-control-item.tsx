@@ -45,7 +45,7 @@ export class SegmentedControlItem {
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string;
 
   /** The icon shown. */
@@ -54,7 +54,7 @@ export class SegmentedControlItem {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
 
   @Watch('label')

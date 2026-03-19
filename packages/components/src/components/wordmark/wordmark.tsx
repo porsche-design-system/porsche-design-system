@@ -25,16 +25,16 @@ const propTypes: PropTypes<typeof Wordmark> = {
 export class Wordmark {
   @Element() public host!: HTMLElement;
 
-  /** Adapts sizing of wordmark. */
+  /** Controls the size of the wordmark. */
   @Prop() public size?: WordmarkSize = 'small';
 
-  /** When providing an url then the component will be rendered as `<a>`. */
+  /** When `href` is provided, the component renders as an `<a>` element. */
   @Prop() public href?: string;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked document. */
   @Prop() public target?: WordmarkTarget = '_self';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

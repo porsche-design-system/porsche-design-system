@@ -74,16 +74,16 @@ export class LinkTile implements ITileProps {
   /** href of the `<a>`. */
   @Prop() public href: string;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked document. */
   @Prop() public target?: LinkTileTarget = '_self';
 
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
+  /** Sets the native `download` attribute when the target URL points to a downloadable file. */
   @Prop() public download?: string;
 
-  /** Specifies the relationship of the target object to the link object. */
+  /** Sets the `rel` attribute on the link. */
   @Prop() public rel?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   @State() private hasFooterSlot: boolean = false;

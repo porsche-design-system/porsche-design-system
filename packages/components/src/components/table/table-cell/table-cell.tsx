@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof TableCell> = {
 export class TableCell {
   @Element() public host!: HTMLElement;
 
-  /** Displays slotted text multiline or forced into a single line. */
+  /** Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. */
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {

@@ -61,10 +61,10 @@ export class LinkTileProduct {
   /** Additional product description. */
   @Prop() public description?: string;
 
-  /** A Boolean attribute indicating that a like button should be shown. */
+  /** Shows a like button. */
   @Prop() public likeButton?: boolean = true;
 
-  /** A Boolean attribute indicating that a product is liked. */
+  /** Indicates whether the product is liked. */
   @Prop() public liked?: boolean = false;
 
   /** href of the `<a>`. */
@@ -73,10 +73,10 @@ export class LinkTileProduct {
   /** Aspect ratio of the link-tile-product. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3/4';
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked document. */
   @Prop() public target?: LinkTileProductTarget = '_self';
 
-  /** Specifies the relationship of the target object to the link object. */
+  /** Sets the `rel` attribute on the link. */
   @Prop() public rel?: string;
 
   /** Emitted when the like button is clicked. */

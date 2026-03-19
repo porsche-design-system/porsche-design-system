@@ -64,7 +64,7 @@ export class InputMonth {
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the input field, used when submitting the form data. */
@@ -84,13 +84,13 @@ export class InputMonth {
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12'). */
+  /** Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12'). */
   @Prop() public max?: string;
 
   /** Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01'). */
   @Prop() public min?: string;
 
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
@@ -105,13 +105,13 @@ export class InputMonth {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Emitted when the number input loses focus after its value was changed. */
+  /** Emitted when the month input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputMonthChangeEventDetail>;
 
-  /** Emitted when the number input has lost focus. */
+  /** Emitted when the month input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputMonthBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */

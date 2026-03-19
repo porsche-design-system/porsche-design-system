@@ -30,9 +30,9 @@ export const metadata = {
 If the `p-fieldset` is set to `required="true"`, only the label of the `p-fieldset` gets an asterisk. It is removed from
 all wrapped child components, as long as they are Porsche Design System form elements.
 
-The `required="true"` prop should only be used if **all** children elements are required. If those children elements are
-a group of radio buttons, it's mandatory to add `aria="{ 'role': 'radiogroup' }"` prop to `p-fieldset` as well. There is
-**no need** to set `required="true"` on the individual radio buttons, as the **fieldset already indicates** that a
+The `required="true"` prop should only be used if **all** child elements are required. If those child elements are a
+group of radio buttons, it is mandatory to add the `aria="{ 'role': 'radiogroup' }"` prop to `p-fieldset` as well. There
+is **no need** to set `required="true"` on the individual radio buttons, as the **fieldset already indicates** that a
 selection of the radio button group is required.
 
 For all other cases, you should set `required="true"` on the individual form elements, such as input fields or

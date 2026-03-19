@@ -15,18 +15,19 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
   outline: 0 !important;
   overflow: visible !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
-  opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
   transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
+  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
 }
 :host::backdrop {
   display: none !important;
 }
-:host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
+:host > :first-child {
+  opacity: 0 !important;
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
+  transition: opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -48,8 +49,11 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 }
 
 @supports (transition-behavior: allow-discrete) {
-  :host(.hydrated), :host(.ssr) {
-    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+  :host {
+    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+  }
+  :host > :first-child {
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
 }
 "
@@ -70,16 +74,19 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
   outline: 0 !important;
   overflow: visible !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
-  opacity: 1 !important;
   visibility: inherit !important;
   pointer-events: inherit !important;
   transform: translate3d(0,0,0) !important;
-  transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1) !important;
 }
 :host::backdrop {
   display: none !important;
+}
+:host > :first-child {
+  opacity: 1 !important;
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
+  transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -96,6 +103,15 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 @media(min-width:1920px) {
   :host {
     inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+  }
+}
+
+@supports (transition-behavior: allow-discrete) {
+  :host {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+  }
+  :host > :first-child {
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
 }
 "

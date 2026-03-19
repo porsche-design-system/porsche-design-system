@@ -35,9 +35,9 @@ export const metadata = {
 ### Labelling
 
 If the text of a link does not clearly indicate what the link's target is, add a brief, descriptive label using the
-`aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like "Detail"
-or "Click" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text
-that offers more detailed information, such as "Details of product XYZ."
+`aria` property with the `aria-label` value to provide more context for screen reader users. Phrases like "Detail" or
+"Click" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text that
+offers more detailed information, such as "Details of product XYZ."
 
 ### Readable text
 
@@ -53,8 +53,7 @@ In case a video background is used, the component checks whether **reduced motio
 settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
 the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
 general might increase the page load time. The video content should support the CTA instead of distracting from it. To
-support screen reader users, it's recommended to define an alternative video description
-`<video aria-label="Some video description"" />`.
+support screen reader users, define an alternative video description: `<video aria-label="Some video description"" />`.
 
 ## Tests
 
