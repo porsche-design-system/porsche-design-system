@@ -5,6 +5,7 @@ import type { Dirent } from 'node:fs';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import {
+  type BedrockMetadataAttribute,
   CHANGELOG_MAX_VERSIONS,
   componentDescriptions,
   FRAMEWORKS,
@@ -15,7 +16,7 @@ import {
   SKIP_DIRECTORIES,
   sourceDir,
 } from './config.js';
-import { formatAllowedValues, loadComponentMeta, processContent } from './transform.js';
+import { loadComponentMeta, processContent } from './transform.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Step 1 — Walk source and copy page.mdx files
@@ -34,18 +35,20 @@ async function walkAndCopy(dir: string, relative: string = '') {
         continue;
       }
 
-      // if (entry.name === 'configurator') {
-      //   const pagePath = path.join(fullPath, 'page.mdx');
-      //   try {
-      //     const content = await fs.readFile(pagePath, 'utf-8');
-      //     const componentName = path.basename(path.dirname(fullPath));
-      //     componentDescriptions[componentName] = content;
-      //     console.log(`  desc: ${componentName} (from configurator)`);
-      //   } catch {
-      //     // No page.mdx in configurator
-      //   }
-      //   continue;
-      // }
+      if (entry.name === 'configurator') {
+        const pagePath = path.join(fullPath, 'page.mdx');
+        try {
+          const content = await fs.readFile(pagePath, 'utf-8');
+          const componentName = path.basename(path.dirname(fullPath));
+          componentDescriptions[componentName] = content;
+          console.log(`  desc: ${componentName} (from configurator)`);
+        } catch {
+          // No page.mdx in configurator
+        }
+        const introRelativePath = relative ? path.join(relative, 'introduction') : 'introduction';
+        await walkAndCopy(fullPath, introRelativePath);
+        continue;
+      }
 
       await walkAndCopy(fullPath, newRelativePath);
     } else if (entry.isFile() && entry.name === 'page.mdx') {
@@ -149,100 +152,6 @@ async function generateFrameworkStories() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 5 — Generate quick-reference pages for each component
-// ──────────────────────────────────────────────────────────────────────────────
-
-async function generateQuickRefs() {
-  const componentsDir = path.join(outputDir, 'components');
-  let entries: Dirent[];
-  try {
-    entries = await fs.readdir(componentsDir, { withFileTypes: true });
-  } catch {
-    return;
-  }
-
-  const componentMeta = await loadComponentMeta();
-
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-
-    const componentName = entry.name as string;
-    const componentDir = path.join(componentsDir, componentName);
-    const tagName = `p-${componentName}`;
-    const meta = componentMeta[tagName];
-
-    let description = '';
-    const rawConfigurator = componentDescriptions[componentName];
-    if (rawConfigurator) {
-      description = rawConfigurator
-        .replace(/^import\s+.*$/gm, '')
-        .replace(/export const metadata\s*=\s*{[\s\S]*?};?\s*/g, '')
-        .replace(/<[A-Z][A-Za-z]*(?:\s+[^>]*)?\s*\/>/g, '')
-        .replace(/<[A-Z][A-Za-z]*(?:\s+[^>]*)?>([\s\S]*?)<\/[A-Z][A-Za-z]*>/g, '')
-        .replace(/^#\s+.*\n?/, '')
-        .replace(/\n{3,}/g, '\n\n')
-        .trim();
-    }
-
-    if (!description && !meta) continue;
-
-    const lines: string[] = [];
-    lines.push(`# ${componentName} — Quick Reference\n`);
-
-    if (description) {
-      lines.push(description);
-      lines.push('');
-    }
-
-    if (meta?.propsMeta && Object.keys(meta.propsMeta).length > 0) {
-      lines.push('## Key Properties\n');
-      lines.push('| Property | Type | Default |');
-      lines.push('|----------|------|---------|');
-
-      for (const [propName, propMeta] of Object.entries(meta.propsMeta) as [string, any][]) {
-        if (propMeta.isDeprecated) continue;
-        const { type } = formatAllowedValues(propMeta);
-        const defaultValue = propMeta.defaultValue !== null ? `\`${JSON.stringify(propMeta.defaultValue)}\`` : '-';
-        lines.push(`| \`${propName}\` | \`${type}\` | ${defaultValue} |`);
-      }
-      lines.push('');
-    }
-
-    if (meta?.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
-      lines.push('## Events\n');
-      lines.push('| Event | Type |');
-      lines.push('|-------|------|');
-      for (const [eventName, eventMeta] of Object.entries(meta.eventsMeta) as [string, any][]) {
-        if ((eventMeta as any).isDeprecated) continue;
-        const type = eventMeta.typeDetail || eventMeta.type || 'void';
-        lines.push(`| \`${eventName}\` | \`${type}\` |`);
-      }
-      lines.push('');
-    }
-
-    const examplesFile = path.join(componentDir, 'examples', 'page.mdx');
-    try {
-      const examplesContent = await fs.readFile(examplesFile, 'utf-8');
-      const firstCodeMatch = examplesContent.match(/```html\n([\s\S]*?)```/);
-      if (firstCodeMatch) {
-        lines.push('## Example\n');
-        lines.push('```html');
-        lines.push(firstCodeMatch[1].trim());
-        lines.push('```');
-        lines.push('');
-      }
-    } catch {
-      // No examples file
-    }
-
-    const quickRefDir = path.join(componentDir, 'quick-ref');
-    await fs.mkdir(quickRefDir, { recursive: true });
-    await fs.writeFile(path.join(quickRefDir, 'page.mdx'), lines.join('\n'), 'utf-8');
-    console.log(`  gen: components/${componentName}/quick-ref`);
-  }
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
 // Step 6 — Generate shared reference pages (icon names, flag names)
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -282,131 +191,69 @@ async function generateSharedReferences() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 7 — Truncate changelog to the last N versions
-// ──────────────────────────────────────────────────────────────────────────────
-// TODO: Currently going from the bottom up, needs to gather from newest to oldest.
-// async function truncateChangelog() {
-//   const changelogPath = path.join(outputDir, 'news', 'changelog', 'page.mdx');
-//   try {
-//     const content = await fs.readFile(changelogPath, 'utf-8');
-//
-//     const versionRegex = /^## \[/gm;
-//     const indices: number[] = [];
-//     let match: RegExpExecArray | null;
-//     while ((match = versionRegex.exec(content)) !== null) {
-//       indices.push(match.index);
-//     }
-//
-//     if (indices.length > CHANGELOG_MAX_VERSIONS) {
-//       const cutoff = indices[CHANGELOG_MAX_VERSIONS];
-//       const truncated =
-//         content.slice(0, cutoff).trim() +
-//         `\n\n---\n\n> *Showing last ${CHANGELOG_MAX_VERSIONS} versions. See the full changelog in the repository.*\n`;
-//       await fs.writeFile(changelogPath, truncated, 'utf-8');
-//       console.log(`  changelog: kept ${CHANGELOG_MAX_VERSIONS} of ${indices.length} versions`);
-//     } else {
-//       console.log(`  changelog: ${indices.length} versions (no truncation needed)`);
-//     }
-//   } catch {
-//     console.log('  changelog: not found — skipping');
-//   }
-// }
-
-// ──────────────────────────────────────────────────────────────────────────────
-// Step 8 — Remove stub / near-empty pages
+// Step 9 — Generate AWS Bedrock Knowledge Base metadata sidecar files
 // ──────────────────────────────────────────────────────────────────────────────
 
-// async function removeStubPages() {
-//   let removed = 0;
-//
-//   async function walk(dir: string) {
-//     const entries = await fs.readdir(dir, { withFileTypes: true });
-//
-//     for (const entry of entries) {
-//       const fullPath = path.join(dir, entry.name);
-//
-//       if (entry.isDirectory()) {
-//         await walk(fullPath);
-//         try {
-//           const remaining = await fs.readdir(fullPath);
-//           if (remaining.length === 0) {
-//             await fs.rmdir(fullPath);
-//           }
-//         } catch {
-//           // directory may already be gone
-//         }
-//       } else if (entry.isFile() && entry.name === 'page.mdx') {
-//         const content = await fs.readFile(fullPath, 'utf-8');
-//
-//         const meaningful = content
-//           .replace(/^#.*$/gm, '')
-//           .replace(/⚠️/g, '')
-//           .replace(/🧪/g, '')
-//           .replace(/🚫/g, '')
-//           .replace(/✅/g, '')
-//           .replace(/ℹ️/g, '')
-//           .replace(/Deprecated/g, '')
-//           .replace(/Experimental/g, '')
-//           .replace(/>\s*\*\*Interactive (?:Story|Configurator)\*\*.*$/gm, '')
-//           .trim();
-//
-//         if (meaningful.length < MIN_PAGE_CONTENT_BYTES) {
-//           await fs.unlink(fullPath);
-//           removed++;
-//           console.log(`  drop: ${path.relative(outputDir, fullPath)} (${meaningful.length}b)`);
-//         }
-//       }
-//     }
-//   }
-//
-//   await walk(outputDir);
-//   console.log(`  total removed: ${removed}`);
-// }
+function stringAttr(value: string, includeForEmbedding = true): BedrockMetadataAttribute {
+  return { value: { type: 'STRING', stringValue: value }, includeForEmbedding };
+}
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Step 9 — Generate snapshot metadata
-// ──────────────────────────────────────────────────────────────────────────────
+function deriveMetadataAttributes(relativePath: string): Record<string, BedrockMetadataAttribute> {
+  const segments = relativePath.replace(/\/page\.mdx$/, '').split('/');
 
-async function generateSnapshotMeta() {
-  async function countFiles(dir: string): Promise<number> {
-    let count = 0;
-    const entries = await fs.readdir(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory()) {
-        count += await countFiles(fullPath);
-      } else if (entry.isFile() && entry.name === 'page.mdx') {
-        count++;
-      }
-    }
-    return count;
-  }
-
-  const documentCount = await countFiles(outputDir);
-
-  const categoryEntries = await fs.readdir(outputDir, { withFileTypes: true });
-  const categories = categoryEntries
-    .filter((e) => e.isDirectory())
-    .map((e) => e.name)
-    .sort();
-
-  let sourceCommit = 'unknown';
-  try {
-    sourceCommit = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim();
-  } catch {
-    // not in a git repo
-  }
-
-  const meta = {
-    version: '1.0.0',
-    generatedAt: new Date().toISOString(),
-    sourceCommit,
-    documentCount,
-    categories,
+  const category = segments[0] ?? 'unknown';
+  const attrs: Record<string, BedrockMetadataAttribute> = {
+    category: stringAttr(category),
+    documentPath: stringAttr(relativePath),
+    version: stringAttr('3.33.0'),
   };
 
-  await fs.writeFile(path.join(outputDir, 'snapshot-meta.json'), JSON.stringify(meta, null, 2), 'utf-8');
-  console.log(`  snapshot: v${meta.version}, ${documentCount} docs, commit ${meta.sourceCommit}`);
+  if (category === 'components' && segments.length >= 2 && !segments[1].startsWith('_')) {
+    attrs.component = stringAttr(segments[1]);
+  }
+
+  // Detect section & optional framework from the last meaningful segment
+  // e.g. "examples-react" → section="examples", framework="react"
+  const lastSegment = segments[segments.length - 1];
+  if (lastSegment) {
+    const fwMatch = FRAMEWORKS.find((fw) => lastSegment.endsWith(`-${fw}`));
+    if (fwMatch) {
+      attrs.framework = stringAttr(fwMatch);
+      attrs.section = stringAttr(lastSegment.slice(0, -(fwMatch.length + 1))); // strip "-react" etc.
+    } else {
+      attrs.section = stringAttr(lastSegment);
+    }
+  }
+
+  return attrs;
+}
+
+async function generateBedrockMetadata() {
+  let count = 0;
+
+  async function walk(dir: string) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+
+      if (entry.isDirectory()) {
+        await walk(fullPath);
+      } else if (entry.isFile() && entry.name === 'page.mdx') {
+        const relativePath = path.relative(outputDir, fullPath);
+        const attributes = deriveMetadataAttributes(relativePath);
+        const metadataFile = `${fullPath}.metadata.json`;
+
+        await fs.writeFile(metadataFile, JSON.stringify({ metadataAttributes: attributes }, null, 2) + '\n', 'utf-8');
+
+        count++;
+        console.log(`  meta: ${relativePath}`);
+      }
+    }
+  }
+
+  await walk(outputDir);
+  console.log(`  total: ${count} metadata files created`);
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -435,20 +282,11 @@ async function prepareContextSnapshots() {
   console.log('\nStep 4/10: Generating framework-specific interactive stories...');
   await generateFrameworkStories();
 
-  console.log('\nStep 5/10: Generating quick-reference pages...');
-  await generateQuickRefs();
-
   console.log('\nStep 6/10: Generating shared reference pages...');
   await generateSharedReferences();
 
-  // console.log('\nStep 7/10: Truncating changelog...');
-  // await truncateChangelog();
-  //
-  // console.log('\nStep 8/10: Removing stub pages...');
-  // await removeStubPages();
-
-  console.log('\nStep 9/10: Writing snapshot metadata...');
-  await generateSnapshotMeta();
+  console.log('\nStep 9/10: Generating AWS Bedrock Knowledge Base metadata...');
+  await generateBedrockMetadata();
 
   // console.log('\nStep 10/10: Preparing for BatchWriteItem');
   // await prepareDynamoEntries();
