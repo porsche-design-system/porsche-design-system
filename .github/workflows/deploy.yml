@@ -33,14 +33,14 @@ jobs:
     #   options: --user root
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
         with:
           node_modules: 'false'
           rclone: 'true'
       - name: 'Setup Node'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: lts/*
       - name: 'Restore'
@@ -129,7 +129,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -151,9 +151,9 @@ jobs:
       image: ${{ inputs.image }}
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}

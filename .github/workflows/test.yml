@@ -17,7 +17,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -38,7 +38,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -53,7 +53,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -74,7 +74,7 @@ jobs:
         run: yarn test:vrt:styles
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-styles-vrt-chrome
           path: ./packages/styles/tests/vrt/results
@@ -86,7 +86,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -101,7 +101,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -120,7 +120,7 @@ jobs:
         run: yarn test:unit:components-js:partials
       - name: 'Unit Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-js-unit
           path: ./packages/components-js/tests/unit/results
@@ -132,7 +132,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -152,7 +152,7 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -172,7 +172,7 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -192,7 +192,7 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -212,7 +212,7 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -221,7 +221,7 @@ jobs:
         run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-js-vrt-chrome-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
@@ -238,7 +238,7 @@ jobs:
         shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -247,7 +247,7 @@ jobs:
         run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-js-vrt-playwright-safari-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
@@ -259,7 +259,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -274,7 +274,7 @@ jobs:
         run: yarn test:vrt:components-angular
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
@@ -286,7 +286,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -299,7 +299,7 @@ jobs:
         run: yarn test:vrt:components-react
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
@@ -311,7 +311,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -322,7 +322,7 @@ jobs:
         run: yarn test:vrt:components-react/remix
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-react-remix-vrt
           path: ./packages/components-react/projects/remix/tests/vrt/results
@@ -334,7 +334,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -343,7 +343,7 @@ jobs:
         run: yarn test:vrt:components-react/react-router
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-react-react-router-vrt
           path: ./packages/components-react/projects/react-router/tests/vrt/results
@@ -355,7 +355,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -368,7 +368,7 @@ jobs:
         run: yarn test:unit:components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-react-nextjs-vrt
           path: ./packages/components-react/projects/nextjs/tests/vrt/results
@@ -380,7 +380,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -393,7 +393,7 @@ jobs:
         run: yarn test:vrt:components-vue
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-components-vue-vrt
           path: ./packages/components-vue/tests/vrt/results
@@ -405,7 +405,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -420,7 +420,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -435,7 +435,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -455,7 +455,7 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -464,7 +464,7 @@ jobs:
         run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-storefront-e2e-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/e2e/results
@@ -476,7 +476,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -485,7 +485,7 @@ jobs:
         run: yarn test:e2e:storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-storefront-e2e-sitemap
           path: ./packages/storefront/tests/e2e/results
@@ -502,7 +502,7 @@ jobs:
         shardTotal: [ 6 ]
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
@@ -511,7 +511,7 @@ jobs:
         run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'A11y Regression'
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: regression-storefront-a11y-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/a11y/results
@@ -523,7 +523,7 @@ jobs:
 #      options: --user 1001
 #    steps:
 #      - name: 'Checkout'
-#        uses: actions/checkout@v4
+#        uses: actions/checkout@v6
 #      - name: 'Install'
 #        uses: ./.github/actions/install
 #      - name: 'Restore'
@@ -532,7 +532,7 @@ jobs:
 #        run: yarn test:vrt:storefront
 #      - name: 'VRT Regression'
 #        if: failure()
-#        uses: actions/upload-artifact@v4
+#        uses: actions/upload-artifact@v7
 #        with:
 #          name: regression-storefront-vrt
 #          path: ./packages/storefront/tests/vrt/results
@@ -544,7 +544,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'

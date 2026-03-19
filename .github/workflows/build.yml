@@ -17,7 +17,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Lint'
@@ -30,7 +30,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Shared'
@@ -58,7 +58,7 @@ jobs:
       - name: 'Storefront'
         run: yarn build:storefront
       - name: 'Upload artifact'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-development
           include-hidden-files: true
@@ -122,7 +122,7 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Shared'
@@ -150,7 +150,7 @@ jobs:
       - name: 'Storefront'
         run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
       - name: 'Upload artifact'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-production
           include-hidden-files: true
