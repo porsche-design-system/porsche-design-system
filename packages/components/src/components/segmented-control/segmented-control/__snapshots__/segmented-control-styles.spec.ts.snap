@@ -480,6 +480,9 @@ slot:not([name]) {
 .message:empty {
   opacity: 0;
   position: absolute;
+}
+.scroller {
+  margin: -4px 0;
 }"
 `;
 
@@ -563,6 +566,9 @@ slot:not([name]) {
 .message:empty {
   opacity: 0;
   position: absolute;
+}
+.scroller {
+  margin: -4px 0;
 }"
 `;
 

@@ -66,5 +66,10 @@ export const getComponentCss = (
     }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...(noWrap && {
+      scroller: {
+        margin: `-${spacingStaticXSmall} 0`,
+      },
+    }),
   });
 };

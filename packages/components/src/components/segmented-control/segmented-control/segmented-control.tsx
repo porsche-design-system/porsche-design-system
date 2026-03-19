@@ -236,7 +236,7 @@ export class SegmentedControl {
     if (this.noWrap) {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
       slotContent = (
-        <PrefixedTagNames.pScroller theme={this.theme}>
+        <PrefixedTagNames.pScroller theme={this.theme} class="scroller">
           <slot />
         </PrefixedTagNames.pScroller>
       );
