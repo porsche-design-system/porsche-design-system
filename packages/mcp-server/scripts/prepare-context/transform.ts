@@ -234,6 +234,13 @@ export function formatAllowedValues(propMeta: any): { type: string; descSuffix: 
   return { type: type || 'unknown', descSuffix: '' };
 }
 
+function escapeMarkdownTableCell(text: string): string {
+  return (text || '')
+    .replace(/\\/g, '\\\\')
+    .replace(/\n/g, ' ')
+    .replace(/\|/g, '\\|');
+}
+
 export function formatComponentApi(tagName: string, meta: any): string {
   if (!meta) return '';
 
@@ -257,7 +264,7 @@ export function formatComponentApi(tagName: string, meta: any): string {
 
   if (meta.propsMeta && Object.keys(meta.propsMeta).length > 0) {
     lines.push('#### Properties\n');
-    lines.push('| Property | Type | Default | Description |');
+      const description = escapeMarkdownTableCell(propMeta.description || '');
     lines.push('|----------|------|---------|-------------|');
 
     for (const [propName, propMeta] of Object.entries(meta.propsMeta) as [string, any][]) {
@@ -275,7 +282,7 @@ export function formatComponentApi(tagName: string, meta: any): string {
       );
     }
     lines.push('');
-  }
+      const description = escapeMarkdownTableCell(eventMeta.description || '');
 
   if (meta.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
     lines.push('#### Events\n');
@@ -289,7 +296,7 @@ export function formatComponentApi(tagName: string, meta: any): string {
       lines.push(`| \`${eventName}\` | \`${type}\` | ${description} |`);
     }
     lines.push('');
-  }
+      const description = escapeMarkdownTableCell(slotMeta.description || '');
 
   if (meta.slotsMeta && Object.keys(meta.slotsMeta).length > 0) {
     lines.push('#### Slots\n');
