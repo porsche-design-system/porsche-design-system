@@ -257,7 +257,10 @@ export function formatComponentApi(tagName: string, meta: any): string {
       if (propMeta.isDeprecated) continue;
       const { type, descSuffix } = formatAllowedValues(propMeta);
       const defaultValue = propMeta.defaultValue !== null ? `\`${JSON.stringify(propMeta.defaultValue)}\`` : '-';
-      const description = (propMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
+      const description = (propMeta.description || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/\n/g, ' ')
+        .replace(/\|/g, '\\|');
       const required = propMeta.isRequired ? ' **(required)**' : '';
       const breakpoint = propMeta.isBreakpointCustomizable ? ' *(breakpoint customizable)*' : '';
       lines.push(
