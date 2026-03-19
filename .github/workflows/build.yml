@@ -12,6 +12,7 @@ jobs:
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     container:
       image: ${{ inputs.image }}
       options: --user 1001
@@ -20,11 +21,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - uses: ./.github/actions/install
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - run: yarn lint
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container:
       image: ${{ inputs.image }}
       options: --user 1001
@@ -33,33 +36,21 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - uses: ./.github/actions/install
-      - name: 'Shared'
-        run: yarn build:shared
-      - name: 'Tokens'
-        run: yarn build:tokens
-      - name: 'Assets'
-        run: yarn build:assets
-      - name: 'Styles'
-        run: yarn build:styles
-      - name: 'Utilities'
-        run: yarn build:utilities
-      - name: 'Component Meta'
-        run: yarn build:component-meta
-      - name: 'Components'
-        run: yarn build:components
-      - name: 'Components JS'
-        run: yarn build:components-js
-      - name: 'Components Angular'
-        run: yarn build:components-angular
-      - name: 'Components React'
-        run: yarn build:components-react
-      - name: 'Components Vue'
-        run: yarn build:components-vue
-      - name: 'Storefront'
-        run: yarn build:storefront
-      - name: 'Upload artifact'
-        uses: actions/upload-artifact@v7
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:shared
+      - run: yarn build:tokens
+      - run: yarn build:assets
+      - run: yarn build:styles
+      - run: yarn build:utilities
+      - run: yarn build:component-meta
+      - run: yarn build:components
+      - run: yarn build:components-js
+      - run: yarn build:components-angular
+      - run: yarn build:components-react
+      - run: yarn build:components-vue
+      - run: yarn build:storefront
+      - uses: actions/upload-artifact@v7
         with:
           name: build-development
           include-hidden-files: true
@@ -118,6 +109,7 @@ jobs:
   build-production:
     name: 'Production'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container:
       image: ${{ inputs.image }}
       options: --user 1001
@@ -126,33 +118,21 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - uses: ./.github/actions/install
-      - name: 'Shared'
-        run: yarn build:shared
-      - name: 'Tokens'
-        run: yarn build:tokens
-      - name: 'Assets'
-        run: yarn build:assets
-      - name: 'Styles'
-        run: yarn build:styles-prod
-      - name: 'Utilities'
-        run: yarn build:utilities
-      - name: 'Component Meta'
-        run: yarn build:component-meta
-      - name: 'Components'
-        run: yarn build:components-prod
-      - name: 'Components JS'
-        run: yarn build:components-js-prod
-      - name: 'Components Angular'
-        run: yarn build:components-angular
-      - name: 'Components React'
-        run: yarn build:components-react
-      - name: 'Components Vue'
-        run: yarn build:components-vue
-      - name: 'Storefront'
-        run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
-      - name: 'Upload artifact'
-        uses: actions/upload-artifact@v7
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:shared
+      - run: yarn build:tokens
+      - run: yarn build:assets
+      - run: yarn build:styles-prod
+      - run: yarn build:utilities
+      - run: yarn build:component-meta
+      - run: yarn build:components-prod
+      - run: yarn build:components-js-prod
+      - run: yarn build:components-angular
+      - run: yarn build:components-react
+      - run: yarn build:components-vue
+      - run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
+      - uses: actions/upload-artifact@v7
         with:
           name: build-production
           include-hidden-files: true
