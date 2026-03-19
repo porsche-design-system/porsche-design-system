@@ -101,7 +101,6 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           # scope: '@porsche-design-system'
-      - run: npm ci
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
@@ -131,7 +130,6 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           # scope: '@porsche-design-system'
-      - run: npm ci
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
@@ -161,7 +159,6 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           # scope: '@porsche-design-system'
-      - run: npm ci
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
@@ -191,7 +188,6 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           # scope: '@porsche-design-system'
-      - run: npm ci
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
