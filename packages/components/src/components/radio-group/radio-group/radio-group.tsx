@@ -78,10 +78,10 @@ export class RadioGroup {
   /** Supplementary text providing more context or explanation for the radio group. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the radio group as a compact version. */
+  /** Displays the radio group in compact mode. */
   @Prop() public compact?: boolean = false;
 
-  /** Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints. */
+  /** Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints. */
   @Prop() public direction?: BreakpointCustomizable<RadioGroupDirection> = 'column';
 
   /** The name of the group of radio buttons, used when submitting the form data. */
@@ -95,7 +95,7 @@ export class RadioGroup {
   /** Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the radio group. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
@@ -110,7 +110,7 @@ export class RadioGroup {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Emitted when the radio-group has lost focus. */

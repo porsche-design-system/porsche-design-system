@@ -36,7 +36,7 @@ export class Tag {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  /** Displays as compact version. */
+  /** Displays the tag in compact mode. */
   @Prop() public compact?: boolean = false;
 
   public render(): JSX.Element {

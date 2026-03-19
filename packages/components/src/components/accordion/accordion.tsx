@@ -62,17 +62,17 @@ export class Accordion {
   @Prop() public compact?: boolean;
 
   /**
-   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
    * Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot). */
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /**
-   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
    * Sets the heading text within the summary section. */
   @Prop() public heading?: string;
 
   /**
-   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
    * Sets the heading tag for proper semantic structure within the page. */
   @Prop() public headingTag?: AccordionHeadingTag = 'h2';
 
@@ -81,7 +81,7 @@ export class Accordion {
    */
   @Prop() public sticky?: boolean;
 
-  /** Emitted when accordion state is changed. */
+  /** Emitted when the accordion state changes. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
   private hasSummary: boolean;

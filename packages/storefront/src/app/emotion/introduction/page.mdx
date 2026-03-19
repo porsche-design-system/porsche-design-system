@@ -10,12 +10,11 @@ export const metadata = {
 
 ## Styles
 
-Styles are the foundational layer of our design language and define basics like colors in different themes, typography
-and other effects that can be applied to objects; or to define the structure and appearance with layout grid and
-spacings.
+Styles are the foundational layer of our design language. They define the basics, such as colors across themes,
+typography, and visual effects, and they also provide structural primitives such as the layout grid and spacing scale.
 
-You should only use the styles whenever you have to build a custom component or pattern that is not yet available in the
-components library or for foundational layout objects like typography, surfaces and boxes.
+Use these styles only when you need to build a custom component or pattern that is not yet available in the component
+library, or when working with foundational layout objects such as typography, surfaces, and boxes.
 
 - [Blur](/emotion/blur/examples)
 - [Border](/emotion/border/examples)
@@ -116,8 +115,7 @@ createRoot(document.getElementById('root')!).render(
 
 #### 2. Component Implementation
 
-Utilize the new tokens within your styles. These variables automatically resolve to the correct value based on the
-active theme.
+Use the new tokens in your styles. These variables automatically resolve to the correct value based on the active theme.
 
 ```tsx
 import styled from '@emotion/styled';
@@ -131,7 +129,7 @@ const MyComponent = styled.div({
 
 #### 3. Application
 
-The defined theme context will cascade to all child elements.
+The selected theme context cascades to all child elements.
 
 ```tsx
 import { MyComponent } from './MyComponent';

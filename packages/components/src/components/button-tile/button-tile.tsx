@@ -96,7 +96,7 @@ export class ButtonTile implements ITileProps {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
 
   @State() private hasFooterSlot: boolean = false;

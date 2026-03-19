@@ -73,7 +73,7 @@ export class Modal {
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */

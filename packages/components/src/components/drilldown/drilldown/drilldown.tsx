@@ -44,19 +44,19 @@ const propTypes: PropTypes<typeof Drilldown> = {
 export class Drilldown {
   @Element() public host!: HTMLElement;
 
-  /** If true, the drilldown is visualized as opened. */
+  /** If `true`, the drilldown is shown as open. */
   @Prop() public open?: boolean = false;
 
-  /** Defines which drilldown-item to be visualized as opened. */
+  /** Defines which `p-drilldown-item` is shown as open. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when activeIdentifier is changed. */
+  /** Emitted when `activeIdentifier` changes. */
   @Event({ bubbles: false }) public update?: EventEmitter<DrilldownUpdateEventDetail>;
 
   @State() private drilldownItemElements: Item[] = [];

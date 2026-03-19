@@ -63,10 +63,10 @@ const propTypes: PropTypes<typeof PinCode> = {
 export class PinCode {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Supplementary text providing more context or explanation for the pin code. */
   @Prop() public description?: string = '';
 
   /** Name of the control. */
@@ -77,7 +77,7 @@ export class PinCode {
   /** Number of characters of the Pin Code. */
   @Prop() public length?: PinCodeLength = 4;
 
-  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label and description. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** The validation state. */
@@ -101,7 +101,7 @@ export class PinCode {
   /** Sets the initial value of the Pin Code. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** A boolean value that, if present, renders the pin-code as a compact version. */
+  /** Displays the pin code in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The id of a form element the pin-code should be associated with. */

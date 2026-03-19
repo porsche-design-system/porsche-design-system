@@ -71,7 +71,7 @@ export class Textarea {
   /** Supplementary text providing more context or explanation for the textarea. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the textarea as a compact version. */
+  /** Displays the textarea in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the textarea, used when submitting the form data. */
@@ -88,7 +88,7 @@ export class Textarea {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Show or hide the character counter. */
@@ -100,7 +100,7 @@ export class Textarea {
   /** A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
-  /** A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the textarea. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
