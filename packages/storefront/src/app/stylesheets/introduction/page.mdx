@@ -1,7 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Styles: Introduction - Porsche Design System',
+  title: 'Stylesheet: Introduction - Porsche Design System',
   description: 'Learn how to set up and use global styles in the Porsche Design System.',
 };
 
@@ -11,9 +11,11 @@ export const metadata = {
 
 ## Setup
 
-As of Porsche Design System **v4**, global styles are **required**. All styles are bundled in a single CSS file:
+As of Porsche Design System **v4**, global styles are **required**. When you import the main package CSS file, all
+styles are included:
 
 ```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
 @import '@porsche-design-system/components-{js|angular|react|vue}';
 
 /* Alternative: If your bundler requires an explicit .css extension, use this path instead */
@@ -22,17 +24,18 @@ As of Porsche Design System **v4**, global styles are **required**. All styles a
 
 This includes:
 
-- [CSS color variables](/stylesheets/colors/)
-- [Font-face definitions](/stylesheets/font-face/)
-- [Normalize styles](/stylesheets/normalize/)
-- Color Scheme / light-dark() polyfill
+- [CSS Variables](/stylesheets/css-variables/)
+- [Color Scheme](/stylesheets/color-scheme/)
+- [Font Face](/stylesheets/font-face/)
+- [Normalize](/stylesheets/normalize/)
 
 ## Individual Imports
 
-You can also import each stylesheet separately for more granular control. Note that `variables.css` and `font-face.css`
-are **required** — components won't render correctly without them.
+If you only need specific styles, you can import each stylesheet separately for more granular control. Note that
+`variables.css` and `font-face.css` are **required** — components will not render correctly without them.
 
 ```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
 @import '@porsche-design-system/components-{js|angular|react|vue}/variables.css';
 @import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
 @import '@porsche-design-system/components-{js|angular|react|vue}/normalize.css';

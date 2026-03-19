@@ -1,0 +1,253 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  colorCanvas,
+  colorSurface,
+  colorFrosted,
+  colorFrostedSoft,
+  colorBackdrop,
+  colorPrimary,
+  colorContrastHigher,
+  colorContrastHigh,
+  colorContrastMedium,
+  colorContrastLow,
+  colorContrastLower,
+  colorInfo,
+  colorInfoMedium,
+  colorInfoLow,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
+  colorSuccess,
+  colorSuccessMedium,
+  colorSuccessLow,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
+  colorWarning,
+  colorWarningMedium,
+  colorWarningLow,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
+  colorError,
+  colorErrorMedium,
+  colorErrorLow,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
+  colorFocus,
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  fontWeightBold,
+  leadingNormal,
+  typescale2Xs,
+  typescaleXs,
+  typescaleSm,
+  typescaleMd,
+  typescaleLg,
+  typescaleXl,
+  typescale2Xl,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
+  spacingFluidXs,
+  spacingFluidSm,
+  spacingFluidMd,
+  spacingFluidLg,
+  spacingFluidXl,
+  spacingFluid2Xl,
+  spacingStaticXs,
+  spacingStaticSm,
+  spacingStaticMd,
+  spacingStaticLg,
+  spacingStaticXl,
+  spacingStatic2Xl,
+  radiusXs,
+  radiusSm,
+  radiusMd,
+  radiusLg,
+  radiusXl,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  blurFrosted,
+  shadowSm,
+  shadowMd,
+  shadowLg,
+  easeInOut,
+  easeIn,
+  easeOut,
+  durationSm,
+  durationMd,
+  durationLg,
+  durationXl,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'Styles: CSS Variables - Porsche Design System',
+  description: 'Detailed API reference for all CSS variables.',
+};
+
+# CSS Variables
+
+<TableOfContents headings={['Color', 'Typography', 'Spacing', 'Border Radius', 'Blur', 'Shadow', 'Motion']} />
+
+## Color
+
+### Background
+
+| Color                                                                                               | CSS variable             | Description                                                                                      | Value                           |
+| --------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------- |
+| <div className="bg-(--p-color-canvas) w-10 h-10 rounded-md border border-contrast-low"></div>       | `--p-color-canvas`       | Applies the **canvas** color, typically used for surfaces.                                       | <code>{colorCanvas}</code>      |
+| <div className="bg-(--p-color-surface) w-10 h-10 rounded-md border border-contrast-low"></div>      | `--p-color-surface`      | Applies the **surface** color, typically used for surfaces.                                      | <code>{colorSurface}</code>     |
+| <div className="bg-(--p-color-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | `--p-color-frosted`      | Applies the **frosted** color, typically used as a background in combination with a blur effect. | <code>{colorFrosted}</code>     |
+| <div className="bg-(--p-color-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | `--p-color-frosted-soft` | Applies the **frosted** color, typically used as a background `:hover`.                          | <code>{colorFrostedSoft}</code> |
+| <div className="bg-(--p-color-backdrop) w-10 h-10 rounded-md border border-contrast-low"></div>     | `--p-color-backdrop`     | Applies the **backdrop** color, typically used for backdrops.                                    | <code>{colorBackdrop}</code>    |
+
+### Foreground
+
+| Color                                                                                                  | CSS variable                | Description                                                                                                        | Value                              |
+| ------------------------------------------------------------------------------------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| <div className="bg-(--p-color-primary) w-10 h-10 rounded-md border border-contrast-low"></div>         | `--p-color-primary`         | Applies the **primary** color, typically used for text.                                                            | <code>{colorPrimary}</code>        |
+| <div className="bg-(--p-color-contrast-higher) w-10 h-10 rounded-md border border-contrast-low"></div> | `--p-color-contrast-higher` | Applies the **contrast-higher** color, typically used for text.                                                    | <code>{colorContrastHigher}</code> |
+| <div className="bg-(--p-color-contrast-high) w-10 h-10 rounded-md border border-contrast-low"></div>   | `--p-color-contrast-high`   | Applies the **contrast-high** color, typically used for text.                                                      | <code>{colorContrastHigh}</code>   |
+| <div className="bg-(--p-color-contrast-medium) w-10 h-10 rounded-md border border-contrast-low"></div> | `--p-color-contrast-medium` | Applies the **contrast-medium** color, typically used for text.                                                    | <code>{colorContrastMedium}</code> |
+| <div className="bg-(--p-color-contrast-low) w-10 h-10 rounded-md border border-contrast-low"></div>    | `--p-color-contrast-low`    | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | <code>{colorContrastLow}</code>    |
+| <div className="bg-(--p-color-contrast-lower) w-10 h-10 rounded-md border border-contrast-low"></div>  | `--p-color-contrast-lower`  | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | <code>{colorContrastLower}</code>  |
+
+### Semantic
+
+| Color                                                                                                       | CSS variable                     | Description                                                                                            | Value                                  |
+| ----------------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| <div className="bg-(--p-color-info) w-10 h-10 rounded-md border border-contrast-low"></div>                 | `--p-color-info`                 | Applies the **info** color, typically used for text.                                                   | <code>{colorInfo}</code>               |
+| <div className="bg-(--p-color-info-medium) w-10 h-10 rounded-md border border-contrast-low"></div>          | `--p-color-info-medium`          | Applies the **info** color, typically used for text or border.                                         | <code>{colorInfoMedium}</code>         |
+| <div className="bg-(--p-color-info-low) w-10 h-10 rounded-md border border-contrast-low"></div>             | `--p-color-info-low`             | Applies the **info** color, typically used for text or border.                                         | <code>{colorInfoLow}</code>            |
+| <div className="bg-(--p-color-info-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>         | `--p-color-info-frosted`         | Applies the **info-frosted** color, typically used as background in combination with a blur effect.    | <code>{colorInfoFrosted}</code>        |
+| <div className="bg-(--p-color-info-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div>    | `--p-color-info-frosted-soft`    | Applies the **info-frosted-soft** color, typically used as background `:hover`.                        | <code>{colorInfoFrostedSoft}</code>    |
+| <div className="bg-(--p-color-success) w-10 h-10 rounded-md border border-contrast-low"></div>              | `--p-color-success`              | Applies the **success** color, typically used for text.                                                | <code>{colorSuccess}</code>            |
+| <div className="bg-(--p-color-success-medium) w-10 h-10 rounded-md border border-contrast-low"></div>       | `--p-color-success-medium`       | Applies the **success** color, typically used for text or border.                                      | <code>{colorSuccessMedium}</code>      |
+| <div className="bg-(--p-color-success-low) w-10 h-10 rounded-md border border-contrast-low"></div>          | `--p-color-success-low`          | Applies the **success** color, typically used for text or border.                                      | <code>{colorSuccessLow}</code>         |
+| <div className="bg-(--p-color-success-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | `--p-color-success-frosted`      | Applies the **success-frosted** color, typically used as background in combination with a blur effect. | <code>{colorSuccessFrosted}</code>     |
+| <div className="bg-(--p-color-success-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | `--p-color-success-frosted-soft` | Applies the **success-frosted-soft** color, typically used as background `:hover`.                     | <code>{colorSuccessFrostedSoft}</code> |
+| <div className="bg-(--p-color-warning) w-10 h-10 rounded-md border border-contrast-low"></div>              | `--p-color-warning`              | Applies the **warning** color, typically used for text.                                                | <code>{colorWarning}</code>            |
+| <div className="bg-(--p-color-warning-medium) w-10 h-10 rounded-md border border-contrast-low"></div>       | `--p-color-warning-medium`       | Applies the **warning** color, typically used for text or border.                                      | <code>{colorWarningMedium}</code>      |
+| <div className="bg-(--p-color-warning-low) w-10 h-10 rounded-md border border-contrast-low"></div>          | `--p-color-warning-low`          | Applies the **warning** color, typically used for text or border.                                      | <code>{colorWarningLow}</code>         |
+| <div className="bg-(--p-color-warning-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | `--p-color-warning-frosted`      | Applies the **warning-frosted** color, typically used as background in combination with a blur effect. | <code>{colorWarningFrosted}</code>     |
+| <div className="bg-(--p-color-warning-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | `--p-color-warning-frosted-soft` | Applies the **warning-frosted-soft** color, typically used as background `:hover`.                     | <code>{colorWarningFrostedSoft}</code> |
+| <div className="bg-(--p-color-error) w-10 h-10 rounded-md border border-contrast-low"></div>                | `--p-color-error`                | Applies the **error** color, typically used for text.                                                  | <code>{colorError}</code>              |
+| <div className="bg-(--p-color-error-medium) w-10 h-10 rounded-md border border-contrast-low"></div>         | `--p-color-error-medium`         | Applies the **error** color, typically used for text or border.                                        | <code>{colorErrorMedium}</code>        |
+| <div className="bg-(--p-color-error-low) w-10 h-10 rounded-md border border-contrast-low"></div>            | `--p-color-error-low`            | Applies the **error** color, typically used for text or border.                                        | <code>{colorErrorLow}</code>           |
+| <div className="bg-(--p-color-error-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>        | `--p-color-error-frosted`        | Applies the **error-frosted** color, typically used as background in combination with a blur effect .  | <code>{colorErrorFrosted}</code>       |
+| <div className="bg-(--p-color-error-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div>   | `--p-color-error-frosted-soft`   | Applies the **error-frosted-soft** color, typically used as background `:hover`.                       | <code>{colorErrorFrostedSoft}</code>   |
+
+### A11y
+
+| Color                                                                                        | CSS variable      | Description                                                                             | Value                     |
+| -------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------- | ------------------------- |
+| <div className="bg-(--p-color-focus) w-10 h-10 rounded-md border border-contrast-low"></div> | `--p-color-focus` | Applies the **focus** color, typically used as the outline for `:focus-visible` states. | <code>{colorFocus}</code> |
+
+## Typography
+
+### Font Family
+
+| CSS variable            | Description                                                         | Value                          |
+| ----------------------- | ------------------------------------------------------------------- | ------------------------------ |
+| `--p-font-porsche-next` | Applies the **Porsche Next** font family along with fallback fonts. | <code>{fontPorscheNext}</code> |
+
+### Font Weight
+
+| CSS variable               | Description                                                                    | Value                             |
+| -------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
+| `--p-font-weight-normal`   | Applies the **regular** font weight optimized for the Porsche Next typeface.   | <code>{fontWeightNormal}</code>   |
+| `--p-font-weight-semibold` | Applies the **semi-bold** font weight optimized for the Porsche Next typeface. | <code>{fontWeightSemibold}</code> |
+| `--p-font-weight-bold`     | Applies the **bold** font weight optimized for the Porsche Next typeface.      | <code>{fontWeightBold}</code>     |
+
+### Line Height
+
+| CSS variable         | Description                                                                                 | Value                        |
+| -------------------- | ------------------------------------------------------------------------------------------- | ---------------------------- |
+| `--p-leading-normal` | Applies a dynamic default line height specifically optimized for the Porsche Next typeface. | <code>{leadingNormal}</code> |
+
+### Typescale
+
+| CSS variable        | Description                                                       | Value                       |
+| ------------------- | ----------------------------------------------------------------- | --------------------------- |
+| `--p-typescale-2xs` | Applies the **2x-small** font size for the Porsche Next typeface. | <code>{typescale2Xs}</code> |
+| `--p-typescale-xs`  | Applies the **x-small** font size for the Porsche Next typeface.  | <code>{typescaleXs}</code>  |
+| `--p-typescale-sm`  | Applies the **small** font size for the Porsche Next typeface.    | <code>{typescaleSm}</code>  |
+| `--p-typescale-md`  | Applies the **medium** font size for the Porsche Next typeface.   | <code>{typescaleMd}</code>  |
+| `--p-typescale-lg`  | Applies the **large** font size for the Porsche Next typeface.    | <code>{typescaleLg}</code>  |
+| `--p-typescale-xl`  | Applies the **x-large** font size for the Porsche Next typeface.  | <code>{typescaleXl}</code>  |
+| `--p-typescale-2xl` | Applies the **2x-large** font size for the Porsche Next typeface. | <code>{typescale2Xl}</code> |
+| `--p-typescale-3xl` | Applies the **3x-large** font size for the Porsche Next typeface. | <code>{typescale3Xl}</code> |
+| `--p-typescale-4xl` | Applies the **4x-large** font size for the Porsche Next typeface. | <code>{typescale4Xl}</code> |
+| `--p-typescale-5xl` | Applies the **5x-large** font size for the Porsche Next typeface. | <code>{typescale5Xl}</code> |
+
+## Spacing
+
+### Fluid
+
+| CSS variable            | Description                             | Value                          |
+| ----------------------- | --------------------------------------- | ------------------------------ |
+| `--p-spacing-fluid-xs`  | Applies the **x-small** fluid spacing.  | <code>{spacingFluidXs}</code>  |
+| `--p-spacing-fluid-sm`  | Applies the **small** fluid spacing.    | <code>{spacingFluidSm}</code>  |
+| `--p-spacing-fluid-md`  | Applies the **medium** fluid spacing.   | <code>{spacingFluidMd}</code>  |
+| `--p-spacing-fluid-lg`  | Applies the **large** fluid spacing.    | <code>{spacingFluidLg}</code>  |
+| `--p-spacing-fluid-xl`  | Applies the **x-large** fluid spacing.  | <code>{spacingFluidXl}</code>  |
+| `--p-spacing-fluid-2xl` | Applies the **2x-large** fluid spacing. | <code>{spacingFluid2Xl}</code> |
+
+### Static
+
+| CSS variable             | Description                              | Value                           |
+| ------------------------ | ---------------------------------------- | ------------------------------- |
+| `--p-spacing-static-xs`  | Applies the **x-small** static spacing.  | <code>{spacingStaticXs}</code>  |
+| `--p-spacing-static-sm`  | Applies the **small** static spacing.    | <code>{spacingStaticSm}</code>  |
+| `--p-spacing-static-md`  | Applies the **medium** static spacing.   | <code>{spacingStaticMd}</code>  |
+| `--p-spacing-static-lg`  | Applies the **large** static spacing.    | <code>{spacingStaticLg}</code>  |
+| `--p-spacing-static-xl`  | Applies the **x-large** static spacing.  | <code>{spacingStaticXl}</code>  |
+| `--p-spacing-static-2xl` | Applies the **2x-large** static spacing. | <code>{spacingStatic2Xl}</code> |
+
+## Border Radius
+
+| CSS variable      | Description                                  | Value                     |
+| ----------------- | -------------------------------------------- | ------------------------- |
+| `--p-radius-xs`   | Applies a **x-small** `border-radius`.       | <code>{radiusXs}</code>   |
+| `--p-radius-sm`   | Applies a **small** `border-radius`.         | <code>{radiusSm}</code>   |
+| `--p-radius-md`   | Applies a **medium** `border-radius`.        | <code>{radiusMd}</code>   |
+| `--p-radius-lg`   | Applies a **large** `border-radius`.         | <code>{radiusLg}</code>   |
+| `--p-radius-xl`   | Applies a **x-large** `border-radius`.       | <code>{radiusXl}</code>   |
+| `--p-radius-2xl`  | Applies a **2x-large** `border-radius`.      | <code>{radius2Xl}</code>  |
+| `--p-radius-3xl`  | Applies a **3x-large** `border-radius`.      | <code>{radius3Xl}</code>  |
+| `--p-radius-4xl`  | Applies a **4x-large** `border-radius`.      | <code>{radius4Xl}</code>  |
+| `--p-radius-full` | Applies a **fully** rounded `border-radius`. | <code>{radiusFull}</code> |
+
+## Blur
+
+| CSS variable       | Description                                                                                                                    | Value                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
+| `--p-blur-frosted` | Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color. | <code>{blurFrosted}</code> |
+
+## Shadow
+
+| CSS variable    | Description                        | Value                   |
+| --------------- | ---------------------------------- | ----------------------- |
+| `--p-shadow-sm` | Applies a **small** `box-shadow`.  | <code>{shadowSm}</code> |
+| `--p-shadow-md` | Applies a **medium** `box-shadow`. | <code>{shadowMd}</code> |
+| `--p-shadow-lg` | Applies a **large** `box-shadow`.  | <code>{shadowLg}</code> |
+
+## Motion
+
+### Duration
+
+| CSS variable      | Description                                    | Value                     |
+| ----------------- | ---------------------------------------------- | ------------------------- |
+| `--p-duration-sm` | Applies a **short** `transition-duration`.     | <code>{durationSm}</code> |
+| `--p-duration-md` | Applies a **moderate** `transition-duration`.  | <code>{durationMd}</code> |
+| `--p-duration-lg` | Applies a **long** `transition-duration`.      | <code>{durationLg}</code> |
+| `--p-duration-xl` | Applies a **very long** `transition-duration`. | <code>{durationXl}</code> |
+
+### Easing
+
+| CSS variable      | Description                                         | Value                    |
+| ----------------- | --------------------------------------------------- | ------------------------ |
+| `--p-ease-in-out` | Applies an **in-out** `transition-timing-function`. | <code>{easeInOut}</code> |
+| `--p-ease-in`     | Applies an **in** `transition-timing-function`.     | <code>{easeIn}</code>    |
+| `--p-ease-out`    | Applies an **out** `transition-timing-function`.    | <code>{easeOut}</code>   |

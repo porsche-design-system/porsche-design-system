@@ -1,0 +1,21 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Stylesheet: Color Scheme - Porsche Design System',
+  description: 'Detailed API reference for the color-scheme / light-dark() polyfill.',
+};
+
+# Color Scheme
+
+<TableOfContents headings={[]} />
+
+## CSS Classes
+
+| CSS classes          | Usage                                                                                  | Description                                                                                                         |
+| -------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `.scheme-normal`     | `<html class="scheme-normal">…</html>` or `<div class="scheme-normal">…</div>`         | Sets `color-scheme: normal`. The element isn't rendered with any color scheme at all — the browser default applies. |
+| `.scheme-light`      | `<html class="scheme-light">…</html>` or `<div class="scheme-light">…</div>`           | Sets `color-scheme: light`. Indicates the element supports only the light color scheme.                             |
+| `.scheme-dark`       | `<html class="scheme-dark">…</html>` or `<div class="scheme-dark">…</div>`             | Sets `color-scheme: dark`. Indicates the element supports only the dark color scheme.                               |
+| `.scheme-light-dark` | `<html class="scheme-light-dark">…</html>` or `<div class="scheme-light-dark">…</div>` | Sets `color-scheme: light dark`. Indicates the element supports both light and dark, chosen by user preference.     |
+| `.scheme-only-light` | `<html class="scheme-only-light">…</html>` or `<div class="scheme-only-light">…</div>` | Sets `color-scheme: only light`. Forces the light color scheme and prevents the browser from overriding it.         |
+| `.scheme-only-dark`  | `<html class="scheme-only-dark">…</html>` or `<div class="scheme-only-dark">…</div>`   | Sets `color-scheme: only dark`. Forces the dark color scheme and prevents the browser from overriding it.           |
