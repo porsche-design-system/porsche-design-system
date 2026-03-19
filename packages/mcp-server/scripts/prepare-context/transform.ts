@@ -275,7 +275,10 @@ export function formatComponentApi(tagName: string, meta: any): string {
         .replace(/\\/g, '\\\\')
         .replace(/\n/g, ' ')
         .replace(/\|/g, '\\|');
-      const required = propMeta.isRequired ? ' **(required)**' : '';
+      const description = (eventMeta.description || '')
+        .replace(/\n/g, ' ')
+        .replace(/\\/g, '\\\\')
+        .replace(/\|/g, '\\|');
       const breakpoint = propMeta.isBreakpointCustomizable ? ' *(breakpoint customizable)*' : '';
       lines.push(
         `| \`${propName}\` | \`${type}\` | ${defaultValue} | ${description}${required}${breakpoint}${descSuffix} |`
@@ -289,7 +292,10 @@ export function formatComponentApi(tagName: string, meta: any): string {
     lines.push('| Event | Type | Description |');
     lines.push('|-------|------|-------------|');
 
-      const description = escapeMarkdownTableCell(eventMeta.description || '');
+      const description = (slotMeta.description || '')
+        .replace(/\n/g, ' ')
+        .replace(/\\/g, '\\\\')
+        .replace(/\|/g, '\\|');
       if (eventMeta.isDeprecated) continue;
       const type = eventMeta.typeDetail || eventMeta.type || 'void';
       const description = (eventMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
@@ -303,7 +309,10 @@ export function formatComponentApi(tagName: string, meta: any): string {
     lines.push('| Slot | Description |');
     lines.push('|------|-------------|');
 
-      const description = escapeMarkdownTableCell(slotMeta.description || '');
+      const description = (varMeta.description || '')
+        .replace(/\n/g, ' ')
+        .replace(/\\/g, '\\\\')
+        .replace(/\|/g, '\\|');
       if (slotMeta.isDeprecated) continue;
       const name = slotName === '' ? '(default)' : `\`${slotName}\``;
       const description = (slotMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
