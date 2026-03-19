@@ -16,10 +16,10 @@ publish_npmjs() {
   echo "task: [$(date)] \"publish_npmjs\" (${PACKAGE_LOCATION})"
 
   if [[ ${NPM_TAG_NAME} ]]; then
-    npm publish --tag ${NPM_TAG_NAME} --non-interactive --access public "${PACKAGE_LOCATION}"
+    npm publish --tag ${NPM_TAG_NAME} --access public "${PACKAGE_LOCATION}"
   else
     # tagged with "latest"
-    npm publish --non-interactive --access public "${PACKAGE_LOCATION}"
+    npm publish --access public "${PACKAGE_LOCATION}"
   fi
 }
 
