@@ -1,6 +1,7 @@
-import { fontLineHeight, frostedGlassStyle, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../types';
+import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
+import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
@@ -12,14 +13,19 @@ import {
   preventFoucOfNestedElementsStyles,
 } from './';
 import {
+  blurFrosted,
   colorFrosted,
   colorFrostedStrong,
-  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusLg,
+  spacingStaticXs,
+  typescaleSm,
 } from './css-variables';
-import { getFontSizeText } from './font-size-text-styles';
+import { colorMap, sizeMap } from './maps';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
@@ -45,7 +51,8 @@ export const getLinkButtonPureStyles = (
   active: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<ButtonPureSize | LinkPureSize>,
+  color: ButtonPureColor | LinkPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
@@ -73,19 +80,19 @@ export const getLinkButtonPureStyles = (
       display: 'flex',
       width: '100%',
       cursor: 'pointer',
-      color: colorPrimary,
+      color: colorMap[color],
       textDecoration: underline ? 'underline' : 'none',
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       ...mergeDeep(
         buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
-          gap: hidelabelValue ? 0 : spacingStaticXSmall,
+          gap: hidelabelValue ? 0 : spacingStaticXs,
         })),
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
           alignItems: stretchValue ? 'center' : 'flex-start',
         })),
-        buildResponsiveStyles(size, (sizeValue: TextSize) => ({
-          fontSize: getFontSizeText(sizeValue),
+        buildResponsiveStyles(size, (v: ButtonPureSize | LinkPureSize) => ({
+          fontSize: sizeMap[v],
         }))
       ),
       ...forcedColorsMediaQuery({
@@ -106,14 +113,16 @@ export const getLinkButtonPureStyles = (
         })),
         transition: getTransition('background-color'),
         ...(active && {
-          ...frostedGlassStyle,
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
           backgroundColor: colorFrosted,
         }),
       },
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover::before': {
-            ...frostedGlassStyle,
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
             backgroundColor: colorFrostedStrong,
           },
         })),
@@ -126,15 +135,6 @@ export const getLinkButtonPureStyles = (
           icon: {
             position: 'relative',
             flexShrink: '0',
-            fontSize: 'inherit', // inherit font size from root
-            width: fontLineHeight,
-            height: fontLineHeight,
-            // workaround for Safari to optimize vertical alignment of icons
-            // TODO: check if this is still needed after optimized icons are included
-            '@supports (width: round(down, 1px, 1px))': {
-              width: `round(down, ${fontLineHeight}, 1px)`,
-              height: `round(down, ${fontLineHeight}, 1px)`,
-            },
           },
           label: mergeDeep(
             { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)

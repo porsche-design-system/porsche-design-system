@@ -116,7 +116,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -259,7 +259,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -387,7 +387,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -505,7 +505,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -629,7 +629,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -772,7 +772,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -890,7 +890,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1007,7 +1007,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1124,7 +1124,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1247,7 +1247,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1383,7 +1383,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1525,7 +1525,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1677,7 +1677,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -1794,7 +1794,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -1911,7 +1911,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -2047,7 +2047,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -2183,7 +2183,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -2325,7 +2325,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
@@ -2440,7 +2440,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -2574,7 +2574,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -2692,7 +2692,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -2816,7 +2816,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -2953,7 +2953,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -3096,7 +3096,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -3224,7 +3224,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -3358,7 +3358,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -3505,7 +3505,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
@@ -3658,7 +3658,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }

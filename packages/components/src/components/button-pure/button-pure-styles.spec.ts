@@ -1,15 +1,16 @@
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
-import type { AlignLabel, BreakpointCustomizable, TextSize } from '../../types';
+import type { AlignLabel, BreakpointCustomizable } from '../../types';
 import { getComponentCss } from './button-pure-styles';
+import type { ButtonPureSize } from './button-pure-utils';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
-  const breakpointCustomizableSize: BreakpointCustomizable<TextSize> = {
-    base: 'x-small',
-    xs: 'small',
-    s: 'medium',
-    m: 'large',
-    l: 'x-large',
+  const breakpointCustomizableSize: BreakpointCustomizable<ButtonPureSize> = {
+    base: 'xs',
+    xs: 'sm',
+    s: 'md',
+    m: 'lg',
+    l: 'xl',
     xl: 'inherit',
   };
   const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
@@ -22,22 +23,35 @@ describe('getComponentCss()', () => {
   };
 
   it.each<Parameters<typeof getComponentCss>>([
-    ['arrow-head-right', '', false, false, false, false, false, 'small', false, 'end', false],
-    ['arrow-head-right', '', false, false, false, false, false, 'small', false, 'right', false],
-    ['arrow-head-right', '', false, false, false, false, false, 'small', false, 'left', false],
-    ['arrow-head-right', '', false, false, false, true, false, 'small', false, 'end', false],
-    ['none', '', false, false, true, true, false, 'small', false, 'end', false],
-    ['arrow-head-right', '', false, false, false, true, false, 'small', false, 'end', false],
-    ['arrow-head-right', '', true, false, false, true, false, 'small', false, 'end', false],
-    ['arrow-head-right', '', false, false, false, false, false, 'small', false, 'end', true],
-    ['arrow-head-right', '', true, false, false, false, true, 'x-large', false, 'start', false],
-    ['arrow-head-right', '', true, false, false, false, true, 'x-large', false, 'start', false],
-    ['arrow-head-right', '', false, false, false, false, false, 'small', true, 'end', false],
-    ['arrow-head-right', '', false, false, false, false, false, 'small', true, 'end', false],
-    ['arrow-head-right', '', false, false, false, false, false, 'small', breakpointCustomizableBoolean, 'end', false],
-    ['none', '', false, false, false, false, false, 'small', false, 'end', false],
-    ['none', '', false, false, false, false, false, 'inherit', false, 'end', false],
-    ['none', '', false, true, false, false, false, breakpointCustomizableSize, false, 'end', false],
+    ['arrow-head-right', '', false, false, false, false, false, 'sm', 'primary', false, 'end', false],
+    ['arrow-head-right', '', false, false, false, false, false, 'sm', 'primary', false, 'right', false],
+    ['arrow-head-right', '', false, false, false, false, false, 'sm', 'primary', false, 'left', false],
+    ['arrow-head-right', '', false, false, false, true, false, 'sm', 'primary', false, 'end', false],
+    ['none', '', false, false, true, true, false, 'sm', 'primary', false, 'end', false],
+    ['arrow-head-right', '', false, false, false, true, false, 'sm', 'primary', false, 'end', false],
+    ['arrow-head-right', '', true, false, false, true, false, 'sm', 'primary', false, 'end', false],
+    ['arrow-head-right', '', false, false, false, false, false, 'sm', 'primary', false, 'end', true],
+    ['arrow-head-right', '', true, false, false, false, true, 'xl', 'primary', false, 'start', false],
+    ['arrow-head-right', '', true, false, false, false, true, 'xl', 'primary', false, 'start', false],
+    ['arrow-head-right', '', false, false, false, false, false, 'sm', 'primary', true, 'end', false],
+    ['arrow-head-right', '', false, false, false, false, false, 'sm', 'primary', true, 'end', false],
+    [
+      'arrow-head-right',
+      '',
+      false,
+      false,
+      false,
+      false,
+      false,
+      'sm',
+      'primary',
+      breakpointCustomizableBoolean,
+      'end',
+      false,
+    ],
+    ['none', '', false, false, false, false, false, 'sm', 'primary', false, 'end', false],
+    ['none', '', false, false, false, false, false, 'inherit', 'primary', false, 'end', false],
+    ['none', '', false, true, false, false, false, breakpointCustomizableSize, 'primary', false, 'end', false],
     [
       'arrow-head-right',
       '',
@@ -47,6 +61,7 @@ describe('getComponentCss()', () => {
       false,
       breakpointCustomizableBoolean,
       breakpointCustomizableSize,
+      'primary',
       breakpointCustomizableBoolean,
       breakpointCustomizableAlignLabel,
       true,
@@ -62,6 +77,7 @@ describe('getComponentCss()', () => {
       isDisabledOrLoading,
       stretch,
       size,
+      color,
       hideLabel,
       alignLabel,
       underline
@@ -76,6 +92,7 @@ describe('getComponentCss()', () => {
           isDisabledOrLoading,
           stretch,
           size,
+          color,
           hideLabel,
           alignLabel,
           underline

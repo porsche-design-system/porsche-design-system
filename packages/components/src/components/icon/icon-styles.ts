@@ -1,23 +1,6 @@
 import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
-import {
-  colorContrastHigh,
-  colorContrastLow,
-  colorContrastMedium,
-  colorError,
-  colorInfo,
-  colorPrimary,
-  colorSuccess,
-  colorWarning,
-  fontPorscheNext,
-  leadingNormal,
-  typescale2Xl,
-  typescale2Xs,
-  typescaleLg,
-  typescaleMd,
-  typescaleSm,
-  typescaleXl,
-  typescaleXs,
-} from '../../styles/css-variables';
+import { fontPorscheNext, leadingNormal } from '../../styles/css-variables';
+import { colorMap, sizeMap } from '../../styles/maps';
 import type { BreakpointCustomizable, IconName } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { buildIconUrl, type IconColor, type IconSize } from './icon-utils';
@@ -31,29 +14,6 @@ const cssVarSize = '--p-icon-size';
  * @css-variable {"name": "--p-icon-color", "description": "Defines the icon color. Overrides the `color` property when set.", "defaultValue": ""}
  */
 const cssVarColor = '--p-icon-color';
-
-const colorMap: Record<IconColor, string> = {
-  primary: colorPrimary,
-  'contrast-high': colorContrastHigh,
-  'contrast-medium': colorContrastMedium,
-  'contrast-low': colorContrastLow,
-  success: colorSuccess,
-  warning: colorWarning,
-  error: colorError,
-  info: colorInfo,
-  inherit: 'currentcolor',
-};
-
-const sizeMap: Record<IconSize, string> = {
-  'xx-small': typescale2Xs,
-  'x-small': typescaleXs,
-  small: typescaleSm,
-  medium: typescaleMd,
-  large: typescaleLg,
-  'x-large': typescaleXl,
-  'xx-large': typescale2Xl,
-  inherit: 'inherit',
-};
 
 const isFlippableIcon = (name: IconName, source: string): boolean => {
   return (

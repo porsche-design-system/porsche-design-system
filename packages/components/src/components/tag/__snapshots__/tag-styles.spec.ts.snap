@@ -45,7 +45,7 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -113,7 +113,7 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -175,7 +175,7 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -243,7 +243,7 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -305,7 +305,7 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;

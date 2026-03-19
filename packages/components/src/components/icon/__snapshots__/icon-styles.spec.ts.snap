@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -25,7 +25,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-high));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -33,7 +33,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -58,7 +58,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-high));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -66,7 +66,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -91,7 +91,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-low));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -99,7 +99,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -124,7 +124,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-low));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -132,7 +132,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -157,7 +157,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -165,7 +165,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -190,7 +190,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -198,7 +198,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -223,7 +223,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-error));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -231,7 +231,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -256,7 +256,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-error));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -264,7 +264,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -289,7 +289,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-info));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -297,7 +297,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -322,7 +322,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-info));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -330,7 +330,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -355,7 +355,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -363,7 +363,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -388,7 +388,40 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
+  img {
+    background: CanvasText;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: 2xs 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  object-position: -9999px -9999px;
+  pointer-events: none;
+  width: var(--p-icon-size,var(--p-leading-normal));
+  height: var(--p-icon-size,var(--p-leading-normal));
+  font-family: var(--p-font-porsche-next);
+  font-size: var(--p-typescale-2xs);
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
+  background: var(--p-icon-color,var(--p-color-primary));
+}
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -421,7 +454,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -429,7 +462,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: large 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: lg 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -454,7 +487,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -462,7 +495,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: medium 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: md 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -487,7 +520,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -495,7 +528,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -520,7 +553,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -528,7 +561,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -553,7 +586,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -561,7 +594,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: x-large 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: xl 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -586,7 +619,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -594,7 +627,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: x-small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: xs 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -619,7 +652,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -627,40 +660,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: xx-small 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-2xs);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
-  background: var(--p-icon-color,var(--p-color-primary));
-}
-@media (forced-colors: active) {
-  img {
-    background: CanvasText;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -685,7 +685,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-success));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -693,7 +693,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -718,7 +718,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-success));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -726,7 +726,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -751,7 +751,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-warning));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -759,7 +759,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: small 2`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: sm 2`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -784,7 +784,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/360.0600731.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-warning));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -792,7 +792,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: , color: primary and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: , color: primary and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -820,7 +820,7 @@ img {
 img:dir(rtl) {
   transform: scaleX(-1);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }
@@ -828,7 +828,7 @@ img:dir(rtl) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: some-custom.svg, color: primary and size: small 1`] = `
+exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: some-custom.svg, color: primary and size: sm 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -853,7 +853,7 @@ img {
   mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   img {
     background: CanvasText;
   }

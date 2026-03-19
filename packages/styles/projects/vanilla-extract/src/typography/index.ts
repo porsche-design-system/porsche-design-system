@@ -1,8 +1,8 @@
 export * from './deprecated';
-export { proseDisplayLgStyle } from './proseDisplayLgStyle';
-export { proseDisplayMdStyle } from './proseDisplayMdStyle';
-export { proseDisplaySmStyle } from './proseDisplaySmStyle';
 export { proseHeading2XlStyle } from './proseHeading2XlStyle';
+export { proseHeading3XlStyle } from './proseHeading3XlStyle';
+export { proseHeading4XlStyle } from './proseHeading4XlStyle';
+export { proseHeading5XlStyle } from './proseHeading5XlStyle';
 export { proseHeadingLgStyle } from './proseHeadingLgStyle';
 export { proseHeadingMdStyle } from './proseHeadingMdStyle';
 export { proseHeadingSmStyle } from './proseHeadingSmStyle';

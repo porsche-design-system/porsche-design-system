@@ -1,18 +1,18 @@
-import { getComponentCss } from './spinner-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './spinner-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', ],
-    ['medium', ],
-    ['large', ],
-    ['inherit', ],
-    [{ base: 'medium', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }, ],
-    ['small', ],
-    ['medium', ],
-    ['large', ],
-    ['inherit', ],
-    [{ base: 'medium', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }, ],
+    ['primary', 'sm'],
+    ['primary', 'md'],
+    ['primary', 'lg'],
+    ['primary', 'inherit'],
+    ['primary', { base: 'md', xs: 'sm', s: 'md', m: 'sm', l: 'md', xl: 'sm' }],
+    ['primary', 'sm'],
+    ['primary', 'md'],
+    ['primary', 'lg'],
+    ['primary', 'inherit'],
+    ['primary', { base: 'md', xs: 'sm', s: 'md', m: 'sm', l: 'md', xl: 'sm' }],
   ])('should return correct css for size: %j', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });

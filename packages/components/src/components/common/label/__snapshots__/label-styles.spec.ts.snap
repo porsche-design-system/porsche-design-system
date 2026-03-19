@@ -552,7 +552,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 .required {
   user-select: none;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;
@@ -604,7 +604,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 .required {
   user-select: none;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .label {
     opacity: 1;
     color: GrayText;

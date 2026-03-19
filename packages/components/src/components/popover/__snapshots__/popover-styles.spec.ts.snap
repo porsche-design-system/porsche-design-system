@@ -57,7 +57,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -102,7 +102,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .arrow {
       background: CanvasText;
     }

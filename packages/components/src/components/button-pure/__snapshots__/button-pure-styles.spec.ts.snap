@@ -20,13 +20,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -45,9 +43,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -66,14 +61,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -87,8 +75,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -115,13 +103,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -140,9 +126,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -161,14 +144,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -182,8 +158,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -210,13 +186,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -235,9 +209,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -256,14 +227,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -277,8 +241,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -305,13 +269,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
   cursor: not-allowed;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -330,9 +292,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -351,14 +310,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -392,13 +344,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
   cursor: not-allowed;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -417,9 +367,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -438,14 +385,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -479,13 +419,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
   cursor: not-allowed;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -496,8 +434,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
   left: -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
 }
 .root:focus-visible::before {
@@ -507,9 +445,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -528,14 +463,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -569,13 +497,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: underline;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -594,9 +520,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -615,14 +538,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -636,8 +552,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -663,13 +579,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: space-between;
   align-items: center;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  font-size: var(--p-typescale-xl);
 }
 .root::before {
   content: "";
@@ -680,8 +594,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   left: -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
 }
 .root:focus-visible::before {
@@ -691,9 +605,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -712,14 +623,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -733,8 +637,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -760,13 +664,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: space-between;
   align-items: center;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  font-size: var(--p-typescale-xl);
 }
 .root::before {
   content: "";
@@ -777,8 +679,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   left: -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
 }
 .root:focus-visible::before {
@@ -788,9 +690,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -809,14 +708,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -830,8 +722,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -858,13 +750,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -883,9 +773,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -904,14 +791,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -925,8 +805,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -953,13 +833,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -978,9 +856,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -999,14 +874,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1020,8 +888,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -1048,13 +916,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -1073,9 +939,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -1094,16 +957,9 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 @media(min-width:480px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
   }
   .root::before {
     right: -4px;
@@ -1135,7 +991,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 
 @media(min-width:1000px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
   }
   .root::before {
     right: -4px;
@@ -1167,7 +1023,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 
 @media(min-width:1760px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
   }
   .root::before {
     right: -4px;
@@ -1181,7 +1037,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1195,8 +1051,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -1260,13 +1116,11 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   cursor: pointer;
   color: var(--p-color-contrast-low);
   text-decoration: underline;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   gap: 0;
   justify-content: space-between;
   align-items: center;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
 }
 .root::before {
   content: "";
@@ -1285,9 +1139,6 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 .icon {
   position: relative;
   flex-shrink: 0;
-  font-size: inherit;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   z-index: 1;
@@ -1306,19 +1157,12 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 @media(min-width:480px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     justify-content: flex-start;
     align-items: flex-start;
-    font-size: 1rem;
+    font-size: var(--p-typescale-sm);
   }
   .root::before {
     right: -4px;
@@ -1338,7 +1182,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     gap: 0;
     justify-content: space-between;
     align-items: center;
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    font-size: var(--p-typescale-md);
   }
   .root::before {
     right: -2px;
@@ -1355,10 +1199,10 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 @media(min-width:1000px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     justify-content: flex-start;
     align-items: flex-start;
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+    font-size: var(--p-typescale-lg);
   }
   .root::before {
     right: -4px;
@@ -1378,7 +1222,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     gap: 0;
     justify-content: space-between;
     align-items: center;
-    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+    font-size: var(--p-typescale-xl);
   }
   .root::before {
     right: -2px;
@@ -1395,7 +1239,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 @media(min-width:1760px) {
   .root {
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     justify-content: flex-start;
     align-items: flex-start;
     font-size: inherit;
@@ -1413,7 +1257,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1427,8 +1271,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -1455,13 +1299,11 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   cursor: not-allowed;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -1484,9 +1326,7 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
 .icon {
   position: absolute;
   top: 0;
-  left: calc(50% - calc(6px + 2.125ex) / 2);
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  left: calc(50% - var(--p-leading-normal) / 2);
 }
 .loading {
   position: absolute;
@@ -1498,7 +1338,7 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1532,13 +1372,11 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1rem;
+  font-size: var(--p-typescale-sm);
 }
 .root::before {
   content: "";
@@ -1567,7 +1405,7 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1581,8 +1419,8 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -1609,10 +1447,8 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   cursor: pointer;
   color: var(--p-color-primary);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
   font-size: inherit;
@@ -1644,7 +1480,7 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1658,8 +1494,8 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }
@@ -1686,13 +1522,11 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
   cursor: pointer;
   color: var(--p-color-contrast-low);
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  gap: 4px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  gap: var(--p-spacing-static-xs);
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
 }
 .root::before {
   content: "";
@@ -1723,25 +1557,25 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 }
 @media(min-width:480px) {
   .root {
-    font-size: 1rem;
+    font-size: var(--p-typescale-sm);
   }
 }
 
 @media(min-width:760px) {
   .root {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    font-size: var(--p-typescale-md);
   }
 }
 
 @media(min-width:1000px) {
   .root {
-    font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+    font-size: var(--p-typescale-lg);
   }
 }
 
 @media(min-width:1300px) {
   .root {
-    font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+    font-size: var(--p-typescale-xl);
   }
 }
 
@@ -1751,7 +1585,7 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .root {
     color: LinkText;
   }
@@ -1765,8 +1599,8 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
 
 @media(hover:hover) {
   .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
 }

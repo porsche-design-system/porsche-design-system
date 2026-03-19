@@ -13,7 +13,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host(:focus-visible) {
     outline-color: Highlight !important;
   }

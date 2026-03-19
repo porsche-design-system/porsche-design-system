@@ -46,6 +46,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "active": "boolean",
   "alignLabel": "breakpoint",
   "aria": "aria",
+  "color": "oneOf",
   "disabled": "boolean",
   "form": "string",
   "hideLabel": "breakpoint",
@@ -219,6 +220,7 @@ exports[`should call validateProps() with correct parameters via render for p-he
   "ellipsis": "boolean",
   "size": "breakpoint",
   "tag": "oneOf",
+  "weight": "oneOf",
 }
 `;
 
@@ -521,6 +523,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "active": "boolean",
   "alignLabel": "breakpoint",
   "aria": "aria",
+  "color": "oneOf",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",

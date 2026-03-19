@@ -124,7 +124,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -268,7 +268,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -416,7 +416,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -564,7 +564,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -710,7 +710,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -856,7 +856,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -1002,7 +1002,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -1148,7 +1148,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -1294,7 +1294,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -1440,7 +1440,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -1586,7 +1586,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
@@ -1730,7 +1730,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: 0;
@@ -1878,7 +1878,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;

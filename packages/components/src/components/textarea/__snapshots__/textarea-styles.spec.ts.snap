@@ -2104,7 +2104,7 @@ textarea:focus {
   opacity: 0;
   position: absolute;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .wrapper {
     opacity: 1;
     color: GrayText;

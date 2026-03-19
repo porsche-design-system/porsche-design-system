@@ -99,7 +99,7 @@ export const spinnerStoryColorCSSVar: Story<'p-spinner'> = {
 export const spinnerStoryResponsiveSize: Story<'p-spinner'> = {
   state: {
     properties: {
-      size: { base: 'small', l: 'xx-large' },
+      size: { base: 'sm', l: '2xl' },
       aria: { 'aria-label': 'Loading page content' },
     },
   },

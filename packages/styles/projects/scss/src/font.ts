@@ -6,6 +6,9 @@ import {
   leadingNormal,
   typescale2Xl,
   typescale2Xs,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
   typescaleLg,
   typescaleMd,
   typescaleSm,
@@ -26,6 +29,9 @@ export const getFontScss = () => {
     $typescale-lg: ${typescaleLg};
     $typescale-xl: ${typescaleXl};
     $typescale-2xl: ${typescale2Xl};
+    $typescale-3xl: ${typescale3Xl};
+    $typescale-4xl: ${typescale4Xl};
+    $typescale-5xl: ${typescale5Xl};
 
     $font-weight-normal: ${fontWeightNormal};
     $font-weight-semibold: ${fontWeightSemibold};

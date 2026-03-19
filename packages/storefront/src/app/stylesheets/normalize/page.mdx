@@ -1,8 +1,8 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Styles: Introduction - Porsche Design System',
-  description: 'Learn about the global styles and how to use them.',
+  title: 'Styles: Normalize - Porsche Design System',
+  description: 'Learn how to include CSS reset and base typography styles in your project.',
 };
 
 # Normalize Styles
@@ -11,14 +11,17 @@ export const metadata = {
 
 ## Setup
 
-The Porsche Design System includes recommended **normalize styles**, which provide:
+The Porsche Design System includes recommended **normalize styles** that provide:
 
 - CSS reset styles
 - Base typography definitions
 
-These styles are included in the main CSS file:
+These styles are part of the main CSS file:
 
 ```css
+@import '@porsche-design-system/components-{js|angular|react|vue}';
+
+/* Alternative: If your bundler requires an explicit .css extension, use this path instead */
 @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
 ```
 

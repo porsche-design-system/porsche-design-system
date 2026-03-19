@@ -91,7 +91,7 @@ dialog::backdrop {
 .sheet:dir(rtl) {
   transform: translateY(25vh);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .sheet {
     border-top: 2px solid CanvasText;
   }
@@ -209,7 +209,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .sheet {
     border-top: 2px solid CanvasText;
   }
@@ -324,7 +324,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .sheet {
     border-top: 2px solid CanvasText;
   }
@@ -439,7 +439,7 @@ dialog::backdrop {
   border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .sheet {
     border-top: 2px solid CanvasText;
   }

@@ -66,7 +66,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -148,7 +148,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -179,7 +179,7 @@ slot {
   display: block;
   padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -239,7 +239,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }
@@ -270,7 +270,7 @@ slot {
   display: block;
   padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     opacity: 1 !important;
     color: GrayText !important;
@@ -333,7 +333,7 @@ slot {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .option--disabled {
     color: GrayText;
   }

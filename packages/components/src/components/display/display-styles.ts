@@ -1,19 +1,22 @@
-import {
-  displayLargeStyle,
-  fontSizeDisplayLarge,
-  fontSizeDisplayMedium,
-  fontSizeDisplaySmall,
-} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
+} from '../../styles/css-variables';
+import { colorMap } from '../../styles/maps';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { DISPLAY_TAGS, type DisplayAlign, type DisplayColor, type DisplaySize } from './display-utils';
 
-const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
-  small: fontSizeDisplaySmall,
-  medium: fontSizeDisplayMedium,
-  large: fontSizeDisplayLarge,
+const sizeMap: { [key in DisplaySize]: string } = {
+  small: typescale3Xl,
+  medium: typescale4Xl,
+  large: typescale5Xl,
+  inherit: 'inherit',
 };
 
 export const getComponentCss = (
@@ -30,16 +33,25 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      [`::slotted(:is(${DISPLAY_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${DISPLAY_TAGS.join()}))`]: addImportantToEachRule({
+        all: 'unset',
+      }),
     },
-    root: getTypographyRootJssStyle(
-      displayLargeStyle,
-      buildResponsiveStyles(size, (sizeValue: DisplaySize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+    root: {
+      all: 'unset',
+      display: 'block',
+      font: `${fontWeightNormal} ${typescale5Xl}/${leadingNormal} ${fontPorscheNext}`,
+      ...buildResponsiveStyles(size, (v: DisplaySize) => ({
+        fontSize: sizeMap[v],
       })),
-      align,
-      color,
-      ellipsis
-    ),
+      color: colorMap[color],
+      textAlign: align,
+      ...(ellipsis && {
+        maxWidth: '100%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }),
+    },
   });
 };

@@ -65,7 +65,7 @@ export const iconStorySizeCSSVar: Story<'p-icon'> = {
 export const iconStoryResponsiveSize: Story<'p-icon'> = {
   state: {
     properties: {
-      size: { base: 'small', l: 'xx-large' },
+      size: { base: 'sm', l: '2xl' },
       name: 'highway',
       aria: { 'aria-label': 'Highway icon' },
     },
