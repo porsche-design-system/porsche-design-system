@@ -40,8 +40,7 @@ jobs:
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Get Package Version'
         id: get_npm_version
         uses: ./.github/actions/get-local-package-version
@@ -85,18 +84,17 @@ jobs:
       id-token: write # Required for OIDC
       contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
@@ -114,18 +112,17 @@ jobs:
       id-token: write # Required for OIDC
       contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
@@ -143,18 +140,17 @@ jobs:
       id-token: write # Required for OIDC
       contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
@@ -172,18 +168,17 @@ jobs:
       id-token: write # Required for OIDC
       contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
@@ -198,17 +193,18 @@ jobs:
     container:
       image: ${{ inputs.image }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
