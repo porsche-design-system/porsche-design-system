@@ -16,12 +16,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Lint'
-        run: yarn lint
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - uses: ./.github/actions/install
+      - run: yarn lint
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
@@ -29,10 +29,11 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - uses: ./.github/actions/install
       - name: 'Shared'
         run: yarn build:shared
       - name: 'Tokens'
@@ -121,10 +122,11 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - uses: ./.github/actions/install
       - name: 'Shared'
         run: yarn build:shared
       - name: 'Tokens'
