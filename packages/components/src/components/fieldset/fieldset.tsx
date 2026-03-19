@@ -44,10 +44,10 @@ const propTypes: PropTypes<typeof Fieldset> = {
 export class Fieldset {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** The size of the label text. */
+  /** Controls the size of the label text. */
   @Prop() public labelSize?: FieldsetLabelSize = 'medium';
 
   /** Marks the Fieldset as required. */
@@ -59,7 +59,7 @@ export class Fieldset {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

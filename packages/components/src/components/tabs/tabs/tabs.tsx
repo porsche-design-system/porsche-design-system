@@ -45,7 +45,7 @@ export class Tabs {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<TabsSize> = 'small';
 
-  /** Defines which tab to be visualized as selected (zero-based numbering). */
+  /** Defines which tab is shown as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
   /** Defines the background color. Use `frosted` only on images, videos or gradients. */

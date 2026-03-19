@@ -38,8 +38,8 @@ export const metadata = {
 ### Custom slotted button
 
 The `p-popover` component does not support the `aria-expanded` attribute when used with a custom slotted button. This is
-due to the fact that the component does not expose its `open` state to the public, which is necessary for managing the
-relationship between the button and the internal state of the popover.
+because the component does not expose its `open` state publicly, which is necessary to manage the relationship between
+the button and the internal state of the popover.
 
 ## Tests
 

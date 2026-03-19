@@ -73,25 +73,25 @@ export class LinkPure {
   /** Shows an underline under the label. */
   @Prop() public underline?: boolean = false;
 
-  /** When providing an url then the component will be rendered as `<a>`. */
+  /** When `href` is provided, the component renders as an `<a>` element. */
   @Prop() public href?: string;
 
-  /** Display link in active state. */
+  /** Displays the link in its active state. */
   @Prop() public active?: boolean = false;
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked document. */
   @Prop() public target?: LinkPureTarget = '_self';
 
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
+  /** Sets the native `download` attribute when the target URL points to a downloadable file. */
   @Prop() public download?: string;
 
-  /** Specifies the relationship of the target object to the link object. */
+  /** Sets the `rel` attribute on the link. */
   @Prop() public rel?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkPureAriaAttribute>;
 
   public componentWillLoad(): void {

@@ -93,10 +93,10 @@ const propTypes: PropTypes<typeof MultiSelect> = {
 export class MultiSelect {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Supplementary text providing more context or explanation for the multi-select. */
   @Prop() public description?: string = '';
 
   /** The name of the control. */
@@ -113,19 +113,19 @@ export class MultiSelect {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Disables the multi-select */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
+  /** Requires an option with a non-empty string value to be selected. */
   @Prop() public required?: boolean = false;
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
-  /** Displays as compact version. */
+  /** Displays the multi-select in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The id of a form element the multi-select should be associated with. */

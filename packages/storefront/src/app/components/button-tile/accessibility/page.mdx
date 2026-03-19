@@ -34,8 +34,8 @@ export const metadata = {
 
 ## Limitations
 
-Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
-attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
+define relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
 
 | ARIA                    | Support |
 | ----------------------- | ------- |
@@ -50,9 +50,9 @@ attributes if they try to set relationship between elements in different shadowD
 ### Labelling
 
 If the text of the button does not clearly indicate what the button's function is, add a brief, descriptive label using
-the `aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like
-"Detail" or "Open" can be unclear when read out of context by a screen reader. In such instances, provide an alternative
-text that offers more detailed information, such as "Open details of product XYZ."
+the `aria` property with the `aria-label` value to provide more context for screen reader users. Phrases like "Detail"
+or "Open" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text
+that offers more detailed information, such as "Open details of product XYZ."
 
 ### Readable text
 
@@ -68,7 +68,7 @@ In case a video background is used, the component checks whether **reduced motio
 settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
 the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
 general might increase the page load time. The video content should support the **CTA** instead of distracting from it.
-To support screen reader users, it's recommended to define an alternative video description
+To support screen reader users, define an alternative video description:
 `<video aria-label="Some video description"" />`.
 
 ## Tests

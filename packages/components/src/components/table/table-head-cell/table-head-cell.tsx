@@ -41,10 +41,10 @@ export class TableHeadCell {
   /** Defines sortability properties. */
   @Prop() public sort?: TableHeadCellSort;
 
-  /** Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined. */
+  /** Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set. */
   @Prop() public hideLabel?: boolean = false;
 
-  /** Displays slotted text multiline or forced into a single line. */
+  /** Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. */
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {

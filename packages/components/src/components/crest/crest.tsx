@@ -32,13 +32,13 @@ const { width, height } = crestSize;
 export class Crest {
   @Element() public host!: HTMLElement;
 
-  /** When providing an url then the component will be rendered as `<a>`. */
+  /** When `href` is provided, the component renders as an `<a>` element. */
   @Prop() public href?: string;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked document. */
   @Prop() public target?: CrestTarget = '_self';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<CrestAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

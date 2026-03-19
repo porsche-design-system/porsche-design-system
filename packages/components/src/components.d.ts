@@ -147,11 +147,11 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
-          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
+          * @deprecated Will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
+          * @deprecated Will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -159,7 +159,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
+          * @deprecated Will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
@@ -198,11 +198,11 @@ export namespace Components {
     }
     interface PButton {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
-          * Displays as compact version.
+          * Displays the button in compact mode.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -214,7 +214,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -248,7 +248,7 @@ export namespace Components {
     }
     interface PButtonPure {
         /**
-          * Display button in active state.
+          * Displays the button in its active state.
          */
         "active"?: boolean;
         /**
@@ -256,7 +256,7 @@ export namespace Components {
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
@@ -272,7 +272,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -318,7 +318,7 @@ export namespace Components {
          */
         "align"?: ButtonTileAlign;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
@@ -392,19 +392,19 @@ export namespace Components {
      */
     interface PCarousel {
         /**
-          * Defines which slide to be active (zero-based numbering).
+          * Defines which slide is active (zero-based numbering).
          */
         "activeSlideIndex"?: number;
         /**
-          * Alignment of slotted controls
+          * Aligns the slotted controls.
          */
         "alignControls"?: CarouselAlignControls;
         /**
-          * Alignment of heading and description
+          * Aligns the heading and description.
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
         /**
@@ -440,7 +440,7 @@ export namespace Components {
          */
         "rewind"?: boolean;
         /**
-          * Defines target of skip link (to skip carousel entries).
+          * Defines the skip link target used to skip carousel entries.
          */
         "skipLinkTarget"?: string;
         /**
@@ -462,7 +462,7 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
-          * Displays as a compact version.
+          * Displays the checkbox in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -474,7 +474,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility, it's recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -482,7 +482,7 @@ export namespace Components {
          */
         "indeterminate"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -512,15 +512,15 @@ export namespace Components {
     }
     interface PCrest {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: CrestTarget;
     }
@@ -566,15 +566,15 @@ export namespace Components {
      */
     interface PDrilldown {
         /**
-          * Defines which drilldown-item to be visualized as opened.
+          * Defines which `p-drilldown-item` is shown as open.
          */
         "activeIdentifier"?: string | undefined;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
-          * If true, the drilldown is visualized as opened.
+          * If `true`, the drilldown is shown as open.
          */
         "open"?: boolean;
     }
@@ -608,7 +608,7 @@ export namespace Components {
      */
     interface PDrilldownLink {
         /**
-          * Display link in active state.
+          * Displays the link in its active state.
          */
         "active"?: boolean;
         /**
@@ -616,15 +616,15 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
          */
         "download"?: string;
         /**
-          * When providing an url then the component will be rendered as `<a>` otherwise the component expects a slotted anchor.
+          * When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * Specifies the relationship of the target object to the link object (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used).
          */
         "rel"?: string;
         /**
@@ -634,15 +634,15 @@ export namespace Components {
     }
     interface PFieldset {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The size of the label text.
+          * Controls the size of the label text.
          */
         "labelSize"?: FieldsetLabelSize;
         /**
@@ -677,7 +677,7 @@ export namespace Components {
      */
     interface PFlyout {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
@@ -733,7 +733,7 @@ export namespace Components {
     }
     interface PIcon {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
@@ -789,11 +789,11 @@ export namespace Components {
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -801,7 +801,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -809,7 +809,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -863,7 +863,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -871,7 +871,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -879,7 +879,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -907,7 +907,7 @@ export namespace Components {
          */
         "minLength"?: number;
         /**
-          * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+          * Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.
          */
         "multiple"?: boolean;
         /**
@@ -945,7 +945,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -953,7 +953,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -961,7 +961,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -973,7 +973,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').
+          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').
          */
         "max"?: string;
         /**
@@ -1015,7 +1015,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1027,7 +1027,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1035,7 +1035,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1083,7 +1083,7 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * The number input value.
+          * The value of the number input.
          */
         "value"?: string;
     }
@@ -1093,7 +1093,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1101,7 +1101,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1109,7 +1109,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1171,7 +1171,7 @@ export namespace Components {
          */
         "clear"?: boolean;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1179,7 +1179,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1187,7 +1187,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1245,7 +1245,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1253,7 +1253,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1261,7 +1261,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1323,7 +1323,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1335,7 +1335,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1343,7 +1343,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1397,11 +1397,11 @@ export namespace Components {
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1409,7 +1409,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1417,7 +1417,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1457,7 +1457,7 @@ export namespace Components {
          */
         "state"?: InputTimeState;
         /**
-          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
          */
         "step"?: number;
         /**
@@ -1471,7 +1471,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1479,7 +1479,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1487,11 +1487,11 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the url icon.
+          * Controls the visibility of the URL icon.
          */
         "indicator"?: boolean;
         /**
@@ -1519,7 +1519,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+          * Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.
          */
         "pattern"?: string;
         /**
@@ -1539,7 +1539,7 @@ export namespace Components {
          */
         "state"?: InputUrlState;
         /**
-          * The url input value.
+          * The URL input value.
          */
         "value"?: string;
     }
@@ -1549,7 +1549,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -1557,7 +1557,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -1565,7 +1565,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1605,33 +1605,33 @@ export namespace Components {
          */
         "state"?: InputWeekState;
         /**
-          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
+          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.
          */
         "step"?: number;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
+          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
          */
         "value"?: string;
     }
     interface PLink {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
-          * Displays as compact version.
+          * Displays the link in compact mode.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+          * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
@@ -1643,11 +1643,11 @@ export namespace Components {
          */
         "iconSource"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkTarget;
         /**
@@ -1657,7 +1657,7 @@ export namespace Components {
     }
     interface PLinkPure {
         /**
-          * Display link in active state.
+          * Displays the link in its active state.
          */
         "active"?: boolean;
         /**
@@ -1665,7 +1665,7 @@ export namespace Components {
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
         /**
@@ -1673,15 +1673,15 @@ export namespace Components {
          */
         "color"?: LinkPureColor;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+          * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
@@ -1693,7 +1693,7 @@ export namespace Components {
          */
         "iconSource"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
@@ -1705,7 +1705,7 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkPureTarget;
         /**
@@ -1719,7 +1719,7 @@ export namespace Components {
          */
         "align"?: LinkTileAlign;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
@@ -1735,7 +1735,7 @@ export namespace Components {
          */
         "description": string;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+          * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
         /**
@@ -1751,7 +1751,7 @@ export namespace Components {
          */
         "label": string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
@@ -1759,7 +1759,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkTileTarget;
         /**
@@ -1789,11 +1789,11 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * A Boolean attribute indicating that a like button should be shown.
+          * Shows a like button.
          */
         "likeButton"?: boolean;
         /**
-          * A Boolean attribute indicating that a product is liked.
+          * Indicates whether the product is liked.
          */
         "liked"?: boolean;
         /**
@@ -1805,11 +1805,11 @@ export namespace Components {
          */
         "priceOriginal"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkTileProductTarget;
     }
@@ -1818,7 +1818,7 @@ export namespace Components {
      */
     interface PModal {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
@@ -1852,7 +1852,7 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+          * Sets the browser's fetch priority hint for the model signature asset.
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
@@ -1877,11 +1877,11 @@ export namespace Components {
      */
     interface PMultiSelect {
         /**
-          * Displays as compact version.
+          * Displays the multi-select in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the multi-select.
          */
         "description"?: string;
         /**
@@ -1897,11 +1897,11 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -1913,7 +1913,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * Requires an option with a non-empty string value to be selected.
          */
         "required"?: boolean;
         /**
@@ -1975,11 +1975,11 @@ export namespace Components {
      */
     interface PPinCode {
         /**
-          * A boolean value that, if present, renders the pin-code as a compact version.
+          * Displays the pin code in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the pin code.
          */
         "description"?: string;
         /**
@@ -1991,11 +1991,11 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Shows or hides the label and description. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -2033,21 +2033,21 @@ export namespace Components {
     }
     interface PPopover {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
-          * Descriptive text to show additional information when popover is open
+          * Descriptive text shown when the popover is open.
          */
         "description"?: string;
         /**
-          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
+          * Preferred direction in which the popover should open when there is enough space in the viewport. Otherwise, it opens in the direction with the most available space.
          */
         "direction"?: PopoverDirection;
     }
     interface PRadioGroup {
         /**
-          * A boolean value that, if present, renders the radio group as a compact version.
+          * Displays the radio group in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -2055,11 +2055,11 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+          * Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints.
          */
         "direction"?: BreakpointCustomizable<RadioGroupDirection>;
         /**
-          * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+          * Disables the radio group. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -2067,7 +2067,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2101,7 +2101,7 @@ export namespace Components {
     }
     interface PRadioGroupOption {
         /**
-          * A boolean value that, if present, makes the radio group option unusable and unclickable.
+          * Disables the radio group option. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -2152,7 +2152,7 @@ export namespace Components {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
-          * A boolean value that, if present, renders the segmented-control as a compact version.
+          * Displays the segmented control in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -2168,7 +2168,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2198,7 +2198,7 @@ export namespace Components {
     }
     interface PSegmentedControlItem {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
@@ -2214,7 +2214,7 @@ export namespace Components {
          */
         "iconSource"?: string;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -2227,11 +2227,11 @@ export namespace Components {
      */
     interface PSelect {
         /**
-          * Displays as compact version.
+          * Displays the select in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the select.
          */
         "description"?: string;
         /**
@@ -2251,11 +2251,11 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -2267,7 +2267,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * Requires an option with a non-empty string value to be selected.
          */
         "required"?: boolean;
         /**
@@ -2294,7 +2294,7 @@ export namespace Components {
      */
     interface PSheet {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
@@ -2316,7 +2316,7 @@ export namespace Components {
     }
     interface PSpinner {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
@@ -2357,7 +2357,7 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays the switch in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -2365,7 +2365,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2399,7 +2399,7 @@ export namespace Components {
     }
     interface PTableCell {
         /**
-          * Displays slotted text multiline or forced into a single line.
+          * Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.
          */
         "multiline"?: boolean;
     }
@@ -2407,11 +2407,11 @@ export namespace Components {
     }
     interface PTableHeadCell {
         /**
-          * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+          * Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set.
          */
         "hideLabel"?: boolean;
         /**
-          * Displays slotted text multiline or forced into a single line.
+          * Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.
          */
         "multiline"?: boolean;
         /**
@@ -2428,7 +2428,7 @@ export namespace Components {
      */
     interface PTabs {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering).
+          * Defines which tab is shown as selected (zero-based numbering).
          */
         "activeTabIndex"?: number;
         /**
@@ -2453,7 +2453,7 @@ export namespace Components {
      */
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
+          * Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected.
          */
         "activeTabIndex"?: number | undefined;
         /**
@@ -2481,7 +2481,7 @@ export namespace Components {
     }
     interface PTag {
         /**
-          * Displays as compact version.
+          * Displays the tag in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -2499,15 +2499,15 @@ export namespace Components {
     }
     interface PTagDismissible {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
-          * A boolean value that, if present, renders the tag dismissible as a compact version.
+          * Displays the dismissible tag in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
     }
@@ -2551,7 +2551,7 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the textarea as a compact version.
+          * Displays the textarea in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -2563,7 +2563,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
+          * Disables the textarea. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -2571,7 +2571,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2646,19 +2646,19 @@ export namespace Components {
     }
     interface PWordmark {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
-          * Adapts sizing of wordmark.
+          * Controls the size of the wordmark.
          */
         "size"?: WordmarkSize;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: WordmarkTarget;
     }
@@ -3832,15 +3832,15 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
-          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
+          * @deprecated Will be removed in the next major release. Use the `summary` slot instead. Sets the heading text within the summary section.
          */
         "heading"?: string;
         /**
-          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
+          * @deprecated Will be removed in the next major release. Use the `summary` slot instead. Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: AccordionHeadingTag;
         /**
-          * Emitted when accordion state is changed.
+          * Emitted when the accordion state changes.
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
@@ -3848,7 +3848,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * @deprecated , will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
+          * @deprecated Will be removed in the next major release. Use the `summary` slot instead. Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot).
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
@@ -3891,11 +3891,11 @@ declare namespace LocalJSX {
     }
     interface PButton {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
-          * Displays as compact version.
+          * Displays the button in compact mode.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -3907,7 +3907,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -3941,7 +3941,7 @@ declare namespace LocalJSX {
     }
     interface PButtonPure {
         /**
-          * Display button in active state.
+          * Displays the button in its active state.
          */
         "active"?: boolean;
         /**
@@ -3949,7 +3949,7 @@ declare namespace LocalJSX {
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
@@ -3965,7 +3965,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4011,7 +4011,7 @@ declare namespace LocalJSX {
          */
         "align"?: ButtonTileAlign;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
@@ -4093,19 +4093,19 @@ declare namespace LocalJSX {
      */
     interface PCarousel {
         /**
-          * Defines which slide to be active (zero-based numbering).
+          * Defines which slide is active (zero-based numbering).
          */
         "activeSlideIndex"?: number;
         /**
-          * Alignment of slotted controls
+          * Aligns the slotted controls.
          */
         "alignControls"?: CarouselAlignControls;
         /**
-          * Alignment of heading and description
+          * Aligns the heading and description.
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
         /**
@@ -4145,7 +4145,7 @@ declare namespace LocalJSX {
          */
         "rewind"?: boolean;
         /**
-          * Defines target of skip link (to skip carousel entries).
+          * Defines the skip link target used to skip carousel entries.
          */
         "skipLinkTarget"?: string;
         /**
@@ -4167,7 +4167,7 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Displays as a compact version.
+          * Displays the checkbox in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4179,7 +4179,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility, it's recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4187,7 +4187,7 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -4225,15 +4225,15 @@ declare namespace LocalJSX {
     }
     interface PCrest {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: CrestTarget;
     }
@@ -4279,11 +4279,11 @@ declare namespace LocalJSX {
      */
     interface PDrilldown {
         /**
-          * Defines which drilldown-item to be visualized as opened.
+          * Defines which `p-drilldown-item` is shown as open.
          */
         "activeIdentifier"?: string | undefined;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
@@ -4291,11 +4291,11 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PDrilldownCustomEvent<void>) => void;
         /**
-          * Emitted when activeIdentifier is changed.
+          * Emitted when `activeIdentifier` changes.
          */
         "onUpdate"?: (event: PDrilldownCustomEvent<DrilldownUpdateEventDetail>) => void;
         /**
-          * If true, the drilldown is visualized as opened.
+          * If `true`, the drilldown is shown as open.
          */
         "open"?: boolean;
     }
@@ -4329,7 +4329,7 @@ declare namespace LocalJSX {
      */
     interface PDrilldownLink {
         /**
-          * Display link in active state.
+          * Displays the link in its active state.
          */
         "active"?: boolean;
         /**
@@ -4337,15 +4337,15 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
          */
         "download"?: string;
         /**
-          * When providing an url then the component will be rendered as `<a>` otherwise the component expects a slotted anchor.
+          * When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * Specifies the relationship of the target object to the link object (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used).
          */
         "rel"?: string;
         /**
@@ -4355,15 +4355,15 @@ declare namespace LocalJSX {
     }
     interface PFieldset {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The size of the label text.
+          * Controls the size of the label text.
          */
         "labelSize"?: FieldsetLabelSize;
         /**
@@ -4398,7 +4398,7 @@ declare namespace LocalJSX {
      */
     interface PFlyout {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
@@ -4466,7 +4466,7 @@ declare namespace LocalJSX {
     }
     interface PIcon {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
@@ -4530,11 +4530,11 @@ declare namespace LocalJSX {
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4542,7 +4542,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -4550,7 +4550,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4578,11 +4578,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the number input has lost focus.
+          * Emitted when the date input has lost focus.
          */
         "onBlur"?: (event: PInputDateCustomEvent<InputDateBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the date input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputDateCustomEvent<InputDateChangeEventDetail>) => void;
         /**
@@ -4616,7 +4616,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4624,7 +4624,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -4632,7 +4632,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4660,7 +4660,7 @@ declare namespace LocalJSX {
          */
         "minLength"?: number;
         /**
-          * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+          * Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.
          */
         "multiple"?: boolean;
         /**
@@ -4710,7 +4710,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4718,7 +4718,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -4726,7 +4726,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4738,7 +4738,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').
+          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').
          */
         "max"?: string;
         /**
@@ -4754,11 +4754,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the number input has lost focus.
+          * Emitted when the month input has lost focus.
          */
         "onBlur"?: (event: PInputMonthCustomEvent<InputMonthBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the month input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputMonthCustomEvent<InputMonthChangeEventDetail>) => void;
         /**
@@ -4792,7 +4792,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4804,7 +4804,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -4812,7 +4812,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4872,7 +4872,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * The number input value.
+          * The value of the number input.
          */
         "value"?: string;
     }
@@ -4882,7 +4882,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4890,7 +4890,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -4898,7 +4898,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4972,7 +4972,7 @@ declare namespace LocalJSX {
          */
         "clear"?: boolean;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -4980,7 +4980,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -4988,7 +4988,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5058,7 +5058,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -5066,7 +5066,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -5074,7 +5074,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5148,7 +5148,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -5160,7 +5160,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -5168,7 +5168,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5234,11 +5234,11 @@ declare namespace LocalJSX {
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -5246,7 +5246,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -5254,7 +5254,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5282,11 +5282,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the number input has lost focus.
+          * Emitted when the time input has lost focus.
          */
         "onBlur"?: (event: PInputTimeCustomEvent<InputTimeBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the time input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTimeCustomEvent<InputTimeChangeEventDetail>) => void;
         /**
@@ -5306,7 +5306,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputTimeState;
         /**
-          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
          */
         "step"?: number;
         /**
@@ -5320,7 +5320,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -5328,7 +5328,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -5336,11 +5336,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the url icon.
+          * Controls the visibility of the URL icon.
          */
         "indicator"?: boolean;
         /**
@@ -5368,11 +5368,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the url input has lost focus.
+          * Emitted when the URL input has lost focus.
          */
         "onBlur"?: (event: PInputUrlCustomEvent<InputUrlBlurEventDetail>) => void;
         /**
-          * Emitted when the url input loses focus after its value was changed.
+          * Emitted when the URL input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputUrlCustomEvent<InputUrlChangeEventDetail>) => void;
         /**
@@ -5380,7 +5380,7 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputUrlCustomEvent<InputUrlInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+          * Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.
          */
         "pattern"?: string;
         /**
@@ -5400,7 +5400,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputUrlState;
         /**
-          * The url input value.
+          * The URL input value.
          */
         "value"?: string;
     }
@@ -5410,7 +5410,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the input field as a compact version.
+          * Displays the input field in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -5418,7 +5418,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+          * Disables the input field. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -5426,7 +5426,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5454,11 +5454,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the number input has lost focus.
+          * Emitted when the week input has lost focus.
          */
         "onBlur"?: (event: PInputWeekCustomEvent<InputWeekBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the week input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputWeekCustomEvent<InputWeekChangeEventDetail>) => void;
         /**
@@ -5478,33 +5478,33 @@ declare namespace LocalJSX {
          */
         "state"?: InputWeekState;
         /**
-          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
+          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.
          */
         "step"?: number;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
+          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
          */
         "value"?: string;
     }
     interface PLink {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
-          * Displays as compact version.
+          * Displays the link in compact mode.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+          * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
@@ -5516,11 +5516,11 @@ declare namespace LocalJSX {
          */
         "iconSource"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkTarget;
         /**
@@ -5530,7 +5530,7 @@ declare namespace LocalJSX {
     }
     interface PLinkPure {
         /**
-          * Display link in active state.
+          * Displays the link in its active state.
          */
         "active"?: boolean;
         /**
@@ -5538,7 +5538,7 @@ declare namespace LocalJSX {
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
         /**
@@ -5546,15 +5546,15 @@ declare namespace LocalJSX {
          */
         "color"?: LinkPureColor;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+          * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
@@ -5566,7 +5566,7 @@ declare namespace LocalJSX {
          */
         "iconSource"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
@@ -5578,7 +5578,7 @@ declare namespace LocalJSX {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkPureTarget;
         /**
@@ -5592,7 +5592,7 @@ declare namespace LocalJSX {
          */
         "align"?: LinkTileAlign;
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
@@ -5608,7 +5608,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+          * Sets the native `download` attribute when the target URL points to a downloadable file.
          */
         "download"?: string;
         /**
@@ -5624,7 +5624,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
@@ -5632,7 +5632,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkTileTarget;
         /**
@@ -5662,11 +5662,11 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * A Boolean attribute indicating that a like button should be shown.
+          * Shows a like button.
          */
         "likeButton"?: boolean;
         /**
-          * A Boolean attribute indicating that a product is liked.
+          * Indicates whether the product is liked.
          */
         "liked"?: boolean;
         /**
@@ -5682,11 +5682,11 @@ declare namespace LocalJSX {
          */
         "priceOriginal"?: string;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Sets the `rel` attribute on the link.
          */
         "rel"?: string;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: LinkTileProductTarget;
     }
@@ -5695,7 +5695,7 @@ declare namespace LocalJSX {
      */
     interface PModal {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
@@ -5741,7 +5741,7 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+          * Sets the browser's fetch priority hint for the model signature asset.
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
@@ -5766,11 +5766,11 @@ declare namespace LocalJSX {
      */
     interface PMultiSelect {
         /**
-          * Displays as compact version.
+          * Displays the multi-select in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the multi-select.
          */
         "description"?: string;
         /**
@@ -5786,11 +5786,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -5814,7 +5814,7 @@ declare namespace LocalJSX {
          */
         "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * Requires an option with a non-empty string value to be selected.
          */
         "required"?: boolean;
         /**
@@ -5880,11 +5880,11 @@ declare namespace LocalJSX {
      */
     interface PPinCode {
         /**
-          * A boolean value that, if present, renders the pin-code as a compact version.
+          * Displays the pin code in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the pin code.
          */
         "description"?: string;
         /**
@@ -5896,11 +5896,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Shows or hides the label and description. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -5946,21 +5946,21 @@ declare namespace LocalJSX {
     }
     interface PPopover {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
-          * Descriptive text to show additional information when popover is open
+          * Descriptive text shown when the popover is open.
          */
         "description"?: string;
         /**
-          * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
+          * Preferred direction in which the popover should open when there is enough space in the viewport. Otherwise, it opens in the direction with the most available space.
          */
         "direction"?: PopoverDirection;
     }
     interface PRadioGroup {
         /**
-          * A boolean value that, if present, renders the radio group as a compact version.
+          * Displays the radio group in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -5968,11 +5968,11 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+          * Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints.
          */
         "direction"?: BreakpointCustomizable<RadioGroupDirection>;
         /**
-          * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+          * Disables the radio group. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -5980,7 +5980,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -6022,7 +6022,7 @@ declare namespace LocalJSX {
     }
     interface PRadioGroupOption {
         /**
-          * A boolean value that, if present, makes the radio group option unusable and unclickable.
+          * Disables the radio group option. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -6073,7 +6073,7 @@ declare namespace LocalJSX {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
-          * A boolean value that, if present, renders the segmented-control as a compact version.
+          * Displays the segmented control in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -6089,7 +6089,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -6127,7 +6127,7 @@ declare namespace LocalJSX {
     }
     interface PSegmentedControlItem {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
@@ -6143,7 +6143,7 @@ declare namespace LocalJSX {
          */
         "iconSource"?: string;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -6156,11 +6156,11 @@ declare namespace LocalJSX {
      */
     interface PSelect {
         /**
-          * Displays as compact version.
+          * Displays the select in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the select.
          */
         "description"?: string;
         /**
@@ -6180,11 +6180,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -6208,7 +6208,7 @@ declare namespace LocalJSX {
          */
         "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * Requires an option with a non-empty string value to be selected.
          */
         "required"?: boolean;
         /**
@@ -6235,7 +6235,7 @@ declare namespace LocalJSX {
      */
     interface PSheet {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
@@ -6269,7 +6269,7 @@ declare namespace LocalJSX {
     }
     interface PSpinner {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
@@ -6314,7 +6314,7 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays the switch in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -6322,7 +6322,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -6330,7 +6330,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Emitted when checked status is changed.
+          * Emitted when the checked state changes.
          */
         "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
         /**
@@ -6364,7 +6364,7 @@ declare namespace LocalJSX {
     }
     interface PTableCell {
         /**
-          * Displays slotted text multiline or forced into a single line.
+          * Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.
          */
         "multiline"?: boolean;
     }
@@ -6372,11 +6372,11 @@ declare namespace LocalJSX {
     }
     interface PTableHeadCell {
         /**
-          * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+          * Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set.
          */
         "hideLabel"?: boolean;
         /**
-          * Displays slotted text multiline or forced into a single line.
+          * Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.
          */
         "multiline"?: boolean;
         /**
@@ -6393,7 +6393,7 @@ declare namespace LocalJSX {
      */
     interface PTabs {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering).
+          * Defines which tab is shown as selected (zero-based numbering).
          */
         "activeTabIndex"?: number;
         /**
@@ -6422,7 +6422,7 @@ declare namespace LocalJSX {
      */
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
+          * Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected.
          */
         "activeTabIndex"?: number | undefined;
         /**
@@ -6454,7 +6454,7 @@ declare namespace LocalJSX {
     }
     interface PTag {
         /**
-          * Displays as compact version.
+          * Displays the tag in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -6472,15 +6472,15 @@ declare namespace LocalJSX {
     }
     interface PTagDismissible {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
-          * A boolean value that, if present, renders the tag dismissible as a compact version.
+          * Displays the dismissible tag in compact mode.
          */
         "compact"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
     }
@@ -6524,7 +6524,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
-          * A boolean value that, if present, renders the textarea as a compact version.
+          * Displays the textarea in compact mode.
          */
         "compact"?: boolean;
         /**
@@ -6536,7 +6536,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
+          * Disables the textarea. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
@@ -6544,7 +6544,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Controls the visibility of the label.
+          * Shows or hides the label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -6634,19 +6634,19 @@ declare namespace LocalJSX {
     }
     interface PWordmark {
         /**
-          * Add ARIA attributes.
+          * Sets ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
         /**
-          * When providing an url then the component will be rendered as `<a>`.
+          * When `href` is provided, the component renders as an `<a>` element.
          */
         "href"?: string;
         /**
-          * Adapts sizing of wordmark.
+          * Controls the size of the wordmark.
          */
         "size"?: WordmarkSize;
         /**
-          * Target attribute where the link should be opened.
+          * Specifies where to open the linked document.
          */
         "target"?: WordmarkTarget;
     }
