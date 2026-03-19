@@ -237,6 +237,13 @@ export function formatAllowedValues(propMeta: any): { type: string; descSuffix: 
 export function formatComponentApi(tagName: string, meta: any): string {
   if (!meta) return '';
 
+  function escapeMarkdownTableCell(text: string): string {
+    return text
+      .replace(/\\/g, '\\\\')
+      .replace(/\|/g, '\\|')
+      .replace(/\n/g, ' ');
+  }
+
   const lines: string[] = [];
   lines.push(`\n### API Reference for \`${tagName}\`\n`);
 
@@ -275,7 +282,7 @@ export function formatComponentApi(tagName: string, meta: any): string {
     lines.push('| Event | Type | Description |');
     lines.push('|-------|------|-------------|');
 
-    for (const [eventName, eventMeta] of Object.entries(meta.eventsMeta) as [string, any][]) {
+      const description = escapeMarkdownTableCell(eventMeta.description || '');
       if (eventMeta.isDeprecated) continue;
       const type = eventMeta.typeDetail || eventMeta.type || 'void';
       const description = (eventMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
@@ -289,7 +296,7 @@ export function formatComponentApi(tagName: string, meta: any): string {
     lines.push('| Slot | Description |');
     lines.push('|------|-------------|');
 
-    for (const [slotName, slotMeta] of Object.entries(meta.slotsMeta) as [string, any][]) {
+      const description = escapeMarkdownTableCell(slotMeta.description || '');
       if (slotMeta.isDeprecated) continue;
       const name = slotName === '' ? '(default)' : `\`${slotName}\``;
       const description = (slotMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
@@ -303,7 +310,7 @@ export function formatComponentApi(tagName: string, meta: any): string {
     lines.push('#### CSS Custom Properties\n');
     lines.push('| Variable | Default | Description |');
     lines.push('|----------|---------|-------------|');
-
+      const description = escapeMarkdownTableCell(varMeta.description || '');
     for (const [varName, varMeta] of Object.entries(meta.cssVariablesMeta) as [string, any][]) {
       const defaultValue = varMeta.defaultValue ? `\`${varMeta.defaultValue}\`` : '-';
       const description = (varMeta.description || '').replace(/\n/g, ' ').replace(/\|/g, '\\|');
