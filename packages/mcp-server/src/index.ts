@@ -60,13 +60,47 @@ server.registerTool(
       'styles (border, typography, spacing…), patterns (forms, header, footer…), ' +
       'must-know (accessibility, performance, versioning…), developing (React, Angular, Vue, Next.js…), ' +
       'partials, Tailwind CSS utilities, AG Grid theme, help/FAQ, news/changelog.\n\n' +
-      'Pass a natural-language query. Returns the most relevant doc chunks.',
+      'Pass a natural-language query. Optionally narrow results with metadata filters.',
     inputSchema: z.object({
       query: z.string().describe('The name of the topic to retrieve. E.g. "button" or "form/checkbox".'),
+      category: z
+        .string()
+        .optional()
+        .describe(
+          'Filter by top-level category. One of: components, styles, patterns, must-know, developing, partials, tailwindcss, ag-grid, templates, help, news, designing, accessibility-statement, license.'
+        ),
+      component: z
+        .string()
+        .optional()
+        .describe('Filter by component name (only within category "components"). E.g. "button", "tabs", "modal".'),
+      section: z
+        .string()
+        .optional()
+        .describe(
+          'Filter by section within a topic. E.g. "introduction", "examples", "api", "usage", "accessibility".'
+        ),
+      framework: z
+        .enum(['react', 'angular', 'vue'])
+        .optional()
+        .describe('Filter for framework-specific docs. One of: react, angular, vue.'),
+      version: z
+        .string()
+        .optional()
+        .describe('Filter for specific version of the documentation. E.g. "3.33.0", "4.0.0".'),
     }),
   },
-  async ({ query }) => {
+  async ({ query, category, component, section, framework, version }) => {
+    const filter: Record<string, string> = {};
+    if (category) filter.category = category;
+    if (component) filter.component = component;
+    if (section) filter.section = section;
+    if (framework) filter.framework = framework;
+    if (version) filter.version = version;
+
     const body: Record<string, unknown> = { query };
+    if (Object.keys(filter).length > 0) {
+      body.filter = filter;
+    }
 
     const data = await api('POST', '/query', body);
     return textResult(data);

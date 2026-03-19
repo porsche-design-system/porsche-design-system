@@ -33,6 +33,16 @@ export const LARGE_ENUM_THRESHOLD = 20;
 /** Directories to skip entirely during source traversal */
 export const SKIP_DIRECTORIES = ['-', '[component]'];
 
+export type BedrockMetadataValue =
+  | { type: 'STRING'; stringValue: string }
+  | { type: 'NUMBER'; numberValue: number }
+  | { type: 'BOOLEAN'; booleanValue: boolean };
+
+export interface BedrockMetadataAttribute {
+  value: BedrockMetadataValue;
+  includeForEmbedding: boolean;
+}
+
 // ──────────────────────────────────────────────────────────────────────────────
 // Shared mutable state (populated during the pipeline)
 // ──────────────────────────────────────────────────────────────────────────────
