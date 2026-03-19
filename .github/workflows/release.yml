@@ -24,6 +24,10 @@ on:
         description: 'Algolia API Key (Storefront).'
         required: true
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   check-publication-status:
     name: 'Check Publication Status'
@@ -40,7 +44,7 @@ jobs:
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Get Package Version'
         id: get_npm_version
         uses: ./.github/actions/get-local-package-version
@@ -85,14 +89,14 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
@@ -101,7 +105,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-angular:
     name: 'NPM (Components Angular)'
@@ -115,14 +118,14 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
@@ -131,7 +134,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-react:
     name: 'NPM (Components React)'
@@ -145,14 +147,14 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
@@ -161,7 +163,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-vue:
     name: 'NPM (Components Vue)'
@@ -175,14 +176,14 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
@@ -191,7 +192,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
@@ -202,9 +202,9 @@ jobs:
       image: ${{ inputs.image }}
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
