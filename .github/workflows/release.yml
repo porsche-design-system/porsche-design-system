@@ -11,6 +11,9 @@ on:
       github-token:
         description: 'github token for container registry'
         required: true
+      npm-token:
+        description: 'npm access token for publishing to npmjs.org'
+        required: true
       gh-deploy-key-storefront:
         description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
         required: true
@@ -89,6 +92,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -99,6 +103,7 @@ jobs:
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   npm-components-angular:
     name: 'NPM (Components Angular)'
@@ -116,6 +121,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -126,6 +132,7 @@ jobs:
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   npm-components-react:
     name: 'NPM (Components React)'
@@ -143,6 +150,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -153,6 +161,7 @@ jobs:
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   npm-components-vue:
     name: 'NPM (Components Vue)'
@@ -170,6 +179,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -180,6 +190,7 @@ jobs:
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
