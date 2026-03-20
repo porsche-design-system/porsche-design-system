@@ -1,9 +1,4 @@
-import {
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textXSmallStyle,
-} from '@porsche-design-system/emotion';
+import { fontLineHeight, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
