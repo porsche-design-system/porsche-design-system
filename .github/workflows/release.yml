@@ -80,13 +80,15 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'yarn'
-          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -105,13 +107,15 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'yarn'
-          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -130,13 +134,15 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'yarn'
-          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -155,13 +161,15 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'yarn'
-          registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
