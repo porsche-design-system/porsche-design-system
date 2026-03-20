@@ -17,8 +17,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:assets:assets
@@ -33,8 +36,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:tokens
@@ -46,8 +52,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -72,8 +81,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:components
@@ -85,8 +97,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -110,8 +125,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:a11y:components-js
@@ -128,8 +146,11 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -146,8 +167,11 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -164,8 +188,11 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -182,8 +209,11 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -206,8 +236,11 @@ jobs:
         shardTotal: [ 2 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -225,8 +258,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:components-angular:vitest
@@ -247,8 +283,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:components-react:react-wrapper
@@ -268,8 +307,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:components-react/remix
@@ -288,8 +330,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:vrt:components-react/react-router
@@ -307,8 +352,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:components-react/nextjs
@@ -328,8 +376,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:components-vue
@@ -349,8 +400,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:component-meta
@@ -362,8 +416,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:shared
@@ -375,8 +432,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:storefront
@@ -393,8 +453,11 @@ jobs:
         shardTotal: [ 4 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -412,8 +475,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:e2e:storefront:sitemap
@@ -436,8 +502,11 @@ jobs:
         shardTotal: [ 6 ]
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -454,14 +523,15 @@ jobs:
 #      image: ${{ inputs.image }}
 #      options: --user 1001
 #    steps:
-#      - name: 'Checkout'
-#        uses: actions/checkout@v6
-#      - name: 'Install'
-#        uses: ./.github/actions/install
+#      - uses: actions/checkout@v6
+#      - uses: actions/setup-node@v6
+#        with:
+#          node-version: '24'
+#          cache: 'yarn'
+#      - run: yarn install --frozen-lockfile
 #      - name: 'Restore'
 #        uses: ./.github/actions/restore
-#      - name: 'VRT'
-#        run: yarn test:vrt:storefront
+#      - run: yarn test:vrt:storefront
 #      - name: 'VRT Regression'
 #        if: failure()
 #        uses: actions/upload-artifact@v7
@@ -476,8 +546,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: yarn test:unit:utilities
