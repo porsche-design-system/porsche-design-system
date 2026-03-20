@@ -168,7 +168,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Open sidebar
       </PButton>
 
-      <div className="@container grid grid-cols-12 gap-x-fluid-md">
+      <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md -mx-(--porsche-canvas-p) px-fluid-xl">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
         <Tabs />
         {children}

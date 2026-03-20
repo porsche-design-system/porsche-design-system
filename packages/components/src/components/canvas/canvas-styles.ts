@@ -273,7 +273,7 @@ export const getComponentCss = (
       },
     },
     main: {
-      zIndex: 3,
+      zIndex: 2,
       gridArea: 'main',
       padding: spacingBase,
     },
@@ -295,7 +295,7 @@ export const getComponentCss = (
       },
     },
     sidebar: {
-      zIndex: 2,
+      zIndex: 3,
       position: 'sticky',
       top: 0,
       height: '100dvh', // transitions between svh (viewport when Safari's address bar and bottom bar are visible (~60-90px less)) and lvh (viewport when Safari's UI is completely hidden (maximum space)) as you scroll (causes reflows)

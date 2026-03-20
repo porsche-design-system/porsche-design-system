@@ -4,6 +4,9 @@
 @source "../../../../node_modules/@porsche-design-system/shared/examples/*.tsx";
 
 @theme {
+  --porsche-canvas-grid: [wide-start] minmax(0,1fr) [extended-start] repeat(10,minmax(0,1fr)) [extended-end] minmax(0,1fr) [wide-end];
+  --porsche-canvas-p: clamp(16px,12px + 1.25vw,24px);
+
   --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
   --_pds-grid-narrow-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
   --_pds-grid-narrow-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
@@ -253,6 +256,63 @@
   body {
     background: var(--color-surface);
     color: var(--color-primary);
+  }
+
+  .signature {
+    z-index: -2;
+    width: min(100cqw, clamp(500px, calc(248.56px + 49.11cqi), 720px));
+    scale: clamp(1, calc(1.3 - 0.067cqi), 1.3);
+    translate: var(--spacing-fluid-md) 0;
+  }
+
+  .glow-1 {
+    z-index: -1;
+    width: 648px;
+    height: 1350px;
+    border-radius: 1350px;
+    filter: blur(68px);
+    background-image: radial-gradient(50% 50%, light-dark(rgb(233 223 223),rgb(233, 232, 223)) 0%, light-dark(rgb(255 106 72),rgb(206, 193, 103)) 15.38%, light-dark(rgb(144 89 173 / 40%),rgb(89 151 173 / 40%)) 100%);
+    transform: rotate(58deg);
+    transition-property: transform;
+    transition-duration: var(--duration-sm);
+    transition-timing-function: linear;
+    pointer-events: none;
+
+    &:dir(rtl) {
+      scale: -1 1;
+    }
+  }
+
+  .glow-2 {
+    z-index: -1;
+    width: 748px;
+    height: 2350px;
+    border-radius: 999px;
+    filter: blur(68px);
+    background-image: radial-gradient(50% 50%, light-dark(rgba(255, 0, 0, 0.33),rgb(48 108 204)) 0%, light-dark(rgb(250 191 0 / 60%),rgb(162 187 209)) 15.38%, light-dark(rgb(209 204 162 / 19%),rgba(162, 179, 209, 0)) 100%);
+    transform: rotate(-180deg);
+    transition-property: transform;
+    transition-duration: var(--duration-sm);
+    transition-timing-function: linear;
+    pointer-events: none;
+
+    &:dir(rtl) {
+      scale: -1 1;
+    }
+  }
+
+  .glow-3 {
+    z-index: -1;
+    width: 2400px;
+    height: 2400px;
+    margin-left: -1200px;
+    border-radius: 999px;
+    filter: blur(68px);
+    background-image: radial-gradient(50% 50%, light-dark(rgb(237 29 29 / 50%),rgb(255 149 8 / 66%)) 0%, light-dark(rgb(161 17 17 / 66%),rgb(161 99 17 / 66%)) 40%, light-dark(rgba(140, 110, 55, 0),rgba(140, 110, 55, 0)) 100%);
+    transition-property: transform;
+    transition-duration: var(--duration-sm);
+    transition-timing-function: linear;
+    pointer-events: none;
   }
 
   code {
