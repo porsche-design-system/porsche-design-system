@@ -16,20 +16,15 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:assets:assets
-      - name: 'Flags Unit'
-        run: yarn test:unit:assets:flags
-      - name: 'Icons Unit'
-        run: yarn test:unit:assets:icons
-      - name: 'Font Face Unit'
-        run: yarn test:unit:assets:font-face
+      - run: yarn test:unit:assets:assets
+      - run: yarn test:unit:assets:flags
+      - run: yarn test:unit:assets:icons
+      - run: yarn test:unit:assets:font-face
   tokens:
     name: 'Tokens'
     runs-on: ubuntu-latest
@@ -37,14 +32,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:tokens
+      - run: yarn test:unit:tokens
   styles:
     name: 'Styles'
     runs-on: ubuntu-latest
@@ -52,26 +45,19 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Global Styles Unit'
-        run: yarn test:unit:styles:global-styles
-      - name: 'Tailwind CSS Unit'
-        run: yarn test:unit:styles:tailwindcss
-      - name: 'SCSS Unit'
-        run: yarn test:unit:styles:scss
-      - name: 'Emotion Unit'
-        run: yarn test:unit:styles:emotion
-      - name: 'Vanilla Extract Unit'
-        run: yarn test:unit:styles:vanilla-extract
-      - name: 'VRT'
-        run: yarn test:vrt:styles
+      - run: yarn test:unit:styles:global-styles
+      - run: yarn test:unit:styles:tailwindcss
+      - run: yarn test:unit:styles:scss
+      - run: yarn test:unit:styles:emotion
+      - run: yarn test:unit:styles:vanilla-extract
+      - run: yarn test:vrt:styles
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -85,14 +71,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:components
+      - run: yarn test:unit:components
   components-js-unit:
     name: 'Components JS Unit'
     runs-on: ubuntu-latest
@@ -100,24 +84,18 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Components Manager Core'
-        run: yarn test:unit:components-js:components-manager-core
-      - name: 'Components Manager CLI'
-        run: yarn test:unit:components-js:components-manager-cli
-      - name: 'Components Wrapper'
-        run: yarn test:unit:components-js:components-wrapper
-      - name: 'JSDom Polyfill'
-        run: yarn test:unit:components-js:jsdom-polyfill
-      - name: 'Partials'
-        run: yarn test:unit:components-js:partials
+      - run: yarn test:unit:components-js:components-manager-core
+      - run: yarn test:unit:components-js:components-manager-cli
+      - run: yarn test:unit:components-js:components-wrapper
+      - run: yarn test:unit:components-js:jsdom-polyfill
+      - run: yarn test:unit:components-js:partials
       - name: 'Unit Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -131,14 +109,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'A11y'
-        run: yarn test:a11y:components-js
+      - run: yarn test:a11y:components-js
   components-js-e2e-chrome:
     name: 'Components JS E2E (Chrome)'
     runs-on: ubuntu-latest
@@ -151,14 +127,12 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-firefox:
     name: 'Components JS E2E (Firefox)'
     runs-on: ubuntu-latest
@@ -171,14 +145,12 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-safari:
     name: 'Components JS E2E (Safari)'
     runs-on: ubuntu-latest
@@ -191,14 +163,12 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-vrt-chrome:
     name: 'Components JS VRT (Chrome)'
     runs-on: ubuntu-latest
@@ -211,14 +181,12 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'VRT'
-        run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -237,14 +205,12 @@ jobs:
         shardIndex: [ 1, 2 ]
         shardTotal: [ 2 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'VRT'
-        run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -258,20 +224,15 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit (Vitest)'
-        run: yarn test:unit:components-angular:vitest
-      - name: 'Unit (Karma)'
-        run: yarn test:unit:components-angular:karma-ci
-      - name: 'E2E'
-        run: yarn test:e2e:components-angular
-      - name: 'VRT'
-        run: yarn test:vrt:components-angular
+      - run: yarn test:unit:components-angular:vitest
+      - run: yarn test:unit:components-angular:karma-ci
+      - run: yarn test:e2e:components-angular
+      - run: yarn test:vrt:components-angular
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -285,18 +246,14 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:components-react:react-wrapper
-      - name: 'E2E'
-        run: yarn test:e2e:components-react
-      - name: 'VRT'
-        run: yarn test:vrt:components-react
+      - run: yarn test:unit:components-react:react-wrapper
+      - run: yarn test:e2e:components-react
+      - run: yarn test:vrt:components-react
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -310,16 +267,13 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:components-react/remix
-      - name: 'VRT'
-        run: yarn test:vrt:components-react/remix
+      - run: yarn test:e2e:components-react/remix
+      - run: yarn test:vrt:components-react/remix
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -333,14 +287,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'VRT'
-        run: yarn test:vrt:components-react/react-router
+      - run: yarn test:vrt:components-react/react-router
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -354,18 +306,14 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:components-react/nextjs
-      - name: 'VRT'
-        run: yarn test:vrt:components-react/nextjs
-      - name: 'Unit Test react-ssr-wrapper'
-        run: yarn test:unit:components-react:react-ssr-wrapper
+      - run: yarn test:e2e:components-react/nextjs
+      - run: yarn test:vrt:components-react/nextjs
+      - run: yarn test:unit:components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -379,18 +327,14 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:components-vue
-      - name: 'E2E'
-        run: yarn test:e2e:components-vue
-      - name: 'VRT'
-        run: yarn test:vrt:components-vue
+      - run: yarn test:unit:components-vue
+      - run: yarn test:e2e:components-vue
+      - run: yarn test:vrt:components-vue
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -404,14 +348,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:component-meta
+      - run: yarn test:unit:component-meta
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
@@ -419,14 +361,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:shared
+      - run: yarn test:unit:shared
   storefront-unit:
     name: 'Storefront Unit'
     runs-on: ubuntu-latest
@@ -434,14 +374,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:storefront
+      - run: yarn test:unit:storefront
   storefront-e2e:
     name: 'Storefront E2E'
     runs-on: ubuntu-latest
@@ -454,14 +392,12 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -475,14 +411,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:storefront:sitemap
+      - run: yarn test:e2e:storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -501,14 +435,12 @@ jobs:
         shardIndex: [ 1, 2, 3, 4, 5, 6 ]
         shardTotal: [ 6 ]
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'A11y'
-        run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'A11y Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -543,11 +475,9 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit'
-        run: yarn test:unit:utilities
+      - run: yarn test:unit:utilities
