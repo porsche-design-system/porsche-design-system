@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+- `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`
+
+### Changed
+
 ## [4.0.0-beta.3] - 2026-03-19
 
 ### Added
