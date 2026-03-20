@@ -16,6 +16,10 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/porsche-design-system/porsche-design-system"
+  },
   "peerDependencies": {
     "ag-grid-community": ">= 35.0.0 <36.0.0",
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
