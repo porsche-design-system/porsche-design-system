@@ -7,6 +7,7 @@ import {
   HEADING_TAGS,
   type HeadingAlign,
   type HeadingColor,
+  type HeadingHyphens,
   type HeadingSize,
   type HeadingWeight,
 } from './heading-utils';
@@ -16,6 +17,7 @@ export const getComponentCss = (
   weight: HeadingWeight,
   align: HeadingAlign,
   color: HeadingColor,
+  hyphens: HeadingHyphens,
   ellipsis: boolean
 ): string => {
   return getCss({
@@ -39,6 +41,10 @@ export const getComponentCss = (
       })),
       color: colorMap[color],
       textAlign: align,
+      hyphens,
+      ...((hyphens === 'auto' || hyphens === 'manual') && {
+        overflowWrap: 'break-word',
+      }),
       ...(ellipsis && {
         maxWidth: '100%',
         overflow: 'hidden',
