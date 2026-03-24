@@ -39,7 +39,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "propsMeta": {
       "alignMarker": {

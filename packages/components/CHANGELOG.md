@@ -28,6 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `skip-forward`
 - `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`
 
+### Fixed
+
+- `Accordion`: missing `delegatesFocus`
+  ([#4238](https://github.com/porsche-design-system/porsche-design-system/pull/4238))
+
 ### Removed
 
 - CSS Variable `--p-hyphens`
