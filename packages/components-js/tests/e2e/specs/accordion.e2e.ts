@@ -254,13 +254,13 @@ test.describe('focus', () => {
     await initAccordion(page);
     const host = getHost(page);
 
-    await expect(getButton(page)).not.toBeFocused();
+    await expect(getSummary(page)).not.toBeFocused();
 
     await host.focus();
-    await expect(getButton(page)).toBeFocused();
+    await expect(getSummary(page)).toBeFocused();
 
-    await getButton(page).blur();
-    await expect(getButton(page)).not.toBeFocused();
+    await host.blur();
+    await expect(getSummary(page)).not.toBeFocused();
   });
 });
 
