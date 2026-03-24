@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "2xl", align: normal, color: start and ellipsis: primary 1`] = `
+exports[`getComponentCss() > should return correct css for size: "2xl", align: normal, color: start, hyphens: primary, and ellipsis: none 1`] = `
 ":host {
   display: block;
 }
@@ -17,10 +17,11 @@ exports[`getComponentCss() > should return correct css for size: "2xl", align: n
   font-size: var(--p-typescale-2xl);
   color: var(--p-color-primary);
   text-align: start;
+  hyphens: none;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "inherit", align: normal, color: center and ellipsis: inherit 1`] = `
+exports[`getComponentCss() > should return correct css for size: "inherit", align: normal, color: center, hyphens: inherit, and ellipsis: none 1`] = `
 ":host {
   display: block;
 }
@@ -37,6 +38,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit", alig
   font-size: inherit;
   color: currentcolor;
   text-align: center;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,7 +46,7 @@ exports[`getComponentCss() > should return correct css for size: "inherit", alig
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "lg", align: normal, color: center and ellipsis: inherit 1`] = `
+exports[`getComponentCss() > should return correct css for size: "lg", align: normal, color: center, hyphens: inherit, and ellipsis: inherit 1`] = `
 ":host {
   display: block;
 }
@@ -61,6 +63,7 @@ exports[`getComponentCss() > should return correct css for size: "lg", align: no
   font-size: var(--p-typescale-lg);
   color: currentcolor;
   text-align: center;
+  hyphens: inherit;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -68,7 +71,7 @@ exports[`getComponentCss() > should return correct css for size: "lg", align: no
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "md", align: normal, color: center and ellipsis: inherit 1`] = `
+exports[`getComponentCss() > should return correct css for size: "md", align: normal, color: center, hyphens: inherit, and ellipsis: none 1`] = `
 ":host {
   display: block;
 }
@@ -85,6 +88,7 @@ exports[`getComponentCss() > should return correct css for size: "md", align: no
   font-size: var(--p-typescale-md);
   color: currentcolor;
   text-align: center;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -92,7 +96,7 @@ exports[`getComponentCss() > should return correct css for size: "md", align: no
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "sm", align: normal, color: center and ellipsis: inherit 1`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", align: normal, color: center, hyphens: inherit, and ellipsis: none 1`] = `
 ":host {
   display: block;
 }
@@ -109,6 +113,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", align: no
   font-size: var(--p-typescale-sm);
   color: currentcolor;
   text-align: center;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -116,7 +121,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", align: no
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "sm", align: normal, color: inherit and ellipsis: inherit 1`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", align: normal, color: inherit, hyphens: inherit, and ellipsis: none 1`] = `
 ":host {
   display: block;
 }
@@ -133,6 +138,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", align: no
   font-size: var(--p-typescale-sm);
   color: currentcolor;
   text-align: inherit;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -140,7 +146,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", align: no
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "xl", align: normal, color: end and ellipsis: primary 1`] = `
+exports[`getComponentCss() > should return correct css for size: "xl", align: normal, color: end, hyphens: primary, and ellipsis: manual 1`] = `
 ":host {
   display: block;
 }
@@ -157,10 +163,12 @@ exports[`getComponentCss() > should return correct css for size: "xl", align: no
   font-size: var(--p-typescale-xl);
   color: var(--p-color-primary);
   text-align: end;
+  hyphens: manual;
+  overflow-wrap: break-word;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "xl", align: normal, color: start and ellipsis: primary 1`] = `
+exports[`getComponentCss() > should return correct css for size: "xl", align: normal, color: start, hyphens: primary, and ellipsis: auto 1`] = `
 ":host {
   display: block;
 }
@@ -177,10 +185,12 @@ exports[`getComponentCss() > should return correct css for size: "xl", align: no
   font-size: var(--p-typescale-xl);
   color: var(--p-color-primary);
   text-align: start;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"sm","xs":"md","s":"lg","m":"xl","l":"2xl","xl":"lg"}, align: normal, color: end and ellipsis: inherit 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"sm","xs":"md","s":"lg","m":"xl","l":"2xl","xl":"lg"}, align: normal, color: end, hyphens: inherit, and ellipsis: none 1`] = `
 ":host {
   display: block;
 }
@@ -197,6 +207,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"sm","x
   font-size: var(--p-typescale-sm);
   color: currentcolor;
   text-align: end;
+  hyphens: none;
 }
 @media(min-width:480px) {
   .root {
