@@ -33,7 +33,7 @@ browsers that do not yet support `light-dark()` (see
 
 #### Utility Classes
 
-Apply these classes to the document or any container to control the theme context:
+Apply these classes to the document or any container to control the color-scheme context:
 
 - `.scheme-light` — Forces light mode.
 - `.scheme-dark` — Forces dark mode.
@@ -43,7 +43,7 @@ Apply these classes to the document or any container to control the theme contex
 
 #### 1. Global Setup
 
-Include the mixin once in your global stylesheet to initialize the theme utilities.
+Include the mixin once in your global stylesheet to initialize the color-scheme utilities.
 
 ```scss
 // global styles
@@ -57,7 +57,7 @@ html, body {…}
 #### 2. Component Implementation
 
 Utilize the new tokens within your styles. These variables automatically resolve to the correct value based on the
-active theme.
+active color-scheme.
 
 ```scss
 // custom component styles
@@ -72,10 +72,10 @@ active theme.
 
 #### 3. Application
 
-The defined theme context will cascade to all child elements.
+The defined color-scheme context will cascade to all child elements.
 
 ```html
-<!-- Defined theme will be applied to all child elements -->
+<!-- Defined color-scheme will be applied to all child elements -->
 <html class="scheme-dark">
   <head></head>
   <body>

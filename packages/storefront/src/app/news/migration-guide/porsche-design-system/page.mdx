@@ -395,6 +395,20 @@ SCSS:
 }
 ```
 
+- Hyphenation style in general: CSS `hyphens` and `overflow-wrap` properties are no longer applied globally across
+  components. If you relied on automatic word hyphenation, you can restore the previous behavior by setting these
+  inheritable properties on a common ancestor like `body`:
+
+```css
+body {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+```
+
+Since both properties are inheritable, they will cascade down to all child elements, including content within Shadow DOM
+components.
+
 ### Text, Icon:
 
 - Changed values `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop

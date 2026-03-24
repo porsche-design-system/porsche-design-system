@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Heading`:
+  - Prop `hyphens` with values: `'none' (default) | 'auto' | 'manual' | 'inherit'`
+- `Text`:
+  - Prop `hyphens` with values: `'none' | 'auto' | 'manual' | 'inherit' (default)`
 - `Icon`: `play-filled`, `arrow-down-left`, `arrow-down-right`, `arrow-up-left`, `arrow-up-right`
 
 ### Changed
