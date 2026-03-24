@@ -9,6 +9,6 @@ test('should navigate to license', async ({ page }) => {
 
   await linkElement.click();
 
-  await expect(page.locator('#main-content > p-display')).toHaveText('License');
+  await expect(page.locator('#main-content > p-heading')).toHaveText('License');
   expect(true).toBe(true);
 });
