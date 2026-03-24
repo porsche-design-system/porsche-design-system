@@ -35,7 +35,7 @@ export const Home = () => {
   return (
     <>
       <section
-        className="col-[wide] relative grid grid-cols-subgrid gap-y-fluid-xl"
+        className="col-[full] relative grid grid-cols-subgrid gap-y-fluid-xl"
         aria-label="Porsche Design System v4"
       >
         {/* ── intro ── */}
@@ -89,7 +89,7 @@ export const Home = () => {
         </div>
 
         {/* ── about ── */}
-        <div className="col-[extended] mt-fluid-xl max-w-[34rem] grid gap-fluid-md">
+        <div className="col-[wide] @md:col-[extended] mt-fluid-xl max-w-[34rem] grid gap-fluid-md">
           <PText size="lg">
             This is your all-in-one toolkit for creating high-quality, visually stunning web applications. With
             intuitive Figma libraries, robust Web Components, and comprehensive guidelines, it&apos;s built and tested
@@ -103,7 +103,7 @@ export const Home = () => {
         </div>
 
         {/* ── getting started ── */}
-        <div className="col-[extended] grid @3xl:grid-cols-2 gap-fluid-md">
+        <div className="col-[wide] @md:col-[extended] grid @3xl:grid-cols-2 gap-fluid-md">
           <AppearAnimation animation="fade-in-up">
             <div className="relative p-fluid-md flex items-center gap-static-md rounded-4xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
               <Link href="/designing/introduction/" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
@@ -145,7 +145,7 @@ export const Home = () => {
         </div>
 
         {/* ── quick links ── */}
-        <div className="col-[extended] grid @xl:grid-cols-2 gap-fluid-md">
+        <div className="col-[wide] @md:col-[extended] grid @xl:grid-cols-2 gap-fluid-md">
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               className="[color-scheme:inherit] bg-frosted backdrop-blur-frosted rounded-4xl"
@@ -287,7 +287,7 @@ export const Home = () => {
         </div>
 
         {/* ── accessibility ── */}
-        <div className="col-[extended]">
+        <div className="col-[wide] @md:col-[extended]">
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               className="[color-scheme:inherit] bg-frosted backdrop-blur-frosted rounded-4xl"
@@ -336,7 +336,7 @@ export const Home = () => {
 
       {/* ── change & feature requests ── */}
       <section
-        className="col-[extended] mt-fluid-2xl grid gap-fluid-md @2xl:grid-cols-2"
+        className="col-[wide] @md:col-[extended] mt-fluid-2xl grid gap-fluid-md @3xl:grid-cols-2"
         aria-label="Change and Feature Requests"
       >
         <AppearAnimation animation="fade-in-up">
@@ -367,8 +367,8 @@ export const Home = () => {
       </div>
 
       {/* ── benefits ── */}
-      <section className="col-[wide] mt-fluid-2xl grid grid-cols-subgrid bg-canvas rounded-4xl" aria-label="Benefits">
-        <div className="col-[extended] justify-self-center my-fluid-xl max-w-[48rem] grid gap-fluid-md">
+      <section className="col-[full] mt-fluid-2xl grid grid-cols-subgrid bg-canvas rounded-4xl" aria-label="Benefits">
+        <div className="col-[wide] justify-self-center my-fluid-xl max-w-[60ch] grid gap-fluid-md">
           <PHeading tag="h2" size="3xl" align="center">
             Benefits
           </PHeading>
@@ -378,14 +378,14 @@ export const Home = () => {
             integration.
           </PText>
         </div>
-        <div className="col-[extended]">
+        <div className="col-[wide]">
           <StickyBenefitsSection />
         </div>
       </section>
 
       {/* ── faq ── */}
       <section
-        className="col-[wide] @md:col-start-2 @md:col-end-12 mt-fluid-xl grid gap-fluid-md @2xl:grid-cols-2"
+        className="col-[wide] @md:col-[extended] mt-fluid-xl grid gap-fluid-md @5xl:grid-cols-2"
         aria-label="FAQ"
       >
         <AppearAnimation animation="fade-in-up">
@@ -400,8 +400,10 @@ export const Home = () => {
                 How do I use the Porsche Design System?
               </PHeading>
               <PText color="contrast-medium">
-                Install the Porsche Design System packages via npm, import the components you need, and wrap your app
-                with the PorscheDesignSystemProvider. Check our Getting Started guides for step-by-step instructions.
+                <PLinkPure icon="none" underline={true}>
+                  <Link href="/developing/introduction/">Get Started</Link>
+                </PLinkPure>{' '}
+                by installing the Porsche Design System packages via npm and importing the components.
               </PText>
             </PAccordion>
             <PAccordion background="frosted" open={openFaq === 1} onUpdate={handleFaqUpdate(1)}>
@@ -409,8 +411,8 @@ export const Home = () => {
                 What&apos;s the source of truth?
               </PHeading>
               <PText color="contrast-medium">
-                The Porsche Design System Figma library is the design source of truth, while the coded components are
-                the development source of truth. Both stay in sync through our release process.
+                The coded components serve as the single source of truth for both design and development. The Figma
+                library is kept in sync but may occasionally diverge in minor details.
               </PText>
             </PAccordion>
             <PAccordion background="frosted" open={openFaq === 2} onUpdate={handleFaqUpdate(2)}>
@@ -418,8 +420,40 @@ export const Home = () => {
                 Can I customize components?
               </PHeading>
               <PText color="contrast-medium">
-                Components are designed to cover common use cases out of the box. You can adjust them via props, slots,
-                and design tokens. For advanced customization, refer to our styling guidelines.
+                <PLinkPure icon="none" underline={true}>
+                  <Link href="/components/introduction/">Components</Link>
+                </PLinkPure>{' '}
+                are designed to cover common use cases out of the box. You can customize them through their public
+                interface: <code>Properties</code>, <code>Slots</code>, and <code>CSS variables</code>. Don't override
+                internals, as this may break future update compatibility. If you need a feature that isn&apos;t
+                available, reach out to us via our{' '}
+                <PLinkPure
+                  href="https://porscheag.enterprise.slack.com/archives/CT7AVHTTQ"
+                  icon="none"
+                  underline={true}
+                >
+                  Slack
+                </PLinkPure>{' '}
+                channel.
+                <br />
+                <br />
+                For fully custom components, we offer styling solutions for{' '}
+                <PLinkPure icon="none" underline={true}>
+                  <Link href="/tailwindcss/introduction/">Tailwind CSS</Link>
+                </PLinkPure>{' '}
+                (recommended),{' '}
+                <PLinkPure icon="none" underline={true}>
+                  <Link href="/scss/introduction/">SCSS</Link>
+                </PLinkPure>
+                ,{' '}
+                <PLinkPure icon="none" underline={true}>
+                  <Link href="/emotion/introduction/">Emotion</Link>
+                </PLinkPure>
+                , and{' '}
+                <PLinkPure icon="none" underline={true}>
+                  <Link href="/vanilla-extract/introduction/">Vanilla Extract</Link>
+                </PLinkPure>
+                .
               </PText>
             </PAccordion>
             <PAccordion background="frosted" open={openFaq === 3} onUpdate={handleFaqUpdate(3)}>
@@ -427,8 +461,9 @@ export const Home = () => {
                 Which frameworks are supported?
               </PHeading>
               <PText color="contrast-medium">
-                We provide first-class support for React, Angular, Vue, and vanilla JS/Web Components. Each framework
-                has its own wrapper package with full TypeScript support.
+                The Porsche Design System offers first-class support for React, Angular, Vue, and Vanilla JS — all built
+                on Web Components under the hood. Each framework comes with a dedicated wrapper package and full
+                TypeScript support.
               </PText>
             </PAccordion>
           </div>
@@ -437,7 +472,7 @@ export const Home = () => {
 
       {/* ── resources ── */}
       <section
-        className="col-[wide] @md:col-start-2 @md:col-end-12 my-fluid-xl grid gap-fluid-md @2xl:grid-cols-2"
+        className="col-[wide] @md:col-[extended] my-fluid-xl grid gap-fluid-md @2xl:grid-cols-2"
         aria-label="Resources"
       >
         <AppearAnimation animation="fade-in-up">
@@ -453,10 +488,10 @@ export const Home = () => {
               size="md"
               href="https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=32923-48020"
             >
-              Figma Design Library (internal)
+              Figma Library (internal)
             </PLinkPure>
             <PLinkPure icon="external" size="md" href="https://figma.com/@porsche">
-              Figma Design Library (public)
+              Figma Library (public)
             </PLinkPure>
             <PLinkPure icon="external" size="md" href="https://brand.porsche.com/">
               Brand Guide

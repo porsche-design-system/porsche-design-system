@@ -117,6 +117,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
   return (
     <PCanvas
+      className="[--p-canvas-sidebar-start-width:315px] [--p-canvas-sidebar-end-width:315px]"
       sidebarStartOpen={isSidebarStartOpen}
       sidebarEndOpen={isSidebarEndOpen}
       onSidebarStartUpdate={onSidebarStartUpdate}
@@ -168,7 +169,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Open sidebar
       </PButton>
 
-      <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md -mx-(--porsche-canvas-p) px-fluid-xl">
+      <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
         <Tabs />
         {children}

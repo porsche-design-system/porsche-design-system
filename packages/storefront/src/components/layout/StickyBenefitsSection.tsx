@@ -222,7 +222,7 @@ export function StickyBenefitsSection() {
             ref={(el) => {
               cardInnerRefs.current[i] = el;
             }}
-            className="origin-[center_top] relative w-full h-full bg-frosted backdrop-blur-frosted rounded-4xl flex flex-col @xl:flex-row items-center justify-between px-fluid-md py-fluid-md @xl:px-fluid-xl @xl:py-fluid-xl @2xl:px-[60px] @2xl:py-[50px]"
+            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-4xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between"
           >
             {/* Dimming overlay – GPU-composited opacity instead of expensive filter */}
             <div
@@ -232,7 +232,7 @@ export function StickyBenefitsSection() {
               className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-4xl pointer-events-none"
             />
             <div className="flex-1 flex items-center justify-center @xl:h-full">{illustrations[i]}</div>
-            <div className="flex-1 h-full flex flex-col items-center justify-center px-fluid-md rounded-[2.5rem]">
+            <div className="flex-1 h-full flex flex-col items-center justify-center rounded-[2.5rem]">
               <div className="text-center max-w-[28rem] flex flex-col gap-static-xs">
                 <PHeading tag="h3" size="xs" color="contrast-medium">
                   {card.label}

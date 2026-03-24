@@ -4,8 +4,7 @@
 @source "../../../../node_modules/@porsche-design-system/shared/examples/*.tsx";
 
 @theme {
-  --porsche-canvas-grid: [wide-start] minmax(0,1fr) [extended-start] repeat(10,minmax(0,1fr)) [extended-end] minmax(0,1fr) [wide-end];
-  --porsche-canvas-p: clamp(16px,12px + 1.25vw,24px);
+  --porsche-canvas-grid: [full-start] minmax(0,1fr) [wide-start] minmax(0,1fr) [extended-start] repeat(10,minmax(0,1fr)) [extended-end] minmax(0,1fr) [wide-end] minmax(0,1fr) [full-end];
 
   --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
   --_pds-grid-narrow-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
