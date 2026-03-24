@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
 import {
   gridStyle,
   gridBasic,
@@ -52,40 +53,40 @@ export const metadata = {
 
 ## SCSS Mixins
 
-| SCSS Mixins                                                  | Description                                                                                                                             |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| <code className="whitespace-nowrap">@mixin pds-grid()</code> | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
+| SCSS Mixins                                     | Description                                                                                                                             |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| <Code variant="nowrap">@mixin pds-grid()</Code> | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
 
 ## SCSS Variables
 
-| SCSS Variable                                                               | Description                                                                  | Value                                                          |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| <code className="whitespace-nowrap">$pds-grid-gap</code>                    | Holds the grid **gap** the Porsche Grid.                                     | <code className="select-none">{gridGap}</code>                 |
-| <code className="whitespace-nowrap">$pds-grid-narrow-column-start</code>    | Holds the **start** position of the `narrow` area within the Porsche Grid.   | <code className="select-none">{gridNarrowColumnStart}</code>   |
-| <code className="whitespace-nowrap">$pds-grid-narrow-column-end</code>      | Holds the **end** position of the `narrow` area within the Porsche Grid.     | <code className="select-none">{gridNarrowColumnEnd}</code>     |
-| <code className="whitespace-nowrap">$pds-grid-narrow-span-one-half</code>   | Holds a **one third** span within the `narrow` area of the Porsche Grid.     | <code className="select-none">{gridNarrowSpanOneHalf}</code>   |
-| <code className="whitespace-nowrap">$pds-grid-narrow-offset-base</code>     | Holds a **base** offset within the `narrow` area of the Porsche Grid.        | <code className="select-none">{gridNarrowOffsetBase}</code>    |
-| <code className="whitespace-nowrap">$pds-grid-narrow-offset-s</code>        | Holds a **small** offset within the `narrow` area of the Porsche Grid.       | <code className="select-none">{gridNarrowOffsetS}</code>       |
-| <code className="whitespace-nowrap">$pds-grid-narrow-offset-xxl</code>      | Holds a **xxl** offset within the `narrow` area of the Porsche Grid.         | <code className="select-none">{gridNarrowOffsetXXL}</code>     |
-| <code className="whitespace-nowrap">$pds-grid-basic-column-start</code>     | Holds the **start** position of the `basic` area within the Porsche Grid.    | <code className="select-none">{gridBasicColumnStart}</code>    |
-| <code className="whitespace-nowrap">$pds-grid-basic-column-end</code>       | Holds the **end** position of the `basic` area within the Porsche Grid.      | <code className="select-none">{gridBasicColumnEnd}</code>      |
-| <code className="whitespace-nowrap">$pds-grid-basic-span-one-half</code>    | Holds a **half** span within the `basic` area of the Porsche Grid.           | <code className="select-none">{gridBasicSpanOneHalf}</code>    |
-| <code className="whitespace-nowrap">$pds-grid-basic-span-one-third</code>   | Holds a **one third** span within the `basic` area of the Porsche Grid.      | <code className="select-none">{gridBasicSpanOneThird}</code>   |
-| <code className="whitespace-nowrap">$pds-grid-basic-span-two-thirds</code>  | Holds a **two thirds** span within the `basic` area of the Porsche Grid.     | <code className="select-none">{gridBasicSpanTwoThirds}</code>  |
-| <code className="whitespace-nowrap">$pds-grid-basic-offset-base</code>      | Holds a **base** offset within the `base` area of the Porsche Grid.          | <code className="select-none">{gridBasicOffsetBase}</code>     |
-| <code className="whitespace-nowrap">$pds-grid-basic-offset-s</code>         | Holds a **small** offset within the `base` area of the Porsche Grid.         | <code className="select-none">{gridBasicOffsetS}</code>        |
-| <code className="whitespace-nowrap">$pds-grid-basic-offset-xxl</code>       | Holds a **xxl** offset within the `base` area of the Porsche Grid.           | <code className="select-none">{gridBasicOffsetXXL}</code>      |
-| <code className="whitespace-nowrap">$pds-grid-extended-column-start</code>  | Holds the **start** position of the `extended` area within the Porsche Grid. | <code className="select-none">{gridExtendedColumnStart}</code> |
-| <code className="whitespace-nowrap">$pds-grid-extended-column-end</code>    | Holds the **end** position of the `extended` area within the Porsche Grid.   | <code className="select-none">{gridExtendedColumnEnd}</code>   |
-| <code className="whitespace-nowrap">$pds-grid-extended-span-one-half</code> | Holds a **half** span within the `extended` area of the Porsche Grid.        | <code className="select-none">{gridExtendedSpanOneHalf}</code> |
-| <code className="whitespace-nowrap">$pds-grid-extended-offset-base</code>   | Holds a **base** offset within the `extended` area of the Porsche Grid.      | <code className="select-none">{gridExtendedOffsetBase}</code>  |
-| <code className="whitespace-nowrap">$pds-grid-extended-offset-s</code>      | Holds a **small** offset within the `extended` area of the Porsche Grid.     | <code className="select-none">{gridExtendedOffsetS}</code>     |
-| <code className="whitespace-nowrap">$pds-grid-extended-offset-xxl</code>    | Holds a **xxl** offset within the `extended` area of the Porsche Grid.       | <code className="select-none">{gridExtendedOffsetXXL}</code>   |
-| <code className="whitespace-nowrap">$pds-grid-wide-column-start</code>      | Holds the **start** position of the `wide` area within the Porsche Grid.     | <code className="select-none">{gridWideColumnStart}</code>     |
-| <code className="whitespace-nowrap">$pds-grid-wide-column-end</code>        | Holds the **end** position of the `wide` area within the Porsche Grid.       | <code className="select-none">{gridWideColumnEnd}</code>       |
-| <code className="whitespace-nowrap">$pds-grid-wide-offset-base</code>       | Holds a **base** offset within the `wide` area of the Porsche Grid.          | <code className="select-none">{gridWideOffsetBase}</code>      |
-| <code className="whitespace-nowrap">$pds-grid-wide-offset-s</code>          | Holds a **small** offset within the `wide` area of the Porsche Grid.         | <code className="select-none">{gridWideOffsetS}</code>         |
-| <code className="whitespace-nowrap">$pds-grid-wide-offset-xxl</code>        | Holds a **xxl** offset within the `wide` area of the Porsche Grid.           | <code className="select-none">{gridWideOffsetXXL}</code>       |
-| <code className="whitespace-nowrap">$pds-grid-full-column-start</code>      | Holds the **start** position of the `full` area within the Porsche Grid.     | <code className="select-none">{gridFullColumnStart}</code>     |
-| <code className="whitespace-nowrap">$pds-grid-full-column-end</code>        | Holds the **end** position of the `full` area within the Porsche Grid.       | <code className="select-none">{gridFullColumnEnd}</code>       |
-| <code className="whitespace-nowrap">$pds-grid-full-offset</code>            | Holds a **full** offset within the `full` area of the Porsche Grid.          | <code className="select-none">{gridFullOffset}</code>          |
+| SCSS Variable                                                  | Description                                                                  | Value                                                  |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------ |
+| <Code variant="nowrap">$pds-grid-gap</Code>                    | Holds the grid **gap** the Porsche Grid.                                     | <Code variant="value">{gridGap}</Code>                 |
+| <Code variant="nowrap">$pds-grid-narrow-column-start</Code>    | Holds the **start** position of the `narrow` area within the Porsche Grid.   | <Code variant="value">{gridNarrowColumnStart}</Code>   |
+| <Code variant="nowrap">$pds-grid-narrow-column-end</Code>      | Holds the **end** position of the `narrow` area within the Porsche Grid.     | <Code variant="value">{gridNarrowColumnEnd}</Code>     |
+| <Code variant="nowrap">$pds-grid-narrow-span-one-half</Code>   | Holds a **one third** span within the `narrow` area of the Porsche Grid.     | <Code variant="value">{gridNarrowSpanOneHalf}</Code>   |
+| <Code variant="nowrap">$pds-grid-narrow-offset-base</Code>     | Holds a **base** offset within the `narrow` area of the Porsche Grid.        | <Code variant="value">{gridNarrowOffsetBase}</Code>    |
+| <Code variant="nowrap">$pds-grid-narrow-offset-s</Code>        | Holds a **small** offset within the `narrow` area of the Porsche Grid.       | <Code variant="value">{gridNarrowOffsetS}</Code>       |
+| <Code variant="nowrap">$pds-grid-narrow-offset-xxl</Code>      | Holds a **xxl** offset within the `narrow` area of the Porsche Grid.         | <Code variant="value">{gridNarrowOffsetXXL}</Code>     |
+| <Code variant="nowrap">$pds-grid-basic-column-start</Code>     | Holds the **start** position of the `basic` area within the Porsche Grid.    | <Code variant="value">{gridBasicColumnStart}</Code>    |
+| <Code variant="nowrap">$pds-grid-basic-column-end</Code>       | Holds the **end** position of the `basic` area within the Porsche Grid.      | <Code variant="value">{gridBasicColumnEnd}</Code>      |
+| <Code variant="nowrap">$pds-grid-basic-span-one-half</Code>    | Holds a **half** span within the `basic` area of the Porsche Grid.           | <Code variant="value">{gridBasicSpanOneHalf}</Code>    |
+| <Code variant="nowrap">$pds-grid-basic-span-one-third</Code>   | Holds a **one third** span within the `basic` area of the Porsche Grid.      | <Code variant="value">{gridBasicSpanOneThird}</Code>   |
+| <Code variant="nowrap">$pds-grid-basic-span-two-thirds</Code>  | Holds a **two thirds** span within the `basic` area of the Porsche Grid.     | <Code variant="value">{gridBasicSpanTwoThirds}</Code>  |
+| <Code variant="nowrap">$pds-grid-basic-offset-base</Code>      | Holds a **base** offset within the `base` area of the Porsche Grid.          | <Code variant="value">{gridBasicOffsetBase}</Code>     |
+| <Code variant="nowrap">$pds-grid-basic-offset-s</Code>         | Holds a **small** offset within the `base` area of the Porsche Grid.         | <Code variant="value">{gridBasicOffsetS}</Code>        |
+| <Code variant="nowrap">$pds-grid-basic-offset-xxl</Code>       | Holds a **xxl** offset within the `base` area of the Porsche Grid.           | <Code variant="value">{gridBasicOffsetXXL}</Code>      |
+| <Code variant="nowrap">$pds-grid-extended-column-start</Code>  | Holds the **start** position of the `extended` area within the Porsche Grid. | <Code variant="value">{gridExtendedColumnStart}</Code> |
+| <Code variant="nowrap">$pds-grid-extended-column-end</Code>    | Holds the **end** position of the `extended` area within the Porsche Grid.   | <Code variant="value">{gridExtendedColumnEnd}</Code>   |
+| <Code variant="nowrap">$pds-grid-extended-span-one-half</Code> | Holds a **half** span within the `extended` area of the Porsche Grid.        | <Code variant="value">{gridExtendedSpanOneHalf}</Code> |
+| <Code variant="nowrap">$pds-grid-extended-offset-base</Code>   | Holds a **base** offset within the `extended` area of the Porsche Grid.      | <Code variant="value">{gridExtendedOffsetBase}</Code>  |
+| <Code variant="nowrap">$pds-grid-extended-offset-s</Code>      | Holds a **small** offset within the `extended` area of the Porsche Grid.     | <Code variant="value">{gridExtendedOffsetS}</Code>     |
+| <Code variant="nowrap">$pds-grid-extended-offset-xxl</Code>    | Holds a **xxl** offset within the `extended` area of the Porsche Grid.       | <Code variant="value">{gridExtendedOffsetXXL}</Code>   |
+| <Code variant="nowrap">$pds-grid-wide-column-start</Code>      | Holds the **start** position of the `wide` area within the Porsche Grid.     | <Code variant="value">{gridWideColumnStart}</Code>     |
+| <Code variant="nowrap">$pds-grid-wide-column-end</Code>        | Holds the **end** position of the `wide` area within the Porsche Grid.       | <Code variant="value">{gridWideColumnEnd}</Code>       |
+| <Code variant="nowrap">$pds-grid-wide-offset-base</Code>       | Holds a **base** offset within the `wide` area of the Porsche Grid.          | <Code variant="value">{gridWideOffsetBase}</Code>      |
+| <Code variant="nowrap">$pds-grid-wide-offset-s</Code>          | Holds a **small** offset within the `wide` area of the Porsche Grid.         | <Code variant="value">{gridWideOffsetS}</Code>         |
+| <Code variant="nowrap">$pds-grid-wide-offset-xxl</Code>        | Holds a **xxl** offset within the `wide` area of the Porsche Grid.           | <Code variant="value">{gridWideOffsetXXL}</Code>       |
+| <Code variant="nowrap">$pds-grid-full-column-start</Code>      | Holds the **start** position of the `full` area within the Porsche Grid.     | <Code variant="value">{gridFullColumnStart}</Code>     |
+| <Code variant="nowrap">$pds-grid-full-column-end</Code>        | Holds the **end** position of the `full` area within the Porsche Grid.       | <Code variant="value">{gridFullColumnEnd}</Code>       |
+| <Code variant="nowrap">$pds-grid-full-offset</Code>            | Holds a **full** offset within the `full` area of the Porsche Grid.          | <Code variant="value">{gridFullOffset}</Code>          |

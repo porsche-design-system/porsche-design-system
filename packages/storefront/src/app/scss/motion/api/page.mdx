@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
 import {
   durationSm,
   durationMd,
@@ -22,17 +23,17 @@ export const metadata = {
 
 ### Duration
 
-| SCSS variable                                           | Description                                                         | Value                                             |
-| ------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------- |
-| <code className="whitespace-nowrap">$duration-sm</code> | Holds a **short** `transition-duration` / `animation-duration`.     | <code className="select-none">{durationSm}</code> |
-| <code className="whitespace-nowrap">$duration-md</code> | Holds a **moderate** `transition-duration` / `animation-duration`.  | <code className="select-none">{durationMd}</code> |
-| <code className="whitespace-nowrap">$duration-lg</code> | Holds a **long** `transition-duration` / `animation-duration`.      | <code className="select-none">{durationLg}</code> |
-| <code className="whitespace-nowrap">$duration-xl</code> | Holds a **very long** `transition-duration` / `animation-duration`. | <code className="select-none">{durationXl}</code> |
+| SCSS variable                              | Description                                                         | Value                                     |
+| ------------------------------------------ | ------------------------------------------------------------------- | ----------------------------------------- |
+| <Code variant="nowrap">$duration-sm</Code> | Holds a **short** `transition-duration` / `animation-duration`.     | <Code variant="value">{durationSm}</Code> |
+| <Code variant="nowrap">$duration-md</Code> | Holds a **moderate** `transition-duration` / `animation-duration`.  | <Code variant="value">{durationMd}</Code> |
+| <Code variant="nowrap">$duration-lg</Code> | Holds a **long** `transition-duration` / `animation-duration`.      | <Code variant="value">{durationLg}</Code> |
+| <Code variant="nowrap">$duration-xl</Code> | Holds a **very long** `transition-duration` / `animation-duration`. | <Code variant="value">{durationXl}</Code> |
 
 ### Ease
 
-| SCSS variable                                           | Description                                       | Value                                            |
-| ------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
-| <code className="whitespace-nowrap">$ease-in-out</code> | Holds an **in-out** `transition-timing-function`. | <code className="select-none">{easeInOut}</code> |
-| <code className="whitespace-nowrap">$ease-in</code>     | Holds an **in** `transition-timing-function`.     | <code className="select-none">{easeIn}</code>    |
-| <code className="whitespace-nowrap">$ease-out</code>    | Holds an **out** `transition-timing-function`.    | <code className="select-none">{easeOut}</code>   |
+| SCSS variable                              | Description                                       | Value                                    |
+| ------------------------------------------ | ------------------------------------------------- | ---------------------------------------- |
+| <Code variant="nowrap">$ease-in-out</Code> | Holds an **in-out** `transition-timing-function`. | <Code variant="value">{easeInOut}</Code> |
+| <Code variant="nowrap">$ease-in</Code>     | Holds an **in** `transition-timing-function`.     | <Code variant="value">{easeIn}</Code>    |
+| <Code variant="nowrap">$ease-out</Code>    | Holds an **out** `transition-timing-function`.    | <Code variant="value">{easeOut}</Code>   |

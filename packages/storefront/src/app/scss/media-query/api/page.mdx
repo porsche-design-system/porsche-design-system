@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
 import {
   breakpointMd,
   breakpointLg,
@@ -19,19 +20,19 @@ export const metadata = {
 
 ## SCSS Mixins
 
-| SCSS Mixins                                                                                                                                     | Description                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| <code className="whitespace-nowrap">@mixin media-query-min('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</code>                                          | Applies a **min** media query with the specified breakpoint.      |
-| <code className="whitespace-nowrap">@mixin media-query-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</code>                                          | Applies a **max** media query with the specified breakpoint.      |
-| <code className="whitespace-nowrap">@mixin media-query-min-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl', 'xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</code> | Applies a **min-max** media query with the specified breakpoints. |
+| SCSS Mixins                                                                                                                        | Description                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| <Code variant="nowrap">@mixin media-query-min('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</Code>                                          | Applies a **min** media query with the specified breakpoint.      |
+| <Code variant="nowrap">@mixin media-query-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</Code>                                          | Applies a **max** media query with the specified breakpoint.      |
+| <Code variant="nowrap">@mixin media-query-min-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl', 'xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</Code> | Applies a **min-max** media query with the specified breakpoints. |
 
 ## SCSS Variables
 
-| SCSS Variable                                              | Description                       | Value                                                |
-| ---------------------------------------------------------- | --------------------------------- | ---------------------------------------------------- |
-| <code className="whitespace-nowrap">$breakpoint-xs</code>  | Holds the `xs` breakpoint value.  | <code className="select-none">{breakpointXs}</code>  |
-| <code className="whitespace-nowrap">$breakpoint-sm</code>  | Holds the `sm` breakpoint value.  | <code className="select-none">{breakpointSm}</code>  |
-| <code className="whitespace-nowrap">$breakpoint-md</code>  | Holds the `md` breakpoint value.  | <code className="select-none">{breakpointMd}</code>  |
-| <code className="whitespace-nowrap">$breakpoint-lg</code>  | Holds the `lg` breakpoint value.  | <code className="select-none">{breakpointLg}</code>  |
-| <code className="whitespace-nowrap">$breakpoint-xl</code>  | Holds the `xl` breakpoint value.  | <code className="select-none">{breakpointXl}</code>  |
-| <code className="whitespace-nowrap">$breakpoint-2xl</code> | Holds the `2xl` breakpoint value. | <code className="select-none">{breakpoint2Xl}</code> |
+| SCSS Variable                                 | Description                       | Value                                        |
+| --------------------------------------------- | --------------------------------- | -------------------------------------------- |
+| <Code variant="nowrap">$breakpoint-xs</Code>  | Holds the `xs` breakpoint value.  | <Code variant="value">{breakpointXs}</Code>  |
+| <Code variant="nowrap">$breakpoint-sm</Code>  | Holds the `sm` breakpoint value.  | <Code variant="value">{breakpointSm}</Code>  |
+| <Code variant="nowrap">$breakpoint-md</Code>  | Holds the `md` breakpoint value.  | <Code variant="value">{breakpointMd}</Code>  |
+| <Code variant="nowrap">$breakpoint-lg</Code>  | Holds the `lg` breakpoint value.  | <Code variant="value">{breakpointLg}</Code>  |
+| <Code variant="nowrap">$breakpoint-xl</Code>  | Holds the `xl` breakpoint value.  | <Code variant="value">{breakpointXl}</Code>  |
+| <Code variant="nowrap">$breakpoint-2xl</Code> | Holds the `2xl` breakpoint value. | <Code variant="value">{breakpoint2Xl}</Code> |
