@@ -272,7 +272,6 @@
     border-radius: 1350px;
     filter: blur(68px);
     background-image: radial-gradient(50% 50%, light-dark(rgb(233 223 223),rgb(233, 232, 223)) 0%, light-dark(rgb(255 106 72),rgb(206, 193, 103)) 15.38%, light-dark(rgb(144 89 173 / 40%),rgb(89 151 173 / 40%)) 100%);
-    transform: rotate(58deg);
     transition-property: transform;
     transition-duration: var(--duration-sm);
     transition-timing-function: linear;
@@ -290,7 +289,6 @@
     border-radius: 999px;
     filter: blur(68px);
     background-image: radial-gradient(50% 50%, light-dark(rgba(255, 0, 0, 0.33),rgb(48 108 204)) 0%, light-dark(rgb(250 191 0 / 60%),rgb(162 187 209)) 15.38%, light-dark(rgb(209 204 162 / 19%),rgba(162, 179, 209, 0)) 100%);
-    transform: rotate(-180deg);
     transition-property: transform;
     transition-duration: var(--duration-sm);
     transition-timing-function: linear;

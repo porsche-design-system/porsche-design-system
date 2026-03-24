@@ -315,7 +315,7 @@ export const Home = () => {
 
         {/* glow 1 */}
         <div
-          className={`absolute top-0 [inset-inline-end:-5cqw] glow-1`}
+          className={`absolute top-0 [inset-inline-end:-5cqw] [transform:rotate(58deg)] glow-1`}
           ref={(el) => {
             blobRefs.current[3] = el;
           }}
@@ -325,7 +325,7 @@ export const Home = () => {
 
         {/* glow 2 */}
         <div
-          className="absolute top-[620px] [inset-inline-start:-344px] glow-2"
+          className="absolute top-[620px] [inset-inline-start:-344px] [transform:rotate(-180deg)] glow-2"
           ref={(el) => {
             blobRefs.current[0] = el;
           }}
