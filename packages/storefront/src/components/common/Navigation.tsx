@@ -113,16 +113,24 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
           © {new Date().getFullYear()} Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
-              <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+              </PLinkPure>
             </li>
             <li>
-              <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+              </PLinkPure>
             </li>
             <li>
-              <Link href="/license">License</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="/license">License</Link>
+              </PLinkPure>
             </li>
             <li>
-              <Link href="/accessibility-statement">Accessibility Statement</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="/accessibility-statement">Accessibility Statement</Link>
+              </PLinkPure>
             </li>
           </ul>
         </PText>

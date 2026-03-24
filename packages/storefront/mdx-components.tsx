@@ -1,5 +1,4 @@
 import {
-  PDisplay,
   PDivider,
   PHeading,
   PLinkPure,

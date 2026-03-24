@@ -98,7 +98,10 @@ export const Home = () => {
           <PText size="sm" color="contrast-medium">
             We provide publicly available npm packages for modern frameworks, all powered by Web Components with
             TypeScript and SSR support. Share your feedback, feature requests, and ideas on our public{' '}
-            <Link href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</Link>!
+            <PLinkPure color="contrast-medium" underline={true} icon="none">
+              <Link href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</Link>
+            </PLinkPure>
+            !
           </PText>
         </div>
 
