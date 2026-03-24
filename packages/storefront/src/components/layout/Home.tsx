@@ -151,7 +151,8 @@ export const Home = () => {
         <div className="col-[wide] @md:col-[extended] grid @xl:grid-cols-2 gap-fluid-md">
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="styles/introduction/"
               label="Overview of styles and tokens"
               description="Styles & Tokens"
@@ -174,7 +175,8 @@ export const Home = () => {
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="components/introduction/"
               label="Coded component library"
               description="Components"
@@ -197,7 +199,8 @@ export const Home = () => {
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="partials/introduction/"
               label="Overview of partials and assets"
               description="Assets"
@@ -220,7 +223,8 @@ export const Home = () => {
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="https://github.com/porsche-design-system/templates"
               label="Overview of complete page templates"
               description="Templates"
@@ -243,7 +247,8 @@ export const Home = () => {
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="news/changelog/"
               label="Find latest release notes"
               description="Release Notes"
@@ -266,7 +271,8 @@ export const Home = () => {
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="help/support/"
               label="How to provide feedback and make requests"
               description="Feedback & Requests"
@@ -293,7 +299,8 @@ export const Home = () => {
         <div className="col-[wide] @md:col-[extended]">
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
-              className="[color-scheme:unset] bg-frosted backdrop-blur-frosted rounded-4xl"
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="must-know/accessibility/introduction/"
               label="How the Porsche Design System respects accessibility"
               description="Accessibility"
