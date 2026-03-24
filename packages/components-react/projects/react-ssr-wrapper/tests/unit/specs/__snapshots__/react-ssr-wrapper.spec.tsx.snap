@@ -143,8 +143,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
@@ -191,8 +189,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   }
   .label {
     font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -222,8 +218,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     display: flex;
     gap: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .message:empty {
@@ -286,8 +280,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -301,7 +295,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -394,8 +388,6 @@ input::-webkit-search-cancel-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -425,8 +417,6 @@ input::-webkit-search-cancel-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -513,8 +503,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
 @media(forced-colors:active) {
@@ -528,7 +518,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/search.3f0f1ce.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg"
                       width="24"
                     />
                   </template>
@@ -669,8 +659,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -684,7 +674,7 @@ img {
                             alt=""
                             height="24"
                             loading="lazy"
-                            src="http://localhost:3001/icons/close.eec3c5d.svg"
+                            src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                             width="24"
                           />
                         </template>
@@ -783,8 +773,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -881,8 +869,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -979,8 +965,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1077,8 +1061,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1175,8 +1157,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1273,8 +1253,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1426,8 +1404,6 @@ input:focus-visible {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1457,8 +1433,6 @@ input:focus-visible {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -1584,8 +1558,6 @@ slot:not([name]) {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1615,8 +1587,6 @@ slot:not([name]) {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -1667,8 +1637,6 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
 }
 button:focus-visible {
@@ -1679,7 +1647,6 @@ span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
@@ -1728,8 +1695,6 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
 }
 button:focus-visible {
@@ -1740,7 +1705,6 @@ span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
@@ -1789,8 +1753,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 .scroller {
   place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   font-size: 1rem;
 }
     </style>
@@ -2828,8 +2790,6 @@ exports[`manual test cases > should pass internal props correctly to p-text-list
 }
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -3215,8 +3175,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -3274,8 +3232,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.8f08911.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-info));
 }
 @media(forced-colors:active) {
@@ -3289,7 +3247,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/information-filled.8f08911.svg"
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.8f08911.svg"
               width="24"
             />
           </template>
@@ -3343,8 +3301,6 @@ img {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -3448,8 +3404,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -3463,7 +3419,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.eec3c5d.svg"
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -3522,8 +3478,6 @@ exports[`should render dsr component for PButton 1`] = `
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -3735,8 +3689,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -3753,7 +3707,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.872716b.svg"
+            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -3830,9 +3784,8 @@ p {
   z-index: 3;
   max-width: 34.375rem;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: inherit;
   color: var(--p-color-primary);
+  hyphens: inherit;
   font-size: var(--p-typescale-md);
   font-weight: var(--p-font-weight-semibold);
 }
@@ -3940,8 +3893,6 @@ p {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -4220,7 +4171,7 @@ h2 {
   transition: border-radius var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .main {
-  z-index: 3;
+  z-index: 2;
   grid-area: main;
   padding: clamp(16px, 1.25vw + 12px, 24px);
 }
@@ -4242,7 +4193,7 @@ h2 {
   transition: border-radius var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .sidebar {
-  z-index: 2;
+  z-index: 3;
   position: sticky;
   top: 0;
   height: 100dvh;
@@ -4389,8 +4340,6 @@ h2 {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -4495,8 +4444,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -4510,7 +4459,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/sidebar.8e43896.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg"
                       width="24"
                     />
                   </template>
@@ -4592,17 +4541,17 @@ img {
             </style>
             <picture>
               <source
-                srcset="http://localhost:3001/crest/porsche-crest.0d0cc89@1x.webp 1x,http://localhost:3001/crest/porsche-crest.2245c45@2x.webp 2x,http://localhost:3001/crest/porsche-crest.19b4292@3x.webp 3x"
+                srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.0d0cc89@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.2245c45@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.19b4292@3x.webp 3x"
                 type="image/webp"
               />
               <source
-                srcset="http://localhost:3001/crest/porsche-crest.d76137c@1x.png 1x,http://localhost:3001/crest/porsche-crest.8a292fb@2x.png 2x,http://localhost:3001/crest/porsche-crest.18d6f02@3x.png 3x"
+                srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.d76137c@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.18d6f02@3x.png 3x"
                 type="image/png"
               />
               <img
                 alt="Porsche"
                 height="40"
-                src="http://localhost:3001/crest/porsche-crest.8a292fb@2x.png"
+                src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png"
                 width="30"
               />
             </picture>
@@ -4727,8 +4676,6 @@ svg {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -4833,8 +4780,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -4848,7 +4795,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/sidebar.8e43896.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg"
                       width="24"
                     />
                   </template>
@@ -5151,8 +5098,6 @@ input:checked::before {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5182,8 +5127,6 @@ input:checked::before {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -5293,17 +5236,17 @@ img {
     </style>
     <picture>
       <source
-        srcset="http://localhost:3001/crest/porsche-crest.0d0cc89@1x.webp 1x,http://localhost:3001/crest/porsche-crest.2245c45@2x.webp 2x,http://localhost:3001/crest/porsche-crest.19b4292@3x.webp 3x"
+        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.0d0cc89@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.2245c45@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.19b4292@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="http://localhost:3001/crest/porsche-crest.d76137c@1x.png 1x,http://localhost:3001/crest/porsche-crest.8a292fb@2x.png 2x,http://localhost:3001/crest/porsche-crest.18d6f02@3x.png 3x"
+        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.d76137c@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.18d6f02@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
         height="40"
-        src="http://localhost:3001/crest/porsche-crest.8a292fb@2x.png"
+        src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png"
         width="30"
       />
     </picture>
@@ -5701,8 +5644,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -5719,7 +5662,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg"
                     width="24"
                   />
                 </template>
@@ -5771,8 +5714,6 @@ img:dir(rtl) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -5876,8 +5817,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -5891,7 +5832,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.eec3c5d.svg"
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -5943,8 +5884,6 @@ img {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -6048,8 +5987,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -6063,7 +6002,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.eec3c5d.svg"
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -6306,8 +6245,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -6324,7 +6263,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg"
                 width="24"
               />
             </template>
@@ -6482,8 +6421,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -6500,7 +6439,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
+                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg"
                 width="24"
               />
             </template>
@@ -6616,8 +6555,6 @@ fieldset {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   margin-top: 16px;
 }
@@ -6674,7 +6611,7 @@ img {
       alt=""
       height="24"
       loading="lazy"
-      src="http://localhost:3001/flags/de.b575e11.svg"
+      src="https://cdn.ui.porsche.com/porsche-design-system/flags/de.b575e11.svg"
       width="24"
     />
   </template>
@@ -6850,8 +6787,6 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -6955,8 +6890,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -6970,7 +6905,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -7064,8 +6999,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 img:dir(rtl) {
@@ -7082,7 +7017,7 @@ img:dir(rtl) {
       alt=""
       height="24"
       loading="lazy"
-      src="http://localhost:3001/icons/arrow-right.872716b.svg"
+      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
       width="24"
     />
   </template>
@@ -7143,8 +7078,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -7202,8 +7135,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.8f08911.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.8f08911.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-info));
 }
 @media(forced-colors:active) {
@@ -7217,7 +7150,7 @@ img {
           alt=""
           height="24"
           loading="lazy"
-          src="http://localhost:3001/icons/information-filled.8f08911.svg"
+          src="https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.8f08911.svg"
           width="24"
         />
       </template>
@@ -7271,8 +7204,6 @@ img {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -7376,8 +7307,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -7391,7 +7322,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/close.eec3c5d.svg"
+                src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                 width="24"
               />
             </template>
@@ -7495,8 +7426,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7526,8 +7455,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -7679,8 +7606,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7710,8 +7635,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -7859,8 +7782,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7890,8 +7811,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8044,8 +7963,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8075,8 +7992,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8221,8 +8136,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8252,8 +8165,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8400,8 +8311,6 @@ input::-webkit-search-cancel-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8431,8 +8340,6 @@ input::-webkit-search-cancel-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8579,8 +8486,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8610,8 +8515,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8755,8 +8658,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8786,8 +8687,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8934,8 +8833,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8965,8 +8862,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -9118,8 +9013,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9149,8 +9042,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -9298,8 +9189,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9329,8 +9218,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -9454,8 +9341,6 @@ exports[`should render dsr component for PLink 1`] = `
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -9642,8 +9527,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -9660,7 +9545,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.872716b.svg"
+            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -9732,9 +9617,8 @@ p {
   z-index: 3;
   max-width: 34.375rem;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: inherit;
   color: var(--p-color-primary);
+  hyphens: inherit;
   font-size: var(--p-typescale-md);
   font-weight: var(--p-font-weight-semibold);
 }
@@ -9865,8 +9749,6 @@ p {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -10023,8 +9905,6 @@ slot[name="header"] {
 .heading {
   margin: 0 0 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -10033,8 +9913,6 @@ slot[name="header"] {
 .price {
   margin: 0;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 @media(min-width:760px) {
   .image {
@@ -10187,8 +10065,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/heart.9a5962e.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/heart.9a5962e.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -10202,7 +10080,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/heart.9a5962e.svg"
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/heart.9a5962e.svg"
                     width="24"
                   />
                 </template>
@@ -10403,8 +10281,6 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -10508,8 +10384,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -10523,7 +10399,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -10568,7 +10444,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   color: var(--p-model-signature-color,var(--p-color-primary));
-  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
+  mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: currentcolor !important;
 }
@@ -10597,7 +10473,7 @@ img {
     <slot />
     <img
       alt="911"
-      src="http://localhost:3001/model-signatures/911.b68f913.svg"
+      src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg"
     />
   </template>
   Some child
@@ -10747,8 +10623,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
@@ -10795,8 +10669,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   }
   .label {
     font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -10826,8 +10698,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     display: flex;
     gap: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .message:empty {
@@ -10890,8 +10760,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -10905,7 +10775,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -10998,8 +10868,6 @@ input::-webkit-search-cancel-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -11029,8 +10897,6 @@ input::-webkit-search-cancel-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -11117,8 +10983,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
 @media(forced-colors:active) {
@@ -11132,7 +10998,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/search.3f0f1ce.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg"
                       width="24"
                     />
                   </template>
@@ -11273,8 +11139,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -11288,7 +11154,7 @@ img {
                             alt=""
                             height="24"
                             loading="lazy"
-                            src="http://localhost:3001/icons/close.eec3c5d.svg"
+                            src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                             width="24"
                           />
                         </template>
@@ -11392,8 +11258,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -11551,8 +11415,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -11661,8 +11523,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 img:dir(rtl) {
@@ -11679,7 +11541,7 @@ img:dir(rtl) {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg"
                   width="24"
                 />
               </template>
@@ -11735,8 +11597,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 img:dir(rtl) {
@@ -11753,7 +11615,7 @@ img:dir(rtl) {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="http://localhost:3001/icons/arrow-right.872716b.svg"
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
                   width="24"
                 />
               </template>
@@ -11846,8 +11708,6 @@ input:focus-visible {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -11877,8 +11737,6 @@ input:focus-visible {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -11988,8 +11846,6 @@ exports[`should render dsr component for PPopover 1`] = `
   }
   p {
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     margin: 0;
   }
   button {
@@ -12060,8 +11916,6 @@ exports[`should render dsr component for PPopover 1`] = `
     pointer-events: auto;
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
   }
@@ -12108,8 +11962,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information.da41162.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information.da41162.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -12123,7 +11977,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/information.da41162.svg"
+            src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.da41162.svg"
             width="24"
           />
         </template>
@@ -12193,8 +12047,6 @@ slot[name="label-after"]::slotted(*) {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12224,8 +12076,6 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -12375,8 +12225,6 @@ input::after {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12631,8 +12479,6 @@ slot:not([name]) {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12662,8 +12508,6 @@ slot:not([name]) {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -12719,8 +12563,6 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
 }
 button:focus-visible {
@@ -12731,7 +12573,6 @@ span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
@@ -12906,8 +12747,6 @@ exports[`should render dsr component for PSelect 1`] = `
     padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
@@ -12954,8 +12793,6 @@ exports[`should render dsr component for PSelect 1`] = `
   }
   .label {
     font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12985,8 +12822,6 @@ exports[`should render dsr component for PSelect 1`] = `
     display: flex;
     gap: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .message:empty {
@@ -13049,8 +12884,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -13064,7 +12899,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -13132,8 +12967,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -13349,8 +13182,6 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -13454,8 +13285,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -13469,7 +13300,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -13552,7 +13383,7 @@ exports[`should render dsr component for PSpinner 1`] = `
   }
   circle:last-child {
     stroke: var(--p-spinner-color,var(--p-color-primary));
-    stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 69);
+    stroke-dasharray: 69;
     stroke-linecap: round;
     animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
   }
@@ -13631,8 +13462,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .scroller {
   place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   font-size: 1rem;
 }
     </style>
@@ -13985,8 +13814,6 @@ button::before {
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -14088,8 +13915,6 @@ exports[`should render dsr component for PTable 1`] = `
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -15085,8 +14910,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -15168,8 +14991,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -15183,7 +15006,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/close.eec3c5d.svg"
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
               width="24"
             />
           </template>
@@ -15250,8 +15073,6 @@ exports[`should render dsr component for PTextList 1`] = `
 }
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -15389,8 +15210,6 @@ textarea:focus {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15420,8 +15239,6 @@ textarea:focus {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {

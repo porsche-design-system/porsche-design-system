@@ -25,8 +25,6 @@ exports[`getComponentCss() > should return correct css 1`] = `
   }
   p {
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     margin: 0;
   }
   button {
@@ -97,8 +95,6 @@ exports[`getComponentCss() > should return correct css 1`] = `
     pointer-events: auto;
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
   }

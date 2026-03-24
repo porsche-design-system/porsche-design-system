@@ -8,8 +8,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
@@ -64,8 +62,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
@@ -120,8 +116,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
@@ -176,8 +170,6 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;

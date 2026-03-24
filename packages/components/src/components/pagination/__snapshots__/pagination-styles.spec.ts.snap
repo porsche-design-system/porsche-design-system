@@ -35,8 +35,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -140,8 +138,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -245,8 +241,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -350,8 +344,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -461,8 +453,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -572,8 +562,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -683,8 +671,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -794,8 +780,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -905,8 +889,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1016,8 +998,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1127,8 +1107,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1238,8 +1216,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1349,8 +1325,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1460,8 +1434,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1568,8 +1540,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1679,8 +1649,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1787,8 +1755,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1898,8 +1864,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -2012,8 +1976,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -2126,8 +2088,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;

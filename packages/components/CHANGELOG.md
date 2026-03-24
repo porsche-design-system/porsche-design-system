@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
 - `Icon`: `play-filled`, `arrow-down-left`, `arrow-down-right`, `arrow-up-left`, `arrow-up-right`
 
 ### Changed
@@ -21,6 +23,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Icon`: Update visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
   `skip-forward`
 - `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`
+
+### Removed
+
+- CSS Variable `--p-hyphens`
+- Hyphenation style in general: CSS `hyphens` and `overflow-wrap` properties are no longer applied globally across
+  components. If you relied on automatic word hyphenation, you can restore the previous behavior by setting these
+  inheritable properties on a common ancestor like `body`:
+
+  ```css
+  body {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  ```
+
+  Since both properties are inheritable, they will cascade down to all child elements, including content within Shadow
+  DOM components.
 
 ## [4.0.0-beta.3] - 2026-03-19
 

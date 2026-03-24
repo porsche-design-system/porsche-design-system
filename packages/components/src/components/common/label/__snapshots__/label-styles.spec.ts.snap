@@ -13,8 +13,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -177,8 +175,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -221,8 +217,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -265,8 +259,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -308,8 +300,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -350,8 +340,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -392,8 +380,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -435,8 +421,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -479,8 +463,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -523,8 +505,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -575,8 +555,6 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;

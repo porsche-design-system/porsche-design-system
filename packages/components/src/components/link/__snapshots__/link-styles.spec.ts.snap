@@ -54,8 +54,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -238,8 +236,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -341,8 +337,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -437,8 +431,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -533,8 +525,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -629,8 +619,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -725,8 +713,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -821,8 +807,6 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);

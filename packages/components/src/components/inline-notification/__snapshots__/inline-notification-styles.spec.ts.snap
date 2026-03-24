@@ -46,8 +46,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -122,8 +120,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -198,8 +194,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -274,8 +268,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -356,8 +348,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -438,8 +428,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -514,8 +502,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }

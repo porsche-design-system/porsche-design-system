@@ -44,11 +44,6 @@ const cssVarPaddingInline = '--p-accordion-px';
  */
 const cssVarPaddingBlock = '--p-accordion-py';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-
 const iconMarker = getInlineSVGBackgroundImage(
   `<path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/>`
 );

@@ -26,8 +26,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -209,8 +207,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -388,8 +384,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -595,8 +589,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -728,8 +720,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -863,8 +853,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -1097,8 +1085,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -1225,8 +1211,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -1549,8 +1533,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -1690,8 +1672,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -1902,8 +1882,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -2117,8 +2095,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
@@ -2306,8 +2282,6 @@ p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;

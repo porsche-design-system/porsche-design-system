@@ -24,10 +24,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "0px",
         "description": "Controls the sticky top position when \`sticky\` is enabled.",
       },
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
     },
     "eventsMeta": {
       "update": {
@@ -242,12 +238,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -332,6 +322,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -341,6 +333,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -511,6 +505,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -652,12 +647,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -764,6 +753,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -773,6 +764,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -942,6 +935,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -1120,12 +1114,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-tile": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -1229,6 +1217,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -1238,6 +1228,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -1408,6 +1400,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -1672,10 +1665,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop \`width\` has no effect anymore.",
       },
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
     },
     "eventsMeta": {
       "update": {
@@ -1860,10 +1849,6 @@ exports[`should match snapshot 1`] = `
       },
       "--p-checkbox-icon-color": {
         "description": "🧪Experimental: Checkmark icon color of Checkbox.",
-      },
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
       },
     },
     "eventsMeta": {
@@ -2950,6 +2935,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -2959,6 +2946,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -3128,6 +3117,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -3259,12 +3249,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-inline-notification": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "action": {
         "description": "Emitted when the action button is clicked.",
@@ -3319,6 +3303,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -3328,6 +3314,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -3497,6 +3485,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -3650,10 +3639,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-date": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -3837,10 +3822,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-email": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4042,10 +4023,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-month": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4229,10 +4206,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-number": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4428,10 +4401,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-password": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4621,10 +4590,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-search": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4821,10 +4786,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-tel": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5020,10 +4981,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-text": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5216,10 +5173,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-time": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5403,10 +5356,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-url": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5602,10 +5551,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-week": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5788,12 +5733,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -5873,6 +5812,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -5882,6 +5823,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -6052,6 +5995,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -6180,12 +6124,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6287,6 +6225,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -6296,6 +6236,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -6465,6 +6407,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -6630,12 +6573,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6786,12 +6723,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "like": {
         "description": "Emitted when the like button is clicked.",
@@ -7120,12 +7051,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the multi-select has lost focus.",
@@ -7282,12 +7207,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-multi-select-option": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7446,12 +7365,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the pin-code has lost focus.",
@@ -7606,12 +7519,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7663,12 +7570,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the radio-group has lost focus.",
@@ -7816,12 +7717,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group-option": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8133,12 +8028,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control-item": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8201,6 +8090,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -8210,6 +8101,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -8379,6 +8272,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -8506,12 +8400,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the select has lost focus.",
@@ -8672,12 +8560,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-option": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8926,12 +8808,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-stepper-horizontal-item": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8983,12 +8859,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "update": {
         "description": "Emitted when the checked state changes.",
@@ -9546,6 +9416,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -9555,6 +9427,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -9725,6 +9599,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -9839,12 +9714,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tag-dismissible": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -10056,10 +9925,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-textarea": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--p-textarea-field-sizing": {
         "defaultValue": "unset",
         "description": "Controls CSS \`field-sizing\` for textarea.",
@@ -10285,10 +10150,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-toast": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--p-toast-position-bottom": {
         "defaultValue": "56px",
         "description": "Defines the spacing between the toast and the bottom edge of its container.",
