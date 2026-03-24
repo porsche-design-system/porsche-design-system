@@ -14,9 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-- `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`
+- `Icon`: `play-filled`, `arrow-down-left`, `arrow-down-right`, `arrow-up-left`, `arrow-up-right`
 
 ### Changed
+
+- `Icon`: Update visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
+  `skip-forward`
+- `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`
 
 ## [4.0.0-beta.3] - 2026-03-19
 
