@@ -15,7 +15,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { colorPrimary, radiusFull } from '../../../styles/css-variables';
+import { colorCanvas, colorPrimary, radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -69,25 +69,28 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
             borderColor: 'GrayText',
           }),
         }),
-        '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
           hoverMediaQuery({
             '&:hover': {
               borderColor: formStateBorderHoverColor,
             },
           })),
+        '&:focus-visible': getFocusBaseStyles(),
+        '&:checked': {
+          background: state === 'none' ? colorPrimary : formStateBorderColor,
+          '&::before': {
+            WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
+            mask: `${checkedIcon} center/contain no-repeat`,
+            backgroundColor: colorCanvas,
+            ...forcedColorsMediaQuery({
+              background: 'CanvasText',
+            }),
+          },
+        },
         '&::before': {
           // This pseudo-element is used to render the checked icon.
           content: '""',
           gridArea: '1/1',
-        },
-        '&:checked::before': {
-          WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `${checkedIcon} center/contain no-repeat`,
-          backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,
-          ...forcedColorsMediaQuery({
-            background: 'CanvasText',
-          }),
         },
         '&::after': {
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.

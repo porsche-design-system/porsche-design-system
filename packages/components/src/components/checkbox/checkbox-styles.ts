@@ -4,14 +4,12 @@ import {
   getDisabledBaseStyles,
   getFocusBaseStyles,
   hostHiddenStyles,
-  hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
-import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
+import { cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -35,7 +33,6 @@ export const getComponentCss = (
   isLoading: boolean,
   isCompact: boolean
 ): string => {
-  const { formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
@@ -58,12 +55,6 @@ export const getComponentCss = (
         '&:checked': getCheckboxCheckedBaseStyles(isLoading, state),
         '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading, state),
         '&:focus-visible': getFocusBaseStyles(),
-        ...(!disabledOrLoading &&
-          hoverMediaQuery({
-            '&:hover': {
-              borderColor: `var(${cssVarCheckboxBorderColor}, ${formStateBorderHoverColor})`,
-            },
-          })),
       },
     },
     root: {

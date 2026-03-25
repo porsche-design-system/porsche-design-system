@@ -18,7 +18,7 @@ span {
   gap: 2px;
   padding: 4px 9px;
   border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-canvas);
   background: var(--p-color-error);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -84,7 +84,7 @@ span {
   gap: 2px;
   padding: 1px 6px;
   border-radius: var(--_p-legacy-radius-small, calc(1px + (calc(6px + 2.125ex) / 2)));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-canvas);
   background: var(--p-color-info);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -144,7 +144,7 @@ span {
   gap: 2px;
   padding: 4px 9px;
   border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-canvas);
   background: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -210,7 +210,7 @@ span {
   gap: 2px;
   padding: 4px 9px;
   border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
@@ -272,7 +272,7 @@ span {
   gap: 2px;
   padding: 1px 6px;
   border-radius: var(--_p-legacy-radius-small, calc(1px + (calc(6px + 2.125ex) / 2)));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-canvas);
   background: var(--p-color-warning);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);

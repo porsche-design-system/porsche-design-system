@@ -222,14 +222,14 @@ export function StickyBenefitsSection() {
             ref={(el) => {
               cardInnerRefs.current[i] = el;
             }}
-            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-4xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between"
+            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-4xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between will-change-transform"
           >
             {/* Dimming overlay – GPU-composited opacity instead of expensive filter */}
             <div
               ref={(el) => {
                 overlayRefs.current[i] = el;
               }}
-              className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-4xl pointer-events-none"
+              className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-4xl pointer-events-none will-change-[opacity]"
             />
             <div className="flex-1 flex items-center justify-center @xl:h-full">{illustrations[i]}</div>
             <div className="flex-1 h-full flex flex-col items-center justify-center rounded-[2.5rem]">

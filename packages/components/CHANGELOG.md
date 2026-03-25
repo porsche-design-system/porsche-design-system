@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.0.0-beta.4] - 2026-03-25
+
 ### Added
 
 - `Heading`:
@@ -24,9 +26,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
-- `Icon`: Update visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
+- `Checkbox`: Improve visual appearance of the checked state
+- `Radio Group`: Improve visual appearance of the checked state
+- `Icon`: Improve visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
   `skip-forward`
-- `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`
+- `Tag`: Improve visual appearance of variant `info`, `success`, `variant` and `error`
+- `Tokens`: Update value of `typescaleXs`
 
 ### Fixed
 
