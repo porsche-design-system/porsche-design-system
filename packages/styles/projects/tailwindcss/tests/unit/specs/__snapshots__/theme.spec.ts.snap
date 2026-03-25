@@ -129,7 +129,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
   --text-2xs: 0.75rem;
   --text-2xs--line-height: calc(6px + 2.125ex);
-  --text-xs: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  --text-xs: 0.875rem;
   --text-xs--line-height: calc(6px + 2.125ex);
   --text-base: 1rem;
   --text-base--line-height: calc(6px + 2.125ex);
