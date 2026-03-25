@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Checkbox`: Improve visual appearance of the checked state
 - `Icon`: Update visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
   `skip-forward`
 - `Tag`: Update visual appearance variant `info`, `success`, `variant` and `error`

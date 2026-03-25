@@ -5,12 +5,13 @@ import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
 import { legacyRadiusSmall, radiusLg, radiusMd } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
+import { hoverMediaQuery } from '../media-query/hover-media-query';
 import {
   cssVarCheckboxBackgroundColor,
   cssVarCheckboxBorderColor,
   cssVarInternalCheckboxScaling,
 } from './checkbox-css-vars';
-import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getCheckboxBaseStyles = (
   isDisabled: boolean,
@@ -18,7 +19,7 @@ export const getCheckboxBaseStyles = (
   isCompact: boolean,
   state: FormState
 ): JssStyle => {
-  const { formStateBackgroundColor, formStateBorderColor } = getThemedFormStateColors(state);
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
@@ -45,6 +46,11 @@ export const getCheckboxBaseStyles = (
     borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusMd : radiusLg})`,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+    }),
+    ...hoverMediaQuery({
+      '&:hover': {
+        borderColor: `var(${cssVarCheckboxBorderColor}, ${formStateBorderHoverColor})`,
+      },
     }),
     '&::before': {
       // This pseudo-element is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.
