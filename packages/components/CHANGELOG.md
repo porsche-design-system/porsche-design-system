@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Icon`: Improve visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
   `skip-forward`
 - `Tag`: Improve visual appearance of variant `info`, `success`, `variant` and `error`
+- `Tokens`: Update value of `typescaleXs`
 
 ### Fixed
 
