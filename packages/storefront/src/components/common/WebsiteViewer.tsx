@@ -22,15 +22,21 @@ export const WebsiteViewer = ({ sourceCodePath, viewPath, title }: WebsiteViewer
     <>
       <div className="flex flex-wrap gap-static-md mt-fluid-lg">
         <PLinkPure icon="external">
-          <Link href={sourceCodeUrl}>Source Code</Link>
+          <Link href={sourceCodeUrl} target="_blank">
+            Source Code
+          </Link>
         </PLinkPure>
         <PLinkPure icon="external">
-          <Link href={viewUrl}>View Fullscreen</Link>
+          <Link href={viewUrl} target="_blank">
+            View Fullscreen
+          </Link>
         </PLinkPure>
       </div>
-
-      <iframe className="my-fluid-md w-full aspect-3/2 rounded-4xl shadow-high" title={title} src={viewUrl} />
+      <iframe
+        className="my-fluid-md w-full aspect-3/2 rounded-4xl shadow-high border border-[light-dark(transparent,var(--color-contrast-lower))]"
+        title={title}
+        src={viewUrl}
+      />
     </>
   );
 };
-
