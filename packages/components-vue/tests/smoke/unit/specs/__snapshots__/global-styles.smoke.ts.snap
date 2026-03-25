@@ -13,6 +13,8 @@ body {
   -webkit-text-size-adjust: none;
 }
 :root {
+  color-scheme: light;
+
   --p-color-focus: light-dark(#1a44ea, #1a44ea);
   --p-color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
   --p-color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
@@ -329,6 +331,8 @@ body {
   -webkit-text-size-adjust: none;
 }
 :root {
+  color-scheme: light;
+
   --p-color-focus: light-dark(#1a44ea, #1a44ea);
   --p-color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
   --p-color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
@@ -653,6 +657,8 @@ body {
 
 exports[`global styles package content > snapshot for "/variables" 1`] = `
 ":root {
+  color-scheme: light;
+
   --p-color-focus: light-dark(#1a44ea, #1a44ea);
   --p-color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
   --p-color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
