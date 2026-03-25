@@ -3,109 +3,109 @@
 exports[`should match compiled variables css 1`] = `
 ":root {
   --p-color-focus: light-dark(#1a44ea, #1a44ea);
-  --p-color-canvas: light-dark(#fff, hsl(225, 66.7%, 1.2%));
-  --p-color-surface: light-dark(hsl(240, 10%, 95%), hsl(240, 2%, 10%));
+  --p-color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
+  --p-color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
   --p-color-frosted: light-dark(
-    hsla(240, 5%, 70%, 0.148),
-    hsla(240, 2%, 43%, 0.228)
+    hsl(240 5% 70% / 0.148),
+    hsl(240 2% 43% / 0.228)
   );
   --p-color-frosted-soft: light-dark(
-    hsla(234, 9.8%, 60%, 0.06),
-    hsla(240, 3.7%, 26.5%, 0.154)
+    hsl(234 9.8% 60% / 0.06),
+    hsl(240 3.7% 26.5% / 0.154)
   );
   --p-color-frosted-strong: light-dark(
-    hsla(236, 6.5%, 42%, 0.236),
-    hsla(240, 1.5%, 61.8%, 0.302)
+    hsl(236 6.5% 42% / 0.236),
+    hsl(240 1.5% 61.8% / 0.302)
   );
   --p-color-backdrop: light-dark(
-    hsla(240, 5.3%, 14.9%, 0.5),
-    hsla(240, 5.3%, 14.9%, 0.5)
+    hsl(240 5.3% 14.9% / 0.5),
+    hsl(240 5.3% 14.9% / 0.5)
   );
   --p-color-contrast-lower: light-dark(
-    hsla(234, 6%, 32.9%, 0.324),
-    hsla(240, 1.5%, 61.8%, 0.302)
+    hsl(234 6% 32.9% / 0.324),
+    hsl(240 1.5% 61.8% / 0.302)
   );
   --p-color-contrast-low: light-dark(
-    hsla(240, 5.3%, 14.9%, 0.5),
-    hsla(240, 12.5%, 96.9%, 0.45)
+    hsl(240 5.3% 14.9% / 0.5),
+    hsl(240 12.5% 96.9% / 0.45)
   );
   --p-color-contrast-medium: light-dark(
-    hsla(240, 6.1%, 7%, 0.6),
-    hsla(240, 12.5%, 96.9%, 0.56)
+    hsl(240 6.1% 7% / 0.6),
+    hsl(240 12.5% 96.9% / 0.56)
   );
   --p-color-contrast-high: light-dark(
-    hsla(240, 7.1%, 11%, 0.7),
-    hsla(240, 12.5%, 96.9%, 0.67)
+    hsl(240 7.1% 11% / 0.7),
+    hsl(240 12.5% 96.9% / 0.67)
   );
   --p-color-contrast-higher: light-dark(
-    hsla(240, 8.7%, 9%, 0.8),
-    hsla(240, 12.5%, 96.9%, 0.78)
+    hsl(240 8.7% 9% / 0.8),
+    hsl(240 12.5% 96.9% / 0.78)
   );
-  --p-color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(225, 100%, 99%));
-  --p-color-success: light-dark(hsl(115, 77.5%, 27.8%), hsl(157, 84.9%, 41.6%));
+  --p-color-primary: light-dark(hsl(225 66.7% 1.2%), hsl(225 100% 99%));
+  --p-color-success: light-dark(hsl(115 77.5% 27.8%), hsl(157 84.9% 41.6%));
   --p-color-success-low: light-dark(
-    hsla(115, 77.5%, 27.8%, 0.18),
-    hsla(157, 84.9%, 41.6%, 0.18)
+    hsl(115 77.5% 27.8% / 0.18),
+    hsl(157 84.9% 41.6% / 0.18)
   );
   --p-color-success-medium: light-dark(
-    hsla(115, 77.5%, 27.8%, 0.6),
-    hsla(157, 84.9%, 41.6%, 0.6)
+    hsl(115 77.5% 27.8% / 0.6),
+    hsl(157 84.9% 41.6% / 0.6)
   );
   --p-color-success-frosted: light-dark(
-    hsla(115, 77.5%, 27.8%, 0.18),
-    hsla(157, 84.9%, 41.6%, 0.26)
+    hsl(115 77.5% 27.8% / 0.18),
+    hsl(157 84.9% 41.6% / 0.26)
   );
   --p-color-success-frosted-soft: light-dark(
-    hsla(115, 77.5%, 27.8%, 0.1),
-    hsla(157, 84.9%, 41.6%, 0.1)
+    hsl(115 77.5% 27.8% / 0.1),
+    hsl(157 84.9% 41.6% / 0.1)
   );
-  --p-color-warning: light-dark(hsl(28, 97.7%, 34.1%), hsl(28, 90.2%, 56.1%));
+  --p-color-warning: light-dark(hsl(28 97.7% 34.1%), hsl(28 90.2% 56.1%));
   --p-color-warning-low: light-dark(
-    hsla(28, 97.7%, 34.1%, 0.18),
-    hsla(28, 90.2%, 56.1%, 0.18)
+    hsl(28 97.7% 34.1% / 0.18),
+    hsl(28 90.2% 56.1% / 0.18)
   );
   --p-color-warning-medium: light-dark(
-    hsla(28, 97.7%, 34.1%, 0.6),
-    hsla(28, 90.2%, 56.1%, 0.6)
+    hsl(28 97.7% 34.1% / 0.6),
+    hsl(28 90.2% 56.1% / 0.6)
   );
   --p-color-warning-frosted: light-dark(
-    hsla(28, 97.7%, 34.1%, 0.18),
-    hsla(28, 90.2%, 56.1%, 0.26)
+    hsl(28 97.7% 34.1% / 0.18),
+    hsl(28 90.2% 56.1% / 0.26)
   );
-  --p-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
-  --p-color-error: light-dark(hsl(357, 78%, 41%), hsl(0, 96.9%, 62%));
+  --p-color-warning-frosted-soft: hsl(28 90.2% 56.1% / 0.1);
+  --p-color-error: light-dark(hsl(357 78% 41%), hsl(0 96.9% 62%));
   --p-color-error-low: light-dark(
-    hsla(357, 78%, 41%, 0.18),
-    hsla(0, 96.9%, 62%, 0.18)
+    hsl(357 78% 41% / 0.18),
+    hsl(0 96.9% 62% / 0.18)
   );
   --p-color-error-medium: light-dark(
-    hsla(357, 78%, 41%, 0.6),
-    hsla(0, 96.9%, 62%, 0.6)
+    hsl(357 78% 41% / 0.6),
+    hsl(0 96.9% 62% / 0.6)
   );
   --p-color-error-frosted: light-dark(
-    hsla(357, 78%, 41%, 0.18),
-    hsla(0, 96.9%, 62%, 0.26)
+    hsl(357 78% 41% / 0.18),
+    hsl(0 96.9% 62% / 0.26)
   );
   --p-color-error-frosted-soft: light-dark(
-    hsla(357, 78%, 41%, 0.1),
-    hsla(0, 96.9%, 62%, 0.1)
+    hsl(357 78% 41% / 0.1),
+    hsl(0 96.9% 62% / 0.1)
   );
-  --p-color-info: light-dark(hsl(228, 83.2%, 51%), hsl(210, 100%, 54.5%));
+  --p-color-info: light-dark(hsl(228 83.2% 51%), hsl(210 100% 54.5%));
   --p-color-info-low: light-dark(
-    hsla(228, 83.2%, 51%, 0.18),
-    hsla(210, 100%, 54.5%, 0.18)
+    hsl(228 83.2% 51% / 0.18),
+    hsl(210 100% 54.5% / 0.18)
   );
   --p-color-info-medium: light-dark(
-    hsla(228, 83.2%, 51%, 0.6),
-    hsla(210, 100%, 54.5%, 0.6)
+    hsl(228 83.2% 51% / 0.6),
+    hsl(210 100% 54.5% / 0.6)
   );
   --p-color-info-frosted: light-dark(
-    hsla(228, 83.2%, 51%, 0.18),
-    hsla(210, 100%, 54.5%, 0.26)
+    hsl(228 83.2% 51% / 0.18),
+    hsl(210 100% 54.5% / 0.26)
   );
   --p-color-info-frosted-soft: light-dark(
-    hsla(228, 83.2%, 51%, 0.1),
-    hsla(210, 100%, 54.5%, 0.1)
+    hsl(228 83.2% 51% / 0.1),
+    hsl(210 100% 54.5% / 0.1)
   );
 
   --p-font-porsche-next:
