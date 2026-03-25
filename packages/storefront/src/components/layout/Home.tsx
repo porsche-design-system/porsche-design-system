@@ -153,30 +153,6 @@ export const Home = () => {
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
               className="bg-frosted backdrop-blur-frosted rounded-4xl"
-              href="styles/introduction/"
-              label="Overview of styles and tokens"
-              description="Styles & Tokens"
-              size="medium"
-              weight="regular"
-              aspectRatio="1/1"
-              compact={true}
-              gradient={false}
-            >
-              <div className="flex items-center justify-center w-full h-full pb-fluid-lg @md:p-fluid-lg">
-                <Image
-                  src={isDark ? 'assets/tokens_dark.webp' : 'assets/tokens_light.webp'}
-                  alt=""
-                  width={400}
-                  height={400}
-                  className="w-auto h-auto max-w-[80%] max-h-[70%] object-contain"
-                />
-              </div>
-            </PLinkTile>
-          </AppearAnimation>
-          <AppearAnimation animation="fade-in-up">
-            <PLinkTile
-              style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="components/introduction/"
               label="Coded component library"
               description="Components"
@@ -201,9 +177,33 @@ export const Home = () => {
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
               className="bg-frosted backdrop-blur-frosted rounded-4xl"
-              href="partials/introduction/"
-              label="Overview of partials and assets"
-              description="Assets"
+              href="tokens/introduction/"
+              label="Overview of tokens"
+              description="Tokens"
+              size="medium"
+              weight="regular"
+              aspectRatio="1/1"
+              compact={true}
+              gradient={false}
+            >
+              <div className="flex items-center justify-center w-full h-full pb-fluid-lg @md:p-fluid-lg">
+                <Image
+                  src={isDark ? 'assets/tokens_dark.webp' : 'assets/tokens_light.webp'}
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="w-auto h-auto max-w-[80%] max-h-[70%] object-contain"
+                />
+              </div>
+            </PLinkTile>
+          </AppearAnimation>
+          <AppearAnimation animation="fade-in-up">
+            <PLinkTile
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              href="patterns/"
+              label="Overview of patterns"
+              description="Patterns"
               size="medium"
               weight="regular"
               aspectRatio="1/1"
@@ -225,8 +225,8 @@ export const Home = () => {
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
               className="bg-frosted backdrop-blur-frosted rounded-4xl"
-              href="https://github.com/porsche-design-system/templates"
-              label="Overview of complete page templates"
+              href="templates/"
+              label="Overview of templates"
               description="Templates"
               size="medium"
               weight="regular"
