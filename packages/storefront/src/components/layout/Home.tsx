@@ -325,7 +325,7 @@ export const Home = () => {
 
         {/* glow 1 */}
         <div
-          className={`absolute top-[190px] [inset-inline-end:26cqw] [transform:rotate(58deg)] glow-1`}
+          className={`absolute top-[190px] [inset-inline-end:26cqw] [transform:rotate(58deg)] will-change-transform glow-1`}
           ref={(el) => {
             blobRefs.current[3] = el;
           }}
@@ -335,7 +335,7 @@ export const Home = () => {
 
         {/* glow 2 */}
         <div
-          className="absolute top-[1440px] [inset-inline-start:-344px] [transform:rotate(-180deg)] glow-2"
+          className="absolute top-[1440px] [inset-inline-start:-344px] [transform:rotate(-180deg)] will-change-transform glow-2"
           ref={(el) => {
             blobRefs.current[0] = el;
           }}
@@ -372,7 +372,7 @@ export const Home = () => {
             blobRefs.current[4] = el;
           }}
           data-parallax="0.75"
-          className="absolute -top-[200px] left-[50%] glow-3"
+          className="absolute -top-[200px] left-[50%] will-change-transform glow-3"
         />
       </div>
 
