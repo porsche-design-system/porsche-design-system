@@ -827,6 +827,12 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -920,6 +926,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -1019,6 +1031,12 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1112,6 +1130,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -1211,6 +1235,12 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1304,6 +1334,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -5044,10 +5080,13 @@ input:indeterminate::before {
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
+  background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
 }
 @media(forced-colors:active) {
   input:focus-visible {
@@ -5064,6 +5103,10 @@ input:checked::before {
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+  input:checked:hover {
+    background-color: var(--p-checkbox-border-color, var(--p-color-contrast-high));
+    border-color: transparent;
   }
 }
 
@@ -5464,9 +5507,9 @@ exports[`should render dsr component for PDrilldown 1`] = `
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(225, 100%, 99%);
-      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
-      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+      --p-color-primary: hsl(225 100% 99%);
+      --p-color-frosted: hsl(240 2% 43% / 0.228);
+      --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -11314,6 +11357,12 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
+
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -12178,14 +12227,15 @@ input::before {
   content: "";
   grid-area: 1/1;
 }
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-}
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
