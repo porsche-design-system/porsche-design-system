@@ -20,7 +20,7 @@ export const colorSuccess = "light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%
 export const colorSurface = "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))";
 export const fontPorscheNext = "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif";
 export const typescaleSm = "1rem";
-export const typescaleXs = "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)";
+export const typescaleXs = ".875rem";
 export const fontWeightSemibold = 600;
 export const spacingStaticXs = "4px";
 /* Auto Generated End */
