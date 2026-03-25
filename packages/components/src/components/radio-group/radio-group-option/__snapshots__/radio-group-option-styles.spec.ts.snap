@@ -104,7 +104,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -235,7 +235,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -366,7 +366,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -497,7 +497,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -628,7 +628,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -759,7 +759,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -896,7 +896,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1033,7 +1033,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1170,7 +1170,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1307,7 +1307,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1444,7 +1444,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1581,7 +1581,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1713,7 +1713,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1856,7 +1856,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1999,7 +1999,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -2142,7 +2142,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -2285,7 +2285,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -2428,7 +2428,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -2578,7 +2578,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -2728,7 +2728,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -2878,7 +2878,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -3028,7 +3028,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -3178,7 +3178,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -3328,7 +3328,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
