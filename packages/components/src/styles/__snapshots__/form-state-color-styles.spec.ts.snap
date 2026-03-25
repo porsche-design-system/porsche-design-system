@@ -3,6 +3,7 @@
 exports[`getThemedFormStateColors() > should return correct colors for theme: error and state: %s 1`] = `
 {
   "formStateBackgroundColor": "var(--p-color-error-frosted-soft)",
+  "formStateBackgroundHoverColor": "var(--p-color-error-medium)",
   "formStateBorderColor": "var(--p-color-error)",
   "formStateBorderHoverColor": "var(--p-color-error)",
   "formStateColor": "var(--p-color-error)",
@@ -12,6 +13,7 @@ exports[`getThemedFormStateColors() > should return correct colors for theme: er
 exports[`getThemedFormStateColors() > should return correct colors for theme: error and state: %s 2`] = `
 {
   "formStateBackgroundColor": "var(--p-color-error-frosted-soft)",
+  "formStateBackgroundHoverColor": "var(--p-color-error-medium)",
   "formStateBorderColor": "var(--p-color-error)",
   "formStateBorderHoverColor": "var(--p-color-error)",
   "formStateColor": "var(--p-color-error)",
@@ -21,6 +23,7 @@ exports[`getThemedFormStateColors() > should return correct colors for theme: er
 exports[`getThemedFormStateColors() > should return correct colors for theme: none and state: %s 1`] = `
 {
   "formStateBackgroundColor": "var(--p-color-frosted)",
+  "formStateBackgroundHoverColor": "var(--p-color-contrast-high)",
   "formStateBorderColor": "var(--p-color-contrast-lower)",
   "formStateBorderHoverColor": "var(--p-color-primary)",
   "formStateColor": undefined,
@@ -30,6 +33,7 @@ exports[`getThemedFormStateColors() > should return correct colors for theme: no
 exports[`getThemedFormStateColors() > should return correct colors for theme: none and state: %s 2`] = `
 {
   "formStateBackgroundColor": "var(--p-color-frosted)",
+  "formStateBackgroundHoverColor": "var(--p-color-contrast-high)",
   "formStateBorderColor": "var(--p-color-contrast-lower)",
   "formStateBorderHoverColor": "var(--p-color-primary)",
   "formStateColor": undefined,
@@ -39,6 +43,7 @@ exports[`getThemedFormStateColors() > should return correct colors for theme: no
 exports[`getThemedFormStateColors() > should return correct colors for theme: success and state: %s 1`] = `
 {
   "formStateBackgroundColor": "var(--p-color-success-frosted-soft)",
+  "formStateBackgroundHoverColor": "var(--p-color-success-medium)",
   "formStateBorderColor": "var(--p-color-success)",
   "formStateBorderHoverColor": "var(--p-color-success)",
   "formStateColor": "var(--p-color-success)",
@@ -48,6 +53,7 @@ exports[`getThemedFormStateColors() > should return correct colors for theme: su
 exports[`getThemedFormStateColors() > should return correct colors for theme: success and state: %s 2`] = `
 {
   "formStateBackgroundColor": "var(--p-color-success-frosted-soft)",
+  "formStateBackgroundHoverColor": "var(--p-color-success-medium)",
   "formStateBorderColor": "var(--p-color-success)",
   "formStateBorderHoverColor": "var(--p-color-success)",
   "formStateColor": "var(--p-color-success)",

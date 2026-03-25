@@ -34,19 +34,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -162,19 +165,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -290,19 +296,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -418,19 +427,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -546,19 +558,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -674,19 +689,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -803,19 +821,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -937,19 +958,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1071,19 +1095,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1205,19 +1232,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1339,19 +1369,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1473,19 +1506,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1607,19 +1643,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1747,19 +1786,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -1887,19 +1929,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2027,19 +2072,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2167,19 +2215,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2307,19 +2358,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2447,19 +2501,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2594,19 +2651,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-error);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2741,19 +2801,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -2888,19 +2951,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -3035,19 +3101,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {
@@ -3182,19 +3251,22 @@ input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+input:checked {
+  background: var(--p-color-success);
+}
 input::before {
   content: "";
   grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input {

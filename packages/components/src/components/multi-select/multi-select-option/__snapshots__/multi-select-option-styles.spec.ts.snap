@@ -74,6 +74,12 @@ slot {
     outline-offset: -2px;
   }
 }
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
 "
 `;
 
@@ -137,12 +143,15 @@ slot {
   grid-area: 1/1;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
+  background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
 }
 .checkbox::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+.checkbox {
+  background: var(--p-color-primary);
 }
 @media(forced-colors:active) {
   .option--disabled {
@@ -155,6 +164,13 @@ slot {
   }
   .checkbox::before {
     background: CanvasText;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: transparent;
+    background-color: var(--p-checkbox-border-color, var(--p-color-contrast-high));
   }
 }
 "
@@ -246,6 +262,12 @@ slot {
     border-color: GrayText;
   }
 }
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
 "
 `;
 
@@ -318,12 +340,15 @@ slot {
   grid-area: 1/1;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
+  background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
 }
 .checkbox::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+.checkbox {
+  background: var(--p-color-primary);
 }
 @media(forced-colors:active) {
   .option--disabled {
@@ -339,6 +364,13 @@ slot {
   }
   .checkbox::before {
     background: CanvasText;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: transparent;
+    background-color: var(--p-checkbox-border-color, var(--p-color-contrast-high));
   }
 }
 "
