@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Prevents Next.js from wrapping PDS components in React.lazy boundaries during SSR bundling,
-  // which would cause splitChildren() to fail detecting slot props on children.
-  serverExternalPackages: ['@porsche-design-system/components-react'],
   experimental: {
     useLightningcss: true,
     lightningCssFeatures: {
