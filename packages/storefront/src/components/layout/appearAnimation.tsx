@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 interface AppearAnimationProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ const AppearAnimation: React.FC<AppearAnimationProps> = ({ children, animation }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animation-play");
+          entry.target.classList.add('animation-play');
         }
       },
       { threshold: 0.2 } // Animation startet, wenn 20% sichtbar sind
@@ -24,7 +24,7 @@ const AppearAnimation: React.FC<AppearAnimationProps> = ({ children, animation }
   }, []);
 
   return (
-    <div ref={ref} data-animation={animation}>
+    <div ref={ref} className="will-change-transform" data-animation={animation}>
       {children}
     </div>
   );

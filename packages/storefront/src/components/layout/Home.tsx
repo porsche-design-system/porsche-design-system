@@ -153,30 +153,6 @@ export const Home = () => {
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
               className="bg-frosted backdrop-blur-frosted rounded-4xl"
-              href="styles/introduction/"
-              label="Overview of styles and tokens"
-              description="Styles & Tokens"
-              size="medium"
-              weight="regular"
-              aspectRatio="1/1"
-              compact={true}
-              gradient={false}
-            >
-              <div className="flex items-center justify-center w-full h-full pb-fluid-lg @md:p-fluid-lg">
-                <Image
-                  src={isDark ? 'assets/tokens_dark.webp' : 'assets/tokens_light.webp'}
-                  alt=""
-                  width={400}
-                  height={400}
-                  className="w-auto h-auto max-w-[80%] max-h-[70%] object-contain"
-                />
-              </div>
-            </PLinkTile>
-          </AppearAnimation>
-          <AppearAnimation animation="fade-in-up">
-            <PLinkTile
-              style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
               href="components/introduction/"
               label="Coded component library"
               description="Components"
@@ -201,9 +177,33 @@ export const Home = () => {
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
               className="bg-frosted backdrop-blur-frosted rounded-4xl"
-              href="partials/introduction/"
-              label="Overview of partials and assets"
-              description="Assets"
+              href="tokens/introduction/"
+              label="Overview of tokens"
+              description="Tokens"
+              size="medium"
+              weight="regular"
+              aspectRatio="1/1"
+              compact={true}
+              gradient={false}
+            >
+              <div className="flex items-center justify-center w-full h-full pb-fluid-lg @md:p-fluid-lg">
+                <Image
+                  src={isDark ? 'assets/tokens_dark.webp' : 'assets/tokens_light.webp'}
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="w-auto h-auto max-w-[80%] max-h-[70%] object-contain"
+                />
+              </div>
+            </PLinkTile>
+          </AppearAnimation>
+          <AppearAnimation animation="fade-in-up">
+            <PLinkTile
+              style={{ colorScheme: 'inherit' }}
+              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              href="patterns/"
+              label="Overview of patterns"
+              description="Patterns"
               size="medium"
               weight="regular"
               aspectRatio="1/1"
@@ -225,8 +225,8 @@ export const Home = () => {
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
               className="bg-frosted backdrop-blur-frosted rounded-4xl"
-              href="https://github.com/porsche-design-system/templates"
-              label="Overview of complete page templates"
+              href="templates/"
+              label="Overview of templates"
               description="Templates"
               size="medium"
               weight="regular"
@@ -325,7 +325,7 @@ export const Home = () => {
 
         {/* glow 1 */}
         <div
-          className={`absolute top-[190px] [inset-inline-end:26cqw] [transform:rotate(58deg)] glow-1`}
+          className={`absolute top-[190px] [inset-inline-end:26cqw] [transform:rotate(58deg)] will-change-transform glow-1`}
           ref={(el) => {
             blobRefs.current[3] = el;
           }}
@@ -335,7 +335,7 @@ export const Home = () => {
 
         {/* glow 2 */}
         <div
-          className="absolute top-[1440px] [inset-inline-start:-344px] [transform:rotate(-180deg)] glow-2"
+          className="absolute top-[1440px] [inset-inline-start:-344px] [transform:rotate(-180deg)] will-change-transform glow-2"
           ref={(el) => {
             blobRefs.current[0] = el;
           }}
@@ -372,7 +372,7 @@ export const Home = () => {
             blobRefs.current[4] = el;
           }}
           data-parallax="0.75"
-          className="absolute -top-[200px] left-[50%] glow-3"
+          className="absolute -top-[200px] left-[50%] will-change-transform glow-3"
         />
       </div>
 
