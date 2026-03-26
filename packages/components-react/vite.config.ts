@@ -6,6 +6,13 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vite.dev/config/
 export default defineConfig({
+  css: {
+    transformer: "lightningcss",
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningcss: {
+      exclude: 1048576,
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),

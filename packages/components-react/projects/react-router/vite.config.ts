@@ -5,6 +5,13 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(({ isSsrBuild }) => {
   return {
+    css: {
+      transformer: "lightningcss",
+      // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+      lightningcss: {
+        exclude: 1048576,
+      },
+    },
     define: {
       'process.browser': JSON.stringify(!isSsrBuild),
     },
