@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    useLightningcss: true,
+    lightningCssFeatures: {
+      exclude: ['light-dark'],
+    },
+  },
 };
 
 const withMDX = createMDX({
