@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     useLightningcss: true,
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
     lightningCssFeatures: {
       exclude: ['light-dark'],
     },
