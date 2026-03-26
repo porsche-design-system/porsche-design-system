@@ -8,6 +8,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         protocol: 'https',
