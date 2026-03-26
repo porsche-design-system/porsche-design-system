@@ -28,9 +28,9 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      [`::slotted(:is(${TEXT_TAGS.join()}))`]: addImportantToEachRule({
+      [`::slotted(:is(${TEXT_TAGS.join()}))`]: {
         all: 'unset',
-      }),
+      },
     },
     root: {
       all: 'unset',

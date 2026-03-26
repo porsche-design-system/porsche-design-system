@@ -6993,7 +6993,7 @@ exports[`should render dsr component for PHeading 1`] = `
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -15086,7 +15086,7 @@ exports[`should render dsr component for PText 1`] = `
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
