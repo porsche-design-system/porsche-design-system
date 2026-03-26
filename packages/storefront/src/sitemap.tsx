@@ -588,6 +588,11 @@ export const sitemap: Routes = {
         path: '/templates/landing-page',
         type: 'PAGE',
       },
+      'admin-panel': {
+        name: 'Admin Panel',
+        path: '/templates/admin-panel',
+        type: 'PAGE',
+      },
     },
   },
   tokens: {
