@@ -281,11 +281,13 @@ Disable Lightning CSS Polyfill:
 
 ```diff
 // vite.config.ts
++ import { Features } from "lightningcss"
+
 export default defineConfig({
 +  css: {
 +    transformer: "lightningcss",
 +    lightningcss: {
-+      exclude: 1048576,
++      exclude: Features.LightDark,
 +    },
 +  },
 });
