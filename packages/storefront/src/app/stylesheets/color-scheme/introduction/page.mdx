@@ -8,7 +8,7 @@ export const metadata = {
 
 # Color Scheme
 
-<TableOfContents headings={['Setup']} />
+<TableOfContents headings={['Setup', 'Lightning CSS Bug']} />
 
 The Porsche Design System components rely on **CSS color variables** using the CSS
 [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function.
@@ -52,3 +52,42 @@ Below is the content of the stylesheet file for reference only. **Don't copy thi
 statement above instead:
 
 <StylesheetViewer file="color-scheme.css" />
+
+## Lightning CSS Bug
+
+Some frameworks in newer versions rely on [`lightningcss`](https://lightningcss.dev/), which includes a polyfill for the
+`light-dark()` function that is currently **broken**. To avoid any issues, we recommend disabling the `lightningcss`
+polyfill for now since we also include our own polyfill for the global styles.
+[More information](https://github.com/porsche-design-system/porsche-design-system/issues/4257)
+
+Disable Lightning CSS Polyfill:
+
+#### React, React Router, Vue (Vite 8)
+
+```diff
+// vite.config.ts
++ import { Features } from "lightningcss"
+
+export default defineConfig({
++  css: {
++    transformer: "lightningcss",
++    lightningcss: {
++      exclude: Features.LightDark,
++    },
++  },
+});
+```
+
+#### Next.js (Turbopack)
+
+```diff
+// next.config.ts
+const nextConfig: NextConfig = {
++  experimental: {
++    useLightningcss: true,
++    lightningCssFeatures: {
++      exclude: ['light-dark'],
++    },
++  },
+};
+```

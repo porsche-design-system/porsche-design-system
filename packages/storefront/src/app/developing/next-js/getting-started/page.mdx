@@ -118,6 +118,12 @@ learn about theming.
 + @import '@porsche-design-system/components-react';
 ```
 
+<Notification heading="Lightning CSS bug" heading-tag="h2" state="info">
+  When using Next.js with Turbopack (default since v16) it relies on [`lightningcss`](https://lightningcss.dev/), which
+  includes a polyfill for the `light-dark()` function that is currently **broken**. We recommend disabling the polyfill
+  for now. [Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
+</Notification>
+
 To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
 ([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
 Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
