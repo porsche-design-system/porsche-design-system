@@ -85,6 +85,7 @@ import * as prettier from 'prettier';
 
 export const buildVariablesCss = async (): Promise<void> => {
   const styles = `:root {
+  color-scheme: light;
   --p-color-focus: ${colorFocus};
   --p-color-canvas: ${colorCanvas};
   --p-color-surface: ${colorSurface};
