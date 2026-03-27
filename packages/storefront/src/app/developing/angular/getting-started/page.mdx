@@ -105,43 +105,15 @@ want to target. See [Initialization](/must-know/initialization/vanilla-js/#prepa
 
 ### Step 4 (recommended)
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
 
-Install
-[@angular-builders/custom-webpack](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform)
-within your project directory.
-
-```bash
-npm install @angular-builders/custom-webpack --save-dev
-```
-
-Configure the `angular.json`.
-
-```diff
-"architect": {
-  "build": {
--   "builder": "@angular/build:application",
-+   "builder": "@angular-builders/custom-webpack:browser",
-    "options": {
--     "browser": "src/main.ts",
-+     "indexTransform": "./index-html-transform.js",
-+     "outputPath": "./dist",
-+     "index": "src/index.html",
-+     "main": "src/main.ts",
-    }
-  }
-  "serve": {
--   "builder": "@angular/build:dev-server",
-+   "builder": "@angular-builders/custom-webpack:dev-server",
-```
-
-Create a `index-html-transform.js` file in your project root directory.
+Create a `prebuild.mjs` file in your project root directory.
 
 ```js
-// index-html-transform.js
+// prebuild.mjs
 
+import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import {
   getComponentChunkLinks,
   getFontLinks,
@@ -149,21 +121,53 @@ import {
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-angular/partials';
 
-// https://github.com/just-jeb/angular-builders/blob/fdd7c8ed00b7eb7e1761aaa6cb5bda41693ceb5d/packages/custom-webpack/README.md#index-transform
-export default (_, html) => {
-  const headPartials = [
-    // preloads Porsche Next font (=> minimize FOUT)
-    getFontLinks(),
-    // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
-    getComponentChunkLinks(),
-    // preloads Porsche icons (=> minimize FOUC)
-    getIconLinks(),
-    // injects favicon, apple touch icons, android touch icons, etc.
-    getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
-  ].join('');
+const headPartials = [
+  // preloads fonts
+  getFontLinks(),
+  // preloads icons
+  getIconLinks(),
+  // preloads component core chunk
+  getComponentChunkLinks(),
+  // injects favicon, apple touch icons, android touch icons, etc.
+  getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+].join('\n');
 
-  return html.replace(/<\/head>/, `${headPartials}$&`);
-};
+const html = readFileSync('src/index.html', 'utf-8');
+const transformed = html.replace(/<\/head>/, `${headPartials}\n$&`);
+
+mkdirSync('.generated', { recursive: true });
+writeFileSync('.generated/index.html', transformed);
+
+console.log('Generated .generated/index.html with PDS partials.');
+```
+
+Configure the `package.json`.
+
+```diff
+"scripts": {
+  "ng": "ng",
++ "prebuild": "node prebuild.mjs",
++ "start": "npm run prebuild && ng serve",
++ "build": "npm run prebuild && ng build",
++ "watch": "npm run prebuild && ng build --watch --configuration development",
+  "test": "ng test",
+},
+```
+
+Configure the `angular.json`.
+
+```diff
+"architect": {
+  "build": {
+    "builder": "@angular/build:application",
+    "options": {
++     "index": ".generated/index.html",
+      "browser": "src/main.ts",
+      "tsConfig": "tsconfig.app.json",
+      …
+    },
+  },
+},
 ```
 
 ### Step 5 (recommended)
@@ -220,7 +224,7 @@ Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with s
 
 <div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
   <p-wordmark></p-wordmark>
-  <h1 class="prose-display-md">Porsche Design System</h1>
+  <h1 class="prose-heading-4xl">Porsche Design System</h1>
 </div>
 <div class="…">…</div>
 ```
