@@ -3518,9 +3518,10 @@ major version.
 
 ##### Content Wrapper:
 
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
-  instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
-  layout needs for a harmonic appearance across all digital Porsche touch-points.
+- Component is deprecated and will be removed with the next major release. Please use
+  **[Porsche Grid](/tailwindcss/grid/examples/)** instead, which is based on
+  [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific layout needs for a harmonic
+  appearance across all digital Porsche touch-points.
 
 ##### Flex:
 
@@ -3532,7 +3533,7 @@ major version.
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
+  **[Porsche Grid](/tailwindcss/grid/examples/)** instead for better performance and more standardized layout technique.
 
 ##### Headline:
 
