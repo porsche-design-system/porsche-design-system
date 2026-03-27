@@ -113,6 +113,28 @@ Import the CSS file in your project.
   [Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
 </Notification>
 
+Disable the `lightningcss` polyfill for the `light-dark()` function — PDS ships with its own polyfill.
+
+```diff
+// astro.config.mjs
+
+// @ts-check
+import { defineConfig } from "astro/config";
++ import { Features } from 'lightningcss';
+
+// https://astro.build/config
+export default defineConfig({
++  vite: {
++    css: {
++      transformer: 'lightningcss',
++      lightningcss: {
++        exclude: Features.LightDark,
++      },
++    },
++  },
+});
+```
+
 To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
 ([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
 Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
@@ -198,9 +220,9 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
 + vite: {
-+   // @ts-expect-error: The types are currently mismatched due to conflicting Vite versions (Astro and the Tailwind CSS Vite plugin are using different versions of Vite)
 +   plugins: [tailwindcss()],
 + },
+  …
 });
 ```
 
@@ -271,8 +293,7 @@ export default defineConfig({
 +   }),
 + ],
   vite: {
-    // @ts-expect-error: The types are currently mismatched due to conflicting Vite versions (Astro and the Tailwind CSS Vite plugin are using different versions of Vite)
-    plugins: [tailwindcss()],
+    …
   },
 });
 ```
