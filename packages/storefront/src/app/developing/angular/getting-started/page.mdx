@@ -51,16 +51,16 @@ npm install @porsche-design-system/components-angular
 
 Add the `PorscheDesignSystemModule` to the imports array of your `@Component` or `@NgModule` declaration.
 
-```ts
+```diff
 // src/app/app.ts
 
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
++ import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PorscheDesignSystemModule],
++ imports: [RouterOutlet, PorscheDesignSystemModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -71,34 +71,28 @@ export class App {
 
 ### Step 3
 
-Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
-recommended styles, such as:
-
-- CSS color variables (including color scheme utilities)
-- Font-face definitions
-- Normalize styles
-
-If your website will be used primarily in China, use the `/cn` import. See
-[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
-
-See [Stylesheets](/stylesheets/introduction/) for more details about global styles. See [Theme](/must-know/theme/) to
-learn about theming.
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
 
 ```diff
 /* src/styles.css */
+
 + @import '@porsche-design-system/components-angular/index.css';
 ```
 
-To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+To prevent FOUC, hide elements until they are either registered
 ([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
-Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). Include the tag names of the components you
-want to target. See [Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
 
 ```diff
 /* src/styles.css */
+
 @import '@porsche-design-system/components-angular/index.css';
 
-+ :is(p-accordion, p-banner, p-button...):not(:defined) {
++ :is(p-accordion, p-banner, p-button, …):not(:defined) {
 +   visibility: hidden;
 + }
 ```
@@ -126,7 +120,7 @@ const headPartials = [
   getFontLinks(),
   // preloads icons
   getIconLinks(),
-  // preloads component core chunk
+  // preloads components
   getComponentChunkLinks(),
   // injects favicon, apple touch icons, android touch icons, etc.
   getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
@@ -175,16 +169,6 @@ Configure the `angular.json`.
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
 **seamless styling consistency** with Porsche's design principles.
-
-#### The Key Advantage: Universal Code Sharing & Scalability
-
-> Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly
-> framework-agnostic**. Since Tailwind generates atomic **utility classes**, you eliminate cascading style issues,
-> promoting long-term **scalability and maintainability** for large projects. The patterns and components you build are
-> easily portable. You can **copy and paste** the same styling code between projects, teams, and different technology
-> stacks (React, Angular, Vue, plain HTML, etc.), ensuring **100% visual uniformity** across the organization. You can
-> now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
-> Tailwind CSS, to build applications quickly and efficiently.
 
 Install Tailwind CSS within your project directory.
 
