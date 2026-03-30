@@ -13,7 +13,6 @@ export const HeaderPartials = ({ cdn = 'local' }: Props): JSX.Element => {
     </>
   ) : (
     <>
-      <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css" />
       {Array.from(getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }).matchAll(/https:\/\/[a-z0-9./-]+/g))
         .map(([url]) => url.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
         .map((url) => (

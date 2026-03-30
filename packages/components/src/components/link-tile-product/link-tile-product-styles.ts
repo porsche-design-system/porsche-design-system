@@ -1,5 +1,4 @@
 import {
-  fontHyphenationStyle,
   getMediaQueryMin,
   headingSmallStyle,
   spacingFluidMedium,
@@ -53,11 +52,6 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
     overflow: 'hidden',
   };
 };
-
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 
 export const getComponentCss = (
   hasLikeButton: boolean,
@@ -164,7 +158,6 @@ export const getComponentCss = (
     heading: {
       margin: '0 0 2px', // ua-style reset
       ...headingSmallStyle,
-      ...fontHyphenationStyle,
       ...getMultilineEllipsis(3),
     },
     price: {

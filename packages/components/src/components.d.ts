@@ -22,7 +22,7 @@ import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/dr
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { HeadingAlign, HeadingColor, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
+import { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
@@ -61,7 +61,7 @@ import { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./c
 import { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
-import { TextAlign, TextColor, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
+import { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
 import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -84,7 +84,7 @@ export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/dr
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { HeadingAlign, HeadingColor, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
+export { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
@@ -123,7 +123,7 @@ export { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./c
 export { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
-export { TextAlign, TextColor, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
+export { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
 export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -707,27 +707,31 @@ export namespace Components {
     }
     interface PHeading {
         /**
-          * Text alignment of the heading.
+          * Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.
          */
         "align"?: HeadingAlign;
         /**
-          * Text color of the heading. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, or 'inherit' to adopt the parent's color.
+          * Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color.
          */
         "color"?: HeadingColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows the container width.
+          * Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}.
+          * Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.
+         */
+        "hyphens"?: HeadingHyphens;
+        /**
+          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property.
+          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6').
          */
         "tag"?: HeadingTag;
         /**
-          * The font weight of the heading. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
+          * The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
          */
         "weight"?: HeadingWeight;
     }
@@ -2513,27 +2517,31 @@ export namespace Components {
     }
     interface PText {
         /**
-          * Text alignment of the text.
+          * Text alignment of the text. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.
          */
         "align"?: TextAlign;
         /**
-          * Text color of the text. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.
+          * Text color of the text. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.
          */
         "color"?: TextColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows the container width.
+          * Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}.
+          * Controls the hyphenation behavior of the text. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.
+         */
+        "hyphens"?: TextHyphens;
+        /**
+          * Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes).
+          * Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes, 'time' for dates).
          */
         "tag"?: TextTag;
         /**
-          * The font weight of the text.
+          * The font weight of the text. Use 'normal' for regular body text, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis.
          */
         "weight"?: TextWeight;
     }
@@ -4440,27 +4448,31 @@ declare namespace LocalJSX {
     }
     interface PHeading {
         /**
-          * Text alignment of the heading.
+          * Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.
          */
         "align"?: HeadingAlign;
         /**
-          * Text color of the heading. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, or 'inherit' to adopt the parent's color.
+          * Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color.
          */
         "color"?: HeadingColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows the container width.
+          * Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}.
+          * Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.
+         */
+        "hyphens"?: HeadingHyphens;
+        /**
+          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property.
+          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6').
          */
         "tag"?: HeadingTag;
         /**
-          * The font weight of the heading. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
+          * The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
          */
         "weight"?: HeadingWeight;
     }
@@ -6486,27 +6498,31 @@ declare namespace LocalJSX {
     }
     interface PText {
         /**
-          * Text alignment of the text.
+          * Text alignment of the text. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.
          */
         "align"?: TextAlign;
         /**
-          * Text color of the text. Use 'primary' for default, 'contrast-high' / 'contrast-medium' for alternative emphasis, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.
+          * Text color of the text. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.
          */
         "color"?: TextColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows the container width.
+          * Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}.
+          * Controls the hyphenation behavior of the text. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.
+         */
+        "hyphens"?: TextHyphens;
+        /**
+          * Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes).
+          * Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes, 'time' for dates).
          */
         "tag"?: TextTag;
         /**
-          * The font weight of the text.
+          * The font weight of the text. Use 'normal' for regular body text, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis.
          */
         "weight"?: TextWeight;
     }

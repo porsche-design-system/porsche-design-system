@@ -7,6 +7,7 @@ import {
 } from '@porsche-design-system/components-js/partials';
 import { defineConfig } from 'vite';
 import { COMPONENT_CHUNK_NAMES } from './projects/components-wrapper';
+import { Features } from "lightningcss"
 
 const localhost = 'http://localhost:3001';
 
@@ -46,6 +47,13 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
       },
+    },
+  },
+  css: {
+    transformer: "lightningcss",
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningcss: {
+      exclude: Features.LightDark,
     },
   },
   plugins: [transformIndexHtmlPlugin()],

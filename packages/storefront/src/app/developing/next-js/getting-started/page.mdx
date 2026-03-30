@@ -19,7 +19,7 @@ System, follow these steps. This guide is based on the following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
-  <PTag compact={true} variant="info">next@15</PTag>
+  <PTag compact={true} variant="info">next@16</PTag>
   {/* prettier-ignore */}
   <PTag compact={true} variant="info">react@19</PTag>
   {/* prettier-ignore */}
@@ -47,25 +47,6 @@ You're all set! Start building your own application now.
 
 ## Integration
 
-<Notification heading="Attention" headingTag="h3" state="warning">
-  The following examples use the **SSR** sub-package from `@porsche-design-system/components-react/ssr`.
-
-This sub-package is a specialized build of the Porsche Design System components that renders different markup on the
-server compared to the browser. While this deviates from traditional SSR/SSG rules (where browser and server markup
-should be identical), it's necessary to enable SSR/SSG with web components and Shadow DOM.
-
-The two environments are detected via the `process.browser` flag, which is replaced with a boolean value at build time.
-In the browser, the components behave like the standard React components from `@porsche-design-system/components-react`.
-
-On the server, the behavior differs: Relevant markup and styles are rendered into a Declarative Shadow DOM, which modern
-browsers convert to a real Shadow DOM without JavaScript. This handles the initial render efficiently. Once the client
-code loads and executes, the Porsche Design System components initialize as usual.
-
-**Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
-into the browser bundle.
-
-</Notification>
-
 ### Step 1
 
 Install the Porsche Design System within your project directory.
@@ -78,10 +59,10 @@ npm install @porsche-design-system/components-react
 
 Wrap your app with the `<PorscheDesignSystemProvider />`.
 
-```tsx
+```diff
 // app/layout.tsx
 
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
++ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 
 export default function RootLayout({
   children,
@@ -91,7 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <PorscheDesignSystemProvider>{children}</PorscheDesignSystemProvider>
++       <PorscheDesignSystemProvider>{children}</PorscheDesignSystemProvider>
       </body>
     </html>
   );
@@ -100,32 +81,37 @@ export default function RootLayout({
 
 ### Step 3
 
-Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
-recommended styles, such as:
-
-- CSS color variables (including color scheme utilities)
-- Font-face definitions
-- Normalize styles
-
-If your website will be used primarily in China, use the `/cn` import. See
-[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
-
-See [Styles](/stylesheets/introduction/) for more details about global styles. See [Theme](/must-know/theme/) to learn
-about theming.
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
 
 ```diff
 /* app/globals.css */
 + @import '@porsche-design-system/components-react';
 ```
 
-To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
-([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
-Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
-`:defined` pseudo-class, consider applying the style only to the relevant tags (`:is(p-button...)`). See
-[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it's broken.
+[Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
 
-If all the components are fully rendered server-side (e.g., when using the `/ssr` sub-package), it is not necessary to
-do this.
+```diff
+// next.config.ts
+
+const nextConfig: NextConfig = {
++  experimental: {
++    useLightningcss: true,
++    // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++    lightningCssFeatures: {
++      exclude: ['light-dark'],
++    },
++  },
+};
+```
+
+To prevent FOUC, hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined,[data-ssr])`).
+See [Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
 
 ```diff
 /* app/globals.css */
@@ -138,20 +124,19 @@ do this.
 
 ### Step 4 (recommended)
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
 
-```tsx
+```diff
 // app/layout.tsx
 
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
-import {
-  getComponentChunkLinks,
-  getFontLinks,
-  getIconLinks,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
++ import {
++   getComponentChunkLinks,
++   getFontLinks,
++   getIconLinks,
++   getMetaTagsAndIconLinks,
++ } from '@porsche-design-system/components-react/partials';
 
 export default function RootLayout({
   children,
@@ -161,14 +146,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* preloads Porsche Next font (=> minimize FOUT) */}
-        {getFontLinks({ format: 'jsx' })}
-        {/* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */}
-        {getComponentChunkLinks({ format: 'jsx' })}
-        {/* preloads Porsche icons (=> minimize FOUC) */}
-        {getIconLinks({ format: 'jsx' })}
-        {/* injects favicon, apple touch icons, android touch icons, etc. */}
-        {getMetaTagsAndIconLinks({ appTitle: 'Porsche', format: 'jsx' })}
++       {/* preloads fonts */}
++       {getFontLinks({ format: 'jsx' })}
++       {/* preloads icons */}
++       {getIconLinks({ format: 'jsx' })}
++       {/* preloads components */}
++       {getComponentChunkLinks({ format: 'jsx' })}
++       {/* injects favicon, apple touch icons, android touch icons, etc. */}
++       {getMetaTagsAndIconLinks({ appTitle: 'Porsche', format: 'jsx' })}
       </head>
       <body>
         <PorscheDesignSystemProvider>{children}</PorscheDesignSystemProvider>
@@ -180,21 +165,8 @@ export default function RootLayout({
 
 ### Step 5 (recommended)
 
-Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
-[Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
-**seamless styling consistency** with Porsche's design principles.
-
-#### The Key Advantage: Universal Code Sharing & Scalability
-
-> Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly
-> framework-agnostic**. Since Tailwind generates atomic **utility classes**, you eliminate cascading style issues,
-> promoting long-term **scalability and maintainability** for large projects. The patterns and components you build are
-> easily portable. You can **copy and paste** the same styling code between projects, teams, and different technology
-> stacks (React, Angular, Vue, plain HTML, etc.), ensuring **100% visual uniformity** across the organization. You can
-> now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
-> Tailwind CSS, to build applications quickly and efficiently.
-
-Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+Import [Tailwind CSS](https://tailwindcss.com) and the PDS [Tailwind CSS Theme](/tailwindcss/introduction) — a
+utility-first setup that ensures **seamless styling consistency** with Porsche's design principles.
 
 ```diff
 /* app/globals.css */
@@ -219,7 +191,7 @@ export default function Home() {
     <>
       <div className="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
         <PWordmark />
-        <h1 className="prose-display-md">Porsche Design System</h1>
+        <h1 className="prose-heading-4xl">Porsche Design System</h1>
       </div>
       <div className="…">…</div>
     </>

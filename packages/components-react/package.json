@@ -31,13 +31,13 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.0.0-beta.2",
+    "@porsche-design-system/components-react": "4.0.0-rc.0",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.9.4",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",

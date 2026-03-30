@@ -44,7 +44,7 @@ const propTypes: PropTypes<typeof Accordion> = {
  */
 @Component({
   tag: 'p-accordion',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Accordion {
   @Element() public host!: HTMLElement;

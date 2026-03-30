@@ -2,33 +2,21 @@
 
 @mixin prose-text-xl {
   font: normal normal font.$font-weight-normal font.$typescale-xl / font.$leading-normal font.$font-porsche-next;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 @mixin prose-text-lg {
   font: normal normal font.$font-weight-normal font.$typescale-lg / font.$leading-normal font.$font-porsche-next;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 @mixin prose-text-md {
   font: normal normal font.$font-weight-normal font.$typescale-md / font.$leading-normal font.$font-porsche-next;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 @mixin prose-text-sm {
   font: normal normal font.$font-weight-normal font.$typescale-sm / font.$leading-normal font.$font-porsche-next;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 @mixin prose-text-xs {
   font: normal normal font.$font-weight-normal font.$typescale-xs / font.$leading-normal font.$font-porsche-next;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 @mixin prose-text-2xs {
   font: normal normal font.$font-weight-normal font.$typescale-2xs / font.$leading-normal font.$font-porsche-next;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 
 /* alias (deprecated) */

@@ -42,6 +42,9 @@ export const TEXT_SIZES = [
 ] as const;
 export type TextSize = (typeof TEXT_SIZES)[number];
 
+export const TEXT_HYPHENS = ['none', 'manual', 'auto', 'inherit'] as const;
+export type TextHyphens = (typeof TEXT_HYPHENS)[number];
+
 export const getTextTagType = (host: HTMLElement, tag: TextTag): string => {
   if (hasSpecificDirectChildTag(host, TEXT_TAGS.join())) {
     return 'div';

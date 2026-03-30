@@ -15,7 +15,7 @@ runs:
   steps:
     - name: 'Cache node_modules'
       if: inputs.node_modules == 'true'
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       id: cache-node_modules
       with:
         path: '**/node_modules'

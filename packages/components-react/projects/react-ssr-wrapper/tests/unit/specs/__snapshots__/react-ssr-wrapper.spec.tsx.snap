@@ -143,8 +143,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
@@ -191,8 +189,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   }
   .label {
     font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -203,7 +199,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   }
   .label:is(span) {
     cursor: unset;
-    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-size: .875rem;
     color: var(--p-color-contrast-high);
     position: static;
     width: auto;
@@ -222,8 +218,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     display: flex;
     gap: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .message:empty {
@@ -394,8 +388,6 @@ input::-webkit-search-cancel-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -406,7 +398,7 @@ input::-webkit-search-cancel-button {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: absolute;
   width: 1px;
@@ -425,8 +417,6 @@ input::-webkit-search-cancel-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -783,8 +773,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -836,6 +824,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -881,8 +875,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -934,6 +926,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -979,8 +977,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1032,6 +1028,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -1077,8 +1079,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1130,6 +1130,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -1175,8 +1181,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1231,6 +1235,12 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
+
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1273,8 +1283,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -1326,6 +1334,12 @@ slot {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
@@ -1426,8 +1440,6 @@ input:focus-visible {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1438,7 +1450,7 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1457,8 +1469,6 @@ input:focus-visible {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -1584,8 +1594,6 @@ slot:not([name]) {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1596,7 +1604,7 @@ slot:not([name]) {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -1615,8 +1623,6 @@ slot:not([name]) {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -1667,8 +1673,6 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
 }
 button:focus-visible {
@@ -1677,9 +1681,8 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
@@ -1728,8 +1731,6 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
 }
 button:focus-visible {
@@ -1738,9 +1739,8 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
@@ -1789,8 +1789,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 .scroller {
   place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   font-size: 1rem;
 }
     </style>
@@ -2828,8 +2826,6 @@ exports[`manual test cases > should pass internal props correctly to p-text-list
 }
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -2932,6 +2928,7 @@ exports[`should render dsr component for PAccordion 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -3215,8 +3212,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -3343,8 +3338,6 @@ img {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -3522,8 +3515,6 @@ exports[`should render dsr component for PButton 1`] = `
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -3830,9 +3821,8 @@ p {
   z-index: 3;
   max-width: 34.375rem;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: inherit;
   color: var(--p-color-primary);
+  hyphens: inherit;
   font-size: var(--p-typescale-md);
   font-weight: var(--p-font-weight-semibold);
 }
@@ -3940,8 +3930,6 @@ p {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -4090,7 +4078,7 @@ slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-can
 h2 {
   all: unset;
   padding: 4px;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
   text-overflow: ellipsis;
   overflow: hidden;
@@ -4220,7 +4208,7 @@ h2 {
   transition: border-radius var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .main {
-  z-index: 3;
+  z-index: 2;
   grid-area: main;
   padding: clamp(16px, 1.25vw + 12px, 24px);
 }
@@ -4242,7 +4230,7 @@ h2 {
   transition: border-radius var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .sidebar {
-  z-index: 2;
+  z-index: 3;
   position: sticky;
   top: 0;
   height: 100dvh;
@@ -4389,8 +4377,6 @@ h2 {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -4727,8 +4713,6 @@ svg {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -5096,10 +5080,13 @@ input:indeterminate::before {
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-color-primary);
 }
+input:checked {
+  background: var(--p-color-primary);
+}
 input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
+  background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
 }
 @media(forced-colors:active) {
   input:focus-visible {
@@ -5116,6 +5103,10 @@ input:checked::before {
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+  input:checked:hover {
+    background-color: var(--p-checkbox-border-color, var(--p-color-contrast-high));
+    border-color: transparent;
   }
 }
 
@@ -5151,8 +5142,6 @@ input:checked::before {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5163,7 +5152,7 @@ input:checked::before {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -5182,8 +5171,6 @@ input:checked::before {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -5520,9 +5507,9 @@ exports[`should render dsr component for PDrilldown 1`] = `
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(225, 100%, 99%);
-      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
-      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+      --p-color-primary: hsl(225 100% 99%);
+      --p-color-frosted: hsl(240 2% 43% / 0.228);
+      --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -5771,8 +5758,6 @@ img:dir(rtl) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -5943,8 +5928,6 @@ img {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -6616,8 +6599,6 @@ fieldset {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   margin-top: 16px;
 }
@@ -6850,8 +6831,6 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -7014,7 +6993,7 @@ exports[`should render dsr component for PHeading 1`] = `
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -7023,6 +7002,7 @@ exports[`should render dsr component for PHeading 1`] = `
   font-size: var(--p-typescale-2xl);
   color: var(--p-color-primary);
   text-align: start;
+  hyphens: none;
 }
     </style>
     <h2
@@ -7143,8 +7123,6 @@ slot[name="heading"] {
 }
 .description {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -7271,8 +7249,6 @@ img {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -7495,8 +7471,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7507,7 +7481,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -7526,8 +7500,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -7679,8 +7651,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7691,7 +7661,7 @@ input {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -7710,8 +7680,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -7859,8 +7827,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7871,7 +7837,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -7890,8 +7856,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8044,8 +8008,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8056,7 +8018,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -8075,8 +8037,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8221,8 +8181,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8233,7 +8191,7 @@ input {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -8252,8 +8210,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8400,8 +8356,6 @@ input::-webkit-search-cancel-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8412,7 +8366,7 @@ input::-webkit-search-cancel-button {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -8431,8 +8385,6 @@ input::-webkit-search-cancel-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8579,8 +8531,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8591,7 +8541,7 @@ input {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -8610,8 +8560,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8755,8 +8703,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8767,7 +8713,7 @@ input {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -8786,8 +8732,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -8934,8 +8878,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8946,7 +8888,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -8965,8 +8907,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -9118,8 +9058,6 @@ input {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9130,7 +9068,7 @@ input {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -9149,8 +9087,6 @@ input {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -9298,8 +9234,6 @@ input::-webkit-calendar-picker-indicator {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9310,7 +9244,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -9329,8 +9263,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -9454,8 +9386,6 @@ exports[`should render dsr component for PLink 1`] = `
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
@@ -9732,9 +9662,8 @@ p {
   z-index: 3;
   max-width: 34.375rem;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: inherit;
   color: var(--p-color-primary);
+  hyphens: inherit;
   font-size: var(--p-typescale-md);
   font-weight: var(--p-font-weight-semibold);
 }
@@ -9865,8 +9794,6 @@ p {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -10023,8 +9950,6 @@ slot[name="header"] {
 .heading {
   margin: 0 0 2px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -10032,9 +9957,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 @media(min-width:760px) {
   .image {
@@ -10403,8 +10326,6 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -10747,8 +10668,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 6px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
@@ -10795,8 +10714,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   }
   .label {
     font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -10807,7 +10724,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   }
   .label:is(span) {
     cursor: unset;
-    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-size: .875rem;
     color: var(--p-color-contrast-high);
     position: static;
     width: auto;
@@ -10826,8 +10743,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     display: flex;
     gap: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .message:empty {
@@ -10998,8 +10913,6 @@ input::-webkit-search-cancel-button {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -11010,7 +10923,7 @@ input::-webkit-search-cancel-button {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: absolute;
   width: 1px;
@@ -11029,8 +10942,6 @@ input::-webkit-search-cancel-button {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -11392,8 +11303,6 @@ slot {
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -11448,6 +11357,12 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .checkbox:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+  }
+}
+
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -11488,7 +11403,7 @@ exports[`should render dsr component for POptgroup 1`] = `
 [role="presentation"] {
   padding-block: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
   padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
-  font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 600 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
 }
     </style>
@@ -11551,8 +11466,6 @@ span {
   height: 2.25rem;
   box-sizing: border-box;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -11846,8 +11759,6 @@ input:focus-visible {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -11858,7 +11769,7 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -11877,8 +11788,6 @@ input:focus-visible {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -11988,8 +11897,6 @@ exports[`should render dsr component for PPopover 1`] = `
   }
   p {
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     margin: 0;
   }
   button {
@@ -12060,8 +11967,6 @@ exports[`should render dsr component for PPopover 1`] = `
     pointer-events: auto;
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     background: var(--p-color-canvas);
     color: var(--p-color-primary);
   }
@@ -12193,8 +12098,6 @@ slot[name="label-after"]::slotted(*) {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12205,7 +12108,7 @@ slot[name="label-after"]::slotted(*) {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -12224,8 +12127,6 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -12326,14 +12227,15 @@ input::before {
   content: "";
   grid-area: 1/1;
 }
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-}
 input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
   input:checked::before {
@@ -12375,8 +12277,6 @@ input::after {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12387,7 +12287,7 @@ input::after {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -12631,8 +12531,6 @@ slot:not([name]) {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12643,7 +12541,7 @@ slot:not([name]) {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -12662,8 +12560,6 @@ slot:not([name]) {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
@@ -12719,8 +12615,6 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
 }
 button:focus-visible {
@@ -12729,9 +12623,8 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
@@ -12906,8 +12799,6 @@ exports[`should render dsr component for PSelect 1`] = `
     padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
@@ -12954,8 +12845,6 @@ exports[`should render dsr component for PSelect 1`] = `
   }
   .label {
     font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12966,7 +12855,7 @@ exports[`should render dsr component for PSelect 1`] = `
   }
   .label:is(span) {
     cursor: unset;
-    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-size: .875rem;
     color: var(--p-color-contrast-high);
     position: static;
     width: auto;
@@ -12985,8 +12874,6 @@ exports[`should render dsr component for PSelect 1`] = `
     display: flex;
     gap: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .message:empty {
@@ -13132,8 +13019,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
@@ -13349,8 +13234,6 @@ dialog::backdrop {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
@@ -13631,8 +13514,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .scroller {
   place-self: flex-start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   font-size: 1rem;
 }
     </style>
@@ -13985,8 +13866,6 @@ button::before {
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -14088,8 +13967,6 @@ exports[`should render dsr component for PTable 1`] = `
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -14329,7 +14206,7 @@ exports[`should render dsr component for PTableHead 1`] = `
     <style>
       :host {
   display: table-header-group;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) !important;
+  font-size: .875rem !important;
   line-height: calc(6px + 2.125ex) !important;
   font-weight: 600 !important;
   border-bottom: 1px solid var(--_c) !important;
@@ -15003,9 +14880,9 @@ span {
   gap: 2px;
   padding: 4px 9px;
   border-radius: var(--_p-legacy-radius-small, calc(4px + (calc(6px + 2.125ex) / 2)));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-frosted-strong);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15085,8 +14962,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -15211,7 +15086,7 @@ exports[`should render dsr component for PText 1`] = `
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -15220,6 +15095,7 @@ exports[`should render dsr component for PText 1`] = `
   font-size: var(--p-typescale-sm);
   color: var(--p-color-primary);
   text-align: start;
+  hyphens: inherit;
 }
     </style>
     <p
@@ -15250,8 +15126,6 @@ exports[`should render dsr component for PTextList 1`] = `
 }
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -15389,8 +15263,6 @@ textarea:focus {
 }
 .label {
   font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15401,7 +15273,7 @@ textarea:focus {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
   color: var(--p-color-contrast-high);
   position: static;
   width: auto;
@@ -15420,8 +15292,6 @@ textarea:focus {
   display: flex;
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {

@@ -4,14 +4,12 @@ import {
   getDisabledBaseStyles,
   getFocusBaseStyles,
   hostHiddenStyles,
-  hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
-import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
+import { cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -22,10 +20,6 @@ import {
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 // CSS Variables defined in checkbox-css-vars.ts
 /**
  * @css-variable {"name": "--p-checkbox-border-color", "description": "🧪Experimental: Border colors of Checkbox. Should be used to override the default border color in different states (e.g., hover, focus, error), e.g. when the Checkbox is wrapped inside a custom label."}
@@ -39,7 +33,6 @@ export const getComponentCss = (
   isLoading: boolean,
   isCompact: boolean
 ): string => {
-  const { formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
@@ -62,12 +55,6 @@ export const getComponentCss = (
         '&:checked': getCheckboxCheckedBaseStyles(isLoading, state),
         '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading, state),
         '&:focus-visible': getFocusBaseStyles(),
-        ...(!disabledOrLoading &&
-          hoverMediaQuery({
-            '&:hover': {
-              borderColor: `var(${cssVarCheckboxBorderColor}, ${formStateBorderHoverColor})`,
-            },
-          })),
       },
     },
     root: {

@@ -36,10 +36,6 @@ const getRadioGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDi
   return groupRadioGroupDirectionJssStyles[direction];
 };
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 export const getComponentCss = (
   isDisabled: boolean,
   isLoading: boolean,

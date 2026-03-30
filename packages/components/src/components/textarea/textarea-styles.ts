@@ -30,9 +30,7 @@ import type { TextareaResize } from './textarea-utils';
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
 
-// CSS Variable defined in fontHyphenationStyle
 /**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
  * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
  * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"unset"}

@@ -6,6 +6,7 @@ import {
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
 import { defineConfig } from 'vite';
+import { Features } from "lightningcss"
 
 const REGEX_HEAD = /<\/head>/;
 const REGEX_BODY = /<\/body>/;
@@ -29,5 +30,12 @@ const transformIndexHtmlPlugin = () => {
 };
 
 export default defineConfig({
+  css: {
+    transformer: "lightningcss",
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningcss: {
+      exclude: Features.LightDark,
+    },
+  },
   plugins: [transformIndexHtmlPlugin()],
 });

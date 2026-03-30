@@ -249,6 +249,19 @@ test.describe('focus', () => {
 
     expect(await hasFocus(body)).toBe(true);
   });
+
+  test('should set programmatic focus', async ({ page }) => {
+    await initAccordion(page);
+    const host = getHost(page);
+
+    await expect(getSummary(page)).not.toBeFocused();
+
+    await host.focus();
+    await expect(getSummary(page)).toBeFocused();
+
+    await host.blur();
+    await expect(getSummary(page)).not.toBeFocused();
+  });
 });
 
 test.describe('lifecycle', () => {

@@ -31,8 +31,6 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
@@ -100,8 +98,6 @@ exports[`getComponentCss() > should return correct css for state: info 1`] = `
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
@@ -169,8 +165,6 @@ exports[`getComponentCss() > should return correct css for state: success 1`] = 
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
@@ -238,8 +232,6 @@ exports[`getComponentCss() > should return correct css for state: warning 1`] = 
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;

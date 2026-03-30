@@ -11,8 +11,8 @@ on:
       github-token:
         description: 'github token for container registry'
         required: true
-      npmjs-registry-token:
-        description: 'npm registry token for npmjs'
+      npm-token:
+        description: 'npm access token for publishing to npmjs.org'
         required: true
       gh-deploy-key-storefront:
         description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
@@ -23,6 +23,10 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   check-publication-status:
@@ -39,8 +43,7 @@ jobs:
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: 'Get Package Version'
         id: get_npm_version
         uses: ./.github/actions/get-local-package-version
@@ -80,29 +83,28 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
+          NPM_CONFIG_PROVENANCE: true
   npm-components-angular:
     name: 'NPM (Components Angular)'
     needs:
@@ -110,29 +112,28 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
+          NPM_CONFIG_PROVENANCE: true
   npm-components-react:
     name: 'NPM (Components React)'
     needs:
@@ -140,29 +141,28 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
+          NPM_CONFIG_PROVENANCE: true
   npm-components-vue:
     name: 'NPM (Components Vue)'
     needs:
@@ -170,29 +170,28 @@ jobs:
       # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
+          NPM_CONFIG_PROVENANCE: true
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     needs: check-publication-status
@@ -201,17 +200,18 @@ jobs:
     container:
       image: ${{ inputs.image }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:

@@ -3,13 +3,21 @@ import { fontPorscheNext, leadingNormal, typescaleSm } from '../../styles/css-va
 import { colorMap, sizeMap, weightMap } from '../../styles/maps';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { TEXT_TAGS, type TextAlign, type TextColor, type TextSize, type TextWeight } from './text-utils';
+import {
+  TEXT_TAGS,
+  type TextAlign,
+  type TextColor,
+  type TextHyphens,
+  type TextSize,
+  type TextWeight,
+} from './text-utils';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   weight: TextWeight,
   align: TextAlign,
   color: TextColor,
+  hyphens: TextHyphens,
   ellipsis: boolean
 ): string => {
   return getCss({
@@ -20,9 +28,9 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      [`::slotted(:is(${TEXT_TAGS.join()}))`]: addImportantToEachRule({
+      [`::slotted(:is(${TEXT_TAGS.join()}))`]: {
         all: 'unset',
-      }),
+      },
     },
     root: {
       all: 'unset',
@@ -33,6 +41,10 @@ export const getComponentCss = (
       })),
       color: colorMap[color],
       textAlign: align,
+      hyphens,
+      ...((hyphens === 'auto' || hyphens === 'manual') && {
+        overflowWrap: 'break-word',
+      }),
       ...(ellipsis && {
         maxWidth: '100%',
         overflow: 'hidden',

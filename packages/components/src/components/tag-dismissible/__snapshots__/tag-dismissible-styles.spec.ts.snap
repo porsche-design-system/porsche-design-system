@@ -25,8 +25,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -91,8 +89,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -157,8 +153,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -184,7 +178,7 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
@@ -229,8 +223,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -256,7 +248,7 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
@@ -301,8 +293,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -328,7 +318,7 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
@@ -373,8 +363,6 @@ button {
   color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -400,7 +388,7 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: .875rem;
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));

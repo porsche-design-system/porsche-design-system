@@ -75,19 +75,13 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
 
   return (
     <PModal
+      className="[--p-modal-spacing-top:10vh] [--p-modal-spacing-bottom:10vh] [--p-modal-width:clamp(276px,45.25vw+131px,640px)]"
       open={isSearchOpen}
       onDismiss={onDismissSearch}
       aria={{ 'aria-label': 'Search' }}
-      style={
-        {
-          '--p-modal-spacing-top': '10vh',
-          '--p-modal-spacing-bottom': '10vh',
-          '--p-modal-width': 'clamp(276px, 45.25vw + 131px, 640px)',
-        } as React.CSSProperties
-      }
     >
       <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
-        <div className="stretch-to-full-modal-width h-[80vh] p-fluid-lg">
+        <div className="h-[80vh] p-fluid-lg">
           <div className="flex flex-col gap-fluid-sm h-full">
             <PHeading size="medium" tag="h2">
               Search

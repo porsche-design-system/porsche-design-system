@@ -33,7 +33,7 @@ require your attention.
 - Redesigned footer of dialog elements
 - All headings use regular as font-weight
 - Design Tokens are exposed as CSS variables, and all component styles are built directly upon them
-  - [Colors](/stylesheets/color/examples/)
+  - [CSS Variables](/stylesheets/css-variables/introduction/)
 - Theming now works by adding a `scheme-light`, `scheme-dark` or `scheme-light-dark` CSS class to any HTML element
   - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
   - [Angular](/developing/angular/advanced/#global-theme)
@@ -268,6 +268,45 @@ export class AppModule {}
 </PorscheDesignSystemProvider>
 ```
 
+### Lightning CSS
+
+Some frameworks in newer versions rely on [`lightningcss`](https://lightningcss.dev/), which includes a polyfill for the
+`light-dark()` function that is currently **broken**. To avoid any issues, we recommend disabling the `lightningcss`
+polyfill for now since we also include our own polyfill for the global styles.
+[More information](https://github.com/porsche-design-system/porsche-design-system/issues/4257)
+
+Disable Lightning CSS Polyfill:
+
+#### React, React Router, Vue (Vite 8)
+
+```diff
+// vite.config.ts
++ import { Features } from "lightningcss"
+
+export default defineConfig({
++  css: {
++    transformer: "lightningcss",
++    lightningcss: {
++      exclude: Features.LightDark,
++    },
++  },
+});
+```
+
+#### Next.js (Turbopack)
+
+```diff
+// next.config.ts
+const nextConfig: NextConfig = {
++  experimental: {
++    useLightningcss: true,
++    lightningCssFeatures: {
++      exclude: ['light-dark'],
++    },
++  },
+};
+```
+
 ## 👹 Breaking Changes
 
 ### Partials
@@ -394,6 +433,20 @@ SCSS:
   }
 }
 ```
+
+- Hyphenation style in general: CSS `hyphens` and `overflow-wrap` properties are no longer applied globally across
+  components. If you relied on automatic word hyphenation, you can restore the previous behavior by setting these
+  inheritable properties on a common ancestor like `body`:
+
+```css
+body {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+```
+
+Since both properties are inheritable, they will cascade down to all child elements, including content within Shadow DOM
+components.
 
 ### Text, Icon:
 
@@ -758,8 +811,8 @@ SCSS:
 + <p-banner dismiss-button="false"></p-banner>
 ```
 
-- Removed deprecated prop `width`, instead the component is aligned with the **[Porsche Grid](/stylesheets/grid/)**
-  "extended" by default.
+- Removed deprecated prop `width`, instead the component is aligned with the
+  **[Porsche Grid](/tailwindcss/grid/examples/)** "extended" by default.
 
 ```diff
 - <p-banner width="fluid"></p-banner>
@@ -806,7 +859,7 @@ SCSS:
 ### Carousel:
 
 - Removed deprecated prop `wrap-content`. The component is always aligned with the
-  **[Porsche Grid](/stylesheets/grid/)** now, adjustable by prop `width`.
+  **[Porsche Grid](/tailwindcss/grid/examples/)** now, adjustable by prop `width`.
 
 ```diff
 - <p-carousel wrap-content="true"></p-carousel>

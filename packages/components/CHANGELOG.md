@@ -14,6 +14,51 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.0.0-rc.0] - 2026-03-27
+
+## [4.0.0-beta.4] - 2026-03-25
+
+### Added
+
+- `Heading`:
+  - Prop `hyphens` with values: `'none' (default) | 'auto' | 'manual' | 'inherit'`
+- `Text`:
+  - Prop `hyphens` with values: `'none' | 'auto' | 'manual' | 'inherit' (default)`
+- `Icon`: `play-filled`, `arrow-down-left`, `arrow-down-right`, `arrow-up-left`, `arrow-up-right`
+
+### Changed
+
+- `Checkbox`: Improve visual appearance of the checked state
+- `Radio Group`: Improve visual appearance of the checked state
+- `Icon`: Improve visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
+  `skip-forward`
+- `Tag`: Improve visual appearance of variant `info`, `success`, `variant` and `error`
+- `Tokens`: Update value of `typescaleXs`
+
+### Fixed
+
+- `Accordion`: missing `delegatesFocus`
+  ([#4238](https://github.com/porsche-design-system/porsche-design-system/pull/4238))
+
+### Removed
+
+- CSS Variable `--p-hyphens`
+- Hyphenation style in general: CSS `hyphens` and `overflow-wrap` properties are no longer applied globally across
+  components. If you relied on automatic word hyphenation, you can restore the previous behavior by setting these
+  inheritable properties on a common ancestor like `body`:
+
+  ```css
+  body {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  ```
+
+  Since both properties are inheritable, they will cascade down to all child elements, including content within Shadow
+  DOM components.
+
+## [4.0.0-beta.3] - 2026-03-19
+
 ### Added
 
 - Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
@@ -3477,9 +3522,10 @@ major version.
 
 ##### Content Wrapper:
 
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
-  instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
-  layout needs for a harmonic appearance across all digital Porsche touch-points.
+- Component is deprecated and will be removed with the next major release. Please use
+  **[Porsche Grid](/tailwindcss/grid/examples/)** instead, which is based on
+  [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific layout needs for a harmonic
+  appearance across all digital Porsche touch-points.
 
 ##### Flex:
 
@@ -3491,7 +3537,7 @@ major version.
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
+  **[Porsche Grid](/tailwindcss/grid/examples/)** instead for better performance and more standardized layout technique.
 
 ##### Headline:
 

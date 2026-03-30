@@ -173,7 +173,11 @@ export const ComponentMetaOverview = () => {
         </PSwitch>
       </div>
 
-      <PTable caption="Component Overview">
+      <PTable
+        className="[--p-table-scroll-indicator-top:64px] [--p-table-scroll-indicator-bottom:64px]"
+        sticky={true}
+        caption="Component Overview"
+      >
         <PTableHead>
           <PTableRow>{renderTableHead()}</PTableRow>
         </PTableHead>

@@ -52,6 +52,9 @@ const headingSizeToTagMap: Record<HeadingSize, string> = {
   inherit: 'h2',
 };
 
+export const HEADING_HYPHENS = ['none', 'manual', 'auto', 'inherit'] as const;
+export type HeadingHyphens = (typeof HEADING_HYPHENS)[number];
+
 export const getHeadingTagType = (
   host: HTMLElement,
   size: BreakpointCustomizable<HeadingSize>,

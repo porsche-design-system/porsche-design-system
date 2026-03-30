@@ -7,7 +7,7 @@ export const metadata = {
 
 # React Router
 
-<TableOfContents headings={['Global Theme', 'Prefixing']} />
+<TableOfContents headings={['Global Theme', 'SSR', 'Prefixing']} />
 
 ## Global Theme
 
@@ -22,6 +22,23 @@ settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS cl
 element. This applies the selected theme to all child elements.
 
 Learn more in the [Theme](/must-know/theme) section.
+
+## SSR
+
+The sub-package `@porsche-design-system/components-react/ssr` is a specialized build of the Porsche Design System
+components that renders different markup on the server compared to the browser. While this deviates from traditional
+SSR/SSG rules (where browser and server markup should be identical), it's necessary to enable SSR/SSG with web
+components and Shadow DOM.
+
+The two environments are detected via the `process.browser` flag, which is replaced with a boolean value at build time.
+In the browser, the components behave like the standard React components from `@porsche-design-system/components-react`.
+
+On the server, the behavior differs: Relevant markup and styles are rendered into a Declarative Shadow DOM, which modern
+browsers convert to a real Shadow DOM without JavaScript. This handles the initial render efficiently. Once the client
+code loads and executes, the Porsche Design System components initialize as usual.
+
+**Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
+into the browser bundle.
 
 ## Prefixing
 

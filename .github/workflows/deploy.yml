@@ -28,21 +28,14 @@ jobs:
   akamai-cdn-assets:
     name: 'Akamai CDN (Assets)'
     runs-on: ubuntu-latest
-    # container:
-    #   image: ${{ inputs.image }}
-    #   options: --user root
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - name: 'Install rclone'
+        run: sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
+        shell: bash
+      - uses: actions/setup-node@v6
         with:
-          node_modules: 'false'
-          rclone: 'true'
-      - name: 'Setup Node'
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+          node-version: '24'
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -128,39 +121,38 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Components JS'
-        run: yarn test:smoke:components-js
-      - name: 'Components Angular'
-        run: yarn test:smoke:components-angular
-      - name: 'Components React'
-        run: yarn test:smoke:components-react
-      - name: 'Components Vue'
-        run: yarn test:smoke:components-vue
+      - run: yarn test:smoke:components-js
+      - run: yarn test:smoke:components-angular
+      - run: yarn test:smoke:components-react
+      - run: yarn test:smoke:components-vue
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "lg", weight: semibold, align: start, color: info and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "lg", weight: semibold, align: start, color: info, hyphens: none and ellipsis: true 1`] = `
 ":host {
   display: block;
 }
@@ -8,7 +8,7 @@ exports[`getComponentCss() > should return correct css for size: "lg", weight: s
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -17,6 +17,7 @@ exports[`getComponentCss() > should return correct css for size: "lg", weight: s
   font-size: var(--p-typescale-lg);
   color: var(--p-color-info);
   text-align: start;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -24,7 +25,7 @@ exports[`getComponentCss() > should return correct css for size: "lg", weight: s
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "md", weight: bold, align: end, color: contrast-high and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "md", weight: bold, align: end, color: contrast-high, hyphens: none and ellipsis: true 1`] = `
 ":host {
   display: block;
 }
@@ -32,7 +33,7 @@ exports[`getComponentCss() > should return correct css for size: "md", weight: b
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -41,6 +42,7 @@ exports[`getComponentCss() > should return correct css for size: "md", weight: b
   font-size: var(--p-typescale-md);
   color: var(--p-color-contrast-high);
   text-align: end;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -48,7 +50,7 @@ exports[`getComponentCss() > should return correct css for size: "md", weight: b
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: end, color: primary and ellipsis: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: end, color: primary, hyphens: manual and ellipsis: false 1`] = `
 ":host {
   display: block;
 }
@@ -56,7 +58,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -65,10 +67,12 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   font-size: var(--p-typescale-sm);
   color: var(--p-color-primary);
   text-align: end;
+  hyphens: manual;
+  overflow-wrap: break-word;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: inherit, color: primary and ellipsis: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: inherit, color: primary, hyphens: inherit and ellipsis: false 1`] = `
 ":host {
   display: block;
 }
@@ -76,7 +80,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -85,10 +89,11 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   font-size: var(--p-typescale-sm);
   color: var(--p-color-primary);
   text-align: inherit;
+  hyphens: inherit;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: start, color: primary and ellipsis: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: start, color: primary, hyphens: auto and ellipsis: false 1`] = `
 ":host {
   display: block;
 }
@@ -96,7 +101,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -105,10 +110,12 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   font-size: var(--p-typescale-sm);
   color: var(--p-color-primary);
   text-align: start;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: start, color: primary and ellipsis: false 2`] = `
+exports[`getComponentCss() > should return correct css for size: "sm", weight: normal, align: start, color: primary, hyphens: none and ellipsis: false 1`] = `
 ":host {
   display: block;
 }
@@ -116,7 +123,7 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -125,10 +132,11 @@ exports[`getComponentCss() > should return correct css for size: "sm", weight: n
   font-size: var(--p-typescale-sm);
   color: var(--p-color-primary);
   text-align: start;
+  hyphens: none;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"sm","xs":"lg","s":"md","m":"inherit","l":"xs","xl":"xl"}, weight: bold, align: center, color: error and ellipsis: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"sm","xs":"lg","s":"md","m":"inherit","l":"xs","xl":"xl"}, weight: bold, align: center, color: error, hyphens: none and ellipsis: true 1`] = `
 ":host {
   display: block;
 }
@@ -136,7 +144,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"sm","x
   display: none !important;
 }
 ::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
-  all: unset !important;
+  all: unset;
 }
 .root {
   all: unset;
@@ -145,6 +153,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"sm","x
   font-size: var(--p-typescale-sm);
   color: var(--p-color-error);
   text-align: center;
+  hyphens: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

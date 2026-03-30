@@ -1,9 +1,4 @@
-import {
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textXSmallStyle,
-} from '@porsche-design-system/emotion';
+import { fontLineHeight, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -14,19 +9,20 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
+  blurFrosted,
   colorCanvas,
   colorContrastHigh,
-  colorErrorFrosted,
-  colorErrorFrostedSoft,
+  colorError,
+  colorErrorMedium,
   colorFrosted,
   colorFrostedStrong,
-  colorInfoFrosted,
-  colorInfoFrostedSoft,
+  colorInfo,
+  colorInfoMedium,
   colorPrimary,
-  colorSuccessFrosted,
-  colorSuccessFrostedSoft,
-  colorWarningFrosted,
-  colorWarningFrostedSoft,
+  colorSuccess,
+  colorSuccessMedium,
+  colorWarning,
+  colorWarningMedium,
   legacyRadiusSmall,
   radiusFull,
 } from '../../styles/css-variables';
@@ -36,28 +32,28 @@ import type { TagVariant } from './tag-utils';
 const colorTextMap: Record<TagVariant, string> = {
   primary: colorCanvas,
   secondary: colorPrimary,
-  info: colorPrimary,
-  success: colorPrimary,
-  warning: colorPrimary,
-  error: colorPrimary,
+  info: colorCanvas,
+  success: colorCanvas,
+  warning: colorCanvas,
+  error: colorCanvas,
 };
 
 const colorBackgroundMap: Record<TagVariant, string> = {
   primary: colorPrimary,
   secondary: colorFrostedStrong,
-  info: colorInfoFrosted,
-  success: colorSuccessFrosted,
-  warning: colorWarningFrosted,
-  error: colorErrorFrosted,
+  info: colorInfo,
+  success: colorSuccess,
+  warning: colorWarning,
+  error: colorError,
 };
 
 const colorBackgroundHoverMap: Record<TagVariant, string> = {
   primary: colorContrastHigh,
   secondary: colorFrosted,
-  info: colorInfoFrostedSoft,
-  success: colorSuccessFrostedSoft,
-  warning: colorWarningFrostedSoft,
-  error: colorErrorFrostedSoft,
+  info: colorInfoMedium,
+  success: colorSuccessMedium,
+  warning: colorWarningMedium,
+  error: colorErrorMedium,
 };
 
 export const getColors = (
@@ -100,7 +96,10 @@ export const getComponentCss = (
         padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
         borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXSmall} + (${fontLineHeight} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
         font: textXSmallStyle.font,
-        ...frostedGlassStyle,
+        ...(variant === 'secondary' && {
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
+        }),
         color: textColor,
         background: backgroundColor,
         transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`, // transition style should always be applied to have a smooth color change in case color prop gets updated during runtime

@@ -2,34 +2,6 @@
 
 import type { Story } from '@/models/story';
 
-export const typographyStoryDisplay: Story<'div'> = {
-  generator: () => [
-    {
-      tag: 'div',
-      properties: {
-        className: 'grid gap-fluid-md',
-      },
-      children: [
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-lg' },
-          children: ['.prose-display-lg'],
-        },
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-md' },
-          children: ['.prose-display-md'],
-        },
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-sm' },
-          children: ['.prose-display-sm'],
-        },
-      ],
-    },
-  ],
-};
-
 export const typographyStoryHeading: Story<'div'> = {
   generator: () => [
     {
@@ -38,6 +10,21 @@ export const typographyStoryHeading: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-5xl' },
+          children: ['.prose-heading-5xl'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-4xl' },
+          children: ['.prose-heading-4xl'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-3xl' },
+          children: ['.prose-heading-3xl'],
+        },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-2xl' },
