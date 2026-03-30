@@ -2,6 +2,6 @@ import { colorPrimary } from '../color';
 import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleXl } from '../font';
 
 export const proseHeadingXlStyle = {
-  font: `normal normal ${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
+  font: `${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
   color: colorPrimary,
 };

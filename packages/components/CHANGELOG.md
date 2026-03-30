@@ -25,11 +25,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - `SCSS`:
-  - All `prose-heading-*` and `prose-text-*` mixins come with an overwritable but default color property
-    ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+  - All `prose-heading-*` and `prose-text-*` mixins set `color` to the primary token by default, overridable via the CSS
+    cascade ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 - `Emotion`, `Vanilla Extract`:
-  - All `proseHeading*` and `proseText*` functions come with an overwritable but default color property
-    ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+  - All `proseHeading*` and `proseText*` style objects set `color` to the primary token by default, overridable in your
+    own styles ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 
 ## [4.0.0-rc.0] - 2026-03-27
 
