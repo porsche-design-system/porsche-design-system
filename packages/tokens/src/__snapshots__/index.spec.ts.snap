@@ -276,6 +276,10 @@ exports[`should contain correct value for spacingFluidXs 1`] = `"clamp(4px, 0.25
 
 exports[`should contain correct value for spacingStatic2Xl 1`] = `"80px"`;
 
+exports[`should contain correct value for spacingStatic2Xs 1`] = `"2px"`;
+
+exports[`should contain correct value for spacingStatic3Xs 1`] = `"1px"`;
+
 exports[`should contain correct value for spacingStaticLg 1`] = `"32px"`;
 
 exports[`should contain correct value for spacingStaticMd 1`] = `"16px"`;
