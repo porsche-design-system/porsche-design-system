@@ -251,7 +251,7 @@ export class SegmentedControl {
           isDisabled={this.disabled}
         />
         {this.noWrap ? (
-          <PrefixedTagNames.pScroller theme={this.theme}>
+          <PrefixedTagNames.pScroller theme={this.theme} class="scroller">
             <slot />
           </PrefixedTagNames.pScroller>
         ) : (
