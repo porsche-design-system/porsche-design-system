@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+- `Tailwind CSS`: `--spacing-static-2xs`
+  ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `SCSS`: `$spacing-static-2xs` ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `Tokens`, `Emotion`, `Vanilla Extract`: `spacingStatic2xs`
+  ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+
 ## [4.0.0-rc.0] - 2026-03-27
 
 ## [4.0.0-beta.4] - 2026-03-25
