@@ -16,6 +16,13 @@ const groupsToCheck = [
     ],
   },
   {
+    name: '/color-scheme',
+    paths: [
+      '@porsche-design-system/components-js/color-scheme.css',
+      '@porsche-design-system/components-js/color-scheme',
+    ],
+  },
+  {
     name: '/font-face',
     paths: ['@porsche-design-system/components-js/font-face.css', '@porsche-design-system/components-js/font-face'],
   },
@@ -73,6 +80,7 @@ describe('global styles package content', () => {
 
     // Check / index
     [
+      '@porsche-design-system/components-js/color-scheme.css',
       '@porsche-design-system/components-js/font-face.css',
       '@porsche-design-system/components-js/normalize.css',
       '@porsche-design-system/components-js/variables.css',
@@ -86,6 +94,7 @@ describe('global styles package content', () => {
 
     // Check /cn index
     [
+      '@porsche-design-system/components-js/color-scheme.css',
       '@porsche-design-system/components-js/cn/font-face.css',
       '@porsche-design-system/components-js/normalize.css',
       '@porsche-design-system/components-js/variables.css',
