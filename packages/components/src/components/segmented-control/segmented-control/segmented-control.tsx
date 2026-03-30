@@ -232,17 +232,7 @@ export class SegmentedControl {
       this.theme
     );
 
-    let slotContent: JSX.Element;
-    if (this.noWrap) {
-      const PrefixedTagNames = getPrefixedTagNames(this.host);
-      slotContent = (
-        <PrefixedTagNames.pScroller theme={this.theme} class="scroller">
-          <slot />
-        </PrefixedTagNames.pScroller>
-      );
-    } else {
-      slotContent = <slot />;
-    }
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <fieldset
@@ -261,7 +251,13 @@ export class SegmentedControl {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        {slotContent}
+        {this.noWrap ? (
+          <PrefixedTagNames.pScroller theme={this.theme}>
+            <slot />
+          </PrefixedTagNames.pScroller>
+        ) : (
+          <slot />
+        )}
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </fieldset>
     );

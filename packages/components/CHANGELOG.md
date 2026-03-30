@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Segmented Control`: `wrap` property to render items inline with optional scroller
+- `Segmented Control`: `noWrap` property to render items inline with optional scroller
   ([#4244](https://github.com/porsche-design-system/porsche-design-system/pull/4244))
 
 ### Fixed
