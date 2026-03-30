@@ -1,1 +1,1 @@
-export const spacingStatic2Xs = '2px';
+export const spacingStatic2Xs = '1px';
