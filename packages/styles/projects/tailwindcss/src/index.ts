@@ -136,6 +136,8 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
+  spacingStatic3Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -249,6 +251,8 @@ export const getTailwindcssTheme = () => {
   --spacing-fluid-xl: ${spacingFluidXl};
   --spacing-fluid-2xl: ${spacingFluid2Xl};
 
+  --spacing-static-3xs: ${spacingStatic3Xs};
+  --spacing-static-2xs: ${spacingStatic2Xs};
   --spacing-static-xs: ${spacingStaticXs};
   --spacing-static-sm: ${spacingStaticSm};
   --spacing-static-md: ${spacingStaticMd};

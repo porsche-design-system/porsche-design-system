@@ -137,6 +137,8 @@ exports[`should match compiled variables css 1`] = `
   --p-spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
   --p-spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
 
+  --p-spacing-static-3xs: 1px;
+  --p-spacing-static-2xs: 2px;
   --p-spacing-static-xs: 4px;
   --p-spacing-static-sm: 8px;
   --p-spacing-static-md: 16px;

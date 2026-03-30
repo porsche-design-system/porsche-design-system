@@ -913,6 +913,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "spacing/spacingFluidXl.cjs",
     "spacing/spacingFluidXs.cjs",
     "spacing/spacingStatic2Xl.cjs",
+    "spacing/spacingStatic2Xs.cjs",
+    "spacing/spacingStatic3Xs.cjs",
     "spacing/spacingStaticLg.cjs",
     "spacing/spacingStaticMd.cjs",
     "spacing/spacingStaticSm.cjs",
@@ -1128,6 +1130,12 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "spacing/spacingStatic2Xl.cjs": [
     "tokens/dist/esm/spacing/static/spacingStatic2Xl.cjs",
+  ],
+  "spacing/spacingStatic2Xs.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStatic2Xs.cjs",
+  ],
+  "spacing/spacingStatic3Xs.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStatic3Xs.cjs",
   ],
   "spacing/spacingStaticLg.cjs": [
     "tokens/dist/esm/spacing/static/spacingStaticLg.cjs",
@@ -1518,6 +1526,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/spacing/fluid/spacingFluidXl.cjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluidXs.cjs": [],
   "tokens/dist/esm/spacing/static/spacingStatic2Xl.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStatic2Xs.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStatic3Xs.cjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticLg.cjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticMd.cjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticSm.cjs": [],
@@ -2600,6 +2610,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "spacing/spacingFluidXl.mjs",
     "spacing/spacingFluidXs.mjs",
     "spacing/spacingStatic2Xl.mjs",
+    "spacing/spacingStatic2Xs.mjs",
+    "spacing/spacingStatic3Xs.mjs",
     "spacing/spacingStaticLg.mjs",
     "spacing/spacingStaticMd.mjs",
     "spacing/spacingStaticSm.mjs",
@@ -2815,6 +2827,12 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "spacing/spacingStatic2Xl.mjs": [
     "tokens/dist/esm/spacing/static/spacingStatic2Xl.mjs",
+  ],
+  "spacing/spacingStatic2Xs.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStatic2Xs.mjs",
+  ],
+  "spacing/spacingStatic3Xs.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStatic3Xs.mjs",
   ],
   "spacing/spacingStaticLg.mjs": [
     "tokens/dist/esm/spacing/static/spacingStaticLg.mjs",
@@ -3205,6 +3223,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/spacing/fluid/spacingFluidXl.mjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluidXs.mjs": [],
   "tokens/dist/esm/spacing/static/spacingStatic2Xl.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStatic2Xs.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStatic3Xs.mjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticLg.mjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticMd.mjs": [],
   "tokens/dist/esm/spacing/static/spacingStaticSm.mjs": [],
