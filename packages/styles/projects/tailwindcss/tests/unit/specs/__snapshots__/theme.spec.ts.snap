@@ -166,8 +166,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
   --spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
 
-  --spacing-static-3xs: 1px;
-  --spacing-static-2xs: 2px;
+  --spacing-static-2xs: 1px;
   --spacing-static-xs: 4px;
   --spacing-static-sm: 8px;
   --spacing-static-md: 16px;

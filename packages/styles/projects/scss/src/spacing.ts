@@ -7,7 +7,6 @@ import {
   spacingFluidXs,
   spacingStatic2Xl,
   spacingStatic2Xs,
-  spacingStatic3Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -17,7 +16,6 @@ import {
 
 export const getSpacingScss = () => {
   return `
-    $spacing-static-3xs: ${spacingStatic3Xs};
     $spacing-static-2xs: ${spacingStatic2Xs};
     $spacing-static-xs: ${spacingStaticXs};
     $spacing-static-sm: ${spacingStaticSm};
