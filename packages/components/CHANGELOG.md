@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Tabs Bar`: flickering of active tab in certain cases
+  ([#4263](https://github.com/porsche-design-system/porsche-design-system/pull/4263))
 - Global Styles: missing individual export for `color-scheme.css`
   ([#4260](https://github.com/porsche-design-system/porsche-design-system/pull/4260))
 
