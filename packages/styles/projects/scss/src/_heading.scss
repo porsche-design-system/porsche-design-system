@@ -1,34 +1,40 @@
 @use 'font';
+@use 'color';
+
+@mixin -prose-heading($size, $weight) {
+  font: normal normal $weight $size / font.$leading-normal font.$font-porsche-next;
+  color: color.$color-primary;
+}
 
 @mixin prose-heading-5xl {
-  font: normal normal font.$font-weight-normal font.$typescale-5xl / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-5xl, font.$font-weight-normal);
 }
 @mixin prose-heading-4xl {
-  font: normal normal font.$font-weight-normal font.$typescale-4xl / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-4xl, font.$font-weight-normal);
 }
 @mixin prose-heading-3xl {
-  font: normal normal font.$font-weight-normal font.$typescale-3xl / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-3xl, font.$font-weight-normal);
 }
 @mixin prose-heading-2xl {
-  font: normal normal font.$font-weight-normal font.$typescale-2xl / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-2xl, font.$font-weight-normal);
 }
 @mixin prose-heading-xl {
-  font: normal normal font.$font-weight-normal font.$typescale-xl / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-xl, font.$font-weight-normal);
 }
 @mixin prose-heading-lg {
-  font: normal normal font.$font-weight-normal font.$typescale-lg / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-lg, font.$font-weight-normal);
 }
 @mixin prose-heading-md {
-  font: normal normal font.$font-weight-normal font.$typescale-md / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-md, font.$font-weight-normal);
 }
 @mixin prose-heading-sm {
-  font: normal normal font.$font-weight-semibold font.$typescale-sm / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-sm, font.$font-weight-semibold);
 }
 @mixin prose-heading-xs {
-  font: normal normal font.$font-weight-semibold font.$typescale-xs / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-xs, font.$font-weight-semibold);
 }
 @mixin prose-heading-2xs {
-  font: normal normal font.$font-weight-semibold font.$typescale-2xs / font.$leading-normal font.$font-porsche-next;
+  @include -prose-heading(font.$typescale-2xs, font.$font-weight-semibold);
 }
 
 /* alias (deprecated) */
