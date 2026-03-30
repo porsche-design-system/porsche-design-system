@@ -1,5 +1,17 @@
 @use 'font';
 
+@mixin prose-text-5xl {
+  font: normal normal font.$font-weight-normal font.$typescale-5xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-text-4xl {
+  font: normal normal font.$font-weight-normal font.$typescale-4xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-text-3xl {
+  font: normal normal font.$font-weight-normal font.$typescale-3xl / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-text-2xl {
+  font: normal normal font.$font-weight-normal font.$typescale-2xl / font.$leading-normal font.$font-porsche-next;
+}
 @mixin prose-text-xl {
   font: normal normal font.$font-weight-normal font.$typescale-xl / font.$leading-normal font.$font-porsche-next;
 }
@@ -43,4 +55,3 @@
 @mixin pds-text-xx-small {
   @include prose-text-2xs();
 }
-

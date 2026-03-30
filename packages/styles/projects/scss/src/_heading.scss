@@ -24,6 +24,12 @@
 @mixin prose-heading-sm {
   font: normal normal font.$font-weight-semibold font.$typescale-sm / font.$leading-normal font.$font-porsche-next;
 }
+@mixin prose-heading-xs {
+  font: normal normal font.$font-weight-semibold font.$typescale-xs / font.$leading-normal font.$font-porsche-next;
+}
+@mixin prose-heading-2xs {
+  font: normal normal font.$font-weight-semibold font.$typescale-2xs / font.$leading-normal font.$font-porsche-next;
+}
 
 /* alias (deprecated) */
 @mixin pds-heading-xx-large {
