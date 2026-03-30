@@ -50,6 +50,16 @@ export const typographyVanillaExtractStoryHeading: Story<'div'> = {
           properties: { className: 'prose-heading-sm' },
           children: ['...proseHeadingSmStyle'],
         },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-xs' },
+          children: ['...proseHeadingXsStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-2xs' },
+          children: ['...proseHeading2XsStyle'],
+        },
       ],
     },
   ],
@@ -63,6 +73,26 @@ export const typographyVanillaExtractStoryText: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-5xl hyphens-auto' },
+          children: ['...proseText5XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-4xl hyphens-auto' },
+          children: ['...proseText4XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-3xl hyphens-auto' },
+          children: ['...proseText3XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-2xl hyphens-auto' },
+          children: ['...proseText2XlStyle'],
+        },
         {
           tag: 'p',
           properties: { className: 'prose-text-xl hyphens-auto' },
