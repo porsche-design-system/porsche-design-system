@@ -1,4 +1,5 @@
 import { easeInOut } from '@porsche-design-system/tokens';
+import { delayTabStyleAttribute } from './tabs-bar-styles';
 
 export const TABS_BAR_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
 export type TabsBarBackground = (typeof TABS_BAR_BACKGROUNDS)[number];
@@ -164,6 +165,10 @@ export const animateBar = (
     scroller,
     tabs
   );
+
+  // enable delayed background-color transition so it syncs with the bar animation (not applied on initial render)
+  tabs[oldTabIndex].removeAttribute(delayTabStyleAttribute);
+  tabs[newTabIndex].setAttribute(delayTabStyleAttribute, '');
 
   bar.animate(
     [
