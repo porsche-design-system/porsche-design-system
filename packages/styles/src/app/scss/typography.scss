@@ -49,6 +49,36 @@
   margin: 0;
 }
 
+.scss-heading-xs {
+  @include pds.prose-heading-xs;
+  margin: 0;
+}
+
+.scss-heading-2xs {
+  @include pds.prose-heading-2xs;
+  margin: 0;
+}
+
+.scss-text-5xl {
+  @include pds.prose-text-5xl;
+  margin: 0;
+}
+
+.scss-text-4xl {
+  @include pds.prose-text-4xl;
+  margin: 0;
+}
+
+.scss-text-3xl {
+  @include pds.prose-text-3xl;
+  margin: 0;
+}
+
+.scss-text-2xl {
+  @include pds.prose-text-2xl;
+  margin: 0;
+}
+
 .scss-text-xl {
   @include pds.prose-text-xl;
   margin: 0;

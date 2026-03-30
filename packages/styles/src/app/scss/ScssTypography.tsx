@@ -10,14 +10,20 @@ export const ScssTypography = () => {
         <h4 className="scss-heading-lg">Heading lg</h4>
         <h5 className="scss-heading-md">Heading md</h5>
         <h6 className="scss-heading-sm">Heading sm</h6>
+        <h6 className="scss-heading-xs">Heading xs</h6>
+        <h6 className="scss-heading-2xs">Heading 2xs</h6>
       </div>
       <div className="scss-typography scss-typography--text">
-        <p className="scss-text-xl">text xl</p>
-        <p className="scss-text-lg">text lg</p>
-        <p className="scss-text-md">text md</p>
-        <p className="scss-text-sm">text sm</p>
-        <p className="scss-text-xs">text xs</p>
-        <p className="scss-text-2xs">text 2xs</p>
+        <p className="scss-text-5xl">Text 5xl</p>
+        <p className="scss-text-4xl">Text 4xl</p>
+        <p className="scss-text-3xl">Text 3xl</p>
+        <p className="scss-text-2xl">Text 2xl</p>
+        <p className="scss-text-xl">Text xl</p>
+        <p className="scss-text-lg">Text lg</p>
+        <p className="scss-text-md">Text md</p>
+        <p className="scss-text-sm">Text sm</p>
+        <p className="scss-text-xs">Text xs</p>
+        <p className="scss-text-2xs">Text 2xs</p>
       </div>
     </>
   );
