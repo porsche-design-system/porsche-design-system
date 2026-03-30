@@ -35,11 +35,7 @@ Learn more at [agents.md](https://agents.md/).
 Recommended structure (monorepo example):
 
 ```markdown
-AGENTS.md
-packages/
-├── package1/AGENTS.md
-├── package2/AGENTS.md
-└── ...
+AGENTS.md packages/ ├── package1/AGENTS.md ├── package2/AGENTS.md └── ...
 ```
 
 **Best practice**: Keep `AGENTS.md` concise and link to detailed documentation. Use package-level files for deeper,
@@ -59,8 +55,7 @@ Create a file at `.github/copilot-instructions.md` in your repository root. This
 interactions in your project.
 
 ```markdown
-.github/
-└── copilot-instructions.md
+.github/ └── copilot-instructions.md
 ```
 
 ### Scoped Instructions
@@ -69,10 +64,8 @@ For more granular control, add instruction files to `.github/instructions/` and 
 target files using glob patterns:
 
 ```markdown
-.github/
-└── instructions/
-    ├── accessibility.instructions.md    # Applies to all frontend files
-    └── project.instructions.md          # Project-specific rules
+.github/ └── instructions/ ├── accessibility.instructions.md # Applies to all frontend files └──
+project.instructions.md # Project-specific rules
 ```
 
 Each instruction file should include an `applyTo` frontmatter that uses glob patterns:
