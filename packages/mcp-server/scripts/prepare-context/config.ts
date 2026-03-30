@@ -18,8 +18,8 @@ export const storefrontSrcDir = path.join(monorepoRoot, 'packages/storefront/src
 // Constants
 // ──────────────────────────────────────────────────────────────────────────────
 
-export const FRAMEWORKS = ['react', 'angular', 'vue'] as const;
-export type Framework = (typeof FRAMEWORKS)[number] | 'vanilla-js';
+export const FRAMEWORKS = ['vanilla-js', 'react', 'angular', 'vue'] as const;
+export type Framework = (typeof FRAMEWORKS)[number];
 
 /** Maximum number of version entries to keep in the changelog */
 export const CHANGELOG_MAX_VERSIONS = 10;

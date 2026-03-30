@@ -74,10 +74,10 @@ async function walkAndCopy(dir: string, relative: string = '') {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 2 — Process all copied MDX files (vanilla-js code examples)
+// Step 2 — Process non-framework MDX pages (framework is irrelevant for these)
 // ──────────────────────────────────────────────────────────────────────────────
 
-async function processAllFiles() {
+async function processNonFrameworkPages() {
   async function walk(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
@@ -85,10 +85,11 @@ async function processAllFiles() {
       if (entry.isDirectory()) {
         await walk(fullPath);
       } else if (entry.isFile() && entry.name === 'page.mdx') {
+        // Skip pages with examples/stories — they're handled in Step 3
+        if (rawExamplesContent[fullPath] || rawStoriesContent[fullPath]) continue;
+
         const rawContent = await fs.readFile(fullPath, 'utf-8');
-        // Pass original MDX (from rawStoriesContent) so story imports can be parsed
-        const originalMdx = rawStoriesContent[fullPath] ?? rawExamplesContent[fullPath];
-        const processed = await processContent(rawContent, 'vanilla-js', originalMdx);
+        const processed = await processContent(rawContent, 'vanilla-js');
         await fs.writeFile(fullPath, processed, 'utf-8');
         console.log(`  parse: ${path.relative(outputDir, fullPath)}`);
       }
@@ -99,53 +100,39 @@ async function processAllFiles() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Step 3 — Generate per-framework example pages
+// Step 3 — Generate per-framework pages (examples & stories, all frameworks)
 // ──────────────────────────────────────────────────────────────────────────────
 
-async function generateFrameworkExamples() {
-  for (const [filePath, rawContent] of Object.entries(rawExamplesContent)) {
-    const examplesPageDir = path.dirname(filePath);
-    const componentDir = path.dirname(examplesPageDir);
-
-    for (const framework of FRAMEWORKS) {
-      const fwDir = path.join(componentDir, `examples-${framework}`);
-      const fwFile = path.join(fwDir, 'page.mdx');
-
-      const processed = await processContent(rawContent, framework, rawContent);
-
-      if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_BYTES) {
-        await fs.mkdir(fwDir, { recursive: true });
-        await fs.writeFile(fwFile, processed, 'utf-8');
-        console.log(`  gen: ${path.relative(outputDir, fwFile)}`);
-      }
-    }
-  }
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
-// Step 4 — Generate per-framework interactive story pages
-// ──────────────────────────────────────────────────────────────────────────────
-
-async function generateFrameworkStories() {
-  // Only process pages that have stories but are NOT already handled by examples
-  // (pages in examples/ dirs are already covered by generateFrameworkExamples)
+async function generateFrameworkPages() {
+  // Merge example and story pages (examples take priority for duplicates)
+  const frameworkPages = new Map<string, string>();
   for (const [filePath, rawContent] of Object.entries(rawStoriesContent)) {
-    if (rawExamplesContent[filePath]) continue; // already handled by examples step
+    frameworkPages.set(filePath, rawContent);
+  }
+  for (const [filePath, rawContent] of Object.entries(rawExamplesContent)) {
+    frameworkPages.set(filePath, rawContent);
+  }
 
+  for (const [filePath, rawContent] of Array.from(frameworkPages.entries())) {
     const pageDir = path.dirname(filePath);
     const parentDir = path.dirname(pageDir);
     const dirName = path.basename(pageDir);
 
     for (const framework of FRAMEWORKS) {
-      const fwDir = path.join(parentDir, `${dirName}-${framework}`);
-      const fwFile = path.join(fwDir, 'page.mdx');
-
       const processed = await processContent(rawContent, framework, rawContent);
 
-      if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_BYTES) {
-        await fs.mkdir(fwDir, { recursive: true });
-        await fs.writeFile(fwFile, processed, 'utf-8');
-        console.log(`  gen: ${path.relative(outputDir, fwFile)}`);
+      if (framework === 'vanilla-js') {
+        // Overwrite the raw copy from Step 1 with processed vanilla-js content
+        await fs.writeFile(filePath, processed, 'utf-8');
+        console.log(`  gen: ${path.relative(outputDir, filePath)} (${framework})`);
+      } else {
+        if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_BYTES) {
+          const fwDir = path.join(parentDir, `${dirName}-${framework}`);
+          const fwFile = path.join(fwDir, 'page.mdx');
+          await fs.mkdir(fwDir, { recursive: true });
+          await fs.writeFile(fwFile, processed, 'utf-8');
+          console.log(`  gen: ${path.relative(outputDir, fwFile)}`);
+        }
       }
     }
   }
@@ -231,6 +218,13 @@ function deriveMetadataAttributes(relativePath: string): Record<string, BedrockM
 async function generateBedrockMetadata() {
   let count = 0;
 
+  // Collect relative paths of base pages that contain vanilla-js framework-specific content
+  const vanillaJsRelativePaths = new Set<string>(
+    [...Object.keys(rawExamplesContent), ...Object.keys(rawStoriesContent)].map((filePath) =>
+      path.relative(outputDir, filePath)
+    )
+  );
+
   async function walk(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
 
@@ -242,6 +236,12 @@ async function generateBedrockMetadata() {
       } else if (entry.isFile() && entry.name === 'page.mdx') {
         const relativePath = path.relative(outputDir, fullPath);
         const attributes = deriveMetadataAttributes(relativePath);
+
+        // Tag base example/story pages with vanilla-js framework
+        if (!attributes.framework && vanillaJsRelativePaths.has(relativePath)) {
+          attributes.framework = stringAttr('vanilla-js');
+        }
+
         const metadataFile = `${fullPath}.metadata.json`;
 
         await fs.writeFile(metadataFile, JSON.stringify({ metadataAttributes: attributes }, null, 2) + '\n', 'utf-8');
@@ -273,14 +273,11 @@ async function prepareContextSnapshots() {
   console.log('Step 1/10: Copying source files...');
   await walkAndCopy(sourceDir, '');
 
-  console.log('\nStep 2/10: Processing MDX → Markdown (vanilla-js)...');
-  await processAllFiles();
+  console.log('\nStep 2/10: Processing non-framework MDX → Markdown...');
+  await processNonFrameworkPages();
 
-  console.log('\nStep 3/10: Generating framework-specific examples...');
-  await generateFrameworkExamples();
-
-  console.log('\nStep 4/10: Generating framework-specific interactive stories...');
-  await generateFrameworkStories();
+  console.log('\nStep 3/10: Generating per-framework pages (examples & stories)...');
+  await generateFrameworkPages();
 
   console.log('\nStep 6/10: Generating shared reference pages...');
   await generateSharedReferences();

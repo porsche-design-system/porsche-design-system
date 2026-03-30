@@ -104,6 +104,13 @@ server.registerTool(
   }
 );
 
+server.registerTool('list-components', {
+  title: 'List all available components',
+  description:
+    'Returns a list of all available components in the Porsche Design System documentation, including their names and categories.',
+  inputSchema: z.string().optional(),
+});
+
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
