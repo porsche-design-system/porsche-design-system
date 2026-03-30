@@ -62,6 +62,8 @@ const packageJsonExports = {
   './tailwindcss/index': './tailwindcss/index.css',
   './index.css': './global-styles/index.css',
   './index': './global-styles/index.css',
+  './color-scheme.css': './global-styles/color-scheme.css',
+  './color-scheme': './global-styles/color-scheme.css',
   './font-face.css': './global-styles/font-face.css',
   './font-face': './global-styles/font-face.css',
   './normalize.css': './global-styles/normalize.css',
@@ -176,6 +178,7 @@ describe('package.json files', () => {
                   prob.entrypoint === './styles' ||
                   prob.entrypoint === './styles/vanilla-extract' ||
                   prob.entrypoint.includes('tailwindcss') ||
+                  prob.entrypoint.includes('color-scheme') ||
                   prob.entrypoint.includes('font-face') ||
                   prob.entrypoint.includes('normalize') ||
                   prob.entrypoint.includes('legacy-radius') ||

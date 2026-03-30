@@ -31,6 +31,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - All `proseHeading*` and `proseText*` style objects set `color` to the primary token by default, overridable in your
     own styles ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 
+### Fixed
+
+- Global Styles: missing individual export for `color-scheme.css`
+  ([#4260](https://github.com/porsche-design-system/porsche-design-system/pull/4260))
+
 ## [4.0.0-rc.0] - 2026-03-27
 
 ## [4.0.0-beta.4] - 2026-03-25
