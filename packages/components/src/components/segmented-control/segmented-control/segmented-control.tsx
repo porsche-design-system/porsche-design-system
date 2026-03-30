@@ -208,13 +208,14 @@ export class SegmentedControl {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
-    const { minWidth, maxWidth } = getItemWidths(this.host, this.compact);
+    const itemWidths = this.noWrap ? undefined : getItemWidths(this.host, this.compact);
+    const PrefixedTagNames = !this.noWrap ? undefined : getPrefixedTagNames(this.host);
 
     attachComponentCss(
       this.host,
       getComponentCss,
-      minWidth,
-      maxWidth,
+      itemWidths?.minWidth,
+      itemWidths?.maxWidth,
       this.columns,
       this.disabled,
       this.hideLabel,
@@ -231,8 +232,6 @@ export class SegmentedControl {
       this.compact,
       this.theme
     );
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <fieldset

@@ -18,8 +18,8 @@ export const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
 
 export const getComponentCss = (
-  minWidth: number | string,
-  maxWidth: number,
+  minWidth: number | string | undefined,
+  maxWidth: number | undefined,
   columns: BreakpointCustomizable<SegmentedControlColumns>,
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
