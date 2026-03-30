@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Banner`: `max-width` is now `100ch` by default to increase readability. Use CSS Variable `--p-banner-max-w` and `--p-banner-offset-inline` to set custom `max-width` and horizontal offset.
+  ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+
 ### Fixed
 
 - Global Styles: missing individual export for `color-scheme.css`
