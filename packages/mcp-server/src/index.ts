@@ -80,13 +80,10 @@ server.registerTool(
           'Filter by section within a topic. E.g. "introduction", "examples", "api", "usage", "accessibility".'
         ),
       framework: z
-        .enum(['react', 'angular', 'vue'])
+        .enum(['react', 'angular', 'vue', 'vanilla-js'])
         .optional()
         .describe('Filter for framework-specific docs. One of: react, angular, vue.'),
-      version: z
-        .string()
-        .optional()
-        .describe('Filter for specific version of the documentation. E.g. "3.33.0", "4.0.0".'),
+      version: z.string().describe('Filter for specific version of the documentation. E.g. "3.33.0", "4.0.0".'),
     }),
   },
   async ({ query, category, component, section, framework, version }) => {

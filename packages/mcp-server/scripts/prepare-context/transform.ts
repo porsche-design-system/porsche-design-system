@@ -233,16 +233,11 @@ export function formatAllowedValues(propMeta: any): { type: string; descSuffix: 
 
   return { type: type || 'unknown', descSuffix: '' };
 }
-
-
 export function formatComponentApi(tagName: string, meta: any): string {
   if (!meta) return '';
 
   function escapeMarkdownTableCell(text: string): string {
-    return text
-      .replace(/\\/g, '\\\\')
-      .replace(/\|/g, '\\|')
-      .replace(/\n/g, ' ');
+    return text.replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\n/g, ' ');
   }
 
   const lines: string[] = [];
