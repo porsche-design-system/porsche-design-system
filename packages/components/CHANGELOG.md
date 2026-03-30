@@ -14,14 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
 - `Tailwind CSS`: `--spacing-static-2xs`
   ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
-- `SCSS`:
-  - `$spacing-static-2xs` ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
-  - All `prose-heading-*` and `prose-text-*` mixins come with a color property
-    ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `SCSS`: `$spacing-static-2xs` ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 - `Tokens`, `Emotion`, `Vanilla Extract`: `spacingStatic2xs`
   ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+
+### Changed
+
+- `SCSS`:
+  - All `prose-heading-*` and `prose-text-*` mixins come with an overwritable but default color property
+    ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `Emotion`, `Vanilla Extract`:
+  - All `proseHeading*` and `proseText*` functions come with an overwritable but default color property
+    ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 
 ## [4.0.0-rc.0] - 2026-03-27
 
