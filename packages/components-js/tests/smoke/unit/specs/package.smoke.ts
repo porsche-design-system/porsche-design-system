@@ -178,6 +178,7 @@ describe('package.json files', () => {
                   prob.entrypoint === './styles' ||
                   prob.entrypoint === './styles/vanilla-extract' ||
                   prob.entrypoint.includes('tailwindcss') ||
+                  prob.entrypoint.includes('color-scheme') ||
                   prob.entrypoint.includes('font-face') ||
                   prob.entrypoint.includes('normalize') ||
                   prob.entrypoint.includes('legacy-radius') ||
