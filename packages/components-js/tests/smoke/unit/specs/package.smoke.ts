@@ -62,6 +62,8 @@ const packageJsonExports = {
   './tailwindcss/index': './tailwindcss/index.css',
   './index.css': './global-styles/index.css',
   './index': './global-styles/index.css',
+  './color-scheme.css': './global-styles/color-scheme.css',
+  './color-scheme': './global-styles/color-scheme.css',
   './font-face.css': './global-styles/font-face.css',
   './font-face': './global-styles/font-face.css',
   './normalize.css': './global-styles/normalize.css',
