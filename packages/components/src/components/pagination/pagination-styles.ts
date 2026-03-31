@@ -1,11 +1,4 @@
-import {
-  frostedGlassStyle,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
+import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -18,11 +11,18 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
+  blurFrosted,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
@@ -53,11 +53,11 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
       },
       ul: {
         display: 'flex',
-        gap: spacingStaticXSmall,
+        gap: spacingStaticXs,
         margin: 0,
         padding: 0,
         [mediaQueryMinS]: {
-          gap: spacingStaticSmall,
+          gap: spacingStaticSm,
         },
       },
       li: {
@@ -108,7 +108,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         minWidth: '2.25rem',
         height: '2.25rem',
         boxSizing: 'border-box',
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         backgroundColor: 'transparent',
@@ -118,7 +118,8 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
-            ...frostedGlassStyle,
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
             background: colorFrosted,
             ...forcedColorsMediaQuery({
               outline: '2px solid CanvasText',

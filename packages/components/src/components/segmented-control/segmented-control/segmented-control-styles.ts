@@ -1,10 +1,10 @@
-import { spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { spacingStaticXs } from '../../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import {
@@ -49,7 +49,7 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
     },
     // .label / .required
     ...getFunctionalComponentLabelStyles(disabled, false, hideLabel, {

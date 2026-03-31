@@ -1,6 +1,15 @@
-import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
-import { colorContrastLow, colorFrosted, colorPrimary } from '../../../styles/css-variables';
+import {
+  colorContrastLow,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  spacingFluidMd,
+  spacingStaticSm,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
@@ -30,10 +39,10 @@ export const getComponentCss = (isCompact: boolean, layout: TableLayout): string
           [cssVariableTableHoverColor]: colorFrosted,
           [cssVariableTableBorderColor]: colorContrastLow,
           ...(isCompact && {
-            [cssVariableTablePadding]: spacingStaticSmall,
+            [cssVariableTablePadding]: spacingStaticSm,
           }),
           ...hostHiddenStyles,
-          ...textSmallStyle,
+          font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
           color: colorPrimary,
           textAlign: 'start',
         }),
@@ -41,7 +50,7 @@ export const getComponentCss = (isCompact: boolean, layout: TableLayout): string
       ...preventFoucOfNestedElementsStyles,
     },
     caption: {
-      marginBottom: spacingFluidMedium,
+      marginBottom: spacingFluidMd,
     },
     table: {
       display: 'table',

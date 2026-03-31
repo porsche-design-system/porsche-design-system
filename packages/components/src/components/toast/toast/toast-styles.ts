@@ -1,10 +1,4 @@
-import {
-  getMediaQueryMin,
-  gridExtendedOffsetBase,
-  motionDurationModerate,
-  motionEasingIn,
-  motionEasingOut,
-} from '@porsche-design-system/emotion';
+import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { TOAST_Z_INDEX } from '../../../constants';
 import {
@@ -14,6 +8,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { durationMd, easeIn, easeOut } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 
 /**
@@ -22,7 +17,7 @@ import { getCss } from '../../../utils';
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--_p-a';
 
-export const ANIMATION_DURATION = motionDurationModerate;
+export const ANIMATION_DURATION = durationMd;
 const duration =
   ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
     ? `var(${cssVariableAnimationDuration},${ANIMATION_DURATION})`
@@ -72,10 +67,10 @@ export const getComponentCss = (): string => {
       '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
     hydrated: {
-      animation: `${duration} $in ${motionEasingIn} forwards`,
+      animation: `${duration} $in ${easeIn} forwards`,
     },
     [toastCloseClassName]: {
-      animation: addImportantToRule(`${ANIMATION_DURATION} $out ${motionEasingOut} forwards`),
+      animation: addImportantToRule(`${ANIMATION_DURATION} $out ${easeOut} forwards`),
     },
   });
 };
