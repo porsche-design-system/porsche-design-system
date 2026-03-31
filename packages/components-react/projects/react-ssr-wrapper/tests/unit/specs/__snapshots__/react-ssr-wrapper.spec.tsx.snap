@@ -2251,16 +2251,17 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -2285,6 +2286,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -2521,16 +2523,17 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -2555,6 +2558,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -3002,11 +3006,14 @@ exports[`should render dsr component for PAccordion 1`] = `
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] &gt; div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, 0);
+    margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -14362,16 +14369,17 @@ exports[`should render dsr component for PTabs 1`] = `
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -14396,6 +14404,7 @@ exports[`should render dsr component for PTabs 1`] = `
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -14612,16 +14621,17 @@ exports[`should render dsr component for PTabsBar 1`] = `
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -14646,6 +14656,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
