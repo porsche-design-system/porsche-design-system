@@ -6,12 +6,7 @@ import { z } from 'zod';
 
 // ── Config ────────────────────────────────────────────────────────
 
-const API_BASE = process.env.PDS_MCP_API_BASE;
-
-if (!API_BASE) {
-  console.error('Missing required env variable PDS_MCP_API_BASE');
-  process.exit(1);
-}
+const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
 
 // ── API helper ────────────────────────────────────────────────────
 

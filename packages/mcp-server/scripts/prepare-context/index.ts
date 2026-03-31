@@ -1,12 +1,9 @@
-#!/usr/bin/env node
-
-import { execSync } from 'node:child_process';
-import type { Dirent } from 'node:fs';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import {
   type BedrockMetadataAttribute,
   CHANGELOG_MAX_VERSIONS,
+  changelogSourcePath,
   componentDescriptions,
   FRAMEWORKS,
   MIN_PAGE_CONTENT_BYTES,
@@ -136,6 +133,42 @@ async function generateFrameworkPages() {
       }
     }
   }
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Step 4 — Truncate changelog to keep only the N most recent versions
+// ──────────────────────────────────────────────────────────────────────────────
+
+async function truncateChangelog() {
+  let content: string;
+  try {
+    content = await fs.readFile(changelogSourcePath, 'utf-8');
+  } catch {
+    console.log('  skip: CHANGELOG.md not found');
+    return;
+  }
+
+  const lines = content.split('\n');
+
+  // Find release version headers — skip RCs, alphas, betas, and [Unreleased]
+  const releaseStarts: number[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (/^## \[\d+\.\d+\.\d+\]/.test(lines[i])) {
+      releaseStarts.push(i);
+    }
+  }
+
+  if (releaseStarts.length <= CHANGELOG_MAX_VERSIONS) {
+    console.log(`  keep: changelog has ${releaseStarts.length} release(s), no truncation needed`);
+  } else {
+    const cutoffLine = releaseStarts[CHANGELOG_MAX_VERSIONS];
+    lines.length = cutoffLine;
+    console.log(`  truncate: kept ${CHANGELOG_MAX_VERSIONS} of ${releaseStarts.length} releases`);
+  }
+
+  const changelogDir = path.join(outputDir, 'news', 'changelog');
+  await fs.mkdir(changelogDir, { recursive: true });
+  await fs.writeFile(path.join(changelogDir, 'page.mdx'), lines.join('\n').trimEnd() + '\n', 'utf-8');
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -278,6 +311,9 @@ async function prepareContextSnapshots() {
 
   console.log('\nStep 3/10: Generating per-framework pages (examples & stories)...');
   await generateFrameworkPages();
+
+  console.log('\nStep 4/10: Truncating changelog...');
+  await truncateChangelog();
 
   console.log('\nStep 6/10: Generating shared reference pages...');
   await generateSharedReferences();
