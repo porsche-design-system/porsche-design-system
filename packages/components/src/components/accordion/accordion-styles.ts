@@ -74,7 +74,7 @@ export const getComponentCss = (
   const paddingBlock = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
   const paddingInline = `calc(11.2px * (${compactFactor} - 0.64285714) + 12px)`;
   const gap = `calc(11.2px * (${compactFactor} - 0.64285714) + 4px)`;
-  const marginTop = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
+  const paddingTop = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
 
   const isIconAlignedStart = alignMarker === 'start';
 
@@ -158,12 +158,15 @@ export const getComponentCss = (
           gridTemplateRows: '0fr',
           visibility: 'hidden', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
           // as soon as all browsers are supporting `allow-discrete` reliable, visibility transition shouldn't be necessary anymore
-          transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
+          transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('padding-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
         },
         '&[open]': {
           '& > div': {
             opacity: 1,
-            marginTop,
+            paddingTop,
+            zIndex: 1,
+            paddingInline: `var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
+            marginInline: `calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
             // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the grid-template-rows rule and animation
             gridTemplateRows: '1fr',
             visibility: 'inherit', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
