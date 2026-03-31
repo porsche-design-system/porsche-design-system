@@ -136,6 +136,7 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -249,6 +250,7 @@ export const getTailwindcssTheme = () => {
   --spacing-fluid-xl: ${spacingFluidXl};
   --spacing-fluid-2xl: ${spacingFluid2Xl};
 
+  --spacing-static-2xs: ${spacingStatic2Xs};
   --spacing-static-xs: ${spacingStaticXs};
   --spacing-static-sm: ${spacingStaticSm};
   --spacing-static-md: ${spacingStaticMd};
@@ -548,48 +550,86 @@ export const getTailwindcssTheme = () => {
 
 /* Typography: Text */
 @utility prose-text-2xs {
-  @apply font-porsche-next not-italic font-normal text-2xs text-primary;
+  font: var(--font-weight-normal) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-xs {
-  @apply font-porsche-next not-italic font-normal text-xs text-primary;
+  font: var(--font-weight-normal) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
+  font: var(--font-weight-normal) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-md {
-  @apply font-porsche-next not-italic font-normal text-md text-primary;
+  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-lg {
-  @apply font-porsche-next not-italic font-normal text-lg text-primary;
+  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-xl {
-  @apply font-porsche-next not-italic font-normal text-xl text-primary;
+  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-2xl {
+  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-3xl {
+  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-4xl {
+  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-5xl {
+  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 
 /* Typography: Heading */
+@utility prose-heading-2xs {
+  font: var(--font-weight-semibold) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-heading-xs {
+  font: var(--font-weight-semibold) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
 @utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-semibold text-sm text-primary;
+  font: var(--font-weight-semibold) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-md {
-  @apply font-porsche-next not-italic font-normal text-md text-primary;
+  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-lg {
-  @apply font-porsche-next not-italic font-normal text-lg text-primary;
+  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-xl {
-  @apply font-porsche-next not-italic font-normal text-xl text-primary;
+  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-2xl {
-  @apply font-porsche-next not-italic font-normal text-2xl text-primary;
+  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-3xl {
-  @apply font-porsche-next not-italic font-normal text-3xl text-primary;
+  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-4xl {
-  @apply font-porsche-next not-italic font-normal text-4xl text-primary;
+  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-5xl {
-  @apply font-porsche-next not-italic font-normal text-5xl text-primary;
+  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 
 /* Typography: Display */

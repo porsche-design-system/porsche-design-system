@@ -1,5 +1,7 @@
-import { fontPorscheNext, fontWeightNormal, leadingNormal, typescale2Xs } from '@porsche-design-system/tokens';
+import { colorPrimary } from '../color';
+import { fontPorscheNext, fontWeightNormal, leadingNormal, typescale2Xs } from '../font';
 
 export const proseText2XsStyle = {
-  font: `normal normal ${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext}`,
+  font: `${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext}`,
+  color: colorPrimary,
 };

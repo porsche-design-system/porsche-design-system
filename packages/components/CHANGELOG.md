@@ -14,8 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Tailwind CSS`: `--spacing-static-2xs`
+  ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `SCSS`: `$spacing-static-2xs` ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `Tokens`, `Emotion`, `Vanilla Extract`: `spacingStatic2xs`
+  ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+
 ### Changed
 
+- `SCSS`:
+  - All `prose-heading-*` and `prose-text-*` mixins set `color` to the primary token by default, overridable via the CSS
+    cascade ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `Emotion`, `Vanilla Extract`:
+  - All `proseHeading*` and `proseText*` style objects set `color` to the primary token by default, overridable in your
+    own styles ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 - `Banner`: `max-width` is now `100ch` by default to increase readability. Use CSS Variable `--p-banner-max-w` and `--p-banner-offset-inline` to set custom `max-width` and horizontal offset.
   ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
 

@@ -69,6 +69,8 @@ exports[`should contain correct values for spacingStatic 1`] = `
 
 exports[`should contain correct values for spacingStatic2Xl 1`] = `"80px"`;
 
+exports[`should contain correct values for spacingStatic2Xs 1`] = `"1px"`;
+
 exports[`should contain correct values for spacingStaticLarge 1`] = `"32px"`;
 
 exports[`should contain correct values for spacingStaticLg 1`] = `"32px"`;

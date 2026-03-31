@@ -179,9 +179,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -407,9 +407,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -635,9 +635,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -863,9 +863,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -1084,9 +1084,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1311,9 +1311,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1537,9 +1537,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1763,9 +1763,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1989,9 +1989,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2215,9 +2215,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2441,9 +2441,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2666,9 +2666,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2901,9 +2901,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -3130,9 +3130,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -3358,9 +3358,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -3586,9 +3586,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -3813,9 +3813,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4041,9 +4041,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4268,9 +4268,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4496,9 +4496,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: pointer;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
     display: inline;
   }
@@ -4717,9 +4717,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -4944,9 +4944,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5170,9 +5170,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5397,9 +5397,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5623,9 +5623,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5849,9 +5849,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: not-allowed;
+    font: 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-color-primary);
+    cursor: not-allowed;
     pointer-events: none;
     opacity: 0.4;
     transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);

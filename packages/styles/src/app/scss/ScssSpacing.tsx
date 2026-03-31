@@ -26,6 +26,10 @@ export const ScssSpacing = () => {
         Fluid 2xl
       </div>
       <div className="scss-spacing__item">
+        <div className="scss-spacing__box scss-spacing__box--static-2xs scss-spacing__box--bg-error"></div>
+        Static 2xs
+      </div>
+      <div className="scss-spacing__item">
         <div className="scss-spacing__box scss-spacing__box--static-xs scss-spacing__box--bg-error"></div>
         Static xs
       </div>

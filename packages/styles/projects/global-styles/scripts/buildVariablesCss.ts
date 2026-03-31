@@ -65,6 +65,7 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -147,6 +148,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-spacing-fluid-xl: ${spacingFluidXl};
   --p-spacing-fluid-2xl: ${spacingFluid2Xl};
 
+  --p-spacing-static-2xs: ${spacingStatic2Xs};
   --p-spacing-static-xs: ${spacingStaticXs};
   --p-spacing-static-sm: ${spacingStaticSm};
   --p-spacing-static-md: ${spacingStaticMd};
