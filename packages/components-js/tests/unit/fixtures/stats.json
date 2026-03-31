@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 4863,
-    "gzipSize": 2059
+    "size": 4443,
+    "gzipSize": 1910
   },
   {
     "chunkShortName": "button",
@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 46397,
-    "gzipSize": 18747
+    "size": 46317,
+    "gzipSize": 18696
   },
   {
     "chunkShortName": "checkbox",
@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 79202,
-    "gzipSize": 25262
+    "gzipSize": 25257
   },
   {
     "chunkShortName": "modal",
