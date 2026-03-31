@@ -1,12 +1,4 @@
-import {
-  breakpointS,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  gridGap,
-  spacingFluidSmall,
-  spacingStaticSmall,
-  textXSmallStyle,
-} from '@porsche-design-system/emotion';
+import { breakpointS, getMediaQueryMax, getMediaQueryMin, gridGap } from '@porsche-design-system/emotion';
 import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
@@ -20,9 +12,15 @@ import {
   colorContrastLower,
   colorPrimary,
   colorSurface,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radius3Xl,
   radiusSm,
+  spacingFluidSm,
+  spacingStaticSm,
+  typescaleXs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { CanvasBackground } from './canvas-utils';
@@ -116,7 +114,7 @@ export const getComponentCss = (
       h2: {
         all: 'unset',
         padding: spacingStaticXs, // preserve enough spacing for focus state
-        font: textXSmallStyle.font,
+        font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary,
         textOverflow: 'ellipsis',
         overflow: 'hidden',
@@ -164,13 +162,13 @@ export const getComponentCss = (
       gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)',
       gap: spacingBase,
       alignItems: 'center',
-      padding: `${spacingStaticSmall} ${spacingBase}`,
+      padding: `${spacingStaticSm} ${spacingBase}`,
       '&:focus-visible': {
         outline: 'none',
       },
       '&__area': {
         display: 'flex',
-        gap: spacingStaticSmall,
+        gap: spacingStaticSm,
         alignItems: 'center',
         '&--start': {
           justifyContent: 'flex-start',
@@ -280,7 +278,7 @@ export const getComponentCss = (
     footer: {
       zIndex: 5,
       gridArea: 'footer',
-      padding: `${spacingBase} ${spacingBase} ${spacingFluidSmall}`,
+      padding: `${spacingBase} ${spacingBase} ${spacingFluidSm}`,
       position: 'sticky',
       bottom: 0,
       '&::before': {
@@ -328,12 +326,12 @@ export const getComponentCss = (
       '&__header': {
         zIndex: 9999999,
         display: 'flex',
-        gap: spacingStaticSmall,
+        gap: spacingStaticSm,
         alignItems: 'center',
         position: 'sticky',
         top: `calc(-1 * ${spacingBase})`,
         margin: `calc(-1 * ${spacingBase}) calc(-1 * ${spacingBase}) ${spacingBase}`,
-        padding: `${spacingStaticSmall} ${spacingBase}`,
+        padding: `${spacingStaticSm} ${spacingBase}`,
         minHeight: '56px',
         boxSizing: 'border-box',
         '&--start': {
