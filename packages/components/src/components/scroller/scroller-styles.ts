@@ -7,6 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  pointerCoarseMediaQuery,
 } from '../../styles';
 import {
   colorPrimary,
@@ -66,6 +67,10 @@ const getScrollIndicatorStyles = (
     ...(hasScrollbar && {
       marginTop: `calc(-1 * ${scrollbarWidth})`,
     }),
+    ...(hasScrollbar &&
+      pointerCoarseMediaQuery({
+        marginTop: 'initial',
+      })),
     display: 'grid',
     alignSelf: 'center',
     width: '1.5rem',
@@ -115,7 +120,9 @@ export const getComponentCss = (
         : !isIndicatorNextVisible
           ? 'left'
           : 'both';
-  const mask = `${getSmoothMask(fadeEdges)} 0 0/auto no-repeat${hasScrollbar ? `,linear-gradient(black,black) 0 bottom/auto ${scrollbarWidth} no-repeat` : ''}`;
+
+  const mask = `${getSmoothMask(fadeEdges)} 0 0/auto no-repeat`;
+  const scrollbarMask = `,linear-gradient(black,black) 0 bottom/auto ${scrollbarWidth} no-repeat`;
 
   return getCss({
     '@global': {
@@ -147,13 +154,26 @@ export const getComponentCss = (
       gridTemplateColumns: `${safeZone} minmax(auto,1fr) ${safeZone}`,
       margin: `calc(-1 * ${safeZone})`, // compensate padding to ensure that `:host` is aligned with other elements
       padding: `${safeZone} 0px${hasScrollbar ? ` calc(${safeZone} + ${scrollbarWidth})` : ''}`, // ensure enough space is available for focus ring of slotted elements (horizontal space is given by `.sentinel`)
+      scrollbarWidth: hasScrollbar ? 'thin' : 'none',
+      // Override for touch devices to avoid issues with ios not rendering mask at all when using multiple mask layers
+      ...(hasScrollbar &&
+        pointerCoarseMediaQuery({
+          padding: `${safeZone} 0px`,
+          scrollbarWidth: 'none',
+        })),
       outline: 'none', // focus ring is applied to `.root`, it would be cut off by the mask if applied to `.scroll`
       overflow: 'auto hidden',
       ...(fadeEdges !== 'none' && {
-        WebkitMask: mask, // necessary for Sogou browser support :-)
-        mask,
+        WebkitMask: hasScrollbar ? `${mask}${scrollbarMask}` : mask, // necessary for Sogou browser support :-)
+        mask: hasScrollbar ? `${mask}${scrollbarMask}` : mask,
       }),
-      scrollbarWidth: hasScrollbar ? 'thin' : 'none',
+      // Override for touch devices to avoid issues with ios not rendering mask at all when using multiple mask layers
+      ...(fadeEdges !== 'none' &&
+        hasScrollbar &&
+        pointerCoarseMediaQuery({
+          WebkitMask: mask,
+          mask: mask,
+        })),
     },
     // as soon as `@container scroll-state(scrollable: left)` has better browser support we can get rid of sentinel and IntersectionObserver
     sentinel: {
