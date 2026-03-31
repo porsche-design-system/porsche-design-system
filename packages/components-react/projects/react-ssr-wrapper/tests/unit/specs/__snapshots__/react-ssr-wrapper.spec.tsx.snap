@@ -1831,9 +1831,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -2345,9 +2345,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -2617,9 +2617,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -12382,9 +12382,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -13563,9 +13563,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -14031,9 +14031,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px calc(4px + 12px);
+  scrollbar-width: thin;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: thin;
 }
 .sentinel {
   width: 4px;
@@ -14113,6 +14113,18 @@ slot {
   }
   .next:hover::after {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
+  }
+}
+
+@media(pointer:coarse) {
+  .scroll {
+    padding: 4px 0px;
+  }
+  .prev {
+    margin-top: initial;
+  }
+  .next {
+    margin-top: initial;
   }
 }
 
@@ -14463,9 +14475,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -14715,9 +14727,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
