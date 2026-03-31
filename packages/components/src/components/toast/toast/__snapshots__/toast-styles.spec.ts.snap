@@ -42,10 +42,10 @@ exports[`getComponentCss() > should return correct css 1`] = `
 }
 
   .hydrated {
-    animation: .4s in cubic-bezier(0,0,.2,1) forwards;
+    animation: var(--p-duration-md) in var(--p-ease-in) forwards;
   }
   .close {
-    animation: .4s out cubic-bezier(.4,0,.5,1) forwards !important;
+    animation: var(--p-duration-md) out var(--p-ease-out) forwards !important;
   }"
 `;
 

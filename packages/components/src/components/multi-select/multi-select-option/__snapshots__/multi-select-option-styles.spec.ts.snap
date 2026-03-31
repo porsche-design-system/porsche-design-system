@@ -12,22 +12,22 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
   display: flex;
   gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -46,11 +46,11 @@ slot {
   display: grid;
   width: calc(var(--__p-checkbox-scaling) * 1.75rem);
   height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   flex-shrink: 0;
@@ -95,22 +95,22 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 .option {
   display: flex;
   gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -129,11 +129,11 @@ slot {
   display: grid;
   width: calc(var(--__p-checkbox-scaling) * 1.75rem);
   height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   flex-shrink: 0;
@@ -189,7 +189,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   :host {
@@ -203,15 +203,15 @@ slot {
   gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -230,11 +230,11 @@ slot {
   display: grid;
   width: calc(var(--__p-checkbox-scaling) * 1.75rem);
   height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
@@ -284,7 +284,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   :host {
@@ -298,15 +298,15 @@ slot {
   gap: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-multi-select-option-scaling) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -325,11 +325,11 @@ slot {
   display: grid;
   width: calc(var(--__p-checkbox-scaling) * 1.75rem);
   height: calc(var(--__p-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;

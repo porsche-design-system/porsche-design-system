@@ -4,11 +4,11 @@ exports[`getComponentCss() > should return correct css for state: error, hasActi
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-error-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -22,7 +22,7 @@ exports[`getComponentCss() > should return correct css for state: error, hasActi
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -40,12 +40,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -54,7 +54,7 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .close {
@@ -62,7 +62,7 @@ slot[name="heading"] {
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
@@ -78,11 +78,11 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-info-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -96,7 +96,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -114,12 +114,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -128,7 +128,7 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .close {
@@ -136,7 +136,7 @@ slot[name="heading"] {
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
@@ -152,11 +152,11 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-info-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -170,7 +170,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -188,12 +188,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -202,7 +202,7 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .close {
@@ -210,7 +210,7 @@ slot[name="heading"] {
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
@@ -226,11 +226,11 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-info-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -244,7 +244,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -262,12 +262,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -276,18 +276,18 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .action {
-  margin-top: 2px;
+  margin-top: 1px;
 }
 .close {
   --p-internal-button-scaling: 0.5;
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
@@ -306,11 +306,11 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-info-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -324,7 +324,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -342,12 +342,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -356,18 +356,18 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .action {
-  margin-top: 2px;
+  margin-top: 1px;
 }
 .close {
   --p-internal-button-scaling: 0.5;
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
@@ -386,11 +386,11 @@ exports[`getComponentCss() > should return correct css for state: success, hasAc
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-success-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -404,7 +404,7 @@ exports[`getComponentCss() > should return correct css for state: success, hasAc
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -422,12 +422,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -436,7 +436,7 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .close {
@@ -444,7 +444,7 @@ slot[name="heading"] {
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
@@ -460,11 +460,11 @@ exports[`getComponentCss() > should return correct css for state: warning, hasAc
 ":host {
   display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
-  gap: 16px !important;
+  gap: var(--p-spacing-static-md) !important;
   place-items: start !important;
-  padding: 16px !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
+  padding: var(--p-spacing-static-md) !important;
+  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
+  backdrop-filter: var(--p-blur-frosted) !important;
   background: var(--p-color-warning-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
@@ -478,7 +478,7 @@ exports[`getComponentCss() > should return correct css for state: warning, hasAc
   all: unset !important;
 }
 slot[name="heading"] {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -496,12 +496,12 @@ slot[name="heading"] {
 }
 
 .heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
 .description {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
 }
@@ -510,7 +510,7 @@ slot[name="heading"] {
 }
 .content {
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 .close {
@@ -518,7 +518,7 @@ slot[name="heading"] {
 }
 @media(min-width:760px) {
   .content {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 

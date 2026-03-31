@@ -20,7 +20,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -29,7 +29,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -103,7 +103,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-md) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -112,7 +112,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -188,7 +188,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-md) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -197,7 +197,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -273,7 +273,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -282,7 +282,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -359,7 +359,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -368,7 +368,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -434,7 +434,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -443,7 +443,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(min-width:480px) {
   ::slotted(a), ::slotted(button) {
@@ -538,7 +538,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -547,7 +547,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
