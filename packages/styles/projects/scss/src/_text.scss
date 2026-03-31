@@ -1,22 +1,40 @@
 @use 'font';
+@use 'color';
 
+@mixin -prose-text($size) {
+  font: font.$font-weight-normal $size / font.$leading-normal font.$font-porsche-next;
+  color: color.$color-primary;
+}
+
+@mixin prose-text-5xl {
+  @include -prose-text(font.$typescale-5xl);
+}
+@mixin prose-text-4xl {
+  @include -prose-text(font.$typescale-4xl);
+}
+@mixin prose-text-3xl {
+  @include -prose-text(font.$typescale-3xl);
+}
+@mixin prose-text-2xl {
+  @include -prose-text(font.$typescale-2xl);
+}
 @mixin prose-text-xl {
-  font: normal normal font.$font-weight-normal font.$typescale-xl / font.$leading-normal font.$font-porsche-next;
+  @include -prose-text(font.$typescale-xl);
 }
 @mixin prose-text-lg {
-  font: normal normal font.$font-weight-normal font.$typescale-lg / font.$leading-normal font.$font-porsche-next;
+  @include -prose-text(font.$typescale-lg);
 }
 @mixin prose-text-md {
-  font: normal normal font.$font-weight-normal font.$typescale-md / font.$leading-normal font.$font-porsche-next;
+  @include -prose-text(font.$typescale-md);
 }
 @mixin prose-text-sm {
-  font: normal normal font.$font-weight-normal font.$typescale-sm / font.$leading-normal font.$font-porsche-next;
+  @include -prose-text(font.$typescale-sm);
 }
 @mixin prose-text-xs {
-  font: normal normal font.$font-weight-normal font.$typescale-xs / font.$leading-normal font.$font-porsche-next;
+  @include -prose-text(font.$typescale-xs);
 }
 @mixin prose-text-2xs {
-  font: normal normal font.$font-weight-normal font.$typescale-2xs / font.$leading-normal font.$font-porsche-next;
+  @include -prose-text(font.$typescale-2xs);
 }
 
 /* alias (deprecated) */
@@ -43,4 +61,3 @@
 @mixin pds-text-xx-small {
   @include prose-text-2xs();
 }
-

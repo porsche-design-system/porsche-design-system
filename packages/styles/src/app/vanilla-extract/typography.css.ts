@@ -1,5 +1,6 @@
 import {
   proseHeading2XlStyle,
+  proseHeading2XsStyle,
   proseHeading3XlStyle,
   proseHeading4XlStyle,
   proseHeading5XlStyle,
@@ -7,7 +8,12 @@ import {
   proseHeadingMdStyle,
   proseHeadingSmStyle,
   proseHeadingXlStyle,
+  proseHeadingXsStyle,
+  proseText2XlStyle,
   proseText2XsStyle,
+  proseText3XlStyle,
+  proseText4XlStyle,
+  proseText5XlStyle,
   proseTextLgStyle,
   proseTextMdStyle,
   proseTextSmStyle,
@@ -52,47 +58,77 @@ export const headingXl = style({
   margin: 0,
 });
 
-export const headingLarge = style({
+export const headingLg = style({
   ...proseHeadingLgStyle,
   margin: 0,
 });
 
-export const headingMedium = style({
+export const headingMd = style({
   ...proseHeadingMdStyle,
   margin: 0,
 });
 
-export const headingSmall = style({
+export const headingSm = style({
   ...proseHeadingSmStyle,
   margin: 0,
 });
 
-export const textXLarge = style({
+export const headingXs = style({
+  ...proseHeadingXsStyle,
+  margin: 0,
+});
+
+export const heading2Xs = style({
+  ...proseHeading2XsStyle,
+  margin: 0,
+});
+
+export const text5Xl = style({
+  ...proseText5XlStyle,
+  margin: 0,
+});
+
+export const text4Xl = style({
+  ...proseText4XlStyle,
+  margin: 0,
+});
+
+export const text3Xl = style({
+  ...proseText3XlStyle,
+  margin: 0,
+});
+
+export const text2Xl = style({
+  ...proseText2XlStyle,
+  margin: 0,
+});
+
+export const textXl = style({
   ...proseTextXlStyle,
   margin: 0,
 });
 
-export const textLarge = style({
+export const textLg = style({
   ...proseTextLgStyle,
   margin: 0,
 });
 
-export const textMedium = style({
+export const textMd = style({
   ...proseTextMdStyle,
   margin: 0,
 });
 
-export const textSmall = style({
+export const textSm = style({
   ...proseTextSmStyle,
   margin: 0,
 });
 
-export const textXSmall = style({
+export const textXs = style({
   ...proseTextXsStyle,
   margin: 0,
 });
 
-export const textXXSmall = style({
+export const text2Xs = style({
   ...proseText2XsStyle,
   margin: 0,
 });

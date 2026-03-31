@@ -8,6 +8,7 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -67,6 +68,10 @@ export const EmotionSpacing = () => {
       <SpacingRow>
         <FluidBox size={spacingFluid2Xl} />
         Fluid 2xl
+      </SpacingRow>
+      <SpacingRow>
+        <StaticBox size={spacingStatic2Xs} />
+        Static 2xs
       </SpacingRow>
       <SpacingRow>
         <StaticBox size={spacingStaticXs} />

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import {
   proseHeading2XlStyle,
+  proseHeading2XsStyle,
   proseHeading3XlStyle,
   proseHeading4XlStyle,
   proseHeading5XlStyle,
@@ -8,7 +9,12 @@ import {
   proseHeadingMdStyle,
   proseHeadingSmStyle,
   proseHeadingXlStyle,
+  proseHeadingXsStyle,
+  proseText2XlStyle,
   proseText2XsStyle,
+  proseText3XlStyle,
+  proseText4XlStyle,
+  proseText5XlStyle,
   proseTextLgStyle,
   proseTextMdStyle,
   proseTextSmStyle,
@@ -26,72 +32,102 @@ const EmotionTypographyWrapper = styled.div(({ theme }) => ({
   color: theme.primary,
 }));
 
-const Heading5XLarge = styled.h2({
+const Heading5Xl = styled.h2({
   ...proseHeading5XlStyle,
   margin: 0,
 });
 
-const Heading4XLarge = styled.h2({
+const Heading4Xl = styled.h2({
   ...proseHeading4XlStyle,
   margin: 0,
 });
 
-const Heading3XLarge = styled.h2({
+const Heading3Xl = styled.h2({
   ...proseHeading3XlStyle,
   margin: 0,
 });
 
-const Heading2XLarge = styled.h2({
+const Heading2Xl = styled.h2({
   ...proseHeading2XlStyle,
   margin: 0,
 });
 
-const HeadingXLarge = styled.h3({
+const HeadingXl = styled.h3({
   ...proseHeadingXlStyle,
   margin: 0,
 });
 
-const HeadingLarge = styled.h4({
+const HeadingLg = styled.h4({
   ...proseHeadingLgStyle,
   margin: 0,
 });
 
-const HeadingMedium = styled.h5({
+const HeadingMd = styled.h5({
   ...proseHeadingMdStyle,
   margin: 0,
 });
 
-const HeadingSmall = styled.h6({
+const HeadingSm = styled.h6({
   ...proseHeadingSmStyle,
   margin: 0,
 });
 
-const TextXLarge = styled.p({
+const HeadingXs = styled.h6({
+  ...proseHeadingXsStyle,
+  margin: 0,
+});
+
+const Heading2Xs = styled.h6({
+  ...proseHeading2XsStyle,
+  margin: 0,
+});
+
+const Text5Xl = styled.p({
+  ...proseText5XlStyle,
+  margin: 0,
+});
+
+const Text4Xl = styled.p({
+  ...proseText4XlStyle,
+  margin: 0,
+});
+
+const Text3Xl = styled.p({
+  ...proseText3XlStyle,
+  margin: 0,
+});
+
+const Text2Xl = styled.p({
+  ...proseText2XlStyle,
+  margin: 0,
+});
+
+const TextXl = styled.p({
   ...proseTextXlStyle,
   margin: 0,
 });
 
-const TextLarge = styled.p({
+const TextLg = styled.p({
   ...proseTextLgStyle,
   margin: 0,
 });
 
-const TextMedium = styled.p({
+const TextMd = styled.p({
   ...proseTextMdStyle,
   margin: 0,
 });
 
-const TextSmallStyled = styled.p({
+const TextSm = styled.p({
   ...proseTextSmStyle,
   margin: 0,
 });
 
-const TextXSmall = styled.p({
+const TextXs = styled.p({
   ...proseTextXsStyle,
   margin: 0,
 });
 
-const Text2XSmall = styled.p({
+const Text2Xs = styled.p({
   ...proseText2XsStyle,
   margin: 0,
 });
@@ -100,22 +136,28 @@ export const EmotionTypography = () => {
   return (
     <>
       <EmotionTypographyWrapper>
-        <Heading5XLarge>Heading 5xl</Heading5XLarge>
-        <Heading4XLarge>Heading 4xl</Heading4XLarge>
-        <Heading3XLarge>Heading 3xl</Heading3XLarge>
-        <Heading2XLarge>Heading 2xl</Heading2XLarge>
-        <HeadingXLarge>Heading xl</HeadingXLarge>
-        <HeadingLarge>Heading lg</HeadingLarge>
-        <HeadingMedium>Heading md</HeadingMedium>
-        <HeadingSmall>Heading sm</HeadingSmall>
+        <Heading5Xl>Heading 5xl</Heading5Xl>
+        <Heading4Xl>Heading 4xl</Heading4Xl>
+        <Heading3Xl>Heading 3xl</Heading3Xl>
+        <Heading2Xl>Heading 2xl</Heading2Xl>
+        <HeadingXl>Heading xl</HeadingXl>
+        <HeadingLg>Heading lg</HeadingLg>
+        <HeadingMd>Heading md</HeadingMd>
+        <HeadingSm>Heading sm</HeadingSm>
+        <HeadingXs>Heading xs</HeadingXs>
+        <Heading2Xs>Heading 2xs</Heading2Xs>
       </EmotionTypographyWrapper>
       <EmotionTypographyWrapper>
-        <TextXLarge>text xl</TextXLarge>
-        <TextLarge>text lg</TextLarge>
-        <TextMedium>text md</TextMedium>
-        <TextSmallStyled>text sm</TextSmallStyled>
-        <TextXSmall>text xs</TextXSmall>
-        <Text2XSmall>text 2xs</Text2XSmall>
+        <Text5Xl>Text 5xl</Text5Xl>
+        <Text4Xl>Text 4xl</Text4Xl>
+        <Text3Xl>Text 3xl</Text3Xl>
+        <Text2Xl>Text 2xl</Text2Xl>
+        <TextXl>Text xl</TextXl>
+        <TextLg>Text lg</TextLg>
+        <TextMd>Text md</TextMd>
+        <TextSm>Text sm</TextSm>
+        <TextXs>Text xs</TextXs>
+        <Text2Xs>Text 2xs</Text2Xs>
       </EmotionTypographyWrapper>
     </>
   );

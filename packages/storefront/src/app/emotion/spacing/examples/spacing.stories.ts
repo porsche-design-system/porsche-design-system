@@ -16,7 +16,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-xs h-fluid-xs bg-info' },
+              properties: { className: 'w-fluid-xs h-fluid-xs bg-[blue]/50' },
             },
             'width: spacingFluidXs, height: spacingFluidXs',
           ],
@@ -29,7 +29,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-sm h-fluid-sm bg-info' },
+              properties: { className: 'w-fluid-sm h-fluid-sm bg-[blue]/50' },
             },
             'width: spacingFluidSm, height: spacingFluidSm',
           ],
@@ -42,7 +42,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-md h-fluid-md bg-info' },
+              properties: { className: 'w-fluid-md h-fluid-md bg-[blue]/50' },
             },
             'width: spacingFluidMd, height: spacingFluidMd',
           ],
@@ -55,7 +55,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-lg h-fluid-lg bg-info' },
+              properties: { className: 'w-fluid-lg h-fluid-lg bg-[blue]/50' },
             },
             'width: spacingFluidLg, height: spacingFluidLg',
           ],
@@ -68,7 +68,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-xl h-fluid-xl bg-info' },
+              properties: { className: 'w-fluid-xl h-fluid-xl bg-[blue]/50' },
             },
             'width: spacingFluidXl, height: spacingFluidXl',
           ],
@@ -81,7 +81,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-2xl h-fluid-2xl bg-info' },
+              properties: { className: 'w-fluid-2xl h-fluid-2xl bg-[blue]/50' },
             },
             'width: spacingFluid2Xl, height: spacingFluid2Xl',
           ],
@@ -105,7 +105,20 @@ export const spacingStaticEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-xs h-static-xs bg-error' },
+              properties: { className: 'w-static-2xs h-static-2xs bg-[deeppink]/50' },
+            },
+            'width: spacingStatic2Xs, height: spacingStatic2Xs',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'w-static-xs h-static-xs bg-[deeppink]/50' },
             },
             'width: spacingStaticXs, height: spacingStaticXs',
           ],
@@ -118,7 +131,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-sm h-static-sm bg-error' },
+              properties: { className: 'w-static-sm h-static-sm bg-[deeppink]/50' },
             },
             'width: spacingStaticSm, height: spacingStaticSm',
           ],
@@ -131,7 +144,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-md h-static-md bg-error' },
+              properties: { className: 'w-static-md h-static-md bg-[deeppink]/50' },
             },
             'width: spacingStaticMd, height: spacingStaticMd',
           ],
@@ -144,7 +157,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-lg h-static-lg bg-error' },
+              properties: { className: 'w-static-lg h-static-lg bg-[deeppink]/50' },
             },
             'width: spacingStaticLg, height: spacingStaticLg',
           ],
@@ -157,7 +170,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-xl h-static-xl bg-error' },
+              properties: { className: 'w-static-xl h-static-xl bg-[deeppink]/50' },
             },
             'width: spacingStaticXl, height: spacingStaticXl',
           ],
@@ -170,7 +183,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-2xl h-static-2xl bg-error' },
+              properties: { className: 'w-static-2xl h-static-2xl bg-[deeppink]/50' },
             },
             'width: spacingStatic2Xl, height: spacingStatic2Xl',
           ],

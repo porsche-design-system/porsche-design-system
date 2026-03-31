@@ -6,6 +6,7 @@ export { spacingFluidSm } from './spacingFluidSm';
 export { spacingFluidXl } from './spacingFluidXl';
 export { spacingFluidXs } from './spacingFluidXs';
 export { spacingStatic2Xl } from './spacingStatic2Xl';
+export { spacingStatic2Xs } from './spacingStatic2Xs';
 export { spacingStaticLg } from './spacingStaticLg';
 export { spacingStaticMd } from './spacingStaticMd';
 export { spacingStaticSm } from './spacingStaticSm';
