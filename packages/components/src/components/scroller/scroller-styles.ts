@@ -159,7 +159,6 @@ export const getComponentCss = (
       ...(hasScrollbar &&
         pointerCoarseMediaQuery({
           padding: `${safeZone} 0px`,
-          scrollbarWidth: 'none',
         })),
       outline: 'none', // focus ring is applied to `.root`, it would be cut off by the mask if applied to `.scroll`
       overflow: 'auto hidden',
