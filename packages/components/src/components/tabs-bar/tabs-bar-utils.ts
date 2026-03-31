@@ -167,8 +167,8 @@ export const animateBar = (
   );
 
   // enable delayed background-color transition so it syncs with the bar animation (not applied on initial render)
-  tabs[oldTabIndex].removeAttribute(delayTabStyleAttribute);
-  tabs[newTabIndex].setAttribute(delayTabStyleAttribute, '');
+  tabs[sanitizedOldTabIndex]?.removeAttribute(delayTabStyleAttribute);
+  tabs[sanitizedNewTabIndex]?.setAttribute(delayTabStyleAttribute, '');
 
   bar.animate(
     [
