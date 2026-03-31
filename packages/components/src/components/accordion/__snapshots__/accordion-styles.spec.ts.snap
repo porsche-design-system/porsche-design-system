@@ -73,11 +73,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
@@ -217,11 +220,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -361,11 +367,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -509,11 +518,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
@@ -659,11 +671,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -805,11 +820,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -951,11 +969,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -1097,11 +1118,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
@@ -1243,11 +1267,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
@@ -1389,11 +1416,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
@@ -1535,11 +1565,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
@@ -1679,11 +1712,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), padding-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, 0);
+    margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
@@ -1823,11 +1859,14 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), padding-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
