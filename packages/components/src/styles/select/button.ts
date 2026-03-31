@@ -1,8 +1,16 @@
-import { borderWidthThin, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
 import { getDisabledBaseStyles, getFocusBaseStyles, getTransition } from '../common-styles';
-import { colorPrimary, legacyRadiusSmall, radiusLg, radiusXl } from '../css-variables';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusLg,
+  radiusXl,
+  typescaleSm,
+} from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
 
@@ -20,7 +28,7 @@ export const getButtonJssStyle = (
 
   const { formStateBorderColor, formStateBorderHoverColor, formStateBackgroundColor } = getThemedFormStateColors(state);
 
-  const borderWidth = borderWidthThin;
+  const borderWidth = '1px';
   const height = `calc(var(${cssVarScalingName}) * 3.5rem)`;
   const paddingInline = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 8px)`;
   const gap = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
@@ -37,7 +45,7 @@ export const getButtonJssStyle = (
     border: `${borderWidth} solid var(${cssVarBorderColor}, ${isOpen ? formStateBorderHoverColor : formStateBorderColor})`,
     borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
     background: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
-    font: textSmallStyle.font,
+    font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
     color: `var(${cssVarTextColor}, ${colorPrimary})`,
     cursor: isDisabled ? 'not-allowed' : 'pointer',
     ...(isDisabled && getDisabledBaseStyles()),
