@@ -274,11 +274,10 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
         isPrimary && {
           [mediaQueryMobile]: {
             display: 'block',
-            marginTop: '2px', // compensate negative margin of ::pseudo background of button-pure
             gridArea: '2/2',
             width: 'fit-content',
             height: 'fit-content',
-            placeSelf: 'start',
+            placeSelf: 'center',
             zIndex: 2,
           },
         }),
