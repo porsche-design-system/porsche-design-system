@@ -1,0 +1,14 @@
+---
+description: Storefront rules for the Next.js documentation site
+globs: packages/storefront/**
+alwaysApply: false
+---
+
+# PDS Storefront
+
+- `packages/storefront` is the Next.js documentation site and should model best-practice use of PDS components.
+- Prefer `@porsche-design-system/components-react/ssr` for UI primitives in app code and examples.
+- Keep MDX and docs content accessible: meaningful link text, correct heading order, appropriate image `alt` text, and keyboard-usable examples.
+- Avoid custom clickable `div`/`span` patterns when a PDS component or native semantic element fits.
+- If a change affects interactive UI, consider the matching validation surface: `yarn test:unit:storefront`, `yarn test:e2e:storefront`, `yarn test:a11y:storefront`, and `yarn test:vrt:storefront`.
+- Files in `public/assets/downloads/` are downloadable templates; keep them aligned with active repo guidance instead of treating them as source code behavior.
