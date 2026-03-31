@@ -57,7 +57,7 @@ slot {
   opacity: 0;
   visibility: hidden;
   transform: translate3d(calc(-1 * var(--p-spacing-static-sm)),0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -67,7 +67,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -81,7 +81,7 @@ slot {
   opacity: 0;
   visibility: hidden;
   transform: translate3d(var(--p-spacing-static-sm),0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -91,7 +91,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -175,7 +175,7 @@ slot {
   opacity: 0;
   visibility: hidden;
   transform: translate3d(calc(-1 * var(--p-spacing-static-sm)),0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -185,7 +185,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -199,7 +199,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -209,7 +209,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -293,7 +293,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -303,7 +303,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -317,7 +317,7 @@ slot {
   opacity: 0;
   visibility: hidden;
   transform: translate3d(var(--p-spacing-static-sm),0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -327,7 +327,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -411,7 +411,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -421,7 +421,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -435,7 +435,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -445,7 +445,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -532,7 +532,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -542,7 +542,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -559,7 +559,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -569,7 +569,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -657,7 +657,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -667,7 +667,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -685,7 +685,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -695,7 +695,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -795,7 +795,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -805,7 +805,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -822,7 +822,7 @@ slot {
   opacity: 1;
   visibility: inherit;
   transform: translate3d(0,0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s;
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear 0s;
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -832,7 +832,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {
@@ -927,7 +927,7 @@ slot {
   opacity: 0;
   visibility: hidden;
   transform: translate3d(calc(-1 * var(--p-spacing-static-sm)),0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
 }
 .prev:dir(rtl) {
   grid-area: 1/3;
@@ -937,7 +937,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .next {
   grid-area: 1/3;
@@ -951,7 +951,7 @@ slot {
   opacity: 0;
   visibility: hidden;
   transform: translate3d(var(--p-spacing-static-sm),0,0);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out),visibility 0s linear var(--p-transition-duration,var(--p-duration-sm));
 }
 .next:dir(rtl) {
   grid-area: 1/1;
@@ -961,7 +961,7 @@ slot {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.121 11.997-5.477-6.497-.769.642 4.94 5.858-4.94 5.858.768.642 5.476-6.494.006-.005v-.001z"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 @media(forced-colors:active) {
   .root:has(.scroll:focus-visible) {

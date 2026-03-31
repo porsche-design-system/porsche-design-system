@@ -19,7 +19,7 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
   visibility: hidden !important;
   pointer-events: none !important;
   transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
-  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
+  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) !important;
 }
 :host::backdrop {
   display: none !important;
@@ -27,7 +27,7 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 :host > :first-child {
   opacity: 0 !important;
   box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
-  transition: opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
+  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -50,10 +50,10 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 
 @supports (transition-behavior: allow-discrete) {
   :host {
-    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
   :host > :first-child {
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
 }
 "
@@ -78,7 +78,7 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
   visibility: inherit !important;
   pointer-events: inherit !important;
   transform: translate3d(0,0,0) !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) !important;
 }
 :host::backdrop {
   display: none !important;
@@ -86,7 +86,7 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 :host > :first-child {
   opacity: 1 !important;
   box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
-  transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1) !important;
+  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -108,10 +108,10 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 
 @supports (transition-behavior: allow-discrete) {
   :host {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+    transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
   :host > :first-child {
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
 }
 "

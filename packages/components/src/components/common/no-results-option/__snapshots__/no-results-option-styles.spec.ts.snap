@@ -6,15 +6,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   gap: calc(11.2px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -60,15 +60,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   gap: calc(11.2px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-multi-select-option-padding-left, calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-multi-select-scaling, 1)) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -114,15 +114,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   gap: calc(11.2px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -168,15 +168,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   gap: calc(11.2px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--p-internal-select-scaling, 1)) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);

@@ -1,4 +1,3 @@
-import { frostedGlassStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
@@ -10,6 +9,7 @@ import {
   motionDurationMap,
 } from '../../styles';
 import {
+  blurFrosted,
   colorCanvas,
   colorFrosted,
   colorPrimary,
@@ -138,7 +138,10 @@ export const getComponentCss = (
         alignItems: 'center',
         padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
         background: backgroundMap[background],
-        ...(background === 'frosted' && frostedGlassStyle),
+        ...(background === 'frosted' && {
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
+        }),
         borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
         ...forcedColorsMediaQuery({
           outline: '1px solid CanvasText',

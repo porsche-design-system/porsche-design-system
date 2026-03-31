@@ -17,7 +17,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -28,13 +28,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -59,7 +59,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -81,8 +81,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -120,7 +120,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -131,13 +131,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -162,7 +162,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -184,8 +184,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -223,7 +223,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -234,13 +234,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -265,7 +265,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -287,8 +287,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -326,7 +326,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -337,13 +337,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -368,7 +368,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -396,8 +396,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -435,7 +435,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -446,13 +446,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -477,7 +477,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-start {
     display: none;
@@ -505,8 +505,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -544,7 +544,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -555,13 +555,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -586,7 +586,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-start {
     display: none;
@@ -614,8 +614,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -653,7 +653,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -664,13 +664,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -695,7 +695,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -723,8 +723,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -762,7 +762,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -773,13 +773,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -804,7 +804,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-start {
     display: none;
@@ -832,8 +832,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -871,7 +871,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -882,13 +882,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -913,7 +913,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -941,8 +941,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -980,7 +980,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -991,13 +991,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1022,7 +1022,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-start {
     display: none;
@@ -1050,8 +1050,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1089,7 +1089,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1100,13 +1100,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1131,7 +1131,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -1159,8 +1159,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1198,7 +1198,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1209,13 +1209,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1240,7 +1240,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-start {
     display: none;
@@ -1268,8 +1268,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1307,7 +1307,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1318,13 +1318,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1349,7 +1349,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -1377,8 +1377,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1416,7 +1416,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1427,13 +1427,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1458,7 +1458,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
 }
 
@@ -1483,8 +1483,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1522,7 +1522,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1533,13 +1533,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1564,7 +1564,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip {
     display: none;
@@ -1592,8 +1592,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1631,7 +1631,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1642,13 +1642,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1673,7 +1673,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
 }
 
@@ -1698,8 +1698,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1737,7 +1737,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1748,13 +1748,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1779,7 +1779,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-end:nth-last-child(3) {
     display: none;
@@ -1807,8 +1807,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1846,7 +1846,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1857,13 +1857,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -1888,7 +1888,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-end:nth-last-child(3) {
     display: none;
@@ -1919,8 +1919,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -1958,7 +1958,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -1969,13 +1969,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -2000,7 +2000,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-end:nth-last-child(3) {
     display: none;
@@ -2031,8 +2031,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {
@@ -2070,7 +2070,7 @@ nav {
 }
 ul {
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin: 0;
   padding: 0;
 }
@@ -2081,13 +2081,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -2112,7 +2112,7 @@ span:not(.ellipsis):focus-visible {
 }
 @media(min-width:760px) {
   ul {
-    gap: 8px;
+    gap: var(--p-spacing-static-sm);
   }
   li.ellip-end:nth-last-child(3) {
     display: none;
@@ -2143,8 +2143,8 @@ span:not(.ellipsis):focus-visible {
 
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
   }
 @media(forced-colors:active) {

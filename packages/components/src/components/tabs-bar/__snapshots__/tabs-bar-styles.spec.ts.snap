@@ -26,7 +26,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -55,7 +55,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -111,7 +111,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -140,7 +140,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -198,7 +198,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -227,7 +227,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -285,7 +285,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -314,7 +314,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -373,7 +373,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -402,7 +402,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -450,7 +450,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -509,7 +509,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -556,7 +556,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   outline-offset: 2px !important;
 }
 ::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
@@ -585,7 +585,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
-    transition: color var(--p-transition-duration, .4s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }

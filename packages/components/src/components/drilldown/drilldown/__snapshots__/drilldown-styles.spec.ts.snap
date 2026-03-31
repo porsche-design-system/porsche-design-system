@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for isOpen: false, isPrimary: true and isSecondaryScrollerVisible: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -11,7 +11,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -33,7 +33,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -42,7 +42,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     z-index: 999999999;
     outline: 0;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete, background var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), backdrop-filter var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), -webkit-backdrop-filter var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete, background var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
   }
   dialog::backdrop {
     display: none;
@@ -52,14 +52,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       grid-area: 3/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -78,7 +78,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     display: grid;
     opacity: 0;
     transform: translate3d(-100%,0,0);
-    transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   .drawer:dir(rtl) {
     transform: translate3d(100%,0,0);
@@ -101,7 +101,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 @media(min-width:760px) {
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
     }
     .drawer:dir(rtl) {
@@ -129,15 +129,15 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -161,11 +161,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     }
     .back {
       display: block;
-      margin-top: 2px;
       grid-area: 2/2;
       width: fit-content;
       height: fit-content;
-      place-self: start;
+      place-self: center;
       z-index: 2;
     }
 }
@@ -175,7 +174,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false and isSecondaryScrollerVisible: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -183,7 +182,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -205,7 +204,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -214,10 +213,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     z-index: 999999999;
     outline: 0;
     visibility: inherit;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -231,13 +230,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-area: 4/2/auto/-2;
       z-index: 0;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      padding-block-end: var(--p-spacing-fluid-lg);
     }
 }
 
@@ -247,7 +246,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -267,7 +266,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(min-width:760px) {
     .drawer {
       width: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: var(--_p-b);
     }
     .drawer::after {
@@ -292,15 +291,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -343,7 +342,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false and isSecondaryScrollerVisible: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -351,7 +350,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -373,7 +372,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -382,10 +381,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     z-index: 999999999;
     outline: 0;
     visibility: inherit;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -411,7 +410,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -431,7 +430,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(min-width:760px) {
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
     }
     .drawer:dir(rtl) {
@@ -459,15 +458,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -496,7 +495,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -504,7 +503,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -526,7 +525,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -535,10 +534,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     z-index: 999999999;
     outline: 0;
     visibility: inherit;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -548,14 +547,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-area: 3/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -565,14 +564,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-area: 4/2/auto/-2;
       z-index: 0;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-mobile var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -582,7 +581,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -602,7 +601,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(min-width:760px) {
     .drawer {
       width: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: var(--_p-b);
     }
     .drawer::after {
@@ -627,15 +626,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -678,7 +677,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -686,7 +685,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -708,7 +707,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -717,10 +716,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     z-index: 999999999;
     outline: 0;
     visibility: inherit;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -730,14 +729,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-area: 3/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -756,7 +755,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -776,7 +775,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(min-width:760px) {
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
     }
     .drawer:dir(rtl) {
@@ -804,15 +803,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -836,11 +835,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     }
     .back {
       display: block;
-      margin-top: 2px;
       grid-area: 2/2;
       width: fit-content;
       height: fit-content;
-      place-self: start;
+      place-self: center;
       z-index: 2;
     }
 }
@@ -850,7 +848,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 2`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -858,7 +856,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -880,7 +878,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -889,10 +887,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     z-index: 999999999;
     outline: 0;
     visibility: inherit;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -902,14 +900,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-area: 3/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -928,7 +926,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -948,7 +946,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(min-width:760px) {
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
     }
     .drawer:dir(rtl) {
@@ -976,15 +974,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -1008,11 +1006,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     }
     .back {
       display: block;
-      margin-top: 2px;
       grid-area: 2/2;
       width: fit-content;
       height: fit-content;
-      place-self: start;
+      place-self: center;
       z-index: 2;
     }
 }
@@ -1022,7 +1019,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 3`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -1030,7 +1027,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
 @keyframes slide-up-desktop {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -1052,7 +1049,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
   dialog {
     all: unset;
@@ -1061,10 +1058,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     z-index: 999999999;
     outline: 0;
     visibility: inherit;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+    transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -1074,14 +1071,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-area: 3/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -1100,7 +1097,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -1120,7 +1117,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(min-width:760px) {
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
     }
     .drawer:dir(rtl) {
@@ -1148,15 +1145,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       --p-color-frosted: hsl(240 2% 43% / 0.228);
       --p-color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
       position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
+      inset-inline-start: calc(100% + var(--p-spacing-fluid-sm));
+      inset-block-start: var(--p-spacing-fluid-sm);
+      padding: var(--p-spacing-static-sm);
     }
 }
 
 @media(max-width:759px) {
     .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-b);
     }
     .drawer::after {
@@ -1180,11 +1177,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     }
     .back {
       display: block;
-      margin-top: 2px;
       grid-area: 2/2;
       width: fit-content;
       height: fit-content;
-      place-self: start;
+      place-self: center;
       z-index: 2;
     }
 }

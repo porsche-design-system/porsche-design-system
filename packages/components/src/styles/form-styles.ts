@@ -1,25 +1,27 @@
-import {
-  fontLineHeight,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { colorContrastHigh } from './css-variables';
+import {
+  colorContrastHigh,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
+} from './css-variables';
 
 export const formElementLayeredGap = '9px'; // to have same distance vertically and horizontally for e.g. button/icon within form element
 // TODO: basic button/icon padding can already be set within style function instead of on component style level
-export const formButtonOrIconPadding = spacingStaticXSmall;
+export const formButtonOrIconPadding = spacingStaticXs;
 // TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
 //  unfortunately line-height alignment breaks for a select element for some reasons then
 // TODO: basic form element padding can already be set within style function instead of on component style level
-export const formElementPaddingVertical = spacingStaticSmall;
+export const formElementPaddingVertical = spacingStaticSm;
 // TODO: basic form element padding can already be set within style function instead of on component style level
-export const formElementPaddingHorizontal = spacingStaticMedium;
+export const formElementPaddingHorizontal = spacingStaticMd;
 export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 | 2): string => {
   // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
-  return `calc(${formElementLayeredGap} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
+  return `calc(${formElementLayeredGap} + ${formElementPaddingHorizontal} / 2 + (${leadingNormal} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
 };
 
 export const getUnitCounterJssStyle = (): JssStyle => {
@@ -30,7 +32,7 @@ export const getUnitCounterJssStyle = (): JssStyle => {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    font: textSmallStyle.font,
+    font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
     color: colorContrastHigh,
   };
 };
