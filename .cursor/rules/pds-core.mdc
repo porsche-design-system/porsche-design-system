@@ -1,0 +1,15 @@
+---
+description: Core monorepo workflow and package conventions for Porsche Design System
+alwaysApply: true
+---
+
+# PDS Core
+
+- Use `yarn`, not `npm`.
+- Assume Volta-pinned tooling from the repo root: Node 24 and Yarn 1.
+- Prefer the nearest `AGENTS.md` for package-specific guidance before applying generic repo rules.
+- Build dependencies in repo order: `shared` -> `tokens` -> `assets` -> `styles` -> `utilities` -> `component-meta` -> `components` -> `components-js` -> framework wrappers -> `storefront`.
+- Use `yarn build` for full builds and `yarn build:core-dependencies` when component work only needs upstream packages.
+- Build before running cross-package e2e, a11y, or VRT tests.
+- Keep accessibility requirements non-negotiable: keyboard support, visible focus, forced-colors support, and semantic HTML.
+- Prefer existing `p-` prefixed PDS components and wrappers over custom primitives.
