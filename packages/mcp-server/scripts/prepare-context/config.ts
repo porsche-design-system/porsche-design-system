@@ -11,6 +11,7 @@ const monorepoRoot = path.resolve(__dirname, '..', '..', '..', '..');
 export const sourceDir = path.join(monorepoRoot, 'packages/storefront/src/app/');
 export const outputDir = path.join(monorepoRoot, 'packages/mcp-server/context-snapshots');
 export const examplesDir = path.join(monorepoRoot, 'packages/shared/src/examples');
+export const changelogSourcePath = path.join(monorepoRoot, 'packages/components/CHANGELOG.md');
 export const componentMetaPath = path.join(monorepoRoot, 'packages/component-meta/src/lib/componentMeta.ts');
 export const storefrontSrcDir = path.join(monorepoRoot, 'packages/storefront/src');
 
@@ -22,7 +23,7 @@ export const FRAMEWORKS = ['vanilla-js', 'react', 'angular', 'vue'] as const;
 export type Framework = (typeof FRAMEWORKS)[number];
 
 /** Maximum number of version entries to keep in the changelog */
-export const CHANGELOG_MAX_VERSIONS = 10;
+export const CHANGELOG_MAX_VERSIONS = 2;
 
 /** Pages with less meaningful content (bytes) than this are removed */
 export const MIN_PAGE_CONTENT_BYTES = 100;
