@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 79202,
-    "gzipSize": 25262
+    "gzipSize": 25260
   },
   {
     "chunkShortName": "modal",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 6637,
-    "gzipSize": 2881
+    "size": 6798,
+    "gzipSize": 2937
   },
   {
     "chunkShortName": "segmented-control",
@@ -256,8 +256,8 @@
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 8453,
-    "gzipSize": 3465
+    "size": 8455,
+    "gzipSize": 3470
   },
   {
     "chunkShortName": "tag",
