@@ -47,7 +47,7 @@ export const getComponentCss = (isOpen: boolean): string => {
           inset: `auto auto var(${cssVariableBottom},${topBottomFallback}) 50vw`,
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`, // needed for rounded box-shadow
-          inlineSize: `min(calc(100vw - 2 * var(${cssVariableOffsetInline}, ${gridExtendedOffsetBase})), var(${cssVariableMaxWidth}, 100ch))`,
+          width: `min(calc(100vw - 2 * var(${cssVariableOffsetInline}, ${gridExtendedOffsetBase})), var(${cssVariableMaxWidth}, 100ch))`,
           '&::backdrop': {
             display: 'none',
           },

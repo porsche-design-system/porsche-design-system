@@ -3107,8 +3107,8 @@ exports[`should render dsr component for PBanner 1`] = `
   position: fixed !important;
   margin: 0 !important;
   padding: 0 !important;
-  inset: auto max(22px, 10.625vw - 12px) var(--p-banner-position-bottom,56px) !important;
-  width: auto !important;
+  inset: auto auto var(--p-banner-position-bottom,56px) 50vw !important;
+  width: min(calc(100vw - 2 * var(--p-banner-offset-inline, max(22px, 10.625vw - 12px))), var(--p-banner-max-w, 100ch)) !important;
   height: auto !important;
   max-width: 100% !important;
   border: 0 !important;
@@ -3118,7 +3118,7 @@ exports[`should render dsr component for PBanner 1`] = `
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
+  transform: translate3d(-50%,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
   transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
 }
 :host::backdrop {
@@ -3137,14 +3137,14 @@ exports[`should render dsr component for PBanner 1`] = `
 }
 @media(min-width:760px) {
   :host {
-    inset: var(--p-banner-position-top,56px) calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) auto !important;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top,56px)),0) !important;
+    inset: var(--p-banner-position-top,56px) auto auto 50vw !important;
+    transform: translate3d(-50%,calc(-100% - var(--p-banner-position-top,56px)),0) !important;
   }
 }
 
 @media(min-width:1920px) {
   :host {
-    inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    inset-inline: 50vw auto !important;
   }
 }
 
