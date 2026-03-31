@@ -1831,9 +1831,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -2247,16 +2247,17 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -2281,6 +2282,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -2339,9 +2341,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -2517,16 +2519,17 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -2551,6 +2554,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -2609,9 +2613,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -2998,11 +3002,14 @@ exports[`should render dsr component for PAccordion 1`] = `
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] &gt; div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, 0);
+    margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
     visibility: inherit;
     transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -12379,9 +12386,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -13561,9 +13568,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -14027,9 +14034,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px calc(4px + 12px);
+  scrollbar-width: thin;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: thin;
 }
 .sentinel {
   width: 4px;
@@ -14109,6 +14116,18 @@ slot {
   }
   .next:hover::after {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
+  }
+}
+
+@media(pointer:coarse) {
+  .scroll {
+    padding: 4px 0px;
+  }
+  .prev {
+    margin-top: initial;
+  }
+  .next {
+    margin-top: initial;
   }
 }
 
@@ -14363,16 +14382,17 @@ exports[`should render dsr component for PTabs 1`] = `
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -14397,6 +14417,7 @@ exports[`should render dsr component for PTabs 1`] = `
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -14455,9 +14476,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
@@ -14613,16 +14634,17 @@ exports[`should render dsr component for PTabsBar 1`] = `
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
+::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
   background: var(--p-color-primary) !important;
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -14647,6 +14669,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 
 @media(hover:hover) {
   ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
@@ -14705,9 +14728,9 @@ slot {
   grid-template-columns: 4px minmax(auto,1fr) 4px;
   margin: calc(-1 * 4px);
   padding: 4px 0px;
+  scrollbar-width: none;
   outline: none;
   overflow: auto hidden;
-  scrollbar-width: none;
 }
 .sentinel {
   width: 4px;
