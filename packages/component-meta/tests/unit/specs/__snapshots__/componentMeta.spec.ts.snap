@@ -144,6 +144,14 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-banner-max-w": {
+        "defaultValue": "100ch",
+        "description": "Defines the max-width of banner",
+      },
+      "--p-banner-offset-inline": {
+        "defaultValue": "Porsche Grid: gridExtendedOffsetBase",
+        "description": "Defines the offset left and right from the screen",
+      },
       "--p-banner-position-bottom": {
         "defaultValue": "56px",
         "description": "Position bottom of banner. Only has an effect below breakpoint 's'.",
