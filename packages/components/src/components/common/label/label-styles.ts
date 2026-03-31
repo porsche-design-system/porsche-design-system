@@ -66,9 +66,9 @@ export const getFunctionalComponentLabelStyles = (
         fontSize: typescaleXs,
         color: colorContrastHigh,
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXs}` })
+          getHiddenTextJssStyle(isHidden, { marginTop: `calc(-1 * ${spacingStaticXs})` })
         ),
-        marginTop: `-${spacingStaticXs}`,
+        marginTop: `calc(-1 * ${spacingStaticXs})`,
       },
       ...additionalDefaultJssStyle,
     },

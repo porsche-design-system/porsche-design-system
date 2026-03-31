@@ -67,6 +67,6 @@ export const getNotificationContentJssStyle = (): JssStyle => ({
   gap: spacingStaticXs,
   marginTop: '2px', // To be center aligned with close button
   [mediaQueryMinS]: {
-    marginLeft: `-${spacingStaticSm}`,
+    marginLeft: `calc(-1 * ${spacingStaticSm})`,
   },
 });
