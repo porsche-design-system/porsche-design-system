@@ -1,8 +1,8 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 7382,
-    "gzipSize": 3008
+    "size": 7497,
+    "gzipSize": 3034
   },
   {
     "chunkShortName": "banner",
@@ -256,8 +256,8 @@
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 8357,
-    "gzipSize": 3422
+    "size": 8453,
+    "gzipSize": 3465
   },
   {
     "chunkShortName": "tag",
