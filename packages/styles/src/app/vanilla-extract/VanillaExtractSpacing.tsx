@@ -7,6 +7,7 @@ import {
   vanillaExtractSpacingFluidXs,
   vanillaExtractSpacingRow,
   vanillaExtractSpacingStatic2Xl,
+  vanillaExtractSpacingStatic2Xs,
   vanillaExtractSpacingStaticLg,
   vanillaExtractSpacingStaticMd,
   vanillaExtractSpacingStaticSm,
@@ -41,6 +42,10 @@ export const VanillaExtractSpacing = () => {
       <div className={vanillaExtractSpacingRow}>
         <div className={vanillaExtractSpacingFluid2Xl} />
         Fluid 2xl
+      </div>
+      <div className={vanillaExtractSpacingRow}>
+        <div className={vanillaExtractSpacingStatic2Xs} />
+        Static 2xs
       </div>
       <div className={vanillaExtractSpacingRow}>
         <div className={vanillaExtractSpacingStaticXs} />

@@ -609,7 +609,8 @@ $shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
 `;
 
 exports[`should contain correct scss content for file ./dist/_spacing.scss 1`] = `
-"$spacing-static-xs: 4px;
+"$spacing-static-2xs: 1px;
+$spacing-static-xs: 4px;
 $spacing-static-sm: 8px;
 $spacing-static-md: 16px;
 $spacing-static-lg: 32px;

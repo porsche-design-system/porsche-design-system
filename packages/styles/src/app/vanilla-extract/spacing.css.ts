@@ -7,6 +7,7 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -72,6 +73,12 @@ export const vanillaExtractSpacingFluid2Xl = style({
   ...getFluidBoxStyle,
   width: spacingFluid2Xl,
   height: spacingFluid2Xl,
+});
+
+export const vanillaExtractSpacingStatic2Xs = style({
+  ...getStaticBoxStyle,
+  width: spacingStatic2Xs,
+  height: spacingStatic2Xs,
 });
 
 export const vanillaExtractSpacingStaticXs = style({

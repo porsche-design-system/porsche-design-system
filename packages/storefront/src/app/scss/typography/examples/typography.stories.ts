@@ -50,6 +50,16 @@ export const typographyScssStoryHeading: Story<'div'> = {
           properties: { className: 'prose-heading-sm' },
           children: ['@include prose-heading-sm;'],
         },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-xs' },
+          children: ['@include prose-heading-xs;'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-2xs' },
+          children: ['@include prose-heading-2xs;'],
+        },
       ],
     },
   ],
@@ -63,6 +73,26 @@ export const typographyScssStoryText: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-5xl hyphens-auto' },
+          children: ['@include prose-text-5xl;'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-4xl hyphens-auto' },
+          children: ['@include prose-text-4xl;'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-3xl hyphens-auto' },
+          children: ['@include prose-text-3xl;'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-2xl hyphens-auto' },
+          children: ['@include prose-text-2xl;'],
+        },
         {
           tag: 'p',
           properties: { className: 'prose-text-xl hyphens-auto' },
