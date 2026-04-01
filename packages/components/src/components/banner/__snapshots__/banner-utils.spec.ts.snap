@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: error 1`] = `
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: error 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -9,7 +9,7 @@ exports[`getInlineNotificationAriaAttributes() > should return correct aria attr
 }
 `;
 
-exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: info 1`] = `
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: info 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -18,7 +18,7 @@ exports[`getInlineNotificationAriaAttributes() > should return correct aria attr
 }
 `;
 
-exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: success 1`] = `
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: success 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -27,7 +27,7 @@ exports[`getInlineNotificationAriaAttributes() > should return correct aria attr
 }
 `;
 
-exports[`getInlineNotificationAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
+exports[`getBannerAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",

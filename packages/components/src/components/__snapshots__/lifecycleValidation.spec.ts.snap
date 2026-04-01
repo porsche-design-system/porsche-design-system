@@ -20,6 +20,7 @@ exports[`should call validateProps() with correct parameters via render for p-ba
   "heading": "string",
   "headingTag": "oneOf",
   "open": "boolean",
+  "position": "breakpoint",
   "state": "oneOf",
 }
 `;
