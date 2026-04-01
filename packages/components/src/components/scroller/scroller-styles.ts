@@ -69,7 +69,7 @@ const getScrollIndicatorStyles = (
     }),
     ...(hasScrollbar &&
       pointerCoarseMediaQuery({
-        marginTop: 'initial',
+        marginTop: 0,
       })),
     display: 'grid',
     alignSelf: 'center',
