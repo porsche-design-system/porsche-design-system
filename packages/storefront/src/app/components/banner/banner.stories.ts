@@ -45,7 +45,7 @@ export const bannerStoryCustomStyling: Story<'p-banner'> = {
   state: {
     properties: {
       open: false,
-      className: '[--p-banner-position-top:200px]',
+      className: '[--p-banner-top:8px] [--p-banner-bottom:8px] [--p-banner-inset-x:8px] [--p-banner-max-w:70ch]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -75,23 +75,26 @@ export const bannerStoryCustomStyling: Story<'p-banner'> = {
       },
       children: [
         {
-          tag: 'h3',
+          tag: 'p-heading',
           properties: {
             slot: 'heading',
+            size: 'sm',
+            weight: 'semibold',
           },
-          children: [
-            'Some heading with a ',
-            { tag: 'p-link-pure', properties: { href: 'https://porsche.com', icon: 'none' }, children: ['link'] },
-          ],
+          children: ['Some heading'],
         },
         {
-          tag: 'span',
+          tag: 'p-text',
           properties: {
             slot: 'description',
           },
           children: [
             'Some description. You can also add inline ',
-            { tag: 'p-link-pure', properties: { href: 'https://porsche.com', icon: 'none' }, children: ['links'] },
+            {
+              tag: 'p-link-pure',
+              properties: { href: 'https://porsche.com', icon: 'none', underline: true },
+              children: ['links'],
+            },
             ' to route to another page.',
           ],
         },
