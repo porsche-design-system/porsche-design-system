@@ -1,3 +1,16 @@
+diff --git a/node_modules/@stencil/core/compiler/stencil.js b/node_modules/@stencil/core/compiler/stencil.js
+index 1f97bb5..e9c1023 100644
+--- a/node_modules/@stencil/core/compiler/stencil.js
++++ b/node_modules/@stencil/core/compiler/stencil.js
+@@ -251954,7 +251954,7 @@ function createLazyAttachInternalsBinding(cmp) {
+                     import_typescript4.default.factory.createIdentifier(HOST_REF_ARG),
+                     import_typescript4.default.factory.createIdentifier("$hostElement$")
+                   ),
+-                  import_typescript4.default.factory.createIdentifier("attachInternals")
++                  import_typescript4.default.factory.createIdentifier("attachInternals?.")
+                 ),
+                 void 0,
+                 []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
 index 7ca390b..e10ed7a 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
