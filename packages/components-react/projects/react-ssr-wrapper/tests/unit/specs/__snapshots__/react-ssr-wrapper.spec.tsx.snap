@@ -3112,24 +3112,16 @@ exports[`should render dsr component for PBanner 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot {
-  display: block;
-}
-slot[name="heading"] {
-  grid-area: 1/2;
-}
-slot[name="description"] {
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-}
-h1,h2,h3,h4,h5,h6 {
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
   all: unset;
+  display: block;
   grid-area: 1/2;
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
-p {
+slot[name="description"],p {
   all: unset;
+  display: block;
   grid-area: 2/2;
   margin-top: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -3138,9 +3130,10 @@ p {
 [popover] {
   all: unset;
   position: fixed;
+  z-index: var(--p-internal-banner-z-index,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
-  inset-inline: 50vw auto;
+  left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
   pointer-events: none;
@@ -3195,6 +3188,12 @@ p {
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   }
+@media(forced-colors:active) {
+    .banner::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
@@ -7012,24 +7011,16 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot {
-  display: block;
-}
-slot[name="heading"] {
-  grid-area: 1/2;
-}
-slot:not([name]) {
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-}
-h1,h2,h3,h4,h5,h6 {
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
   all: unset;
+  display: block;
   grid-area: 1/2;
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
-p {
+slot:not([name]),p {
   all: unset;
+  display: block;
   grid-area: 2/2;
   margin-top: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -7062,6 +7053,12 @@ p {
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
