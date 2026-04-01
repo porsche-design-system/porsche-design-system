@@ -151,6 +151,9 @@ export const getComponentCss = (
           background: notificationColorMap[state],
           WebkitMask: `${notificationIconMap[state]} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${notificationIconMap[state]} center/contain no-repeat`,
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
         },
       },
     },
