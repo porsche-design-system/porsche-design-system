@@ -2,7 +2,7 @@
 
 We currently have two Stencil patches in place which are applied using
 [`patch-package`](https://www.npmjs.com/package/patch-package). The patches are located in the `patches/` folder and are
-applied automatically when installing.
+applied automatically when installing via a `postinstall` script.
 
 Stencil version used when this document was created: `4.43.3`
 
