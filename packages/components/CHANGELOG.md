@@ -41,6 +41,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4263](https://github.com/porsche-design-system/porsche-design-system/pull/4263))
 - Global Styles: missing individual export for `color-scheme.css`
   ([#4260](https://github.com/porsche-design-system/porsche-design-system/pull/4260))
+- `Table`: double focus outline of sort buttons
+  ([#4270](https://github.com/porsche-design-system/porsche-design-system/pull/4270))
 
 ## [4.0.0-rc.0] - 2026-03-27
 
