@@ -37,24 +37,16 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      slot: {
-        display: 'block',
-        '&[name="heading"]': {
-          gridArea: '1/2',
-        },
-        '&:not([name])': {
-          gridArea: '2/2',
-          marginTop: spacingStaticXs,
-        },
-      },
-      'h1,h2,h3,h4,h5,h6': {
+      'slot[name="heading"],h1,h2,h3,h4,h5,h6': {
         all: 'unset',
+        display: 'block',
         gridArea: '1/2',
         font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary,
       },
-      p: {
+      'slot:not([name]),p': {
         all: 'unset',
+        display: 'block',
         gridArea: '2/2',
         marginTop: spacingStaticXs,
         font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,

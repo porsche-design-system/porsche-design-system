@@ -70,24 +70,16 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      slot: {
-        display: 'block',
-        '&[name="heading"]': {
-          gridArea: '1/2',
-        },
-        '&[name="description"]': {
-          gridArea: '2/2',
-          marginTop: spacingStaticXs,
-        },
-      },
-      'h1,h2,h3,h4,h5,h6': {
+      'slot[name="heading"],h1,h2,h3,h4,h5,h6': {
         all: 'unset',
+        display: 'block',
         gridArea: '1/2',
         font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary,
       },
-      p: {
+      'slot[name="description"],p': {
         all: 'unset',
+        display: 'block',
         gridArea: '2/2',
         marginTop: spacingStaticXs,
         font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
@@ -111,7 +103,7 @@ export const getComponentCss = (
             }),
           }),
         })),
-        insetInline: `50vw auto`,
+        left: '50vw',
         width: `min(calc(100vw - 2 * var(${cssVarInsetX},${gridExtendedOffsetBase})),var(${cssVarMaxWidth},100ch))`,
         '&:popover-open': {
           overlay: 'auto',
