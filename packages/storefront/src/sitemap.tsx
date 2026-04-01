@@ -15,7 +15,6 @@ const getComponents = (): Routes => {
   const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
     'p-canvas',
     'p-pagination',
-    'p-flag',
     'p-switch',
     'p-sheet',
     'p-tag-dismissible',
@@ -425,46 +424,58 @@ export const sitemap: Routes = {
       ...getComponents(),
     }, // Assuming this is dynamically fetched or implemented elsewhere.
   },
-  styles: {
-    name: 'Styles',
-    path: '/styles',
+  stylesheets: {
+    name: 'Stylesheets',
+    path: '/stylesheets',
     type: 'CATEGORY',
     subPaths: {
       introduction: {
         name: 'Introduction',
-        path: '/styles/introduction',
+        path: '/stylesheets/introduction',
         type: 'PAGE',
       },
-      color: {
-        name: 'Color',
-        path: '/styles/color',
+      'css-variables': {
+        name: 'CSS Variables',
+        path: '/stylesheets/css-variables',
         type: 'PAGE',
         subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/styles/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/styles/color/usage',
+          introduction: {
+            name: 'Introduction',
+            path: '/stylesheets/css-variables/introduction',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/styles/color/api',
+            path: '/stylesheets/css-variables/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'color-scheme': {
+        name: 'Color Scheme',
+        path: '/stylesheets/color-scheme',
+        type: 'PAGE',
+        subPaths: {
+          introduction: {
+            name: 'Introduction',
+            path: '/stylesheets/color-scheme/introduction',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/stylesheets/color-scheme/api',
             type: 'TAB',
           },
         },
       },
       'font-face': {
         name: 'Font Face',
-        path: '/styles/font-face',
+        path: '/stylesheets/font-face',
         type: 'PAGE',
       },
       normalize: {
         name: 'Normalize',
-        path: '/styles/normalize',
+        path: '/stylesheets/normalize',
         type: 'PAGE',
       },
     },
@@ -575,6 +586,11 @@ export const sitemap: Routes = {
       'landing-page': {
         name: 'Landing Page',
         path: '/templates/landing-page',
+        type: 'PAGE',
+      },
+      'admin-panel': {
+        name: 'Admin Panel',
+        path: '/templates/admin-panel',
         type: 'PAGE',
       },
     },
@@ -1824,6 +1840,11 @@ export const sitemap: Routes = {
           introduction: {
             name: 'Introduction',
             path: '/must-know/accessibility/introduction',
+            type: 'PAGE',
+          },
+          'ai-agent-setup': {
+            name: 'Setting AI Agent Context',
+            path: '/must-know/accessibility/ai-agent-setup',
             type: 'PAGE',
           },
           statement: {

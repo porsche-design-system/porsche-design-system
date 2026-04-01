@@ -1,18 +1,10 @@
 import { STARTING_PDS_VERSION } from '@/models/pdsVersion';
 import { isVersionAtLeast } from '@/utils/pdsVersion';
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 export type FetchPdsVersionsOptions = {
   filterStable?: boolean;
   startingVersion?: string;
-};
-
-/**
- * Checks if a version is a v4 alpha release.
- * @param version - Version string to check
- * @returns True if version matches v4 alpha pattern (e.g., "4.0.0-alpha.0")
- */
-const isV4Alpha = (version: string): boolean => {
-  return /^4\.\d+\.\d+-alpha|beta\.\d+$/.test(version);
 };
 
 export const fetchPdsVersions = async ({
@@ -33,11 +25,16 @@ export const fetchPdsVersions = async ({
   let versions = Object.keys(data.versions);
 
   if (filterStable) {
-    versions = versions.filter((version) => /^\d+\.\d+\.\d+$/.test(version) || isV4Alpha(version));
+    versions = versions.filter((version) => /^\d+\.\d+\.\d+$/.test(version));
   }
 
   if (startingVersion) {
     versions = versions.filter((v: string) => isVersionAtLeast(v, startingVersion));
+  }
+
+  // Current running version is missing or filtered out, add it to the list
+  if (!versions.includes(localPorscheDesignSystemVersion)) {
+    versions = [localPorscheDesignSystemVersion, ...versions];
   }
 
   return versions.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));

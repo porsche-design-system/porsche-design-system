@@ -37,9 +37,12 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 "
@@ -82,9 +85,12 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 "
@@ -134,9 +140,12 @@ svg {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 "
@@ -186,9 +195,12 @@ svg {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
+  }
+  svg {
+    fill: CanvasText;
   }
 }
 "

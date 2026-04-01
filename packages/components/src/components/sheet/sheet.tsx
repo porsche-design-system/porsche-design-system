@@ -59,7 +59,7 @@ export class Sheet {
   /** Defines the background color */
   @Prop() public background?: SheetBackground = 'canvas';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */

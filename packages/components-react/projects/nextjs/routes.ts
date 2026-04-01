@@ -564,6 +564,10 @@ const generatedRoutes = {
     "path": "/overview-forms",
     "name": "OverviewForms"
   },
+  "overviewTypescale": {
+    "path": "/overview-typescale",
+    "name": "OverviewTypescale"
+  },
   "pagination": {
     "path": "/pagination",
     "name": "Pagination"

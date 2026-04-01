@@ -1,7 +1,7 @@
-import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleXl } from '@porsche-design-system/tokens';
-import { fontHyphenationStyle } from '../font';
+import { colorPrimary } from '../color';
+import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleXl } from '../font';
 
 export const proseTextXlStyle = {
-  font: `normal normal ${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
-  ...fontHyphenationStyle,
+  font: `${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
+  color: colorPrimary,
 };

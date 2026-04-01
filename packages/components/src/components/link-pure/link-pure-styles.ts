@@ -1,19 +1,17 @@
 import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
 import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { LinkPureColor, LinkPureSize } from './link-pure-utils';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<LinkPureSize>,
+  color: LinkPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
@@ -28,6 +26,7 @@ export const getComponentCss = (
         false,
         stretch,
         size,
+        color,
         hideLabel,
         alignLabel,
         underline,

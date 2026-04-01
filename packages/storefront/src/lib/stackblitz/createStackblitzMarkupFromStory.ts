@@ -1,6 +1,6 @@
 import type { Framework } from '@porsche-design-system/shared';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { Story, StoryState } from '@/models/story';
-import type { StorefrontColorScheme } from '@/models/theme';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';

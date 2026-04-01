@@ -1,20 +1,48 @@
-<div class="playground" title="should show heading with different color variants">
-  <p-heading color="primary" style="color: deeppink" class="a11ytree-snapshot-test"
-    >The quick brown fox jumps over the lazy dog</p-heading
-  >
+<div class="playground" title="default">
+  <p-heading>The quick brown fox jumps over the lazy dog</p-heading>
+</div>
+
+<div class="playground" title="size=2xs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, inherit">
+  <p-heading size="2xs" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="xs" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="sm" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="md" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="lg" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="xl" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="2xl" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="3xl" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="4xl" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="5xl" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading size="inherit" style="font-size: 48px" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
+</div>
+
+<div class="playground" title="size={ base: '2xs', xs: 'xs', s: 'sm', m: 'md', l: 'lg', xl: 'xl' }">
+  <p-heading size="{ base: '2xs', xs: 'xs', s: 'sm', m: 'md', l: 'lg', xl: 'xl' }">The quick brown fox jumps over the lazy dog</p-heading>
+</div>
+
+<div class="playground" title="color=primary, contrast-higher, contrast-high, contrast-medium, inherit">
+  <p-heading color="primary">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading color="contrast-higher">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading color="contrast-high">The quick brown fox jumps over the lazy dog</p-heading>
+  <p-heading color="contrast-medium">The quick brown fox jumps over the lazy dog</p-heading>
   <p-heading color="inherit" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-heading>
 </div>
 
-<div class="playground" title="should show heading with different alignments">
-  <div style="text-align: center">
-    <p-heading align="inherit">Inherit</p-heading>
-  </div>
+<div class="playground" title="align=start, center, end, inherit">
   <p-heading align="start">Start</p-heading>
   <p-heading align="center">Center</p-heading>
   <p-heading align="end">End</p-heading>
+  <p-heading align="inherit" style="text-align: center">Inherit</p-heading>
 </div>
 
-<div class="playground" title="should cut off too long text">
+<div class="playground" title="hyphens=none, auto, manual, inherit">
+  <p-heading hyphens="none" style="max-width: 300px;">An extra&shy;ordinarily Porsche</p-heading>
+  <p-heading hyphens="auto" style="max-width: 300px;">An extra&shy;ordinarily Porsche</p-heading>
+  <p-heading hyphens="manual" style="max-width: 300px;">An extra&shy;ordinarily Porsche</p-heading>
+  <p-heading hyphens="inherit" style="max-width: 300px; hyphens: auto">An extra&shy;ordinarily Porsche</p-heading>
+</div>
+
+<div class="playground" title="ellipsis=true">
   <p-heading ellipsis="true">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -22,27 +50,10 @@
 </div>
 
 <div class="playground" title="should show heading with different slotted tags in same layout">
-  <p-heading size="inherit" style="font-size: 1rem"><h1>The quick brown fox jumps over the lazy dog</h1></p-heading>
-  <p-heading size="inherit" style="font-size: 1rem"><h2>The quick brown fox jumps over the lazy dog</h2></p-heading>
-  <p-heading size="inherit" style="font-size: 1rem"><h3>The quick brown fox jumps over the lazy dog</h3></p-heading>
-  <p-heading size="inherit" style="font-size: 1rem"><h4>The quick brown fox jumps over the lazy dog</h4></p-heading>
-  <p-heading size="inherit" style="font-size: 1rem"><h5>The quick brown fox jumps over the lazy dog</h5></p-heading>
-  <p-heading size="inherit" style="font-size: 1rem"><h6>The quick brown fox jumps over the lazy dog</h6></p-heading>
-</div>
-
-<div class="playground" title="should show heading in different sizes">
-  <p-heading size="small" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
-  <p-heading size="medium" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
-  <p-heading size="large" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
-  <p-heading size="x-large" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
-  <p-heading size="xx-large" class="a11ytree-snapshot-test">The quick brown fox jumps over the lazy dog</p-heading>
-  <p-heading size="inherit" style="font-size: 5rem" class="a11ytree-snapshot-test"
-    >The quick brown fox jumps over the lazy dog</p-heading
-  >
-</div>
-
-<div class="playground" title="should show heading in different sizes on different viewports">
-  <p-heading size="{ base: 'small', xs: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }" style="font-size: 1rem">
-    The quick brown fox jumps over the lazy dog
-  </p-heading>
+  <p-heading><h1>The quick brown fox jumps over the lazy dog</h1></p-heading>
+  <p-heading><h2>The quick brown fox jumps over the lazy dog</h2></p-heading>
+  <p-heading><h3>The quick brown fox jumps over the lazy dog</h3></p-heading>
+  <p-heading><h4>The quick brown fox jumps over the lazy dog</h4></p-heading>
+  <p-heading><h5>The quick brown fox jumps over the lazy dog</h5></p-heading>
+  <p-heading><h6>The quick brown fox jumps over the lazy dog</h6></p-heading>
 </div>

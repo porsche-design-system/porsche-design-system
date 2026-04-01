@@ -296,3 +296,22 @@ HTMLElement.prototype.attachInternals = jest.fn(
     }) as ElementInternals
 );
 ```
+
+### animate API
+
+Affected Components: `p-tabs-bar`, `p-tabs`
+
+The API must be mocked within the test setup.
+
+Example mock:
+
+```ts
+Element.prototype.animate = vi.fn(
+  () =>
+    ({
+      onfinish: null,
+      cancel: vi.fn(),
+      finish: vi.fn(),
+    }) as unknown as Animation
+);
+```

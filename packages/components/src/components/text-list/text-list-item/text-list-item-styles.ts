@@ -1,5 +1,5 @@
-import { spacingStaticMedium } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { spacingStaticMd } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   cssVariableOrderedGridColumn,
@@ -16,7 +16,7 @@ export const getComponentCss = (): string => {
         display: 'grid',
         ...addImportantToEachRule({
           gridTemplateColumns: `var(${cssVariablePseudoSpace}) 1fr`,
-          columnGap: spacingStaticMedium,
+          columnGap: spacingStaticMd,
           font: 'inherit', // ensures style can't be overwritten from outside
           color: 'inherit', // ensures style can't be overwritten from outside
           ...hostHiddenStyles,

@@ -5,9 +5,17 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import * as partials from '@porsche-design-system/components-vue/partials';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
+import { Features } from "lightningcss"
 
 // Config to build static demo-app
 export default defineConfig({
+  css: {
+    transformer: "lightningcss",
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningcss: {
+      exclude: Features.LightDark,
+    },
+  },
   plugins: [
     vue(),
     vueJsx(),

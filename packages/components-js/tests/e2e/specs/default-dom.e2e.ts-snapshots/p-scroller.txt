@@ -1,19 +1,9 @@
 <div class="root">
-  <div class="scroll-area">
-    <div class="scroll-wrapper">
-      <slot> </slot>
-      <div class="trigger"></div>
-      <div class="trigger"></div>
-    </div>
-  </div>
-  <div class="action-prev">
-    <p-button class="action-button hydrated" hide-label="true" tabindex="-1">
-      prev</p-button
-    >
-  </div>
-  <div class="action-next">
-    <p-button class="action-button hydrated" hide-label="true" tabindex="-1">
-      next</p-button
-    >
+  <span class="prev"> </span>
+  <span class="next"> </span>
+  <div class="scroll">
+    <span class="sentinel"> </span>
+    <slot> </slot>
+    <span class="sentinel"> </span>
   </div>
 </div>

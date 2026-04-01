@@ -17,13 +17,11 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  color: var(--p-color-primary);
-  background: var(--p-color-error-frosted);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-canvas);
+  background: var(--p-color-error);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -45,11 +43,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
     background-color: Canvas;
+    color: CanvasText;
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
@@ -58,7 +57,7 @@ span {
 
 @media(hover:hover) {
   span:hover {
-    background: var(--p-color-error-frosted-soft);
+    background: var(--p-color-error-medium);
   }
 }
 
@@ -84,13 +83,11 @@ span {
   display: flex;
   gap: 2px;
   padding: 1px 6px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  color: var(--p-color-primary);
-  background: var(--p-color-info-frosted);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, calc(1px + (var(--p-leading-normal) / 2)));
+  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-canvas);
+  background: var(--p-color-info);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -112,11 +109,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
     background-color: Canvas;
+    color: CanvasText;
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
@@ -145,13 +143,11 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -173,11 +169,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
     background-color: Canvas;
+    color: CanvasText;
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
@@ -212,13 +209,13 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px 9px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-frosted-strong);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -240,11 +237,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
     background-color: Canvas;
+    color: CanvasText;
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
@@ -273,13 +271,11 @@ span {
   display: flex;
   gap: 2px;
   padding: 1px 6px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  color: var(--p-color-primary);
-  background: var(--p-color-warning-frosted);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, calc(1px + (var(--p-leading-normal) / 2)));
+  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-canvas);
+  background: var(--p-color-warning);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -301,11 +297,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
     background-color: Canvas;
+    color: CanvasText;
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;

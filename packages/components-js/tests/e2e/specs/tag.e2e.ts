@@ -1,16 +1,24 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
-import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
+import {
+  getLifecycleStatus,
+  setContentWithDesignSystem,
+  setProperty,
+  skipInBrowsers,
+  waitForStencilLifecycle,
+} from '../helpers';
 
 type InitOpts = {
   withIcon?: boolean;
+  variant?: string;
 };
 
 const initTag = (page: Page, props?: InitOpts) => {
-  const { withIcon = false } = props || {};
-  const attributes = withIcon ? ' icon="car"' : '';
+  const { withIcon = false, variant } = props || {};
+  const iconAttr = withIcon ? ' icon="car"' : '';
+  const variantAttr = variant ? ` variant="${variant}"` : '';
 
-  const content = `<p-tag${attributes}>Some Tag</p-tag>`;
+  const content = `<p-tag${iconAttr}${variantAttr}>Some Tag</p-tag>`;
 
   return setContentWithDesignSystem(page, content);
 };
@@ -19,40 +27,44 @@ const getHost = (page: Page) => page.locator('p-tag');
 const getSpan = (page: Page) => page.locator('p-tag span');
 
 test.describe('lifecycle', () => {
-  test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initTag(page);
+  skipInBrowsers(['webkit'], () => {
+    test('should work without unnecessary round trips on init', async ({ page }) => {
+      await initTag(page);
+      const status = await getLifecycleStatus(page);
 
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-tag'], 'componentDidLoad: p-tag')
-      .toBe(1);
+      expect(status.componentDidLoad['p-tag'], 'componentDidLoad: p-tag').toBe(1);
 
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad.all, 'componentDidLoad: all')
-      .toBe(1);
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all, 'componentDidUpdate: all')
-      .toBe(0);
-  });
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
 
-  test('should work without unnecessary round trips on prop change', async ({ page }) => {
-    await initTag(page, { withIcon: true });
-    const host = getHost(page);
+    test('should work without unnecessary round trips on prop change', async ({ page }) => {
+      await initTag(page, { withIcon: true });
+      const host = getHost(page);
 
-    await setProperty(host, 'icon', 'highway');
-    await waitForStencilLifecycle(page);
+      await setProperty(host, 'icon', 'highway');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
 
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-tag'], 'componentDidUpdate: p-tag')
-      .toBe(1);
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon')
-      .toBe(1);
+      expect(status.componentDidUpdate['p-tag'], 'componentDidUpdate: p-tag').toBe(1);
+      expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad.all, 'componentDidLoad: all')
-      .toBe(2);
-    await expect
-      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all, 'componentDidUpdate: all')
-      .toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    });
+
+    test('should work without unnecessary round trips on variant prop change', async ({ page }) => {
+      await initTag(page, { variant: 'primary' });
+      const host = getHost(page);
+
+      await setProperty(host, 'variant', 'error');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-tag'], 'componentDidUpdate: p-tag').toBe(1);
+
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
   });
 });

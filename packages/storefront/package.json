@@ -37,20 +37,20 @@
     "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.0.0-beta.0",
+    "@porsche-design-system/components-react": "4.0.0-rc.0",
     "react-syntax-highlighter": "^15.6.6",
-    "next": "15.4.2",
+    "next": "^16.2.1",
     "algoliasearch": "^5.40.0",
     "@algolia/cache-in-memory": "^4.25.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-instantsearch": "^7.16.3",
     "react-instantsearch-nextjs": "^1.0.2"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
-    "@next/mdx": "^15.4.2",
+    "@next/mdx": "^16.2.1",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@types/mdx": "^2.0.13",

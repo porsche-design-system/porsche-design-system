@@ -16,6 +16,442 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Tailwind CSS`: `--spacing-static-2xs`
+  ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `SCSS`: `$spacing-static-2xs` ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `Tokens`, `Emotion`, `Vanilla Extract`: `spacingStatic2xs`
+  ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+
+### Changed
+
+- `SCSS`:
+  - All `prose-heading-*` and `prose-text-*` mixins set `color` to the primary token by default, overridable via the CSS
+    cascade ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+- `Emotion`, `Vanilla Extract`:
+  - All `proseHeading*` and `proseText*` style objects set `color` to the primary token by default, overridable in your
+    own styles ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
+
+### Fixed
+
+- `Accordion`: summary overlapping details when custom padding is applied
+  ([#4263](https://github.com/porsche-design-system/porsche-design-system/pull/4263))
+- `Scroller`: mask not rendering on ios when `scrollbar` set to `true`
+  ([#4263](https://github.com/porsche-design-system/porsche-design-system/pull/4263))
+- `Tabs Bar`: flickering of active tab in certain cases
+  ([#4263](https://github.com/porsche-design-system/porsche-design-system/pull/4263))
+- Global Styles: missing individual export for `color-scheme.css`
+  ([#4260](https://github.com/porsche-design-system/porsche-design-system/pull/4260))
+
+## [4.0.0-rc.0] - 2026-03-27
+
+## [4.0.0-beta.4] - 2026-03-25
+
+### Added
+
+- `Heading`:
+  - Prop `hyphens` with values: `'none' (default) | 'auto' | 'manual' | 'inherit'`
+- `Text`:
+  - Prop `hyphens` with values: `'none' | 'auto' | 'manual' | 'inherit' (default)`
+- `Icon`: `play-filled`, `arrow-down-left`, `arrow-down-right`, `arrow-up-left`, `arrow-up-right`
+
+### Changed
+
+- `Checkbox`: Improve visual appearance of the checked state
+- `Radio Group`: Improve visual appearance of the checked state
+- `Icon`: Improve visual appearance of `fast-backward`, `fast-forward`, `new-chat`, `pause`, `play`, `skip-backward`,
+  `skip-forward`
+- `Tag`: Improve visual appearance of variant `info`, `success`, `variant` and `error`
+- `Tokens`: Update value of `typescaleXs`
+
+### Fixed
+
+- `Accordion`: missing `delegatesFocus`
+  ([#4238](https://github.com/porsche-design-system/porsche-design-system/pull/4238))
+
+### Removed
+
+- CSS Variable `--p-hyphens`
+- Hyphenation style in general: CSS `hyphens` and `overflow-wrap` properties are no longer applied globally across
+  components. If you relied on automatic word hyphenation, you can restore the previous behavior by setting these
+  inheritable properties on a common ancestor like `body`:
+
+  ```css
+  body {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  ```
+
+  Since both properties are inheritable, they will cascade down to all child elements, including content within Shadow
+  DOM components.
+
+## [4.0.0-beta.3] - 2026-03-19
+
+### Added
+
+- Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
+  to generate accessible code that follows WCAG 2.2 AA standards. ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
+- `Tokens`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Tailwind CSS`: `--text-3xl`, `--text-4xl`, `--text-5xl`, `.prose-heading-3xl`, `.prose-heading-4xl`,
+  `.prose-heading-5xl` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `SCSS`: `$typescale-3xl`, `$typescale-4xl`, `$typescale-5xl`, `@mixin prose-heading-3xl()`,
+  `@mixin prose-heading-4xl()`, `@mixin prose-heading-5xl()`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Emotion`, `Vanilla Extract`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`, `proseHeading3XlStyle`,
+  `proseHeading4XlStyle`, `proseHeading5XlStyle`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Spinner`, `Flag`, `Icon`:
+  - Prop `size` supports all typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234),
+    [#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Spinner`:
+  - Prop `color` with values: `'primary' | 'inherit'`
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-size`: Defines the width and height of the spinner. Overrides the `size` property when
+    set. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-color`: Defines the foreground color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-spinner-track-color`: Defines the track/background color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Flag`:
+  - CSS Variable `--p-flag-size`: Defines the width and height of the flag. Overrides the `size` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+- `Icon`:
+  - CSS Variable `--p-icon-size`: Defines the width and height of the icon. Overrides the `size` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - CSS Variable `--p-icon-color`: Defines the icon color. Overrides the `color` property when set.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+  - Prop `color` supports new value `'contrast-higher'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Button Pure`, `Link Pure`:
+  - Prop `size` supports new typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `color` supports new values `'contrast-higher' | 'contrast-high' | 'contrast-medium'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Text`:
+  - Prop `size` supports new typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `weight` supports new value `'bold'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `color` supports new value `'contrast-higher'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Heading`:
+  - Prop `size` supports new typographic scale values:
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'inherit'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `weight` supports new value `'bold'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - Prop `color` supports new values `'contrast-higher' | 'contrast-high' | 'contrast-medium'`
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+### Changed
+
+- `Spinner`, `Flag`, `Icon`:
+  - The `size` prop is breakpoint customizable.
+    ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234),
+    [#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+  - When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against
+    the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based
+    components. ([#4234](https://github.com/porsche-design-system/porsche-design-system/pull/4234))
+
+    ```diff
+    - <p-spinner size="inherit" style="width: 100px; height: 100px;"></p-spinner>
+    + <p-spinner style="--p-spinner-size: 100px;"></p-spinner>
+
+    // When using size="inherit" with a defined font-size, the spinner size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-spinner size="inherit" style="font-size: 100px;"></p-spinner>
+    ```
+
+    ```diff
+    - <p-icon size="inherit" style="width: 100px; height: 100px;"></p-icon>
+    + <p-icon style="--p-icon-size: 100px;"></p-icon>
+
+    // When using size="inherit" with a defined font-size, the icon size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-icon size="inherit" style="font-size: 100px;"></p-icon>
+    ```
+
+    ```diff
+    - <p-flag size="inherit" style="width: 100px; height: 100px;"></p-flag>
+    + <p-flag style="--p-flag-size: 100px;"></p-flag>
+
+    // When using size="inherit" with a defined font-size, the flag size is calculated from the global line-height (ex-unit) based on that font-size."
+    <p-flag size="inherit" style="font-size: 100px;"></p-flag>
+    ```
+
+- `Pagination`: Modernize visual appearance
+  ([#4241](https://github.com/porsche-design-system/porsche-design-system/pull/4241))
+
+### Removed
+
+- `Emotion, Vanilla Extract` (added in `v4.0.0-beta.0`): `proseDisplayLgStyle`, `proseDisplayMdStyle`,
+  `proseDisplaySmStyle` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `SCSS` (added in `v4.0.0-beta.0`): `@mixin prose-display-lg()`, `@mixin prose-display-md()`,
+  `@mixin prose-display-sm()` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+- `Text`: Value `contrast-low` for `color` prop since it's not a11y compliant. Use `contrast-medium` instead.
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+### Deprecated
+
+- `Text`:
+  - Values `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large'` of prop `size` (use
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-text size="xx-small">…</p-text>
+    + <p-text size="2xs">…</p-text>
+
+    - <p-text size="x-small">…</p-text>
+    + <p-text size="xs">…</p-text>
+
+    - <p-text size="small">…</p-text>
+    + <p-text size="sm">…</p-text>
+
+    - <p-text size="medium">…</p-text>
+    + <p-text size="md">…</p-text>
+
+    - <p-text size="large">…</p-text>
+    + <p-text size="lg">…</p-text>
+
+    - <p-text size="x-large">…</p-text>
+    + <p-text size="xl">…</p-text>
+    ```
+
+  - Values `'regular' | 'semi-bold'` of prop `weight` (use `'normal' | 'semibold'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-text weight="regular">…</p-text>
+    + <p-text weight="normal">…</p-text>
+
+    - <p-text weight="semi-bold">…</p-text>
+    + <p-text weight="semibold">…</p-text>
+    ```
+
+- `Heading`:
+  - Values `'small' | 'medium' | 'large' | 'x-large' | 'xx-large'` of prop `size` (use
+    `'sm' | 'md' | 'lg' | 'xl' | '2xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-heading size="small">…</p-heading>
+    + <p-heading size="sm">…</p-heading>
+
+    - <p-heading size="medium">…</p-heading>
+    + <p-heading size="md">…</p-heading>
+
+    - <p-heading size="large">…</p-heading>
+    + <p-heading size="lg">…</p-heading>
+
+    - <p-heading size="x-large">…</p-heading>
+    + <p-heading size="xl">…</p-heading>
+
+    - <p-heading size="xx-large">…</p-heading>
+    + <p-heading size="2xl">…</p-heading>
+    ```
+
+  - Values `'regular' | 'semi-bold'` of prop `weight` (use `'normal' | 'semibold'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+- `Icon`:
+  - Values `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large'` of prop `size` (use
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-icon size="xx-small">…</p-icon>
+    + <p-icon size="2xs">…</p-icon>
+
+    - <p-icon size="x-small">…</p-icon>
+    + <p-icon size="xs">…</p-icon>
+
+    - <p-icon size="small">…</p-icon>
+    + <p-icon size="sm">…</p-icon>
+
+    - <p-icon size="medium">…</p-icon>
+    + <p-icon size="md">…</p-icon>
+
+    - <p-icon size="large">…</p-icon>
+    + <p-icon size="lg">…</p-icon>
+
+    - <p-icon size="x-large">…</p-icon>
+    + <p-icon size="xl">…</p-icon>
+
+    - <p-icon size="xx-large">…</p-icon>
+    + <p-icon size="2xl">…</p-icon>
+    ```
+
+- `Spinner`:
+  - Values `'small' | 'medium' | 'large'` of prop `size` (use `'sm' | 'md' | 'lg'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-spinner size="small">…</p-spinner>
+    + <p-spinner size="sm">…</p-spinner>
+
+    - <p-spinner size="medium">…</p-spinner>
+    + <p-spinner size="md">…</p-spinner>
+
+    - <p-spinner size="large">…</p-spinner>
+    + <p-spinner size="lg">…</p-spinner>
+    ```
+
+- `Button Pure`, `Link Pure`:
+  - Values `'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large'` of prop `size` (use
+    `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'` instead)
+    ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+    ```diff
+    - <p-button-pure size="xx-small">…</p-button-pure>
+    + <p-button-pure size="2xs">…</p-button-pure>
+
+    - <p-button-pure size="x-small">…</p-button-pure>
+    + <p-button-pure size="xs">…</p-button-pure>
+
+    - <p-button-pure size="small">…</p-button-pure>
+    + <p-button-pure size="sm">…</p-button-pure>
+
+    - <p-button-pure size="medium">…</p-button-pure>
+    + <p-button-pure size="md">…</p-button-pure>
+
+    - <p-button-pure size="large">…</p-button-pure>
+    + <p-button-pure size="lg">…</p-button-pure>
+
+    - <p-button-pure size="x-large">…</p-button-pure>
+    + <p-button-pure size="xl">…</p-button-pure>
+    ```
+
+- `Display` ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+  ```diff
+  - <p-display size="large">…</p-display>
+  + <p-heading size="5xl">…</p-heading>
+
+  - <p-display size="medium">…</p-display>
+  + <p-heading size="4xl">…</p-heading>
+
+  - <p-display size="small">…</p-display>
+  + <p-heading size="3xl">…</p-heading>
+  ```
+
+- `Tailwind CSS`: `.prose-display-lg`, `.prose-display-md`, `.prose-display-sm`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+  ```diff
+  - <h1 class="prose-display-lg">…</h1>
+  + <h1 class="prose-heading-5xl">…</h1>
+
+  - <h1 class="prose-display-md">…</h1>
+  + <h1 class="prose-heading-4xl">…</h1>
+
+  - <h1 class="prose-display-sm">…</h1>
+  + <h1 class="prose-heading-3xl">…</h1>
+  ```
+
+- `SCSS`: `@mixin pds-display-large`, `@mixin pds-display-medium`, `@mixin pds-display-small`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+  ```diff
+  - @include pds-display-large;
+  + @include prose-heading-5xl;
+
+  - @include pds-display-medium;
+  + @include prose-heading-4xl;
+
+  - @include pds-display-small;
+  + @include prose-heading-3xl;
+  ```
+
+- `Emotion, Vanilla Extract`: `displayLargeStyle`, `displayMediumStyle`, `displaySmallStyle`
+  ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
+
+  ```diff
+  - ...displayLargeStyle,
+  + ...proseHeading5XlStyle,
+
+  - ...displayMediumStyle,
+  + ...proseHeading4XlStyle,
+
+  - ...displaySmallStyle,
+  + ...proseHeading3XlStyle,
+  ```
+
+## [4.0.0-beta.2] - 2026-03-11
+
+### Added
+
+- `Scroller`:
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `sticky`: Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-indicator-top`: Defines the distance from the top of the viewport at which the indicator
+    sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-scroller-gap`: Defines the gap between slotted nodes.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `background`: Defines the background color. Use `frosted` only on images, videos or gradients.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `compact`: Displays with reduced spacing and smaller padding for a more condensed layout.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Prop `sticky`: Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll
+    direction. ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-top`: Defines the distance from the top of the viewport at which the scroll
+    indicator sticks when scrolling down and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - CSS Variable `--p-table-scroll-indicator-bottom`: Defines the distance from the bottom of the viewport at which the
+    scroll indicator sticks when scrolling up and `sticky` is enabled.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Changed
+
+- `Scroller`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Modernize visual appearance ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Table`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Stepper Horizontal`:
+  - Use modernized scroller internally
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+### Deprecated
+
+- `Scroller`:
+  - Prop `alignScrollIndicator`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+  - Prop `scrollToPosition`: Will be removed with next major release, use native `scrollIntoView()` on the slotted
+    element itself, e.g.
+    `el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center', container: 'nearest' })`.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs Bar`:
+  - Prop `weight`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+- `Tabs`:
+  - Prop `weight`: Will be removed with next major release, has no effect anymore.
+    ([#4228](https://github.com/porsche-design-system/porsche-design-system/pull/4228))
+
+## [4.0.0-beta.1] - 2026-03-02
+
+### Added
+
 - `SCSS`, `Emotion`, `Vanilla Extract`: bring back PDS v3 import paths for better DX and backward compatibility.
 - `Accordion`:
   - Slot `summary` ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
@@ -41,6 +477,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4201](https://github.com/porsche-design-system/porsche-design-system/pull/4201))
 - `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
   `Input Time`, `Input Url`, `Textarea`: `value` sync with the underlying native `<input />` or `<textarea />` element
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  Slot `label-after` is not affected by `disbaled` states anymore
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
 - **Vue:** All component events now emit the full `CustomEvent` instead of just the event detail. The event detail must
   be accessed via `event.detail`. Props and other component data can be accessed directly via `event.target`.
 
@@ -452,7 +891,6 @@ and migration steps.
 - `Scroller`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
-  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
 - `Segmented Control`:
   - prop `backgroundColor` (has no effect anyway)
   - event `segmentedControlChange` (use `change` instead)
@@ -519,6 +957,21 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.33.0] - 2026-03-09
+
+## [3.33.0-rc.0] - 2026-03-04
+
+### Added
+
+- `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
+  ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+- `Checkbox`: add warning for Firefox form restore bug
+
+### Changed
+
+- `Tag`: deprecated `color` property, use `variant` property instead to define background colors which complies now with
+  PDS `v4` ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
 
 ## [3.32.1] - 2026-02-24
 
@@ -595,11 +1048,6 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-
-### Changed
-
-- `Link Tile`, `Button Tile`: appearance in compact mode
-- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
@@ -2016,7 +2464,7 @@ and migration steps.
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel align-header="start"></p-carousel>
++ <p-carousel-pure align-header="start"></p-carousel>
 ```
 
 ### Fixed
@@ -3102,9 +3550,10 @@ major version.
 
 ##### Content Wrapper:
 
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
-  instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
-  layout needs for a harmonic appearance across all digital Porsche touch-points.
+- Component is deprecated and will be removed with the next major release. Please use
+  **[Porsche Grid](/tailwindcss/grid/examples/)** instead, which is based on
+  [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific layout needs for a harmonic
+  appearance across all digital Porsche touch-points.
 
 ##### Flex:
 
@@ -3116,7 +3565,7 @@ major version.
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
+  **[Porsche Grid](/tailwindcss/grid/examples/)** instead for better performance and more standardized layout technique.
 
 ##### Headline:
 

@@ -1,6 +1,6 @@
 import { type Breakpoint, breakpoint } from '@porsche-design-system/emotion';
 import type { Options, Splide } from '@splidejs/splide';
-import type { BreakpointCustomizable, HeadingSize } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import {
   bulletActiveClass,
   bulletClass,
@@ -17,7 +17,8 @@ export type CarouselSlidesPerPage = (typeof CAROUSEL_SLIDES_PER_PAGE)[number];
 export const CAROUSEL_ALIGN_HEADERS = ['start', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
-export type CarouselHeadingSize = Extract<HeadingSize, 'x-large' | 'xx-large'>;
+export const CAROUSEL_HEADING_SIZES = ['x-large', 'xx-large'] as const;
+export type CarouselHeadingSize = (typeof CAROUSEL_HEADING_SIZES)[number];
 
 export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type CarouselAriaAttribute = (typeof CAROUSEL_ARIA_ATTRIBUTES)[number];

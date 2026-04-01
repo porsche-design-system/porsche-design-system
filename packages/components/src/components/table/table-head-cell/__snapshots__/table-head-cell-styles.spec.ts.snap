@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -16,7 +16,7 @@ exports[`getComponentCss() > should return correct css for active: false, direct
 button {
   position: relative;
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   width: auto;
   margin: 0;
   padding: 0;
@@ -37,13 +37,13 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -51,8 +51,8 @@ button:focus-visible::before {
 
 @media(hover:hover) {
   button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
@@ -61,7 +61,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
@@ -71,7 +71,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -84,7 +84,7 @@ exports[`getComponentCss() > should return correct css for active: false, direct
 button {
   position: relative;
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   width: auto;
   margin: 0;
   padding: 0;
@@ -105,13 +105,13 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -119,8 +119,8 @@ button:focus-visible::before {
 
 @media(hover:hover) {
   button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
@@ -129,7 +129,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -139,7 +139,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -152,7 +152,7 @@ exports[`getComponentCss() > should return correct css for active: true, directi
 button {
   position: relative;
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   width: auto;
   margin: 0;
   padding: 0;
@@ -173,13 +173,13 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -187,8 +187,8 @@ button:focus-visible::before {
 
 @media(hover:hover) {
   button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
@@ -197,7 +197,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 1;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
@@ -207,7 +207,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -220,7 +220,7 @@ exports[`getComponentCss() > should return correct css for active: true, directi
 button {
   position: relative;
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   width: auto;
   margin: 0;
   padding: 0;
@@ -241,13 +241,13 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -255,8 +255,8 @@ button:focus-visible::before {
 
 @media(hover:hover) {
   button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
@@ -265,7 +265,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -275,7 +275,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: normal !important;
 }
@@ -288,7 +288,7 @@ exports[`getComponentCss() > should return correct css for active: true, directi
 button {
   position: relative;
   display: flex;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   width: auto;
   margin: 0;
   padding: 0;
@@ -309,13 +309,13 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   z-index: -1;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button:focus-visible::before {
     outline-color: Highlight;
   }
@@ -323,8 +323,8 @@ button:focus-visible::before {
 
 @media(hover:hover) {
   button:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
   button:hover .icon, button:focus-visible .icon {
@@ -333,7 +333,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -343,7 +343,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -358,7 +358,7 @@ exports[`getComponentCss() > should return correct css for active: undefined, di
 exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_a, clamp(8px, 0.5vw + 6px, 16px)) var(--_a, clamp(8px, 0.5vw + 6px, 16px)) !important;
+  padding: 2px var(--_a, var(--p-spacing-fluid-sm)) var(--_a, var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }

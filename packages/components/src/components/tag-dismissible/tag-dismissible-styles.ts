@@ -1,4 +1,3 @@
-import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -13,19 +12,19 @@ import {
   colorContrastHigh,
   colorFrosted,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
   radiusLg,
   radiusXl,
+  typescaleSm,
+  typescaleXs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
-
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 
 export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string => {
   const buttonPaddingBlock = hasLabel
@@ -59,7 +58,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         background: colorFrosted,
         color: colorPrimary,
         textAlign: 'start',
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         ...hoverMediaQuery({
           '&:hover > .icon': {
             backgroundColor: colorFrosted,
@@ -77,7 +76,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         display: 'block',
         marginBottom: '-4px',
         color: colorContrastHigh,
-        fontSize: fontSizeTextXSmall,
+        fontSize: typescaleXs,
       },
     }),
     icon: {

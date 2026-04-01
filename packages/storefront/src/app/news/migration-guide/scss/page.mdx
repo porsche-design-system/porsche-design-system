@@ -33,7 +33,7 @@ browsers that do not yet support `light-dark()` (see
 
 #### Utility Classes
 
-Apply these classes to the document or any container to control the theme context:
+Apply these classes to the document or any container to control the color-scheme context:
 
 - `.scheme-light` — Forces light mode.
 - `.scheme-dark` — Forces dark mode.
@@ -43,7 +43,7 @@ Apply these classes to the document or any container to control the theme contex
 
 #### 1. Global Setup
 
-Include the mixin once in your global stylesheet to initialize the theme utilities.
+Include the mixin once in your global stylesheet to initialize the color-scheme utilities.
 
 ```scss
 // global styles
@@ -57,7 +57,7 @@ html, body {…}
 #### 2. Component Implementation
 
 Utilize the new tokens within your styles. These variables automatically resolve to the correct value based on the
-active theme.
+active color-scheme.
 
 ```scss
 // custom component styles
@@ -72,10 +72,10 @@ active theme.
 
 #### 3. Application
 
-The defined theme context will cascade to all child elements.
+The defined color-scheme context will cascade to all child elements.
 
 ```html
-<!-- Defined theme will be applied to all child elements -->
+<!-- Defined color-scheme will be applied to all child elements -->
 <html class="scheme-dark">
   <head></head>
   <body>
@@ -87,7 +87,12 @@ The defined theme context will cascade to all child elements.
 
 ## 👹 Breaking Changes
 
-- Removed `@mixin pds-hover()` since it did not work reliable.
+- Removed `@mixin pds-hover()` since it did not work reliably. There is no replacement.
+- **Heading font-weight changed:** All heading typography mixins (`prose-heading-*` / formerly `pds-heading-*`) now use
+  `font-weight: normal` (regular) instead of `semi-bold`. This is a visual change that applies automatically when
+  upgrading.
+- **Border-radius `large` value changed:** `$pds-border-radius-large` / `$radius-lg` was changed from `12px` to `8px`,
+  since more radius sizes are now available (`$radius-xl` through `$radius-4xl` and `$radius-full`).
 
 ## 🤡 Deprecations (will be removed in v5)
 
@@ -323,13 +328,16 @@ See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
 
 See [SCSS Typography Examples](/scss/typography/examples) for more details.
 
+> **Note:** All heading mixins now use `font-weight: normal` (regular) instead of `semi-bold`. This change is applied
+> automatically through the new mixins.
+
 ```diff
 - @include pds-display-large;
-+ @include prose-display-lg;
++ @include prose-heading-5xl;
 - @include pds-display-medium;
-+ @include prose-display-md;
++ @include prose-heading-4xl;
 - @include pds-display-small;
-+ @include prose-display-sm;
++ @include prose-heading-3xl;
 - @include pds-heading-xx-large;
 + @include prose-heading-2xl;
 - @include pds-heading-x-large;
@@ -352,6 +360,49 @@ See [SCSS Typography Examples](/scss/typography/examples) for more details.
 + @include prose-text-xs;
 - @include pds-text-xx-small;
 + @include prose-text-2xs;
+```
+
+Font variables:
+
+```diff
+- $pds-font-family;
++ $font-porsche-next;
+- $pds-font-line-height;
++ $leading-normal;
+- $pds-font-weight-regular;
++ $font-weight-normal;
+- $pds-font-weight-semi-bold;
++ $font-weight-semibold;
+- $pds-font-weight-bold;
++ $font-weight-bold;
+- $pds-font-size-text-xx-small;
++ $typescale-2xs;
+- $pds-font-size-text-x-small;
++ $typescale-xs;
+- $pds-font-size-text-small;
++ $typescale-sm;
+- $pds-font-size-text-medium;
++ $typescale-md;
+- $pds-font-size-text-large;
++ $typescale-lg;
+- $pds-font-size-text-x-large;
++ $typescale-xl;
+- $pds-font-size-heading-small;
++ $typescale-sm;
+- $pds-font-size-heading-medium;
++ $typescale-md;
+- $pds-font-size-heading-large;
++ $typescale-lg;
+- $pds-font-size-heading-x-large;
++ $typescale-xl;
+- $pds-font-size-heading-xx-large;
++ $typescale-2xl;
+- $pds-font-size-display-small;
++ $typescale-3xl;
+- $pds-font-size-display-medium;
++ $typescale-4xl;
+- $pds-font-size-display-large;
++ $typescale-5xl;
 ```
 
 ### Skeleton

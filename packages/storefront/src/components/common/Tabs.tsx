@@ -39,7 +39,7 @@ export default function Tabs() {
   }
 
   return (
-    <PTabsBar className="col-span-full xs:col-start-2 xs:col-end-12" activeTabIndex={tabIndex} onUpdate={onUpdate}>
+    <PTabsBar className="col-[wide]" activeTabIndex={tabIndex} background="surface" onUpdate={onUpdate}>
       {Object.entries(tabs).map(([_, route]) => (
         <Link key={route.path} href={route.path as string}>
           {route.name}

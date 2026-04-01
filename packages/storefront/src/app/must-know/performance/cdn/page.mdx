@@ -27,24 +27,24 @@ System Button:
 - [Porsche Finder](https://finder.porsche.com) created with React
 - [My Porsche](https://login.porsche.com/login) created with Angular
 
-When e.g. a user visits **Porsche.com** then the Porsche Design System Button gets loaded for the first time and will be
-automatically stored in browser cache. Imagine the same user switches to the **Porsche Finder** or **My Porsche**
-application which uses the same button then it will instantly be available because it's already in browser cache. Which
-means for the second and any further application less network requests and loading time.
+For example, when a user visits **Porsche.com**, the Porsche Design System button is loaded for the first time and then
+stored in the browser cache. If the same user later switches to the **Porsche Finder** or **My Porsche** application,
+which uses the same button, it becomes instantly available because it is already cached in the browser. This means fewer
+network requests and shorter loading times for the second and every subsequent application.
 
 This way performance and consistency can be dramatically increased across all digital Porsche products using the Porsche
 Design System.
 
 ## China CDN
 
-When requests are made from China the CDN (cdn.ui.porsche.**com**) is configured to automatically forward those requests
-to a CDN hosted in China (cdn.ui.porsche.**cn**) which finally responses the request. Why? Because it's local law.
-Anyway this way we provide an easy way to use the Porsche Design System assets without worrying about performance in
-China or the rest of world with zero configuration.
+When requests are made from China, the CDN (`cdn.ui.porsche.**com**`) is configured to automatically forward those
+requests to a CDN hosted in China (`cdn.ui.porsche.**cn**`), which then serves the response. Why? Because local law
+requires it. This approach provides an easy way to use Porsche Design System assets without having to worry about
+performance in China or the rest of the world, and it works with zero configuration.
 
-Because of the automatic forwarding strategy the amount of requests increases in China and the forwarding itself also
-costs each time some milliseconds. That's why the Porsche Design System provides the optional possibility to define from
-which CDN those assets shall be loaded to get maximum performance in China.
+Because of the automatic forwarding strategy, the number of requests increases in China and the forwarding itself also
+adds a small amount of latency each time. That is why the Porsche Design System provides an optional way to define which
+CDN should load those assets in order to achieve maximum performance in China.
 
 To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which needs to be defined before
 initializing the Porsche Design System.
@@ -149,6 +149,10 @@ root.render(
 In order to use the Chinese CDN for the Font-face definitions, the `/cn` import needs to be used, e.g.:
 
 ```diff
+- @import '@porsche-design-system/components-{js|angular|react|vue}';
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
+
+// Alternative: If your bundler requires an explicit .css extension, use this path instead
 - @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
 + @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
 ```

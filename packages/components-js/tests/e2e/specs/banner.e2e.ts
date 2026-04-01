@@ -54,7 +54,8 @@ test('should forward props correctly to p-inline-notification', async ({ page })
 test('should not show banner by default', async ({ page }) => {
   await initBanner(page, { open: false });
   const banner = getHost(page);
-  expect(await getElementStyle(banner, 'opacity')).toBe('0');
+  const notification = getInlineNotification(page);
+  expect(await getElementStyle(notification, 'opacity')).toBe('0');
   expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
 });
 
@@ -77,9 +78,10 @@ test('should show banner when setting open prop true ', async ({ page }) => {
 test('should not show banner by setting open prop false', async ({ page }) => {
   await initBanner(page, { open: true });
   const banner = getHost(page);
+  const notification = getInlineNotification(page);
   await setProperty(banner, 'open', false);
   await waitForStencilLifecycle(page);
-  await expect(banner).toHaveCSS('opacity', '0');
+  await expect(notification).toHaveCSS('opacity', '0');
   await expect(banner).toBeHidden();
 });
 

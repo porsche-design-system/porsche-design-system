@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
 import { skeletonKeyframes } from '@porsche-design-system/components-react/vanilla-extract';
 
 export const metadata = {
@@ -12,12 +13,12 @@ export const metadata = {
 
 ## JS Functions
 
-| JS Function                               | Description                                                     |
-| ----------------------------------------- | --------------------------------------------------------------- |
-| `getSkeletonStyle(animationName: string)` | Applies a skeleton placeholder style to indicate loading state. |
+| JS Function                                                           | Description                                                     |
+| --------------------------------------------------------------------- | --------------------------------------------------------------- |
+| <Code variant="nowrap">getSkeletonStyle(animationName: string)</Code> | Applies a skeleton placeholder style to indicate loading state. |
 
 ## JS
 
-| JS                  | Description                                                                      | Value                               |
-| ------------------- | -------------------------------------------------------------------------------- | ----------------------------------- |
-| `skeletonKeyframes` | Holds the **keyframes** to be used with the `keyframes` vanila-extract function. | {JSON.stringify(skeletonKeyframes)} |
+| JS                                              | Description                                                                      | Value                                                            |
+| ----------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <Code variant="nowrap">skeletonKeyframes</Code> | Holds the **keyframes** to be used with the `keyframes` vanila-extract function. | <Code variant="value">{JSON.stringify(skeletonKeyframes)}</Code> |

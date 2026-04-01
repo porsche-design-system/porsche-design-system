@@ -28,7 +28,7 @@ do not yet support `light-dark()` (see [browser support](https://caniuse.com/mdn
 
 #### Utility Classes
 
-Apply these classes to the document or any container to control the theme context:
+Apply these classes to the document or any container to control the color-scheme context:
 
 - `.scheme-light` — Forces light mode.
 - `.scheme-dark` — Forces dark mode.
@@ -36,10 +36,10 @@ Apply these classes to the document or any container to control the theme contex
 
 ### Usage
 
-The defined theme context will cascade to all child elements.
+The defined color-scheme context will cascade to all child elements.
 
 ```html
-<!-- Defined theme will be applied to all child elements -->
+<!-- Defined color-scheme will be applied to all child elements -->
 <html class="scheme-dark">
   <head></head>
   <body>
@@ -51,8 +51,8 @@ The defined theme context will cascade to all child elements.
 
 ## 👹 Breaking Changes
 
-- Theme utility classes `light`, `dark` and `auto` have been removed in favor of `scheme-light`, `scheme-dark` and
-  `scheme-light-dark`. Please update your class names accordingly.
+- Theme utility classes `.light`, `.dark` and `.auto` have been removed in favor of `.scheme-light`, `.scheme-dark` and
+  `.scheme-light-dark`. Please update your class names accordingly.
 
 ```diff
 - <html class="dark">
@@ -69,20 +69,20 @@ The defined theme context will cascade to all child elements.
 + <html class="scheme-light-dark">
 ```
 
-- Ensure consistency with the Porsche Brand Guide by resetting Tailwind CSS defaults. Note that this is a breaking
-  change: standard utilities like `bg-red-500` will no longer function. You must now use the approved PDS tokens for all
-  styling to ensure brand compliance.
-
-```css
-@theme {
-  --color-*: initial;
-}
-```
+- Ensure consistency with the Porsche Brand Guide by resetting Tailwind CSS defaults like `--color-*: initial;`. Note
+  that this is a breaking change: standard utilities like `bg-red-500` will no longer function. You must now use the
+  approved PDS tokens for all styling to ensure brand compliance.
 
 - Removed `--color-disabled`, use `--color-contrast-lower` instead.
+
+```diff
+- <div class="text-disabled">…</div>
++ <div class="text-contrast-lower">…</div>
+```
+
 - Removed `--color-*-light` and `--color-*-dark` color variables, use `--color-*` or the corresponding CSS utility
   classes, e.g. `bg-frosted` or `text-primary` instead. The new variables automatically resolve to the correct value
-  based on the active theme.
+  based on the color-scheme.
 
 ## 🤡 Deprecations (will be removed in v5)
 
@@ -99,6 +99,9 @@ See [Tailwind CSS Border Examples](/tailwindcss/border/examples) for more detail
 - .border-regular
 + .border
 ```
+
+The CSS variables `--border-width-thin` and `--border-width-regular` are deprecated. The default border width is now
+`1px` via `--default-border-width`.
 
 ### Shadow
 
@@ -126,4 +129,17 @@ See [Tailwind CSS Motion Examples](/tailwindcss/motion/examples) for more detail
 + .duration-lg
 - .duration-very-long
 + .duration-xl
+```
+
+### Typography
+
+See [Tailwind CSS Typography Examples](/tailwindcss/typography/examples) for more details.
+
+```diff
+- .prose-display-lg
++ .prose-heading-5xl
+- .prose-display-md
++ .prose-heading-4xl
+- .prose-display-sm
++ .prose-heading-3xl
 ```

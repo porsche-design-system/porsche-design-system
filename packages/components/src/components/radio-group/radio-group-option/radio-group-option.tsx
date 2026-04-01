@@ -40,7 +40,7 @@ export class RadioGroupOption {
   /** Text content for a user-facing label. */
   @Prop() public label?: string;
 
-  /** A boolean value that, if present, makes the radio group option unusable and unclickable. */
+  /** Disables the radio group option. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
@@ -101,7 +101,7 @@ export class RadioGroupOption {
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
             {isOptionLoading && !this.host.loadingParent && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
+              <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />
             )}
           </div>
           <Label

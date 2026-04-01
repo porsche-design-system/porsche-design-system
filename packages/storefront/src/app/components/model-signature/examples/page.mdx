@@ -35,12 +35,12 @@ probably preferred when the element is positioned independently.
 
 ## Mask: Blend Mode
 
-In case, `p-model-signature` shall be blended with its background, the CSS property
+If `p-model-signature` should be blended with its background, the CSS property
 [mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
-bring the best results). Depending on the use case it may be important to use it together with the CSS property
-[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It's also
-important to mention, that the `p-model-signature` has to be used together with `contrast-{high|medium}` color to have
-proper blend mode results.
+produce the best results). Depending on the use case, it may be important to use it together with the CSS property
+[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It is also
+important to note that `p-model-signature` must be used with the `contrast-{high|medium}` color for proper blend mode
+results.
 
 <ComponentStory story={modelSignatureStoryMaskBlendMode} />
 
@@ -63,7 +63,7 @@ proper blend mode results.
 ## Custom styling
 
 The `p-model-signature` color can be changed by setting the `color` prop to `inherit` and applying some CSS `color`.
-Additionally the component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+Additionally, the component has some values that can be overridden via CSS custom properties (aka CSS variables):
 
 ```scss
 --p-model-signature-width

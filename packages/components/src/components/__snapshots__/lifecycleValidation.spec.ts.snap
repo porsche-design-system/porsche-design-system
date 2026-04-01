@@ -46,6 +46,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "active": "boolean",
   "alignLabel": "breakpoint",
   "aria": "aria",
+  "color": "oneOf",
   "disabled": "boolean",
   "form": "string",
   "hideLabel": "breakpoint",
@@ -196,7 +197,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
 }
 `;
 
@@ -217,8 +218,10 @@ exports[`should call validateProps() with correct parameters via render for p-he
   "align": "oneOf",
   "color": "oneOf",
   "ellipsis": "boolean",
+  "hyphens": "oneOf",
   "size": "breakpoint",
   "tag": "oneOf",
+  "weight": "oneOf",
 }
 `;
 
@@ -227,7 +230,7 @@ exports[`should call validateProps() with correct parameters via render for p-ic
   "aria": "aria",
   "color": "oneOf",
   "name": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
   "source": "string",
 }
 `;
@@ -521,6 +524,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "active": "boolean",
   "alignLabel": "breakpoint",
   "aria": "aria",
+  "color": "oneOf",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",
@@ -689,8 +693,10 @@ exports[`should call validateProps() with correct parameters via render for p-sc
 {
   "alignScrollIndicator": "oneOf",
   "aria": "aria",
+  "compact": "boolean",
   "scrollToPosition": "shape",
   "scrollbar": "boolean",
+  "sticky": "boolean",
 }
 `;
 
@@ -760,6 +766,7 @@ exports[`should call validateProps() with correct parameters via render for p-sh
 exports[`should call validateProps() with correct parameters via render for p-spinner > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "color": "oneOf",
   "size": "breakpoint",
 }
 `;
@@ -794,6 +801,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
   "caption": "string",
   "compact": "boolean",
   "layout": "oneOf",
+  "sticky": "boolean",
 }
 `;
 
@@ -814,6 +822,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
   "weight": "oneOf",
 }
@@ -822,6 +832,8 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "background": "oneOf",
+  "compact": "boolean",
   "size": "breakpoint",
   "weight": "oneOf",
 }
@@ -855,6 +867,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "align": "oneOf",
   "color": "oneOf",
   "ellipsis": "boolean",
+  "hyphens": "oneOf",
   "size": "breakpoint",
   "tag": "oneOf",
   "weight": "oneOf",

@@ -30,7 +30,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <PHeading slot="summary" tag="h2" size="small">
+      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
         CSS Variables
       </PHeading>
       {amountOfConfiguredCssVariables > 0 && (
@@ -61,7 +61,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
               }
             >
               <span slot="label">{cssVariableName}</span>
-              <span slot="label-after" className="inline-flex gap-static-xs ms-static-xs">
+              <span slot="label-after" className="inline-flex gap-static-xs">
                 <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
                 {getFlags(cssVariableMeta)}
                 {/* TODO: Fix typing */}

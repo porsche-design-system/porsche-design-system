@@ -15,9 +15,7 @@ export const convertToNextJsVRTPage = (
   let newFileContent = convertedFileContent
     .replace(
       /\/\* Auto Generated File \*\//,
-      convertedFileContent.match(/use[A-Z]/)
-        ? "$&\n'use client';\nimport type { NextPage } from 'next';"
-        : "$&\nimport type { NextPage } from 'next';"
+      "$&\n'use client';\nimport type { NextPage } from 'next';"
     )
     .replace(/import { pollComponentsReady } from '\.\.\/\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
     .replace(/export (const pollComponentsReady)/, '$1')
@@ -32,7 +30,7 @@ export const convertToNextJsVRTPage = (
     .replace(/<img/g, '<Image');
 
   if (newFileContent.includes('<Image')) {
-    newFileContent = newFileContent.replace(/\/\* Auto Generated File \*\//, "$&\nimport Image from 'next/image';");
+    newFileContent = newFileContent.replace(/'use client';/, "$&\nimport Image from 'next/image';");
   }
 
   return {

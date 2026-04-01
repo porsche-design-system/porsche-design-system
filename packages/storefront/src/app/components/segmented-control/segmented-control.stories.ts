@@ -9,7 +9,7 @@ export const segmentedControlSlotStories: SlotStories<'p-segmented-control'> = {
       generator: () => [
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: ['Some Popover Content.'],
         },
       ],
@@ -86,7 +86,7 @@ export const segmentedControlStorySlots: Story<'p-segmented-control'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          properties: { slot: 'label-after' },
           children: [
             'Some Popover content with a ',
             {

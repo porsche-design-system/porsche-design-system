@@ -1,16 +1,16 @@
-import { borderWidthThin, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
-import { legacyRadiusSmall, radiusLg, radiusMd } from '../css-variables';
+import { fontPorscheNext, leadingNormal, legacyRadiusSmall, radiusLg, radiusMd, typescaleSm } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
+import { hoverMediaQuery } from '../media-query/hover-media-query';
 import {
   cssVarCheckboxBackgroundColor,
   cssVarCheckboxBorderColor,
   cssVarInternalCheckboxScaling,
 } from './checkbox-css-vars';
-import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getCheckboxBaseStyles = (
   isDisabled: boolean,
@@ -18,13 +18,13 @@ export const getCheckboxBaseStyles = (
   isCompact: boolean,
   state: FormState
 ): JssStyle => {
-  const { formStateBackgroundColor, formStateBorderColor } = getThemedFormStateColors(state);
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
-  const checkboxBorderWidth = borderWidthThin;
+  const checkboxBorderWidth = '1px';
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
-  const checkboxMarginBlock = `max(0px, calc((${fontLineHeight} - ${checkboxDimension}) / 2))`;
+  const checkboxMarginBlock = `max(0px, calc((${leadingNormal} - ${checkboxDimension}) / 2))`;
   const checkboxTouchInset = `calc(-${checkboxBorderWidth} - max(0px, calc(24px - ${checkboxDimension}) / 2))`;
 
   return {
@@ -34,7 +34,7 @@ export const getCheckboxBaseStyles = (
     height: checkboxDimension,
     marginBlock: checkboxMarginBlock,
     boxSizing: 'border-box',
-    font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+    font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
     background: `var(${cssVarCheckboxBackgroundColor},${formStateBackgroundColor})`,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${checkboxBorderWidth} solid var(${cssVarCheckboxBorderColor},${formStateBorderColor})`,
@@ -45,6 +45,11 @@ export const getCheckboxBaseStyles = (
     borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusMd : radiusLg})`,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+    }),
+    ...hoverMediaQuery({
+      '&:hover': {
+        borderColor: `var(${cssVarCheckboxBorderColor}, ${formStateBorderHoverColor})`,
+      },
     }),
     '&::before': {
       // This pseudo-element is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.

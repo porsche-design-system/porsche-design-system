@@ -40,7 +40,7 @@ for browsers that do not yet support `light-dark()` (see
 
 #### Utility Classes
 
-Apply these classes to the document or any container to control the theme context:
+Apply these classes to the document or any container to control the color-scheme context:
 
 - `.scheme-light` — Forces light mode.
 - `.scheme-dark` — Forces dark mode.
@@ -50,7 +50,7 @@ Apply these classes to the document or any container to control the theme contex
 
 #### 1. Global Setup
 
-Include the global styles once in your `main.tsx` to initialize the theme utilities.
+Include the global styles once in your `main.tsx` to initialize the color-scheme utilities.
 
 ```diff
 import { StrictMode } from 'react';
@@ -75,7 +75,7 @@ createRoot(document.getElementById('root')!).render(
 #### 2. Component Implementation
 
 Utilize the new tokens within your styles. These variables automatically resolve to the correct value based on the
-active theme.
+active color-scheme.
 
 ```tsx
 import styled from '@emotion/styled';
@@ -89,12 +89,12 @@ const MyComponent = styled.div({
 
 #### 3. Application
 
-The defined theme context will cascade to all child elements.
+The defined color-scheme context will cascade to all child elements.
 
 ```tsx
 import { MyComponent } from './MyComponent';
 
-<!-- Defined theme will be applied to all child elements -->
+<!-- Defined color-scheme will be applied to all child elements -->
 export const App = () => {
   return (
     <div className="scheme-dark">
@@ -322,11 +322,11 @@ See [Emotion Typography Examples](/emotion/typography/examples) for more details
 
 ```diff
 - ...displayLargeStyle,
-+ ...proseDisplayLgStyle,
++ ...proseHeading5XlStyle,
 - ...displayMediumStyle,
-+ ...proseDisplayMdStyle,
++ ...proseHeading4XlStyle,
 - ...displaySmallStyle,
-+ ...proseDisplaySmStyle,
++ ...proseHeading3XlStyle,
 - ...headingXXLargeStyle,
 + ...proseHeading2XlStyle,
 - ...headingXLargeStyle,
@@ -349,4 +349,45 @@ See [Emotion Typography Examples](/emotion/typography/examples) for more details
 + ...proseTextXsStyle,
 - ...textXXSmallStyle,
 + ...proseText2XsStyle,
+```
+
+Font variables:
+
+```diff
+- fontFamily
++ fontPorscheNext
+- fontLineHeight
++ leadingNormal
+- fontWeightRegular
++ fontWeightNormal
+- fontWeightSemiBold
++ fontWeightSemibold
+- fontSizeTextXXSmall
++ typescale2Xs
+- fontSizeTextXSmall
++ typescaleXs
+- fontSizeTextSmall
++ typescaleSm
+- fontSizeTextMedium
++ typescaleMd
+- fontSizeTextLarge
++ typescaleLg
+- fontSizeTextXLarge
++ typescaleXl
+- fontSizeHeadingSmall
++ typescaleSm
+- fontSizeHeadingMedium
++ typescaleMd
+- fontSizeHeadingLarge
++ typescaleLg
+- fontSizeHeadingXLarge
++ typescaleXl
+- fontSizeHeadingXXLarge
++ typescale2Xl
+- fontSizeDisplay.small
++ typescale3Xl
+- fontSizeDisplay.medium
++ typescale4Xl
+- fontSizeDisplay.large
++ typescale5Xl
 ```

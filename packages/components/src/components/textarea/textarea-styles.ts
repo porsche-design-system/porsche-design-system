@@ -1,4 +1,3 @@
-import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -12,9 +11,14 @@ import {
   colorContrastMedium,
   colorFrosted,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusLg,
   radiusXl,
+  spacingStaticXs,
+  typescaleSm,
 } from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { getUnitCounterJssStyle } from '../../styles/form-styles';
@@ -30,9 +34,7 @@ import type { TextareaResize } from './textarea-utils';
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
 
-// CSS Variable defined in fontHyphenationStyle
 /**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
  * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
  * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"unset"}
@@ -52,7 +54,7 @@ export const getComponentCss = (
   const textareaMinHeight = `calc(var(${cssVarInternalTextareaScaling}) * 3.5rem)`;
   const textareaPaddingBlock = `calc(28px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 5px)`;
   const textareaPaddingInline = `calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 8px)`;
-  const textareaPaddingBottom = `calc(${fontLineHeight} + calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px))`;
+  const textareaPaddingBottom = `calc(${leadingNormal} + calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px))`;
   const counterMarginBottom = `calc(11.2px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px)`;
 
   const { formStateBorderColor, formStateBackgroundColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
@@ -64,10 +66,9 @@ export const getComponentCss = (
         [`${cssVarInternalTextareaScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         all: 'unset',
@@ -79,14 +80,14 @@ export const getComponentCss = (
         maxWidth: 'var(--p-textarea-max-width, unset)',
         minHeight: `var(--p-textarea-min-height, ${textareaMinHeight})`,
         maxHeight: 'var(--p-textarea-max-height, unset)',
-        border: `${borderWidthThin} solid ${formStateBorderColor}`,
+        border: `1px solid ${formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: colorPrimary,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
         boxSizing: 'border-box',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        font: textSmallStyle.font,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         padding: hasCounter
           ? `${textareaPaddingBlock} ${textareaPaddingInline} ${textareaPaddingBottom}`
           : `${textareaPaddingBlock} ${textareaPaddingInline}`,
@@ -110,10 +111,11 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
     },
     wrapper: {
       display: 'grid',
+      ...(isDisabled && getDisabledBaseStyles()),
     },
     ...(hasCounter && {
       counter: {
@@ -126,7 +128,7 @@ export const getComponentCss = (
       'sr-only': getHiddenTextJssStyle(),
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
   });

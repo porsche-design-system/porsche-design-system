@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { addImportantToEachRule, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, forcedColorsMediaQuery, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
 import { colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
@@ -47,6 +47,9 @@ export const getComponentCss = (size: WordmarkSize): string => {
       svg: {
         ...sizingStyles,
         fill: colorPrimary,
+        ...forcedColorsMediaQuery({
+          fill: 'CanvasText',
+        }),
       },
     },
   });

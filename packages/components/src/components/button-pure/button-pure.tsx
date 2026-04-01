@@ -11,14 +11,16 @@ import {
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  TEXT_SIZES,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-pure-styles';
 import {
+  BUTTON_PURE_COLORS,
+  BUTTON_PURE_SIZES,
   type ButtonPureAlignLabel,
   type ButtonPureAriaAttribute,
+  type ButtonPureColor,
   type ButtonPureIcon,
   type ButtonPureSize,
   type ButtonPureType,
@@ -32,8 +34,9 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   value: AllowedTypes.string,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  size: AllowedTypes.breakpoint<ButtonPureSize>(TEXT_SIZES),
+  size: AllowedTypes.breakpoint<ButtonPureSize>(BUTTON_PURE_SIZES),
   icon: AllowedTypes.string,
+  color: AllowedTypes.oneOf<ButtonPureColor>(BUTTON_PURE_COLORS),
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
   active: AllowedTypes.boolean,
@@ -71,7 +74,10 @@ export class ButtonPure {
   @Prop() public loading?: boolean = false;
 
   /** Size of the button. */
-  @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'sm';
+
+  /** The color. */
+  @Prop() public color?: ButtonPureColor = 'primary';
 
   /** The icon shown. */
   @Prop() public icon?: ButtonPureIcon = 'arrow-right';
@@ -82,10 +88,10 @@ export class ButtonPure {
   /** Shows an underline under the label. */
   @Prop() public underline?: boolean = false;
 
-  /** Display button in active state. */
+  /** Displays the button in its active state. */
   @Prop() public active?: boolean = false;
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
@@ -94,7 +100,7 @@ export class ButtonPure {
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
   /** The id of a form element the button should be associated with. */
@@ -183,6 +189,7 @@ export class ButtonPure {
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
+      this.color,
       this.hideLabel,
       this.alignLabel,
       this.underline
@@ -193,6 +200,7 @@ export class ButtonPure {
     const iconProps = {
       class: 'icon',
       size: 'inherit',
+      color: 'inherit',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -211,13 +219,7 @@ export class ButtonPure {
             <PrefixedTagNames.pSpinner {...iconProps} aria-hidden="true" />
           ) : (
             hasIcon && (
-              <PrefixedTagNames.pIcon
-                {...iconProps}
-                name={this.icon}
-                source={this.iconSource}
-                color="inherit"
-                aria-hidden="true"
-              />
+              <PrefixedTagNames.pIcon {...iconProps} name={this.icon} source={this.iconSource} aria-hidden="true" />
             )
           )}
           <span class="label">

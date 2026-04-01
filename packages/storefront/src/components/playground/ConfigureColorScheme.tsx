@@ -26,7 +26,7 @@ export const ConfigureColorScheme = ({ style, handleUpdateColorScheme }: Configu
 
   return (
     <>
-      <PHeading slot="summary" tag="h2" size="small">
+      <PHeading slot="summary" tag="h2" size="small" weight="semibold">
         Color Scheme
       </PHeading>
       <div className="flex flex-col gap-fluid-sm">

@@ -13,7 +13,13 @@ hr {
   background: var(--p-color-contrast-high);
   height: 1px;
   width: 100%;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "horizontal" 2`] = `
@@ -29,7 +35,13 @@ hr {
   background: var(--p-color-contrast-high);
   height: 1px;
   width: 100%;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 1`] = `
@@ -45,7 +57,13 @@ hr {
   background: var(--p-color-contrast-high);
   height: 100%;
   width: 1px;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 2`] = `
@@ -61,7 +79,13 @@ hr {
   background: var(--p-color-contrast-high);
   height: 100%;
   width: 1px;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 1`] = `
@@ -77,7 +101,13 @@ hr {
   background: var(--p-color-contrast-low);
   height: 1px;
   width: 100%;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 2`] = `
@@ -93,7 +123,13 @@ hr {
   background: var(--p-color-contrast-low);
   height: 1px;
   width: 100%;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 1`] = `
@@ -109,7 +145,13 @@ hr {
   background: var(--p-color-contrast-low);
   height: 100%;
   width: 1px;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 2`] = `
@@ -125,7 +167,13 @@ hr {
   background: var(--p-color-contrast-low);
   height: 100%;
   width: 1px;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} 1`] = `
@@ -176,6 +224,12 @@ hr {
     width: 1px;
   }
 }
+
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
 "
 `;
 
@@ -192,7 +246,13 @@ hr {
   background: var(--p-color-contrast-medium);
   height: 1px;
   width: 100%;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 2`] = `
@@ -208,7 +268,13 @@ hr {
   background: var(--p-color-contrast-medium);
   height: 1px;
   width: 100%;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 1`] = `
@@ -224,7 +290,13 @@ hr {
   background: var(--p-color-contrast-medium);
   height: 100%;
   width: 1px;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 2`] = `
@@ -240,5 +312,11 @@ hr {
   background: var(--p-color-contrast-medium);
   height: 100%;
   width: 1px;
-}"
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
 `;

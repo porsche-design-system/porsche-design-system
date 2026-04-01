@@ -24,23 +24,21 @@ exports[`getComponentCss() > should return correct css 1`] = `
     visibility: hidden;
   }
   p {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     margin: 0;
   }
   button {
     all: unset;
     display: block;
-    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    width: calc(6px + 2.125ex);
-    height: calc(6px + 2.125ex);
+    font: var(--p-typescale-sm) var(--p-font-porsche-next);
+    width: var(--p-leading-normal);
+    height: var(--p-leading-normal);
     border-radius: var(--p-radius-full);
     cursor: pointer;
     background-color: var(--p-color-frosted);
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -52,12 +50,12 @@ exports[`getComponentCss() > should return correct css 1`] = `
     pointer-events: none;
     filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
     backdrop-filter: drop-shadow(0 0 transparent);
-    animation: var(--p-animation-duration, .25s) fade-in cubic-bezier(.25,.1,.25,1) forwards;
+    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
   }
   [popover]:not(:popover-open) {
     display: none;
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     button:focus-visible {
       outline-color: Highlight;
     }
@@ -93,16 +91,14 @@ exports[`getComponentCss() > should return correct css 1`] = `
     max-width: min(calc(100dvw - 16px), 48ch);
     width: max-content;
     box-sizing: border-box;
-    padding: 8px 16px;
+    padding: var(--p-spacing-static-sm) var(--p-spacing-static-md);
     pointer-events: auto;
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
     background: var(--p-color-canvas);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
   }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
     .arrow {
       background: CanvasText;
     }

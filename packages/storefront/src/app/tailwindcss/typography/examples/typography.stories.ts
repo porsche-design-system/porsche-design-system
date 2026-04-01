@@ -2,34 +2,6 @@
 
 import type { Story } from '@/models/story';
 
-export const typographyStoryDisplay: Story<'div'> = {
-  generator: () => [
-    {
-      tag: 'div',
-      properties: {
-        className: 'grid gap-fluid-md',
-      },
-      children: [
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-lg' },
-          children: ['.prose-display-lg'],
-        },
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-md' },
-          children: ['.prose-display-md'],
-        },
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-sm' },
-          children: ['.prose-display-sm'],
-        },
-      ],
-    },
-  ],
-};
-
 export const typographyStoryHeading: Story<'div'> = {
   generator: () => [
     {
@@ -38,6 +10,21 @@ export const typographyStoryHeading: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-5xl' },
+          children: ['.prose-heading-5xl'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-4xl' },
+          children: ['.prose-heading-4xl'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-3xl' },
+          children: ['.prose-heading-3xl'],
+        },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-2xl' },
@@ -63,6 +50,16 @@ export const typographyStoryHeading: Story<'div'> = {
           properties: { className: 'prose-heading-sm' },
           children: ['.prose-heading-sm'],
         },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-xs' },
+          children: ['.prose-heading-xs'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-2xs' },
+          children: ['.prose-heading-2xs'],
+        },
       ],
     },
   ],
@@ -76,6 +73,26 @@ export const typographyStoryText: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-5xl hyphens-auto' },
+          children: ['.prose-text-5xl'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-4xl hyphens-auto' },
+          children: ['.prose-text-4xl'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-3xl hyphens-auto' },
+          children: ['.prose-text-3xl'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-2xl hyphens-auto' },
+          children: ['.prose-text-2xl'],
+        },
         {
           tag: 'p',
           properties: { className: 'prose-text-xl hyphens-auto' },

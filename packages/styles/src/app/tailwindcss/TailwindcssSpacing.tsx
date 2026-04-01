@@ -26,6 +26,10 @@ export const TailwindcssSpacing = () => {
         Fluid 2xl
       </div>
       <div className="flex items-center gap-static-md">
+        <div className="w-static-2xs h-static-2xs bg-error"></div>
+        Static 2xs
+      </div>
+      <div className="flex items-center gap-static-md">
         <div className="w-static-xs h-static-xs bg-error"></div>
         Static xs
       </div>

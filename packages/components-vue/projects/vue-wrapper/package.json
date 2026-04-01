@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-vue",
-  "version": "4.0.0-beta.0",
+  "version": "4.0.0-rc.0",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "keywords": [
     "porsche",
@@ -16,8 +16,12 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/porsche-design-system/porsche-design-system"
+  },
   "dependencies": {
-    "@porsche-design-system/components-js": "4.0.0-beta.0"
+    "@porsche-design-system/components-js": "4.0.0-rc.0"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
@@ -99,6 +103,8 @@
     "./tailwindcss/index": "./tailwindcss/index.css",
     "./index.css": "./global-styles/index.css",
     "./index": "./global-styles/index.css",
+    "./color-scheme.css": "./global-styles/color-scheme.css",
+    "./color-scheme": "./global-styles/color-scheme.css",
     "./font-face.css": "./global-styles/font-face.css",
     "./font-face": "./global-styles/font-face.css",
     "./normalize.css": "./global-styles/normalize.css",

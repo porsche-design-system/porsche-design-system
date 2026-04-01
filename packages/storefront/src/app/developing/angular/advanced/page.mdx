@@ -13,9 +13,9 @@ export const metadata = {
 
 All system colors are controlled via the CSS
 [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property and are
-included in our mandatory [Global Styles](/styles/introduction). These styles also provide utility classes for selecting
-the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()` (see
-[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+included in our mandatory [Global Styles](/stylesheets/introduction). These styles also provide utility classes for
+selecting the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()`
+(see [browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
 By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
 settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS class to the `<html>` element or any HTML
@@ -36,7 +36,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(PorscheDesignSystemModule.load({ theme: 'dark' }))],
+  providers: [importProvidersFrom(PorscheDesignSystemModule.load())],
 }).catch((err) => console.error(err));
 ```
 

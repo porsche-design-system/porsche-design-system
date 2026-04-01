@@ -21,15 +21,12 @@ import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { Search } from '@/components/search/Search';
 import { useDirection } from '@/hooks/useDirection';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
+import { useStorefrontVersion } from '@/hooks/useStorefrontVersion';
 import { useTextZoom } from '@/hooks/useTextZoom';
+import type { StorefrontColorScheme } from '@/models/colorScheme';
 import type { StorefrontDirection } from '@/models/dir';
-import { LEGACY_PDS_VERSIONS, type PDSVersionGroup, type Semver } from '@/models/pdsVersion';
 import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontColorScheme } from '@/models/theme';
-import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
-import { isDevEnvironment } from '@/utils/isDev';
-import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 declare global {
   interface Window {
@@ -42,18 +39,8 @@ if (global?.window) {
 }
 
 export const Canvas = ({ children }: PropsWithChildren) => {
-  const [stablePdsReleases, setStablePdsReleases] = useState<string[]>([]);
-
-  useEffect(() => {
-    async function load() {
-      const list = await fetchPdsVersions();
-      setStablePdsReleases(list);
-    }
-
-    load();
-  }, []);
-
-  const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
+  const { pdsVersion, isOutdatedVersionBannerOpen, setIsIsOutdatedVersionBannerOpen } = useStorefrontVersion();
+  const { storefrontColorScheme, setStorefrontColorScheme } = useStorefrontColorScheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
@@ -61,23 +48,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
-  const [isBannerOpen, setIsBannerOpen] = useState(false);
   const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointMd}px)`).matches;
-
-  const latestPdsVersion = stablePdsReleases[0] as Semver;
-
-  useEffect(() => {
-    if (!latestPdsVersion) return;
-    if (!isDevEnvironment && localPorscheDesignSystemVersion !== latestPdsVersion) {
-      setIsBannerOpen(true);
-    }
-  }, [latestPdsVersion]);
-
-  const pdsVersion: PDSVersionGroup = {
-    all: [...stablePdsReleases, ...LEGACY_PDS_VERSIONS],
-    current: localPorscheDesignSystemVersion as Semver,
-    latest: latestPdsVersion,
-  };
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
@@ -117,6 +88,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
   return (
     <PCanvas
+      className="[--p-canvas-sidebar-start-width:315px] [--p-canvas-sidebar-end-width:315px]"
       sidebarStartOpen={isSidebarStartOpen}
       sidebarEndOpen={isSidebarEndOpen}
       onSidebarStartUpdate={onSidebarStartUpdate}
@@ -126,7 +98,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
-      <PBanner open={isBannerOpen} onDismiss={() => setIsBannerOpen(false)}>
+      <PBanner open={isOutdatedVersionBannerOpen} onDismiss={() => setIsIsOutdatedVersionBannerOpen(false)}>
         <div slot="description" className="flex flex-col gap-fluid-xs">
           You are currently viewing an earlier release of the Porsche Design System.
           <Link href={`https://designsystem.porsche.com/`}>
@@ -168,7 +140,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Open sidebar
       </PButton>
 
-      <div className="@container grid grid-cols-12 gap-x-fluid-md">
+      <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
         <Tabs />
         {children}
@@ -179,12 +151,12 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end" className="flex flex-col gap-fluid-sm">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
-          <PHeading size="small" tag="h2">
+          <PHeading size="small" tag="h2" weight="semibold">
             Global settings
           </PHeading>
           <ThemeSelect
-            value={storefrontTheme}
-            onThemeChange={(e): void => setStorefrontTheme(e.detail.value as StorefrontColorScheme)}
+            value={storefrontColorScheme}
+            onThemeChange={(e): void => setStorefrontColorScheme(e.detail.value as StorefrontColorScheme)}
             compact={true}
           />
           <DirectionSelect

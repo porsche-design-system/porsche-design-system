@@ -1,5 +1,7 @@
-import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleSm } from '@porsche-design-system/tokens';
+import { colorPrimary } from '../color';
+import { fontPorscheNext, fontWeightSemibold, leadingNormal, typescaleSm } from '../font';
 
 export const proseHeadingSmStyle = {
-  font: `normal normal ${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+  font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+  color: colorPrimary,
 };

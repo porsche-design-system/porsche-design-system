@@ -1,8 +1,8 @@
-import { fontLineHeight, frostedGlassStyle, spacingFluidXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -11,7 +11,17 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { colorCanvas, colorFrosted, colorPrimary, legacyRadiusSmall, radiusFull } from '../../../styles/css-variables';
+import {
+  blurFrosted,
+  colorCanvas,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusFull,
+} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
@@ -28,11 +38,6 @@ const svgNumber = [
   '<path d="m9.16 10.33c0-2.03 1.02-2.86 2.83-2.86s2.82.81 2.82 2.85c0 1.11-.3 1.82-.81 2.64l-2.18 3.44h-1.1l2.18-3.37c-.31.14-.65.2-1.01.2-1.82 0-2.74-.99-2.74-2.9zm4.65 0c0-1.23-.47-1.92-1.81-1.92s-1.81.69-1.81 1.92c0 1.37.49 2.05 1.81 2.05s1.81-.68 1.81-2.05z"/>',
 ];
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-
 export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean): string => {
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;
@@ -45,9 +50,6 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           fontSize: 'inherit',
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
-          '&(:not(:last-of-type))': {
-            marginInlineEnd: spacingFluidXSmall,
-          },
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -61,32 +63,47 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         paddingBlock: '6px',
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
-        font: textSmallStyle.font,
-        fontSize: 'inherit', // necessary because of all: unset
+        font: `${fontWeightNormal} inherit / ${leadingNormal} ${fontPorscheNext}`,
         borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         ...(isStateCurrent && {
-          ...frostedGlassStyle,
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
           background: colorFrosted,
         }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
-              ...frostedGlassStyle,
+              WebkitBackdropFilter: blurFrosted,
+              backdropFilter: blurFrosted,
               background: colorFrosted,
             },
           })),
         '&:focus-visible': getFocusBaseStyles(),
+        ...forcedColorsMediaQuery({
+          ...(isStateCurrent && {
+            outline: '1px solid CanvasText',
+          }),
+          ...(isDisabled && {
+            color: 'GrayText',
+            borderColor: 'GrayText',
+          }),
+        }),
       },
     },
     icon: {
-      font: textSmallStyle.font,
-      fontSize: 'inherit', // necessary because of all: unset
-      width: fontLineHeight,
-      height: fontLineHeight,
+      font: `inherit ${fontPorscheNext}`, // necessary because of all: unset and to correctly calculate width/height based on ex-unit
+      width: leadingNormal,
+      height: leadingNormal,
+      forcedColorAdjust: 'none',
       ...(isStateCurrentOrUndefined && {
         display: 'grid',
         backgroundImage: `radial-gradient(circle, ${colorPrimary} 60%, transparent 62%)`,
+        ...(isDisabled && {
+          ...forcedColorsMediaQuery({
+            backgroundImage: 'radial-gradient(circle, GrayText 60%, transparent 62%)',
+          }),
+        }),
         '&::before': {
           content: '""',
           ...Array.from(new Array(9)).reduce(

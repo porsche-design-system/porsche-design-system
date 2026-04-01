@@ -1,12 +1,11 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { IconName, PropTypes, SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, IconName, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
-  TEXT_SIZES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './icon-styles';
@@ -14,6 +13,7 @@ import {
   buildIconUrl,
   ICON_ARIA_ATTRIBUTES,
   ICON_COLORS,
+  ICON_SIZES,
   type IconAriaAttribute,
   type IconColor,
   type IconSize,
@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof Icon> = {
   name: AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]),
   source: AllowedTypes.string,
   color: AllowedTypes.oneOf<IconColor>(ICON_COLORS),
-  size: AllowedTypes.oneOf<IconSize>(TEXT_SIZES),
+  size: AllowedTypes.breakpoint<IconSize>(ICON_SIZES),
   aria: AllowedTypes.aria<IconAriaAttribute>(ICON_ARIA_ATTRIBUTES),
 };
 
@@ -43,10 +43,10 @@ export class Icon {
   /** Basic color variations. */
   @Prop() public color?: IconColor = 'primary';
 
-  /** The size of the icon. */
-  @Prop() public size?: IconSize = 'small';
+  /** Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
+  @Prop() public size?: BreakpointCustomizable<IconSize> = 'sm';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

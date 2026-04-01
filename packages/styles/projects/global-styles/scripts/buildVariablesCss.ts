@@ -1,78 +1,39 @@
 import * as fs from 'node:fs';
 import {
   blurFrosted,
-  breakpoint2Xl,
-  breakpointLg,
-  breakpointMd,
-  breakpointSm,
-  breakpointXl,
-  breakpointXs,
   colorBackdrop,
-  colorBackdropLight,
   colorCanvas,
-  colorCanvasLight,
   colorContrastHigh,
   colorContrastHigher,
-  colorContrastHigherLight,
-  colorContrastHighLight,
   colorContrastLow,
   colorContrastLower,
-  colorContrastLowerLight,
-  colorContrastLowLight,
   colorContrastMedium,
-  colorContrastMediumLight,
   colorError,
   colorErrorFrosted,
-  colorErrorFrostedLight,
   colorErrorFrostedSoft,
-  colorErrorFrostedSoftLight,
-  colorErrorLight,
   colorErrorLow,
-  colorErrorLowLight,
   colorErrorMedium,
-  colorErrorMediumLight,
   colorFocus,
-  colorFocusLight,
   colorFrosted,
-  colorFrostedLight,
   colorFrostedSoft,
-  colorFrostedSoftLight,
   colorFrostedStrong,
-  colorFrostedStrongLight,
   colorInfo,
   colorInfoFrosted,
-  colorInfoFrostedLight,
   colorInfoFrostedSoft,
-  colorInfoFrostedSoftLight,
-  colorInfoLight,
   colorInfoLow,
-  colorInfoLowLight,
   colorInfoMedium,
-  colorInfoMediumLight,
   colorPrimary,
-  colorPrimaryLight,
   colorSuccess,
   colorSuccessFrosted,
-  colorSuccessFrostedLight,
   colorSuccessFrostedSoft,
-  colorSuccessFrostedSoftLight,
-  colorSuccessLight,
   colorSuccessLow,
-  colorSuccessLowLight,
   colorSuccessMedium,
-  colorSuccessMediumLight,
   colorSurface,
-  colorSurfaceLight,
   colorWarning,
   colorWarningFrosted,
-  colorWarningFrostedLight,
   colorWarningFrostedSoftDark,
-  colorWarningFrostedSoftLight,
-  colorWarningLight,
   colorWarningLow,
-  colorWarningLowLight,
   colorWarningMedium,
-  colorWarningMediumLight,
   durationLg,
   durationMd,
   durationSm,
@@ -104,6 +65,7 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -111,6 +73,9 @@ import {
   spacingStaticXs,
   typescale2Xl,
   typescale2Xs,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
   typescaleLg,
   typescaleMd,
   typescaleSm,
@@ -121,6 +86,8 @@ import * as prettier from 'prettier';
 
 export const buildVariablesCss = async (): Promise<void> => {
   const styles = `:root {
+  color-scheme: light;
+
   --p-color-focus: ${colorFocus};
   --p-color-canvas: ${colorCanvas};
   --p-color-surface: ${colorSurface};
@@ -170,13 +137,9 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-typescale-lg: ${typescaleLg};
   --p-typescale-xl: ${typescaleXl};
   --p-typescale-2xl: ${typescale2Xl};
-
-  --p-breakpoint-xs: ${breakpointXs}px;
-  --p-breakpoint-sm: ${breakpointSm}px;
-  --p-breakpoint-md: ${breakpointMd}px;
-  --p-breakpoint-lg: ${breakpointLg}px;
-  --p-breakpoint-xl: ${breakpointXl}px;
-  --p-breakpoint-2xl: ${breakpoint2Xl}px;
+  --p-typescale-3xl: ${typescale3Xl};
+  --p-typescale-4xl: ${typescale4Xl};
+  --p-typescale-5xl: ${typescale5Xl};
 
   --p-spacing-fluid-xs: ${spacingFluidXs};
   --p-spacing-fluid-sm: ${spacingFluidSm};
@@ -185,6 +148,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-spacing-fluid-xl: ${spacingFluidXl};
   --p-spacing-fluid-2xl: ${spacingFluid2Xl};
 
+  --p-spacing-static-2xs: ${spacingStatic2Xs};
   --p-spacing-static-xs: ${spacingStaticXs};
   --p-spacing-static-sm: ${spacingStaticSm};
   --p-spacing-static-md: ${spacingStaticMd};

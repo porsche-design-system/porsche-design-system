@@ -4,15 +4,7 @@ import {
   gridExtendedOffset,
   gridFullOffset,
   gridWideOffset,
-  headingXLargeStyle,
-  headingXXLargeStyle,
   motionDurationModerate,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
 } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
@@ -27,9 +19,20 @@ import {
 import {
   colorContrastMedium,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusLarge,
   radius4Xl,
   radiusFull,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescale2Xl,
+  typescaleSm,
+  typescaleXl,
 } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
@@ -97,11 +100,6 @@ const backfaceVisibilityJssStyle: JssStyle = {
 
 const gradientMask = `linear-gradient(90deg,transparent 20%,#000 var(${cssVariableGradientColorWidth},33%) calc(100% - var(${cssVariableGradientColorWidth},33%)),transparent 80%)`;
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-
 export const getComponentCss = (
   gradient: boolean,
   hasHeading: boolean,
@@ -122,7 +120,7 @@ export const getComponentCss = (
       ':host': {
         display: 'flex',
         ...addImportantToEachRule({
-          gap: spacingFluidMedium, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
+          gap: spacingFluidMd, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
           flexDirection: 'column',
           boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
           ...hostHiddenStyles,
@@ -164,20 +162,20 @@ export const getComponentCss = (
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
-            margin: `0 0 ${hasDescription ? 0 : spacingFluidMedium}`,
-            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+            margin: `0 0 ${hasDescription ? 0 : spacingFluidMd}`,
+            font: `${fontWeightNormal} ${headingSize === 'xx-large' ? typescale2Xl : typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
           },
           '::slotted([slot=heading])': {
             margin: 0, // reset ua-style
-            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+            font: `${fontWeightNormal} ${headingSize === 'xx-large' ? typescale2Xl : typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
           },
         }),
         // p,::slotted([slot=description])
         ...(hasDescription && {
           [selectorDescription]: {
             maxWidth: '34.375rem',
-            margin: `${spacingFluidSmall} 0 ${spacingFluidMedium}`,
-            ...textSmallStyle,
+            margin: `${spacingFluidSm} 0 ${spacingFluidMd}`,
+            font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
           },
         }),
       }),
@@ -190,7 +188,7 @@ export const getComponentCss = (
         gridTemplateColumns: 'minmax(0px,1fr) auto',
         paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
         paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
-        ...(hasNavigation && { columnGap: spacingStaticMedium }),
+        ...(hasNavigation && { columnGap: spacingStaticMd }),
       },
       [mediaQueryXXL]: {
         paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
@@ -203,12 +201,12 @@ export const getComponentCss = (
         gridRowStart: '3',
         gridColumnEnd: '-1',
         display: 'flex',
-        gap: spacingStaticXSmall,
+        gap: spacingStaticXs,
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
     },
     btn: {
-      padding: spacingStaticSmall,
+      padding: spacingStaticSm,
     },
     'skip-link': {
       // :focus must be used in this case, because :focus-visible is just matched on the focusable element itself, not on the host element.

@@ -38,7 +38,7 @@ export class Switch {
   /** Aligns the label. */
   @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'end';
 
-  /** Show or hide label. For better accessibility it's recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Stretches the contents to max available space. */
@@ -53,10 +53,10 @@ export class Switch {
   /** Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
 
-  /** Displays as compact version. */
+  /** Displays the switch in compact mode. */
   @Prop() public compact?: boolean = false;
 
-  /** Emitted when checked status is changed. */
+  /** Emitted when the checked state changes. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
   private initialLoading: boolean = false;
@@ -116,9 +116,7 @@ export class Switch {
           onClick={this.onSwitchClick}
         >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
-          <span class="toggle">
-            {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
-          </span>
+          <span class="toggle">{this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}</span>
         </button>
         <label id="label" htmlFor={id}>
           <slot />

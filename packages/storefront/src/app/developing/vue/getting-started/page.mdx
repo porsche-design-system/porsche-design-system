@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
 import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Vue: Getting started - Porsche Design System',
@@ -63,54 +64,62 @@ npm install @porsche-design-system/components-vue
 
 Wrap your app with the `<PorscheDesignSystemProvider />`.
 
-```vue
+```diff
 // src/App.vue
 
 <script setup lang="ts">
   import { RouterView } from 'vue-router';
-  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
++ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
-  <PorscheDesignSystemProvider>
++ <PorscheDesignSystemProvider>
     <header>…</header>
     <RouterView />
-  </PorscheDesignSystemProvider>
++ </PorscheDesignSystemProvider>
 </template>
-
-<style scoped>
-  …
-</style>
 ```
 
 ### Step 3
 
-Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
-recommended styles, such as:
-
-- CSS color variables (including color scheme utilities)
-- Font-face definitions
-- Normalize styles
-
-If your website will be used primarily in China, use the `/cn` import. See
-[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
-
-See [Styles](/styles/introduction/) for more details about global styles. See [Theme](/must-know/theme/) to learn about
-theming.
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
 
 ```diff
 /* src/assets/main.css */
+
 + @import '@porsche-design-system/components-vue';
 ```
 
-To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it's broken.
+[Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
+
+```diff
+// vite.config.ts
+
++ import { Features } from 'lightningcss';
+
+export default defineConfig({
++ css: {
++   transformer: 'lightningcss',
++   // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++   lightningcss: {
++     exclude: Features.LightDark,
++   },
++ },
+});
+```
+
+To prevent FOUC, hide elements until they are either registered
 ([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
-Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
-`:defined` pseudo-class, consider applying the style only to the relevant tags (`:is(p-button...)`). See
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
 [Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
 
 ```diff
 /* src/assets/main.css */
+
 @import '@porsche-design-system/components-vue';
 
 + :not(:defined) {
@@ -120,38 +129,36 @@ Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you 
 
 ### Step 4 (recommended)
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
 
-```tsx
+```diff
 // vite.config.ts
 
-import …
 import { defineConfig } from 'vite';
-import {
-  getComponentChunkLinks,
-  getFontLinks,
-  getIconLinks,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-vue/partials';
++ import {
++   getComponentChunkLinks,
++   getFontLinks,
++   getIconLinks,
++   getMetaTagsAndIconLinks,
++ } from '@porsche-design-system/components-vue/partials';
 
 const transformIndexHtmlPlugin = () => {
   return {
     name: 'html-transform',
     transformIndexHtml(html: string) {
-      const headPartials = [
-        // preloads Porsche Next font (=> minimize FOUT)
-        getFontLinks(),
-        // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
-        getComponentChunkLinks(),
-        // preloads Porsche icons (=> minimize FOUC)
-        getIconLinks(),
-        // injects favicon, apple touch icons, android touch icons, etc.
-        getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
-      ].join('');
++     const headPartials = [
++       // preloads fonts
++       getFontLinks(),
++       // preloads icons
++       getIconLinks(),
++       // preloads components
++       getComponentChunkLinks(),
++       // injects favicon, apple touch icons, android touch icons, etc.
++       getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
++     ].join('');
 
-      return html.replace(/<\/head>/, `${headPartials}$&`);
++     return html.replace(/<\/head>/, `${headPartials}$&`);
     },
   };
 };
@@ -172,16 +179,6 @@ Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design Syste
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
 **seamless styling consistency** with Porsche's design principles.
 
-#### The Key Advantage: Universal Code Sharing & Scalability
-
-> Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly
-> framework-agnostic**. Since Tailwind generates atomic **utility classes**, you eliminate cascading style issues,
-> promoting long-term **scalability and maintainability** for large projects. The patterns and components you build are
-> easily portable. You can **copy and paste** the same styling code between projects, teams, and different technology
-> stacks (React, Angular, Vue, plain HTML, etc.), ensuring **100% visual uniformity** across the organization. You can
-> now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
-> Tailwind CSS, to build applications quickly and efficiently.
-
 Install Tailwind CSS within your project directory.
 
 ```bash
@@ -190,17 +187,14 @@ npm install tailwindcss @tailwindcss/vite
 
 Configure the Vite Tailwind CSS plugin.
 
-```tsx
+```diff
 // vite.config.ts
 
-import …
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
-
-const transformIndexHtmlPlugin = () => { … }
++ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), vueDevTools(), transformIndexHtmlPlugin(), tailwindcss()],
++ plugins: [vue(), vueJsx(), vueDevTools(), transformIndexHtmlPlugin(), tailwindcss()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -237,7 +231,7 @@ import { PWordmark } from '@porsche-design-system/components-vue';
   <PorscheDesignSystemProvider>
     <div class="grid justify-items-center col-span-full gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
       <PWordmark />
-      <h1 class="prose-display-md">Porsche Design System</h1>
+      <h1 class="prose-heading-4xl">Porsche Design System</h1>
     </div>
     <header>…</header>
     <RouterView />

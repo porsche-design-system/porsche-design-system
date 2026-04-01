@@ -1,7 +1,6 @@
-import { getBasePath } from '@/utils/getBasePath';
 import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
-import remarkGfm from 'remark-gfm';
+import { getBasePath } from '@/utils/getBasePath';
 
 const basePath = getBasePath();
 
@@ -19,13 +18,19 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    useLightningcss: true,
+    // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
+    lightningCssFeatures: {
+      exclude: ['light-dark'],
+    },
+  },
 };
 
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    remarkPlugins: ['remark-gfm'],
   },
 });
 

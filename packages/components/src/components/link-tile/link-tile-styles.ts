@@ -1,11 +1,4 @@
-import {
-  gradientToBottomStyle,
-  gradientToTopStyle,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingStaticMedium,
-  textMediumStyle,
-} from '@porsche-design-system/emotion';
+import { gradientToBottomStyle, gradientToTopStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getTransition,
@@ -13,9 +6,20 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorCanvas, colorPrimary, legacyRadiusLarge, radius4Xl } from '../../styles/css-variables';
-import { getFontSizeText } from '../../styles/font-size-text-styles';
-import { getFontWeight } from '../../styles/font-weight-styles';
+import {
+  colorCanvas,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusLarge,
+  radius4Xl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingStaticMd,
+  typescaleSm,
+} from '../../styles/css-variables';
+import { sizeMap, weightMap } from '../../styles/maps';
 import {
   buildResponsiveStyles,
   getCss,
@@ -26,11 +30,6 @@ import {
   type TileWeight,
 } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
@@ -93,22 +92,22 @@ export const getComponentCss = (
         all: 'unset',
         zIndex: 3,
         maxWidth: '34.375rem',
-        ...textMediumStyle,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary,
         hyphens: 'inherit',
         ...mergeDeep(
-          buildResponsiveStyles(size, (sizeValue: TileSize) => ({
-            fontSize: getFontSizeText(sizeValue),
+          buildResponsiveStyles(size, (v: TileSize) => ({
+            fontSize: sizeMap[v],
           })),
-          buildResponsiveStyles(weight, (weightValue: TileWeight) => ({
-            fontWeight: getFontWeight(weightValue),
+          buildResponsiveStyles(weight, (v: TileWeight) => ({
+            fontWeight: weightMap[v],
           }))
         ),
       },
     },
     root: {
       display: 'grid',
-      gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
+      gridTemplate: `${spacingFluidMd} auto minmax(0px, 1fr) auto ${spacingFluidMd}/${spacingFluidMd} minmax(0px, 1fr) ${spacingFluidMd}`,
       width: '100%', // necessary in case tile content overflows in grid or flex context
       // Safari workaround to scale the tile properly
       '@supports (-webkit-hyphens: auto)': {
@@ -126,14 +125,14 @@ export const getComponentCss = (
             ? {
                 gridArea: '1/1/3/-1',
                 background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${colorCanvas} h s l / `),
-                marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
+                marginBottom: `calc(${spacingFluidLg} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderStartStartRadius: 'inherit',
                 borderStartEndRadius: 'inherit',
               }
             : {
                 gridArea: '4/1/6/-1',
                 background: gradientToTopStyle.background.replaceAll('0,0%,0%,', `from ${colorCanvas} h s l / `),
-                marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
+                marginTop: `calc(${spacingFluidLg} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderEndStartRadius: 'inherit',
                 borderEndEndRadius: 'inherit',
               }),
@@ -160,7 +159,7 @@ export const getComponentCss = (
           ? {
               display: 'grid',
               gridTemplateColumns: 'minmax(0,1fr) auto',
-              columnGap: spacingStaticMedium,
+              columnGap: spacingStaticMd,
             }
           : {
               display: 'flex',
@@ -181,7 +180,7 @@ export const getComponentCss = (
     'link-or-button': {
       minHeight: '54px', // prevent content shift
       zIndex: 5,
-      marginTop: spacingStaticMedium,
+      marginTop: spacingStaticMd,
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'none' : 'inline-block',
       })),

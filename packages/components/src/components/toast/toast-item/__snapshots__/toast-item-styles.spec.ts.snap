@@ -14,14 +14,14 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
   width: auto !important;
   height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
-  gap: 16px;
+  gap: var(--p-spacing-static-md);
   place-items: start;
-  padding: 16px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  padding: var(--p-spacing-static-md);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background: var(--p-color-error-frosted);
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
+  box-shadow: var(--p-shadow-lg);
 }
 :host::backdrop {
   display: none;
@@ -30,13 +30,11 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
   visibility: hidden;
 }
 p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -44,11 +42,11 @@ p {
     grid-template-columns: auto minmax(auto, 1fr) auto;
   }
   p {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -83,14 +81,14 @@ exports[`getComponentCss() > should return correct css for state: info 1`] = `
   width: auto !important;
   height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
-  gap: 16px;
+  gap: var(--p-spacing-static-md);
   place-items: start;
-  padding: 16px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  padding: var(--p-spacing-static-md);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background: var(--p-color-info-frosted);
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
+  box-shadow: var(--p-shadow-lg);
 }
 :host::backdrop {
   display: none;
@@ -99,13 +97,11 @@ exports[`getComponentCss() > should return correct css for state: info 1`] = `
   visibility: hidden;
 }
 p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -113,11 +109,11 @@ p {
     grid-template-columns: auto minmax(auto, 1fr) auto;
   }
   p {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -152,14 +148,14 @@ exports[`getComponentCss() > should return correct css for state: success 1`] = 
   width: auto !important;
   height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
-  gap: 16px;
+  gap: var(--p-spacing-static-md);
   place-items: start;
-  padding: 16px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  padding: var(--p-spacing-static-md);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background: var(--p-color-success-frosted);
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
+  box-shadow: var(--p-shadow-lg);
 }
 :host::backdrop {
   display: none;
@@ -168,13 +164,11 @@ exports[`getComponentCss() > should return correct css for state: success 1`] = 
   visibility: hidden;
 }
 p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -182,11 +176,11 @@ p {
     grid-template-columns: auto minmax(auto, 1fr) auto;
   }
   p {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -221,14 +215,14 @@ exports[`getComponentCss() > should return correct css for state: warning 1`] = 
   width: auto !important;
   height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
-  gap: 16px;
+  gap: var(--p-spacing-static-md);
   place-items: start;
-  padding: 16px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
+  padding: var(--p-spacing-static-md);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
   background: var(--p-color-warning-frosted);
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16);
+  box-shadow: var(--p-shadow-lg);
 }
 :host::backdrop {
   display: none;
@@ -237,13 +231,11 @@ exports[`getComponentCss() > should return correct css for state: warning 1`] = 
   visibility: hidden;
 }
 p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   color: var(--p-color-primary);
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
   margin-top: 2px;
 }
 @media(min-width:760px) {
@@ -251,11 +243,11 @@ p {
     grid-template-columns: auto minmax(auto, 1fr) auto;
   }
   p {
-    margin-left: -8px;
+    margin-left: calc(-1 * var(--p-spacing-static-sm));
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   :host {
     outline: 2px solid CanvasText;
     outline-offset: -2px;

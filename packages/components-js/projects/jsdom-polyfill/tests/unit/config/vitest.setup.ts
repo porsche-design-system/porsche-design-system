@@ -4,6 +4,11 @@ import { beforeAll, beforeEach, vi } from 'vitest';
 import '@testing-library/jest-dom';
 
 beforeAll(() => {
+  // Mock for the Web Animations API (not available in jsdom)
+  Element.prototype.animate = vi.fn(
+    () => ({ onfinish: null, cancel: vi.fn(), finish: vi.fn() }) as unknown as Animation
+  );
+
   // Mock for the Dialog API
   HTMLDialogElement.prototype.show = vi.fn();
   HTMLDialogElement.prototype.showModal = vi.fn();

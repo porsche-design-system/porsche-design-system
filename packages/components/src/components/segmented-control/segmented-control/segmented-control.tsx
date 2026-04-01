@@ -80,7 +80,7 @@ export class SegmentedControl {
   /** The name of the segmented-control. */
   @Prop({ reflect: true }) public name?: string;
 
-  /** A boolean value that, if present, renders the segmented-control as a compact version. */
+  /** Displays the segmented control in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** Indicates the validation or overall status of the component. */
@@ -92,7 +92,7 @@ export class SegmentedControl {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Sets the amount of columns. */

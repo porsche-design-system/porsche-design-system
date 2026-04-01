@@ -3,10 +3,10 @@
 exports[`getNotificationContentJssStyle() > should return correct JssStyle 1`] = `
 {
   "@media(min-width:760px)": {
-    "marginLeft": "-8px",
+    "marginLeft": "calc(-1 * var(--p-spacing-static-sm))",
   },
   "display": "grid",
-  "gap": "4px",
+  "gap": "var(--p-spacing-static-xs)",
   "marginTop": "2px",
 }
 `;
@@ -22,220 +22,220 @@ exports[`getNotificationIconJssStyle() > should return correct JssStyle 1`] = `
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: error 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-error-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: error 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-error-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-info-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-info-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 3`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto auto",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-info-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr) auto",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 4`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-info-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr) auto",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: info 5`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-info-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: success 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-success-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: success 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-success-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: warning 1`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-warning-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;
 
 exports[`getNotificationRootJssStyles() > should return correct JssStyle for state: warning 2`] = `
 {
-  "@media (forced-colors: active)": {
+  "@media(forced-colors:active)": {
     "outline": "2px solid CanvasText",
     "outlineOffset": "-2px",
   },
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
+  "WebkitBackdropFilter": "var(--p-blur-frosted)",
+  "backdropFilter": "var(--p-blur-frosted)",
   "background": "var(--p-color-warning-frosted)",
   "borderRadius": "var(--_p-legacy-radius-medium, var(--p-radius-xl))",
-  "gap": "16px",
+  "gap": "var(--p-spacing-static-md)",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-spacing-static-md)",
   "placeItems": "start",
 }
 `;

@@ -1,21 +1,16 @@
-import { fontLineHeight } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../../styles';
 import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
 import { cssVarInternalCheckboxScaling } from '../../../styles/checkbox/checkbox-css-vars';
+import { leadingNormal } from '../../../styles/css-variables';
 import { getOptionJssStyle } from '../../../styles/select';
 import { getCss, mergeDeep } from '../../../utils';
 
 export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-
 export const getComponentCss = (isDisabled: boolean, selected: boolean): string => {
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
-  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${leadingNormal}) / 2))`;
 
   return getCss({
     '@global': {
@@ -37,7 +32,10 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
     option: getOptionJssStyle('multi-select-option', cssVarInternalMultiSelectOptionScaling),
     checkbox: mergeDeep(
       getCheckboxBaseStyles(isDisabled, false, true, 'none'),
-      selected ? getCheckboxCheckedBaseStyles(false, 'none') : {}
+      selected ? getCheckboxCheckedBaseStyles(false, 'none') : {},
+      {
+        flexShrink: 0,
+      }
     ),
   });
 };

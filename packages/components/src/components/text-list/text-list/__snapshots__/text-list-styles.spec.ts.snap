@@ -9,17 +9,15 @@ exports[`getComponentCss() > should return correct css for type: alphabetically 
   display: none !important;
 }
 ol,ul {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px !important;
-  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
+  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
   --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
 }
 ::slotted(*)::before {
@@ -39,17 +37,15 @@ exports[`getComponentCss() > should return correct css for type: alphabetically 
   display: none !important;
 }
 ol,ul {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px !important;
-  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
+  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
   --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
 }
 ::slotted(*)::before {
@@ -69,17 +65,15 @@ exports[`getComponentCss() > should return correct css for type: numbered 1`] = 
   display: none !important;
 }
 ol,ul {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px !important;
-  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
+  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
   --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
 }
 ::slotted(*)::before {
@@ -99,17 +93,15 @@ exports[`getComponentCss() > should return correct css for type: numbered 2`] = 
   display: none !important;
 }
 ol,ul {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px !important;
-  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
+  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
   --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
 }
 ::slotted(*)::before {
@@ -129,17 +121,15 @@ exports[`getComponentCss() > should return correct css for type: unordered 1`] =
   display: none !important;
 }
 ol,ul {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px !important;
-  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
+  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
   --p-internal-text-list-pseudo-space: var(--p-internal-text-list-unordered-grid-column,.375rem) !important;
 }
 ::slotted(*)::before {
@@ -156,17 +146,15 @@ exports[`getComponentCss() > should return correct css for type: unordered 2`] =
   display: none !important;
 }
 ol,ul {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px !important;
-  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
+  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
   --p-internal-text-list-pseudo-space: var(--p-internal-text-list-unordered-grid-column,.375rem) !important;
 }
 ::slotted(*)::before {

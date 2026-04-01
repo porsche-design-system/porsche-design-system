@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: start 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -24,10 +24,8 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -38,7 +36,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -126,13 +124,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -152,12 +150,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -174,6 +166,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -188,7 +186,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -207,10 +205,8 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -221,7 +217,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -303,13 +299,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -329,12 +325,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -351,6 +341,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -365,7 +361,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -386,10 +382,8 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -400,7 +394,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -512,13 +506,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -538,12 +532,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -560,6 +548,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -574,7 +568,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -593,10 +587,8 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -607,7 +599,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -661,13 +653,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -687,7 +679,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -698,7 +690,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -718,18 +710,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -740,7 +730,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -794,13 +784,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -820,7 +810,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -831,7 +821,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -853,18 +843,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -875,7 +863,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -993,13 +981,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -1040,12 +1028,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1062,6 +1044,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1076,7 +1064,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -1095,10 +1083,8 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1109,7 +1095,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -1165,13 +1151,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -1191,7 +1177,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1202,7 +1188,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -1223,10 +1209,8 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1237,7 +1221,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -1299,13 +1283,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -1325,7 +1309,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1336,7 +1320,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: false, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -1355,12 +1339,12 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 }
 .heading {
   max-width: 56.25rem !important;
-  margin: 0 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1371,7 +1355,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -1455,13 +1439,13 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -1478,12 +1462,6 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
-  }
-}
-
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1506,6 +1484,12 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
@@ -1517,7 +1501,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -1539,18 +1523,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1561,7 +1543,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -1623,13 +1605,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -1649,7 +1631,7 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
@@ -1660,7 +1642,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -1680,18 +1662,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1702,7 +1682,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -1810,13 +1790,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -1833,12 +1813,6 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
-  }
-}
-
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1861,6 +1835,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
@@ -1872,7 +1852,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -1892,18 +1872,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1914,7 +1892,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -2004,13 +1982,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -2051,12 +2029,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2076,6 +2048,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
@@ -2087,7 +2065,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: false and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -2107,18 +2085,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -2129,7 +2105,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -2218,7 +2194,7 @@ p,::slotted([slot="description"]) {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -2235,12 +2211,6 @@ p,::slotted([slot="description"]) {
   .splide__track {
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
-  }
-}
-
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2263,6 +2233,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
@@ -2274,7 +2250,7 @@ p,::slotted([slot="description"]) {
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  gap: var(--p-spacing-fluid-md) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
 }
@@ -2296,18 +2272,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: var(--p-hyphens, auto) !important;
+  margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -2318,7 +2292,7 @@ p,::slotted([slot="description"]) {
   display: none;
 }
 .btn {
-  padding: 8px;
+  padding: var(--p-spacing-static-sm);
 }
 .skip-link:not(:focus) {
   opacity: 0;
@@ -2432,13 +2406,13 @@ p,::slotted([slot="description"]) {
     grid-template-columns: minmax(0px,1fr) auto;
     padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
-    column-gap: 16px;
+    column-gap: var(--p-spacing-static-md);
   }
   .nav {
     grid-row-start: 3;
     grid-column-end: -1;
     display: flex;
-    gap: 4px;
+    gap: var(--p-spacing-static-xs);
     align-self: flex-start;
   }
   .splide__track {
@@ -2458,12 +2432,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media (forced-colors: active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2480,6 +2448,12 @@ p,::slotted([slot="description"]) {
     content: "";
     position: absolute;
     inset: -8px;
+  }
+}
+
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
   }
 }
 

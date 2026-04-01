@@ -9,18 +9,18 @@
   color: pds.$color-primary;
 }
 
-.scss-display-lg {
-  @include pds.prose-display-lg;
+.scss-heading-5xl {
+  @include pds.prose-heading-5xl;
   margin: 0;
 }
 
-.scss-display-md {
-  @include pds.prose-display-md;
+.scss-heading-4xl {
+  @include pds.prose-heading-4xl;
   margin: 0;
 }
 
-.scss-display-sm {
-  @include pds.prose-display-sm;
+.scss-heading-3xl {
+  @include pds.prose-heading-3xl;
   margin: 0;
 }
 
@@ -46,6 +46,36 @@
 
 .scss-heading-sm {
   @include pds.prose-heading-sm;
+  margin: 0;
+}
+
+.scss-heading-xs {
+  @include pds.prose-heading-xs;
+  margin: 0;
+}
+
+.scss-heading-2xs {
+  @include pds.prose-heading-2xs;
+  margin: 0;
+}
+
+.scss-text-5xl {
+  @include pds.prose-text-5xl;
+  margin: 0;
+}
+
+.scss-text-4xl {
+  @include pds.prose-text-4xl;
+  margin: 0;
+}
+
+.scss-text-3xl {
+  @include pds.prose-text-3xl;
+  margin: 0;
+}
+
+.scss-text-2xl {
+  @include pds.prose-text-2xl;
   margin: 0;
 }
 

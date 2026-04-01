@@ -1,10 +1,5 @@
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  getDisabledBaseStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { spacingStaticXs } from '../../../styles/css-variables';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
   getButtonJssStyle,
@@ -30,10 +25,6 @@ import { cssVarInternalMultiSelectOptionScaling } from '../multi-select-option/m
 
 export const cssVarInternalMultiSelectScaling = '--p-internal-multi-select-scaling';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 export const getComponentCss = (
   isOpen: boolean,
   isDisabled: boolean,
@@ -52,10 +43,9 @@ export const getComponentCss = (
           [`${cssVarInternalMultiSelectOptionScaling}`]: isCompact ? 0.64285714 : 1,
           [`${cssVarInternalOptgroupScaling}`]: isCompact ? 0.64285714 : 1,
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, isCompact, cssVarInternalMultiSelectScaling),
@@ -67,9 +57,9 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
-      minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(2)})`,
+      minWidth: `calc(1rem + ${formElementPaddingHorizontal} + 1px * 2 + ${getCalculatedFormElementPaddingHorizontal(2)})`,
     },
     filter: getFilterJssStyle(cssVarInternalMultiSelectScaling),
     options: getOptionsJssStyle(cssVarInternalMultiSelectScaling),
@@ -77,7 +67,7 @@ export const getComponentCss = (
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', cssVarInternalMultiSelectScaling),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
   });

@@ -1,4 +1,3 @@
-import { frostedGlassStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
@@ -10,6 +9,7 @@ import {
   motionDurationMap,
 } from '../../styles';
 import {
+  blurFrosted,
   colorCanvas,
   colorFrosted,
   colorPrimary,
@@ -44,12 +44,7 @@ const cssVarPaddingInline = '--p-accordion-px';
  */
 const cssVarPaddingBlock = '--p-accordion-py';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-
-const icon = getInlineSVGBackgroundImage(
+const iconMarker = getInlineSVGBackgroundImage(
   `<path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/>`
 );
 
@@ -79,7 +74,7 @@ export const getComponentCss = (
   const paddingBlock = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
   const paddingInline = `calc(11.2px * (${compactFactor} - 0.64285714) + 12px)`;
   const gap = `calc(11.2px * (${compactFactor} - 0.64285714) + 4px)`;
-  const marginTop = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
+  const paddingTop = `calc(28px * (${compactFactor} - 0.64285714) + 6px)`;
 
   const isIconAlignedStart = alignMarker === 'start';
 
@@ -143,7 +138,10 @@ export const getComponentCss = (
         alignItems: 'center',
         padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
         background: backgroundMap[background],
-        ...(background === 'frosted' && frostedGlassStyle),
+        ...(background === 'frosted' && {
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
+        }),
         borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
         ...forcedColorsMediaQuery({
           outline: '1px solid CanvasText',
@@ -163,12 +161,15 @@ export const getComponentCss = (
           gridTemplateRows: '0fr',
           visibility: 'hidden', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
           // as soon as all browsers are supporting `allow-discrete` reliable, visibility transition shouldn't be necessary anymore
-          transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('margin-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
+          transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('padding-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
         },
         '&[open]': {
           '& > div': {
             opacity: 1,
-            marginTop,
+            paddingTop,
+            zIndex: 1,
+            paddingInline: `var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
+            marginInline: `calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
             // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the grid-template-rows rule and animation
             gridTemplateRows: '1fr',
             visibility: 'inherit', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
@@ -210,9 +211,6 @@ export const getComponentCss = (
           borderRadius: radiusFull,
           background: 'transparent',
           transition: getTransition('background-color'),
-          ...forcedColorsMediaQuery({
-            backgroundColor: 'LinkText',
-          }),
         },
         '&::after': {
           gridArea: `1/${isIconAlignedStart ? '1' : hasSummaryBefore && hasSummaryAfter ? '4' : hasSummaryBefore || hasSummaryAfter ? '3' : '2'}`,
@@ -221,8 +219,8 @@ export const getComponentCss = (
           width: '1rem',
           height: '1rem',
           pointerEvents: 'none',
-          WebkitMask: `${icon} center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `${icon} center/contain no-repeat`,
+          WebkitMask: `${iconMarker} center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${iconMarker} center/contain no-repeat`,
           background: colorPrimary,
           transform: 'rotate3d(0)',
           transition: getTransition('transform', duration, easing),

@@ -136,6 +136,7 @@ import {
   spacingFluidXl,
   spacingFluidXs,
   spacingStatic2Xl,
+  spacingStatic2Xs,
   spacingStaticLg,
   spacingStaticMd,
   spacingStaticSm,
@@ -143,6 +144,9 @@ import {
   spacingStaticXs,
   typescale2Xl,
   typescale2Xs,
+  typescale3Xl,
+  typescale4Xl,
+  typescale5Xl,
   typescaleLg,
   typescaleMd,
   typescaleSm,
@@ -223,6 +227,12 @@ export const getTailwindcssTheme = () => {
   --text-xl--line-height: ${leadingNormal};
   --text-2xl: ${typescale2Xl};
   --text-2xl--line-height: ${leadingNormal};
+  --text-3xl: ${typescale3Xl};
+  --text-3xl--line-height: ${leadingNormal};
+  --text-4xl: ${typescale4Xl};
+  --text-4xl--line-height: ${leadingNormal};
+  --text-5xl: ${typescale5Xl};
+  --text-5xl--line-height: ${leadingNormal};
 
   /* Breakpoint */
   --breakpoint-xs: ${breakpointXs}px;
@@ -240,6 +250,7 @@ export const getTailwindcssTheme = () => {
   --spacing-fluid-xl: ${spacingFluidXl};
   --spacing-fluid-2xl: ${spacingFluid2Xl};
 
+  --spacing-static-2xs: ${spacingStatic2Xs};
   --spacing-static-xs: ${spacingStaticXs};
   --spacing-static-sm: ${spacingStaticSm};
   --spacing-static-md: ${spacingStaticMd};
@@ -539,49 +550,96 @@ export const getTailwindcssTheme = () => {
 
 /* Typography: Text */
 @utility prose-text-2xs {
-  @apply font-porsche-next not-italic font-normal text-2xs text-primary;
+  font: var(--font-weight-normal) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-xs {
-  @apply font-porsche-next not-italic font-normal text-xs text-primary;
+  font: var(--font-weight-normal) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
+  font: var(--font-weight-normal) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-md {
-  @apply font-porsche-next not-italic font-normal text-md text-primary;
+  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-lg {
-  @apply font-porsche-next not-italic font-normal text-lg text-primary;
+  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-text-xl {
-  @apply font-porsche-next not-italic font-normal text-xl text-primary;
+  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-2xl {
+  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-3xl {
+  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-4xl {
+  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-text-5xl {
+  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 
 /* Typography: Heading */
+@utility prose-heading-2xs {
+  font: var(--font-weight-semibold) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-heading-xs {
+  font: var(--font-weight-semibold) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
 @utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
+  font: var(--font-weight-semibold) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-md {
-  @apply font-porsche-next not-italic font-normal text-md text-primary;
+  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-lg {
-  @apply font-porsche-next not-italic font-normal text-lg text-primary;
+  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-xl {
-  @apply font-porsche-next not-italic font-normal text-xl text-primary;
+  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 @utility prose-heading-2xl {
-  @apply font-porsche-next not-italic font-normal text-2xl text-primary;
+  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-heading-3xl {
+  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-heading-4xl {
+  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
+}
+@utility prose-heading-5xl {
+  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
+  color: var(--color-primary);
 }
 
 /* Typography: Display */
 @utility prose-display-sm {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(1.8rem,2.41vw+1.32rem,4.21rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-3xl;
 }
 @utility prose-display-md {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.03rem,3.58vw+1.31rem,5.61rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-4xl;
 }
 @utility prose-display-lg {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-5xl;
 }`;
 };

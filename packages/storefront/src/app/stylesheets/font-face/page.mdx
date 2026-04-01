@@ -1,0 +1,57 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { StylesheetViewer } from '@/components/common/StylesheetViewer';
+
+export const metadata = {
+  title: 'Stylesheet: Font Face - Porsche Design System',
+  description: 'Learn how to include Porsche Next font-face definitions in your project.',
+};
+
+# Font Face
+
+<TableOfContents headings={['Setup', 'China CDN', 'Optimizing Font Loading']} />
+
+The Porsche Design System uses the **Porsche Next** font family. The `@font-face` definitions must be included as global
+styles in your application.
+
+## Setup
+
+When you import the main package CSS file, the `@font-face` definitions are already included:
+
+```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
+@import '@porsche-design-system/components-{js|angular|react|vue}';
+```
+
+If you only need the `@font-face` definitions without any other styles, you can import them separately:
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
+```
+
+Below is the content of the stylesheet file for reference only. **Don't copy this into your project** — use the import
+statement above instead:
+
+<StylesheetViewer file="font-face.css" />
+
+## China CDN
+
+By default, fonts are loaded from the global Porsche Design System CDN. If your application is primarily accessed from
+China, where the global CDN may be slow or unreliable, use the `/cn` imports to load fonts from a China-based CDN
+instead:
+
+```css
+/* Global import (China CDN) */
+@import '@porsche-design-system/components-{js|angular|react|vue}/cn';
+
+/* Alternative: If your bundler requires an explicit .css extension, use this path instead */
+@import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
+
+/* Font-face only (China CDN) */
+@import '@porsche-design-system/components-{js|angular|react|vue}/cn/font-face.css';
+```
+
+## Optimizing Font Loading
+
+To reduce the time until fonts are visually rendered, use the [`getFontLinks()`](/partials/font-links/) partial to add
+`<link rel="preload">` tags for font assets. This tells the browser to start downloading fonts early, before they are
+referenced in CSS.

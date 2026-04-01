@@ -3,7 +3,6 @@ import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  HEADING_TAGS,
   hasNamedSlot,
   hasPropValueChanged,
   observeChildren,
@@ -13,6 +12,7 @@ import {
 import { getComponentCss } from './accordion-styles';
 import {
   ACCORDION_ALIGN_MARKERS,
+  ACCORDION_HEADINGS_DEPRECATED,
   ACCORDION_SIZES,
   ACCORDIONS_BACKGROUNDS,
   type AccordionAlignMarker,
@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   sticky: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   heading: AllowedTypes.string,
-  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
+  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(ACCORDION_HEADINGS_DEPRECATED),
 };
 
 /**
@@ -44,7 +44,7 @@ const propTypes: PropTypes<typeof Accordion> = {
  */
 @Component({
   tag: 'p-accordion',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Accordion {
   @Element() public host!: HTMLElement;
@@ -62,17 +62,17 @@ export class Accordion {
   @Prop() public compact?: boolean;
 
   /**
-   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
    * Controls the heading size in the summary section (only applies when using the `heading` prop or `heading` slot). */
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /**
-   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
    * Sets the heading text within the summary section. */
   @Prop() public heading?: string;
 
   /**
-   * @deprecated, will be removed in the next major release. Use the `summary` slot instead.
+   * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
    * Sets the heading tag for proper semantic structure within the page. */
   @Prop() public headingTag?: AccordionHeadingTag = 'h2';
 
@@ -81,7 +81,7 @@ export class Accordion {
    */
   @Prop() public sticky?: boolean;
 
-  /** Emitted when accordion state is changed. */
+  /** Emitted when the accordion state changes. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
   private hasSummary: boolean;

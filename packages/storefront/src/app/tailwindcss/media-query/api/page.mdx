@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
 
 export const metadata = {
   title: 'Tailwind CSS: Media Query - Porsche Design System',
@@ -11,11 +12,11 @@ export const metadata = {
 
 ## Variables
 
-| Tailwind CSS variable | Tailwind CSS class                    | Description                                                   |
-| --------------------- | ------------------------------------- | ------------------------------------------------------------- |
-| `--breakpoint-xs`     | `.xs:*`, `.max-xs:*`                  | Applies a media query with the `xs` (**480px**) breakpoint.   |
-| `--breakpoint-sm`     | `.sm:*`, `.max-sm:*`, `.xs:max-sm:*`  | Applies a media query with the `sm` (**760px**) breakpoint.   |
-| `--breakpoint-md`     | `.md:*`, `.max-md:*`, `.md:max-lg:*`  | Applies a media query with the `md` (**1000px**) breakpoint.  |
-| `--breakpoint-lg`     | `.lg:*`, `.max-lg:*`, `.lg:max-xl:*`  | Applies a media query with the `lg` (**1300px**) breakpoint.  |
-| `--breakpoint-xl`     | `.xl:*`, `.max-xl:*`, `.xl:max-2xl:*` | Applies a media query with the `xl` (**1760px**) breakpoint.  |
-| `--breakpoint-2xl`    | `.2xl:*`, `.max-2xl:*`                | Applies a media query with the `2xl` (**1920px**) breakpoint. |
+| Tailwind CSS variable                                    | Tailwind CSS class                                                              | Description                                                   |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| <Code variant="nowrap">--breakpoint-xs</Code>     | <Code variant="nowrap">{'.xs:\*'}</Code>, <Code variant="nowrap">{'.max-xs:\*'}</Code>                  | Applies a media query with the `xs` (**480px**) breakpoint.   |
+| <Code variant="nowrap">--breakpoint-sm</Code>     | <Code variant="nowrap">{'.sm:\*'}</Code>, <Code variant="nowrap">{'.max-sm:\*'}</Code>, <Code variant="nowrap">{'.xs:max-sm:\*'}</Code>  | Applies a media query with the `sm` (**760px**) breakpoint.   |
+| <Code variant="nowrap">--breakpoint-md</Code>     | <Code variant="nowrap">{'.md:\*'}</Code>, <Code variant="nowrap">{'.max-md:\*'}</Code>, <Code variant="nowrap">{'.md:max-lg:\*'}</Code>  | Applies a media query with the `md` (**1000px**) breakpoint.  |
+| <Code variant="nowrap">--breakpoint-lg</Code>     | <Code variant="nowrap">{'.lg:\*'}</Code>, <Code variant="nowrap">{'.max-lg:\*'}</Code>, <Code variant="nowrap">{'.lg:max-xl:\*'}</Code>  | Applies a media query with the `lg` (**1300px**) breakpoint.  |
+| <Code variant="nowrap">--breakpoint-xl</Code>     | <Code variant="nowrap">{'.xl:\*'}</Code>, <Code variant="nowrap">{'.max-xl:\*'}</Code>, <Code variant="nowrap">{'.xl:max-2xl:\*'}</Code> | Applies a media query with the `xl` (**1760px**) breakpoint.  |
+| <Code variant="nowrap">--breakpoint-2xl</Code>    | <Code variant="nowrap">{'.2xl:\*'}</Code>, <Code variant="nowrap">{'.max-2xl:\*'}</Code>                | Applies a media query with the `2xl` (**1920px**) breakpoint. |

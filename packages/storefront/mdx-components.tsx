@@ -1,5 +1,4 @@
 import {
-  PDisplay,
   PDivider,
   PHeading,
   PLinkPure,
@@ -37,14 +36,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     wrapper: ({ children }) => (
       // biome-ignore lint/correctness/useUniqueElementIds: ok
-      <article id="main-content" className="col-span-full xs:col-start-2 xs:col-end-12">
+      <article id="main-content" className="col-[wide]">
         {children as React.ReactNode}
       </article>
     ),
     h1: ({ children }) => (
-      <PDisplay tag="h1" size="small" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h1" size="3xl" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
-      </PDisplay>
+      </PHeading>
     ),
     h2: ({ children }) => {
       const text = children as string;
@@ -53,7 +52,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <PHeading
           tag="h2"
-          size="x-large"
+          size="xl"
           className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
           id={id}
         >
@@ -71,17 +70,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
     h4: ({ children }) => (
-      <PHeading tag="h4" size="medium" className="my-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h4" size="md" className="my-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),
     h5: ({ children }) => (
-      <PHeading tag="h5" size="small" className="my-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h5" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),
     h6: ({ children }) => (
-      <PHeading tag="h6" size="small" className="my-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h6" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),

@@ -1,6 +1,6 @@
 'use client';
 
-import type { Framework } from '@porsche-design-system/shared';
+import { FRAMEWORK_TYPES, type Framework } from '@porsche-design-system/shared';
 import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
 
 interface StorefrontFrameworkContextProps {
@@ -18,12 +18,15 @@ export const StorefrontFrameworkProvider = ({ children }: PropsWithChildren) => 
   // Load initial state from localStorage once component mounts
   useEffect(() => {
     const storedFramework = localStorage.getItem(storefrontFrameworkLocalStorageKey) as Framework | null;
-    if (storedFramework) {
+    if (storedFramework && FRAMEWORK_TYPES.includes(storedFramework)) {
       setSelectedFramework(storedFramework);
     }
   }, []);
 
   const setStorefrontFramework = (storefrontFramework: Framework) => {
+    if (!FRAMEWORK_TYPES.includes(storefrontFramework)) {
+      return;
+    }
     setSelectedFramework(storefrontFramework);
     localStorage.setItem(storefrontFrameworkLocalStorageKey, storefrontFramework);
   };

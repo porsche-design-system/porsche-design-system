@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
 import {
   durationSm,
   durationMd,
@@ -22,17 +23,17 @@ export const metadata = {
 
 ### Duration
 
-| SCSS variable  | Description                                                         | Value        |
-| -------------- | ------------------------------------------------------------------- | ------------ |
-| `$duration-sm` | Holds a **short** `transition-duration` / `animation-duration`.     | {durationSm} |
-| `$duration-md` | Holds a **moderate** `transition-duration` / `animation-duration`.  | {durationMd} |
-| `$duration-lg` | Holds a **long** `transition-duration` / `animation-duration`.      | {durationLg} |
-| `$duration-xl` | Holds a **very long** `transition-duration` / `animation-duration`. | {durationXl} |
+| SCSS variable                              | Description                                                         | Value                                     |
+| ------------------------------------------ | ------------------------------------------------------------------- | ----------------------------------------- |
+| <Code variant="nowrap">$duration-sm</Code> | Holds a **short** `transition-duration` / `animation-duration`.     | <Code variant="value">{durationSm}</Code> |
+| <Code variant="nowrap">$duration-md</Code> | Holds a **moderate** `transition-duration` / `animation-duration`.  | <Code variant="value">{durationMd}</Code> |
+| <Code variant="nowrap">$duration-lg</Code> | Holds a **long** `transition-duration` / `animation-duration`.      | <Code variant="value">{durationLg}</Code> |
+| <Code variant="nowrap">$duration-xl</Code> | Holds a **very long** `transition-duration` / `animation-duration`. | <Code variant="value">{durationXl}</Code> |
 
 ### Ease
 
-| SCSS variable  | Description                                       | Value       |
-| -------------- | ------------------------------------------------- | ----------- |
-| `$ease-in-out` | Holds an **in-out** `transition-timing-function`. | {easeInOut} |
-| `$ease-in`     | Holds an **in** `transition-timing-function`.     | {easeIn}    |
-| `$ease-out`    | Holds an **out** `transition-timing-function`.    | {easeOut}   |
+| SCSS variable                              | Description                                       | Value                                    |
+| ------------------------------------------ | ------------------------------------------------- | ---------------------------------------- |
+| <Code variant="nowrap">$ease-in-out</Code> | Holds an **in-out** `transition-timing-function`. | <Code variant="value">{easeInOut}</Code> |
+| <Code variant="nowrap">$ease-in</Code>     | Holds an **in** `transition-timing-function`.     | <Code variant="value">{easeIn}</Code>    |
+| <Code variant="nowrap">$ease-out</Code>    | Holds an **out** `transition-timing-function`.    | <Code variant="value">{easeOut}</Code>   |

@@ -1,0 +1,35 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
+import { flagStoryResponsiveSize, flagStorySize, flagStorySizeCSSVar } from '@/app/components/flag/flag.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Flag component.',
+};
+
+# Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
+
+<TableOfContents headings={['Size']} />
+
+## Size
+
+There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
+the `size` property can be set to `inherit` to derive the flag's dimensions from the font-size of a parent element (e.g.
+a `p-text`). The internal calculation is based on the `ex`-unit relative to the inherited font-size and the global
+line-height, ensuring the flag stays visually consistent with surrounding typographic-scale-based components.
+
+<ComponentStory story={flagStorySize} />
+
+Alternatively, the size can be controlled via the custom CSS variable `--p-flag-size`, which accepts any valid CSS
+length value. This approach is particularly useful when the flag is placed independently of typographic-scale-based
+components and a precise, fixed size is required.
+
+<ComponentStory story={flagStorySizeCSSVar} />
+
+The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major
+breakpoint (`xs`, `s`, `m`, `l`, `xl`). This makes it easy to adapt the flag's appearance responsively without
+additional CSS.
+
+<ComponentStory story={flagStoryResponsiveSize} />

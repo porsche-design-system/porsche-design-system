@@ -24,14 +24,10 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "0px",
         "description": "Controls the sticky top position when \`sticky\` is enabled.",
       },
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
     },
     "eventsMeta": {
       "update": {
-        "description": "Emitted when accordion state is changed.",
+        "description": "Emitted when the accordion state changes.",
         "type": "AccordionUpdateEventDetail",
         "typeDetail": "{ open: boolean }",
       },
@@ -43,7 +39,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "propsMeta": {
       "alignMarker": {
@@ -75,7 +71,7 @@ exports[`should match snapshot 1`] = `
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading text within the summary section.",
+        "description": "@deprecated Will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading text within the summary section.",
         "isDeprecated": true,
         "type": "string",
       },
@@ -89,7 +85,7 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": "h2",
-        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading tag for proper semantic structure within the page.",
+        "description": "@deprecated Will be removed in the next major release. Use the \`summary\` slot instead. Sets the heading tag for proper semantic structure within the page.",
         "isDeprecated": true,
         "type": "AccordionHeadingTag",
       },
@@ -105,7 +101,7 @@ exports[`should match snapshot 1`] = `
           "medium",
         ],
         "defaultValue": "small",
-        "description": "@deprecated, will be removed in the next major release. Use the \`summary\` slot instead. Controls the heading size in the summary section (only applies when using the \`heading\` prop or \`heading\` slot).",
+        "description": "@deprecated Will be removed in the next major release. Use the \`summary\` slot instead. Controls the heading size in the summary section (only applies when using the \`heading\` prop or \`heading\` slot).",
         "isBreakpointCustomizable": true,
         "isDeprecated": true,
         "type": "AccordionSize",
@@ -242,12 +238,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -271,14 +261,14 @@ exports[`should match snapshot 1`] = `
           "aria-pressed": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "ButtonAriaAttribute",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays the button in compact mode.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -300,7 +290,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -332,6 +322,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -341,6 +333,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -511,6 +505,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -652,12 +647,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -675,7 +664,7 @@ exports[`should match snapshot 1`] = `
       "active": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Display button in active state.",
+        "description": "Displays the button in its active state.",
         "type": "boolean",
       },
       "alignLabel": {
@@ -697,9 +686,21 @@ exports[`should match snapshot 1`] = `
           "aria-pressed": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "ButtonPureAriaAttribute",
+      },
+      "color": {
+        "allowedValues": [
+          "primary",
+          "contrast-higher",
+          "contrast-high",
+          "contrast-medium",
+          "inherit",
+        ],
+        "defaultValue": "primary",
+        "description": "The color.",
+        "type": "ButtonPureColor",
       },
       "disabled": {
         "allowedValues": "boolean",
@@ -719,7 +720,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -752,6 +753,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -761,6 +764,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -930,6 +935,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -1039,15 +1045,33 @@ exports[`should match snapshot 1`] = `
       },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "xx-small",
           "x-small",
           "small",
           "medium",
           "large",
           "x-large",
-          "inherit",
         ],
-        "defaultValue": "small",
+        "defaultValue": "sm",
+        "deprecatedValues": [
+          "xx-small",
+          "x-small",
+          "small",
+          "medium",
+          "large",
+          "x-large",
+        ],
         "description": "Size of the button.",
         "isBreakpointCustomizable": true,
         "type": "ButtonPureSize",
@@ -1090,12 +1114,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-tile": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -1127,7 +1145,7 @@ exports[`should match snapshot 1`] = `
           "aria-pressed": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "ButtonTileAriaAttribute",
       },
@@ -1199,6 +1217,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -1208,6 +1228,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -1378,6 +1400,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -1642,10 +1665,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop \`width\` has no effect anymore.",
       },
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
     },
     "eventsMeta": {
       "update": {
@@ -1671,7 +1690,7 @@ exports[`should match snapshot 1`] = `
       "activeSlideIndex": {
         "allowedValues": "number",
         "defaultValue": 0,
-        "description": "Defines which slide to be active (zero-based numbering).",
+        "description": "Defines which slide is active (zero-based numbering).",
         "type": "number",
       },
       "alignControls": {
@@ -1681,7 +1700,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "auto",
-        "description": "Alignment of slotted controls",
+        "description": "Aligns the slotted controls.",
         "type": "CarouselAlignControls",
       },
       "alignHeader": {
@@ -1690,7 +1709,7 @@ exports[`should match snapshot 1`] = `
           "center",
         ],
         "defaultValue": "start",
-        "description": "Alignment of heading and description",
+        "description": "Aligns the heading and description.",
         "type": "CarouselAlignHeader",
       },
       "aria": {
@@ -1698,7 +1717,7 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "CarouselAriaAttribute",
       },
@@ -1764,7 +1783,7 @@ exports[`should match snapshot 1`] = `
       "skipLinkTarget": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines target of skip link (to skip carousel entries).",
+        "description": "Defines the skip link target used to skip carousel entries.",
         "type": "string",
       },
       "slidesPerPage": {
@@ -1809,10 +1828,10 @@ exports[`should match snapshot 1`] = `
         "description": "Default slot for the carousel slides.",
       },
       "controls": {
-        "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
+        "description": "Renders custom controls such as navigation buttons or indicators.",
       },
       "description": {
-        "description": "Shows a footer section, flowing under the content area when scrollable.",
+        "description": "Renders descriptive content below the heading.",
       },
       "heading": {
         "description": "Renders a heading above the carousel.",
@@ -1830,10 +1849,6 @@ exports[`should match snapshot 1`] = `
       },
       "--p-checkbox-icon-color": {
         "description": "🧪Experimental: Checkmark icon color of Checkbox.",
-      },
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
       },
     },
     "eventsMeta": {
@@ -1874,7 +1889,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as a compact version.",
+        "description": "Displays the checkbox in compact mode.",
         "type": "boolean",
       },
       "disabled": {
@@ -1898,7 +1913,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility, it's recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -1911,7 +1926,7 @@ exports[`should match snapshot 1`] = `
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "loading": {
@@ -1991,14 +2006,14 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "CrestAriaAttribute",
       },
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\`.",
+        "description": "When \`href\` is provided, the component renders as an \`<a>\` element.",
         "type": "string",
       },
       "target": {
@@ -2010,13 +2025,14 @@ exports[`should match snapshot 1`] = `
           "string",
         ],
         "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
+        "description": "Specifies where to open the linked document.",
         "type": "CrestTarget",
       },
     },
     "styling": "jss",
   },
   "p-display": {
+    "deprecationMessage": "since v4.0.0, will be removed with next major release. Please use \`p-heading\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2025,6 +2041,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "propsMeta": {
       "align": {
@@ -2143,7 +2160,7 @@ exports[`should match snapshot 1`] = `
         "type": "void",
       },
       "update": {
-        "description": "Emitted when activeIdentifier is changed.",
+        "description": "Emitted when \`activeIdentifier\` changes.",
         "type": "DrilldownUpdateEventDetail",
         "typeDetail": "{ activeIdentifier: string | undefined }",
       },
@@ -2166,7 +2183,7 @@ exports[`should match snapshot 1`] = `
       "activeIdentifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines which drilldown-item to be visualized as opened.",
+        "description": "Defines which \`p-drilldown-item\` is shown as open.",
         "type": "string | undefined",
       },
       "aria": {
@@ -2174,14 +2191,14 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "DrilldownAriaAttribute",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "If true, the drilldown is visualized as opened.",
+        "description": "If \`true\`, the drilldown is shown as open.",
         "type": "boolean",
       },
     },
@@ -2266,7 +2283,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a custom button to reach a deeper level of the navigation structure.",
       },
       "header": {
-        "description": "Shows a custom header section on mobile view",
+        "description": "Shows a custom header section on mobile view.",
       },
     },
     "styling": "jss",
@@ -2286,7 +2303,7 @@ exports[`should match snapshot 1`] = `
       "active": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Display link in active state.",
+        "description": "Displays the link in its active state.",
         "type": "boolean",
       },
       "aria": {
@@ -2304,19 +2321,19 @@ exports[`should match snapshot 1`] = `
       "download": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Special download attribute to open native browser download dialog if target url points to a downloadable file (only has effect when \`href\` is defined and no slotted anchor is used).",
+        "description": "Sets the native \`download\` attribute when the target URL points to a downloadable file (only has effect when \`href\` is defined and no slotted anchor is used).",
         "type": "string",
       },
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\` otherwise the component expects a slotted anchor.",
+        "description": "When \`href\` is provided, the component renders as an \`<a>\` element. Otherwise, provide a slotted anchor element.",
         "type": "string",
       },
       "rel": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the relationship of the target object to the link object (only has effect when \`href\` is defined and no slotted anchor is used).",
+        "description": "Sets the \`rel\` attribute on the link (only has effect when \`href\` is defined and no slotted anchor is used).",
         "type": "string",
       },
       "target": {
@@ -2362,14 +2379,14 @@ exports[`should match snapshot 1`] = `
           "role": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "'radiogroup'",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "labelSize": {
@@ -2378,7 +2395,7 @@ exports[`should match snapshot 1`] = `
           "medium",
         ],
         "defaultValue": "medium",
-        "description": "The size of the label text.",
+        "description": "Controls the size of the label text.",
         "type": "FieldsetLabelSize",
       },
       "message": {
@@ -2418,6 +2435,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flag": {
+    "cssVariablesMeta": {
+      "--p-flag-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the flag. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2563,16 +2586,37 @@ exports[`should match snapshot 1`] = `
       },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "xx-small",
           "x-small",
           "small",
           "medium",
           "large",
           "x-large",
-          "inherit",
+          "xx-large",
         ],
-        "defaultValue": "small",
-        "description": "The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are \`small\`, \`medium\`, \`large\`, etc.",
+        "defaultValue": "sm",
+        "deprecatedValues": [
+          "xx-small",
+          "x-small",
+          "small",
+          "medium",
+          "large",
+          "x-large",
+          "xx-large",
+        ],
+        "description": "Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
+        "isBreakpointCustomizable": true,
         "type": "FlagSize",
       },
     },
@@ -2636,7 +2680,7 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
       },
@@ -2701,7 +2745,7 @@ exports[`should match snapshot 1`] = `
         "description": "Renders a sticky header section above the content area.",
       },
       "sub-footer": {
-        "description": "Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content.",
+        "description": "Renders additional content below the footer, such as legal information or FAQs. It appears when the flyout has enough space or when the user scrolls to the end.",
       },
     },
     "styling": "jss",
@@ -2725,35 +2769,66 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "start",
-        "description": "Text alignment of the component.",
+        "description": "Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.",
         "type": "HeadingAlign",
       },
       "color": {
         "allowedValues": [
           "primary",
+          "contrast-higher",
+          "contrast-high",
+          "contrast-medium",
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations.",
+        "description": "Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color.",
         "type": "HeadingColor",
       },
       "ellipsis": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Adds an ellipsis to a single line of text if it overflows.",
+        "description": "Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with \`text-overflow: ellipsis\`. Cannot be combined with multi-line content.",
         "type": "boolean",
+      },
+      "hyphens": {
+        "allowedValues": [
+          "none",
+          "manual",
+          "auto",
+          "inherit",
+        ],
+        "defaultValue": "none",
+        "description": "Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. \`&shy;\`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.",
+        "type": "HeadingHyphens",
       },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "small",
           "medium",
           "large",
           "x-large",
           "xx-large",
-          "inherit",
         ],
-        "defaultValue": "xx-large",
-        "description": "Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.",
+        "defaultValue": "2xl",
+        "deprecatedValues": [
+          "small",
+          "medium",
+          "large",
+          "x-large",
+          "xx-large",
+        ],
+        "description": "Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.",
         "isBreakpointCustomizable": true,
         "type": "HeadingSize",
       },
@@ -2768,8 +2843,24 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": null,
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "description": "Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the \`size\` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6').",
         "type": "HeadingTag",
+      },
+      "weight": {
+        "allowedValues": [
+          "normal",
+          "semibold",
+          "bold",
+          "regular",
+          "semi-bold",
+        ],
+        "defaultValue": "normal",
+        "deprecatedValues": [
+          "regular",
+          "semi-bold",
+        ],
+        "description": "The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For \`size\` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.",
+        "type": "HeadingWeight",
       },
     },
     "slotsMeta": {
@@ -2780,6 +2871,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-icon": {
+    "cssVariablesMeta": {
+      "--p-icon-color": {
+        "defaultValue": "",
+        "description": "Defines the icon color. Overrides the \`color\` property when set.",
+      },
+      "--p-icon-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the icon. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2795,16 +2896,18 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "IconAriaAttribute",
       },
       "color": {
         "allowedValues": [
           "primary",
+          "contrast-higher",
           "contrast-high",
           "contrast-medium",
           "contrast-low",
+          "contrast-lower",
           "success",
           "warning",
           "error",
@@ -2843,6 +2946,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -2852,6 +2957,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -3021,6 +3128,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -3109,16 +3217,37 @@ exports[`should match snapshot 1`] = `
       },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "xx-small",
           "x-small",
           "small",
           "medium",
           "large",
           "x-large",
-          "inherit",
+          "xx-large",
         ],
-        "defaultValue": "small",
-        "description": "The size of the icon.",
+        "defaultValue": "sm",
+        "deprecatedValues": [
+          "xx-small",
+          "x-small",
+          "small",
+          "medium",
+          "large",
+          "x-large",
+          "xx-large",
+        ],
+        "description": "Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
+        "isBreakpointCustomizable": true,
         "type": "IconSize",
       },
       "source": {
@@ -3131,12 +3260,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-inline-notification": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "action": {
         "description": "Emitted when the action button is clicked.",
@@ -3191,6 +3314,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -3200,6 +3325,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -3369,6 +3496,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -3522,10 +3650,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-date": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -3535,12 +3659,12 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "blur": {
-        "description": "Emitted when the number input has lost focus.",
+        "description": "Emitted when the date input has lost focus.",
         "type": "InputDateBlurEventDetail",
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the number input loses focus after its value was changed.",
+        "description": "Emitted when the date input loses focus after its value was changed.",
         "type": "InputDateChangeEventDetail",
         "typeDetail": "Event",
       },
@@ -3566,13 +3690,13 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).",
         "type": "string",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -3584,7 +3708,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -3602,7 +3726,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -3709,10 +3833,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-email": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -3759,7 +3879,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -3771,7 +3891,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -3789,7 +3909,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -3833,7 +3953,7 @@ exports[`should match snapshot 1`] = `
       "multiple": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.",
+        "description": "Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.",
         "type": "boolean",
       },
       "name": {
@@ -3914,10 +4034,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-month": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -3927,12 +4043,12 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "blur": {
-        "description": "Emitted when the number input has lost focus.",
+        "description": "Emitted when the month input has lost focus.",
         "type": "InputMonthBlurEventDetail",
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the number input loses focus after its value was changed.",
+        "description": "Emitted when the month input loses focus after its value was changed.",
         "type": "InputMonthChangeEventDetail",
         "typeDetail": "Event",
       },
@@ -3964,7 +4080,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -3976,7 +4092,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -3994,7 +4110,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -4014,7 +4130,7 @@ exports[`should match snapshot 1`] = `
       "max": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').",
+        "description": "Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').",
         "type": "string",
       },
       "message": {
@@ -4101,10 +4217,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-number": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4151,7 +4263,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "controls": {
@@ -4169,7 +4281,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -4187,7 +4299,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -4269,7 +4381,7 @@ exports[`should match snapshot 1`] = `
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The number input value.",
+        "description": "The value of the number input.",
         "propOptions": {
           "mutable": true,
         },
@@ -4300,10 +4412,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-password": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4350,7 +4458,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -4362,7 +4470,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -4380,7 +4488,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -4493,10 +4601,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-search": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4550,7 +4654,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -4562,7 +4666,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -4580,7 +4684,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -4693,10 +4797,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-tel": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4743,7 +4843,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -4755,7 +4855,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -4773,7 +4873,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -4892,10 +4992,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-text": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4939,7 +5035,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "counter": {
@@ -4957,7 +5053,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -4975,7 +5071,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -5088,10 +5184,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-time": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5101,12 +5193,12 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "blur": {
-        "description": "Emitted when the number input has lost focus.",
+        "description": "Emitted when the time input has lost focus.",
         "type": "InputTimeBlurEventDetail",
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the number input loses focus after its value was changed.",
+        "description": "Emitted when the time input loses focus after its value was changed.",
         "type": "InputTimeChangeEventDetail",
         "typeDetail": "Event",
       },
@@ -5132,13 +5224,13 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -5150,7 +5242,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -5168,7 +5260,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -5238,7 +5330,7 @@ exports[`should match snapshot 1`] = `
       "step": {
         "allowedValues": "number",
         "defaultValue": 60,
-        "description": "efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).",
+        "description": "Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).",
         "type": "number",
       },
       "value": {
@@ -5275,10 +5367,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-url": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5288,12 +5376,12 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "blur": {
-        "description": "Emitted when the url input has lost focus.",
+        "description": "Emitted when the URL input has lost focus.",
         "type": "InputUrlBlurEventDetail",
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the url input loses focus after its value was changed.",
+        "description": "Emitted when the URL input loses focus after its value was changed.",
         "type": "InputUrlChangeEventDetail",
         "typeDetail": "Event",
       },
@@ -5325,7 +5413,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -5337,7 +5425,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -5355,14 +5443,14 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "indicator": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the url icon.",
+        "description": "Controls the visibility of the URL icon.",
         "type": "boolean",
       },
       "label": {
@@ -5409,7 +5497,7 @@ exports[`should match snapshot 1`] = `
       "pattern": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.",
+        "description": "Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.",
         "type": "string",
       },
       "placeholder": {
@@ -5443,7 +5531,7 @@ exports[`should match snapshot 1`] = `
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The url input value.",
+        "description": "The URL input value.",
         "propOptions": {
           "mutable": true,
         },
@@ -5474,10 +5562,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-week": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5487,12 +5571,12 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "blur": {
-        "description": "Emitted when the number input has lost focus.",
+        "description": "Emitted when the week input has lost focus.",
         "type": "InputWeekBlurEventDetail",
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the number input loses focus after its value was changed.",
+        "description": "Emitted when the week input loses focus after its value was changed.",
         "type": "InputWeekChangeEventDetail",
         "typeDetail": "Event",
       },
@@ -5524,7 +5608,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "description": "Displays the input field in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -5536,7 +5620,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the input field. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -5554,7 +5638,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -5624,13 +5708,13 @@ exports[`should match snapshot 1`] = `
       "step": {
         "allowedValues": "number",
         "defaultValue": 1,
-        "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.",
+        "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.",
         "type": "number",
       },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')",
+        "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').",
         "propOptions": {
           "mutable": true,
         },
@@ -5660,12 +5744,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -5687,34 +5765,34 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "LinkAriaAttribute",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays the link in compact mode.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "download": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Special download attribute to open native browser download dialog if target url points to a downloadable file.",
+        "description": "Sets the native \`download\` attribute when the target URL points to a downloadable file.",
         "type": "string",
       },
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\`.",
+        "description": "When \`href\` is provided, the component renders as an \`<a>\` element.",
         "type": "string",
       },
       "icon": {
@@ -5745,6 +5823,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -5754,6 +5834,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -5924,6 +6006,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -6019,7 +6102,7 @@ exports[`should match snapshot 1`] = `
       "rel": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the relationship of the target object to the link object.",
+        "description": "Sets the \`rel\` attribute on the link.",
         "type": "string",
       },
       "target": {
@@ -6031,7 +6114,7 @@ exports[`should match snapshot 1`] = `
           "string",
         ],
         "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
+        "description": "Specifies where to open the linked document.",
         "type": "LinkTarget",
       },
       "variant": {
@@ -6052,12 +6135,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6074,7 +6151,7 @@ exports[`should match snapshot 1`] = `
       "active": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Display link in active state.",
+        "description": "Displays the link in its active state.",
         "type": "boolean",
       },
       "alignLabel": {
@@ -6095,27 +6172,39 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "LinkPureAriaAttribute",
+      },
+      "color": {
+        "allowedValues": [
+          "primary",
+          "contrast-higher",
+          "contrast-high",
+          "contrast-medium",
+          "inherit",
+        ],
+        "defaultValue": "primary",
+        "description": "The color.",
+        "type": "LinkPureColor",
       },
       "download": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Special download attribute to open native browser download dialog if target url points to a downloadable file.",
+        "description": "Sets the native \`download\` attribute when the target URL points to a downloadable file.",
         "type": "string",
       },
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\`.",
+        "description": "When \`href\` is provided, the component renders as an \`<a>\` element.",
         "type": "string",
       },
       "icon": {
@@ -6147,6 +6236,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -6156,6 +6247,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -6325,6 +6418,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -6420,20 +6514,38 @@ exports[`should match snapshot 1`] = `
       "rel": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the relationship of the target object to the link object.",
+        "description": "Sets the \`rel\` attribute on the link.",
         "type": "string",
       },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "xx-small",
           "x-small",
           "small",
           "medium",
           "large",
           "x-large",
-          "inherit",
         ],
-        "defaultValue": "small",
+        "defaultValue": "sm",
+        "deprecatedValues": [
+          "xx-small",
+          "x-small",
+          "small",
+          "medium",
+          "large",
+          "x-large",
+        ],
         "description": "Size of the link.",
         "isBreakpointCustomizable": true,
         "type": "LinkPureSize",
@@ -6454,7 +6566,7 @@ exports[`should match snapshot 1`] = `
           "string",
         ],
         "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
+        "description": "Specifies where to open the linked document.",
         "type": "LinkPureTarget",
       },
       "underline": {
@@ -6472,12 +6584,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6508,7 +6614,7 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "LinkTileAriaAttribute",
       },
@@ -6543,7 +6649,7 @@ exports[`should match snapshot 1`] = `
       "download": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Special download attribute to open native browser download dialog if target url points to a downloadable file.",
+        "description": "Sets the native \`download\` attribute when the target URL points to a downloadable file.",
         "type": "string",
       },
       "gradient": {
@@ -6569,7 +6675,7 @@ exports[`should match snapshot 1`] = `
       "rel": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the relationship of the target object to the link object.",
+        "description": "Sets the \`rel\` attribute on the link.",
         "type": "string",
       },
       "size": {
@@ -6592,7 +6698,7 @@ exports[`should match snapshot 1`] = `
           "string",
         ],
         "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
+        "description": "Specifies where to open the linked document.",
         "type": "LinkTileTarget",
       },
       "weight": {
@@ -6628,12 +6734,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "like": {
         "description": "Emitted when the like button is clicked.",
@@ -6687,13 +6787,13 @@ exports[`should match snapshot 1`] = `
       "likeButton": {
         "allowedValues": "boolean",
         "defaultValue": true,
-        "description": "A Boolean attribute indicating that a like button should be shown.",
+        "description": "Shows a like button.",
         "type": "boolean",
       },
       "liked": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A Boolean attribute indicating that a product is liked.",
+        "description": "Indicates whether the product is liked.",
         "type": "boolean",
       },
       "price": {
@@ -6712,7 +6812,7 @@ exports[`should match snapshot 1`] = `
       "rel": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the relationship of the target object to the link object.",
+        "description": "Sets the \`rel\` attribute on the link.",
         "type": "string",
       },
       "target": {
@@ -6724,7 +6824,7 @@ exports[`should match snapshot 1`] = `
           "string",
         ],
         "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
+        "description": "Specifies where to open the linked document.",
         "type": "LinkTileProductTarget",
       },
     },
@@ -6808,7 +6908,7 @@ exports[`should match snapshot 1`] = `
           "role": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "ModalAriaAttribute",
       },
@@ -6900,7 +7000,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "auto",
-        "description": "Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.",
+        "description": "Sets the browser's fetch priority hint for the model signature asset.",
         "type": "ModelSignatureFetchPriority",
       },
       "lazy": {
@@ -6962,12 +7062,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the multi-select has lost focus.",
@@ -7002,13 +7096,13 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays the multi-select in compact mode.",
         "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the multi-select.",
         "type": "string",
       },
       "disabled": {
@@ -7042,14 +7136,14 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "message": {
@@ -7071,7 +7165,7 @@ exports[`should match snapshot 1`] = `
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A Boolean attribute indicating that an option with a non-empty string value must be selected.",
+        "description": "Requires an option with a non-empty string value to be selected.",
         "type": "boolean",
       },
       "state": {
@@ -7124,12 +7218,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-multi-select-option": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7288,12 +7376,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the pin-code has lost focus.",
@@ -7322,13 +7404,13 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the pin-code as a compact version.",
+        "description": "Displays the pin code in compact mode.",
         "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the pin code.",
         "type": "string",
       },
       "disabled": {
@@ -7352,14 +7434,14 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label and description. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "length": {
@@ -7448,12 +7530,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7472,14 +7548,14 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "PopoverAriaAttribute",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Descriptive text to show additional information when popover is open",
+        "description": "Descriptive text shown when the popover is open.",
         "type": "string",
       },
       "direction": {
@@ -7490,7 +7566,7 @@ exports[`should match snapshot 1`] = `
           "left",
         ],
         "defaultValue": "bottom",
-        "description": "Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.",
+        "description": "Preferred direction in which the popover should open when there is enough space in the viewport. Otherwise, it opens in the direction with the most available space.",
         "type": "PopoverDirection",
       },
     },
@@ -7505,12 +7581,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the radio-group has lost focus.",
@@ -7539,7 +7609,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the radio group as a compact version.",
+        "description": "Displays the radio group in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -7554,14 +7624,14 @@ exports[`should match snapshot 1`] = `
           "column",
         ],
         "defaultValue": "column",
-        "description": "Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.",
+        "description": "Defines the direction of the main and cross-axis. The default is \`column\`, which stacks the options vertically. You always need to provide a base value when using breakpoints.",
         "isBreakpointCustomizable": true,
         "type": "RadioGroupDirection",
       },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the radio group. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -7579,7 +7649,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -7658,12 +7728,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group-option": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7680,7 +7744,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the radio group option unusable and unclickable.",
+        "description": "Disables the radio group option. The value will not be submitted with the form.",
         "type": "boolean",
       },
       "label": {
@@ -7717,6 +7781,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-scroller": {
+    "cssVariablesMeta": {
+      "--p-scroller-gap": {
+        "defaultValue": "8px",
+        "description": "Defines the gap between slotted nodes.",
+      },
+      "--p-scroller-indicator-bottom": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and \`sticky\` is enabled.",
+      },
+      "--p-scroller-indicator-top": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and \`sticky\` is enabled.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7726,9 +7804,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "alignScrollIndicator": {
         "allowedValues": [
@@ -7736,7 +7811,8 @@ exports[`should match snapshot 1`] = `
           "center",
         ],
         "defaultValue": "center",
-        "description": "Sets the vertical position of scroll indicator.",
+        "description": "@deprecated since v4.0.0, will be removed with next major release, has no effect anymore.",
+        "isDeprecated": true,
         "type": "ScrollerAlignScrollIndicator",
       },
       "aria": {
@@ -7748,13 +7824,20 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "ScrollerAriaAttribute",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
+        "type": "boolean",
+      },
       "scrollToPosition": {
         "allowedValues": {
           "isSmooth": "boolean",
           "scrollPosition": "number",
         },
         "defaultValue": null,
-        "description": "Scrolls the scroll area to the left either smooth or immediately.",
+        "description": "@deprecated since v4.0.0, use native \`scrollIntoView()\` on the slotted element itself.",
+        "isDeprecated": true,
         "propOptions": {
           "mutable": true,
         },
@@ -7764,6 +7847,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Specifies if scrollbar should be shown.",
+        "type": "boolean",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction.",
+        "isExperimental": true,
         "type": "boolean",
       },
     },
@@ -7845,7 +7935,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
+        "description": "Displays the segmented control in compact mode.",
         "type": "boolean",
       },
       "description": {
@@ -7875,7 +7965,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -7949,12 +8039,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control-item": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7978,7 +8062,7 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "SegmentedControlItemAriaAttribute",
       },
@@ -8017,6 +8101,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -8026,6 +8112,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -8195,6 +8283,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -8290,7 +8379,7 @@ exports[`should match snapshot 1`] = `
       "label": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "value": {
@@ -8322,12 +8411,6 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the select has lost focus.",
@@ -8361,13 +8444,13 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays the select in compact mode.",
         "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the select.",
         "type": "string",
       },
       "disabled": {
@@ -8407,14 +8490,14 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "message": {
@@ -8436,7 +8519,7 @@ exports[`should match snapshot 1`] = `
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A Boolean attribute indicating that an option with a non-empty string value must be selected.",
+        "description": "Requires an option with a non-empty string value to be selected.",
         "type": "boolean",
       },
       "state": {
@@ -8488,12 +8571,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-option": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8586,7 +8663,7 @@ exports[`should match snapshot 1`] = `
           "role": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "SheetAriaAttribute",
       },
@@ -8630,6 +8707,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-spinner": {
+    "cssVariablesMeta": {
+      "--p-spinner-color": {
+        "defaultValue": "",
+        "description": "Defines the foreground color. Overrides the \`color\` property when set.",
+      },
+      "--p-spinner-size": {
+        "defaultValue": "",
+        "description": "Defines the width and height of the spinner. Overrides the \`size\` property when set.",
+      },
+      "--p-spinner-track-color": {
+        "defaultValue": "",
+        "description": "Defines the track/background color. Overrides the \`color\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8645,19 +8736,43 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "SpinnerAriaAttribute",
       },
+      "color": {
+        "allowedValues": [
+          "primary",
+          "inherit",
+        ],
+        "defaultValue": "primary",
+        "description": "Basic color variations.",
+        "type": "SpinnerColor",
+      },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "small",
           "medium",
           "large",
-          "inherit",
         ],
-        "defaultValue": "small",
-        "description": "Size of the spinner.",
+        "defaultValue": "sm",
+        "deprecatedValues": [
+          "small",
+          "medium",
+          "large",
+        ],
+        "description": "Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to \`inherit\`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on \`ex\`-unit) to remain visually consistent with other typographic-scale-based components.",
         "isBreakpointCustomizable": true,
         "type": "SpinnerSize",
       },
@@ -8704,12 +8819,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-stepper-horizontal-item": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8761,15 +8870,9 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "eventsMeta": {
       "update": {
-        "description": "Emitted when checked status is changed.",
+        "description": "Emitted when the checked state changes.",
         "type": "SwitchUpdateEventDetail",
         "typeDetail": "{ checked: boolean }",
       },
@@ -8806,7 +8909,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays the switch in compact mode.",
         "type": "boolean",
       },
       "disabled": {
@@ -8818,7 +8921,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -8844,6 +8947,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-table": {
+    "cssVariablesMeta": {
+      "--p-table-scroll-indicator-bottom": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and \`sticky\` is enabled.",
+      },
+      "--p-table-scroll-indicator-top": {
+        "defaultValue": "0px",
+        "description": "Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and \`sticky\` is enabled.",
+      },
+    },
     "eventsMeta": {
       "update": {
         "description": "Emitted when sorting is changed.",
@@ -8873,7 +8986,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
         "type": "boolean",
       },
       "layout": {
@@ -8884,6 +8997,13 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Controls the layout behavior of the table.",
         "type": "TableLayout",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.",
+        "isExperimental": true,
+        "type": "boolean",
       },
     },
     "slotsMeta": {
@@ -8934,7 +9054,7 @@ exports[`should match snapshot 1`] = `
       "multiline": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays slotted text multiline or forced into a single line.",
+        "description": "Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.",
         "type": "boolean",
       },
     },
@@ -8988,13 +9108,13 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.",
+        "description": "Hides the label but keeps it accessible for screen readers. This property only takes effect when the \`sort\` prop is not set.",
         "type": "boolean",
       },
       "multiline": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays slotted text multiline or forced into a single line.",
+        "description": "Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.",
         "type": "boolean",
       },
       "sort": {
@@ -9101,11 +9221,28 @@ exports[`should match snapshot 1`] = `
       "activeTabIndex": {
         "allowedValues": "number",
         "defaultValue": 0,
-        "description": "Defines which tab to be visualized as selected (zero-based numbering).",
+        "description": "Defines which tab is shown as selected (zero-based numbering).",
         "propOptions": {
           "mutable": true,
         },
         "type": "number",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "TabsBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
+        "type": "boolean",
       },
       "size": {
         "allowedValues": [
@@ -9123,7 +9260,8 @@ exports[`should match snapshot 1`] = `
           "semi-bold",
         ],
         "defaultValue": "regular",
-        "description": "The text weight.",
+        "description": "@deprecated Will be removed in the next major release. Has no effect anymore.",
+        "isDeprecated": true,
         "type": "TabsWeight",
       },
     },
@@ -9166,8 +9304,25 @@ exports[`should match snapshot 1`] = `
       "activeTabIndex": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.",
+        "description": "Defines which tab is shown as selected (zero-based numbering), or \`undefined\` if none should be selected.",
         "type": "number | undefined",
+      },
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+          "frosted",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Defines the background color. Use \`frosted\` only on images, videos or gradients.",
+        "type": "TabsBarBackground",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Displays with reduced spacing and smaller padding for a more condensed layout.",
+        "type": "boolean",
       },
       "size": {
         "allowedValues": [
@@ -9185,7 +9340,8 @@ exports[`should match snapshot 1`] = `
           "semi-bold",
         ],
         "defaultValue": "regular",
-        "description": "The text weight.",
+        "description": "@deprecated Will be removed in the next major release. Has no effect anymore.",
+        "isDeprecated": true,
         "type": "TabsBarWeight",
       },
     },
@@ -9240,7 +9396,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays the tag in compact mode.",
         "type": "boolean",
       },
       "icon": {
@@ -9271,6 +9427,8 @@ exports[`should match snapshot 1`] = `
           "arrow-double-right",
           "arrow-double-up",
           "arrow-down",
+          "arrow-down-left",
+          "arrow-down-right",
           "arrow-first",
           "arrow-head-down",
           "arrow-head-left",
@@ -9280,6 +9438,8 @@ exports[`should match snapshot 1`] = `
           "arrow-left",
           "arrow-right",
           "arrow-up",
+          "arrow-up-left",
+          "arrow-up-right",
           "arrows",
           "attachment",
           "augmented-reality",
@@ -9450,6 +9610,7 @@ exports[`should match snapshot 1`] = `
           "pin-filled",
           "pivot",
           "play",
+          "play-filled",
           "plug",
           "plus",
           "preheating",
@@ -9564,12 +9725,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tag-dismissible": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9588,20 +9743,20 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "TagDismissibleAriaAttribute",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the tag dismissible as a compact version.",
+        "description": "Displays the dismissible tag in compact mode.",
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
     },
@@ -9613,12 +9768,6 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text": {
-    "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9637,15 +9786,15 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "start",
-        "description": "Text alignment of the component.",
+        "description": "Text alignment of the text. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.",
         "type": "TextAlign",
       },
       "color": {
         "allowedValues": [
           "primary",
+          "contrast-higher",
           "contrast-high",
           "contrast-medium",
-          "contrast-low",
           "success",
           "warning",
           "error",
@@ -9653,27 +9802,56 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations.",
+        "description": "Text color of the text. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color.",
         "type": "TextColor",
       },
       "ellipsis": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Adds an ellipsis to a single line of text if it overflows.",
+        "description": "Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with \`text-overflow: ellipsis\`. Cannot be combined with multi-line content.",
         "type": "boolean",
+      },
+      "hyphens": {
+        "allowedValues": [
+          "none",
+          "manual",
+          "auto",
+          "inherit",
+        ],
+        "defaultValue": "inherit",
+        "description": "Controls the hyphenation behavior of the text. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. \`&shy;\`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.",
+        "type": "TextHyphens",
       },
       "size": {
         "allowedValues": [
+          "2xs",
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "2xl",
+          "3xl",
+          "4xl",
+          "5xl",
+          "inherit",
           "xx-small",
           "x-small",
           "small",
           "medium",
           "large",
           "x-large",
-          "inherit",
         ],
-        "defaultValue": "small",
-        "description": "Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.",
+        "defaultValue": "sm",
+        "deprecatedValues": [
+          "xx-small",
+          "x-small",
+          "small",
+          "medium",
+          "large",
+          "x-large",
+        ],
+        "description": "Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.",
         "isBreakpointCustomizable": true,
         "type": "TextSize",
       },
@@ -9690,17 +9868,23 @@ exports[`should match snapshot 1`] = `
           "legend",
         ],
         "defaultValue": "p",
-        "description": "Sets a custom HTML tag depending on the usage of the text component.",
+        "description": "Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes, 'time' for dates).",
         "type": "TextTag",
       },
       "weight": {
         "allowedValues": [
+          "normal",
+          "semibold",
+          "bold",
           "regular",
           "semi-bold",
-          "bold",
         ],
-        "defaultValue": "regular",
-        "description": "The weight of the text.",
+        "defaultValue": "normal",
+        "deprecatedValues": [
+          "regular",
+          "semi-bold",
+        ],
+        "description": "The font weight of the text. Use 'normal' for regular body text, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis.",
         "type": "TextWeight",
       },
     },
@@ -9763,10 +9947,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-textarea": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--p-textarea-field-sizing": {
         "defaultValue": "unset",
         "description": "Controls CSS \`field-sizing\` for textarea.",
@@ -9827,7 +10007,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, renders the textarea as a compact version.",
+        "description": "Displays the textarea in compact mode.",
         "type": "boolean",
       },
       "counter": {
@@ -9845,7 +10025,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.",
+        "description": "Disables the textarea. The value will not be submitted with the form.",
         "propOptions": {
           "mutable": true,
         },
@@ -9863,7 +10043,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Controls the visibility of the label.",
+        "description": "Shows or hides the label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -9992,10 +10172,6 @@ exports[`should match snapshot 1`] = `
   },
   "p-toast": {
     "cssVariablesMeta": {
-      "--p-hyphens": {
-        "defaultValue": "auto",
-        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
-      },
       "--p-toast-position-bottom": {
         "defaultValue": "56px",
         "description": "Defines the spacing between the toast and the bottom edge of its container.",
@@ -10077,14 +10253,14 @@ exports[`should match snapshot 1`] = `
           "aria-label": "string",
         },
         "defaultValue": null,
-        "description": "Add ARIA attributes.",
+        "description": "Sets ARIA attributes.",
         "isAria": true,
         "type": "WordmarkAriaAttribute",
       },
       "href": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "When providing an url then the component will be rendered as \`<a>\`.",
+        "description": "When \`href\` is provided, the component renders as an \`<a>\` element.",
         "type": "string",
       },
       "size": {
@@ -10093,7 +10269,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "Adapts sizing of wordmark.",
+        "description": "Controls the size of the wordmark.",
         "type": "WordmarkSize",
       },
       "target": {
@@ -10105,7 +10281,7 @@ exports[`should match snapshot 1`] = `
           "string",
         ],
         "defaultValue": "_self",
-        "description": "Target attribute where the link should be opened.",
+        "description": "Specifies where to open the linked document.",
         "type": "WordmarkTarget",
       },
     },

@@ -24,8 +24,8 @@ In the **controlled** approach, the input state is externally managed using the 
 keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
 that the component will still always update its internal value automatically when interacted with.
 
-In the **uncontrolled** approach, the input behaves similar to a native `<input type="tel" />`, automatically managing
-its own state and including its value in form submissions through the
+In the **uncontrolled** approach, the input behaves similarly to a native `<input type="tel" />`, automatically manages
+its own state, and includes its value in form submissions through the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
 smaller forms or simple submissions.
 
@@ -37,15 +37,12 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
-Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
-named slot is used (because a property definition is preferred over a named slot). For named slots only
-[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
-allowed.
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
 
-In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This
-slot must be used to render content after the label which is not directly part of it (e.g. an external link or a
-`popover` component).
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
 
 If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
 example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
@@ -55,10 +52,10 @@ If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have t
 `--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
 
 <Notification heading="Attention" heading-tag="h3" state="warning">
-  If the <code>component</code> is in <code>disabled/loading</code> state
-  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
-  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
-  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+  In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive keyboard focus. Add <code>tabindex="-1"</code> to those UI elements.
+
+The <code>label-after</code> slot is not affected by a <code>disabled/loading</code> state at all.
+
 </Notification>
 
 <ComponentStory story={inputTelStorySlots} />

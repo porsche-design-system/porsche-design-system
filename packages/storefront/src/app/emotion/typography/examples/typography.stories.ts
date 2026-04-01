@@ -2,34 +2,6 @@
 
 import type { Story } from '@/models/story';
 
-export const typographyEmotionStoryDisplay: Story<'div'> = {
-  generator: () => [
-    {
-      tag: 'div',
-      properties: {
-        className: 'grid gap-fluid-md',
-      },
-      children: [
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-lg' },
-          children: ['...proseDisplayLgStyle'],
-        },
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-md' },
-          children: ['...proseDisplayMdStyle'],
-        },
-        {
-          tag: 'h3',
-          properties: { className: 'prose-display-sm' },
-          children: ['...proseDisplaySmStyle'],
-        },
-      ],
-    },
-  ],
-};
-
 export const typographyEmotionStoryHeading: Story<'div'> = {
   generator: () => [
     {
@@ -38,6 +10,21 @@ export const typographyEmotionStoryHeading: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-5xl' },
+          children: ['...proseHeading5XlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-4xl' },
+          children: ['...proseHeading4XlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-3xl' },
+          children: ['...proseHeading3XlStyle'],
+        },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-2xl' },
@@ -63,6 +50,16 @@ export const typographyEmotionStoryHeading: Story<'div'> = {
           properties: { className: 'prose-heading-sm' },
           children: ['...proseHeadingSmStyle'],
         },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-xs' },
+          children: ['...proseHeadingXsStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-2xs' },
+          children: ['...proseHeading2XsStyle'],
+        },
       ],
     },
   ],
@@ -76,6 +73,26 @@ export const typographyEmotionStoryText: Story<'div'> = {
         className: 'grid gap-fluid-md',
       },
       children: [
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-5xl hyphens-auto' },
+          children: ['...proseText5XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-4xl hyphens-auto' },
+          children: ['...proseText4XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-3xl hyphens-auto' },
+          children: ['...proseText3XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-2xl hyphens-auto' },
+          children: ['...proseText2XlStyle'],
+        },
         {
           tag: 'p',
           properties: { className: 'prose-text-xl hyphens-auto' },

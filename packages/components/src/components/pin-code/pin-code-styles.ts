@@ -1,4 +1,3 @@
-import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -7,7 +6,17 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorPrimary, legacyRadiusSmall, radiusLg, radiusXl } from '../../styles/css-variables';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusLg,
+  radiusXl,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
@@ -22,11 +31,6 @@ import type { PinCodeLength } from './pin-code-utils';
 
 export const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
@@ -38,7 +42,7 @@ export const getComponentCss = (
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   const gap = `calc(11.2px * (var(${cssVarInternalPinCodeScaling}) - 0.64285714) + 4px)`;
-  const inputBorderWidth = borderWidthThin;
+  const inputBorderWidth = '1px';
   const inputDimension = `calc(var(${cssVarInternalPinCodeScaling}) * 3.5rem)`;
   const inputPadding = `calc(11.2px * (var(${cssVarInternalPinCodeScaling}) - 0.64285714) + 4px)`;
   const inputMinWidth = `calc(1ch + ${inputPadding} * 2 + ${inputBorderWidth} * 2)`;
@@ -50,10 +54,9 @@ export const getComponentCss = (
         [`${cssVarInternalPinCodeScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(isDisabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -67,13 +70,13 @@ export const getComponentCss = (
         border: `${inputBorderWidth} solid ${formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
-        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        font: `${fontWeightNormal} ${typescaleSm} / calc(${leadingNormal} + 6px) ${fontPorscheNext}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         color: colorPrimary,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         textOverflow: 'ellipsis',
         cursor: isDisabled || isLoading ? 'not-allowed' : 'text',
         textAlign: 'center',
-        ...(isLoading && getDisabledBaseStyles()),
+        ...((isDisabled || isLoading) && getDisabledBaseStyles()),
         '&:focus-visible': {
           borderColor: formStateBorderHoverColor,
         },
@@ -89,7 +92,7 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
     },
     wrapper: {
       position: 'relative',
@@ -104,13 +107,11 @@ export const getComponentCss = (
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: inputDimension,
-        height: inputDimension,
         pointerEvents: 'none',
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, isLoading, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

@@ -1,0 +1,13 @@
+---
+description: Angular wrapper rules for packages/components-angular
+globs: packages/components-angular/**
+alwaysApply: false
+---
+
+# PDS Angular
+
+- Preserve the Angular wrapper API around existing PDS web components instead of re-implementing behavior.
+- Follow `PorscheDesignSystemModule.load()` setup patterns for NgModule or standalone bootstrap flows.
+- Pass extra ARIA through the wrapper's `[aria]` input instead of adding `aria-*` directly to the host.
+- Avoid manual edits to generated `dist/` output unless the task is explicitly about published artifacts.
+- Validate wrapper changes with `yarn test:unit:components-angular`.

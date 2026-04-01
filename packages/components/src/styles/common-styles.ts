@@ -1,18 +1,17 @@
-import {
-  borderWidthBase,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionDurationVeryLong,
-  motionEasingBase,
-  motionEasingIn,
-  motionEasingOut,
-} from '@porsche-design-system/emotion';
 import type * as fromMotionType from '@porsche-design-system/emotion/dist/esm/motion';
 import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import { alphaDisabled } from './alpha-disabled';
-import { colorFocus } from './css-variables';
+import {
+  colorFocus,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+} from './css-variables';
 import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
@@ -21,16 +20,16 @@ type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapit
 export type MotionEasingKey = WithoutMotionEasingPrefix<keyof typeof fromMotionType>;
 
 export const motionDurationMap: Record<MotionDurationKey, string> = {
-  short: motionDurationShort,
-  moderate: motionDurationModerate,
-  long: motionDurationLong,
-  veryLong: motionDurationVeryLong,
+  short: durationSm,
+  moderate: durationMd,
+  long: durationLg,
+  veryLong: durationXl,
 };
 
 export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
-  base: motionEasingBase,
-  in: motionEasingIn,
-  out: motionEasingOut,
+  base: easeInOut,
+  in: easeIn,
+  out: easeOut,
   linear: 'linear',
 };
 
@@ -89,22 +88,23 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-export const getFocusBaseStyles = () => {
+export const getFocusBaseStyles = (offset: number = 2) => {
   return {
-    outline: `${borderWidthBase} solid ${colorFocus}`,
-    outlineOffset: '2px',
+    outline: `2px solid ${colorFocus}`,
+    outlineOffset: `${offset}px`,
     ...forcedColorsMediaQuery({
       outlineColor: 'Highlight',
     }),
   } as const;
 };
 
-export const getDisabledBaseStyles = () => {
+export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: JssStyle) => {
   return {
     opacity: alphaDisabled,
     ...forcedColorsMediaQuery({
       opacity: 1,
       color: 'GrayText',
+      ...addForcedColorsDisabledStyles,
     }),
   } as const;
 };

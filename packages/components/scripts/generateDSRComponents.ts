@@ -152,7 +152,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|inputElements)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItems|slides|inputElements)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
@@ -423,7 +423,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
-          .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
+          .replace(/this\.tabsItems(\.map)/, `otherChildren$1`)
           .replace(
             /(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g,
             "$1{typeof tab === 'object' && 'props' in tab && tab.props.label}$2"
@@ -711,6 +711,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
       } else if (tagName === 'p-button-pure') {
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
+      } else if (tagName === 'p-tag') {
+        newFileContent = newFileContent.replace(
+          /VARIANT_TO_COLOR_MAP\[this\.props\.variant]/,
+          'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
+        );
       }
 
       return newFileContent;

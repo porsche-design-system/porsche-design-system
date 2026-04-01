@@ -1,19 +1,25 @@
-import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/emotion';
+import { getMediaQueryMax } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { colorPrimary } from '../../styles/css-variables';
-import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import { getCss, HEADING_TAGS } from '../../utils';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  leadingNormal,
+  typescaleSm,
+} from '../../styles/css-variables';
+import { getCss } from '../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
-import type { InlineNotificationState } from './inline-notification-utils';
+import { INLINE_NOTIFICATION_HEADING_TAGS, type InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
 
@@ -23,14 +29,9 @@ const getTextJssStyle = {
 };
 
 const getHeadingJssStyle = {
-  ...headingSmallStyle,
+  font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
   ...getTextJssStyle,
 };
-
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 
 export const getComponentCss = (state: InlineNotificationState, hasAction: boolean, hasClose: boolean): string => {
   return getCss({
@@ -43,19 +44,21 @@ export const getComponentCss = (state: InlineNotificationState, hasAction: boole
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${INLINE_NOTIFICATION_HEADING_TAGS.join()}))`]: addImportantToEachRule({
+        all: 'unset',
+      }),
       'slot[name="heading"]': getHeadingJssStyle,
     },
     heading: getHeadingJssStyle,
     description: {
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
       ...getTextJssStyle,
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
-        marginTop: borderWidthBase, // To visually align with close button
+        marginTop: '1px', // To visually align with close button
         [mediaQueryMaxS]: {
           gridRowStart: 2,
         },

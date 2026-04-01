@@ -3,16 +3,16 @@ import { getComponentCss } from './heading-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['xx-large', 'start', 'primary', false],
-    ['x-large', 'start', 'primary', false],
-    ['x-large', 'end', 'primary', false],
-    ['large', 'center', 'inherit', true],
-    ['medium', 'center', 'inherit', true],
-    ['small', 'center', 'inherit', true],
-    ['small', 'inherit', 'inherit', true],
-    ['inherit', 'center', 'inherit', true],
-    [{ base: 'small', xs: 'medium', s: 'large', m: 'x-large', l: 'xx-large', xl: 'large' }, 'end', 'inherit', false],
-  ])('should return correct css for size: %j, align: %s, color: %s and ellipsis: %s', (...args) => {
+    ['2xl', 'normal', 'start', 'primary', 'none', false],
+    ['xl', 'normal', 'start', 'primary', 'auto', false],
+    ['xl', 'normal', 'end', 'primary', 'manual', false],
+    ['lg', 'normal', 'center', 'inherit', 'inherit', true],
+    ['md', 'normal', 'center', 'inherit', 'none', true],
+    ['sm', 'normal', 'center', 'inherit', 'none', true],
+    ['sm', 'normal', 'inherit', 'inherit', 'none', true],
+    ['inherit', 'normal', 'center', 'inherit', 'none', true],
+    [{ base: 'sm', xs: 'md', s: 'lg', m: 'xl', l: '2xl', xl: 'lg' }, 'normal', 'end', 'inherit', 'none', false],
+  ])('should return correct css for size: %j, align: %s, color: %s, hyphens: %s, and ellipsis: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

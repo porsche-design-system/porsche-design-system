@@ -24,15 +24,13 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -51,7 +49,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
@@ -90,15 +88,13 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -117,7 +113,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
@@ -156,15 +152,13 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -184,12 +178,12 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
@@ -228,15 +222,13 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -256,12 +248,12 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
@@ -300,15 +292,13 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -328,12 +318,12 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
@@ -372,15 +362,13 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media (forced-colors: active) {
+@media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
@@ -400,12 +388,12 @@ button:focus-visible {
   display: block;
   margin-bottom: -4px;
   color: var(--p-color-contrast-high);
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
 }
 .icon {
   padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
