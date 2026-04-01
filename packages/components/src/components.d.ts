@@ -172,27 +172,27 @@ export namespace Components {
      */
     interface PBanner {
         /**
-          * Description of the banner.
+          * Sets the description text of the banner.
          */
         "description"?: string;
         /**
-          * If false, the banner will not have a dismiss button.
+          * Shows a dismiss button allowing the banner to be closed.
          */
         "dismissButton"?: boolean;
         /**
-          * Heading of the banner.
+          * Sets the heading text of the banner.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: BannerHeadingTag;
         /**
-          * If true, the banner is open.
+          * Controls whether the banner is open or closed.
          */
         "open": boolean;
         /**
-          * State of the banner.
+          * Defines the visual state of the banner.
          */
         "state"?: BannerState;
     }
@@ -3869,31 +3869,31 @@ declare namespace LocalJSX {
      */
     interface PBanner {
         /**
-          * Description of the banner.
+          * Sets the description text of the banner.
          */
         "description"?: string;
         /**
-          * If false, the banner will not have a dismiss button.
+          * Shows a dismiss button allowing the banner to be closed.
          */
         "dismissButton"?: boolean;
         /**
-          * Heading of the banner.
+          * Sets the heading text of the banner.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: BannerHeadingTag;
         /**
-          * Emitted when the close button is clicked.
+          * Emitted when the banner is requested to be dismissed.
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
-          * If true, the banner is open.
+          * Controls whether the banner is open or closed.
          */
         "open"?: boolean;
         /**
-          * State of the banner.
+          * Defines the visual state of the banner.
          */
         "state"?: BannerState;
     }
