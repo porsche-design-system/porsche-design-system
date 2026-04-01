@@ -35,9 +35,9 @@ This needs to be added in the constructor e.g. `// StencilLazyHost constructor(s
 already has a shadowRoot which was rendered on the server.
 
 ```diff
-if (self.shadowRoot) {
-  self.hasDSR = true;
-}
++ if (self.shadowRoot) {
++   self.hasDSR = true;
++ }
 ```
 
 This should be applied before stencil calls the render function e.g. `callRender` in order to clear the DSR rendered
