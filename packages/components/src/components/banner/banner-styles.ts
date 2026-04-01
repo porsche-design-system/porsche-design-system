@@ -1,4 +1,5 @@
 import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/emotion';
+import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
@@ -48,6 +49,7 @@ const cssVarInsetX = '--p-banner-inset-x';
 const cssVarPositionTop = '--p-banner-position-top'; // deprecated (aliased)
 const cssVarPositionBottom = '--p-banner-position-bottom'; // deprecated (aliased)
 const topBottomFallback = '56px';
+const cssVariableZIndex = '--p-internal-banner-z-index';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -94,6 +96,7 @@ export const getComponentCss = (
       '[popover]': {
         all: 'unset',
         position: 'fixed',
+        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`, // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
         ...buildResponsiveStyles(position, (v: BannerPosition) => ({
           ...(v === 'top' && {
             insetBlock: `var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback})) auto`,
