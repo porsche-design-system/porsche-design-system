@@ -10,24 +10,16 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot {
-  display: block;
-}
-slot[name="heading"] {
-  grid-area: 1/2;
-}
-slot[name="description"] {
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-}
-h1,h2,h3,h4,h5,h6 {
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
   all: unset;
+  display: block;
   grid-area: 1/2;
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
-p {
+slot[name="description"],p {
   all: unset;
+  display: block;
   grid-area: 2/2;
   margin-top: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -36,7 +28,8 @@ p {
 [popover] {
   all: unset;
   position: fixed;
-  inset-inline: 50vw auto;
+  z-index: var(--p-internal-banner-z-index,99);
+  left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
   pointer-events: none;
@@ -76,6 +69,12 @@ p {
     -webkit-mask: undefined center/contain no-repeat;
     mask: undefined center/contain no-repeat;
   }
+@media(forced-colors:active) {
+    .banner::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
@@ -97,24 +96,16 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot {
-  display: block;
-}
-slot[name="heading"] {
-  grid-area: 1/2;
-}
-slot[name="description"] {
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-}
-h1,h2,h3,h4,h5,h6 {
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
   all: unset;
+  display: block;
   grid-area: 1/2;
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
-p {
+slot[name="description"],p {
   all: unset;
+  display: block;
   grid-area: 2/2;
   margin-top: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -123,7 +114,8 @@ p {
 [popover] {
   all: unset;
   position: fixed;
-  inset-inline: 50vw auto;
+  z-index: var(--p-internal-banner-z-index,99);
+  left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: inherit;
   pointer-events: inherit;
@@ -164,6 +156,12 @@ p {
     -webkit-mask: undefined center/contain no-repeat;
     mask: undefined center/contain no-repeat;
   }
+@media(forced-colors:active) {
+    .banner::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
