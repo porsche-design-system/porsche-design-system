@@ -100,9 +100,9 @@ test.describe('banner', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const banner = page.locator('p-banner');
+    const banner = page.locator('p-banner [popover]');
     const bannerOpenBtn = page.locator('p-banner ~ button');
-    const bannerCloseBtn = page.locator('p-banner p-inline-notification .close');
+    const bannerCloseBtn = page.locator('p-banner [popover] .dismiss');
     const bannerDismissEventCounter = page.locator('p-banner + p');
 
     await bannerOpenBtn.click();
