@@ -9,7 +9,7 @@ import {
   type BannerHeadingTag,
   type BannerPosition,
   type BannerState,
-  getContentAriaAttributes,
+  getBannerAriaAttributes,
 } from './banner-utils';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
@@ -110,7 +110,7 @@ export class Banner {
         id={bannerId}
         popover="manual"
         aria-hidden={this.open ? 'false' : 'true'}
-        {...getContentAriaAttributes(this.state, labelId, descriptionId)}
+        {...getBannerAriaAttributes(this.state, labelId, descriptionId)}
         ref={(el: HTMLElement) => (this.refPopover = el)}
       >
         <div class="banner">

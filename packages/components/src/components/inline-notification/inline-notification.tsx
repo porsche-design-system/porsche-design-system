@@ -3,7 +3,7 @@ import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
-  getContentAriaAttributes,
+  getInlineNotificationAriaAttributes,
   INLINE_NOTIFICATION_HEADING_TAGS,
   INLINE_NOTIFICATION_STATES,
   type InlineNotificationActionIcon,
@@ -74,7 +74,11 @@ export class InlineNotification {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <div id={notificationId} class="notification" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
+      <div
+        id={notificationId}
+        class="notification"
+        {...getInlineNotificationAriaAttributes(this.state, labelId, descriptionId)}
+      >
         {this.heading ? <Heading id={labelId}>{this.heading}</Heading> : <slot name="heading" />}
         {this.description ? <p id={descriptionId}>{this.description}</p> : <slot />}
         {this.actionLabel && (

@@ -20,7 +20,7 @@ export const getInlineNotificationIconName = (state: InlineNotificationState): I
   return iconMap[state];
 };
 
-export const getContentAriaAttributes = (
+export const getInlineNotificationAriaAttributes = (
   state: InlineNotificationState,
   labelId: string,
   descriptionId: string
