@@ -1,4 +1,3 @@
-import { fontLineHeight, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -10,6 +9,7 @@ import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-style
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
 import { cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
+import { leadingNormal, spacingStaticXs } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -36,7 +36,7 @@ export const getComponentCss = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
-  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${leadingNormal}) / 2))`;
   const labelPaddingInlineStart = `calc(11.2px * (var(${cssVarInternalCheckboxScaling}) - 0.64285714) + 4px)`;
 
   return getCss({
@@ -59,7 +59,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      rowGap: spacingStaticXSmall,
+      rowGap: spacingStaticXs,
     },
     wrapper: {
       position: 'relative',
@@ -71,7 +71,7 @@ export const getComponentCss = (
       alignItems: 'center',
       display: 'grid',
       alignSelf: 'flex-start',
-      minHeight: fontLineHeight, // necessary for compact mode
+      minHeight: leadingNormal, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       ...(isDisabled && getDisabledBaseStyles()),
     },

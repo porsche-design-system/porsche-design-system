@@ -29,6 +29,8 @@ import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { TabsBarBackground, TabsBarSize } from './tabs-bar-utils';
 
+export const delayTabStyleAttribute = 'data-delay';
+
 const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
   canvas: colorCanvas,
   surface: colorSurface,
@@ -71,18 +73,22 @@ export const getComponentCss = (
               fontSize: fontSizeText[sizeValue],
             })),
             color: colorPrimary,
-            transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
           },
           '&(a:focus-visible),&(button:focus-visible)': getFocusBaseStyles(),
           ...hoverMediaQuery({
             '&(a:not([aria-current="true"]):hover),&(button:not([aria-selected="true"]):hover)': {
+              // Only applied on hover since applying it globally causes the active tab to visually flash when navigating in SPAs (where the tabs-bar persist across routes but the children tabs change).
+              transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
               background: colorFrostedStrong,
             },
           }),
+          // The data attribute is applied before the tabs switching animation runs in the utils to delay the selected tab styles until the animation is finished
+          [`&(a[${delayTabStyleAttribute}]),&(button[${delayTabStyleAttribute}])`]: {
+            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`, // the background shall be changed immediately after the bar transition has finished
+          },
           '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
             color: colorCanvas,
             background: colorPrimary,
-            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`, // the background shall be changed immediately after the bar transition has finished
           },
           ...forcedColorsMediaQuery({
             '&(a),&(button)': {

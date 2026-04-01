@@ -1,11 +1,4 @@
 import {
-  borderWidthThin,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/emotion';
-import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getDisabledBaseStyles,
@@ -15,7 +8,15 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { colorCanvas, colorPrimary, radiusFull } from '../../../styles/css-variables';
+import {
+  colorCanvas,
+  colorPrimary,
+  fontPorscheNext,
+  leadingNormal,
+  radiusFull,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -34,11 +35,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
 
-  const radioBorderWidth = borderWidthThin;
+  const radioBorderWidth = '1px';
   const radioDimension = `calc(var(${cssVarInternalRadioGroupOptionScaling}) * 1.75rem)`;
-  const radioMarginBlock = `max(0px, calc((${fontLineHeight} - ${radioDimension}) / 2))`;
+  const radioMarginBlock = `max(0px, calc((${leadingNormal} - ${radioDimension}) / 2))`;
   const radioTouchInset = `calc(-${radioBorderWidth} - max(0px, calc(24px - ${radioDimension}) / 2))`;
-  const labelPaddingTop = `max(0px, calc((${radioDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingTop = `max(0px, calc((${radioDimension} - ${leadingNormal}) / 2))`;
   const labelPaddingInlineStart = `calc(11.2px * (var(${cssVarInternalRadioGroupOptionScaling}) - 0.64285714) + 4px)`;
 
   return getCss({
@@ -58,7 +59,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         height: radioDimension,
         marginBlock: radioMarginBlock,
         boxSizing: 'border-box',
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+        font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
         background: formStateBackgroundColor,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         border: `${radioBorderWidth} solid ${formStateBorderColor}`,
@@ -104,14 +105,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     root: {
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
-      rowGap: spacingStaticXSmall,
+      rowGap: spacingStaticXs,
     },
     wrapper: {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
       alignSelf: 'flex-start',
-      minHeight: fontLineHeight, // necessary for compact mode
+      minHeight: leadingNormal, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       ...(disabled && getDisabledBaseStyles()),
     },

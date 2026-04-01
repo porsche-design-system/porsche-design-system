@@ -169,6 +169,20 @@ describe('activeTabIndexHandler()', () => {
     );
   });
 
+  it('should set data attribute to delay active tab style with transition', () => {
+    const { component, tabs } = initComponentForHandler();
+
+    component.activeTabIndexHandler(1, 0);
+
+    expect(tabs[0].getAttribute('data-delay')).toBe(null);
+    expect(tabs[1].getAttribute('data-delay')).toBe('');
+
+    component.activeTabIndexHandler(2, 1);
+
+    expect(tabs[1].getAttribute('data-delay')).toBe(null);
+    expect(tabs[2].getAttribute('data-delay')).toBe('');
+  });
+
   it('should not animate the bar when both indices are out of range', () => {
     const { component, bar } = initComponentForHandler();
 

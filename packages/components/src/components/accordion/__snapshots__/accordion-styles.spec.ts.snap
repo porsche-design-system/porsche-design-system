@@ -38,7 +38,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -57,8 +57,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -73,14 +73,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -106,7 +109,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/2;
@@ -119,7 +122,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -184,7 +187,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-sm));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -217,14 +220,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -250,7 +256,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -263,7 +269,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -328,7 +334,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-sm));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -361,14 +367,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -398,7 +407,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -411,7 +420,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -476,7 +485,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -509,14 +518,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -546,7 +558,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -559,7 +571,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -624,7 +636,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-sm));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -643,8 +655,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -659,14 +671,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -692,7 +707,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -705,7 +720,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -770,7 +785,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-sm));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -789,8 +804,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -805,14 +820,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -838,7 +856,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -851,7 +869,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -916,7 +934,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-sm));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -935,8 +953,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -951,14 +969,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -984,7 +1005,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -997,7 +1018,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1062,7 +1083,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -1081,8 +1102,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -1097,14 +1118,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1130,7 +1154,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1143,7 +1167,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1208,7 +1232,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -1227,8 +1251,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -1243,14 +1267,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1276,7 +1303,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1289,7 +1316,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1354,7 +1381,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -1373,8 +1400,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -1389,14 +1416,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1422,7 +1452,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1435,7 +1465,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1500,7 +1530,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -1519,8 +1549,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   }
   details::details-content {
@@ -1535,14 +1565,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1568,7 +1601,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1581,7 +1614,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1646,7 +1679,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.25s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-sm));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -1679,14 +1712,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .25s), grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, 0);
+    margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), margin-top var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -1712,7 +1748,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1725,7 +1761,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1790,7 +1826,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details[open] slot:not([name]) {
     overflow: visible;
-    animation: overflow-hidden var(--p-transition-duration,.4s);
+    animation: overflow-hidden var(--p-transition-duration,var(--p-duration-md));
   }
   h1,h2,h3,h4,h5,h6 {
     all: unset;
@@ -1823,14 +1859,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, .4s), grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
-    margin-top: calc(28px * (1 - 0.64285714) + 6px);
+    padding-top: calc(28px * (1 - 0.64285714) + 6px);
+    z-index: 1;
+    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), margin-top var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1860,7 +1899,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1873,7 +1912,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);

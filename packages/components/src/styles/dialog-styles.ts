@@ -1,14 +1,8 @@
-import {
-  frostedGlassStyle,
-  gridGap,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-} from '@porsche-design-system/emotion';
+import { gridGap } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
 import {
+  blurFrosted,
   colorBackdrop,
   colorCanvas,
   colorFrosted,
@@ -17,6 +11,10 @@ import {
   legacyRadiusLarge,
   radius3Xl,
   radiusXl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
 } from './css-variables';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
@@ -26,8 +24,8 @@ const cssVarBackgroundColor = '--_a';
 
 export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle => {
   return {
-    '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-    '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+    '--pds-internal-grid-outer-column': `calc(${spacingFluidLg} - ${gridGap})`,
+    '--pds-internal-grid-margin': `calc(${spacingFluidLg} * -1)`,
     '--pds-internal-grid-width-min': 'auto',
     '--pds-internal-grid-width-max': 'none',
     [cssVarBackgroundColor]: background === 'surface' ? colorSurface : colorCanvas,
@@ -78,7 +76,10 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           visibility: 'inherit',
           pointerEvents: 'auto',
           background: colorBackdrop,
-          ...(isBackdropBlur && frostedGlassStyle),
+          ...(isBackdropBlur && {
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
+          }),
         }
       : {
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
@@ -124,16 +125,16 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
 };
 
 export const dialogBorderRadius = `var(${legacyRadiusLarge}, ${radiusXl})`;
-export const dialogPaddingTop = spacingFluidMedium;
-export const dialogPaddingBottom = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
-export const dialogPaddingInline = spacingFluidLarge;
+export const dialogPaddingTop = spacingFluidMd;
+export const dialogPaddingBottom = `calc(${spacingFluidSm} + ${spacingFluidMd})`;
+export const dialogPaddingInline = spacingFluidLg;
 
 export const dialogGridJssStyle = (): JssStyle => {
   return {
     position: 'relative',
     display: 'grid',
-    gridTemplate: `auto/${spacingFluidSmall} minmax(0,1fr) ${spacingFluidSmall}`,
-    gap: `${spacingFluidMedium} calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
+    gridTemplate: `auto/${spacingFluidSm} minmax(0,1fr) ${spacingFluidSm}`,
+    gap: `${spacingFluidMd} calc(${spacingFluidLg} - ${spacingFluidSm})`,
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
@@ -175,15 +176,15 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
-    top: spacingFluidSmall,
-    marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSmall})`,
-    marginInlineEnd: spacingFluidSmall,
+    top: spacingFluidSm,
+    marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSm})`,
+    marginInlineEnd: spacingFluidSm,
     placeSelf: 'flex-start flex-end',
     '&::after': {
       content: '""',
       display: 'block',
       position: 'absolute',
-      inset: `calc(-1 * ${spacingFluidSmall}) calc(-1 * ${spacingFluidSmall}) -50px -50px`,
+      inset: `calc(-1 * ${spacingFluidSm}) calc(-1 * ${spacingFluidSm}) -50px -50px`,
       pointerEvents: 'none',
       zIndex: -1,
       borderRadius: dialogBorderRadius,
@@ -203,7 +204,7 @@ export const getSlotJssStyle = (): JssStyle => {
 
 export const getSlotHeaderJssStyle = (): JssStyle => {
   const paddingTop = dialogPaddingTop;
-  const paddingBottom = spacingStaticMedium;
+  const paddingBottom = spacingStaticMd;
 
   return {
     gridColumn: '1/-1',
@@ -242,7 +243,8 @@ export const getSlotFooterJssStyle = (): JssStyle => {
       inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
       background: colorFrosted,
       borderRadius: radius3Xl,
-      ...frostedGlassStyle,
+      WebkitBackdropFilter: blurFrosted,
+      backdropFilter: blurFrosted,
     },
   };
 };

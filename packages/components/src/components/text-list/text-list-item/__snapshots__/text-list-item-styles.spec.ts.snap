@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: grid;
   grid-template-columns: var(--p-internal-text-list-pseudo-space) 1fr !important;
-  column-gap: 16px !important;
+  column-gap: var(--p-spacing-static-md) !important;
   font: inherit !important;
   color: inherit !important;
 }

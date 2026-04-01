@@ -1,4 +1,3 @@
-import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
@@ -13,9 +12,14 @@ import {
   colorContrastMedium,
   colorFrosted,
   colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusLg,
   radiusXl,
+  spacingStaticXs,
+  typescaleSm,
 } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
@@ -46,7 +50,7 @@ export const getFunctionalComponentInputBaseStyles = (
   additionalInputJssStyle?: JssStyle,
   additionalHostJssStyle?: JssStyle
 ): Styles => {
-  const wrapperBorderWidth = borderWidthThin;
+  const wrapperBorderWidth = '1px';
   const wrapperHeight = `calc(var(${cssVarInternalInputBaseScaling}) * 3.5rem)`;
   const wrapperPaddingInline = `calc(22.4px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714) + 8px)`;
   const wrapperGap = `calc(22.4px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714) + 4px)`;
@@ -81,14 +85,14 @@ export const getFunctionalComponentInputBaseStyles = (
         alignItems: 'center',
         width: 'max(100%, 2ch)', // show at least 2 characters in very narrow containers
         height: '100%',
-        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        font: `${fontWeightNormal} ${typescaleSm} / calc(${leadingNormal} + 6px) ${fontPorscheNext}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         textOverflow: 'ellipsis',
         ...additionalInputJssStyle,
       },
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
     },
     wrapper: {
       display: 'flex',
