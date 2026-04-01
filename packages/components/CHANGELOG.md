@@ -16,6 +16,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Banner`:
+  - Prop `position` with values: `BreakpointCustomizable<'top' | 'bottom'>` (default: `{ base: 'bottom', s: 'top' }`)
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+  - CSS Variable `--p-banner-top`: Defines the distance from the top of the viewport. Only takes effect when the
+    `position` property is set to `top` (at the respective breakpoint).
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+  - CSS Variable `--p-banner-bottom`: Defines the distance from the bottom of the viewport. Only takes effect when the
+    `position` property is set to `bottom` (at the respective breakpoint).
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+  - CSS Variable `--p-banner-max-w`: Defines the maximum width of the banner.
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+  - CSS Variable `--p-banner-inset-x`: Defines the horizontal offset of the banner from the edges of the viewport.
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
 - `Tailwind CSS`: `--spacing-static-2xs`
   ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 - `SCSS`: `$spacing-static-2xs` ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
@@ -24,14 +37,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Banner`, `Inline Notification`: Improve visual appearance
+  ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+- `Banner`: `max-width` is now `100ch` by default to increase readability. Use CSS Variable `--p-banner-max-w` and
+  `--p-banner-inset-x` to set custom `max-width` and horizontal offset.
+  ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
 - `SCSS`:
   - All `prose-heading-*` and `prose-text-*` mixins set `color` to the primary token by default, overridable via the CSS
     cascade ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
 - `Emotion`, `Vanilla Extract`:
   - All `proseHeading*` and `proseText*` style objects set `color` to the primary token by default, overridable in your
     own styles ([#4262](https://github.com/porsche-design-system/porsche-design-system/pull/4262))
-- `Banner`: `max-width` is now `100ch` by default to increase readability. Use CSS Variable `--p-banner-max-w` and `--p-banner-offset-inline` to set custom `max-width` and horizontal offset.
-  ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
 
 ### Fixed
 
@@ -43,6 +59,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4263](https://github.com/porsche-design-system/porsche-design-system/pull/4263))
 - Global Styles: missing individual export for `color-scheme.css`
   ([#4260](https://github.com/porsche-design-system/porsche-design-system/pull/4260))
+
+### Deprecated
+
+- `Banner`:
+  - CSS Variable `--p-banner-position-top` (use `--p-banner-top` instead)
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
+  - CSS Variable `--p-banner-position-bottom` (use `--p-banner-bottom` instead)
+    ([#4264](https://github.com/porsche-design-system/porsche-design-system/pull/4264))
 
 ## [4.0.0-rc.0] - 2026-03-27
 
@@ -91,8 +115,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
-  to generate accessible code that follows WCAG 2.2 AA standards. ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
+- Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and
+  Cursor to generate accessible code that follows WCAG 2.2 AA standards.
+  ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
 - `Tokens`: `typescale3Xl`, `typescale4Xl`, `typescale5Xl`
   ([#4246](https://github.com/porsche-design-system/porsche-design-system/pull/4246))
 - `Tailwind CSS`: `--text-3xl`, `--text-4xl`, `--text-5xl`, `.prose-heading-3xl`, `.prose-heading-4xl`,
