@@ -144,18 +144,26 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
-      "--p-banner-position-bottom": {
+      "--p-banner-bottom": {
         "defaultValue": "56px",
-        "description": "Position bottom of banner. Only has an effect below breakpoint 's'.",
+        "description": "Defines the distance from the bottom of the viewport. Only takes effect when the \`position\` property is set to \`bottom\` (at the respective breakpoint).",
       },
-      "--p-banner-position-top": {
+      "--p-banner-inset-x": {
+        "defaultValue": "max(22px, 10.625vw - 12px)",
+        "description": "Defines the horizontal offset of the Banner from the edges of the viewport.",
+      },
+      "--p-banner-max-w": {
+        "defaultValue": "100ch",
+        "description": "Defines the maximum width of the Banner.",
+      },
+      "--p-banner-top": {
         "defaultValue": "56px",
-        "description": "Position top of banner",
+        "description": "Defines the distance from the top of the viewport. Only takes effect when the \`position\` property is set to \`top\` (at the respective breakpoint).",
       },
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the close button is clicked.",
+        "description": "Emitted when the banner is requested to be dismissed.",
         "type": "void",
       },
     },
@@ -165,32 +173,29 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "hostAttributes": {
-      "popover": "manual",
-    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
     "nestedComponents": [
-      "p-inline-notification",
+      "p-button",
     ],
     "propsMeta": {
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "Description of the banner.",
+        "description": "Sets the description text of the banner.",
         "type": "string",
       },
       "dismissButton": {
         "allowedValues": "boolean",
         "defaultValue": true,
-        "description": "If false, the banner will not have a dismiss button.",
+        "description": "Shows a dismiss button allowing the banner to be closed.",
         "type": "boolean",
       },
       "heading": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "Heading of the banner.",
+        "description": "Sets the heading text of the banner.",
         "type": "string",
       },
       "headingTag": {
@@ -203,15 +208,28 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": "h5",
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "description": "Sets the heading tag for proper semantic structure within the page.",
         "type": "BannerHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "If true, the banner is open.",
+        "description": "Controls whether the banner is open or closed.",
         "isRequired": true,
         "type": "boolean",
+      },
+      "position": {
+        "allowedValues": [
+          "top",
+          "bottom",
+        ],
+        "defaultValue": {
+          "base": "bottom",
+          "s": "top",
+        },
+        "description": "Sets the position of the banner.",
+        "isBreakpointCustomizable": true,
+        "type": "BannerPosition",
       },
       "state": {
         "allowedValues": [
@@ -221,7 +239,7 @@ exports[`should match snapshot 1`] = `
           "error",
         ],
         "defaultValue": "info",
-        "description": "State of the banner.",
+        "description": "Defines the visual state of the banner.",
         "type": "BannerState",
       },
     },
@@ -3280,7 +3298,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "nestedComponents": [
-      "p-icon",
       "p-button-pure",
       "p-button",
     ],

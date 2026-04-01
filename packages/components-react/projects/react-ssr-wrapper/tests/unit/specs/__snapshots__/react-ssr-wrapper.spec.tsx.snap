@@ -3097,7 +3097,6 @@ exports[`should render dsr component for PAccordion 1`] = `
 exports[`should render dsr component for PBanner 1`] = `
 <p-banner
   data-ssr=""
-  popover="manual"
 >
   <template
     shadowroot="open"
@@ -3105,32 +3104,7 @@ exports[`should render dsr component for PBanner 1`] = `
   >
     <style>
       :host {
-  display: block;
-  all: unset !important;
-  position: fixed !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  inset: auto max(22px, 10.625vw - 12px) var(--p-banner-position-bottom,56px) !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 100% !important;
-  border: 0 !important;
-  outline: 0 !important;
-  overflow: visible !important;
-  z-index: var(--p-internal-banner-z-index,99) !important;
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
-  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) !important;
-}
-:host::backdrop {
-  display: none !important;
-}
-:host &gt; :first-child {
-  opacity: 0 !important;
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) !important;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
@@ -3138,178 +3112,119 @@ exports[`should render dsr component for PBanner 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-@media(min-width:760px) {
-  :host {
-    inset: var(--p-banner-position-top,56px) calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) auto !important;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top,56px)),0) !important;
-  }
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+  all: unset;
+  display: block;
+  grid-area: 1/2;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
 }
-
-@media(min-width:1920px) {
-  :host {
-    inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+slot[name="description"],p {
+  all: unset;
+  display: block;
+  grid-area: 2/2;
+  margin-top: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
+[popover] {
+  all: unset;
+  position: fixed;
+  z-index: var(--p-internal-banner-z-index,99);
+  inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
+  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
+  left: 50vw;
+  width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+}
+[popover]:popover-open {
+  overlay: auto;
+}
+[popover]::backdrop {
+  display: none;
+}
+@media(min-width:760px) {
+  [popover] {
+    inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
+    transform: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
   }
 }
 
 @supports (transition-behavior: allow-discrete) {
-  :host {
-    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+  [popover] {
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
-  :host &gt; :first-child {
-    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  padding: var(--p-spacing-static-md);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-info-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  box-shadow: var(--p-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+}
+.dismiss {
+  grid-area: 1/4/3;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+  margin-inline-end: calc(-1 * var(--p-spacing-static-xs));
+  margin-inline-start: var(--p-spacing-static-md);
+}
+@media(min-width:760px) {
+  .banner::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-info);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .banner::before {
+      background: CanvasText;
+    }
+}
+
+}
+
+@media(forced-colors:active) {
+  .banner {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 
     </style>
-    <p-inline-notification
+    <div
+      aria-describedby="description"
       aria-hidden="true"
-      data-ssr=""
+      aria-labelledby="heading"
+      aria-live="polite"
+      id="banner"
+      popover="manual"
+      role="status"
     >
-      <template
-        shadowroot="open"
-        shadowrootmode="open"
+      <div
+        class="banner"
       >
-        <style>
-          :host {
-  display: grid;
-  grid-template-columns: minmax(auto, 1fr) auto !important;
-  gap: var(--p-spacing-static-md) !important;
-  place-items: start !important;
-  padding: var(--p-spacing-static-md) !important;
-  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
-  backdrop-filter: var(--p-blur-frosted) !important;
-  background: var(--p-color-info-frosted) !important;
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
-}
-slot[name="heading"] {
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
-  color: var(--p-color-primary);
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto !important;
-  }
-}
-
-@media(forced-colors:active) {
-  :host {
-    outline: 2px solid CanvasText !important;
-    outline-offset: -2px !important;
-  }
-}
-
-.heading {
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
-  color: var(--p-color-primary);
-}
-.description {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
-  color: var(--p-color-primary);
-}
-.icon {
-  margin-top: 2px;
-}
-.content {
-  display: grid;
-  gap: var(--p-spacing-static-xs);
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0.5;
-}
-@media(min-width:760px) {
-  .content {
-    margin-left: calc(-1 * var(--p-spacing-static-sm));
-  }
-}
-
-@media(max-width:759px) {
-  .icon {
-    display: none;
-  }
-}
-
-        </style>
-        <p-icon
-          aria-hidden="true"
-          class="icon"
-          data-ssr=""
-        >
-          <template
-            shadowroot="open"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
-  background: var(--p-icon-color,var(--p-color-info));
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-            </style>
-            <img
-              alt=""
-              height="24"
-              loading="lazy"
-              src="http://localhost:3001/icons/information-filled.8f08911.svg"
-              width="24"
-            />
-          </template>
-        </p-icon>
-        <div
-          aria-describedby="description"
-          aria-labelledby="label"
-          aria-live="polite"
-          class="content"
-          id="banner"
-          role="status"
-        >
-          <p
-            class="description"
-            id="description"
-          >
-            <slot />
-          </p>
-        </div>
+        <slot
+          name="heading"
+        />
+        <slot
+          name="description"
+        />
         <p-button
           aria-controls="banner"
-          class="close"
+          class="dismiss"
           data-ssr=""
         >
           <template
@@ -3321,8 +3236,8 @@ img {
               :host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
+  --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -3477,10 +3392,10 @@ img {
               role="status"
             />
           </template>
-          Close notification
+          Close banner
         </p-button>
-      </template>
-    </p-inline-notification>
+      </div>
+    </div>
   </template>
   Some child
 </p-banner>
@@ -7088,15 +7003,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
   >
     <style>
       :host {
-  display: grid;
-  grid-template-columns: minmax(auto, 1fr) auto !important;
-  gap: var(--p-spacing-static-md) !important;
-  place-items: start !important;
-  padding: var(--p-spacing-static-md) !important;
-  -webkit-backdrop-filter: var(--p-blur-frosted) !important;
-  backdrop-filter: var(--p-blur-frosted) !important;
-  background: var(--p-color-info-frosted) !important;
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
+  display: block;
 }
 :host([hidden]) {
   display: none !important;
@@ -7104,142 +7011,92 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
-}
-slot[name="heading"] {
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+  all: unset;
+  display: block;
+  grid-area: 1/2;
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
   color: var(--p-color-primary);
 }
+slot:not([name]),p {
+  all: unset;
+  display: block;
+  grid-area: 2/2;
+  margin-top: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
+.notification {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  padding: var(--p-spacing-static-md);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  background: var(--p-color-info-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/3;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+  margin-inline-end: calc(-1 * var(--p-spacing-static-xs));
+  margin-inline-start: var(--p-spacing-static-md);
+}
 @media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto !important;
+  .notification::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-info);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
-  :host {
-    outline: 2px solid CanvasText !important;
-    outline-offset: -2px !important;
-  }
-}
-
-.heading {
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
-  color: var(--p-color-primary);
-}
-.description {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
-  color: var(--p-color-primary);
-}
-.icon {
-  margin-top: 2px;
-}
-.content {
-  display: grid;
-  gap: var(--p-spacing-static-xs);
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0.5;
-}
-@media(min-width:760px) {
-  .content {
-    margin-left: calc(-1 * var(--p-spacing-static-sm));
-  }
-}
-
-@media(max-width:759px) {
-  .icon {
-    display: none;
+  .notification {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 
     </style>
-    <p-icon
-      aria-hidden="true"
-      class="icon"
-      data-ssr=""
-    >
-      <template
-        shadowroot="open"
-        shadowrootmode="open"
-      >
-        <style>
-          :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/information-filled.8f08911.svg") center/contain no-repeat;
-  background: var(--p-icon-color,var(--p-color-info));
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-        </style>
-        <img
-          alt=""
-          height="24"
-          loading="lazy"
-          src="http://localhost:3001/icons/information-filled.8f08911.svg"
-          width="24"
-        />
-      </template>
-    </p-icon>
     <div
       aria-describedby="description"
-      aria-labelledby="label"
+      aria-labelledby="heading"
       aria-live="polite"
-      class="content"
-      id="banner"
+      class="notification"
+      id="notification"
       role="status"
     >
-      <p
-        class="description"
-        id="description"
+      <slot
+        name="heading"
+      />
+      <slot />
+      <p-button
+        aria-controls="notification"
+        class="dismiss"
+        data-ssr=""
       >
-        <slot />
-      </p>
-    </div>
-    <p-button
-      aria-controls="banner"
-      class="close"
-      data-ssr=""
-    >
-      <template
-        shadowroot="open"
-        shadowrootdelegatesfocus="true"
-        shadowrootmode="open"
-      >
-        <style>
-          :host {
+        <template
+          shadowroot="open"
+          shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
+        >
+          <style>
+            :host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-button-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
+  --p-internal-button-scaling: 0.64285714;
+  --p-internal-border-radius: var(--p-radius-lg);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -7327,22 +7184,22 @@ img {
 
 }
 
-        </style>
-        <button
-          class="root"
-          type="button"
-        >
-          <p-icon
-            aria-hidden="true"
-            class="icon"
-            data-ssr=""
+          </style>
+          <button
+            class="root"
+            type="button"
           >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
+            <p-icon
+              aria-hidden="true"
+              class="icon"
+              data-ssr=""
             >
-              <style>
-                :host {
+              <template
+                shadowroot="open"
+                shadowrootmode="open"
+              >
+                <style>
+                  :host {
   display: inline-flex;
   vertical-align: top;
 }
@@ -7372,30 +7229,31 @@ img {
   }
 }
 
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/close.eec3c5d.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
+                </style>
+                <img
+                  alt=""
+                  height="24"
+                  loading="lazy"
+                  src="http://localhost:3001/icons/close.eec3c5d.svg"
+                  width="24"
+                />
+              </template>
+            </p-icon>
+            <span
+              class="label"
+            >
+              <slot />
+            </span>
+          </button>
           <span
-            class="label"
-          >
-            <slot />
-          </span>
-        </button>
-        <span
-          class="loading"
-          id="loading"
-          role="status"
-        />
-      </template>
-      Close notification
-    </p-button>
+            class="loading"
+            id="loading"
+            role="status"
+          />
+        </template>
+        Close notification
+      </p-button>
+    </div>
   </template>
   Some child
 </p-inline-notification>

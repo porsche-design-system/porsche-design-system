@@ -1,21 +1,23 @@
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { PropTypes } from '../../types';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  getShadowRootHTMLElement,
-  hasNamedSlot,
-  validateProps,
-} from '../../utils';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './banner-styles';
-import { BANNER_HEADING_TAGS, BANNER_STATES, type BannerHeadingTag, type BannerState } from './banner-utils';
+import {
+  BANNER_HEADING_TAGS,
+  BANNER_POSITIONS,
+  BANNER_STATES,
+  type BannerHeadingTag,
+  type BannerPosition,
+  type BannerState,
+  getBannerAriaAttributes,
+} from './banner-utils';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<BannerHeadingTag>(BANNER_HEADING_TAGS),
   description: AllowedTypes.string,
+  position: AllowedTypes.breakpoint<BannerPosition>(BANNER_POSITIONS),
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
 };
@@ -33,29 +35,32 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
 export class Banner {
   @Element() public host!: HTMLElement;
 
-  /** If true, the banner is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  /** Controls whether the banner is open or closed. */
+  @Prop() public open: boolean = false;
 
-  /** Heading of the banner. */
+  /** Sets the heading text of the banner. */
   @Prop() public heading?: string = '';
 
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  /** Sets the heading tag for proper semantic structure within the page. */
   @Prop() public headingTag?: BannerHeadingTag = 'h5';
 
-  /** Description of the banner. */
+  /** Sets the description text of the banner. */
   @Prop() public description?: string = '';
 
-  /** State of the banner. */
+  /** Sets the position of the banner. */
+  @Prop() public position?: BreakpointCustomizable<BannerPosition> = { base: 'bottom', s: 'top' };
+
+  /** Defines the visual state of the banner. */
   @Prop() public state?: BannerState = 'info';
 
-  /** If false, the banner will not have a dismiss button. */
+  /** Shows a dismiss button allowing the banner to be closed. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** Emitted when the close button is clicked. */
+  /** Emitted when the banner is requested to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  private inlineNotificationElement: HTMLPInlineNotificationElement;
-  private closeBtn: HTMLElement;
+  private refPopover: HTMLElement;
+  private refDismiss: HTMLElement;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -74,67 +79,68 @@ export class Banner {
     }
   }
 
-  public componentDidRender(): void {
-    // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
-    this.setBannerVisibility(this.open);
-
-    if (this.dismissButton) {
-      this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
-      this.closeBtn?.focus();
-    }
-  }
-
   public disconnectedCallback(): void {
     if (this.open && this.dismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public componentDidRender(): void {
+    // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
+    this.refPopover[this.open ? 'showPopover' : 'hidePopover']();
+    this.refDismiss?.focus();
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open);
+    attachComponentCss(this.host, getComponentCss, this.open, this.position, this.state, this.dismissButton);
 
+    const bannerId = 'banner';
+    const labelId = 'heading';
+    const descriptionId = 'description';
+    const Heading = this.headingTag;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host popover="manual">
-        <PrefixedTagNames.pInlineNotification
-          ref={(el: HTMLPInlineNotificationElement) => (this.inlineNotificationElement = el)}
-          heading={this.heading}
-          headingTag={this.headingTag}
-          description={this.description}
-          state={this.state}
-          dismissButton={this.dismissButton}
-          onDismiss={this.onDismiss}
-          aria-hidden={this.open ? 'false' : 'true'}
-        >
-          {hasNamedSlot(this.host, 'heading') && <slot name="heading" slot="heading" />}
-          {hasNamedSlot(this.host, 'description') && <slot name="description" />}
-        </PrefixedTagNames.pInlineNotification>
-      </Host>
+      <div
+        id={bannerId}
+        popover="manual"
+        aria-hidden={this.open ? 'false' : 'true'}
+        {...getBannerAriaAttributes(this.state, labelId, descriptionId)}
+        ref={(el: HTMLElement) => (this.refPopover = el)}
+      >
+        <div class="banner">
+          {this.heading ? <Heading id={labelId}>{this.heading}</Heading> : <slot name="heading" />}
+          {this.description ? <p id={descriptionId}>{this.description}</p> : <slot name="description" />}
+          {this.dismissButton && (
+            <PrefixedTagNames.pButton
+              class="dismiss"
+              type="button"
+              variant="secondary"
+              icon="close"
+              hideLabel={true}
+              compact={true}
+              aria-controls={bannerId}
+              onClick={this.dismissBanner}
+              ref={(el: HTMLElement) => (this.refDismiss = el)}
+            >
+              Close banner
+            </PrefixedTagNames.pButton>
+          )}
+        </div>
+      </div>
     );
   }
 
-  private onKeyboardEvent = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape') {
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
       this.dismissBanner();
     }
   };
-
-  private onDismiss = (event?: CustomEvent): void => {
-    if (this.dismissButton) {
-      event?.stopPropagation(); // prevent double event emission because of identical name
-      this.dismiss.emit();
-    }
-  };
-
-  private setBannerVisibility(isOpen: boolean): void {
-    if (isOpen) {
-      this.host.showPopover();
-    } else {
-      this.host.hidePopover();
-    }
-  }
 
   private dismissBanner = (): void => {
     this.dismiss.emit();

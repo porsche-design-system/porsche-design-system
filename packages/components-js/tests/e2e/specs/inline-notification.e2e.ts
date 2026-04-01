@@ -44,19 +44,19 @@ const initInlineNotification = (
 };
 
 const getHost = (page: Page) => page.locator('p-inline-notification');
-const getCloseButton = (page: Page) => page.locator('p-inline-notification .close');
+const getDismissButton = (page: Page) => page.locator('p-inline-notification .dismiss');
 const getActionButton = (page: Page) => page.locator('p-inline-notification .action');
 
 test('should render close button with type of "button"', async ({ page }) => {
   await initInlineNotification(page);
-  const closeBtnReal = page.locator('p-inline-notification .close button');
+  const closeBtnReal = page.locator('p-inline-notification .dismiss button');
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
 test('should render without button when dismissButton prop false', async ({ page }) => {
   await initInlineNotification(page, { dismissButton: false });
   console.log(await getProperty(getHost(page), 'dismissButton'));
-  const el = getCloseButton(page);
+  const el = getDismissButton(page);
   await expect(el).toHaveCount(0);
 });
 
@@ -65,7 +65,7 @@ test.describe('close button', () => {
     await initInlineNotification(page);
 
     const host = getHost(page);
-    const closeButton = getCloseButton(page);
+    const closeButton = getDismissButton(page);
     await addEventListener(host, 'dismiss');
 
     await closeButton.click();
@@ -76,7 +76,7 @@ test.describe('close button', () => {
     await initInlineNotification(page);
 
     const host = getHost(page);
-    const closeButton = getCloseButton(page);
+    const closeButton = getDismissButton(page);
     await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
@@ -106,10 +106,10 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // one included in button
     expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -131,17 +131,6 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidUpdate['p-icon'];
-        },
-        {
-          message: 'componentDidUpdate: p-icon',
-        }
-      )
-      .toBe(1);
 
     await expect
       .poll(
@@ -153,7 +142,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(4);
+      .toBe(3);
     await expect
       .poll(
         async () => {
@@ -164,6 +153,6 @@ test.describe('lifecycle', () => {
           message: 'componentDidUpdate: all',
         }
       )
-      .toBe(2);
+      .toBe(1);
   });
 });

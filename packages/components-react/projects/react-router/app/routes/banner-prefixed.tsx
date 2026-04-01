@@ -27,7 +27,7 @@ const BannerPrefixedPage = (): JSX.Element => {
 
       <PorscheDesignSystemProvider prefix="my-prefix">
         <div>
-          <PBanner description="Description" heading="Heading" open={true} />
+          <PBanner open={true} heading="Heading" description="Description" />
         </div>
       </PorscheDesignSystemProvider>
     </>

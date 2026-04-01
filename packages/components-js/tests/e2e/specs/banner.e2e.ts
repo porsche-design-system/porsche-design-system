@@ -1,4 +1,4 @@
-import { type Locator, Page, expect, test } from '@playwright/test';
+import { expect, type Locator, Page, test } from '@playwright/test';
 import type { BannerState } from '@porsche-design-system/components';
 import {
   addEventListener,
@@ -33,56 +33,29 @@ const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
 };
 
 const getHost = (page: Page) => page.locator('p-banner');
-const getInlineNotification = (page: Page) => page.locator('p-banner p-inline-notification');
-const getCloseButton = (page: Page) => page.locator('p-banner p-inline-notification .close');
-
-test('should forward props correctly to p-inline-notification', async ({ page }) => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-banner state="error" dismiss-button="false">
-      <span slot="title">Some notification title</span>
-      <span slot="description">Some notification description.</span>
-    </p-banner>`
-  );
-
-  const inlineNotification = getInlineNotification(page);
-  expect(await getProperty(inlineNotification, 'state')).toBe('error');
-  expect(await getProperty(inlineNotification, 'dismissButton')).toBe(false);
-});
+const getBannerPopover = (page: Page) => page.locator('p-banner [popover]');
+const getCloseButton = (page: Page) => page.locator('p-banner [popover] .dismiss');
 
 test('should not show banner by default', async ({ page }) => {
   await initBanner(page, { open: false });
-  const banner = getHost(page);
-  const notification = getInlineNotification(page);
-  expect(await getElementStyle(notification, 'opacity')).toBe('0');
-  expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
+  await expect(getBannerPopover(page)).toBeHidden();
 });
 
 test('should show banner when prop open is true', async ({ page }) => {
   await initBanner(page, { open: true });
-  const banner = getHost(page);
-  expect(await getElementStyle(banner, 'opacity')).toBe('1');
-  expect(await getElementStyle(banner, 'visibility')).toBe('visible');
+  await expect(getBannerPopover(page)).toBeVisible();
 });
 
 test('should show banner when setting open prop true ', async ({ page }) => {
   await initBanner(page, { open: false });
-  const banner = getHost(page);
-  await setProperty(banner, 'open', true);
-  await waitForStencilLifecycle(page);
-  expect(await getElementStyle(banner, 'opacity')).toBe('1');
-  expect(await getElementStyle(banner, 'visibility')).toBe('visible');
+  await setProperty(getHost(page), 'open', true);
+  await expect(getBannerPopover(page)).toBeVisible();
 });
 
 test('should not show banner by setting open prop false', async ({ page }) => {
   await initBanner(page, { open: true });
-  const banner = getHost(page);
-  const notification = getInlineNotification(page);
-  await setProperty(banner, 'open', false);
-  await waitForStencilLifecycle(page);
-  await expect(notification).toHaveCSS('opacity', '0');
-  await expect(banner).toBeHidden();
+  await setProperty(getHost(page), 'open', false);
+  await expect(getBannerPopover(page)).toBeHidden();
 });
 
 test.describe('close', () => {
@@ -157,7 +130,7 @@ test.describe('close', () => {
 
     const banner1 = page.locator('#banner1');
     const banner2 = page.locator('#banner2');
-    const closeButtonBanner2 = page.locator('#banner2 p-inline-notification p-button');
+    const closeButtonBanner2 = page.locator('#banner2 p-button');
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);
@@ -183,11 +156,10 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
-    expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button
     expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-banner').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -211,28 +183,6 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidUpdate['p-inline-notification'];
-        },
-        {
-          message: 'componentDidUpdate: p-inline-notification',
-        }
-      )
-      .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidUpdate['p-icon'];
-        },
-        {
-          message: 'componentDidUpdate: p-icon',
-        }
-      )
-      .toBe(1);
 
     await expect
       .poll(
@@ -244,7 +194,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(5);
+      .toBe(3);
     await expect
       .poll(
         async () => {
@@ -255,6 +205,6 @@ test.describe('lifecycle', () => {
           message: 'componentDidUpdate: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
   });
 });
