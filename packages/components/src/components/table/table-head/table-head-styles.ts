@@ -1,5 +1,5 @@
-import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { fontPorscheNext, fontWeightSemibold, leadingNormal, typescaleXs } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   cssVariableTableBorderColor,
@@ -13,9 +13,7 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'table-header-group',
         ...addImportantToEachRule({
-          fontSize: fontSizeTextXSmall,
-          lineHeight: fontLineHeight,
-          fontWeight: fontWeightSemiBold,
+          font: `${fontWeightSemibold} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
           borderBottom: `1px solid var(${cssVariableTableBorderColor})`,
           ...hostHiddenStyles,
         }),

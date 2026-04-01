@@ -1,9 +1,8 @@
-import { borderWidthThin, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
-import { legacyRadiusSmall, radiusLg, radiusMd } from '../css-variables';
+import { fontPorscheNext, leadingNormal, legacyRadiusSmall, radiusLg, radiusMd, typescaleSm } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
@@ -23,9 +22,9 @@ export const getCheckboxBaseStyles = (
 
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
-  const checkboxBorderWidth = borderWidthThin;
+  const checkboxBorderWidth = '1px';
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
-  const checkboxMarginBlock = `max(0px, calc((${fontLineHeight} - ${checkboxDimension}) / 2))`;
+  const checkboxMarginBlock = `max(0px, calc((${leadingNormal} - ${checkboxDimension}) / 2))`;
   const checkboxTouchInset = `calc(-${checkboxBorderWidth} - max(0px, calc(24px - ${checkboxDimension}) / 2))`;
 
   return {
@@ -35,7 +34,7 @@ export const getCheckboxBaseStyles = (
     height: checkboxDimension,
     marginBlock: checkboxMarginBlock,
     boxSizing: 'border-box',
-    font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+    font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
     background: `var(${cssVarCheckboxBackgroundColor},${formStateBackgroundColor})`,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${checkboxBorderWidth} solid var(${cssVarCheckboxBorderColor},${formStateBorderColor})`,

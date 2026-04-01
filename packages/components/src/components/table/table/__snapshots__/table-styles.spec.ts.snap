@@ -7,7 +7,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -18,7 +18,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -35,7 +35,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -46,7 +46,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -63,7 +63,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -74,7 +74,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -92,7 +92,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -103,7 +103,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -121,8 +121,8 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  --_a: 8px !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  --_a: var(--p-spacing-static-sm) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -133,7 +133,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -150,8 +150,8 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  --_a: 8px !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  --_a: var(--p-spacing-static-sm) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -162,7 +162,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -179,8 +179,8 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  --_a: 8px !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  --_a: var(--p-spacing-static-sm) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -191,7 +191,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;
@@ -209,8 +209,8 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --p-scroller-indicator-bottom: var(--p-table-scroll-indicator-bottom,0px) !important;
   --_b: var(--p-color-frosted) !important;
   --_c: var(--p-color-contrast-low) !important;
-  --_a: 8px !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  --_a: var(--p-spacing-static-sm) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -221,7 +221,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   visibility: hidden;
 }
 .caption {
-  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+  margin-bottom: var(--p-spacing-fluid-md);
 }
 .table {
   display: table;

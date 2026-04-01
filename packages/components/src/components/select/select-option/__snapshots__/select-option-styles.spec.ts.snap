@@ -9,9 +9,9 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   display: none !important;
 }
 ::slotted(img) {
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   width: auto !important;
-  height: calc(6px + 2.125ex) !important;
+  height: var(--p-leading-normal) !important;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
 }
 :not(:defined,[data-ssr]) {
@@ -22,15 +22,15 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   gap: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -70,9 +70,9 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   display: none !important;
 }
 ::slotted(img) {
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   width: auto !important;
-  height: calc(6px + 2.125ex) !important;
+  height: var(--p-leading-normal) !important;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
 }
 :not(:defined,[data-ssr]) {
@@ -90,15 +90,15 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   gap: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--p-internal-select-option-scaling) - 0.64285714) + 4px);
   padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-option-scaling) - 0.64285714) + 6px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-height: var(--p-leading-normal);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);

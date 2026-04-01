@@ -5,7 +5,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -26,13 +26,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -44,7 +44,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -58,7 +58,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -80,7 +80,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -109,7 +109,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   --p-internal-switch-scaling: 0.64285714;
   display: inline-flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -130,13 +130,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -148,7 +148,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -162,7 +162,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -184,7 +184,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -214,7 +214,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   display: inline-flex;
   opacity: 0.4 !important;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -235,13 +235,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -253,7 +253,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -267,7 +267,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   :host {
@@ -293,7 +293,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -322,7 +322,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   --p-internal-switch-scaling: 1;
   display: flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -342,13 +342,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -360,7 +360,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -374,7 +374,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -396,7 +396,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -425,7 +425,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   --p-internal-switch-scaling: 1;
   display: flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -445,13 +445,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -463,7 +463,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -477,7 +477,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button {
@@ -499,7 +499,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: transparent;
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -532,7 +532,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   display: flex;
   opacity: 0.4 !important;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -552,13 +552,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -570,7 +570,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -584,7 +584,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   :host {
@@ -610,7 +610,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: transparent;
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -643,7 +643,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   display: flex;
   opacity: 0.4 !important;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -663,13 +663,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -681,7 +681,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -695,7 +695,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   :host {
@@ -721,7 +721,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: transparent;
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -753,7 +753,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   --p-internal-switch-scaling: 1;
   display: flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -773,13 +773,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-success-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -791,7 +791,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -805,7 +805,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -827,7 +827,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-success);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * 3rem) - 1px * 2 - 100% - calc(var(--p-internal-switch-scaling) * .1875rem)), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -856,7 +856,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"left",
   --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -877,13 +877,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -895,7 +895,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -909,7 +909,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -931,7 +931,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -960,7 +960,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"right"
   --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -981,13 +981,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -999,7 +999,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -1013,7 +1013,7 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -1035,7 +1035,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -1064,7 +1064,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"start"
   --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -1085,13 +1085,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1103,7 +1103,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -1138,7 +1138,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -1167,7 +1167,7 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":{"base"
   --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -1188,13 +1188,13 @@ button {
   box-sizing: border-box;
   width: calc(var(--p-internal-switch-scaling) * 3rem);
   height: calc(var(--p-internal-switch-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
   border: 1px solid var(--p-color-contrast-low);
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1206,7 +1206,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -1236,7 +1236,7 @@ label {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
   }
 }
 
@@ -1274,7 +1274,7 @@ label {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
   }
 }
 
@@ -1312,7 +1312,7 @@ label {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
   }
 }
 
@@ -1336,7 +1336,7 @@ label {
   height: calc(var(--p-internal-switch-scaling) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {

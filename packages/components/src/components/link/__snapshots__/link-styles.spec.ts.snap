@@ -51,15 +51,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -78,8 +78,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: nowrap;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: 0;
 }
 @media(min-width:480px) {
@@ -233,15 +234,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }
@@ -260,8 +261,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: normal;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
@@ -334,15 +336,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }
@@ -357,8 +359,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: normal;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
@@ -428,15 +431,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }
@@ -451,8 +454,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: normal;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
@@ -522,15 +526,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }
@@ -545,8 +549,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: normal;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
@@ -616,15 +621,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }
@@ -639,8 +644,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: normal;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
@@ -710,15 +716,15 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }
@@ -733,8 +739,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   white-space: normal;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
   margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
@@ -804,15 +811,15 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
 }

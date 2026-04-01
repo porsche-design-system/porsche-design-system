@@ -1,4 +1,4 @@
-import { fontLineHeight, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
+import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -23,8 +23,12 @@ import {
   colorSuccessMedium,
   colorWarning,
   colorWarningMedium,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
   legacyRadiusSmall,
   radiusFull,
+  typescaleXs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { TagVariant } from './tag-utils';
@@ -93,9 +97,9 @@ export const getComponentCss = (
         position: 'relative', // necessary as relative anchor to ensure click area of optional slotted focusable element is in sync
         display: 'flex',
         gap: '2px',
-        padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
-        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXSmall} + (${fontLineHeight} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
-        font: textXSmallStyle.font,
+        padding: compact ? '1px 6px' : `${spacingStaticXs} 9px`,
+        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
+        font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
         ...(variant === 'secondary' && {
           WebkitBackdropFilter: blurFrosted,
           backdropFilter: blurFrosted,

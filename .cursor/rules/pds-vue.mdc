@@ -1,0 +1,13 @@
+---
+description: Vue wrapper rules for packages/components-vue
+globs: packages/components-vue/**
+alwaysApply: false
+---
+
+# PDS Vue
+
+- Keep wrapper behavior aligned with the underlying PDS web component and preserve existing typings.
+- Use `PorscheDesignSystemProvider` or `createPorscheDesignSystem()` patterns that match the current public API.
+- Pass extra ARIA through the supported `:aria` prop rather than ad-hoc host attributes.
+- Avoid manual edits to generated `dist/` output unless the task is explicitly about published artifacts.
+- Validate wrapper changes with `yarn test:unit:components-vue`.

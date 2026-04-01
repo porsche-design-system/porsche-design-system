@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: table-row;
   border-bottom: var(--_d,1px) solid var(--_c) !important;
-  transition: background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
+  transition: background var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 :host([hidden]) {
   display: none !important;

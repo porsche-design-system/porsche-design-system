@@ -1,21 +1,18 @@
-import {
-  frostedGlassStyle,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/emotion';
+import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
+import { forcedColorsMediaQuery } from '../../styles';
 import {
+  blurFrosted,
   colorErrorFrosted,
   colorInfoFrosted,
   colorSuccessFrosted,
   colorWarningFrosted,
   legacyRadiusMedium,
   radiusXl,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXs,
 } from '../../styles/css-variables';
-import { forcedColorsMediaQuery } from '../../styles';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -40,10 +37,11 @@ export const getNotificationRootJssStyle = (
     // display: 'grid', // NOTE: display property is moved into component styled to not apply !important keyword
     // 2 columns for content and optional close button
     gridTemplateColumns: `minmax(auto, 1fr)${hasClose ? ' auto' : ''}`,
-    gap: spacingStaticMedium,
+    gap: spacingStaticMd,
     placeItems: 'start',
-    padding: spacingStaticMedium,
-    ...frostedGlassStyle,
+    padding: spacingStaticMd,
+    WebkitBackdropFilter: blurFrosted,
+    backdropFilter: blurFrosted,
     background: getBackgroundColor(state),
     borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`,
     [mediaQueryMinS]: {
@@ -66,9 +64,9 @@ export const getNotificationIconJssStyle = (): JssStyle => ({
 
 export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
-  gap: spacingStaticXSmall,
+  gap: spacingStaticXs,
   marginTop: '2px', // To be center aligned with close button
   [mediaQueryMinS]: {
-    marginLeft: `-${spacingStaticSmall}`,
+    marginLeft: `calc(-1 * ${spacingStaticSm})`,
   },
 });

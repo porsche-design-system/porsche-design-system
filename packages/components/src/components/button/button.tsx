@@ -175,11 +175,10 @@ export class Button {
           value={this.value}
           aria-describedby={this.loading ? loadingId : undefined}
         >
-          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}
           {hasVisibleIcon(this.icon, this.iconSource) && (
             <PrefixedTagNames.pIcon
               class="icon"
-              size="inherit"
               name={this.iconSource ? undefined : this.icon}
               source={this.iconSource}
               color="inherit"
