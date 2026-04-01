@@ -187,8 +187,8 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     needs: check-publication-status
