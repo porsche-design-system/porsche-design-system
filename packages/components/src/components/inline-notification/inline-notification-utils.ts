@@ -9,17 +9,6 @@ export type InlineNotificationActionIcon = IconName;
 export const INLINE_NOTIFICATION_HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type InlineNotificationHeadingTag = (typeof INLINE_NOTIFICATION_HEADING_TAGS)[number];
 
-export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
-  const iconMap: Record<InlineNotificationState, IconName> = {
-    info: 'information-filled',
-    warning: 'warning-filled',
-    success: 'success-filled',
-    error: 'error-filled',
-  };
-
-  return iconMap[state];
-};
-
 export const getInlineNotificationAriaAttributes = (
   state: InlineNotificationState,
   labelId: string,
