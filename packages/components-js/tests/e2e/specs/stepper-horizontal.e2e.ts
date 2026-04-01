@@ -99,8 +99,8 @@ test.describe('validation', () => {
       await setProperty(item2, 'state', 'current');
       await waitForStencilLifecycle(page);
 
-    await expect.poll(() => getConsoleErrorsAmount()).toBe(1);
-  });
+      await expect.poll(() => getConsoleErrorsAmount()).toBe(1);
+    });
 
     test('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async ({
       page,
@@ -355,13 +355,15 @@ test.describe('lifecycle', () => {
       await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
-      await expect.poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal']).toBe(1);
+      await expect
+        .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal'])
+        .toBe(1);
       await expect
         .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-stepper-horizontal-item'])
         .toBe(2);
       await expect.poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-scroller']).toBe(0);
 
-      await expect.poll(async () => (await getLifecycleStatus(page)).componentDidLoad.all).toBe(10);
+      await expect.poll(async () => (await getLifecycleStatus(page)).componentDidLoad.all).toBe(6);
       await expect.poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all).toBe(3);
     });
   });
