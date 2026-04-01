@@ -1,11 +1,13 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasPropValueChanged, validateProps } from '../../utils';
 import { getComponentCss } from './banner-styles';
 import {
   BANNER_HEADING_TAGS,
+  BANNER_POSITIONS,
   BANNER_STATES,
   type BannerHeadingTag,
+  type BannerPosition,
   type BannerState,
   getContentAriaAttributes,
 } from './banner-utils';
@@ -15,6 +17,7 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<BannerHeadingTag>(BANNER_HEADING_TAGS),
   description: AllowedTypes.string,
+  position: AllowedTypes.breakpoint<BannerPosition>(BANNER_POSITIONS),
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
 };
@@ -43,6 +46,9 @@ export class Banner {
 
   /** Sets the description text of the banner. */
   @Prop() public description?: string = '';
+
+  /** Sets the position of the banner. */
+  @Prop() public position?: BreakpointCustomizable<BannerPosition> = { base: 'bottom', s: 'top' };
 
   /** Defines the visual state of the banner. */
   @Prop() public state?: BannerState = 'info';
@@ -79,6 +85,10 @@ export class Banner {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
   public componentDidRender(): void {
     // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
     this.refPopover[this.open ? 'showPopover' : 'hidePopover']();
@@ -87,7 +97,7 @@ export class Banner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, this.state, this.dismissButton);
+    attachComponentCss(this.host, getComponentCss, this.open, this.position, this.state, this.dismissButton);
 
     const bannerId = 'banner';
     const labelId = 'heading';

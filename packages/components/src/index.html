@@ -610,34 +610,38 @@
           <p-text-list-item>ABC</p-text-list-item>
         </p-text-list>
       </div>
-      <div data-card="inline-notification">
+      <div data-card="inline-notification" style="grid-column: span 2;">
         <p-inline-notification heading="Some heading" heading-tag="h2" description="Some content"></p-inline-notification>
         <p-inline-notification dismiss-button="false">
           <p-heading slot="heading" tag="h2" size="large">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification>
-          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification state="success">
-          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification state="warning">
-          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification state="error">
-          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car">
-          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car" action-loading="true">
-          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification action-label="Some action" action-icon="car" action-loading="true">
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
       </div>

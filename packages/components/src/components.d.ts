@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
-import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+import { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -69,7 +69,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
-export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+export { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -191,6 +191,10 @@ export namespace Components {
           * Controls whether the banner is open or closed.
          */
         "open": boolean;
+        /**
+          * Sets the position of the banner.
+         */
+        "position"?: BreakpointCustomizable<BannerPosition>;
         /**
           * Defines the visual state of the banner.
          */
@@ -3892,6 +3896,10 @@ declare namespace LocalJSX {
           * Controls whether the banner is open or closed.
          */
         "open"?: boolean;
+        /**
+          * Sets the position of the banner.
+         */
+        "position"?: BreakpointCustomizable<BannerPosition>;
         /**
           * Defines the visual state of the banner.
          */
