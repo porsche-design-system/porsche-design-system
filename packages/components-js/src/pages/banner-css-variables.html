@@ -1,7 +1,9 @@
 <style>
   p-banner {
-    --p-banner-position-top: 0px;
-    --p-banner-position-bottom: 0px;
+    --p-banner-top: 8px;
+    --p-banner-bottom: 8px;
+    --p-banner-inset-x: 8px;
+    --p-banner-max-w: 70ch;
   }
 </style>
 
@@ -26,4 +28,4 @@
   <span></span>
 </div>
 
-<p-banner description="Description" heading="Heading" open="true"></p-banner>
+<p-banner open="true" heading="Heading" description="Description" position="{ base: 'top', xs: 'bottom', s: 'top', m: 'bottom', l: 'top', xl: 'bottom' }"></p-banner>

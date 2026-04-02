@@ -8,9 +8,9 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
 } from '../../../utils';
-import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
 import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
 import { getComponentCss } from './toast-item-styles';
+import { getToastIconName } from './toast-item-utils';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
@@ -54,7 +54,7 @@ export class ToastItem {
       <Host popover="manual">
         <PrefixedTagNames.pIcon
           class="icon"
-          name={getInlineNotificationIconName(this.state)}
+          name={getToastIconName(this.state)}
           color={this.state}
           aria-hidden="true"
         />
