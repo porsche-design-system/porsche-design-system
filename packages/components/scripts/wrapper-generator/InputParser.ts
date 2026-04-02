@@ -1,8 +1,8 @@
+import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
 import type { TagName } from '@porsche-design-system/shared';
-import * as path from 'path';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
-import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
+import * as path from 'path';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
@@ -38,7 +38,7 @@ export class InputParser {
 
   public getRawComponentInterface(component: TagName): string {
     // We need semicolon and double newline to ensure comments are ignored
-    const regex = new RegExp(`interface ${this.intrinsicElements[component]} ({(?:\\s|.)*?;?\\s\\s})`);
+    const regex = new RegExp(`interface ${this.intrinsicElements[component]} (\\{(?:[^{}]|\\{[^{}]*\\})*\\})`);
     let [, rawLocalJSXInterface] = regex.exec(this.rawLocalJSX) || [];
 
     const cleanInterface = (input: string): string =>
@@ -161,10 +161,19 @@ export class InputParser {
     const [, rawComponents] = /export namespace Components {((?:\n|.)*)}\sdeclare global/.exec(bundleDtsContent) || [];
     this.rawComponents = rawComponents;
 
-    let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
+    let [, rawIntrinsicElements] = /interface IntrinsicElements \{((?:\n|.)*?)\n}/.exec(rawLocalJSX) || [];
 
-    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
-    this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
+    // Extract component names and their types from the interface
+    // Pattern matches both: "component-name": Omit<TypeName, ... and "component-name": TypeName;
+    const componentMatches = Array.from(rawIntrinsicElements.matchAll(/"([^"]+)":\s*(?:Omit<(\w+),|(\w+);)/g));
+
+    // Convert to object with component names as keys and type names as values
+    this.intrinsicElements = {};
+    for (const match of componentMatches) {
+      const [, componentName, typeNameFromOmit, typeNameDirect] = match;
+      const typeName = typeNameFromOmit || typeNameDirect;
+      this.intrinsicElements[componentName as TagName] = typeName;
+    }
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
   }

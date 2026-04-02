@@ -3007,7 +3007,7 @@ exports[`should render dsr component for PAccordion 1`] = `
   details[open] &gt; div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, 0);
     margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
@@ -13982,10 +13982,10 @@ slot {
     padding: 4px 0px;
   }
   .prev {
-    margin-top: initial;
+    margin-top: 0;
   }
   .next {
-    margin-top: initial;
+    margin-top: 0;
   }
 }
 

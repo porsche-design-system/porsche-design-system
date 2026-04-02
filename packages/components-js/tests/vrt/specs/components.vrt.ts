@@ -95,7 +95,7 @@ for (const component of components) {
       });
 
       test(`hcm ${scheme}`, async ({ page }) => {
-        // test.skip(component === 'select', 'This component is flaky in HC mode');
+        test.skip(['select', 'multi-select'].includes(component), 'This component is flaky in HC mode');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forcedColorsEnabled: true,

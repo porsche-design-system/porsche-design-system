@@ -167,7 +167,7 @@ export const getComponentCss = (
           '& > div': {
             opacity: 1,
             paddingTop,
-            zIndex: 1,
+            zIndex: 2, // Ensure details are above summary when using custom padding
             paddingInline: `var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
             marginInline: `calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
             // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the grid-template-rows rule and animation

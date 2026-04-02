@@ -9,7 +9,7 @@
     "test": "yarn test:unit",
     "test:unit": "yarn test:unit:ag-grid",
     "test:unit:ag-grid": "yarn --cwd ./projects/ag-grid test",
-    "clean:build": "yarn --cwd ./projects/utilities clean:build"
+    "clean:build": "yarn --cwd ./projects/ag-grid clean:build"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"

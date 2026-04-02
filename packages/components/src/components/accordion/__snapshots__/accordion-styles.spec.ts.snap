@@ -78,7 +78,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -225,7 +225,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -372,7 +372,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -523,7 +523,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -676,7 +676,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -825,7 +825,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -974,7 +974,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -1123,7 +1123,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -1272,7 +1272,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -1421,7 +1421,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -1570,7 +1570,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
@@ -1717,7 +1717,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, 0);
     margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
@@ -1864,7 +1864,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
     margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;

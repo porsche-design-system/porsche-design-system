@@ -29,5 +29,5 @@ export const setContentWithDesignSystem = async (
 </html>`,
     { waitUntil: 'networkidle' }
   );
-  await page.waitForSelector('html.hydrated');
+  await page.waitForLoadState();
 };

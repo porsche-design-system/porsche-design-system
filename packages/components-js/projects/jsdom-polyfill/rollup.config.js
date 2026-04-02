@@ -1,4 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
@@ -15,8 +16,12 @@ export default [
       file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
       exports: 'auto', // fixes rollup warning
+      inlineDynamicImports: true,
     },
     plugins: [
+      dynamicImportVars({
+        include: ['src/**/*.js'],
+      }),
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
       /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
