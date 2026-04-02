@@ -62,6 +62,9 @@ export const getComponentCss = (
               border: 0,
               zIndex: 0,
               cursor: 'pointer',
+              '&:focus, &:focus-visible': {
+                outline: 'none',
+              },
               // TODO: re-think if ::before is still needed
               '&::before': {
                 content: '""',
