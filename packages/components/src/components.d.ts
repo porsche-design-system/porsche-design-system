@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
-import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+import { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -69,7 +69,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
-export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
+export { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
@@ -172,27 +172,31 @@ export namespace Components {
      */
     interface PBanner {
         /**
-          * Description of the banner.
+          * Sets the description text of the banner.
          */
         "description"?: string;
         /**
-          * If false, the banner will not have a dismiss button.
+          * Shows a dismiss button allowing the banner to be closed.
          */
         "dismissButton"?: boolean;
         /**
-          * Heading of the banner.
+          * Sets the heading text of the banner.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: BannerHeadingTag;
         /**
-          * If true, the banner is open.
+          * Controls whether the banner is open or closed.
          */
         "open": boolean;
         /**
-          * State of the banner.
+          * Sets the position of the banner.
+         */
+        "position"?: BreakpointCustomizable<BannerPosition>;
+        /**
+          * Defines the visual state of the banner.
          */
         "state"?: BannerState;
     }
@@ -3869,31 +3873,35 @@ declare namespace LocalJSX {
      */
     interface PBanner {
         /**
-          * Description of the banner.
+          * Sets the description text of the banner.
          */
         "description"?: string;
         /**
-          * If false, the banner will not have a dismiss button.
+          * Shows a dismiss button allowing the banner to be closed.
          */
         "dismissButton"?: boolean;
         /**
-          * Heading of the banner.
+          * Sets the heading text of the banner.
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the heading tag for proper semantic structure within the page.
          */
         "headingTag"?: BannerHeadingTag;
         /**
-          * Emitted when the close button is clicked.
+          * Emitted when the banner is requested to be dismissed.
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
-          * If true, the banner is open.
+          * Controls whether the banner is open or closed.
          */
         "open"?: boolean;
         /**
-          * State of the banner.
+          * Sets the position of the banner.
+         */
+        "position"?: BreakpointCustomizable<BannerPosition>;
+        /**
+          * Defines the visual state of the banner.
          */
         "state"?: BannerState;
     }

@@ -1,96 +1,169 @@
-import {
-  dropShadowHighStyle,
-  getMediaQueryMin,
-  gridExtendedOffsetBase,
-  gridExtendedOffsetS,
-  gridExtendedOffsetXXL,
-  motionDurationLong,
-  motionDurationModerate,
-  motionEasingOut,
-} from '@porsche-design-system/emotion';
+import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/emotion';
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
+  forcedColorsMediaQuery,
   getTransition,
   hostHiddenStyles,
+  motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getBannerPopoverResetStyles } from '../../styles/banner-popover-reset-styles';
-import { legacyRadiusMedium, radiusXl } from '../../styles/css-variables';
-import { getCss } from '../../utils';
+import {
+  blurFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  leadingNormal,
+  legacyRadiusMedium,
+  radius2Xl,
+  shadowLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../styles/css-variables';
+import { notificationBackgroundMap, notificationColorMap, notificationIconMap } from '../../styles/maps';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BannerPosition, BannerState } from './banner-utils';
 
 /**
- * @css-variable {"name": "--p-banner-position-top", "description": "Position top of banner", "defaultValue": "56px"}
- * @css-variable {"name": "--p-banner-position-bottom", "description": "Position bottom of banner. Only has an effect below breakpoint 's'.", "defaultValue": "56px"}
+ * @css-variable {"name": "--p-banner-max-w", "description": "Defines the maximum width of the Banner.", "defaultValue": "100ch"}
  */
-const cssVariableTop = '--p-banner-position-top';
-const cssVariableBottom = '--p-banner-position-bottom';
+const cssVarMaxWidth = '--p-banner-max-w';
+/**
+ * @css-variable {"name": "--p-banner-top", "description": "Defines the distance from the top of the viewport. Only takes effect when the `position` property is set to `top` (at the respective breakpoint).", "defaultValue": "56px"}
+ */
+const cssVarTop = '--p-banner-top';
+/**
+ * @css-variable {"name": "--p-banner-bottom", "description": "Defines the distance from the bottom of the viewport. Only takes effect when the `position` property is set to `bottom` (at the respective breakpoint).", "defaultValue": "56px"}
+ */
+const cssVarBottom = '--p-banner-bottom';
+/**
+ * @css-variable {"name": "--p-banner-inset-x", "description": "Defines the horizontal offset of the Banner from the edges of the viewport.", "defaultValue": "max(22px, 10.625vw - 12px)"}
+ */
+const cssVarInsetX = '--p-banner-inset-x';
+
+const cssVarPositionTop = '--p-banner-position-top'; // deprecated (aliased)
+const cssVarPositionBottom = '--p-banner-position-bottom'; // deprecated (aliased)
+const topBottomFallback = '56px';
 const cssVariableZIndex = '--p-internal-banner-z-index';
 
-const topBottomFallback = '56px';
-
-export const getComponentCss = (isOpen: boolean): string => {
+export const getComponentCss = (
+  isOpen: boolean,
+  position: BreakpointCustomizable<BannerPosition>,
+  state: BannerState,
+  hasDismissButton: boolean
+): string => {
+  const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
-  const transition = `visibility 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '0s' : motionDurationLong}), ${getTransition('transform', 'moderate', easing)}`;
-  const transitionChild = `${getTransition('opacity', 'moderate', easing)}`;
+  const transition = `visibility 0s linear var(${cssVariableTransitionDuration},${isOpen ? '0s' : motionDurationMap[duration]}),${getTransition('transform', duration, easing)}`;
 
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'contents',
         ...addImportantToEachRule({
-          all: 'unset',
-          ...getBannerPopoverResetStyles(),
-          inset: `auto ${gridExtendedOffsetBase} var(${cssVariableBottom},${topBottomFallback})`,
-          zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
-          borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`, // needed for rounded box-shadow
-          '&::backdrop': {
-            display: 'none',
-          },
-          '& > :first-child': {
-            opacity: 0,
-            ...dropShadowHighStyle,
-            ...(isOpen
-              ? {
-                  opacity: 1,
-                }
-              : {
-                  opacity: 0,
-                }),
-            transition: transitionChild,
-            // // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-            '@supports (transition-behavior: allow-discrete)': {
-              transition: `${transitionChild}, overlay var(${cssVariableTransitionDuration}, ${motionDurationModerate}) ${motionEasingOut} allow-discrete`,
-            },
-          },
-          ...(isOpen
-            ? {
-                visibility: 'inherit',
-                pointerEvents: 'inherit',
-                transform: 'translate3d(0,0,0)',
-              }
-            : {
-                visibility: 'hidden',
-                pointerEvents: 'none',
-                transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
-              }),
-          transition,
-          // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-          '@supports (transition-behavior: allow-discrete)': {
-            transition: `${transition}, overlay var(${cssVariableTransitionDuration}, ${motionDurationModerate}) ${motionEasingOut} allow-discrete`,
-          },
-          [getMediaQueryMin('s')]: {
-            inset: `var(${cssVariableTop},${topBottomFallback}) ${gridExtendedOffsetS} auto`,
-            ...(!isOpen && { transform: `translate3d(0,calc(-100% - var(${cssVariableTop},${topBottomFallback})),0)` }),
-          },
-          [getMediaQueryMin('xxl')]: {
-            insetInline: gridExtendedOffsetXXL,
-          },
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      'slot[name="heading"],h1,h2,h3,h4,h5,h6': {
+        all: 'unset',
+        display: 'block',
+        gridArea: '1/2',
+        font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+        color: colorPrimary,
+      },
+      'slot[name="description"],p': {
+        all: 'unset',
+        display: 'block',
+        gridArea: '2/2',
+        marginTop: spacingStaticXs,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+        color: colorPrimary,
+      },
+      '[popover]': {
+        all: 'unset',
+        position: 'fixed',
+        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`, // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
+        ...buildResponsiveStyles(position, (v: BannerPosition) => ({
+          ...(v === 'top' && {
+            insetBlock: `var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback})) auto`,
+            ...(!isOpen && {
+              transform: `translate3d(-50%,calc(-100% - var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback}))),0)`,
+            }),
+          }),
+          ...(v === 'bottom' && {
+            insetBlock: `auto var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback}))`,
+            ...(!isOpen && {
+              transform: `translate3d(-50%,calc(var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback})) + 100%),0)`,
+            }),
+          }),
+        })),
+        left: '50vw',
+        width: `min(calc(100vw - 2 * var(${cssVarInsetX},${gridExtendedOffsetBase})),var(${cssVarMaxWidth},100ch))`,
+        '&:popover-open': {
+          overlay: 'auto',
+        },
+        '&::backdrop': {
+          display: 'none',
+        },
+        visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
+        pointerEvents: 'none', // element can't be interacted with mouse
+        ...(isOpen && {
+          visibility: 'inherit',
+          pointerEvents: 'inherit',
+          transform: 'translate3d(-50%,0,0)',
+        }),
+        transition,
+        // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
+        '@supports (transition-behavior: allow-discrete)': {
+          transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
+        },
+      },
     },
+    banner: {
+      display: 'grid',
+      gridTemplateColumns: `auto minmax(0, 1fr) auto auto`,
+      padding: spacingStaticMd,
+      borderRadius: `var(${legacyRadiusMedium}, ${radius2Xl})`,
+      background: notificationBackgroundMap[state],
+      WebkitBackdropFilter: blurFrosted,
+      backdropFilter: blurFrosted,
+      boxShadow: shadowLg,
+      opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
+      transition: getTransition('opacity', duration, easing),
+      ...forcedColorsMediaQuery({
+        outline: '2px solid CanvasText',
+        outlineOffset: '-2px',
+      }),
+      '&::before': {
+        [getMediaQueryMin('s')]: {
+          gridArea: '1/1',
+          placeSelf: 'center',
+          content: '""',
+          width: '1.5rem',
+          height: '1.5rem',
+          marginInlineEnd: spacingStaticSm,
+          background: notificationColorMap[state],
+          WebkitMask: `${notificationIconMap[state]} center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${notificationIconMap[state]} center/contain no-repeat`,
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
+        },
+      },
+    },
+    ...(hasDismissButton && {
+      dismiss: {
+        gridArea: `1/4/3`,
+        marginTop: `calc(-1 * ${spacingStaticXs})`,
+        marginInlineEnd: `calc(-1 * ${spacingStaticXs})`,
+        marginInlineStart: spacingStaticMd,
+      },
+    }),
   });
 };

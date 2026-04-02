@@ -1,10 +1,9 @@
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasHeading, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
-  getContentAriaAttributes,
-  getInlineNotificationIconName,
+  getInlineNotificationAriaAttributes,
   INLINE_NOTIFICATION_HEADING_TAGS,
   INLINE_NOTIFICATION_STATES,
   type InlineNotificationActionIcon,
@@ -68,33 +67,20 @@ export class InlineNotification {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.dismissButton);
 
-    const bannerId = 'banner';
-    const labelId = 'label';
+    const notificationId = 'notification';
+    const labelId = 'heading';
     const descriptionId = 'description';
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.headingTag;
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <PrefixedTagNames.pIcon
-          class="icon"
-          name={getInlineNotificationIconName(this.state)}
-          color={this.state}
-          aria-hidden="true"
-        />
-        <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
-          {hasHeading(this.host, this.heading) &&
-            (this.heading ? (
-              <Heading id={labelId} class="heading">
-                {this.heading}
-              </Heading>
-            ) : (
-              <slot name="heading" />
-            ))}
-          <p id={descriptionId} class="description">
-            {this.description || <slot />}
-          </p>
-        </div>
+      <div
+        id={notificationId}
+        class="notification"
+        {...getInlineNotificationAriaAttributes(this.state, labelId, descriptionId)}
+      >
+        {this.heading ? <Heading id={labelId}>{this.heading}</Heading> : <slot name="heading" />}
+        {this.description ? <p id={descriptionId}>{this.description}</p> : <slot />}
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure
             class="action"
@@ -107,18 +93,23 @@ export class InlineNotification {
         )}
         {this.dismissButton && (
           <PrefixedTagNames.pButton
-            class="close"
+            class="dismiss"
             type="button"
             variant="secondary"
             icon="close"
             hideLabel={true}
-            aria-controls={bannerId}
-            onClick={this.dismiss.emit}
+            compact={true}
+            aria-controls={notificationId}
+            onClick={this.dismissNotification}
           >
             Close notification
           </PrefixedTagNames.pButton>
         )}
-      </Host>
+      </div>
     );
   }
+
+  private dismissNotification = (): void => {
+    this.dismiss.emit();
+  };
 }

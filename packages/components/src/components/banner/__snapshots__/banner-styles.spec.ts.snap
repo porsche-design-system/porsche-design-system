@@ -2,32 +2,7 @@
 
 exports[`getComponentCss() > should return correct css for open: false 1`] = `
 ":host {
-  display: block;
-  all: unset !important;
-  position: fixed !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  inset: auto max(22px, 10.625vw - 12px) var(--p-banner-position-bottom,56px) !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 100% !important;
-  border: 0 !important;
-  outline: 0 !important;
-  overflow: visible !important;
-  z-index: var(--p-internal-banner-z-index,99) !important;
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
-  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) !important;
-}
-:host::backdrop {
-  display: none !important;
-}
-:host > :first-child {
-  opacity: 0 !important;
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) !important;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
@@ -35,25 +10,77 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-@media(min-width:760px) {
-  :host {
-    inset: var(--p-banner-position-top,56px) calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) auto !important;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top,56px)),0) !important;
-  }
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+  all: unset;
+  display: block;
+  grid-area: 1/2;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
 }
-
-@media(min-width:1920px) {
-  :host {
-    inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-  }
+slot[name="description"],p {
+  all: unset;
+  display: block;
+  grid-area: 2/2;
+  margin-top: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
 }
-
+[popover] {
+  all: unset;
+  position: fixed;
+  z-index: var(--p-internal-banner-z-index,99);
+  left: 50vw;
+  width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+}
+[popover]:popover-open {
+  overlay: auto;
+}
+[popover]::backdrop {
+  display: none;
+}
 @supports (transition-behavior: allow-discrete) {
-  :host {
-    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+  [popover] {
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
-  :host > :first-child {
-    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  padding: var(--p-spacing-static-md);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  box-shadow: var(--p-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+}
+@media(min-width:760px) {
+  .banner::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    -webkit-mask: undefined center/contain no-repeat;
+    mask: undefined center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .banner::before {
+      background: CanvasText;
+    }
+}
+
+}
+
+@media(forced-colors:active) {
+  .banner {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 "
@@ -61,32 +88,7 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 
 exports[`getComponentCss() > should return correct css for open: true 1`] = `
 ":host {
-  display: block;
-  all: unset !important;
-  position: fixed !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  inset: auto max(22px, 10.625vw - 12px) var(--p-banner-position-bottom,56px) !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 100% !important;
-  border: 0 !important;
-  outline: 0 !important;
-  overflow: visible !important;
-  z-index: var(--p-internal-banner-z-index,99) !important;
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
-  visibility: inherit !important;
-  pointer-events: inherit !important;
-  transform: translate3d(0,0,0) !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) !important;
-}
-:host::backdrop {
-  display: none !important;
-}
-:host > :first-child {
-  opacity: 1 !important;
-  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) !important;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
@@ -94,24 +96,78 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-@media(min-width:760px) {
-  :host {
-    inset: var(--p-banner-position-top,56px) calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) auto !important;
-  }
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+  all: unset;
+  display: block;
+  grid-area: 1/2;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
 }
-
-@media(min-width:1920px) {
-  :host {
-    inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-  }
+slot[name="description"],p {
+  all: unset;
+  display: block;
+  grid-area: 2/2;
+  margin-top: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
 }
-
+[popover] {
+  all: unset;
+  position: fixed;
+  z-index: var(--p-internal-banner-z-index,99);
+  left: 50vw;
+  width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  visibility: inherit;
+  pointer-events: inherit;
+  transform: translate3d(-50%,0,0);
+  transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+}
+[popover]:popover-open {
+  overlay: auto;
+}
+[popover]::backdrop {
+  display: none;
+}
 @supports (transition-behavior: allow-discrete) {
-  :host {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+  [popover] {
+    transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in),overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) allow-discrete;
   }
-  :host > :first-child {
-    transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  padding: var(--p-spacing-static-md);
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  box-shadow: var(--p-shadow-lg);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+}
+@media(min-width:760px) {
+  .banner::before {
+    grid-area: 1/1;
+    place-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    -webkit-mask: undefined center/contain no-repeat;
+    mask: undefined center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .banner::before {
+      background: CanvasText;
+    }
+}
+
+}
+
+@media(forced-colors:active) {
+  .banner {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 "
