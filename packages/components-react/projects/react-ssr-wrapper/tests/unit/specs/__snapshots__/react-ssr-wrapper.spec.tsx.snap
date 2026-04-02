@@ -3205,11 +3205,8 @@ slot[name="description"],p {
 
     </style>
     <div
-      aria-describedby="description"
       aria-hidden="true"
-      aria-labelledby="heading"
       aria-live="polite"
-      id="banner"
       popover="manual"
       role="status"
     >
@@ -3223,7 +3220,6 @@ slot[name="description"],p {
           name="description"
         />
         <p-button
-          aria-controls="banner"
           class="dismiss"
           data-ssr=""
         >
@@ -3327,6 +3323,7 @@ slot[name="description"],p {
 
             </style>
             <button
+              aria-description=""
               class="root"
               type="button"
             >
@@ -7070,11 +7067,8 @@ slot:not([name]),p {
 
     </style>
     <div
-      aria-describedby="description"
-      aria-labelledby="heading"
       aria-live="polite"
       class="notification"
-      id="notification"
       role="status"
     >
       <slot
@@ -7082,7 +7076,6 @@ slot:not([name]),p {
       />
       <slot />
       <p-button
-        aria-controls="notification"
         class="dismiss"
         data-ssr=""
       >
