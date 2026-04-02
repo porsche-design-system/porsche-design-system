@@ -14,7 +14,8 @@ const styleOverrides = fs.readFileSync(
 const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 
 const gotoUrl = async (page: Page, url: string): Promise<void> => {
-  await page.goto(url, { waitUntil: 'domcontentloaded' });
+  await page.goto(url, { waitUntil: 'load' });
+  await page.waitForLoadState();
 
   // inject style overrides for css variables
   await page.evaluate((styles) => {
@@ -23,7 +24,6 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
     document.head.append(styleEl);
   }, rootStyles);
 
-  await page.waitForSelector('html.hydrated');
   await page.evaluate(() =>
     (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
   );

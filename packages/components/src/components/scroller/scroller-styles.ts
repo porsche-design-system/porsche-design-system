@@ -69,7 +69,7 @@ const getScrollIndicatorStyles = (
     }),
     ...(hasScrollbar &&
       pointerCoarseMediaQuery({
-        marginTop: 'initial',
+        marginTop: 0,
       })),
     display: 'grid',
     alignSelf: 'center',
@@ -122,7 +122,7 @@ export const getComponentCss = (
           : 'both';
 
   const mask = `${getSmoothMask(fadeEdges)} 0 0/auto no-repeat`;
-  const scrollbarMask = `,linear-gradient(black,black) 0 bottom/auto ${scrollbarWidth} no-repeat`;
+  const scrollbarMask = `linear-gradient(black,black) 0 bottom/auto ${scrollbarWidth} no-repeat`;
 
   return getCss({
     '@global': {
@@ -163,8 +163,8 @@ export const getComponentCss = (
       outline: 'none', // focus ring is applied to `.root`, it would be cut off by the mask if applied to `.scroll`
       overflow: 'auto hidden',
       ...(fadeEdges !== 'none' && {
-        WebkitMask: hasScrollbar ? `${mask}${scrollbarMask}` : mask, // necessary for Sogou browser support :-)
-        mask: hasScrollbar ? `${mask}${scrollbarMask}` : mask,
+        WebkitMask: hasScrollbar ? `${mask},${scrollbarMask}` : mask, // necessary for Sogou browser support :-)
+        mask: hasScrollbar ? `${mask},${scrollbarMask}` : mask,
       }),
       // Override for touch devices to avoid issues with ios not rendering mask at all when using multiple mask layers
       ...(fadeEdges !== 'none' &&

@@ -195,6 +195,7 @@ export class RadioGroup {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
+    this.updateTabStops();
   }
 
   public render(): JSX.Element {
@@ -306,7 +307,7 @@ export class RadioGroup {
     this.radioGroupOptions.forEach((opt, i) => {
       const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
       if (input) {
-        input.tabIndex = i === focusIndex ? 0 : -1;
+        input.setAttribute('tabindex', i === focusIndex ? '0' : '-1');
       }
     });
   }

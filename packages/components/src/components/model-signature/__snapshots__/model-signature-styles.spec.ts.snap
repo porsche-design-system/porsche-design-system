@@ -8,10 +8,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,auto);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,inherit);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,currentcolor) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -44,10 +43,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,auto);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,inherit);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,currentcolor) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -80,10 +78,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,auto);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -116,10 +113,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,auto);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -152,10 +148,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-contrast-high));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-contrast-high)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -188,10 +183,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-contrast-high));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-contrast-high)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -224,10 +218,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-contrast-low));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-contrast-low)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -260,10 +253,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-contrast-low));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-contrast-low)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -296,10 +288,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-contrast-medium));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-contrast-medium)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -332,10 +323,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-contrast-medium));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-contrast-medium)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -368,10 +358,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,inherit);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,currentcolor) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -404,10 +393,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,inherit);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,currentcolor) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -440,10 +428,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -476,10 +463,9 @@ exports[`getComponentCss() > should return correct css for model: 911, safe-zone
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -512,10 +498,9 @@ exports[`getComponentCss() > should return correct css for model: cayenne, safe-
   max-height: 100%;
   width: var(--p-model-signature-width,245px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/cayenne.2556201.svg) no-repeat left top / contain !important;
   aspect-ratio: 245 / 35 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -548,10 +533,9 @@ exports[`getComponentCss() > should return correct css for model: cayenne, safe-
   max-height: 100%;
   width: var(--p-model-signature-width,245px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/cayenne.2556201.svg) no-repeat left top / contain !important;
   aspect-ratio: 245 / 35 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -584,10 +568,9 @@ exports[`getComponentCss() > should return correct css for model: cayenne, safe-
   max-height: 100%;
   width: var(--p-model-signature-width,245px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/cayenne.2556201.svg) no-repeat left top / contain !important;
   aspect-ratio: 245 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;

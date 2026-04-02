@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import {viewportWidthL, viewportWidths, viewportWidthXS} from '@porsche-design-system/shared/testing';
+import { viewportWidthL, viewportWidthXS } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
 import path from 'path';
 
@@ -34,6 +34,7 @@ for (const component of components) {
     for (const viewportWidth of [viewportWidthXS, viewportWidthL]) {
       test(`viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(`/${component}`);
+        await page.waitForLoadState('load');
         // Remove selects in iframes
         await page.evaluate(() => {
           document.querySelectorAll('iframe').forEach((iframe) => {

@@ -2999,7 +2999,7 @@ exports[`should render dsr component for PAccordion 1`] = `
   details[open] &gt; div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
-    z-index: 1;
+    z-index: 2;
     padding-inline: var(--p-accordion-px, 0);
     margin-inline: calc(-1 * var(--p-accordion-px, 0));
     grid-template-rows: 1fr;
@@ -6665,6 +6665,7 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -6689,7 +6690,6 @@ dialog::backdrop {
   inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
   pointer-events: none;
   z-index: -1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
 @media(forced-colors:active) {
@@ -10082,6 +10082,7 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   opacity: 0;
@@ -10113,7 +10114,6 @@ dialog::backdrop {
   inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
   pointer-events: none;
   z-index: -1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
 @media(forced-colors:active) {
@@ -10331,10 +10331,9 @@ exports[`should render dsr component for PModelSignature 1`] = `
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  color: var(--p-model-signature-color,var(--p-color-primary));
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: currentcolor !important;
+  background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12983,6 +12982,7 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   opacity: 0;
@@ -13013,7 +13013,6 @@ dialog::backdrop {
   inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
   pointer-events: none;
   z-index: -1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
   background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
 }
 @media(forced-colors:active) {
@@ -13946,10 +13945,10 @@ slot {
     padding: 4px 0px;
   }
   .prev {
-    margin-top: initial;
+    margin-top: 0;
   }
   .next {
-    margin-top: initial;
+    margin-top: 0;
   }
 }
 

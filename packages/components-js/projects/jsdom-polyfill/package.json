@@ -24,7 +24,8 @@
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1"
+    "@testing-library/user-event": "^14.6.1",
+    "@rollup/plugin-dynamic-import-vars": "^2.1.5"
   },
   "volta": {
     "extends": "../../../../package.json"
