@@ -1,9 +1,4 @@
-<fieldset
-  class="root"
-  role="radiogroup"
-  aria-describedby="description message"
-  aria-labelledby="label"
->
+<fieldset class="root" role="radiogroup" aria-labelledby="label">
   <div class="wrapper">
     <slot> </slot>
   </div>

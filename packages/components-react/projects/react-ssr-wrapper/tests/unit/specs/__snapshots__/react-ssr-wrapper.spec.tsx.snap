@@ -524,7 +524,6 @@ img {
                   </template>
                 </p-icon>
                 <input
-                  aria-describedby="description message"
                   autocomplete="off"
                   dir="auto"
                   id="input-search"
@@ -1487,7 +1486,6 @@ input:focus-visible {
 }
     </style>
     <fieldset
-      aria-describedby="description message"
       aria-labelledby="label"
       class="root"
     >
@@ -1496,7 +1494,6 @@ input:focus-visible {
         dir="ltr"
       >
         <input
-          aria-describedby="label description message"
           aria-label="1-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -1505,7 +1502,6 @@ input:focus-visible {
           value="1"
         />
         <input
-          aria-describedby="label description message"
           aria-label="2-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -1514,7 +1510,6 @@ input:focus-visible {
           value="2"
         />
         <input
-          aria-describedby="label description message"
           aria-label="3-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -1523,7 +1518,6 @@ input:focus-visible {
           value="3"
         />
         <input
-          aria-describedby="label description message"
           aria-label="4-4"
           autocomplete="one-time-code"
           id="current-input"
@@ -1631,8 +1625,6 @@ slot:not([name]) {
 }
     </style>
     <fieldset
-      aria-describedby="description"
-      aria-labelledby="label"
       class="root"
     >
       <slot />
@@ -7405,7 +7397,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-date"
           step="1"
@@ -7581,7 +7572,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-email"
           type="email"
@@ -7761,7 +7751,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-month"
           step="1"
@@ -7938,7 +7927,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-number"
           step="1"
@@ -8111,7 +8099,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-password"
           type="password"
@@ -8286,7 +8273,6 @@ input::-webkit-search-cancel-button {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-search"
           type="search"
@@ -8461,7 +8447,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-tel"
           type="tel"
@@ -8633,7 +8618,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-text"
           type="text"
@@ -8812,7 +8796,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-time"
           step="60"
@@ -8988,7 +8971,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-url"
           type="url"
@@ -9168,7 +9150,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-week"
           step="1"
@@ -10911,7 +10892,6 @@ img {
                   </template>
                 </p-icon>
                 <input
-                  aria-describedby="description message"
                   autocomplete="off"
                   dir="auto"
                   id="input-search"
@@ -11668,7 +11648,6 @@ input:focus-visible {
 }
     </style>
     <fieldset
-      aria-describedby="description message"
       aria-labelledby="label"
       class="root"
     >
@@ -11677,7 +11656,6 @@ input:focus-visible {
         dir="ltr"
       >
         <input
-          aria-describedby="label description message"
           aria-label="1-4"
           autocomplete="one-time-code"
           id="current-input"
@@ -11686,7 +11664,6 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-describedby="label description message"
           aria-label="2-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -11694,7 +11671,6 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-describedby="label description message"
           aria-label="3-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -11702,7 +11678,6 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-describedby="label description message"
           aria-label="4-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -12017,7 +11992,6 @@ slot[name="label-after"]::slotted(*) {
 }
     </style>
     <fieldset
-      aria-describedby="description message"
       aria-labelledby="label"
       class="root"
       role="radiogroup"
@@ -12182,7 +12156,6 @@ input:checked::before {
         class="wrapper"
       >
         <input
-          aria-describedby="message"
           id="radio-group-option"
           type="radio"
         />
@@ -12430,8 +12403,6 @@ slot:not([name]) {
 }
     </style>
     <fieldset
-      aria-describedby="description"
-      aria-labelledby="label"
       class="root"
     >
       <slot />
@@ -15181,7 +15152,6 @@ textarea:focus {
         class="wrapper"
       >
         <textarea
-          aria-describedby="description message"
           id="textarea"
           placeholder=""
           rows="7"
