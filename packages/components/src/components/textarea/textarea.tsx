@@ -215,7 +215,7 @@ export class Textarea {
         />
         <div class="wrapper">
           <textarea
-            aria-describedby={`${descriptionId} ${messageId}`}
+            aria-describedby={this.description ? descriptionId : this.message ? messageId : null}
             aria-invalid={this.state === 'error' ? 'true' : null}
             id={id}
             ref={(el: HTMLTextAreaElement) => (this.textAreaElement = el)}

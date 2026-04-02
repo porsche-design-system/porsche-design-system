@@ -197,7 +197,7 @@ export class PinCode {
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
-        aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
+        aria-describedby={this.loading ? loadingId : this.description ? descriptionId : this.message ? messageId : null}
         aria-labelledby={labelId}
       >
         <Label
@@ -220,7 +220,9 @@ export class PinCode {
               {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
+              aria-describedby={
+                this.label ? labelId : this.description ? descriptionId : this.message ? messageId : null
+              }
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"

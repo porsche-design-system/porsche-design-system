@@ -22,7 +22,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { StateMessage } from '../../common/state-message/state-message';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
@@ -193,8 +193,8 @@ export class SegmentedControl {
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
-        aria-labelledby={labelId}
-        aria-describedby={descriptionId}
+        aria-labelledby={this.label ? labelId : null}
+        aria-describedby={this.description ? descriptionId : this.message ? messageId : null}
       >
         <Label
           host={this.host}

@@ -219,7 +219,7 @@ export class RadioGroup {
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
-        aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
+        aria-describedby={this.loading ? loadingId : this.description ? descriptionId : this.message ? messageId : null}
         aria-labelledby={labelId}
         onKeyDown={this.onKeyDown}
       >
