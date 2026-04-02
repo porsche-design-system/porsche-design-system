@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, getSlotTextContent, validateProps } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
   getInlineNotificationAriaAttributes,
@@ -67,20 +67,14 @@ export class InlineNotification {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.dismissButton);
 
-    const notificationId = 'notification';
-    const labelId = 'heading';
-    const descriptionId = 'description';
     const Heading = this.headingTag;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const headingText = this.heading ? this.heading : getSlotTextContent(this.host, 'heading');
 
     return (
-      <div
-        id={notificationId}
-        class="notification"
-        {...getInlineNotificationAriaAttributes(this.state, labelId, descriptionId)}
-      >
-        {this.heading ? <Heading id={labelId}>{this.heading}</Heading> : <slot name="heading" />}
-        {this.description ? <p id={descriptionId}>{this.description}</p> : <slot />}
+      <div class="notification" {...getInlineNotificationAriaAttributes(this.state, headingText)}>
+        {this.heading ? <Heading>{this.heading}</Heading> : <slot name="heading" />}
+        {this.description ? <p>{this.description}</p> : <slot />}
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure
             class="action"
@@ -99,7 +93,6 @@ export class InlineNotification {
             icon="close"
             hideLabel={true}
             compact={true}
-            aria-controls={notificationId}
             onClick={this.dismissNotification}
           >
             Close notification
