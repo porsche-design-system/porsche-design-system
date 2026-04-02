@@ -138,6 +138,7 @@ export const dialogGridJssStyle = (): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
+    overflow: 'clip',
   };
 };
 
@@ -187,7 +188,6 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
       inset: `calc(-1 * ${spacingFluidSm}) calc(-1 * ${spacingFluidSm}) -50px -50px`,
       pointerEvents: 'none',
       zIndex: -1,
-      borderRadius: dialogBorderRadius,
       background: `radial-gradient(circle at top right, hsla(from var(${cssVarBackgroundColor}) h s l / 0.35) 0%, transparent 70%)`,
     },
   };
