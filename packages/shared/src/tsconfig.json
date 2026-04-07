@@ -52,6 +52,8 @@
     // PDS custom options
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+
+    "ignoreDeprecations": "6.0"
   }
 }
