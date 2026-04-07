@@ -97,7 +97,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const classMembers = [
       ...inputProps.map(
         (x) =>
-          (x.isDeprecated ? '/** @deprecated */\n  ' : '') + `${x.key}${x.isOptional ? '?' : ''}: ${x.rawValueType};`
+          (x.isDeprecated ? '/** @deprecated */\n  ' : '') + `${x.key}${x.isOptional ? '?' : '!'}: ${x.rawValueType};`
       ),
       ...outputProps.map(
         (x) =>
