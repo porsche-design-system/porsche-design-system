@@ -72,7 +72,7 @@
     "local-web-server": "^5.4.0",
     "ng-packagr": "^21.1.0",
     "postcss": "^8.5.3",
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   },
   "peerDependencies": {
     "@playwright/test": "*",
