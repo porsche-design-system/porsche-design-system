@@ -5108,7 +5108,6 @@ input:checked::before {
           class="input-wrapper"
         >
           <input
-            aria-describedby="description message"
             id="x"
             name=""
             type="checkbox"
