@@ -53,9 +53,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react-jsx",
-
-    // TODO: Remove this once tsup is compatible with TypeScript 6.0
-    // Ignore deprecations for now since dependencies like tsup use deprecated APIs.
-    "ignoreDeprecations": "6.0"
   }
 }
