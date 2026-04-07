@@ -28,7 +28,6 @@ export class Optgroup {
   @Watch('disabled')
   public handleDisabledChange(): void {
     updateOptionsDisabled(this.host, this.disabled);
-    this.dispatchInternalOptgroupUpdate();
   }
 
   public connectedCallback(): void {
