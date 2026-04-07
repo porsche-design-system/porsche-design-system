@@ -107,6 +107,22 @@ const addOption = async (page: Page, value: string, textContent?: string, image?
   );
 };
 
+const addOptionToOptgroup = async (page: Page, optgroupLabel: string, value: string, textContent?: string) => {
+  const host = getHost(page);
+  await host.evaluate(
+    (el, { optgroupLabel, value, textContent }) => {
+      const optgroup = el.querySelector(`p-optgroup[label="${optgroupLabel}"]`);
+      if (optgroup) {
+        const option: any = document.createElement('p-select-option');
+        option.value = value;
+        option.textContent = textContent;
+        optgroup.append(option);
+      }
+    },
+    { optgroupLabel, value, textContent: textContent ?? value }
+  );
+};
+
 const removeOption = async (page: Page, value: string) => {
   const host = getHost(page);
   await host.evaluate((el, value) => {
@@ -2785,6 +2801,104 @@ test.describe('optgroups', () => {
     for (const child of children) {
       await expect(child).not.toBeVisible();
     }
+  });
+
+  test('should select option inside optgroup by click', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const options = getSelectOptions(page);
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    await options.nth(0).click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(options.nth(0)).toHaveJSProperty('selected', true);
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    await options.nth(1).click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'b');
+    await expect(options.nth(0)).toHaveJSProperty('selected', false);
+    await expect(options.nth(1)).toHaveJSProperty('selected', true);
+    await expect(buttonElement.locator('span').first()).toHaveText('b');
+  });
+
+  test('should select option inside optgroup by keyboard', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
+  });
+
+  test('should emit change event with correct details when option inside optgroup is selected', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const options = getSelectOptions(page);
+    await addEventListener(host, 'change');
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+    await options.nth(0).click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+      { value: 'a', name: 'options' },
+    ]);
+  });
+
+  test('should update options list when option is dynamically added to optgroup', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const optgroups = getSelectOptgroups(page);
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    const initialCount = await getSelectOptions(page).count();
+
+    // Add a new option to the first optgroup (label="0")
+    await addOptionToOptgroup(page, '0', 'new', 'new');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectOptions(page).count()).toBe(initialCount + 1);
+
+    // Select the newly added option (last child inside the first optgroup)
+    const newOption = optgroups.nth(0).locator('p-select-option').last();
+    await newOption.click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'new');
+    await expect(buttonElement).toHaveText('new');
   });
 });
 

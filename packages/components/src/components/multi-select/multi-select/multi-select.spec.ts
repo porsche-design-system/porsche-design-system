@@ -69,6 +69,23 @@ describe('disconnectedCallback', () => {
   });
 });
 
+describe('optgroupUpdateHandler', () => {
+  it('should call stopPropagation(), updateOptions() and syncMultiSelectChildrenProps() with correct parameters', () => {
+    const component = initComponent();
+    const syncSpy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
+    const event = new Event('internalOptgroupUpdate', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+
+    component.optgroupUpdateHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(syncSpy).toHaveBeenCalledWith(
+      [...component['multiSelectOptions'], ...component['multiSelectOptgroups']],
+      component.theme
+    );
+  });
+});
+
 describe('render', () => {
   it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
     const spy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
