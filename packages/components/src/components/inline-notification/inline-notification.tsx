@@ -94,6 +94,7 @@ export class InlineNotification {
             hideLabel={true}
             compact={true}
             onClick={this.dismissNotification}
+            aria={{ 'aria-description': headingText }}
           >
             Close notification
           </PrefixedTagNames.pButton>

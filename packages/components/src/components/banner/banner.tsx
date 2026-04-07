@@ -129,7 +129,7 @@ export class Banner {
               hideLabel={true}
               compact={true}
               onClick={this.dismissBanner}
-              aria={{ 'aria-description': this.heading }}
+              aria={{ 'aria-description': headingText }}
               ref={(el: HTMLElement) => (this.refDismiss = el)}
             >
               Close banner
