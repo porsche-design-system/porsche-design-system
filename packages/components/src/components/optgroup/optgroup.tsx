@@ -1,9 +1,8 @@
+import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import { type OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
-
-import { Component, Element, Host, type JSX, Prop, Watch, h } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../utils';
 import { getComponentCss } from './optgroup-styles';
+import { type OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
 
 const propTypes: PropTypes<typeof Optgroup> = {
   label: AllowedTypes.string,
@@ -29,6 +28,7 @@ export class Optgroup {
   @Watch('disabled')
   public handleDisabledChange(): void {
     updateOptionsDisabled(this.host, this.disabled);
+    this.dispatchInternalOptgroupUpdate();
   }
 
   public connectedCallback(): void {
@@ -57,9 +57,17 @@ export class Optgroup {
           <span id={labelId} role="presentation">
             {this.label}
           </span>
-          <slot />
+          <slot onSlotchange={() => this.dispatchInternalOptgroupUpdate()} />
         </div>
       </Host>
     );
   }
+
+  private dispatchInternalOptgroupUpdate = (): void => {
+    this.host.dispatchEvent(
+      new CustomEvent('internalOptgroupUpdate', {
+        bubbles: true,
+      })
+    );
+  };
 }
