@@ -17,7 +17,10 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasMessage,
   hasPropValueChanged,
+  setAriaIDREF,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -214,13 +217,15 @@ export class RadioGroup {
     syncRadioGroupChildrenProps(this.radioGroupOptions, this.disabled, this.loading, this.state, this.name);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const inputDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
       <fieldset
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
-        aria-describedby={this.loading ? loadingId : this.description ? descriptionId : this.message ? messageId : null}
+        aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
         aria-labelledby={labelId}
         onKeyDown={this.onKeyDown}
       >

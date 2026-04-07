@@ -11,7 +11,16 @@ import {
   Watch,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
+  hasDescription,
+  hasMessage,
+  hasPropValueChanged,
+  setAriaIDREF,
+  validateProps,
+} from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId } from '../common/label/label-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
@@ -203,6 +212,9 @@ export class Textarea {
     );
 
     const id = 'textarea';
+    const textareaDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const textareaMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
+
     return (
       <div class="root">
         <Label
@@ -215,7 +227,7 @@ export class Textarea {
         />
         <div class="wrapper">
           <textarea
-            aria-describedby={this.description ? descriptionId : this.message ? messageId : null}
+            aria-describedby={setAriaIDREF(textareaMessageId, textareaDescriptionId)}
             aria-invalid={this.state === 'error' ? 'true' : null}
             id={id}
             ref={(el: HTMLTextAreaElement) => (this.textAreaElement = el)}

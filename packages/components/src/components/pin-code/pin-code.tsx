@@ -5,7 +5,11 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
+  setAriaIDREF,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -191,13 +195,16 @@ export class PinCode {
     this.inputElements = [];
 
     const currentInputId = 'current-input';
+    const inputLabelId = hasLabel(this.host, this.label) ? labelId : undefined;
+    const inputDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
       <fieldset
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
-        aria-describedby={this.loading ? loadingId : this.description ? descriptionId : this.message ? messageId : null}
+        aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
         aria-labelledby={labelId}
       >
         <Label
@@ -220,9 +227,7 @@ export class PinCode {
               {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={
-                this.label ? labelId : this.description ? descriptionId : this.message ? messageId : null
-              }
+              aria-describedby={setAriaIDREF(inputLabelId, inputMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"

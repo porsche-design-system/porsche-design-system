@@ -1,81 +1,21 @@
 import type { AriaAttributes } from '../../../types';
+import { setAriaIDREF } from '../a11y';
 
-export const getFilterInputAriaAttributes = (
-  isOpen: boolean,
-  isRequired: boolean,
-  label: string,
-  descriptionId: string,
-  dropdownId: string,
-  activeDescendantId?: number
-): AriaAttributes => {
-  return {
-    ...getSelectDropdownButtonAriaAttributes(isOpen, label, descriptionId, dropdownId, activeDescendantId),
-    'aria-autocomplete': 'list',
-    ...(isRequired && {
-      'aria-required': 'true',
-    }),
-  };
-};
-
-export const getSelectDropdownButtonAriaAttributes = (
-  isOpen: boolean,
-  label: string,
-  descriptionId: string,
-  dropdownId: string,
-  activeDescendantId?: number
-): AriaAttributes => {
-  return {
-    'aria-label': label || null,
-    'aria-describedby': descriptionId || null,
-    'aria-haspopup': 'listbox',
-    'aria-expanded': isOpen ? 'true' : 'false',
-    'aria-controls': dropdownId,
-    ...(isOpen &&
-      activeDescendantId !== undefined && {
-        'aria-activedescendant': `option-${activeDescendantId}`,
-      }),
-  };
-};
-
-// TODO: Can this be shared with select-wrapper dropdown?
 export const getComboboxAriaAttributes = (
   isOpen: boolean,
   isRequired: boolean,
   labelId: string,
+  messageId: string,
   descriptionId: string,
   dropdownId: string
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId || null,
-    'aria-describedby': descriptionId || null,
+    'aria-describedby': setAriaIDREF(messageId, descriptionId),
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-required': isRequired ? 'true' : 'false',
     'aria-controls': dropdownId,
-  };
-};
-
-// TODO: Change to aria-labelledby
-export const getListAriaAttributes = (
-  label: string,
-  isRequired: boolean,
-  hasFilter: boolean,
-  isOpen: boolean,
-  multiple = false
-): AriaAttributes => {
-  return {
-    role: 'listbox',
-    'aria-label': label,
-    ...(isRequired &&
-      !hasFilter && {
-        'aria-required': 'true',
-      }),
-    ...(!isOpen && {
-      'aria-hidden': 'true',
-    }),
-    ...(multiple && {
-      'aria-multiselectable': 'true',
-    }),
   };
 };
 

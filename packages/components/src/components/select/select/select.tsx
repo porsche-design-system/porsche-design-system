@@ -25,6 +25,7 @@ import {
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
   getShadowRootHTMLElement,
+  hasDescription,
   hasMessage,
   hasNamedSlot,
   hasPropValueChanged,
@@ -41,7 +42,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { labelId } from '../../common/label/label-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
@@ -293,9 +294,8 @@ export class Select {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
     const popoverId = 'list';
-    const descriptionId = this.description ? 'description' : undefined;
+    const selectDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
-    const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
 
     return (
       <div class="root">
@@ -312,7 +312,14 @@ export class Select {
           type="button"
           role="combobox"
           id={buttonId}
-          {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
+          {...getComboboxAriaAttributes(
+            this.isOpen,
+            this.required,
+            labelId,
+            selectMessageId,
+            selectDescriptionId,
+            popoverId
+          )}
           disabled={this.disabled}
           onClick={this.onComboClick}
           onBlur={this.onComboBlur}
