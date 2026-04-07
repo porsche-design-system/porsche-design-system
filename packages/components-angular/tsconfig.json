@@ -14,7 +14,8 @@
       "@porsche-design-system/components-angular": ["dist/angular-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
     },
-    "types": ["node", "vitest/jsdom"]
+    "types": ["node", "vitest/jsdom"],
+    "ignoreDeprecations": "6.0"
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
