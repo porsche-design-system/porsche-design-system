@@ -223,7 +223,7 @@ test.describe('focus', () => {
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
-    await expect(input).toHaveCSS('outline', '2px solid rgb(26, 68, 234)');
+    await expect(input).toHaveCSS('outline', 'rgb(26, 68, 234) solid 2px');
     await expect(input).toHaveCSS('outline-offset', '2px');
   });
 
@@ -233,7 +233,7 @@ test.describe('focus', () => {
 
     await input.focus();
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
-    await expect(input).toHaveCSS('outline', '2px solid rgb(26, 68, 234)');
+    await expect(input).toHaveCSS('outline', 'rgb(26, 68, 234) solid 2px');
     await expect(input).toHaveCSS('outline-offset', '2px');
   });
 
