@@ -56,9 +56,17 @@ export class Optgroup {
           <span id={labelId} role="presentation">
             {this.label}
           </span>
-          <slot />
+          <slot onSlotchange={() => this.dispatchInternalOptgroupUpdate()} />
         </div>
       </Host>
     );
   }
+
+  private dispatchInternalOptgroupUpdate = (): void => {
+    this.host.dispatchEvent(
+      new CustomEvent('internalOptgroupUpdate', {
+        bubbles: true,
+      })
+    );
+  };
 }
