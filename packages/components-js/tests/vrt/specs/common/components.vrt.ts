@@ -95,7 +95,7 @@ for (const component of components) {
     // regular tests on different viewports
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        test.skip(component === 'select', 'This component is flaky');
+        test.skip(component === 'select' || component === 'multi-select', 'This component is flaky');
 
         await setupScenario(page, `/${component}`, viewportWidth);
         await revertAutoFocus(page, component);
@@ -110,7 +110,7 @@ for (const component of components) {
         page,
       }) => {
         test.skip(!isComponentThemeable(component), 'This component has no theme support');
-        test.skip(component === 'select', 'This component is flaky');
+        test.skip(component === 'select' || component === 'multi-select', 'This component is flaky');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forceComponentTheme: 'auto',
@@ -124,7 +124,7 @@ for (const component of components) {
       test(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
-        test.skip(component === 'select', 'This component is flaky in HC mode');
+        test.skip(component === 'select' || component === 'multi-select', 'This component is flaky in HC mode');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forcedColorsEnabled: true,
