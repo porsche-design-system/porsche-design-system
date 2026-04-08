@@ -6097,10 +6097,10 @@
   resolved "https://registry.yarnpkg.com/@publint/pack/-/pack-0.1.2.tgz#1b9a9567423262093e4a73e77697b65bf622f8c9"
   integrity sha512-S+9ANAvUmjutrshV4jZjaiG8XQyuJIZ8a4utWmN/vW1sgQ9IfBnPndwkmQYw53QmouOIytT874u65HEmu6H5jw==
 
-"@react-router/dev@^7.9.4":
-  version "7.9.4"
-  resolved "https://registry.yarnpkg.com/@react-router/dev/-/dev-7.9.4.tgz#68f21fd8952967a1545dfc8c1c7515a191635831"
-  integrity sha512-bLs6DjKMJExT7Y57EBx25hkeGGUla3pURxvOn15IN8Mmaw2+euDtBUX9+OFrAPsAzD1xIj6+2HNLXlFH/LB86Q==
+"@react-router/dev@^7.14.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@react-router/dev/-/dev-7.14.0.tgz#a7bc5945d322ccf7c784979f2468f1d4df3ed0aa"
+  integrity sha512-/1ElF4lDTEIZ/rbEdlj6MmRY9ERRDyaTswWes+3pbqEKF2r/ixSzACueHWIfV9ULg/x5/weCvSexDD9f16ObwA==
   dependencies:
     "@babel/core" "^7.27.7"
     "@babel/generator" "^7.27.5"
@@ -6109,9 +6109,8 @@
     "@babel/preset-typescript" "^7.27.1"
     "@babel/traverse" "^7.27.7"
     "@babel/types" "^7.27.7"
-    "@npmcli/package-json" "^4.0.1"
-    "@react-router/node" "7.9.4"
-    "@remix-run/node-fetch-server" "^0.9.0"
+    "@react-router/node" "7.14.0"
+    "@remix-run/node-fetch-server" "^0.13.0"
     arg "^5.0.1"
     babel-dead-code-elimination "^1.0.6"
     chokidar "^4.0.0"
@@ -6121,41 +6120,43 @@
     isbot "^5.1.11"
     jsesc "3.0.2"
     lodash "^4.17.21"
+    p-map "^7.0.3"
     pathe "^1.1.2"
     picocolors "^1.1.1"
+    pkg-types "^2.3.0"
     prettier "^3.6.2"
     react-refresh "^0.14.0"
     semver "^7.3.7"
     tinyglobby "^0.2.14"
-    valibot "^1.1.0"
+    valibot "^1.2.0"
     vite-node "^3.2.2"
 
-"@react-router/express@7.9.4":
-  version "7.9.4"
-  resolved "https://registry.yarnpkg.com/@react-router/express/-/express-7.9.4.tgz#00535976d47b35c5daf64ce321c415bc2b866527"
-  integrity sha512-qba2YnZXWz8kyXNxXKDa0qS88ct4MwJKMwINmto/LPb08W/YdgRUBSZIw7QnOdN7aFkvWTRGXKBTCcle8WDnRA==
+"@react-router/express@7.14.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@react-router/express/-/express-7.14.0.tgz#df15ee1c458bbe21db47bb3c58477d48db81839d"
+  integrity sha512-isrPotskov4KJ/v0GvTACaXWua/3iPs71717iZZfxix77MqVo1uW7jtuXc8ChJRRWSHZOv2NFvIOYCUFXzmNJA==
   dependencies:
-    "@react-router/node" "7.9.4"
+    "@react-router/node" "7.14.0"
 
-"@react-router/node@7.9.4", "@react-router/node@^7.9.4":
-  version "7.9.4"
-  resolved "https://registry.yarnpkg.com/@react-router/node/-/node-7.9.4.tgz#6c1a566c8e808b52cc96ad053767984e01419994"
-  integrity sha512-sdeDNRaqAB71BR2hPlhcQbPbrXh8uGJUjLVc+NpRiPsQbv6B8UvIucN4IX9YGVJkw3UxVQBn2vPSwxACAck32Q==
+"@react-router/node@7.14.0", "@react-router/node@^7.14.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@react-router/node/-/node-7.14.0.tgz#cb502c6c4db43b9ca06b9cee9991cb669e3ca578"
+  integrity sha512-ZxJJLE4PX29+cHLacH3pmCHMCJQz/1dpEgFQtm8Pst2IP5GI6897rShYylLZbJ7jRBJSkskHn+opSEh+o6mmOA==
   dependencies:
     "@mjackson/node-fetch-server" "^0.2.0"
 
-"@react-router/serve@^7.9.4":
-  version "7.9.4"
-  resolved "https://registry.yarnpkg.com/@react-router/serve/-/serve-7.9.4.tgz#767a3935fd609144247a3324d430f5d466ee3440"
-  integrity sha512-zXub2L4qwtGd8+pdXi1QheI8PHPxSwi5EF0D1924fji8yN1R8csP/2cr055/xFOEtbkbJSZyVRrJ44fFnBxKCw==
+"@react-router/serve@^7.14.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@react-router/serve/-/serve-7.14.0.tgz#9d9dc33fb6639f8fc9651312666229db8f4de657"
+  integrity sha512-setPBP5+ci0vwx+ufGZl0inOwsCoGU1ssOJcW4fHo+Pb6GbbMTrbCOVO6yQkDsTrQju+iStp3d7FTxLHphLhcA==
   dependencies:
     "@mjackson/node-fetch-server" "^0.2.0"
-    "@react-router/express" "7.9.4"
-    "@react-router/node" "7.9.4"
-    compression "^1.7.4"
+    "@react-router/express" "7.14.0"
+    "@react-router/node" "7.14.0"
+    compression "^1.8.1"
     express "^4.19.2"
     get-port "5.1.1"
-    morgan "^1.10.0"
+    morgan "^1.10.1"
     source-map-support "^0.5.21"
 
 "@remix-run/dev@^2.17.1":
@@ -6227,10 +6228,10 @@
   dependencies:
     "@remix-run/node" "2.17.1"
 
-"@remix-run/node-fetch-server@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/node-fetch-server/-/node-fetch-server-0.9.0.tgz#4f881ad0c9019a37471e98fd25815c2d7f4b12fb"
-  integrity sha512-SoLMv7dbH+njWzXnOY6fI08dFMI5+/dQ+vY3n8RnnbdG7MdJEgiP28Xj/xWlnRnED/aB6SFw56Zop+LbmaaKqA==
+"@remix-run/node-fetch-server@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/node-fetch-server/-/node-fetch-server-0.13.0.tgz#93be9c2e0e6f12512be471501e3a86dda295b178"
+  integrity sha512-1EsNo0ZpgXu/90AWoRZf/oE3RVTUS80tiTUpt+hv5pjtAkw7icN4WskDwz/KdAw5ARbJLMhZBrO1NqThmy/McA==
 
 "@remix-run/node@2.17.1", "@remix-run/node@^2.17.1":
   version "2.17.1"
@@ -7950,7 +7951,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@24.7.2", "@types/node@>=10.0.0", "@types/node@^20.0.0", "@types/node@^24.7.2":
+"@types/node@*", "@types/node@24.7.2", "@types/node@>=10.0.0", "@types/node@^20.0.0", "@types/node@^24.7.2", "@types/node@^25.5.2":
   version "24.7.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-24.7.2.tgz#5adf66b6e2ac5cab1d10a2ad3682e359cb652f4a"
   integrity sha512-/NbVmcGTP+lj5oa4yiYxxeBjRivKQ5Ns1eSZeB99ExsEQ6rX5XYU1Zy/gGxY/ilqtD4Etx9mKyrPxZRetiahhA==
@@ -10951,6 +10952,11 @@ confbox@^0.1.8:
   resolved "https://registry.yarnpkg.com/confbox/-/confbox-0.1.8.tgz#820d73d3b3c82d9bd910652c5d4d599ef8ff8b06"
   integrity sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==
 
+confbox@^0.2.2:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/confbox/-/confbox-0.2.4.tgz#592e7be71f882a4a874e3c88f0ac1ef6f7da1ce5"
+  integrity sha512-ysOGlgTFbN2/Y6Cg3Iye8YKulHw+R2fNXHrgSmXISQdMnomY6eNDprVdW9R5xBguEqI954+S6709UyiO7B+6OQ==
+
 config-chain@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.13.tgz#fad0795aa6a6cdaff9ed1b68e9dff94372c232f4"
@@ -13479,6 +13485,11 @@ express@^5.2.1:
     type-is "^2.0.1"
     vary "^1.1.2"
 
+exsolve@^1.0.7:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/exsolve/-/exsolve-1.0.8.tgz#7f5e34da61cd1116deda5136e62292c096f50613"
+  integrity sha512-LmDxfWXwcTArk8fUEnOfSZpHOJ6zOMUJKOtFLFqJLoKJetuQG874Uc7/Kki7zFLzYybmZhp1M7+98pfMqeX8yA==
+
 extend@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
@@ -15468,6 +15479,11 @@ isbot@^5.1.31:
   version "5.1.31"
   resolved "https://registry.yarnpkg.com/isbot/-/isbot-5.1.31.tgz#ecbab171da577002c66f9123fe180c1e795e4e4e"
   integrity sha512-DPgQshehErHAqSCKDb3rNW03pa2wS/v5evvUqtxt6TTnHRqAG8FdzcSSJs9656pK6Y+NT7K9R4acEYXLHYfpUQ==
+
+isbot@^5.1.37:
+  version "5.1.37"
+  resolved "https://registry.yarnpkg.com/isbot/-/isbot-5.1.37.tgz#77ae942b8ebb52b3ceddc681051c8508a6711d92"
+  integrity sha512-5bcicX81xf6NlTEV8rWdg7Pk01LFizDetuYGHx6d/f6y3lR2/oo8IfxjzJqn1UdDEyCcwT9e7NRloj8DwCYujQ==
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -18870,17 +18886,6 @@ module-lookup-amd@^9.0.1:
     requirejs "^2.3.7"
     requirejs-config-file "^4.0.0"
 
-morgan@^1.10.0, morgan@^1.6.1:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.10.0.tgz#091778abc1fc47cd3509824653dae1faab6b17d7"
-  integrity sha512-AbegBVI4sh6El+1gNwvD5YIck7nSA36weD7xvIxG4in80j/UoK8AEGaWnnz8v1GxonMCltmlNs5ZKbGvl9b1XQ==
-  dependencies:
-    basic-auth "~2.0.1"
-    debug "2.6.9"
-    depd "~2.0.0"
-    on-finished "~2.3.0"
-    on-headers "~1.0.2"
-
 morgan@^1.10.1:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.10.1.tgz#4e02e6a4465a48e26af540191593955d17f61570"
@@ -18891,6 +18896,17 @@ morgan@^1.10.1:
     depd "~2.0.0"
     on-finished "~2.3.0"
     on-headers "~1.1.0"
+
+morgan@^1.6.1:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.10.0.tgz#091778abc1fc47cd3509824653dae1faab6b17d7"
+  integrity sha512-AbegBVI4sh6El+1gNwvD5YIck7nSA36weD7xvIxG4in80j/UoK8AEGaWnnz8v1GxonMCltmlNs5ZKbGvl9b1XQ==
+  dependencies:
+    basic-auth "~2.0.1"
+    debug "2.6.9"
+    depd "~2.0.0"
+    on-finished "~2.3.0"
+    on-headers "~1.0.2"
 
 mri@^1.1.0, mri@^1.2.0:
   version "1.2.0"
@@ -20123,6 +20139,15 @@ pkg-types@^1.3.0:
     mlly "^1.7.4"
     pathe "^2.0.1"
 
+pkg-types@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-2.3.0.tgz#037f2c19bd5402966ff6810e32706558cb5b5726"
+  integrity sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==
+  dependencies:
+    confbox "^0.2.2"
+    exsolve "^1.0.7"
+    pathe "^2.0.3"
+
 pkg-up@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-3.1.0.tgz#100ec235cc150e4fd42519412596a28512a0def5"
@@ -21347,6 +21372,14 @@ react-router@7.9.4, react-router@^7.9.4:
   version "7.9.4"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.9.4.tgz#2c4249e5d0a6bb8b8f6bf0ede8f5077e4ff8024f"
   integrity sha512-SD3G8HKviFHg9xj7dNODUKDFgpG4xqD5nhyd0mYoB5iISepuZAvzSr8ywxgxKJ52yRzf/HWtVHc9AWwoTbljvA==
+  dependencies:
+    cookie "^1.0.1"
+    set-cookie-parser "^2.6.0"
+
+react-router@^7.14.0:
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.14.0.tgz#33169c9ac03b298bb51aad13e038ba548c79a862"
+  integrity sha512-m/xR9N4LQLmAS0ZhkY2nkPA1N7gQ5TUVa5n8TgANuDTARbn1gt+zLPXEm7W0XDTbrQ2AJSJKhoa6yx1D8BcpxQ==
   dependencies:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
@@ -24688,10 +24721,10 @@ valibot@^0.41.0:
   resolved "https://registry.yarnpkg.com/valibot/-/valibot-0.41.0.tgz#5c2efd49c078e455f7862379365f6036f3cd9f96"
   integrity sha512-igDBb8CTYr8YTQlOKgaN9nSS0Be7z+WRuaeYqGf3Cjz3aKmSnqEmYnkfVjzIuumGqfHpa3fLIvMEAfhrpqN8ng==
 
-valibot@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/valibot/-/valibot-1.1.0.tgz#873bb1af9e1577391690307bfe0520bd1360ec2d"
-  integrity sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==
+valibot@^1.2.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/valibot/-/valibot-1.3.1.tgz#483c5e229b75c0cb441dfaa9392ffe0a1ec53f2f"
+  integrity sha512-sfdRir/QFM0JaF22hqTroPc5xy4DimuGQVKFrzF1YfGwaS1nJot3Y8VqMdLO2Lg27fMzat2yD3pY5PbAYO39Gg==
 
 validate-npm-package-license@^3.0.1, validate-npm-package-license@^3.0.4:
   version "3.0.4"
