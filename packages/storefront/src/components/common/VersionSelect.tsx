@@ -1,5 +1,4 @@
 import { PButton, PSelect, PSelectOption } from '@porsche-design-system/components-react/ssr';
-import type { CSSProperties } from 'react';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { isDevEnvironment } from '@/utils/isDev';
 import { getMajorVersion } from '@/utils/pdsVersion';
@@ -22,7 +21,7 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
         onChange={(e) => onVersionChange(e.detail.value)}
         label="Switch version"
         compact={true}
-        style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
+        style={{ '--p-select-background-color': 'var(--p-color-surface)' } as Record<string, string>}
       >
         {pdsVersion.all.map((version) => {
           const prefixedVersion = `v${version}`;
