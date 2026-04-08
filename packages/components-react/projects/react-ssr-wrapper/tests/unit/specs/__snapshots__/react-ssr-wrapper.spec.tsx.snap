@@ -3315,7 +3315,6 @@ slot[name="description"],p {
 
             </style>
             <button
-              aria-description=""
               class="root"
               type="button"
             >
