@@ -169,6 +169,12 @@ export class MultiSelect {
     this.updateSelectedOption(e.target);
   }
 
+  @Listen('internalOptgroupUpdate')
+  public optgroupUpdateHandler(e: Event): void {
+    e.stopPropagation();
+    this.updateOptions();
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.setFormValue(this.value);

@@ -177,6 +177,12 @@ export class Select {
     this.updateSelectedOption(e.target);
   }
 
+  @Listen('internalOptgroupUpdate')
+  public optgroupUpdateHandler(e: Event): void {
+    e.stopPropagation();
+    this.updateOptions();
+  }
+
   @Watch('value')
   public onValueChange(): void {
     this.internals?.setFormValue(this.value);
