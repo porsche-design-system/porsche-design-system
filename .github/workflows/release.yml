@@ -24,6 +24,10 @@ on:
         description: 'Algolia API Key (Storefront).'
         required: true
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   check-publication-status:
     name: 'Check Publication Status'
@@ -80,9 +84,9 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -109,9 +113,9 @@ jobs:
       - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -138,9 +142,9 @@ jobs:
       - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -167,9 +171,9 @@ jobs:
       - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
