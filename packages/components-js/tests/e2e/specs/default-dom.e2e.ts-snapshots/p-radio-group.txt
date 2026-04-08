@@ -1,4 +1,4 @@
-<fieldset class="root" role="radiogroup" aria-labelledby="label">
+<fieldset class="root" role="radiogroup">
   <div class="wrapper">
     <slot> </slot>
   </div>

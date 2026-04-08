@@ -243,7 +243,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
         aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="label"
         aria-required="false"
         id="button"
         role="combobox"
@@ -1486,7 +1485,6 @@ input:focus-visible {
 }
     </style>
     <fieldset
-      aria-labelledby="label"
       class="root"
     >
       <div
@@ -10608,7 +10606,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
         aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="label"
         aria-required="false"
         id="button"
         role="combobox"
@@ -11645,7 +11642,6 @@ input:focus-visible {
 }
     </style>
     <fieldset
-      aria-labelledby="label"
       class="root"
     >
       <div
@@ -11989,7 +11985,6 @@ slot[name="label-after"]::slotted(*) {
 }
     </style>
     <fieldset
-      aria-labelledby="label"
       class="root"
       role="radiogroup"
     >
@@ -12729,7 +12724,6 @@ exports[`should render dsr component for PSelect 1`] = `
         aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="label"
         aria-required="false"
         id="button"
         role="combobox"
