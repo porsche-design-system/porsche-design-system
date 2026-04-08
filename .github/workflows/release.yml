@@ -9,10 +9,10 @@ on:
         type: string
     secrets:
       github-token:
-        description: 'github token for container registry'
+        description: 'github token for container registry.'
         required: true
       npm-token:
-        description: 'npm access token for publishing to npmjs.org'
+        description: 'npm access token for publishing to npmjs.org.'
         required: true
       gh-deploy-key-storefront:
         description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
