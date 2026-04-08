@@ -11,8 +11,8 @@ on:
       github-token:
         description: 'github token for container registry'
         required: true
-      npmjs-registry-token:
-        description: 'npm registry token for npmjs'
+      npm-token:
+        description: 'npm access token for publishing to npmjs.org'
         required: true
       gh-deploy-key-storefront:
         description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
@@ -100,7 +100,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-angular:
     name: 'NPM (Components Angular)'
@@ -129,7 +129,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-react:
     name: 'NPM (Components React)'
@@ -158,7 +158,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-vue:
     name: 'NPM (Components Vue)'
