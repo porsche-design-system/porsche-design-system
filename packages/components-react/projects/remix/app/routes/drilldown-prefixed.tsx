@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PDrilldown, PDrilldownItem, PDrilldownLink, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-const DrilldownPrefixedPage = (): JSX.Element => {
+export const DrilldownPrefixedPage = () => {
   return (
     <>
       <PorscheDesignSystemProvider prefix="my-prefix">
@@ -39,5 +39,3 @@ const DrilldownPrefixedPage = (): JSX.Element => {
     </>
   );
 };
-
-export default DrilldownPrefixedPage;

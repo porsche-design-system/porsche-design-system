@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PHeading, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-const ModalPrefixedPage = (): JSX.Element => {
+export const ModalPrefixedPage = () => {
   return (
     <>
       <PorscheDesignSystemProvider prefix="my-prefix">
@@ -15,5 +15,3 @@ const ModalPrefixedPage = (): JSX.Element => {
     </>
   );
 };
-
-export default ModalPrefixedPage;

@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PHeading, PorscheDesignSystemProvider, PSheet, PText } from '@porsche-design-system/components-react/ssr';
 
-const SheetPrefixedPage = (): JSX.Element => {
+export const SheetPrefixedPage = () => {
   return (
     <>
       <PorscheDesignSystemProvider prefix="my-prefix">
@@ -15,5 +15,3 @@ const SheetPrefixedPage = (): JSX.Element => {
     </>
   );
 };
-
-export default SheetPrefixedPage;

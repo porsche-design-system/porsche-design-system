@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PAccordion, PButton, PButtonPure, PButtonTile, PCarousel, PCheckbox, PCrest, PDisplay, PDivider, PFieldset, PFlag, PHeading, PIcon, PInlineNotification, PInputDate, PInputEmail, PInputMonth, PInputNumber, PInputPassword, PInputSearch, PInputTel, PInputText, PInputTime, PInputUrl, PInputWeek, PLink, PLinkPure, PLinkTile, PLinkTileProduct, PModelSignature, PMultiSelect, PMultiSelectOption, PorscheDesignSystemProvider, PPagination, PPinCode, PPopover, PRadioGroup, PRadioGroupOption, PScroller, PSegmentedControl, PSegmentedControlItem, PSelect, PSelectOption, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextarea, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
-const OverviewComponentsPage = (): JSX.Element => {
+export const OverviewComponentsPage = () => {
   const style = `
     #app,
     :host {
@@ -681,5 +681,3 @@ const OverviewComponentsPage = (): JSX.Element => {
     </>
   );
 };
-
-export default OverviewComponentsPage;

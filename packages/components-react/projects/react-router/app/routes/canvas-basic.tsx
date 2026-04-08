@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PCanvas, PText } from '@porsche-design-system/components-react/ssr';
 
-const CanvasBasicPage = (): JSX.Element => {
+export const CanvasBasicPage = () => {
   const style = `
     span {
       display: block;
@@ -22,5 +22,3 @@ const CanvasBasicPage = (): JSX.Element => {
     </>
   );
 };
-
-export default CanvasBasicPage;

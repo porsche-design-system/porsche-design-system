@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PDrilldown, PDrilldownItem, PDrilldownLink } from '@porsche-design-system/components-react/ssr';
 
-const DrilldownBasicPage = (): JSX.Element => {
+export const DrilldownBasicPage = () => {
   return (
     <>
       <PDrilldown open={true}>
@@ -35,5 +35,3 @@ const DrilldownBasicPage = (): JSX.Element => {
     </>
   );
 };
-
-export default DrilldownBasicPage;

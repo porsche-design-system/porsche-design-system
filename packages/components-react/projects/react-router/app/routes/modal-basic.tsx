@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 
-const ModalBasicPage = (): JSX.Element => {
+export const ModalBasicPage = () => {
   return (
     <>
       <PModal open={true}>
@@ -11,5 +11,3 @@ const ModalBasicPage = (): JSX.Element => {
     </>
   );
 };
-
-export default ModalBasicPage;
