@@ -61,7 +61,8 @@
     "autoprefixer": "^10.4.27",
     "remark-gfm": "^4.0.1",
     "cheerio": "^1.2.0",
-    "@testing-library/jest-dom": "^6.9.1"
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0"
   },
   "peerDependencies": {
     "@axe-core/playwright": "*",
