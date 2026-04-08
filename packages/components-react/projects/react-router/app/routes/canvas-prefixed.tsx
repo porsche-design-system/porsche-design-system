@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PCanvas, PorscheDesignSystemProvider, PText } from '@porsche-design-system/components-react/ssr';
 
-export const CanvasPrefixedPage = () => {
+const CanvasPrefixedPage = () => {
   const style = `
     span {
       display: block;
@@ -26,3 +26,5 @@ export const CanvasPrefixedPage = () => {
     </>
   );
 };
+
+export default CanvasPrefixedPage;

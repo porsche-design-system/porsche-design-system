@@ -1,6 +1,6 @@
+import { kebabCase } from 'change-case';
 import * as fs from 'fs';
 import * as path from 'path';
-import { kebabCase } from 'change-case';
 import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
 
 const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
@@ -14,7 +14,7 @@ export const convertToRemixVRTPage = (
 
   let newFileContent = fileContent
     .replace(/import { pollComponentsReady } from '\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
-    .replace(/export\s(const\s)([a-zA-Z]+)(\s=\s\(\):\sJSX\.Element\s=>\s{[\s\S]+};)/, '$1$2$3\n\nexport default $2;')
+    .replace(/export\s(const\s)([a-zA-Z]+)(\s=\s\(\)\s=>\s{[\s\S]+};)/, '$1$2$3\n\nexport default $2;')
     .replace(/@porsche-design-system\/components-react/g, '$&/ssr') // tweak path to ssr subpackage
     .replace(/(\w|>)'(\w|<)/g, '$1&apos;$2') // escape single quotes
     .replace(/([\w>(])"([\w<)])/g, '$1&quot;$2') // escape double quotes

@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner } from '@porsche-design-system/components-react/ssr';
 
-export const BannerBasicPage = () => {
+const BannerBasicPage = () => {
   return (
     <>
       <div className="visualize-grid">
@@ -29,3 +29,5 @@ export const BannerBasicPage = () => {
     </>
   );
 };
+
+export default BannerBasicPage;

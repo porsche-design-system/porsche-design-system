@@ -2,7 +2,7 @@
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { Toast } from '../../components';
 
-export const ToastPrefixedPage = () => {
+const ToastPrefixedPage = () => {
   return (
     <>
       <div className="visualize-grid">
@@ -34,3 +34,5 @@ export const ToastPrefixedPage = () => {
     </>
   );
 };
+
+export default ToastPrefixedPage;

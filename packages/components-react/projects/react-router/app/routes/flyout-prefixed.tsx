@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-export const FlyoutPrefixedPage = () => {
+const FlyoutPrefixedPage = () => {
   return (
     <>
       <PorscheDesignSystemProvider prefix="my-prefix">
@@ -12,3 +12,5 @@ export const FlyoutPrefixedPage = () => {
     </>
   );
 };
+
+export default FlyoutPrefixedPage;

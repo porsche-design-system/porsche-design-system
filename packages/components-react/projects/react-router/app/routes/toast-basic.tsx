@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { Toast } from '../../components';
 
-export const ToastBasicPage = () => {
+const ToastBasicPage = () => {
   return (
     <>
       <div className="visualize-grid">
@@ -29,3 +29,5 @@ export const ToastBasicPage = () => {
     </>
   );
 };
+
+export default ToastBasicPage;

@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-export const BannerPrefixedPage = () => {
+const BannerPrefixedPage = () => {
   return (
     <>
       <div className="visualize-grid">
@@ -33,3 +33,5 @@ export const BannerPrefixedPage = () => {
     </>
   );
 };
+
+export default BannerPrefixedPage;
