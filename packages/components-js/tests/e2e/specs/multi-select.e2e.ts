@@ -57,6 +57,22 @@ const addOption = async (page: Page, value: string, textContent?: string) => {
   );
 };
 
+const addOptionToOptgroup = async (page: Page, optgroupLabel: string, value: string, textContent?: string) => {
+  const host = getHost(page);
+  await host.evaluate(
+    (el, { optgroupLabel, value, textContent }) => {
+      const optgroup = el.querySelector(`p-optgroup[label="${optgroupLabel}"]`);
+      if (optgroup) {
+        const option: any = document.createElement('p-multi-select-option');
+        option.value = value;
+        option.textContent = textContent;
+        optgroup.append(option);
+      }
+    },
+    { optgroupLabel, value, textContent: textContent ?? value }
+  );
+};
+
 const removeOption = async (page: Page, value: string) => {
   const host = getHost(page);
   await host.evaluate((el, value) => {
@@ -2311,6 +2327,83 @@ test.describe('optgroups', () => {
     for (const child of children) {
       await expect(child).toBeHidden();
     }
+  });
+
+  test('should select option inside optgroup by click', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const options = getMultiSelectOptions(page);
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    await options.nth(0).click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', ['a']);
+    await expect(options.nth(0)).toHaveJSProperty('selected', true);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option A');
+
+    await options.nth(1).click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', ['a', 'b']);
+    await expect(options.nth(0)).toHaveJSProperty('selected', true);
+    await expect(options.nth(1)).toHaveJSProperty('selected', true);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option A, Option B');
+  });
+
+  test('should emit change event with correct details when option inside optgroup is selected', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const options = getMultiSelectOptions(page);
+    await addEventListener(host, 'change');
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+    await options.nth(0).click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+      {
+        value: ['a'],
+        name: 'name',
+      },
+    ]);
+  });
+
+  test('should update options list when option is dynamically added to optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const optgroups = getMultiSelectOptgroups(page);
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    const initialCount = await getMultiSelectOptions(page).count();
+
+    // Add a new option to the first optgroup (label="0")
+    await addOptionToOptgroup(page, '0', 'new', 'new');
+    await waitForStencilLifecycle(page);
+
+    expect(await getMultiSelectOptions(page).count()).toBe(initialCount + 1);
+
+    // Select the newly added option (last child inside the first optgroup)
+    const newOption = optgroups.nth(0).locator('p-multi-select-option').last();
+    await newOption.click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', ['new']);
   });
 });
 
