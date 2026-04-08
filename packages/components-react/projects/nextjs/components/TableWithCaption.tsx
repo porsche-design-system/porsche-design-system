@@ -13,7 +13,7 @@ import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared'
 import Image from 'next/image';
 
 // NOTE: this component is duplicated and adjusted from react
-export const TableWithCaption = (): JSX.Element => {
+export const TableWithCaption = () => {
   return (
     <PTable caption="Some caption">
       <PTableHead>

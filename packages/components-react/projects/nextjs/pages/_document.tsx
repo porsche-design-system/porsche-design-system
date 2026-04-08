@@ -1,7 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 import { HeaderPartials } from '../components';
 
-const Document = (): JSX.Element => {
+const Document = () => {
   const cdn = 'local';
 
   return (
