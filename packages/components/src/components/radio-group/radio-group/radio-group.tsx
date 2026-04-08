@@ -18,6 +18,7 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasDescription,
+  hasLabel,
   hasMessage,
   hasPropValueChanged,
   setAriaIDREF,
@@ -226,7 +227,7 @@ export class RadioGroup {
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
         aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
-        aria-labelledby={labelId}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
         onKeyDown={this.onKeyDown}
       >
         <Label

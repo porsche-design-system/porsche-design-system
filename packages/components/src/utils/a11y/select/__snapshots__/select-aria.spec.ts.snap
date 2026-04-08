@@ -1,5 +1,49 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`getComboboxAriaAttributes() > should return correct aria attributes when closed and not required 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": "message-id description-id",
+  "aria-expanded": "false",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+  "aria-required": "false",
+}
+`;
+
+exports[`getComboboxAriaAttributes() > should return correct aria attributes when open, required, with all IDs 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": "message-id description-id",
+  "aria-expanded": "true",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+  "aria-required": "true",
+}
+`;
+
+exports[`getComboboxAriaAttributes() > should return correct aria attributes with empty labelId 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": "message-id description-id",
+  "aria-expanded": "false",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": null,
+  "aria-required": "false",
+}
+`;
+
+exports[`getComboboxAriaAttributes() > should return correct aria attributes with empty messageId and descriptionId 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": null,
+  "aria-expanded": "true",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+  "aria-required": "false",
+}
+`;
+
 exports[`getOptionAriaAttributes() > should return correct aria attributes for isSelected: true, isDisabled: false, isHidden: false and hasValue: false 1`] = `
 {
   "aria-disabled": null,

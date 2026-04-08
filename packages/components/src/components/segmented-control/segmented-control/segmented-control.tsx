@@ -17,6 +17,7 @@ import {
   attachComponentCss,
   FORM_STATES,
   hasDescription,
+  hasLabel,
   hasMessage,
   hasPropValueChanged,
   observeChildren,
@@ -199,7 +200,7 @@ export class SegmentedControl {
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
-        aria-labelledby={this.label ? labelId : null}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
         aria-describedby={setAriaIDREF(fieldMessageId, fieldDescriptionId)}
       >
         <Label

@@ -26,6 +26,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasDescription,
+  hasLabel,
   hasMessage,
   hasNamedSlot,
   hasPropValueChanged,
@@ -313,7 +314,7 @@ export class MultiSelect {
           {...getComboboxAriaAttributes(
             this.isOpen,
             this.required,
-            labelId,
+            hasLabel(this.host, this.label) && labelId,
             selectMessageId,
             selectDescriptionId,
             popoverId

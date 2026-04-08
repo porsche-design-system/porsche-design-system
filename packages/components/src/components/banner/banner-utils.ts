@@ -14,6 +14,6 @@ export const getBannerAriaAttributes = (state: BannerState, heading: string): Ar
   return {
     role: isAlert ? 'alert' : 'status',
     'aria-live': isAlert ? 'assertive' : 'polite',
-    'aria-label': heading,
+    'aria-label': heading || null,
   };
 };

@@ -26,6 +26,7 @@ import {
   getSelectActionFromKeyboardEvent,
   getShadowRootHTMLElement,
   hasDescription,
+  hasLabel,
   hasMessage,
   hasNamedSlot,
   hasPropValueChanged,
@@ -315,7 +316,7 @@ export class Select {
           {...getComboboxAriaAttributes(
             this.isOpen,
             this.required,
-            labelId,
+            hasLabel(this.host, this.label) && labelId,
             selectMessageId,
             selectDescriptionId,
             popoverId

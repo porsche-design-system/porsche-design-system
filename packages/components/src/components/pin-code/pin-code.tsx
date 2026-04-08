@@ -205,7 +205,7 @@ export class PinCode {
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
         aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
-        aria-labelledby={labelId}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
       >
         <Label
           host={this.host}

@@ -247,7 +247,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/^/, `import { splitChildren } from '../../splitChildren';`)
             .replace(
               /hasDescription\(\/\/ host, (description)\)/g,
-              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$2').length > 0)`
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0)`
             )
             .replace(
               /hasMessage\(\/\/ host, (message), (state)\)/g,

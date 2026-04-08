@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Accessibility`: improved internal ARIA attribute handling for various components, e.g. `Banner`, `Inline Notification` and `Input` elements.
+  ([#4274](https://github.com/porsche-design-system/porsche-design-system/pull/4274))
+
 ## [4.0.0-rc.1] - 2026-04-07
 
 ### Added
@@ -67,8 +72,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4260](https://github.com/porsche-design-system/porsche-design-system/pull/4260))
 - `Table`: double focus outline of sort buttons
   ([#4270](https://github.com/porsche-design-system/porsche-design-system/pull/4270))
-- `Accessibility`: improved internal ARIA attribute handling for various components, e.g. `Banner`, `Inline Notification`and `Input` elements.
-  ([#4274](https://github.com/porsche-design-system/porsche-design-system/pull/4274))
 
 ### Deprecated
 

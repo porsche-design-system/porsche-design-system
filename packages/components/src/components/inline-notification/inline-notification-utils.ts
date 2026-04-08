@@ -17,6 +17,6 @@ export const getInlineNotificationAriaAttributes = (
   return {
     role: isAlert ? 'alert' : 'status',
     'aria-live': isAlert ? 'assertive' : 'polite',
-    'aria-label': heading,
+    'aria-label': heading || null,
   };
 };
