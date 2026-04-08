@@ -28,7 +28,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@react-router/dev": "^7.9.4",
-    "@tailwindcss/vite": "^4.1.14",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^24.7.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",

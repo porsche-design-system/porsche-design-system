@@ -55,7 +55,7 @@
     "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.6.1",
     "happy-dom": "^20.0.10",
-    "@tailwindcss/cli": "^4.1.16"
+    "@tailwindcss/cli": "^4.2.2"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
