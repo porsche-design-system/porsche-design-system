@@ -1,7 +1,7 @@
 import { PButton, PCarousel } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const CarouselExampleDynamicSlidesPage = (): JSX.Element => {
+export const CarouselExampleDynamicSlidesPage = () => {
   const [amountOfSlides, setAmountOfSlides] = useState(3);
   const onAddClick = useCallback(() => setAmountOfSlides((prev) => prev + 1), []);
   const onRemoveClick = useCallback(() => setAmountOfSlides((prev) => (prev === 0 ? 0 : prev - 1)), []);

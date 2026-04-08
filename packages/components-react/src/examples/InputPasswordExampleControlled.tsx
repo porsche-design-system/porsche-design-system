@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputPasswordControlledExamplePage = (): JSX.Element => {
+export const InputPasswordControlledExamplePage = () => {
   const [value, setValue] = useState<PInputPasswordProps['value']>('');
 
   const onInput = (e: CustomEvent<InputPasswordInputEventDetail>) => {

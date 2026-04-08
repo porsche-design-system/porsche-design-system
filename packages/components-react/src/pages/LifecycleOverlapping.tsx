@@ -1,7 +1,7 @@
 import { PInputText, PTextarea } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const LifecycleOverlappingPage = (): JSX.Element => {
+export const LifecycleOverlappingPage = () => {
   const [isActive, setIsActive] = useState(false);
 
   const props = {

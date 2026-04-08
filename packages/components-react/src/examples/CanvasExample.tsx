@@ -8,7 +8,7 @@ import {
 import { breakpointS } from '@porsche-design-system/components-react/emotion';
 import { useCallback, useState } from 'react';
 
-export const CanvasExamplePage = (): JSX.Element => {
+export const CanvasExamplePage = () => {
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState<boolean>(
     // initially, sidebar should be closed on mobile and opened on desktop
     window.matchMedia(`(min-width: ${breakpointS}px)`).matches

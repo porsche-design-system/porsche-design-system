@@ -1,7 +1,7 @@
 import { PTable, PTableHead, PTableHeadCell, PTableHeadRow } from '@porsche-design-system/components-react';
 import { TableWithCaption } from '../components';
 
-export const TablePage = (): JSX.Element => {
+export const TablePage = () => {
   return (
     <>
       <div className="playground light" title="should render table on light background">

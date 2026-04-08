@@ -2,7 +2,7 @@ import { PLinkTile, PSelect, PSelectOption, SelectChangeEventDetail } from '@por
 import { Property } from 'csstype';
 import { useState } from 'react';
 
-export const LinkTileExampleHyphensPage = (): JSX.Element => {
+export const LinkTileExampleHyphensPage = () => {
   const [hyphens, setHyphens] = useState<Property.Hyphens>('auto');
 
   const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {

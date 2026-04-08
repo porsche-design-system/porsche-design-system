@@ -56,7 +56,7 @@ const dataBasic: DataBasic[] = [
   },
 ];
 
-export const TableExampleBasicPage = (): JSX.Element => {
+export const TableExampleBasicPage = () => {
   return (
     <PTable caption="Some caption">
       <PTableHead>
