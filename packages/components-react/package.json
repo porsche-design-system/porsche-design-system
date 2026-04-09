@@ -57,7 +57,7 @@
     "@playwright/test": "*",
     "change-case": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "vite": "*",
     "typescript": "*",
     "@tailwindcss/vite": "*"

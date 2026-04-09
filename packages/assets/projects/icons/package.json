@@ -34,7 +34,7 @@
   },
   "peerDependencies": {
     "change-case": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "prettier": "*",
     "svgo": "*",
     "tsup": "*",

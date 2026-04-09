@@ -52,7 +52,6 @@
     "change-case-legacy": "npm:change-case@^4.1.2",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
-    "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.6.1",
     "happy-dom": "^20.0.10",
     "@tailwindcss/cli": "^4.2.2"
@@ -60,7 +59,7 @@
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "jss": "*",
     "jss-plugin-sort-css-media-queries": "*",
     "jss-preset-default": "*",

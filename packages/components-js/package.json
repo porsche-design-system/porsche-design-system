@@ -112,8 +112,7 @@
     "mime": "^4.1.0",
     "terser-webpack-plugin": "^5.3.14",
     "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^6.0.1",
-    "globby-legacy": "npm:globby@^11.0.4"
+    "webpack-cli": "^6.0.1"
   },
   "peerDependencies": {
     "@playwright/test": "*",
@@ -121,7 +120,7 @@
     "ag-grid-react": ">= 35.0.0 <36.0.0",
     "change-case": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "sass": "*",
     "tailwindcss": "*",
     "tsx": "*",

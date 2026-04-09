@@ -29,8 +29,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "globby-legacy": "npm:globby@^11.0.4"
+    "@types/react-dom": "^19.2.3"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",

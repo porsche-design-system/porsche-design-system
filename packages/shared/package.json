@@ -38,7 +38,7 @@
     "@rollup/plugin-typescript": "*",
     "@types/madge": "*",
     "@types/node": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "madge": "*",
     "rollup": "*",
     "rollup-plugin-bin": "*",

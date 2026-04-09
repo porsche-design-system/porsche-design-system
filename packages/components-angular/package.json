@@ -62,7 +62,6 @@
     "ag-grid-angular": "35.2.1",
     "ag-grid-community": "35.2.1",
     "ag-grid-enterprise": "35.2.1",
-    "globby-legacy": "npm:globby@^11.0.4",
     "jest-preset-angular": "^14.6.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",

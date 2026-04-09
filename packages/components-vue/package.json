@@ -59,7 +59,7 @@
     "@playwright/test": "*",
     "change-case": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "tsx": "*",
     "typescript": "*",
     "vite": "*",

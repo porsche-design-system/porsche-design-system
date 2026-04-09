@@ -68,7 +68,7 @@
     "@axe-core/playwright": "*",
     "@playwright/test": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "typescript": "*",
     "change-case": "*",
     "vitest": "*",
