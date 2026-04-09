@@ -234,7 +234,7 @@
     "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/madge": "^5.0.3",
-    "@types/node": "^24.7.2",
+    "@types/node": "^25.5.2",
     "@vitest/ui": "^4.1.3",
     "concurrently": "^9.2.1",
     "fast-glob": "^3.3.3",
