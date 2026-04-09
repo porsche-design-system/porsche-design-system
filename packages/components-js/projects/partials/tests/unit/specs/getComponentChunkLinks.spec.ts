@@ -1,7 +1,6 @@
 import { renderToString } from 'react-dom/server';
-import { vi, describe, it, expect } from 'vitest';
-import type { ComponentChunkName } from '../../../../components-wrapper';
-import { COMPONENT_CHUNK_NAMES } from '../../../../components-wrapper';
+import { describe, expect, it, vi } from 'vitest';
+import { COMPONENT_CHUNK_NAMES, type ComponentChunkName } from '../../../../components-wrapper/lib/chunksManifest';
 import { getComponentChunkLinks } from '../../../src';
 
 const { version } = require('../../../../components-wrapper/package.json');
