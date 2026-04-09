@@ -1,5 +1,5 @@
 import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
-import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import { legacyRadiusSmall, radiusFull, radiusLg } from '../../styles/css-variables';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
@@ -42,9 +42,9 @@ export const getComponentCss = (
               content: '""',
               position: 'fixed',
               insetBlock: offsetVertical,
-              borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
               ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
+                borderRadius: `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : radiusLg})`,
               })),
             },
             '&(a:focus-visible)::before': getFocusBaseStyles(),
