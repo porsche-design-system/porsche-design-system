@@ -2532,6 +2532,7 @@ export namespace Components {
         "name"?: string;
         /**
           * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+          * @default false
          */
         "noWrap"?: boolean;
         /**
@@ -6881,6 +6882,7 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+          * @default false
          */
         "noWrap"?: boolean;
         /**
@@ -8081,6 +8083,7 @@ declare namespace LocalJSX {
         "columns": string;
         "form": string;
         "disabled": boolean;
+        "noWrap": boolean;
     }
     interface PSegmentedControlItemAttributes {
         "value": string;
