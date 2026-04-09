@@ -272,8 +272,7 @@
   },
   "resolutions": {
     "**/vite/rollup": "^4.52.4",
-    "**/workbox-build/rollup": "^4.52.4",
-    "**/@types/node": "24.7.2"
+    "**/workbox-build/rollup": "^4.52.4"
   },
   "volta": {
     "node": "24.13.0",
