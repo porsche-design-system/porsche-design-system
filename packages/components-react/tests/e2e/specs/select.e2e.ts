@@ -4,6 +4,7 @@ import {
   getEventSummary,
   getFormDataValue,
   setProperty,
+  sleep,
 } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
@@ -39,5 +40,35 @@ test.describe('form', () => {
 
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'options')).toBe(newValue);
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should correctly reflect value when options inside optgroup change dynamically', async ({ page }) => {
+    await goto(page, 'select-example-dynamic-optgroup');
+    await waitForComponentsReady(page);
+
+    // Let the interval run for a few ticks so options appear
+    await sleep(1500);
+
+    // Sample the state multiple times while the interval is still running.
+    // Each check reads value and displayed text atomically and compares them.
+    for (let i = 0; i < 10; i++) {
+      await sleep(500);
+
+      const { value, displayedText } = await page.evaluate(() => {
+        const host = document.querySelector('p-select') as any;
+        const button = host?.shadowRoot?.querySelector('button[role="combobox"]');
+        const span = button?.querySelector('span');
+        return {
+          value: host?.value as string | undefined,
+          displayedText: span?.textContent ?? '',
+        };
+      });
+
+      if (value) {
+        expect(displayedText, `Check ${i}: displayed "${displayedText}" should match value "${value}"`).toBe(value);
+      }
+    }
   });
 });
