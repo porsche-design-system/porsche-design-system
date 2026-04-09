@@ -37,7 +37,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -9846,6 +9846,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
+      "p-scroller",
       "p-icon",
     ],
     "propsMeta": {
@@ -9951,6 +9952,12 @@ exports[`should match snapshot 1`] = `
           "reflect": true,
         },
         "type": "string",
+      },
+      "noWrap": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.",
+        "type": "boolean",
       },
       "required": {
         "allowedValues": "boolean",
