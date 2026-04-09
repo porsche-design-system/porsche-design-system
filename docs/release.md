@@ -34,7 +34,8 @@ version can be released.
 
 1. Open `package.json` and change `@porsche-design-system/components-(js/angular/react/vue)` version to the newly
    published RC.
-2. Run `npm run dev:{angular/astro/next-js/react-router/react/vanilla-js/vue}` and check if everything works.
+2. Run `npm run build:{angular/astro/next-js/react-router/react/vanilla-js/vue}`
+3. Run `npm run preview:{angular/astro/next-js/react-router/react/vanilla-js/vue}` and check if everything works.
 
 ## Stable Release
 
