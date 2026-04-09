@@ -52,7 +52,7 @@
     "ag-grid-vue3": "35.2.1",
     "local-web-server": "^5.4.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-static-copy": "^3.4.0",
+    "vite-plugin-static-copy": "^4.0.1",
     "vue-tsc": "3.1.1"
   },
   "peerDependencies": {

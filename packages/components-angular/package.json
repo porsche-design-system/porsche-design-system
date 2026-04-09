@@ -79,7 +79,9 @@
     "concurrently": "*",
     "tailwindcss": "*",
     "postcss": "*",
-    "@tailwindcss/postcss": "*"
+    "@tailwindcss/postcss": "*",
+    "vitest": "*",
+    "vite": "*"
   },
   "volta": {
     "extends": "../../package.json"
