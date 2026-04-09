@@ -271,9 +271,7 @@
     "postinstall-postinstall": "^2.1.0"
   },
   "resolutions": {
-    "**/vite": "^8.0.8",
     "**/vite/rollup": "^4.52.4",
-    "**/vitest": "^4.1.4",
     "**/workbox-build/rollup": "^4.52.4"
   },
   "volta": {
