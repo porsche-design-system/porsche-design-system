@@ -104,6 +104,7 @@ describe('package.json files', () => {
   for (const packageName of packageNames) {
     test(
       `should have correct entrypoints for "${packageName}"`,
+      { timeout: 30000 },
       async () => {
         const pathName = path
           .resolve(nodeRequire.resolve(packageName), '../package.json')
@@ -193,8 +194,7 @@ describe('package.json files', () => {
         }
 
         expect(relevantProblems).toHaveLength(0);
-      },
-      { timeout: 30000 }
+      }
     );
   }
 });
