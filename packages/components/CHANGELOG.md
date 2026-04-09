@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.34.0] - 2026-04-09
+
+## [3.34.0-rc.0] - 2026-04-01
+
+### Added
+
+- `Segmented Control`: `noWrap` property to render items inline with optional scroller
+  ([#4244](https://github.com/porsche-design-system/porsche-design-system/pull/4244))
+
 ### Fixed
 
 - `Link Pure`: focus border of slotted anchor 
