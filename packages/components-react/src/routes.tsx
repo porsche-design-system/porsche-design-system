@@ -407,6 +407,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.MultiSelectExampleDynamicPage />,
   },
   {
+    name: 'Multi-Select Example Dynamic Optgroup',
+    path: '/multi-select-example-dynamic-optgroup',
+    element: <fromExamples.MultiSelectExampleDynamicOptgroupPage />,
+  },
+  {
     name: 'Multi-Select Example Form',
     path: '/multi-select-example-form',
     element: <fromExamples.MultiSelectExampleFormPage />,
@@ -485,6 +490,11 @@ export const routes: RouteType[] = [
     name: 'Select Example Dynamic',
     path: '/select-example-dynamic',
     element: <fromExamples.SelectExampleDynamicPage />,
+  },
+  {
+    name: 'Select Example Dynamic Optgroup',
+    path: '/select-example-dynamic-optgroup',
+    element: <fromExamples.SelectExampleDynamicOptgroupPage />,
   },
   {
     name: 'Select Example Form',

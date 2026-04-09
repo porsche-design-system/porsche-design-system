@@ -2900,6 +2900,58 @@ test.describe('optgroups', () => {
     await expect(host).toHaveJSProperty('value', 'new');
     await expect(buttonElement).toHaveText('new');
   });
+
+  test('should correctly reflect value when options inside optgroup change dynamically', async ({ page }) => {
+    await initSelect(page, {
+      props: { name: 'options', value: 'a' },
+      options: {
+        includeOptgroups: true,
+        values: [[{ value: 'a' }, { value: 'b' }, { value: 'c' }]],
+      },
+    });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const optgroups = getSelectOptgroups(page);
+
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
+
+    // Simulate dynamic option addition (like React re-rendering with an extra option)
+    await addOptionToOptgroup(page, '0', 'd', 'd');
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
+    expect(await optgroups.nth(0).locator('p-select-option').count()).toBe(4);
+
+    // Change value to 'b'
+    await setValue(page, 'b');
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'b');
+    await expect(buttonElement.locator('span').first()).toHaveText('b');
+
+    // Remove the dynamically added option (simulating React re-render with fewer options)
+    await host.evaluate((el) => {
+      const optgroup = el.querySelector('p-optgroup[label="0"]');
+      if (optgroup?.lastElementChild) {
+        optgroup.removeChild(optgroup.lastElementChild);
+      }
+    });
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'b');
+    await expect(buttonElement.locator('span').first()).toHaveText('b');
+    expect(await optgroups.nth(0).locator('p-select-option').count()).toBe(3);
+
+    // Change value back to 'a'
+    await setValue(page, 'a');
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
+  });
 });
 
 test.describe('form', () => {
