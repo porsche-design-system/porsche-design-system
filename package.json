@@ -270,10 +270,6 @@
     "patch-package": "^8.0.1",
     "postinstall-postinstall": "^2.1.0"
   },
-  "resolutions": {
-    "**/vite/rollup": "^4.52.4",
-    "**/workbox-build/rollup": "^4.52.4"
-  },
   "volta": {
     "node": "24.13.0",
     "yarn": "1.22.22"
