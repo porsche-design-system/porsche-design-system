@@ -46,7 +46,7 @@
     "@tsconfig/node18": "^18.2.4",
     "@vitejs/plugin-vue": "^6.0.5",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
-    "@vue/tsconfig": "0.8.1",
+    "@vue/tsconfig": "0.9.1",
     "ag-grid-community": "35.2.1",
     "ag-grid-enterprise": "35.2.1",
     "ag-grid-vue3": "35.2.1",
