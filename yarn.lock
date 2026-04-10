@@ -540,7 +540,7 @@
     js-tokens "^4.0.0"
     picocolors "^1.0.0"
 
-"@babel/code-frame@^7.26.2", "@babel/code-frame@^7.27.1":
+"@babel/code-frame@^7.27.1":
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.27.1.tgz#200f715e66d52a23b221a9435534a91cc13ad5be"
   integrity sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==
@@ -18898,10 +18898,10 @@ next@^16.2.3:
     "@next/swc-win32-x64-msvc" "16.2.3"
     sharp "^0.34.5"
 
-ng-packagr@^21.1.0:
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-21.1.0.tgz#9e3eca9a4fe2d5fce1d14069110c6f9146e5048e"
-  integrity sha512-UlQOhH8DRlaYsBGQMjOYvg70J70hD4i/55NV9vAsYvsxEskmp86xjUtZgEeVKeoLq8tYMjMXDgaYjYde153sZQ==
+ng-packagr@^21.2.2:
+  version "21.2.2"
+  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-21.2.2.tgz#35abb97b0bedebf918a98977e186ee71e0920cfc"
+  integrity sha512-VO0y7RU3Ik8E14QdrryVyVbTAyqO2MK9W9GrG4e/4N8+ti+DWiBSQmw0tIhnV67lEjQwCccPA3ZBoIn3B1vJ1Q==
   dependencies:
     "@ampproject/remapping" "^2.3.0"
     "@rollup/plugin-json" "^6.1.0"
@@ -18920,7 +18920,7 @@ ng-packagr@^21.1.0:
     ora "^9.0.0"
     piscina "^5.0.0"
     postcss "^8.4.47"
-    rollup-plugin-dts "^6.2.0"
+    rollup-plugin-dts "^6.4.0"
     rxjs "^7.8.1"
     sass "^1.81.0"
     tinyglobby "^0.2.12"
@@ -21875,14 +21875,17 @@ rollup-plugin-copy@^3.5.0:
     globby "10.0.1"
     is-plain-object "^3.0.0"
 
-rollup-plugin-dts@^6.2.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-dts/-/rollup-plugin-dts-6.2.1.tgz#120a40734f740115da44931d7915a370fe420701"
-  integrity sha512-sR3CxYUl7i2CHa0O7bA45mCrgADyAQ0tVtGSqi3yvH28M+eg1+g5d7kQ9hLvEz5dorK3XVsH5L2jwHLQf72DzA==
+rollup-plugin-dts@^6.4.0:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-dts/-/rollup-plugin-dts-6.4.1.tgz#9bec10f1b796ed022f76ff799429123c33aa88b7"
+  integrity sha512-l//F3Zf7ID5GoOfLfD8kroBjQKEKpy1qfhtAdnpibFZMffPaylrg1CoDC2vGkPeTeyxUe4bVFCln2EFuL7IGGg==
   dependencies:
-    magic-string "^0.30.17"
+    "@jridgewell/remapping" "^2.3.5"
+    "@jridgewell/sourcemap-codec" "^1.5.5"
+    convert-source-map "^2.0.0"
+    magic-string "^0.30.21"
   optionalDependencies:
-    "@babel/code-frame" "^7.26.2"
+    "@babel/code-frame" "^7.29.0"
 
 rollup-plugin-generate-package-json@^3.2.0:
   version "3.2.0"
