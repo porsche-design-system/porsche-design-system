@@ -35,7 +35,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.4",
+    "@floating-ui/dom": "^1.7.6",
     "@porsche-design-system/crest": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
