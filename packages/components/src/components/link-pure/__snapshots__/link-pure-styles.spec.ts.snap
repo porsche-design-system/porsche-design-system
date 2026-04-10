@@ -529,8 +529,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   content: "" !important;
   position: fixed !important;
   inset-block: -2px !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   inset-inline: -4px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -980,8 +980,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   content: "" !important;
   position: fixed !important;
   inset-block: -2px !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   inset-inline: -2px !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
