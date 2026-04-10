@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@octokit/core": "^7.0.5",
-    "change-case-legacy": "npm:change-case@^4.1.2",
+    "change-case": "^5.4.4",
     "@types/tinycolor2": "^1.4.6",
     "tinycolor2": "^1.6.0"
   },
