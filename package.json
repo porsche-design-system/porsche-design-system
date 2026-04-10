@@ -259,7 +259,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "@tailwindcss/vite": "^4.2.2",
     "tsup": "^8.5.1",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.8",
     "vitest": "^4.1.4",
