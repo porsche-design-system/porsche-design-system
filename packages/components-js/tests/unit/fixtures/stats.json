@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 81886,
-    "gzipSize": 25562
+    "gzipSize": 25566
   },
   {
     "chunkShortName": "modal",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 47933,
-    "gzipSize": 17051
+    "size": 47757,
+    "gzipSize": 17041
   },
   {
     "chunkShortName": "optgroup",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 26522,
-    "gzipSize": 10290
+    "size": 26350,
+    "gzipSize": 10272
   },
   {
     "chunkShortName": "radio-group",
@@ -221,8 +221,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 46472,
-    "gzipSize": 16568
+    "size": 46298,
+    "gzipSize": 16548
   },
   {
     "chunkShortName": "sheet",
