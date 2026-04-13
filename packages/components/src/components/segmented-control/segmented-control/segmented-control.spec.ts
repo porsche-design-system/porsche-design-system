@@ -1,4 +1,5 @@
 import { vi } from 'vitest';
+import * as utils from '../../../utils';
 import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { SegmentedControl } from './segmented-control';
@@ -149,6 +150,29 @@ describe('componentDidLoad', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
     expect(setFormValueSpy).toHaveBeenCalledWith(value);
+  });
+});
+
+describe('noWrap prop', () => {
+  it('should default noWrap to false', () => {
+    const component = initComponent();
+    expect(component.noWrap).toBe(false);
+  });
+
+  it('should call getPrefixedTagNames when noWrap is true', () => {
+    const spy = vi.spyOn(utils, 'getPrefixedTagNames');
+    const component = initComponent();
+    component.noWrap = true;
+    component.render();
+    expect(spy).toHaveBeenCalledWith(component.host);
+  });
+
+  it('should not call getPrefixedTagNames when noWrap is false', () => {
+    const spy = vi.spyOn(utils, 'getPrefixedTagNames');
+    const component = initComponent();
+    component.noWrap = false;
+    component.render();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 

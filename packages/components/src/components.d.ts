@@ -2767,6 +2767,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+         */
+        "noWrap"?: boolean;
+        /**
           * A boolean value that specifies a selection must be made from the group before the form can be submitted.
          */
         "required"?: boolean;
@@ -7686,6 +7690,10 @@ declare namespace LocalJSX {
           * The name of the segmented-control.
          */
         "name"?: string;
+        /**
+          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+         */
+        "noWrap"?: boolean;
         /**
           * Emitted when the segmented-control has lost focus.
          */

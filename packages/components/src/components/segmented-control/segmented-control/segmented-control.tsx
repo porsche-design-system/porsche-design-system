@@ -16,6 +16,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getPrefixedTagNames,
   hasPropValueChanged,
   observeChildren,
   THEMES,
@@ -59,6 +60,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  noWrap: AllowedTypes.boolean,
 };
 
 /**
@@ -121,6 +123,9 @@ export class SegmentedControl {
 
   /** Disables the segmented-control. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
+
+  /** If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead. */
+  @Prop() public noWrap?: boolean = false;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -203,18 +208,20 @@ export class SegmentedControl {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
-    const { minWidth, maxWidth } = getItemWidths(this.host, this.compact);
+    const itemWidths = this.noWrap ? undefined : getItemWidths(this.host, this.compact);
+    const PrefixedTagNames = !this.noWrap ? undefined : getPrefixedTagNames(this.host);
 
     attachComponentCss(
       this.host,
       getComponentCss,
-      minWidth,
-      maxWidth,
+      itemWidths?.minWidth,
+      itemWidths?.maxWidth,
       this.columns,
       this.disabled,
       this.hideLabel,
       this.state,
-      this.theme
+      this.theme,
+      this.noWrap
     );
     syncSegmentedControlItemsProps(
       this.host,
@@ -243,7 +250,13 @@ export class SegmentedControl {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <slot />
+        {this.noWrap ? (
+          <PrefixedTagNames.pScroller theme={this.theme} class="scroller">
+            <slot />
+          </PrefixedTagNames.pScroller>
+        ) : (
+          <slot />
+        )}
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </fieldset>
     );

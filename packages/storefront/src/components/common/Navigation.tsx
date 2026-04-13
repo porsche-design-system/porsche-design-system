@@ -9,9 +9,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
-import { PDSVersionGroup } from '@/models/pdsVersion';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
   acc[section] = false;
@@ -85,7 +85,7 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
-          © 2025 Dr. Ing. h.c. F. Porsche AG.
+          © 2026 Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>

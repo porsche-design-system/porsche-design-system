@@ -18,13 +18,14 @@ export const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
 
 export const getComponentCss = (
-  minWidth: number | string,
-  maxWidth: number,
+  minWidth: number | string | undefined,
+  maxWidth: number | undefined,
   columns: BreakpointCustomizable<SegmentedControlColumns>,
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: SegmentedControlState,
-  theme: Theme
+  theme: Theme,
+  noWrap: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -40,12 +41,14 @@ export const getComponentCss = (
       'slot:not([name])': {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
-        ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
-          gridTemplateColumns:
-            col === 'auto'
-              ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
-              : `repeat(${col}, minmax(0, 1fr))`,
-        })),
+        ...(noWrap
+          ? { gridAutoFlow: 'column', gridAutoColumns: 'max-content' }
+          : buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
+              gridTemplateColumns:
+                col === 'auto'
+                  ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
+                  : `repeat(${col}, minmax(0, 1fr))`,
+            }))),
         gap: '6px',
       },
     },
@@ -63,5 +66,10 @@ export const getComponentCss = (
     }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...(noWrap && {
+      scroller: {
+        margin: `-${spacingStaticXSmall} 0`,
+      },
+    }),
   });
 };

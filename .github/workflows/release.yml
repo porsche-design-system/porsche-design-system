@@ -9,10 +9,10 @@ on:
         type: string
     secrets:
       github-token:
-        description: 'github token for container registry'
+        description: 'github token for container registry.'
         required: true
-      npmjs-registry-token:
-        description: 'npm registry token for npmjs'
+      npm-token:
+        description: 'npm access token for publishing to npmjs.org.'
         required: true
       gh-deploy-key-storefront:
         description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
@@ -23,6 +23,10 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   check-publication-status:
@@ -80,9 +84,9 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -100,7 +104,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-angular:
     name: 'NPM (Components Angular)'
@@ -109,9 +113,9 @@ jobs:
       - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -129,7 +133,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-react:
     name: 'NPM (Components React)'
@@ -138,9 +142,9 @@ jobs:
       - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -158,7 +162,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-vue:
     name: 'NPM (Components Vue)'
@@ -167,9 +171,9 @@ jobs:
       - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -187,8 +191,8 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     needs: check-publication-status

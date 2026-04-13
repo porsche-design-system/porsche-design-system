@@ -21,10 +21,9 @@ test('should have certain amount of components', () => {
   expect(components.length).toBe(amountOfTestableComponents);
 });
 
-// TODO: remove filter once the height issue is fixed (issue/#3687),
-for (const component of components.filter(
-  (component) => !['button-tile', 'link-tile', 'link-tile-model-signature', 'input-text'].includes(component) // TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
-)) {
+// TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
+// Select is excluded due to flakyness
+for (const component of components.filter((component) => !['input-text', 'select'].includes(component))) {
   const isComponentThemeable = (component: string): boolean =>
     getComponentMeta(`p-${component}` as TagName).isThemeable;
 

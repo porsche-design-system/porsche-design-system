@@ -30,16 +30,12 @@ version can be released.
 
 1. Go to according sample integration projects:
 
-- https://github.com/porsche-design-system/sample-integration-angular
-- https://github.com/porsche-design-system/sample-integration-react
-- https://github.com/porsche-design-system/sample-integration-nextjs
-- https://github.com/porsche-design-system/sample-integration-vanillajs
+- https://github.com/porsche-design-system/examples/frameworks/{angular/astro/next-js/react-router/react/vanilla-js/vue}/
 
 1. Open `package.json` and change `@porsche-design-system/components-(js/angular/react/vue)` version to the newly
    published RC.
-2. Run `yarn`
-3. Run `yarn build`
-4. Run `yarn start` and check if everything works.
+2. Run `npm run build:{angular/astro/next-js/react-router/react/vanilla-js/vue}`
+3. Run `npm run preview:{angular/astro/next-js/react-router/react/vanilla-js/vue}` and check if everything works.
 
 ## Stable Release
 
