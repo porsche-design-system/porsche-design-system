@@ -1,5 +1,6 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import { getTagNameWithoutPrefix, throwException } from '..';
+import { throwException } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 import { getDirectChildHTMLElement } from '../dom/getDirectChildHTMLElement';
 
 // prettier-ignore

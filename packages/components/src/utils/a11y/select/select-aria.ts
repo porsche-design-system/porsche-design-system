@@ -82,7 +82,7 @@ export const getListAriaAttributes = (
 export const getOptionAriaAttributes = (
   isSelected: boolean,
   isDisabled: boolean,
-  isHidden: boolean,
+  isHidden: HTMLElement['hidden'],
   hasValue: boolean
 ): AriaAttributes => ({
   ...(!isHidden && { 'aria-selected': isSelected ? 'true' : 'false' }),
