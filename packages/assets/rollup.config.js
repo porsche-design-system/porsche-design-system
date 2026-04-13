@@ -66,6 +66,6 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
 ];
