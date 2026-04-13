@@ -1,7 +1,7 @@
 import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const FlyoutExamplePage = (): JSX.Element => {
+export const FlyoutExamplePage = () => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsFlyoutOpen(true);

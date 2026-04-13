@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const PinCodeExampleFormPage = (): JSX.Element => {
+export const PinCodeExampleFormPage = () => {
   const [form, setForm] = useState({ myPinCode: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

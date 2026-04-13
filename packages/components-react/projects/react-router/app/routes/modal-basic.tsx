@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 
-const ModalBasicPage = (): JSX.Element => {
+const ModalBasicPage = () => {
   return (
     <>
       <PModal open={true}>

@@ -3,7 +3,7 @@ import {
   componentsReady,
   IconName,
   PorscheDesignSystemModule,
-  TabsUpdateEvent,
+  TabsUpdateEventDetail,
   ToastManager,
 } from '../../../projects/angular-wrapper/src/public-api';
 
@@ -21,7 +21,7 @@ it('should expose ToastManager', () => {
 
 it('should expose types from root', () => {
   const icon: IconName = '360';
-  const event: TabsUpdateEvent = { activeTabIndex: 1 };
+  const event: TabsUpdateEventDetail = { activeTabIndex: 1 };
   expect(icon).toBe('360');
   expect(event).toEqual({ activeTabIndex: 1 });
 });

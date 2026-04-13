@@ -1,7 +1,7 @@
 import { PButton, PCheckbox, PFlyout, PHeading, PText, PTextarea } from '@porsche-design-system/components-react';
 import { type FormEvent, useCallback, useState } from 'react';
 
-export const FlyoutExampleFormPage = (): JSX.Element => {
+export const FlyoutExampleFormPage = () => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useState('none');
   const [textareaValue, setTextareaValue] = useState('none');

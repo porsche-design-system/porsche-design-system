@@ -1,6 +1,6 @@
 import { camelCase } from 'change-case';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import * as path from 'path';
 
 const INTERNAL_TAG_NAMES = ['p-toast-item'];

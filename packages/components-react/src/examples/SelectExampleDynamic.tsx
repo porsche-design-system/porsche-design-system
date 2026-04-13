@@ -9,7 +9,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const SelectExampleDynamicPage = (): JSX.Element => {
+export const SelectExampleDynamicPage = () => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('1');
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);

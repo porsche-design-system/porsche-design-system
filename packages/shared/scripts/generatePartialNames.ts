@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import path from 'path';
 
 const generateTagNamesWithChunk = (): void => {

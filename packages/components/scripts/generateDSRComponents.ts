@@ -4,7 +4,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { kebabCase, pascalCase } from 'change-case';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import * as path from 'path';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];

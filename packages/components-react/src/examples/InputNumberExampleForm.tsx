@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const InputNumberExampleFormPage = (): JSX.Element => {
+export const InputNumberExampleFormPage = () => {
   const [form, setForm] = useState({ myInputNumber: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

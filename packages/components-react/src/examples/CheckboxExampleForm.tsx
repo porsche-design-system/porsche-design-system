@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const CheckboxExampleFormPage = (): JSX.Element => {
+export const CheckboxExampleFormPage = () => {
   const [form, setForm] = useState({ myCheckbox: false });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

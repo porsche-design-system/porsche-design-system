@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { Toast } from '../../components';
 
-const ToastBasicPage = (): JSX.Element => {
+const ToastBasicPage = () => {
   return (
     <>
       <div className="visualize-grid">

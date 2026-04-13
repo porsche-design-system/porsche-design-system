@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner } from '@porsche-design-system/components-react/ssr';
 
-const BannerBasicPage = (): JSX.Element => {
+const BannerBasicPage = () => {
   return (
     <>
       <div className="visualize-grid">

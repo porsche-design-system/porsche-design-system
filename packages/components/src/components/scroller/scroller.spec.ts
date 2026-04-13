@@ -32,7 +32,8 @@ describe('initIntersectionObserver()', () => {
     mockDisconnect = vi.fn();
 
     // IntersectionObserver isn't available in jsdom
-    window.IntersectionObserver = vi.fn().mockImplementation((callback) => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    window.IntersectionObserver = vi.fn().mockImplementation(function (callback: IntersectionObserverCallback) {
       intersectionCallback = callback;
       return {
         observe: mockObserve,

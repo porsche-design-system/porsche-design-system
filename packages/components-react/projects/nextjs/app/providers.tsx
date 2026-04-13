@@ -1,9 +1,9 @@
 'use client';
 
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
-import { type JSX, type PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
-export const Providers = ({ children }: PropsWithChildren<{}>): JSX.Element => {
+export const Providers = ({ children }: PropsWithChildren) => {
   return (
     <>
       <PorscheDesignSystemProvider cdn="auto" children={children} />

@@ -38,7 +38,7 @@
   },
   "peerDependencies": {
     "change-case": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "prettier": "*",
     "publint": "*",
     "svgo": "*",

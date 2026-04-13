@@ -8,10 +8,10 @@
     "projects/vue-wrapper/src/jsdom-polyfill/index.ts"
   ],
   "compilerOptions": {
+    "rootDir": "projects/vue-wrapper/src",
     "outDir": "dist/vue-wrapper",
     "declaration": true,
     "declarationDir": "dist/vue-wrapper/esm",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./projects/vue-wrapper/src/public-api.ts"]
     },

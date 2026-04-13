@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { type AccordionUpdateEventDetail, PAccordion, PButton } from '@porsche-design-system/components-react';
 import {
   borderRadiusLarge,
@@ -37,7 +38,6 @@ import {
   themeLightStateHover,
 } from '@porsche-design-system/components-react/emotion';
 import { useCallback, useState } from 'react';
-import styled from '@emotion/styled';
 
 // VisualizeGrid
 const VisualizeGrid = styled.div({
@@ -323,7 +323,7 @@ const NarrowContentHalfRight = styled.div({
 type Props = {
   visualizeGrid: boolean;
 };
-export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
+export const GridLayout = ({ visualizeGrid = true }: Props) => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 

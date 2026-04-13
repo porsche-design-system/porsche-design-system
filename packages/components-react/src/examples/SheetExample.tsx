@@ -1,7 +1,7 @@
 import { PButton, PHeading, PSheet, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const SheetExamplePage = (): JSX.Element => {
+export const SheetExamplePage = () => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsSheetOpen(true);

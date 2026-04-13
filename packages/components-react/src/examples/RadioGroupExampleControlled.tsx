@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const RadioGroupExampleControlledPage = (): JSX.Element => {
+export const RadioGroupExampleControlledPage = () => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('a');
 
   const onChange = (e: CustomEvent<RadioGroupChangeEventDetail> | FormEvent<{}>) => {

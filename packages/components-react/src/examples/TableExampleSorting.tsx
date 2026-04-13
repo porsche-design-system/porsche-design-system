@@ -46,7 +46,7 @@ const dataSorting: DataSorting[] = [
   },
 ];
 
-export const TableExampleSortingPage = (): JSX.Element => {
+export const TableExampleSortingPage = () => {
   const [head, setHead] = useState(headSorting);
   const [data, setData] = useState(dataSorting);
 

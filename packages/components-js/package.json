@@ -104,16 +104,15 @@
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.2",
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "35.0.0",
-    "ag-grid-enterprise": "35.0.0",
-    "devtools-protocol": "^0.0.1528500",
-    "jsdom": "^24.1.0",
+    "ag-grid-community": "35.2.1",
+    "ag-grid-enterprise": "35.2.1",
+    "devtools-protocol": "^0.0.1612613",
+    "jsdom": "^29.0.2",
     "local-web-server": "^5.4.0",
     "mime": "^4.1.0",
-    "terser-webpack-plugin": "^5.3.14",
-    "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^6.0.1",
-    "globby-legacy": "npm:globby@^11.0.4"
+    "terser-webpack-plugin": "^5.4.0",
+    "webpack-bundle-analyzer": "^5.3.0",
+    "webpack-cli": "^7.0.2"
   },
   "peerDependencies": {
     "@playwright/test": "*",
@@ -121,7 +120,7 @@
     "ag-grid-react": ">= 35.0.0 <36.0.0",
     "change-case": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "sass": "*",
     "tailwindcss": "*",
     "tsx": "*",

@@ -1,7 +1,7 @@
 import { PButton, PInputTime, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const InputTimeExamplePage = (): JSX.Element => {
+export const InputTimeExamplePage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('');
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputUrlControlledExamplePage = (): JSX.Element => {
+export const InputUrlControlledExamplePage = () => {
   const [value, setValue] = useState<PInputUrlProps['value']>('');
 
   const onInput = (e: CustomEvent<InputUrlInputEventDetail>) => {
