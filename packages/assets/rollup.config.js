@@ -66,6 +66,14 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
+    onwarn(warning, warn) {
+      // Suppress circular dependency warnings that originate entirely within node_modules
+      // (e.g. union, spdy-transport, readable-stream used by http-server)
+      if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.every((id) => id.includes('node_modules'))) {
+        return;
+      }
+      warn(warning);
+    },
     plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
 ];
