@@ -16,6 +16,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getPrefixedTagNames,
   hasPropValueChanged,
   observeChildren,
   unobserveChildren,
@@ -49,6 +50,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  noWrap: AllowedTypes.boolean,
 };
 
 /**
@@ -103,6 +105,9 @@ export class SegmentedControl {
 
   /** Disables the segmented-control. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
+
+  /** If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead. */
+  @Prop() public noWrap?: boolean = false;
 
   /** Emitted when the segmented-control has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
@@ -174,17 +179,19 @@ export class SegmentedControl {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const { minWidth, maxWidth } = getItemWidths(this.host, this.compact);
+    const itemWidths = this.noWrap ? undefined : getItemWidths(this.host, this.compact);
+    const PrefixedTagNames = !this.noWrap ? undefined : getPrefixedTagNames(this.host);
 
     attachComponentCss(
       this.host,
       getComponentCss,
-      minWidth,
-      maxWidth,
+      itemWidths?.minWidth,
+      itemWidths?.maxWidth,
       this.columns,
       this.disabled,
       this.hideLabel,
-      this.state
+      this.state,
+      this.noWrap
     );
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.state, this.message, this.compact);
 
@@ -204,7 +211,13 @@ export class SegmentedControl {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <slot />
+        {this.noWrap ? (
+          <PrefixedTagNames.pScroller class="scroller">
+            <slot />
+          </PrefixedTagNames.pScroller>
+        ) : (
+          <slot />
+        )}
         <StateMessage state={this.state} message={this.message} host={this.host} />
       </fieldset>
     );
