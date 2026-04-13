@@ -79,7 +79,7 @@ export default [
         baseContents: {
           main: 'styles-entry.js',
           module: 'esm/styles-entry.js',
-          types: 'styles-entry.d.ts',
+          types: 'src/styles-entry.d.ts',
           sideEffects: false,
         },
       }),

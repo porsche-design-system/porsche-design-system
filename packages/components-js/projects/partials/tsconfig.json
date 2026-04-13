@@ -2,7 +2,9 @@
   "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "node",
-    "jsx": "react-jsx"
+    "ignoreDeprecations": "6.0",
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
   "include": ["./src"]
 }

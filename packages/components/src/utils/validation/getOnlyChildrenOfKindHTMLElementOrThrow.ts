@@ -1,4 +1,5 @@
-import { getTagNameWithoutPrefix, throwException } from '..';
+import { throwException } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 import { getDirectChildHTMLElements } from '../dom';
 
 export function getOnlyChildrenOfKindHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(
