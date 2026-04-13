@@ -8,7 +8,17 @@ import shebang from 'rollup-plugin-preserve-shebang';
 import pkg from './package.json';
 
 const input = 'src/index.ts';
-const external = [...Object.keys(pkg.dependencies), 'fs', 'path'];
+const external = [
+  ...Object.keys(pkg.dependencies),
+  // JSS packages are hoisted from workspace root; keep them external at runtime
+  'jss',
+  'jss-preset-default',
+  'jss-plugin-sort-css-media-queries',
+  // change-case is ESM-only; must stay external to avoid CJS bundling issues
+  'change-case',
+  'fs',
+  'path',
+];
 
 export default [
   {
@@ -121,7 +131,14 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    // Suppress circular dependency warnings from third-party node_modules (e.g. union, spdy-transport).
+    // These are well-known, harmless internal cycles in bundled dependencies and are not actionable.
+    // Warnings from our own source files are still surfaced via the fallback to `warn(warning)`.
+    onwarn(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.some((id) => id.includes('node_modules'))) return;
+      warn(warning);
+    },
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
   {
     input: 'src/scripts/vrt/prepareVRTSnapshots.ts',
@@ -129,6 +146,11 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    // Same as above: suppress node_modules circular dependency noise for this bin bundle.
+    onwarn(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY' && warning.ids?.some((id) => id.includes('node_modules'))) return;
+      warn(warning);
+    },
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
 ];

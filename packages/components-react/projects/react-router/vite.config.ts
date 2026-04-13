@@ -1,7 +1,6 @@
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { Features } from "lightningcss"
 
 export default defineConfig(({ isSsrBuild }) => {
@@ -16,13 +15,12 @@ export default defineConfig(({ isSsrBuild }) => {
     define: {
       'process.browser': JSON.stringify(!isSsrBuild),
     },
+    resolve: {
+      tsconfigPaths: true,
+    },
     plugins: [
       tailwindcss(),
       reactRouter(),
-      tsconfigPaths({
-        // Only look for tsconfig in the current project
-        root: './',
-      }),
     ],
   };
 });

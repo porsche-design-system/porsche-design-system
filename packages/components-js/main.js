@@ -90,7 +90,7 @@ const updateRoute = async (opts) => {
 
     const scripts = app.getElementsByTagName('script');
     for (let i = 0; i < scripts.length; i++) {
-      eval(scripts[i].innerText); // execute scripts inserted via innerHTML
+      (0, eval)(scripts[i].innerText); // execute scripts inserted via innerHTML (indirect eval avoids bundler warnings)
     }
   }
 };

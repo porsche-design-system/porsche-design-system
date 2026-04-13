@@ -1,5 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, paramCaseToCamelCase, throwException } from '..';
+import { throwException } from '../log/logger';
+import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from '../tag-name';
+import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 import type { PrefixedTagNames } from '../tag-name';
 
 export const throwIfRootNodeIsNotOneOfKind = (element: HTMLElement, tagNames: TagName[]): void => {
