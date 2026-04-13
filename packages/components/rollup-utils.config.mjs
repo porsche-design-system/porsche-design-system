@@ -72,7 +72,7 @@ export default [
         baseContents: {
           main: 'utils-entry.js',
           module: 'esm/utils-entry.js',
-          types: 'utils-entry.d.ts',
+          types: 'src/utils-entry.d.ts',
           sideEffects: false,
         },
       }),

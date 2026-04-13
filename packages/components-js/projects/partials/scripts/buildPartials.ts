@@ -8,7 +8,8 @@ import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 
 const generateSharedCode = (): string => {
-  return `import type { Cdn, FormatWithCSP, FormatWithJS } from '../shared';
+  return `import type { JSX } from 'react';
+import type { Cdn, FormatWithCSP, FormatWithJS } from '../shared';
 import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
