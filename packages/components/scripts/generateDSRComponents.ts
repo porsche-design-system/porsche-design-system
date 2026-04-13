@@ -100,6 +100,7 @@ const generateDSRComponents = (): void => {
         .replace(
           /^/g,
           `import { Component } from 'react';
+import type { JSX } from 'react';
 import { minifyCss } from '../../minifyCss';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
