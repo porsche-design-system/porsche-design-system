@@ -14,7 +14,7 @@ export abstract class BaseComponent implements OnChanges {
 
   ngOnChanges(props: Record<string, { previousValue: any; currentValue: any; firstChange: boolean }>): void {
     for (const prop in props) {
-      this.el[prop] = props[prop].currentValue;
+      (this.el as Record<string, any>)[prop] = props[prop].currentValue;
     }
   }
 }

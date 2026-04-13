@@ -2,7 +2,10 @@ import { TAG_NAMES } from '@porsche-design-system/shared';
 import * as fs from 'fs';
 import { gzipSizeSync } from 'gzip-size';
 import * as path from 'path';
-import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
+import {
+  COMPONENT_CHUNKS_MANIFEST,
+  type ComponentChunkName,
+} from '../../../projects/components-wrapper/lib/chunksManifest';
 
 const indexJsFileCjs = require.resolve('@porsche-design-system/components-js');
 const indexJsFileEsm = path.resolve(indexJsFileCjs, '../../esm/index.mjs');

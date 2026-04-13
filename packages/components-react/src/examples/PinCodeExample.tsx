@@ -1,7 +1,7 @@
 import { PButton, PPinCode, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useCallback, useState } from 'react';
 
-export const PinCodeExamplePage = (): JSX.Element => {
+export const PinCodeExamplePage = () => {
   const [lastSubmittedValue, setLastSubmittedValue] = useState('none');
 
   const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {

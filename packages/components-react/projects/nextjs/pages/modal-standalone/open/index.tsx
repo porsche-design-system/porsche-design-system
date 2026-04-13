@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import ModalStandaloneLayout from './../layout';
 
-const ModalStandaloneOpenPage: NextPage = (): JSX.Element => {
+const ModalStandaloneOpenPage: NextPage = () => {
   const router = useRouter();
   const onDismiss = useCallback(() => {
     router.push('/modal-standalone', { scroll: false });

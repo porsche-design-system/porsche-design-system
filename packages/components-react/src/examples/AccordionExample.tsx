@@ -1,7 +1,7 @@
 import { type AccordionUpdateEventDetail, PAccordion, PHeading, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const AccordionExamplePage = (): JSX.Element => {
+export const AccordionExamplePage = () => {
   const [isOpen1, setIsOpen1] = useState<boolean>(false);
   const [isOpen2, setIsOpen2] = useState<boolean>(false);
 

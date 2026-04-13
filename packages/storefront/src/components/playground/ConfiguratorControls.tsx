@@ -177,7 +177,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
       />
     ),
     <ConfigureColorScheme
-      style={storyState.properties?.style ?? {}}
+      style={(storyState.properties?.style as Record<string, string>) ?? {}}
       handleUpdateColorScheme={handleUpdateColorScheme}
     />,
   ];

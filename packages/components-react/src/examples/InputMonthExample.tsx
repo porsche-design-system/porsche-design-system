@@ -1,7 +1,7 @@
 import { PButton, PInputMonth, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const InputMonthExamplePage = (): JSX.Element => {
+export const InputMonthExamplePage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('');
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

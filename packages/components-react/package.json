@@ -33,31 +33,31 @@
   "dependencies": {
     "@porsche-design-system/components-react": "4.0.0-rc.1",
     "react-imask": "^7.6.1",
-    "react-router-dom": "^7.9.4",
+    "react-router-dom": "^7.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "ag-grid-community": "35.0.0",
-    "ag-grid-enterprise": "35.0.0",
-    "ag-grid-react": "35.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "ag-grid-community": "35.2.1",
+    "ag-grid-enterprise": "35.2.1",
+    "ag-grid-react": "35.2.1",
     "local-web-server": "^5.4.0",
-    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-react": "^6.0.1",
     "vite-plugin-html": "^3.2.2"
   },
   "peerDependencies": {
     "@playwright/test": "*",
     "change-case": "*",
     "concurrently": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "vite": "*",
     "typescript": "*",
     "@tailwindcss/vite": "*"

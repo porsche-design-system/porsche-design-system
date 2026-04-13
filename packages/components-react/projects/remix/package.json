@@ -22,19 +22,19 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "4.0.0-rc.1",
-    "@remix-run/node": "^2.17.1",
-    "@remix-run/react": "^2.17.1",
-    "@remix-run/serve": "^2.17.1",
-    "@remix-run/server-runtime": "^2.17.1",
-    "isbot": "^5.1.31",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "@remix-run/node": "^2.17.4",
+    "@remix-run/react": "^2.17.4",
+    "@remix-run/serve": "^2.17.4",
+    "@remix-run/server-runtime": "^2.17.4",
+    "isbot": "^5.1.37",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^2.17.1",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
+    "@remix-run/dev": "^2.17.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "binode": "^1.0.5",
     "cross-env": "^10.1.0"
   },

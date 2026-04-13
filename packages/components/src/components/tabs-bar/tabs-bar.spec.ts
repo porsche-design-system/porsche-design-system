@@ -48,11 +48,10 @@ describe('defineTabs()', () => {
 
 describe('slotchange listener', () => {
   beforeEach(() => {
-    global.ResizeObserver = vi.fn().mockImplementation(() => ({
-      observe: vi.fn(),
-      disconnect: vi.fn(),
-      unobserve: vi.fn(),
-    }));
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    global.ResizeObserver = vi.fn().mockImplementation(function () {
+      return { observe: vi.fn(), disconnect: vi.fn(), unobserve: vi.fn() };
+    });
   });
 
   const initComponentWithSlot = (
@@ -198,7 +197,8 @@ describe('resizeObserver', () => {
   const mockObserve = vi.fn();
 
   beforeEach(() => {
-    global.ResizeObserver = vi.fn().mockImplementation((callback: ResizeObserverCallback) => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    global.ResizeObserver = vi.fn().mockImplementation(function (callback: ResizeObserverCallback) {
       resizeCallback = callback;
       return { observe: mockObserve, disconnect: mockDisconnect, unobserve: vi.fn() };
     });

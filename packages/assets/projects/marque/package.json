@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "change-case": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "tsup": "*",
     "tsx": "*",
     "typescript": "*"

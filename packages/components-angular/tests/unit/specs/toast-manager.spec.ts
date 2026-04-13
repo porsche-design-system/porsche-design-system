@@ -1,6 +1,3 @@
-/**
- * @vitest-environment jsdom
- */
 import { describe, expect, it, vi } from 'vitest';
 import type { ToastMessage } from '../../../projects/angular-wrapper/src/public-api';
 import { ToastManager } from '../../../projects/angular-wrapper/src/toast-manager';

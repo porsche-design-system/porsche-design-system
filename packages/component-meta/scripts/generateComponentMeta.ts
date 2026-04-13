@@ -3,7 +3,7 @@ import type { PropOptions } from '@porsche-design-system/components/dist/types/s
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import * as path from 'path';
 import type { ComponentMeta, ComponentsMeta, CssVariableMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';

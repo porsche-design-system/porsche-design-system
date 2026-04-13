@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 

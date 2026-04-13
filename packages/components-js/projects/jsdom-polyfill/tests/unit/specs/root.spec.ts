@@ -3,7 +3,7 @@ import * as path from 'path';
 import { componentsReady } from '@porsche-design-system/components-js';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { vi } from 'vitest';
 import { WHITELISTED_TAG_NAMES, tagNameMarkup } from '../helper';
 

@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-const BannerPrefixedPage = (): JSX.Element => {
+const BannerPrefixedPage = () => {
   return (
     <>
       <div className="visualize-grid">
