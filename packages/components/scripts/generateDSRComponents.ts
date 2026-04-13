@@ -95,7 +95,7 @@ const generateDSRComponents = (): void => {
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
-        .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
+        .replace(/.*= .*getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
         .replace(
           /^/g,
