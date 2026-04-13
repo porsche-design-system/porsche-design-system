@@ -1000,6 +1000,15 @@ and migration steps.
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
+## [3.34.0] - 2026-04-09
+
+## [3.34.0-rc.0] - 2026-04-01
+
+### Added
+
+- `Segmented Control`: `noWrap` property to render items inline with optional scroller
+  ([#4244](https://github.com/porsche-design-system/porsche-design-system/pull/4244))
+
 ## [3.33.0] - 2026-03-09
 
 ## [3.33.0-rc.0] - 2026-03-04

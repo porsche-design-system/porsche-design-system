@@ -712,6 +712,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "label": "string",
   "message": "string",
   "name": "string",
+  "noWrap": "boolean",
   "required": "boolean",
   "state": "oneOf",
   "value": "oneOf",
