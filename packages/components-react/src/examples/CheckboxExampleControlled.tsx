@@ -1,7 +1,7 @@
 import { type CheckboxChangeEventDetail, PCheckbox, PText } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const CheckboxExampleControlledPage = (): JSX.Element => {
+export const CheckboxExampleControlledPage = () => {
   const [state, setState] = useState({
     'some-name': true,
   });

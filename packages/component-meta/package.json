@@ -22,7 +22,7 @@
   },
   "peerDependencies": {
     "change-case": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "tsx": "*",
     "typescript": "*",
     "vitest": "*"

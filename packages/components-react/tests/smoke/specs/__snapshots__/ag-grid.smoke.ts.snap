@@ -3,6 +3,14 @@
 exports[`style package content > should match content 1`] = `
 {
   "pdsTheme": _ThemeImpl {
+    "params": {
+      "overridePrefix": undefined,
+      "themeLogger": {
+        "error": [Function],
+        "preInitErr": [Function],
+        "warn": [Function],
+      },
+    },
     "parts": [
       PartImpl {
         "css": undefined,
@@ -28,6 +36,12 @@ exports[`style package content > should match content 1`] = `
             },
             "cellFontFamily": {
               "ref": "fontFamily",
+            },
+            "cellFontSize": {
+              "ref": "dataFontSize",
+            },
+            "cellFontWeight": {
+              "ref": "fontWeight",
             },
             "cellHorizontalPadding": {
               "calc": "spacing * 2 * cellHorizontalPaddingScale",
@@ -73,23 +87,17 @@ exports[`style package content > should match content 1`] = `
               "mix": 0.05,
               "ref": "accentColor",
             },
+            "columnPanelApplyButtonBackgroundColor": {
+              "ref": "accentColor",
+            },
+            "columnPanelApplyButtonColor": {
+              "ref": "backgroundColor",
+            },
             "columnSelectIndentSize": {
               "ref": "iconSize",
             },
             "dataBackgroundColor": {
               "ref": "backgroundColor",
-            },
-            "dataFontSize": {
-              "ref": "fontSize",
-            },
-            "dialogBorder": {
-              "color": {
-                "mix": 0.2,
-                "ref": "foregroundColor",
-              },
-            },
-            "dialogShadow": {
-              "ref": "popupShadow",
             },
             "dragHandleColor": {
               "mix": 0.7,
@@ -127,9 +135,6 @@ exports[`style package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "invalidColor",
             },
-            "headerBackgroundColor": {
-              "ref": "chromeBackgroundColor",
-            },
             "headerCellBackgroundTransitionDuration": "0.2s",
             "headerCellHoverBackgroundColor": "transparent",
             "headerCellMovingBackgroundColor": {
@@ -142,21 +147,7 @@ exports[`style package content > should match content 1`] = `
             },
             "headerColumnResizeHandleHeight": "30%",
             "headerColumnResizeHandleWidth": 2,
-            "headerFontFamily": {
-              "ref": "fontFamily",
-            },
-            "headerFontSize": {
-              "ref": "fontSize",
-            },
-            "headerFontWeight": 500,
-            "headerHeight": {
-              "calc": "max(iconSize, dataFontSize) + spacing * 4 * headerVerticalPaddingScale",
-            },
             "headerRowBorder": true,
-            "headerTextColor": {
-              "ref": "textColor",
-            },
-            "headerVerticalPaddingScale": 1,
             "iconButtonActiveBackgroundColor": {
               "mix": 0.28,
               "ref": "accentColor",
@@ -180,28 +171,6 @@ exports[`style package content > should match content 1`] = `
             "iconButtonHoverColor": {
               "ref": "iconButtonColor",
             },
-            "menuBackgroundColor": {
-              "mix": 0.03,
-              "onto": "backgroundColor",
-              "ref": "foregroundColor",
-            },
-            "menuBorder": {
-              "color": {
-                "mix": 0.2,
-                "ref": "foregroundColor",
-              },
-            },
-            "menuSeparatorColor": {
-              "ref": "borderColor",
-            },
-            "menuShadow": {
-              "ref": "popupShadow",
-            },
-            "menuTextColor": {
-              "mix": 0.95,
-              "onto": "backgroundColor",
-              "ref": "foregroundColor",
-            },
             "modalOverlayBackgroundColor": {
               "mix": 0.66,
               "ref": "backgroundColor",
@@ -212,25 +181,6 @@ exports[`style package content > should match content 1`] = `
             "paginationPanelHeight": {
               "calc": "max(rowHeight, 22px)",
               "ref": "rowHeight",
-            },
-            "panelBackgroundColor": {
-              "ref": "backgroundColor",
-            },
-            "panelTitleBarBackgroundColor": {
-              "ref": "headerBackgroundColor",
-            },
-            "panelTitleBarBorder": true,
-            "panelTitleBarFontWeight": {
-              "ref": "headerFontWeight",
-            },
-            "panelTitleBarHeight": {
-              "ref": "headerHeight",
-            },
-            "panelTitleBarIconColor": {
-              "ref": "headerTextColor",
-            },
-            "panelTitleBarTextColor": {
-              "ref": "headerTextColor",
             },
             "pinnedColumnBorder": true,
             "pinnedRowBackgroundColor": {
@@ -276,7 +226,7 @@ exports[`style package content > should match content 1`] = `
               "calc": "cellWidgetSpacing + iconSize",
             },
             "rowHeight": {
-              "calc": "max(iconSize, dataFontSize) + spacing * 3.25 * rowVerticalPaddingScale",
+              "calc": "max(iconSize, cellFontSize) + spacing * 3.25 * rowVerticalPaddingScale",
             },
             "rowHoverColor": {
               "mix": 0.08,
@@ -311,6 +261,7 @@ exports[`style package content > should match content 1`] = `
             "sideBarBackgroundColor": {
               "ref": "chromeBackgroundColor",
             },
+            "sideBarPanelAnimationDuration": 0,
             "sideBarPanelWidth": 250,
             "sideButtonBackgroundColor": "transparent",
             "sideButtonBarBackgroundColor": {
@@ -359,25 +310,13 @@ exports[`style package content > should match content 1`] = `
             "valueChangeDeltaDownColor": "#e53935",
             "valueChangeDeltaUpColor": "#43a047",
             "valueChangeValueHighlightBackgroundColor": "#16a08580",
-            "widgetContainerHorizontalPadding": {
-              "calc": "spacing * 1.5",
-            },
-            "widgetContainerVerticalPadding": {
-              "calc": "spacing * 1.5",
-            },
-            "widgetHorizontalSpacing": {
-              "calc": "spacing * 1.5",
-            },
-            "widgetVerticalSpacing": {
-              "ref": "spacing",
-            },
             "wrapperBorder": true,
             "wrapperBorderRadius": 8,
           },
         },
       },
       PartImpl {
-        "css": ":where(.ag-button){background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0;text-indent:inherit;text-shadow:inherit;text-transform:inherit;word-spacing:inherit;&:disabled{cursor:default}&:focus-visible{box-shadow:var(--ag-focus-shadow);outline:none}}.ag-standard-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--ag-button-background-color);border:var(--ag-button-border);border-radius:var(--ag-button-border-radius);color:var(--ag-button-text-color);cursor:pointer;font-weight:var(--ag-button-font-weight);padding:var(--ag-button-vertical-padding) var(--ag-button-horizontal-padding);&:hover{background-color:var(--ag-button-hover-background-color);border:var(--ag-button-hover-border);color:var(--ag-button-hover-text-color)}&:active{background-color:var(--ag-button-active-background-color);border:var(--ag-button-active-border);color:var(--ag-button-active-text-color)}&:disabled{background-color:var(--ag-button-disabled-background-color);border:var(--ag-button-disabled-border);color:var(--ag-button-disabled-text-color)}}",
+        "css": ":where(.ag-button){background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0;text-indent:inherit;text-shadow:inherit;text-transform:inherit;word-spacing:inherit;&:disabled{cursor:default}&:focus-visible{box-shadow:var(--ag-focus-shadow);outline:none}}.ag-standard-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--ag-button-background-color);border:var(--ag-button-border);border-radius:var(--ag-button-border-radius);color:var(--ag-button-text-color);cursor:pointer;font-weight:var(--ag-button-font-weight);padding:var(--ag-button-vertical-padding) var(--ag-button-horizontal-padding);&:active{background-color:var(--ag-button-active-background-color);border:var(--ag-button-active-border);color:var(--ag-button-active-text-color)}&:disabled{background-color:var(--ag-button-disabled-background-color);border:var(--ag-button-disabled-border);color:var(--ag-button-disabled-text-color)}}.ag-standard-button:hover{background-color:var(--ag-button-hover-background-color);border:var(--ag-button-hover-border);color:var(--ag-button-hover-text-color)}",
         "cssImports": undefined,
         "feature": "buttonStyle",
         "modeParams": {
@@ -455,7 +394,86 @@ exports[`style package content > should match content 1`] = `
         },
       },
       PartImpl {
-        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);:where(input){-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}&:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color);&:after{background-color:var(--ag-checkbox-checked-shape-color)}}&:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color);&:after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}}.ag-cell-editing-error .ag-checkbox-input-wrapper:focus-within{box-shadow:var(--ag-focus-error-shadow)}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": "formulaStyle",
+        "modeParams": {
+          "$default": {
+            "formulaToken1BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken1Color",
+            },
+            "formulaToken1Border": {
+              "color": {
+                "ref": "formulaToken1Color",
+              },
+            },
+            "formulaToken1Color": "#3269c6",
+            "formulaToken2BackgroundColor": {
+              "mix": 0.06,
+              "ref": "formulaToken2Color",
+            },
+            "formulaToken2Border": {
+              "color": {
+                "ref": "formulaToken2Color",
+              },
+            },
+            "formulaToken2Color": "#c0343f",
+            "formulaToken3BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken3Color",
+            },
+            "formulaToken3Border": {
+              "color": {
+                "ref": "formulaToken3Color",
+              },
+            },
+            "formulaToken3Color": "#8156b8",
+            "formulaToken4BackgroundColor": {
+              "mix": 0.06,
+              "ref": "formulaToken4Color",
+            },
+            "formulaToken4Border": {
+              "color": {
+                "ref": "formulaToken4Color",
+              },
+            },
+            "formulaToken4Color": "#007c1f",
+            "formulaToken5BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken5Color",
+            },
+            "formulaToken5Border": {
+              "color": {
+                "ref": "formulaToken5Color",
+              },
+            },
+            "formulaToken5Color": "#b03e85",
+            "formulaToken6BackgroundColor": {
+              "mix": 0.06,
+              "ref": "formulaToken6Color",
+            },
+            "formulaToken6Border": {
+              "color": {
+                "ref": "formulaToken6Color",
+              },
+            },
+            "formulaToken6Color": "#b74900",
+            "formulaToken7BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken7Color",
+            },
+            "formulaToken7Border": {
+              "color": {
+                "ref": "formulaToken7Color",
+              },
+            },
+            "formulaToken7Color": "#247492",
+          },
+        },
+      },
+      PartImpl {
+        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color)}&:where(.ag-checked):after{background-color:var(--ag-checkbox-checked-shape-color)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input,.ag-radio-button-input{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}.ag-checkbox-input-wrapper:after,.ag-radio-button-input-wrapper:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}.ag-checkbox-input-wrapper:where(:focus-within,:active),.ag-radio-button-input-wrapper:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color)}&:where(.ag-indeterminate):after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}.ag-cell-editing-error .ag-checkbox-input-wrapper:focus-within{box-shadow:var(--ag-focus-error-shadow)}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
         "cssImports": undefined,
         "feature": "checkboxStyle",
         "modeParams": {
@@ -547,6 +565,9 @@ exports[`style package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "foregroundColor",
             },
+            "columnPanelApplyButtonColor": {
+              "ref": "foregroundColor",
+            },
             "filterPanelApplyButtonColor": {
               "ref": "foregroundColor",
             },
@@ -557,6 +578,13 @@ exports[`style package content > should match content 1`] = `
               "ref": "backgroundColor",
             },
             "foregroundColor": "#FFF",
+            "formulaToken1Color": "#4da3e5",
+            "formulaToken2Color": "#f55864",
+            "formulaToken3Color": "#b688f2",
+            "formulaToken4Color": "#24bb4a",
+            "formulaToken5Color": "#e772ba",
+            "formulaToken6Color": "#f69b5f",
+            "formulaToken7Color": "#a3e6ff",
             "menuBackgroundColor": {
               "mix": 0.1,
               "onto": "backgroundColor",
@@ -609,6 +637,9 @@ exports[`style package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "foregroundColor",
             },
+            "columnPanelApplyButtonColor": {
+              "ref": "foregroundColor",
+            },
             "filterPanelApplyButtonColor": {
               "ref": "foregroundColor",
             },
@@ -619,6 +650,13 @@ exports[`style package content > should match content 1`] = `
               "ref": "backgroundColor",
             },
             "foregroundColor": "#FFF",
+            "formulaToken1Color": "#4da3e5",
+            "formulaToken2Color": "#f55864",
+            "formulaToken3Color": "#b688f2",
+            "formulaToken4Color": "#24bb4a",
+            "formulaToken5Color": "#e772ba",
+            "formulaToken6Color": "#f69b5f",
+            "formulaToken7Color": "#a3e6ff",
             "menuBackgroundColor": {
               "mix": 0.1,
               "onto": "backgroundColor",
@@ -672,7 +710,7 @@ exports[`style package content > should match content 1`] = `
         },
       },
       PartImpl {
-        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:solid var(--ag-border-width) var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:solid var(--ag-border-width) var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative;&:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}&.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}&:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}&.ag-tab-selected:after{opacity:1}}:where(.ag-ltr) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}}}:where(.ag-rtl) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}}}",
+        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:solid var(--ag-border-width) var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:solid var(--ag-border-width) var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative}.ag-tab:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}.ag-tab.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}:where(.ag-ltr) .ag-tab.ag-tab-selected:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}:where(.ag-rtl) .ag-tab.ag-tab-selected:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}:where(.ag-ltr) .ag-tab.ag-tab-selected:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}:where(.ag-rtl) .ag-tab.ag-tab-selected:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}.ag-tab:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}.ag-tab.ag-tab-selected:after{opacity:1}",
         "cssImports": undefined,
         "feature": "tabStyle",
         "modeParams": {
@@ -1151,11 +1189,6 @@ exports[`style package content > should match content 1`] = `
         },
       },
     ],
-    "themeLogger": {
-      "error": [Function],
-      "preInitErr": [Function],
-      "warn": [Function],
-    },
   },
 }
 `;

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: "4/3", size: "medium", weight: "semi-bold", background: bottom, align: false, isCompact: true, hasGradient: false and isDisabled: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: "4/3", size: "medium", weight: "semi-bold", align: bottom, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -115,7 +115,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: "9/16", size: "medium", weight: "semi-bold", background: bottom, align: false, isCompact: false, hasGradient: false and isDisabled: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: "9/16", size: "medium", weight: "semi-bold", align: bottom, isCompact: false, hasGradient: false and isDisabled: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -221,7 +221,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: "16/9", size: "inherit", weight: "regular", background: top, align: true, isCompact: false, hasGradient: true and isDisabled: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: "16/9", size: "inherit", weight: "regular", align: top, isCompact: true, hasGradient: false and isDisabled: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -327,7 +327,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1/1","xs":"4/3","s":"3/4","m":"16/9","l":"9/16","xl":"1/1"}, size: {"base":"inherit","xs":"medium","s":"inherit","m":"large","l":"medium","xl":"large"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: top, align: { base: true, xs: false, s: true, m: false, l: true, xl: false }, isCompact: true, hasGradient: false and isDisabled: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1/1","xs":"4/3","s":"3/4","m":"16/9","l":"9/16","xl":"1/1"}, size: {"base":"inherit","xs":"medium","s":"inherit","m":"large","l":"medium","xl":"large"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -562,7 +562,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabledOrLoading: true, aspectRatio: "1/1", size: "inherit", weight: "regular", background: bottom, align: false, isCompact: true, hasGradient: true and isDisabled: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabledOrLoading: true, aspectRatio: "1/1", size: "inherit", weight: "regular", align: bottom, isCompact: false, hasGradient: true and isDisabled: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -677,7 +677,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabledOrLoading: true, aspectRatio: "3/4", size: "large", weight: "semi-bold", background: top, align: false, isCompact: true, hasGradient: false and isDisabled: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabledOrLoading: true, aspectRatio: "3/4", size: "large", weight: "semi-bold", align: top, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;

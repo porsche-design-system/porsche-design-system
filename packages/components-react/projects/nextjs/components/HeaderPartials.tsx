@@ -5,7 +5,7 @@ type Props = {
   cdn?: 'local' | 'auto' | 'cn';
 };
 
-export const HeaderPartials = ({ cdn = 'local' }: Props): JSX.Element => {
+export const HeaderPartials = ({ cdn = 'local' }: Props) => {
   return cdn !== 'local' ? (
     <>
       {getFontLinks({ format: 'jsx', cdn, weights: ['regular', 'semi-bold', 'bold'] })}

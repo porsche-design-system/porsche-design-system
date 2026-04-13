@@ -4,7 +4,7 @@ import { PButton, PHeading, PLink, PModal, PText } from '@porsche-design-system/
 import Link from 'next/link';
 import { type PropsWithChildren, useCallback, useState } from 'react';
 
-export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}>): JSX.Element {
+export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}>) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);

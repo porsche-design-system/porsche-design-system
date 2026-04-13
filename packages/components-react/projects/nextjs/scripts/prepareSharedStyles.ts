@@ -7,7 +7,7 @@ const prepareSharedStyles = (): void => {
 
   const fileContent = `/* Auto Generated File */
 
-export const getSharedStyles = (): JSX.Element => {
+export const getSharedStyles = () => {
   return <style dangerouslySetInnerHTML={{ __html: \`${sharedTestingStyles.replace(
     /\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g,
     '$1'

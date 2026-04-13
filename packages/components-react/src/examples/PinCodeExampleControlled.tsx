@@ -1,7 +1,7 @@
 import { type PinCodeChangeEventDetail, PPinCode, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const PinCodeExampleControlledPage = (): JSX.Element => {
+export const PinCodeExampleControlledPage = () => {
   const [value, setValue] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 

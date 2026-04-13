@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const TextareaExampleFormPage = (): JSX.Element => {
+export const TextareaExampleFormPage = () => {
   const [form, setForm] = useState({ myTextarea: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

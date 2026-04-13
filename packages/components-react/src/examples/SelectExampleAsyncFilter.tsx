@@ -17,7 +17,7 @@ const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
   };
 };
 
-export const SelectExampleAsyncFilter = (): JSX.Element => {
+export const SelectExampleAsyncFilter = () => {
   const [value, setValue] = useState<string | undefined>(undefined);
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 

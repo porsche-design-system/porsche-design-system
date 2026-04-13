@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const SegmentedControlExampleControlledPage = (): JSX.Element => {
+export const SegmentedControlExampleControlledPage = () => {
   const [currentValue, setCurrentValue] = useState(1);
 
   const onChange = useCallback((e: CustomEvent<SegmentedControlChangeEventDetail>) => {

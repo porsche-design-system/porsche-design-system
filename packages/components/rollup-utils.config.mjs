@@ -6,7 +6,9 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
-import { globbySync } from 'globby';
+import fg from 'fast-glob';
+
+const { sync: globbySync } = fg;
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import pkgJson from './package.json' with { type: 'json' };
 

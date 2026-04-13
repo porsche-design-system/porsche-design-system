@@ -4,7 +4,7 @@ import { useState } from 'react';
 /* Page used to render/repaint a React Wrapper Component of the PDS on button click,
  to track the initiated stencil lifecycles */
 
-export const StencilLifecyclesPage = (): JSX.Element => {
+export const StencilLifecyclesPage = () => {
   const [key, setKey] = useState(0);
 
   return (

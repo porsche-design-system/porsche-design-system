@@ -2,7 +2,7 @@
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { Toast } from '../../components';
 
-const ToastPrefixedPage = (): JSX.Element => {
+const ToastPrefixedPage = () => {
   return (
     <>
       <div className="visualize-grid">

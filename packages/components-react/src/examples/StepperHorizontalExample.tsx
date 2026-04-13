@@ -13,7 +13,7 @@ type StepperHorizontalItemProps = {
   name: string;
 };
 
-export const StepperHorizontalExamplePage = (): JSX.Element => {
+export const StepperHorizontalExamplePage = () => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
       state: 'current',
