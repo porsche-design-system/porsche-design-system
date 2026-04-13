@@ -3,7 +3,8 @@
   "compilerOptions": {
     "strict": false, // 🙈 too many errors
     "noUnusedLocals": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
   "include": ["./src"]
 }
