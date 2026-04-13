@@ -8,7 +8,17 @@ import shebang from 'rollup-plugin-preserve-shebang';
 import pkg from './package.json';
 
 const input = 'src/index.ts';
-const external = [...Object.keys(pkg.dependencies), 'fs', 'path'];
+const external = [
+  ...Object.keys(pkg.dependencies),
+  // JSS packages are hoisted from workspace root; keep them external at runtime
+  'jss',
+  'jss-preset-default',
+  'jss-plugin-sort-css-media-queries',
+  // change-case is ESM-only; must stay external to avoid CJS bundling issues
+  'change-case',
+  'fs',
+  'path',
+];
 
 export default [
   {
@@ -121,7 +131,7 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
   {
     input: 'src/scripts/vrt/prepareVRTSnapshots.ts',
@@ -129,6 +139,6 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+    plugins: [shebang(), resolve({ preferBuiltins: true }), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
 ];
