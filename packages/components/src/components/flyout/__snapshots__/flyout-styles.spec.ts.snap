@@ -89,7 +89,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -106,15 +105,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -232,7 +223,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -249,15 +239,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -360,7 +342,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -377,15 +358,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -478,7 +451,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -495,15 +467,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -602,7 +566,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -619,15 +582,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -745,7 +700,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -762,15 +716,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -863,7 +809,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -880,15 +825,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -980,7 +917,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -997,15 +933,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1097,7 +1025,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1114,15 +1041,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1220,7 +1139,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1237,15 +1155,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1356,7 +1266,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1373,15 +1282,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1498,7 +1399,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1515,15 +1415,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1650,7 +1542,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1667,15 +1558,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1767,7 +1650,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1784,15 +1666,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -1884,7 +1758,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -1901,15 +1774,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2020,7 +1885,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2037,15 +1901,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2156,7 +2012,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2173,15 +2028,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2298,7 +2145,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2315,15 +2161,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2413,7 +2251,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2430,15 +2267,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2547,7 +2376,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2564,15 +2392,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2664,7 +2484,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2682,15 +2501,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2788,7 +2599,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2806,15 +2616,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -2925,7 +2727,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -2943,15 +2744,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -3068,7 +2861,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -3086,15 +2878,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -3196,7 +2980,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -3214,15 +2997,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -3330,7 +3105,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -3348,15 +3122,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -3477,7 +3243,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -3495,15 +3260,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -3630,7 +3387,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -3648,15 +3404,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {

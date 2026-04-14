@@ -11,13 +11,13 @@
   },
   {
     "chunkShortName": "button",
-    "size": 9367,
-    "gzipSize": 3863
+    "size": 9351,
+    "gzipSize": 3861
   },
   {
     "chunkShortName": "button-pure",
-    "size": 10921,
-    "gzipSize": 4367
+    "size": 10905,
+    "gzipSize": 4361
   },
   {
     "chunkShortName": "button-tile",
@@ -31,12 +31,12 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 56351,
-    "gzipSize": 22020
+    "size": 56343,
+    "gzipSize": 22018
   },
   {
     "chunkShortName": "checkbox",
-    "size": 13968,
+    "size": 13960,
     "gzipSize": 5321
   },
   {
@@ -71,8 +71,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 11747,
-    "gzipSize": 4762
+    "size": 11536,
+    "gzipSize": 4719
   },
   {
     "chunkShortName": "heading",
@@ -91,58 +91,58 @@
   },
   {
     "chunkShortName": "input-date",
-    "size": 14078,
-    "gzipSize": 5342
+    "size": 14070,
+    "gzipSize": 5340
   },
   {
     "chunkShortName": "input-email",
-    "size": 13877,
-    "gzipSize": 5225
+    "size": 13869,
+    "gzipSize": 5221
   },
   {
     "chunkShortName": "input-month",
-    "size": 14133,
-    "gzipSize": 5363
+    "size": 14125,
+    "gzipSize": 5360
   },
   {
     "chunkShortName": "input-number",
-    "size": 14505,
-    "gzipSize": 5429
+    "size": 14497,
+    "gzipSize": 5427
   },
   {
     "chunkShortName": "input-password",
-    "size": 14099,
-    "gzipSize": 5309
+    "size": 14091,
+    "gzipSize": 5306
   },
   {
     "chunkShortName": "input-search",
-    "size": 14307,
-    "gzipSize": 5384
+    "size": 14299,
+    "gzipSize": 5382
   },
   {
     "chunkShortName": "input-tel",
-    "size": 13807,
-    "gzipSize": 5209
+    "size": 13799,
+    "gzipSize": 5205
   },
   {
     "chunkShortName": "input-text",
-    "size": 14611,
-    "gzipSize": 5435
+    "size": 14603,
+    "gzipSize": 5433
   },
   {
     "chunkShortName": "input-time",
-    "size": 14077,
-    "gzipSize": 5343
+    "size": 14069,
+    "gzipSize": 5342
   },
   {
     "chunkShortName": "input-url",
-    "size": 13809,
-    "gzipSize": 5209
+    "size": 13801,
+    "gzipSize": 5205
   },
   {
     "chunkShortName": "input-week",
-    "size": 14129,
-    "gzipSize": 5360
+    "size": 14121,
+    "gzipSize": 5359
   },
   {
     "chunkShortName": "link",
@@ -162,17 +162,17 @@
   {
     "chunkShortName": "link-tile-product",
     "size": 8378,
-    "gzipSize": 3609
+    "gzipSize": 3611
   },
   {
     "chunkShortName": "main",
     "size": 81909,
-    "gzipSize": 25589
+    "gzipSize": 25591
   },
   {
     "chunkShortName": "modal",
-    "size": 11437,
-    "gzipSize": 4626
+    "size": 11226,
+    "gzipSize": 4580
   },
   {
     "chunkShortName": "model-signature",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 48013,
-    "gzipSize": 17154
+    "size": 48005,
+    "gzipSize": 17150
   },
   {
     "chunkShortName": "optgroup",
@@ -196,7 +196,7 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 14024,
+    "size": 14016,
     "gzipSize": 5536
   },
   {
@@ -206,8 +206,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 17666,
-    "gzipSize": 6596
+    "size": 17658,
+    "gzipSize": 6595
   },
   {
     "chunkShortName": "scroller",
@@ -216,18 +216,18 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 15930,
-    "gzipSize": 6098
+    "size": 15916,
+    "gzipSize": 6103
   },
   {
     "chunkShortName": "select",
-    "size": 46554,
-    "gzipSize": 16656
+    "size": 46546,
+    "gzipSize": 16653
   },
   {
     "chunkShortName": "sheet",
-    "size": 9986,
-    "gzipSize": 4090
+    "size": 9775,
+    "gzipSize": 4049
   },
   {
     "chunkShortName": "spinner",
@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "switch",
-    "size": 7143,
-    "gzipSize": 3086
+    "size": 7137,
+    "gzipSize": 3083
   },
   {
     "chunkShortName": "table",
@@ -281,8 +281,8 @@
   },
   {
     "chunkShortName": "textarea",
-    "size": 12657,
-    "gzipSize": 4855
+    "size": 12649,
+    "gzipSize": 4851
   },
   {
     "chunkShortName": "toast",
