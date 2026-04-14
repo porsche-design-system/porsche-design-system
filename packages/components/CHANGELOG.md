@@ -16,8 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
-- `Link Pure`: focus border of slotted anchor 
-   ([#4285](https://github.com/porsche-design-system/porsche-design-system/pull/4285))
+- `Flyout`, `Modal`, `Sheet`: `overflow: clip` causing issues
+  ([#4296](https://github.com/porsche-design-system/porsche-design-system/pull/4296))
+- `Link Pure`: focus border of slotted anchor
+  ([#4285](https://github.com/porsche-design-system/porsche-design-system/pull/4285))
 
 ## [4.0.0-rc.1] - 2026-04-07
 
