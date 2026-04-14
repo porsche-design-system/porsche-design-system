@@ -2,8 +2,7 @@
 
 exports[`getBannerAriaAttributes() > should return correct aria attributes for state: error 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "assertive",
   "role": "alert",
 }
@@ -11,8 +10,7 @@ exports[`getBannerAriaAttributes() > should return correct aria attributes for s
 
 exports[`getBannerAriaAttributes() > should return correct aria attributes for state: info 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "polite",
   "role": "status",
 }
@@ -20,8 +18,7 @@ exports[`getBannerAriaAttributes() > should return correct aria attributes for s
 
 exports[`getBannerAriaAttributes() > should return correct aria attributes for state: success 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "polite",
   "role": "status",
 }
@@ -29,8 +26,7 @@ exports[`getBannerAriaAttributes() > should return correct aria attributes for s
 
 exports[`getBannerAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
 {
-  "aria-describedby": "descriptionId",
-  "aria-labelledby": "labelId",
+  "aria-label": "Some label",
   "aria-live": "assertive",
   "role": "alert",
 }

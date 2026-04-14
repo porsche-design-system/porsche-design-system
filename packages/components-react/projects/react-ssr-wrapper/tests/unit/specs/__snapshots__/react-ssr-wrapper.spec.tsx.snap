@@ -243,7 +243,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
         aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="label"
         aria-required="false"
         id="button"
         role="combobox"
@@ -524,7 +523,6 @@ img {
                   </template>
                 </p-icon>
                 <input
-                  aria-describedby="description message"
                   autocomplete="off"
                   dir="auto"
                   id="input-search"
@@ -1487,8 +1485,6 @@ input:focus-visible {
 }
     </style>
     <fieldset
-      aria-describedby="description message"
-      aria-labelledby="label"
       class="root"
     >
       <div
@@ -1496,7 +1492,6 @@ input:focus-visible {
         dir="ltr"
       >
         <input
-          aria-describedby="label description message"
           aria-label="1-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -1505,7 +1500,6 @@ input:focus-visible {
           value="1"
         />
         <input
-          aria-describedby="label description message"
           aria-label="2-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -1514,7 +1508,6 @@ input:focus-visible {
           value="2"
         />
         <input
-          aria-describedby="label description message"
           aria-label="3-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -1523,7 +1516,6 @@ input:focus-visible {
           value="3"
         />
         <input
-          aria-describedby="label description message"
           aria-label="4-4"
           autocomplete="one-time-code"
           id="current-input"
@@ -1631,8 +1623,6 @@ slot:not([name]) {
 }
     </style>
     <fieldset
-      aria-describedby="description"
-      aria-labelledby="label"
       class="root"
     >
       <slot />
@@ -3205,11 +3195,8 @@ slot[name="description"],p {
 
     </style>
     <div
-      aria-describedby="description"
       aria-hidden="true"
-      aria-labelledby="heading"
       aria-live="polite"
-      id="banner"
       popover="manual"
       role="status"
     >
@@ -3223,7 +3210,6 @@ slot[name="description"],p {
           name="description"
         />
         <p-button
-          aria-controls="banner"
           class="dismiss"
           data-ssr=""
         >
@@ -5119,7 +5105,6 @@ input:checked::before {
           class="input-wrapper"
         >
           <input
-            aria-describedby="description message"
             id="x"
             name=""
             type="checkbox"
@@ -7070,11 +7055,8 @@ slot:not([name]),p {
 
     </style>
     <div
-      aria-describedby="description"
-      aria-labelledby="heading"
       aria-live="polite"
       class="notification"
-      id="notification"
       role="status"
     >
       <slot
@@ -7082,7 +7064,6 @@ slot:not([name]),p {
       />
       <slot />
       <p-button
-        aria-controls="notification"
         class="dismiss"
         data-ssr=""
       >
@@ -7412,7 +7393,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-date"
           step="1"
@@ -7588,7 +7568,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-email"
           type="email"
@@ -7768,7 +7747,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-month"
           step="1"
@@ -7945,7 +7923,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-number"
           step="1"
@@ -8118,7 +8095,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-password"
           type="password"
@@ -8293,7 +8269,6 @@ input::-webkit-search-cancel-button {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-search"
           type="search"
@@ -8468,7 +8443,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-tel"
           type="tel"
@@ -8640,7 +8614,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-text"
           type="text"
@@ -8819,7 +8792,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-time"
           step="60"
@@ -8995,7 +8967,6 @@ input {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-url"
           type="url"
@@ -9175,7 +9146,6 @@ input::-webkit-calendar-picker-indicator {
           name="start"
         />
         <input
-          aria-describedby="description message"
           dir="auto"
           id="input-week"
           step="1"
@@ -10636,7 +10606,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
         aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="label"
         aria-required="false"
         id="button"
         role="combobox"
@@ -10917,7 +10886,6 @@ img {
                   </template>
                 </p-icon>
                 <input
-                  aria-describedby="description message"
                   autocomplete="off"
                   dir="auto"
                   id="input-search"
@@ -11674,8 +11642,6 @@ input:focus-visible {
 }
     </style>
     <fieldset
-      aria-describedby="description message"
-      aria-labelledby="label"
       class="root"
     >
       <div
@@ -11683,7 +11649,6 @@ input:focus-visible {
         dir="ltr"
       >
         <input
-          aria-describedby="label description message"
           aria-label="1-4"
           autocomplete="one-time-code"
           id="current-input"
@@ -11692,7 +11657,6 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-describedby="label description message"
           aria-label="2-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -11700,7 +11664,6 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-describedby="label description message"
           aria-label="3-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -11708,7 +11671,6 @@ input:focus-visible {
           type="text"
         />
         <input
-          aria-describedby="label description message"
           aria-label="4-4"
           autocomplete="one-time-code"
           inputmode="numeric"
@@ -12023,8 +11985,6 @@ slot[name="label-after"]::slotted(*) {
 }
     </style>
     <fieldset
-      aria-describedby="description message"
-      aria-labelledby="label"
       class="root"
       role="radiogroup"
     >
@@ -12188,7 +12148,6 @@ input:checked::before {
         class="wrapper"
       >
         <input
-          aria-describedby="message"
           id="radio-group-option"
           type="radio"
         />
@@ -12436,8 +12395,6 @@ slot:not([name]) {
 }
     </style>
     <fieldset
-      aria-describedby="description"
-      aria-labelledby="label"
       class="root"
     >
       <slot />
@@ -12767,7 +12724,6 @@ exports[`should render dsr component for PSelect 1`] = `
         aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="label"
         aria-required="false"
         id="button"
         role="combobox"
@@ -15187,7 +15143,6 @@ textarea:focus {
         class="wrapper"
       >
         <textarea
-          aria-describedby="description message"
           id="textarea"
           placeholder=""
           rows="7"

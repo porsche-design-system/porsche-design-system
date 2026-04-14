@@ -11,14 +11,12 @@ export type InlineNotificationHeadingTag = (typeof INLINE_NOTIFICATION_HEADING_T
 
 export const getInlineNotificationAriaAttributes = (
   state: InlineNotificationState,
-  labelId: string,
-  descriptionId: string
+  heading: string
 ): AriaAttributes & { role: string } => {
   const isAlert = state === 'warning' || state === 'error';
   return {
     role: isAlert ? 'alert' : 'status',
     'aria-live': isAlert ? 'assertive' : 'polite',
-    'aria-labelledby': labelId,
-    'aria-describedby': descriptionId,
+    'aria-label': heading || null,
   };
 };

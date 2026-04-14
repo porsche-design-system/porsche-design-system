@@ -5,7 +5,6 @@
   </div>
   <div class="wrapper">
     <textarea
-      aria-describedby="description message"
       id="textarea"
       name="value"
       placeholder=""

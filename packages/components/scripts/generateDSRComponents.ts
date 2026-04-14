@@ -245,10 +245,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
               `$&
     const { namedSlotChildren } = splitChildren(children);\n`
             )
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`)
             .replace(
-              /^/,
-              `import { splitChildren } from '../../splitChildren';
-`
+              /hasDescription\(\/\/ host, (description)\)/g,
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0)`
+            )
+            .replace(
+              /hasMessage\(\/\/ host, (message), (state)\)/g,
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
             );
         }
         if (newFileContent.includes('export const LegacyLabel:')) {
