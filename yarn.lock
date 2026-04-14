@@ -19501,11 +19501,6 @@ p-map@^7.0.3:
   resolved "https://registry.yarnpkg.com/p-map/-/p-map-7.0.3.tgz#7ac210a2d36f81ec28b736134810f7ba4418cdb6"
   integrity sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==
 
-p-map@^7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/p-map/-/p-map-7.0.4.tgz#b81814255f542e252d5729dca4d66e5ec14935b8"
-  integrity sha512-tkAQEw8ysMzmkhgw8k+1U/iPhWNhykKnSk4Rd5zLoPJCuJaGRPo6YposrZgaxHKzDHdDWWZvE/Sk7hsL2X/CpQ==
-
 p-retry@^4.5.0:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.6.2.tgz#9baae7184057edd4e17231cee04264106e092a16"
@@ -24584,16 +24579,6 @@ vite-plugin-html@^3.2.2:
     html-minifier-terser "^6.1.0"
     node-html-parser "^5.3.3"
     pathe "^0.2.0"
-
-vite-plugin-static-copy@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-static-copy/-/vite-plugin-static-copy-4.0.1.tgz#5e0614d4a8ac57d484de2893fc8acdad249f1e74"
-  integrity sha512-r3kQUrrimduikhyRm58ayemoxsgB8lZdn/JULLL4wpXHAZlYejtyZx7E/id7dwRtIOSYWu/tWvFjdEOTzso2MA==
-  dependencies:
-    chokidar "^3.6.0"
-    p-map "^7.0.4"
-    picocolors "^1.1.1"
-    tinyglobby "^0.2.15"
 
 vite@7.3.2, "vite@^5.0.0 || ^6.0.0 || ^7.0.0-0":
   version "7.3.2"
