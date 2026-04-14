@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4274](https://github.com/porsche-design-system/porsche-design-system/pull/4274))
 - Prefixing: custom PDS prefixes allow numbers in the prefix name
   ([#4297](https://github.com/porsche-design-system/porsche-design-system/pull/4297))
+- `Tailwind CSS`: Custom tailwind prefixing
+  ([#4294](https://github.com/porsche-design-system/porsche-design-system/pull/4294))
 
 ## [4.0.0-rc.1] - 2026-04-07
 
