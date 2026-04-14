@@ -35,6 +35,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -198,6 +201,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }"
@@ -240,6 +246,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }"
@@ -280,6 +289,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -322,6 +334,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }"
@@ -362,6 +377,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }"
@@ -401,6 +419,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -444,6 +465,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }"
@@ -485,6 +509,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -528,6 +555,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -578,6 +608,9 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;

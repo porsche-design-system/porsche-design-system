@@ -208,6 +208,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -441,6 +444,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -676,6 +682,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -910,6 +919,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -1138,6 +1150,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -1372,6 +1387,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -1603,6 +1621,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -1836,6 +1857,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -2067,6 +2091,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -2300,6 +2327,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -2532,6 +2562,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -2762,6 +2795,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -3002,6 +3038,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -3237,6 +3276,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -3470,6 +3512,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -3705,6 +3750,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -3937,6 +3985,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -4172,6 +4223,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -4404,6 +4458,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -4639,6 +4696,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -4867,6 +4927,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -5101,6 +5164,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -5332,6 +5398,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
@@ -5566,6 +5635,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -5798,6 +5870,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -6029,6 +6104,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
+  }
+  .label > slot[name="label"]::slotted(*) {
+    display: inline !important;
   }
   .required {
     user-select: none;
