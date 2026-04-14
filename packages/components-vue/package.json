@@ -7,7 +7,7 @@
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:vue-wrapper && yarn build:subPackages",
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
-    "build:vue-wrapper:lib": "vite build -c vite.config.package.mts",
+    "build:vue-wrapper:lib": "vite build -c vite.config.package.mts && cp ../../LICENSE.md ../../OSS_NOTICE projects/vue-wrapper/README.md projects/vue-wrapper/package.json ../components/CHANGELOG.md dist/vue-wrapper/",
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && tsx scripts/addDeprecatedAnnotations.ts",
     "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:global-styles && yarn build:subPackages:tailwindcss && yarn build:subPackages:vanilla-extract && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
@@ -52,7 +52,6 @@
     "ag-grid-vue3": "35.2.1",
     "local-web-server": "^5.4.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-static-copy": "^4.0.1",
     "vue-tsc": "3.2.6"
   },
   "peerDependencies": {
