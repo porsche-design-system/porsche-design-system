@@ -20,6 +20,8 @@ describe('getTagNameWithoutPrefix()', () => {
     ['my-prefix-p-some-element', 'p-some-element'],
     ['my-other-prefix-p-some-element', 'p-some-element'],
     ['my-prefix-p-some-other-element', 'p-some-other-element'],
+    ['test-2-p-some-element', 'p-some-element'],
+    ['prefix3-p-some-element', 'p-some-element'],
     ['div', 'div'],
     ['h1', 'h1'],
   ])('should for %s element return %s', (tag, result) => {
@@ -41,6 +43,10 @@ describe('getPrefixedTagNames()', () => {
     const resultWithPrefix = getPrefixedTagNames(document.createElement('my-prefix-p-button'));
     expect(resultWithPrefix.pButton).toEqual('my-prefix-p-button');
     expect(Object.keys(resultWithPrefix).length).toEqual(TAG_NAMES.length - 3); // without p-text, p-heading and p-display
+
+    const resultWithNumericPrefix = getPrefixedTagNames(document.createElement('test-2-p-button'));
+    expect(resultWithNumericPrefix.pButton).toEqual('test-2-p-button');
+    expect(Object.keys(resultWithNumericPrefix).length).toEqual(TAG_NAMES.length - 3); // without p-text, p-heading and p-display
   });
 
   it('should cache result', () => {
