@@ -125,16 +125,16 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: yarn test:smoke:components-js
-      - run: yarn test:smoke:components-angular
-      - run: yarn test:smoke:components-react
-      - run: yarn test:smoke:components-vue
+      - run: npm run test:smoke:components-js
+      - run: npm run test:smoke:components-angular
+      - run: npm run test:smoke:components-react
+      - run: npm run test:smoke:components-vue
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     runs-on: ubuntu-latest
@@ -151,8 +151,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
