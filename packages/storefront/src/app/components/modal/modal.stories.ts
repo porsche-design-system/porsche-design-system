@@ -292,7 +292,7 @@ export const modalStoryCustomStyling: Story<'p-modal'> = {
           tag: 'img',
           properties: {
             src: 'assets/porsche-992-carrera-s.jpg',
-            className: '-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)',
+            className: '-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb) max-w-(--p-modal-width)',
           },
         },
       ],
