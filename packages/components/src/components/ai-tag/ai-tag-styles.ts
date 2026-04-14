@@ -30,28 +30,28 @@ export const getComponentCss = (theme: Theme): string => {
           ...hostHiddenStyles,
         }),
       },
-      'span:not(.icon)': {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '2px',
-        padding: '1px 6px 1px 4px',
-        borderRadius: borderRadiusSmall,
-        font: textXXSmallStyle.font,
-        color: contrastHighColor,
-        background: backgroundFrostedColor,
-        ...frostedGlassStyle,
-        ...(isHighContrastMode && {
-          outline: '1px solid transparent',
-        }),
-        transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
-          background: backgroundFrostedColorDark,
-        }),
-      },
       abbr: {
         textDecoration: 'none',
       },
+    },
+    root: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '2px',
+      padding: '1px 6px 1px 4px',
+      borderRadius: borderRadiusSmall,
+      font: textXXSmallStyle.font,
+      color: contrastHighColor,
+      background: backgroundFrostedColor,
+      ...frostedGlassStyle,
+      ...(isHighContrastMode && {
+        outline: '1px solid transparent',
+      }),
+      transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+        background: backgroundFrostedColorDark,
+      }),
     },
     icon: {
       display: 'inline-block',

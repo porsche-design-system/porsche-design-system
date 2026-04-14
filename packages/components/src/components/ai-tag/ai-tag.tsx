@@ -7,8 +7,7 @@ import {
   AI_TAG_TRANSLATIONS,
   type AiTagLocale,
   type AiTagTextVariant,
-  getAiTagLongForm,
-  getAiTagText,
+  getAiTagTranslation,
 } from './ai-tag-utils';
 
 const propTypes: PropTypes<typeof AiTag> = {
@@ -38,13 +37,17 @@ export class AiTag {
 
     attachComponentCss(this.host, getComponentCss, this.theme);
 
-    const text = getAiTagText(this.locale, this.textVariant);
+    const { short, long, generated, modified } = getAiTagTranslation(this.locale);
+    const suffix = this.textVariant === 'ai-generated' ? generated : this.textVariant === 'ai-modified' ? modified : null;
 
     return (
-      <span>
+      <div class="root">
         <span class="icon"></span>
-        {this.textVariant === 'abbreviation' ? <abbr title={getAiTagLongForm(this.locale)}>{text}</abbr> : text}
-      </span>
+        <span>
+          <abbr title={long}>{short}</abbr>
+          {suffix && ` ${suffix}`}
+        </span>
+      </div>
     );
   }
 }

@@ -6,52 +6,44 @@ export const AI_TAG_TEXT_VARIANTS = ['abbreviation', 'ai-generated', 'ai-modifie
 export type AiTagTextVariant = (typeof AI_TAG_TEXT_VARIANTS)[number];
 
 type AiTagTranslationEntry = {
-  abbreviation: { text: string; 'long-form': string };
-  'ai-generated': string;
-  'ai-modified': string;
+  short: string;
+  long: string;
+  generated: string;
+  modified: string;
 };
 
 // ISO locale code to AI text mapping
 export const AI_TAG_TRANSLATIONS = {
-  de_DE: { abbreviation: { text: 'KI', 'long-form': 'Künstliche Intelligenz' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  en_US: { abbreviation: { text: 'AI', 'long-form': 'Artificial Intelligence' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  en_GB: { abbreviation: { text: 'AI', 'long-form': 'Artificial Intelligence' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  da_DK: { abbreviation: { text: 'KI', 'long-form': 'Kunstig intelligens' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  fi_FI: { abbreviation: { text: 'AI', 'long-form': 'Tekoäly' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  fr_FR: { abbreviation: { text: 'IA', 'long-form': 'Intelligence artificielle' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  el_GR: { abbreviation: { text: 'ΤΝ', 'long-form': 'Τεχνητή νοημοσύνη' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  it_IT: { abbreviation: { text: 'IA', 'long-form': 'Intelligenza artificiale' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  hr_HR: { abbreviation: { text: 'UI', 'long-form': 'Umjetna inteligencija' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  nl_NL: { abbreviation: { text: 'AI', 'long-form': 'Kunstmatige intelligentie' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  nb_NO: { abbreviation: { text: 'KI', 'long-form': 'Kunstig intelligens' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  pl_PL: { abbreviation: { text: 'SI', 'long-form': 'Sztuczna inteligencja' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  pt_PT: { abbreviation: { text: 'IA', 'long-form': 'Inteligência artificial' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  ro_RO: { abbreviation: { text: 'IA', 'long-form': 'Inteligență artificială' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  sv_SE: { abbreviation: { text: 'AI', 'long-form': 'Artificiell intelligens' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  sk_SK: { abbreviation: { text: 'UI', 'long-form': 'Umelá inteligencia' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  sl_SI: { abbreviation: { text: 'UI', 'long-form': 'Umetna inteligenca' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  es_ES: { abbreviation: { text: 'IA', 'long-form': 'Inteligencia artificial' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  cs_CZ: { abbreviation: { text: 'UI', 'long-form': 'Umělá inteligence' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  hu_HU: { abbreviation: { text: 'MI', 'long-form': 'Mesterséges intelligencia' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  mt_MT: { abbreviation: { text: 'AI', 'long-form': 'Artificial Intelligence' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  bg_BG: { abbreviation: { text: 'ИИ', 'long-form': 'Изкуствен интелект' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  en_CY: { abbreviation: { text: 'AI', 'long-form': 'Artificial Intelligence' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  et_EE: { abbreviation: { text: 'TI', 'long-form': 'Tehisintellekt' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  lv_LV: { abbreviation: { text: 'MI', 'long-form': 'Mākslīgais intelekts' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
-  lt_LT: { abbreviation: { text: 'DI', 'long-form': 'Dirbtinis intelektas' }, 'ai-generated': 'TODO', 'ai-modified': 'TODO' },
+  de_DE: { short: 'KI', long: 'Künstliche Intelligenz', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  en_US: { short: 'AI', long: 'Artificial Intelligence', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  en_GB: { short: 'AI', long: 'Artificial Intelligence', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  da_DK: { short: 'KI', long: 'Kunstig intelligens', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  fi_FI: { short: 'AI', long: 'Tekoäly', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  fr_FR: { short: 'IA', long: 'Intelligence artificielle', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  el_GR: { short: 'ΤΝ', long: 'Τεχνητή νοημοσύνη', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  it_IT: { short: 'IA', long: 'Intelligenza artificiale', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  hr_HR: { short: 'UI', long: 'Umjetna inteligencija', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  nl_NL: { short: 'AI', long: 'Kunstmatige intelligentie', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  nb_NO: { short: 'KI', long: 'Kunstig intelligens', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  pl_PL: { short: 'SI', long: 'Sztuczna inteligencja', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  pt_PT: { short: 'IA', long: 'Inteligência artificial', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  ro_RO: { short: 'IA', long: 'Inteligență artificială', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  sv_SE: { short: 'AI', long: 'Artificiell intelligens', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  sk_SK: { short: 'UI', long: 'Umelá inteligencia', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  sl_SI: { short: 'UI', long: 'Umetna inteligenca', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  es_ES: { short: 'IA', long: 'Inteligencia artificial', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  cs_CZ: { short: 'UI', long: 'Umělá inteligence', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  hu_HU: { short: 'MI', long: 'Mesterséges intelligencia', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  mt_MT: { short: 'AI', long: 'Artificial Intelligence', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  bg_BG: { short: 'ИИ', long: 'Изкуствен интелект', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  en_CY: { short: 'AI', long: 'Artificial Intelligence', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  et_EE: { short: 'TI', long: 'Tehisintellekt', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  lv_LV: { short: 'MI', long: 'Mākslīgais intelekts', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
+  lt_LT: { short: 'DI', long: 'Dirbtinis intelektas', generated: 'PLACEHOLDER', modified: 'PLACEHOLDER' },
 } satisfies Record<string, AiTagTranslationEntry>;
 
 export type AiTagLocale = keyof typeof AI_TAG_TRANSLATIONS;
 
-export const getAiTagText = (locale: string, textVariant: AiTagTextVariant = 'ai-generated'): string => {
-  const entry = AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS['en_US'];
-  if (textVariant === 'abbreviation') {
-    return entry.abbreviation.text;
-  }
-  return entry[textVariant];
-};
-
-export const getAiTagLongForm = (locale: string): string => {
-  const entry = AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS['en_US'];
-  return entry.abbreviation['long-form'];
+export const getAiTagTranslation = (locale: string): AiTagTranslationEntry => {
+  return AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS['en_US'];
 };
