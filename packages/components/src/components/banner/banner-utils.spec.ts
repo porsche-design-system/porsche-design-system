@@ -2,6 +2,6 @@ import { BANNER_STATES, type BannerState, getBannerAriaAttributes } from './bann
 
 describe('getBannerAriaAttributes()', () => {
   it.each<BannerState>(BANNER_STATES)('should return correct aria attributes for state: %s', (state) => {
-    expect(getBannerAriaAttributes(state, 'labelId', 'descriptionId')).toMatchSnapshot();
+    expect(getBannerAriaAttributes(state, 'Some label')).toMatchSnapshot();
   });
 });

@@ -34,3 +34,12 @@ export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string
   }
   return undefined;
 };
+
+/**
+ * Builds a space-separated IDREF string from conditional ID entries.
+ * Returns `null` when no IDs are truthy — safe for JSX attribute assignment.
+ */
+export const setAriaIDREF = (...ids: (string | false | null | undefined)[]): string | null => {
+  const result = ids.filter(Boolean).join(' ');
+  return result || null;
+};

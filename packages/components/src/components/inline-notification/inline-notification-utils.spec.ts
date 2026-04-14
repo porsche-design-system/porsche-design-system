@@ -8,7 +8,7 @@ describe('getInlineNotificationAriaAttributes()', () => {
   it.each<InlineNotificationState>(INLINE_NOTIFICATION_STATES)(
     'should return correct aria attributes for state: %s',
     (state) => {
-      expect(getInlineNotificationAriaAttributes(state, 'labelId', 'descriptionId')).toMatchSnapshot();
+      expect(getInlineNotificationAriaAttributes(state, 'Some label')).toMatchSnapshot();
     }
   );
 });

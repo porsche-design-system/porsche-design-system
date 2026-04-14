@@ -25,7 +25,8 @@ export const metadata = {
 
 | ARIA                            | Usage                                                                                                 |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `aria-label="STRING"`           | Defines the accessible name and status messages.                                                      |
+| `aria-labelledby="IDREF"`       | Defines the accessible name.                                                                          |
+| `aria-describedby="IDREF"`      | Defines the accessible description combined with the status message.                                  |
 | `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
 | `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
 | `aria-invalid="true"`           | If `error` state is set.                                                                              |
