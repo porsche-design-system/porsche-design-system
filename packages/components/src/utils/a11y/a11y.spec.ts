@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 import type { AriaAttributes } from '../../types';
 import * as jsonUtils from '../json';
-import { parseAndGetAriaAttributes, setAriaAttributes } from './a11y';
+import { parseAndGetAriaAttributes, setAriaAttributes, setAriaIDREF } from './a11y';
 
 describe('setAriaAttributes()', () => {
   let node: HTMLElement;
@@ -100,5 +100,27 @@ describe('parseAndGetAriaAttributes()', () => {
 
   it.each<string>([undefined, ''])('should return undefined for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
+  });
+});
+
+describe('setAriaIDREF()', () => {
+  it('should return space-separated IDs when all are truthy', () => {
+    expect(setAriaIDREF('loading-id', 'description-id', 'message-id')).toBe('loading-id description-id message-id');
+  });
+
+  it('should skip falsy entries and return remaining IDs', () => {
+    expect(setAriaIDREF(false, 'description-id', undefined, 'message-id', null)).toBe('description-id message-id');
+  });
+
+  it('should return a single ID when only one is truthy', () => {
+    expect(setAriaIDREF(false, 'message-id', undefined)).toBe('message-id');
+  });
+
+  it('should return null when all entries are falsy', () => {
+    expect(setAriaIDREF(false, undefined, null, '')).toBeNull();
+  });
+
+  it('should return null when called with no arguments', () => {
+    expect(setAriaIDREF()).toBeNull();
   });
 });

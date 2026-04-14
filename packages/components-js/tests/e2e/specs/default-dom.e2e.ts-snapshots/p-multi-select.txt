@@ -3,7 +3,6 @@
     type="button"
     role="combobox"
     id="button"
-    aria-labelledby="label"
     aria-haspopup="listbox"
     aria-expanded="false"
     aria-required="false"

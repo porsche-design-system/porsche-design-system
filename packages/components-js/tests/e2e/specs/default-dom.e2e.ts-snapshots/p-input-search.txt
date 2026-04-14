@@ -5,13 +5,7 @@
   </div>
   <div class="wrapper">
     <slot name="start"> </slot>
-    <input
-      aria-describedby="description message"
-      id="input-search"
-      name="value"
-      type="search"
-      dir="auto"
-    />
+    <input id="input-search" name="value" type="search" dir="auto" />
     <slot name="end"> </slot>
   </div>
   <span id="message" class="message" role="alert"> </span>

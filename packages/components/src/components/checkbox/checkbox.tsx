@@ -17,13 +17,14 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasLabel,
+  hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
+  setAriaIDREF,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
-import { descriptionId } from '../common/label/label-utils';
-import { LoadingMessage } from '../common/loading-message/loading-message';
+import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
 import type { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from './checkbox-utils';
@@ -216,6 +217,7 @@ export class Checkbox {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     const id = 'x';
     return (
@@ -225,7 +227,7 @@ export class Checkbox {
             <input
               type="checkbox"
               id={id}
-              aria-describedby={`${descriptionId} ${messageId}`}
+              aria-describedby={setAriaIDREF(this.loading && loadingId, selectMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading || this.disabled ? 'true' : null}
               checked={this.checked}

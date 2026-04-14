@@ -17,13 +17,17 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
   observeChildren,
+  setAriaIDREF,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { StateMessage } from '../../common/state-message/state-message';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
@@ -195,13 +199,16 @@ export class SegmentedControl {
     );
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.state, this.message, this.compact);
 
+    const fieldDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const fieldMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
+
     return (
       <fieldset
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
-        aria-labelledby={labelId}
-        aria-describedby={descriptionId}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
+        aria-describedby={setAriaIDREF(fieldMessageId, fieldDescriptionId)}
       >
         <Label
           host={this.host}

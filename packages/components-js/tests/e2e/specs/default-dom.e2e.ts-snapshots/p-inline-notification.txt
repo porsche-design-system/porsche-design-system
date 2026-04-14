@@ -1,14 +1,5 @@
-<div
-  id="notification"
-  class="notification"
-  role="status"
-  aria-live="polite"
-  aria-labelledby="heading"
-  aria-describedby="description"
->
+<div class="notification" role="status" aria-live="polite">
   <slot name="heading"> </slot>
   <slot> </slot>
-  <p-button class="dismiss hydrated" aria-controls="notification">
-    Close notification</p-button
-  >
+  <p-button class="dismiss hydrated"> Close notification</p-button>
 </div>

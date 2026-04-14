@@ -112,7 +112,7 @@ export class Switch {
           type="button"
           role="switch"
           aria-labelledby="label" // only relevant for axe-core because of https://github.com/dequelabs/axe-core/issues/1393
-          aria-describedby={this.loading ? loadingId : undefined}
+          aria-describedby={this.loading ? loadingId : null}
           onClick={this.onSwitchClick}
         >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}

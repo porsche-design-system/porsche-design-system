@@ -1,8 +1,4 @@
-<fieldset
-  class="root"
-  aria-describedby="description message"
-  aria-labelledby="label"
->
+<fieldset class="root" aria-labelledby="label">
   <div class="label-wrapper">
     <label class="label" id="label" for="current-input"> Some label</label>
     <slot name="label-after"> </slot>
@@ -12,7 +8,7 @@
       id="current-input"
       type="text"
       aria-label="1-4"
-      aria-describedby="label description message"
+      aria-describedby="label"
       autocomplete="one-time-code"
       pattern="\d*"
       inputmode="numeric"
@@ -20,7 +16,7 @@
     <input
       type="text"
       aria-label="2-4"
-      aria-describedby="label description message"
+      aria-describedby="label"
       autocomplete="one-time-code"
       pattern="\d*"
       inputmode="numeric"
@@ -28,7 +24,7 @@
     <input
       type="text"
       aria-label="3-4"
-      aria-describedby="label description message"
+      aria-describedby="label"
       autocomplete="one-time-code"
       pattern="\d*"
       inputmode="numeric"
@@ -36,7 +32,7 @@
     <input
       type="text"
       aria-label="4-4"
-      aria-describedby="label description message"
+      aria-describedby="label"
       autocomplete="one-time-code"
       pattern="\d*"
       inputmode="numeric"
