@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
-  "packageManager": "npm@11.4.2",
   "workspaces": [
     "packages/*",
     "packages/assets/projects/crest",
