@@ -14,7 +14,7 @@ design principles.
 
 #### Volta
 
-We recommend using [Volta](https://volta.sh) to manage the correct Node.js and Yarn version.
+We recommend using [Volta](https://volta.sh) to manage the correct Node.js and NPM version.
 
 ```bash
 # On most Unix systems including macOS, you can install with a single command:
@@ -30,16 +30,7 @@ volta install node@22
 node -v
 ```
 
-#### Yarn
-
-```bash
-corepack enable yarn
-
-# Verify Yarn version:
-yarn -v
-```
-
-Volta should automatically pick up the correct Node.js and Yarn version defined in `./package.json`.
+Volta should automatically pick up the correct Node.js version defined in `./package.json`.
 
 #### Docker
 
@@ -59,13 +50,13 @@ machines. This is particularly important for visual regression testing.
 Install all required npm packages:
 
 ```bash
-yarn install
+npm install
 ```
 
 Build all internal npm packages:
 
 ```bash
-yarn build
+npm run build
 ```
 
 ---
@@ -106,14 +97,14 @@ The following instructions assume that [WebStorm](https://www.jetbrains.com/webs
 All available commands for developing, building and testing are listed in the **scripts** section of the
 `./package.json` file in the project root. You can execute them from the root directory, for example:
 
-- `yarn build`
-- `yarn test:e2e:components-js`
-- `yarn test:vrt:components-js`
+- `npm run build`
+- `npm run test:e2e:components-js`
+- `npm run test:vrt:components-js`
 - …
 
 Any command can also be executed in a Docker container by running it with `./docker.sh`, such as:
 
-- `./docker.sh yarn build`
-- `./docker.sh yarn test:e2e:components-js`
-- `./docker.sh yarn test:vrt:components-js`
+- `./docker.sh npm run build`
+- `./docker.sh npm run test:e2e:components-js`
+- `./docker.sh npm run test:vrt:components-js`
 - …

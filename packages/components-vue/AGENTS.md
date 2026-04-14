@@ -22,13 +22,13 @@ packages/components-vue/
 
 ```bash
 # Start dev server
-yarn start:components-vue
+npm run start:components-vue
 
 # Build wrapper
-yarn build:components-vue
+npm run build:components-vue
 
 # Run unit tests
-yarn test:unit:components-vue
+npm run test:unit:components-vue
 ```
 
 ## Usage
@@ -98,5 +98,5 @@ This package requires these to be built first:
 2. `components`
 3. `components-js`
 
-Run `yarn build` from the root to build all dependencies in order.
+Run `npm run build` from the root to build all dependencies in order.
 

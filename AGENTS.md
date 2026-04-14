@@ -11,7 +11,7 @@ The **Porsche Design System (PDS)** is a monorepo providing design tokens, web c
 
 | Layer              | Technology                                 |
 | ------------------ | ------------------------------------------ |
-| Package Manager    | Yarn 1.22 (workspaces)                     |
+| Package Manager    | npm 10+ (workspaces)                     |
 | Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
 | Styling            | JSS (CSS-in-JS), Tailwind CSS              |
@@ -49,43 +49,43 @@ The monorepo has **strict build dependencies**. Always build in this order:
 4. `components-angular`, `components-react`, `components-vue` (can be parallel)
 5. `storefront`
 
-Use `yarn build` to handle this automatically.
+Use `npm run build` to handle this automatically.
 
 ## Essential Commands
 
 ```bash
 # Install dependencies (run from repo root)
-yarn install
+npm install
 
 # Build everything (required before running tests)
-yarn build
+npm run build
 
 # Build only core dependencies (faster for component work)
-yarn build:core-dependencies
+npm run build:core-dependencies
 
 # Start dev servers
-yarn start:components      # Component dev server
-yarn start:storefront      # Documentation site
+npm run start:components      # Component dev server
+npm run start:storefront      # Documentation site
 
 # Run tests
-yarn test:unit:components          # Unit tests (Vitest)
-yarn test:e2e:components-js        # E2E tests (Playwright, requires build)
-./docker.sh yarn test:vrt:components-js   # VRT tests (use Docker!)
-yarn test:a11y:components-js       # Accessibility tests
+npm run test:unit:components          # Unit tests (Vitest)
+npm run test:e2e:components-js        # E2E tests (Playwright, requires build)
+./docker.sh npm run test:vrt:components-js   # VRT tests (use Docker!)
+npm run test:a11y:components-js       # Accessibility tests
 
 # Lint and format
-yarn lint
-yarn format
+npm run lint
+npm run format
 ```
 
 ## Testing
 
 | Test Type | Command                                     | Notes                                      |
 | --------- | ------------------------------------------- | ------------------------------------------ |
-| Unit      | `yarn test:unit:{package}`                  | Vitest, runs fast                          |
-| E2E       | `yarn test:e2e:components-js`               | Playwright, requires build first           |
-| VRT       | `./docker.sh yarn test:vrt:components-js`   | **Must use Docker** for consistent screenshots |
-| A11Y      | `yarn test:a11y:components-js`              | Axe-core + a11y tree snapshots             |
+| Unit      | `npm run test:unit:{package}`                  | Vitest, runs fast                          |
+| E2E       | `npm run test:e2e:components-js`               | Playwright, requires build first           |
+| VRT       | `./docker.sh npm run test:vrt:components-js`   | **Must use Docker** for consistent screenshots |
+| A11Y      | `npm run test:a11y:components-js`              | Axe-core + a11y tree snapshots             |
 
 Key test files:
 
@@ -151,9 +151,8 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 
 | ❌ Don't                                            | ✅ Do                                              |
 | --------------------------------------------------- | -------------------------------------------------- |
-| Run `npm install`                                   | Always use `yarn`                                  |
-| Skip `yarn build` before tests                      | Build first, then test                             |
-| Modify `yarn.lock` manually                         | Run `yarn` to regenerate                           |
+| Skip `npm run build` before tests                   | Build first, then test                             |
+| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                    |
 | Remove focus outlines                               | Provide accessible alternatives                    |
 | Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                          |
 | Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first |
@@ -161,8 +160,7 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 ## Known Constraints
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds
-2. **Stencil + npm**: A fake npm script exists at `packages/components/scripts/fakenpm/` to prevent Stencil from corrupting yarn workspaces
-3. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
+2. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
 
 ## Package-Specific Instructions
 
@@ -192,10 +190,10 @@ When multiple guidance files exist, prefer them in this order:
 
 | Task           | Command                                    |
 | -------------- | ------------------------------------------ |
-| Fresh install  | `yarn install && yarn build`               |
-| Dev components | `yarn start:components`                    |
-| Dev storefront | `yarn start:storefront`                    |
-| Test component | `yarn test:unit:components`                |
-| Clean rebuild  | `yarn clean && yarn install && yarn build` |
+| Fresh install  | `npm install && npm run build`               |
+| Dev components | `npm run start:components`                    |
+| Dev storefront | `npm run start:storefront`                    |
+| Test component | `npm run test:unit:components`                |
+| Clean rebuild  | `npm run clean && npm install && npm run build` |
 | Run in Docker  | `./docker.sh {command}`                    |
 

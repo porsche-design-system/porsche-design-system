@@ -10,4 +10,4 @@ alwaysApply: false
 - Follow `PorscheDesignSystemModule.load()` setup patterns for NgModule or standalone bootstrap flows.
 - Pass extra ARIA through the wrapper's `[aria]` input instead of adding `aria-*` directly to the host.
 - Avoid manual edits to generated `dist/` output unless the task is explicitly about published artifacts.
-- Validate wrapper changes with `yarn test:unit:components-angular`.
+- Validate wrapper changes with `npm run test:unit:components-angular`.

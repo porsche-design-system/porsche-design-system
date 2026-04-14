@@ -22,13 +22,13 @@ packages/components-angular/
 
 ```bash
 # Start dev server
-yarn start:components-angular
+npm run start:components-angular
 
 # Build wrapper
-yarn build:components-angular
+npm run build:components-angular
 
 # Run unit tests
-yarn test:unit:components-angular
+npm run test:unit:components-angular
 ```
 
 ## Usage
@@ -87,5 +87,5 @@ This package requires these to be built first:
 2. `components`
 3. `components-js`
 
-Run `yarn build` from the root to build all dependencies in order.
+Run `npm run build` from the root to build all dependencies in order.
 
