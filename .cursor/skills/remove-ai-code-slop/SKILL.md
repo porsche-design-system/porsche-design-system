@@ -50,10 +50,10 @@ Make the change look like deliberate human code: minimal, consistent with surrou
 
 ## In this repository (Porsche Design System)
 
-- Use **Yarn**; follow nearest **AGENTS.md** and `.cursor/rules/pds-*.mdc`.
+- Use **NPM**; follow nearest **AGENTS.md** and `.cursor/rules/pds-*.mdc`.
 - Format/lint: **`npm run lint`** and **`npm run format`** from repo root (Biome + Prettier for MD/MDX).
-- After substantive component changes, **`npm run build:core-dependencies`** or full **`npm run build`** before cross-package
-  tests (see root **AGENTS.md**).
+- After substantive component changes, **`npm run build:core-dependencies`** or full **`npm run build`** before
+  cross-package tests (see root **AGENTS.md**).
 
 ## Output to the user
 
