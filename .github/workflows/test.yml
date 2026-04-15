@@ -20,14 +20,14 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:assets:assets
-      - run: yarn test:unit:assets:flags
-      - run: yarn test:unit:assets:icons
-      - run: yarn test:unit:assets:font-face
+      - run: npm run test:unit:assets:assets
+      - run: npm run test:unit:assets:flags
+      - run: npm run test:unit:assets:icons
+      - run: npm run test:unit:assets:font-face
   tokens:
     name: 'Tokens'
     runs-on: ubuntu-latest
@@ -39,11 +39,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:tokens
+      - run: npm run test:unit:tokens
   styles:
     name: 'Styles'
     runs-on: ubuntu-latest
@@ -55,18 +55,18 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: yarn test:unit:styles:global-styles
-      - run: yarn test:unit:styles:tailwindcss
-      - run: yarn test:unit:styles:scss
-      - run: yarn test:unit:styles:emotion
-      - run: yarn test:unit:styles:vanilla-extract
-      - run: yarn test:vrt:styles
+      - run: npm run test:unit:styles:global-styles
+      - run: npm run test:unit:styles:tailwindcss
+      - run: npm run test:unit:styles:scss
+      - run: npm run test:unit:styles:emotion
+      - run: npm run test:unit:styles:vanilla-extract
+      - run: npm run test:vrt:styles
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -84,11 +84,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:components
+      - run: npm run test:unit:components
   components-js-unit:
     name: 'Components JS Unit'
     runs-on: ubuntu-latest
@@ -100,17 +100,17 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: yarn test:unit:components-js:components-manager-core
-      - run: yarn test:unit:components-js:components-manager-cli
-      - run: yarn test:unit:components-js:components-wrapper
-      - run: yarn test:unit:components-js:jsdom-polyfill
-      - run: yarn test:unit:components-js:partials
+      - run: npm run test:unit:components-js:components-manager-core
+      - run: npm run test:unit:components-js:components-manager-cli
+      - run: npm run test:unit:components-js:components-wrapper
+      - run: npm run test:unit:components-js:jsdom-polyfill
+      - run: npm run test:unit:components-js:partials
       - name: 'Unit Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -128,11 +128,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:a11y:components-js
+      - run: npm run test:a11y:components-js
   components-js-e2e-chrome:
     name: 'Components JS E2E (Chrome)'
     runs-on: ubuntu-latest
@@ -149,11 +149,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-firefox:
     name: 'Components JS E2E (Firefox)'
     runs-on: ubuntu-latest
@@ -170,11 +170,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-safari:
     name: 'Components JS E2E (Safari)'
     runs-on: ubuntu-latest
@@ -191,11 +191,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-vrt-chrome:
     name: 'Components JS VRT (Chrome)'
     runs-on: ubuntu-latest
@@ -212,11 +212,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -239,11 +239,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -261,14 +261,14 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:components-angular:vitest
-      - run: yarn test:unit:components-angular:karma-ci
-      - run: yarn test:e2e:components-angular
-      - run: yarn test:vrt:components-angular
+      - run: npm run test:unit:components-angular:vitest
+      - run: npm run test:unit:components-angular:karma-ci
+      - run: npm run test:e2e:components-angular
+      - run: npm run test:vrt:components-angular
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -286,13 +286,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:components-react:react-wrapper
-      - run: yarn test:e2e:components-react
-      - run: yarn test:vrt:components-react
+      - run: npm run test:unit:components-react:react-wrapper
+      - run: npm run test:e2e:components-react
+      - run: npm run test:vrt:components-react
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -310,12 +310,12 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:components-react/remix
-      - run: yarn test:vrt:components-react/remix
+      - run: npm run test:e2e:components-react/remix
+      - run: npm run test:vrt:components-react/remix
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -333,11 +333,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:vrt:components-react/react-router
+      - run: npm run test:vrt:components-react/react-router
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -355,13 +355,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:components-react/nextjs
-      - run: yarn test:vrt:components-react/nextjs
-      - run: yarn test:unit:components-react:react-ssr-wrapper
+      - run: npm run test:e2e:components-react/nextjs
+      - run: npm run test:vrt:components-react/nextjs
+      - run: npm run test:unit:components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -379,13 +379,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:components-vue
-      - run: yarn test:e2e:components-vue
-      - run: yarn test:vrt:components-vue
+      - run: npm run test:unit:components-vue
+      - run: npm run test:e2e:components-vue
+      - run: npm run test:vrt:components-vue
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -403,11 +403,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:component-meta
+      - run: npm run test:unit:component-meta
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
@@ -419,11 +419,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:shared
+      - run: npm run test:unit:shared
   storefront-unit:
     name: 'Storefront Unit'
     runs-on: ubuntu-latest
@@ -435,11 +435,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:storefront
+      - run: npm run test:unit:storefront
   storefront-e2e:
     name: 'Storefront E2E'
     runs-on: ubuntu-latest
@@ -456,11 +456,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -478,11 +478,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:e2e:storefront:sitemap
+      - run: npm run test:e2e:storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -505,11 +505,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: npm run test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'A11y Regression'
         if: failure()
         uses: actions/upload-artifact@v7
@@ -527,11 +527,11 @@ jobs:
 #      - uses: actions/setup-node@v6
 #        with:
 #          node-version: '24'
-#          cache: 'yarn'
-#      - run: yarn install --frozen-lockfile
+#          cache: 'npm'
+#      - run: npm ci
 #      - name: 'Restore'
 #        uses: ./.github/actions/restore
-#      - run: yarn test:vrt:storefront
+#      - run: npm run test:vrt:storefront
 #      - name: 'VRT Regression'
 #        if: failure()
 #        uses: actions/upload-artifact@v7
@@ -549,8 +549,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'npm'
+      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: yarn test:unit:utilities
+      - run: npm run test:unit:utilities

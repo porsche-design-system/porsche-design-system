@@ -18,18 +18,18 @@ This package contains the **Next.js documentation site** for the Porsche Design 
 
 ```bash
 # Start dev server
-yarn start:storefront
+npm run start:storefront
 
 # Build storefront
-yarn build:storefront
+npm run build:storefront
 
 # Run unit tests
-yarn test:unit:storefront
+npm run test:unit:storefront
 
 # Run end-to-end, accessibility, and visual regression tests
-yarn test:e2e:storefront
-yarn test:a11y:storefront
-yarn test:vrt:storefront
+npm run test:e2e:storefront
+npm run test:a11y:storefront
+npm run test:vrt:storefront
 ```
 
 ## Prefer PDS Components

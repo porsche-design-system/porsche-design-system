@@ -25,10 +25,10 @@ packages/shared/
 
 ```bash
 # Build shared generated files and bundle package
-yarn build:shared
+npm run build:shared
 
 # Run unit tests
-yarn test:unit:shared
+npm run test:unit:shared
 ```
 
 ## Generated Files

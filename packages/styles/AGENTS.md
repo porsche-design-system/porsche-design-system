@@ -24,13 +24,13 @@ packages/styles/
 
 ```bash
 # Build all style packages and demo app
-yarn build:styles
+npm run build:styles
 
 # Run unit tests for all style packages
-yarn test:unit:styles
+npm run test:unit:styles
 
 # Run visual regression tests
-yarn test:vrt:styles
+npm run test:vrt:styles
 ```
 
 ## Working Guidelines
@@ -44,5 +44,5 @@ yarn test:vrt:styles
 ## Testing Expectations
 
 - Run the relevant unit tests for the subpackage you change.
-- Run `yarn test:vrt:styles` when a visual contract or rendered demo output changes.
+- Run `npm run test:vrt:styles` when a visual contract or rendered demo output changes.
 - Be careful with cross-target changes: a token or helper adjustment may affect several style packages at once.

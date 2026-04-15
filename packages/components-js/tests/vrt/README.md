@@ -30,7 +30,7 @@ with `headless: false`, but it's not visible (not applied) on screenshots.
 In `components-js` do:
 
 ```
-yarn test:vrt sometestname
+npm run test:vrt sometestname
 ```
 
 5. Safari will be opened and you'll see the blue element (because red gets blue when applying `invert(100%)` filter)

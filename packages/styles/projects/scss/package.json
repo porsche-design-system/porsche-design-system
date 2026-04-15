@@ -9,10 +9,10 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:package && yarn copy:scss",
+    "build": "npm run clean:build && npm run build:package && npm run copy:scss",
     "build:package": "tsx scripts/build.ts",
     "copy:scss": "cp -r src/*.scss dist/",
-    "test": "yarn test:unit",
+    "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },

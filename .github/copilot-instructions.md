@@ -11,7 +11,7 @@ The Porsche Design System (PDS) is a **monorepo** providing design tokens, web c
 
 | Layer | Technology |
 |-------|------------|
-| **Package Manager** | Yarn 1.22 (workspaces) |
+| **Package Manager** | npm 10+ (workspaces) |
 | **Node** | v22 (use Volta) |
 | **Web Components** | Stencil 4.x |
 | **Styling** | JSS (CSS-in-JS), Tailwind CSS |
@@ -43,33 +43,33 @@ packages/
 
 ```bash
 # Install dependencies (run from repo root)
-yarn install
+npm install
 
 # Build everything (required before running tests)
-yarn build
+npm run build
 
 # Build only core dependencies (faster for component work)
-yarn build:core-dependencies
+npm run build:core-dependencies
 
 # Start component dev server
-yarn start:components
+npm run start:components
 
 # Start storefront dev server  
-yarn start:storefront
+npm run start:storefront
 
 # Run unit tests for a package
-yarn test:unit:components
-yarn test:unit:storefront
+npm run test:unit:components
+npm run test:unit:storefront
 
 # Run e2e tests (requires build first)
-yarn test:e2e:components-js
+npm run test:e2e:components-js
 
 # Run visual regression tests (use Docker for consistency)
-./docker.sh yarn test:vrt:components-js
+./docker.sh npm run test:vrt:components-js
 
 # Lint and format
-yarn lint
-yarn format
+npm run lint
+npm run format
 ```
 
 ## Build Order (Critical)
@@ -82,7 +82,7 @@ The monorepo has **strict build dependencies**. Always build in this order:
 4. `components-angular`, `components-react`, `components-vue` (can be parallel)
 5. `storefront`
 
-Use `yarn build` to handle this automatically, or `yarn build:core-dependencies` + individual package builds.
+Use `npm run build` to handle this automatically, or `npm run build:core-dependencies` + individual package builds.
 
 ## Component Development
 
@@ -110,10 +110,10 @@ packages/components/src/components/{name}/
 
 | Test Type | Command | Notes |
 |-----------|---------|-------|
-| Unit | `yarn test:unit:{package}` | Vitest, runs fast |
-| E2E | `yarn test:e2e:components-js` | Playwright, requires build |
-| VRT | `./docker.sh yarn test:vrt:components-js` | Use Docker for consistency |
-| A11Y | `yarn test:a11y:components-js` | Axe-core + a11y tree snapshots |
+| Unit | `npm run test:unit:{package}` | Vitest, runs fast |
+| E2E | `npm run test:e2e:components-js` | Playwright, requires build |
+| VRT | `./docker.sh npm run test:vrt:components-js` | Use Docker for consistency |
+| A11Y | `npm run test:a11y:components-js` | Axe-core + a11y tree snapshots |
 
 **Important**: VRT tests should run in Docker (`./docker.sh`) to ensure consistent screenshots across machines.
 
@@ -127,14 +127,12 @@ packages/components/src/components/{name}/
 ## Known Constraints
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds in the codebase
-2. **Stencil + npm**: A fake npm script exists at `packages/components/scripts/fakenpm/` to prevent Stencil from corrupting yarn workspaces
-3. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
+2. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
 
 ## Common Pitfalls
 
-- **Don't** run `npm install` — always use `yarn`
-- **Don't** skip `yarn build` before running tests
-- **Don't** modify `yarn.lock` manually; run `yarn` to regenerate
+- **Don't** skip `npm run build` before running tests
+- **Don't** modify `package-lock.json` manually; run `npm install` to regenerate
 - **Don't** remove focus outlines without providing accessible alternatives
 - **Do** use Docker for VRT to match CI environment
 - **Do** check `docs/dependencies.md` before upgrading packages
@@ -147,10 +145,10 @@ Accessibility instructions are in `instructions/accessibility.instructions.md`. 
 
 | Task | Command |
 |------|---------|
-| Fresh install | `yarn install && yarn build` |
-| Dev components | `yarn start:components` |
-| Dev storefront | `yarn start:storefront` |
-| Test component | `yarn test:unit:components` |
-| Clean rebuild | `yarn clean && yarn install && yarn build` |
+| Fresh install | `npm install && npm run build` |
+| Dev components | `npm run start:components` |
+| Dev storefront | `npm run start:storefront` |
+| Test component | `npm run test:unit:components` |
+| Clean rebuild | `npm run clean && npm install && npm run build` |
 | Run in Docker | `./docker.sh {command}` |
 

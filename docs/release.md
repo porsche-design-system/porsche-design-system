@@ -15,7 +15,7 @@ version can be released.
 2. Run `git pull origin {main- or v-branch}`
 3. Create a new branch e.g. `git checkout -b release/components-v4.0.0-rc.0`
 4. Make sure all relevant changes for the new release to be documented in `./packages/components/CHANGELOG.md`
-5. Run `yarn prepare-release ${TARGET_VERSION}` (e.g. `yarn prepare-release 4.0.0-rc.0`)
+5. Run `npm run prepare-release ${TARGET_VERSION}` (e.g. `npm run prepare-release 4.0.0-rc.0`)
 
 ### Publish
 
@@ -47,7 +47,7 @@ release can be published.
 1. Switch to **project root directory**
 2. Run `git pull origin {main- or v-branch}`
 3. Create a new branch e.g. `git checkout -b release/components-v4.0.0`
-4. Run `yarn prepare-release ${TARGET_VERSION}` (e.g. `yarn prepare-release 4.0.0`)
+4. Run `npm run prepare-release ${TARGET_VERSION}` (e.g. `npm run prepare-release 4.0.0`)
 
 ### Publish
 
