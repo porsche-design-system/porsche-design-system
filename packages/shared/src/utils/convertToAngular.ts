@@ -1,5 +1,4 @@
-// TODO: Change to latest change-case version once components/unit tests are migrated to vitest and can handle ESM
-import { camelCase } from 'change-case-legacy';
+import { camelCase } from 'change-case';
 
 export const transformEventsToAngularSyntax = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, ' ($1)="$2"');

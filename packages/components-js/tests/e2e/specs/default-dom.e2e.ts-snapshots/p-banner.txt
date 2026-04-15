@@ -1,17 +1,7 @@
-<div
-  id="banner"
-  popover="manual"
-  aria-hidden="true"
-  role="status"
-  aria-live="polite"
-  aria-labelledby="heading"
-  aria-describedby="description"
->
+<div popover="manual" aria-hidden="true" role="status" aria-live="polite">
   <div class="banner">
     <slot name="heading"> </slot>
     <slot name="description"> </slot>
-    <p-button class="dismiss hydrated" aria-controls="banner">
-      Close banner</p-button
-    >
+    <p-button class="dismiss hydrated"> Close banner</p-button>
   </div>
 </div>

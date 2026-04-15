@@ -1,7 +1,7 @@
 import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const SelectExampleRequiredPage = (): JSX.Element => {
+export const SelectExampleRequiredPage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
   const [isRequired, setIsRequired] = useState(true);
   const [hasDeselection, setHasDeselection] = useState(false);

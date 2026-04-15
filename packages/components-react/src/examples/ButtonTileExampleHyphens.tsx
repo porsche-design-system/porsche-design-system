@@ -2,7 +2,7 @@ import { PButtonTile, PSelect, PSelectOption, SelectChangeEventDetail } from '@p
 import { Property } from 'csstype';
 import { useState } from 'react';
 
-export const ButtonTileExampleHyphensPage = (): JSX.Element => {
+export const ButtonTileExampleHyphensPage = () => {
   const [hyphens, setHyphens] = useState<Property.Hyphens>('auto');
 
   const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {

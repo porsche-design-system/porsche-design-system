@@ -1,6 +1,6 @@
 import { camelCase, capitalCase, kebabCase, pascalCase } from 'change-case';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import * as path from 'path';
 import { type AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';

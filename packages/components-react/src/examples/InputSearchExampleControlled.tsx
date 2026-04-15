@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputSearchControlledExamplePage = (): JSX.Element => {
+export const InputSearchControlledExamplePage = () => {
   const [value, setValue] = useState<PInputSearchProps['value']>('');
 
   const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {

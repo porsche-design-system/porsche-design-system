@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const DrilldownExamplePage = (): JSX.Element => {
+export const DrilldownExamplePage = () => {
   const [isDrilldownOpen, setIsDrilldownOpen] = useState<boolean>(false);
   const [drilldownActiveIdentifier, setDrilldownActiveIdentifier] =
     useState<DrilldownUpdateEventDetail['activeIdentifier']>(undefined);

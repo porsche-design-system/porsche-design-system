@@ -9,7 +9,6 @@ import {
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
-import { messageId } from '../../common/state-message/state-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
 import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
@@ -94,7 +93,7 @@ export class RadioGroupOption {
               }}
               onChange={this.onChange}
               onBlur={this.onBlur}
-              aria-describedby={isLoading ? loadingId : `${messageId}`}
+              aria-describedby={isLoading ? loadingId : null}
               aria-invalid={state === 'error' ? 'true' : null}
               aria-disabled={isDisabled || isLoading ? 'true' : null}
               ref={(el) => (this.inputElement = el)}

@@ -1,7 +1,7 @@
 import { PButton, PRadioGroup, PRadioGroupOption, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const RadioGroupExamplePage = (): JSX.Element => {
+export const RadioGroupExamplePage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

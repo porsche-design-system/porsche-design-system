@@ -1,7 +1,7 @@
 import { PButton, PHeading, PModal, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const ModalExampleAccessibilityPage = (): JSX.Element => {
+export const ModalExampleAccessibilityPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);

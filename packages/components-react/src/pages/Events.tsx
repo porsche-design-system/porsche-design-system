@@ -70,7 +70,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const EventsPage = (): JSX.Element => {
+export const EventsPage = () => {
   const [accordionUpdateEventCounter, setAccordionUpdateEventCounter] = useState(0);
   const [paginationUpdateEventCounter, setPaginationUpdateEventCounter] = useState(0);
   const [tabsBarUpdateEventCounter, setTabsBarUpdateEventCounter] = useState(0);

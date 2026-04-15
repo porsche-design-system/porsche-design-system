@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputTimeControlledExamplePage = (): JSX.Element => {
+export const InputTimeControlledExamplePage = () => {
   const [value, setValue] = useState<PInputTimeProps['value']>('');
 
   const onInput = (e: CustomEvent<InputTimeInputEventDetail>) => {

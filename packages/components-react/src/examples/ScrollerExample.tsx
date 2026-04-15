@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
-export const ScrollerExamplePage = (): JSX.Element => {
+export const ScrollerExamplePage = () => {
   const style = `
       p-scroller > *:not(:last-child) {
         margin-right: 1rem;

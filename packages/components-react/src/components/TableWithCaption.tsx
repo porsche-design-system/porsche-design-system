@@ -10,7 +10,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared';
 
-export const TableWithCaption = (): JSX.Element => {
+export const TableWithCaption = () => {
   return (
     <PTable caption="Some caption">
       <PTableHead>

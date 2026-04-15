@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 
 describe('package content', () => {
   const ESMBuildDir = path.resolve(__dirname, './../../../../../dist/vue-wrapper/esm');

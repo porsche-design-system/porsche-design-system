@@ -1,7 +1,7 @@
 import { kebabCase } from 'change-case';
 import * as crypto from 'crypto';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { gzipSizeSync } from 'gzip-size';
 import * as path from 'path';
 import { format } from 'prettier';

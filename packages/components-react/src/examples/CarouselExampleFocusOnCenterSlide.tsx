@@ -1,7 +1,7 @@
 import { PCarousel } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
+export const CarouselExampleFocusOnCenterSlidePage = () => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const slideStyles = {

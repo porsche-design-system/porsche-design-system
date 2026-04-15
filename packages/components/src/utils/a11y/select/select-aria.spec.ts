@@ -1,51 +1,27 @@
-import {
-  getFilterInputAriaAttributes,
-  getListAriaAttributes,
-  getOptionAriaAttributes,
-  getSelectDropdownButtonAriaAttributes,
-} from './select-aria';
+import { getComboboxAriaAttributes, getOptionAriaAttributes } from './select-aria';
 
-describe('getSelectDropdownButtonAriaAttributes()', () => {
-  it.each<Parameters<typeof getSelectDropdownButtonAriaAttributes>>([
-    [true, 'label', 'description-id', 'dropdown-id', 0],
-    [false, 'label', 'description-id', 'dropdown-id', 1],
-  ])(
-    'should return correct aria attributes for isOpen: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
-    (isOpen, labelId, descriptionId, dropdownId, activeDescendantId) => {
-      expect(
-        getSelectDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId)
-      ).toMatchSnapshot();
-    }
-  );
-});
+describe('getComboboxAriaAttributes()', () => {
+  it('should return correct aria attributes when open, required, with all IDs', () => {
+    expect(
+      getComboboxAriaAttributes(true, true, 'label-id', 'message-id', 'description-id', 'dropdown-id')
+    ).toMatchSnapshot();
+  });
 
-describe('getFilterInputAriaAttributes()', () => {
-  it.each<Parameters<typeof getFilterInputAriaAttributes>>([
-    [true, true, 'label', 'description-id', 'dropdown-id', 0],
-    [false, false, 'label', 'description-id', 'dropdown-id', 0],
-    [false, false, 'label', 'description-id', 'dropdown-id', 1],
-  ])(
-    'should return correct aria attributes for isOpen: %o, isRequired: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
-    (isOpen, isRequired, labelId, descriptionId, dropdownId, activeDescendantId) => {
-      expect(
-        getFilterInputAriaAttributes(isOpen, isRequired, labelId, descriptionId, dropdownId, activeDescendantId)
-      ).toMatchSnapshot();
-    }
-  );
-});
+  it('should return correct aria attributes when closed and not required', () => {
+    expect(
+      getComboboxAriaAttributes(false, false, 'label-id', 'message-id', 'description-id', 'dropdown-id')
+    ).toMatchSnapshot();
+  });
 
-describe('getListAriaAttributes()', () => {
-  it.each<Parameters<typeof getListAriaAttributes>>([
-    ['Some label', true, false, false],
-    ['Some label', false, true, false],
-    ['Some label', false, false, false],
-    ['Some label', true, true, true],
-  ])(
-    'should return correct aria attributes for label: %o, isRequired: %o, hasFilter: %o and isOpen: %o',
-    (label, isRequired, hasFilter, isOpen) => {
-      expect(getListAriaAttributes(label, isRequired, hasFilter, isOpen)).toMatchSnapshot();
-    }
-  );
+  it('should return correct aria attributes with empty labelId', () => {
+    expect(
+      getComboboxAriaAttributes(false, false, '', 'message-id', 'description-id', 'dropdown-id')
+    ).toMatchSnapshot();
+  });
+
+  it('should return correct aria attributes with empty messageId and descriptionId', () => {
+    expect(getComboboxAriaAttributes(true, false, 'label-id', '', '', 'dropdown-id')).toMatchSnapshot();
+  });
 });
 
 describe('getOptionAriaAttributes()', () => {

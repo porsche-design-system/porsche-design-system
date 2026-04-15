@@ -33,7 +33,8 @@ describe('addStickyTopCssVarStyleSheet()', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    global.CSSStyleSheet = vi.fn().mockImplementation(() => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest needs regular function
+    global.CSSStyleSheet = vi.fn().mockImplementation(function () {
       return stylesheetMock;
     });
     host = new MockHTMLElement();
@@ -79,10 +80,12 @@ describe('handleUpdateStickyTopCssVar()', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    global.ResizeObserver = vi.fn().mockImplementation(() => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest needs regular function
+    global.ResizeObserver = vi.fn().mockImplementation(function () {
       return mockResizeObserver;
     });
-    global.CSSStyleSheet = vi.fn().mockImplementation(() => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest needs regular function
+    global.CSSStyleSheet = vi.fn().mockImplementation(function () {
       return stylesheetMock;
     });
     host = new MockHTMLElement();
@@ -154,7 +157,8 @@ describe('updateStickyTopCssVarStyleSheet()', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     host = new MockHTMLElement();
-    global.CSSStyleSheet = vi.fn().mockImplementation(() => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest needs regular function
+    global.CSSStyleSheet = vi.fn().mockImplementation(function () {
       return stylesheetMock;
     });
   });
@@ -176,7 +180,8 @@ describe('getStickyTopResizeObserver()', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     host = new MockHTMLElement();
-    global.ResizeObserver = vi.fn().mockImplementation(() => {
+    // biome-ignore lint/complexity/useArrowFunction: vitest needs regular function
+    global.ResizeObserver = vi.fn().mockImplementation(function () {
       return mockResizeObserver;
     });
   });

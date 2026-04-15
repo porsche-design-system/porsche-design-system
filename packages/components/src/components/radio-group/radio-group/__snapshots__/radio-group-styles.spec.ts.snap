@@ -67,6 +67,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -169,6 +172,9 @@ slot[name="label-after"]::slotted(*) {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -273,6 +279,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -374,6 +383,9 @@ slot[name="label-after"]::slotted(*) {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -477,6 +489,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -578,6 +593,9 @@ slot[name="label-after"]::slotted(*) {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -682,6 +700,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -783,6 +804,9 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -886,6 +910,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -988,6 +1015,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1088,6 +1118,9 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1190,6 +1223,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1291,6 +1327,9 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1411,6 +1450,9 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1635,6 +1677,9 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1883,6 +1928,9 @@ slot[name="label-after"]::slotted(*) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;

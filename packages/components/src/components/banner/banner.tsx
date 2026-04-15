@@ -1,6 +1,13 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasPropValueChanged, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  getSlotTextContent,
+  hasPropValueChanged,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './banner-styles';
 import {
   BANNER_HEADING_TAGS,
@@ -99,23 +106,20 @@ export class Banner {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.open, this.position, this.state, this.dismissButton);
 
-    const bannerId = 'banner';
-    const labelId = 'heading';
-    const descriptionId = 'description';
     const Heading = this.headingTag;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const headingText = this.heading ? this.heading : getSlotTextContent(this.host, 'heading');
 
     return (
       <div
-        id={bannerId}
         popover="manual"
         aria-hidden={this.open ? 'false' : 'true'}
-        {...getBannerAriaAttributes(this.state, labelId, descriptionId)}
+        {...getBannerAriaAttributes(this.state, headingText)}
         ref={(el: HTMLElement) => (this.refPopover = el)}
       >
         <div class="banner">
-          {this.heading ? <Heading id={labelId}>{this.heading}</Heading> : <slot name="heading" />}
-          {this.description ? <p id={descriptionId}>{this.description}</p> : <slot name="description" />}
+          {this.heading ? <Heading>{this.heading}</Heading> : <slot name="heading" />}
+          {this.description ? <p>{this.description}</p> : <slot name="description" />}
           {this.dismissButton && (
             <PrefixedTagNames.pButton
               class="dismiss"
@@ -124,8 +128,8 @@ export class Banner {
               icon="close"
               hideLabel={true}
               compact={true}
-              aria-controls={bannerId}
               onClick={this.dismissBanner}
+              {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
               ref={(el: HTMLElement) => (this.refDismiss = el)}
             >
               Close banner

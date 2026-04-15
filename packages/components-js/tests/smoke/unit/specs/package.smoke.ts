@@ -2,7 +2,7 @@ import { createRequire } from 'node:module';
 import { type Analysis, checkPackage, createPackageFromTarballData, type Problem } from '@arethetypeswrong/core';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
@@ -104,6 +104,7 @@ describe('package.json files', () => {
   for (const packageName of packageNames) {
     test(
       `should have correct entrypoints for "${packageName}"`,
+      { timeout: 30000 },
       async () => {
         const pathName = path
           .resolve(nodeRequire.resolve(packageName), '../package.json')
@@ -193,8 +194,7 @@ describe('package.json files', () => {
         }
 
         expect(relevantProblems).toHaveLength(0);
-      },
-      { timeout: 30000 }
+      }
     );
   }
 });

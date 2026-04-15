@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
+    "rootDir": "./library-entry",
     "outDir": "./dist/library-entry"
   },
   "include": ["library-entry"],

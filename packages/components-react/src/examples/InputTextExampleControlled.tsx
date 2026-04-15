@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputTextControlledExamplePage = (): JSX.Element => {
+export const InputTextControlledExamplePage = () => {
   const [value, setValue] = useState<PInputTextProps['value']>('');
 
   const onInput = (e: CustomEvent<InputTextInputEventDetail>) => {

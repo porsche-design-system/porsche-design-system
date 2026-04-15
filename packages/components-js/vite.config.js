@@ -1,13 +1,14 @@
-import { resolve } from 'path';
 import {
   getComponentChunkLinks,
   getFontLinks,
   getLoaderScript,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
+import tailwindcss from '@tailwindcss/vite';
+import { Features } from 'lightningcss';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { COMPONENT_CHUNK_NAMES } from './projects/components-wrapper';
-import { Features } from "lightningcss"
 
 const localhost = 'http://localhost:3001';
 
@@ -41,6 +42,7 @@ export default defineConfig({
     port: 8575,
   },
   build: {
+    chunkSizeWarningLimit: Number.POSITIVE_INFINITY, // Does not matter for demo-app
     emptyOutDir: true,
     outDir: 'dist/demo-app',
     rollupOptions: {
@@ -50,11 +52,11 @@ export default defineConfig({
     },
   },
   css: {
-    transformer: "lightningcss",
+    transformer: 'lightningcss',
     // Disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
     lightningcss: {
       exclude: Features.LightDark,
     },
   },
-  plugins: [transformIndexHtmlPlugin()],
+  plugins: [tailwindcss(), transformIndexHtmlPlugin()],
 });

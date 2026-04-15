@@ -115,7 +115,7 @@ const defaultColDef = {
   editable: true,
 };
 
-export const AGGridExamplePage = (): JSX.Element => {
+export const AGGridExamplePage = () => {
   return (
     <div style={{ height: '80vh' }}>
       <AgGridReact

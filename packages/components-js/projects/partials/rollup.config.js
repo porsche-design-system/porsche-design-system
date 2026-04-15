@@ -63,10 +63,13 @@ maybeImportJSXRuntime();`
   },
 });
 
+const external = ['crypto', 'react/jsx-runtime'];
+
 export default [
   // Default JS Build - CJS
   {
     input,
+    external,
     output: {
       dir: `${outputDir}/cjs`,
       format: 'cjs',
@@ -77,6 +80,7 @@ export default [
   // Default JS Build - ESM
   {
     input,
+    external,
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',

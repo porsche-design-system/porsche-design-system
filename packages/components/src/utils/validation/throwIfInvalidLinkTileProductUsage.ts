@@ -1,4 +1,6 @@
-import { getOnlyChildOfKindHTMLElementOrThrow, getTagNameWithoutPrefix, throwException } from '../../utils';
+import { throwException } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
+import { getOnlyChildOfKindHTMLElementOrThrow } from './getOnlyChildOfKindHTMLElementOrThrow';
 import { getNamedSlot } from '../getNamedSlot';
 import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
 

@@ -21,12 +21,10 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
-  "dependencies": {
-    "@porsche-design-system/component-meta": "0.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@octokit/core": "^7.0.5",
-    "change-case-legacy": "npm:change-case@^4.1.2",
+    "@octokit/core": "^7.0.6",
+    "change-case": "^5.4.4",
     "@types/tinycolor2": "^1.4.6",
     "tinycolor2": "^1.6.0"
   },
@@ -38,7 +36,7 @@
     "@rollup/plugin-typescript": "*",
     "@types/madge": "*",
     "@types/node": "*",
-    "globby": "*",
+    "fast-glob": "*",
     "madge": "*",
     "rollup": "*",
     "rollup-plugin-bin": "*",

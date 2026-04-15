@@ -18,6 +18,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const reactImports = [
       'type ForwardedRef',
       'forwardRef',
+      'type JSX',
       ...(this.inputParser.canHaveChildren(component) ? ['type PropsWithChildren'] : []),
       'useRef',
     ].sort();

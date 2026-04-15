@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputDateControlledExamplePage = (): JSX.Element => {
+export const InputDateControlledExamplePage = () => {
   const [value, setValue] = useState<PInputDateProps['value']>('');
 
   const onInput = (e: CustomEvent<InputDateInputEventDetail>) => {

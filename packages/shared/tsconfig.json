@@ -3,7 +3,9 @@
   "compilerOptions": {
     "strict": false, // 🙈 too many issues
     "verbatimModuleSyntax": false,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
+    "types": ["node"],
   },
   "include": ["./src", "./scripts"],
   "exclude": ["**/*.spec.ts"]

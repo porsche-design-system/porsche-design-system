@@ -2,7 +2,7 @@ import { PHeading, PModal } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 import { TableWithCaption } from '../components';
 
-export const ModalFocusCyclePage = (): JSX.Element => {
+export const ModalFocusCyclePage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 

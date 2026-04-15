@@ -81,11 +81,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   );
 
   expect(container.firstElementChild).toMatchSnapshot();
-  if (tagName === 'p-canvas') {
-    expect(consoleSpy).toHaveBeenCalledTimes(1); // jsdom isn't able to parse @container queries
-  } else {
-    expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
-  }
+  expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
 });
 
 describe('manual test cases', () => {

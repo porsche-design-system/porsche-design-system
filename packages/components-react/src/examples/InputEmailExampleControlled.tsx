@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const InputEmailControlledExamplePage = (): JSX.Element => {
+export const InputEmailControlledExamplePage = () => {
   const [value, setValue] = useState<PInputEmailProps['value']>('');
 
   const onInput = (e: CustomEvent<InputEmailInputEventDetail>) => {

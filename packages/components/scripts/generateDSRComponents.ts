@@ -4,7 +4,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { kebabCase, pascalCase } from 'change-case';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import * as path from 'path';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
@@ -95,11 +95,12 @@ const generateDSRComponents = (): void => {
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
-        .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
+        .replace(/.*= .*getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
         .replace(
           /^/g,
           `import { Component } from 'react';
+import type { JSX } from 'react';
 import { minifyCss } from '../../minifyCss';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
@@ -244,10 +245,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
               `$&
     const { namedSlotChildren } = splitChildren(children);\n`
             )
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`)
             .replace(
-              /^/,
-              `import { splitChildren } from '../../splitChildren';
-`
+              /hasDescription\(\/\/ host, (description)\)/g,
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0)`
+            )
+            .replace(
+              /hasMessage\(\/\/ host, (message), (state)\)/g,
+              `($1 || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes($2)`
             );
         }
         if (newFileContent.includes('export const LegacyLabel:')) {

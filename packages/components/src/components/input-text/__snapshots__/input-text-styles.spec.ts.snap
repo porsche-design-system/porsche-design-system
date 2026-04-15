@@ -90,6 +90,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -238,6 +241,9 @@ input {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -388,6 +394,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -515,6 +524,9 @@ input {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -644,6 +656,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -771,6 +786,9 @@ input {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -901,6 +919,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1029,6 +1050,9 @@ input {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1156,6 +1180,9 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1305,6 +1332,9 @@ input {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1431,6 +1461,9 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1559,6 +1592,9 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1703,6 +1739,9 @@ input {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1845,6 +1884,9 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2093,6 +2135,9 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2354,6 +2399,9 @@ input {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;

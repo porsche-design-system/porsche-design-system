@@ -23,7 +23,8 @@ const initComponent = (): StepperHorizontal => {
 };
 
 beforeEach(() => {
-  global.ResizeObserver = vi.fn().mockImplementation((callback) => {
+  // biome-ignore lint/complexity/useArrowFunction: vitest needs regular function
+  global.ResizeObserver = vi.fn().mockImplementation(function (callback) {
     resizeCallback = callback;
     return {
       observe: mockObserve,
