@@ -433,3 +433,17 @@
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
   </p-radio-group>
 </div>
+
+<div class="playground" title="should render with multiline slotted label, slotted description and label-after slot if slot is block element">
+  <p-radio-group name="some-name" value="b" style="display: block; width: 15rem">
+    <div slot="label">Some label dolor sit amet, consetetur</div>
+    <div slot="description">Some description dolor sit amet, consetetur</div>
+    <p-popover slot="label-after">Some popover content</p-popover>
+    <p-radio-group-option value="a">
+      <div slot="label">Some label dolor sit amet, consetetur</div>
+      <p-popover slot="label-after">Some popover content</p-popover>
+    </p-radio-group-option>
+    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
+  </p-radio-group>
+</div>

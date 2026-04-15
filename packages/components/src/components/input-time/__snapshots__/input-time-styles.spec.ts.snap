@@ -93,6 +93,9 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -229,6 +232,9 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -363,6 +369,9 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -499,6 +508,9 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -633,6 +645,9 @@ input::-webkit-calendar-picker-indicator {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -769,6 +784,9 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -904,6 +922,9 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1033,6 +1054,9 @@ input::-webkit-calendar-picker-indicator {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1288,6 +1312,9 @@ input::-webkit-calendar-picker-indicator {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1556,6 +1583,9 @@ input::-webkit-calendar-picker-indicator {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
