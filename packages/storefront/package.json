@@ -69,6 +69,7 @@
     "@playwright/test": "*",
     "concurrently": "*",
     "fast-glob": "*",
+    "local-web-server": "*",
     "typescript": "*",
     "change-case": "*",
     "vitest": "*",
