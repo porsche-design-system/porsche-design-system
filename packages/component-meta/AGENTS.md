@@ -23,10 +23,10 @@ packages/component-meta/
 
 ```bash
 # Build generated metadata and bundle package
-yarn build:component-meta
+npm run build:component-meta
 
 # Run unit tests
-yarn test:unit:component-meta
+npm run test:unit:component-meta
 ```
 
 ## Generated Files
