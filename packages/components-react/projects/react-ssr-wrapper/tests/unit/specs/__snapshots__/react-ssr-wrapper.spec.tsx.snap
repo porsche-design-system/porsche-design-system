@@ -211,6 +211,9 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label &gt; slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -408,6 +411,9 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1460,6 +1466,9 @@ input:focus-visible {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -1607,6 +1616,9 @@ slot:not([name]) {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -5071,6 +5083,9 @@ input:checked::before {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -6661,7 +6676,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   width: var(--p-flyout-width,auto);
@@ -6678,15 +6692,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -7342,6 +7348,9 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -7521,6 +7530,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -7695,6 +7707,9 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -7876,6 +7891,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -8047,6 +8065,9 @@ input {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -8222,6 +8243,9 @@ input::-webkit-search-cancel-button {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -8396,6 +8420,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -8566,6 +8593,9 @@ input {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -8740,6 +8770,9 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -8920,6 +8953,9 @@ input {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -9094,6 +9130,9 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -10078,7 +10117,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   opacity: 0;
@@ -10102,15 +10140,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .modal {
@@ -10574,6 +10604,9 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label &gt; slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -10771,6 +10804,9 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -11617,6 +11653,9 @@ input:focus-visible {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -11950,6 +11989,9 @@ slot[name="label-after"]::slotted(*) {
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
 }
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
+}
 .required {
   user-select: none;
 }
@@ -12126,6 +12168,9 @@ input:checked::before {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -12379,6 +12424,9 @@ slot:not([name]) {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -12692,6 +12740,9 @@ exports[`should render dsr component for PSelect 1`] = `
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
+  .label &gt; slot[name="label"]::slotted(*) {
+    display: inline !important;
+  }
   .required {
     user-select: none;
   }
@@ -12974,7 +13025,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_a);
   opacity: 0;
@@ -12997,15 +13047,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * var(--p-spacing-fluid-sm)) calc(-1 * var(--p-spacing-fluid-sm)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .sheet {
@@ -15121,6 +15163,9 @@ textarea:focus {
   clip: auto;
   white-space: normal;
   margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label &gt; slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;

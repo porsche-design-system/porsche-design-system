@@ -281,8 +281,8 @@ describe('chunk content', () => {
   });
 
   describe('getPrefixedTagNames', () => {
-    // /^([a-z-]+)-p-[a-z-]+$/.exec is used in the getPrefixedTagNames function
-    const getPrefixedTagNamesRegEx = /\/\^\(\[a-z-]\+\)-p-\[a-z-]\+\$\/\.exec/;
+    // /^([a-z0-9-]+)-p-[a-z-]+$/.exec is used in the getPrefixedTagNames function
+    const getPrefixedTagNamesRegEx = /\/\^\(\[a-z0-9-]\+\)-p-\[a-z-]\+\$\/\.exec/;
 
     it('should be in core chunk', () => {
       const content = getChunkContent(chunkFileNames[0]);

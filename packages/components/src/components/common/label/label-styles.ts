@@ -70,6 +70,11 @@ export const getFunctionalComponentLabelStyles = (
         ),
         marginTop: `calc(-1 * ${spacingStaticXs})`,
       },
+      '& > slot[name="label"]::slotted(*)': {
+        ...addImportantToEachRule({
+          display: 'inline',
+        }),
+      },
       ...additionalDefaultJssStyle,
     },
     // .required
