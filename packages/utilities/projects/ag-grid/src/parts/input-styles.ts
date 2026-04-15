@@ -1,5 +1,14 @@
 import { createPart, type Part } from 'ag-grid-community';
-import { borderWidthThin, colorCanvas, colorContrastLower, colorErrorLow, colorPrimary, radiusXl } from '../styles';
+import {
+  borderWidthThin,
+  colorCanvas,
+  colorContrastLower,
+  colorErrorLow,
+  colorPrimary,
+  radiusLg,
+  radiusXl,
+  spacingStaticXs,
+} from '../styles';
 
 /**
  * Input field styles for AG Grid following v35 standards
@@ -34,5 +43,27 @@ export const inputStyles: Part = createPart({
     .ag-text-field-input {
         border-radius: ${radiusXl};
     }
+
+    /* Reduce vertical space around the search input in the column tool panel */
+    .ag-column-select-header {
+        height: auto;
+        padding-top: ${spacingStaticXs};
+        padding-bottom: ${spacingStaticXs};
+    }
   `,
 });
+
+export const inputStylesCompact: Part = createPart({
+  feature: 'inputStylesCompact',
+  css: `
+  .ag-text-field-input {
+      border-radius: ${radiusLg};
+  }
+
+  .ag-column-select-header {
+      height: auto;
+      padding-top: 2px;
+      padding-bottom: 2px;
+  }
+  `
+})

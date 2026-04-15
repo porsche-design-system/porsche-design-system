@@ -7,6 +7,9 @@ import {
   colorSuccess,
   colorSuccessFrostedSoft,
   colorSuccessLow,
+  pdsSwitchHeightCompact,
+  pdsSwitchInsetCompact,
+  pdsSwitchWidthCompact,
   spacingStaticXs,
 } from '../styles';
 
@@ -93,4 +96,13 @@ export const toggleButtonStyle: Part = createPart({
         }
     }
   `,
+});
+
+export const toggleButtonStyleCompact: Part = createPart({
+  feature: 'toggleButtonStyleCompact',
+  params: {
+    toggleButtonWidth: pdsSwitchWidthCompact,
+    toggleButtonHeight: pdsSwitchHeightCompact,
+    toggleButtonSwitchInset: pdsSwitchInsetCompact,
+  },
 });
