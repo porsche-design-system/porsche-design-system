@@ -12063,6 +12063,11 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
     <style>
       :host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -12089,10 +12094,6 @@ input {
   border: 1px solid undefined;
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input::before {
   content: "";
   grid-area: 1/1;
@@ -12108,11 +12109,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -12193,7 +12194,8 @@ input:checked::before {
         class="wrapper"
       >
         <input
-          id="radio-group-option"
+          aria-hidden="true"
+          tabindex="-1"
           type="radio"
         />
       </div>

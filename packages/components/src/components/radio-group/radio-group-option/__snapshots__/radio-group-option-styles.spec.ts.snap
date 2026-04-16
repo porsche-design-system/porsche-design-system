@@ -3,6 +3,11 @@
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -30,10 +35,6 @@ input {
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -52,11 +53,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -137,6 +138,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -164,10 +170,6 @@ input {
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -186,11 +188,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -271,6 +273,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -298,10 +305,6 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -320,11 +323,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -405,6 +408,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -432,10 +440,6 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -454,11 +458,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -539,6 +543,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -566,10 +575,6 @@ input {
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -588,11 +593,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -673,6 +678,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -700,10 +710,6 @@ input {
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -722,11 +728,11 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -807,6 +813,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -835,10 +846,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -857,14 +864,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -947,6 +954,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -975,10 +987,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -997,14 +1005,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1087,6 +1095,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1115,10 +1128,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1137,14 +1146,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1227,6 +1236,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1255,10 +1269,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1277,14 +1287,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1367,6 +1377,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1395,10 +1410,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -1417,14 +1428,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1507,6 +1518,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1535,10 +1551,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -1557,14 +1569,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1647,6 +1659,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1675,10 +1692,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -1697,14 +1710,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1793,6 +1806,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1821,10 +1839,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -1843,14 +1857,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -1939,6 +1953,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -1967,10 +1986,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1989,14 +2004,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2085,6 +2100,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -2113,10 +2133,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -2135,14 +2151,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2231,6 +2247,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -2259,10 +2280,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -2281,14 +2298,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2377,6 +2394,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -2405,10 +2427,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -2427,14 +2445,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2523,6 +2541,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -2551,10 +2574,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -2573,14 +2592,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2676,6 +2695,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -2704,10 +2728,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-error);
 }
@@ -2726,14 +2746,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2829,6 +2849,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -2857,10 +2882,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -2879,14 +2900,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2982,6 +3003,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -3010,10 +3036,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -3032,14 +3054,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -3135,6 +3157,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -3163,10 +3190,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -3185,14 +3208,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -3288,6 +3311,11 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
 ":host {
   display: block;
+  outline: none;
+}
+:host(:focus-visible) input {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 :host([hidden]) {
   display: none !important;
@@ -3316,10 +3344,6 @@ input {
   border-radius: var(--p-radius-full);
   pointer-events: none;
 }
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
 input:checked {
   background: var(--p-color-success);
 }
@@ -3338,14 +3362,14 @@ input:checked::before {
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
+  :host(:focus-visible) input {
+    outline-color: Highlight;
+  }
   input {
     border-color: GrayText;
   }
   input:checked::before {
     background: CanvasText;
-  }
-  input:focus-visible {
-    outline-color: Highlight;
   }
 }
 

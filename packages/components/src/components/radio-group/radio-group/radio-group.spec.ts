@@ -110,44 +110,28 @@ describe('formStateRestoreCallback', () => {
 });
 
 describe('updateTabStops', () => {
-  const createOption = (value: string, { disabled = false, checked = false } = {}) => {
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.disabled = disabled;
-    input.checked = checked;
-
-    const shadowRoot = {
-      querySelector: vi.fn().mockImplementation((sel: string) => {
-        if (sel === 'input[type="radio"]') return input;
-        return null;
-      }),
-    };
-
+  const createOption = (value: string, { disabled = false} = {}) => {
     return {
       value,
       disabled,
-      shadowRoot,
+      tabIndex: 0,
     } as unknown as RadioGroupOption;
   };
 
-  const radioInputs = (opt1: RadioGroupOption, opt2?: RadioGroupOption, opt3?: RadioGroupOption) =>
-    [opt1, opt2, opt3].map((o) => o.shadowRoot.querySelector('input[type="radio"]') as HTMLInputElement);
-
   it('should set tabIndex 0 on checked option and tabIndex -1 on all others', () => {
     const component = initComponent();
-    const opt1 = createOption('a', { checked: false });
-    const opt2 = createOption('b', { checked: true });
-    const opt3 = createOption('c', { checked: false });
+    const opt1 = createOption('a');
+    const opt2 = createOption('b');
+    const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
     vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(1);
     vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(0);
 
     (component as any).updateTabStops();
 
-    const inputs = radioInputs(opt1, opt2, opt3);
-    expect(inputs[0].tabIndex).toBe(-1);
-    expect(inputs[1].tabIndex).toBe(0);
-    expect(inputs[2].tabIndex).toBe(-1);
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(0);
+    expect(opt3.tabIndex).toBe(-1);
   });
 
   it('should set tabIndex 0 on 1st possible (not disabled) option if none of them is checked', () => {
@@ -161,13 +145,12 @@ describe('updateTabStops', () => {
 
     (component as any).updateTabStops();
 
-    const inputs = radioInputs(opt1, opt2, opt3);
-    expect(inputs[0].tabIndex).toBe(-1);
-    expect(inputs[1].tabIndex).toBe(0);
-    expect(inputs[2].tabIndex).toBe(-1);
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(0);
+    expect(opt3.tabIndex).toBe(-1);
   });
 
-  it('should set all inputs to tabindex -1 if they are disabled', () => {
+  it('should set all options to tabindex -1 if they are disabled', () => {
     const component = initComponent();
     const opt1 = createOption('x', { disabled: true });
     const opt2 = createOption('y', { disabled: true });
@@ -178,10 +161,9 @@ describe('updateTabStops', () => {
 
     (component as any).updateTabStops();
 
-    const inputs = radioInputs(opt1, opt2, opt3);
-    expect(inputs[0].tabIndex).toBe(-1);
-    expect(inputs[1].tabIndex).toBe(-1);
-    expect(inputs[2].tabIndex).toBe(-1);
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(-1);
+    expect(opt3.tabIndex).toBe(-1);
   });
 
   it('should return if no options are provided', () => {
@@ -192,7 +174,7 @@ describe('updateTabStops', () => {
 
   it('should set tabindex -1 to option if it is checked and disabled', () => {
     const component = initComponent();
-    const opt1 = createOption('a', { disabled: true, checked: true });
+    const opt1 = createOption('a', { disabled: true});
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
@@ -201,9 +183,8 @@ describe('updateTabStops', () => {
 
     (component as any).updateTabStops();
 
-    const inputs = radioInputs(opt1, opt2, opt3);
-    expect((inputs[0] as HTMLInputElement).tabIndex).toBe(-1);
-    expect((inputs[1] as HTMLInputElement).tabIndex).toBe(0);
-    expect((inputs[2] as HTMLInputElement).tabIndex).toBe(-1);
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(0);
+    expect(opt3.tabIndex).toBe(-1);
   });
 });
