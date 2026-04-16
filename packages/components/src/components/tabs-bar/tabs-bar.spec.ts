@@ -431,6 +431,7 @@ describe('onKeydown()', () => {
     component.update = { emit: vi.fn() } as any;
     component['hasPTabsParent'] = opts.hasPTabsParent ?? false;
     component.activeTabIndex = opts.activeTabIndex;
+    component['scroller'] = document.createElement('div');
 
     // mock focus for buttons
     for (const tab of tabs) {
@@ -679,6 +680,83 @@ describe('onKeydown()', () => {
     const endEvent = createKeyboardEvent('End', tabs[0]);
     component['onKeydown'](endEvent);
     expect(endEvent.preventDefault).toHaveBeenCalled();
+  });
+
+  describe('RTL mode', () => {
+    const initComponentForRtlKeydown = (
+      tag: 'button',
+      opts: { hasPTabsParent?: boolean; activeTabIndex?: number } = {}
+    ): { component: TabsBar; tabs: HTMLElement[] } => {
+      const result = initComponentForKeydown(tag, opts);
+      vi.spyOn(window, 'getComputedStyle').mockReturnValue({ direction: 'rtl' } as CSSStyleDeclaration);
+      return result;
+    };
+
+    afterEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it('should focus previous button on ArrowRight in RTL', () => {
+      const { component, tabs } = initComponentForRtlKeydown('button');
+      Object.defineProperty(document, 'activeElement', { value: tabs[1], configurable: true });
+
+      const event = createKeyboardEvent('ArrowRight', tabs[1]);
+      component['onKeydown'](event);
+
+      expect(tabs[0].focus).toHaveBeenCalled();
+    });
+
+    it('should focus next button on ArrowLeft in RTL', () => {
+      const { component, tabs } = initComponentForRtlKeydown('button');
+      Object.defineProperty(document, 'activeElement', { value: tabs[0], configurable: true });
+
+      const event = createKeyboardEvent('ArrowLeft', tabs[0]);
+      component['onKeydown'](event);
+
+      expect(tabs[1].focus).toHaveBeenCalled();
+    });
+
+    it('should wrap around to first button on ArrowRight from first in RTL', () => {
+      const { component, tabs } = initComponentForRtlKeydown('button');
+      Object.defineProperty(document, 'activeElement', { value: tabs[0], configurable: true });
+
+      const event = createKeyboardEvent('ArrowRight', tabs[0]);
+      component['onKeydown'](event);
+
+      expect(tabs[2].focus).toHaveBeenCalled();
+    });
+
+    it('should wrap around to last button on ArrowLeft from last in RTL', () => {
+      const { component, tabs } = initComponentForRtlKeydown('button');
+      Object.defineProperty(document, 'activeElement', { value: tabs[2], configurable: true });
+
+      const event = createKeyboardEvent('ArrowLeft', tabs[2]);
+      component['onKeydown'](event);
+
+      expect(tabs[0].focus).toHaveBeenCalled();
+    });
+
+    it('should not affect Home and End keys in RTL', () => {
+      const { component, tabs } = initComponentForRtlKeydown('button');
+      Object.defineProperty(document, 'activeElement', { value: tabs[1], configurable: true });
+
+      const homeEvent = createKeyboardEvent('Home', tabs[1]);
+      component['onKeydown'](homeEvent);
+      expect(tabs[0].focus).toHaveBeenCalled();
+
+      const endEvent = createKeyboardEvent('End', tabs[1]);
+      component['onKeydown'](endEvent);
+      expect(tabs[2].focus).toHaveBeenCalled();
+    });
+
+    it('should emit update event with swapped direction when hasPTabsParent is true in RTL', () => {
+      const { component, tabs } = initComponentForRtlKeydown('button', { hasPTabsParent: true, activeTabIndex: 1 });
+
+      const event = createKeyboardEvent('ArrowRight', tabs[1]);
+      component['onKeydown'](event);
+
+      expect(component.update.emit).toHaveBeenCalledWith({ activeTabIndex: 0 });
+    });
   });
 });
 
