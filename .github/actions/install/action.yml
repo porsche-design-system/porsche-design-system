@@ -37,6 +37,10 @@ runs:
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
+    - name: 'Setup bin links'
+      if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit == 'true'
+      run: bash ./scripts/setup-bin-links.sh
+      shell: bash
     - name: 'Install rclone'
       if: inputs.rclone == 'true'
       run: |
