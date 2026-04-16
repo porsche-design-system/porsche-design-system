@@ -92,7 +92,7 @@ export class RadioGroupOption {
               checked={isSelected}
               disabled={isDisabled || isLoading}
               value={this.value}
-              tabindex={-1}
+              tabIndex={-1}
               aria-hidden="true"
               onClick={(e) => {
                 e.stopPropagation();
