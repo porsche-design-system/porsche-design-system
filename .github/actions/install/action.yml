@@ -1,6 +1,14 @@
 name: 'Install'
 
 inputs:
+  node-version:
+    description: 'Node.js version to use.'
+    required: false
+    default: '24'
+  registry-url:
+    description: 'npm registry URL (needed for publishing).'
+    required: false
+    default: ''
   node_modules:
     description: 'Whether to install node_modules or not.'
     required: false
@@ -13,6 +21,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: 'Setup Node.js'
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
+        registry-url: ${{ inputs.registry-url }}
     - name: 'Cache node_modules'
       if: inputs.node_modules == 'true'
       uses: actions/cache@v5
@@ -23,6 +36,10 @@ runs:
     - name: 'Install node_modules'
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
       run: npm ci
+      shell: bash
+    - name: 'Setup bin links'
+      if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit == 'true'
+      run: bash ./scripts/setup-bin-links.sh
       shell: bash
     - name: 'Install rclone'
       if: inputs.rclone == 'true'
