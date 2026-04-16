@@ -18,11 +18,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'npm'
-      - run: npm ci
+      - uses: ./.github/actions/install
       - run: npm run lint
   build-development:
     name: 'Development'
@@ -33,11 +29,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'npm'
-      - run: npm ci
+      - uses: ./.github/actions/install
       - run: npm run build:shared
       - run: npm run build:tokens
       - run: npm run build:assets
@@ -115,11 +107,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'npm'
-      - run: npm ci
+      - uses: ./.github/actions/install
       - run: npm run build:shared
       - run: npm run build:tokens
       - run: npm run build:assets
