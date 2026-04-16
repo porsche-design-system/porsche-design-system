@@ -46,11 +46,13 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     '@global': {
       ':host': {
         display: 'block',
-        outline: 'none',
-        '&(:focus-visible) input': getFocusBaseStyles(),
         ...addImportantToEachRule({
+          '&(:focus-visible)': {
+            outline: 'none',
+          },
           ...hostHiddenStyles,
         }),
+        '&(:focus-visible) input': getFocusBaseStyles(),
       },
       ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,

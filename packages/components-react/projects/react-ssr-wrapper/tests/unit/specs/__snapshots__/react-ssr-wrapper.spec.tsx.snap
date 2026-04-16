@@ -12063,14 +12063,16 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
     <style>
       :host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;

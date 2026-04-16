@@ -3,14 +3,16 @@
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -138,14 +140,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -273,14 +277,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -408,14 +414,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -543,14 +551,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -678,14 +688,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -813,14 +825,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -954,14 +968,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1095,14 +1111,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1236,14 +1254,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1377,14 +1397,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1518,14 +1540,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1659,14 +1683,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1806,14 +1832,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -1953,14 +1981,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2100,14 +2130,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2247,14 +2279,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2394,14 +2428,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2541,14 +2577,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2695,14 +2733,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -2849,14 +2889,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -3003,14 +3045,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -3157,14 +3201,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
@@ -3311,14 +3357,16 @@ input:checked::before {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
 ":host {
   display: block;
-  outline: none;
+}
+:host(:focus-visible) {
+  outline: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 :host(:focus-visible) input {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
-}
-:host([hidden]) {
-  display: none !important;
 }
 slot[name="label-after"] {
   display: inline-block;
