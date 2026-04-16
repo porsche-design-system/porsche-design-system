@@ -21,9 +21,9 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
@@ -36,20 +36,20 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build:shared
-      - run: yarn build:tokens
-      - run: yarn build:assets
-      - run: yarn build:styles
-      - run: yarn build:utilities
-      - run: yarn build:component-meta
-      - run: yarn build:components
-      - run: yarn build:components-js
-      - run: yarn build:components-angular
-      - run: yarn build:components-react
-      - run: yarn build:components-vue
-      - run: yarn build:storefront
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build:shared
+      - run: npm run build:tokens
+      - run: npm run build:assets
+      - run: npm run build:styles
+      - run: npm run build:utilities
+      - run: npm run build:component-meta
+      - run: npm run build:components
+      - run: npm run build:components-js
+      - run: npm run build:components-angular
+      - run: npm run build:components-react
+      - run: npm run build:components-vue
+      - run: npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
           name: build-development
@@ -118,20 +118,20 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build:shared
-      - run: yarn build:tokens
-      - run: yarn build:assets
-      - run: yarn build:styles-prod
-      - run: yarn build:utilities
-      - run: yarn build:component-meta
-      - run: yarn build:components-prod
-      - run: yarn build:components-js-prod
-      - run: yarn build:components-angular
-      - run: yarn build:components-react
-      - run: yarn build:components-vue
-      - run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build:shared
+      - run: npm run build:tokens
+      - run: npm run build:assets
+      - run: npm run build:styles-prod
+      - run: npm run build:utilities
+      - run: npm run build:component-meta
+      - run: npm run build:components-prod
+      - run: npm run build:components-js-prod
+      - run: npm run build:components-angular
+      - run: npm run build:components-react
+      - run: npm run build:components-vue
+      - run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
           name: build-production

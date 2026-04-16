@@ -24,10 +24,10 @@ packages/utilities/
 
 ```bash
 # Build utilities package
-yarn build:utilities
+npm run build:utilities
 
 # Run unit tests
-yarn test:unit:utilities
+npm run test:unit:utilities
 ```
 
 ## Working Guidelines

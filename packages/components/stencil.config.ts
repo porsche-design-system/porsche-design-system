@@ -1,24 +1,9 @@
-import * as path from 'node:path';
 import { bundles } from '@porsche-design-system/shared';
 import replace from '@rollup/plugin-replace';
 import type { Config } from '@stencil/core';
 import { version } from './package.json';
 
-/**
- * TODO: Remove this workaround
- * This is a temporary workaround to stop stencil from
- * messing up our dependencies by running an `npm` command.
- * Since we're heavily relying on yarn workspaces running
- * `npm` is leading to conflicts.
- * By adding a npm script to the PATH that does nothing
- * we can ensure, that our dependencies stay untouched.
- * https://github.com/porsche-design-system/porsche-design-system/issues/318
- */
-const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
-process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
-
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
-
 
 export const config: Config = {
   namespace: 'porsche-design-system',

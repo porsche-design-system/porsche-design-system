@@ -10,7 +10,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'yarn start-app',
+    command: 'npm run start-app',
     port: 4200,
   },
 });

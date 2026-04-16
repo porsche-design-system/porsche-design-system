@@ -5,6 +5,10 @@ inputs:
     description: 'The artifact name.'
     required: true
     default: 'build-development'
+  setup-bin:
+    description: 'Whether to setup executable files and workspace bin links (requires npm ci).'
+    required: false
+    default: 'true'
 
 runs:
   using: 'composite'
@@ -15,8 +19,13 @@ runs:
         name: '${{ inputs.artifact }}'
         path: ./packages
     - name: 'Setup executable files'
+      if: inputs.setup-bin == 'true'
       run: |
         chmod +x ./packages/assets/bin/serve-cdn.js
         chmod +x ./packages/shared/bin/serve-dummyassets.js
         chmod +x ./packages/shared/bin/prepareVRTSnapshots.js
+        # Recreate workspace bin links that npm ci may not create
+        ln -sf ../../packages/assets/bin/serve-cdn.js ./node_modules/.bin/serve-cdn
+        ln -sf ../../packages/shared/bin/serve-dummyassets.js ./node_modules/.bin/serve-dummyassets
+        ln -sf ../../packages/shared/bin/prepareVRTSnapshots.js ./node_modules/.bin/prepare-vrt-snapshots
       shell: bash

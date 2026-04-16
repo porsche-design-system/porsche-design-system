@@ -28,10 +28,10 @@ packages/tokens/
 
 ```bash
 # Build token package
-yarn build:tokens
+npm run build:tokens
 
 # Run unit tests
-yarn test:unit:tokens
+npm run test:unit:tokens
 ```
 
 ## Working Guidelines

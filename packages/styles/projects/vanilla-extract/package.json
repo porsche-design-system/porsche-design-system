@@ -9,11 +9,11 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:bundle",
+    "build": "npm run clean:build && npm run build:bundle",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
-    "test": "yarn test:unit",
-    "test:unit": "yarn generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
+    "test": "npm run test:unit",
+    "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "exports": {
