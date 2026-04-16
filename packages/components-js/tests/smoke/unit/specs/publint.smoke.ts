@@ -13,7 +13,9 @@ describe('publint', () => {
       (m) =>
         (m.type === 'error' || m.type === 'warning') &&
         // .d.ts works fine for both CJS and ESM resolution in practice
-        m.code !== 'EXPORTS_TYPES_INVALID_FORMAT'
+        m.code !== 'EXPORTS_TYPES_INVALID_FORMAT' &&
+        // jsdom-polyfill intentionally uses "default" with a .cjs file to serve both ESM and CJS consumers
+        !(m.code === 'CJS_WITH_ESMODULE_DEFAULT_EXPORT' && m.path?.includes('./jsdom-polyfill'))
     );
 
     if (problems.length) {
