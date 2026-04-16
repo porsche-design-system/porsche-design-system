@@ -72,6 +72,7 @@ export class RadioGroupOption {
 
     attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state);
 
+    const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -85,8 +86,9 @@ export class RadioGroupOption {
       >
         <div class="root">
           <div class="wrapper">
-            {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: it's needed to provide visual styling */}
             <input
+              inert
+              id={id}
               type="radio"
               name={name}
               checked={isSelected}
@@ -100,7 +102,6 @@ export class RadioGroupOption {
                 this.host.focus();
               }}
               onChange={this.onChange}
-              onBlur={this.onBlur}
               ref={(el) => (this.inputElement = el)}
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
@@ -111,6 +112,7 @@ export class RadioGroupOption {
           <Label
             host={this.host}
             label={this.label}
+            htmlFor={id}
             isDisabled={isDisabled}
             isLoading={isLoading}
             stopClickPropagation={true}
