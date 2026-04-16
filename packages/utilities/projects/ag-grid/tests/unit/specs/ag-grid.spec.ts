@@ -13,7 +13,7 @@ describe('pdsTheme', () => {
   });
 
   it('should match the snapshot for CSS Chunk', () => {
-    const cssChunk = theme._getPerInstanceCss('ag-theme-pds');
+    const cssChunk = theme._getParamsCss();
     expect(cssChunk).toMatchSnapshot();
   });
 

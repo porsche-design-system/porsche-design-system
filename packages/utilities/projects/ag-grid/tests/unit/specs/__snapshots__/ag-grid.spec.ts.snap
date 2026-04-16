@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
-":where(.ag-theme-pds) {
+":where(.ag-theme-params-1) {
 	--ag-accent-color: var(--ag-inherited-accent-color, light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%)));
 	--ag-advanced-filter-builder-button-bar-border: var(--ag-inherited-advanced-filter-builder-button-bar-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #a6e194);
@@ -36,6 +36,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-cell-editing-border: var(--ag-inherited-cell-editing-border, solid var(--ag-border-width) var(--ag-accent-color));
 	--ag-cell-editing-shadow: var(--ag-inherited-cell-editing-shadow, var(--ag-card-shadow));
 	--ag-cell-font-family: var(--ag-inherited-cell-font-family, var(--ag-font-family));
+	--ag-cell-font-size: var(--ag-inherited-cell-font-size, var(--ag-data-font-size));
+	--ag-cell-font-weight: var(--ag-inherited-cell-font-weight, var(--ag-font-weight));
 	--ag-cell-horizontal-padding: var(--ag-inherited-cell-horizontal-padding, calc( var(--ag-spacing)   *  2  *   var(--ag-cell-horizontal-padding-scale) ));
 	--ag-cell-horizontal-padding-scale: var(--ag-inherited-cell-horizontal-padding-scale, 1);
 	--ag-cell-text-color: var(--ag-inherited-cell-text-color, var(--ag-text-color));
@@ -72,6 +74,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
 	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
 	--ag-column-hover-color: var(--ag-inherited-column-hover-color, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)));
+	--ag-column-panel-apply-button-background-color: var(--ag-inherited-column-panel-apply-button-background-color, var(--ag-accent-color));
+	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-background-color));
 	--ag-column-select-indent-size: var(--ag-inherited-column-select-indent-size, var(--ag-icon-size));
 	--ag-data-background-color: var(--ag-inherited-data-background-color, var(--ag-background-color));
 	--ag-data-font-size: var(--ag-inherited-data-font-size, var(--ag-font-size));
@@ -96,8 +100,30 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-focus-shadow: var(--ag-inherited-focus-shadow, none);
 	--ag-font-family: var(--ag-inherited-font-family, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
 	--ag-font-size: var(--ag-inherited-font-size, 1rem);
+	--ag-font-weight: var(--ag-inherited-font-weight, inherit);
 	--ag-footer-row-border: var(--ag-inherited-footer-row-border, var(--ag-row-border));
 	--ag-foreground-color: var(--ag-inherited-foreground-color, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)));
+	--ag-formula-token-1-background-color: var(--ag-inherited-formula-token-1-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-1-color) 8%));
+	--ag-formula-token-1-border: var(--ag-inherited-formula-token-1-border, solid var(--ag-border-width) var(--ag-formula-token-1-color));
+	--ag-formula-token-1-color: var(--ag-inherited-formula-token-1-color, #3269c6);
+	--ag-formula-token-2-background-color: var(--ag-inherited-formula-token-2-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-2-color) 6%));
+	--ag-formula-token-2-border: var(--ag-inherited-formula-token-2-border, solid var(--ag-border-width) var(--ag-formula-token-2-color));
+	--ag-formula-token-2-color: var(--ag-inherited-formula-token-2-color, #c0343f);
+	--ag-formula-token-3-background-color: var(--ag-inherited-formula-token-3-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-3-color) 8%));
+	--ag-formula-token-3-border: var(--ag-inherited-formula-token-3-border, solid var(--ag-border-width) var(--ag-formula-token-3-color));
+	--ag-formula-token-3-color: var(--ag-inherited-formula-token-3-color, #8156b8);
+	--ag-formula-token-4-background-color: var(--ag-inherited-formula-token-4-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-4-color) 6%));
+	--ag-formula-token-4-border: var(--ag-inherited-formula-token-4-border, solid var(--ag-border-width) var(--ag-formula-token-4-color));
+	--ag-formula-token-4-color: var(--ag-inherited-formula-token-4-color, #007c1f);
+	--ag-formula-token-5-background-color: var(--ag-inherited-formula-token-5-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-5-color) 8%));
+	--ag-formula-token-5-border: var(--ag-inherited-formula-token-5-border, solid var(--ag-border-width) var(--ag-formula-token-5-color));
+	--ag-formula-token-5-color: var(--ag-inherited-formula-token-5-color, #b03e85);
+	--ag-formula-token-6-background-color: var(--ag-inherited-formula-token-6-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-6-color) 6%));
+	--ag-formula-token-6-border: var(--ag-inherited-formula-token-6-border, solid var(--ag-border-width) var(--ag-formula-token-6-color));
+	--ag-formula-token-6-color: var(--ag-inherited-formula-token-6-color, #b74900);
+	--ag-formula-token-7-background-color: var(--ag-inherited-formula-token-7-background-color, color-mix(in srgb, transparent, var(--ag-formula-token-7-color) 8%));
+	--ag-formula-token-7-border: var(--ag-inherited-formula-token-7-border, solid var(--ag-border-width) var(--ag-formula-token-7-color));
+	--ag-formula-token-7-color: var(--ag-inherited-formula-token-7-color, #247492);
 	--ag-full-row-edit-invalid-background-color: var(--ag-inherited-full-row-edit-invalid-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 25%));
 	--ag-header-background-color: var(--ag-inherited-header-background-color, light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302)));
 	--ag-header-cell-background-transition-duration: var(--ag-inherited-header-cell-background-transition-duration, 0.2s);
@@ -157,6 +183,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
 	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
 	--ag-panel-title-bar-border: var(--ag-inherited-panel-title-bar-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-panel-title-bar-font-family: var(--ag-inherited-panel-title-bar-font-family, var(--ag-header-font-family));
+	--ag-panel-title-bar-font-size: var(--ag-inherited-panel-title-bar-font-size, var(--ag-header-font-size));
 	--ag-panel-title-bar-font-weight: var(--ag-inherited-panel-title-bar-font-weight, var(--ag-header-font-weight));
 	--ag-panel-title-bar-height: var(--ag-inherited-panel-title-bar-height, var(--ag-header-height));
 	--ag-panel-title-bar-icon-color: var(--ag-inherited-panel-title-bar-icon-color, var(--ag-header-text-color));
@@ -200,6 +228,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18)));
 	--ag-set-filter-indent-size: var(--ag-inherited-set-filter-indent-size, var(--ag-icon-size));
 	--ag-side-bar-background-color: var(--ag-inherited-side-bar-background-color, var(--ag-chrome-background-color));
+	--ag-side-bar-panel-animation-duration: var(--ag-inherited-side-bar-panel-animation-duration, 0s);
 	--ag-side-bar-panel-width: var(--ag-inherited-side-bar-panel-width, 250px);
 	--ag-side-button-background-color: var(--ag-inherited-side-button-background-color, transparent);
 	--ag-side-button-bar-background-color: var(--ag-inherited-side-button-bar-background-color, var(--ag-side-bar-background-color));
@@ -284,9 +313,17 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
+	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-foreground-color));
 	--ag-filter-panel-apply-button-color: var(--ag-inherited-filter-panel-apply-button-color, var(--ag-foreground-color));
 	--ag-find-active-match-color: var(--ag-inherited-find-active-match-color, var(--ag-background-color));
 	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-background-color));
+	--ag-formula-token-1-color: var(--ag-inherited-formula-token-1-color, #4da3e5);
+	--ag-formula-token-2-color: var(--ag-inherited-formula-token-2-color, #f55864);
+	--ag-formula-token-3-color: var(--ag-inherited-formula-token-3-color, #b688f2);
+	--ag-formula-token-4-color: var(--ag-inherited-formula-token-4-color, #24bb4a);
+	--ag-formula-token-5-color: var(--ag-inherited-formula-token-5-color, #e772ba);
+	--ag-formula-token-6-color: var(--ag-inherited-formula-token-6-color, #f69b5f);
+	--ag-formula-token-7-color: var(--ag-inherited-formula-token-7-color, #a3e6ff);
 	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
 	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
 	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
@@ -301,16 +338,24 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
+	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-foreground-color));
 	--ag-filter-panel-apply-button-color: var(--ag-inherited-filter-panel-apply-button-color, var(--ag-foreground-color));
 	--ag-find-active-match-color: var(--ag-inherited-find-active-match-color, var(--ag-background-color));
 	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-background-color));
+	--ag-formula-token-1-color: var(--ag-inherited-formula-token-1-color, #4da3e5);
+	--ag-formula-token-2-color: var(--ag-inherited-formula-token-2-color, #f55864);
+	--ag-formula-token-3-color: var(--ag-inherited-formula-token-3-color, #b688f2);
+	--ag-formula-token-4-color: var(--ag-inherited-formula-token-4-color, #24bb4a);
+	--ag-formula-token-5-color: var(--ag-inherited-formula-token-5-color, #e772ba);
+	--ag-formula-token-6-color: var(--ag-inherited-formula-token-6-color, #f69b5f);
+	--ag-formula-token-7-color: var(--ag-inherited-formula-token-7-color, #a3e6ff);
 	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
 	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
 	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
 	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
 }
 }
-:has(> :where(.ag-theme-pds)):not(:where(.ag-theme-pds)) {
+:has(> :where(.ag-theme-params-1)):not(:where(.ag-theme-params-1)) {
 	--ag-inherited-accent-color: var(--ag-accent-color);
 	--ag-inherited-advanced-filter-builder-button-bar-border: var(--ag-advanced-filter-builder-button-bar-border);
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
@@ -345,6 +390,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-cell-editing-border: var(--ag-cell-editing-border);
 	--ag-inherited-cell-editing-shadow: var(--ag-cell-editing-shadow);
 	--ag-inherited-cell-font-family: var(--ag-cell-font-family);
+	--ag-inherited-cell-font-size: var(--ag-cell-font-size);
+	--ag-inherited-cell-font-weight: var(--ag-cell-font-weight);
 	--ag-inherited-cell-horizontal-padding: var(--ag-cell-horizontal-padding);
 	--ag-inherited-cell-horizontal-padding-scale: var(--ag-cell-horizontal-padding-scale);
 	--ag-inherited-cell-text-color: var(--ag-cell-text-color);
@@ -381,6 +428,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-column-drop-cell-drag-handle-color: var(--ag-column-drop-cell-drag-handle-color);
 	--ag-inherited-column-drop-cell-text-color: var(--ag-column-drop-cell-text-color);
 	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
+	--ag-inherited-column-panel-apply-button-background-color: var(--ag-column-panel-apply-button-background-color);
+	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
 	--ag-inherited-column-select-indent-size: var(--ag-column-select-indent-size);
 	--ag-inherited-data-background-color: var(--ag-data-background-color);
 	--ag-inherited-data-font-size: var(--ag-data-font-size);
@@ -405,8 +454,30 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-focus-shadow: var(--ag-focus-shadow);
 	--ag-inherited-font-family: var(--ag-font-family);
 	--ag-inherited-font-size: var(--ag-font-size);
+	--ag-inherited-font-weight: var(--ag-font-weight);
 	--ag-inherited-footer-row-border: var(--ag-footer-row-border);
 	--ag-inherited-foreground-color: var(--ag-foreground-color);
+	--ag-inherited-formula-token-1-background-color: var(--ag-formula-token-1-background-color);
+	--ag-inherited-formula-token-1-border: var(--ag-formula-token-1-border);
+	--ag-inherited-formula-token-1-color: var(--ag-formula-token-1-color);
+	--ag-inherited-formula-token-2-background-color: var(--ag-formula-token-2-background-color);
+	--ag-inherited-formula-token-2-border: var(--ag-formula-token-2-border);
+	--ag-inherited-formula-token-2-color: var(--ag-formula-token-2-color);
+	--ag-inherited-formula-token-3-background-color: var(--ag-formula-token-3-background-color);
+	--ag-inherited-formula-token-3-border: var(--ag-formula-token-3-border);
+	--ag-inherited-formula-token-3-color: var(--ag-formula-token-3-color);
+	--ag-inherited-formula-token-4-background-color: var(--ag-formula-token-4-background-color);
+	--ag-inherited-formula-token-4-border: var(--ag-formula-token-4-border);
+	--ag-inherited-formula-token-4-color: var(--ag-formula-token-4-color);
+	--ag-inherited-formula-token-5-background-color: var(--ag-formula-token-5-background-color);
+	--ag-inherited-formula-token-5-border: var(--ag-formula-token-5-border);
+	--ag-inherited-formula-token-5-color: var(--ag-formula-token-5-color);
+	--ag-inherited-formula-token-6-background-color: var(--ag-formula-token-6-background-color);
+	--ag-inherited-formula-token-6-border: var(--ag-formula-token-6-border);
+	--ag-inherited-formula-token-6-color: var(--ag-formula-token-6-color);
+	--ag-inherited-formula-token-7-background-color: var(--ag-formula-token-7-background-color);
+	--ag-inherited-formula-token-7-border: var(--ag-formula-token-7-border);
+	--ag-inherited-formula-token-7-color: var(--ag-formula-token-7-color);
 	--ag-inherited-full-row-edit-invalid-background-color: var(--ag-full-row-edit-invalid-background-color);
 	--ag-inherited-header-background-color: var(--ag-header-background-color);
 	--ag-inherited-header-cell-background-transition-duration: var(--ag-header-cell-background-transition-duration);
@@ -466,6 +537,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-panel-background-color: var(--ag-panel-background-color);
 	--ag-inherited-panel-title-bar-background-color: var(--ag-panel-title-bar-background-color);
 	--ag-inherited-panel-title-bar-border: var(--ag-panel-title-bar-border);
+	--ag-inherited-panel-title-bar-font-family: var(--ag-panel-title-bar-font-family);
+	--ag-inherited-panel-title-bar-font-size: var(--ag-panel-title-bar-font-size);
 	--ag-inherited-panel-title-bar-font-weight: var(--ag-panel-title-bar-font-weight);
 	--ag-inherited-panel-title-bar-height: var(--ag-panel-title-bar-height);
 	--ag-inherited-panel-title-bar-icon-color: var(--ag-panel-title-bar-icon-color);
@@ -509,6 +582,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-selected-row-background-color: var(--ag-selected-row-background-color);
 	--ag-inherited-set-filter-indent-size: var(--ag-set-filter-indent-size);
 	--ag-inherited-side-bar-background-color: var(--ag-side-bar-background-color);
+	--ag-inherited-side-bar-panel-animation-duration: var(--ag-side-bar-panel-animation-duration);
 	--ag-inherited-side-bar-panel-width: var(--ag-side-bar-panel-width);
 	--ag-inherited-side-button-background-color: var(--ag-side-button-background-color);
 	--ag-inherited-side-button-bar-background-color: var(--ag-side-button-bar-background-color);
@@ -593,9 +667,17 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
+	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
 	--ag-inherited-filter-panel-apply-button-color: var(--ag-filter-panel-apply-button-color);
 	--ag-inherited-find-active-match-color: var(--ag-find-active-match-color);
 	--ag-inherited-find-match-color: var(--ag-find-match-color);
+	--ag-inherited-formula-token-1-color: var(--ag-formula-token-1-color);
+	--ag-inherited-formula-token-2-color: var(--ag-formula-token-2-color);
+	--ag-inherited-formula-token-3-color: var(--ag-formula-token-3-color);
+	--ag-inherited-formula-token-4-color: var(--ag-formula-token-4-color);
+	--ag-inherited-formula-token-5-color: var(--ag-formula-token-5-color);
+	--ag-inherited-formula-token-6-color: var(--ag-formula-token-6-color);
+	--ag-inherited-formula-token-7-color: var(--ag-formula-token-7-color);
 	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
 	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
 	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
@@ -610,9 +692,17 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
+	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
 	--ag-inherited-filter-panel-apply-button-color: var(--ag-filter-panel-apply-button-color);
 	--ag-inherited-find-active-match-color: var(--ag-find-active-match-color);
 	--ag-inherited-find-match-color: var(--ag-find-match-color);
+	--ag-inherited-formula-token-1-color: var(--ag-formula-token-1-color);
+	--ag-inherited-formula-token-2-color: var(--ag-formula-token-2-color);
+	--ag-inherited-formula-token-3-color: var(--ag-formula-token-3-color);
+	--ag-inherited-formula-token-4-color: var(--ag-formula-token-4-color);
+	--ag-inherited-formula-token-5-color: var(--ag-formula-token-5-color);
+	--ag-inherited-formula-token-6-color: var(--ag-formula-token-6-color);
+	--ag-inherited-formula-token-7-color: var(--ag-formula-token-7-color);
 	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
 	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
 	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
@@ -622,7 +712,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 "
 `;
 
-exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-batchEditStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9 ag-theme-inputStyles-10"`;
+exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-batchEditStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9 ag-theme-inputStyles-10 ag-theme-params-1"`;
 
 exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 "
@@ -797,6 +887,12 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "cellFontFamily": {
       "ref": "fontFamily",
     },
+    "cellFontSize": {
+      "ref": "dataFontSize",
+    },
+    "cellFontWeight": {
+      "ref": "fontWeight",
+    },
     "cellHorizontalPadding": {
       "calc": "spacing * 2 * cellHorizontalPaddingScale",
     },
@@ -868,6 +964,12 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "textColor",
     },
     "columnHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
+    "columnPanelApplyButtonBackgroundColor": {
+      "ref": "accentColor",
+    },
+    "columnPanelApplyButtonColor": {
+      "ref": "backgroundColor",
+    },
     "columnSelectIndentSize": {
       "ref": "iconSize",
     },
@@ -942,10 +1044,81 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "focusShadow": "none",
     "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "fontSize": "1rem",
+    "fontWeight": "inherit",
     "footerRowBorder": {
       "ref": "rowBorder",
     },
     "foregroundColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+    "formulaToken1BackgroundColor": {
+      "mix": 0.08,
+      "ref": "formulaToken1Color",
+    },
+    "formulaToken1Border": {
+      "color": {
+        "ref": "formulaToken1Color",
+      },
+    },
+    "formulaToken1Color": "#3269c6",
+    "formulaToken2BackgroundColor": {
+      "mix": 0.06,
+      "ref": "formulaToken2Color",
+    },
+    "formulaToken2Border": {
+      "color": {
+        "ref": "formulaToken2Color",
+      },
+    },
+    "formulaToken2Color": "#c0343f",
+    "formulaToken3BackgroundColor": {
+      "mix": 0.08,
+      "ref": "formulaToken3Color",
+    },
+    "formulaToken3Border": {
+      "color": {
+        "ref": "formulaToken3Color",
+      },
+    },
+    "formulaToken3Color": "#8156b8",
+    "formulaToken4BackgroundColor": {
+      "mix": 0.06,
+      "ref": "formulaToken4Color",
+    },
+    "formulaToken4Border": {
+      "color": {
+        "ref": "formulaToken4Color",
+      },
+    },
+    "formulaToken4Color": "#007c1f",
+    "formulaToken5BackgroundColor": {
+      "mix": 0.08,
+      "ref": "formulaToken5Color",
+    },
+    "formulaToken5Border": {
+      "color": {
+        "ref": "formulaToken5Color",
+      },
+    },
+    "formulaToken5Color": "#b03e85",
+    "formulaToken6BackgroundColor": {
+      "mix": 0.06,
+      "ref": "formulaToken6Color",
+    },
+    "formulaToken6Border": {
+      "color": {
+        "ref": "formulaToken6Color",
+      },
+    },
+    "formulaToken6Color": "#b74900",
+    "formulaToken7BackgroundColor": {
+      "mix": 0.08,
+      "ref": "formulaToken7Color",
+    },
+    "formulaToken7Border": {
+      "color": {
+        "ref": "formulaToken7Color",
+      },
+    },
+    "formulaToken7Color": "#247492",
     "fullRowEditInvalidBackgroundColor": {
       "mix": 0.25,
       "onto": "backgroundColor",
@@ -1083,6 +1256,12 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "headerBackgroundColor",
     },
     "panelTitleBarBorder": true,
+    "panelTitleBarFontFamily": {
+      "ref": "headerFontFamily",
+    },
+    "panelTitleBarFontSize": {
+      "ref": "headerFontSize",
+    },
     "panelTitleBarFontWeight": {
       "ref": "headerFontWeight",
     },
@@ -1188,6 +1367,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "sideBarBackgroundColor": {
       "ref": "chromeBackgroundColor",
     },
+    "sideBarPanelAnimationDuration": 0,
     "sideBarPanelWidth": 250,
     "sideButtonBackgroundColor": "transparent",
     "sideButtonBarBackgroundColor": {
@@ -1349,6 +1529,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
+    "columnPanelApplyButtonColor": {
+      "ref": "foregroundColor",
+    },
     "filterPanelApplyButtonColor": {
       "ref": "foregroundColor",
     },
@@ -1358,6 +1541,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "findMatchColor": {
       "ref": "backgroundColor",
     },
+    "formulaToken1Color": "#4da3e5",
+    "formulaToken2Color": "#f55864",
+    "formulaToken3Color": "#b688f2",
+    "formulaToken4Color": "#24bb4a",
+    "formulaToken5Color": "#e772ba",
+    "formulaToken6Color": "#f69b5f",
+    "formulaToken7Color": "#a3e6ff",
     "menuBackgroundColor": {
       "mix": 0.1,
       "onto": "backgroundColor",
@@ -1386,6 +1576,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
+    "columnPanelApplyButtonColor": {
+      "ref": "foregroundColor",
+    },
     "filterPanelApplyButtonColor": {
       "ref": "foregroundColor",
     },
@@ -1395,6 +1588,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "findMatchColor": {
       "ref": "backgroundColor",
     },
+    "formulaToken1Color": "#4da3e5",
+    "formulaToken2Color": "#f55864",
+    "formulaToken3Color": "#b688f2",
+    "formulaToken4Color": "#24bb4a",
+    "formulaToken5Color": "#e772ba",
+    "formulaToken6Color": "#f69b5f",
+    "formulaToken7Color": "#a3e6ff",
     "menuBackgroundColor": {
       "mix": 0.1,
       "onto": "backgroundColor",
