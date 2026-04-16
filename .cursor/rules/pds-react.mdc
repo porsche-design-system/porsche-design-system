@@ -10,4 +10,4 @@ alwaysApply: false
 - Use `@porsche-design-system/components-react/ssr` for SSR frameworks and keep `PorscheDesignSystemProvider` requirements intact.
 - Pass extra ARIA through the supported `aria` prop rather than ad-hoc host attributes.
 - Avoid manual edits to generated `dist/` output unless the task is explicitly about published artifacts.
-- Validate wrapper changes with `yarn test:unit:components-react`.
+- Validate wrapper changes with `npm run test:unit:components-react`.

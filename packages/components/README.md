@@ -2,40 +2,40 @@
 
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn start
+npm run start
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
 
 ### Lints and fixes files
 ```
-yarn lint
+npm run lint
 ```
 
 ### Run your tests
 ```
-yarn test
+npm run test
 ```
 
 ### Run your unit tests
 ```
-yarn test:unit
+npm run test:unit
 ```
 
 ### Run your end-to-end tests
 ```
-yarn test:e2e
+npm run test:e2e
 ```
 
 ### Run your visual regression tests
 ```
-yarn test:vrt
+npm run test:vrt
 ```

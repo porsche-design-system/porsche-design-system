@@ -10,4 +10,4 @@ alwaysApply: false
 - Use `PorscheDesignSystemProvider` or `createPorscheDesignSystem()` patterns that match the current public API.
 - Pass extra ARIA through the supported `:aria` prop rather than ad-hoc host attributes.
 - Avoid manual edits to generated `dist/` output unless the task is explicitly about published artifacts.
-- Validate wrapper changes with `yarn test:unit:components-vue`.
+- Validate wrapper changes with `npm run test:unit:components-vue`.

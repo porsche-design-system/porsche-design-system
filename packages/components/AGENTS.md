@@ -24,16 +24,16 @@ src/components/{name}/
 
 ```bash
 # Start dev server
-yarn start:components
+npm run start:components
 
 # Build components
-yarn build:components
+npm run build:components
 
 # Run unit tests
-yarn test:unit:components
+npm run test:unit:components
 
 # Run specific test file
-yarn test:unit:components -- {name}.spec.ts
+npm run test:unit:components -- {name}.spec.ts
 ```
 
 ## Accessibility Contract (WCAG 2.2 AA)
@@ -116,7 +116,7 @@ When behavior/markup changes, add or update tests consistent with this repo.
 - [ ] Focus ring matches `getFocusBaseStyles()` behavior
 - [ ] `forced-colors: active` still shows all states and focus
 - [ ] Axe-core and a11y tree tests pass
-- [ ] Unit tests pass: `yarn test:unit:components`
+- [ ] Unit tests pass: `npm run test:unit:components`
 
 ## Component Conventions
 

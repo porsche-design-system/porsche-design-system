@@ -88,16 +88,16 @@ All UI code must:
 
 ```bash
 # Install dependencies
-# yarn install / npm install
+# npm install / npm install
 
 # Build
-# yarn build / npm run build
+# npm run build / npm run build
 
 # Run tests
-# yarn test / npm test
+# npm run test / npm test
 
 # Lint and format
-# yarn lint / npm run lint
+# npm run lint / npm run lint
 ```
 
 ## Testing

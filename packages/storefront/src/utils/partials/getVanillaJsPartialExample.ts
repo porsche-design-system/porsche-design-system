@@ -28,7 +28,7 @@ export const getVanillaJsPartialExample = (name: Partials, location: PartialLoca
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
-  "prestart": "yarn replace",
+  "prestart": "npm run replace",
   ${jsPartials}
 }`;
 };

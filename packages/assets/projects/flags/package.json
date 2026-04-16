@@ -27,7 +27,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "lint": "publint",
-    "build": "yarn clean:build && yarn build:flags && yarn build:lib",
+    "build": "npm run clean:build && npm run build:flags && npm run build:lib",
     "build:flags": "tsx scripts/build.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",

@@ -25,16 +25,16 @@ packages/components-react/
 
 ```bash
 # Start dev server
-yarn start:components-react
+npm run start:components-react
 
 # Build wrapper
-yarn build:components-react
+npm run build:components-react
 
 # Start Next.js integration
-yarn start:components-react/nextjs
+npm run start:components-react/nextjs
 
 # Start Remix integration
-yarn start:components-react/remix
+npm run start:components-react/remix
 ```
 
 ## Usage Patterns
@@ -80,7 +80,7 @@ All accessibility requirements from the root [`AGENTS.md`](../../AGENTS.md) appl
 
 ```bash
 # Run unit tests
-yarn test:unit:components-react
+npm run test:unit:components-react
 ```
 
 Tests are located in the `tests/` directory. When modifying wrapper behavior:
@@ -113,5 +113,5 @@ This package requires these to be built first:
 2. `components`
 3. `components-js`
 
-Run `yarn build` from the root to build all dependencies in order.
+Run `npm run build` from the root to build all dependencies in order.
 
