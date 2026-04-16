@@ -185,15 +185,25 @@ export class TabsBar {
       : (getActiveElementIndex(this.tabs) ?? 0);
     const { target } = e;
 
+    const isRtl = window.getComputedStyle(this.scroller).direction === 'rtl';
+
     switch (e.key) {
       case 'ArrowLeft':
       case 'Left':
-        upcomingActiveElementIndex = getUpcomingActiveElementIndex('prev', this.tabs, activeElementIndex);
+        upcomingActiveElementIndex = getUpcomingActiveElementIndex(
+          isRtl ? 'next' : 'prev',
+          this.tabs,
+          activeElementIndex
+        );
         break;
 
       case 'ArrowRight':
       case 'Right':
-        upcomingActiveElementIndex = getUpcomingActiveElementIndex('next', this.tabs, activeElementIndex);
+        upcomingActiveElementIndex = getUpcomingActiveElementIndex(
+          isRtl ? 'prev' : 'next',
+          this.tabs,
+          activeElementIndex
+        );
         break;
 
       case 'Home':
