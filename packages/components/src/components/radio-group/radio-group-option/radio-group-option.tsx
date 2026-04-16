@@ -8,7 +8,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
+import { LoadingMessage } from '../../common/loading-message/loading-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
 import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
  */
 @Component({
   tag: 'p-radio-group-option',
-  shadow: { delegatesFocus: true },
+  shadow: true,
 })
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
@@ -72,30 +72,34 @@ export class RadioGroupOption {
 
     attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state);
 
-    const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
-        {/* wrapped in host for programmatic selection via radio-group-option */}
+      <Host
+        role="radio"
+        aria-checked={isSelected ? 'true' : 'false'}
+        aria-disabled={isDisabled || isLoading ? 'true' : null}
+        aria-invalid={state === 'error' ? 'true' : null}
+        onClick={!isDisabled && !isLoading && this.onHostClick}
+        onBlur={this.onBlur}
+      >
         <div class="root">
           <div class="wrapper">
             <input
-              id={id}
               type="radio"
               name={name}
               checked={isSelected}
               disabled={isDisabled || isLoading}
               value={this.value}
+              tabindex={-1}
+              aria-hidden="true"
               onClick={(e) => {
                 e.stopPropagation();
                 e.stopImmediatePropagation();
+                this.host.focus();
               }}
               onChange={this.onChange}
               onBlur={this.onBlur}
-              aria-describedby={isLoading ? loadingId : null}
-              aria-invalid={state === 'error' ? 'true' : null}
-              aria-disabled={isDisabled || isLoading ? 'true' : null}
               ref={(el) => (this.inputElement = el)}
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
@@ -106,7 +110,6 @@ export class RadioGroupOption {
           <Label
             host={this.host}
             label={this.label}
-            htmlFor={id}
             isDisabled={isDisabled}
             isLoading={isLoading}
             stopClickPropagation={true}
@@ -141,7 +144,7 @@ export class RadioGroupOption {
   };
 
   private onHostClick = (): void => {
-    this.inputElement.focus();
+    this.host.focus();
     this.inputElement.click();
   };
 }

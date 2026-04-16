@@ -46,6 +46,8 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     '@global': {
       ':host': {
         display: 'block',
+        outline: 'none',
+        '&(:focus-visible) input': getFocusBaseStyles(),
         ...addImportantToEachRule({
           ...hostHiddenStyles,
         }),
@@ -76,7 +78,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
               borderColor: formStateBorderHoverColor,
             },
           })),
-        '&:focus-visible': getFocusBaseStyles(),
         '&:checked': {
           background: state === 'none' ? colorPrimary : formStateBorderColor,
           '&::before': {

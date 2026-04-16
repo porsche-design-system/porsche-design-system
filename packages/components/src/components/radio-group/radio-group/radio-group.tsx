@@ -311,10 +311,7 @@ export class RadioGroup {
     const focusIndex = selectedIndex !== -1 ? selectedIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;
 
     this.radioGroupOptions.forEach((opt, i) => {
-      const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
-      if (input) {
-        input.setAttribute('tabindex', i === focusIndex ? '0' : '-1');
-      }
+      opt.tabIndex = i === focusIndex ? 0 : -1;
     });
   }
 }
