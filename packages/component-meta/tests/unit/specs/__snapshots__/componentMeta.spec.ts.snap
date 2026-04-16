@@ -7752,7 +7752,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": false,
-    "isDelegatingFocus": true,
+    "isDelegatingFocus": false,
     "isInternal": false,
     "nestedComponents": [
       "p-spinner",
