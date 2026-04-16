@@ -85,6 +85,7 @@ export class RadioGroupOption {
       >
         <div class="root">
           <div class="wrapper">
+            {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: it's needed to provide visual styling */}
             <input
               type="radio"
               name={name}

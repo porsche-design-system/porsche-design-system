@@ -305,7 +305,7 @@ export class RadioGroup {
   };
 
   private updateTabStops(): void {
-    if (!this.radioGroupOptions.length) return;
+    if (!this.radioGroupOptions.length || this.loading) return;
     const selectedIndex = getCheckedOptionIndex(this.radioGroupOptions);
     const firstEnabledIndex = getFirstEnabledOptionIndex(this.radioGroupOptions);
     const focusIndex = selectedIndex !== -1 ? selectedIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;
