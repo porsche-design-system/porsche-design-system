@@ -30,17 +30,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install rclone'
-        run: sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
-        shell: bash
-      - uses: actions/setup-node@v6
+      - uses: ./.github/actions/install
         with:
-          node-version: '24'
+          node_modules: 'false'
+          rclone: 'true'
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-          setup-bin: 'false'
       - name: 'Rclone (Components)'
         uses: ./.github/actions/rclone
         with:
@@ -123,11 +120,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'npm'
-      - run: npm ci
+      - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -149,11 +142,7 @@ jobs:
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'npm'
-      - run: npm ci
+      - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:

@@ -47,8 +47,8 @@ const packageJsonExports = {
     default: './testing/index.cjs',
   },
   './styles': {
-    sass: './scss/_index.scss',
     types: './emotion/esm/index.d.ts',
+    sass: './scss/_index.scss',
     import: './emotion/esm/index.mjs',
     default: './emotion/cjs/index.cjs',
   },
