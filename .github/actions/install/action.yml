@@ -39,7 +39,14 @@ runs:
       shell: bash
     - name: 'Setup bin links'
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit == 'true'
-      run: bash ./scripts/setup-bin-links.sh
+      run: |
+        # Recreate workspace bin links that are not preserved in cache
+        chmod +x ./packages/assets/bin/serve-cdn.js
+        chmod +x ./packages/shared/bin/serve-dummyassets.js
+        chmod +x ./packages/shared/bin/prepareVRTSnapshots.js
+        ln -sf ../../packages/assets/bin/serve-cdn.js ./node_modules/.bin/serve-cdn
+        ln -sf ../../packages/shared/bin/serve-dummyassets.js ./node_modules/.bin/serve-dummyassets
+        ln -sf ../../packages/shared/bin/prepareVRTSnapshots.js ./node_modules/.bin/prepare-vrt-snapshots
       shell: bash
     - name: 'Install rclone'
       if: inputs.rclone == 'true'
