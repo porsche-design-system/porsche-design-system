@@ -14,3 +14,15 @@ runs:
       with:
         name: '${{ inputs.artifact }}'
         path: ./packages
+    - name: 'Setup bin links'
+      run: |
+        chmod +x ./packages/assets/bin/serve-cdn.js
+        chmod +x ./packages/shared/bin/serve-dummyassets.js
+        chmod +x ./packages/shared/bin/prepareVRTSnapshots.js
+        # Recreate workspace bin links that are not preserved in cache
+        if [ -d ./node_modules/.bin ]; then
+          ln -sf ../../packages/assets/bin/serve-cdn.js ./node_modules/.bin/serve-cdn
+          ln -sf ../../packages/shared/bin/serve-dummyassets.js ./node_modules/.bin/serve-dummyassets
+          ln -sf ../../packages/shared/bin/prepareVRTSnapshots.js ./node_modules/.bin/prepare-vrt-snapshots
+        fi
+      shell: bash
