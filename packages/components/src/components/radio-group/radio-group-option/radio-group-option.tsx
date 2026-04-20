@@ -79,10 +79,13 @@ export class RadioGroupOption {
 
     // Workaround to get correct number and index of items announced by screen readers (e.g. "1 of 3")
     // Internals is used instead of sprouting aria role/attributes to the host element to not expose axe-core violations of nested ui elements
-    this.internals.role = 'radio';
-    this.internals.ariaChecked = isSelected ? 'true' : 'false';
-    this.internals.ariaDisabled = isDisabled || isLoading ? 'true' : null;
-    this.internals.ariaInvalid = state === 'error' ? 'true' : null;
+    const internals = this.internals;
+    if (internals) {
+      internals.role = 'radio';
+      internals.ariaChecked = isSelected ? 'true' : 'false';
+      internals.ariaDisabled = isDisabled || isLoading ? 'true' : null;
+      internals.ariaInvalid = state === 'error' ? 'true' : null;
+    }
 
     return (
       <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>

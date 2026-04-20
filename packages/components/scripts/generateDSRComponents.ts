@@ -590,7 +590,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
-          .replace(/this\.props\.internals\.[^;]*;/g, '');
+          .replace(/\n\s*private internals: any;\s*\n/, '\n')
+          // Strip ElementInternals ARIA mirror (const + if) after this.* → this.props.*; keep legacy one-liner replace below
+          .replace(
+            /(?:[ \t]*\/\/[^\n]*\n)*[ \t]*const internals = this\.props\.internals;\s*if \(internals\) \{[\s\S]*?\n[ \t]*\}\n/g,
+            ''
+          );
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent
           .replace(/this\.theme/, 'this.props.theme')
