@@ -51,7 +51,7 @@
     "preinstall:components-vue": "TARGET=./packages/components-vue/dist/vue-wrapper && mkdir -p $TARGET && cp ./packages/components-vue/projects/vue-wrapper/package.json $TARGET",
     "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s^shared^@porsche-design-system/shared^\" ./packages/shared/package.json > $TARGET/package.json && mkdir -p ./packages/shared/bin && touch ./packages/shared/bin/serve-dummyassets.js && touch ./packages/shared/bin/prepareVRTSnapshots.js",
     "postinstall": "patch-package && npm run postinstall:bin-links",
-    "postinstall:bin-links": "bash ./scripts/setup-bin-links.sh",
+    "postinstall:bin-links": "chmod +x ./packages/assets/bin/serve-cdn.js ./packages/shared/bin/serve-dummyassets.js ./packages/shared/bin/prepareVRTSnapshots.js 2>/dev/null; ln -sf ../../packages/assets/bin/serve-cdn.js ./node_modules/.bin/serve-cdn; ln -sf ../../packages/shared/bin/serve-dummyassets.js ./node_modules/.bin/serve-dummyassets; ln -sf ../../packages/shared/bin/prepareVRTSnapshots.js ./node_modules/.bin/prepare-vrt-snapshots; true",
     "start:components": "npm run start --prefix ./packages/components",
     "start:components-js": "npm run start --prefix ./packages/components-js",
     "start:components-angular": "npm run start --prefix ./packages/components-angular",
