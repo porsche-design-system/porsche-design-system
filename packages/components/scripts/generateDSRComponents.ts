@@ -589,7 +589,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-radio-group-option') {
         newFileContent = newFileContent
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
-          .replace(/@AttachInternals\(\)/, '');
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.internals\.[^;]*;/g, '');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent
           .replace(/this\.theme/, 'this.props.theme')
