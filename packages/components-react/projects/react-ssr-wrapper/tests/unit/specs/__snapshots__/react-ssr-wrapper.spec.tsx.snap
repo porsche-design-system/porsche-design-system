@@ -4818,6 +4818,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
