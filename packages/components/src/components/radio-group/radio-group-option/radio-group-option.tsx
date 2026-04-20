@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { AttachInternals, Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -45,6 +45,8 @@ export class RadioGroupOption {
   /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
+  @AttachInternals() private internals: ElementInternals;
+
   private initialLoading: boolean = false;
   private inputElement!: HTMLInputElement;
 
@@ -75,19 +77,18 @@ export class RadioGroupOption {
     const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
+    // Workaround to get correct number and index of items announced by screen readers (e.g. "1 of 3")
+    // Internals is used instead of sprouting aria role/attributes to the host element to not expose axe-core violations of nested ui elements
+    this.internals.role = 'radio';
+    this.internals.ariaChecked = isSelected ? 'true' : 'false';
+    this.internals.ariaDisabled = isDisabled || isLoading ? 'true' : null;
+    this.internals.ariaInvalid = state === 'error' ? 'true' : null;
+
     return (
-      <Host
-        role="radio"
-        aria-checked={isSelected ? 'true' : 'false'}
-        aria-disabled={isDisabled || isLoading ? 'true' : null}
-        aria-invalid={state === 'error' ? 'true' : null}
-        onClick={!isDisabled && !isLoading && this.onHostClick}
-        onBlur={this.onBlur}
-      >
+      <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
         <div class="root">
           <div class="wrapper">
             <input
-              inert
               id={id}
               type="radio"
               name={name}

@@ -586,6 +586,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-radio-group-option') {
+        newFileContent = newFileContent
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent
           .replace(/this\.theme/, 'this.props.theme')
