@@ -34,6 +34,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -215,6 +216,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -392,6 +394,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -597,6 +600,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -728,6 +732,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -861,6 +866,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -1093,6 +1099,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -1219,6 +1226,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -1353,6 +1361,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -1541,6 +1550,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -1680,6 +1690,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -1890,6 +1901,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -2103,6 +2115,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
@@ -2290,6 +2303,7 @@ p,::slotted([slot="description"]) {
 }
 .nav {
   display: none;
+  color-scheme: var(--p-carousel-prev-next-color-scheme);
 }
 .btn {
   padding: var(--p-spacing-static-sm);
