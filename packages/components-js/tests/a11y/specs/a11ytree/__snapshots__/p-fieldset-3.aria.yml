@@ -1,8 +1,9 @@
 - group "Some label":
+  - text: ""
   - radiogroup "Some Label":
-    - radio "Some Label"
+    - text: ""
     - status
-    - radio "Some Label"
+    - text: ""
     - status
     - status
     - status

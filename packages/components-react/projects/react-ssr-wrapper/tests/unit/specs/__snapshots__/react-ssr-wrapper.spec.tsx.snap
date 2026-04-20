@@ -12057,7 +12057,6 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
-    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -12197,6 +12196,7 @@ input:checked::before {
       >
         <input
           aria-hidden="true"
+          id="radio-group-option"
           tabindex="-1"
           type="radio"
         />

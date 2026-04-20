@@ -1,6 +1,11 @@
 <div class="root">
   <div class="wrapper">
-    <input id="radio-group-option" type="radio" tabindex="0" />
+    <input
+      id="radio-group-option"
+      type="radio"
+      tabindex="-1"
+      aria-hidden="true"
+    />
   </div>
   <div class="label-wrapper">
     <label class="label" id="label" for="radio-group-option"> Some label</label>

@@ -1,9 +1,9 @@
 - radiogroup "Some label":
-  - radio "A"
+  - text: ""
   - status
-  - radio "B" [checked]
+  - text: ""
   - status
-  - radio "C"
+  - text: ""
   - status
   - alert
   - status

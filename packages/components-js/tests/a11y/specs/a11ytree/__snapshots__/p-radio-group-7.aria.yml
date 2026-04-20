@@ -1,8 +1,4 @@
 - radiogroup "Some label":
-  - radio "Some label A" [disabled]
-  - radio "Some label B" [checked] [disabled]
-  - radio "Some label C" [disabled]
-  - radio "Some label D" [disabled]
-  - radio "Some label E" [disabled]
+  - text: Some label Some label A Some label B Some label C Some label D Some label E
   - alert
   - status: Loading
