@@ -687,12 +687,17 @@ components.
 
 ### Carousel:
 
-- Removed CSS variable `--p-carousel-prev-next-filter`.
+- Removed CSS variable `--p-carousel-prev-next-filter`, use `--p-carousel-prev-next-color-scheme` instead.
+
+```diff
+- <p-carousel style="--p-carousel-prev-next-filter: invert(1);"></p-carousel>
++ <p-carousel style="--p-carousel-prev-next-color-scheme: dark;"></p-carousel>
+```
 
 - Removed prop `gradient-color`, use `gradient="true"` instead.
 
 ```diff
-- <p-carousel gradient-color="background-surface">
+- <p-carousel gradient-color="background-surface"></p-carousel>
 + <p-carousel gradient="true"></p-carousel>
 ```
 
