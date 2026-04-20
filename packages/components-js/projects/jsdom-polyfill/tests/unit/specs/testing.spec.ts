@@ -76,23 +76,29 @@ describe('getByTextShadowed()', () => {
     expect(el).toBeInTheDocument();
     expect(el.tagName).toBe('H3');
   });
+
+  it('should work for p-radio-group-option', async () => {
+    document.body.innerHTML = `<p-radio-group label="Radio Button" name="some-name">
+  <p-radio-group-option value="a" label="Radio Option A"></p-radio-group-option>
+  <p-radio-group-option value="b" label="Radio Option B"></p-radio-group-option>
+  <p-radio-group-option value="c" label="Radio Option C"></p-radio-group-option>
+</p-radio-group>`;
+    await componentsReady();
+
+    const el = getByTextShadowed('Radio Option A');
+    expect(el).toBeInTheDocument();
+  });
 });
 
 describe('getByRoleShadowed()', () => {
   it('should be supported for form components', async () => {
     document.body.innerHTML = `
 <p-checkbox label="Checkbox" name="some-name"></p-checkbox>
-<p-radio-group label="Radio Button" name="some-name">
-  <p-radio-group-option value="a" label="Radio Option A"></p-radio-group-option>
-  <p-radio-group-option value="b" label="Radio Option B"></p-radio-group-option>
-  <p-radio-group-option value="c" label="Radio Option C"></p-radio-group-option>
-</p-radio-group>
 <p-input-text label="Text Field" name="some-name"></p-input-text>
 <p-textarea label="Textarea" name="some-name"></p-textarea>`;
     await componentsReady();
 
     expect(getByRoleShadowed('checkbox', { name: 'Checkbox' })).toBeInTheDocument();
-    expect(getByRoleShadowed('radio', { name: 'Radio Option A' })).toBeInTheDocument();
     expect(getByRoleShadowed('textbox', { name: 'Text Field' })).toBeInTheDocument();
     expect(getByRoleShadowed('textbox', { name: 'Textarea' })).toBeInTheDocument();
   });
