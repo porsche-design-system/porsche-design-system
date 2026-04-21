@@ -48,6 +48,14 @@ const getSelectedOptionIndex = async (page: Page): Promise<number> =>
 
 const getForm = (page: Page) => page.locator('form');
 
+/** Asserts `tabIndex` on each `p-radio-group-option` host (roving tabindex: exactly one `0` when any option is focusable). */
+const expectRadioOptionTabIndices = async (page: Page, expected: number[]): Promise<void> => {
+  const options = getRadioGroupOptions(page);
+  for (let i = 0; i < expected.length; i++) {
+    await expect(options.nth(i)).toHaveJSProperty('tabIndex', expected[i]);
+  }
+};
+
 const setValue = async (page: Page, value: string) => {
   const host: Locator = getHost(page);
   await host.evaluate((el, value) => {
@@ -247,6 +255,8 @@ test.describe('keyboard behavior', () => {
           values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
         },
       });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [0, -1, -1]);
 
       const options = getRadioGroupOptions(page);
 
@@ -262,6 +272,8 @@ test.describe('keyboard behavior', () => {
           values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
         },
       });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, 0, -1]);
 
       const options = getRadioGroupOptions(page);
 
@@ -277,6 +289,8 @@ test.describe('keyboard behavior', () => {
           values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
         },
       });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, 0, -1]);
 
       const options = getRadioGroupOptions(page);
 
@@ -292,6 +306,8 @@ test.describe('keyboard behavior', () => {
           values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
         },
       });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, -1, 0]);
 
       const options = getRadioGroupOptions(page);
 
@@ -307,6 +323,8 @@ test.describe('keyboard behavior', () => {
           values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
         },
       });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, 0, -1]);
 
       const options = getRadioGroupOptions(page);
 
@@ -315,7 +333,88 @@ test.describe('keyboard behavior', () => {
       await expect(options.nth(1)).toBeFocused();
     });
 
-    test('should skip disabled and loading options when pressing ArrowUp/ArrowDown', async ({ page }) => {
+    test('should tab to first focusable option when the 1st option has loading (not in tab order)', async ({
+      page,
+    }) => {
+      await initRadioGroup(page, {
+        props: { value: 'b', name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a', loading: true }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, 0, -1]);
+
+      const options = getRadioGroupOptions(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+    });
+
+    test('should apply roving tabIndex (one host at 0, siblings at -1) before keyboard interaction', async ({
+      page,
+    }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [0, -1, -1]);
+    });
+
+    test('should set tabIndex -1 on all option hosts when radio group loading is true', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label', loading: true, value: 'b' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, -1, -1]);
+    });
+
+    test('should set tabIndex -1 on all option hosts when radio group is disabled', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { name: 'options', label: 'Some Label', disabled: true, value: 'b' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        },
+      });
+      await waitForStencilLifecycle(page);
+      await expectRadioOptionTabIndices(page, [-1, -1, -1]);
+    });
+
+    test('should move selection with ArrowUp symmetrically (skip disabled)', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { value: 'a', name: 'options', label: 'Some Label' },
+        options: {
+          values: [{ value: 'a' }, { value: 'b', disabled: true }, { value: 'c' }],
+        },
+      });
+      const options = getRadioGroupOptions(page);
+      await waitForStencilLifecycle(page);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(0)).toBeFocused();
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(2)).toBeFocused();
+      expect(await getSelectedOptionIndex(page)).toBe(2);
+
+      await page.keyboard.press('ArrowUp');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(0)).toBeFocused();
+      expect(await getSelectedOptionIndex(page)).toBe(0);
+    });
+
+    test('should skip non-focusable options when pressing ArrowDown or ArrowUp (disabled, loading)', async ({
+      page,
+    }) => {
       await initRadioGroup(page, {
         props: { value: 'a', name: 'options', label: 'Some Label' },
         options: {
@@ -329,6 +428,7 @@ test.describe('keyboard behavior', () => {
           ],
         },
       });
+      await waitForStencilLifecycle(page);
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
