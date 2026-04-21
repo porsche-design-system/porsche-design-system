@@ -1,6 +1,12 @@
 import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getShadowRootHTMLElement,
+  throwIfParentIsNotOfKind,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './optgroup-styles';
 import { type OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
 
@@ -30,6 +36,10 @@ export class Optgroup {
     updateOptionsDisabled(this.host, this.disabled);
   }
 
+  public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.dispatchInternalOptgroupUpdate);
+  }
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-multi-select']);
   }
@@ -56,7 +66,7 @@ export class Optgroup {
           <span id={labelId} role="presentation">
             {this.label}
           </span>
-          <slot onSlotchange={() => this.dispatchInternalOptgroupUpdate()} />
+          <slot />
         </div>
       </Host>
     );
