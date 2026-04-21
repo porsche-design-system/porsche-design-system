@@ -88,12 +88,9 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: ./.github/actions/install
         with:
-          node-version: '24'
-          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -117,12 +114,9 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: ./.github/actions/install
         with:
-          node-version: '24'
-          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -146,12 +140,9 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: ./.github/actions/install
         with:
-          node-version: '24'
-          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -175,12 +166,9 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: ./.github/actions/install
         with:
-          node-version: '24'
-          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -207,11 +195,7 @@ jobs:
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'npm'
-      - run: npm ci
+      - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:

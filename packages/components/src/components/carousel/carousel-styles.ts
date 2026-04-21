@@ -53,6 +53,11 @@ export const cssVarPaddingInlineStart = '--p-carousel-ps';
  */
 export const cssVarPaddingInlineEnd = '--p-carousel-pe';
 
+/**
+ * @css-variable {"name": "--p-carousel-prev-next-color-scheme", "description": "Color Scheme applied to the navigation (prev/next buttons)"}
+ */
+const cssVariablePrevNextColorScheme = '--p-carousel-prev-next-color-scheme';
+
 export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 export const carouselTransitionDuration = motionDurationModerate;
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
@@ -204,6 +209,7 @@ export const getComponentCss = (
         gap: spacingStaticXs,
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
+      colorScheme: `var(${cssVariablePrevNextColorScheme})`,
     },
     btn: {
       padding: spacingStaticSm,

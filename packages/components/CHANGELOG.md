@@ -14,13 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Carousel`: `--p-carousel-prev-next-color-scheme` CSS variable in order to change the `color-scheme` of the prev/next
+  buttons individually ([#4308](https://github.com/porsche-design-system/porsche-design-system/pull/4308))
+
 ### Fixed
 
 - `Flyout`, `Modal`, `Sheet`: `overflow: clip` causing issues
   ([#4296](https://github.com/porsche-design-system/porsche-design-system/pull/4296))
-- `Link Pure`: focus border of slotted anchor 
-   ([#4285](https://github.com/porsche-design-system/porsche-design-system/pull/4285))
-- `Accessibility`: improved internal ARIA attribute handling for various components, e.g. `Banner`, `Inline Notification` and `Input` elements.
+- `Link Pure`: focus border of slotted anchor
+  ([#4285](https://github.com/porsche-design-system/porsche-design-system/pull/4285))
+- `Accessibility`: improved internal ARIA attribute handling for various components, e.g. `Banner`,
+  `Inline Notification` and `Input` elements.
   ([#4274](https://github.com/porsche-design-system/porsche-design-system/pull/4274))
 - Prefixing: custom PDS prefixes allow numbers in the prefix name
   ([#4297](https://github.com/porsche-design-system/porsche-design-system/pull/4297))
