@@ -36,6 +36,7 @@ import {
   getActiveOptionIndex,
   getCheckedOptionIndex,
   getFirstEnabledOptionIndex,
+  isRadioGroupOptionFocusable,
   type RadioGroupChangeEventDetail,
   type RadioGroupDirection,
   type RadioGroupOption,
@@ -202,6 +203,10 @@ export class RadioGroup {
     this.updateTabStops();
   }
 
+  public componentDidRender(): void {
+    this.updateTabStops();
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
@@ -251,7 +256,7 @@ export class RadioGroup {
 
   private focusOption(index: number): void {
     const option = this.radioGroupOptions[index];
-    if (option && !option.disabled) {
+    if (option && isRadioGroupOptionFocusable(option)) {
       /*
       Fix for when multiple keys (e.g., ArrowUp + ArrowDown) are pressed simultaneously,
       the focus could land on the wrong (non-selected) option. Deferring the click
@@ -262,6 +267,9 @@ export class RadioGroup {
   }
 
   private onKeyDown = (event: KeyboardEvent): void => {
+    if (this.loading || this.disabled) {
+      return;
+    }
     const { key } = event;
     if (!this.radioGroupOptions.length) return;
 
@@ -305,7 +313,13 @@ export class RadioGroup {
   };
 
   private updateTabStops(): void {
-    if (!this.radioGroupOptions.length || this.loading) return;
+    if (!this.radioGroupOptions.length) return;
+    if (this.loading) {
+      this.radioGroupOptions.forEach((opt) => {
+        opt.tabIndex = -1;
+      });
+      return;
+    }
     const selectedIndex = getCheckedOptionIndex(this.radioGroupOptions);
     const firstEnabledIndex = getFirstEnabledOptionIndex(this.radioGroupOptions);
     const focusIndex = selectedIndex !== -1 ? selectedIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;

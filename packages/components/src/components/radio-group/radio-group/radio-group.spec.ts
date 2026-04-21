@@ -248,4 +248,39 @@ describe('updateTabStops', () => {
     expect(opt2.tabIndex).toBe(-1);
     expect(opt3.tabIndex).toBe(-1);
   });
+
+  it('should set all options to tabIndex -1 when the radio group loading prop is true', () => {
+    const component = initComponent();
+    component.loading = true;
+    const opt1 = createOption('a');
+    const opt2 = createOption('b', { selected: true });
+    const opt3 = createOption('c');
+    (component as any).radioGroupOptions = [opt1, opt2, opt3];
+
+    (component as any).updateTabStops();
+
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(-1);
+    expect(opt3.tabIndex).toBe(-1);
+  });
+
+  it('should restore tabIndex 0 to the selected option after loading ends once loadingParent is synced (componentDidRender)', () => {
+    const component = initComponent();
+    component.loading = true;
+    const opt1 = createOption('a');
+    const opt2 = createOption('b', { selected: true });
+    (component as any).radioGroupOptions = [opt1, opt2];
+    (component as any).updateTabStops();
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(-1);
+
+    component.loading = false;
+    opt1.loadingParent = false;
+    opt2.loadingParent = false;
+
+    (component as any).componentDidRender();
+
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(0);
+  });
 });
