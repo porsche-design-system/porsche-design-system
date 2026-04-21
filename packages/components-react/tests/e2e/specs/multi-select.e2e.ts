@@ -3,7 +3,6 @@ import {
   addEventListener,
   getEventSummary,
   setProperty,
-  sleep,
 } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
@@ -50,35 +49,49 @@ test.describe('form', () => {
 });
 
 test.describe('optgroups', () => {
-  test('should correctly reflect value when options inside optgroup change dynamically', async ({ page }) => {
-    await goto(page, 'multi-select-example-dynamic-optgroup');
+  test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
+    await goto(page, 'multi-select-example');
     await waitForComponentsReady(page);
 
-    // Let the interval run for a few ticks so options appear
-    await sleep(1500);
+    const host = getHost(page);
 
-    // Sample the state multiple times while the interval is still running.
-    // Each check reads value and displayed text atomically and compares them.
-    // Without the fix, they'll be out of sync on at least one check.
-    for (let i = 0; i < 10; i++) {
-      await sleep(500);
+    // Step 1: mount an empty optgroup as a direct child of the multi-select.
+    // The multi-select learns about the optgroup via slotchange on its own default slot.
+    await page.evaluate(() => {
+      const multiSelect = document.querySelector('p-multi-select')!;
+      const optgroup = document.createElement('p-optgroup') as any;
+      optgroup.label = 'Dynamic Group';
+      multiSelect.appendChild(optgroup);
+    });
+    await waitForComponentsReady(page);
 
-      const { value, displayedText } = await page.evaluate(() => {
-        const host = document.querySelector('p-multi-select') as any;
-        const button = host?.shadowRoot?.querySelector('button[role="combobox"]');
-        const span = button?.querySelector('span');
-        return {
-          value: host?.value as string[] | undefined,
-          displayedText: span?.textContent ?? '',
-        };
-      });
+    // Step 2: append a new option INSIDE the already-mounted optgroup.
+    // This mutation does not reach the multi-select's own slot — it only fires slotchange on
+    // the optgroup's internal shadow slot. The multi-select therefore depends on the optgroup
+    // forwarding its inner slotchange via the bubbling `internalOptgroupUpdate` event to learn
+    // about the new option. Without that wiring its cached `multiSelectOptions` stays stale.
+    await page.evaluate(() => {
+      const optgroup = document.querySelector('p-multi-select p-optgroup')!;
+      const newOption = document.createElement('p-multi-select-option') as any;
+      newOption.value = 'new';
+      newOption.textContent = 'Option NEW';
+      optgroup.appendChild(newOption);
+    });
 
-      if (value && value.length > 0) {
-        const expectedText = value.map((v: string) => `Option ${v.toUpperCase()}`).join(', ');
-        expect(displayedText, `Check ${i}: displayed "${displayedText}" should match value "${expectedText}"`).toBe(
-          expectedText
-        );
-      }
-    }
+    // Programmatically select the dynamically added option together with an existing one.
+    await setProperty(host, 'value', ['a', 'new']);
+
+    // Verify the displayed text reflects both selected values.
+    // Without the fix, "new" is not in the cached options, so the displayed label stays as
+    // "Option A" only.
+    await expect
+      .poll(async () =>
+        page.evaluate(() => {
+          const el = document.querySelector('p-multi-select') as any;
+          const button = el?.shadowRoot?.querySelector('button[role="combobox"]');
+          return button?.querySelector('span')?.textContent ?? '';
+        })
+      )
+      .toBe('Option A, Option NEW');
   });
 });
