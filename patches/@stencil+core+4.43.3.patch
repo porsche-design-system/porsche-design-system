@@ -12,42 +12,10 @@ index 1f97bb5..538b44d 100644
                  void 0,
                  []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index 7ca390b..d7a475b 100644
+index 7ca390b..cfaca27 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
-@@ -3247,8 +3247,31 @@ var isPromisey = (maybePromise) => maybePromise instanceof Promise || maybePromi
- var updateComponent = async (hostRef, instance, isInitialLoad) => {
-   var _a;
-   const elm = hostRef.$hostElement$;
-+  const cmpMeta = hostRef.$cmpMeta$;
-   const endUpdate = createTime("update", hostRef.$cmpMeta$.$tagName$);
-   const rc = elm["s-rc"];
-+
-+  //========= PDS PATCH START
-+  if (isInitialLoad && BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
-+    if (supportsShadow) {
-+      if (elm.shadowRoot) {
-+        elm.hasDSR = true;
-+      }
-+      if (!elm.shadowRoot) {
-+        createShadowRoot.call(elm, cmpMeta);
-+      } else {
-+        if (elm.shadowRoot.mode !== "open") {
-+          throw new Error(
-+            `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${elm.shadowRoot.mode} but Stencil only supports open shadow roots.`
-+          );
-+        }
-+      }
-+    } else if (!BUILD28.hydrateServerSide && !("shadowRoot" in elm)) {
-+      elm.shadowRoot = elm;
-+    }
-+  }
-+  //========= PDS PATCH END
-+
-   if (BUILD21.style && isInitialLoad) {
-     attachStyles(hostRef);
-   }
-@@ -3256,6 +3279,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
+@@ -3256,6 +3256,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
    if (BUILD21.isDev) {
      hostRef.$flags$ |= 1024 /* devOnRender */;
    }
@@ -62,7 +30,36 @@ index 7ca390b..d7a475b 100644
    if (BUILD21.hydrateServerSide) {
      await callRender(hostRef, instance, elm, isInitialLoad);
    } else {
-@@ -4243,21 +4274,6 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -3828,6 +3836,28 @@ var initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId) => {
+         if (!Cstr) {
+           throw new Error(`Constructor for "${cmpMeta.$tagName$}#${hostRef.$modeName$}" was not found`);
+         }
++
++        //========= PDS PATCH START
++        if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
++          if (supportsShadow) {
++            if (elm.shadowRoot) {
++              elm.hasDSR = true;
++            }
++            if (!elm.shadowRoot) {
++              createShadowRoot.call(elm, cmpMeta);
++            } else {
++              if (elm.shadowRoot.mode !== "open") {
++                throw new Error(
++                  `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${elm.shadowRoot.mode} but Stencil only supports open shadow roots.`
++                );
++              }
++            }
++          } else if (!BUILD28.hydrateServerSide && !("shadowRoot" in elm)) {
++            elm.shadowRoot = elm;
++          }
++        }
++        //========= PDS PATCH END
++
+         if (BUILD24.member && !Cstr.isProxied) {
+           if (BUILD24.propChangeCallback) {
+             cmpMeta.$watchers$ = Cstr.watchers;
+@@ -4243,21 +4273,6 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
            super(self);
            self = this;
            registerHost(self, cmpMeta);
