@@ -81,6 +81,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.AGGridExampleStorefrontPage />,
   },
   {
+    name: 'AG Grid Compact Example',
+    path: '/aggrid-compact-example',
+    element: <fromExamples.AGGridExamplePage />,
+  },
+  {
+    name: 'AG Grid Compact Example Storefront',
+    path: '/aggrid-compact-example-storefront',
+    element: <fromExamples.AGGridExampleStorefrontPage />,
+  },
+  {
     name: 'Banner Example',
     path: '/banner-example',
     element: <fromExamples.BannerExamplePage />,
@@ -544,5 +554,5 @@ export const routes: RouteType[] = [
     name: 'Toast Example',
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,
-  }
+  },
 ];

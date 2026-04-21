@@ -9,7 +9,7 @@ type ColumnDefs = DataAdvanced & {
   active: boolean;
 };
 
-export const AGGridExampleStorefrontPage = () => {
+export const AGGridCompactExampleStorefrontPage = () => {
   const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
   const columnDefs: ColDef<ColumnDefs>[] = [

@@ -27,8 +27,8 @@ for (const exampleUrl of exampleUrls) {
       [
         'aggrid-example',
         'aggrid-example-storefront',
-        'aggrid-example-compact',
-        'aggrid-example-compact-storefront',
+        'aggrid-compact-example',
+        'aggrid-compact-example-storefront',
       ].includes(exampleUrl)
     );
     await goto(page, exampleUrl);
