@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 56343,
-    "gzipSize": 22021
+    "size": 56398,
+    "gzipSize": 22042
   },
   {
     "chunkShortName": "checkbox",
@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 81914,
-    "gzipSize": 25585
+    "gzipSize": 25586
   },
   {
     "chunkShortName": "modal",
@@ -206,8 +206,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 17916,
-    "gzipSize": 6621
+    "size": 18115,
+    "gzipSize": 6696
   },
   {
     "chunkShortName": "scroller",
