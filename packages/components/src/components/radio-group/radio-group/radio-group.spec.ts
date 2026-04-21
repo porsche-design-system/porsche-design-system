@@ -110,10 +110,11 @@ describe('formStateRestoreCallback', () => {
 });
 
 describe('updateTabStops', () => {
-  const createOption = (value: string, { disabled = false} = {}) => {
+  const createOption = (value: string, { disabled = false, selected = false } = {}) => {
     return {
       value,
       disabled,
+      selected,
       tabIndex: 0,
     } as unknown as RadioGroupOption;
   };
@@ -121,11 +122,10 @@ describe('updateTabStops', () => {
   it('should set tabIndex 0 on checked option and tabIndex -1 on all others', () => {
     const component = initComponent();
     const opt1 = createOption('a');
-    const opt2 = createOption('b');
+    const opt2 = createOption('b', { selected: true });
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(1);
-    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(0);
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(1);
 
     (component as any).updateTabStops();
 
@@ -140,8 +140,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
-    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(-1);
+    expect(radioGroupUtils.getFirstEnabledOptionIndex([opt1, opt2, opt3])).toBe(1);
 
     (component as any).updateTabStops();
 
@@ -152,12 +152,12 @@ describe('updateTabStops', () => {
 
   it('should set all options to tabindex -1 if they are disabled', () => {
     const component = initComponent();
-    const opt1 = createOption('x', { disabled: true });
+    const opt1 = createOption('x', { disabled: true, selected: true });
     const opt2 = createOption('y', { disabled: true });
     const opt3 = createOption('z', { disabled: true });
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(-1);
-    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(-1);
+    expect(radioGroupUtils.getFirstEnabledOptionIndex([opt1, opt2, opt3])).toBe(-1);
 
     (component as any).updateTabStops();
 
@@ -172,14 +172,14 @@ describe('updateTabStops', () => {
     expect(() => (component as any).updateTabStops()).not.toThrow();
   });
 
-  it('should set tabindex -1 to option if it is checked and disabled', () => {
+  it('should not treat a checked-but-disabled option as checked; tabIndex 0 falls through to first enabled', () => {
     const component = initComponent();
-    const opt1 = createOption('a', { disabled: true});
+    const opt1 = createOption('a', { disabled: true, selected: true });
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
-    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(-1);
+    expect(radioGroupUtils.getFirstEnabledOptionIndex([opt1, opt2, opt3])).toBe(1);
 
     (component as any).updateTabStops();
 
