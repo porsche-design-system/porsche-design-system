@@ -58,20 +58,29 @@ export function getActiveOptionIndex<T extends HTMLElement>(options: T[]): numbe
   return options.findIndex((opt) => opt === document.activeElement || opt.contains(document.activeElement));
 }
 
+/** Aligns with p-radio-group-option render: interaction is blocked when disabled/disabledParent or option/group loading. */
+export function isRadioGroupOptionFocusable(option: RadioGroupOption): boolean {
+  const isDisabled = Boolean(option.disabled || option.disabledParent);
+  if (isDisabled) return false;
+  const isOptionLoading = Boolean(option.loading && !option.selected);
+  const isLoading = isOptionLoading || Boolean(option.loadingParent);
+  return !isLoading;
+}
+
 export function getCheckedOptionIndex(options: RadioGroupOption[]): number {
-  return options.findIndex((opt) => !opt.disabled && opt.selected);
+  return options.findIndex((opt) => isRadioGroupOptionFocusable(opt) && opt.selected);
 }
 
 export function getFirstEnabledOptionIndex(options: RadioGroupOption[]): number {
-  return options.findIndex((opt) => !opt.disabled);
+  return options.findIndex((opt) => isRadioGroupOptionFocusable(opt));
 }
 
 /**
- * Find the next enabled option index in the group.
- * Wraps around and skips disabled/loading options.
+ * Find the next focusable option index in the group.
+ * Wraps around and skips disabled and non-interactive (loading) options.
  */
-export function findNextEnabledIndex<T extends { disabled?: boolean; loading?: boolean }>(
-  options: T[],
+export function findNextEnabledIndex(
+  options: RadioGroupOption[],
   startIndex: number,
   step: number
 ): number {
@@ -81,8 +90,8 @@ export function findNextEnabledIndex<T extends { disabled?: boolean; loading?: b
   for (let tries = 0; tries < len; tries++) {
     i = (i + step + len) % len; // wrap around
     const option = options[i];
-    if (!option.disabled && !option.loading) return i;
+    if (isRadioGroupOptionFocusable(option)) return i;
   }
 
-  return startIndex; // no enabled option found
+  return startIndex; // no focusable option found
 }

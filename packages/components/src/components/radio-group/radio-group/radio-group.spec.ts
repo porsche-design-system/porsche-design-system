@@ -110,11 +110,23 @@ describe('formStateRestoreCallback', () => {
 });
 
 describe('updateTabStops', () => {
-  const createOption = (value: string, { disabled = false, selected = false } = {}) => {
+  const createOption = (
+    value: string,
+    {
+      disabled = false,
+      selected = false,
+      loading = false,
+      loadingParent = false,
+      disabledParent = false,
+    } = {}
+  ) => {
     return {
       value,
       disabled,
       selected,
+      loading,
+      loadingParent,
+      disabledParent,
       tabIndex: 0,
     } as unknown as RadioGroupOption;
   };
@@ -185,6 +197,55 @@ describe('updateTabStops', () => {
 
     expect(opt1.tabIndex).toBe(-1);
     expect(opt2.tabIndex).toBe(0);
+    expect(opt3.tabIndex).toBe(-1);
+  });
+
+  it('should not assign tabIndex 0 to an unselected option that is only in option-loading state (skip to next focusable)', () => {
+    const component = initComponent();
+    const opt1 = createOption('a', { loading: true, selected: false });
+    const opt2 = createOption('b');
+    const opt3 = createOption('c');
+    (component as any).radioGroupOptions = [opt1, opt2, opt3];
+    expect(radioGroupUtils.isRadioGroupOptionFocusable(opt1)).toBe(false);
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(-1);
+    expect(radioGroupUtils.getFirstEnabledOptionIndex([opt1, opt2, opt3])).toBe(1);
+
+    (component as any).updateTabStops();
+
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(0);
+    expect(opt3.tabIndex).toBe(-1);
+  });
+
+  it('should keep tabIndex 0 on the selected option while another unselected option is in option-loading state', () => {
+    const component = initComponent();
+    const opt1 = createOption('a', { selected: true });
+    const opt2 = createOption('b', { loading: true, selected: false });
+    const opt3 = createOption('c');
+    (component as any).radioGroupOptions = [opt1, opt2, opt3];
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(0);
+
+    (component as any).updateTabStops();
+
+    expect(opt1.tabIndex).toBe(0);
+    expect(opt2.tabIndex).toBe(-1);
+    expect(opt3.tabIndex).toBe(-1);
+  });
+
+  it('should set all tabIndex to -1 when parent group is loading (loadingParent), so no non-interactive host is tabbable', () => {
+    const component = initComponent();
+    const opt1 = createOption('a', { selected: true, loadingParent: true });
+    const opt2 = createOption('b', { loadingParent: true });
+    const opt3 = createOption('c', { loadingParent: true });
+    (component as any).radioGroupOptions = [opt1, opt2, opt3];
+    expect(radioGroupUtils.isRadioGroupOptionFocusable(opt1)).toBe(false);
+    expect(radioGroupUtils.getCheckedOptionIndex([opt1, opt2, opt3])).toBe(-1);
+    expect(radioGroupUtils.getFirstEnabledOptionIndex([opt1, opt2, opt3])).toBe(-1);
+
+    (component as any).updateTabStops();
+
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(-1);
     expect(opt3.tabIndex).toBe(-1);
   });
 });
