@@ -60,10 +60,10 @@ export function getActiveOptionIndex<T extends HTMLElement>(options: T[]): numbe
 
 /** Aligns with p-radio-group-option render: interaction is blocked when disabled/disabledParent or option/group loading. */
 export function isRadioGroupOptionFocusable(option: RadioGroupOption): boolean {
-  const isDisabled = Boolean(option.disabled || option.disabledParent);
+  const isDisabled = option.disabled || option.disabledParent;
   if (isDisabled) return false;
-  const isOptionLoading = Boolean(option.loading && !option.selected);
-  const isLoading = isOptionLoading || Boolean(option.loadingParent);
+  const isOptionLoading = option.loading && !option.selected;
+  const isLoading = isOptionLoading || option.loadingParent;
   return !isLoading;
 }
 
@@ -79,11 +79,7 @@ export function getFirstEnabledOptionIndex(options: RadioGroupOption[]): number 
  * Find the next focusable option index in the group.
  * Wraps around and skips disabled and non-interactive (loading) options.
  */
-export function findNextEnabledIndex(
-  options: RadioGroupOption[],
-  startIndex: number,
-  step: number
-): number {
+export function findNextEnabledIndex(options: RadioGroupOption[], startIndex: number, step: number): number {
   const len = options.length;
   let i = startIndex;
 
