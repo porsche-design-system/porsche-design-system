@@ -21,6 +21,13 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
+  "dependencies": {},
+  "devDependencies": {
+    "@octokit/core": "^7.0.6",
+    "change-case": "^5.4.4",
+    "@types/tinycolor2": "^1.4.6",
+    "tinycolor2": "^1.6.0"
+  },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",
     "@rollup/plugin-json": "*",
@@ -29,7 +36,6 @@
     "@rollup/plugin-typescript": "*",
     "@types/madge": "*",
     "@types/node": "*",
-    "change-case": "*",
     "fast-glob": "*",
     "madge": "*",
     "rollup": "*",
