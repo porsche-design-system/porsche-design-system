@@ -11,10 +11,10 @@
     "build": "npm run clean:build && npm run build:react-wrapper && npm run build:react-ssr-wrapper && npm run build:nextjs && npm run build:remix && npm run build:react-router",
     "build-app": "tsc -b && vite build",
     "build:react-wrapper": "npx rollup -c ./projects/react-wrapper/rollup.config.js --bundleConfigAsCjs && npm run build:subPackages:global-styles && npm run build:subPackages:tailwindcss && npm run build:typings && chmod +x dist/react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.js",
-    "build:react-ssr-wrapper": "npm run build --prefix ./projects/react-ssr-wrapper",
-    "build:nextjs": "npm run build --prefix ./projects/nextjs",
-    "build:remix": "npm run build --prefix ./projects/remix",
-    "build:react-router": "npm run build --prefix ./projects/react-router",
+    "build:react-ssr-wrapper": "npm run build --workspace=@porsche-design-system/react-ssr-wrapper",
+    "build:nextjs": "npm run build --workspace=@porsche-design-system/nextjs",
+    "build:remix": "npm run build --workspace=@porsche-design-system/remix",
+    "build:react-router": "npm run build --workspace=@porsche-design-system/react-router",
     "build:subPackages:tailwindcss": "TARGET=./dist/react-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:global-styles": "TARGET=./dist/react-wrapper/global-styles && rm -rf $TARGET && cp -r ../styles/projects/global-styles/dist $TARGET",
     "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/esm/index.d.ts && rm -rf $SRC/partials && mv $SRC/tokens/index.d.ts $DEST/tokens/esm/index.d.ts && rm -rf $SRC/tokens && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing && npm run build:typings:emotion && npm run build:typings:vanilla-extract && npm run build:typings:ag-grid",
@@ -24,11 +24,11 @@
     "test": "npm run test:unit && npm run test:e2e && npm run test:vrt",
     "test:unit": "npm run test:unit:react-wrapper && npm run test:unit:react-ssr-wrapper",
     "test:unit:react-wrapper": "vitest -c projects/react-wrapper/tests/unit/config/vitest.config.ts",
-    "test:unit:react-ssr-wrapper": "npm run test:unit --prefix ./projects/react-ssr-wrapper",
+    "test:unit:react-ssr-wrapper": "npm run test:unit --workspace=@porsche-design-system/react-ssr-wrapper",
     "test:e2e": "npm run build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:smoke": "vitest --config tests/smoke/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist && npm run clean:build --prefix projects/nextjs && npm run clean:build --prefix projects/remix"
+    "clean:build": "rm -rf ./dist && npm run clean:build --workspace=@porsche-design-system/nextjs && npm run clean:build --workspace=@porsche-design-system/remix"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "4.0.0-rc.1",
