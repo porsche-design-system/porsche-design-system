@@ -201,7 +201,12 @@
     "clean:shared:build": "npm run clean:build --prefix ./packages/shared",
     "clean:styles:build": "npm run clean:build --prefix ./packages/styles",
     "clean:storefront:build": "npm run clean:build --prefix packages/storefront",
-    "clean:utilities:build": "npm run clean:build --prefix ./packages/utilities"
+    "clean:utilities:build": "npm run clean:build --prefix ./packages/utilities",
+    "npm:install": "npm install",
+    "npm:outdated": "npm outdated --workspaces",
+    "npm:upgrade": "npx npm-check-updates --workspaces -u && npm install",
+    "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
+    "npm:clean": "npm cache clean --force"
   },
   "dependencies": {
     "change-case": "^5.4.4",
