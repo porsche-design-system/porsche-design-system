@@ -2254,11 +2254,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -2526,11 +2528,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -14243,11 +14247,13 @@ exports[`should render dsr component for PTabs 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -14495,11 +14501,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {

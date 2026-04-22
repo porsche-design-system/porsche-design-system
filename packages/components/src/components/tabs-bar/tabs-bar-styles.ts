@@ -83,6 +83,7 @@ export const getComponentCss = (
           '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
             color: colorCanvas,
           },
+          // Transition color and background when animation is playing
           [`&(a[aria-current="true"][${animatingAttribute}]),&(button[aria-selected="true"][${animatingAttribute}])`]: {
             transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`,
           },

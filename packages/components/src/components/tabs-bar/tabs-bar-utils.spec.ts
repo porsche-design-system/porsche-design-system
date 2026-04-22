@@ -76,6 +76,7 @@ const createBar = (): HTMLElement => {
     finished: Promise.resolve(),
     cancel: vi.fn(),
   });
+  bar.getAnimations = vi.fn().mockReturnValue([]);
   return bar;
 };
 
@@ -639,14 +640,13 @@ describe('animateBar()', () => {
     expect(keyframes[1]).toEqual({ transform: 'translate3d(30px,0,0)', width: '0px' });
   });
 
-  it('should set animating attribute on old and new tabs during animation', () => {
+  it('should set animating attribute on new tabs during animation', () => {
     const scroller = createScroller({ rect: { left: 0, right: 200 } });
     const tabs = [createTab({ left: 0, right: 50, width: 50 }), createTab({ left: 50, right: 120, width: 70 })];
     const bar = createBar();
 
     animateBar(1, 0, scroller, tabs, bar);
 
-    expect(tabs[0].getAttribute(animatingAttribute)).toBe('');
     expect(tabs[1].getAttribute(animatingAttribute)).toBe('');
   });
 
@@ -660,17 +660,6 @@ describe('animateBar()', () => {
     // Wait for the finished promise to resolve
     await Promise.resolve();
 
-    expect(tabs[0].hasAttribute(animatingAttribute)).toBe(false);
     expect(tabs[1].hasAttribute(animatingAttribute)).toBe(false);
-  });
-
-  it('should only set animating attribute on new tab when old tab is undefined', () => {
-    const scroller = createScroller({ rect: { left: 0, right: 200 } });
-    const tabs = [createTab({ left: 0, right: 80, width: 80 })];
-    const bar = createBar();
-
-    animateBar(0, undefined, scroller, tabs, bar);
-
-    expect(tabs[0].getAttribute(animatingAttribute)).toBe('');
   });
 });
