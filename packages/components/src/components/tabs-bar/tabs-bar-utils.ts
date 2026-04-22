@@ -135,8 +135,6 @@ const BAR_ANIMATION_DURATION = 400;
 
 export const animatingAttribute = 'data-animating';
 
-let currentAnimation: Animation | undefined;
-
 export const animateBar = (
   newTabIndex: number | undefined,
   oldTabIndex: number | undefined,

@@ -25,11 +25,13 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -110,11 +112,13 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -197,11 +201,13 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -284,11 +290,13 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -372,11 +380,13 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -449,11 +459,13 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(min-width:480px) {
@@ -555,11 +567,13 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
 ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a[aria-current="true"][data-animating]), ::slotted(button[aria-selected="true"][data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a[aria-current="true"]:not([data-animating])), ::slotted(button[aria-selected="true"]:not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {

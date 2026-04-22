@@ -14,6 +14,7 @@ import {
   colorFrostedStrong,
   colorPrimary,
   colorSurface,
+  durationMd,
   fontPorscheNext,
   leadingNormal,
   legacyRadiusSmall,
@@ -81,6 +82,9 @@ export const getComponentCss = (
           }),
           '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
             color: colorCanvas,
+          },
+          [`&(a[aria-current="true"][${animatingAttribute}]),&(button[aria-selected="true"][${animatingAttribute}])`]: {
+            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`,
           },
           // Apply background only when no active animation is playing
           [`&(a[aria-current="true"]:not([${animatingAttribute}])),&(button[aria-selected="true"]:not([${animatingAttribute}]))`]:
