@@ -14,7 +14,6 @@ import {
   colorFrostedStrong,
   colorPrimary,
   colorSurface,
-  durationMd,
   fontPorscheNext,
   leadingNormal,
   legacyRadiusSmall,
@@ -27,9 +26,7 @@ import {
 } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import type { TabsBarBackground, TabsBarSize } from './tabs-bar-utils';
-
-export const delayTabStyleAttribute = 'data-delay';
+import { animatingAttribute, type TabsBarBackground, type TabsBarSize } from './tabs-bar-utils';
 
 const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
   canvas: colorCanvas,
@@ -82,14 +79,14 @@ export const getComponentCss = (
               background: colorFrostedStrong,
             },
           }),
-          // The data attribute is applied before the tabs switching animation runs in the utils to delay the selected tab styles until the animation is finished
-          [`&(a[${delayTabStyleAttribute}]),&(button[${delayTabStyleAttribute}])`]: {
-            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`, // the background shall be changed immediately after the bar transition has finished
-          },
           '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
             color: colorCanvas,
-            background: colorPrimary,
           },
+          // Apply background only when no active animation is playing
+          [`&(a[aria-current="true"]:not([${animatingAttribute}])),&(button[aria-selected="true"]:not([${animatingAttribute}]))`]:
+            {
+              background: colorPrimary,
+            },
           ...forcedColorsMediaQuery({
             '&(a),&(button)': {
               forcedColorAdjust: 'none',

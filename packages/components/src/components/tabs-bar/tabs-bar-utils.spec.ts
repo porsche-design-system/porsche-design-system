@@ -1,6 +1,7 @@
 import { easeInOut } from '@porsche-design-system/tokens';
 import {
   animateBar,
+  animatingAttribute,
   getActiveElementIndex,
   getEndMetrics,
   getSanitizedActiveTabIndex,
@@ -71,7 +72,10 @@ const createTab = (rect: Partial<DOMRect>): HTMLElement => {
 
 const createBar = (): HTMLElement => {
   const bar = document.createElement('span');
-  bar.animate = vi.fn();
+  bar.animate = vi.fn().mockReturnValue({
+    finished: Promise.resolve(),
+    cancel: vi.fn(),
+  });
   return bar;
 };
 
@@ -546,7 +550,7 @@ describe('animateBar()', () => {
     expect(keyframes[0]).toEqual({ transform: 'translate3d(0px,0,0)', width: '50px' });
     // end: new tab (index 1) → translateX=50, width=70
     expect(keyframes[1]).toEqual({ transform: 'translate3d(50px,0,0)', width: '70px' });
-    expect(options.duration).toBe(420); // 400 + 20 buffer
+    expect(options.duration).toBe(400);
   });
 
   it('should call bar.animate growing from center when oldTabIndex is undefined (LTR)', () => {
@@ -633,5 +637,40 @@ describe('animateBar()', () => {
     expect(keyframes[0]).toEqual({ transform: 'translate3d(0px,0,0)', width: '60px' });
     // newTabIndex sanitized to undefined → shrink to center: translateX = 0 + 60/2 = 30, width=0
     expect(keyframes[1]).toEqual({ transform: 'translate3d(30px,0,0)', width: '0px' });
+  });
+
+  it('should set animating attribute on old and new tabs during animation', () => {
+    const scroller = createScroller({ rect: { left: 0, right: 200 } });
+    const tabs = [createTab({ left: 0, right: 50, width: 50 }), createTab({ left: 50, right: 120, width: 70 })];
+    const bar = createBar();
+
+    animateBar(1, 0, scroller, tabs, bar);
+
+    expect(tabs[0].getAttribute(animatingAttribute)).toBe('');
+    expect(tabs[1].getAttribute(animatingAttribute)).toBe('');
+  });
+
+  it('should remove animating attribute after animation finishes', async () => {
+    const scroller = createScroller({ rect: { left: 0, right: 200 } });
+    const tabs = [createTab({ left: 0, right: 50, width: 50 }), createTab({ left: 50, right: 120, width: 70 })];
+    const bar = createBar();
+
+    animateBar(1, 0, scroller, tabs, bar);
+
+    // Wait for the finished promise to resolve
+    await Promise.resolve();
+
+    expect(tabs[0].hasAttribute(animatingAttribute)).toBe(false);
+    expect(tabs[1].hasAttribute(animatingAttribute)).toBe(false);
+  });
+
+  it('should only set animating attribute on new tab when old tab is undefined', () => {
+    const scroller = createScroller({ rect: { left: 0, right: 200 } });
+    const tabs = [createTab({ left: 0, right: 80, width: 80 })];
+    const bar = createBar();
+
+    animateBar(0, undefined, scroller, tabs, bar);
+
+    expect(tabs[0].getAttribute(animatingAttribute)).toBe('');
   });
 });
