@@ -312,6 +312,7 @@ export class MultiSelect {
           type="button"
           role="combobox"
           id={buttonId}
+          tabIndex={0}
           {...getComboboxAriaAttributes(
             this.isOpen,
             this.required,

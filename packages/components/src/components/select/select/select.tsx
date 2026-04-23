@@ -315,7 +315,7 @@ export class Select {
           role="combobox"
           id={buttonId}
           // only needed for Safari to recognize focus state on click
-          tabindex="0"
+          tabIndex={0}
           {...getComboboxAriaAttributes(
             this.isOpen,
             this.required,
