@@ -29,6 +29,9 @@ jobs:
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
       - name: "Analyze"
+        id: analyze
+        # Don't fail the job on unresolved issues (exit 2); analyzer-result.yml is still written.
+        continue-on-error: true
         run: |
           docker run \
             --user root \
@@ -55,7 +58,8 @@ jobs:
           name: ort-analysis
           path: ./ort
       - name: "Send"
-        if: github.event_name == 'schedule'
+        # Only on scheduled runs and only if the analyzer did not report unresolved issues.
+        if: github.event_name == 'schedule' && steps.analyze.outcome == 'success'
         run: |
           zip \
             -j analyzer-result.zip ort/analyzer-result.yml
