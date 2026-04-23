@@ -116,7 +116,14 @@ export class TabsBar {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.background, this.size, this.compact);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.background,
+      this.size,
+      this.compact,
+      getSanitizedActiveTabIndex(this.activeTabIndex, this.tabs)
+    );
 
     this.setAccessibilityAttributes();
 

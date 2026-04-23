@@ -24,7 +24,7 @@ curl https://get.volta.sh | bash
 #### Node
 
 ```bash
-volta install node@22
+volta install node@24
 
 # Verify the Node.js version:
 node -v

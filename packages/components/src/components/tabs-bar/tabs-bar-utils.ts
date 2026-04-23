@@ -1,5 +1,4 @@
 import { easeInOut } from '@porsche-design-system/tokens';
-import { delayTabStyleAttribute } from './tabs-bar-styles';
 
 export const TABS_BAR_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
 export type TabsBarBackground = (typeof TABS_BAR_BACKGROUNDS)[number];
@@ -133,7 +132,8 @@ export const getEndMetrics = (
 };
 
 const BAR_ANIMATION_DURATION = 400;
-const BAR_ANIMATION_BUFFER = 20; // ensure aria-selected style is applied
+
+export const animatingAttribute = 'data-animating';
 
 export const animateBar = (
   newTabIndex: number | undefined,
@@ -153,6 +153,11 @@ export const animateBar = (
     return;
   }
 
+  // Cancel any in-progress animation
+  for (const anim of bar.getAnimations()) {
+    anim.cancel();
+  }
+
   const { translateX: startTranslateX, width: startWidth } = getStartMetrics(
     sanitizedNewTabIndex,
     sanitizedOldTabIndex,
@@ -167,16 +172,22 @@ export const animateBar = (
   );
 
   // enable delayed background-color transition so it syncs with the bar animation (not applied on initial render)
-  tabs[sanitizedOldTabIndex]?.removeAttribute(delayTabStyleAttribute);
-  tabs[sanitizedNewTabIndex]?.setAttribute(delayTabStyleAttribute, '');
+  tabs[sanitizedNewTabIndex]?.setAttribute(animatingAttribute, '');
 
-  bar.animate(
-    [
-      { transform: `translate3d(${startTranslateX}px,0,0)`, width: `${startWidth}px` },
-      { transform: `translate3d(${endTranslateX}px,0,0)`, width: `${endWidth}px` },
-    ],
-    { duration: BAR_ANIMATION_DURATION + BAR_ANIMATION_BUFFER, easing: easeInOut } // give 20ms extra time to ensure the `aria-selected` and/or `aria-current` style is really applied
-  );
+  bar
+    .animate(
+      [
+        { transform: `translate3d(${startTranslateX}px,0,0)`, width: `${startWidth}px` },
+        { transform: `translate3d(${endTranslateX}px,0,0)`, width: `${endWidth}px` },
+      ],
+      { duration: BAR_ANIMATION_DURATION, easing: easeInOut }
+    )
+    .finished.then(() => {
+      tabs[sanitizedNewTabIndex]?.removeAttribute(animatingAttribute);
+    })
+    // Swallow rejection from cancel() – when a new animation starts, the previous one is
+    // cancelled which rejects its .finished promise. Without this, we'd get an unhandled rejection.
+    .catch(() => {});
 };
 
 export const scrollTabIntoView = (
