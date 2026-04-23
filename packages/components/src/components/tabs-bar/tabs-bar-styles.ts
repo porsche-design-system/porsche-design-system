@@ -43,8 +43,17 @@ const fontSizeText = {
 export const getComponentCss = (
   background: TabsBarBackground,
   size: BreakpointCustomizable<TabsBarSize>,
-  isCompact: boolean
+  isCompact: boolean,
+  activeTabIndex: number | undefined
 ): string => {
+  const hasActive = activeTabIndex !== undefined;
+  // :nth-child is 1-based
+  const nth = hasActive ? activeTabIndex + 1 : 0;
+  const activeSelector = `&(a:nth-child(${nth})),&(button:nth-child(${nth}))`;
+  const notActiveHoverSelector = hasActive
+    ? `&(a:not(:nth-child(${nth})):hover),&(button:not(:nth-child(${nth})):hover)`
+    : '&(a:hover),&(button:hover)';
+
   return getCss({
     '@global': {
       ':host': {
@@ -74,24 +83,26 @@ export const getComponentCss = (
           },
           '&(a:focus-visible),&(button:focus-visible)': getFocusBaseStyles(),
           ...hoverMediaQuery({
-            '&(a:not([aria-current="true"]):hover),&(button:not([aria-selected="true"]):hover)': {
+            [notActiveHoverSelector]: {
               // Only applied on hover since applying it globally causes the active tab to visually flash when navigating in SPAs (where the tabs-bar persist across routes but the children tabs change).
               transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
               background: colorFrostedStrong,
             },
           }),
-          '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
-            color: colorCanvas,
-          },
-          // Transition color and background when animation is playing
-          [`&(a[aria-current="true"][${animatingAttribute}]),&(button[aria-selected="true"][${animatingAttribute}])`]: {
-            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`,
-          },
-          // Apply background only when no active animation is playing
-          [`&(a[aria-current="true"]:not([${animatingAttribute}])),&(button[aria-selected="true"]:not([${animatingAttribute}]))`]:
-            {
-              background: colorPrimary,
+          ...(hasActive && {
+            [activeSelector]: {
+              color: colorCanvas,
             },
+            // Transition color and background when animation is playing
+            [`&(a:nth-child(${nth})[${animatingAttribute}]),&(button:nth-child(${nth})[${animatingAttribute}])`]: {
+              transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`,
+            },
+            // Apply background only when no active animation is playing
+            [`&(a:nth-child(${nth}):not([${animatingAttribute}])),&(button:nth-child(${nth}):not([${animatingAttribute}]))`]:
+              {
+                background: colorPrimary,
+              },
+          }),
           ...forcedColorsMediaQuery({
             '&(a),&(button)': {
               forcedColorAdjust: 'none',
@@ -105,9 +116,11 @@ export const getComponentCss = (
               color: 'ButtonText',
               boxShadow: 'inset 0 0 0 2px ButtonBorder',
             },
-            '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
-              transition: 'unset',
-            },
+            ...(hasActive && {
+              [activeSelector]: {
+                transition: 'unset',
+              },
+            }),
           }),
         },
       }),
