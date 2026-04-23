@@ -7,6 +7,7 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes whe
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
+  "aria-multiselectable": "false",
   "aria-required": "false",
 }
 `;
@@ -18,6 +19,7 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes whe
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
+  "aria-multiselectable": "false",
   "aria-required": "true",
 }
 `;
@@ -29,6 +31,7 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes wit
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
   "aria-labelledby": null,
+  "aria-multiselectable": "false",
   "aria-required": "false",
 }
 `;
@@ -40,6 +43,7 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes wit
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
   "aria-labelledby": "label-id",
+  "aria-multiselectable": "false",
   "aria-required": "false",
 }
 `;

@@ -6,26 +6,15 @@
     aria-haspopup="listbox"
     aria-expanded="false"
     aria-required="false"
-    aria-controls="list"
+    aria-controls="listbox"
+    aria-multiselectable="true"
   >
     <span> </span>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
   </button>
-  <div
-    id="list"
-    popover="manual"
-    tabindex="-1"
-    role="dialog"
-    aria-label=""
-    aria-hidden="true"
-  >
+  <div popover="manual" tabindex="0">
     <p-input-search class="filter hydrated" name="filter"> </p-input-search>
-    <div
-      class="options"
-      role="listbox"
-      aria-label=""
-      aria-multiselectable="true"
-    >
+    <div id="listbox" class="options" role="listbox" aria-required="false">
       <slot name="options-status"> </slot>
       <slot> </slot>
     </div>

@@ -243,9 +243,10 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
       class="root"
     >
       <button
-        aria-controls="list"
+        aria-controls="listbox"
         aria-expanded="false"
         aria-haspopup="listbox"
+        aria-multiselectable="true"
         aria-required="false"
         id="button"
         role="combobox"
@@ -304,12 +305,8 @@ img {
         </p-icon>
       </button>
       <div
-        aria-hidden="true"
-        aria-label=""
-        id="list"
         popover="manual"
-        role="dialog"
-        tabindex="-1"
+        tabindex="0"
       >
         <p-input-search
           class="filter"
@@ -715,9 +712,9 @@ img {
           </template>
         </p-input-search>
         <div
-          aria-label=""
-          aria-multiselectable="true"
+          aria-required="false"
           class="options"
+          id="listbox"
           role="listbox"
         >
           <div
@@ -10637,9 +10634,10 @@ exports[`should render dsr component for PMultiSelect 1`] = `
       class="root"
     >
       <button
-        aria-controls="list"
+        aria-controls="listbox"
         aria-expanded="false"
         aria-haspopup="listbox"
+        aria-multiselectable="true"
         aria-required="false"
         id="button"
         role="combobox"
@@ -10698,12 +10696,8 @@ img {
         </p-icon>
       </button>
       <div
-        aria-hidden="true"
-        aria-label=""
-        id="list"
         popover="manual"
-        role="dialog"
-        tabindex="-1"
+        tabindex="0"
       >
         <p-input-search
           class="filter"
@@ -11109,9 +11103,9 @@ img {
           </template>
         </p-input-search>
         <div
-          aria-label=""
-          aria-multiselectable="true"
+          aria-required="false"
           class="options"
+          id="listbox"
           role="listbox"
         >
           <div
@@ -12773,12 +12767,15 @@ exports[`should render dsr component for PSelect 1`] = `
       class="root"
     >
       <button
-        aria-controls="list"
+        aria-autocomplete="none"
+        aria-controls="listbox"
         aria-expanded="false"
         aria-haspopup="listbox"
+        aria-multiselectable="false"
         aria-required="false"
         id="button"
         role="combobox"
+        tabindex="0"
         type="button"
       >
         <span />
@@ -12834,17 +12831,15 @@ img {
         </p-icon>
       </button>
       <div
-        aria-hidden="true"
-        aria-label=""
-        id="list"
         popover="manual"
-        role="dialog"
-        tabindex="-1"
+        tabindex="0"
       >
         <div
-          aria-label=""
+          aria-required="false"
           class="options"
+          id="listbox"
           role="listbox"
+          tabindex="-1"
         >
           <slot
             name="options-status"
