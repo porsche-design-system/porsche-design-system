@@ -7,6 +7,7 @@ import {
   fontWeightNormal,
   leadingNormal,
   spacingFluidMd,
+  spacingFluidSm,
   spacingStaticSm,
   typescaleSm,
 } from '../../../styles/css-variables';
@@ -38,9 +39,8 @@ export const getComponentCss = (isCompact: boolean, layout: TableLayout): string
           '--p-scroller-indicator-bottom': `var(${cssVarScrollIndicatorBottom},0px)`,
           [cssVariableTableHoverColor]: colorFrosted,
           [cssVariableTableBorderColor]: colorContrastLow,
-          ...(isCompact && {
-            [cssVariableTablePadding]: spacingStaticSm,
-          }),
+          [cssVariableTablePadding]: isCompact ? spacingStaticSm : spacingFluidSm,
+          [cssVariableTableBorderWidth]: '1px',
           ...hostHiddenStyles,
           font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
           color: colorPrimary,

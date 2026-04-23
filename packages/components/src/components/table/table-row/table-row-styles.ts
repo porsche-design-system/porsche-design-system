@@ -12,7 +12,7 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'table-row',
         ...addImportantToEachRule({
-          borderBottom: `var(${cssVariableTableBorderWidth},1px) solid var(${cssVariableTableBorderColor})`,
+          borderBottom: `var(${cssVariableTableBorderWidth}) solid var(${cssVariableTableBorderColor})`,
           transition: getTransition('background'),
           ...hostHiddenStyles,
           ...hoverMediaQuery({
