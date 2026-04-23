@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81914,
-    "gzipSize": 25586
+    "size": 81915,
+    "gzipSize": 25581
   },
   {
     "chunkShortName": "modal",
@@ -206,8 +206,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 18115,
-    "gzipSize": 6696
+    "size": 17730,
+    "gzipSize": 6622
   },
   {
     "chunkShortName": "scroller",
@@ -256,8 +256,8 @@
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 9732,
-    "gzipSize": 3974
+    "size": 9950,
+    "gzipSize": 4040
   },
   {
     "chunkShortName": "tag",
