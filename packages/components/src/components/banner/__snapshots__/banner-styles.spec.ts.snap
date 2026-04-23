@@ -28,7 +28,7 @@ slot[name="description"],p {
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--p-internal-banner-z-index,99);
+  z-index: var(--_p-banner-a,99);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
@@ -114,7 +114,7 @@ slot[name="description"],p {
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--p-internal-banner-z-index,99);
+  z-index: var(--_p-banner-a,99);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: inherit;

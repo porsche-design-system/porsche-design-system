@@ -11,17 +11,17 @@ exports[`getComponentCss() > should return correct css for type: alphabetically 
 ol,ul {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
-  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
+  padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
-  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
-  --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
+  --_p-text-list-d: var(--p-spacing-static-xs) !important;
+  --_p-text-list-c: var(--p-spacing-static-md) !important;
+  --_p-text-list-e: var(--_p-text-list-a,1.5rem) !important;
 }
 ::slotted(*)::before {
-  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-ordered-pseudo-suffix,'.') !important;
+  content: counters(p-text-list-counter,'.',lower-latin) var(--_p-text-list-b,'.') !important;
   counter-increment: p-text-list-counter !important;
   justify-self: flex-end !important;
   white-space: nowrap !important;
@@ -39,17 +39,17 @@ exports[`getComponentCss() > should return correct css for type: alphabetically 
 ol,ul {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
-  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
+  padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
-  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
-  --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
+  --_p-text-list-d: var(--p-spacing-static-xs) !important;
+  --_p-text-list-c: var(--p-spacing-static-md) !important;
+  --_p-text-list-e: var(--_p-text-list-a,1.5rem) !important;
 }
 ::slotted(*)::before {
-  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-ordered-pseudo-suffix,'.') !important;
+  content: counters(p-text-list-counter,'.',lower-latin) var(--_p-text-list-b,'.') !important;
   counter-increment: p-text-list-counter !important;
   justify-self: flex-end !important;
   white-space: nowrap !important;
@@ -67,17 +67,17 @@ exports[`getComponentCss() > should return correct css for type: numbered 1`] = 
 ol,ul {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
-  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
+  padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
-  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
-  --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
+  --_p-text-list-d: var(--p-spacing-static-xs) !important;
+  --_p-text-list-c: var(--p-spacing-static-md) !important;
+  --_p-text-list-e: var(--_p-text-list-a,1.5rem) !important;
 }
 ::slotted(*)::before {
-  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-ordered-pseudo-suffix,'.') !important;
+  content: counters(p-text-list-counter,'.',decimal) var(--_p-text-list-b,'.') !important;
   counter-increment: p-text-list-counter !important;
   justify-self: flex-end !important;
   white-space: nowrap !important;
@@ -95,17 +95,17 @@ exports[`getComponentCss() > should return correct css for type: numbered 2`] = 
 ol,ul {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
-  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
+  padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
-  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
-  --p-internal-text-list-pseudo-space: var(--p-internal-text-list-ordered-grid-column,1.5rem) !important;
+  --_p-text-list-d: var(--p-spacing-static-xs) !important;
+  --_p-text-list-c: var(--p-spacing-static-md) !important;
+  --_p-text-list-e: var(--_p-text-list-a,1.5rem) !important;
 }
 ::slotted(*)::before {
-  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-ordered-pseudo-suffix,'.') !important;
+  content: counters(p-text-list-counter,'.',decimal) var(--_p-text-list-b,'.') !important;
   counter-increment: p-text-list-counter !important;
   justify-self: flex-end !important;
   white-space: nowrap !important;
@@ -123,17 +123,17 @@ exports[`getComponentCss() > should return correct css for type: unordered 1`] =
 ol,ul {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
-  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
+  padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
-  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
-  --p-internal-text-list-pseudo-space: var(--p-internal-text-list-unordered-grid-column,.375rem) !important;
+  --_p-text-list-d: var(--p-spacing-static-xs) !important;
+  --_p-text-list-c: var(--p-spacing-static-md) !important;
+  --_p-text-list-e: var(--_p-text-list-f,.375rem) !important;
 }
 ::slotted(*)::before {
-  content: var(--p-internal-text-list-unordered-pseudo-content,'•') !important;
+  content: var(--_p-text-list-g,'•') !important;
 }"
 `;
 
@@ -148,16 +148,16 @@ exports[`getComponentCss() > should return correct css for type: unordered 2`] =
 ol,ul {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
-  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
+  padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
   color: var(--p-color-primary);
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: var(--p-spacing-static-xs) !important;
-  --p-internal-text-list-padding-bottom: var(--p-spacing-static-md) !important;
-  --p-internal-text-list-pseudo-space: var(--p-internal-text-list-unordered-grid-column,.375rem) !important;
+  --_p-text-list-d: var(--p-spacing-static-xs) !important;
+  --_p-text-list-c: var(--p-spacing-static-md) !important;
+  --_p-text-list-e: var(--_p-text-list-f,.375rem) !important;
 }
 ::slotted(*)::before {
-  content: var(--p-internal-text-list-unordered-pseudo-content,'•') !important;
+  content: var(--_p-text-list-g,'•') !important;
 }"
 `;

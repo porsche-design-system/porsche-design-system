@@ -4,8 +4,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
@@ -16,7 +16,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(min-width:480px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+    border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
   }
 }
 
@@ -28,7 +28,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1000px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+    border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
   }
 }
 
@@ -40,7 +40,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1760px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+    border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
   }
 }
 
@@ -60,7 +60,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px);
   gap: 0;
 }
 .root:focus-visible {
@@ -85,8 +85,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(min-width:480px) {
   .root {
-    padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-    gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+    padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+    gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
   }
   .label {
     position: static;
@@ -99,13 +99,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     white-space: normal;
   }
   .icon {
-    margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+    margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
   }
 }
 
 @media(min-width:760px) {
   .root {
-    padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px);
+    padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px);
     gap: 0;
   }
   .label {
@@ -125,8 +125,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1000px) {
   .root {
-    padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-    gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+    padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+    gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
   }
   .label {
     position: static;
@@ -139,13 +139,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     white-space: normal;
   }
   .icon {
-    margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+    margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
   }
 }
 
 @media(min-width:1300px) {
   .root {
-    padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px);
+    padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px);
     gap: 0;
   }
   .label {
@@ -165,8 +165,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1760px) {
   .root {
-    padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-    gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+    padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+    gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
   }
   .label {
     position: static;
@@ -179,7 +179,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     white-space: normal;
   }
   .icon {
-    margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+    margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
   }
 }
 
@@ -217,9 +217,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -243,8 +243,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .root:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -264,7 +264,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+  margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
   .root {
@@ -300,9 +300,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -345,8 +345,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .label {
   position: static;
@@ -362,7 +362,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+  margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
   .root {
@@ -395,9 +395,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -440,8 +440,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .label {
   position: static;
@@ -457,7 +457,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+  margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
   .root {
@@ -490,9 +490,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 0.64285714;
-  --p-internal-border-radius: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 0.64285714;
+  --_p-link-button-a: var(--p-radius-lg);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -535,8 +535,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .label {
   position: static;
@@ -552,7 +552,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+  margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
   .root {
@@ -585,9 +585,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -630,8 +630,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .label {
   position: static;
@@ -647,7 +647,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+  margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
   .root {
@@ -680,9 +680,9 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -725,8 +725,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .label {
   position: static;
@@ -742,7 +742,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
-  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px));
+  margin-inline-start: calc(-1 * (11.2px * (var(--_p-link-a) - 0.64285714) + 4px));
 }
 @media(forced-colors:active) {
   .root {
@@ -775,9 +775,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
 ":host {
   display: inline-block;
   vertical-align: top;
-  --p-internal-link-scaling: 1;
-  --p-internal-border-radius: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small, var(--p-internal-border-radius)) !important;
+  --_p-link-a: 1;
+  --_p-link-button-a: var(--p-radius-xl);
+  border-radius: var(--_p-legacy-radius-small, var(--_p-link-button-a)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -820,8 +820,8 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--p-internal-link-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-link-scaling) - 0.64285714) + 16px);
-  gap: calc(11.2px * (var(--p-internal-link-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
 .label {
   position: static;

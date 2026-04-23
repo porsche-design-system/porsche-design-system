@@ -19,11 +19,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -93,7 +93,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -102,18 +102,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-c) 100%);
     }
     .drawer:dir(rtl) {
-      background: linear-gradient(90deg,var(--_p-c) 0%,var(--_p-c) 50%,var(--_p-b) 50%,var(--_p-b) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -138,15 +138,15 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .dismiss-mobile {
       width: fit-content;
@@ -190,11 +190,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -215,7 +215,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     visibility: inherit;
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    background: var(--_p-d);
+    background: var(--_p-drilldown-d);
     transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
@@ -258,7 +258,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -267,15 +267,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer {
       width: clamp(338px, 210px + 18vw, 640px);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -300,15 +300,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -322,7 +322,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       top: 0;
       grid-area: 1/1/4/-1;
       z-index: 1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .dismiss-mobile {
       width: fit-content;
@@ -358,11 +358,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -383,7 +383,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     visibility: inherit;
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    background: var(--_p-d);
+    background: var(--_p-drilldown-d);
     transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
@@ -422,7 +422,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -431,18 +431,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-c) 100%);
     }
     .drawer:dir(rtl) {
-      background: linear-gradient(90deg,var(--_p-c) 0%,var(--_p-c) 50%,var(--_p-b) 50%,var(--_p-b) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -467,15 +467,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .dismiss-mobile {
       width: fit-content;
@@ -511,11 +511,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -536,7 +536,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     visibility: inherit;
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    background: var(--_p-d);
+    background: var(--_p-drilldown-d);
     transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
@@ -593,7 +593,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -602,15 +602,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer {
       width: clamp(338px, 210px + 18vw, 640px);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -635,15 +635,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -657,7 +657,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       top: 0;
       grid-area: 1/1/4/-1;
       z-index: 1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .dismiss-mobile {
       width: fit-content;
@@ -693,11 +693,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -718,7 +718,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     visibility: inherit;
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    background: var(--_p-d);
+    background: var(--_p-drilldown-d);
     transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
@@ -767,7 +767,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -776,18 +776,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-c) 100%);
     }
     .drawer:dir(rtl) {
-      background: linear-gradient(90deg,var(--_p-c) 0%,var(--_p-c) 50%,var(--_p-b) 50%,var(--_p-b) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -812,15 +812,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .dismiss-mobile {
       width: fit-content;
@@ -864,11 +864,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -889,7 +889,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     visibility: inherit;
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    background: var(--_p-d);
+    background: var(--_p-drilldown-d);
     transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
@@ -938,7 +938,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -947,18 +947,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-c) 100%);
     }
     .drawer:dir(rtl) {
-      background: linear-gradient(90deg,var(--_p-c) 0%,var(--_p-c) 50%,var(--_p-b) 50%,var(--_p-b) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -983,15 +983,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .dismiss-mobile {
       width: fit-content;
@@ -1035,11 +1035,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: var(--p-color-primary) !important;
-    --_p-b: var(--p-color-canvas) !important;
-    --_p-c: var(--p-color-surface) !important;
-    --_p-d: var(--p-color-backdrop) !important;
-    --_p-f: rgba(255,255,255,.01) !important;
+    --_p-drilldown-a: var(--p-color-primary) !important;
+    --_p-drilldown-b: var(--p-color-canvas) !important;
+    --_p-drilldown-c: var(--p-color-surface) !important;
+    --_p-drilldown-d: var(--p-color-backdrop) !important;
+    --_p-drilldown-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1060,7 +1060,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     visibility: inherit;
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    background: var(--_p-d);
+    background: var(--_p-drilldown-d);
     transition: background var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
@@ -1109,7 +1109,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .back {
     display: none;
@@ -1118,18 +1118,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer {
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(2, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
-      background: linear-gradient(90deg,var(--_p-b) 0%,var(--_p-b) 50%,var(--_p-c) 50%,var(--_p-c) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-c) 100%);
     }
     .drawer:dir(rtl) {
-      background: linear-gradient(90deg,var(--_p-c) 0%,var(--_p-c) 50%,var(--_p-b) 50%,var(--_p-b) 100%);
+      background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: var(--_p-c);
+      background: var(--_p-drilldown-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -1154,15 +1154,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 @media(max-width:759px) {
     .drawer {
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: var(--_p-b);
+      background: var(--_p-drilldown-b);
     }
     .dismiss-mobile {
       width: fit-content;

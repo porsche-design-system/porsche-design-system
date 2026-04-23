@@ -57,7 +57,7 @@ p {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0.5;
+  --_p-button-a: 0.5;
 }
 @media(max-width:759px) {
   .icon {
@@ -124,7 +124,7 @@ p {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0.5;
+  --_p-button-a: 0.5;
 }
 @media(max-width:759px) {
   .icon {
@@ -191,7 +191,7 @@ p {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0.5;
+  --_p-button-a: 0.5;
 }
 @media(max-width:759px) {
   .icon {
@@ -258,7 +258,7 @@ p {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0.5;
+  --_p-button-a: 0.5;
 }
 @media(max-width:759px) {
   .icon {
