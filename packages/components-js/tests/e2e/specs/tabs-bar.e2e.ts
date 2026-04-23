@@ -298,8 +298,7 @@ test.describe('bar animation', () => {
     // end keyframe should match position and width of the second (target) tab
     expect(Math.round(getKeyframeWidth(keyframes[1]))).toBe(buttonWidths[1]);
     expect(Math.round(getKeyframeTranslateX(keyframes[1]))).toBe(Math.round(buttonStarts[1]));
-    // duration = BAR_ANIMATION_DURATION(400) + BAR_ANIMATION_BUFFER(20)
-    expect(duration).toBe(420);
+    expect(duration).toBe(400);
   });
 
   test('should animate bar growing from center when activeTabIndex changes from undefined to 1', async ({ page }) => {
@@ -320,7 +319,7 @@ test.describe('bar animation', () => {
     // end keyframe: bar reaches full width and position of the target tab
     expect(Math.round(getKeyframeWidth(keyframes[1]))).toBe(buttonWidths[1]);
     expect(Math.round(getKeyframeTranslateX(keyframes[1]))).toBe(Math.round(buttonStarts[1]));
-    expect(duration).toBe(420);
+    expect(duration).toBe(400);
   });
 
   test('should animate bar shrinking to center when activeTabIndex changes from 1 to undefined', async ({ page }) => {
@@ -341,7 +340,7 @@ test.describe('bar animation', () => {
     expect(getKeyframeWidth(keyframes[1])).toBe(0);
     const expectedCenter = buttonStarts[1] + buttonWidths[1] / 2;
     expect(Math.round(getKeyframeTranslateX(keyframes[1]))).toBe(Math.round(expectedCenter));
-    expect(duration).toBe(420);
+    expect(duration).toBe(400);
   });
 
   test('should have bar hidden with width 0px after animation has finished', async ({ page }) => {
@@ -384,7 +383,7 @@ test.describe('bar animation', () => {
     // end keyframe should match position and width of the newly added tab (index 3)
     expect(Math.round(getKeyframeWidth(keyframes[1]))).toBe(buttonWidths[3]);
     expect(Math.round(getKeyframeTranslateX(keyframes[1]))).toBe(Math.round(buttonStarts[3]));
-    expect(duration).toBe(420);
+    expect(duration).toBe(400);
   });
 });
 
