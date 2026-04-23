@@ -20,7 +20,7 @@ import { getCss } from '../../../utils';
  * @css-variable {"name": "--p-toast-position-bottom", "description": "Defines the spacing between the toast and the bottom edge of its container.", "defaultValue": "56px"}
  */
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const cssVariablePositionBottomInternal = '--_p-a';
+const cssVariablePositionBottomInternal = '--_p-toast-a';
 
 export const ANIMATION_DURATION = motionDurationModerate;
 const duration =

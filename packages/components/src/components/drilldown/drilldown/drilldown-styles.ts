@@ -28,11 +28,11 @@ export const cssVariableGridTemplate = '--p-drilldown-grid-template';
 export const cssVariableGap = '--p-drilldown-gap';
 
 // private css variables
-export const cssVarColorPrimary = '--_p-a';
-export const cssVarColorBackgroundBase = '--_p-b';
-export const cssVarColorBackgroundSurface = '--_p-c';
-export const cssVarColorBackgroundShading = '--_p-d';
-export const cssVarColorBackgroundScroller = '--_p-f';
+export const cssVarColorPrimary = '--_p-drilldown-a';
+export const cssVarColorBackgroundBase = '--_p-drilldown-b';
+export const cssVarColorBackgroundSurface = '--_p-drilldown-c';
+export const cssVarColorBackgroundShading = '--_p-drilldown-d';
+export const cssVarColorBackgroundScroller = '--_p-drilldown-f';
 
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
