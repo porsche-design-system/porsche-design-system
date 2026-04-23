@@ -413,8 +413,7 @@ export const createElements = (
 export const createElement = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   key: number,
-  updateState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>,
-  parentTag?: HTMLTagOrComponent
+  updateState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>
 ): ReactNode => {
   if (!config) return null;
   if (typeof config === 'string') return config;
@@ -423,15 +422,6 @@ export const createElement = (
   const isPDSComponent = tag.startsWith('p-');
 
   const ReactComponent = isPDSComponent ? componentMap[tag as ConfiguratorTagNames] : tag;
-
-  // `p-tabs-bar` (and `p-tabs`, which renders a `p-tabs-bar` internally) sprouts `role`,
-  // `tabindex` and `aria-selected`/`aria-current` onto its slotted `button`/`a` children
-  // during SSR (via the DSR wrapper) but not during CSR initial render (Stencil applies
-  // them after hydration). Silence the expected SSR/CSR attribute diff on those children.
-  const suppressHydrationWarning =
-    (parentTag === 'p-tabs-bar' || parentTag === 'p-tabs') && (tag === 'button' || tag === 'a')
-      ? { suppressHydrationWarning: true }
-      : undefined;
 
   const eventEntries = Object.entries(events);
 
@@ -463,7 +453,7 @@ export const createElement = (
 
   return React.createElement(
     ReactComponent,
-    { key, ...propsWithEvents, ...suppressHydrationWarning },
-    ...(children || []).map((child, index) => createElement(child, index, updateState, tag))
+    { key, ...propsWithEvents },
+    ...(children || []).map((child, index) => createElement(child, index, updateState))
   );
 };

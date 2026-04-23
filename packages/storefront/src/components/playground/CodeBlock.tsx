@@ -40,7 +40,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
           onUpdate={onUpdate}
         >
           {frameworks.map((framework) => (
-            <button key={framework} type="button" suppressHydrationWarning>
+            <button key={framework} type="button">
               {frameworkNameMap[framework]}
             </button>
           ))}
