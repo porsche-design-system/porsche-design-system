@@ -48,13 +48,13 @@ This approach simplifies component usage and improves readability, making the AP
 
 ## CSS Custom Properties (CSS Variables)
 
-The prefix of a CSS variable encodes its **visibility** and **direction** (read vs. write). Pick
-the narrowest prefix that fits and always scope component variables by the component name.
+The prefix of a CSS variable encodes its **visibility** and **direction** (read vs. write). Pick the narrowest prefix
+that fits and always scope component variables by the component name.
 
 ### Global Styles Variables — `--p-*`
 
-Design tokens coming from the `index.css` file (colors, spacing, radii, typescale, etc.). These
-are the public theme API and have no component segment.
+Design tokens coming from the global styles (colors, spacing, typescale, etc.). These are the public theme API and have
+no component segment.
 
 ```css
 --p-color-primary
@@ -64,9 +64,8 @@ are the public theme API and have no component segment.
 
 ### Public API Variables — `--p-<component>-*`
 
-Stable, writable API for consumers to customize a component. **Must have JSDoc** so
-`component-meta` picks them up and generates them into the documentation. Suffixes may follow a
-Tailwind-like syntax (`-pt`, `-px`, `-width`, …).
+Stable, writable API for consumers to customize a component. **Must have JSDoc** so `component-meta` picks them up and
+generates them into the documentation. Suffixes may follow a Tailwind-like syntax (`-pt`, `-px`, `-width`, …).
 
 ```css
 --p-flyout-width
@@ -75,8 +74,8 @@ Tailwind-like syntax (`-pt`, `-px`, `-width`, …).
 
 ### Public API Read-only Variables — `--ref-p-<component>-*`
 
-Same rules and JSDoc requirement as public writable vars, but intended only to be **read** by
-consumers (e.g. to align surrounding layout). Must never be set from the outside.
+Same rules and JSDoc requirement as public writable vars, but intended only to be **read** by consumers (e.g. to align
+surrounding layout). Must never be set from the outside.
 
 ```css
 --ref-p-flyout-pt
@@ -85,9 +84,9 @@ consumers (e.g. to align surrounding layout). Must never be set from the outside
 
 ### Internal CSS Variables — `--_p-<component>-{a,b,c,…}`
 
-Implementation details, may change at any time. Used for inheritance between a component’s own
-elements. For **nested components**, make sure to (re)define these variables on the nested
-`:host` — otherwise they leak in via CSS inheritance from the outer component.
+Implementation details, may change at any time. Used for inheritance between a component’s own elements. For nested
+components, define these variables on the `:host` to override them and prevent inheritance. If inheritance is desired,
+do not redefine them.
 
 ```css
 --_p-dialog-a
@@ -96,12 +95,13 @@ elements. For **nested components**, make sure to (re)define these variables on 
 
 ### Custom Test Variables
 
-No consistent naming convention yet. Used exclusively for testing purposes (e.g. to reset timing
-in e2e/VRT) and are **not** part of the public API.
+No consistent naming convention yet. Used exclusively for testing purposes (e.g. to reset timing in e2e/VRT) and are
+**not** part of the public API.
 
 ```css
 --p-temporary-toast-timeout
 --p-temporary-toast-skip-timeout
+--p-temporary-spinner-stroke-dasharray
 --p-animation-duration
 --p-transition-duration
 ```
