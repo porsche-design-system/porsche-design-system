@@ -49,11 +49,11 @@ exports[`getComponentCss() > should return correct css 1`] = `
   }"
 `;
 
-exports[`getKeyframesMobile() > should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
+exports[`getKeyframesMobile() > should return correct JssStyle for direction: in and bottomVar: --_p-toast-a 1`] = `
 {
   "from": {
     "opacity": 0,
-    "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
+    "transform": "translate3d(0,calc(var(--_p-toast-a) + 100%),0)",
   },
   "to": {
     "opacity": 1,
@@ -62,7 +62,7 @@ exports[`getKeyframesMobile() > should return correct JssStyle for direction: in
 }
 `;
 
-exports[`getKeyframesMobile() > should return correct JssStyle for direction: out and bottomVar: --p-bottom-var 1`] = `
+exports[`getKeyframesMobile() > should return correct JssStyle for direction: out and bottomVar: --_p-toast-a 1`] = `
 {
   "from": {
     "opacity": 1,
@@ -70,7 +70,7 @@ exports[`getKeyframesMobile() > should return correct JssStyle for direction: ou
   },
   "to": {
     "opacity": 0,
-    "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
+    "transform": "translate3d(0,calc(var(--_p-toast-a) + 100%),0)",
   },
 }
 `;
