@@ -5,11 +5,11 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "npm run build:ag-grid",
-    "build:ag-grid": "npm run build --prefix ./projects/ag-grid",
+    "build:ag-grid": "npm run build --workspace=@porsche-design-system/ag-grid",
     "test": "npm run test:unit",
     "test:unit": "npm run test:unit:ag-grid",
-    "test:unit:ag-grid": "npm run test --prefix ./projects/ag-grid",
-    "clean:build": "npm run clean:build --prefix ./projects/ag-grid"
+    "test:unit:ag-grid": "npm run test --workspace=@porsche-design-system/ag-grid",
+    "clean:build": "npm run clean:build --workspace=@porsche-design-system/ag-grid"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
