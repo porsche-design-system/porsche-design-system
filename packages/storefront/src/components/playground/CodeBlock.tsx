@@ -39,14 +39,8 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
           background="surface"
           onUpdate={onUpdate}
         >
-          {frameworks.map((framework, index) => (
-            <button
-              key={framework}
-              type="button"
-              role="tab"
-              tabIndex={index === tabIndex ? 0 : -1}
-              aria-selected={index === tabIndex}
-            >
+          {frameworks.map((framework) => (
+            <button key={framework} type="button">
               {frameworkNameMap[framework]}
             </button>
           ))}

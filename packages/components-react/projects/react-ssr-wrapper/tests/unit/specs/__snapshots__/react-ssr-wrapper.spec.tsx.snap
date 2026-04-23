@@ -2251,11 +2251,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(2)), ::slotted(button:nth-child(2)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(2)[data-animating]), ::slotted(button:nth-child(2)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(2):not([data-animating])), ::slotted(button:nth-child(2):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -2271,7 +2273,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(2)), ::slotted(button:nth-child(2)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -2280,7 +2282,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(2)):hover), ::slotted(button:not(:nth-child(2)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -2453,13 +2455,11 @@ slot {
     </p-scroller>
   </template>
   <a
-    aria-current="false"
     href="#"
   >
     Item 1
   </a>
   <a
-    aria-current="true"
     href="#"
   >
     Item 2
@@ -2523,11 +2523,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -2543,7 +2545,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -2552,7 +2554,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -2725,17 +2727,11 @@ slot {
         </p-scroller>
       </template>
       <button
-        aria-selected="true"
-        role="tab"
-        tabindex="0"
         type="button"
       >
         Tab 1
       </button>
       <button
-        aria-selected="false"
-        role="tab"
-        tabindex="-1"
         type="button"
       >
         Tab 2
@@ -14238,11 +14234,13 @@ exports[`should render dsr component for PTabs 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -14258,7 +14256,7 @@ exports[`should render dsr component for PTabs 1`] = `
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -14267,7 +14265,7 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -14440,9 +14438,6 @@ slot {
         </p-scroller>
       </template>
       <button
-        aria-selected="true"
-        role="tab"
-        tabindex="0"
         type="button"
       >
         TabItem
@@ -14490,13 +14485,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
-  background: var(--p-color-primary) !important;
-}
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
@@ -14510,16 +14498,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-    transition: unset !important;
-  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:hover), ::slotted(button:hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
