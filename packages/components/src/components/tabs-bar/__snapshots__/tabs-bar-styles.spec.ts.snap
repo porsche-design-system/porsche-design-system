@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for background: canvas, size: "small", isCompact: false 1`] = `
+exports[`getComponentCss() > should return correct css for background: canvas, size: "small", isCompact: false, activeTabIndex: 0 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -25,11 +25,13 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -45,7 +47,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -54,7 +56,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -85,7 +87,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 "
 `;
 
-exports[`getComponentCss() > should return correct css for background: frosted, size: "medium", isCompact: false 1`] = `
+exports[`getComponentCss() > should return correct css for background: frosted, size: "medium", isCompact: false, activeTabIndex: 0 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -110,11 +112,13 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -130,7 +134,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -139,7 +143,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -172,7 +176,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for background: frosted, size: "medium", isCompact: true 1`] = `
+exports[`getComponentCss() > should return correct css for background: frosted, size: "medium", isCompact: true, activeTabIndex: 0 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -197,11 +201,13 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -217,7 +223,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -226,7 +232,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -259,7 +265,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for background: frosted, size: "small", isCompact: false 1`] = `
+exports[`getComponentCss() > should return correct css for background: frosted, size: "small", isCompact: false, activeTabIndex: 0 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -284,11 +290,13 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -304,7 +312,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -313,7 +321,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -346,7 +354,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for background: none, size: "small", isCompact: false 1`] = `
+exports[`getComponentCss() > should return correct css for background: none, size: "small", isCompact: false, activeTabIndex: 0 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -372,11 +380,13 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -392,7 +402,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -401,7 +411,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -423,7 +433,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for background: none, size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, isCompact: false 1`] = `
+exports[`getComponentCss() > should return correct css for background: none, size: "small", isCompact: false, activeTabIndex: 2 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -449,11 +459,159 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(3)), ::slotted(button:nth-child(3)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(3)[data-animating]), ::slotted(button:nth-child(3)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+::slotted(a:nth-child(3):not([data-animating])), ::slotted(button:nth-child(3):not([data-animating])) {
+  background: var(--p-color-primary) !important;
+}
+@media(forced-colors:active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a:nth-child(3)), ::slotted(button:nth-child(3)) {
+    transition: unset !important;
+  }
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
+@media(hover:hover) {
+  ::slotted(a:not(:nth-child(3)):hover), ::slotted(button:not(:nth-child(3)):hover) {
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    background: var(--p-color-frosted-strong) !important;
+  }
+}
+
+.scroller {
+  place-self: flex-start;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+}
+.bar {
+  position: absolute;
+  inset-inline-start: 0;
+  width: 0px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  background: var(--p-color-primary);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for background: none, size: "small", isCompact: false, activeTabIndex: undefined 1`] = `
+":host {
+  display: grid;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+::slotted(a), ::slotted(button) {
+  all: unset !important;
+  padding: 12px var(--p-spacing-static-md) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  background: var(--p-color-frosted) !important;
+  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font-size: var(--p-typescale-sm) !important;
+  color: var(--p-color-primary) !important;
+}
+::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
+}
+@media(forced-colors:active) {
+  ::slotted(a), ::slotted(button) {
+    forced-color-adjust: none !important;
+    background: Canvas !important;
+  }
+  ::slotted(a) {
+    color: LinkText !important;
+    box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(button) {
+    color: ButtonText !important;
+    box-shadow: inset 0 0 0 2px ButtonBorder !important;
+  }
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
+
+@media(hover:hover) {
+  ::slotted(a:hover), ::slotted(button:hover) {
+    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    background: var(--p-color-frosted-strong) !important;
+  }
+}
+
+.scroller {
+  place-self: flex-start;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+}
+.bar {
+  position: absolute;
+  inset-inline-start: 0;
+  width: 0px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  background: var(--p-color-primary);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for background: none, size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, isCompact: false, activeTabIndex: 0 1`] = `
+":host {
+  display: grid;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+::slotted(a), ::slotted(button) {
+  all: unset !important;
+  padding: 12px var(--p-spacing-static-md) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  background: var(--p-color-frosted) !important;
+  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font-size: var(--p-typescale-sm) !important;
+  color: var(--p-color-primary) !important;
+}
+::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  outline: 2px solid var(--p-color-focus) !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
   color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
+  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+}
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(min-width:480px) {
@@ -499,7 +657,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -508,7 +666,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
@@ -530,7 +688,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for background: surface, size: "small", isCompact: false 1`] = `
+exports[`getComponentCss() > should return correct css for background: surface, size: "small", isCompact: false, activeTabIndex: 0 1`] = `
 ":host {
   display: grid;
   position: relative !important;
@@ -555,11 +713,13 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a[data-delay]), ::slotted(button[data-delay]) {
+::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+  color: var(--p-color-canvas) !important;
+}
+::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
   transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
-::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
-  color: var(--p-color-canvas) !important;
+::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
 }
 @media(forced-colors:active) {
@@ -575,7 +735,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a[aria-current="true"]), ::slotted(button[aria-selected="true"]) {
+  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
     transition: unset !important;
   }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -584,7 +744,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not([aria-current="true"]):hover), ::slotted(button:not([aria-selected="true"]):hover) {
+  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
     transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }

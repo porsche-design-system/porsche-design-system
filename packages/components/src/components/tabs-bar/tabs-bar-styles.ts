@@ -27,9 +27,7 @@ import {
 } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import type { TabsBarBackground, TabsBarSize } from './tabs-bar-utils';
-
-export const delayTabStyleAttribute = 'data-delay';
+import { animatingAttribute, type TabsBarBackground, type TabsBarSize } from './tabs-bar-utils';
 
 const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
   canvas: colorCanvas,
@@ -45,8 +43,17 @@ const fontSizeText = {
 export const getComponentCss = (
   background: TabsBarBackground,
   size: BreakpointCustomizable<TabsBarSize>,
-  isCompact: boolean
+  isCompact: boolean,
+  activeTabIndex: number | undefined
 ): string => {
+  const hasActive = activeTabIndex !== undefined;
+  // :nth-child is 1-based
+  const nth = hasActive ? activeTabIndex + 1 : 0;
+  const activeSelector = `&(a:nth-child(${nth})),&(button:nth-child(${nth}))`;
+  const notActiveHoverSelector = hasActive
+    ? `&(a:not(:nth-child(${nth})):hover),&(button:not(:nth-child(${nth})):hover)`
+    : '&(a:hover),&(button:hover)';
+
   return getCss({
     '@global': {
       ':host': {
@@ -76,20 +83,26 @@ export const getComponentCss = (
           },
           '&(a:focus-visible),&(button:focus-visible)': getFocusBaseStyles(),
           ...hoverMediaQuery({
-            '&(a:not([aria-current="true"]):hover),&(button:not([aria-selected="true"]):hover)': {
+            [notActiveHoverSelector]: {
               // Only applied on hover since applying it globally causes the active tab to visually flash when navigating in SPAs (where the tabs-bar persist across routes but the children tabs change).
               transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
               background: colorFrostedStrong,
             },
           }),
-          // The data attribute is applied before the tabs switching animation runs in the utils to delay the selected tab styles until the animation is finished
-          [`&(a[${delayTabStyleAttribute}]),&(button[${delayTabStyleAttribute}])`]: {
-            transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`, // the background shall be changed immediately after the bar transition has finished
-          },
-          '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
-            color: colorCanvas,
-            background: colorPrimary,
-          },
+          ...(hasActive && {
+            [activeSelector]: {
+              color: colorCanvas,
+            },
+            // Transition color and background when animation is playing
+            [`&(a:nth-child(${nth})[${animatingAttribute}]),&(button:nth-child(${nth})[${animatingAttribute}])`]: {
+              transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`,
+            },
+            // Apply background only when no active animation is playing
+            [`&(a:nth-child(${nth}):not([${animatingAttribute}])),&(button:nth-child(${nth}):not([${animatingAttribute}]))`]:
+              {
+                background: colorPrimary,
+              },
+          }),
           ...forcedColorsMediaQuery({
             '&(a),&(button)': {
               forcedColorAdjust: 'none',
@@ -103,9 +116,11 @@ export const getComponentCss = (
               color: 'ButtonText',
               boxShadow: 'inset 0 0 0 2px ButtonBorder',
             },
-            '&(a[aria-current="true"]),&(button[aria-selected="true"])': {
-              transition: 'unset',
-            },
+            ...(hasActive && {
+              [activeSelector]: {
+                transition: 'unset',
+              },
+            }),
           }),
         },
       }),
