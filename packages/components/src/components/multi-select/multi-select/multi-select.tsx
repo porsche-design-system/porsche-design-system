@@ -248,7 +248,7 @@ export class MultiSelect {
       ? (this.filterSlot.assignedElements()[0] as HTMLPInputSearchElement)
       : this.inputSearchElement;
     this.filterSlot && this.inputSearchElement.addEventListener('keydown', this.onComboKeyDown);
-    const nativeInput = this.inputSearchElement.shadowRoot.querySelector('input');
+    const nativeInput = this.inputSearchElement.shadowRoot?.querySelector('input');
     // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
     if (nativeInput) {
       (nativeInput as HTMLInputElement & { ariaControlsElements: HTMLElement[] }).ariaControlsElements = [
