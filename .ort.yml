@@ -109,7 +109,7 @@ resolutions:
     - message: "^invalid: @jest/transform@.*"
       reason: CANT_FIX_ISSUE
       comment: "Transitive Jest 27 tooling via react-scripts; dev-only, not shipped."
-    - message: "^invalid: /project/packages/.*/node_modules/typescript /project/node_modules/typescript$"
+    - message: "^(invalid: )?/project/packages/.*/node_modules/typescript /project/node_modules/typescript$"
       reason: CANT_FIX_ISSUE
       comment: "npm reports duplicated nested TypeScript install (Angular DevKit pin); dev-only, not shipped."
     - message: "^missing: @babel/plugin-transform-react-jsx@.*eslint-plugin-flowtype.*"
