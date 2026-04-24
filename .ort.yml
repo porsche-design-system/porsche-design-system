@@ -4,10 +4,9 @@ analyzer:
   package_managers:
     NPM:
       options:
-        # Run `npm list` with `--legacy-peer-deps`, mirroring the Yarn 1
-        # behavior we relied on before the migration and the `legacy-peer-deps=true`
-        # setting already present in `.npmrc`. This prevents ORT from surfacing
-        # transitive peer-dependency mismatches in dev-only tooling as issues.
+        # Required to match the `legacy-peer-deps=true` setting in `.npmrc`;
+        # without it, ORT surfaces transitive peer-dependency mismatches that
+        # npm itself ignores during install.
         legacyPeerDeps: "true"
 
 excludes:
