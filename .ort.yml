@@ -1,6 +1,14 @@
 analyzer:
   skip_excluded: true
   enabled_package_managers: [NPM]
+  package_managers:
+    NPM:
+      options:
+        # Run `npm list` with `--legacy-peer-deps`, mirroring the Yarn 1
+        # behavior we relied on before the migration and the `legacy-peer-deps=true`
+        # setting already present in `.npmrc`. This prevents ORT from surfacing
+        # transitive peer-dependency mismatches in dev-only tooling as issues.
+        legacyPeerDeps: "true"
 
 excludes:
   # -----------------------------
@@ -67,55 +75,4 @@ excludes:
     - pattern: "peerDependencies"
       reason: PROVIDED_DEPENDENCY_OF
       comment: "Peer dependencies must be provided by the consuming project; not part of delivered artifacts."
-
-# -----------------------------
-# Issue resolutions
-# -----------------------------
-# After migrating from Yarn 1 to npm workspaces, ORT's NPM analyzer surfaces
-# peer-dependency mismatches reported by `npm list` as errors. Yarn 1 never
-# enforced peer dependencies, so these warnings were silently ignored before.
-# The repository already sets `legacy-peer-deps=true` in `.npmrc` so installs
-# succeed, but `npm list` (used by ORT) still prints these messages.
-#
-# All affected packages are transitive devDependencies of build/test tooling
-# (react-scripts, Angular DevKit, Stencil, Jest, Vite, Rollup, etc.) and are
-# excluded from delivered artifacts via the scope/path excludes above.
-resolutions:
-  issues:
-    - message: "^invalid: typescript@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Transitive tooling (react-scripts, @angular-devkit, stencil, ts-jest, etc.) declares peer ranges on older TypeScript versions. Matches Yarn 1 behavior; not shipped in any artifact."
-    - message: "^invalid: rollup@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Rollup 4.x is hoisted at the workspace root; some plugins declare peer ranges on older majors. Dev-only tooling, not shipped."
-    - message: "^invalid: vite@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Vite 8.x is hoisted at the workspace root; some Angular/React tooling still declares peer ranges on older majors. Dev-only tooling."
-    - message: "^invalid: yaml@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Transitive peer-range mismatch in dev tooling; dev-only, not shipped."
-    - message: "^invalid: picomatch@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Transitive peer-range mismatch in dev tooling; dev-only, not shipped."
-    - message: "^invalid: zod@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Transitive peer-range mismatch in dev tooling; dev-only, not shipped."
-    - message: "^invalid: jest@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Jest 27 pulled in by react-scripts/Angular tooling; dev-only, not shipped."
-    - message: "^invalid: babel-jest@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Transitive Jest 27 tooling via react-scripts; dev-only, not shipped."
-    - message: "^invalid: @jest/transform@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Transitive Jest 27 tooling via react-scripts; dev-only, not shipped."
-    - message: "^(invalid: )?/project/packages/.*/node_modules/typescript /project/node_modules/typescript$"
-      reason: CANT_FIX_ISSUE
-      comment: "npm reports duplicated nested TypeScript install (Angular DevKit pin); dev-only, not shipped."
-    - message: "^missing: @babel/plugin-transform-react-jsx@.*eslint-plugin-flowtype.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Broken optional peer dep in eslint-plugin-flowtype@8.0.3 (transitive via react-scripts in utilities-v2); dev-only, not shipped."
-    - message: "^karma-jasmine-html-reporter@.* karma-jasmine@.*"
-      reason: CANT_FIX_ISSUE
-      comment: "Karma peer-range mismatch reported by npm list; test-only tooling for components-angular, not shipped."
 
