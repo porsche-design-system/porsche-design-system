@@ -22,7 +22,7 @@ export const getComponentCss = (
           ...preventFoucOfNestedElementsStyles,
         },
       },
-      getFunctionalComponentNotificationBaseStyles(state, hasAction, hasDismissButton, hasHeadingOrHeadingSlot, 'xl')
+      getFunctionalComponentNotificationBaseStyles(state, hasAction, hasDismissButton, hasHeadingOrHeadingSlot)
     )
   );
 };

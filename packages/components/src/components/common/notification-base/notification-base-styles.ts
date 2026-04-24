@@ -10,7 +10,7 @@ import {
   leadingNormal,
   legacyRadiusMedium,
   radius2Xl,
-  radiusXl,
+  spacingFluidSm,
   spacingStatic2Xs,
   spacingStaticMd,
   spacingStaticSm,
@@ -23,8 +23,7 @@ export const getFunctionalComponentNotificationBaseStyles = (
   state: 'info' | 'success' | 'warning' | 'error',
   hasAction: boolean,
   hasDismissButton: boolean,
-  hasHeadingOrHeadingSlot: boolean,
-  radius: '2xl' | 'xl'
+  hasHeadingOrHeadingSlot: boolean
 ): Styles => {
   return {
     '@global': {
@@ -47,8 +46,8 @@ export const getFunctionalComponentNotificationBaseStyles = (
     notification: {
       display: 'grid',
       gridTemplate: `repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto)`,
-      padding: spacingStaticMd,
-      borderRadius: `var(${legacyRadiusMedium}, ${radius === '2xl' ? radius2Xl : radiusXl})`,
+      padding: `calc(${spacingStaticSm} + ${spacingFluidSm})`,
+      borderRadius: `var(${legacyRadiusMedium}, ${radius2Xl})`,
       background: notificationBackgroundMap[state],
       WebkitBackdropFilter: blurFrosted,
       backdropFilter: blurFrosted,

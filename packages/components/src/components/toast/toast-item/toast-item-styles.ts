@@ -1,4 +1,5 @@
 import { addImportantToEachRule, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { shadowLg } from '../../../styles/css-variables';
 import { getCss, mergeDeep } from '../../../utils';
 import { getFunctionalComponentNotificationBaseStyles } from '../../common/notification-base/notification-base-styles';
 import type { ToastState } from '../toast/toast-utils';
@@ -30,7 +31,12 @@ export const getComponentCss = (state: ToastState): string => {
           ...preventFoucOfNestedElementsStyles,
         },
       },
-      getFunctionalComponentNotificationBaseStyles(state, false, true, false, '2xl')
+      {
+        notification: {
+          boxShadow: shadowLg,
+        },
+      },
+      getFunctionalComponentNotificationBaseStyles(state, false, true, false)
     )
   );
 };

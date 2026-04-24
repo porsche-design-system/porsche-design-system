@@ -96,15 +96,17 @@ export const getComponentCss = (
             '@supports (transition-behavior: allow-discrete)': {
               transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
             },
-            '& .notification': {
-              boxShadow: shadowLg,
-              opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
-              transition: getTransition('opacity', duration, easing),
-            },
           },
         },
       },
-      getFunctionalComponentNotificationBaseStyles(state, false, hasDismissButton, hasHeadingOrHeadingSlot, '2xl')
+      {
+        notification: {
+          boxShadow: shadowLg,
+          opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
+          transition: getTransition('opacity', duration, easing),
+        },
+      },
+      getFunctionalComponentNotificationBaseStyles(state, false, hasDismissButton, hasHeadingOrHeadingSlot)
     ),
   });
 };
