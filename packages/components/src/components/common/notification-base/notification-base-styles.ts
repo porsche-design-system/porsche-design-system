@@ -18,10 +18,9 @@ import {
   typescaleSm,
 } from '../../../styles/css-variables';
 import { notificationBackgroundMap, notificationColorMap, notificationIconMap } from '../../../styles/maps';
-import type { InlineNotificationState } from '../../inline-notification/inline-notification-utils';
 
 export const getFunctionalComponentNotificationBaseStyles = (
-  state: InlineNotificationState,
+  state: 'info' | 'success' | 'warning' | 'error',
   hasAction: boolean,
   hasDismissButton: boolean,
   hasHeadingOrHeadingSlot: boolean,
@@ -88,7 +87,7 @@ export const getFunctionalComponentNotificationBaseStyles = (
         marginTop: spacingStaticMd,
         [getMediaQueryMin('s')]: {
           gridArea: '1/3',
-          marginTop: 0,
+          marginTop: '0px',
           marginInlineStart: spacingStaticMd,
         },
       },
