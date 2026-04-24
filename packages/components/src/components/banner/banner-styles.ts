@@ -1,32 +1,17 @@
-import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/emotion';
+import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
-  forcedColorsMediaQuery,
   getTransition,
   hostHiddenStyles,
   motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  blurFrosted,
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  fontWeightSemibold,
-  leadingNormal,
-  legacyRadiusMedium,
-  radius2Xl,
-  shadowLg,
-  spacingStaticMd,
-  spacingStaticSm,
-  spacingStaticXs,
-  typescaleSm,
-} from '../../styles/css-variables';
-import { notificationBackgroundMap, notificationColorMap, notificationIconMap } from '../../styles/maps';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { shadowLg } from '../../styles/css-variables';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import { getFunctionalComponentNotificationBaseStyles } from '../common/notification-base/notification-base-styles';
 import type { BannerPosition, BannerState } from './banner-utils';
 
 /**
@@ -55,115 +40,71 @@ export const getComponentCss = (
   isOpen: boolean,
   position: BreakpointCustomizable<BannerPosition>,
   state: BannerState,
-  hasDismissButton: boolean
+  hasDismissButton: boolean,
+  hasHeadingOrHeadingSlot: boolean
 ): string => {
   const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
   const transition = `visibility 0s linear var(${cssVariableTransitionDuration},${isOpen ? '0s' : motionDurationMap[duration]}),${getTransition('transform', duration, easing)}`;
 
   return getCss({
-    '@global': {
-      ':host': {
-        display: 'contents',
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-        }),
-      },
-      ...preventFoucOfNestedElementsStyles,
-      'slot[name="heading"],h1,h2,h3,h4,h5,h6': {
-        all: 'unset',
-        display: 'block',
-        gridArea: '1/2',
-        font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
-        color: colorPrimary,
-      },
-      'slot[name="description"],p': {
-        all: 'unset',
-        display: 'block',
-        gridArea: '2/2',
-        marginTop: spacingStaticXs,
-        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
-        color: colorPrimary,
-      },
-      '[popover]': {
-        all: 'unset',
-        position: 'fixed',
-        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`, // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
-        ...buildResponsiveStyles(position, (v: BannerPosition) => ({
-          ...(v === 'top' && {
-            insetBlock: `var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback})) auto`,
-            ...(!isOpen && {
-              transform: `translate3d(-50%,calc(-100% - var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback}))),0)`,
+    ...mergeDeep(
+      {
+        '@global': {
+          ':host': {
+            display: 'contents',
+            ...addImportantToEachRule({
+              ...hostHiddenStyles,
             }),
-          }),
-          ...(v === 'bottom' && {
-            insetBlock: `auto var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback}))`,
-            ...(!isOpen && {
-              transform: `translate3d(-50%,calc(var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback})) + 100%),0)`,
+          },
+          ...preventFoucOfNestedElementsStyles,
+          '[popover]': {
+            all: 'unset',
+            position: 'fixed',
+            zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`, // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
+            ...buildResponsiveStyles(position, (v: BannerPosition) => ({
+              ...(v === 'top' && {
+                insetBlock: `var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback})) auto`,
+                ...(!isOpen && {
+                  transform: `translate3d(-50%,calc(-100% - var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback}))),0)`,
+                }),
+              }),
+              ...(v === 'bottom' && {
+                insetBlock: `auto var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback}))`,
+                ...(!isOpen && {
+                  transform: `translate3d(-50%,calc(var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback})) + 100%),0)`,
+                }),
+              }),
+            })),
+            left: '50vw',
+            width: `min(calc(100vw - 2 * var(${cssVarInsetX},${gridExtendedOffsetBase})),var(${cssVarMaxWidth},100ch))`,
+            '&:popover-open': {
+              overlay: 'auto',
+            },
+            '&::backdrop': {
+              display: 'none',
+            },
+            visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
+            pointerEvents: 'none', // element can't be interacted with mouse
+            ...(isOpen && {
+              visibility: 'inherit',
+              pointerEvents: 'inherit',
+              transform: 'translate3d(-50%,0,0)',
             }),
-          }),
-        })),
-        left: '50vw',
-        width: `min(calc(100vw - 2 * var(${cssVarInsetX},${gridExtendedOffsetBase})),var(${cssVarMaxWidth},100ch))`,
-        '&:popover-open': {
-          overlay: 'auto',
-        },
-        '&::backdrop': {
-          display: 'none',
-        },
-        visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
-        pointerEvents: 'none', // element can't be interacted with mouse
-        ...(isOpen && {
-          visibility: 'inherit',
-          pointerEvents: 'inherit',
-          transform: 'translate3d(-50%,0,0)',
-        }),
-        transition,
-        // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-        '@supports (transition-behavior: allow-discrete)': {
-          transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
+            transition,
+            // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
+            '@supports (transition-behavior: allow-discrete)': {
+              transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
+            },
+            '& .notification': {
+              boxShadow: shadowLg,
+              opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
+              transition: getTransition('opacity', duration, easing),
+            },
+          },
         },
       },
-    },
-    banner: {
-      display: 'grid',
-      gridTemplateColumns: `auto minmax(0, 1fr) auto auto`,
-      padding: spacingStaticMd,
-      borderRadius: `var(${legacyRadiusMedium}, ${radius2Xl})`,
-      background: notificationBackgroundMap[state],
-      WebkitBackdropFilter: blurFrosted,
-      backdropFilter: blurFrosted,
-      boxShadow: shadowLg,
-      opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
-      transition: getTransition('opacity', duration, easing),
-      ...forcedColorsMediaQuery({
-        outline: '2px solid CanvasText',
-        outlineOffset: '-2px',
-      }),
-      '&::before': {
-        [getMediaQueryMin('s')]: {
-          gridArea: '1/1',
-          placeSelf: 'center',
-          content: '""',
-          width: '1.5rem',
-          height: '1.5rem',
-          marginInlineEnd: spacingStaticSm,
-          background: notificationColorMap[state],
-          WebkitMask: `${notificationIconMap[state]} center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `${notificationIconMap[state]} center/contain no-repeat`,
-          ...forcedColorsMediaQuery({
-            background: 'CanvasText',
-          }),
-        },
-      },
-    },
-    ...(hasDismissButton && {
-      dismiss: {
-        gridArea: `1/4/3`,
-        marginTop: `calc(-1 * ${spacingStaticXs})`,
-        marginInlineEnd: `calc(-1 * ${spacingStaticXs})`,
-        marginInlineStart: spacingStaticMd,
-      },
-    }),
+      getFunctionalComponentNotificationBaseStyles(state, false, hasDismissButton, hasHeadingOrHeadingSlot, '2xl')
+    ),
   });
 };
