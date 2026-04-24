@@ -58,9 +58,13 @@ jobs:
           name: ort-analysis
           path: ./ort
       - name: "Send"
-        # Only on scheduled runs and only if the analyzer did not report unresolved issues.
-        if: github.event_name == 'schedule' && steps.analyze.outcome == 'success'
+        # Only on scheduled runs. Fails the job if the analyzer reported unresolved issues.
+        if: github.event_name == 'schedule'
         run: |
+          if [ "${{ steps.analyze.outcome }}" != "success" ]; then
+            echo "Analyzer reported unresolved issues (outcome: ${{ steps.analyze.outcome }}). Skipping send and failing the job."
+            exit 1
+          fi
           zip \
             -j analyzer-result.zip ort/analyzer-result.yml
           curl \
