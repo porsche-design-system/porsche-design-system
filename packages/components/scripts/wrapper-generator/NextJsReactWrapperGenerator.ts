@@ -62,6 +62,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
                 {...{ ${spreadProps} }}
               />
             ),
+            'data-dsr': '',
           }
         : {
             ${hasChildren ? 'children,\n            ' : ''}suppressHydrationWarning: true,

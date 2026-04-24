@@ -12,7 +12,7 @@ index 1f97bb5..538b44d 100644
                  void 0,
                  []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index 7ca390b..f450306 100644
+index 7ca390b..0366079 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
 @@ -3256,6 +3256,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
@@ -46,7 +46,7 @@ index 7ca390b..f450306 100644
 +        }
 +        connectedCallback() {
 +          //========= PDS PATCH START
-+          if (this.hasAttribute('data-ssr')) {
++          if (this.hasAttribute('data-dsr')) {
 +            this.hasDSR = true;
 +          } else {
 +            if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
