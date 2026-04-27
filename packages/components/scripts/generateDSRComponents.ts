@@ -3,8 +3,8 @@ import { breakpoint } from '@porsche-design-system/emotion';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { kebabCase, pascalCase } from 'change-case';
-import * as fs from 'fs';
 import { sync as globbySync } from 'fast-glob';
+import * as fs from 'fs';
 import * as path from 'path';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
@@ -89,6 +89,7 @@ const generateDSRComponents = (): void => {
             : group.endsWith('state-message') ||
                 group.endsWith('loading-message') ||
                 group.endsWith('input-base') ||
+                group.endsWith('notification-base') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
                 group.endsWith('no-results-option')
@@ -378,9 +379,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // remove warning about deprecated title slot
         newFileContent = newFileContent
           .replace(/.+consoleWarn\([\s\S]+?\);\n/g, '')
+          .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
+          .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
           .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-inline-notification') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
+          .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
         newFileContent = newFileContent
           // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
