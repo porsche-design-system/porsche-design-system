@@ -27,7 +27,7 @@ import {
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
-export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-option-scaling';
+export const cssVarInternalRadioGroupOptionScaling = '--_p-radio-group-option-a';
 
 const checkedIcon = getInlineSVGBackgroundImage(`<circle cx="12" cy="12" r="6"/>`);
 

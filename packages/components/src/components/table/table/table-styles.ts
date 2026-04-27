@@ -7,6 +7,7 @@ import {
   fontWeightNormal,
   leadingNormal,
   spacingFluidMd,
+  spacingFluidSm,
   spacingStaticSm,
   typescaleSm,
 } from '../../../styles/css-variables';
@@ -23,10 +24,10 @@ const cssVarScrollIndicatorTop = '--p-table-scroll-indicator-top';
  */
 const cssVarScrollIndicatorBottom = '--p-table-scroll-indicator-bottom';
 
-export const cssVariableTablePadding = '--_a';
-export const cssVariableTableHoverColor = '--_b';
-export const cssVariableTableBorderColor = '--_c';
-export const cssVariableTableBorderWidth = '--_d';
+export const cssVariableTablePadding = '--_p-table-a';
+export const cssVariableTableHoverColor = '--_p-table-b';
+export const cssVariableTableBorderColor = '--_p-table-c';
+export const cssVariableTableBorderWidth = '--_p-table-d';
 
 export const getComponentCss = (isCompact: boolean, layout: TableLayout): string => {
   return getCss({
@@ -38,9 +39,8 @@ export const getComponentCss = (isCompact: boolean, layout: TableLayout): string
           '--p-scroller-indicator-bottom': `var(${cssVarScrollIndicatorBottom},0px)`,
           [cssVariableTableHoverColor]: colorFrosted,
           [cssVariableTableBorderColor]: colorContrastLow,
-          ...(isCompact && {
-            [cssVariableTablePadding]: spacingStaticSm,
-          }),
+          [cssVariableTablePadding]: isCompact ? spacingStaticSm : spacingFluidSm,
+          [cssVariableTableBorderWidth]: '1px',
           ...hostHiddenStyles,
           font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
           color: colorPrimary,

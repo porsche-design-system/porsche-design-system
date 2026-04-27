@@ -24,7 +24,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
 import { cssVarInternalSelectOptionScaling } from '../select-option/select-option-styles';
 
-export const cssVarInternalSelectScaling = '--p-internal-select-scaling';
+export const cssVarInternalSelectScaling = '--_p-select-a';
 
 export const getComponentCss = (
   isOpen: boolean,

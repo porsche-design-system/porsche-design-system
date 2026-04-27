@@ -19,7 +19,7 @@ import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalRadioGroupOptionScaling } from '../radio-group-option/radio-group-option-styles';
 
-export const cssVarInternalRadioGroupScaling = '--p-internal-radio-group-scaling';
+export const cssVarInternalRadioGroupScaling = '--_p-radio-group-a';
 
 const groupRadioGroupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
   column: {

@@ -81,11 +81,11 @@ export const getLinkButtonStyles = (
         ...mergeDeep(
           buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
             [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
-            '--p-internal-border-radius': compactValue ? radiusLg : radiusXl,
+            '--_p-link-button-a': compactValue ? radiusLg : radiusXl,
           })),
           buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
             borderRadius: addImportantToRule(
-              `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : 'var(--p-internal-border-radius)'})`
+              `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : 'var(--_p-link-button-a)'})`
             ),
           }))
         ),

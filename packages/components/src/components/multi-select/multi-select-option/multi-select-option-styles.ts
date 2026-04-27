@@ -6,7 +6,7 @@ import { leadingNormal } from '../../../styles/css-variables';
 import { getOptionJssStyle } from '../../../styles/select';
 import { getCss, mergeDeep } from '../../../utils';
 
-export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
+export const cssVarInternalMultiSelectOptionScaling = '--_p-multi-select-option-a';
 
 export const getComponentCss = (isDisabled: boolean, selected: boolean): string => {
   const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;

@@ -3,9 +3,9 @@
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -44,10 +44,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
@@ -138,9 +138,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -179,10 +179,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
@@ -273,9 +273,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -314,10 +314,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -407,9 +407,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -448,10 +448,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -541,9 +541,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 3`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -582,10 +582,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -675,9 +675,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -716,10 +716,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-success-frosted-soft);
@@ -810,9 +810,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -851,10 +851,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-success-frosted-soft);
@@ -945,9 +945,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -986,10 +986,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
@@ -1079,9 +1079,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1120,10 +1120,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
@@ -1213,9 +1213,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1254,10 +1254,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -1346,9 +1346,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1387,10 +1387,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -1479,9 +1479,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and readOnly: true 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 0.64285714;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 0.64285714;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1520,10 +1520,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
@@ -1608,9 +1608,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and readOnly: true 2`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 0.64285714;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 0.64285714;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1649,10 +1649,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
@@ -1737,9 +1737,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1778,10 +1778,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -1986,9 +1986,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2027,10 +2027,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
@@ -2253,9 +2253,9 @@ input {
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
-  --p-internal-input-base-scaling: 1;
-  --ref-p-input-slotted-padding: calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714)) !important;
-  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--p-internal-input-base-scaling) - 0.64285714))) !important;
+  --_p-input-base-a: 1;
+  --ref-p-input-slotted-padding: calc(11.2px * (var(--_p-input-base-a) - 0.64285714)) !important;
+  --ref-p-input-slotted-margin: calc(-1 * calc(11.2px * (var(--_p-input-base-a) - 0.64285714))) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2294,10 +2294,10 @@ input {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 4px);
-  height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
+  gap: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 4px);
+  height: calc(var(--_p-input-base-a) * 3.5rem);
   box-sizing: border-box;
-  padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
+  padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);

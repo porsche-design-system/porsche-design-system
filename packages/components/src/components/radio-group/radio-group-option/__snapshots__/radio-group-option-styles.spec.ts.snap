@@ -27,9 +27,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -46,7 +46,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -92,8 +92,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -164,9 +164,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -183,7 +183,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -229,8 +229,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -301,9 +301,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -320,7 +320,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -366,8 +366,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -438,9 +438,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -457,7 +457,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -503,8 +503,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -575,9 +575,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -594,7 +594,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -640,8 +640,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -712,9 +712,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -731,7 +731,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -777,8 +777,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -849,9 +849,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -869,7 +869,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -903,7 +903,7 @@ input:checked::before {
   cursor: not-allowed;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -919,8 +919,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -992,9 +992,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -1012,7 +1012,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1046,7 +1046,7 @@ input:checked::before {
   cursor: not-allowed;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1062,8 +1062,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -1135,9 +1135,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -1155,7 +1155,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1189,7 +1189,7 @@ input:checked::before {
   cursor: not-allowed;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1205,8 +1205,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -1278,9 +1278,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -1298,7 +1298,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1332,7 +1332,7 @@ input:checked::before {
   cursor: not-allowed;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1348,8 +1348,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -1421,9 +1421,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -1441,7 +1441,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1475,7 +1475,7 @@ input:checked::before {
   cursor: not-allowed;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1491,8 +1491,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -1564,9 +1564,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -1584,7 +1584,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1618,7 +1618,7 @@ input:checked::before {
   cursor: not-allowed;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1634,8 +1634,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -1707,9 +1707,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -1727,7 +1727,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1771,8 +1771,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -1856,9 +1856,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -1876,7 +1876,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -1920,8 +1920,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2005,9 +2005,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -2025,7 +2025,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2069,8 +2069,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2154,9 +2154,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -2174,7 +2174,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2218,8 +2218,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2303,9 +2303,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -2323,7 +2323,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2367,8 +2367,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2452,9 +2452,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -2472,7 +2472,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2516,8 +2516,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2601,9 +2601,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -2621,7 +2621,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2656,7 +2656,7 @@ input:checked::before {
   opacity: 0.4;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2672,8 +2672,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2757,9 +2757,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-error-frosted-soft);
@@ -2777,7 +2777,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2812,7 +2812,7 @@ input:checked::before {
   opacity: 0.4;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2828,8 +2828,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -2913,9 +2913,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -2933,7 +2933,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -2968,7 +2968,7 @@ input:checked::before {
   opacity: 0.4;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2984,8 +2984,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -3069,9 +3069,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-frosted);
@@ -3089,7 +3089,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -3124,7 +3124,7 @@ input:checked::before {
   opacity: 0.4;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -3140,8 +3140,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -3225,9 +3225,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -3245,7 +3245,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -3280,7 +3280,7 @@ input:checked::before {
   opacity: 0.4;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -3296,8 +3296,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -3381,9 +3381,9 @@ slot[name="label-after"]::slotted(*) {
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-color-success-frosted-soft);
@@ -3401,7 +3401,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:checked::before {
@@ -3436,7 +3436,7 @@ input:checked::before {
   opacity: 0.4;
 }
 .spinner {
-  --p-spinner-size: calc(calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - 2px);
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -3452,8 +3452,8 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - var(--p-leading-normal)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);

@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false and length: 4 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -22,10 +22,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -56,7 +56,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -245,7 +245,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 1 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 0.64285714;
+  --_p-pin-code-a: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -264,10 +264,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
@@ -298,7 +298,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -366,7 +366,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 1 2`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -385,10 +385,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -419,7 +419,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -487,7 +487,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 2 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -506,10 +506,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -540,7 +540,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -608,7 +608,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 3 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -627,10 +627,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -661,7 +661,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -729,7 +729,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 4 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -748,10 +748,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -782,7 +782,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -850,7 +850,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 5 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -869,10 +869,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -903,7 +903,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -971,7 +971,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true and length: 6 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -990,10 +990,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1026,7 +1026,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .spinner {
   position: absolute;
@@ -1102,7 +1102,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 1 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1121,10 +1121,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1157,7 +1157,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1234,7 +1234,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 2 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1253,10 +1253,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1289,7 +1289,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1366,7 +1366,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 3 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1385,10 +1385,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1421,7 +1421,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1498,7 +1498,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 4 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1517,10 +1517,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1553,7 +1553,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1630,7 +1630,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1649,10 +1649,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1685,7 +1685,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1762,7 +1762,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 2`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 0.64285714;
+  --_p-pin-code-a: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1781,10 +1781,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
@@ -1817,7 +1817,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1894,7 +1894,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and length: 6 1`] = `
 ":host {
   display: block;
-  --p-internal-pin-code-scaling: 1;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1913,10 +1913,10 @@ input {
   all: unset;
   display: block;
   width: auto;
-  min-width: calc(1ch + calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px) * 2 + 1px * 2);
-  max-width: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  height: calc(var(--p-internal-pin-code-scaling) * 3.5rem);
-  padding: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
@@ -1947,7 +1947,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-self: flex-start;
-  gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;

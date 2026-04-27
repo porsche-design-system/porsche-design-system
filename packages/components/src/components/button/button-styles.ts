@@ -4,7 +4,7 @@ import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName } from '
 import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
-export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
+export const cssVariableInternalButtonScaling = '--_p-button-a';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,

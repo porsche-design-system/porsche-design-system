@@ -54,8 +54,8 @@ exports[`should match compiled variables css 1`] = `
     hsl(157 84.9% 41.6% / 0.6)
   );
   --p-color-success-frosted: light-dark(
-    hsl(115 77.5% 27.8% / 0.18),
-    hsl(157 84.9% 41.6% / 0.26)
+    hsl(109 100% 90% / 0.55),
+    hsl(157 79% 20% / 0.66)
   );
   --p-color-success-frosted-soft: light-dark(
     hsl(115 77.5% 27.8% / 0.1),
@@ -71,8 +71,8 @@ exports[`should match compiled variables css 1`] = `
     hsl(28 90.2% 56.1% / 0.6)
   );
   --p-color-warning-frosted: light-dark(
-    hsl(28 97.7% 34.1% / 0.18),
-    hsl(28 90.2% 56.1% / 0.26)
+    hsl(40 100% 90% / 0.55),
+    hsl(52 79% 20% / 0.66)
   );
   --p-color-warning-frosted-soft: hsl(28 90.2% 56.1% / 0.1);
   --p-color-error: light-dark(hsl(357 78% 41%), hsl(0 96.9% 62%));
@@ -85,8 +85,8 @@ exports[`should match compiled variables css 1`] = `
     hsl(0 96.9% 62% / 0.6)
   );
   --p-color-error-frosted: light-dark(
-    hsl(357 78% 41% / 0.18),
-    hsl(0 96.9% 62% / 0.26)
+    hsl(0 100% 90% / 0.55),
+    hsl(0 79% 20% / 0.66)
   );
   --p-color-error-frosted-soft: light-dark(
     hsl(357 78% 41% / 0.1),
@@ -102,8 +102,8 @@ exports[`should match compiled variables css 1`] = `
     hsl(210 100% 54.5% / 0.6)
   );
   --p-color-info-frosted: light-dark(
-    hsl(228 83.2% 51% / 0.18),
-    hsl(210 100% 54.5% / 0.26)
+    hsl(211 100% 90% / 0.55),
+    hsl(210 79% 20% / 0.66)
   );
   --p-color-info-frosted-soft: light-dark(
     hsl(228 83.2% 51% / 0.1),

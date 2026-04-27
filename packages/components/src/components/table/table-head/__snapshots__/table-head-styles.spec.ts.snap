@@ -4,13 +4,13 @@ exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: table-header-group;
   font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
-  border-bottom: 1px solid var(--_c) !important;
+  border-bottom: 1px solid var(--_p-table-c) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  --_d: 0px !important;
-  --_b: none !important;
+  --_p-table-d: 0px !important;
+  --_p-table-b: none !important;
 }"
 `;

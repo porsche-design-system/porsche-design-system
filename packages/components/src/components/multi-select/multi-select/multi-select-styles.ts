@@ -23,7 +23,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
 import { cssVarInternalMultiSelectOptionScaling } from '../multi-select-option/multi-select-option-styles';
 
-export const cssVarInternalMultiSelectScaling = '--p-internal-multi-select-scaling';
+export const cssVarInternalMultiSelectScaling = '--_p-multi-select-a';
 
 export const getComponentCss = (
   isOpen: boolean,
