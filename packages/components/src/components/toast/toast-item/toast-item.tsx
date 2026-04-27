@@ -8,9 +8,9 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
 } from '../../../utils';
+import { NotificationBase } from '../../common/notification-base/notification-base';
 import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
 import { getComponentCss } from './toast-item-styles';
-import { getToastIconName } from './toast-item-utils';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
@@ -52,23 +52,23 @@ export class ToastItem {
 
     return (
       <Host popover="manual">
-        <PrefixedTagNames.pIcon
-          class="icon"
-          name={getToastIconName(this.state)}
-          color={this.state}
-          aria-hidden="true"
+        <NotificationBase
+          description={this.text}
+          innerHTML={true}
+          dismissButton={
+            <PrefixedTagNames.pButton
+              class="dismiss"
+              type="button"
+              variant="secondary"
+              icon="close"
+              hideLabel={true}
+              compact={true}
+              onClick={this.dismiss.emit}
+            >
+              Close notification message
+            </PrefixedTagNames.pButton>
+          }
         />
-        <p innerHTML={this.text} />
-        <PrefixedTagNames.pButton
-          variant="secondary"
-          class="close"
-          type="button"
-          icon="close"
-          hideLabel={true}
-          onClick={this.dismiss.emit}
-        >
-          Close notification message
-        </PrefixedTagNames.pButton>
       </Host>
     );
   }

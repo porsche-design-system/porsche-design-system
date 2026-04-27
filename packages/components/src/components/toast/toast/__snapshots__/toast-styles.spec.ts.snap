@@ -2,9 +2,9 @@
 
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
-  --_p-toast-a: var(--p-toast-position-bottom, 56px) !important;
+  --_p-a: var(--p-toast-position-bottom, 56px) !important;
   position: fixed !important;
-  inset: auto max(22px, 10.625vw - 12px) var(--_p-toast-a) !important;
+  inset: auto max(22px, 10.625vw - 12px) var(--_p-a) !important;
   z-index: 999999 !important;
 }
 :host([hidden]) {
@@ -15,28 +15,24 @@ exports[`getComponentCss() > should return correct css 1`] = `
 }
 @keyframes in {
   from {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--_p-toast-a) + 100%),0);
+    transform: translate3d(0,calc(var(--_p-a) + 100%),0);
   }
   to {
-    opacity: 1;
     transform: translate3d(0,0,0);
   }
 }
 @keyframes out {
   from {
-    opacity: 1;
     transform: translate3d(0,0,0);
   }
   to {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--_p-toast-a) + 100%),0);
+    transform: translate3d(0,calc(var(--_p-a) + 100%),0);
   }
 }
 @media(min-width:760px) {
     :host {
-      --_p-toast-a: var(--p-toast-position-bottom, 64px) !important;
-      inset: auto auto var(--_p-toast-a) 64px !important;
+      --_p-a: var(--p-toast-position-bottom, 64px) !important;
+      inset: auto auto var(--_p-a) 64px !important;
       max-width: min(42rem, calc(100vw - 64px * 2)) !important;
     }
 }
@@ -49,28 +45,24 @@ exports[`getComponentCss() > should return correct css 1`] = `
   }"
 `;
 
-exports[`getKeyframesMobile() > should return correct JssStyle for direction: in and bottomVar: --_p-toast-a 1`] = `
+exports[`getKeyframesMobile() > should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
 {
   "from": {
-    "opacity": 0,
-    "transform": "translate3d(0,calc(var(--_p-toast-a) + 100%),0)",
+    "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
   },
   "to": {
-    "opacity": 1,
     "transform": "translate3d(0,0,0)",
   },
 }
 `;
 
-exports[`getKeyframesMobile() > should return correct JssStyle for direction: out and bottomVar: --_p-toast-a 1`] = `
+exports[`getKeyframesMobile() > should return correct JssStyle for direction: out and bottomVar: --p-bottom-var 1`] = `
 {
   "from": {
-    "opacity": 1,
     "transform": "translate3d(0,0,0)",
   },
   "to": {
-    "opacity": 0,
-    "transform": "translate3d(0,calc(var(--_p-toast-a) + 100%),0)",
+    "transform": "translate3d(0,calc(var(--p-bottom-var) + 100%),0)",
   },
 }
 `;

@@ -1,3 +1,1 @@
-import { palette } from '../../palette';
-
-export const colorWarningFrostedDark = palette.dark.yellow['200a'];
+export const colorWarningFrostedDark = 'hsl(52 79% 20% / 0.66)';
