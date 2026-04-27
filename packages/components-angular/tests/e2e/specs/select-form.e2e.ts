@@ -2,7 +2,7 @@ import { expect, Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-select');
 const getCombobox = (page: Page) => page.locator('p-select [role="combobox"]');
-const getDialog = (page: Page) => page.locator('p-select [role="dialog"]');
+const getDialog = (page: Page) => page.locator('p-select [popover]');
 const getOptions = (page: Page) => page.locator('p-select-option');
 
 const setValue = async (page) => {

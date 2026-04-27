@@ -1,9 +1,8 @@
-
 import { expect, Page, test } from '@playwright/test';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getCombobox = (page: Page) => page.locator('p-multi-select [role="combobox"]');
-const getDialog = (page: Page) => page.locator('p-multi-select [role="dialog"]');
+const getDialog = (page: Page) => page.locator('p-multi-select [popover]');
 const getOptions = (page: Page) => page.locator('p-multi-select-option');
 
 test('should work with v-model:value manually and programmatic', async ({ page }) => {
