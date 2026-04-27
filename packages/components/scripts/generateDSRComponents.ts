@@ -467,35 +467,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           // get rid of left over
           .replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '')
-          // set aria attributes on button and anchor children, what at runtime is done via this.setAccessibilityAttributes()
-          .replace(
-            /const { children, namedSlotChildren, otherChildren } =.*/,
-            `$&
-    const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? child.type === 'button'
-          ? {
-              ...child,
-              props: {
-                ...child.props,
-                role: 'tab',
-                tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1',
-                'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false',
-              },
-            }
-          : child.type === 'a'
-          ? {
-              ...child,
-              props: {
-                ...child.props,
-                'aria-current': this.props.activeTabIndex === i ? 'true' : 'false',
-              },
-            }
-          : child
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/(getSanitizedActiveTabIndex\(this\.props\.activeTabIndex, )(this\.props\.tabs)/, '$1children');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(

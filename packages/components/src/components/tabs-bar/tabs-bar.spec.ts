@@ -129,7 +129,8 @@ describe('activeTabIndexHandler()', () => {
     component['defineTabs']();
     component['scroller'] = document.createElement('div');
     const bar = document.createElement('span');
-    bar.animate = vi.fn();
+    bar.animate = vi.fn().mockReturnValue({ finished: Promise.resolve(), cancel: vi.fn() });
+    bar.getAnimations = vi.fn().mockReturnValue([]);
     component['bar'] = bar;
     return { component, tabs, bar };
   };
@@ -166,20 +167,6 @@ describe('activeTabIndexHandler()', () => {
       ]),
       expect.objectContaining({ duration: expect.any(Number), easing: expect.any(String) })
     );
-  });
-
-  it('should set data attribute to delay active tab style with transition', () => {
-    const { component, tabs } = initComponentForHandler();
-
-    component.activeTabIndexHandler(1, 0);
-
-    expect(tabs[0].getAttribute('data-delay')).toBe(null);
-    expect(tabs[1].getAttribute('data-delay')).toBe('');
-
-    component.activeTabIndexHandler(2, 1);
-
-    expect(tabs[1].getAttribute('data-delay')).toBe(null);
-    expect(tabs[2].getAttribute('data-delay')).toBe('');
   });
 
   it('should not animate the bar when both indices are out of range', () => {
