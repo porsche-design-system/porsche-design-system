@@ -8,7 +8,6 @@
     aria-expanded="false"
     aria-required="false"
     aria-controls="listbox"
-    aria-multiselectable="false"
     aria-autocomplete="none"
   >
     <span> </span>
@@ -20,6 +19,7 @@
       class="options"
       role="listbox"
       aria-required="false"
+      aria-multiselectable="false"
       tabindex="-1"
     >
       <slot name="options-status"> </slot>

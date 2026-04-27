@@ -319,8 +319,7 @@ export class MultiSelect {
             hasLabel(this.host, this.label) && labelId,
             selectMessageId,
             selectDescriptionId,
-            listboxId,
-            true
+            listboxId
           )}
           disabled={this.disabled}
           onClick={this.onComboClick}
@@ -349,7 +348,7 @@ export class MultiSelect {
           )}
           <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
-        <div popover="manual" tabindex={0} onToggle={() => this.onToggle()} ref={(el) => (this.popoverElement = el)}>
+        <div popover="manual" tabIndex={0} onToggle={() => this.onToggle()} ref={(el) => (this.popoverElement = el)}>
           {hasCustomFilterSlot ? (
             <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>
           ) : (
@@ -377,7 +376,8 @@ export class MultiSelect {
               this.required,
               hasLabel(this.host, this.label) && labelId,
               selectMessageId,
-              selectDescriptionId
+              selectDescriptionId,
+              true
             )}
             onPointerMove={this.onPointerMove}
             onBlur={(e: any) => e.stopPropagation()}

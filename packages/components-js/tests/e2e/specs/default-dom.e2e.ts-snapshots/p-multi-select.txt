@@ -3,18 +3,24 @@
     type="button"
     role="combobox"
     id="button"
+    tabindex="0"
     aria-haspopup="listbox"
     aria-expanded="false"
     aria-required="false"
     aria-controls="listbox"
-    aria-multiselectable="true"
   >
     <span> </span>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
   </button>
   <div popover="manual" tabindex="0">
     <p-input-search class="filter hydrated" name="filter"> </p-input-search>
-    <div id="listbox" class="options" role="listbox" aria-required="false">
+    <div
+      id="listbox"
+      class="options"
+      role="listbox"
+      aria-required="false"
+      aria-multiselectable="true"
+    >
       <slot name="options-status"> </slot>
       <slot> </slot>
     </div>

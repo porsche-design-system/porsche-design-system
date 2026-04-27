@@ -7,8 +7,7 @@ export const getComboboxAriaAttributes = (
   labelId: string,
   messageId: string,
   descriptionId: string,
-  listboxId: string,
-  multiselectable: boolean
+  listboxId: string
 ): AriaAttributes => {
   return {
     'aria-labelledby': labelId || null,
@@ -17,7 +16,6 @@ export const getComboboxAriaAttributes = (
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-required': isRequired ? 'true' : 'false',
     'aria-controls': listboxId || null,
-    'aria-multiselectable': multiselectable ? 'true' : 'false',
   };
 };
 
@@ -25,13 +23,15 @@ export const getListboxAriaAttributes = (
   isRequired: boolean,
   labelId: string,
   messageId: string,
-  descriptionId: string
+  descriptionId: string,
+  multiselectable: boolean
 ): AriaAttributes => {
   return {
     role: 'listbox',
     'aria-labelledby': labelId || null,
     'aria-describedby': setAriaIDREF(messageId, descriptionId),
     'aria-required': isRequired ? 'true' : 'false',
+    'aria-multiselectable': multiselectable ? 'true' : 'false',
   };
 };
 

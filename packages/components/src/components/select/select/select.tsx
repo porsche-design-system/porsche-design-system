@@ -322,8 +322,7 @@ export class Select {
             hasLabel(this.host, this.label) && labelId,
             selectMessageId,
             selectDescriptionId,
-            listboxId,
-            false
+            listboxId
           )}
           aria-autocomplete="none"
           disabled={this.disabled}
@@ -371,7 +370,8 @@ export class Select {
               this.required,
               hasLabel(this.host, this.label) && labelId,
               selectMessageId,
-              selectDescriptionId
+              selectDescriptionId,
+              false
             )}
             tabIndex={-1}
             onPointerMove={this.onPointerMove}

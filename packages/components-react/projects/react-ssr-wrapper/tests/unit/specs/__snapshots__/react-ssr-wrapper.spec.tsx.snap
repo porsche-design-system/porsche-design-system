@@ -246,10 +246,10 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
         aria-controls="listbox"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-multiselectable="true"
         aria-required="false"
         id="button"
         role="combobox"
+        tabindex="0"
         type="button"
       >
         <span />
@@ -712,6 +712,7 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-multiselectable="true"
           aria-required="false"
           class="options"
           id="listbox"
@@ -10633,10 +10634,10 @@ exports[`should render dsr component for PMultiSelect 1`] = `
         aria-controls="listbox"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-multiselectable="true"
         aria-required="false"
         id="button"
         role="combobox"
+        tabindex="0"
         type="button"
       >
         <span />
@@ -11099,6 +11100,7 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-multiselectable="true"
           aria-required="false"
           class="options"
           id="listbox"
@@ -12767,7 +12769,6 @@ exports[`should render dsr component for PSelect 1`] = `
         aria-controls="listbox"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-multiselectable="false"
         aria-required="false"
         id="button"
         role="combobox"
@@ -12831,6 +12832,7 @@ img {
         tabindex="0"
       >
         <div
+          aria-multiselectable="false"
           aria-required="false"
           class="options"
           id="listbox"
