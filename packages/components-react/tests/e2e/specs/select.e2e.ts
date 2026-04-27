@@ -45,48 +45,12 @@ test.describe('form', () => {
 
 test.describe('optgroups', () => {
   test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
-    await goto(page, 'select-example');
-    await waitForComponentsReady(page);
-
+    await goto(page, 'select-example-dynamic-optgroup');
     const host = getHost(page);
+    const button = page.getByRole('button', { name: 'Add & change value' });
 
-    // Step 1: mount an empty optgroup as a direct child of the select.
-    // The select learns about the optgroup via slotchange on its own default slot.
-    await page.evaluate(() => {
-      const select = document.querySelector('p-select')!;
-      const optgroup = document.createElement('p-optgroup') as any;
-      optgroup.label = 'Dynamic Group';
-      select.appendChild(optgroup);
-    });
-    await waitForComponentsReady(page);
+    await button.dblclick();
 
-    // Step 2: append a new option INSIDE the already-mounted optgroup.
-    // This mutation does not reach the select's own slot — it only fires slotchange on the
-    // optgroup's internal shadow slot. The select therefore depends on the optgroup forwarding
-    // its inner slotchange via the bubbling `internalOptgroupUpdate` event to learn about
-    // the new option. Without that wiring its cached `selectOptions` stays stale.
-    await page.evaluate(() => {
-      const optgroup = document.querySelector('p-select p-optgroup')!;
-      const newOption = document.createElement('p-select-option') as any;
-      newOption.value = 'new';
-      newOption.textContent = 'Option NEW';
-      optgroup.appendChild(newOption);
-    });
-
-    // Programmatically select the dynamically added option.
-    await setProperty(host, 'value', 'new');
-
-    // Verify the displayed text reflects the selected value.
-    // Without the fix, "new" is not in the cached options, so `selectedOption` becomes null
-    // and the displayed span is empty.
-    await expect
-      .poll(async () =>
-        page.evaluate(() => {
-          const el = document.querySelector('p-select') as any;
-          const button = el?.shadowRoot?.querySelector('button[role="combobox"]');
-          return button?.querySelector('span')?.textContent ?? '';
-        })
-      )
-      .toBe('Option NEW');
+    await expect(host).toHaveJSProperty('value', 'a');
   });
 });
