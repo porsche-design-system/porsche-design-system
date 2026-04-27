@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Tokens`, `Tailwind CSS`, `SCSS`, `Emotion`, `Vanilla Extract`: Update notification frosted colors (success, error,
+  warning, info) ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
 - `Banner`, `Inline Notification`: prop or slot `heading` is recommended but not required anymore
   ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
 - `Banner`, `Inline Notification`, `Toast`: visual alignment and color contrast improvements
