@@ -2,8 +2,6 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import {
-  aiTagStoryTextVariants,
-  aiTagStoryLocales,
   aiTagStoryWithCheckbox,
   aiTagStoryWithRadioButton,
   aiTagStoryWithTag,
@@ -11,6 +9,7 @@ import {
   aiTagStoryWithSelect,
   aiTagStoryWithInputSearch,
   aiTagStoryWithImage,
+  aiTagStoryWithTable,
 } from '@/app/components/ai-tag/ai-tag.stories';
 
 export const metadata = {
@@ -29,6 +28,7 @@ export const metadata = {
     'Within Tag',
     'Within Text',
     'Within Image',
+    'Within Table',
   ]}
 />
 
@@ -78,3 +78,10 @@ The `p-ai-tag` can be positioned as an overlay on images to indicate that the im
 modified by AI.
 
 <ComponentStory story={aiTagStoryWithImage} />
+
+## Within Table
+
+The `p-ai-tag` can sit inline in a `p-table-head-cell` next to the column title — for example on a **Status** column
+when that data is AI-assisted.
+
+<ComponentStory story={aiTagStoryWithTable} />
