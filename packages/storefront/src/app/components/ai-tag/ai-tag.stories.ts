@@ -208,44 +208,6 @@ export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
             { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
           ],
         },
-        {
-          tag: 'p-tag',
-          properties: { icon: 'globe', variant: 'primary' },
-          children: [
-            'Some label ',
-            {
-              tag: 'p-ai-tag',
-              properties: { theme: 'dark', textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' },
-            },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { icon: 'globe', variant: 'primary' },
-          children: [
-            {
-              tag: 'button',
-              properties: { type: 'button' },
-              children: ['Some label'],
-            },
-            ' ',
-            {
-              tag: 'p-ai-tag',
-              properties: { theme: 'dark', textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' },
-            },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { icon: 'globe', variant: 'primary', compact: true },
-          children: [
-            'Some label ',
-            {
-              tag: 'p-ai-tag',
-              properties: { theme: 'dark', textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' },
-            },
-          ],
-        },
       ],
     },
   ],
