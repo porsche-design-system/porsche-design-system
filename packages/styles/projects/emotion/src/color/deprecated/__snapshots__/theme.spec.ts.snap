@@ -16,13 +16,13 @@ exports[`should contain correct values for theme 1`] = `
     },
     "notification": {
       "error": "hsl(0 96.9% 62%)",
-      "errorSoft": "hsl(0 96.9% 62% / 0.26)",
+      "errorSoft": "hsl(0 79% 20% / 0.66)",
       "info": "hsl(210 100% 54.5%)",
-      "infoSoft": "hsl(210 100% 54.5% / 0.26)",
+      "infoSoft": "hsl(210 79% 20% / 0.66)",
       "success": "hsl(157 84.9% 41.6%)",
-      "successSoft": "hsl(157 84.9% 41.6% / 0.26)",
+      "successSoft": "hsl(157 79% 20% / 0.66)",
       "warning": "hsl(28 90.2% 56.1%)",
-      "warningSoft": "hsl(28 90.2% 56.1% / 0.26)",
+      "warningSoft": "hsl(52 79% 20% / 0.66)",
     },
     "primary": "hsl(225 100% 99%)",
     "state": {
@@ -46,13 +46,13 @@ exports[`should contain correct values for theme 1`] = `
     },
     "notification": {
       "error": "hsl(357 78% 41%)",
-      "errorSoft": "hsl(357 78% 41% / 0.18)",
+      "errorSoft": "hsl(0 100% 90% / 0.55)",
       "info": "hsl(228 83.2% 51%)",
-      "infoSoft": "hsl(228 83.2% 51% / 0.18)",
+      "infoSoft": "hsl(211 100% 90% / 0.55)",
       "success": "hsl(115 77.5% 27.8%)",
-      "successSoft": "hsl(115 77.5% 27.8% / 0.18)",
+      "successSoft": "hsl(109 100% 90% / 0.55)",
       "warning": "hsl(28 97.7% 34.1%)",
-      "warningSoft": "hsl(28 97.7% 34.1% / 0.18)",
+      "warningSoft": "hsl(40 100% 90% / 0.55)",
     },
     "primary": "hsl(225 66.7% 1.2%)",
     "state": {
@@ -80,13 +80,13 @@ exports[`should contain correct values for themeDark 1`] = `
   },
   "notification": {
     "error": "hsl(0 96.9% 62%)",
-    "errorSoft": "hsl(0 96.9% 62% / 0.26)",
+    "errorSoft": "hsl(0 79% 20% / 0.66)",
     "info": "hsl(210 100% 54.5%)",
-    "infoSoft": "hsl(210 100% 54.5% / 0.26)",
+    "infoSoft": "hsl(210 79% 20% / 0.66)",
     "success": "hsl(157 84.9% 41.6%)",
-    "successSoft": "hsl(157 84.9% 41.6% / 0.26)",
+    "successSoft": "hsl(157 79% 20% / 0.66)",
     "warning": "hsl(28 90.2% 56.1%)",
-    "warningSoft": "hsl(28 90.2% 56.1% / 0.26)",
+    "warningSoft": "hsl(52 79% 20% / 0.66)",
   },
   "primary": "hsl(225 100% 99%)",
   "state": {
@@ -114,19 +114,19 @@ exports[`should contain correct values for themeDarkContrastMedium 1`] = `"hsl(2
 
 exports[`should contain correct values for themeDarkNotificationError 1`] = `"hsl(0 96.9% 62%)"`;
 
-exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"hsl(0 96.9% 62% / 0.26)"`;
+exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"hsl(0 79% 20% / 0.66)"`;
 
 exports[`should contain correct values for themeDarkNotificationInfo 1`] = `"hsl(210 100% 54.5%)"`;
 
-exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"hsl(210 100% 54.5% / 0.26)"`;
+exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"hsl(210 79% 20% / 0.66)"`;
 
 exports[`should contain correct values for themeDarkNotificationSuccess 1`] = `"hsl(157 84.9% 41.6%)"`;
 
-exports[`should contain correct values for themeDarkNotificationSuccessSoft 1`] = `"hsl(157 84.9% 41.6% / 0.26)"`;
+exports[`should contain correct values for themeDarkNotificationSuccessSoft 1`] = `"hsl(157 79% 20% / 0.66)"`;
 
 exports[`should contain correct values for themeDarkNotificationWarning 1`] = `"hsl(28 90.2% 56.1%)"`;
 
-exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"hsl(28 90.2% 56.1% / 0.26)"`;
+exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"hsl(52 79% 20% / 0.66)"`;
 
 exports[`should contain correct values for themeDarkPrimary 1`] = `"hsl(225 100% 99%)"`;
 
@@ -153,13 +153,13 @@ exports[`should contain correct values for themeLight 1`] = `
   },
   "notification": {
     "error": "hsl(357 78% 41%)",
-    "errorSoft": "hsl(357 78% 41% / 0.18)",
+    "errorSoft": "hsl(0 100% 90% / 0.55)",
     "info": "hsl(228 83.2% 51%)",
-    "infoSoft": "hsl(228 83.2% 51% / 0.18)",
+    "infoSoft": "hsl(211 100% 90% / 0.55)",
     "success": "hsl(115 77.5% 27.8%)",
-    "successSoft": "hsl(115 77.5% 27.8% / 0.18)",
+    "successSoft": "hsl(109 100% 90% / 0.55)",
     "warning": "hsl(28 97.7% 34.1%)",
-    "warningSoft": "hsl(28 97.7% 34.1% / 0.18)",
+    "warningSoft": "hsl(40 100% 90% / 0.55)",
   },
   "primary": "hsl(225 66.7% 1.2%)",
   "state": {
@@ -187,19 +187,19 @@ exports[`should contain correct values for themeLightContrastMedium 1`] = `"hsl(
 
 exports[`should contain correct values for themeLightNotificationError 1`] = `"hsl(357 78% 41%)"`;
 
-exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"hsl(357 78% 41% / 0.18)"`;
+exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"hsl(0 100% 90% / 0.55)"`;
 
 exports[`should contain correct values for themeLightNotificationInfo 1`] = `"hsl(228 83.2% 51%)"`;
 
-exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"hsl(228 83.2% 51% / 0.18)"`;
+exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"hsl(211 100% 90% / 0.55)"`;
 
 exports[`should contain correct values for themeLightNotificationSuccess 1`] = `"hsl(115 77.5% 27.8%)"`;
 
-exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"hsl(115 77.5% 27.8% / 0.18)"`;
+exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"hsl(109 100% 90% / 0.55)"`;
 
 exports[`should contain correct values for themeLightNotificationWarning 1`] = `"hsl(28 97.7% 34.1%)"`;
 
-exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"hsl(28 97.7% 34.1% / 0.18)"`;
+exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"hsl(40 100% 90% / 0.55)"`;
 
 exports[`should contain correct values for themeLightPrimary 1`] = `"hsl(225 66.7% 1.2%)"`;
 

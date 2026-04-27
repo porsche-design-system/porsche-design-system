@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for open: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, position: bottom, state: error, hasDismissButton: true, hasHeadingOrHeadingSlot: true 1`] = `
 ":host {
   display: contents;
 }
@@ -10,25 +10,12 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
-  all: unset;
-  display: block;
-  grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot[name="description"],p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
 [popover] {
   all: unset;
   position: fixed;
   z-index: var(--p-internal-banner-z-index,99);
+  inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
+  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
@@ -41,36 +28,57 @@ slot[name="description"],p {
 [popover]::backdrop {
   display: none;
 }
+slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+  all: unset;
+  grid-area: 1/2;
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 2/2;
+  margin-top: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
 @supports (transition-behavior: allow-discrete) {
   [popover] {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
-.banner {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
+.notification {
   box-shadow: var(--p-shadow-lg);
   opacity: 0;
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  display: grid;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-error-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
-  .banner::before {
+  .notification::before {
     grid-area: 1/1;
     place-self: center;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
     margin-inline-end: var(--p-spacing-static-sm);
-    -webkit-mask: undefined center/contain no-repeat;
-    mask: undefined center/contain no-repeat;
+    background: var(--p-color-error);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h4l2 2 2-2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5 3.5-.4 5.5h-1.2L11 6.5zm-2 7h2v2h-2z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h4l2 2 2-2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5 3.5-.4 5.5h-1.2L11 6.5zm-2 7h2v2h-2z"/></svg>') center/contain no-repeat;
   }
 @media(forced-colors:active) {
-    .banner::before {
+    .notification::before {
       background: CanvasText;
     }
 }
@@ -78,7 +86,7 @@ slot[name="description"],p {
 }
 
 @media(forced-colors:active) {
-  .banner {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
@@ -86,7 +94,7 @@ slot[name="description"],p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for open: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, position: bottom, state: success, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
 ":host {
   display: contents;
 }
@@ -96,25 +104,181 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+[popover] {
   all: unset;
-  display: block;
-  grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
+  position: fixed;
+  z-index: var(--p-internal-banner-z-index,99);
+  inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
+  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
+  left: 50vw;
+  width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
 }
-slot[name="description"],p {
+[popover]:popover-open {
+  overlay: auto;
+}
+[popover]::backdrop {
+  display: none;
+}
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  grid-area: 1/2;
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
+}
+@supports (transition-behavior: allow-discrete) {
+  [popover] {
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+  }
+}
+
+.notification {
+  box-shadow: var(--p-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  display: grid;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-success-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+@media(min-width:760px) {
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-success);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18m-1.26 12.69-3.8-3.8 1.07-1.05 2.73 2.73 5.25-5.26 1.06 1.06z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18m-1.26 12.69-3.8-3.8 1.07-1.05 2.73 2.73 5.25-5.26 1.06 1.06z"/></svg>') center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
+}
+
+@media(forced-colors:active) {
+  .notification {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for open: false, position: bottom, state: warning, hasDismissButton: true, hasHeadingOrHeadingSlot: false 1`] = `
+":host {
+  display: contents;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 [popover] {
   all: unset;
   position: fixed;
   z-index: var(--p-internal-banner-z-index,99);
+  inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
+  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
+  left: 50vw;
+  width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+}
+[popover]:popover-open {
+  overlay: auto;
+}
+[popover]::backdrop {
+  display: none;
+}
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
+@supports (transition-behavior: allow-discrete) {
+  [popover] {
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+  }
+}
+
+.notification {
+  box-shadow: var(--p-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  display: grid;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-warning-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+@media(min-width:760px) {
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-warning);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.58 18.26 13.3 3.75A1.5 1.5 0 0 0 12 3a1.5 1.5 0 0 0-1.3.75l-8.28 14.5a1.5 1.5 0 0 0 0 1.5c.28.47.76.75 1.3.75h16.56a1.5 1.5 0 0 0 1.3-2.25M13 17.5h-2v-2h2zm-.4-3.5h-1.2L11 8.5h2z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.58 18.26 13.3 3.75A1.5 1.5 0 0 0 12 3a1.5 1.5 0 0 0-1.3.75l-8.28 14.5a1.5 1.5 0 0 0 0 1.5c.28.47.76.75 1.3.75h16.56a1.5 1.5 0 0 0 1.3-2.25M13 17.5h-2v-2h2zm-.4-3.5h-1.2L11 8.5h2z"/></svg>') center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
+}
+
+@media(forced-colors:active) {
+  .notification {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for open: true, position: top, state: info, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
+":host {
+  display: contents;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+[popover] {
+  all: unset;
+  position: fixed;
+  z-index: var(--p-internal-banner-z-index,99);
+  inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: inherit;
@@ -128,36 +292,45 @@ slot[name="description"],p {
 [popover]::backdrop {
   display: none;
 }
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
 @supports (transition-behavior: allow-discrete) {
   [popover] {
     transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in),overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) allow-discrete;
   }
 }
 
-.banner {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
+.notification {
   box-shadow: var(--p-shadow-lg);
   opacity: 1;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  display: grid;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-info-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
 }
 @media(min-width:760px) {
-  .banner::before {
+  .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
     margin-inline-end: var(--p-spacing-static-sm);
-    -webkit-mask: undefined center/contain no-repeat;
-    mask: undefined center/contain no-repeat;
+    background: var(--p-color-info);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
   }
 @media(forced-colors:active) {
-    .banner::before {
+    .notification::before {
       background: CanvasText;
     }
 }
@@ -165,7 +338,7 @@ slot[name="description"],p {
 }
 
 @media(forced-colors:active) {
-  .banner {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
