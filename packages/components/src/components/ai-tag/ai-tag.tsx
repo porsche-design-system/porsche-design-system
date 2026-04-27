@@ -29,8 +29,8 @@ export class AiTag {
   /** Locale for the AI text (ISO format, e.g. "de_DE"). */
   @Prop() public locale?: AiTagLocale = 'en_US';
 
-  /** Text variant to display: 'abbreviation' (e.g. "AI"), 'ai-generated', or 'ai-modified'. */
-  @Prop() public textVariant?: AiTagTextVariant = 'ai-generated';
+  /** Text variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified"). */
+  @Prop() public textVariant?: AiTagTextVariant = 'generated';
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
@@ -38,15 +38,15 @@ export class AiTag {
     attachComponentCss(this.host, getComponentCss, this.theme);
 
     const { short, long, generated, modified } = getAiTagTranslation(this.locale);
-    const suffix = this.textVariant === 'ai-generated' ? generated : this.textVariant === 'ai-modified' ? modified : null;
 
     return (
       <div class="root">
         <span class="icon"></span>
-        <span>
+        {this.textVariant !== 'abbreviation' ? (
+          <span>{this.textVariant === 'modified' ? modified : generated}</span>
+        ) : (
           <abbr title={long}>{short}</abbr>
-          {suffix && ` ${suffix}`}
-        </span>
+        )}
       </div>
     );
   }
