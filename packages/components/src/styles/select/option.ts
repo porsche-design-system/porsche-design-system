@@ -19,7 +19,7 @@ export const getOptionJssStyle = (
 ): JssStyle => {
   const gap = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
   const paddingBlock = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
-  const paddingInline = `var(--p-internal-${componentName}-padding-left, calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)) calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)`;
+  const paddingInline = `var(--_p-${componentName}-b, calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)) calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)`;
 
   return {
     display: 'flex',

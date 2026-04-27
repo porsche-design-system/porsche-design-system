@@ -11,9 +11,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -32,11 +32,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -65,10 +65,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -85,9 +85,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -116,16 +116,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -135,9 +135,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -248,9 +248,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -269,11 +269,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -302,10 +302,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -322,9 +322,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -353,16 +353,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -372,9 +372,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -486,9 +486,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -507,11 +507,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -540,10 +540,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -560,9 +560,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -591,16 +591,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -610,9 +610,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -723,9 +723,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -744,11 +744,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -777,10 +777,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -797,9 +797,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -828,16 +828,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -847,9 +847,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -960,9 +960,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -981,11 +981,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -1011,10 +1011,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1031,9 +1031,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -1057,16 +1057,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -1076,9 +1076,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1196,9 +1196,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1217,11 +1217,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -1247,10 +1247,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1267,9 +1267,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -1293,16 +1293,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -1312,9 +1312,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1431,9 +1431,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1452,11 +1452,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -1482,10 +1482,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1502,9 +1502,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -1528,16 +1528,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -1547,9 +1547,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1666,9 +1666,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 0.64285714 !important;
-    --p-internal-select-option-scaling: 0.64285714 !important;
-    --p-internal-optgroup-scaling: 0.64285714 !important;
+    --_p-select-a: 0.64285714 !important;
+    --_p-select-option-a: 0.64285714 !important;
+    --_p-optgroup-a: 0.64285714 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1687,11 +1687,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -1717,10 +1717,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1737,9 +1737,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -1763,16 +1763,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -1782,9 +1782,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1901,9 +1901,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1922,11 +1922,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -1952,10 +1952,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1972,9 +1972,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -1998,16 +1998,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -2017,9 +2017,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2137,9 +2137,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2158,11 +2158,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -2188,10 +2188,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2208,9 +2208,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -2234,16 +2234,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -2253,9 +2253,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2372,9 +2372,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2393,11 +2393,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -2423,10 +2423,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2443,9 +2443,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -2469,16 +2469,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -2488,9 +2488,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2606,9 +2606,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2627,11 +2627,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -2657,10 +2657,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: none;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2677,9 +2677,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -2703,16 +2703,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -2722,9 +2722,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2841,9 +2841,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2862,11 +2862,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -2895,10 +2895,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2915,9 +2915,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -2946,16 +2946,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -2965,9 +2965,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3079,9 +3079,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3100,11 +3100,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -3133,10 +3133,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3153,9 +3153,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -3184,16 +3184,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -3203,9 +3203,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3316,9 +3316,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3337,11 +3337,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -3370,10 +3370,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3390,9 +3390,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -3421,16 +3421,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -3440,9 +3440,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3553,9 +3553,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3574,11 +3574,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -3607,10 +3607,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3627,9 +3627,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -3658,16 +3658,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -3677,9 +3677,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3790,9 +3790,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3811,11 +3811,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -3844,10 +3844,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3864,9 +3864,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -3895,16 +3895,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -3914,9 +3914,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4027,9 +4027,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4048,11 +4048,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -4081,10 +4081,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -4101,9 +4101,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -4132,16 +4132,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -4151,9 +4151,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4263,9 +4263,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4284,11 +4284,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -4317,10 +4317,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -4337,9 +4337,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -4368,16 +4368,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -4387,9 +4387,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4500,9 +4500,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4521,11 +4521,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -4554,10 +4554,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -4574,9 +4574,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -4605,16 +4605,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -4624,9 +4624,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4737,9 +4737,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4758,11 +4758,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -4788,10 +4788,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -4808,9 +4808,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -4834,16 +4834,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -4853,9 +4853,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4973,9 +4973,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4994,11 +4994,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -5024,10 +5024,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -5044,9 +5044,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -5070,16 +5070,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -5089,9 +5089,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5208,9 +5208,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -5229,11 +5229,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -5259,10 +5259,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -5279,9 +5279,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -5305,16 +5305,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -5324,9 +5324,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5444,9 +5444,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 0.64285714 !important;
-    --p-internal-select-option-scaling: 0.64285714 !important;
-    --p-internal-optgroup-scaling: 0.64285714 !important;
+    --_p-select-a: 0.64285714 !important;
+    --_p-select-option-a: 0.64285714 !important;
+    --_p-optgroup-a: 0.64285714 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -5465,11 +5465,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
     background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
@@ -5495,10 +5495,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -5515,9 +5515,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -5541,16 +5541,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -5560,9 +5560,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5680,9 +5680,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -5701,11 +5701,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
@@ -5731,10 +5731,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -5751,9 +5751,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -5777,16 +5777,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -5796,9 +5796,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5915,9 +5915,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 }
   :host {
     display: block;
-    --p-internal-select-scaling: 1 !important;
-    --p-internal-select-option-scaling: 1 !important;
-    --p-internal-optgroup-scaling: 1 !important;
+    --_p-select-a: 1 !important;
+    --_p-select-option-a: 1 !important;
+    --_p-optgroup-a: 1 !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -5936,11 +5936,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     display: flex;
     align-items: center;
-    gap: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    height: calc(var(--p-internal-select-scaling) * 3.5rem);
+    gap: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 4px);
+    height: calc(var(--_p-select-a) * 3.5rem);
     box-sizing: border-box;
     min-width: 0;
-    padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
+    padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-select-background-color, var(--p-color-frosted));
@@ -5966,10 +5966,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -5986,9 +5986,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   ::slotted([slot="filter"]) {
     position: sticky !important;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) !important;
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1) !important;
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) !important;
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1) !important;
     background: var(--p-color-canvas) !important;
     z-index: 1 !important;
   }
@@ -6012,16 +6012,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .filter {
     position: sticky;
-    top: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
-    padding: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    margin: calc(calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px) * -1);
+    top: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
+    padding: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    margin: calc(calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px) * -1);
     background: var(--p-color-canvas);
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
   }
   .icon {
     margin-inline-end: -3px;
@@ -6031,9 +6031,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   .no-results {
     display: flex;
-    gap: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-block: calc(11.2px * (var(--p-internal-select-scaling) - 0.64285714) + 4px);
-    padding-inline: var(--p-internal-select-option-padding-left, calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px)) calc(16.8px * (var(--p-internal-select-scaling) - 0.64285714) + 6px);
+    gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);

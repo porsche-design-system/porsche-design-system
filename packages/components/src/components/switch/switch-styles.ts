@@ -26,7 +26,7 @@ import type { AlignLabel, BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
-const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
+const cssVarInternalSwitchScaling = '--_p-switch-a';
 
 const getColors = (
   checked: boolean,

@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: table-row;
-  border-bottom: var(--_d,1px) solid var(--_c) !important;
+  border-bottom: var(--_p-table-d) solid var(--_p-table-c) !important;
   transition: background var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 :host([hidden]) {
@@ -11,7 +11,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
 }
 @media(hover:hover) {
   :host(:hover) {
-    background: var(--_b) !important;
+    background: var(--_p-table-b) !important;
   }
 }
 "

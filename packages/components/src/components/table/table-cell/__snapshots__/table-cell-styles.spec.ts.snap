@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css for multiline: false 1`] 
 ":host {
   display: table-cell;
   vertical-align: middle;
-  padding: var(--_a, var(--p-spacing-fluid-sm)) !important;
+  padding: var(--_p-table-a) !important;
   margin: 0 !important;
   white-space: nowrap !important;
 }
@@ -17,7 +17,7 @@ exports[`getComponentCss() > should return correct css for multiline: true 1`] =
 ":host {
   display: table-cell;
   vertical-align: middle;
-  padding: var(--_a, var(--p-spacing-fluid-sm)) !important;
+  padding: var(--_p-table-a) !important;
   margin: 0 !important;
   white-space: normal !important;
 }

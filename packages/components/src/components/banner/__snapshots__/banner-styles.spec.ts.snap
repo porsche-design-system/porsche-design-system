@@ -13,7 +13,7 @@ exports[`getComponentCss() > should return correct css for open: false, position
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--p-internal-banner-z-index,99);
+  z-index: var(--_p-banner-a,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
@@ -107,7 +107,7 @@ exports[`getComponentCss() > should return correct css for open: false, position
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--p-internal-banner-z-index,99);
+  z-index: var(--_p-banner-a,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
@@ -189,7 +189,7 @@ exports[`getComponentCss() > should return correct css for open: false, position
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--p-internal-banner-z-index,99);
+  z-index: var(--_p-banner-a,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
@@ -277,7 +277,7 @@ exports[`getComponentCss() > should return correct css for open: true, position:
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--p-internal-banner-z-index,99);
+  z-index: var(--_p-banner-a,99);
   inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));

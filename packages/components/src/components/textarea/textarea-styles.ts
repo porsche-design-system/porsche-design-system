@@ -32,7 +32,7 @@ import {
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
-export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
+export const cssVarInternalTextareaScaling = '--_p-textarea-a';
 
 /**
  * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}

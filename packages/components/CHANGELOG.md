@@ -43,6 +43,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4294](https://github.com/porsche-design-system/porsche-design-system/pull/4294))
 - Form components: rendering issues of slotted label if provided as `display: block` element
   ([#4298](https://github.com/porsche-design-system/porsche-design-system/pull/4298))
+- `Table`: incorrect cell padding when nested inside `Flyout`, `Modal` or `Sheet`
+  ([#4314](https://github.com/porsche-design-system/porsche-design-system/pull/4314))
 - `Tabs`, `Tabs Bar`:
   - keyboard navigation in RTL mode ([#4300](https://github.com/porsche-design-system/porsche-design-system/pull/4300))
   - animation flickering ([#4309](https://github.com/porsche-design-system/porsche-design-system/pull/4309))

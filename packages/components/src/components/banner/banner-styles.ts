@@ -34,7 +34,7 @@ const cssVarInsetX = '--p-banner-inset-x';
 const cssVarPositionTop = '--p-banner-position-top'; // deprecated (aliased)
 const cssVarPositionBottom = '--p-banner-position-bottom'; // deprecated (aliased)
 const topBottomFallback = '56px';
-const cssVariableZIndex = '--p-internal-banner-z-index';
+const cssVariableZIndex = '--_p-banner-a';
 
 export const getComponentCss = (
   isOpen: boolean,
