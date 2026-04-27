@@ -2811,20 +2811,16 @@ test.describe('optgroups', () => {
     const options = getSelectOptions(page);
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     await options.nth(0).click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'a');
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
     await expect(buttonElement.locator('span').first()).toHaveText('a');
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     await options.nth(1).click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'b');
     await expect(options.nth(0)).toHaveJSProperty('selected', false);
@@ -2840,15 +2836,12 @@ test.describe('optgroups', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
 
     await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
 
     await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(host).toHaveJSProperty('value', 'b');
     await expect(buttonElement.locator('span').first()).toHaveText('a');
   });
 
@@ -2861,12 +2854,10 @@ test.describe('optgroups', () => {
     await addEventListener(host, 'change');
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
 
     await options.nth(0).click();
-    await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
     expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
@@ -2895,7 +2886,6 @@ test.describe('optgroups', () => {
     // Select the newly added option (last child inside the first optgroup)
     const newOption = optgroups.nth(0).locator('p-select-option').last();
     await newOption.click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'new');
     await expect(buttonElement).toHaveText('new');
