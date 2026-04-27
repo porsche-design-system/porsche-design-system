@@ -3114,21 +3114,6 @@ exports[`should render dsr component for PBanner 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
-  all: unset;
-  display: block;
-  grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot[name="description"],p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
 [popover] {
   all: unset;
   position: fixed;
@@ -3147,6 +3132,13 @@ slot[name="description"],p {
 [popover]::backdrop {
   display: none;
 }
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
 @media(min-width:760px) {
   [popover] {
     inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
@@ -3160,28 +3152,28 @@ slot[name="description"],p {
   }
 }
 
-.banner {
+.notification {
+  box-shadow: var(--p-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  box-shadow: var(--p-shadow-lg);
-  opacity: 0;
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
 }
 .dismiss {
-  grid-area: 1/4/3;
-  margin-top: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-end: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-start: var(--p-spacing-static-md);
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
-  .banner::before {
+  .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
@@ -3191,7 +3183,7 @@ slot[name="description"],p {
     mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   }
 @media(forced-colors:active) {
-    .banner::before {
+    .notification::before {
       background: CanvasText;
     }
 }
@@ -3199,7 +3191,7 @@ slot[name="description"],p {
 }
 
 @media(forced-colors:active) {
-  .banner {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
@@ -3213,14 +3205,9 @@ slot[name="description"],p {
       role="status"
     >
       <div
-        class="banner"
+        class="notification"
       >
-        <slot
-          name="heading"
-        />
-        <slot
-          name="description"
-        />
+        <slot />
         <p-button
           class="dismiss"
           data-ssr=""
@@ -7003,40 +6990,32 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
-  grid-area: 1/4/3;
-  margin-top: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-end: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-start: var(--p-spacing-static-md);
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
   .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
@@ -7066,9 +7045,6 @@ slot:not([name]),p {
       class="notification"
       role="status"
     >
-      <slot
-        name="heading"
-      />
       <slot />
       <p-button
         class="dismiss"
