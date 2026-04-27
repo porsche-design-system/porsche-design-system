@@ -1,4 +1,4 @@
-<span>
+<div class="root">
   <span class="icon"> </span>
-  TODO</span
->
+  <span> AI-generated</span>
+</div>

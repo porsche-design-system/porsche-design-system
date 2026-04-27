@@ -10,7 +10,10 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-span:not(.icon) {
+abbr {
+  text-decoration: none;
+}
+.root {
   display: flex;
   align-items: center;
   gap: 2px;
@@ -22,9 +25,6 @@ span:not(.icon) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-abbr {
-  text-decoration: none;
 }
 .icon {
   display: inline-block;
@@ -47,7 +47,10 @@ exports[`getComponentCss() > should return correct css for theme: light 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-span:not(.icon) {
+abbr {
+  text-decoration: none;
+}
+.root {
   display: flex;
   align-items: center;
   gap: 2px;
@@ -59,9 +62,6 @@ span:not(.icon) {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-abbr {
-  text-decoration: none;
 }
 .icon {
   display: inline-block;

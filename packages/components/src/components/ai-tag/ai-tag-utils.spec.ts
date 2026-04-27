@@ -1,4 +1,16 @@
-import { AI_TAG_ICON_PATH, AI_TAG_TRANSLATIONS, type AiTagLocale, getAiTagTranslation } from './ai-tag-utils';
+import {
+  AI_TAG_ICON_PATH,
+  AI_TAG_TEXT_VARIANTS,
+  AI_TAG_TRANSLATIONS,
+  type AiTagLocale,
+  getAiTagTranslation,
+} from './ai-tag-utils';
+
+describe('AI_TAG_TEXT_VARIANTS', () => {
+  it('should list supported text-variant prop values', () => {
+    expect(AI_TAG_TEXT_VARIANTS).toStrictEqual(['abbreviation', 'generated', 'modified']);
+  });
+});
 
 describe('AI_TAG_ICON_PATH', () => {
   it('should contain a valid SVG path', () => {
@@ -9,7 +21,7 @@ describe('AI_TAG_ICON_PATH', () => {
 
 describe('AI_TAG_TRANSLATIONS', () => {
   it('should contain translations for all supported locales', () => {
-    expect(Object.keys(AI_TAG_TRANSLATIONS).length).toBeGreaterThanOrEqual(26);
+    expect(Object.keys(AI_TAG_TRANSLATIONS).length).toBe(35);
   });
 
   it('should have short, long, generated and modified for each locale', () => {
@@ -24,148 +36,200 @@ describe('AI_TAG_TRANSLATIONS', () => {
   });
 
   it.each<[AiTagLocale, string]>([
-    ['de_DE', 'KI'],
-    ['en_US', 'AI'],
-    ['en_GB', 'AI'],
+    ['bg_BG', 'ИИ'],
+    ['bs_BA', 'AI'],
+    ['cs_CZ', 'AI'],
     ['da_DK', 'KI'],
+    ['de_DE', 'KI'],
+    ['el_GR', 'ΤΝ'],
+    ['en_CY', 'AI'],
+    ['en_GB', 'AI'],
+    ['en_US', 'AI'],
+    ['es_ES', 'IA'],
+    ['et_EE', 'TI'],
     ['fi_FI', 'AI'],
     ['fr_FR', 'IA'],
-    ['el_GR', 'ΤΝ'],
-    ['it_IT', 'IA'],
+    ['he_IL', 'AI'],
     ['hr_HR', 'UI'],
-    ['nl_NL', 'AI'],
+    ['hu_HU', 'MI'],
+    ['is_IS', 'AI'],
+    ['it_IT', 'IA'],
+    ['lt_LT', 'DI'],
+    ['lv_LV', 'MI'],
+    ['me_ME', 'AI'],
+    ['mk_MK', 'ВИ'],
+    ['mt_MT', 'AI'],
     ['nb_NO', 'KI'],
+    ['nl_NL', 'AI'],
     ['pl_PL', 'SI'],
     ['pt_PT', 'IA'],
     ['ro_RO', 'IA'],
-    ['sv_SE', 'AI'],
-    ['sk_SK', 'UI'],
+    ['ru_RU', 'ИИ'],
+    ['sk_SK', 'AI'],
     ['sl_SI', 'UI'],
-    ['es_ES', 'IA'],
-    ['cs_CZ', 'UI'],
-    ['hu_HU', 'MI'],
-    ['mt_MT', 'AI'],
-    ['bg_BG', 'ИИ'],
-    ['en_CY', 'AI'],
-    ['et_EE', 'TI'],
-    ['lv_LV', 'MI'],
-    ['lt_LT', 'DI'],
-  ])('should return correct abbreviation text for locale: %s → %s', (locale, expected) => {
+    ['sr_RS', 'AI'],
+    ['sv_SE', 'AI'],
+    ['tr_TR', 'AI'],
+    ['uk_UA', 'ШІ'],
+  ])('should return correct short text for locale: %s → %s', (locale, expected) => {
     expect(AI_TAG_TRANSLATIONS[locale].short).toBe(expected);
   });
 
   it.each<[AiTagLocale, string]>([
-    ['de_DE', 'Künstliche Intelligenz'],
-    ['en_US', 'Artificial Intelligence'],
-    ['en_GB', 'Artificial Intelligence'],
-    ['da_DK', 'Kunstig intelligens'],
-    ['fi_FI', 'Tekoäly'],
-    ['fr_FR', 'Intelligence artificielle'],
-    ['el_GR', 'Τεχνητή νοημοσύνη'],
-    ['it_IT', 'Intelligenza artificiale'],
-    ['hr_HR', 'Umjetna inteligencija'],
-    ['nl_NL', 'Kunstmatige intelligentie'],
-    ['nb_NO', 'Kunstig intelligens'],
-    ['pl_PL', 'Sztuczna inteligencja'],
-    ['pt_PT', 'Inteligência artificial'],
-    ['ro_RO', 'Inteligență artificială'],
-    ['sv_SE', 'Artificiell intelligens'],
-    ['sk_SK', 'Umelá inteligencia'],
-    ['sl_SI', 'Umetna inteligenca'],
-    ['es_ES', 'Inteligencia artificial'],
-    ['cs_CZ', 'Umělá inteligence'],
-    ['hu_HU', 'Mesterséges intelligencia'],
-    ['mt_MT', 'Artificial Intelligence'],
-    ['bg_BG', 'Изкуствен интелект'],
-    ['en_CY', 'Artificial Intelligence'],
-    ['et_EE', 'Tehisintellekt'],
-    ['lv_LV', 'Mākslīgais intelekts'],
-    ['lt_LT', 'Dirbtinis intelektas'],
-  ])('should return correct long-form text for locale: %s → %s', (locale, expected) => {
+    ['bg_BG', 'изкуствен интелект'],
+    ['bs_BA', 'vještačka inteligencija'],
+    ['cs_CZ', 'umělá inteligence'],
+    ['da_DK', 'kunstig intelligens'],
+    ['de_DE', 'künstliche Intelligenz'],
+    ['el_GR', 'τεχνητή νοημοσύνη'],
+    ['en_CY', 'artificial intelligence'],
+    ['en_GB', 'artificial intelligence'],
+    ['en_US', 'artificial intelligence'],
+    ['es_ES', 'inteligencia artificial'],
+    ['et_EE', 'tehisintellekt'],
+    ['fi_FI', 'tekoäly'],
+    ['fr_FR', 'intelligence artificielle'],
+    ['he_IL', 'בינה מלאכותית'],
+    ['hr_HR', 'umjetna inteligencija'],
+    ['hu_HU', 'mesterséges intelligencia'],
+    ['is_IS', 'gervigreind'],
+    ['it_IT', 'intelligenza artificiale'],
+    ['lt_LT', 'dirbtinis intelektas'],
+    ['lv_LV', 'mākslīgais intelekts'],
+    ['me_ME', 'veštačka inteligencija'],
+    ['mk_MK', 'вештачка интелигенција'],
+    ['mt_MT', 'artificial intelligence'],
+    ['nb_NO', 'kunstig intelligens'],
+    ['nl_NL', 'kunstmatige intelligentie'],
+    ['pl_PL', 'sztuczna inteligencja'],
+    ['pt_PT', 'inteligência artificial'],
+    ['ro_RO', 'inteligență artificială'],
+    ['ru_RU', 'искусственный интеллект'],
+    ['sk_SK', 'umelá inteligencia'],
+    ['sl_SI', 'umetna inteligenca'],
+    ['sr_RS', 'veštačka inteligencija'],
+    ['sv_SE', 'artificiell intelligens'],
+    ['tr_TR', 'yapay zeka'],
+    ['uk_UA', 'штучний інтелект'],
+  ])('should return correct long text for locale: %s → %s', (locale, expected) => {
     expect(AI_TAG_TRANSLATIONS[locale].long).toBe(expected);
   });
 });
 
 describe('getAiTagTranslation()', () => {
-  it.each<[string, string]>([
-    ['de_DE', 'KI'],
-    ['en_US', 'AI'],
-    ['en_GB', 'AI'],
+  it.each<[AiTagLocale, string]>([
+    ['bg_BG', 'ИИ'],
+    ['bs_BA', 'AI'],
+    ['cs_CZ', 'AI'],
     ['da_DK', 'KI'],
+    ['de_DE', 'KI'],
+    ['el_GR', 'ΤΝ'],
+    ['en_CY', 'AI'],
+    ['en_GB', 'AI'],
+    ['en_US', 'AI'],
+    ['es_ES', 'IA'],
+    ['et_EE', 'TI'],
     ['fi_FI', 'AI'],
     ['fr_FR', 'IA'],
-    ['el_GR', 'ΤΝ'],
-    ['it_IT', 'IA'],
+    ['he_IL', 'AI'],
     ['hr_HR', 'UI'],
-    ['nl_NL', 'AI'],
+    ['hu_HU', 'MI'],
+    ['is_IS', 'AI'],
+    ['it_IT', 'IA'],
+    ['lt_LT', 'DI'],
+    ['lv_LV', 'MI'],
+    ['me_ME', 'AI'],
+    ['mk_MK', 'ВИ'],
+    ['mt_MT', 'AI'],
     ['nb_NO', 'KI'],
+    ['nl_NL', 'AI'],
     ['pl_PL', 'SI'],
     ['pt_PT', 'IA'],
     ['ro_RO', 'IA'],
-    ['sv_SE', 'AI'],
-    ['sk_SK', 'UI'],
+    ['ru_RU', 'ИИ'],
+    ['sk_SK', 'AI'],
     ['sl_SI', 'UI'],
-    ['es_ES', 'IA'],
-    ['cs_CZ', 'UI'],
-    ['hu_HU', 'MI'],
-    ['mt_MT', 'AI'],
-    ['bg_BG', 'ИИ'],
-    ['en_CY', 'AI'],
-    ['et_EE', 'TI'],
-    ['lv_LV', 'MI'],
-    ['lt_LT', 'DI'],
+    ['sr_RS', 'AI'],
+    ['sv_SE', 'AI'],
+    ['tr_TR', 'AI'],
+    ['uk_UA', 'ШІ'],
   ])('should return correct short text for locale: %s → %s', (locale, expected) => {
     expect(getAiTagTranslation(locale).short).toBe(expected);
   });
 
-  it.each<[string, string]>([
-    ['de_DE', 'Künstliche Intelligenz'],
-    ['en_US', 'Artificial Intelligence'],
-    ['en_GB', 'Artificial Intelligence'],
-    ['da_DK', 'Kunstig intelligens'],
-    ['fi_FI', 'Tekoäly'],
-    ['fr_FR', 'Intelligence artificielle'],
-    ['el_GR', 'Τεχνητή νοημοσύνη'],
-    ['it_IT', 'Intelligenza artificiale'],
-    ['hr_HR', 'Umjetna inteligencija'],
-    ['nl_NL', 'Kunstmatige intelligentie'],
-    ['nb_NO', 'Kunstig intelligens'],
-    ['pl_PL', 'Sztuczna inteligencja'],
-    ['pt_PT', 'Inteligência artificial'],
-    ['ro_RO', 'Inteligență artificială'],
-    ['sv_SE', 'Artificiell intelligens'],
-    ['sk_SK', 'Umelá inteligencia'],
-    ['sl_SI', 'Umetna inteligenca'],
-    ['es_ES', 'Inteligencia artificial'],
-    ['cs_CZ', 'Umělá inteligence'],
-    ['hu_HU', 'Mesterséges intelligencia'],
-    ['mt_MT', 'Artificial Intelligence'],
-    ['bg_BG', 'Изкуствен интелект'],
-    ['en_CY', 'Artificial Intelligence'],
-    ['et_EE', 'Tehisintellekt'],
-    ['lv_LV', 'Mākslīgais intelekts'],
-    ['lt_LT', 'Dirbtinis intelektas'],
+  it.each<[AiTagLocale, string]>([
+    ['bg_BG', 'изкуствен интелект'],
+    ['bs_BA', 'vještačka inteligencija'],
+    ['cs_CZ', 'umělá inteligence'],
+    ['da_DK', 'kunstig intelligens'],
+    ['de_DE', 'künstliche Intelligenz'],
+    ['el_GR', 'τεχνητή νοημοσύνη'],
+    ['en_CY', 'artificial intelligence'],
+    ['en_GB', 'artificial intelligence'],
+    ['en_US', 'artificial intelligence'],
+    ['es_ES', 'inteligencia artificial'],
+    ['et_EE', 'tehisintellekt'],
+    ['fi_FI', 'tekoäly'],
+    ['fr_FR', 'intelligence artificielle'],
+    ['he_IL', 'בינה מלאכותית'],
+    ['hr_HR', 'umjetna inteligencija'],
+    ['hu_HU', 'mesterséges intelligencia'],
+    ['is_IS', 'gervigreind'],
+    ['it_IT', 'intelligenza artificiale'],
+    ['lt_LT', 'dirbtinis intelektas'],
+    ['lv_LV', 'mākslīgais intelekts'],
+    ['me_ME', 'veštačka inteligencija'],
+    ['mk_MK', 'вештачка интелигенција'],
+    ['mt_MT', 'artificial intelligence'],
+    ['nb_NO', 'kunstig intelligens'],
+    ['nl_NL', 'kunstmatige intelligentie'],
+    ['pl_PL', 'sztuczna inteligencja'],
+    ['pt_PT', 'inteligência artificial'],
+    ['ro_RO', 'inteligență artificială'],
+    ['ru_RU', 'искусственный интеллект'],
+    ['sk_SK', 'umelá inteligencia'],
+    ['sl_SI', 'umetna inteligenca'],
+    ['sr_RS', 'veštačka inteligencija'],
+    ['sv_SE', 'artificiell intelligens'],
+    ['tr_TR', 'yapay zeka'],
+    ['uk_UA', 'штучний інтелект'],
   ])('should return correct long text for locale: %s → %s', (locale, expected) => {
     expect(getAiTagTranslation(locale).long).toBe(expected);
   });
 
-  it('should return generated and modified for each locale', () => {
+  it('should return generated and modified (full label strings) for each locale', () => {
     for (const locale of Object.keys(AI_TAG_TRANSLATIONS)) {
       const entry = getAiTagTranslation(locale);
       expect(entry.generated).toBeDefined();
       expect(entry.modified).toBeDefined();
+      expect(entry.generated.length).toBeGreaterThan(0);
+      expect(entry.modified.length).toBeGreaterThan(0);
     }
+  });
+
+  it('should use full localized phrases for en_US (not short + composition)', () => {
+    const en = getAiTagTranslation('en_US');
+    expect(en.generated).toBe('AI-generated');
+    expect(en.modified).toBe('AI-modified');
+  });
+
+  it('should use full localized phrases for bg_BG (not acronym-only composition)', () => {
+    const bg = getAiTagTranslation('bg_BG');
+    expect(bg.generated).toBe('генериран от изкуствен интелект');
+    expect(bg.modified).toBe('модифициран от изкуствен интелект');
   });
 
   it('should fall back to en_US for unknown locale', () => {
     const entry = getAiTagTranslation('xx_XX');
     expect(entry.short).toBe('AI');
-    expect(entry.long).toBe('Artificial Intelligence');
+    expect(entry.long).toBe('artificial intelligence');
+    expect(entry.generated).toBe('AI-generated');
+    expect(entry.modified).toBe('AI-modified');
   });
 
   it('should fall back to en_US for empty locale', () => {
     const entry = getAiTagTranslation('');
     expect(entry.short).toBe('AI');
-    expect(entry.long).toBe('Artificial Intelligence');
+    expect(entry.long).toBe('artificial intelligence');
   });
 });

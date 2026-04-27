@@ -6,13 +6,18 @@
   }
 </style>
 
-<div class="playground light auto-layout-inline" title="should show default ai-tag">
-  <p-ai-tag></p-ai-tag>
+<div class="playground light auto-layout-inline" title="should show component with default text-variant and locale">
+  <p-ai-tag class="a11ytree-snapshot-test"></p-ai-tag>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show all text variants">
-  <p-ai-tag text-variant="abbreviation"></p-ai-tag>
-  <p-ai-tag text-variant="ai-generated"></p-ai-tag>
-  <p-ai-tag text-variant="ai-modified"></p-ai-tag>
+<div class="playground light auto-layout-inline" title="should show all text variants with default locale">
+  <p-ai-tag text-variant="abbreviation" class="a11ytree-snapshot-test"></p-ai-tag>
+  <p-ai-tag text-variant="generated"></p-ai-tag>
+  <p-ai-tag text-variant="modified"></p-ai-tag>
 </div>
 
+<div class="playground light auto-layout-inline" title="should show all text variants with de_DE locale">
+  <p-ai-tag text-variant="abbreviation" locale="de_DE"></p-ai-tag>
+  <p-ai-tag text-variant="generated" locale="de_DE"></p-ai-tag>
+  <p-ai-tag text-variant="modified" locale="de_DE"></p-ai-tag>
+</div>
