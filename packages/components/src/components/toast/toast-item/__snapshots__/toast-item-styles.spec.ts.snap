@@ -2,26 +2,18 @@
 
 exports[`getComponentCss() > should return correct css for state: error 1`] = `
 ":host {
-  display: grid;
-  opacity: 0;
+  display: block;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
+  padding: 0 !important;
   inset: inherit !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
   width: auto !important;
   height: auto !important;
-  grid-template-columns: minmax(auto, 1fr) auto;
-  gap: var(--p-spacing-static-md);
-  place-items: start;
-  padding: var(--p-spacing-static-md);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  background: var(--p-color-error-frosted);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: var(--p-shadow-lg);
+  background: transparent !important;
 }
 :host::backdrop {
   display: none;
@@ -29,39 +21,53 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-p {
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
   color: var(--p-color-primary);
+}
+.notification {
+  box-shadow: var(--p-shadow-lg);
   display: grid;
-  gap: var(--p-spacing-static-xs);
-  margin-top: 2px;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-error-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-error);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h4l2 2 2-2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5 3.5-.4 5.5h-1.2L11 6.5zm-2 7h2v2h-2z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h4l2 2 2-2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5 3.5-.4 5.5h-1.2L11 6.5zm-2 7h2v2h-2z"/></svg>') center/contain no-repeat;
   }
-  p {
-    margin-left: calc(-1 * var(--p-spacing-static-sm));
-  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
-  :host {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
-  }
-}
-
-.icon {
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0.5;
-}
-@media(max-width:759px) {
-  .icon {
-    display: none;
   }
 }
 "
@@ -69,26 +75,18 @@ p {
 
 exports[`getComponentCss() > should return correct css for state: info 1`] = `
 ":host {
-  display: grid;
-  opacity: 0;
+  display: block;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
+  padding: 0 !important;
   inset: inherit !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
   width: auto !important;
   height: auto !important;
-  grid-template-columns: minmax(auto, 1fr) auto;
-  gap: var(--p-spacing-static-md);
-  place-items: start;
-  padding: var(--p-spacing-static-md);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  background: var(--p-color-info-frosted);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: var(--p-shadow-lg);
+  background: transparent !important;
 }
 :host::backdrop {
   display: none;
@@ -96,39 +94,53 @@ exports[`getComponentCss() > should return correct css for state: info 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-p {
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
   color: var(--p-color-primary);
+}
+.notification {
+  box-shadow: var(--p-shadow-lg);
   display: grid;
-  gap: var(--p-spacing-static-xs);
-  margin-top: 2px;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-info-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-info);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
   }
-  p {
-    margin-left: calc(-1 * var(--p-spacing-static-sm));
-  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
-  :host {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
-  }
-}
-
-.icon {
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0.5;
-}
-@media(max-width:759px) {
-  .icon {
-    display: none;
   }
 }
 "
@@ -136,26 +148,18 @@ p {
 
 exports[`getComponentCss() > should return correct css for state: success 1`] = `
 ":host {
-  display: grid;
-  opacity: 0;
+  display: block;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
+  padding: 0 !important;
   inset: inherit !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
   width: auto !important;
   height: auto !important;
-  grid-template-columns: minmax(auto, 1fr) auto;
-  gap: var(--p-spacing-static-md);
-  place-items: start;
-  padding: var(--p-spacing-static-md);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  background: var(--p-color-success-frosted);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: var(--p-shadow-lg);
+  background: transparent !important;
 }
 :host::backdrop {
   display: none;
@@ -163,39 +167,53 @@ exports[`getComponentCss() > should return correct css for state: success 1`] = 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-p {
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
   color: var(--p-color-primary);
+}
+.notification {
+  box-shadow: var(--p-shadow-lg);
   display: grid;
-  gap: var(--p-spacing-static-xs);
-  margin-top: 2px;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-success-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-success);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18m-1.26 12.69-3.8-3.8 1.07-1.05 2.73 2.73 5.25-5.26 1.06 1.06z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18m-1.26 12.69-3.8-3.8 1.07-1.05 2.73 2.73 5.25-5.26 1.06 1.06z"/></svg>') center/contain no-repeat;
   }
-  p {
-    margin-left: calc(-1 * var(--p-spacing-static-sm));
-  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
-  :host {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
-  }
-}
-
-.icon {
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0.5;
-}
-@media(max-width:759px) {
-  .icon {
-    display: none;
   }
 }
 "
@@ -203,26 +221,18 @@ p {
 
 exports[`getComponentCss() > should return correct css for state: warning 1`] = `
 ":host {
-  display: grid;
-  opacity: 0;
+  display: block;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
+  padding: 0 !important;
   inset: inherit !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
   width: auto !important;
   height: auto !important;
-  grid-template-columns: minmax(auto, 1fr) auto;
-  gap: var(--p-spacing-static-md);
-  place-items: start;
-  padding: var(--p-spacing-static-md);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  background: var(--p-color-warning-frosted);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  box-shadow: var(--p-shadow-lg);
+  background: transparent !important;
 }
 :host::backdrop {
   display: none;
@@ -230,39 +240,53 @@ exports[`getComponentCss() > should return correct css for state: warning 1`] = 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-p {
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  margin: 0;
   color: var(--p-color-primary);
+}
+.notification {
+  box-shadow: var(--p-shadow-lg);
   display: grid;
-  gap: var(--p-spacing-static-xs);
-  margin-top: 2px;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-warning-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-warning);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.58 18.26 13.3 3.75A1.5 1.5 0 0 0 12 3a1.5 1.5 0 0 0-1.3.75l-8.28 14.5a1.5 1.5 0 0 0 0 1.5c.28.47.76.75 1.3.75h16.56a1.5 1.5 0 0 0 1.3-2.25M13 17.5h-2v-2h2zm-.4-3.5h-1.2L11 8.5h2z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.58 18.26 13.3 3.75A1.5 1.5 0 0 0 12 3a1.5 1.5 0 0 0-1.3.75l-8.28 14.5a1.5 1.5 0 0 0 0 1.5c.28.47.76.75 1.3.75h16.56a1.5 1.5 0 0 0 1.3-2.25M13 17.5h-2v-2h2zm-.4-3.5h-1.2L11 8.5h2z"/></svg>') center/contain no-repeat;
   }
-  p {
-    margin-left: calc(-1 * var(--p-spacing-static-sm));
-  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
 }
 
 @media(forced-colors:active) {
-  :host {
+  .notification {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
-  }
-}
-
-.icon {
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0.5;
-}
-@media(max-width:759px) {
-  .icon {
-    display: none;
   }
 }
 "

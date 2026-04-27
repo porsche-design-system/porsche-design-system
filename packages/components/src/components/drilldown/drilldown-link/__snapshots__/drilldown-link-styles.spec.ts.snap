@@ -16,7 +16,7 @@ a {
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--_p-a);
+  color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: transparent;
   cursor: pointer;
@@ -56,7 +56,7 @@ a {
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--_p-a);
+  color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
@@ -96,7 +96,7 @@ a {
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--_p-a);
+  color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
@@ -136,7 +136,7 @@ a {
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--_p-a);
+  color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
@@ -176,7 +176,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
-  color: var(--_p-a) !important;
+  color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   cursor: pointer !important;
@@ -216,7 +216,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
-  color: var(--_p-a) !important;
+  color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
@@ -256,7 +256,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
-  color: var(--_p-a) !important;
+  color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
@@ -296,7 +296,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
-  color: var(--_p-a) !important;
+  color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;

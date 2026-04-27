@@ -10,7 +10,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -74,7 +74,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -96,7 +96,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .modal {
@@ -117,7 +117,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -181,7 +181,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -203,7 +203,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;
 
@@ -217,7 +217,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -281,7 +281,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -303,7 +303,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;
 
@@ -317,7 +317,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -381,7 +381,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -403,7 +403,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .modal {
@@ -424,7 +424,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -488,7 +488,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -510,7 +510,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;
 
@@ -524,7 +524,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -588,7 +588,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -610,7 +610,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;
 
@@ -624,7 +624,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -692,7 +692,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -725,7 +725,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -793,7 +793,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -815,7 +815,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .modal {
@@ -836,7 +836,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -900,7 +900,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -926,7 +926,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -994,7 +994,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -1020,7 +1020,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1088,7 +1088,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -1110,7 +1110,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;
 
@@ -1124,7 +1124,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1194,7 +1194,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1224,7 +1224,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1290,7 +1290,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1309,7 +1309,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .modal {
@@ -1330,7 +1330,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1396,7 +1396,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1419,7 +1419,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1489,7 +1489,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1512,7 +1512,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1578,7 +1578,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1597,7 +1597,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;
 
@@ -1611,7 +1611,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1677,7 +1677,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1696,7 +1696,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(min-width:480px) {
   .modal {
@@ -1786,7 +1786,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1811,7 +1811,7 @@ slot[name=footer] {
   bottom: -.1px;
   margin-block: calc(-1 * calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
   padding: calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) var(--p-spacing-fluid-lg);
-  background: linear-gradient(0deg,var(--_a) 0%,var(--_a) 20%,transparent 80%);
+  background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
 }
 slot[name=footer][data-stuck]::after {
   content: "";
@@ -1871,7 +1871,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -1901,7 +1901,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1930,7 +1930,7 @@ slot[name=footer] {
   bottom: -.1px;
   margin-block: calc(-1 * calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
   padding: calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) var(--p-spacing-fluid-lg);
-  background: linear-gradient(0deg,var(--_a) 0%,var(--_a) 20%,transparent 80%);
+  background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
 }
 slot[name=footer][data-stuck]::after {
   content: "";
@@ -1990,7 +1990,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -2020,7 +2020,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2090,7 +2090,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -2109,7 +2109,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .modal {
@@ -2130,7 +2130,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2200,7 +2200,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -2219,6 +2219,6 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }"
 `;

@@ -19,6 +19,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: `--p-carousel-prev-next-color-scheme` CSS variable in order to change the `color-scheme` of the prev/next
   buttons individually ([#4308](https://github.com/porsche-design-system/porsche-design-system/pull/4308))
 
+### Changed
+
+- `Tokens`, `Tailwind CSS`, `SCSS`, `Emotion`, `Vanilla Extract`: Update notification frosted colors (success, error,
+  warning, info) ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
+- `Banner`, `Inline Notification`: prop or slot `heading` is recommended but not required anymore
+  ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
+- `Banner`, `Inline Notification`, `Toast`: visual alignment and color contrast improvements
+  ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
+
 ### Fixed
 
 - `Flyout`, `Modal`, `Sheet`: `overflow: clip` causing issues
@@ -34,12 +43,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4294](https://github.com/porsche-design-system/porsche-design-system/pull/4294))
 - Form components: rendering issues of slotted label if provided as `display: block` element
   ([#4298](https://github.com/porsche-design-system/porsche-design-system/pull/4298))
+- `Table`: incorrect cell padding when nested inside `Flyout`, `Modal` or `Sheet`
+  ([#4314](https://github.com/porsche-design-system/porsche-design-system/pull/4314))
 - `Tabs`, `Tabs Bar`:
   - keyboard navigation in RTL mode ([#4300](https://github.com/porsche-design-system/porsche-design-system/pull/4300))
   - animation flickering ([#4309](https://github.com/porsche-design-system/porsche-design-system/pull/4309))
   - hydration error ([#4309](https://github.com/porsche-design-system/porsche-design-system/pull/4309))
 - `Select`, `Multi Select`: Optimize screen reader experience
   ([#4313](https://github.com/porsche-design-system/porsche-design-system/pull/4313))
+
+### Deprecated
+
+- `Banner`:
+  - Slot `description` (use default slot instead)
+    ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
 
 ## [4.0.0-rc.1] - 2026-04-07
 

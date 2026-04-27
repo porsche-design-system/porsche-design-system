@@ -56,7 +56,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     grid-column: 1/-1;
@@ -148,7 +148,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -276,14 +276,14 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
 }
 
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     grid-column: 1/-1;
@@ -325,7 +325,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;
@@ -440,14 +440,14 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
 }
 
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -487,7 +487,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;
@@ -574,7 +574,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -695,7 +695,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -838,7 +838,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
     ::slotted(*:not([secondary])) {
       display: none !important;
@@ -848,7 +848,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -892,7 +892,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;
@@ -1015,7 +1015,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
     ::slotted(*:not([secondary])) {
       display: none !important;
@@ -1025,7 +1025,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -1069,7 +1069,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;

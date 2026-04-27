@@ -29,7 +29,7 @@ import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-me
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { PinCodeLength } from './pin-code-utils';
 
-export const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
+export const cssVarInternalPinCodeScaling = '--_p-pin-code-a';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
