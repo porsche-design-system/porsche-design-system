@@ -1613,7 +1613,7 @@ export namespace Components {
           * The text input value.
           * @default ''
          */
-        "value"?: string | null;
+        "value"?: string | number | null;
     }
     interface PInputTime {
         /**
@@ -5879,7 +5879,7 @@ declare namespace LocalJSX {
           * The text input value.
           * @default ''
          */
-        "value"?: string | null;
+        "value"?: string | number | null;
     }
     interface PInputTime {
         /**
@@ -7846,7 +7846,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string | null;
+        "value": string;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;

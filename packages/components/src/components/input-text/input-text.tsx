@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof InputText> = {
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   spellCheck: AllowedTypes.boolean,
   counter: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
@@ -84,7 +84,7 @@ export class InputText {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The text input value. */
-  @Prop({ mutable: true }) public value?: string | null = '';
+  @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name'). */
   @Prop() public autoComplete?: string;
@@ -140,17 +140,17 @@ export class InputText {
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
+  // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return this.value == null ? '' : String(this.value);
+  }
+
   @Watch('value')
-  public onValueChange(newValue: string | null): void {
-    // Normalize `null` to '' mirroring native behavior
-    if (newValue === null) {
-      this.value = ''; // re-triggers this watcher with ''
-      return;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
-    }
-    this.internals?.setFormValue(newValue);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {
@@ -158,10 +158,7 @@ export class InputText {
   }
 
   public componentWillLoad(): void {
-    if (this.value === null) {
-      this.value = '';
-    }
-    this.defaultValue = this.value;
+    this.defaultValue = this.parsedValue;
     this.initialLoading = this.loading;
   }
 
@@ -181,7 +178,7 @@ export class InputText {
   }
 
   public formStateRestoreCallback(state: string | null): void {
-    this.value = state ?? ''; // browser may hand back null for empty restored state
+    this.value = state; // browser may hand back null for empty restored state
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -189,7 +186,7 @@ export class InputText {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentDidRender(): void {
@@ -235,7 +232,7 @@ export class InputText {
         placeholder={this.placeholder}
         maxLength={this.maxLength}
         minLength={this.minLength}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}
@@ -249,11 +246,11 @@ export class InputText {
             <Fragment>
               <span class="sr-only" aria-live="polite">
                 {this.maxLength
-                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
-                  : `${this.value.length} characters entered`}
+                  ? `You have ${this.maxLength - this.parsedValue.length} out of ${this.maxLength} characters left`
+                  : `${this.parsedValue.length} characters entered`}
               </span>
               <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
-                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
+                {this.maxLength ? `${this.parsedValue.length}/${this.maxLength}` : `${this.parsedValue.length}`}
               </span>
             </Fragment>
           ),
