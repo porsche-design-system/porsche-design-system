@@ -20,6 +20,7 @@ import {
   FORM_STATES,
   getComboboxAriaAttributes,
   getHasNativePopoverSupport,
+  getListboxAriaAttributes,
   getMatchingSelectOptionIndex,
   getNextOptionToHighlight,
   getPrefixedTagNames,
@@ -294,7 +295,7 @@ export class Select {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
-    const popoverId = 'list';
+    const listboxId = 'listbox';
     const selectDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
@@ -313,14 +314,17 @@ export class Select {
           type="button"
           role="combobox"
           id={buttonId}
+          // only needed for Safari to recognize focus state on click
+          tabIndex={0}
           {...getComboboxAriaAttributes(
             this.isOpen,
             this.required,
             hasLabel(this.host, this.label) && labelId,
             selectMessageId,
             selectDescriptionId,
-            popoverId
+            listboxId
           )}
+          aria-autocomplete="none"
           disabled={this.disabled}
           onClick={this.onComboClick}
           onBlur={this.onComboBlur}
@@ -339,17 +343,7 @@ export class Select {
           )}
           <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
-        <div
-          id={popoverId}
-          popover="manual"
-          tabIndex={-1}
-          onToggle={() => this.onToggle()}
-          onBlur={(e: any) => e.stopPropagation()}
-          role="dialog"
-          aria-label={this.label}
-          aria-hidden={this.isOpen ? null : 'true'}
-          ref={(el) => (this.popoverElement = el)}
-        >
+        <div popover="manual" tabIndex={0} onToggle={() => this.onToggle()} ref={(el) => (this.popoverElement = el)}>
           {this.filter && !hasCustomFilterSlot && (
             <PrefixedTagNames.pInputSearch
               class="filter"
@@ -368,11 +362,20 @@ export class Select {
             />
           )}
           {hasCustomFilterSlot && <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>}
+          {/** biome-ignore lint/a11y/noStaticElementInteractions: role listbox is added through getListboxAriaAttributes */}
           <div
+            id={listboxId}
             class="options"
-            role="listbox"
-            aria-label={this.label}
+            {...getListboxAriaAttributes(
+              this.required,
+              hasLabel(this.host, this.label) && labelId,
+              selectMessageId,
+              selectDescriptionId,
+              false
+            )}
+            tabIndex={-1}
             onPointerMove={this.onPointerMove}
+            onBlur={(e: any) => e.stopPropagation()}
             ref={(el) => (this.listboxElement = el)}
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
