@@ -2075,7 +2075,7 @@ test.describe('slots', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('Option C');
 
     await host.evaluate((el) => {
-      (el as HTMLPMultiSelectElement).lastElementChild.remove();
+      (el as HTMLPMultiSelectElement).lastElementChild?.remove();
     });
 
     await expect(host).toHaveJSProperty('value', ['c']);
