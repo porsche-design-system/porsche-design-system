@@ -64,6 +64,7 @@ export const getComponentCss = (theme: Theme): string => {
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: contrastHighColorDark,
       }),
+      ...(isHighContrastMode && { backgroundColor: 'CanvasText' }),
     },
   });
 };
