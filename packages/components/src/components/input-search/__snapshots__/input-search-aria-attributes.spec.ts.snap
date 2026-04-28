@@ -3,13 +3,9 @@
 exports[`INPUT_SEARCH_ARIA_ATTRIBUTES > should match snapshot 1`] = `
 [
   "role",
-  "aria-activedescendant",
   "aria-autocomplete",
-  "aria-controls",
   "aria-expanded",
   "aria-haspopup",
   "aria-label",
-  "aria-labelledby",
-  "aria-owns",
 ]
 `;
