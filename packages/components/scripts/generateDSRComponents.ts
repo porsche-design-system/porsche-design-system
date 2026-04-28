@@ -230,6 +230,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
+            .replace(/^/, "\n$&import type { AriaAttributes } from '../types';\n")
             .replace(/(type InputBaseProps = {)/, '$1 children?: JSX.Element; ')
             .replace(/(InputBase: FC<InputBaseProps> = \({)/, '$1 children, ')
             .replace(/(host={)host(})/g, '$1null$2')
