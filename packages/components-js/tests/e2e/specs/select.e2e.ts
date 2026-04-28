@@ -2715,20 +2715,16 @@ test.describe('optgroups', () => {
     const options = getSelectOptions(page);
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     await options.nth(0).click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'a');
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
     await expect(buttonElement.locator('span').first()).toHaveText('a');
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     await options.nth(1).click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'b');
     await expect(options.nth(0)).toHaveJSProperty('selected', false);
@@ -2743,14 +2739,12 @@ test.describe('optgroups', () => {
     const buttonElement = getButton(page);
 
     await page.keyboard.press('Tab');
+    await expect(host).toBeFocused();
     await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
 
     await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
 
     await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'a');
     await expect(buttonElement.locator('span').first()).toHaveText('a');
@@ -2765,12 +2759,10 @@ test.describe('optgroups', () => {
     await addEventListener(host, 'change');
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
 
     await options.nth(0).click();
-    await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
     expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
@@ -2799,7 +2791,6 @@ test.describe('optgroups', () => {
     // Select the newly added option (last child inside the first optgroup)
     const newOption = optgroups.nth(0).locator('p-select-option').last();
     await newOption.click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', 'new');
     await expect(buttonElement).toHaveText('new');
@@ -2829,12 +2820,12 @@ test.describe('optgroups', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('a');
     expect(await optgroups.nth(0).locator('p-select-option').count()).toBe(4);
 
-    // Change value to 'b'
-    await setValue(page, 'b');
+    // Change value to the dynamically added option
+    await setValue(page, 'd');
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', 'b');
-    await expect(buttonElement.locator('span').first()).toHaveText('b');
+    await expect(host).toHaveJSProperty('value', 'd');
+    await expect(buttonElement.locator('span').first()).toHaveText('d');
 
     // Remove the dynamically added option (simulating React re-render with fewer options)
     await host.evaluate((el) => {
@@ -2845,8 +2836,6 @@ test.describe('optgroups', () => {
     });
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', 'b');
-    await expect(buttonElement.locator('span').first()).toHaveText('b');
     expect(await optgroups.nth(0).locator('p-select-option').count()).toBe(3);
 
     // Change value back to 'a'

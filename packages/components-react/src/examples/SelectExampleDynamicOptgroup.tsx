@@ -1,27 +1,33 @@
-import { POptgroup, PSelect, PSelectOption } from '@porsche-design-system/components-react';
-import { useEffect, useState } from 'react';
+import { PButton, POptgroup, PSelect, PSelectOption, type PSelectProps } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
 export const SelectExampleDynamicOptgroupPage = (): JSX.Element => {
-  const [value, setValue] = useState('a');
+  const [value, setValue] = useState<PSelectProps['value']>();
   const [options, setOptions] = useState<string[]>([]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOptions(Math.random() > 0.5 ? ['a', 'b', 'c'] : ['a', 'b', 'c', 'd']);
-      setValue(Math.random() > 0.5 ? 'b' : 'a');
-    }, 500);
-    return () => clearInterval(interval);
-  }, []);
+  const handleOnClick = () => {
+    const nextValue = value === 'b' ? 'a' : 'b';
+    const nextOptions = options.length === 3 ? ['a', 'b', 'c', 'd'] : ['a', 'b', 'c'];
+    setValue(nextValue);
+    setOptions(nextOptions);
+  };
 
   return (
-    <PSelect name="options" label="Some Label" value={value}>
-      <POptgroup label="Group 1">
-        {options.map((option) => (
-          <PSelectOption value={option} key={option}>
-            {option}
-          </PSelectOption>
-        ))}
-      </POptgroup>
-    </PSelect>
+    <>
+      <PSelect name="options" label="Some Label" value={value}>
+        <POptgroup label="Group 1">
+          {options.map((option) => (
+            <PSelectOption value={option} key={option}>
+              Option {option.toUpperCase()}
+            </PSelectOption>
+          ))}
+        </POptgroup>
+      </PSelect>
+
+      <div className="flex gap-fluid-sm">
+        <PButton onClick={handleOnClick}>Add & change value</PButton>
+        <PButton type="reset">Reset</PButton>
+      </div>
+    </>
   );
 };
