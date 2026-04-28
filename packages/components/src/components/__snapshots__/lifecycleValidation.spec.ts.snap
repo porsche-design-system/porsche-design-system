@@ -16,8 +16,8 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 exports[`should call validateProps() with correct parameters via render for p-ai-tag > propTypes with ValidatorFunctions 1`] = `
 {
   "locale": "oneOf",
-  "textVariant": "oneOf",
   "theme": "oneOf",
+  "variant": "oneOf",
 }
 `;
 

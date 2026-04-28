@@ -182,16 +182,6 @@ exports[`should match snapshot 1`] = `
         "description": "Locale for the AI text (ISO format, e.g. "de_DE").",
         "type": "AiTagLocale",
       },
-      "textVariant": {
-        "allowedValues": [
-          "abbreviation",
-          "generated",
-          "modified",
-        ],
-        "defaultValue": "generated",
-        "description": "Text variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").",
-        "type": "AiTagTextVariant",
-      },
       "theme": {
         "allowedValues": [
           "light",
@@ -201,6 +191,16 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the tag color depending on the theme.",
         "type": "Theme",
+      },
+      "variant": {
+        "allowedValues": [
+          "abbreviation",
+          "generated",
+          "modified",
+        ],
+        "defaultValue": "generated",
+        "description": "Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").",
+        "type": "AiTagVariant",
       },
     },
     "styling": "jss",

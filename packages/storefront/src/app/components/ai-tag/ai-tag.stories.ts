@@ -33,7 +33,7 @@ export const aiTagStoryWithCheckbox: Story<'p-ai-tag'> = {
                 {
                   tag: 'span',
                   properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-                  children: ['Banana ', { tag: 'p-ai-tag', properties: { textVariant: 'generated' } }],
+                  children: ['Banana ', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
                 },
               ],
             },
@@ -48,7 +48,7 @@ export const aiTagStoryWithCheckbox: Story<'p-ai-tag'> = {
                 {
                   tag: 'span',
                   properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-                  children: ['Melon ', { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation' } }],
+                  children: ['Melon ', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
                 },
               ],
             },
@@ -81,7 +81,7 @@ export const aiTagStoryWithRadioButton: Story<'p-ai-tag'> = {
             {
               tag: 'span',
               properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-              children: ['Banana', { tag: 'p-ai-tag', properties: { textVariant: 'generated' } }],
+              children: ['Banana', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
             },
           ],
         },
@@ -96,7 +96,7 @@ export const aiTagStoryWithRadioButton: Story<'p-ai-tag'> = {
             {
               tag: 'span',
               properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-              children: ['Melon', { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation' } }],
+              children: ['Melon', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
             },
           ],
         },
@@ -119,7 +119,7 @@ export const aiTagStoryWithInputSearch: Story<'p-ai-tag'> = {
           tag: 'p-ai-tag',
           properties: {
             slot: 'end',
-            textVariant: 'abbreviation',
+            variant: 'abbreviation',
           },
         },
       ],
@@ -136,7 +136,7 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
         {
           tag: 'span',
           properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-          children: ['Pick your favorite Fruits ', { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation' } }],
+          children: ['Pick your favorite Fruits ', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
         },
         {
           tag: 'p-optgroup',
@@ -145,13 +145,13 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
             {
               tag: 'p-select-option',
               properties: { value: 'a' },
-              children: ['Option A ', { tag: 'p-ai-tag', properties: { textVariant: 'generated' } }],
+              children: ['Option A ', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
             },
             { tag: 'p-select-option', properties: { value: 'b' }, children: ['Option B'] },
             {
               tag: 'p-select-option',
               properties: { value: 'c' },
-              children: ['Option C ', { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation' } }],
+              children: ['Option C ', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
             },
           ],
         },
@@ -163,7 +163,7 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
             {
               tag: 'p-select-option',
               properties: { value: 'e' },
-              children: ['Option E ', { tag: 'p-ai-tag', properties: { textVariant: 'generated' } }],
+              children: ['Option E ', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
             },
             { tag: 'p-select-option', properties: { value: 'f' }, children: ['Option F'] },
           ],
@@ -184,7 +184,7 @@ export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
           properties: { icon: 'globe' },
           children: [
             'Some label ',
-            { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
           ],
         },
         {
@@ -197,7 +197,7 @@ export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
               children: ['Some label'],
             },
             ' ',
-            { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
           ],
         },
         {
@@ -205,7 +205,7 @@ export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
           properties: { icon: 'globe', compact: true },
           children: [
             'Some label ',
-            { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
           ],
         },
       ],
@@ -231,7 +231,7 @@ export const aiTagStoryWithImage: Story<'p-ai-tag'> = {
           tag: 'p-ai-tag',
           properties: {
             theme: 'dark',
-            textVariant: 'modified',
+            variant: 'modified',
             className: 'absolute bottom-static-sm end-static-sm',
           },
         },
@@ -246,7 +246,7 @@ export const aiTagStoryWithText: Story<'p-ai-tag'> = {
       tag: 'p-text',
       children: [
         "This content was generated using artificial intelligence (AI). AI can be a powerful tool for creating content, but it's important to be transparent about its use. By including an AI tag, we can inform users that this content may have been modified or generated by AI, helping to build trust and provide context for the information presented.",
-        { tag: 'p-ai-tag', properties: { textVariant: 'modified', className: 'align-bottom' } },
+        { tag: 'p-ai-tag', properties: { variant: 'modified', className: 'align-bottom' } },
         ' This is some additional text to show how the AI tag can be used within a text component. The AI tag can be used to indicate that certain content has been modified or generated by AI, providing transparency to users.',
       ],
     },
@@ -286,7 +286,7 @@ export const aiTagStoryWithTable: Story<'p-ai-tag'> = {
                         {
                           tag: 'span',
                           properties: { className: 'inline-flex items-center gap-static-sm' },
-                          children: ['Status', { tag: 'p-ai-tag', properties: { textVariant: 'abbreviation' } }],
+                          children: ['Status', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
                         },
                       ],
                     },

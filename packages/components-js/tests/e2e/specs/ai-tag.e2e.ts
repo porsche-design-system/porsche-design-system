@@ -3,16 +3,16 @@ import type { Page } from 'playwright';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 type InitOpts = {
-  textVariant?: string;
+  variant?: string;
   locale?: string;
 };
 
 const initAiTag = (page: Page, props?: InitOpts) => {
-  const { textVariant, locale } = props || {};
-  const textVariantAttr = textVariant ? ` text-variant="${textVariant}"` : '';
+  const { variant, locale } = props || {};
+  const variantAttr = variant ? ` variant="${variant}"` : '';
   const localeAttr = locale ? ` locale="${locale}"` : '';
 
-  const content = `<p-ai-tag${textVariantAttr}${localeAttr}></p-ai-tag>`;
+  const content = `<p-ai-tag${variantAttr}${localeAttr}></p-ai-tag>`;
 
   return setContentWithDesignSystem(page, content);
 };
@@ -34,7 +34,7 @@ test.describe('lifecycle', () => {
     await initAiTag(page);
     const host = getHost(page);
 
-    await setProperty(host, 'textVariant', 'abbreviation');
+    await setProperty(host, 'variant', 'abbreviation');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 

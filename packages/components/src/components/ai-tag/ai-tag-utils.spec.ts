@@ -1,14 +1,14 @@
 import {
   AI_TAG_ICON_PATH,
-  AI_TAG_TEXT_VARIANTS,
+  AI_TAG_VARIANTS,
   AI_TAG_TRANSLATIONS,
   type AiTagLocale,
   getAiTagTranslation,
 } from './ai-tag-utils';
 
-describe('AI_TAG_TEXT_VARIANTS', () => {
-  it('should list supported text-variant prop values', () => {
-    expect(AI_TAG_TEXT_VARIANTS).toStrictEqual(['abbreviation', 'generated', 'modified']);
+describe('AI_TAG_VARIANTS', () => {
+  it('should list supported variant prop values', () => {
+    expect(AI_TAG_VARIANTS).toStrictEqual(['abbreviation', 'generated', 'modified']);
   });
 });
 
