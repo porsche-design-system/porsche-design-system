@@ -20,15 +20,33 @@ export const metadata = {
 
 ### ARIA enhancements
 
+#### External **ARIA** provided by the `aria` property:
+
+Use the `aria` property to pass supported attributes to the **native `<input>` inside the shadow DOM**, for example when you implement a combobox-style pattern (search field + suggestion list).
+
+| ARIA                  | Usage                                                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `role`                | Overrides the implicit role when needed (e.g. `combobox` for an autocomplete pattern alongside a separate listbox).                     |
+| `aria-autocomplete`   | Indicates whether and how the component predicts text (`none`, `inline`, `list`, `both`).                                               |
+| `aria-expanded`       | Indicates whether the suggestion popup or related surface is expanded or collapsed.                                                     |
+| `aria-haspopup`       | Indicates that activating the input triggers a popup (e.g. `listbox`, `dialog`).                                                        |
+| `aria-label`          | Defines an accessible name when the visible label is insufficient or hidden; prefer a visible `label` for most cases.                   |
+
+You can pass a JSON object on the element (vanilla JS) or use your framework’s prop binding, for example
+`aria={{ role: 'combobox', 'aria-expanded': isOpen, 'aria-haspopup': 'listbox' }}`.
+
 #### Internal **ARIA** that is managed by the component:
 
-| ARIA                            | Usage                                                                                                 |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `aria-describedby="IDREF"`      | Defines the accessible description combined with the status message.                                  |
-| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
-| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
-| `aria-invalid="true"`           | If `error` state is set.                                                                              |
-| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
+The following apply in addition to any `aria` values you pass. On the **native search input**, `aria-describedby`, `aria-invalid`, `aria-disabled`, and `aria-readonly` are always set by the component and **take precedence** over the same keys if they were supplied in `aria`.
+
+| ARIA                            | Usage                                                                                                   |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `aria-describedby="IDREF"`      | Combines references for description, state message, and loading feedback on the native input.           |
+| `aria-invalid="true"`           | When `state` is `error`.                                                                                |
+| `aria-disabled="true"`          | When `disabled` or `loading` is active.                                                                 |
+| `aria-readonly="true"`          | When `readOnly` is active.                                                                              |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` change, the status message region is exposed for announcements. |
+| `aria-hidden="true"`            | On decorative icons (e.g. search indicator).                                                            |
 
 ## Development considerations
 
@@ -37,15 +55,29 @@ export const metadata = {
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Combobox and suggestion lists
+
+For a search field that controls a separate list of suggestions, set the `aria` property so the input exposes the
+expected semantics supported by this component, for example:
+
+- `role: 'combobox'`
+- `aria-expanded` reflecting open/closed state
+- `aria-haspopup` / `aria-autocomplete` as required by your pattern
+
+Associate the suggestion list and keyboard interaction in the host application according to the [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) you implement there.
+
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
-define relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
+define (IDREF) relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
 
-| ARIA               | Support |
-| ------------------ | ------- |
-| `aria-labelledby`  | 🚫      |
-| `aria-describedby` | 🚫      |
+| ARIA                    | Support |
+| ----------------------- | ------- |
+| `aria-labelledby`       | 🚫      |
+| `aria-describedby`      | 🚫      |
+| `aria-owns`             | 🚫      |
+| `aria-activedescendant` | 🚫      |
+| `aria-controls`         | 🚫      |
 
 ## Tests
 
