@@ -49,6 +49,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - keyboard navigation in RTL mode ([#4300](https://github.com/porsche-design-system/porsche-design-system/pull/4300))
   - animation flickering ([#4309](https://github.com/porsche-design-system/porsche-design-system/pull/4309))
   - hydration error ([#4309](https://github.com/porsche-design-system/porsche-design-system/pull/4309))
+- `Select`, `Multi Select`: Optimize screen reader experience
+  ([#4313](https://github.com/porsche-design-system/porsche-design-system/pull/4313))
 - `Radio Group`: VoiceOver announcement of index of active option
   ([#4303](https://github.com/porsche-design-system/porsche-design-system/pull/4303))
 
