@@ -1211,9 +1211,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.cjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.cjs": [],
   "tokens/dist/esm/color/dark/semantic/colorErrorLowDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1224,9 +1222,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.cjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.cjs": [],
   "tokens/dist/esm/color/dark/semantic/colorInfoLowDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1237,9 +1233,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.cjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.cjs": [],
   "tokens/dist/esm/color/dark/semantic/colorSuccessLowDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1250,9 +1244,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.cjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorWarningFrostedSoftDark.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorWarningFrostedSoftDark.cjs": [],
   "tokens/dist/esm/color/dark/semantic/colorWarningLowDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1427,9 +1419,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.cjs": [],
-  "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.cjs": [],
   "tokens/dist/esm/color/light/semantic/colorErrorLight.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1440,9 +1430,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.cjs": [],
-  "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.cjs": [],
   "tokens/dist/esm/color/light/semantic/colorInfoLight.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1453,9 +1441,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.cjs": [],
-  "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.cjs": [],
   "tokens/dist/esm/color/light/semantic/colorSuccessLight.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -1466,9 +1452,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.cjs": [],
-  "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.cjs": [],
   "tokens/dist/esm/color/light/semantic/colorWarningLight.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
@@ -2949,9 +2933,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.mjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorErrorFrostedSoftDark.mjs": [],
   "tokens/dist/esm/color/dark/semantic/colorErrorLowDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -2962,9 +2944,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.mjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorInfoFrostedSoftDark.mjs": [],
   "tokens/dist/esm/color/dark/semantic/colorInfoLowDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -2975,9 +2955,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.mjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedSoftDark.mjs": [],
   "tokens/dist/esm/color/dark/semantic/colorSuccessLowDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -2988,9 +2966,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.mjs": [],
-  "tokens/dist/esm/color/dark/semantic/colorWarningFrostedSoftDark.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/dark/semantic/colorWarningFrostedSoftDark.mjs": [],
   "tokens/dist/esm/color/dark/semantic/colorWarningLowDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -3165,9 +3141,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.mjs": [],
-  "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorErrorFrostedSoftLight.mjs": [],
   "tokens/dist/esm/color/light/semantic/colorErrorLight.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -3178,9 +3152,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.mjs": [],
-  "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorInfoFrostedSoftLight.mjs": [],
   "tokens/dist/esm/color/light/semantic/colorInfoLight.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -3191,9 +3163,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.mjs": [],
-  "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorSuccessFrostedSoftLight.mjs": [],
   "tokens/dist/esm/color/light/semantic/colorSuccessLight.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
@@ -3204,9 +3174,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.mjs": [],
-  "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
+  "tokens/dist/esm/color/light/semantic/colorWarningFrostedSoftLight.mjs": [],
   "tokens/dist/esm/color/light/semantic/colorWarningLight.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
