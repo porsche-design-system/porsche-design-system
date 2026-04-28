@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Carousel`: `--p-carousel-prev-next-color-scheme` CSS variable in order to change the `color-scheme` of the prev/next
   buttons individually ([#4308](https://github.com/porsche-design-system/porsche-design-system/pull/4308))
+- `Input Search`: `aria` prop to provide additional context for screen reader
+  ([#4321](https://github.com/porsche-design-system/porsche-design-system/pull/4321))
 
 ### Changed
 
