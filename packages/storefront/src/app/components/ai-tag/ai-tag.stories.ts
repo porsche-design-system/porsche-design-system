@@ -222,7 +222,7 @@ export const aiTagStoryWithImage: Story<'p-ai-tag'> = {
         {
           tag: 'img',
           properties: {
-            src: '/assets/ai-tag-image.jpg',
+            src: 'assets/ai-tag-image.jpg',
             alt: 'AI modified image',
             className: 'block w-[300px] h-[300px] object-cover',
           },
