@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "ai-tag",
-    "size": 7440,
-    "gzipSize": 3199
+    "size": 7479,
+    "gzipSize": 3219
   },
   {
     "chunkShortName": "banner",
@@ -217,7 +217,7 @@
   {
     "chunkShortName": "main",
     "size": 91048,
-    "gzipSize": 28534
+    "gzipSize": 28535
   },
   {
     "chunkShortName": "marque",
