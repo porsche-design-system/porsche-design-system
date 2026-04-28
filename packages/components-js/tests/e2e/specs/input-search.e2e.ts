@@ -142,6 +142,7 @@ test.describe('aria', () => {
           role: 'combobox',
           'aria-expanded': true,
           'aria-haspopup': 'dialog',
+          'aria-controls': 'combobox-suggestions',
         },
       },
     });
@@ -149,6 +150,7 @@ test.describe('aria', () => {
     await expect(inputSearch).toHaveAttribute('role', 'combobox');
     await expect(inputSearch).toHaveAttribute('aria-expanded', 'true');
     await expect(inputSearch).toHaveAttribute('aria-haspopup', 'dialog');
+    await expect(inputSearch).toHaveAttribute('aria-controls', 'combobox-suggestions');
   });
 });
 

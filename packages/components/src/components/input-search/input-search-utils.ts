@@ -7,6 +7,7 @@ export type InputSearchInputEventDetail = InputEvent;
 export const INPUT_SEARCH_ARIA_ATTRIBUTES = [
   'role',
   'aria-autocomplete',
+  'aria-controls',
   'aria-expanded',
   'aria-haspopup',
   'aria-label',

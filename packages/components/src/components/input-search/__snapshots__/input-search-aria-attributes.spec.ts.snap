@@ -4,6 +4,7 @@ exports[`INPUT_SEARCH_ARIA_ATTRIBUTES > should match snapshot 1`] = `
 [
   "role",
   "aria-autocomplete",
+  "aria-controls",
   "aria-expanded",
   "aria-haspopup",
   "aria-label",

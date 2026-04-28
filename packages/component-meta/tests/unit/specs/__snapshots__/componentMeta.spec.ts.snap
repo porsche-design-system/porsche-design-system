@@ -4664,6 +4664,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-autocomplete": "string",
+          "aria-controls": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
