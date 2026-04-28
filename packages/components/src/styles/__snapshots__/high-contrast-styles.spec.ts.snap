@@ -1,5 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should have only high contrast styles for p-ai-tag 1`] = `
+[
+  {
+    ".icon": {
+      "background-color": "CanvasText",
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-button 1`] = `
 [
   {
