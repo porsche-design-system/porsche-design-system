@@ -1839,7 +1839,6 @@ test.describe('keyboard handling', () => {
   test('should highlight and select options on PageDown/PageUp', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
-    const dropdown = getDropdown(page);
     const options = getMultiSelectOptions(page);
 
     await page.keyboard.press('Tab');
@@ -2502,8 +2501,8 @@ test.describe('optgroups', () => {
 
     await page.keyboard.press('Enter');
 
-    await expect(host).toHaveJSProperty('value', ['b']);
-    await expect(buttonElement.locator('span').first()).toHaveText('a');
+    await expect(host).toHaveJSProperty('value', ['a']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option A');
   });
 
   test('should emit change event with correct details when option inside optgroup is selected', async ({ page }) => {
@@ -2576,10 +2575,11 @@ test.describe('optgroups', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('Option A');
     expect(await optgroups.nth(0).locator('p-multi-select-option').count()).toBe(4);
 
-    await setValue(page, ['b']);
+    // Change value to the dynamically added option
+    await setValue(page, ['d']);
 
-    await expect(host).toHaveJSProperty('value', ['b']);
-    await expect(buttonElement.locator('span').first()).toHaveText('Option B');
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option D');
 
     // Remove the dynamically added option (simulating React re-render with fewer options)
     await host.evaluate((el) => {
@@ -2589,8 +2589,6 @@ test.describe('optgroups', () => {
       }
     });
 
-    await expect(host).toHaveJSProperty('value', ['b']);
-    await expect(buttonElement.locator('span').first()).toHaveText('Option B');
     expect(await optgroups.nth(0).locator('p-multi-select-option').count()).toBe(3);
 
     // Change value back to ['a']

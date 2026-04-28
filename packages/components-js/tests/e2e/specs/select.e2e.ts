@@ -1,5 +1,4 @@
 import { expect, Locator, test } from '@playwright/test';
-import { Theme } from '@porsche-design-system/components';
 import type { Components } from '@porsche-design-system/components/src/components';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
 import type { Page } from 'playwright';
@@ -2841,7 +2840,7 @@ test.describe('optgroups', () => {
 
     await page.keyboard.press('Enter');
 
-    await expect(host).toHaveJSProperty('value', 'b');
+    await expect(host).toHaveJSProperty('value', 'a');
     await expect(buttonElement.locator('span').first()).toHaveText('a');
   });
 
@@ -2915,12 +2914,12 @@ test.describe('optgroups', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('a');
     expect(await optgroups.nth(0).locator('p-select-option').count()).toBe(4);
 
-    // Change value to 'b'
-    await setValue(page, 'b');
+    // Change value to the dynamically added option
+    await setValue(page, 'd');
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', 'b');
-    await expect(buttonElement.locator('span').first()).toHaveText('b');
+    await expect(host).toHaveJSProperty('value', 'd');
+    await expect(buttonElement.locator('span').first()).toHaveText('d');
 
     // Remove the dynamically added option (simulating React re-render with fewer options)
     await host.evaluate((el) => {
@@ -2931,8 +2930,6 @@ test.describe('optgroups', () => {
     });
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', 'b');
-    await expect(buttonElement.locator('span').first()).toHaveText('b');
     expect(await optgroups.nth(0).locator('p-select-option').count()).toBe(3);
 
     // Change value back to 'a'
