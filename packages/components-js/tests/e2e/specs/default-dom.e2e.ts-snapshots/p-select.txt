@@ -3,23 +3,25 @@
     type="button"
     role="combobox"
     id="button"
+    tabindex="0"
     aria-haspopup="listbox"
     aria-expanded="false"
     aria-required="false"
-    aria-controls="list"
+    aria-controls="listbox"
+    aria-autocomplete="none"
   >
     <span> </span>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
   </button>
-  <div
-    id="list"
-    popover="manual"
-    tabindex="-1"
-    role="dialog"
-    aria-label=""
-    aria-hidden="true"
-  >
-    <div class="options" role="listbox" aria-label="">
+  <div popover="manual" tabindex="0">
+    <div
+      id="listbox"
+      class="options"
+      role="listbox"
+      aria-required="false"
+      aria-multiselectable="false"
+      tabindex="-1"
+    >
       <slot name="options-status"> </slot>
       <slot> </slot>
     </div>
