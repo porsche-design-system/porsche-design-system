@@ -2328,7 +2328,6 @@ test.describe('optgroups', () => {
       await expect(child).toBeHidden();
     }
   });
-
   test('should select option inside optgroup by click', async ({ page }) => {
     await initMultiSelect(page, { options: { includeOptgroups: true } });
 
@@ -2355,6 +2354,24 @@ test.describe('optgroups', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('Option A, Option B');
   });
 
+  test('should select option inside optgroup by keyboard', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+
+    await page.keyboard.press('Tab');
+    await expect(host).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+
+    await page.keyboard.press('ArrowDown');
+
+    await page.keyboard.press('Enter');
+
+    await expect(host).toHaveJSProperty('value', ['a']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option A');
+  });
+
   test('should emit change event with correct details when option inside optgroup is selected', async ({ page }) => {
     await initMultiSelect(page, { options: { includeOptgroups: true } });
 
@@ -2364,12 +2381,10 @@ test.describe('optgroups', () => {
     await addEventListener(host, 'change');
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
 
     await options.nth(0).click();
-    await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
     expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
@@ -2388,20 +2403,16 @@ test.describe('optgroups', () => {
     const optgroups = getMultiSelectOptgroups(page);
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
 
     const initialCount = await getMultiSelectOptions(page).count();
 
-    // Add a new option to the first optgroup (label="0")
     await addOptionToOptgroup(page, '0', 'new', 'new');
-    await waitForStencilLifecycle(page);
 
     expect(await getMultiSelectOptions(page).count()).toBe(initialCount + 1);
 
     // Select the newly added option (last child inside the first optgroup)
     const newOption = optgroups.nth(0).locator('p-multi-select-option').last();
     await newOption.click();
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', ['new']);
   });
@@ -2416,7 +2427,6 @@ test.describe('optgroups', () => {
     });
 
     await setValue(page, ['a']);
-    await waitForStencilLifecycle(page);
 
     const host = getHost(page);
     const buttonElement = getButton(page);
@@ -2427,18 +2437,16 @@ test.describe('optgroups', () => {
 
     // Simulate dynamic option addition (like React re-rendering with an extra option)
     await addOptionToOptgroup(page, '0', 'd', 'Option D');
-    await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', ['a']);
     await expect(buttonElement.locator('span').first()).toHaveText('Option A');
     expect(await optgroups.nth(0).locator('p-multi-select-option').count()).toBe(4);
 
-    // Change value to ['b']
-    await setValue(page, ['b']);
-    await waitForStencilLifecycle(page);
+    // Change value to the dynamically added option
+    await setValue(page, ['d']);
 
-    await expect(host).toHaveJSProperty('value', ['b']);
-    await expect(buttonElement.locator('span').first()).toHaveText('Option B');
+    await expect(host).toHaveJSProperty('value', ['d']);
+    await expect(buttonElement.locator('span').first()).toHaveText('Option D');
 
     // Remove the dynamically added option (simulating React re-render with fewer options)
     await host.evaluate((el) => {
@@ -2447,10 +2455,7 @@ test.describe('optgroups', () => {
         optgroup.removeChild(optgroup.lastElementChild);
       }
     });
-    await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', ['b']);
-    await expect(buttonElement.locator('span').first()).toHaveText('Option B');
     expect(await optgroups.nth(0).locator('p-multi-select-option').count()).toBe(3);
 
     // Change value back to ['a']

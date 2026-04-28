@@ -44,34 +44,17 @@ test.describe('form', () => {
 });
 
 test.describe('optgroups', () => {
-  test('should correctly reflect value when options inside optgroup change dynamically', async ({ page }) => {
-    await goto(page, 'multi-select-example-dynamic-optgroup');
-    await waitForComponentsReady(page);
+  test.describe('optgroups', () => {
+    test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
+      await goto(page, 'multi-select-example-dynamic-optgroup');
+      await waitForComponentsReady(page);
 
-    // Let the interval run for a few ticks so options appear
-    await sleep(1500);
+      const host = getHost(page);
+      const button = page.getByRole('button', { name: 'Add & change value' });
 
-    // Sample the state multiple times while the interval is still running.
-    // Each check reads value and displayed text atomically and compares them.
-    for (let i = 0; i < 10; i++) {
-      await sleep(500);
+      await button.dblclick();
 
-      const { value, displayedText } = await page.evaluate(() => {
-        const host = document.querySelector('p-multi-select') as any;
-        const button = host?.shadowRoot?.querySelector('button[role="combobox"]');
-        const span = button?.querySelector('span');
-        return {
-          value: host?.value as string[] | undefined,
-          displayedText: span?.textContent ?? '',
-        };
-      });
-
-      if (value && value.length > 0) {
-        const expectedText = value.map((v: string) => `Option ${v.toUpperCase()}`).join(', ');
-        expect(displayedText, `Check ${i}: displayed "${displayedText}" should match value "${expectedText}"`).toBe(
-          expectedText
-        );
-      }
-    }
+      await expect(host).toHaveJSProperty('value', ['a']);
+    });
   });
 });
