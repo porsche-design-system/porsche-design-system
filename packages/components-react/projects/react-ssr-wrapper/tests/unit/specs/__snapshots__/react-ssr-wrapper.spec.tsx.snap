@@ -8933,7 +8933,7 @@ div {
   display: flex;
   align-items: center;
   gap: 2px;
-  padding: 2px 6px 2px 4px;
+  padding: 1px 6px 1px 4px;
   border-radius: 4px;
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #535457;

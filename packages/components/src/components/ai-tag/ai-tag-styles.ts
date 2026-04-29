@@ -37,7 +37,7 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
-        padding: '2px 6px 2px 4px',
+        padding: '1px 6px 1px 4px',
         borderRadius: borderRadiusSmall,
         font: textXXSmallStyle.font,
         color: contrastHighColor,
