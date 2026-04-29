@@ -10,11 +10,7 @@ if (semver.valid(pkgVersion) === null) {
 }
 
 const changelog = 'packages/components/CHANGELOG.md';
-const pkgFiles = globbySync([
-  './**/package.json',
-  '!./**/node_modules/**',
-  '!./packages/storefront/projects/stackblitz/src/**',
-]);
+const pkgFiles = globbySync(['./**/package.json', '!./**/node_modules/**']);
 const pkgNames = [
   '@porsche-design-system/components',
   '@porsche-design-system/components-js',
@@ -82,4 +78,3 @@ fs.writeFileSync(
 
 console.log('Updating package-lock.json via "npm install"…');
 execSync('npm install --package-lock-only --ignore-scripts', { stdio: 'inherit' });
-
