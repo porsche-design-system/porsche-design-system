@@ -14718,7 +14718,7 @@ span {
   position: relative;
   display: flex;
   gap: 2px;
-  padding: 4px 9px;
+  padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
