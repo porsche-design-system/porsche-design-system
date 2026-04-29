@@ -1735,7 +1735,6 @@ test.describe('keyboard handling', () => {
   test('should highlight and select options on PageDown/PageUp', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
-    const dropdown = getDropdown(page);
     const options = getMultiSelectOptions(page);
 
     await page.keyboard.press('Tab');

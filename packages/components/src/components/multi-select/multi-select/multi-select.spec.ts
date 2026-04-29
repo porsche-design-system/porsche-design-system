@@ -69,6 +69,27 @@ describe('disconnectedCallback', () => {
   });
 });
 
+describe('optgroupUpdateHandler', () => {
+  it('should call stopPropagation(), updateOptions() and syncMultiSelectChildrenProps() with correct parameters', () => {
+    const component = initComponent();
+    const event = new Event('internalOptgroupUpdate', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+
+    component.optgroupUpdateHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+  });
+});
+
+describe('render', () => {
+  it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
+    const spy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
+    const component = initComponent();
+    component.render();
+    expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
+  });
+});
+
 describe('formResetCallback', () => {
   it('should reset value to defaultValue', () => {
     const component = initComponent();

@@ -9,6 +9,7 @@ import {
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-select');
+const getButton = (page: Page) => page.locator('p-select button[role="combobox"]');
 const getForm = (page: Page) => page.locator('form');
 
 test.describe('form', () => {
