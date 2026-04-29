@@ -12,9 +12,7 @@ import {
   storiesCache,
 } from './config.js';
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Loaders
-// ──────────────────────────────────────────────────────────────────────────────
 
 export async function loadComponentMeta(): Promise<Record<string, any>> {
   if (componentMetaCache) return componentMetaCache;
@@ -45,16 +43,13 @@ export async function loadExample(exampleName: string): Promise<{ frameworkMarku
       }
     }
   } catch {
-    // File not found — expected for some examples
+    // ignore
   }
   return null;
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Story loading — resolve imports, execute generators, produce framework markup
-// ──────────────────────────────────────────────────────────────────────────────
 
-/** Cache for the createFrameworkMarkup function (loaded once from storefront) */
 let createFrameworkMarkupFn: ((config: any[], state: any, theme: string) => Record<string, string>) | null = null;
 
 async function getCreateFrameworkMarkup() {
@@ -168,9 +163,7 @@ export async function loadStoryMarkup(
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Formatters
-// ──────────────────────────────────────────────────────────────────────────────
 
 /**
  * Known large-enum prop types that get their own shared reference page.
@@ -377,9 +370,7 @@ export function formatStoryCode(
   return lines.join('\n');
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Content processing — framework-aware MDX → Markdown
-// ──────────────────────────────────────────────────────────────────────────────
 
 export async function processContent(
   content: string,

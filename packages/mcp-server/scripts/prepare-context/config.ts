@@ -1,9 +1,7 @@
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Paths (resolved relative to the monorepo root)
-// ──────────────────────────────────────────────────────────────────────────────
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const monorepoRoot = path.resolve(__dirname, '..', '..', '..', '..');
@@ -15,9 +13,7 @@ export const changelogSourcePath = path.join(monorepoRoot, 'packages/components/
 export const componentMetaPath = path.join(monorepoRoot, 'packages/component-meta/src/lib/componentMeta.ts');
 export const storefrontSrcDir = path.join(monorepoRoot, 'packages/storefront/src');
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Constants
-// ──────────────────────────────────────────────────────────────────────────────
 
 export const FRAMEWORKS = ['vanilla-js', 'react', 'angular', 'vue'] as const;
 export type Framework = (typeof FRAMEWORKS)[number];
@@ -44,9 +40,7 @@ export interface BedrockMetadataAttribute {
   includeForEmbedding: boolean;
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Shared mutable state (populated during the pipeline)
-// ──────────────────────────────────────────────────────────────────────────────
 
 /** Caches loaded example files to avoid repeated disk reads */
 export const examplesCache: Record<string, { frameworkMarkup: Record<string, string> }> = {};

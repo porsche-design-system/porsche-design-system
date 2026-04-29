@@ -14,9 +14,7 @@ import {
 } from './config.js';
 import { loadComponentMeta, processContent } from './transform.js';
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Step 1 — Walk source and copy page.mdx files
-// ──────────────────────────────────────────────────────────────────────────────
 
 async function walkAndCopy(dir: string, relative: string = '') {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -60,9 +58,7 @@ async function walkAndCopy(dir: string, relative: string = '') {
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Step 2 — Process non-framework MDX pages (framework is irrelevant for these)
-// ──────────────────────────────────────────────────────────────────────────────
 
 async function processNonFrameworkPages() {
   async function walk(dir: string) {
@@ -86,9 +82,7 @@ async function processNonFrameworkPages() {
   await walk(outputDir);
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Step 3 — Generate per-framework pages (examples & stories, all frameworks)
-// ──────────────────────────────────────────────────────────────────────────────
 
 async function generateFrameworkPages() {
   // Merge example and story pages (examples take priority for duplicates)
@@ -125,9 +119,7 @@ async function generateFrameworkPages() {
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
 // Step 4 — Truncate changelog to keep only the N most recent versions
-// ──────────────────────────────────────────────────────────────────────────────
 
 async function truncateChangelog() {
   let content: string;
@@ -161,9 +153,7 @@ async function truncateChangelog() {
   await fs.writeFile(path.join(changelogDir, 'page.mdx'), lines.join('\n').trimEnd() + '\n', 'utf-8');
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Step 6 — Generate shared reference pages (icon names, flag names)
-// ──────────────────────────────────────────────────────────────────────────────
+// Step 5 — Generate shared reference pages (icon names, flag names)
 
 async function generateSharedReferences() {
   const componentMeta = await loadComponentMeta();
@@ -200,9 +190,7 @@ async function generateSharedReferences() {
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Step 9 — Generate AWS Bedrock Knowledge Base metadata sidecar files
-// ──────────────────────────────────────────────────────────────────────────────
+// Step 6 — Generate AWS Bedrock Knowledge Base metadata sidecar files
 
 function stringAttr(value: string, includeForEmbedding = true): BedrockMetadataAttribute {
   return { value: { type: 'STRING', stringValue: value }, includeForEmbedding };
@@ -279,36 +267,28 @@ async function generateBedrockMetadata() {
   console.log(`  total: ${count} metadata files created`);
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Main — orchestrate all 10 steps
-// ──────────────────────────────────────────────────────────────────────────────
-
 async function prepareContextSnapshots() {
   console.log(`Preparing context snapshots from: ${sourceDir}\n`);
 
-  try {
-    await fs.rm(outputDir, { recursive: true, force: true });
-  } catch {
-    // May not exist yet
-  }
+  await fs.rm(outputDir, { recursive: true, force: true });
   await fs.mkdir(outputDir, { recursive: true });
 
-  console.log('Step 1/10: Copying source files...');
+  console.log('Step 1/6: Copying source files...');
   await walkAndCopy(sourceDir, '');
 
-  console.log('\nStep 2/10: Processing non-framework MDX → Markdown...');
+  console.log('\nStep 2/6: Processing non-framework MDX → Markdown...');
   await processNonFrameworkPages();
 
-  console.log('\nStep 3/10: Generating per-framework pages (examples & stories)...');
+  console.log('\nStep 3/6: Generating per-framework pages (examples & stories)...');
   await generateFrameworkPages();
 
-  console.log('\nStep 4/10: Truncating changelog...');
+  console.log('\nStep 4/6: Truncating changelog...');
   await truncateChangelog();
 
-  console.log('\nStep 6/10: Generating shared reference pages...');
+  console.log('\nStep 5/6: Generating shared reference pages...');
   await generateSharedReferences();
 
-  console.log('\nStep 9/10: Generating AWS Bedrock Knowledge Base metadata...');
+  console.log('\nStep 6/6: Generating AWS Bedrock Knowledge Base metadata...');
   await generateBedrockMetadata();
 
   console.log('\nDone! Context snapshots ready.');

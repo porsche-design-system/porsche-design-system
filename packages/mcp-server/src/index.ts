@@ -4,11 +4,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
-// ── Config ────────────────────────────────────────────────────────
-
 const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
-
-// ── API helper ────────────────────────────────────────────────────
 
 async function api<T = unknown>(method: 'GET' | 'POST', path: string, body?: Record<string, unknown>): Promise<T> {
   const url = `${API_BASE}${path}`;
@@ -39,8 +35,7 @@ const server = new McpServer(
     version: '1.0.0',
   },
   {
-    instructions:
-      'Porsche Design System (PDS) documentation server. Use the query tool to search 670+ docs covering components, styles, patterns, framework guides, and more.',
+    instructions: 'Porsche Design System (PDS) documentation server. Use the query tool to search the docs.',
   }
 );
 
@@ -48,14 +43,7 @@ server.registerTool(
   'query',
   {
     title: 'Query documentation',
-    description:
-      'Semantic search over Porsche Design System (PDS) documentation (670+ docs). ' +
-      'Use for any question about PDS components, styles, patterns, or guides.\n\n' +
-      'Categories: components (73, e.g. button, tabs, modal, select, carousel…), ' +
-      'styles (border, typography, spacing…), patterns (forms, header, footer…), ' +
-      'must-know (accessibility, performance, versioning…), developing (React, Angular, Vue, Next.js…), ' +
-      'partials, Tailwind CSS utilities, AG Grid theme, help/FAQ, news/changelog.\n\n' +
-      'Pass a natural-language query. Optionally narrow results with metadata filters.',
+    description: 'Semantic search over Porsche Design System (PDS) documentation. Pass a natural-language query and optionally narrow results with the metadata filters below.',
     inputSchema: z.object({
       query: z.string().describe('The name of the topic to retrieve. E.g. "button" or "form/checkbox".'),
       category: z
@@ -76,9 +64,7 @@ server.registerTool(
           'license',
         ])
         .optional()
-        .describe(
-          'Filter by top-level category. One of: components, styles, patterns, must-know, developing, partials, tailwindcss, ag-grid, templates, help, news, designing, accessibility-statement, license.'
-        ),
+        .describe('Filter by top-level category.'),
       component: z
         .enum([
           'accordion',
@@ -154,11 +140,11 @@ server.registerTool(
           'wordmark',
         ])
         .optional()
-        .describe('Filter by component name (only within category "components"). E.g. "button", "tabs", "modal".'),
+        .describe('Filter by component name (only within category "components").'),
       framework: z
         .enum(['react', 'angular', 'vue', 'vanilla-js'])
         .optional()
-        .describe('Filter for framework-specific docs. One of: react, angular, vue.'),
+        .describe('Filter for framework-specific docs.'),
       version: z.string().describe('Filter for specific version of the documentation. E.g. "3.33.0", "4.0.0".'),
     }),
   },
