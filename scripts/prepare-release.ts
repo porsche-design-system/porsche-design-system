@@ -1,6 +1,7 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
-import * as semver from 'semver';
 import { sync as globbySync } from 'fast-glob';
+import * as semver from 'semver';
 
 const pkgVersion = process.argv[2];
 
@@ -78,3 +79,7 @@ fs.writeFileSync(
     .readFileSync(changelog, 'utf8')
     .replace('## [Unreleased]', `## [Unreleased]\n\n## [${pkgVersion}] - ${formatDate(new Date())}`)
 );
+
+console.log('Updating package-lock.json via "npm install"…');
+execSync('npm install --package-lock-only --ignore-scripts', { stdio: 'inherit' });
+
