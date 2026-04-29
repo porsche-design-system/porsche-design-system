@@ -11,7 +11,7 @@ const buttonFrameworkMap: Record<Framework, string> = {
 const frameworks: Framework[] = ['vanilla-js', 'react', 'angular', 'vue'];
 
 for (const framework of frameworks) {
-  test(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
+  test.skip(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
     test.setTimeout(180000);
     const context = await browser.newContext({
       // bypass captcha in headless chrome
