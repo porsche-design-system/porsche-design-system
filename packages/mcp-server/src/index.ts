@@ -2,7 +2,27 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { TAG_NAMES } from '@porsche-design-system/shared';
 import { z } from 'zod';
+
+const COMPONENT_NAMES = TAG_NAMES.map((tag) => tag.replace(/^p-/, ''));
+
+const CATEGORIES = [
+  'components',
+  'styles',
+  'patterns',
+  'must-know',
+  'developing',
+  'partials',
+  'tailwindcss',
+  'ag-grid',
+  'templates',
+  'help',
+  'news',
+  'designing',
+  'accessibility-statement',
+  'license',
+] as const;
 
 const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
 
@@ -47,98 +67,11 @@ server.registerTool(
     inputSchema: z.object({
       query: z.string().describe('The name of the topic to retrieve. E.g. "button" or "form/checkbox".'),
       category: z
-        .enum([
-          'components',
-          'styles',
-          'patterns',
-          'must-know',
-          'developing',
-          'partials',
-          'tailwindcss',
-          'ag-grid',
-          'templates',
-          'help',
-          'news',
-          'designing',
-          'accessibility-statement',
-          'license',
-        ])
+        .enum([...CATEGORIES] as [string, ...string[]])
         .optional()
         .describe('Filter by top-level category.'),
       component: z
-        .enum([
-          'accordion',
-          'banner',
-          'button',
-          'button-group',
-          'button-pure',
-          'button-tile',
-          'canvas',
-          'carousel',
-          'checkbox',
-          'checkbox-wrapper',
-          'content-wrapper',
-          'crest',
-          'display',
-          'divider',
-          'drilldown',
-          'fieldset',
-          'fieldset-wrapper',
-          'flag',
-          'flex',
-          'flyout',
-          'grid',
-          'heading',
-          'headline',
-          'icon',
-          'inline-notification',
-          'input-date',
-          'input-email',
-          'input-month',
-          'input-number',
-          'input-password',
-          'input-search',
-          'input-tel',
-          'input-text',
-          'input-time',
-          'input-url',
-          'input-week',
-          'link',
-          'link-pure',
-          'link-social',
-          'link-tile',
-          'link-tile-model-signature',
-          'link-tile-product',
-          'marque',
-          'modal',
-          'model-signature',
-          'multi-select',
-          'pagination',
-          'pin-code',
-          'popover',
-          'radio-button-wrapper',
-          'radio-group',
-          'scroller',
-          'segmented-control',
-          'select',
-          'select-wrapper',
-          'sheet',
-          'spinner',
-          'stepper-horizontal',
-          'switch',
-          'table',
-          'tabs',
-          'tabs-bar',
-          'tag',
-          'tag-dismissible',
-          'text',
-          'text-field-wrapper',
-          'text-list',
-          'textarea',
-          'textarea-wrapper',
-          'toast',
-          'wordmark',
-        ])
+        .enum([...COMPONENT_NAMES] as [string, ...string[]])
         .optional()
         .describe('Filter by component name (only within category "components").'),
       framework: z
