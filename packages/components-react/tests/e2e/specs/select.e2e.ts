@@ -4,6 +4,7 @@ import {
   getEventSummary,
   getFormDataValue,
   setProperty,
+  sleep,
 } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
@@ -39,5 +40,17 @@ test.describe('form', () => {
 
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'options')).toBe(newValue);
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
+    await goto(page, 'select-example-dynamic-optgroup');
+    const host = getHost(page);
+    const button = page.getByRole('button', { name: 'Add & change value' });
+
+    await button.dblclick();
+
+    await expect(host).toHaveJSProperty('value', 'a');
   });
 });
