@@ -12,6 +12,49 @@ import {
   storiesCache,
 } from './config.ts';
 
+// Token resolution — loads @porsche-design-system/tokens values for interpolation
+let tokenValues: Record<string, string> | null = null;
+let pdsVersion: string | null = null;
+
+const loadTokenValues = async (): Promise<Record<string, string>> => {
+  if (tokenValues) return tokenValues;
+  tokenValues = {};
+  try {
+    const tokens = await import('@porsche-design-system/tokens');
+    for (const [key, value] of Object.entries(tokens)) {
+      if (typeof value === 'string') tokenValues[key] = value;
+      else if (typeof value === 'number') tokenValues[key] = String(value);
+    }
+  } catch {
+    // tokens not available
+  }
+  try {
+    const emotion = await import('@porsche-design-system/components-react/emotion');
+    for (const [key, value] of Object.entries(emotion)) {
+      if (tokenValues[key]) continue; // tokens take priority
+      if (typeof value === 'string') tokenValues[key] = value;
+      else if (typeof value === 'number') tokenValues[key] = String(value);
+    }
+  } catch {
+    // emotion not available
+  }
+  return tokenValues;
+};
+
+const loadPdsVersion = async (): Promise<string> => {
+  if (pdsVersion) return pdsVersion;
+  try {
+    const pkgPath = path.join(storefrontSrcDir, '..', 'package.json');
+    const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf-8'));
+    const ver = pkg.dependencies?.['@porsche-design-system/components-react'] ?? '0';
+    pdsVersion = String(parseInt(ver.replace(/^\^|^~/, ''), 10));
+    return pdsVersion;
+  } catch {
+    pdsVersion = '4';
+    return pdsVersion;
+  }
+};
+
 // Loaders
 
 export const loadComponentMeta = async (): Promise<Record<string, any>> => {
@@ -374,6 +417,46 @@ export const processContent = async (
 
   // Remove export const metadata
   content = content.replace(/export const metadata\s*=\s*{[\s\S]*?};?\s*/g, '');
+
+  // Extract MDX-local export const values (e.g. `export const foo = JSON.stringify(...)`)
+  const localExports: Record<string, string> = {};
+  content = content.replace(/^export\s+const\s+(\w+)\s*=\s*([\s\S]*?)(?:;\s*$)/gm, (_full, name, expr) => {
+    const trimmed = expr.trim();
+    // Resolve simple literals
+    if (/^['"].*['"]$/.test(trimmed)) {
+      localExports[name] = trimmed.slice(1, -1);
+    } else if (/^\d+$/.test(trimmed)) {
+      localExports[name] = trimmed;
+    } else if (trimmed === 'true' || trimmed === 'false') {
+      localExports[name] = trimmed;
+    } else if (/^JSON\.stringify\(\s*componentMeta\[['"]([^'"]+)['"]\]\.propsMeta\.(\w+)\.defaultValue\s*\)/.test(trimmed)) {
+      // Resolve JSON.stringify(componentMeta['p-xxx'].propsMeta.Y.defaultValue)
+      const match = trimmed.match(/componentMeta\[['"]([^'"]+)['"]\]\.propsMeta\.(\w+)\.defaultValue/);
+      if (match) {
+        const [, tagName, propName] = match;
+        const meta = componentMeta[tagName];
+        const propMeta = meta?.propsMeta?.[propName];
+        if (propMeta?.defaultValue !== undefined) {
+          localExports[name] = JSON.stringify(propMeta.defaultValue);
+        }
+      }
+    }
+    return '';
+  });
+
+  // Resolve JSX expressions {tokenName} with actual token values
+  const tokens = await loadTokenValues();
+  const majorVersion = await loadPdsVersion();
+  content = content.replace(/\{localPorscheDesignSystemMajorVersion\}/g, majorVersion);
+  content = content.replace(/\{([a-z][A-Za-z0-9]+)\}/g, (full, name) => {
+    return localExports[name] ?? tokens[name] ?? full;
+  });
+
+  // Remove JSX comments {/* ... */}
+  content = content.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+
+  // Strip <div className="...">...</div> wrappers (keep children)
+  content = content.replace(/<div\s+className="[^"]*">([\s\S]*?)<\/div>/g, '$1');
 
   // ComponentStatus → emoji
   content = content.replace(
