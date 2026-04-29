@@ -3,7 +3,7 @@
 exports[`should have only high contrast styles for p-ai-tag 1`] = `
 [
   {
-    ".icon": {
+    "div::before": {
       "background-color": "CanvasText",
     },
   },

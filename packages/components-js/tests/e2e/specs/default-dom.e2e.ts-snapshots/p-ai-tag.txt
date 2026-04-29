@@ -1,4 +1,1 @@
-<div class="root">
-  <span class="icon"> </span>
-  <span> AI-generated</span>
-</div>
+<div>AI-generated</div>
