@@ -10,11 +10,11 @@ import {
   setComponentMetaCache,
   storefrontSrcDir,
   storiesCache,
-} from './config.js';
+} from './config.ts';
 
 // Loaders
 
-export async function loadComponentMeta(): Promise<Record<string, any>> {
+export const loadComponentMeta = async (): Promise<Record<string, any>> => {
   if (componentMetaCache) return componentMetaCache;
   try {
     const module = await import(componentMetaPath);
@@ -24,9 +24,11 @@ export async function loadComponentMeta(): Promise<Record<string, any>> {
     console.warn('Could not load component meta:', error);
   }
   return {};
-}
+};
 
-export async function loadExample(exampleName: string): Promise<{ frameworkMarkup: Record<string, string> } | null> {
+export const loadExample = async (
+  exampleName: string
+): Promise<{ frameworkMarkup: Record<string, string> } | null> => {
   if (examplesCache[exampleName]) return examplesCache[exampleName];
   try {
     const fileName = exampleName.charAt(0).toUpperCase() + exampleName.slice(1);
@@ -46,13 +48,13 @@ export async function loadExample(exampleName: string): Promise<{ frameworkMarku
     // ignore
   }
   return null;
-}
+};
 
 // Story loading — resolve imports, execute generators, produce framework markup
 
 let createFrameworkMarkupFn: ((config: any[], state: any, theme: string) => Record<string, string>) | null = null;
 
-async function getCreateFrameworkMarkup() {
+const getCreateFrameworkMarkup = async () => {
   if (createFrameworkMarkupFn) return createFrameworkMarkupFn;
   try {
     const mod = await import(path.join(storefrontSrcDir, 'utils/generator/createFrameworkMarkup.ts'));
@@ -62,7 +64,7 @@ async function getCreateFrameworkMarkup() {
     console.warn('Could not load createFrameworkMarkup:', error);
     return null;
   }
-}
+};
 
 /**
  * Parse the raw MDX content to build a map of story variable names to their
@@ -71,7 +73,7 @@ async function getCreateFrameworkMarkup() {
  * E.g. `import { fooStory } from '@/app/components/foo/foo.stories';`
  *   → { fooStory: '/abs/path/storefront/src/app/components/foo/foo.stories.ts' }
  */
-function parseStoryImports(rawMdx: string): Record<string, string> {
+const parseStoryImports = (rawMdx: string): Record<string, string> => {
   const map: Record<string, string> = {};
   const importRegex = /^import\s+{([^}]+)}\s+from\s+['"]([^'"]+\.stor(?:ies|y))['"];?\s*$/gm;
   let match: RegExpExecArray | null;
@@ -101,13 +103,13 @@ function parseStoryImports(rawMdx: string): Record<string, string> {
   }
 
   return map;
-}
+};
 
 /**
  * Strip the HTML document wrapper that getVanillaJsCode adds,
  * keeping only the meaningful body content (markup + script).
  */
-function stripVanillaJsWrapper(code: string): string {
+const stripVanillaJsWrapper = (code: string): string => {
   // Extract content between <body ...> and </body>
   const bodyMatch = code.match(/<body[^>]*>\n?([\s\S]*?)\n?<\/body>/);
   if (!bodyMatch) return code;
@@ -118,16 +120,16 @@ function stripVanillaJsWrapper(code: string): string {
   body = body.replace(/<script>\s*\n?\s*<\/script>/g, '').trim();
 
   return body;
-}
+};
 
 /**
  * Load a story by variable name, execute its generator, and produce
  * framework-specific markup. Returns a Record<framework, code> or null.
  */
-export async function loadStoryMarkup(
+export const loadStoryMarkup = async (
   storyVarName: string,
   storyImports: Record<string, string>
-): Promise<Record<string, string> | null> {
+): Promise<Record<string, string> | null> => {
   // Check cache first
   if (storiesCache[storyVarName]) return storiesCache[storyVarName];
 
@@ -161,7 +163,7 @@ export async function loadStoryMarkup(
     console.warn(`  warn: could not load story "${storyVarName}" from ${modulePath}:`, (error as Error).message);
     return null;
   }
-}
+};
 
 // Formatters
 
@@ -180,7 +182,7 @@ const SHARED_ENUM_REFS: Record<string, { path: string; label: string }> = {
  * Returns { type: string, descSuffix: string } where descSuffix is appended
  * to the description (used for large enum references).
  */
-export function formatAllowedValues(propMeta: any): { type: string; descSuffix: string } {
+export const formatAllowedValues = (propMeta: any): { type: string; descSuffix: string } => {
   const { allowedValues, type } = propMeta;
 
   // No allowed values metadata — keep the raw type name
@@ -225,13 +227,13 @@ export function formatAllowedValues(propMeta: any): { type: string; descSuffix: 
   }
 
   return { type: type || 'unknown', descSuffix: '' };
-}
-export function formatComponentApi(tagName: string, meta: any): string {
+};
+export const formatComponentApi = (tagName: string, meta: any): string => {
   if (!meta) return '';
 
-  function escapeMarkdownTableCell(text: string): string {
+  const escapeMarkdownTableCell = (text: string): string => {
     return text.replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\n/g, ' ');
-  }
+  };
 
   const lines: string[] = [];
   lines.push(`\n### API Reference for \`${tagName}\`\n`);
@@ -306,17 +308,17 @@ export function formatComponentApi(tagName: string, meta: any): string {
   }
 
   return lines.join('\n');
-}
+};
 
 const LANG_BY_FRAMEWORK: Record<string, string> = { react: 'tsx', angular: 'typescript', vue: 'vue' };
 
-function formatFrameworkCodeBlock(
+const formatFrameworkCodeBlock = (
   heading: string,
   label: string,
   name: string,
   frameworkMarkup: Record<string, string>,
   framework: Framework
-): string {
+): string => {
   const lines: string[] = [`\n### ${heading}: \`${name}\`\n`];
 
   if (framework === 'vanilla-js') {
@@ -336,31 +338,31 @@ function formatFrameworkCodeBlock(
   }
 
   return lines.join('\n');
-}
+};
 
-export function formatCodeExample(
+export const formatCodeExample = (
   exampleName: string,
   frameworkMarkup: Record<string, string>,
   framework: Framework = 'vanilla-js'
-): string {
+): string => {
   return formatFrameworkCodeBlock('Code Example', 'example', exampleName, frameworkMarkup, framework);
-}
+};
 
-export function formatStoryCode(
+export const formatStoryCode = (
   storyName: string,
   frameworkMarkup: Record<string, string>,
   framework: Framework = 'vanilla-js'
-): string {
+): string => {
   return formatFrameworkCodeBlock('Interactive Story', 'story', storyName, frameworkMarkup, framework);
-}
+};
 
 // Content processing — framework-aware MDX → Markdown
 
-export async function processContent(
+export const processContent = async (
   content: string,
   framework: Framework = 'vanilla-js',
   rawMdx?: string
-): Promise<string> {
+): Promise<string> => {
   const componentMeta = await loadComponentMeta();
 
   // Parse story imports from the original MDX source (before imports are stripped)
@@ -484,4 +486,4 @@ export async function processContent(
   content = content.trim();
 
   return content;
-}
+};

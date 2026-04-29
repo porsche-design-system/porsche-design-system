@@ -11,12 +11,12 @@ import {
   rawStoriesContent,
   SKIP_DIRECTORIES,
   sourceDir,
-} from './config.js';
-import { loadComponentMeta, processContent } from './transform.js';
+} from './config.ts';
+import { loadComponentMeta, processContent } from './transform.ts';
 
 // Step 1 — Walk source and copy page.mdx files
 
-async function walkAndCopy(dir: string, relative: string = '') {
+const walkAndCopy = async (dir: string, relative: string = '') => {
   const entries = await fs.readdir(dir, { withFileTypes: true });
 
   for (const entry of entries) {
@@ -56,12 +56,12 @@ async function walkAndCopy(dir: string, relative: string = '') {
       console.log(`  copy: ${newRelativePath}`);
     }
   }
-}
+};
 
 // Step 2 — Process non-framework MDX pages (framework is irrelevant for these)
 
-async function processNonFrameworkPages() {
-  async function walk(dir: string) {
+const processNonFrameworkPages = async () => {
+  const walk = async (dir: string) => {
     const entries = await fs.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
@@ -77,14 +77,14 @@ async function processNonFrameworkPages() {
         console.log(`  parse: ${path.relative(outputDir, fullPath)}`);
       }
     }
-  }
+  };
 
   await walk(outputDir);
-}
+};
 
 // Step 3 — Generate per-framework pages (examples & stories, all frameworks)
 
-async function generateFrameworkPages() {
+const generateFrameworkPages = async () => {
   // Merge example and story pages (examples take priority for duplicates)
   const frameworkPages = new Map<string, string>();
   for (const [filePath, rawContent] of Object.entries(rawStoriesContent)) {
@@ -117,11 +117,11 @@ async function generateFrameworkPages() {
       }
     }
   }
-}
+};
 
 // Step 4 — Truncate changelog to keep only the N most recent versions
 
-async function truncateChangelog() {
+const truncateChangelog = async () => {
   let content: string;
   try {
     content = await fs.readFile(changelogSourcePath, 'utf-8');
@@ -151,11 +151,11 @@ async function truncateChangelog() {
   const changelogDir = path.join(outputDir, 'news', 'changelog');
   await fs.mkdir(changelogDir, { recursive: true });
   await fs.writeFile(path.join(changelogDir, 'page.mdx'), lines.join('\n').trimEnd() + '\n', 'utf-8');
-}
+};
 
 // Step 5 — Generate shared reference pages (icon names, flag names)
 
-async function generateSharedReferences() {
+const generateSharedReferences = async () => {
   const componentMeta = await loadComponentMeta();
   const sharedDir = path.join(outputDir, 'components', '_shared');
 
@@ -188,15 +188,15 @@ async function generateSharedReferences() {
     );
     console.log(`  gen: components/_shared/flag-names (${sorted.length} flags)`);
   }
-}
+};
 
 // Step 6 — Generate AWS Bedrock Knowledge Base metadata sidecar files
 
-function stringAttr(value: string, includeForEmbedding = true): BedrockMetadataAttribute {
+const stringAttr = (value: string, includeForEmbedding = true): BedrockMetadataAttribute => {
   return { value: { type: 'STRING', stringValue: value }, includeForEmbedding };
-}
+};
 
-function deriveMetadataAttributes(relativePath: string): Record<string, BedrockMetadataAttribute> {
+const deriveMetadataAttributes = (relativePath: string): Record<string, BedrockMetadataAttribute> => {
   const segments = relativePath.replace(/\/page\.mdx$/, '').split('/');
 
   const category = segments[0] ?? 'unknown';
@@ -224,9 +224,9 @@ function deriveMetadataAttributes(relativePath: string): Record<string, BedrockM
   }
 
   return attrs;
-}
+};
 
-async function generateBedrockMetadata() {
+const generateBedrockMetadata = async () => {
   let count = 0;
 
   // Collect relative paths of base pages that contain vanilla-js framework-specific content
@@ -236,7 +236,7 @@ async function generateBedrockMetadata() {
     )
   );
 
-  async function walk(dir: string) {
+  const walk = async (dir: string) => {
     const entries = await fs.readdir(dir, { withFileTypes: true });
 
     for (const entry of entries) {
@@ -261,13 +261,13 @@ async function generateBedrockMetadata() {
         console.log(`  meta: ${relativePath}`);
       }
     }
-  }
+  };
 
   await walk(outputDir);
   console.log(`  total: ${count} metadata files created`);
-}
+};
 
-async function prepareContextSnapshots() {
+const prepareContextSnapshots = async () => {
   console.log(`Preparing context snapshots from: ${sourceDir}\n`);
 
   await fs.rm(outputDir, { recursive: true, force: true });
@@ -292,7 +292,7 @@ async function prepareContextSnapshots() {
   await generateBedrockMetadata();
 
   console.log('\nDone! Context snapshots ready.');
-}
+};
 
 prepareContextSnapshots().catch((err) => {
   console.error(err);

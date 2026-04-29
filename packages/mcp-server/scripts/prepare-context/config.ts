@@ -47,9 +47,9 @@ export const examplesCache: Record<string, { frameworkMarkup: Record<string, str
 
 /** Component meta cache (loaded once from the TS module) */
 export let componentMetaCache: Record<string, any> | null = null;
-export function setComponentMetaCache(value: Record<string, any>) {
+export const setComponentMetaCache = (value: Record<string, any>) => {
   componentMetaCache = value;
-}
+};
 
 /** Raw MDX source for every examples/page.mdx — needed to re-process per framework */
 export const rawExamplesContent: Record<string, string> = {};

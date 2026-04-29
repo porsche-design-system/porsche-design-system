@@ -26,7 +26,11 @@ const CATEGORIES = [
 
 const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
 
-async function api<T = unknown>(method: 'GET' | 'POST', path: string, body?: Record<string, unknown>): Promise<T> {
+const api = async <T = unknown>(
+  method: 'GET' | 'POST',
+  path: string,
+  body?: Record<string, unknown>
+): Promise<T> => {
   const url = `${API_BASE}${path}`;
 
   const res = await fetch(url, {
@@ -41,13 +45,13 @@ async function api<T = unknown>(method: 'GET' | 'POST', path: string, body?: Rec
   }
 
   return res.json() as T;
-}
+};
 
-function textResult(data: unknown) {
+const textResult = (data: unknown) => {
   return {
     content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
   };
-}
+};
 
 const server = new McpServer(
   {
@@ -60,10 +64,22 @@ const server = new McpServer(
 );
 
 server.registerTool(
+  'list-components',
+  {
+    title: 'List of components',
+    description: 'List of all components',
+  },
+  async () => {
+    return textResult([...COMPONENT_NAMES]);
+  }
+);
+
+server.registerTool(
   'query',
   {
     title: 'Query documentation',
-    description: 'Semantic search over Porsche Design System (PDS) documentation. Pass a natural-language query and optionally narrow results with the metadata filters below.',
+    description:
+      'Semantic search over Porsche Design System (PDS) documentation. Pass a natural-language query and optionally narrow results with the metadata filters below.',
     inputSchema: z.object({
       query: z.string().describe('The name of the topic to retrieve. E.g. "button" or "form/checkbox".'),
       category: z
@@ -98,11 +114,11 @@ server.registerTool(
   }
 );
 
-async function main() {
+const main = async () => {
   const transport = new StdioServerTransport();
   await server.connect(transport);
   console.error(`PDS MCP client connected → ${API_BASE}`);
-}
+};
 
 main().catch((err) => {
   console.error('Fatal:', err);
