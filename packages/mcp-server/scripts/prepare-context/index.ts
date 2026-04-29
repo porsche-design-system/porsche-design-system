@@ -5,7 +5,7 @@ import {
   CHANGELOG_MAX_VERSIONS,
   changelogSourcePath,
   FRAMEWORKS,
-  MIN_PAGE_CONTENT_BYTES,
+  MIN_PAGE_CONTENT_CHARS,
   outputDir,
   rawExamplesContent,
   rawStoriesContent,
@@ -107,7 +107,7 @@ async function generateFrameworkPages() {
         await fs.writeFile(filePath, processed, 'utf-8');
         console.log(`  gen: ${path.relative(outputDir, filePath)} (${framework})`);
       } else {
-        if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_BYTES) {
+        if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_CHARS) {
           const fwDir = path.join(parentDir, `${dirName}-${framework}`);
           const fwFile = path.join(fwDir, 'page.mdx');
           await fs.mkdir(fwDir, { recursive: true });

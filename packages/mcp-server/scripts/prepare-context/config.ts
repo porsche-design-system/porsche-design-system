@@ -21,8 +21,8 @@ export type Framework = (typeof FRAMEWORKS)[number];
 /** Maximum number of version entries to keep in the changelog */
 export const CHANGELOG_MAX_VERSIONS = 2;
 
-/** Pages with less meaningful content (bytes) than this are removed */
-export const MIN_PAGE_CONTENT_BYTES = 100;
+/** Pages with fewer meaningful characters than this are removed */
+export const MIN_PAGE_CONTENT_CHARS = 100;
 
 /** Props with more allowed values than this get a shared reference page instead of inline values */
 export const LARGE_ENUM_THRESHOLD = 20;
