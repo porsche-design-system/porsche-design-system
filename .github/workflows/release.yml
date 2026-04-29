@@ -171,8 +171,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
-  git-tag:
-    name: 'Git Tag'
+  github-release:
+    name: 'GitHub Release'
     needs:
       - check-publication-status
       - npm-components-js
@@ -180,8 +180,10 @@ jobs:
       - npm-components-react
       - npm-components-vue
     # Only run if at least one npm package was actually published in this run.
-    # Skipped jobs (already-published) shouldn't block tag creation, but we also
-    # don't want to tag if every publish job was skipped or failed.
+    # Skipped jobs (already-published) shouldn't block the release, but we also
+    # don't want to release if every publish job was skipped or failed. The
+    # action itself skips pre-release versions (no -rc/-beta/-alpha suffix).
+    # Creating the release also creates the underlying git tag at github.sha.
     if: |
       always()
       && needs.check-publication-status.result == 'success'
@@ -195,25 +197,7 @@ jobs:
       && needs.npm-components-vue.result != 'failure'
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Required to create git tags via the GitHub API
-    steps:
-      - uses: actions/checkout@v6
-      - name: 'Create Git Tag'
-        uses: ./.github/actions/create-git-tag
-        with:
-          version: ${{ needs.check-publication-status.outputs.components-version }}
-          github-token: ${{ secrets.github-token }}
-  github-release:
-    name: 'GitHub Release'
-    needs:
-      - check-publication-status
-      - git-tag
-    # Only create a release once the tag has been successfully created. The
-    # action itself skips pre-release versions (no -rc/-beta/-alpha suffix).
-    if: ${{ needs.git-tag.result == 'success' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # Required to create GitHub releases via the GitHub API
+      contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
     steps:
       - uses: actions/checkout@v6
       - name: 'Create GitHub Release'

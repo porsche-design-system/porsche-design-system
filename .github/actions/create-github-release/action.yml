@@ -1,5 +1,5 @@
 name: 'Create GitHub Release'
-description: 'Idempotently creates a GitHub Release (vX.Y.Z) for a stable version, merging all related pre-release changelog entries into the release body.'
+description: 'Idempotently creates a GitHub Release (vX.Y.Z) for a stable version, automatically creating the underlying git tag at the given commit. Pre-release versions are skipped.'
 
 inputs:
   version:
@@ -8,6 +8,10 @@ inputs:
   github-token:
     description: 'GitHub token with "contents: write" permission.'
     required: true
+  sha:
+    description: 'Commit SHA the release (and its tag) should point at. Defaults to github.sha.'
+    required: false
+    default: ${{ github.sha }}
   repository:
     description: 'Target repository in "owner/name" form. Defaults to github.repository.'
     required: false
@@ -24,6 +28,7 @@ runs:
       shell: bash
       env:
         INPUT_VERSION: ${{ inputs.version }}
+        INPUT_SHA: ${{ inputs.sha }}
         INPUT_REPOSITORY: ${{ inputs.repository }}
         INPUT_CHANGELOG_PATH: ${{ inputs.changelog-path }}
         GITHUB_TOKEN: ${{ inputs.github-token }}
