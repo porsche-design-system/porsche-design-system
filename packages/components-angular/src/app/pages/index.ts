@@ -26,6 +26,12 @@ export * from './form-wrapper-binding.component';
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
 export * from './generated/overview.component';
+export * from './optional-properties.component';
+export * from './tabs-bar-navigation';
+export * from './tabs-bar-navigation-bug';
+export * from './theme-injection.component';
+export * from './utilities.component';
+
 import { AccordionComponent } from './generated/accordion.component';
 import { AiTagComponent } from './generated/ai-tag.component';
 import { BannerComponent } from './generated/banner.component';
@@ -240,10 +246,10 @@ import { TabsBarComponent } from './generated/tabs-bar.component';
 import { TagComponent } from './generated/tag.component';
 import { TagDismissibleComponent } from './generated/tag-dismissible.component';
 import { TextComponent } from './generated/text.component';
-import { TextareaComponent } from './generated/textarea.component';
-import { TextareaWrapperComponent } from './generated/textarea-wrapper.component';
 import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
 import { TextListComponent } from './generated/text-list.component';
+import { TextareaComponent } from './generated/textarea.component';
+import { TextareaWrapperComponent } from './generated/textarea-wrapper.component';
 import { ToastComponent } from './generated/toast.component';
 import { ToastBasicComponent } from './generated/toast-basic.component';
 import { ToastMultilineComponent } from './generated/toast-multiline.component';
