@@ -257,7 +257,7 @@
     "@vanilla-extract/css": "^1.20.1",
     "@vanilla-extract/vite-plugin": "^5.2.2",
     "@vanilla-extract/rollup-plugin": "^1.5.3",
-    "webpack": "^5.106.1",
+    "webpack": "^5.106.2",
     "patch-package": "^8.0.1",
     "vue": "^3.5.32"
   },
