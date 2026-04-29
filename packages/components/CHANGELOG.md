@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Radio Group`: VoiceOver announcement of index of active option
+  ([#4303](https://github.com/porsche-design-system/porsche-design-system/pull/4303))
+
 ## [4.0.0-rc.2] - 2026-04-28
 
 ### Added
@@ -58,8 +63,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - hydration error ([#4309](https://github.com/porsche-design-system/porsche-design-system/pull/4309))
 - `Select`, `Multi Select`: Optimize screen reader experience
   ([#4313](https://github.com/porsche-design-system/porsche-design-system/pull/4313))
-- `Radio Group`: VoiceOver announcement of index of active option
-  ([#4303](https://github.com/porsche-design-system/porsche-design-system/pull/4303))
 
 ### Deprecated
 
