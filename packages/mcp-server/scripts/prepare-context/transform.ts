@@ -308,35 +308,42 @@ export function formatComponentApi(tagName: string, meta: any): string {
   return lines.join('\n');
 }
 
+const LANG_BY_FRAMEWORK: Record<string, string> = { react: 'tsx', angular: 'typescript', vue: 'vue' };
+
+function formatFrameworkCodeBlock(
+  heading: string,
+  label: string,
+  name: string,
+  frameworkMarkup: Record<string, string>,
+  framework: Framework
+): string {
+  const lines: string[] = [`\n### ${heading}: \`${name}\`\n`];
+
+  if (framework === 'vanilla-js') {
+    const code = frameworkMarkup['vanilla-js'];
+    if (code) {
+      lines.push('```html', code, '```\n');
+    } else {
+      lines.push(`> No vanilla JS ${label} available for \`${name}\`.\n`);
+    }
+  } else {
+    const code = frameworkMarkup[framework];
+    if (!code) {
+      lines.push(`> No ${framework} ${label} available for \`${name}\`.\n`);
+    } else {
+      lines.push(`\`\`\`${LANG_BY_FRAMEWORK[framework] || 'html'}`, code, '```\n');
+    }
+  }
+
+  return lines.join('\n');
+}
+
 export function formatCodeExample(
   exampleName: string,
   frameworkMarkup: Record<string, string>,
   framework: Framework = 'vanilla-js'
 ): string {
-  const lines: string[] = [];
-  lines.push(`\n### Code Example: \`${exampleName}\`\n`);
-
-  if (framework === 'vanilla-js') {
-    if (frameworkMarkup['vanilla-js']) {
-      lines.push('```html');
-      lines.push(frameworkMarkup['vanilla-js']);
-      lines.push('```\n');
-    } else {
-      lines.push('> No vanilla JS example available.\n');
-    }
-  } else {
-    const code = frameworkMarkup[framework];
-    if (!code) {
-      lines.push(`> No ${framework} example available for \`${exampleName}\`.\n`);
-      return lines.join('\n');
-    }
-    const langMap: Record<string, string> = { react: 'tsx', angular: 'typescript', vue: 'vue' };
-    lines.push(`\`\`\`${langMap[framework] || 'html'}`);
-    lines.push(code);
-    lines.push('```\n');
-  }
-
-  return lines.join('\n');
+  return formatFrameworkCodeBlock('Code Example', 'example', exampleName, frameworkMarkup, framework);
 }
 
 export function formatStoryCode(
@@ -344,30 +351,7 @@ export function formatStoryCode(
   frameworkMarkup: Record<string, string>,
   framework: Framework = 'vanilla-js'
 ): string {
-  const lines: string[] = [];
-  lines.push(`\n### Interactive Story: \`${storyName}\`\n`);
-
-  if (framework === 'vanilla-js') {
-    if (frameworkMarkup['vanilla-js']) {
-      lines.push('```html');
-      lines.push(frameworkMarkup['vanilla-js']);
-      lines.push('```\n');
-    } else {
-      lines.push(`> No vanilla JS story available for \`${storyName}\`.\n`);
-    }
-  } else {
-    const code = frameworkMarkup[framework];
-    if (!code) {
-      lines.push(`> No ${framework} story available for \`${storyName}\`.\n`);
-      return lines.join('\n');
-    }
-    const langMap: Record<string, string> = { react: 'tsx', angular: 'typescript', vue: 'vue' };
-    lines.push(`\`\`\`${langMap[framework] || 'html'}`);
-    lines.push(code);
-    lines.push('```\n');
-  }
-
-  return lines.join('\n');
+  return formatFrameworkCodeBlock('Interactive Story', 'story', storyName, frameworkMarkup, framework);
 }
 
 // Content processing — framework-aware MDX → Markdown
@@ -451,10 +435,17 @@ export async function processContent(
   );
 
   // Notification (with state)
+  // Notification (with optional state)
+  const NOTIFICATION_EMOJI: Record<string, string> = {
+    error: '🚫',
+    warning: '⚠️',
+    success: '✅',
+    info: 'ℹ️',
+  };
   content = content.replace(
-    /<Notification\s+heading=["']([^"']+)["'](?:\s+heading-tag=["'][^"']*["']|\s+headingTag=["'][^"']*["'])?\s+state=["']([^"']+)["']\s*>([\s\S]*?)<\/Notification>/g,
+    /<Notification\s+heading=["']([^"']+)["'](?:\s+(?:heading-tag|headingTag)=["'][^"']*["'])?(?:\s+state=["']([^"']+)["'])?\s*>([\s\S]*?)<\/Notification>/g,
     (_match, heading, state, notificationContent) => {
-      const emoji = state === 'error' ? '🚫' : state === 'warning' ? '⚠️' : state === 'success' ? '✅' : 'ℹ️';
+      const emoji = NOTIFICATION_EMOJI[state] ?? NOTIFICATION_EMOJI.info;
       const cleanContent = notificationContent
         .replace(/{'\s*'}/g, '')
         .replace(/<br\s*\/?>/g, '\n')
@@ -463,24 +454,6 @@ export async function processContent(
         .replace(/<Link\s+href=["']([^"']+)["']>([^<]*)<\/Link>/g, '[$2]($1)')
         .trim();
       return `\n> ${emoji} **${heading}**\n>\n${cleanContent
-        .split('\n')
-        .map((line: string) => `> ${line.trim()}`)
-        .join('\n')}\n`;
-    }
-  );
-
-  // Notification (without state)
-  content = content.replace(
-    /<Notification\s+heading=["']([^"']+)["'](?:\s+heading-tag=["'][^"']*["']|\s+headingTag=["'][^"']*["'])?\s*>([\s\S]*?)<\/Notification>/g,
-    (_match, heading, notificationContent) => {
-      const cleanContent = notificationContent
-        .replace(/{'\s*'}/g, '')
-        .replace(/<br\s*\/?>/g, '\n')
-        .replace(/<code>([^<]*)<\/code>/g, '`$1`')
-        .replace(/<strong>([^<]*)<\/strong>/g, '**$1**')
-        .replace(/<Link\s+href=["']([^"']+)["']>([^<]*)<\/Link>/g, '[$2]($1)')
-        .trim();
-      return `\n> ℹ️ **${heading}**\n>\n${cleanContent
         .split('\n')
         .map((line: string) => `> ${line.trim()}`)
         .join('\n')}\n`;
