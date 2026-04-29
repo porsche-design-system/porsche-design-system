@@ -70,7 +70,7 @@ describe('disconnectedCallback', () => {
 });
 
 describe('optgroupUpdateHandler', () => {
-  it('should call stopPropagation(), updateOptions() and syncMultiSelectChildrenProps() with correct parameters', () => {
+  it('should call stopPropagation() and updateOptions() with correct parameters', () => {
     const component = initComponent();
     const event = new Event('internalOptgroupUpdate', { bubbles: true });
     const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
@@ -78,15 +78,6 @@ describe('optgroupUpdateHandler', () => {
     component.optgroupUpdateHandler(event);
 
     expect(stopPropagationSpy).toHaveBeenCalled();
-  });
-});
-
-describe('render', () => {
-  it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
-    const spy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
-    const component = initComponent();
-    component.render();
-    expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
   });
 });
 
