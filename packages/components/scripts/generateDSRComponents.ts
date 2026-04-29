@@ -676,7 +676,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()')
-          .replace(/this\.props\.parsedValue/, 'this.parsedValue');
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue');
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(
