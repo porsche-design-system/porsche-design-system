@@ -3,6 +3,7 @@ import { addEventListener, getEventSummary, setProperty } from '../../../../comp
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
+const getButton = (page: Page) => page.locator('p-multi-select button[role="combobox"]');
 const getForm = (page: Page) => page.locator('form');
 
 test.describe('form', () => {
@@ -40,5 +41,19 @@ test.describe('form', () => {
         return lastSubmittedData.includes('a, b');
       })
       .toBe(true);
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
+    await goto(page, 'multi-select-example-dynamic-optgroup');
+    await waitForComponentsReady(page);
+
+    const host = getHost(page);
+    const button = page.getByRole('button', { name: 'Add & change value' });
+
+    await button.dblclick();
+
+    await expect(host).toHaveJSProperty('value', ['a']);
   });
 });
