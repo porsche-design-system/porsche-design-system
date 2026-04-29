@@ -70,7 +70,7 @@
     "karma-jasmine-html-reporter": "^2.2.0",
     "local-web-server": "^5.4.0",
     "ng-packagr": "^21.2.2",
-    "postcss": "^8.5.9",
+    "postcss": "^8.5.10",
     "typescript": "6.0.2"
   },
   "peerDependencies": {
