@@ -1,7 +1,7 @@
 /* Auto Generated Start */
 export const radiusLg = "8px";
 export const borderWidthThin = "1px";
-export const colorSuccessFrostedSoft = "light-dark(hsl(115 77.5% 27.8% / 0.1),hsl(157 84.9% 41.6% / 0.1))";
+export const colorSuccessFrostedSoft = "light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66))";
 export const radiusMd = "6px";
 export const colorSuccessLow = "light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18))";
 export const radiusSm = "4px";

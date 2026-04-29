@@ -13,21 +13,31 @@ import {
   colorCanvas,
   colorContrastHigh,
   colorError,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
   colorErrorMedium,
   colorFrosted,
   colorFrostedStrong,
   colorInfo,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
   colorInfoMedium,
   colorPrimary,
   colorSuccess,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
   colorSuccessMedium,
   colorWarning,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
   colorWarningMedium,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
   legacyRadiusSmall,
   radiusFull,
+  spacingStatic2Xs,
+  spacingStaticSm,
   typescaleXs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
@@ -37,27 +47,39 @@ const colorTextMap: Record<TagVariant, string> = {
   primary: colorCanvas,
   secondary: colorPrimary,
   info: colorCanvas,
+  'info-frosted': colorPrimary,
   success: colorCanvas,
+  'success-frosted': colorPrimary,
   warning: colorCanvas,
+  'warning-frosted': colorPrimary,
   error: colorCanvas,
+  'error-frosted': colorPrimary,
 };
 
 const colorBackgroundMap: Record<TagVariant, string> = {
   primary: colorPrimary,
   secondary: colorFrostedStrong,
   info: colorInfo,
+  'info-frosted': colorInfoFrosted,
   success: colorSuccess,
+  'success-frosted': colorSuccessFrosted,
   warning: colorWarning,
+  'warning-frosted': colorWarningFrosted,
   error: colorError,
+  'error-frosted': colorErrorFrosted,
 };
 
 const colorBackgroundHoverMap: Record<TagVariant, string> = {
   primary: colorContrastHigh,
   secondary: colorFrosted,
   info: colorInfoMedium,
+  'info-frosted': colorInfoFrostedSoft,
   success: colorSuccessMedium,
+  'success-frosted': colorSuccessFrostedSoft,
   warning: colorWarningMedium,
+  'warning-frosted': colorWarningFrostedSoft,
   error: colorErrorMedium,
+  'error-frosted': colorErrorFrostedSoft,
 };
 
 export const getColors = (
@@ -97,10 +119,16 @@ export const getComponentCss = (
         position: 'relative', // necessary as relative anchor to ensure click area of optional slotted focusable element is in sync
         display: 'flex',
         gap: '2px',
-        padding: compact ? '1px 6px' : `${spacingStaticXs} 9px`,
+        padding: compact
+          ? `${spacingStatic2Xs} ${spacingStaticSm}`
+          : `${spacingStaticXs} calc(12 * ${spacingStatic2Xs})`,
         borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
         font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
-        ...(variant === 'secondary' && {
+        ...((variant === 'secondary' ||
+          variant === 'info-frosted' ||
+          variant === 'success-frosted' ||
+          variant === 'warning-frosted' ||
+          variant === 'error-frosted') && {
           WebkitBackdropFilter: blurFrosted,
           backdropFilter: blurFrosted,
         }),
