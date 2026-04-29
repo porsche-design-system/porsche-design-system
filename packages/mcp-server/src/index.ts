@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { TAG_NAMES } from '@porsche-design-system/shared';
@@ -26,11 +24,7 @@ const CATEGORIES = [
 
 const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
 
-const api = async <T = unknown>(
-  method: 'GET' | 'POST',
-  path: string,
-  body?: Record<string, unknown>
-): Promise<T> => {
+const api = async <T = unknown>(method: 'GET' | 'POST', path: string, body?: Record<string, unknown>): Promise<T> => {
   const url = `${API_BASE}${path}`;
 
   const res = await fetch(url, {
