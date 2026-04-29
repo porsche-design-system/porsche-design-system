@@ -57,9 +57,6 @@ export function setComponentMetaCache(value: Record<string, any>) {
   componentMetaCache = value;
 }
 
-/** Descriptions extracted from configurator pages before they are dropped */
-export const componentDescriptions: Record<string, string> = {};
-
 /** Raw MDX source for every examples/page.mdx — needed to re-process per framework */
 export const rawExamplesContent: Record<string, string> = {};
 

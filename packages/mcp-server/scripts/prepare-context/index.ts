@@ -4,7 +4,6 @@ import {
   type BedrockMetadataAttribute,
   CHANGELOG_MAX_VERSIONS,
   changelogSourcePath,
-  componentDescriptions,
   FRAMEWORKS,
   MIN_PAGE_CONTENT_BYTES,
   outputDir,
@@ -33,15 +32,6 @@ async function walkAndCopy(dir: string, relative: string = '') {
       }
 
       if (entry.name === 'configurator') {
-        const pagePath = path.join(fullPath, 'page.mdx');
-        try {
-          const content = await fs.readFile(pagePath, 'utf-8');
-          const componentName = path.basename(path.dirname(fullPath));
-          componentDescriptions[componentName] = content;
-          console.log(`  desc: ${componentName} (from configurator)`);
-        } catch {
-          // No page.mdx in configurator
-        }
         const introRelativePath = relative ? path.join(relative, 'introduction') : 'introduction';
         await walkAndCopy(fullPath, introRelativePath);
         continue;
@@ -321,10 +311,10 @@ async function prepareContextSnapshots() {
   console.log('\nStep 9/10: Generating AWS Bedrock Knowledge Base metadata...');
   await generateBedrockMetadata();
 
-  // console.log('\nStep 10/10: Preparing for BatchWriteItem');
-  // await prepareDynamoEntries();
-
   console.log('\nDone! Context snapshots ready.');
 }
 
-prepareContextSnapshots().catch(console.warn);
+prepareContextSnapshots().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
