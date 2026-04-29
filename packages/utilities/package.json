@@ -4,16 +4,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start-app": "react-scripts start",
-    "build": "yarn build:utilities && yarn build:ag-grid",
-    "build:utilities": "yarn --cwd ./projects/utilities build",
-    "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
-    "build-app": "react-scripts build",
-    "test": "yarn test:unit",
-    "test:unit": "yarn test:unit:utilities && yarn test:unit:ag-grid",
-    "test:unit:utilities": "yarn --cwd ./projects/utilities test",
-    "test:unit:ag-grid": "yarn --cwd ./projects/ag-grid test",
-    "clean:build": "yarn --cwd ./projects/utilities clean:build"
+    "build": "npm run build:ag-grid",
+    "build:ag-grid": "npm run build --workspace=@porsche-design-system/ag-grid",
+    "test": "npm run test:unit",
+    "test:unit": "npm run test:unit:ag-grid",
+    "test:unit:ag-grid": "npm run test --workspace=@porsche-design-system/ag-grid",
+    "clean:build": "npm run clean:build --workspace=@porsche-design-system/ag-grid"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"

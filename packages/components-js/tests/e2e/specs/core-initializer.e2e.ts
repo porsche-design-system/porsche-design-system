@@ -4,10 +4,10 @@ import { goto } from '../helpers';
 test.describe('core-initializer', () => {
   test('should initialize component deterministically', async ({ page }) => {
     await goto(page, 'core-initializer');
-    await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
+    await page.waitForFunction(() => document.querySelectorAll('p-input-text').length === 2);
 
-    const component1 = page.locator('p-text-field-wrapper').nth(0);
-    const component2 = page.locator('p-text-field-wrapper').nth(1);
+    const component1 = page.locator('p-input-text').nth(0);
+    const component2 = page.locator('p-input-text').nth(1);
 
     await expect
       .poll(async () => {

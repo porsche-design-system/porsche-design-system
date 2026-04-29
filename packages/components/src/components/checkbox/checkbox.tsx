@@ -10,28 +10,24 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
-  THEMES,
+  setAriaIDREF,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
-import { descriptionId } from '../common/label/label-utils';
-import { LoadingMessage } from '../common/loading-message/loading-message';
+import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
-import type {
-  CheckboxBlurEventDetail,
-  CheckboxChangeEventDetail,
-  CheckboxState,
-  CheckboxUpdateEventDetail,
-} from './checkbox-utils';
+import type { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from './checkbox-utils';
 
 const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
@@ -47,12 +43,11 @@ const propTypes: PropTypes<typeof Checkbox> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 /**
- * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
- * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  */
 @Component({
   tag: 'p-checkbox',
@@ -88,7 +83,7 @@ export class Checkbox {
    */
   @Prop() public value?: string = 'on';
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
   /** The validation state. */
@@ -97,23 +92,14 @@ export class Checkbox {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility, it's recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** @experimental Disables the checkbox and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Displays as a compact version. */
+  /** Displays the checkbox in compact mode. */
   @Prop() public compact?: boolean = false;
-
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * Emitted when checkbox checked property is changed.
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
 
   /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
@@ -126,6 +112,7 @@ export class Checkbox {
   private initialLoading: boolean = false;
   private defaultChecked: boolean;
   private checkboxInputElement: HTMLInputElement;
+  private externalLabel: HTMLLabelElement | null = null;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -154,6 +141,7 @@ export class Checkbox {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
+    this.externalLabel = this.host.closest('label');
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -202,6 +190,17 @@ export class Checkbox {
         this.checkboxInputElement
       );
     }
+
+    // Handle cross-root ARIA labeling when the component is wrapped in a <label> element.
+    // We use the Accessibility Object Model (AOM) ariaLabelledByElements property to establish
+    // the relationship across the shadow DOM boundary, as IDREF-based aria-labelledby doesn't work cross-root.
+    if (this.externalLabel && !hasLabel(this.host, this.label)) {
+      if ('ariaLabelledByElements' in this.checkboxInputElement) {
+        this.checkboxInputElement.ariaLabelledByElements = [this.externalLabel];
+      } else {
+        (this.checkboxInputElement as HTMLInputElement).ariaLabel = this.externalLabel.textContent || '';
+      }
+    }
   }
 
   public render(): JSX.Element {
@@ -214,13 +213,13 @@ export class Checkbox {
       this.state,
       this.disabled,
       this.loading,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const id = 'checkbox';
+    const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
+    const id = 'x';
     return (
       <div class="root">
         <div class="wrapper">
@@ -228,7 +227,7 @@ export class Checkbox {
             <input
               type="checkbox"
               id={id}
-              aria-describedby={`${descriptionId} ${messageId}`}
+              aria-describedby={setAriaIDREF(this.loading && loadingId, selectMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading || this.disabled ? 'true' : null}
               checked={this.checked}
@@ -241,9 +240,7 @@ export class Checkbox {
               disabled={this.disabled}
               ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
             />
-            {this.loading && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-            )}
+            {this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}
           </div>
           <Label
             host={this.host}
@@ -254,7 +251,7 @@ export class Checkbox {
             isRequired={this.required}
           />
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
@@ -273,11 +270,5 @@ export class Checkbox {
     this.checked = checked;
     this.internals?.setFormValue(checked ? this.value : undefined);
     this.change.emit(e);
-
-    this.update.emit({
-      value: this.value,
-      name: this.name,
-      checked,
-    });
   };
 }

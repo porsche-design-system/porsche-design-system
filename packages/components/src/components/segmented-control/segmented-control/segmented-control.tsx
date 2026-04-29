@@ -11,45 +11,39 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
   observeChildren,
-  THEMES,
+  setAriaIDREF,
   unobserveChildren,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { descriptionId, labelId } from '../../common/label/label-utils';
-import { StateMessage } from '../../common/state-message/state-message';
-import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
   getItemWidths,
-  SEGMENTED_CONTROL_BACKGROUND_COLORS,
   SEGMENTED_CONTROL_COLUMNS,
-  type SegmentedControlBackgroundColor,
   type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
   type SegmentedControlState,
-  type SegmentedControlUpdateEventDetail,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
-  backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>([
-    undefined,
-    ...SEGMENTED_CONTROL_BACKGROUND_COLORS,
-  ]),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
@@ -70,7 +64,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-segmented-control',
@@ -79,14 +73,6 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 })
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release.
-   * Background color variations */
-  @Prop() public backgroundColor?: SegmentedControlBackgroundColor;
-
-  /** Adapts the segmented-control color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
@@ -100,7 +86,7 @@ export class SegmentedControl {
   /** The name of the segmented-control. */
   @Prop({ reflect: true }) public name?: string;
 
-  /** A boolean value that, if present, renders the segmented-control as a compact version. */
+  /** Displays the segmented control in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** Indicates the validation or overall status of the component. */
@@ -112,7 +98,7 @@ export class SegmentedControl {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Sets the amount of columns. */
@@ -127,21 +113,11 @@ export class SegmentedControl {
   /** If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead. */
   @Prop() public noWrap?: boolean = false;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when selected element changes. */
-  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlUpdateEventDetail>;
-
   /** Emitted when the segmented-control has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<SegmentedControlChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -206,7 +182,6 @@ export class SegmentedControl {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
     const itemWidths = this.noWrap ? undefined : getItemWidths(this.host, this.compact);
     const PrefixedTagNames = !this.noWrap ? undefined : getPrefixedTagNames(this.host);
@@ -220,27 +195,20 @@ export class SegmentedControl {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.theme,
       this.noWrap
     );
-    syncSegmentedControlItemsProps(
-      this.host,
-      this.value,
-      this.disabled,
-      this.state,
-      this.message,
-      this.compact,
-      this.theme
-    );
+    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.state, this.message, this.compact);
+
+    const fieldDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const fieldMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
       <fieldset
-        inert={this.disabled}
+        class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
-        aria-labelledby={labelId}
-        aria-describedby={descriptionId}
-        class="root"
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
+        aria-describedby={setAriaIDREF(fieldMessageId, fieldDescriptionId)}
       >
         <Label
           host={this.host}
@@ -251,13 +219,13 @@ export class SegmentedControl {
           isDisabled={this.disabled}
         />
         {this.noWrap ? (
-          <PrefixedTagNames.pScroller theme={this.theme} class="scroller">
+          <PrefixedTagNames.pScroller class="scroller">
             <slot />
           </PrefixedTagNames.pScroller>
         ) : (
           <slot />
         )}
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </fieldset>
     );
   }
@@ -265,8 +233,6 @@ export class SegmentedControl {
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
     this.value = item.value; // causes rerender
     this.change.emit({ value: this.value });
-    this.update.emit({ value: this.value });
-    this.segmentedControlChange.emit({ value: this.value });
     item.focus();
   };
 }

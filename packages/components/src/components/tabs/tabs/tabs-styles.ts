@@ -1,10 +1,6 @@
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { spacingStaticSm } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -12,14 +8,13 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
-      marginBottom: '8px',
+      marginBottom: spacingStaticSm,
     },
   });
 };

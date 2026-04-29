@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,7 +8,6 @@ import {
   hasPropValueChanged,
   hasShowPickerSupport,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -38,7 +37,6 @@ const propTypes: PropTypes<typeof InputWeek> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -60,13 +58,13 @@ export class InputWeek {
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month. */
+  /** Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week. */
   @Prop() public step?: number = 1;
 
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the input field, used when submitting the form data. */
@@ -74,7 +72,7 @@ export class InputWeek {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default week value for the input, in YYYY-Www format (e.g., value='2025-W27') */
+  /** The default week value for the input, in YYYY-Www format (e.g., value='2025-W27'). */
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features. */
@@ -92,7 +90,7 @@ export class InputWeek {
   /** Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01'). */
   @Prop() public min?: string;
 
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
@@ -107,16 +105,13 @@ export class InputWeek {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Emitted when the number input loses focus after its value was changed. */
+  /** Emitted when the week input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputWeekChangeEventDetail>;
 
-  /** Emitted when the number input has lost focus. */
+  /** Emitted when the week input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputWeekBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
@@ -130,6 +125,9 @@ export class InputWeek {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -190,8 +188,7 @@ export class InputWeek {
       this.hideLabel,
       this.state,
       this.compact,
-      this.readOnly,
-      this.theme
+      this.readOnly
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -219,15 +216,14 @@ export class InputWeek {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
         {...(hasShowPickerSupport() && {
           end: (
             <PrefixedTagNames.pButtonPure
+              tabIndex={this.disabled ? -1 : null}
               hideLabel={true}
-              theme={this.theme}
               class="button"
               type="button"
               icon="calendar"

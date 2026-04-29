@@ -1,0 +1,99 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
+import {
+  colorCanvas,
+  colorSurface,
+  colorFrosted,
+  colorFrostedSoft,
+  colorBackdrop,
+  colorPrimary,
+  colorContrastHigher,
+  colorContrastHigh,
+  colorContrastMedium,
+  colorContrastLow,
+  colorContrastLower,
+  colorInfo,
+  colorInfoMedium,
+  colorInfoLow,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
+  colorSuccess,
+  colorSuccessMedium,
+  colorSuccessLow,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
+  colorWarning,
+  colorWarningMedium,
+  colorWarningLow,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
+  colorError,
+  colorErrorMedium,
+  colorErrorLow,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
+  colorFocus,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'Tokens: Color - Porsche Design System',
+  description: 'Detailed API reference for the Color tokens.',
+};
+
+# Color
+
+<TableOfContents headings={[]} />
+
+## Tokens
+
+### Background
+
+| Color                                                                                               | Token                                           | Description                                                                                    | Value                   |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------- |
+| <div className="bg-(--p-color-canvas) w-10 h-10 rounded-md border border-contrast-low"></div>       | <Code variant="nowrap">colorCanvas</Code>           | Holds the **canvas** color, typically used for surfaces.                                       | <Code variant="value">{colorCanvas}</Code>      |
+| <div className="bg-(--p-color-surface) w-10 h-10 rounded-md border border-contrast-low"></div>      | <Code variant="nowrap">colorSurface</Code>         | Holds the **surface** color, typically used for surfaces.                                      | <Code variant="value">{colorSurface}</Code>     |
+| <div className="bg-(--p-color-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | <Code variant="nowrap">colorFrosted</Code>         | Holds the **frosted** color, typically used as a background in combination with a blur effect. | <Code variant="value">{colorFrosted}</Code>     |
+| <div className="bg-(--p-color-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">colorFrostedSoft</Code> | Holds the **frosted** color, typically used as a background `:hover`.                          | <Code variant="value">{colorFrostedSoft}</Code> |
+| <div className="bg-(--p-color-backdrop) w-10 h-10 rounded-md border border-contrast-low"></div>     | <Code variant="nowrap">colorBackdrop</Code>       | Holds the **backdrop** color, typically used for backdrops.                                    | <Code variant="value">{colorBackdrop}</Code>    |
+
+### Foreground
+
+| Color                                                                                                  | Token                                                 | Description                                                                                                      | Value                      |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| <div className="bg-(--p-color-primary) w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">colorPrimary</Code>               | Holds the **primary** color, typically used for text.                                                            | <Code variant="value">{colorPrimary}</Code>        |
+| <div className="bg-(--p-color-contrast-higher) w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">colorContrastHigher</Code> | Holds the **contrast-higher** color, typically used for text.                                                    | <Code variant="value">{colorContrastHigher}</Code> |
+| <div className="bg-(--p-color-contrast-high) w-10 h-10 rounded-md border border-contrast-low"></div>   | <Code variant="nowrap">colorContrastHigh</Code>     | Holds the **contrast-high** color, typically used for text.                                                      | <Code variant="value">{colorContrastHigh}</Code>   |
+| <div className="bg-(--p-color-contrast-medium) w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">colorContrastMedium</Code> | Holds the **contrast-medium** color, typically used for text.                                                    | <Code variant="value">{colorContrastMedium}</Code> |
+| <div className="bg-(--p-color-contrast-low) w-10 h-10 rounded-md border border-contrast-low"></div>    | <Code variant="nowrap">colorContrastLow</Code>       | Holds the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | <Code variant="value">{colorContrastLow}</Code>    |
+| <div className="bg-(--p-color-contrast-lower) w-10 h-10 rounded-md border border-contrast-low"></div>  | <Code variant="nowrap">colorContrastLower</Code>   | Holds the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | <Code variant="value">{colorContrastLower}</Code>  |
+
+### Semantic
+
+| Color                                                                                                       | Token                                                         | Description                                                                                          | Value                              |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| <div className="bg-(--p-color-info) w-10 h-10 rounded-md border border-contrast-low"></div>                 | <Code variant="nowrap">colorInfo</Code>                             | Holds the **info** color, typically used for text.                                                   | <Code variant="value">{colorInfo}</Code>               |
+| <div className="bg-(--p-color-info-medium) w-10 h-10 rounded-md border border-contrast-low"></div>          | <Code variant="nowrap">colorInfoMedium</Code>                 | Holds the **info** color, typically used for text or border.                                         | <Code variant="value">{colorInfoMedium}</Code>         |
+| <div className="bg-(--p-color-info-low) w-10 h-10 rounded-md border border-contrast-low"></div>             | <Code variant="nowrap">colorInfoLow</Code>                       | Holds the **info** color, typically used for text or border.                                         | <Code variant="value">{colorInfoLow}</Code>            |
+| <div className="bg-(--p-color-info-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">colorInfoFrosted</Code>               | Holds the **info-frosted** color, typically used as background in combination with a blur effect.    | <Code variant="value">{colorInfoFrosted}</Code>        |
+| <div className="bg-(--p-color-info-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div>    | <Code variant="nowrap">colorInfoFrostedSoft</Code>       | Holds the **info-frosted-soft** color, typically used as background `:hover`.                        | <Code variant="value">{colorInfoFrostedSoft}</Code>    |
+| <div className="bg-(--p-color-success) w-10 h-10 rounded-md border border-contrast-low"></div>              | <Code variant="nowrap">colorSuccess</Code>                       | Holds the **success** color, typically used for text.                                                | <Code variant="value">{colorSuccess}</Code>            |
+| <div className="bg-(--p-color-success-medium) w-10 h-10 rounded-md border border-contrast-low"></div>       | <Code variant="nowrap">colorSuccessMedium</Code>           | Holds the **success** color, typically used for text or border.                                      | <Code variant="value">{colorSuccessMedium}</Code>      |
+| <div className="bg-(--p-color-success-low) w-10 h-10 rounded-md border border-contrast-low"></div>          | <Code variant="nowrap">colorSuccessLow</Code>                 | Holds the **success** color, typically used for text or border.                                      | <Code variant="value">{colorSuccessLow}</Code>         |
+| <div className="bg-(--p-color-success-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | <Code variant="nowrap">colorSuccessFrosted</Code>         | Holds the **success-frosted** color, typically used as background in combination with a blur effect. | <Code variant="value">{colorSuccessFrosted}</Code>     |
+| <div className="bg-(--p-color-success-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">colorSuccessFrostedSoft</Code> | Holds the **success-frosted-soft** color, typically used as background `:hover`.                     | <Code variant="value">{colorSuccessFrostedSoft}</Code> |
+| <div className="bg-(--p-color-warning) w-10 h-10 rounded-md border border-contrast-low"></div>              | <Code variant="nowrap">colorWarning</Code>                       | Holds the **warning** color, typically used for text.                                                | <Code variant="value">{colorWarning}</Code>            |
+| <div className="bg-(--p-color-warning-medium) w-10 h-10 rounded-md border border-contrast-low"></div>       | <Code variant="nowrap">colorWarningMedium</Code>           | Holds the **warning** color, typically used for text or border.                                      | <Code variant="value">{colorWarningMedium}</Code>      |
+| <div className="bg-(--p-color-warning-low) w-10 h-10 rounded-md border border-contrast-low"></div>          | <Code variant="nowrap">colorWarningLow</Code>                 | Holds the **warning** color, typically used for text or border.                                      | <Code variant="value">{colorWarningLow}</Code>         |
+| <div className="bg-(--p-color-warning-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>      | <Code variant="nowrap">colorWarningFrosted</Code>         | Holds the **warning-frosted** color, typically used as background in combination with a blur effect. | <Code variant="value">{colorWarningFrosted}</Code>     |
+| <div className="bg-(--p-color-warning-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">colorWarningFrostedSoft</Code> | Holds the **warning-frosted-soft** color, typically used as background `:hover`.                     | <Code variant="value">{colorWarningFrostedSoft}</Code> |
+| <div className="bg-(--p-color-error) w-10 h-10 rounded-md border border-contrast-low"></div>                | <Code variant="nowrap">colorError</Code>                           | Holds the **error** color, typically used for text.                                                  | <Code variant="value">{colorError}</Code>              |
+| <div className="bg-(--p-color-error-medium) w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">colorErrorMedium</Code>               | Holds the **error** color, typically used for text or border.                                        | <Code variant="value">{colorErrorMedium}</Code>        |
+| <div className="bg-(--p-color-error-low) w-10 h-10 rounded-md border border-contrast-low"></div>            | <Code variant="nowrap">colorErrorLow</Code>                     | Holds the **error** color, typically used for text or border.                                        | <Code variant="value">{colorErrorLow}</Code>           |
+| <div className="bg-(--p-color-error-frosted) w-10 h-10 rounded-md border border-contrast-low"></div>        | <Code variant="nowrap">colorErrorFrosted</Code>             | Holds the **error-frosted** color, typically used as background in combination with a blur effect .  | <Code variant="value">{colorErrorFrosted}</Code>       |
+| <div className="bg-(--p-color-error-frosted-soft) w-10 h-10 rounded-md border border-contrast-low"></div>   | <Code variant="nowrap">colorErrorFrostedSoft</Code>     | Holds the **error-frosted-soft** color, typically used as background `:hover`.                       | <Code variant="value">{colorErrorFrostedSoft}</Code>   |
+
+### A11y
+
+| Color                                                                                        | Token                               | Description                                                                           | Value             |
+| -------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------- | ----------------- |
+| <div className="bg-(--p-color-focus) w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">colorFocus</Code> | Holds the **focus** color, typically used as the outline for `:focus-visible` states. | <Code variant="value">{colorFocus}</Code> |

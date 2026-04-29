@@ -1,14 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: dark and state: error 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 1`] = `
 ".message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -16,14 +14,13 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: dark and state: none 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 2`] = `
 ".message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -31,15 +28,12 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: dark and state: success 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 1`] = `
 ".message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -47,15 +41,12 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: light and state: error 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 2`] = `
 ".message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -63,14 +54,13 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: light and state: none 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 1`] = `
 ".message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -78,15 +68,13 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: light and state: success 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 2`] = `
 ".message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;

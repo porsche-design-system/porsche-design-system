@@ -11,7 +11,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       [focusOnCenterSlide]="true"
       [trimSpace]="false"
       [heading]="'Some Heading'"
-      [gradientColor]="'background-surface'"
+      [gradient]="true"
       (update)="onCarouselUpdate($event)"
       >
       @for (slide of slides; track slide; let i = $index) {
@@ -22,7 +22,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </p-carousel>
     `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;
@@ -31,7 +31,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       background: #00b0f4;
       height: 150px;
       transition: background 0.3s ease;
-      color: $pds-theme-light-primary;
+      color: $color-primary;
     }
 
     .is-active {

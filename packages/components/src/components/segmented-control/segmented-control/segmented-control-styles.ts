@@ -1,11 +1,11 @@
-import { spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
+  getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import { spacingStaticXs } from '../../../styles/css-variables';
+import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import {
   getFunctionalComponentLabelAfterStyles,
@@ -24,19 +24,16 @@ export const getComponentCss = (
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: SegmentedControlState,
-  theme: Theme,
   noWrap: boolean
 ): string => {
   return getCss({
     '@global': {
       ':host': {
         ...addImportantToEachRule({
-          ...(disabled && { cursor: 'not-allowed' }),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(disabled),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       'slot:not([name])': {
         display: 'grid',
@@ -55,20 +52,17 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap: spacingStaticXs,
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
-      cursor: 'inherit',
-      '&:is(legend)': {
-        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-      },
+    ...getFunctionalComponentLabelStyles(disabled, false, hideLabel, {
+      ...(disabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
     ...(noWrap && {
       scroller: {
-        margin: `-${spacingStaticXSmall} 0`,
+        margin: `-${spacingStaticXs} 0`,
       },
     }),
   });

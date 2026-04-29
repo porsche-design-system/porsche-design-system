@@ -1,7 +1,7 @@
+import { PToast, useToastManager } from '@porsche-design-system/components-react';
 import { useState } from 'react';
-import { useToastManager, PToast } from '@porsche-design-system/components-react';
 
-export const ToastExamplePage = (): JSX.Element => {
+export const ToastExamplePage = () => {
   const { addMessage } = useToastManager();
   const [counter, setCounter] = useState(1);
 

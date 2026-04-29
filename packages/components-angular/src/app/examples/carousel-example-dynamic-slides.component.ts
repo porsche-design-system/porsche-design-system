@@ -16,7 +16,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </p-button>
     `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;
@@ -24,7 +24,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       justify-content: center;
       background: #00b0f4;
       height: 150px;
-      color: $pds-theme-light-primary;
+      color: $color-primary;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,18 @@
+---
+description: Stencil component rules for packages/components
+globs: packages/components/**
+alwaysApply: false
+---
+
+# PDS Components
+
+- `packages/components` is the source of truth for web components; avoid editing generated output such as `*.props.md`.
+- Keep component logic in `src/components/{name}/` and reuse existing patterns before introducing new utilities or styles.
+- Use shared accessibility helpers instead of ad-hoc solutions:
+  - `getFocusBaseStyles()` from `src/styles/common-styles.ts`
+  - `forcedColorsMediaQuery()` from `src/styles/media-query/forced-colors-media-query.ts`
+  - ARIA helpers from `src/utils/a11y/a11y.ts`
+- Prefer native elements inside Shadow DOM and only add ARIA required by the pattern.
+- Do not remove focus styling or invent a new focus ring when the shared helper should be used.
+- If behavior or markup changes, update unit tests and consider matching a11y/VRT coverage in `packages/components-js/tests/`.
+- Use `npm run start:components`, `npm run build:components`, and `npm run test:unit:components` from the repo root.

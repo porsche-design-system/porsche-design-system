@@ -25,18 +25,6 @@ describe('componentDidLoad', () => {
   });
 });
 
-describe('componentShouldUpdate', () => {
-  it('should return true if not offsetBottom or theme', () => {
-    const component = new Toast();
-    expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
-  });
-
-  it('should return false for theme', () => {
-    const component = new Toast();
-    expect(component.componentShouldUpdate(null, null, 'theme')).toBe(false);
-  });
-});
-
 describe('disconnectedCallback', () => {
   it('should call toastManager.unregister()', () => {
     const spy = vi.spyOn(toastManager, 'unregister');

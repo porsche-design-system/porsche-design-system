@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: false and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -11,7 +11,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -19,7 +19,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -27,7 +27,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -46,7 +45,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
 }
@@ -57,12 +56,12 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     grid-column: 1/-1;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+    padding: var(--p-spacing-fluid-sm);
+    margin: 0 calc(var(--p-spacing-fluid-sm) * -1);
   }
   .back {
     display: none;
@@ -84,7 +83,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: false and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -92,7 +91,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -100,7 +99,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -108,7 +107,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -133,7 +131,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -150,7 +148,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -181,7 +179,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: true and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -189,7 +187,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -197,7 +195,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -205,7 +203,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -224,21 +221,21 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
       grid-area: 2/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop-secondary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop-secondary var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -248,14 +245,14 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       z-index: 0;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-mobile var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
     slot[name="button"] {
       display: none;
@@ -267,31 +264,31 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       z-index: 2;
     }
     h2 {
-      font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
       z-index: 2;
       margin: 0;
-      padding-inline: 16px;
+      padding-inline: var(--p-spacing-static-md);
       max-width: 100%;
       box-sizing: border-box;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
 }
 
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     grid-column: 1/-1;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+    padding: var(--p-spacing-fluid-sm);
+    margin: 0 calc(var(--p-spacing-fluid-sm) * -1);
   }
   .back {
     display: none;
@@ -302,7 +299,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       position: absolute;
       inset: 0;
       inset-inline-start: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) minmax(0, 1fr)/var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -328,7 +325,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;
@@ -340,7 +337,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: true and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -348,7 +345,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -356,7 +353,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -364,7 +361,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -389,21 +385,21 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
       grid-area: 2/2/auto/-2;
       display: contents;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop-secondary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop-secondary var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -413,14 +409,14 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       z-index: 0;
       display: contents;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-mobile var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
     slot[name="button"] {
       display: none;
@@ -432,26 +428,26 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       z-index: 2;
     }
     h2 {
-      font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
       z-index: 2;
       margin: 0;
-      padding-inline: 16px;
+      padding-inline: var(--p-spacing-static-md);
       max-width: 100%;
       box-sizing: border-box;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
 }
 
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -465,7 +461,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       position: absolute;
       inset: 0;
       inset-inline-start: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) minmax(0, 1fr)/var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -491,7 +487,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;
@@ -503,7 +499,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: false and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -511,7 +507,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -519,7 +515,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -527,7 +523,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -549,21 +544,21 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
       grid-area: 3/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop-primary var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -579,7 +574,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -593,7 +588,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
     }
     .back {
       grid-area: 2/2;
-      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+      margin-bottom: var(--p-spacing-fluid-md);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -622,7 +617,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: false and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -630,7 +625,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -638,7 +633,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -646,7 +641,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -671,21 +665,21 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
       grid-area: 3/2/auto/-2;
       display: contents;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop-primary var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -701,7 +695,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -715,7 +709,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
     }
     .back {
       grid-area: 2/2;
-      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+      margin-bottom: var(--p-spacing-fluid-md);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -744,7 +738,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: true and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -752,7 +746,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -760,7 +754,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -768,7 +762,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -790,21 +783,21 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
       grid-area: 2/2/auto/-2;
       display: grid;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop-primary var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -814,14 +807,14 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       z-index: 0;
       display: contents;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-mobile var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
     slot[name="button"] {
       display: none;
@@ -833,19 +826,19 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       z-index: 2;
     }
     h2 {
-      font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
       z-index: 2;
       margin: 0;
-      padding-inline: 16px;
+      padding-inline: var(--p-spacing-static-md);
       max-width: 100%;
       box-sizing: border-box;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
     ::slotted(*:not([secondary])) {
       display: none !important;
@@ -855,7 +848,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -866,7 +859,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       position: absolute;
       inset: 0;
       inset-inline-start: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) minmax(0, 1fr)/var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -876,7 +869,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
     }
     .back {
       grid-area: 2/2;
-      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+      margin-bottom: var(--p-spacing-fluid-md);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -899,7 +892,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;
@@ -919,7 +912,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: true and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+    transform: translate3d(0,var(--p-spacing-fluid-md),0);
   }
   to {
     transform: translate3d(0,0,0);
@@ -927,7 +920,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-primary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -935,7 +928,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 @keyframes slide-up-desktop-secondary {
   from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+    margin-block-start: var(--p-spacing-fluid-md);
   }
   to {
     margin-block-start: 0px;
@@ -943,7 +936,6 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
   :host {
     display: contents;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -968,21 +960,21 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
-    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+    --p-drilldown-gap: var(--p-spacing-fluid-xs);
   }
 @media(min-width:760px) {
     slot:not([name]) {
       grid-area: 2/2/auto/-2;
       display: contents;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-desktop-primary var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
 }
 
@@ -992,14 +984,14 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       z-index: 0;
       display: contents;
       grid-template: var(--p-drilldown-grid-template,auto/auto);
-      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      gap: var(--p-drilldown-gap,var(--p-spacing-fluid-xs));
       align-content: start;
       align-items: start;
       box-sizing: border-box;
       min-height: 100%;
       height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      padding-block-end: var(--p-spacing-fluid-lg);
+      animation: slide-up-mobile var(--p-animation-duration, var(--p-duration-md)) var(--p-ease-in-out);
     }
     slot[name="button"] {
       display: none;
@@ -1011,19 +1003,19 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       z-index: 2;
     }
     h2 {
-      font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
       z-index: 2;
       margin: 0;
-      padding-inline: 16px;
+      padding-inline: var(--p-spacing-static-md);
       max-width: 100%;
       box-sizing: border-box;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--_p-a);
+      color: var(--_p-drilldown-a);
     }
     ::slotted(*:not([secondary])) {
       display: none !important;
@@ -1033,7 +1025,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: var(--_p-f);
+    background: var(--_p-drilldown-f);
   }
   .button {
     display: none;
@@ -1044,7 +1036,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       position: absolute;
       inset: 0;
       inset-inline-start: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
+      grid-template: var(--p-spacing-fluid-md) minmax(0, 1fr)/var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -1054,7 +1046,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
     }
     .back {
       grid-area: 2/2;
-      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
+      margin-bottom: var(--p-spacing-fluid-md);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -1077,7 +1069,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       position: sticky;
       top: 0;
       grid-area: 1/1/4/-1;
-      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-drilldown-b) 0%,var(--_p-drilldown-b) 65%,transparent 100%);
     }
     .button {
       display: none;

@@ -1,5 +1,5 @@
-import { type Protocol } from 'devtools-protocol';
 import { type CDPSession, type Page } from '@playwright/test';
+import { type Protocol } from 'devtools-protocol';
 
 type NodeId = Protocol.DOM.NodeId;
 type BackendNodeId = Protocol.DOM.BackendNodeId;
@@ -10,27 +10,6 @@ type ForcedPseudoClasses = (typeof FORCED_PSEUDO_CLASSES)[number];
 const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus'];
 const FOCUS_VISIBLE_STATE: ForcedPseudoClasses[] = ['focus-visible'];
-const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE, FOCUS_VISIBLE_STATE);
-
-export const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
-
-export const getPlaygroundPseudoStatesMarkup = (
-  markup: (index: number) => string,
-  opts?: { autoLayout?: 'inline' | 'block' }
-): string => {
-  const { autoLayout = false } = opts || {};
-
-  return PSEUDO_STATES.map((state, index) => {
-    return `<div class="playground light ${state} ${
-      autoLayout === 'inline' ? 'auto-layout-inline' : autoLayout === 'block' ? 'auto-layout-block' : ''
-    }" title="should render :${state}">${markup(index)}</div>`;
-  }).join('\n');
-};
-
-export const generateGUID = (): string => {
-  // return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-};
 
 export const forceHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, HOVER_STATE);
@@ -41,15 +20,6 @@ export const forceFocusVisibleState = (page: Page, selector: string): Promise<vo
 export const forceFocusState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_STATE);
 };
-// TODO: shouldn't it be named `forceFocusAndFocusVisibleAndHoverState()`?
-export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
-  return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
-};
-
-const s4 = (): string =>
-  Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .substring(1);
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {
   const cdp: CDPSession = await page.context().newCDPSession(page); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted

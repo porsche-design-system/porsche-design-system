@@ -1,37 +1,41 @@
+import { gridGap } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
 import {
-  frostedGlassStyle,
-  gridGap,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-} from '@porsche-design-system/styles';
-import {
-  cssVariableTransitionDuration,
-  getThemedColors,
-  getTransition,
-  motionDurationMap,
-  prefersColorSchemeDarkMediaQuery,
-} from './';
-import { isThemeDark, type Theme } from '../utils';
+  blurFrosted,
+  colorBackdrop,
+  colorCanvas,
+  colorFrosted,
+  colorPrimary,
+  colorSurface,
+  legacyRadiusLarge,
+  radius3Xl,
+  radiusXl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
+} from './css-variables';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
 
-export const headingTags = 'h1,h2,h3,h4,h5,h6';
+const cssVarBackgroundColor = '--_p-dialog-a';
 
-export const dialogHostJssStyle: JssStyle = {
-  '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-  '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-  '--pds-internal-grid-width-min': 'auto',
-  '--pds-internal-grid-width-max': 'none',
+export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle => {
+  return {
+    '--pds-internal-grid-outer-column': `calc(${spacingFluidLg} - ${gridGap})`,
+    '--pds-internal-grid-margin': `calc(${spacingFluidLg} * -1)`,
+    '--pds-internal-grid-width-min': 'auto',
+    '--pds-internal-grid-width-max': 'none',
+    [cssVarBackgroundColor]: background === 'surface' ? colorSurface : colorCanvas,
+  };
 };
 
-export const getDialogJssStyle = (isVisible: boolean, theme: Theme, backdrop: Backdrop = 'blur'): JssStyle => {
+export const getDialogJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   return {
     ...dialogBackdropResetJssStyle,
-    ...getDialogBackdropTransitionJssStyle(isVisible, theme, backdrop),
+    ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
   };
 };
 
@@ -53,14 +57,8 @@ const dialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-const getDialogBackdropTransitionJssStyle = (
-  isVisible: boolean,
-  theme: Theme,
-  backdrop: Backdrop = 'blur'
-): JssStyle => {
+const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
-  const { backgroundShadingColor } = getThemedColors(theme);
-  const { backgroundShadingColor: backgroundShadingColorDark } = getThemedColors('dark');
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
@@ -77,10 +75,10 @@ const getDialogBackdropTransitionJssStyle = (
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          background: backgroundShadingColor,
-          ...(isBackdropBlur && frostedGlassStyle),
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundShadingColorDark,
+          background: colorBackdrop,
+          ...(isBackdropBlur && {
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
           }),
         }
       : {
@@ -97,11 +95,11 @@ const getDialogBackdropTransitionJssStyle = (
   };
 };
 
-export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
+export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): JssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
-  const background: { [K in Theme]: string } = {
+  const background = {
     light: backgroundLight,
     dark: backgroundDark,
     auto: backgroundLight,
@@ -122,34 +120,31 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
-    background: background[theme],
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: background.dark,
-    }),
+    background: background.light,
   };
 };
 
-export const dialogPaddingBlock = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+export const dialogBorderRadius = `var(${legacyRadiusLarge}, ${radiusXl})`;
+export const dialogPaddingTop = spacingFluidMd;
+export const dialogPaddingBottom = `calc(${spacingFluidSm} + ${spacingFluidMd})`;
+export const dialogPaddingInline = spacingFluidLg;
 
-export const dialogGridJssStyle: JssStyle = {
-  display: 'grid',
-  gridTemplate: `auto/${spacingFluidSmall} minmax(0,1fr) ${spacingFluidSmall}`,
-  gap: `${spacingFluidMedium} calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
-  paddingBlock: dialogPaddingBlock,
-  alignContent: 'flex-start',
+export const dialogGridJssStyle = (): JssStyle => {
+  return {
+    position: 'relative',
+    display: 'grid',
+    gridTemplate: `auto/${spacingFluidSm} minmax(0,1fr) ${spacingFluidSm}`,
+    gap: `${spacingFluidMd} calc(${spacingFluidLg} - ${spacingFluidSm})`,
+    paddingTop: dialogPaddingTop,
+    paddingBottom: dialogPaddingBottom,
+    alignContent: 'flex-start',
+  };
 };
 
-export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-
+export const getDialogColorJssStyle = (): JssStyle => {
   return {
-    color: primaryColor, // enables color inheritance for slots
-    background: backgroundColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: primaryColorDark,
-      background: backgroundColorDark,
-    }),
+    color: colorPrimary, // enables color inheritance for slots
+    background: `var(${cssVarBackgroundColor})`,
   };
 };
 
@@ -176,33 +171,80 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
-  const { backgroundColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
-  const scrollShadowColor = 'rgba(204, 204, 204, 0.35)';
-  const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
-  const isAreaHeader = area === 'header';
-  const boxShadowDimension = `0 ${isAreaHeader ? 5 : -5}px 10px`;
+export const getDialogDismissButtonJssStyle = (): JssStyle => {
+  return {
+    gridArea: '1/3',
+    zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    position: 'sticky',
+    top: spacingFluidSm,
+    marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSm})`,
+    marginInlineEnd: spacingFluidSm,
+    placeSelf: 'flex-start flex-end',
+    boxShadow: `0px 0px 30px hsla(from var(${cssVarBackgroundColor}) h s l / 0.35)`
+  };
+};
+
+export const getSlotJssStyle = (): JssStyle => {
+  return {
+    display: 'block',
+    '&:first-of-type': {
+      gridRowStart: 1,
+    },
+  };
+};
+
+export const getSlotHeaderJssStyle = (): JssStyle => {
+  const paddingTop = dialogPaddingTop;
+  const paddingBottom = spacingStaticMd;
 
   return {
+    gridColumn: '1/-1',
+    zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
-    [isAreaHeader ? 'top' : 'bottom']: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
-    transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers (e.g. Firefox) caused by float value of sticky top position
-    padding: `${spacingStaticMedium} ${spacingFluidLarge}`,
-    marginBlock: `${
-      isAreaHeader ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)` : `-${spacingStaticMedium}`
-    } -${spacingStaticMedium}`,
-    background: backgroundColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: backgroundColorDark,
-    }),
-    clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
-    transition: `${getTransition('box-shadow')}`,
-    '&[data-stuck]': {
-      boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} ${boxShadowDimension}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        boxShadow: `${scrollShadowColorDark} ${boxShadowDimension}`,
-      }),
+    top: 0, // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
+    marginBlock: `calc(-1 * ${paddingTop}) calc(-1 * ${paddingBottom})`,
+    padding: `${paddingTop} ${dialogPaddingInline} ${paddingBottom}`,
+    background: `linear-gradient(180deg,var(${cssVarBackgroundColor}) 0%,var(${cssVarBackgroundColor}) 80%,transparent 100%)`,
+  };
+};
+
+export const getSlotMainJssStyle = (): JssStyle => {
+  return {
+    gridColumn: '2/3',
+    zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+  };
+};
+
+export const getSlotFooterJssStyle = (): JssStyle => {
+  const paddingBlock = `calc(${dialogPaddingBottom} - ${dialogBorderRadius})`;
+  const offset = `calc(${paddingBlock} / 2)`;
+
+  return {
+    gridColumn: '1/-1',
+    zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    position: 'sticky',
+    bottom: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
+    marginBlock: `calc(-1 * ${paddingBlock})`,
+    padding: `${paddingBlock} ${dialogPaddingInline}`,
+    background: `linear-gradient(0deg,var(${cssVarBackgroundColor}) 0%,var(${cssVarBackgroundColor}) 20%,transparent 80%)`,
+    '&[data-stuck]::after': {
+      content: '""',
+      zIndex: -1,
+      position: 'absolute',
+      inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
+      background: colorFrosted,
+      borderRadius: radius3Xl,
+      WebkitBackdropFilter: blurFrosted,
+      backdropFilter: blurFrosted,
     },
+  };
+};
+
+export const getSlotSubFooterJssStyle = (): JssStyle => {
+  return {
+    gridColumn: '1/-1',
+    zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    paddingInline: dialogPaddingInline,
+    backgroundColor: `var(${cssVarBackgroundColor})`,
   };
 };

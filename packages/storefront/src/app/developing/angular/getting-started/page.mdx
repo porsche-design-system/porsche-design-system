@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Angular: Getting started - Porsche Design System',
@@ -17,11 +18,11 @@ This guide is based on the following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@angular/*@21</PTag>
+  <PTag compact={true} variant="info">@angular/*@21</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  <PTag compact={true} variant="info">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-angular@3</PTag>
+  <PTag compact={true} variant="info">@porsche-design-system/components-angular@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash
@@ -50,16 +51,16 @@ npm install @porsche-design-system/components-angular
 
 Add the `PorscheDesignSystemModule` to the imports array of your `@Component` or `@NgModule` declaration.
 
-```ts
+```diff
 // src/app/app.ts
 
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
++ import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PorscheDesignSystemModule],
++ imports: [RouterOutlet, PorscheDesignSystemModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -68,18 +69,83 @@ export class App {
 }
 ```
 
-### Step 3 (recommended)
+### Step 3
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
 
-Install
-[@angular-builders/custom-webpack](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform)
-within your project directory.
+```diff
+/* src/styles.css */
 
-```bash
-npm install @angular-builders/custom-webpack --save-dev
++ @import '@porsche-design-system/components-angular/index.css';
+```
+
+To prevent FOUC, hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/styles.css */
+
+@import '@porsche-design-system/components-angular/index.css';
+
++ :is(p-accordion, p-banner, p-button, …):not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
+
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
+
+Create a `prebuild.mjs` file in your project root directory.
+
+```js
+// prebuild.mjs
+
+import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import {
+  getComponentChunkLinks,
+  getFontLinks,
+  getIconLinks,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-angular/partials';
+
+const headPartials = [
+  // preloads fonts
+  getFontLinks(),
+  // preloads icons
+  getIconLinks(),
+  // preloads components
+  getComponentChunkLinks(),
+  // injects favicon, apple touch icons, android touch icons, etc.
+  getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+].join('\n');
+
+const html = readFileSync('src/index.html', 'utf-8');
+const transformed = html.replace(/<\/head>/, `${headPartials}\n$&`);
+
+mkdirSync('.generated', { recursive: true });
+writeFileSync('.generated/index.html', transformed);
+
+console.log('Generated .generated/index.html with PDS partials.');
+```
+
+Configure the `package.json`.
+
+```diff
+"scripts": {
+  "ng": "ng",
++ "prebuild": "node prebuild.mjs",
++ "start": "npm run prebuild && ng serve",
++ "build": "npm run prebuild && ng build",
++ "watch": "npm run prebuild && ng build --watch --configuration development",
+  "test": "ng test",
+},
 ```
 
 Configure the `angular.json`.
@@ -87,71 +153,22 @@ Configure the `angular.json`.
 ```diff
 "architect": {
   "build": {
--   "builder": "@angular/build:application",
-+   "builder": "@angular-builders/custom-webpack:browser",
+    "builder": "@angular/build:application",
     "options": {
--     "browser": "src/main.ts",
-+     "indexTransform": "./index-html-transform.js",
-+     "outputPath": "./dist",
-+     "index": "src/index.html",
-+     "main": "src/main.ts",
-    }
-  }
-  "serve": {
--   "builder": "@angular/build:dev-server",
-+   "builder": "@angular-builders/custom-webpack:dev-server",
++     "index": ".generated/index.html",
+      "browser": "src/main.ts",
+      "tsConfig": "tsconfig.app.json",
+      …
+    },
+  },
+},
 ```
 
-Create a `index-html-transform.js` file in your project root directory.
-
-```js
-// index-html-transform.js
-
-import {
-  getComponentChunkLinks,
-  getFontFaceStyles,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-angular/partials';
-
-// https://github.com/just-jeb/angular-builders/blob/fdd7c8ed00b7eb7e1761aaa6cb5bda41693ceb5d/packages/custom-webpack/README.md#index-transform
-export default (_, html) => {
-  const headPartials = [
-    // injects stylesheet which defines visibility of pre-hydrated PDS components
-    getInitialStyles(),
-    // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
-    getFontFaceStyles(),
-    // preloads Porsche Next font (=> minimize FOUT)
-    getFontLinks(),
-    // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
-    getComponentChunkLinks(),
-    // preloads Porsche icons (=> minimize FOUC)
-    getIconLinks(),
-    // injects favicon, apple touch icons, android touch icons, etc.
-    getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
-  ].join('');
-
-  return html.replace(/<\/head>/, `${headPartials}$&`);
-};
-```
-
-### Step 4 (recommended)
+### Step 5 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
 **seamless styling consistency** with Porsche's design principles.
-
-#### The Key Advantage: Universal Code Sharing & Scalability
-
-> Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly
-> framework-agnostic**. Since Tailwind generates atomic **utility classes**, you eliminate cascading style issues,
-> promoting long-term **scalability and maintainability** for large projects. The patterns and components you build are
-> easily portable. You can **copy and paste** the same styling code between projects, teams, and different technology
-> stacks (React, Angular, Vue, plain HTML, etc.), ensuring **100% visual uniformity** across the organization. You can
-> now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
-> Tailwind CSS, to build applications quickly and efficiently.
 
 Install Tailwind CSS within your project directory.
 
@@ -173,14 +190,15 @@ Create a `.postcssrc.json` file in your project root directory.
 
 Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
-```css
+```diff
 /* src/styles.css */
+@import '@porsche-design-system/components-angular/index.css';
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-react/tailwindcss';
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-angular/tailwindcss';
 ```
 
-### Step 5
+### Step 6
 
 Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
 `npm run start` and verify that the component and styles display correctly.
@@ -190,7 +208,7 @@ Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with s
 
 <div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
   <p-wordmark></p-wordmark>
-  <h1 class="prose-display-md">Porsche Design System</h1>
+  <h1 class="prose-heading-4xl">Porsche Design System</h1>
 </div>
 <div class="…">…</div>
 ```

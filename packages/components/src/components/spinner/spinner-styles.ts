@@ -1,77 +1,40 @@
-import type { JssStyle } from 'jss';
-import type { SpinnerSize } from './spinner-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
+  addImportantToRule,
   cssVariableAnimationDuration,
+  forcedColorsMediaQuery,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { motionDurationVeryLong } from '@porsche-design-system/styles';
+import { colorContrastLower, durationXl, fontPorscheNext, leadingNormal } from '../../styles/css-variables';
+import { colorMap, sizeMap } from '../../styles/maps';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { SpinnerColor, SpinnerSize } from './spinner-utils';
 
-const sizeSmall = '48px';
-const sizeMedium = '72px';
-const sizeLarge = '104px';
+/**
+ * @css-variable {"name": "--p-spinner-size", "description": "Defines the width and height of the spinner. Overrides the `size` property when set.", "defaultValue": ""}
+ */
+const cssVarSize = '--p-spinner-size';
 
-const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
-  small: { height: sizeSmall, width: sizeSmall },
-  medium: { height: sizeMedium, width: sizeMedium },
-  large: { height: sizeLarge, width: sizeLarge },
-  inherit: { height: 'inherit', width: 'inherit' },
-};
+/**
+ * @css-variable {"name": "--p-spinner-color", "description": "Defines the foreground color. Overrides the `color` property when set.", "defaultValue": ""}
+ */
+const cssVarColor = '--p-spinner-color';
 
-export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
-  const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
+/**
+ * @css-variable {"name": "--p-spinner-track-color", "description": "Defines the track/background color. Overrides the `color` property when set.", "defaultValue": ""}
+ */
+const cssVarTrackColor = '--p-spinner-track-color';
+
+export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizable<SpinnerSize>): string => {
+  const dimension = `var(${cssVarSize},${leadingNormal})`;
+  const strokeDasharray = '69'; // C = 2πR
+  const animationDuration = `var(${cssVariableAnimationDuration}, ${durationXl})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
-  const { canvasColor, canvasTextColor } = getHighContrastColors();
-  const firstHighContrastStrokeColor = isHighContrastMode && canvasTextColor;
-  const lastHighContrastStrokeColor = isHighContrastMode && canvasColor;
 
   return getCss({
     '@global': {
-      ':host': {
-        display: 'inline-flex',
-        ...addImportantToEachRule({
-          verticalAlign: 'top',
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
-        }),
-      },
-      svg: {
-        display: 'block', // for correct vertical alignment
-        fill: 'none',
-        animation: `$rotate ${animationDuration} steps(50) infinite`,
-      },
-      circle: {
-        '&:first-child': {
-          // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: firstHighContrastStrokeColor || contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: firstHighContrastStrokeColor || contrastMediumColorDark,
-          }),
-        },
-        '&:last-child': {
-          animation: `$dash ${animationDuration} steps(50) infinite`,
-          // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: lastHighContrastStrokeColor || primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: lastHighContrastStrokeColor || primaryColorDark,
-          }),
-          strokeDasharray:
-            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-              ? strokeDasharray
-              : strokeDasharrayVar,
-          strokeLinecap: 'round',
-        },
-      },
       '@keyframes rotate': {
         '0%': {
           transform: 'rotateZ(0deg)',
@@ -82,24 +45,62 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       '@keyframes dash': {
         '0%': {
-          strokeDashoffset: 57,
+          strokeDashoffset: 69,
           transform: 'rotateZ(0)',
         },
         '50%, 75%': {
-          strokeDashoffset: 20,
+          strokeDashoffset: 24,
           transform: 'rotateZ(80deg)',
         },
-
         '100%': {
-          strokeDashoffset: 57,
+          strokeDashoffset: 69,
           transform: 'rotateZ(360deg)',
         },
       },
-    },
-    root: {
-      display: 'block',
-      ...buildResponsiveStyles(size, (s: SpinnerSize) => sizeMap[s]),
-      strokeWidth: 1.5,
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+        }),
+      },
+      div: {
+        width: dimension,
+        height: dimension,
+        fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
+        ...buildResponsiveStyles(size, (s: SpinnerSize) => ({
+          fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
+        })),
+      },
+      svg: {
+        display: 'block', // for correct vertical alignment
+        fill: 'none',
+        strokeWidth: 1.5,
+        animation: `rotate ${animationDuration} steps(50) infinite`,
+      },
+      circle: {
+        '&:first-child': {
+          stroke: `var(${cssVarTrackColor},${colorContrastLower})`,
+          '@supports (color: oklch(from red l c h))': {
+            stroke: `var(${cssVarTrackColor},oklch(from var(${cssVarColor},${colorMap[color]}) l c h/.2))`,
+          },
+          ...forcedColorsMediaQuery({
+            stroke: addImportantToRule('none'),
+          }),
+        },
+        '&:last-child': {
+          stroke: `var(${cssVarColor},${colorMap[color]})`,
+          ...forcedColorsMediaQuery({
+            stroke: 'CanvasText',
+          }),
+          strokeDasharray:
+            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+              ? strokeDasharray
+              : strokeDasharrayVar,
+          strokeLinecap: 'round',
+          animation: `dash ${animationDuration} steps(50) infinite`,
+        },
+      },
     },
     'sr-only': getHiddenTextJssStyle(),
   });

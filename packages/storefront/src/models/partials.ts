@@ -1,13 +1,7 @@
 export type Partials =
-  | 'getBrowserSupportFallbackScript'
   | 'getComponentChunkLinks'
-  | 'getCookiesFallbackScript'
-  | 'getDSRPonyfill'
-  | 'getFontFaceStyles'
-  | 'getFontFaceStylesheet'
   | 'getFontLinks'
   | 'getIconLinks'
-  | 'getInitialStyles'
   | 'getLoaderScript'
   | 'getMetaTagsAndIconLinks';
 export type PartialLocation = 'head' | 'body';

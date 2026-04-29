@@ -10,7 +10,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,7 +18,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -50,7 +49,6 @@ const propTypes: PropTypes<typeof InputSearch> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -75,7 +73,7 @@ export class InputSearch {
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the input field, used when submitting the form data. */
@@ -110,7 +108,7 @@ export class InputSearch {
   /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
@@ -125,11 +123,8 @@ export class InputSearch {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the search input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputSearchChangeEventDetail>;
@@ -150,6 +145,9 @@ export class InputSearch {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
     this.isClearable = !!newValue;
   }
@@ -213,7 +211,6 @@ export class InputSearch {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
       this.clear
     );
 
@@ -243,18 +240,16 @@ export class InputSearch {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         loading={this.loading}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="state-disabled" theme={this.theme} />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="contrast-medium" />,
         })}
         {...(this.clear && {
           end: (
             <PrefixedTagNames.pButtonPure
               tabIndex={-1}
               hideLabel={true}
-              theme={this.theme}
               class="button"
               type="button"
               icon="close"

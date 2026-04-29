@@ -1,0 +1,129 @@
+'use client';
+
+import type { Story } from '@/models/story';
+
+export const typographyVanillaExtractStoryHeading: Story<'div'> = {
+  generator: () => [
+    {
+      tag: 'div',
+      properties: {
+        className: 'grid gap-fluid-md',
+      },
+      children: [
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-5xl' },
+          children: ['...proseHeading5XlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-4xl' },
+          children: ['...proseHeading4XlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-3xl' },
+          children: ['...proseHeading3XlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-2xl' },
+          children: ['...proseHeading2XlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-xl' },
+          children: ['...proseHeadingXlStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-lg' },
+          children: ['...proseHeadingLgStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-md' },
+          children: ['...proseHeadingMdStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-sm' },
+          children: ['...proseHeadingSmStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-xs' },
+          children: ['...proseHeadingXsStyle'],
+        },
+        {
+          tag: 'h3',
+          properties: { className: 'prose-heading-2xs' },
+          children: ['...proseHeading2XsStyle'],
+        },
+      ],
+    },
+  ],
+};
+
+export const typographyVanillaExtractStoryText: Story<'div'> = {
+  generator: () => [
+    {
+      tag: 'div',
+      properties: {
+        className: 'grid gap-fluid-md',
+      },
+      children: [
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-5xl hyphens-auto' },
+          children: ['...proseText5XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-4xl hyphens-auto' },
+          children: ['...proseText4XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-3xl hyphens-auto' },
+          children: ['...proseText3XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-2xl hyphens-auto' },
+          children: ['...proseText2XlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-xl hyphens-auto' },
+          children: ['...proseTextXlStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-lg hyphens-auto' },
+          children: ['...proseTextLgStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-md hyphens-auto' },
+          children: ['...proseTextMdStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-sm hyphens-auto' },
+          children: ['...proseTextSmStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-xs hyphens-auto' },
+          children: ['...proseTextXsStyle'],
+        },
+        {
+          tag: 'p',
+          properties: { className: 'prose-text-2xs hyphens-auto' },
+          children: ['...proseText2XsStyle'],
+        },
+      ],
+    },
+  ],
+};

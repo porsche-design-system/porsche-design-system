@@ -1,0 +1,14 @@
+@use 'heading';
+
+/* alias (deprecated) */
+@mixin pds-display-large {
+  @include heading.prose-heading-5xl;
+}
+/* alias (deprecated) */
+@mixin pds-display-medium {
+  @include heading.prose-heading-4xl;
+}
+/* alias (deprecated) */
+@mixin pds-display-small {
+  @include heading.prose-heading-3xl;
+}

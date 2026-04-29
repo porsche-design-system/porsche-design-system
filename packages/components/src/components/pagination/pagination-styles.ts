@@ -1,35 +1,33 @@
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  frostedGlassStyle,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getThemedColors,
+  forcedColorsMediaQuery,
+  getDisabledBaseStyles,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
+import {
+  blurFrosted,
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusFull,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
-
-// button size needs to be fluid between 320px and 360px viewport width, so that the pagination fits into 320px viewport
-// and text scale 200% works (almost) on mobile viewports too
-const buttonSize = `clamp(36px, calc(${fontLineHeight} + 10vw - 20px), 40px)`;
 
 const disabledCursorStyle: JssStyle = {
   cursor: 'default',
@@ -38,20 +36,12 @@ const disabledCursorStyle: JssStyle = {
 
 const hiddenStyle: JssStyle = { display: 'none' };
 
-export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    hoverColor: hoverColorDark,
-  } = getThemedColors('dark');
-
+export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -63,11 +53,11 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
       },
       ul: {
         display: 'flex',
-        gap: spacingStaticXSmall,
+        gap: spacingStaticXs,
         margin: 0,
         padding: 0,
         [mediaQueryMinS]: {
-          gap: spacingStaticSmall,
+          gap: spacingStaticSm,
         },
       },
       li: {
@@ -95,10 +85,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
           },
         }),
         [mediaQueryMinS]: {
-          // prev
-          '&:first-child': { marginInlineEnd: spacingStaticSmall },
-          // next
-          '&:last-child': { marginInlineStart: spacingStaticSmall },
           ...(pageTotal < 8
             ? { '&.ellip': hiddenStyle }
             : // max 7 items including ellipsis at the same time on tablet
@@ -116,48 +102,44 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transition between states
+        transition: `${getTransition('background-color')}, ${getTransition('color')}`, // for smooth transition between states
         position: 'relative',
-        width: buttonSize,
-        height: buttonSize,
+        padding: '0 6px',
+        minWidth: '2.25rem',
+        height: '2.25rem',
         boxSizing: 'border-box',
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
-        color: primaryColor,
-        borderRadius: borderRadiusSmall,
+        backgroundColor: 'transparent',
+        color: colorPrimary,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
-            ...frostedGlassStyle,
-            background: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
+            background: colorFrosted,
+            ...forcedColorsMediaQuery({
+              outline: '2px solid CanvasText',
+              outlineOffset: '-2px',
             }),
           },
         }),
         '&[aria-current]': {
           ...disabledCursorStyle,
-          color: primaryColor,
-          border: `${borderWidthBase} solid ${primaryColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-            borderColor: primaryColorDark,
+          backgroundColor: colorFrostedStrong,
+          ...forcedColorsMediaQuery({
+            border: '2px solid CanvasText',
           }),
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
-          color: disabledColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-          }),
+          ...getDisabledBaseStyles(),
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
-        '&:not(.ellipsis)': getFocusJssStyle(theme),
+        '&:not(.ellipsis):focus-visible': getFocusBaseStyles(),
       },
     },
     ellipsis: {

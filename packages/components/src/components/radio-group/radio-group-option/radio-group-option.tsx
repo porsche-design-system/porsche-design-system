@@ -9,7 +9,6 @@ import {
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
-import { messageId } from '../../common/state-message/state-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
 import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
@@ -21,8 +20,10 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
   loading: AllowedTypes.boolean,
 };
 
+// Though "description" and "message" slots are technically available (provided by the "label" component),
+// they are not documented here to avoid confusion since they are not intended for use within radio group options.
 /**
- * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)." }
  */
 @Component({
@@ -38,7 +39,7 @@ export class RadioGroupOption {
   /** Text content for a user-facing label. */
   @Prop() public label?: string;
 
-  /** A boolean value that, if present, makes the radio group option unusable and unclickable. */
+  /** Disables the radio group option. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
@@ -64,12 +65,12 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, name, state } = this.host;
+    const { selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;
     const isLoading = isOptionLoading || this.host.loadingParent;
 
-    attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state, theme);
+    attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state);
 
     const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -92,14 +93,14 @@ export class RadioGroupOption {
               }}
               onChange={this.onChange}
               onBlur={this.onBlur}
-              aria-describedby={isLoading ? loadingId : `${messageId}`}
+              aria-describedby={isLoading ? loadingId : null}
               aria-invalid={state === 'error' ? 'true' : null}
               aria-disabled={isDisabled || isLoading ? 'true' : null}
               ref={(el) => (this.inputElement = el)}
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
             {isOptionLoading && !this.host.loadingParent && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />
+              <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />
             )}
           </div>
           <Label

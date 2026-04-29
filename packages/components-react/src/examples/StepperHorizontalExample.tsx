@@ -1,6 +1,5 @@
 import {
   PButton,
-  PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
@@ -14,7 +13,7 @@ type StepperHorizontalItemProps = {
   name: string;
 };
 
-export const StepperHorizontalExamplePage = (): JSX.Element => {
+export const StepperHorizontalExamplePage = () => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
       state: 'current',
@@ -76,25 +75,23 @@ export const StepperHorizontalExamplePage = (): JSX.Element => {
 
       {stepContent.map((content, i) => getActiveStepIndex(steps) === i && <PText key={i}>{content}</PText>)}
 
-      <PButtonGroup>
-        <PButton
-          type="button"
-          icon="arrow-head-left"
-          variant="tertiary"
-          onClick={() => onNextPrevStep('prev')}
-          disabled={getActiveStepIndex(steps) === 0}
-        >
-          Previous Step
-        </PButton>
+      <PButton
+        type="button"
+        icon="arrow-head-left"
+        variant="secondary"
+        onClick={() => onNextPrevStep('prev')}
+        disabled={getActiveStepIndex(steps) === 0}
+      >
+        Previous Step
+      </PButton>
 
-        <PButton
-          variant="primary"
-          disabled={getActiveStepIndex(steps) === steps.length - 1}
-          onClick={() => onNextPrevStep('next')}
-        >
-          Next Step
-        </PButton>
-      </PButtonGroup>
+      <PButton
+        variant="primary"
+        disabled={getActiveStepIndex(steps) === steps.length - 1}
+        onClick={() => onNextPrevStep('next')}
+      >
+        Next Step
+      </PButton>
     </>
   );
 };

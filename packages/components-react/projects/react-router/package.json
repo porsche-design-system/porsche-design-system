@@ -9,31 +9,30 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'react-router dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'react-router-serve ./build/server/index.js'",
-    "build": "yarn build-app",
+    "build": "npm run build-app",
     "build-app": "react-router build",
     "typecheck": "react-router typegen && tsc",
-    "test": "yarn test:vrt",
+    "test": "npm run test:vrt",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./.react-router && rm -rf ./build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.34.0",
-    "@react-router/node": "^7.9.4",
-    "@react-router/serve": "^7.9.4",
-    "isbot": "^5.1.31",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router": "^7.9.4"
+    "@porsche-design-system/components-react": "4.0.0",
+    "@react-router/node": "^7.14.0",
+    "@react-router/serve": "^7.14.0",
+    "isbot": "^5.1.37",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router": "^7.14.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@react-router/dev": "^7.9.4",
-    "@tailwindcss/vite": "^4.1.14",
-    "@types/node": "^24.7.2",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "typescript": "^5.9.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "@react-router/dev": "^7.14.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.2"
   },
   "peerDependencies": {
     "concurrently": "*",

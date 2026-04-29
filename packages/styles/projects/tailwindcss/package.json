@@ -1,6 +1,7 @@
 {
   "name": "@porsche-design-system/tailwindcss",
   "version": "0.0.0",
+  "type": "commonjs",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -11,20 +12,26 @@
     }
   },
   "sideEffects": false,
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:package",
+    "build": "npm run clean:build && npm run build:package",
     "build:package": "tsx scripts/build.ts",
-    "test": "yarn test:unit",
+    "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@biomejs/biome": "*",
     "tailwindcss": "*",
     "vitest": "*",
     "tsx": "*",

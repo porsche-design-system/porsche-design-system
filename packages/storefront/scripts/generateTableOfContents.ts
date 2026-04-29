@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { globby } from 'globby';
+import { glob as globby } from 'fast-glob';
 import * as prettier from 'prettier';
 
 const tableOfContentsRegex = /<TableOfContents[^>]*>/;

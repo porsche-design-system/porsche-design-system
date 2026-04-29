@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner } from '@porsche-design-system/components-react/ssr';
 
-const BannerBasicPage = (): JSX.Element => {
+const BannerBasicPage = () => {
   return (
     <>
       <div className="visualize-grid">
@@ -25,7 +25,7 @@ const BannerBasicPage = (): JSX.Element => {
         <span />
       </div>
 
-      <PBanner description="Description" heading="Heading" open={true} />
+      <PBanner open={true} heading="Heading" description="Description" />
     </>
   );
 };

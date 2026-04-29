@@ -1,6 +1,6 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
 import { Component, Element, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +10,6 @@ import {
   hasPropValueChanged,
   isClickOutside,
   parseAndGetAriaAttributes,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
@@ -26,7 +25,6 @@ const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -40,18 +38,15 @@ const propTypes: PropTypes<typeof Popover> = {
 export class Popover {
   @Element() public host!: HTMLElement;
 
-  /** Preferred direction in which popover should open, given there is enough space in viewport.
-   * Otherwise, it will be opened in the direction with most available space. */
+  /** Preferred direction in which the popover should open when there is enough space in the viewport.
+   * Otherwise, it opens in the direction with the most available space. */
   @Prop() public direction?: PopoverDirection = 'bottom';
 
-  /** Descriptive text to show additional information when popover is open  */
+  /** Descriptive text shown when the popover is open. */
   @Prop() public description?: string;
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
-
-  /** Adapts the popover color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   @State() private isOpen = false;
 
@@ -92,7 +87,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
@@ -111,7 +106,7 @@ export class Popover {
             })}
             ref={(el) => (this.button = el)}
           >
-            <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
+            <PrefixedTagNames.pIcon class="icon" name="information" />
             <span class="label">More information</span>
           </button>
         )}

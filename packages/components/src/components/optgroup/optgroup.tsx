@@ -8,7 +8,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './optgroup-styles';
-import { type OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
+import { updateOptionsDisabled } from './optgroup-utils';
 
 const propTypes: PropTypes<typeof Optgroup> = {
   label: AllowedTypes.string,
@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof Optgroup> = {
   shadow: true,
 })
 export class Optgroup {
-  @Element() public host!: HTMLElement & OptgroupInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** The optgroup label. */
   @Prop() public label?: string;
@@ -36,10 +36,6 @@ export class Optgroup {
     updateOptionsDisabled(this.host, this.disabled);
   }
 
-  public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.dispatchInternalOptgroupUpdate);
-  }
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-multi-select']);
   }
@@ -48,10 +44,14 @@ export class Optgroup {
     updateOptionsDisabled(this.host, this.disabled);
   }
 
+  public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.dispatchInternalOptgroupUpdate);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', hidden } = this.host;
-    attachComponentCss(this.host, getComponentCss, this.disabled, theme);
+    const { hidden } = this.host;
+    attachComponentCss(this.host, getComponentCss, this.disabled);
 
     const labelId = 'label';
 

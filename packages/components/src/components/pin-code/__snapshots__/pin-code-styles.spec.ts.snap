@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, length: 4 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false and length: 4 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,58 +12,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-success-frosted-soft);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #0E4809;
+  input:hover {
+    border-color: var(--p-color-success);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -76,12 +69,10 @@ input:disabled {
   white-space: nowrap;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -89,8 +80,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -99,19 +90,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -148,7 +140,7 @@ input:disabled {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    margin-top: -4px;
+    margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
 }
 
@@ -196,7 +188,7 @@ input:disabled {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    margin-top: -4px;
+    margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
 }
 
@@ -244,16 +236,16 @@ input:disabled {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    margin-top: -4px;
+    margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, length: 1 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 1 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -262,58 +254,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -327,12 +312,10 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -340,8 +323,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -350,18 +333,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -379,10 +363,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, length: 1 and theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 1 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -391,58 +375,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 0.5))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 0.5));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 0.5) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -456,12 +433,10 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -469,8 +444,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -479,18 +454,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -508,10 +484,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, length: 2 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 2 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -520,58 +496,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -585,12 +554,10 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -598,8 +565,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -608,18 +575,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -637,10 +605,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, length: 3 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 3 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -649,58 +617,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -714,12 +675,10 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -727,8 +686,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -737,18 +696,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -766,10 +726,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, length: 4 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 4 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -778,58 +738,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -843,12 +796,10 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -856,8 +807,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -866,18 +817,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -895,10 +847,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, length: 5 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 5 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -907,58 +859,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+input:focus-visible {
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -972,12 +917,10 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -985,8 +928,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -995,18 +938,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1024,10 +968,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, length: 6 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true and length: 6 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1036,62 +980,59 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  opacity: 0.2;
-  cursor: not-allowed;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .spinner {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   pointer-events: none;
 }
 .label-wrapper {
@@ -1106,12 +1047,11 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  cursor: not-allowed;
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1119,8 +1059,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1129,18 +1069,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1158,10 +1099,10 @@ input:disabled {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, length: 1 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 1 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1169,61 +1110,54 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
-@media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1237,12 +1171,12 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1250,7 +1184,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1259,18 +1194,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1285,13 +1221,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, length: 2 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 2 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1299,61 +1242,54 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
-@media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1367,12 +1303,12 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1380,7 +1316,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1389,18 +1326,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1415,13 +1353,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, length: 3 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 3 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1429,61 +1374,54 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
-@media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1497,12 +1435,12 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1510,7 +1448,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1519,18 +1458,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1545,13 +1485,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, length: 4 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 4 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1559,61 +1506,54 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
-@media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1627,12 +1567,12 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1640,7 +1580,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1649,18 +1590,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1675,13 +1617,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, length: 5 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1689,61 +1638,54 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
-@media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1757,12 +1699,12 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1770,7 +1712,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1779,18 +1722,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1805,13 +1749,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, length: 5 and theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1819,61 +1770,54 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 0.5))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 0.5));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
-}
-input:focus {
-  border-color: #010205;
-}
-input:disabled {
   cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  text-align: center;
+  opacity: 0.4;
 }
-@media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+input:focus-visible {
+  border-color: var(--p-color-primary);
+}
+@media(forced-colors:active) {
+  input {
+    opacity: 1;
+    color: GrayText;
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 0.5) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1887,12 +1831,12 @@ input:disabled {
   white-space: normal;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1900,7 +1844,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1909,18 +1854,19 @@ input:disabled {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1935,13 +1881,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, length: 6 and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and length: 6 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --_p-pin-code-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1950,58 +1903,51 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 input {
+  all: unset;
   display: block;
   width: auto;
-  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  border: 2px solid #FC4040;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #FBFCFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  text-align: center;
-  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
-  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-:not(input[type="password"]) {
+  min-width: calc(1ch + calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px) * 2 + 1px * 2);
+  max-width: calc(var(--_p-pin-code-a) * 3.5rem);
+  height: calc(var(--_p-pin-code-a) * 3.5rem);
+  padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
+  box-sizing: border-box;
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-error-frosted-soft);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
+  cursor: text;
+  text-align: center;
 }
-input:focus {
-  border-color: #FBFCFF;
-}
-input:disabled {
-  cursor: not-allowed;
-  color: #7E7F82;
-  border-color: #7E7F82;
-  -webkit-text-fill-color: #7E7F82;
+input:focus-visible {
+  border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #FB0404;
+  input:hover {
+    border-color: var(--p-color-error);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
-  gap: 4px;
+  gap: var(--p-spacing-static-xs);
 }
 .wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-self: flex-start;
-  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -2014,12 +1960,10 @@ input:disabled {
   white-space: nowrap;
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2027,8 +1971,8 @@ input:disabled {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2037,19 +1981,20 @@ input:disabled {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;

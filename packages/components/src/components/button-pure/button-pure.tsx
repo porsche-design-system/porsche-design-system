@@ -1,32 +1,29 @@
-import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, Watch, h } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { AttachInternals, Component, Element, Host, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
+  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  TEXT_SIZES,
-  THEMES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
-  attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-pure-styles';
 import {
+  BUTTON_PURE_COLORS,
+  BUTTON_PURE_SIZES,
   type ButtonPureAlignLabel,
-  type ButtonPureAlignLabelDeprecated,
   type ButtonPureAriaAttribute,
+  type ButtonPureColor,
   type ButtonPureIcon,
   type ButtonPureSize,
   type ButtonPureType,
-  type ButtonPureWeight,
   getButtonPureAriaAttributes,
   warnIfIsLoadingAndIconIsNone,
 } from './button-pure-utils';
@@ -37,16 +34,15 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   value: AllowedTypes.string,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  size: AllowedTypes.breakpoint<ButtonPureSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<ButtonPureWeight>(TYPOGRAPHY_TEXT_WEIGHTS),
+  size: AllowedTypes.breakpoint<ButtonPureSize>(BUTTON_PURE_SIZES),
   icon: AllowedTypes.string,
+  color: AllowedTypes.oneOf<ButtonPureColor>(BUTTON_PURE_COLORS),
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   alignLabel: AllowedTypes.breakpoint<ButtonPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonPureAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
   form: AllowedTypes.string,
 };
@@ -78,13 +74,10 @@ export class ButtonPure {
   @Prop() public loading?: boolean = false;
 
   /** Size of the button. */
-  @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'sm';
 
-  /**
-   * The weight of the text (only has effect with visible label).
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public weight?: ButtonPureWeight = 'regular';
+  /** The color. */
+  @Prop() public color?: ButtonPureColor = 'primary';
 
   /** The icon shown. */
   @Prop() public icon?: ButtonPureIcon = 'arrow-right';
@@ -95,10 +88,10 @@ export class ButtonPure {
   /** Shows an underline under the label. */
   @Prop() public underline?: boolean = false;
 
-  /** Display button in active state. */
+  /** Displays the button in its active state. */
   @Prop() public active?: boolean = false;
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
@@ -107,10 +100,7 @@ export class ButtonPure {
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
   /** The id of a form element the button should be associated with. */
@@ -188,33 +178,21 @@ export class ButtonPure {
     validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
 
-    const alignLabelDeprecationMap: Record<
-      ButtonPureAlignLabelDeprecated,
-      Exclude<ButtonPureAlignLabel, ButtonPureAlignLabelDeprecated>
-    > = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof ButtonPure, ButtonPureAlignLabelDeprecated, ButtonPureAlignLabel>(
-      this,
-      'alignLabel',
-      alignLabelDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
       this.icon,
       this.iconSource,
       this.active,
+      this.disabled,
       this.loading,
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
+      this.color,
       this.hideLabel,
       this.alignLabel,
-      this.underline,
-      this.theme
+      this.underline
     );
 
     const hasIcon = hasVisibleIcon(this.icon, this.iconSource);
@@ -222,7 +200,7 @@ export class ButtonPure {
     const iconProps = {
       class: 'icon',
       size: 'inherit',
-      theme: this.theme,
+      color: 'inherit',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -241,14 +219,7 @@ export class ButtonPure {
             <PrefixedTagNames.pSpinner {...iconProps} aria-hidden="true" />
           ) : (
             hasIcon && (
-              <PrefixedTagNames.pIcon
-                {...iconProps}
-                name={this.icon}
-                source={this.iconSource}
-                color={this.isDisabledOrLoading ? 'state-disabled' : 'primary'}
-                theme={this.theme}
-                aria-hidden="true"
-              />
+              <PrefixedTagNames.pIcon {...iconProps} name={this.icon} source={this.iconSource} aria-hidden="true" />
             )
           )}
           <span class="label">

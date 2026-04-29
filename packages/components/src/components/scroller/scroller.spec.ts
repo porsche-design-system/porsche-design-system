@@ -1,110 +1,241 @@
 import { vi } from 'vitest';
 import * as jsonUtils from '../../utils/json';
-import * as scrollingUtils from '../../utils/scrolling';
 import { Scroller } from './scroller';
 
-describe('scrollToPositionHandler', () => {
-  it('should call parseJSONAttribute() with correct parameters and set scrollPosition', () => {
-    const component = new Scroller();
-    component.scrollToPosition = { scrollPosition: 100 };
-    component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
-    vi.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation(() => {});
+const initComponent = (): Scroller => {
+  const component = new Scroller();
+  component.host = document.createElement('p-scroller');
+  component.host.attachShadow({ mode: 'open' });
 
-    component.scrollToPositionHandler();
+  const scrollArea = document.createElement('div');
+  const sentinelLeft = document.createElement('span');
+  const sentinelRight = document.createElement('span');
 
-    expect(spy).toHaveBeenCalledWith({ scrollPosition: 100 });
-    expect(component.scrollToPosition).toStrictEqual({ scrollPosition: 200 });
+  scrollArea.appendChild(sentinelLeft);
+  scrollArea.appendChild(sentinelRight);
+  component.host.shadowRoot.appendChild(scrollArea);
+
+  component['scrollArea'] = scrollArea;
+  component['sentinelLeft'] = sentinelLeft;
+  component['sentinelRight'] = sentinelRight;
+
+  return component;
+};
+
+describe('initIntersectionObserver()', () => {
+  let mockObserve: ReturnType<typeof vi.fn>;
+  let mockDisconnect: ReturnType<typeof vi.fn>;
+  let intersectionCallback: IntersectionObserverCallback;
+
+  beforeEach(() => {
+    mockObserve = vi.fn();
+    mockDisconnect = vi.fn();
+
+    // IntersectionObserver isn't available in jsdom
+    // biome-ignore lint/complexity/useArrowFunction: vitest requires normal function
+    window.IntersectionObserver = vi.fn().mockImplementation(function (callback: IntersectionObserverCallback) {
+      intersectionCallback = callback;
+      return {
+        observe: mockObserve,
+        unobserve: vi.fn(),
+        disconnect: mockDisconnect,
+      };
+    }) as any;
   });
 
-  it('should call scrollElementTo() with correct parameters if isSmooth', () => {
-    const component = new Scroller();
-    component.scrollToPosition = { scrollPosition: 100, isSmooth: true };
-    component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = vi.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation(() => {});
+  it('should create IntersectionObserver with scrollArea as root and threshold 0.1', () => {
+    const component = initComponent();
 
-    component.scrollToPositionHandler();
+    component['initIntersectionObserver']();
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(window.IntersectionObserver).toHaveBeenCalledWith(expect.any(Function), {
+      root: component['scrollArea'],
+      threshold: 0.1,
+    });
   });
 
-  it('should set scrollAreaElement.scrollLeft if !isSmooth', () => {
-    const component = new Scroller();
-    component.scrollToPosition = { scrollPosition: 100 };
-    component['scrollAreaElement'] = document.createElement('p-scroller');
+  it('should observe sentinelLeft and sentinelRight', () => {
+    const component = initComponent();
 
-    component.scrollToPositionHandler();
+    component['initIntersectionObserver']();
 
-    expect(component['scrollAreaElement'].scrollLeft).toBe(component.scrollToPosition.scrollPosition);
+    expect(mockObserve).toHaveBeenCalledTimes(2);
+    expect(mockObserve).toHaveBeenCalledWith(component['sentinelLeft']);
+    expect(mockObserve).toHaveBeenCalledWith(component['sentinelRight']);
+  });
+
+  it('should set isIndicatorPrevVisible to false when sentinelLeft is intersecting', () => {
+    const component = initComponent();
+    component['isIndicatorPrevVisible'] = true;
+
+    component['initIntersectionObserver']();
+
+    intersectionCallback(
+      [{ target: component['sentinelLeft'], isIntersecting: true }] as unknown as IntersectionObserverEntry[],
+      {} as IntersectionObserver
+    );
+
+    expect(component['isIndicatorPrevVisible']).toBe(false);
+  });
+
+  it('should set isIndicatorPrevVisible to true when sentinelLeft is not intersecting', () => {
+    const component = initComponent();
+    component['isIndicatorPrevVisible'] = false;
+
+    component['initIntersectionObserver']();
+
+    intersectionCallback(
+      [{ target: component['sentinelLeft'], isIntersecting: false }] as unknown as IntersectionObserverEntry[],
+      {} as IntersectionObserver
+    );
+
+    expect(component['isIndicatorPrevVisible']).toBe(true);
+  });
+
+  it('should set isIndicatorNextVisible to false when sentinelRight is intersecting', () => {
+    const component = initComponent();
+    component['isIndicatorNextVisible'] = true;
+
+    component['initIntersectionObserver']();
+
+    intersectionCallback(
+      [{ target: component['sentinelRight'], isIntersecting: true }] as unknown as IntersectionObserverEntry[],
+      {} as IntersectionObserver
+    );
+
+    expect(component['isIndicatorNextVisible']).toBe(false);
+  });
+
+  it('should set isIndicatorNextVisible to true when sentinelRight is not intersecting', () => {
+    const component = initComponent();
+    component['isIndicatorNextVisible'] = false;
+
+    component['initIntersectionObserver']();
+
+    intersectionCallback(
+      [{ target: component['sentinelRight'], isIntersecting: false }] as unknown as IntersectionObserverEntry[],
+      {} as IntersectionObserver
+    );
+
+    expect(component['isIndicatorNextVisible']).toBe(true);
+  });
+
+  it('should handle both sentinels in a single callback invocation', () => {
+    const component = initComponent();
+
+    component['initIntersectionObserver']();
+
+    intersectionCallback(
+      [
+        { target: component['sentinelLeft'], isIntersecting: false },
+        { target: component['sentinelRight'], isIntersecting: true },
+      ] as unknown as IntersectionObserverEntry[],
+      {} as IntersectionObserver
+    );
+
+    expect(component['isIndicatorPrevVisible']).toBe(true);
+    expect(component['isIndicatorNextVisible']).toBe(false);
+  });
+
+  it('should store the IntersectionObserver instance', () => {
+    const component = initComponent();
+
+    component['initIntersectionObserver']();
+
+    expect(component['intersectionObserver']).toBeDefined();
+    expect(component['intersectionObserver'].observe).toBeDefined();
   });
 });
 
-describe('connectedCallback', () => {
-  it('should call parseJSONAttribute() with correct parameter and set scrollPosition', () => {
-    const component = new Scroller();
+describe('scrollToPositionHandler()', () => {
+  it('should call parseJSONAttribute() with scrollToPosition', () => {
+    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
+    const component = initComponent();
+    component['scrollArea'].scrollTo = vi.fn();
+    component.scrollToPosition = { scrollPosition: 200, isSmooth: true };
+
+    component.scrollToPositionHandler();
+
+    expect(spy).toHaveBeenCalledWith({ scrollPosition: 200, isSmooth: true });
+  });
+
+  it('should call scrollArea.scrollTo() with smooth behavior when isSmooth is true', () => {
+    const component = initComponent();
+    const scrollToSpy = vi.fn();
+    component['scrollArea'].scrollTo = scrollToSpy;
+    component.scrollToPosition = { scrollPosition: 300, isSmooth: true };
+
+    component.scrollToPositionHandler();
+
+    expect(scrollToSpy).toHaveBeenCalledWith({ left: 300, behavior: 'smooth' });
+  });
+
+  it('should call scrollArea.scrollTo() with instant behavior when isSmooth is false', () => {
+    const component = initComponent();
+    const scrollToSpy = vi.fn();
+    component['scrollArea'].scrollTo = scrollToSpy;
+    component.scrollToPosition = { scrollPosition: 150, isSmooth: false };
+
+    component.scrollToPositionHandler();
+
+    expect(scrollToSpy).toHaveBeenCalledWith({ left: 150, behavior: 'instant' });
+  });
+
+  it('should call scrollArea.scrollTo() with instant behavior when isSmooth is undefined', () => {
+    const component = initComponent();
+    const scrollToSpy = vi.fn();
+    component['scrollArea'].scrollTo = scrollToSpy;
     component.scrollToPosition = { scrollPosition: 100 };
-    component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
 
-    component.connectedCallback();
+    component.scrollToPositionHandler();
 
-    expect(spy).toHaveBeenCalledWith({ scrollPosition: 100 });
-    expect(component.scrollToPosition).toStrictEqual({ scrollPosition: 200 });
+    expect(scrollToSpy).toHaveBeenCalledWith({ left: 100, behavior: 'instant' });
+  });
+
+  it('should not call scrollTo() when scrollArea is undefined', () => {
+    const component = initComponent();
+    const scrollToSpy = vi.fn();
+    component['scrollArea'].scrollTo = scrollToSpy;
+    component['scrollArea'] = undefined;
+    component.scrollToPosition = { scrollPosition: 200, isSmooth: true };
+
+    component.scrollToPositionHandler();
+
+    expect(scrollToSpy).not.toHaveBeenCalled();
   });
 });
 
-describe('componentDidLoad', () => {
-  it('should call initIntersectionObserver()', () => {
-    const component = new Scroller();
-    const spy = vi.spyOn(component, 'initIntersectionObserver' as any);
+describe('scroll()', () => {
+  it('should call scrollBy() with negative left value and smooth behavior for direction "prev"', () => {
+    const component = initComponent();
+    const scrollBySpy = vi.fn();
+    component['scrollArea'].scrollBy = scrollBySpy;
+    Object.defineProperty(component['scrollArea'], 'offsetWidth', { value: 400 });
 
-    try {
-      component.componentDidLoad();
-    } catch {}
+    component['scroll']('prev');
 
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-  it('should call scrollToPositionHandler() if scrollToPosition', () => {
-    const component = new Scroller();
-    vi.spyOn(component, 'initIntersectionObserver' as any).mockImplementation(() => {});
-    component.scrollToPosition = { scrollPosition: 100 };
-    component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = vi.spyOn(component, 'scrollToPositionHandler');
-
-    component.componentDidLoad();
-
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('componentShouldUpdate', () => {
-  it('should return true if prop name does not match scrollToPosition', () => {
-    const component = new Scroller();
-    expect(component.componentShouldUpdate(1, 0, 'theme')).toBe(true);
+    expect(scrollBySpy).toHaveBeenCalledWith({ left: -200, behavior: 'smooth' });
   });
 
-  it('should return true if prop name matches "scrollToPosition", value of "scrollToPosition" changed and isPrevHidden and isNextHidden are false', () => {
-    const component = new Scroller();
-    component['isPrevHidden'] = false;
-    component['isNextHidden'] = false;
-    expect(component.componentShouldUpdate({ scrollPosition: 10 }, { scrollPosition: 0 }, 'scrollToPosition')).toBe(
-      true
-    );
+  it('should call scrollBy() with positive left value and smooth behavior for direction "next"', () => {
+    const component = initComponent();
+    const scrollBySpy = vi.fn();
+    component['scrollArea'].scrollBy = scrollBySpy;
+    Object.defineProperty(component['scrollArea'], 'offsetWidth', { value: 400 });
+
+    component['scroll']('next');
+
+    expect(scrollBySpy).toHaveBeenCalledWith({ left: 200, behavior: 'smooth' });
   });
 
-  it('should return false if prop name matches "scrollToPosition" and isPrevHidden is true', () => {
-    const component = new Scroller();
-    component['isPrevHidden'] = true;
-    expect(component.componentShouldUpdate({ scrollPosition: 0 }, { scrollPosition: 0 }, 'scrollToPosition')).toBe(
-      false
-    );
-  });
+  it('should use half of scrollArea offsetWidth as scroll distance', () => {
+    const component = initComponent();
+    const scrollBySpy = vi.fn();
+    component['scrollArea'].scrollBy = scrollBySpy;
+    Object.defineProperty(component['scrollArea'], 'offsetWidth', { value: 600 });
 
-  it('should return false if prop name matches "scrollToPosition" and isNextHidden is true', () => {
-    const component = new Scroller();
-    component['isNextHidden'] = true;
-    expect(component.componentShouldUpdate({ scrollPosition: 0 }, { scrollPosition: 0 }, 'scrollToPosition')).toBe(
-      false
-    );
+    component['scroll']('next');
+
+    expect(scrollBySpy).toHaveBeenCalledWith({ left: 300, behavior: 'smooth' });
   });
 });

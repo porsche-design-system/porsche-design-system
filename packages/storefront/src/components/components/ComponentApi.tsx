@@ -1,10 +1,10 @@
+import { componentMeta } from '@porsche-design-system/component-meta';
+import type { TagName } from '@porsche-design-system/shared';
+import React from 'react';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentMetaCssVariables } from '@/components/components/ComponentMetaCssVariables';
 import { ComponentMetaEvents } from '@/components/components/ComponentMetaEvents';
 import { ComponentMetaSlots } from '@/components/components/ComponentMetaSlots';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
-import React from 'react';
 import { ComponentMetaProps } from './ComponentMetaProps';
 
 type ComponentApiProps = {

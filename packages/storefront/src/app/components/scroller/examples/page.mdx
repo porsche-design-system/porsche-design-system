@@ -17,13 +17,13 @@ export const metadata = {
 
 ## Height
 
-The height of `p-scroller` depends on its content height.
+The height of `p-scroller` depends on the height of its content.
 
 Keep in mind that the content passed to the `p-scroller` should be within the size definition of the design system and
 thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
 
-The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
-consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
+The `p-scroller` only takes care of horizontal alignment. Spacing and custom CSS properties must be handled by the
+consumer, e.g. `white-space: nowrap`, to avoid line breaks inside the elements.
 
 <ComponentStory story={scrollerStoryHeight} />
 
@@ -32,6 +32,6 @@ consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
 The `p-scroller` component provides the `scrollToPosition` property. It accepts
 `{ scrollPosition: number, isSmooth?: boolean }`.
 
-If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
+If `scrollToPosition` is set with `isSmooth: true`, the scrolling is animated.
 
 <ComponentExample codeSample={scrollerExample} />

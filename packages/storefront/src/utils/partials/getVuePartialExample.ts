@@ -20,7 +20,7 @@ export const getVuePartialExample = (name: Partials, location: PartialLocation, 
 
   return `<!-- prerequisite -->
 <!-- docs: https://github.com/vbenjs/vite-plugin-html -->
-yarn add --dev vite-plugin-html
+npm install --save-dev vite-plugin-html
 
 <!-- index.html -->
 <${location}>

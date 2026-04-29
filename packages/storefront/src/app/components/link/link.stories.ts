@@ -28,11 +28,14 @@ export const linkStory: Story<'p-link'> = {
   generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-link',
-      properties: Object.fromEntries(
-        Object.entries(properties ?? {}).filter(([name]) =>
-          slots?.default.name === 'Slotted Anchor' ? name !== 'href' : true
-        )
-      ),
+      properties: {
+        ...Object.fromEntries(
+          Object.entries(properties ?? {}).filter(([name]) =>
+            slots?.default.name === 'Slotted Anchor' ? name !== 'href' : true
+          )
+        ),
+        ...(properties?.hideLabel && !properties?.icon && !properties?.iconSource && { icon: 'arrow-right' }),
+      },
       children:
         slots?.default?.generator(
           slots?.default.name === 'Slotted Anchor' ? { properties: { href: properties?.href } } : undefined

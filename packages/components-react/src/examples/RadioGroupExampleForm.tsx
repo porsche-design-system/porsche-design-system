@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { FormEvent, useState } from 'react';
 
-export const RadioGroupExampleFormPage = (): JSX.Element => {
+export const RadioGroupExampleFormPage = () => {
   const [form, setForm] = useState({ myRadioGroup: '' });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 

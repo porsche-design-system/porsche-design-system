@@ -1,44 +1,42 @@
 import {
-  borderRadiusLarge,
-  borderRadiusSmall,
   getMediaQueryMin,
   gridBasicOffset,
   gridExtendedOffset,
   gridFullOffset,
   gridWideOffset,
-  headingXLargeStyle,
-  headingXXLargeStyle,
   motionDurationModerate,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
-import type {
-  CarouselAlignControls,
-  CarouselAlignHeader,
-  CarouselGradientColor,
-  CarouselHeadingSize,
-  CarouselWidth,
-} from './carousel-utils';
+import {
+  colorContrastMedium,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusLarge,
+  radius4Xl,
+  radiusFull,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescale2Xl,
+  typescaleSm,
+  typescaleXl,
+} from '../../styles/css-variables';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 
 /**
  * @css-variable {"name": "--p-carousel-px", "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
@@ -56,9 +54,10 @@ export const cssVarPaddingInlineStart = '--p-carousel-ps';
 export const cssVarPaddingInlineEnd = '--p-carousel-pe';
 
 /**
- * @css-variable {"name": "--p-carousel-prev-next-filter", "description": "CSS Filter applied to the navigation (prev/next buttons)", "defaultValue": "none"}
+ * @css-variable {"name": "--p-carousel-prev-next-color-scheme", "description": "Color Scheme applied to the navigation (prev/next buttons)"}
  */
-const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
+const cssVariablePrevNextColorScheme = '--p-carousel-prev-next-color-scheme';
+
 export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 export const carouselTransitionDuration = motionDurationModerate;
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
@@ -95,7 +94,7 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   full: {
     base: gridFullOffset,
     s: gridFullOffset,
-    xxl: gridFullOffset
+    xxl: gridFullOffset,
   },
 };
 
@@ -104,41 +103,10 @@ const backfaceVisibilityJssStyle: JssStyle = {
   WebkitBackfaceVisibility: 'hidden',
 };
 
-const gradientColorLight: Record<CarouselGradientColor, string> = {
-  'background-base': '255,255,255',
-  'background-surface': '238,239,242',
-  none: '',
-};
+const gradientMask = `linear-gradient(90deg,transparent 20%,#000 var(${cssVariableGradientColorWidth},33%) calc(100% - var(${cssVariableGradientColorWidth},33%)),transparent 80%)`;
 
-const gradientColorDark: Record<CarouselGradientColor, string> = {
-  'background-base': '14,14,18',
-  'background-surface': '33,34,37',
-  none: '',
-};
-
-const gradientColorMap: Record<Theme, Record<CarouselGradientColor, string>> = {
-  auto: gradientColorLight,
-  light: gradientColorLight,
-  dark: gradientColorDark,
-};
-
-const getGradient = (theme: Theme, gradientColorTheme: CarouselGradientColor): string => {
-  const gradientColor = gradientColorMap[theme][gradientColorTheme];
-
-  return (
-    `rgba(${gradientColor},1) 20%,` +
-    `rgba(${gradientColor},0.6) 48%,` +
-    `rgba(${gradientColor},0.3) 68%,` +
-    `rgba(${gradientColor},0)`
-  );
-};
-
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 export const getComponentCss = (
-  gradientColor: CarouselGradientColor,
+  gradient: boolean,
   hasHeading: boolean,
   hasDescription: boolean,
   hasControlsSlot: boolean,
@@ -147,35 +115,19 @@ export const getComponentCss = (
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
-  theme: Theme,
   hasNavigation: boolean,
   alignControls: CarouselAlignControls
 ): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
-  const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
-
-  const getGradientStyles = (direction: 'left' | 'right'): JssStyle =>
-    gradientColor
-      ? {
-          [direction === 'left' ? 'right' : 'left']: 0,
-          background: `linear-gradient(to ${direction}, ${getGradient(theme, gradientColor)} 100%)`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: `linear-gradient(to ${direction}, ${getGradient('dark', gradientColor)} 100%)`,
-          }),
-        }
-      : {};
 
   return getCss({
     '@global': {
       ':host': {
         display: 'flex',
         ...addImportantToEachRule({
-          gap: spacingFluidMedium, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
+          gap: spacingFluidMd, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
           flexDirection: 'column',
           boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -197,7 +149,7 @@ export const getComponentCss = (
       ...addImportantToEachRule({
         '::slotted': {
           '&(*)': {
-            borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+            borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
           },
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
@@ -205,33 +157,30 @@ export const getComponentCss = (
         ...((hasHeading || hasDescription) && {
           [`${selectorHeading},${selectorDescription}`]: {
             gridColumn: '1/-1',
-            color: primaryColor,
+            color: colorPrimary,
             ...(isHeaderAlignCenter && {
               textAlign: 'center', // relevant in case heading or description becomes multiline
               justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
-            }),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: primaryColorDark,
             }),
           },
         }),
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
-            margin: `0 0 ${hasDescription ? 0 : spacingFluidMedium}`,
-            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+            margin: `0 0 ${hasDescription ? 0 : spacingFluidMd}`,
+            font: `${fontWeightNormal} ${headingSize === 'xx-large' ? typescale2Xl : typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
           },
           '::slotted([slot=heading])': {
             margin: 0, // reset ua-style
-            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+            font: `${fontWeightNormal} ${headingSize === 'xx-large' ? typescale2Xl : typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
           },
         }),
         // p,::slotted([slot=description])
         ...(hasDescription && {
           [selectorDescription]: {
             maxWidth: '34.375rem',
-            margin: `${spacingFluidSmall} 0 ${spacingFluidMedium}`,
-            ...textSmallStyle,
+            margin: `${spacingFluidSm} 0 ${spacingFluidMd}`,
+            font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
           },
         }),
       }),
@@ -244,7 +193,7 @@ export const getComponentCss = (
         gridTemplateColumns: 'minmax(0px,1fr) auto',
         paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
         paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
-        ...(hasNavigation && { columnGap: spacingStaticMedium }),
+        ...(hasNavigation && { columnGap: spacingStaticMd }),
       },
       [mediaQueryXXL]: {
         paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
@@ -257,13 +206,13 @@ export const getComponentCss = (
         gridRowStart: '3',
         gridColumnEnd: '-1',
         display: 'flex',
-        gap: spacingStaticXSmall,
+        gap: spacingStaticXs,
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
-      filter: `var(${cssVariablePrevNextFilter}, none)`,
+      colorScheme: `var(${cssVariablePrevNextColorScheme})`,
     },
     btn: {
-      padding: spacingStaticSmall,
+      padding: spacingStaticSm,
     },
     'skip-link': {
       // :focus must be used in this case, because :focus-visible is just matched on the focusable element itself, not on the host element.
@@ -278,6 +227,10 @@ export const getComponentCss = (
       margin: '-4px 0', // for slide focus outline
       '&__track': {
         position: 'relative',
+        ...(gradient && {
+          WebkitMask: gradientMask,
+          mask: gradientMask,
+        }),
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           paddingBlock: '0px',
@@ -298,19 +251,6 @@ export const getComponentCss = (
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
         },
-        ...(gradientColor &&
-          gradientColor !== 'none' && {
-            '&::before, &::after': {
-              content: '""',
-              position: 'absolute',
-              zIndex: 1,
-              top: 0,
-              height: '100%',
-              width: `var(${cssVariableGradientColorWidth}, 33%)`,
-            },
-            '&::before': getGradientStyles('right'),
-            '&::after': getGradientStyles('left'),
-          }),
       },
       '&__list': {
         ...backfaceVisibilityJssStyle,
@@ -320,8 +260,8 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
-        ...getFocusJssStyle(theme),
+        borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
+        '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
       ...(isHeaderAlignCenter && {
@@ -370,17 +310,8 @@ export const getComponentCss = (
           },
           position: 'relative',
         },
-        borderRadius: borderRadiusSmall,
-        ...(isHighContrastMode
-          ? {
-              background: canvasTextColor,
-            }
-          : {
-              background: contrastMediumColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: contrastMediumColorDark,
-              }),
-            }),
+        borderRadius: radiusFull,
+        background: colorContrastMedium,
         ...(isInfinitePagination
           ? {
               width: '0px',
@@ -420,16 +351,7 @@ export const getComponentCss = (
         },
       }),
       [bulletActiveClass]: {
-        ...(isHighContrastMode
-          ? {
-              background: canvasTextColor,
-            }
-          : {
-              background: primaryColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: primaryColorDark,
-              }),
-            }),
+        background: colorPrimary,
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {

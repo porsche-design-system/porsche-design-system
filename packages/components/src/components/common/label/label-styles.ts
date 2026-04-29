@@ -1,47 +1,42 @@
-import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
+import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import {
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../../styles';
-import { buildResponsiveStyles, type Theme } from '../../../utils';
+  colorContrastHigh,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  spacingStaticXs,
+  typescaleSm,
+  typescaleXs,
+} from '../../../styles/css-variables';
+import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
-export const getFunctionalComponentLabelAfterStyles = (
-  isDisabledOrLoading: boolean,
-  additionalIsDisabledJssStyle?: JssStyle
-): Styles => {
+export const getFunctionalComponentLabelAfterStyles = (): Styles => {
   return {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
-      ...(isDisabledOrLoading && {
-        pointerEvents: 'none',
-        opacity: '0.4', // workaround: must be opacity because color tokens would not affect e.g. slotted `popover`
-        ...additionalIsDisabledJssStyle,
-      }),
+      '&::slotted(*)': {
+        ...addImportantToEachRule({
+          marginInlineStart: spacingStaticXs,
+        }),
+      },
     },
   };
 };
 
 export const getFunctionalComponentLabelStyles = (
-  isDisabledOrLoading: boolean,
+  isDisabled: boolean,
+  isLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
-  theme: Theme,
   additionalDefaultJssStyle?: JssStyle,
   additionalLabelWrapperJssStyle?: JssStyle,
   additionalIsShownJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
-  } = getThemedColors('dark');
-
+  const isDisabledOrLoading = isDisabled || isLoading;
   return {
     'label-wrapper': {
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
@@ -51,30 +46,34 @@ export const getFunctionalComponentLabelStyles = (
       ...additionalLabelWrapperJssStyle,
     },
     label: {
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
-      transition: getTransition('color'), // for smooth transitions between e.g. disabled state
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
+      color: colorPrimary,
+      ...(isDisabledOrLoading && {
+        pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
+      ...(isDisabled && {
+        ...getDisabledBaseStyles(),
+      }),
+      transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       display: 'inline',
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
       },
+      // styling for the description
       '&:is(span)': {
         cursor: 'unset',
-        fontSize: fontSizeTextXSmall,
-        ...(!isDisabledOrLoading && {
-          color: contrastHighColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastHighColorDark,
-          }),
-        }),
+        fontSize: typescaleXs,
+        color: colorContrastHigh,
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXSmall}` })
+          getHiddenTextJssStyle(isHidden, { marginTop: `calc(-1 * ${spacingStaticXs})` })
         ),
-        marginTop: `-${spacingStaticXSmall}`,
+        marginTop: `calc(-1 * ${spacingStaticXs})`,
+      },
+      '& > slot[name="label"]::slotted(*)': {
+        ...addImportantToEachRule({
+          display: 'inline',
+        }),
       },
       ...additionalDefaultJssStyle,
     },

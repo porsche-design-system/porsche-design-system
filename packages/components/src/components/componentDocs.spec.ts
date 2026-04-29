@@ -3,7 +3,7 @@ import * as path from 'node:path';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import * as globby from 'globby-legacy';
+import * as globby from 'fast-glob';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
@@ -33,9 +33,7 @@ describe.each<TagName>(
         ([, slotName]) => {
           if (slotName) {
             return slotName.match(/^[a-z]+[A-Z][a-z]+/)
-              ? slotName
-                  .replace(/slot/i, '')
-                  .toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
+              ? slotName.replace(/slot/i, '').toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
               : slotName; // <slot name="heading" />
           }
           return ''; // Default slot
@@ -47,8 +45,9 @@ describe.each<TagName>(
         (slot) => !slot.includes('internal') && !slot.includes('INTERNAL')
       );
 
-      if (sourceFileContent.includes('<Label') || sourceFileContent.includes('<LegacyLabel')) {
+      if (sourceFileContent.includes('<Label')) {
         namedSlotsUnique.push('label');
+        namedSlotsUnique.push('label-after');
       }
       if (sourceFileContent.includes('<Label')) {
         namedSlotsUnique.push('label-after');

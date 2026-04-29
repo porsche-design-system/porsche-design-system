@@ -1,0 +1,6 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`scss package content > should match content 1`] = `
+"@forward '@porsche-design-system/components-js/scss';
+"
+`;

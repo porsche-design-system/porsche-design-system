@@ -11,14 +11,17 @@ import {
   Watch,
 } from '@stencil/core';
 import { GROUP_DIRECTIONS } from '../../../styles/group-direction-styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
-  THEMES,
+  setAriaIDREF,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -56,7 +59,6 @@ const propTypes: PropTypes<typeof RadioGroup> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -80,10 +82,10 @@ export class RadioGroup {
   /** Supplementary text providing more context or explanation for the radio group. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the radio group as a compact version. */
+  /** Displays the radio group in compact mode. */
   @Prop() public compact?: boolean = false;
 
-  /** Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints. */
+  /** Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints. */
   @Prop() public direction?: BreakpointCustomizable<RadioGroupDirection> = 'column';
 
   /** The name of the group of radio buttons, used when submitting the form data. */
@@ -97,7 +99,7 @@ export class RadioGroup {
   /** Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the radio group. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
@@ -112,11 +114,8 @@ export class RadioGroup {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the radio-group has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
@@ -200,6 +199,7 @@ export class RadioGroup {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
+    this.updateTabStops();
   }
 
   public render(): JSX.Element {
@@ -213,20 +213,21 @@ export class RadioGroup {
       this.hideLabel,
       this.state,
       this.compact,
-      this.direction,
-      this.theme
+      this.direction
     );
-    syncRadioGroupChildrenProps(this.radioGroupOptions, this.theme, this.disabled, this.loading, this.state, this.name);
+    syncRadioGroupChildrenProps(this.radioGroupOptions, this.disabled, this.loading, this.state, this.name);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const inputDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
       <fieldset
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
-        aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
-        aria-labelledby={labelId}
+        aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
         onKeyDown={this.onKeyDown}
       >
         <Label
@@ -240,11 +241,9 @@ export class RadioGroup {
         />
         <div class="wrapper">
           <slot onSlotchange={this.onSlotChange} />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </fieldset>
     );
@@ -314,7 +313,7 @@ export class RadioGroup {
     this.radioGroupOptions.forEach((opt, i) => {
       const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
       if (input) {
-        input.tabIndex = i === focusIndex ? 0 : -1;
+        input.setAttribute('tabindex', i === focusIndex ? '0' : '-1');
       }
     });
   }

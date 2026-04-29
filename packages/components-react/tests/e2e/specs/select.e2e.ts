@@ -4,6 +4,7 @@ import {
   getEventSummary,
   getFormDataValue,
   setProperty,
+  sleep,
 } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 

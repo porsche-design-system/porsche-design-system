@@ -121,9 +121,9 @@ test.describe('banner', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const banner = page.locator('p-banner');
+    const banner = page.locator('p-banner [popover]');
     const bannerOpenBtn = page.locator('p-banner ~ button');
-    const bannerCloseBtn = page.locator('p-banner >>> p-inline-notification >>> .close');
+    const bannerCloseBtn = page.locator('p-banner [popover] .dismiss');
     const bannerDismissEventCounter = page.locator('p-banner + p');
 
     await bannerOpenBtn.click();
@@ -202,16 +202,16 @@ test.describe('accordion', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const accordionButton = page.locator('p-accordion').getByRole('button');
+    const accordionSummary = page.locator('p-accordion').getByRole('group');
     const accordionUpdateEventCounter = page.locator('p-accordion + p');
 
-    await accordionButton.click();
+    await accordionSummary.click();
     expect(await getCounterValue(accordionUpdateEventCounter)).toBe('1');
 
-    await accordionButton.click();
+    await accordionSummary.click();
     expect(await getCounterValue(accordionUpdateEventCounter)).toBe('2');
 
-    await accordionButton.click();
+    await accordionSummary.click();
     expect(await getCounterValue(accordionUpdateEventCounter)).toBe('3');
   });
 });

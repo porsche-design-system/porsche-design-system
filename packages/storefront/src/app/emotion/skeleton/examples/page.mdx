@@ -1,0 +1,18 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { skeletonEmotionStory } from '@/app/emotion/skeleton/examples/skeleton.stories';
+
+export const metadata = {
+  title: 'Emotion: Skeleton - Porsche Design System',
+  description: 'Learn about the Emotion skeleton style of our design language and how to use it.',
+};
+
+# Skeleton
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides a JS Function for the skeleton style to be used in Emotion.
+
+Styles import: `import { getSkeletonStyle } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+
+<ComponentStory story={skeletonEmotionStory} showCodeBlock={false} />

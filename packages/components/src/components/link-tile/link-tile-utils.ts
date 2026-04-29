@@ -1,16 +1,14 @@
 import {
-  type LinkAriaAttribute,
-  type TileAlign,
-  type TileAspectRatio,
-  type TileBackground,
-  type TileSize,
-  type LinkTarget,
   AllowedTypes,
-  THEMES,
+  type LinkAriaAttribute,
+  type LinkTarget,
   TILE_ALIGNS,
   TILE_ASPECT_RATIOS,
   TILE_SIZES,
-  TILE_WEIGHTS,
+  type TILE_WEIGHTS,
+  type TileAlign,
+  type TileAspectRatio,
+  type TileSize,
 } from '../../utils';
 import type { PropTypes } from '../../utils/validation/validateProps';
 import type { ButtonTile } from '../button-tile/button-tile';
@@ -20,12 +18,8 @@ export type LinkTileTarget = LinkTarget;
 export type LinkTileAriaAttribute = LinkAriaAttribute;
 export type LinkTileAspectRatio = TileAspectRatio;
 export type LinkTileSize = TileSize;
-export type LinkTileBackground = TileBackground;
 export type LinkTileAlign = TileAlign;
-/** @deprecated */
-export const LINK_TILE_WEIGHTS_DEPRECATED = ['semibold'] as const;
-export const LINK_TILE_WEIGHTS = [...TILE_WEIGHTS, ...LINK_TILE_WEIGHTS_DEPRECATED] as const;
-export type LinkTileWeight = (typeof LINK_TILE_WEIGHTS)[number];
+export type LinkTileWeight = (typeof TILE_WEIGHTS)[number];
 
 type CommonButtonAndLinkTileProps = {
   [K in keyof PropTypes<typeof ButtonTile> & keyof PropTypes<typeof LinkTile>]:
@@ -35,7 +29,6 @@ type CommonButtonAndLinkTileProps = {
 
 export const sharedTilePropTypes: Omit<CommonButtonAndLinkTileProps, 'aria' | 'weight'> = {
   size: AllowedTypes.breakpoint<TileSize>(TILE_SIZES),
-  background: AllowedTypes.oneOf<TileBackground>(THEMES),
   aspectRatio: AllowedTypes.breakpoint<TileAspectRatio>(TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,

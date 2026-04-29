@@ -1,4 +1,3 @@
-import type { Theme } from '../../../types';
 import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
 
 export type SelectOptionInternalHTMLProps = {
@@ -8,8 +7,6 @@ export type SelectOptionInternalHTMLProps = {
   disabledParent?: boolean;
   /** Highlights options when navigating with keyboard **/
   highlighted?: boolean;
-  /** Option theme (synchronized from p-select) **/
-  theme?: Theme;
 };
 
 // TODO: Partially copied from getOnlyChildrenOfKindHTMLElementOrThrow, maybe change getOnlyChildrenOfKindHTMLElementOrThrow to make it usable here

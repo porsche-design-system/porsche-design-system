@@ -1,8 +1,11 @@
+@import '@porsche-design-system/components-react';
 @import 'tailwindcss';
 @import '@porsche-design-system/components-react/tailwindcss';
 @source "../../../../node_modules/@porsche-design-system/shared/examples/*.tsx";
 
 @theme {
+  --porsche-canvas-grid: [full-start] minmax(0,1fr) [wide-start] minmax(0,1fr) [extended-start] repeat(10,minmax(0,1fr)) [extended-end] minmax(0,1fr) [wide-end] minmax(0,1fr) [full-end];
+
   --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
   --_pds-grid-narrow-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
   --_pds-grid-narrow-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
@@ -209,164 +212,104 @@
   --font-code: Menlo, Monaco, Consolas, 'Courier New', monospace;
   --max-width-prose: 85ch;
 
-  --hljs-color: #383a42;
-  --hljs-background: #EEEFF266;
-  --hljs-comment-color: #717277;
-  --hljs-quote-color: #717277;
-  --hljs-doctag-color: #a626a4;
-  --hljs-keyword-color: #a626a4;
-  --hljs-formula-color: #a626a4;
-  --hljs-section-color: #e41300;
-  --hljs-name-color: #e41300;
-  --hljs-selector-tag-color: #e41300;
-  --hljs-deletion-color: #82071e;
-  --hljs-deletion-background: #ffebe9;
-  --hljs-subst-color: #e41300;
-  --hljs-literal-color: #007aad;
-  --hljs-string-color: #028500;
-  --hljs-regexp-color: #028500;
-  --hljs-addition-color: #116329;
-  --hljs-addition-background: #dafbe1;
-  --hljs-attribute-color: #028500;
-  --hljs-meta-string-color: #028500;
-  /*// TODO: Check color contrast*/
-  /*--hljs-built-in-color: #c18401;*/
-  --hljs-attr-color: #986801;
-  --hljs-variable-color: #986801;
-  --hljs-template-variable-color: #986801;
-  --hljs-type-color: #986801;
-  --hljs-selector-class-color: #986801;
-  --hljs-selector-attr-color: #986801;
-  --hljs-selector-pseudo-color: #986801;
-  --hljs-number-color: #986801;
-  --hljs-symbol-color: #1f66ff;
-  --hljs-bullet-color: #1f66ff;
-  --hljs-link-color: #1f66ff;
-  --hljs-meta-color: #1f66ff;
-  --hljs-selector-id-color: #1f66ff;
-  --hljs-title-color: #1f66ff;
-}
-
-@layer theme {
-  .light {
-    --hljs-color: #383a42;
-    --hljs-background: #EEEFF266;
-    --hljs-comment-color: #717277;
-    --hljs-quote-color: #717277;
-    --hljs-doctag-color: #a626a4;
-    --hljs-keyword-color: #a626a4;
-    --hljs-formula-color: #a626a4;
-    --hljs-section-color: #e41300;
-    --hljs-name-color: #e41300;
-    --hljs-selector-tag-color: #e41300;
-    --hljs-deletion-color: #82071e;
-    --hljs-deletion-background: #ffebe9;
-    --hljs-subst-color: #e41300;
-    --hljs-literal-color: #007aad;
-    --hljs-string-color: #028500;
-    --hljs-regexp-color: #028500;
-    --hljs-addition-color: #116329;
-    --hljs-addition-background: #dafbe1;
-    --hljs-attribute-color: #028500;
-    --hljs-meta-string-color: #028500;
-    /*--hljs-built-in-color: #c18401;*/
-    --hljs-attr-color: #986801;
-    --hljs-variable-color: #986801;
-    --hljs-template-variable-color: #986801;
-    --hljs-type-color: #986801;
-    --hljs-selector-class-color: #986801;
-    --hljs-selector-attr-color: #986801;
-    --hljs-selector-pseudo-color: #986801;
-    --hljs-number-color: #986801;
-    --hljs-symbol-color: #1f66ff;
-    --hljs-bullet-color: #1f66ff;
-    --hljs-link-color: #1f66ff;
-    --hljs-meta-color: #1f66ff;
-    --hljs-selector-id-color: #1f66ff;
-    --hljs-title-color: #1f66ff;
-  }
-  .dark {
-    --hljs-color: #abb2bf;
-    --hljs-background: #21222599;
-    --hljs-comment-color: #7b8495;
-    --hljs-quote-color: #7b8495;
-    --hljs-doctag-color: #c678dd;
-    --hljs-keyword-color: #c678dd;
-    --hljs-formula-color: #c678dd;
-    --hljs-section-color: #e06c75;
-    --hljs-name-color: #e06c75;
-    --hljs-selector-tag-color: #e06c75;
-    --hljs-deletion-color: #ffdcd7;
-    --hljs-deletion-background: #67060c;
-    --hljs-subst-color: #e06c75;
-    --hljs-literal-color: #56b6c2;
-    --hljs-string-color: #98c379;
-    --hljs-regexp-color: #98c379;
-    --hljs-addition-color: #aff5b4;
-    --hljs-addition-background: #033a16;
-    --hljs-attribute-color: #98c379;
-    --hljs-meta-string-color: #98c379;
-    /*--hljs-built-in-color: #e6c07b;*/
-    --hljs-attr-color: #d19a66;
-    --hljs-variable-color: #d19a66;
-    --hljs-template-variable-color: #d19a66;
-    --hljs-type-color: #d19a66;
-    --hljs-selector-class-color: #d19a66;
-    --hljs-selector-attr-color: #d19a66;
-    --hljs-selector-pseudo-color: #d19a66;
-    --hljs-number-color: #d19a66;
-    --hljs-symbol-color: #61aeee;
-    --hljs-bullet-color: #61aeee;
-    --hljs-link-color: #61aeee;
-    --hljs-meta-color: #61aeee;
-    --hljs-selector-id-color: #61aeee;
-    --hljs-title-color: #61aeee;
-  }
-  .auto {
-    @media (prefers-color-scheme: dark) {
-      --hljs-color: #abb2bf;
-      --hljs-background: #21222599;
-      --hljs-comment-color: #7b8495;
-      --hljs-quote-color: #7b8495;
-      --hljs-doctag-color: #c678dd;
-      --hljs-keyword-color: #c678dd;
-      --hljs-formula-color: #c678dd;
-      --hljs-section-color: #e06c75;
-      --hljs-name-color: #e06c75;
-      --hljs-selector-tag-color: #e06c75;
-      --hljs-deletion-color: #ffdcd7;
-      --hljs-deletion-background: #67060c;
-      --hljs-subst-color: #e06c75;
-      --hljs-literal-color: #56b6c2;
-      --hljs-string-color: #98c379;
-      --hljs-regexp-color: #98c379;
-      --hljs-addition-color: #aff5b4;
-      --hljs-addition-background: #033a16;
-      --hljs-attribute-color: #98c379;
-      --hljs-meta-string-color: #98c379;
-      /*--hljs-built-in-color: #e6c07b;*/
-      --hljs-attr-color: #d19a66;
-      --hljs-variable-color: #d19a66;
-      --hljs-template-variable-color: #d19a66;
-      --hljs-type-color: #d19a66;
-      --hljs-selector-class-color: #d19a66;
-      --hljs-selector-attr-color: #d19a66;
-      --hljs-selector-pseudo-color: #d19a66;
-      --hljs-number-color: #d19a66;
-      --hljs-symbol-color: #61aeee;
-      --hljs-bullet-color: #61aeee;
-      --hljs-link-color: #61aeee;
-      --hljs-meta-color: #61aeee;
-      --hljs-selector-id-color: #61aeee;
-      --hljs-title-color: #61aeee;
-    }
-  }
+  /* hljs colors - WCAG AA compliant (4.5:1 minimum contrast ratio) */
+  /* Light background: #EEEFF266 ≈ #F5F5F7, Dark background: #21222599 ≈ #181a1e */
+  --hljs-color: light-dark(#383a42, #c5cad3);
+  --hljs-background: light-dark(#EEEFF266, #21222599);
+  --hljs-comment-color: light-dark(#5c5d61, #9198a6);
+  --hljs-quote-color: light-dark(#5c5d61, #9198a6);
+  --hljs-doctag-color: light-dark(#8a1d96, #d9a1e8);
+  --hljs-keyword-color: light-dark(#8a1d96, #d9a1e8);
+  --hljs-formula-color: light-dark(#8a1d96, #d9a1e8);
+  --hljs-section-color: light-dark(#c01000, #f08880);
+  --hljs-name-color: light-dark(#c01000, #f08880);
+  --hljs-selector-tag-color: light-dark(#c01000, #f08880);
+  --hljs-deletion-color: light-dark(#82071e, #ffdcd7);
+  --hljs-deletion-background: light-dark(#ffebe9, #67060c);
+  --hljs-subst-color: light-dark(#c01000, #f08880);
+  --hljs-literal-color: light-dark(#006898, #6fd4e8);
+  --hljs-string-color: light-dark(#027000, #a8d98f);
+  --hljs-regexp-color: light-dark(#027000, #a8d98f);
+  --hljs-addition-color: light-dark(#116329, #aff5b4);
+  --hljs-addition-background: light-dark(#dafbe1, #033a16);
+  --hljs-attribute-color: light-dark(#027000, #a8d98f);
+  --hljs-meta-string-color: light-dark(#027000, #a8d98f);
+  --hljs-built-in-color: light-dark(#7a5200, #efc56e);
+  --hljs-attr-color: light-dark(#7a5200, #efc56e);
+  --hljs-variable-color: light-dark(#7a5200, #e8b878);
+  --hljs-template-variable-color: light-dark(#7a5200, #e8b878);
+  --hljs-type-color: light-dark(#7a5200, #e8b878);
+  --hljs-selector-class-color: light-dark(#7a5200, #e8b878);
+  --hljs-selector-attr-color: light-dark(#7a5200, #e8b878);
+  --hljs-selector-pseudo-color: light-dark(#7a5200, #e8b878);
+  --hljs-number-color: light-dark(#7a5200, #e8b878);
+  --hljs-symbol-color: light-dark(#1858d9, #7fbfff);
+  --hljs-bullet-color: light-dark(#1858d9, #7fbfff);
+  --hljs-link-color: light-dark(#1858d9, #7fbfff);
+  --hljs-meta-color: light-dark(#1858d9, #7fbfff);
+  --hljs-selector-id-color: light-dark(#1858d9, #7fbfff);
+  --hljs-title-color: light-dark(#1858d9, #7fbfff);
 }
 
 @layer base {
   body {
     background: var(--color-surface);
     color: var(--color-primary);
+  }
+
+  .signature {
+    z-index: -2;
+    width: min(100cqw, clamp(500px, calc(248.56px + 49.11cqi), 720px));
+    scale: clamp(1, calc(1.3 - 0.067cqi), 1.3);
+    translate: var(--spacing-fluid-md) 0;
+  }
+
+  .glow-1 {
+    z-index: -1;
+    width: 648px;
+    height: 1350px;
+    border-radius: 1350px;
+    filter: blur(68px);
+    background-image: radial-gradient(50% 50%, light-dark(rgb(233 223 223),rgb(233, 232, 223)) 0%, light-dark(rgb(255 106 72),rgb(206, 193, 103)) 15.38%, light-dark(rgb(144 89 173 / 40%),rgb(89 151 173 / 40%)) 100%);
+    transition-property: transform;
+    transition-duration: var(--duration-sm);
+    transition-timing-function: linear;
+    pointer-events: none;
+
+    &:dir(rtl) {
+      scale: -1 1;
+    }
+  }
+
+  .glow-2 {
+    z-index: -1;
+    width: 748px;
+    height: 2350px;
+    border-radius: 999px;
+    filter: blur(68px);
+    background-image: radial-gradient(50% 50%, light-dark(rgba(255, 0, 0, 0.33),rgb(48 108 204)) 0%, light-dark(rgb(250 191 0 / 60%),rgb(162 187 209)) 15.38%, light-dark(rgb(209 204 162 / 19%),rgba(162, 179, 209, 0)) 100%);
+    transition-property: transform;
+    transition-duration: var(--duration-sm);
+    transition-timing-function: linear;
+    pointer-events: none;
+
+    &:dir(rtl) {
+      scale: -1 1;
+    }
+  }
+
+  .glow-3 {
+    z-index: -1;
+    width: 2400px;
+    height: 2400px;
+    margin-left: -1200px;
+    border-radius: 999px;
+    filter: blur(68px);
+    background-image: radial-gradient(50% 50%, light-dark(rgb(237 29 29 / 50%),rgb(255 149 8 / 66%)) 0%, light-dark(rgb(161 17 17 / 66%),rgb(161 99 17 / 66%)) 40%, light-dark(rgba(140, 110, 55, 0),rgba(140, 110, 55, 0)) 100%);
+    transition-property: transform;
+    transition-duration: var(--duration-sm);
+    transition-timing-function: linear;
+    pointer-events: none;
   }
 
   code {

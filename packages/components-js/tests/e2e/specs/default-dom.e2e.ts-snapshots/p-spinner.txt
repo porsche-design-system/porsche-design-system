@@ -1,4 +1,4 @@
-<span class="root" role="alert" aria-live="assertive">
+<div role="alert" aria-live="assertive">
   <span class="sr-only"> &nbsp;</span>
   <svg
     viewBox="-16 -16 32 32"
@@ -7,7 +7,7 @@
     focusable="false"
     aria-hidden="true"
   >
-    <circle r="9"></circle>
-    <circle r="9"></circle>
+    <circle r="11"></circle>
+    <circle r="11"></circle>
   </svg>
-</span>
+</div>

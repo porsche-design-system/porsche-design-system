@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { textareaStory } from '@/app/components/textarea/textarea.stories';
+import { textareaStory, textareaSlotStories } from '@/app/components/textarea/textarea.stories';
 import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
@@ -26,4 +26,4 @@ give the user visual cues to fill out the form.
 Instead of relying on slotted content, the `p-textarea` component offers a `value` attribute and property that remain
 synchronized with user input.
 
-<Configurator tagName="p-textarea" story={textareaStory} />
+<Configurator tagName="p-textarea" story={textareaStory} slotStories={textareaSlotStories} />

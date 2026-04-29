@@ -1,8 +1,7 @@
-import { removeAttribute, setAttribute } from '../dom';
 import type { AriaAttributes } from '../../types';
-import { parseJSONAttribute } from '../json';
+import { removeAttribute, setAttribute } from '../dom';
 import type { FormState } from '../form/form-state';
-import { hasWindow } from '../has-window';
+import { parseJSONAttribute } from '../json';
 
 export type SetAriaAttributesOptions = {
   label?: string;
@@ -36,4 +35,11 @@ export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string
   return undefined;
 };
 
-export const isHighContrastMode = hasWindow && window.matchMedia?.('(forced-colors: active)').matches;
+/**
+ * Builds a space-separated IDREF string from conditional ID entries.
+ * Returns `null` when no IDs are truthy — safe for JSX attribute assignment.
+ */
+export const setAriaIDREF = (...ids: (string | false | null | undefined)[]): string | null => {
+  const result = ids.filter(Boolean).join(' ');
+  return result || null;
+};

@@ -1,38 +1,38 @@
-import {
-  frostedGlassStyle,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXSmall,
-  spacingStaticSmall,
-} from '@porsche-design-system/styles';
+import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
+import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableTransitionDuration,
-  dismissButtonJssStyle,
   getAnimation,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   motionDurationMap,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss, type Theme } from '../../../utils';
+import {
+  blurFrosted,
+  colorBackdrop,
+  colorCanvas,
+  colorPrimary,
+  colorSurface,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXs,
+  spacingStaticSm,
+} from '../../../styles/css-variables';
+import { getCss } from '../../../utils';
 
 // public css variables
 export const cssVariableGridTemplate = '--p-drilldown-grid-template';
 export const cssVariableGap = '--p-drilldown-gap';
 
 // private css variables
-export const cssVarColorPrimary = '--_p-a';
-export const cssVarColorBackgroundBase = '--_p-b';
-export const cssVarColorBackgroundSurface = '--_p-c';
-export const cssVarColorBackgroundShading = '--_p-d';
-export const cssVarColorBackgroundScroller = '--_p-f';
+export const cssVarColorPrimary = '--_p-drilldown-a';
+export const cssVarColorBackgroundBase = '--_p-drilldown-b';
+export const cssVarColorBackgroundSurface = '--_p-drilldown-c';
+export const cssVarColorBackgroundShading = '--_p-drilldown-d';
+export const cssVarColorBackgroundScroller = '--_p-drilldown-f';
 
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
@@ -45,56 +45,36 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
-export const getComponentCss = (
-  isOpen: boolean,
-  isPrimary: boolean,
-  isSecondaryScrollerVisible: boolean,
-  theme: Theme
-): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    backgroundShadingColor: backgroundShadingColorDark,
-  } = getThemedColors('dark');
-
+export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondaryScrollerVisible: boolean): string => {
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
-        from: { transform: `translate3d(0,${spacingFluidMedium},0)` },
+        from: { transform: `translate3d(0,${spacingFluidMd},0)` },
         to: { transform: 'translate3d(0,0,0)' },
       },
       // unfortunately, it's not possible to use transform animation like in mobile view
       // because then a new stacking context within scroll container would be initialized
       // causing the slotted scroll container to become invisible
       '@keyframes slide-up-desktop': {
-        from: { marginBlockStart: spacingFluidMedium },
+        from: { marginBlockStart: spacingFluidMd },
         to: { marginBlockStart: '0px' },
       },
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVarColorPrimary]: primaryColor,
-          [cssVarColorBackgroundBase]: backgroundColor,
-          [cssVarColorBackgroundSurface]: backgroundSurfaceColor,
-          [cssVarColorBackgroundShading]: backgroundShadingColor,
-          [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
-          ...colorSchemeStyles,
+          [cssVarColorPrimary]: colorPrimary,
+          [cssVarColorBackgroundBase]: colorCanvas,
+          [cssVarColorBackgroundSurface]: colorSurface,
+          [cssVarColorBackgroundShading]: colorBackdrop,
+          // [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
+          [cssVarColorBackgroundScroller]: 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...hostHiddenStyles,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            [cssVarColorPrimary]: primaryColorDark,
-            [cssVarColorBackgroundBase]: backgroundColorDark,
-            [cssVarColorBackgroundSurface]: backgroundSurfaceColorDark,
-            [cssVarColorBackgroundShading]: backgroundShadingColorDark,
-            [cssVarColorBackgroundScroller]: 'rgba(0,0,0,.01)', // ensures that the scrollbar color is mostly set correctly
-          }),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       '::slotted(*)': {
         [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
-        [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
+        [cssVariableGap]: spacingFluidXs, // reset css variable to prevent inheritance
       },
       dialog: {
         all: 'unset',
@@ -105,7 +85,8 @@ export const getComponentCss = (
         ...(isOpen
           ? {
               visibility: 'inherit',
-              ...frostedGlassStyle,
+              WebkitBackdropFilter: blurFrosted,
+              backdropFilter: blurFrosted,
               background: `var(${cssVarColorBackgroundShading})`,
               transition: `${getTransition('background', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
             }
@@ -125,13 +106,13 @@ export const getComponentCss = (
             zIndex: 0,
             display: 'grid',
             gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-            gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+            gap: `var(${cssVariableGap},${spacingFluidXs})`,
             alignContent: 'start',
             alignItems: 'start',
             boxSizing: 'border-box',
             minHeight: '100%',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLarge,
+            paddingBlockEnd: spacingFluidLg,
             ...(isPrimary && {
               animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
             }),
@@ -142,13 +123,13 @@ export const getComponentCss = (
             gridArea: '3/2/auto/-2',
             display: 'grid',
             gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-            gap: `var(${cssVariableGap},${isPrimary ? spacingFluidXSmall : spacingFluidMedium})`,
+            gap: `var(${cssVariableGap},${isPrimary ? spacingFluidXs : spacingFluidMd})`,
             alignContent: 'start',
             alignItems: 'start',
             boxSizing: 'border-box',
             minHeight: '100%',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLarge,
+            paddingBlockEnd: spacingFluidLg,
             animation: getAnimation('slide-up-desktop', 'moderate', 'base'),
           }),
         },
@@ -187,12 +168,12 @@ export const getComponentCss = (
             },
           }),
       [mediaQueryMobile]: {
-        gridTemplate: `${spacingFluidMedium} auto ${spacingFluidLarge} minmax(0, 1fr)/${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
+        gridTemplate: `${spacingFluidMd} auto ${spacingFluidLg} minmax(0, 1fr)/${spacingFluidLg} auto minmax(0, 1fr) auto ${spacingFluidLg}`,
         background: `var(${cssVarColorBackgroundBase})`,
       },
       [mediaQueryDesktop]: {
         width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
-        gridTemplate: `${spacingFluidMedium} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
+        gridTemplate: `${spacingFluidMd} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLg} minmax(0, 1fr) ${spacingFluidLg})`,
         background: `var(${cssVarColorBackgroundBase})`,
         ...(isSecondaryScrollerVisible && {
           background: `linear-gradient(90deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 50%,var(${cssVarColorBackgroundSurface}) 50%,var(${cssVarColorBackgroundSurface}) 100%)`,
@@ -261,7 +242,6 @@ export const getComponentCss = (
     },
     'dismiss-mobile': {
       [mediaQueryMobile]: {
-        ...dismissButtonJssStyle,
         width: 'fit-content',
         height: 'fit-content',
         placeSelf: 'start end',
@@ -278,11 +258,14 @@ export const getComponentCss = (
         display: 'none',
       },
       [mediaQueryDesktop]: {
-        '--p-internal-icon-filter': 'invert(1)',
+        // TODO: we need to expose color variables for button-pure to be able to use the correct colors in drilldown
+        '--p-color-primary': colorPrimaryDark,
+        '--p-color-frosted': colorFrostedDark,
+        '--p-color-frosted-soft': colorFrostedSoftDark,
         position: 'absolute',
-        insetInlineStart: `calc(100% + ${spacingFluidSmall})`,
-        insetBlockStart: spacingFluidSmall,
-        padding: spacingStaticSmall,
+        insetInlineStart: `calc(100% + ${spacingFluidSm})`,
+        insetBlockStart: spacingFluidSm,
+        padding: spacingStaticSm,
       },
     },
     back: {
@@ -291,11 +274,10 @@ export const getComponentCss = (
         isPrimary && {
           [mediaQueryMobile]: {
             display: 'block',
-            marginTop: '2px', // compensate negative margin of ::pseudo background of button-pure
             gridArea: '2/2',
             width: 'fit-content',
             height: 'fit-content',
-            placeSelf: 'start',
+            placeSelf: 'center',
             zIndex: 2,
           },
         }),

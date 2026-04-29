@@ -1,0 +1,21 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { borderRadiusEmotionStory } from '@/app/emotion/border/examples/border.stories';
+
+export const metadata = {
+  title: 'Emotion: Border - Porsche Design System',
+  description: 'Learn about the Emotion border styles of our design language and how to use them.',
+};
+
+# Border
+
+<TableOfContents headings={['Border Radius', 'Border Width']} />
+
+The Porsche Design System provides multiple JS Variables for border styles to be used in Emotion.
+
+Styles import:
+`import { radiusLg, radiusSm, … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+
+## Border Radius
+
+<ComponentStory story={borderRadiusEmotionStory} showCodeBlock={false} />

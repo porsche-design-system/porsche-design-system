@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {
   PButton,
+  PInputText,
   PSelect,
   PSelectOption,
-  PTextFieldWrapper,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
@@ -21,9 +21,9 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onChange = (e: SelectChangeEventDetail) => {
-  selectedValue.value = e.value;
-  inputValue.value = e.value;
+const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  selectedValue.value = e.detail.value;
+  inputValue.value = e.detail.value;
 };
 
 const onAddOption = () => {
@@ -39,9 +39,7 @@ const onRemoveOption = () => {
 
 <template>
   <div>
-    <PTextFieldWrapper label="Value:">
-      <input name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1" />
-    </PTextFieldWrapper>
+    <PInputText label="Value:" name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1" />
     <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
     <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
 

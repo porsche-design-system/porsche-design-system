@@ -1,52 +1,56 @@
-import type { BreakpointCustomizable, HeadingSize, Theme } from '../../types';
-import type { HeadingAlign, HeadingColor } from './heading-utils';
-import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { fontPorscheNext, leadingNormal, typescale2Xl } from '../../styles/css-variables';
+import { colorMap, sizeMap, weightMap } from '../../styles/maps';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
-  fontSizeHeadingLarge,
-  fontSizeHeadingMedium,
-  fontSizeHeadingSmall,
-  fontSizeHeadingXLarge,
-  fontSizeHeadingXXLarge,
-  headingXXLargeStyle,
-} from '@porsche-design-system/styles';
-import { getTypographySlottedJssStyle, getTypographyRootJssStyle } from '../../styles/typography-styles';
-
-export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
-  small: fontSizeHeadingSmall,
-  medium: fontSizeHeadingMedium,
-  large: fontSizeHeadingLarge,
-  'x-large': fontSizeHeadingXLarge,
-  'xx-large': fontSizeHeadingXXLarge,
-};
+  HEADING_TAGS,
+  type HeadingAlign,
+  type HeadingColor,
+  type HeadingHyphens,
+  type HeadingSize,
+  type HeadingWeight,
+} from './heading-utils';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<HeadingSize>,
+  weight: HeadingWeight,
   align: HeadingAlign,
   color: HeadingColor,
-  ellipsis: boolean,
-  theme: Theme
+  hyphens: HeadingHyphens,
+  ellipsis: boolean
 ): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
-      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${HEADING_TAGS.join()}))`]: {
+        all: 'unset',
+      },
     },
-    root: getTypographyRootJssStyle(
-      headingXXLargeStyle,
-      buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+    root: {
+      all: 'unset',
+      display: 'block',
+      font: `${weightMap[weight]} ${typescale2Xl}/${leadingNormal} ${fontPorscheNext}`,
+      ...buildResponsiveStyles(size, (v: HeadingSize) => ({
+        fontSize: sizeMap[v],
       })),
-      align,
-      color,
-      ellipsis,
-      theme
-    ),
+      color: colorMap[color],
+      textAlign: align,
+      hyphens,
+      ...((hyphens === 'auto' || hyphens === 'manual') && {
+        overflowWrap: 'break-word',
+      }),
+      ...(ellipsis && {
+        maxWidth: '100%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }),
+    },
   });
 };

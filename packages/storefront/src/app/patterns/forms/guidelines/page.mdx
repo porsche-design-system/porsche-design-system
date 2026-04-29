@@ -10,7 +10,7 @@ export const metadata = {
 <TableOfContents
   headings={[
     'Tips for Designing User-Centric Forms:',
-    'Tips for a Effective Form Layout:',
+    'Tips for an Effective Form Layout:',
     'Tips for Effective Form Validation:',
     'Tips for Writing Effective Error Messages:',
     'Writing examples',
@@ -20,9 +20,9 @@ export const metadata = {
 />
 
 Forms are an essential component for gathering information from users or allowing them to configure options.
-Well-designed forms enhance user experience and are crucial for brand reputation. The perfect combination of structure,
-form elements, labels, help, and feedback are necessary for creating effective forms and increasing conversions. Common
-cases for form use include account login or registration, contact forms, checkout processes, setting configuration, and
+Well-designed forms enhance the user experience and are crucial for brand reputation. The right combination of
+structure, form elements, labels, help, and feedback is necessary to create effective forms and increase conversions.
+Common use cases include account login or registration, contact forms, checkout processes, settings configuration, and
 surveys.
 
 Porsche web applications should follow a basic structure consisting of form fields, labels, good feedback, and
@@ -52,7 +52,7 @@ have clear labels, informing users about what to expect.
 
 ---
 
-## Tips for a Effective Form Layout:
+## Tips for an Effective Form Layout:
 
 - **Headline and subline:** Use a clear title to inform the user about the form's purpose and what to expect when
   filling it out.
@@ -64,7 +64,7 @@ have clear labels, informing users about what to expect.
   a research study that found that single-column forms could be completed 15.4 seconds faster than comparable
   multi-column forms, at a 95% confidence level (CXL Institute, 2018). The common reading direction is zigzag ("Z"),
   which makes it harder to perceive a multi-column form.
-- **Form layout spacings:** Cluster the form in logical, coherent parts using our fluid-spacer. This decision is based
+- **Form layout spacing:** Group the form into logical, coherent sections using our fluid spacer. This decision is based
   on the Gestalt psychology principle of proximity.
 - **Form field widths:** Set to full form width by default to minimize the fluttering effect. Use estimated form field
   lengths for select or radio button groups, multiple form fields in a row, or very short forms. This decision is based
@@ -95,7 +95,7 @@ have clear labels, informing users about what to expect.
 
 **Common reasons for errors:**
 
-- input incorrectly formatting data
+- entering data in the wrong format
 - leaving a mandatory field blank
 - leaving a mandatory field incomplete
 
@@ -117,7 +117,7 @@ have clear labels, informing users about what to expect.
 
 ### Mandatory free text input field is not filled
 
-**Instead of saying** _This field is obligatory._
+**Instead of saying** _This field is required._
 
 **Describe the problem** _Please enter your message._
 
@@ -149,8 +149,8 @@ server. Try again later or visit another site, while we’re working on a soluti
 
 ### **Prevent errors**
 
-Your microcopy might even help in preventing errors, e.g. by telling a user as clear as possible what format and input
-is required for a certain input field. E.g. List the necessary characters that a password must contain.
+Your microcopy can even help prevent errors, for example by telling the user as clearly as possible which format and
+input are required for a specific field. For example, list the characters a password must contain.
 
 ---
 
@@ -161,24 +161,24 @@ applications for Porsche. For form design you should consider in particular the 
 
 - Forms should **provide 100% keyboard navigation**, which means: Users should be able to jump through the whole form
   using the tab key.
-- Always **provide focus states** to show the user both the starting and when proceeding the current position. The
-  Porsche Design System form components are provided with a focus state on board.
+- Always **provide focus states** so users can identify both their starting point and their current position as they
+  move through the form. Porsche Design System form components include focus states by default.
 - **Never use color as a single indicator for a type of use or state**. In form layout, this means that for error or
-  success notifications and for highlighting incorrect form fields it's highly recommended to work with further
-  formatting, e.g. a larger border width. This is also already predefined in the Porsche Design System form components.
+  success notifications, and for highlighting incorrect form fields, it is highly recommended to use additional
+  formatting, e.g. a larger border width. This is already predefined in Porsche Design System form components.
 - **Provide a sufficient click/touch area** for each component.
   [Apple’s Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout)
-  suggest providing a tappable area of 44 x 44 px for all controls. As this "safe zone" might result in large spacings
-  between components (just think of a stacked checkbox list) or overlapping of the tappable areas, we'd recommend
-  defining the tappable area component-based, as the size of the tappable area is also a matter of the general height
-  _and_ width of a component. You'll find detailed information in the respective component guidelines.
+  suggest providing a tappable area of 44 x 44 px for all controls. As this "safe zone" might result in large spacing
+  between components (just think of a stacked checkbox list) or overlapping tappable areas, we recommend defining the
+  tappable area on a component-by-component basis, as its size also depends on the general height _and_ width of a
+  component. You will find detailed information in the respective component guidelines.
 
 ---
 
 ## Related components
 
-- [Text Field](/components/text-field-wrapper)
-- [Textarea](/components/textarea)
-- [Checkbox](/components/checkbox)
-- [Radio Button](/components/radio-button-wrapper)
-- [Select](/components/select)
+- [Input Text](/components/input-text/)
+- [Textarea](/components/textarea/)
+- [Checkbox](/components/checkbox/)
+- [Radio Group](/components/radio-group/)
+- [Select](/components/select/)

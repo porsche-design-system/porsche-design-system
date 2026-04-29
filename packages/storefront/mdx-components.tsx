@@ -1,5 +1,4 @@
 import {
-  PDisplay,
   PDivider,
   PHeading,
   PLinkPure,
@@ -13,13 +12,15 @@ import {
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
-import { kebabCase } from 'change-case';
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import type React from 'react';
 import type { PropsWithChildren } from 'react';
+
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { getChangelogAnchorId } from '@/utils/extractChangelogVersion';
 
 export const H3 = ({ children }: PropsWithChildren) => (
   <PHeading tag="h3" size="large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
@@ -34,47 +35,52 @@ export const P = ({ children }: PropsWithChildren) => (
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     wrapper: ({ children }) => (
-      // biome-ignore lint/correctness/useUniqueElementIds: <Needed>
-      <article id="main-content" className="col-span-full xs:col-start-2 xs:col-end-12">
+      // biome-ignore lint/correctness/useUniqueElementIds: ok
+      <article id="main-content" className="col-[wide]">
         {children as React.ReactNode}
       </article>
     ),
     h1: ({ children }) => (
-      <PDisplay tag="h1" size="small" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h1" size="3xl" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
-      </PDisplay>
-    ),
-    h2: ({ children }) => (
-      <PHeading
-        tag="h2"
-        size="x-large"
-        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
-        id={kebabCase(children as string)}
-      >
-        {children as React.ReactNode}
-        <PLinkPure
-          className="ms-static-sm invisible group-hover:visible"
-          title="Link to this heading"
-          icon="none"
-          size="inherit"
-        >
-          <Link href={`#${kebabCase(children as string)}`}>#</Link>
-        </PLinkPure>
       </PHeading>
     ),
+    h2: ({ children }) => {
+      const text = children as string;
+      const id = getChangelogAnchorId(text);
+
+      return (
+        <PHeading
+          tag="h2"
+          size="xl"
+          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
+          id={id}
+        >
+          {children as React.ReactNode}
+          <PLinkPure
+            className="ms-static-sm invisible group-hover:visible"
+            title="Link to this heading"
+            icon="none"
+            size="inherit"
+          >
+            <Link href={`#${id}`}>#</Link>
+          </PLinkPure>
+        </PHeading>
+      );
+    },
     h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
     h4: ({ children }) => (
-      <PHeading tag="h4" size="medium" className="my-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h4" size="md" className="my-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),
     h5: ({ children }) => (
-      <PHeading tag="h5" size="small" className="my-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h5" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),
     h6: ({ children }) => (
-      <PHeading tag="h6" size="small" className="my-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h6" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),
@@ -123,7 +129,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <>
           {hasLang ? (
             <code
-              className="my-fluid-md max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-0"
+              className="my-fluid-md p-fluid-md max-h-96 overflow-auto rounded-4xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2"
               tabIndex={0}
             >
               {/* @ts-expect-error */}

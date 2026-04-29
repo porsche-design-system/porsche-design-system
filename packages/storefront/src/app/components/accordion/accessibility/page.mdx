@@ -14,28 +14,17 @@ export const metadata = {
 
 ### Keyboard
 
-| Key / state        | Function                                                                          |
-| ------------------ | --------------------------------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element.                          |
-| `Enter/Space`      | When focus is on the accordion header, the associated panel expands or collapses. |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                      | Usage                                                        |
-| ------------------------- | ------------------------------------------------------------ |
-| `aria-expanded="BOOLEAN"` | Exposes expanded or collapsed state.                         |
-| `aria-controls="IDREF"`   | Exposes relationship of header and associated panel.         |
-| `role="region"`           | Creates a landmark region that contains the accordion panel. |
-| `aria-labelledby="IDREF"` | Defines the accessible name.                                 |
+| Key / state        | Function                                                                           |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element.                           |
+| `Enter/Space`      | When focus is on the accordion trigger, the associated panel expands or collapses. |
 
 ## Development considerations
 
-### Focus handling
+### Heading hierarchy
 
-The `heading-tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is
-no `heading-tag` property provided, it defaults to `h2`.
+The accordion summary should be a heading element (e.g.,`p-heading` or `<h1>` to `<h6>`,) to ensure proper semantic
+structure and correct heading hierarchy.
 
 ## Tests
 

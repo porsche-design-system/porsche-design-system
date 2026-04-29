@@ -1,0 +1,37 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  colorScssStoryBackgroundColor,
+  colorScssStoryBorderColor,
+  colorScssStoryTextColor,
+} from '@/app/scss/color/examples/color.stories';
+
+export const metadata = {
+  title: 'SCSS: Color - Porsche Design System',
+  description: 'Learn about the SCSS styles of our design language and how to use them.',
+};
+
+# Color
+
+<TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
+
+The Porsche Design System provides multiple SCSS Variables for color styles.
+
+The colors use the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function. To change the theme, use the utility classes `.scheme-light`, `.scheme-dark` or `.scheme-light-dark`. Learn
+more in the [Color Scheme](/scss/introduction#color-scheme) section.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
+
+## Text Color
+
+<ComponentStory story={colorScssStoryTextColor} showCodeBlock={false} />
+
+## Background Color
+
+<ComponentStory story={colorScssStoryBackgroundColor} showCodeBlock={false} />
+
+## Border Color
+
+<ComponentStory story={colorScssStoryBorderColor} showCodeBlock={false} />

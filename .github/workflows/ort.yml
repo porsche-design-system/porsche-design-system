@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Production Builds'
-        run: yarn build-prod
+        run: npm run build-prod
       - name: "Login"
         uses: docker/login-action@v3
         with:
@@ -50,7 +50,7 @@ jobs:
             -f StaticHtml
         shell: bash
       - name: 'Upload'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ort-analysis
           path: ./ort

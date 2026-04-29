@@ -1,32 +1,18 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../types';
+import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
-  THEMES,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
-import {
-  TAG_COLORS,
-  TAG_VARIANTS,
-  type TagColor,
-  type TagColorDeprecated,
-  type TagIcon,
-  type TagVariant,
-  VARIANT_TO_COLOR_MAP,
-} from './tag-utils';
-
-type DeprecationMapType = Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>>;
+import { TAG_VARIANTS, type TagIcon, type TagVariant } from './tag-utils';
 
 const propTypes: PropTypes<typeof Tag> = {
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
-  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
-  variant: AllowedTypes.oneOf<TagVariant>([undefined, ...TAG_VARIANTS]),
-  icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
+  variant: AllowedTypes.oneOf<TagVariant>(TAG_VARIANTS),
+  icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   compact: AllowedTypes.boolean,
 };
@@ -41,56 +27,28 @@ const propTypes: PropTypes<typeof Tag> = {
 export class Tag {
   @Element() public host!: HTMLElement;
 
-  /** Adapts the tag color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.33.0, will be removed with next major release. Use `variant` prop instead.
-   * Background color variations depending on theme property.
-   */
-  @Prop() public color?: TagColor = 'background-surface';
-
   /** Background color variations. */
-  @Prop() public variant?: TagVariant;
+  @Prop() public variant?: TagVariant = 'secondary';
 
   /** The icon shown. */
-  @Prop() public icon?: TagIcon; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
+  @Prop() public icon?: TagIcon = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  /** Displays as compact version. */
+  /** Displays the tag in compact mode. */
   @Prop() public compact?: boolean = false;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const hasIcon = !!(this.icon || this.iconSource);
-    const deprecationMap: DeprecationMapType = {
-      'background-default': 'background-base',
-      'neutral-contrast-high': 'primary',
-      'notification-neutral': 'notification-info-soft',
-      'notification-warning': 'notification-warning-soft',
-      'notification-success': 'notification-success-soft',
-      'notification-error': 'notification-error-soft',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', deprecationMap);
-
-    // Resolve effective color: variant takes precedence over color
-    const resolvedColor: Exclude<TagColor, TagColorDeprecated> = this.variant
-      ? VARIANT_TO_COLOR_MAP[this.variant]
-      : ((deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<
-          TagColor,
-          TagColorDeprecated
-        >);
-
+    const hasIcon = this.icon !== 'none' || !!this.iconSource;
     attachComponentCss(
       this.host,
       getComponentCss,
-      resolvedColor,
+      this.variant,
       this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
-      hasIcon,
-      this.theme
+      hasIcon
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -99,11 +57,10 @@ export class Tag {
         {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
-            name={this.icon}
+            {...(this.icon !== 'none' && { name: this.icon })}
             source={this.iconSource}
-            color="primary"
+            color="inherit"
             size="x-small"
-            theme={this.theme}
             aria-hidden="true"
           />
         )}

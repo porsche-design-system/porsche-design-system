@@ -21,7 +21,7 @@
   "types": "./dist/openInStackblitz.d.ts",
   "files": ["./dist/"],
   "scripts": {
-    "build": "yarn clean:build && yarn build:generateStackblitzBundle && yarn build:lib",
+    "build": "npm run clean:build && npm run build:generateStackblitzBundle && npm run build:lib",
     "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts",
     "build:lib": "tsup scripts/openInStackblitz.ts --format esm,cjs --dts",
     "clean:build": "rm -rf ./generated && rm -rf ./dist"

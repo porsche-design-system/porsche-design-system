@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,7 +7,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -39,7 +38,6 @@ const propTypes: PropTypes<typeof InputUrl> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -64,7 +62,7 @@ export class InputUrl {
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the input field, used when submitting the form data. */
@@ -72,7 +70,7 @@ export class InputUrl {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The url input value. */
+  /** The URL input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url'). */
@@ -93,7 +91,7 @@ export class InputUrl {
   /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/') */
   @Prop() public placeholder?: string = '';
 
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
@@ -105,25 +103,22 @@ export class InputUrl {
   /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputUrlState = 'none';
 
-  /** Controls the visibility of the url icon. */
+  /** Controls the visibility of the URL icon. */
   @Prop() public indicator?: boolean = false;
 
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation. */
+  /** Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation. */
   @Prop() public pattern?: string;
 
-  /** Emitted when the url input loses focus after its value was changed. */
+  /** Emitted when the URL input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputUrlChangeEventDetail>;
 
-  /** Emitted when the url input has lost focus. */
+  /** Emitted when the URL input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputUrlBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
@@ -137,6 +132,9 @@ export class InputUrl {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -197,8 +195,7 @@ export class InputUrl {
       this.hideLabel,
       this.state,
       this.compact,
-      this.readOnly,
-      this.theme
+      this.readOnly
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -227,12 +224,11 @@ export class InputUrl {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         loading={this.loading}
         pattern={this.pattern}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="linked" color="state-disabled" theme={this.theme} />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="linked" color="contrast-low" />,
         })}
       />
     );

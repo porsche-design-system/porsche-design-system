@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PFlyout, PButton, PHeading, PText, PButtonGroup } from '@porsche-design-system/components-vue';
+import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isFlyoutOpen = ref(false);
@@ -16,10 +16,8 @@ const onDismiss = (): void => {
   <PFlyout :open="isFlyoutOpen" :position="'end'" @dismiss="onDismiss">
     <PHeading slot="header" size="large" tag="h2">Some Heading</PHeading>
     <PText>Some Content</PText>
-    <PButtonGroup slot="footer">
-      <PButton type="button">Proceed</PButton>
-      <PButton type="button" variant="secondary">Cancel</PButton>
-    </PButtonGroup>
+    <PButton slot="footer" type="button">Proceed</PButton>
+    <PButton slot="footer" type="button" variant="secondary">Cancel</PButton>
     <PText slot="sub-footer">Some additional Sub-Footer</PText>
   </PFlyout>
 </template>

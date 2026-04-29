@@ -33,19 +33,19 @@ const propTypes: PropTypes<typeof DrilldownLink> = {
 export class DrilldownLink {
   @Element() public host!: HTMLElement;
 
-  /** When providing an url then the component will be rendered as `<a>` otherwise the component expects a slotted anchor. */
+  /** When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Display link in active state. */
+  /** Displays the link in its active state. */
   @Prop() public active?: boolean = false;
 
   /** Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used). */
   @Prop() public target?: DrilldownLinkTarget = '_self';
 
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used). */
+  /** Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used). */
   @Prop() public download?: string;
 
-  /** Specifies the relationship of the target object to the link object (only has effect when `href` is defined and no slotted anchor is used). */
+  /** Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used). */
   @Prop() public rel?: string;
 
   /** Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used). */

@@ -1,40 +1,33 @@
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
-  THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   hasPropValueChanged,
   removeAttribute,
   setAttribute,
   setAttributes,
   throwIfChildrenAreNotOfKind,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
-import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../../scroller/scroller-utils';
-import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, type TabsBarUpdateEventDetail } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 import {
-  type TabsGradientColor,
-  type TabsGradientColorScheme,
+  TABS_BACKGROUNDS,
+  TABS_SIZES,
+  TABS_WEIGHTS,
+  type TabsBackground,
   type TabsSize,
   type TabsUpdateEventDetail,
   type TabsWeight,
-  syncTabsItemsProps,
 } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
-  size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
-  weight: AllowedTypes.oneOf<TabsWeight>(TABS_BAR_WEIGHTS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabsGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<TabsGradientColor>([undefined, ...GRADIENT_COLORS]),
+  size: AllowedTypes.breakpoint<TabsSize>(TABS_SIZES),
   activeTabIndex: AllowedTypes.number,
+  background: AllowedTypes.oneOf<TabsBackground>(TABS_BACKGROUNDS),
+  compact: AllowedTypes.boolean,
+  weight: AllowedTypes.oneOf<TabsWeight>(TABS_WEIGHTS),
 };
 
 /**
@@ -52,52 +45,43 @@ export class Tabs {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<TabsSize> = 'small';
 
-  /** The text weight. */
-  @Prop() public weight?: TabsWeight = 'regular';
-
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
-   * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabsGradientColorScheme;
-
-  /**
-   * @deprecated since v3.29.0, will be removed with next major release.
-   * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: TabsGradientColor;
-
-  /** Defines which tab to be visualized as selected (zero-based numbering). */
+  /** Defines which tab is shown as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
+  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
+  @Prop() public background?: TabsBackground = 'none';
+
+  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  @Prop() public compact?: boolean;
+
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsUpdateEventDetail>;
+   * @deprecated Will be removed in the next major release.
+   * Has no effect anymore. */
+  @Prop() public weight?: TabsWeight = 'regular';
 
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEventDetail>;
 
-  @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
+  @State() private tabsItems: HTMLPTabsItemElement[] = [];
+
+  private slot: HTMLSlotElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
-    this.setAccessibilityAttributes();
     this.update.emit({ activeTabIndex: newValue });
-    this.tabChange.emit({ activeTabIndex: newValue });
   }
 
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  public disconnectedCallback(): void {
+    this.slot?.removeEventListener('slotchange', this.defineTabsItems);
   }
 
   public componentWillLoad(): void {
-    this.defineTabsItemElements();
+    this.defineTabsItems();
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineTabsItemElements);
+    // it would be better to use `<slot onslotchange={() => {}} />` in jsx but that doesn't work reliable or triggers initially when component is rendered via js framework
+    this.slot.addEventListener('slotchange', this.defineTabsItems);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -110,14 +94,7 @@ export class Tabs {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Tabs>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
-    warnIfDeprecatedPropIsUsed<typeof Tabs>(
-      this,
-      'gradientColor',
-      'Prop can be omitted, gradient handling is managed internally.'
-    );
     attachComponentCss(this.host, getComponentCss);
-    syncTabsItemsProps(this.tabsItemElements, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -126,32 +103,29 @@ export class Tabs {
         <PrefixedTagNames.pTabsBar
           class="root"
           size={this.size}
-          weight={this.weight}
-          theme={this.theme}
-          gradientColorScheme={this.gradientColorScheme}
-          gradientColor={this.gradientColor}
+          background={this.background}
+          compact={this.compact}
           activeTabIndex={this.activeTabIndex}
           onUpdate={this.onTabsBarUpdate}
-          onTabChange={(e: Event) => e.stopPropagation()} // prevent double event emission because of identical name
         >
-          {this.tabsItemElements.map((tab, index) => (
+          {this.tabsItems.map((tab, index) => (
             <button key={index} type="button">
               {tab.label}
             </button>
           ))}
         </PrefixedTagNames.pTabsBar>
-        <slot />
+        <slot ref={(el: HTMLSlotElement) => (this.slot = el)} />
       </Host>
     );
   }
 
-  private defineTabsItemElements = (): void => {
+  private defineTabsItems = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-tabs-item');
-    this.tabsItemElements = Array.from(this.host.children) as HTMLPTabsItemElement[];
+    this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
   private setAccessibilityAttributes = (): void => {
-    this.tabsItemElements.forEach((tab, index) => {
+    this.tabsItems.forEach((tab, index) => {
       const attrs = {
         role: 'tabpanel',
         'aria-label': tab.label,
@@ -168,7 +142,7 @@ export class Tabs {
     });
   };
 
-  private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>): void => {
+  private onTabsBarUpdate = (e: CustomEvent<TabsUpdateEventDetail>): void => {
     e.stopPropagation(); // prevent double event emission because of identical name
     this.activeTabIndex = e.detail.activeTabIndex;
   };

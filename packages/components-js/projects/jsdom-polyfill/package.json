@@ -7,7 +7,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs && mv ../../dist/components-wrapper/testing/testing.d.ts ../../dist/components-wrapper/testing/index.d.ts",
-    "test": "yarn test:unit",
+    "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
@@ -24,7 +24,8 @@
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1"
+    "@testing-library/user-event": "^14.6.1",
+    "@rollup/plugin-dynamic-import-vars": "^2.1.5"
   },
   "volta": {
     "extends": "../../../../package.json"

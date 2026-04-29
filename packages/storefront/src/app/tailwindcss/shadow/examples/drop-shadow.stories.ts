@@ -13,23 +13,23 @@ export const shadowStory: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'shadow-low rounded-lg p-fluid-sm',
+            className: 'shadow-sm rounded-lg p-fluid-sm',
           },
-          children: ['.shadow-low'],
+          children: ['.shadow-sm'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'shadow-medium rounded-lg p-fluid-sm',
+            className: 'shadow-md rounded-lg p-fluid-sm',
           },
-          children: ['.shadow-medium'],
+          children: ['.shadow-md'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'shadow-high rounded-lg p-fluid-sm',
+            className: 'shadow-lg rounded-lg p-fluid-sm',
           },
-          children: ['.shadow-high'],
+          children: ['.shadow-lg'],
         },
       ],
     },

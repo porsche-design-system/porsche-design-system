@@ -25,11 +25,11 @@ it.each<TagName>(tagNamesWithJss)(
     expect(spy).toHaveBeenCalledTimes(1);
 
     const cssObject = getComponentCssObject(spy) as { [key: string]: { display?: string } };
-    if (cssObject[':host'].display) {
+    if (cssObject[':host']?.display) {
       expect(cssObject[':host'].display).not.toMatch(/!important/);
     } else {
       // some components don't have a display style
-      expect(cssObject[':host'].display).toBeUndefined();
+      expect(cssObject[':host']?.display).toBeUndefined();
     }
   }
 );

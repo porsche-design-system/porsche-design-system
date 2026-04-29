@@ -37,6 +37,7 @@ export const metadata = {
 | `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
 | `aria-invalid="true"`           | If `error` state is set.                                                                              |
 | `aria-required="true"`          | Indicates if the element is required.                                                                 |
+| `aria-description="STRING"`     | Provides additional content for states.                                                               |
 
 ## Development considerations
 
@@ -53,9 +54,8 @@ of the control item.
 
 ### Disabled state
 
-In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
-can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
-elements are disabled.
+In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
+reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
 ## Tests
 

@@ -1,5 +1,5 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getEventSummary,
@@ -73,18 +73,18 @@ test.describe('sorting', () => {
 });
 
 test.describe('events', () => {
-  test('should emit event on sorting change', async ({ page }) => {
+  test('should emit update event on sorting change', async ({ page }) => {
     await initTable(page, { isSortable: true });
 
     const host = getHost(page);
-    await addEventListener(host, 'sortingChange');
+    await addEventListener(host, 'update');
 
     const firstTableHeadCellButton = getFirstTableHeadCellButton(page);
     await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
 
     await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(2);
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
   });
 
   test('should not have clickable button when column is not sortable', async ({ page }) => {
@@ -92,21 +92,6 @@ test.describe('events', () => {
 
     const firstTableHeadCellPButtonPure = getFirstTableHeadCellButton(page);
     await expect(firstTableHeadCellPButtonPure).toHaveCount(0);
-  });
-
-  test('should emit both sortingChange and update event', async ({ page }) => {
-    await initTable(page, { isSortable: true });
-    const host = getHost(page);
-
-    await addEventListener(host, 'sortingChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const firstTableHeadCellButton = getFirstTableHeadCellButton(page);
-    await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 
@@ -117,8 +102,6 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1); // table uses p-scroller
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // scroller contains 2 p-icons: inside left and right scroll buttons
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
@@ -126,7 +109,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(32); // all the components summed up
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(28); // all the components summed up
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -134,7 +117,7 @@ test.describe('lifecycle', () => {
     await initTable(page);
     const initialStatus = await getLifecycleStatus(page);
 
-    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(32);
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(28);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
     const host = getHost(page);
@@ -148,8 +131,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     // after adding sorting to every column (5 columns) we get 5 p-icons extra, so that the component amount increases from 30 to 40
-    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(37);
-    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7); // 2 p-icons inside scroller + 5 p-icons in table head for sorting
+    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(33);
+    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(5); // 5 p-icons in table head for sorting
     expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5); // 5 p-table-head-cells have been updated
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
   });

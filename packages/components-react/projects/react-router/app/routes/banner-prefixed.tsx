@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-const BannerPrefixedPage = (): JSX.Element => {
+const BannerPrefixedPage = () => {
   return (
     <>
       <div className="visualize-grid">
@@ -27,7 +27,7 @@ const BannerPrefixedPage = (): JSX.Element => {
 
       <PorscheDesignSystemProvider prefix="my-prefix">
         <div>
-          <PBanner description="Description" heading="Heading" open={true} />
+          <PBanner open={true} heading="Heading" description="Description" />
         </div>
       </PorscheDesignSystemProvider>
     </>

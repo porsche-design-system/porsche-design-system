@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import {
   getConsoleErrorsAmount,
   getElementProp,
@@ -12,7 +12,7 @@ const console = require('console');
 
 test('overview should work without errors', async ({ page }) => {
   initConsoleObserver(page);
-  await goto(page, 'overview');
+  await goto(page, 'overview-components');
 
   expect(getConsoleErrorsAmount()).toBe(0);
 
@@ -23,9 +23,9 @@ test('overview should work without errors', async ({ page }) => {
 test.describe('without prefix', () => {
   test('should initialize component deterministically', async ({ page }) => {
     await goto(page, 'core-initializer');
-    await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
+    await page.waitForFunction(() => document.querySelectorAll('p-input-text').length === 2);
 
-    const [component1, component2] = await page.locator('p-text-field-wrapper').all();
+    const [component1, component2] = await page.locator('p-input-text').all();
 
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);
@@ -40,7 +40,7 @@ test.describe('without prefix', () => {
 });
 
 test.describe('with prefix', () => {
-  const regularSelector = 'p-text-field-wrapper';
+  const regularSelector = 'p-input-text';
   const prefixedSelector = `my-prefix-${regularSelector}`;
 
   test('should initialize angular component', async ({ page }) => {
@@ -50,24 +50,6 @@ test.describe('with prefix', () => {
 
     expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
     expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
-  });
-});
-
-test.describe('Form Wrapper with slotted input', () => {
-  test('should have no console error if input type is bound', async ({ page }) => {
-    initConsoleObserver(page);
-    await goto(page, 'form-wrapper-binding');
-
-    await page.locator('select[name="route"]').selectOption('overview');
-    await waitForComponentsReady(page);
-
-    // back and forth navigation seems to be necessary to reproduce a bug
-    await page.locator('select[name="route"]').selectOption('form-wrapper-binding');
-
-    expect(getConsoleErrorsAmount()).toBe(0);
-
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
   });
 });
 

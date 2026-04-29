@@ -62,7 +62,7 @@ exports[`generateReactMarkup() > should generate correct React markup for flyout
   }",
   "imports": "
 import { useState } from 'react';
-import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';",
+import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';",
   "markup": "      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
         Open Flyout
       </PButton>
@@ -78,14 +78,14 @@ import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design
         <PText>
           Some Content End
         </PText>
-        <PButtonGroup slot="footer">
+        <div slot="footer" role="group" className="flex flex-wrap gap-fluid-sm max-xs:flex-col">
           <PButton type="button">
             Proceed
           </PButton>
           <PButton type="button" variant="secondary">
             Cancel
           </PButton>
-        </PButtonGroup>
+        </div>
         <PText slot="sub-footer">
           Some additional Sub-Footer
         </PText>

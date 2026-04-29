@@ -17,7 +17,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('close', () => {
+  el.addEventListener('dismiss', () => {
     debugEl.querySelector('span').innerHTML = '1';
   });
 

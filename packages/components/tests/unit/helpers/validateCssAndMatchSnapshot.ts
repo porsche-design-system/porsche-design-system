@@ -50,11 +50,11 @@ const validateVisibilityStyle = (cssObject: object) => {
 
 // Expect no !important rule on display style of :host selector since it should be overridable
 const validateHostDisplayStyle = (cssObject: any) => {
-  if (cssObject[':host'].display) {
+  if (cssObject[':host']?.display) {
     expect(cssObject[':host'].display).not.toMatch(/!important/);
   } else {
     // some components don't have a display style
-    expect(cssObject[':host'].display).toBeUndefined();
+    expect(cssObject[':host']?.display).toBeUndefined();
   }
 };
 
@@ -84,7 +84,7 @@ const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
       // exceptions for tagName and css property are defined here
       if (
         !['p-textarea-wrapper', 'p-optgroup'].includes(tagName) &&
-        !['height', 'min-height', 'resize', 'margin'].includes(cssProp)
+        !['all', 'height', 'min-height', 'resize', 'margin'].includes(cssProp)
       ) {
         expect(cssValue).toMatch(/!important$/);
       }

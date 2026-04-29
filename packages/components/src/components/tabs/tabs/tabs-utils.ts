@@ -1,26 +1,12 @@
-import { forceUpdate } from '@stencil/core';
-import type { Theme } from '../../../types';
-import type {
-  TabsBarGradientColor,
-  TabsBarGradientColorScheme,
-  TabsBarSize,
-  TabsBarUpdateEvent,
-  TabsBarWeight,
-} from '../../tabs-bar/tabs-bar-utils';
-import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
+export const TABS_SIZES = ['small', 'medium'] as const;
+export type TabsSize = (typeof TABS_SIZES)[number];
 
-export type TabsSize = TabsBarSize;
-export type TabsWeight = TabsBarWeight;
-/** @deprecated */
-export type TabsGradientColorScheme = TabsBarGradientColorScheme;
-export type TabsGradientColor = TabsBarGradientColor;
-/** @deprecated */
-export type TabsUpdateEvent = TabsBarUpdateEvent;
-export type TabsUpdateEventDetail = TabsUpdateEvent;
+export const TABS_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
+export type TabsBackground = (typeof TABS_BACKGROUNDS)[number];
 
-export const syncTabsItemsProps = (items: HTMLPTabsItemElement[], theme: Theme): void => {
-  for (const item of items) {
-    (item as HTMLPTabsItemElement & TabsItemInternalHTMLProps).theme = theme;
-    forceUpdate(item);
-  }
-};
+/** @deprecated */
+export const TABS_WEIGHTS = ['regular', 'semi-bold'] as const;
+/** @deprecated */
+export type TabsWeight = (typeof TABS_WEIGHTS)[number];
+
+export type TabsUpdateEventDetail = { activeTabIndex: number };

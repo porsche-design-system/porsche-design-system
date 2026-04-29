@@ -1,6 +1,6 @@
 import * as fromPartials from '../../../src';
 import * as shared from '../../../src/shared';
-import { vi } from 'vitest';
+import { vi, it, expect } from 'vitest';
 
 it.each(Object.keys(fromPartials))('should not throw in node for %s', (partialName) => {
   const spy = vi.spyOn(shared, 'throwIfRunInBrowser');

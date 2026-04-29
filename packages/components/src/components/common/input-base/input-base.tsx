@@ -1,6 +1,5 @@
 import { type FunctionalComponent, h, type JSX } from '@stencil/core';
-import type { Theme } from '../../../types';
-import { getPrefixedTagNames } from '../../../utils';
+import { getPrefixedTagNames, hasDescription, hasMessage, setAriaIDREF } from '../../../utils';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
 import { LoadingMessage, loadingId } from '../loading-message/loading-message';
@@ -25,7 +24,6 @@ type InputBaseProps = {
   disabled?: boolean;
   state?: InputBaseState;
   message?: string;
-  theme?: Theme;
   readOnly?: boolean;
   name: string;
   form?: string;
@@ -62,7 +60,6 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   disabled,
   state,
   message,
-  theme,
   readOnly,
   type,
   form,
@@ -88,6 +85,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   end,
 }) => {
   const PrefixedTagNames = getPrefixedTagNames(host);
+  const inputDescriptionId = hasDescription(host, description) ? descriptionId : undefined;
+  const inputMessageId = hasMessage(host, message, state) ? messageId : undefined;
 
   return (
     <div class="root">
@@ -104,7 +103,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         <slot name="start" />
         {start}
         <input
-          aria-describedby={loading ? loadingId : `${descriptionId} ${messageId}`}
+          aria-describedby={setAriaIDREF(loading && loadingId, inputMessageId, inputDescriptionId)}
           aria-invalid={state === 'error' ? 'true' : null}
           aria-disabled={disabled || loading ? 'true' : null}
           aria-readonly={readOnly ? 'true' : null}
@@ -132,13 +131,13 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           disabled={disabled}
           pattern={pattern}
           multiple={multiple}
-          dir="auto" // This is the default: let the browser decide in which direction the value should be placed.
+          dir="auto" // This overwrites the default: let the browser now decide in which direction the value should be placed.
         />
         {end}
         <slot name="end" />
-        {loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />}
+        {loading && <PrefixedTagNames.pSpinner aria-hidden="true" />}
       </div>
-      <StateMessage state={state} message={message} theme={theme} host={host} />
+      <StateMessage state={state} message={message} host={host} />
       <LoadingMessage loading={loading} initialLoading={initialLoading} />
     </div>
   );

@@ -30,11 +30,6 @@ export const tabsStory: Story<'p-tabs'> = {
 };
 
 export const tabsStoryGradient: Story<'p-tabs'> = {
-  state: {
-    properties: {
-      gradientColor: 'background-surface',
-    },
-  },
   generator: ({ properties } = {}) => [
     {
       tag: 'p-tabs',

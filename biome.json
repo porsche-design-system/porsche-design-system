@@ -9,7 +9,7 @@
     "ignoreUnknown": false,
     "includes": [
       "**",
-      "!yarn.lock",
+      "!package-lock.json",
       "!**/*.snap",
       "!packages/components/src/components.d.ts",
       "!packages/components/src/styles/colors.ts",
@@ -96,6 +96,11 @@
       "!**/storefront-old/**/*",
       "!**/utilities/**/*"
     ]
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "javascript": {
     "formatter": {

@@ -1,25 +1,31 @@
 import type { JssStyle, Styles } from 'jss';
-import { type GetJssStyleFunction, buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
+import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
+import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../types';
+import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getThemedColors,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
 import {
-  borderRadiusSmall,
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import { getFontSizeText } from './font-size-text-styles';
+  blurFrosted,
+  colorFrosted,
+  colorFrostedStrong,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+  spacingStaticXs,
+  typescaleSm,
+} from './css-variables';
+import { colorMap, sizeMap } from './maps';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
@@ -45,19 +51,13 @@ export const getLinkButtonPureStyles = (
   active: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<ButtonPureSize | LinkPureSize>,
+  color: ButtonPureColor | LinkPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
-  hasSlottedAnchor: boolean,
-  theme: Theme
+  hasSlottedAnchor: boolean
 ): Styles => {
-  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    hoverColor: hoverColorDark,
-  } = getThemedColors('dark');
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return {
@@ -65,8 +65,6 @@ export const getLinkButtonPureStyles = (
       ':host': {
         ...addImportantToEachRule({
           transform: 'translate3d(0,0,0)', // creates new stacking context
-          outline: 0, // custom element is able to delegate the focus
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
@@ -78,28 +76,31 @@ export const getLinkButtonPureStyles = (
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
+      all: 'unset',
       display: 'flex',
       width: '100%',
-      padding: 0,
-      margin: 0, // Removes default button margin on safari 15
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      cursor: 'pointer',
+      color: colorMap[color],
       textDecoration: underline ? 'underline' : 'none',
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
-      }),
-      ...textSmallStyle,
+      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
       ...mergeDeep(
         buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
-          gap: hidelabelValue ? 0 : spacingStaticXSmall,
+          gap: hidelabelValue ? 0 : spacingStaticXs,
         })),
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
           alignItems: stretchValue ? 'center' : 'flex-start',
         })),
-        buildResponsiveStyles(size, (sizeValue: TextSize) => ({
-          fontSize: getFontSizeText(sizeValue),
+        buildResponsiveStyles(size, (v: ButtonPureSize | LinkPureSize) => ({
+          fontSize: sizeMap[v],
         }))
       ),
+      ...forcedColorsMediaQuery({
+        color: 'LinkText',
+        '&:is(button)': {
+          color: 'ButtonText',
+        },
+      }),
       '&::before': {
         content: '""',
         position: 'absolute', // mobile Safari -> prevent lagging active state
@@ -108,49 +109,38 @@ export const getLinkButtonPureStyles = (
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
+          borderRadius: `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : radiusLg})`,
         })),
-        borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
         ...(active && {
-          ...frostedGlassStyle,
-          backgroundColor: hoverColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundColor: hoverColorDark,
-          }),
+          WebkitBackdropFilter: blurFrosted,
+          backdropFilter: blurFrosted,
+          backgroundColor: colorFrosted,
         }),
       },
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover::before': {
-            ...frostedGlassStyle,
-            backgroundColor: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
-            }),
+            WebkitBackdropFilter: blurFrosted,
+            backdropFilter: blurFrosted,
+            backgroundColor: colorFrostedStrong,
           },
         })),
-      ...(!hasSlottedAnchor && getFocusJssStyle(theme, { pseudo: true, offset: '-2px' })),
+      ...(!hasSlottedAnchor && {
+        '&:focus-visible::before': getFocusBaseStyles(),
+      }),
     },
     ...(hasIcon
       ? {
           icon: {
             position: 'relative',
             flexShrink: '0',
-            width: fontLineHeight,
-            height: fontLineHeight,
-            // workaround for Safari to optimize vertical alignment of icons
-            // TODO: check if this is still needed after optimized icons are included
-            '@supports (width: round(down, 1px, 1px))': {
-              width: `round(down, ${fontLineHeight}, 1px)`,
-              height: `round(down, ${fontLineHeight}, 1px)`,
-            },
           },
           label: mergeDeep(
             { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
             buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-              // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-              order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+              order: alignLabelValue === 'start' ? -1 : 0,
             }))
           ),
         }

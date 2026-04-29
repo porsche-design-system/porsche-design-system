@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { PButton } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
 const isVisible = ref(false);
 </script>
 
 <template>
-  <div class="playground light">
+  <div class="playground">
     <PButton :theme="'light'">Light Button</PButton>
     <PButton :theme="'dark'">Dark Button</PButton>
     <br />

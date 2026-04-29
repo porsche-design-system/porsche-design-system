@@ -1,5 +1,5 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
-import { hasDescription, hasLabel, hasNamedSlot, isParentFieldsetRequired } from '../../../utils';
+import { hasDescription, hasLabel, isParentFieldsetRequired } from '../../../utils';
 import { Required } from '../required/required';
 import { descriptionId, type LabelTag, labelId } from './label-utils';
 
@@ -54,7 +54,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
               {isRequired && !isParentFieldsetRequired(host) && <Required />}
             </Fragment>
           </TagType>
-          {hasNamedSlot(host, 'label-after') && <slot name="label-after" />}
+          <slot name="label-after" />
         </div>
       )}
       {hasDescription(host, description) && (

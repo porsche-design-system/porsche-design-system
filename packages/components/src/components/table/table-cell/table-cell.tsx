@@ -1,6 +1,6 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
 import { getComponentCss } from './table-cell-styles';
 
 const propTypes: PropTypes<typeof TableCell> = {
@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof TableCell> = {
 export class TableCell {
   @Element() public host!: HTMLElement;
 
-  /** Displays slotted text multiline or forced into a single line. */
+  /** Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. */
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {

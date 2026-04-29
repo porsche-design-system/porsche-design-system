@@ -10,7 +10,7 @@ required beyond the capabilities of our [p-table](/components/table/examples/) c
 Porsche Design System's visual language and ensures consistency across your application.
 
 The Porsche Design System AG Grid theme is based on the default AG Grid theme, `ag-theme-quartz`, and is available in
-both light (default) and dark (`data-ag-theme-mode="dark"`) modes.
+both light (default) and dark mode controlled by CSS `color-scheme`.
 
 For more information on AG Grid's base themes, you can refer to the official
 [AG Grid Themes documentation](https://ag-grid.com/javascript-data-grid/themes).
@@ -59,15 +59,17 @@ Pass the theme directly as a prop:
 #### 3. Change the Theme Mode
 
 By default, the Porsche Design System AG Grid theme uses a light color scheme. You can control the color scheme by
-setting the `data-ag-theme-mode` attribute on any parent element of the grid, such as the `<html>` or `<body>` tag.
+setting CSS `color-scheme: light;`, `color-scheme: dark;` or `color-scheme: light dark;` on any parent element of the
+grid, such as the `<html>` or `<body>` tag.
 
 **Available Modes:**
 
-- Light Mode (default) → `data-ag-theme-mode` is not set.
-- Dark Mode → Set `data-ag-theme-mode="dark"`.
+- Light Mode (default) → Set `color-scheme: light;` (optionally).
+- Dark Mode → Set `color-scheme: dark;`.
+- Auto Dark Mode → Set `color-scheme: light dark;`.
 
 ```html
-<body data-ag-theme-mode="dark"></body>
+<body style="color-scheme: light;"></body>
 ```
 
 ## Example

@@ -71,7 +71,6 @@ describe('render', () => {
     component.render();
     expect(spy).toHaveBeenCalledWith(
       component['radioGroupOptions'],
-      component.theme,
       component.disabled,
       component.loading,
       component.state,

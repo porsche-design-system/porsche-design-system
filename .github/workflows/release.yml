@@ -4,15 +4,15 @@ on:
   workflow_call:
     inputs:
       image:
-        description: 'Docker image to be used in workflow.'
+        description: 'Docker image to be used in workflow'
         required: true
         type: string
     secrets:
       github-token:
-        description: 'github token for container registry.'
+        description: 'github token for container registry'
         required: true
       npm-token:
-        description: 'npm access token for publishing to npmjs.org.'
+        description: 'npm access token for publishing to npmjs.org'
         required: true
       gh-deploy-key-storefront:
         description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
@@ -26,7 +26,6 @@ on:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
 
 jobs:
   check-publication-status:
@@ -43,8 +42,7 @@ jobs:
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: 'Get Package Version'
         id: get_npm_version
         uses: ./.github/actions/get-local-package-version
@@ -86,113 +84,127 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
-          GITHUB_TOKEN: ${{ secrets.github-token }}
+          NPM_CONFIG_PROVENANCE: true
   npm-components-angular:
     name: 'NPM (Components Angular)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
-          GITHUB_TOKEN: ${{ secrets.github-token }}
+          NPM_CONFIG_PROVENANCE: true
   npm-components-react:
     name: 'NPM (Components React)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
-          GITHUB_TOKEN: ${{ secrets.github-token }}
+          NPM_CONFIG_PROVENANCE: true
   npm-components-vue:
     name: 'NPM (Components Vue)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
+          NPM_CONFIG_PROVENANCE: true
+  github-release:
+    name: 'GitHub Release'
+    needs:
+      - check-publication-status
+      - npm-components-js
+      - npm-components-angular
+      - npm-components-react
+      - npm-components-vue
+    # Only run if at least one npm package was actually published in this run.
+    # Skipped jobs (already-published) shouldn't block the release, but we also
+    # don't want to release if every publish job was skipped or failed. The
+    # action itself skips pre-release versions (no -rc/-beta/-alpha suffix).
+    # Creating the release also creates the underlying git tag at github.sha.
+    if: |
+      always()
+      && needs.check-publication-status.result == 'success'
+      && (needs.npm-components-js.result == 'success'
+          || needs.npm-components-angular.result == 'success'
+          || needs.npm-components-react.result == 'success'
+          || needs.npm-components-vue.result == 'success')
+      && needs.npm-components-js.result != 'failure'
+      && needs.npm-components-angular.result != 'failure'
+      && needs.npm-components-react.result != 'failure'
+      && needs.npm-components-vue.result != 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
+    steps:
+      - uses: actions/checkout@v6
+      - name: 'Create GitHub Release'
+        uses: ./.github/actions/create-github-release
+        with:
+          version: ${{ needs.check-publication-status.outputs.components-version }}
+          github-token: ${{ secrets.github-token }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     needs: check-publication-status
@@ -201,23 +213,20 @@ jobs:
     container:
       image: ${{ inputs.image }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
       - name: 'Build Storefront'
-        run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" yarn build:storefront
+        run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" npm run build:storefront
       - name: 'Deploy (GH Pages)'
         uses: ./.github/actions/gh-pages
         with:

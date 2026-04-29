@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 import { kebabCase } from 'change-case';
 import { optimize, type Config } from 'svgo';
 import { config } from '../svgo.config';

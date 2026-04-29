@@ -1,47 +1,36 @@
 import {
-  borderRadiusSmall,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  frostedGlassStyle,
-  motionDurationShort,
-  motionEasingBase,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableAnimationDuration,
-  getFocusJssStyle,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
+import {
+  blurFrosted,
+  colorCanvas,
+  colorFrosted,
+  colorFrostedSoft,
+  colorPrimary,
+  durationSm,
+  easeInOut,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  typescaleSm,
+} from '../../styles/css-variables';
+import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
-const { canvasTextColor } = getHighContrastColors();
-
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
-export const getComponentCss = (theme: Theme): string => {
-  const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    hoverColor: hoverColorDark,
-    primaryColor: primaryColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
-
+export const getComponentCss = (): string => {
   const shadowColor = 'rgba(0,0,0,0.3)';
 
   return getCss({
@@ -59,7 +48,6 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -68,28 +56,27 @@ export const getComponentCss = (theme: Theme): string => {
       },
       ...preventFoucOfNestedElementsStyles,
       p: {
-        ...textSmallStyle,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         margin: 0,
       },
       button: {
         all: 'unset',
         display: 'block',
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width/height definition based on ex-unit
-        width: fontLineHeight, // width needed to improve ssr support
-        height: fontLineHeight, // height needed to improve ssr support
-        borderRadius: '50%',
+        font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width/height definition based on ex-unit
+        width: leadingNormal, // width needed to improve ssr support
+        height: leadingNormal, // height needed to improve ssr support
+        borderRadius: radiusFull,
         cursor: 'pointer',
+        backgroundColor: colorFrosted,
+        transition: getTransition('background-color'),
+        WebkitBackdropFilter: blurFrosted,
+        backdropFilter: blurFrosted,
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
           '&:hover': {
-            ...frostedGlassStyle,
-            backgroundColor: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
-            }),
+            backgroundColor: colorFrostedSoft,
           },
         }),
-        ...getFocusJssStyle(theme, { offset: 0 }),
+        '&:focus-visible': getFocusBaseStyles(),
       },
       '[popover]': {
         all: 'unset',
@@ -97,7 +84,7 @@ export const getComponentCss = (theme: Theme): string => {
         pointerEvents: 'none',
         filter: `drop-shadow(0 0 16px ${shadowColor})`,
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
-        animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
+        animation: `var(${cssVariableAnimationDuration}, ${durationSm}) fade-in ${easeInOut} forwards`,
         '&:not(:popover-open)': {
           display: 'none', // ensures popover is not flickering when closed in some situations
         },
@@ -112,33 +99,24 @@ export const getComponentCss = (theme: Theme): string => {
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      ...(isHighContrastMode
-        ? {
-            background: canvasTextColor,
-          }
-        : {
-            background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundSurfaceColorDark,
-            }),
-          }),
+      background: colorCanvas,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
     },
     content: {
       maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
       width: 'max-content', // ensures in older browsers correct width
       boxSizing: 'border-box',
-      padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
+      padding: `${spacingStaticSm} ${spacingStaticMd}`,
       pointerEvents: 'auto',
-      borderRadius: borderRadiusSmall,
-      ...(isHighContrastMode && {
-        outline: `1px solid ${canvasTextColor}`,
-      }),
-      ...textSmallStyle,
-      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-      color: primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundSurfaceColorDark,
-        color: primaryColorDark,
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
+      background: colorCanvas,
+      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      color: colorPrimary,
+      ...forcedColorsMediaQuery({
+        outline: '2px solid CanvasText',
+        outlineOffset: '-2px',
       }),
     },
   });

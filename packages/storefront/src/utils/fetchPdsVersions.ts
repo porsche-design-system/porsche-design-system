@@ -1,5 +1,6 @@
 import { STARTING_PDS_VERSION } from '@/models/pdsVersion';
-import { isGte } from '@/utils/pdsVersion';
+import { isVersionAtLeast } from '@/utils/pdsVersion';
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 export type FetchPdsVersionsOptions = {
   filterStable?: boolean;
@@ -28,7 +29,12 @@ export const fetchPdsVersions = async ({
   }
 
   if (startingVersion) {
-    versions = versions.filter((v: string) => isGte(v, startingVersion));
+    versions = versions.filter((v: string) => isVersionAtLeast(v, startingVersion));
+  }
+
+  // Current running version is missing or filtered out, add it to the list
+  if (!versions.includes(localPorscheDesignSystemVersion)) {
+    versions = [localPorscheDesignSystemVersion, ...versions];
   }
 
   return versions.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));

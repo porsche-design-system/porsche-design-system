@@ -1,25 +1,24 @@
-import type { Direction } from '../table/table-utils';
-import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
-  borderRadiusSmall,
-  frostedGlassStyle,
-  spacingFluidSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
+  blurFrosted,
+  colorFrosted,
+  legacyRadiusSmall,
+  radiusSm,
+  spacingFluidSm,
+  spacingStaticXs,
+} from '../../../styles/css-variables';
+import { getCss } from '../../../utils';
+import { cssVariableTablePadding } from '../table/table-styles';
+import type { Direction } from '../table/table-utils';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
-import { cssVariableTableHeadCellIconFilter, cssVariableTablePadding } from '../table/table-styles';
-
-const { hoverColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
 
 const buttonBeforeOffsetVertical = '-2px';
 const buttonBeforeOffsetHorizontal = '-4px';
@@ -37,7 +36,7 @@ export const getComponentCss = (
       ':host': {
         display: 'table-cell',
         ...addImportantToEachRule({
-          padding: `2px var(${cssVariableTablePadding}, ${spacingFluidSmall}) var(${cssVariableTablePadding}, ${spacingFluidSmall})`,
+          padding: `2px var(${cssVariableTablePadding}, ${spacingFluidSm}) var(${cssVariableTablePadding}, ${spacingFluidSm})`,
           verticalAlign: 'bottom',
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
@@ -49,7 +48,7 @@ export const getComponentCss = (
             button: {
               position: 'relative',
               display: 'flex',
-              gap: spacingStaticXSmall,
+              gap: spacingStaticXs,
               width: 'auto',
               margin: 0, // Removes default button margin on safari 15
               padding: 0,
@@ -63,12 +62,15 @@ export const getComponentCss = (
               border: 0,
               zIndex: 0,
               cursor: 'pointer',
+              '&:focus, &:focus-visible': {
+                outline: 'none',
+              },
               // TODO: re-think if ::before is still needed
               '&::before': {
                 content: '""',
                 position: 'absolute',
                 inset: `${buttonBeforeOffsetVertical} ${buttonBeforeOffsetHorizontal}`,
-                borderRadius: borderRadiusSmall,
+                borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
                 transition: getTransition('background-color'),
               },
@@ -79,12 +81,12 @@ export const getComponentCss = (
                   },
                 },
                 '&:hover::before': {
-                  ...frostedGlassStyle,
-                  backgroundColor: hoverColor,
+                  WebkitBackdropFilter: blurFrosted,
+                  backdropFilter: blurFrosted,
+                  backgroundColor: colorFrosted,
                 },
               }),
-              // TODO: to be future proof, we need to pass theme parameter
-              ...getFocusJssStyle('light', { pseudo: true, offset: '-2px' }),
+              '&:focus-visible::before': getFocusBaseStyles(),
             },
           }
         : hideLabel && {
@@ -101,7 +103,6 @@ export const getComponentCss = (
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS
-        filter: `var(${cssVariableTableHeadCellIconFilter})`,
       },
     }),
   });

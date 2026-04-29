@@ -1,24 +1,21 @@
-import { borderRadiusSmall } from '@porsche-design-system/styles';
-import { addImportantToEachRule, getFocusJssStyle, getResetInitialStylesForSlottedAnchor } from '../../styles';
+import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
+import { legacyRadiusSmall, radiusFull, radiusLg } from '../../styles/css-variables';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { LinkPureColor, LinkPureSize } from './link-pure-utils';
 
-// CSS Variable defined in fontHyphenationStyle
-/**
- * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- */
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
   active: boolean,
   stretch: BreakpointCustomizable<boolean>,
-  size: BreakpointCustomizable<TextSize>,
+  size: BreakpointCustomizable<LinkPureSize>,
+  color: LinkPureColor,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
-  hasSlottedAnchor: boolean,
-  theme: Theme
+  hasSlottedAnchor: boolean
 ): string => {
   return getCss(
     mergeDeep(
@@ -29,34 +26,28 @@ export const getComponentCss = (
         false,
         stretch,
         size,
+        color,
         hideLabel,
         alignLabel,
         underline,
-        hasSlottedAnchor,
-        theme
+        hasSlottedAnchor
       ),
       hasSlottedAnchor && {
         '@global': addImportantToEachRule({
           '::slotted': {
             '&(a)': {
-              ...getResetInitialStylesForSlottedAnchor,
-              textDecoration: underline ? 'underline' : 'none',
-              font: 'inherit',
-              color: 'inherit',
+              all: 'unset',
             },
-            // The clickable area for Safari < ~15 (<= release date: 2021-10-28) is reduced to the slotted anchor itself,
-            // since Safari prior to this major release does not support pseudo-elements in the slotted context
-            // (https://bugs.webkit.org/show_bug.cgi?id=178237)
             '&(a)::before': {
               content: '""',
               position: 'fixed',
               insetBlock: offsetVertical,
-              borderRadius: borderRadiusSmall,
               ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
+                borderRadius: `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : radiusLg})`,
               })),
             },
-            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true, offset: '-2px' }),
+            '&(a:focus-visible)::before': getFocusBaseStyles(),
           },
         }),
       }

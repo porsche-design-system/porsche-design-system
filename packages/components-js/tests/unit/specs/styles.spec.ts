@@ -1,4 +1,4 @@
-import * as styles from '@porsche-design-system/components-js/styles';
+import * as styles from '@porsche-design-system/components-js/emotion';
 
 it.each<keyof typeof styles>(['fontFamily', 'fontVariant'])('should be of type string: %s', (util) => {
   expect(typeof styles[util]).toBe('string');

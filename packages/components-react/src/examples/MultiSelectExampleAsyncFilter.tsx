@@ -17,7 +17,7 @@ const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
   };
 };
 
-export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
+export const MultiSelectExampleAsyncFilter = () => {
   const [value, setValue] = useState<string[]>([]);
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 
@@ -125,7 +125,7 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
       {/* Error state */}
       {error && (
         <div slot="options-status" className="flex gap-static-sm py-static-sm px-[12px]" role="alert">
-          <PIcon name="information" color="notification-error" />
+          <PIcon name="information" color="error" />
           <span className="text-error">{error}</span>
         </div>
       )}

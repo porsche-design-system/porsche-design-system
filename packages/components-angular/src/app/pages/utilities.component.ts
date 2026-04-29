@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { textSmallStyle, themeLight } from '@porsche-design-system/components-angular/styles';
+import { textSmallStyle, themeLight } from '@porsche-design-system/components-angular/emotion';
 import { kebabCase } from 'change-case';
 
 @Component({

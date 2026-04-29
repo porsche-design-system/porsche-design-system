@@ -1,10 +1,11 @@
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import modify from 'rollup-plugin-modify';
-import { version } from '../components-wrapper/package.json';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import modify from 'rollup-plugin-modify';
+import { version } from '../components-wrapper/package.json';
 
 const outputDir = '../../dist/components-wrapper';
 
@@ -15,8 +16,12 @@ export default [
       file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
       exports: 'auto', // fixes rollup warning
+      inlineDynamicImports: true,
     },
     plugins: [
+      dynamicImportVars({
+        include: ['src/**/*.js'],
+      }),
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
       /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
@@ -50,12 +55,6 @@ export default [
       modify({
         find: /'ROLLUP_REPLACE_VERSION'/,
         replace: `'${version}'`,
-      }),
-      // patch conditions into build to allow opt-out of CDN requests
-      modify({
-        // font-face css via injectGlobalStyle() and validatePartialUsage()
-        find: /appGlobals\.globalScripts\(\);/,
-        replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
       }),
       modify({
         // icon svgs (img src)

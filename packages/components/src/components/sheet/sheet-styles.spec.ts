@@ -3,12 +3,11 @@ import { getComponentCss } from './sheet-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [true, true, 'light'],
-    [true, true, 'dark'],
-    [true, true, 'auto'],
-    [false, true, 'light'],
-    [false, false, 'light'],
-  ])('should return correct css for open: %s, dismissButton: %s and theme: %s', (...args) => {
+    [true, 'canvas', true],
+    [true, 'surface', true],
+    [false, 'canvas', true],
+    [false, 'canvas', false],
+  ])('should return correct css for open: %s, background: %s and dismissButton: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

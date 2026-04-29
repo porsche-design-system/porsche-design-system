@@ -1,7 +1,7 @@
 'use client';
 
-import type { Story } from '@/models/story';
 import type { CSSProperties } from 'react';
+import type { Story } from '@/models/story';
 
 export const bannerStory: Story<'p-banner'> = {
   state: {
@@ -45,10 +45,7 @@ export const bannerStoryCustomStyling: Story<'p-banner'> = {
   state: {
     properties: {
       open: false,
-      heading: 'Some Heading',
-      headingTag: 'h3',
-      description: 'Some Description',
-      className: '[--p-banner-position-top:200px]',
+      className: '[--p-banner-top:8px] [--p-banner-bottom:8px] [--p-banner-inset-x:8px] [--p-banner-max-w:70ch]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -78,23 +75,26 @@ export const bannerStoryCustomStyling: Story<'p-banner'> = {
       },
       children: [
         {
-          tag: 'h3',
+          tag: 'p-heading',
           properties: {
             slot: 'heading',
+            size: 'sm',
+            weight: 'semibold',
           },
-          children: [
-            'Some heading with a ',
-            { tag: 'a', properties: { href: 'https://porsche.com' }, children: ['link'] },
-          ],
+          children: ['Some heading'],
         },
         {
-          tag: 'span',
+          tag: 'p-text',
           properties: {
             slot: 'description',
           },
           children: [
             'Some description. You can also add inline ',
-            { tag: 'a', properties: { href: 'https://porsche.com' }, children: ['links'] },
+            {
+              tag: 'p-link-pure',
+              properties: { href: 'https://porsche.com', icon: 'none', underline: true },
+              children: ['links'],
+            },
             ' to route to another page.',
           ],
         },

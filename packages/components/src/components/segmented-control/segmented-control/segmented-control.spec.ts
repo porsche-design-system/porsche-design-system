@@ -1,6 +1,5 @@
 import { vi } from 'vitest';
 import * as utils from '../../../utils';
-import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { SegmentedControl } from './segmented-control';
 import * as segmentedControlUtils from './segmented-control-utils';
@@ -66,21 +65,8 @@ describe('render', () => {
       component.disabled,
       component.state,
       component.message,
-      component.compact,
-      component.theme
+      component.compact
     );
-  });
-
-  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
-    const spy = vi.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
-    const component = initComponent();
-    component.host = document.createElement('p-segmented-control');
-    component.backgroundColor = 'background-surface';
-    component.host.attachShadow({ mode: 'open' });
-
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component, 'backgroundColor');
   });
 });
 
@@ -97,8 +83,6 @@ describe('updateSegmentedControlItemHandler', () => {
     const component = initComponent();
 
     component.change = { emit: vi.fn() };
-    component.update = { emit: vi.fn() };
-    component.segmentedControlChange = { emit: vi.fn() };
 
     component.updateSegmentedControlItemHandler(mockEvent);
     expect(mockEvent.stopPropagation).toHaveBeenCalled();
@@ -108,8 +92,6 @@ describe('updateSegmentedControlItemHandler', () => {
     const component = initComponent();
 
     component.change = { emit: vi.fn() };
-    component.update = { emit: vi.fn() };
-    component.segmentedControlChange = { emit: vi.fn() };
     component.disabled = false;
     // @ts-expect-error
     const updateValueSpy = vi.spyOn(component, 'updateValue');
@@ -179,9 +161,7 @@ describe('noWrap prop', () => {
 describe('updateValue()', () => {
   const component = initComponent();
   const emitSpy = vi.fn();
-  component.change = { emit: vi.fn() };
-  component.update = { emit: emitSpy };
-  component.segmentedControlChange = { emit: emitSpy };
+  component.change = { emit: emitSpy };
 
   const item = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;
   item.value = 'a';
@@ -198,7 +178,7 @@ describe('updateValue()', () => {
     expect(component.value).toBe(item.value);
   });
 
-  it('should call segmentedControlChange.emit()', () => {
+  it('should call change.emit()', () => {
     // @ts-expect-error
     component.updateValue(item);
 

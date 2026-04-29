@@ -1,0 +1,29 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { spacingFluidScssStory, spacingStaticScssStory } from '@/app/scss/spacing/examples/spacing.stories';
+
+export const metadata = {
+  title: 'SCSS: Spacing - Porsche Design System',
+  description: 'Learn about the SCSS spacing styles of our design language and how to use them.',
+};
+
+# Spacing
+
+<TableOfContents headings={['Fluid', 'Static']} />
+
+The Porsche Design System provides multiple SCSS variables for spacing styles.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
+
+## Fluid
+
+Spacing scales dynamically based on the viewport width, within defined minimum and maximum limits. Mainly intended for
+**vertical** spacing between elements.
+
+<ComponentStory story={spacingFluidScssStory} showCodeBlock={false} />
+
+## Static
+
+Spacing uses static, pixel-based values. Primarily used for **horizontal** spacing between elements.
+
+<ComponentStory story={spacingStaticScssStory} showCodeBlock={false} />

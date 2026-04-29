@@ -25,7 +25,7 @@ export const metadata = {
 
 | ARIA                            | Usage                                                                                                 |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `aria-describedby="STRING"`     | Defines the accessible description combined with the status message.                                  |
+| `aria-describedby="IDREF"`      | Defines the accessible description combined with the status message.                                  |
 | `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
 | `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
 | `aria-invalid="true"`           | If `error` state is set.                                                                              |
@@ -41,14 +41,13 @@ prop to `kilometers per hour`. This way, the screen reader will read out the ful
 
 ### Disabled state
 
-In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
-can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
-elements are disabled.
+In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
+reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
 ## Limitations
 
-Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
-attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
+define relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
 
 | ARIA               | Support |
 | ------------------ | ------- |

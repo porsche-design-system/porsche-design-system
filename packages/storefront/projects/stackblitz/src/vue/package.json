@@ -9,17 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.34.0",
+    "@porsche-design-system/components-vue": "4.0.0",
     "vue": "^3.5.22"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.8.1",
-    "typescript": "~5.9.3",
-    "vite": "^7.1.9",
-    "vue-tsc": "^3.1.1",
+    "@vue/tsconfig": "^0.9.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.8",
+    "vue-tsc": "^3.2.6",
     "postcss": "^8",
-    "tailwindcss": "^4.1.14",
-    "@tailwindcss/postcss": "^4.1.14"
+    "tailwindcss": "^4.2.2",
+    "@tailwindcss/postcss": "^4.2.2"
   }
 }

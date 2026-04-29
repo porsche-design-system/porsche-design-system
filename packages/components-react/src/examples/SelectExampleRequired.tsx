@@ -1,7 +1,7 @@
 import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
-export const SelectExampleRequiredPage = (): JSX.Element => {
+export const SelectExampleRequiredPage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
   const [isRequired, setIsRequired] = useState(true);
   const [hasDeselection, setHasDeselection] = useState(false);
@@ -22,8 +22,8 @@ export const SelectExampleRequiredPage = (): JSX.Element => {
 
   return (
     <>
-      <PCheckbox label="Required" name="required" checked={isRequired} onUpdate={onChangeRequired} />
-      <PCheckbox label="Allow deselection" name="deselection" checked={hasDeselection} onUpdate={onChangeDeselection} />
+      <PCheckbox label="Required" name="required" checked={isRequired} onChange={onChangeRequired} />
+      <PCheckbox label="Allow deselection" name="deselection" checked={hasDeselection} onChange={onChangeDeselection} />
 
       <form onSubmit={onSubmit}>
         <PSelect name="options" label="Some Label" required={isRequired}>

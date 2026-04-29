@@ -1,7 +1,7 @@
-import { PSelect, PSelectOption, PButton } from '@porsche-design-system/components-react/ssr';
-import type { CSSProperties } from 'react';
-import { PDSVersionGroup } from '@/models/pdsVersion';
-import { getMajor } from '@/utils/pdsVersion';
+import { PButton, PSelect, PSelectOption } from '@porsche-design-system/components-react/ssr';
+import type { PDSVersionGroup } from '@/models/pdsVersion';
+import { isDevEnvironment } from '@/utils/isDev';
+import { getMajorVersion } from '@/utils/pdsVersion';
 
 type VersionSelectProps = {
   readonly pdsVersion: PDSVersionGroup;
@@ -9,7 +9,7 @@ type VersionSelectProps = {
 
 export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
   const onVersionChange = (version: string) => {
-    const ver = version === pdsVersion.latest ? getMajor(version) : version;
+    const ver = version === pdsVersion.latest ? getMajorVersion(version) : version;
     window.location.href = `https://designsystem.porsche.com/v${ver}`;
   };
 
@@ -21,7 +21,7 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
         onChange={(e) => onVersionChange(e.detail.value)}
         label="Switch version"
         compact={true}
-        style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
+        style={{ '--p-select-background-color': 'var(--p-color-surface)' } as Record<string, string>}
       >
         {pdsVersion.all.map((version) => {
           const prefixedVersion = `v${version}`;
@@ -32,8 +32,13 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
           );
         })}
       </PSelect>
-      {pdsVersion.current !== null && pdsVersion.current !== pdsVersion.latest && (
-        <PButton compact={true} variant="ghost" icon="arrow-right" onClick={() => onVersionChange(pdsVersion.latest)}>
+      {!isDevEnvironment && pdsVersion.current !== null && pdsVersion.current !== pdsVersion.latest && (
+        <PButton
+          compact={true}
+          variant="secondary"
+          icon="arrow-right"
+          onClick={() => onVersionChange(pdsVersion.latest)}
+        >
           Use Latest Release
         </PButton>
       )}

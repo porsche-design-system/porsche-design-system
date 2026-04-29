@@ -28,16 +28,12 @@
     aria-label="Navigation sidebar closed"
     tabindex="-1"
   >
-    <div class="sidebar__scroller">
-      <div class="sidebar__header sidebar__header--start">
-        <p-button hide-label="true" class="hydrated">
-          Open navigation sidebar</p-button
-        >
-      </div>
-      <div class="sidebar__content">
-        <slot name="sidebar-start"> </slot>
-      </div>
+    <div class="sidebar__header sidebar__header--start">
+      <p-button hide-label="true" class="hydrated">
+        Open navigation sidebar</p-button
+      >
     </div>
+    <slot name="sidebar-start"> </slot>
   </aside>
   <main class="main">
     <slot> </slot>

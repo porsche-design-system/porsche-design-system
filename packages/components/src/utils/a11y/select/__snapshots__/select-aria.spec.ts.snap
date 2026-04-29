@@ -1,68 +1,85 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFilterInputAriaAttributes() > should return correct aria attributes for isOpen: false, isRequired: false, labelId: 'label', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: +0 1`] = `
+exports[`getComboboxAriaAttributes() > should return correct aria attributes when closed and not required 1`] = `
 {
-  "aria-autocomplete": "list",
   "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
+  "aria-describedby": "message-id description-id",
   "aria-expanded": "false",
   "aria-haspopup": "listbox",
-  "aria-label": "label",
+  "aria-labelledby": "label-id",
+  "aria-required": "false",
 }
 `;
 
-exports[`getFilterInputAriaAttributes() > should return correct aria attributes for isOpen: false, isRequired: false, labelId: 'label', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
+exports[`getComboboxAriaAttributes() > should return correct aria attributes when open, required, with all IDs 1`] = `
 {
-  "aria-autocomplete": "list",
   "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
-  "aria-expanded": "false",
-  "aria-haspopup": "listbox",
-  "aria-label": "label",
-}
-`;
-
-exports[`getFilterInputAriaAttributes() > should return correct aria attributes for isOpen: true, isRequired: true, labelId: 'label', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: +0 1`] = `
-{
-  "aria-activedescendant": "option-0",
-  "aria-autocomplete": "list",
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
+  "aria-describedby": "message-id description-id",
   "aria-expanded": "true",
   "aria-haspopup": "listbox",
-  "aria-label": "label",
+  "aria-labelledby": "label-id",
   "aria-required": "true",
 }
 `;
 
-exports[`getListAriaAttributes() > should return correct aria attributes for label: 'Some label', isRequired: false, hasFilter: false and isOpen: false 1`] = `
+exports[`getComboboxAriaAttributes() > should return correct aria attributes with empty labelId 1`] = `
 {
-  "aria-hidden": "true",
-  "aria-label": "Some label",
+  "aria-controls": "dropdown-id",
+  "aria-describedby": "message-id description-id",
+  "aria-expanded": "false",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": null,
+  "aria-required": "false",
+}
+`;
+
+exports[`getComboboxAriaAttributes() > should return correct aria attributes with empty messageId and descriptionId 1`] = `
+{
+  "aria-controls": "dropdown-id",
+  "aria-describedby": null,
+  "aria-expanded": "true",
+  "aria-haspopup": "listbox",
+  "aria-labelledby": "label-id",
+  "aria-required": "false",
+}
+`;
+
+exports[`getListboxAriaAttributes() > should return correct aria attributes when not required and not multiselectable 1`] = `
+{
+  "aria-describedby": "message-id description-id",
+  "aria-labelledby": "label-id",
+  "aria-multiselectable": "false",
+  "aria-required": "false",
   "role": "listbox",
 }
 `;
 
-exports[`getListAriaAttributes() > should return correct aria attributes for label: 'Some label', isRequired: false, hasFilter: true and isOpen: false 1`] = `
+exports[`getListboxAriaAttributes() > should return correct aria attributes when required and multiselectable, with all IDs 1`] = `
 {
-  "aria-hidden": "true",
-  "aria-label": "Some label",
-  "role": "listbox",
-}
-`;
-
-exports[`getListAriaAttributes() > should return correct aria attributes for label: 'Some label', isRequired: true, hasFilter: false and isOpen: false 1`] = `
-{
-  "aria-hidden": "true",
-  "aria-label": "Some label",
+  "aria-describedby": "message-id description-id",
+  "aria-labelledby": "label-id",
+  "aria-multiselectable": "true",
   "aria-required": "true",
   "role": "listbox",
 }
 `;
 
-exports[`getListAriaAttributes() > should return correct aria attributes for label: 'Some label', isRequired: true, hasFilter: true and isOpen: true 1`] = `
+exports[`getListboxAriaAttributes() > should return correct aria attributes with empty labelId 1`] = `
 {
-  "aria-label": "Some label",
+  "aria-describedby": "message-id description-id",
+  "aria-labelledby": null,
+  "aria-multiselectable": "false",
+  "aria-required": "false",
+  "role": "listbox",
+}
+`;
+
+exports[`getListboxAriaAttributes() > should return correct aria attributes with empty messageId and descriptionId 1`] = `
+{
+  "aria-describedby": null,
+  "aria-labelledby": "label-id",
+  "aria-multiselectable": "true",
+  "aria-required": "true",
   "role": "listbox",
 }
 `;
@@ -98,26 +115,5 @@ exports[`getOptionAriaAttributes() > should return correct aria attributes for i
   "aria-disabled": "true",
   "aria-hidden": "true",
   "aria-label": null,
-}
-`;
-
-exports[`getSelectDropdownButtonAriaAttributes() > should return correct aria attributes for isOpen: false, labelId: 'label', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 1 1`] = `
-{
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
-  "aria-expanded": "false",
-  "aria-haspopup": "listbox",
-  "aria-label": "label",
-}
-`;
-
-exports[`getSelectDropdownButtonAriaAttributes() > should return correct aria attributes for isOpen: true, labelId: 'label', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: +0 1`] = `
-{
-  "aria-activedescendant": "option-0",
-  "aria-controls": "dropdown-id",
-  "aria-describedby": "description-id",
-  "aria-expanded": "true",
-  "aria-haspopup": "listbox",
-  "aria-label": "label",
 }
 `;

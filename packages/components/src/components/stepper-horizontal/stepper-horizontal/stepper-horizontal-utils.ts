@@ -1,15 +1,9 @@
-import { forceUpdate } from '@stencil/core';
-import type { Theme } from '../../../types';
 import { getTagNameWithoutPrefix, throwException } from '../../../utils';
-import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
-import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
 
 export const STEPPER_HORIZONTAL_SIZES = ['small', 'medium'] as const;
 export type StepperHorizontalSize = (typeof STEPPER_HORIZONTAL_SIZES)[number];
 
-/** @deprecated */
-export type StepperHorizontalUpdateEvent = { activeStepIndex: number };
-export type StepperHorizontalUpdateEventDetail = StepperHorizontalUpdateEvent;
+export type StepperHorizontalUpdateEventDetail = { activeStepIndex: number };
 
 export const getIndexOfStepWithStateCurrent = (stepperHorizontalItems: HTMLPStepperHorizontalItemElement[]): number => {
   return stepperHorizontalItems.findIndex((item) => item.state === 'current');
@@ -27,9 +21,24 @@ export const throwIfMultipleCurrentStates = (
   }
 };
 
-export const syncStepperHorizontalItemsProps = (host: HTMLElement, theme: Theme): void => {
-  for (const item of Array.from(host.children)) {
-    (item as HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps).theme = theme;
-    forceUpdate(item);
+export const scrollStepperHorizontalItemIntoView = (
+  stepIndex: number | undefined,
+  scroller: HTMLElement | undefined,
+  stepperHorizontalItems: HTMLElement[],
+  isSmooth = true
+): void => {
+  if (!scroller || !stepperHorizontalItems.length) {
+    return;
   }
+
+  if (stepIndex === undefined || stepIndex < 0 || stepIndex >= stepperHorizontalItems.length) {
+    return;
+  }
+
+  stepperHorizontalItems[stepIndex]?.scrollIntoView({
+    behavior: isSmooth ? 'smooth' : 'instant',
+    block: 'nearest',
+    inline: 'center',
+    container: 'nearest',
+  } as ScrollIntoViewOptions);
 };

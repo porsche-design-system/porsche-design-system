@@ -1,6 +1,6 @@
 import { PButton, PSelect, PSelectOption } from '@porsche-design-system/components-react';
 
-export const HiddenAttributeExamplePage = (): JSX.Element => {
+export const HiddenAttributeExamplePage = () => {
   return (
     <>
       <PSelect name="options" label="Some Label" value="a">

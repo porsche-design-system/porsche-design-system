@@ -1,0 +1,59 @@
+@use 'font';
+@use 'color';
+
+@mixin -prose-heading($size, $weight) {
+  font: $weight $size / font.$leading-normal font.$font-porsche-next;
+  color: color.$color-primary;
+}
+
+@mixin prose-heading-5xl {
+  @include -prose-heading(font.$typescale-5xl, font.$font-weight-normal);
+}
+@mixin prose-heading-4xl {
+  @include -prose-heading(font.$typescale-4xl, font.$font-weight-normal);
+}
+@mixin prose-heading-3xl {
+  @include -prose-heading(font.$typescale-3xl, font.$font-weight-normal);
+}
+@mixin prose-heading-2xl {
+  @include -prose-heading(font.$typescale-2xl, font.$font-weight-normal);
+}
+@mixin prose-heading-xl {
+  @include -prose-heading(font.$typescale-xl, font.$font-weight-normal);
+}
+@mixin prose-heading-lg {
+  @include -prose-heading(font.$typescale-lg, font.$font-weight-normal);
+}
+@mixin prose-heading-md {
+  @include -prose-heading(font.$typescale-md, font.$font-weight-normal);
+}
+@mixin prose-heading-sm {
+  @include -prose-heading(font.$typescale-sm, font.$font-weight-semibold);
+}
+@mixin prose-heading-xs {
+  @include -prose-heading(font.$typescale-xs, font.$font-weight-semibold);
+}
+@mixin prose-heading-2xs {
+  @include -prose-heading(font.$typescale-2xs, font.$font-weight-semibold);
+}
+
+/* alias (deprecated) */
+@mixin pds-heading-xx-large {
+  @include prose-heading-2xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-x-large {
+  @include prose-heading-xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-large {
+  @include prose-heading-lg();
+}
+/* alias (deprecated) */
+@mixin pds-heading-medium {
+  @include prose-heading-md();
+}
+/* alias (deprecated) */
+@mixin pds-heading-small {
+  @include prose-heading-sm();
+}

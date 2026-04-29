@@ -8,10 +8,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <p-modal [open]="isModalOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'A slightly more detailed label' }">
       <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
       <p-text>Some Content</p-text>
-      <p-button-group slot="footer">
-        <p-button type="button">Accept</p-button>
-        <p-button type="button" [variant]="'secondary'">Deny</p-button>
-      </p-button-group>
+      <p-button slot="footer" type="button">Accept</p-button>
+      <p-button slot="footer" type="button" [variant]="'secondary'">Deny</p-button>
     </p-modal>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -17,7 +17,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const select = document.querySelector('p-select');
-  select.addEventListener('update', () => {
+  select.addEventListener('change', () => {
     debugEl.querySelector('span').innerHTML = '1';
   });
 

@@ -23,7 +23,7 @@ for (const component of advancedPagesToTest) {
       if (!componentsValid.includes(component)) {
         selector = componentsValid.find((item) => component.includes(item));
       }
-      const getComponentTagName = `p-${selector}`;
+      const getComponentTagName = `p-${selector}${selector === 'banner' ? ' [popover]' : ''}`;
 
       let index = 0;
 

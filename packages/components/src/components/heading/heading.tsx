@@ -1,36 +1,31 @@
-import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
-import {
-  type HeadingAlign,
-  type HeadingAlignDeprecated,
-  type HeadingColor,
-  getHeadingTagType,
-  HEADING_COLORS,
-} from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { getComponentCss } from './heading-styles';
 import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  hasPropValueChanged,
+  getHeadingTagType,
+  HEADING_ALIGNS,
+  HEADING_COLORS,
+  HEADING_HYPHENS,
   HEADING_SIZES,
   HEADING_TAGS,
-  THEMES,
-  TYPOGRAPHY_ALIGNS,
-  validateProps,
-  warnIfDeprecatedPropValueIsUsed,
-} from '../../utils';
-import { getComponentCss } from './heading-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type AlignDeprecationMapType = Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>>;
+  HEADING_WEIGHTS,
+  type HeadingAlign,
+  type HeadingColor,
+  type HeadingHyphens,
+  type HeadingSize,
+  type HeadingTag,
+  type HeadingWeight,
+} from './heading-utils';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
-  align: AllowedTypes.oneOf<HeadingAlign>(TYPOGRAPHY_ALIGNS),
+  weight: AllowedTypes.oneOf<HeadingWeight>(HEADING_WEIGHTS),
+  align: AllowedTypes.oneOf<HeadingAlign>(HEADING_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
+  hyphens: AllowedTypes.oneOf<HeadingHyphens>(HEADING_HYPHENS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -43,27 +38,26 @@ const propTypes: PropTypes<typeof Heading> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  /** Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6'). */
   @Prop() public tag?: HeadingTag;
 
-  /** Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
-  @Prop() public size?: BreakpointCustomizable<HeadingSize> = 'xx-large';
+  /** Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size. */
+  @Prop() public size?: BreakpointCustomizable<HeadingSize> = '2xl';
 
-  /** Text alignment of the component. */
+  /** The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability. */
+  @Prop() public weight?: HeadingWeight = 'normal';
+
+  /** Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment. */
   @Prop() public align?: HeadingAlign = 'start';
 
-  /** Basic text color variations depending on theme property. */
+  /** Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color. */
   @Prop() public color?: HeadingColor = 'primary';
 
-  /** Adds an ellipsis to a single line of text if it overflows. */
+  /** Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting. */
+  @Prop() public hyphens?: HeadingHyphens = 'none';
+
+  /** Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content. */
   @Prop() public ellipsis?: boolean = false;
-
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -71,28 +65,15 @@ export class Heading {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Heading, HeadingAlignDeprecated, HeadingAlign>(
-      this,
-      'align',
-      alignDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        HeadingAlign,
-        HeadingAlignDeprecated
-      >,
+      this.weight,
+      this.align,
       this.color,
-      this.ellipsis,
-      this.theme
+      this.hyphens,
+      this.ellipsis
     );
 
     const TagType = getHeadingTagType(this.host, this.size, this.tag);

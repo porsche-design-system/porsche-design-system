@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`scss package content > should match content 1`] = `
+"@forward 'border';
+@forward 'breakpoint';
+@forward 'display';
+@forward 'shadow';
+@forward 'font';
+@forward 'blur';
+@forward 'gradient';
+@forward 'grid';
+@forward 'grid-gap';
+@forward 'grid-full';
+@forward 'grid-full-offset';
+@forward 'grid-wide';
+@forward 'grid-wide-offset';
+@forward 'grid-extended';
+@forward 'grid-extended-offset';
+@forward 'grid-basic';
+@forward 'grid-basic-offset';
+@forward 'grid-narrow';
+@forward 'grid-narrow-offset';
+@forward 'heading';
+@forward 'motion';
+@forward 'spacing';
+@forward 'text';
+@forward 'color';
+@forward 'focus';
+@forward 'media-query';
+@forward 'skeleton';
+"
+`;

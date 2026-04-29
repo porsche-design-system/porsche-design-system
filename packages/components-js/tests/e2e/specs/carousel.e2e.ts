@@ -3,7 +3,6 @@ import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
-import { waitFor } from '@testing-library/dom';
 import {
   addEventListener,
   getActiveElementId,
@@ -20,7 +19,6 @@ import {
   setProperty,
   skipInBrowsers,
   waitForComponentsReady,
-  waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -34,6 +32,8 @@ type InitOptions = {
   focusOnCenterSlide?: boolean;
   skipLinkTarget?: string;
   dir?: 'ltr' | 'rtl';
+  trimSpace?: boolean;
+  pagination?: boolean;
 };
 
 const initCarousel = (page: Page, opts?: InitOptions) => {
@@ -47,6 +47,8 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     focusOnCenterSlide = false,
     skipLinkTarget,
     dir = 'ltr',
+    trimSpace = true,
+    pagination = true,
   } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
@@ -61,11 +63,13 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const attrs = [
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
-    rewind ? '' : 'rewind="false"',
+    rewind ? 'rewind="true"' : '',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
     focusOnCenterSlide ? `focus-on-center-slide="${focusOnCenterSlide}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
     dir ? `dir="${dir}"` : '',
+    trimSpace ? `trim-space="true"` : '',
+    pagination ? `pagination="${pagination}"` : '',
   ].join(' ');
 
   const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>
@@ -771,13 +775,13 @@ test.describe('focus behavior', () => {
 });
 
 test.describe('events', () => {
-  test('should not emit carouselChange event initially', async ({ page }) => {
+  test('should not emit update event initially', async ({ page }) => {
     await setContentWithDesignSystem(page, '');
     await page.evaluate(() => {
       (document as any).eventCounter = 0;
       const carousel = document.createElement('p-carousel');
       carousel.innerHTML = '<div>Slide 1</div><div>Slide 2</div>';
-      carousel.addEventListener('carouselChange', () => (document as any).eventCounter++);
+      carousel.addEventListener('update', () => (document as any).eventCounter++);
       document.body.append(carousel);
     });
 
@@ -789,53 +793,38 @@ test.describe('events', () => {
     expect(await page.evaluate(() => (document as any).eventCounter)).toBe(1);
   });
 
-  test('should emit carouselChange event on slide change', async ({ page }) => {
+  test('should emit update event on slide change', async ({ page }) => {
     await initCarousel(page);
     const host = getHost(page);
     const prevButton = getButtonPrev(page);
     const nextButton = getButtonNext(page);
 
-    await addEventListener(host, 'carouselChange');
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
-
-    await nextButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
-
-    await prevButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
-  });
-
-  test('should correctly emit carouselChange event after reconnect', async ({ page }) => {
-    await initCarousel(page);
-    const host = getHost(page);
-    const prevButton = getButtonPrev(page);
-    const nextButton = getButtonNext(page);
-
-    await addEventListener(host, 'carouselChange');
-
-    await reattachElement(host);
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
-
-    await nextButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
-
-    await prevButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
-  });
-
-  test('should emit both carouselChange and update event', async ({ page }) => {
-    await initCarousel(page);
-    const host = getHost(page);
-
-    await addEventListener(host, 'carouselChange');
     await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const nextButton = getButtonNext(page);
     await nextButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
+
+    await prevButton.click();
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
+  });
+
+  test('should correctly emit update event after reconnect', async ({ page }) => {
+    await initCarousel(page);
+    const host = getHost(page);
+    const prevButton = getButtonPrev(page);
+    const nextButton = getButtonNext(page);
+
+    await addEventListener(host, 'update');
+
+    await reattachElement(host);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    await nextButton.click();
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
+
+    await prevButton.click();
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
   });
 
   // TODO: find a way to test native click behaviour

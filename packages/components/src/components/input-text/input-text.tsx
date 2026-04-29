@@ -10,14 +10,13 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   hasPropValueChanged,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -49,7 +48,6 @@ const propTypes: PropTypes<typeof InputText> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -77,7 +75,7 @@ export class InputText {
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the input field, used when submitting the form data. */
@@ -106,7 +104,7 @@ export class InputText {
   /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
@@ -121,11 +119,8 @@ export class InputText {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Show or hide the character counter. */
   @Prop() public counter?: boolean = false;
@@ -147,6 +142,9 @@ export class InputText {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.inputElement && this.inputElement.value !== newValue) {
+      this.inputElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -208,7 +206,6 @@ export class InputText {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
       this.counter
     );
 
@@ -236,7 +233,6 @@ export class InputText {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}

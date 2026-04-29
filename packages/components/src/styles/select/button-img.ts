@@ -1,9 +1,9 @@
-import { borderRadiusSmall, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
+import { fontPorscheNext, leadingNormal, legacyRadiusSmall, radiusSm, typescaleSm } from '../css-variables';
 
 export const getButtonImageJssStyle: JssStyle = {
-  font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct calculations based on ex-unit
+  font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct calculations based on ex-unit
   width: 'auto',
-  height: fontLineHeight,
-  borderRadius: borderRadiusSmall,
+  height: leadingNormal,
+  borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
 };

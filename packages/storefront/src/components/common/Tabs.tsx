@@ -1,10 +1,10 @@
 'use client';
 
-import { getPathnameRoutes } from '@/utils/pathname';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
 import { useMemo, useState } from 'react';
+import { getPathnameRoutes } from '@/utils/pathname';
 
 export default function Tabs() {
   const [tabIndex, setTabIndex] = useState<number>(0);
@@ -39,7 +39,7 @@ export default function Tabs() {
   }
 
   return (
-    <PTabsBar className="col-span-full xs:col-start-2 xs:col-end-12" activeTabIndex={tabIndex} onUpdate={onUpdate}>
+    <PTabsBar className="col-[wide]" activeTabIndex={tabIndex} background="surface" onUpdate={onUpdate}>
       {Object.entries(tabs).map(([_, route]) => (
         <Link key={route.path} href={route.path as string}>
           {route.name}

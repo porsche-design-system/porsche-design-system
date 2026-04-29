@@ -1,7 +1,6 @@
 import { renderToString } from 'react-dom/server';
-import { vi } from 'vitest';
-import type { ComponentChunkName } from '../../../../components-wrapper';
-import { COMPONENT_CHUNK_NAMES } from '../../../../components-wrapper';
+import { describe, expect, it, vi } from 'vitest';
+import { COMPONENT_CHUNK_NAMES, type ComponentChunkName } from '../../../../components-wrapper/lib/chunksManifest';
 import { getComponentChunkLinks } from '../../../src';
 
 const { version } = require('../../../../components-wrapper/package.json');
@@ -21,7 +20,7 @@ describe('validation', () => {
         some-invalid-component
 
       Please use only valid component chunk names:
-        accordion, banner, button-group, button-pure, button-tile, button, canvas, carousel, checkbox-wrapper, checkbox, content-wrapper, crest, display, divider, drilldown, fieldset-wrapper, fieldset, flag, flex, flyout, grid, heading, headline, icon, inline-notification, input-date, input-email, input-month, input-number, input-password, input-search, input-tel, input-text, input-time, input-url, input-week, link-pure, link-social, link-tile-model-signature, link-tile-product, link-tile, link, marque, modal, model-signature, multi-select, optgroup, pagination, pin-code, popover, radio-button-wrapper, radio-group-option, radio-group, scroller, segmented-control, select-wrapper, select, sheet, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-field-wrapper, text-list, text, textarea-wrapper, textarea, toast, wordmark]
+        accordion, banner, button-pure, button-tile, button, canvas, carousel, checkbox, crest, display, divider, drilldown, fieldset, flag, flyout, heading, icon, inline-notification, input-date, input-email, input-month, input-number, input-password, input-search, input-tel, input-text, input-time, input-url, input-week, link-pure, link-tile-product, link-tile, link, modal, model-signature, multi-select, optgroup, pagination, pin-code, popover, radio-group, scroller, segmented-control, select, sheet, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-list, text, textarea, toast, wordmark]
     `);
   });
 });
@@ -43,9 +42,9 @@ describe('format: html', () => {
   });
 
   it('should return multiple links', () => {
-    const result = getComponentChunkLinks({ components: ['button', 'button-pure', 'marque'] });
+    const result = getComponentChunkLinks({ components: ['button', 'button-pure', 'crest'] });
     const regex = new RegExp(
-      `^${coreLinkCom}<link rel=preload href=${baseHrefCom}/porsche-design-system\\.button\\.${hash}\\.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system\\.button-pure\\.${hash}\\.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system\\.marque\\.${hash}\\.js as=script>$`
+      `^${coreLinkCom}<link rel=preload href=${baseHrefCom}/porsche-design-system\\.button\\.${hash}\\.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system\\.button-pure\\.${hash}\\.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system\\.crest\\.${hash}\\.js as=script>$`
     );
     expect(result).toMatch(regex);
   });
@@ -81,10 +80,10 @@ describe('format: jsx', () => {
   it('should return multiple links', () => {
     const result = getComponentChunkLinks({
       format: 'jsx',
-      components: ['button', 'button-pure', 'marque'],
+      components: ['button', 'button-pure', 'crest'],
     });
     const regex = new RegExp(
-      `^${coreLinkCom}<link rel="preload" href="${baseHrefCom}/porsche-design-system\\.button\\.${hash}\\.js" as="script"/><link rel="preload" href="${baseHrefCom}/porsche-design-system\\.button-pure\\.${hash}\\.js" as="script"/><link rel="preload" href="${baseHrefCom}/porsche-design-system\\.marque\\.${hash}\\.js" as="script"/>$`
+      `^${coreLinkCom}<link rel="preload" href="${baseHrefCom}/porsche-design-system\\.button\\.${hash}\\.js" as="script"/><link rel="preload" href="${baseHrefCom}/porsche-design-system\\.button-pure\\.${hash}\\.js" as="script"/><link rel="preload" href="${baseHrefCom}/porsche-design-system\\.crest\\.${hash}\\.js" as="script"/>$`
     );
 
     expect(renderToString(result)).toMatch(regex);

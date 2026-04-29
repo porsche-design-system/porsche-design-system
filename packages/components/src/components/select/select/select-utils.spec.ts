@@ -41,20 +41,6 @@ const generateOptions = (
   );
 };
 
-describe('syncSelectChildrenProps', () => {
-  it('should update theme and force update for mismatched options', () => {
-    const options = generateOptions();
-    options[0].theme = 'light';
-    options[1].theme = 'dark';
-
-    selectUtils.syncSelectChildrenProps(options, 'dark');
-
-    options.forEach((option) => {
-      expect(option.theme).toBe('dark');
-    });
-  });
-});
-
 describe('getSelectedOptionString', () => {
   it('should return the textContent of the selected option', () => {
     const options = generateOptions({ selectedIndices: [2], textContents: ['a', 'b', 'c'] });

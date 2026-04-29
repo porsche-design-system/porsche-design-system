@@ -1,7 +1,7 @@
+import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { PButton, PText, PFlyout, PHeading, PButtonGroup } from '@porsche-design-system/components-react';
 
-export const FlyoutExamplePage = (): JSX.Element => {
+export const FlyoutExamplePage = () => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsFlyoutOpen(true);
@@ -20,12 +20,12 @@ export const FlyoutExamplePage = (): JSX.Element => {
           Some Heading
         </PHeading>
         <PText>Some Content</PText>
-        <PButtonGroup slot="footer">
-          <PButton type="button">Proceed</PButton>
-          <PButton type="button" variant="secondary">
-            Cancel
-          </PButton>
-        </PButtonGroup>
+        <PButton slot="footer" type="button">
+          Proceed
+        </PButton>
+        <PButton slot="footer" type="button" variant="secondary">
+          Cancel
+        </PButton>
         <PText slot="sub-footer">Some Content</PText>
       </PFlyout>
     </>

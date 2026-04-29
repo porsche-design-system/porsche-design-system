@@ -3,16 +3,14 @@
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: table-header-group;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) !important;
-  line-height: calc(6px + 2.125ex) !important;
-  font-weight: 600 !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  border-bottom: 1px solid var(--_p-table-c) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-table-border-width: 0px !important;
-  --p-internal-table-hover-color: none !important;
+  --_p-table-d: 0px !important;
+  --_p-table-b: none !important;
 }"
 `;

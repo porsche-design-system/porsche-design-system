@@ -1,16 +1,61 @@
-import { type ThemedColors, getThemedColors } from './';
-import type { Theme } from '@porsche-design-system/styles';
 import type { FormState } from '../utils/form/form-state';
+import {
+  colorContrastHigh,
+  colorContrastLower,
+  colorError,
+  colorErrorFrostedSoft,
+  colorErrorMedium,
+  colorFrosted,
+  colorPrimary,
+  colorSuccess,
+  colorSuccessFrostedSoft,
+  colorSuccessMedium,
+} from './css-variables';
 
 type ThemedFormStateColors = {
-  formStateColor: string | undefined; // form state: "none" => undefined
-  formStateHoverColor: string | undefined; // form state: "none" => undefined
+  formStateBackgroundColor: string;
+  formStateBackgroundHoverColor: string;
+  formStateBorderColor: string;
+  formStateBorderHoverColor: string;
+  formStateColor: string | undefined;
 };
 
-export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
-  const themedColors = getThemedColors(theme);
+const colorBackgroundMap: Record<FormState, string> = {
+  success: colorSuccessFrostedSoft,
+  error: colorErrorFrostedSoft,
+  none: colorFrosted,
+};
+
+const colorBackgroundHoverMap: Record<FormState, string> = {
+  success: colorSuccessMedium,
+  error: colorErrorMedium,
+  none: colorContrastHigh,
+};
+
+const colorBorderMap: Record<FormState, string> = {
+  success: colorSuccess,
+  error: colorError,
+  none: colorContrastLower,
+};
+
+const colorBorderHoverMap: Record<FormState, string> = {
+  success: colorSuccess,
+  error: colorError,
+  none: colorPrimary,
+};
+
+const colorMap: Record<FormState, string> = {
+  success: colorSuccess,
+  error: colorError,
+  none: undefined,
+};
+
+export const getThemedFormStateColors = (state: FormState): ThemedFormStateColors => {
   return {
-    formStateColor: themedColors[`${state}Color` as keyof ThemedColors],
-    formStateHoverColor: themedColors[`${state}ColorDarken` as keyof ThemedColors],
+    formStateBackgroundColor: colorBackgroundMap[state],
+    formStateBackgroundHoverColor: colorBackgroundHoverMap[state],
+    formStateBorderColor: colorBorderMap[state],
+    formStateBorderHoverColor: colorBorderHoverMap[state],
+    formStateColor: colorMap[state],
   };
 };

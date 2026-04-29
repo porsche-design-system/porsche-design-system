@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 
 const addTableOfContents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');

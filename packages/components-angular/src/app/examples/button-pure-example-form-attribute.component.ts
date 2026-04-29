@@ -8,10 +8,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       <p-textarea name="some-name" label="Some Label"></p-textarea>
     </form>
 
-    <p-button-group>
-      <p-button-pure type="submit" form="some-form">Submit</p-button-pure>
-      <p-button-pure type="reset" form="some-form">Reset</p-button-pure>
-    </p-button-group>
+    <p-button-pure type="submit" form="some-form">Submit</p-button-pure>
+    <p-button-pure type="reset" form="some-form">Reset</p-button-pure>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,

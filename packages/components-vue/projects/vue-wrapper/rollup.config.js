@@ -13,8 +13,10 @@ const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
-  '@porsche-design-system/components-js/styles',
-  '@porsche-design-system/components-js/styles/vanilla-extract',
+  '@porsche-design-system/components-js/tokens',
+  '@porsche-design-system/components-js/emotion',
+  '@porsche-design-system/components-js/scss',
+  '@porsche-design-system/components-js/vanilla-extract',
   '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/testing',
 ];
@@ -41,15 +43,6 @@ const buildConfig = (packagePath) => {
     plugins: [
       // typings are generated via separate tsc command
       typescript(typescriptOpts),
-      // TODO: only copy stuff once when needed instead of twice (= for each sub package)
-      copy({
-        targets: [
-          {
-            src: `${projectDir}/src/styles/_index.scss`,
-            dest: `${outputDir}/styles`,
-          },
-        ],
-      }),
       generatePackageJson({
         outputFolder: `${outputDir}/${packagePath}`,
         baseContents: {
@@ -64,19 +57,68 @@ const buildConfig = (packagePath) => {
 };
 
 export default [
-  buildConfig('styles'),
+  buildConfig('emotion'),
   {
-    input: `${projectDir}/src/styles/vanilla-extract/index.ts`,
+    input: `${projectDir}/src/vanilla-extract/index.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        file: `${outputDir}/vanilla-extract/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        file: `${outputDir}/vanilla-extract/esm/index.mjs`,
         format: 'esm',
       },
+    ],
+    plugins: [
+      // typings are generated via separate tsc command
+      typescript(typescriptOpts),
+      // SCSS
+      copy({
+        targets: [
+          {
+            src: `${projectDir}/src/scss/_index.scss`,
+            dest: `${outputDir}/scss`,
+          },
+        ],
+      }),
+      generatePackageJson({
+        outputFolder: `${outputDir}/vanilla-extract`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/tokens/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/tokens/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/tokens/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are generated via separate tsc command
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/tokens`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
   {

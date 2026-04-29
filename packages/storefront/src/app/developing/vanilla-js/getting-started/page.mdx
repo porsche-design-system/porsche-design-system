@@ -1,6 +1,7 @@
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Vanilla JS: Getting started - Porsche Design System',
@@ -18,11 +19,11 @@ following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">vite@7</PTag>
+  <PTag compact={true} variant="info">vite@8</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  <PTag compact={true} variant="info">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-js@3</PTag>
+  <PTag compact={true} variant="info">@porsche-design-system/components-js@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash
@@ -69,48 +70,86 @@ export default defineConfig({
 });
 ```
 
-### Step 3 (recommended)
+### Step 3
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
 
-```tsx
+```diff
+/* src/style.css */
++ @import '@porsche-design-system/components-js';
+```
+
+Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it's broken.
+[Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
+
+```diff
+// vite.config.ts
+
++ import { Features } from 'lightningcss';
+
+export default defineConfig({
++ css: {
++   transformer: 'lightningcss',
++   // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++   lightningcss: {
++     exclude: Features.LightDark,
++   },
++ },
+});
+```
+
+To prevent FOUC, hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/style.css */
+@import '@porsche-design-system/components-js';
+
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
+
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
+
+```diff
 // vite.config.ts
 
 import { defineConfig } from 'vite';
 import {
-  getLoaderScript,
-  getComponentChunkLinks,
-  getFontFaceStyles,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-  getMetaTagsAndIconLinks,
+   getLoaderScript,
++  getComponentChunkLinks,
++  getFontLinks,
++  getIconLinks,
++  getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
 
 const transformIndexHtmlPlugin = () => {
   return {
     name: 'html-transform',
     transformIndexHtml(html: string) {
-      const headPartials = [
-        // injects stylesheet which defines visibility of pre-hydrated PDS components
-        getInitialStyles(),
-        // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
-        getFontFaceStyles(),
-        // preloads Porsche Next font (=> minimize FOUT)
-        getFontLinks(),
-        // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
-        getComponentChunkLinks(),
-        // preloads Porsche icons (=> minimize FOUC)
-        getIconLinks(),
-        // injects favicon, apple touch icons, android touch icons, etc.
-        getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
-      ].join('');
++     const headPartials = [
++       // preloads fonts
++       getFontLinks(),
++       // preloads components
++       getComponentChunkLinks(),
++       // preloads icons
++       getIconLinks(),
++       // injects favicon, apple touch icons, android touch icons, etc.
++       getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
++     ].join('');
 
       const bodyPartials = [getLoaderScript()].join('');
 
-      return html.replace(/<\/head>/, `${headPartials}$&`).replace(/<\/body>/, `${bodyPartials}$&`);
++     return html.replace(/<\/head>/, `${headPartials}$&`).replace(/<\/body>/, `${bodyPartials}$&`);
     },
   };
 };
@@ -120,21 +159,11 @@ export default defineConfig({
 });
 ```
 
-### Step 4 (recommended)
+### Step 5 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
 **seamless styling consistency** with Porsche's design principles.
-
-#### The Key Advantage: Universal Code Sharing & Scalability
-
-> Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly
-> framework-agnostic**. Since Tailwind generates atomic **utility classes**, you eliminate cascading style issues,
-> promoting long-term **scalability and maintainability** for large projects. The patterns and components you build are
-> easily portable. You can **copy and paste** the same styling code between projects, teams, and different technology
-> stacks (React, Angular, Vue, plain HTML, etc.), ensuring **100% visual uniformity** across the organization. You can
-> now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
-> Tailwind CSS, to build applications quickly and efficiently.
 
 Install Tailwind CSS within your project directory.
 
@@ -144,29 +173,27 @@ npm install tailwindcss @tailwindcss/vite
 
 Configure the Vite Tailwind CSS plugin.
 
-```tsx
+```diff
 // vite.config.ts
 
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
-
-const transformIndexHtmlPlugin = () => { … }
++ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [transformIndexHtmlPlugin(), tailwindcss()],
++ plugins: [transformIndexHtmlPlugin(), tailwindcss()],
 });
 ```
 
 Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
-```css
+```diff
 /* src/style.css */
+@import '@porsche-design-system/components-js';
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-js/tailwindcss';
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-js/tailwindcss';
 ```
 
-### Step 5
+### Step 6
 
 Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
 `npm run dev` and verify that the component and styles display correctly.
@@ -179,7 +206,7 @@ import './style.css';
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
     <p-wordmark></p-wordmark>
-    <h1 class="prose-display-md">Porsche Design System</h1>
+    <h1 class="prose-heading-4xl">Porsche Design System</h1>
   </div>
   <div class="…">…</div>
 `;

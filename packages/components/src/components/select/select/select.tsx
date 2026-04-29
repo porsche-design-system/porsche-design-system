@@ -13,18 +13,21 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getComboboxAriaAttributes,
   getHasNativePopoverSupport,
+  getListboxAriaAttributes,
   getMatchingSelectOptionIndex,
   getNextOptionToHighlight,
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
   getShadowRootHTMLElement,
+  hasDescription,
+  hasLabel,
   hasMessage,
   hasNamedSlot,
   hasPropValueChanged,
@@ -35,14 +38,13 @@ import {
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   setHighlightedSelectOption,
-  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
   updateHighlightedOption,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { labelId } from '../../common/label/label-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
@@ -54,10 +56,8 @@ import {
   type SelectOption,
   type SelectState,
   type SelectToggleEventDetail,
-  type SelectUpdateEventDetail,
   selectOptionByValue,
   setSelectedOption,
-  syncSelectChildrenProps,
 } from './select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
@@ -74,7 +74,6 @@ const propTypes: PropTypes<typeof Select> = {
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -87,7 +86,7 @@ const propTypes: PropTypes<typeof Select> = {
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-select',
@@ -97,10 +96,10 @@ const propTypes: PropTypes<typeof Select> = {
 export class Select {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Supplementary text providing more context or explanation for the select. */
   @Prop() public description?: string = '';
 
   /** The name of the control. */
@@ -117,13 +116,13 @@ export class Select {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Disables the select. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
+  /** Requires an option with a non-empty string value to be selected. */
   @Prop() public required?: boolean = false;
 
   /** Changes the direction to which the dropdown list appears. */
@@ -132,11 +131,8 @@ export class Select {
   /** Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used. */
   @Prop() public filter?: boolean = false;
 
-  /** Displays as compact version. */
+  /** Displays the select in compact mode. */
   @Prop() public compact?: boolean = false;
-
-  /** Adapts the select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** The id of a form element the select should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
@@ -149,11 +145,6 @@ export class Select {
 
   /** Emitted when the dropdown is toggled. */
   @Event({ bubbles: false }) public toggle: EventEmitter<SelectToggleEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
@@ -191,7 +182,6 @@ export class Select {
   public optgroupUpdateHandler(e: Event): void {
     e.stopPropagation();
     this.updateOptions();
-    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
   }
 
   @Watch('value')
@@ -303,20 +293,17 @@ export class Select {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.compact,
-      this.theme
+      this.compact
     );
-    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
     const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
-    const popoverId = 'list';
-    const descriptionId = this.description ? 'description' : undefined;
+    const listboxId = 'listbox';
+    const selectDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
-    const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
 
     return (
       <div class="root">
@@ -333,7 +320,17 @@ export class Select {
           type="button"
           role="combobox"
           id={buttonId}
-          {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
+          // only needed for Safari to recognize focus state on click
+          tabIndex={0}
+          {...getComboboxAriaAttributes(
+            this.isOpen,
+            this.required,
+            hasLabel(this.host, this.label) && labelId,
+            selectMessageId,
+            selectDescriptionId,
+            listboxId
+          )}
+          aria-autocomplete="none"
           disabled={this.disabled}
           onClick={this.onComboClick}
           onBlur={this.onComboBlur}
@@ -350,25 +347,9 @@ export class Select {
               <span>{this.selectedOption?.textContent ?? ''}</span>
             </Fragment>
           )}
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name="arrow-head-down"
-            theme={this.theme}
-            color={this.disabled ? 'state-disabled' : 'primary'}
-            aria-hidden="true"
-          />
+          <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
-        <div
-          id={popoverId}
-          popover="manual"
-          tabIndex={-1}
-          onToggle={() => this.onToggle()}
-          onBlur={(e: any) => e.stopPropagation()}
-          role="dialog"
-          aria-label={this.label}
-          aria-hidden={this.isOpen ? null : 'true'}
-          ref={(el) => (this.popoverElement = el)}
-        >
+        <div popover="manual" tabIndex={0} onToggle={() => this.onToggle()} ref={(el) => (this.popoverElement = el)}>
           {this.filter && !hasCustomFilterSlot && (
             <PrefixedTagNames.pInputSearch
               class="filter"
@@ -379,7 +360,6 @@ export class Select {
               clear={true}
               indicator={true}
               compact={true}
-              theme={this.theme}
               onInput={this.onFilterInput}
               onBlur={(e: any) => e.stopPropagation()}
               onChange={(e: any) => e.stopPropagation()}
@@ -388,11 +368,20 @@ export class Select {
             />
           )}
           {hasCustomFilterSlot && <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>}
+          {/** biome-ignore lint/a11y/noStaticElementInteractions: role listbox is added through getListboxAriaAttributes */}
           <div
+            id={listboxId}
             class="options"
-            role="listbox"
-            aria-label={this.label}
+            {...getListboxAriaAttributes(
+              this.required,
+              hasLabel(this.host, this.label) && labelId,
+              selectMessageId,
+              selectDescriptionId,
+              false
+            )}
+            tabIndex={-1}
             onPointerMove={this.onPointerMove}
+            onBlur={(e: any) => e.stopPropagation()}
             ref={(el) => (this.listboxElement = el)}
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
@@ -400,7 +389,7 @@ export class Select {
             <slot />
           </div>
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }
@@ -411,6 +400,7 @@ export class Select {
       hoveredOption &&
       isElementOfKind(hoveredOption, 'p-select-option') &&
       !hoveredOption.disabled &&
+      !hoveredOption.disabledParent &&
       hoveredOption !== this.currentlyHighlightedOption
     ) {
       this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
@@ -419,7 +409,6 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
     const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
@@ -546,6 +535,7 @@ export class Select {
       (el) =>
         el.tagName !== 'SELECT' &&
         el.slot !== 'label' &&
+        el.slot !== 'label-after' &&
         el.slot !== 'description' &&
         el.slot !== 'message' &&
         el.slot !== 'filter'
@@ -599,10 +589,6 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
-      name: this.name,
-    });
-    this.update.emit({
       value: this.value,
       name: this.name,
     });

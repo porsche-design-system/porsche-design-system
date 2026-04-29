@@ -28,21 +28,12 @@ jobs:
   akamai-cdn-assets:
     name: 'Akamai CDN (Assets)'
     runs-on: ubuntu-latest
-    # container:
-    #   image: ${{ inputs.image }}
-    #   options: --user root
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
         with:
           node_modules: 'false'
           rclone: 'true'
-      - name: 'Setup Node'
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -60,14 +51,6 @@ jobs:
         with:
           source: 'packages/assets/cdn/crest/'
           target: 'crest/'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
-      - name: 'Rclone (Fallbacks)'
-        uses: ./.github/actions/rclone
-        with:
-          source: 'packages/assets/cdn/fallbacks/'
-          target: 'fallbacks/'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
@@ -136,39 +119,30 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Components JS'
-        run: yarn test:smoke:components-js
-      - name: 'Components Angular'
-        run: yarn test:smoke:components-angular
-      - name: 'Components React'
-        run: yarn test:smoke:components-react
-      - name: 'Components Vue'
-        run: yarn test:smoke:components-vue
+      - run: npm run test:smoke:components-js
+      - run: npm run test:smoke:components-angular
+      - run: npm run test:smoke:components-react
+      - run: npm run test:smoke:components-vue
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Checkout (GH Pages)'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - name: 'Install'
-        uses: ./.github/actions/install
+      - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:

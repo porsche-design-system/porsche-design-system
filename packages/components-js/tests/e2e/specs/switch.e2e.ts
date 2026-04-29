@@ -55,42 +55,42 @@ test.describe('label', () => {
 });
 
 test.describe('events', () => {
-  test('should trigger event on click', async ({ page }) => {
+  test('should trigger update event on click', async ({ page }) => {
     await initSwitch(page);
 
     const host = getHost(page);
     const button = getButton(page);
-    await addEventListener(host, 'switchChange');
+    await addEventListener(host, 'update');
 
     await button.click();
-    const { counter } = await getEventSummary(host, 'switchChange');
+    const { counter } = await getEventSummary(host, 'update');
 
     expect(counter).toBe(1);
   });
 
-  test('should not trigger event on click if switch is disabled', async ({ page }) => {
+  test('should not trigger update event on click if switch is disabled', async ({ page }) => {
     await initSwitch(page, { isDisabled: true });
 
     const host = getHost(page);
     const button = getButton(page);
-    await addEventListener(host, 'switchChange');
+    await addEventListener(host, 'update');
 
     await button.click({ force: true });
-    const { counter } = await getEventSummary(host, 'switchChange');
+    const { counter } = await getEventSummary(host, 'update');
 
     expect(counter).toBe(0);
   });
 
-  test('should not trigger event on click if switch is loading', async ({ page }) => {
+  test('should not trigger update event on click if switch is loading', async ({ page }) => {
     await initSwitch(page, { isLoading: true });
 
     const host = getHost(page);
     const button = getButton(page);
-    await addEventListener(host, 'switchChange');
+    await addEventListener(host, 'update');
 
     await button.click({ force: true });
     await host.click();
-    const { counter } = await getEventSummary(host, 'switchChange');
+    const { counter } = await getEventSummary(host, 'update');
 
     expect(counter).toBe(0);
   });
@@ -214,20 +214,6 @@ test.describe('events', () => {
     expect(await hasFocus(host)).toBe(false);
   });
 
-  test('should emit both switchChange and update event', async ({ page }) => {
-    await initSwitch(page);
-    const host = getHost(page);
-
-    await addEventListener(host, 'switchChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'switchChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const button = getButton(page);
-    await button.click();
-    expect((await getEventSummary(host, 'switchChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
-  });
 });
 
 test.describe('focus', () => {

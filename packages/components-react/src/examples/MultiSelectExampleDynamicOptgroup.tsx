@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const MultiSelectExampleDynamicOptgroupPage = (): JSX.Element => {
+export const MultiSelectExampleDynamicOptgroupPage = () => {
   const [value, setValue] = useState<PMultiSelectProps['value']>([]);
   const [options, setOptions] = useState<string[]>([]);
 

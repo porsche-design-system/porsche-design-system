@@ -1,9 +1,10 @@
 'use client';
-import { type PropsWithChildren, useCallback, useState } from 'react';
-import { PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
-import Link from 'next/link';
 
-export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}>): JSX.Element {
+import { PButton, PHeading, PLink, PModal, PText } from '@porsche-design-system/components-react/ssr';
+import Link from 'next/link';
+import { type PropsWithChildren, useCallback, useState } from 'react';
+
+export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}>) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
@@ -43,14 +44,15 @@ export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}
         Open Modal (without route change)
       </PButton>
       {isModalOpen && (
-        <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
+        <PModal open={isModalOpen} onDismiss={onDismiss}>
+          <PHeading slot="header" size="large" tag="h2">
+            Some Heading
+          </PHeading>
           <PText>Some Content</PText>
-          <PButtonGroup className="footer">
-            <PButton>Save</PButton>
-            <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-              Close
-            </PButton>
-          </PButtonGroup>
+          <PButton slot="footer">Save</PButton>
+          <PButton slot="footer" type="button" variant="secondary" icon="close" onClick={onDismiss}>
+            Close
+          </PButton>
         </PModal>
       )}
       <main>{children}</main>

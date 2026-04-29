@@ -1,5 +1,5 @@
-import { getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { getCss } from '../../../utils';
 
 export const getComponentCss = (): string => {
   return getCss({

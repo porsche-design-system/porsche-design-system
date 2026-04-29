@@ -10,8 +10,17 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, THEMES, validateProps } from '../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
+  hasDescription,
+  hasMessage,
+  hasPropValueChanged,
+  setAriaIDREF,
+  validateProps,
+} from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId } from '../common/label/label-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
@@ -49,7 +58,6 @@ const propTypes: PropTypes<typeof Textarea> = {
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -72,7 +80,7 @@ export class Textarea {
   /** Supplementary text providing more context or explanation for the textarea. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the textarea as a compact version. */
+  /** Displays the textarea in compact mode. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the textarea, used when submitting the form data. */
@@ -89,7 +97,7 @@ export class Textarea {
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Controls the visibility of the label. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Show or hide the character counter. */
@@ -101,7 +109,7 @@ export class Textarea {
   /** A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
-  /** A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form. */
+  /** Disables the textarea. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
@@ -131,9 +139,6 @@ export class Textarea {
   /** A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the textarea loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<TextareaChangeEventDetail>;
 
@@ -150,6 +155,9 @@ export class Textarea {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
+    if (this.textAreaElement && this.textAreaElement.value !== newValue) {
+      this.textAreaElement.value = newValue;
+    }
     this.internals?.setFormValue(newValue);
   }
 
@@ -200,11 +208,13 @@ export class Textarea {
       this.state,
       this.compact,
       this.counter,
-      this.resize,
-      this.theme
+      this.resize
     );
 
     const id = 'textarea';
+    const textareaDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const textareaMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
+
     return (
       <div class="root">
         <Label
@@ -217,7 +227,7 @@ export class Textarea {
         />
         <div class="wrapper">
           <textarea
-            aria-describedby={`${descriptionId} ${messageId}`}
+            aria-describedby={setAriaIDREF(textareaMessageId, textareaDescriptionId)}
             aria-invalid={this.state === 'error' ? 'true' : null}
             id={id}
             ref={(el: HTMLTextAreaElement) => (this.textAreaElement = el)}
@@ -251,7 +261,7 @@ export class Textarea {
             </Fragment>
           )}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }

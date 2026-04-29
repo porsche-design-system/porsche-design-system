@@ -1,17 +1,20 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasDescription,
+  hasLabel,
+  hasMessage,
   hasPropValueChanged,
-  THEMES,
+  setAriaIDREF,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId, labelId } from '../common/label/label-utils';
-import { LoadingMessage } from '../common/loading-message/loading-message';
+import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './pin-code-styles';
 import {
@@ -27,9 +30,9 @@ import {
   type PinCodeLength,
   type PinCodeState,
   type PinCodeType,
-  type PinCodeUpdateEventDetail,
   removeWhiteSpaces,
 } from './pin-code-utils';
+import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -46,7 +49,6 @@ const propTypes: PropTypes<typeof PinCode> = {
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   value: AllowedTypes.string,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -55,7 +57,7 @@ const propTypes: PropTypes<typeof PinCode> = {
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-pin-code',
@@ -65,10 +67,10 @@ const propTypes: PropTypes<typeof PinCode> = {
 export class PinCode {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Supplementary text providing more context or explanation for the pin code. */
   @Prop() public description?: string = '';
 
   /** Name of the control. */
@@ -79,7 +81,7 @@ export class PinCode {
   /** Number of characters of the Pin Code. */
   @Prop() public length?: PinCodeLength = 4;
 
-  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  /** Shows or hides the label and description. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** The validation state. */
@@ -103,11 +105,8 @@ export class PinCode {
   /** Sets the initial value of the Pin Code. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** A boolean value that, if present, renders the pin-code as a compact version. */
+  /** Displays the pin code in compact mode. */
   @Prop() public compact?: boolean = false;
-
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** The id of a form element the pin-code should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
@@ -117,11 +116,6 @@ export class PinCode {
 
   /** Emitted when the input is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -192,8 +186,7 @@ export class PinCode {
       this.disabled,
       this.loading,
       this.length,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -202,9 +195,18 @@ export class PinCode {
     this.inputElements = [];
 
     const currentInputId = 'current-input';
+    const inputLabelId = hasLabel(this.host, this.label) ? labelId : undefined;
+    const inputDescriptionId = hasDescription(this.host, this.description) ? descriptionId : undefined;
+    const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
-      <div class="root">
+      <fieldset
+        class="root"
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
+        aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
+      >
         <Label
           host={this.host}
           label={this.label}
@@ -225,7 +227,7 @@ export class PinCode {
               {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
+              aria-describedby={setAriaIDREF(inputLabelId, inputMessageId)}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"
@@ -238,13 +240,11 @@ export class PinCode {
               ref={(el) => this.inputElements.push(el)}
             />
           ))}
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
-      </div>
+      </fieldset>
     );
   }
 
@@ -312,7 +312,6 @@ export class PinCode {
     this.internals?.setFormValue(this.value);
     const details = { value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length };
     this.change.emit(details);
-    this.update.emit(details);
   };
 
   private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {

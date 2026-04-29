@@ -1,13 +1,4 @@
-import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
-import {
-  type StepperHorizontalItemInternalHTMLProps,
-  type StepperHorizontalItemState,
-  getStepperHorizontalIconName,
-  isItemClickable,
-  isStateCompleteOrWarning,
-  STEPPER_ITEM_STATES,
-  throwIfCurrentAndDisabled,
-} from './stepper-horizontal-item-utils';
+import { Component, Element, Host, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -18,6 +9,14 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
+import {
+  getStepperHorizontalIconName,
+  isItemClickable,
+  isStateCompleteOrWarning,
+  STEPPER_ITEM_STATES,
+  type StepperHorizontalItemState,
+  throwIfCurrentAndDisabled,
+} from './stepper-horizontal-item-utils';
 
 const propTypes: PropTypes<typeof StepperHorizontalItem> = {
   state: AllowedTypes.oneOf<StepperHorizontalItemState>([undefined, ...STEPPER_ITEM_STATES]),
@@ -32,7 +31,7 @@ const propTypes: PropTypes<typeof StepperHorizontalItem> = {
   shadow: { delegatesFocus: true },
 })
 export class StepperHorizontalItem {
-  @Element() public host!: HTMLElement & StepperHorizontalItemInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** The validation state. */
   @Prop() public state?: StepperHorizontalItemState;
@@ -59,7 +58,7 @@ export class StepperHorizontalItem {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     throwIfCurrentAndDisabled(this.host);
-    attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.host.theme || 'light');
+    attachComponentCss(this.host, getComponentCss, this.state, this.disabled);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -70,15 +69,16 @@ export class StepperHorizontalItem {
           aria-disabled={!this.state || this.disabled ? 'true' : null}
           aria-current={this.state === 'current' ? 'step' : null}
         >
-          {isStateCompleteOrWarning(this.state) && (
+          {isStateCompleteOrWarning(this.state) ? (
             <PrefixedTagNames.pIcon
               class="icon"
               name={getStepperHorizontalIconName(this.state)}
               size="inherit"
-              theme={this.host.theme || 'light'}
-              color={this.disabled ? 'state-disabled' : `notification-${getStepperHorizontalIconName(this.state)}`}
+              color={getStepperHorizontalIconName(this.state)}
               aria-hidden="true"
             />
+          ) : (
+            <span class="icon" aria-hidden="true" />
           )}
           {this.state && <span class="sr-only">{this.state}: </span>}
           <slot />

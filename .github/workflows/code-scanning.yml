@@ -14,11 +14,11 @@ jobs:
     name: 'CodeQL'
     runs-on: ubuntu-latest
     # container:
-    #   image: mcr.microsoft.com/playwright:v1.56.0-jammy
+    #   image: mcr.microsoft.com/playwright:v1.59.1-jammy
     #   options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 'Initialize'
         uses: github/codeql-action/init@v3
         with:

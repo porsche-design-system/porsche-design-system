@@ -3,7 +3,6 @@ import * as childrenObserverUtils from '../../utils/children-observer';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as observerUtils from '../../utils/dialog/observer';
 import * as domUtils from '../../utils/dom';
-import * as hasHeading from '../../utils/form/hasHeading';
 import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
 import * as setScrollLockUtils from '../../utils/setScrollLock';
 import { Modal } from './modal';
@@ -14,7 +13,6 @@ beforeEach(() => {
   component = new Modal();
   component.host = document.createElement('p-modal');
   component.host.attachShadow({ mode: 'open' });
-  component['closeBtn'] = document.createElement('button');
   component['dialog'] = document.createElement('dialog');
 });
 
@@ -64,7 +62,7 @@ describe('componentDidLoad', () => {
     component['hasFooter'] = true;
     component.componentDidLoad();
 
-    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
+    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['footer']);
   });
   it('should not call observeStickyArea() with if hasFooter is false', () => {
     const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
@@ -81,7 +79,7 @@ describe('componentDidUpdate', () => {
     component['hasFooter'] = true;
     component.componentDidUpdate();
 
-    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
+    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['footer']);
   });
   it('should not call observeStickyArea() with if hasFooter is false', () => {
     const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
@@ -120,11 +118,10 @@ describe('render', () => {
       'warnIfAriaAndHeadingPropsAreUndefined'
     );
     component.open = true;
-    component.heading = 'Some Heading';
     component.aria = {};
     component.render();
 
-    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toHaveBeenCalledWith(component.host, true, component.aria);
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toHaveBeenCalledWith(component.host, false, component.aria);
   });
 
   it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
@@ -138,14 +135,6 @@ describe('render', () => {
     expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toHaveBeenCalled();
   });
 
-  it('should call hasHeading() with correct parameters', () => {
-    const spy = vi.spyOn(hasHeading, 'hasHeading');
-    component.heading = 'Some Heading';
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component.host, component.heading);
-  });
-
   it('should call hasNamedSlot() with correct parameters', () => {
     const hasNamedSlotSpy = vi.spyOn(domUtils, 'hasNamedSlot');
 
@@ -154,12 +143,8 @@ describe('render', () => {
     component.host.appendChild(header);
     component.render();
 
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'footer');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(4, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(5, component.host, 'header');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(6, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(6);
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'header');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'footer');
+    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(2);
   });
 });

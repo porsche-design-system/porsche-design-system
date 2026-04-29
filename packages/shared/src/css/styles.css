@@ -8,17 +8,7 @@
 body {
   /* to beat scroll lock */
   position: static !important;
-  background: var(--playground-background-base, #fff);
-}
-
-body.dark {
-  --playground-background-base: #0e0e12;
-}
-
-@media (prefers-color-scheme: dark) {
-  body.auto {
-    --playground-background-base: #0e0e12;
-  }
+  background: var(--p-color-canvas);
 }
 
 button,
@@ -28,26 +18,13 @@ a {
 }
 
 /* Playground */
-/* TODO: we should generate background colors with scss or js styles package */
 .playground {
   padding: 16px;
-  background: var(--playground-background-base, #fff);
+  background: var(--p-color-canvas);
 }
 
 .playground.surface {
-  background: var(--playground-background-surface, #eeeff2);
-}
-
-.playground.dark {
-  --playground-background-base: #0e0e12;
-  --playground-background-surface: #212225;
-}
-
-@media (prefers-color-scheme: dark) {
-  .playground.auto {
-    --playground-background-base: #0e0e12;
-    --playground-background-surface: #212225;
-  }
+  background: var(--p-color-surface);
 }
 
 .playground.auto-layout-inline,

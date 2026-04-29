@@ -1,2 +1,6 @@
-<p-inline-notification aria-hidden="true" class="hydrated">
-</p-inline-notification>
+<div popover="manual" aria-hidden="true" role="status" aria-live="polite">
+  <div class="notification">
+    <slot> </slot>
+    <p-button class="dismiss hydrated"> Close banner</p-button>
+  </div>
+</div>

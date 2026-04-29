@@ -1,8 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import * as fs from 'fs';
 import { gzipSizeSync } from 'gzip-size';
-import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
+import * as path from 'path';
+import {
+  COMPONENT_CHUNKS_MANIFEST,
+  type ComponentChunkName,
+} from '../../../projects/components-wrapper/lib/chunksManifest';
 
 const indexJsFileCjs = require.resolve('@porsche-design-system/components-js');
 const indexJsFileEsm = path.resolve(indexJsFileCjs, '../../esm/index.mjs');
@@ -204,12 +207,6 @@ describe('chunk content', () => {
   /** core chunk is identified by version in file name */
   const isCoreChunk = (chunkFileName: string): boolean => chunkFileName.includes(version);
 
-  it('marque chunk should not contain icon manifest', () => {
-    const marqueJsCode = getChunkContent('marque');
-    expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
-    expect(marqueJsCode).not.toContain('arrowDoubleDown');
-  });
-
   it('icon chunk should not contain marque manifest', () => {
     const iconJsCode = getChunkContent('icon');
     expect(iconJsCode).not.toContain('/porsche-design-system/marque');
@@ -249,23 +246,10 @@ describe('chunk content', () => {
 
   describe('hex colors', () => {
     const hexColorRegEx = /#[a-f\d]{3,6}/i;
-    const componentsWithHexColors: ComponentChunkName[] = [
-      'select-wrapper',
-      'text-field-wrapper',
-      'textarea-wrapper',
-      'scroller',
-    ];
+    const componentsWithHexColors: ComponentChunkName[] = ['carousel', 'scroller'];
 
     const containsHexColor = (chunkFileName: string): boolean =>
       componentsWithHexColors.some((x) => chunkFileName.includes(x));
-
-    describe('core chunk', () => {
-      const content = getChunkContent(chunkFileNames[0]);
-
-      it('should contain hex colors', () => {
-        expect(content).toMatch(hexColorRegEx);
-      });
-    });
 
     it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && !containsHexColor(x)))(
       'should not contain hex colors in %s',
@@ -284,18 +268,6 @@ describe('chunk content', () => {
     }
   });
 
-  describe('color scheme', () => {
-    const colorSchemeRegEx = /{colorScheme:.*?light dark.*?}/i;
-
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
-      'should contain color scheme style in %s',
-      (chunkFileName) => {
-        const content = getChunkContent(chunkFileName);
-        expect(content).toMatch(colorSchemeRegEx);
-      }
-    );
-  });
-
   describe('host hidden', () => {
     const colorSchemeRegEx = /\[hidden].*?:.*?{display:.*?none.*?}/i;
 
@@ -309,8 +281,8 @@ describe('chunk content', () => {
   });
 
   describe('getPrefixedTagNames', () => {
-    const getPrefixedTagNamesRegEx =
-      /new Map.+?\.filter\(\(([a-z])=>[\\"']+p-text[\\"']+!==\1&&[\\"']+p-heading[\\"']+!==\1&&[\\"']+p-headline[\\"']+!==\1&&[\\"']+p-display[\\"']+!==\1\)/;
+    // /^([a-z0-9-]+)-p-[a-z-]+$/.exec is used in the getPrefixedTagNames function
+    const getPrefixedTagNamesRegEx = /\/\^\(\[a-z0-9-]\+\)-p-\[a-z-]\+\$\/\.exec/;
 
     it('should be in core chunk', () => {
       const content = getChunkContent(chunkFileNames[0]);

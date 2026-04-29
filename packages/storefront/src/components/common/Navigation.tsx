@@ -2,6 +2,7 @@ import {
   type AccordionUpdateEventDetail,
   PAccordion,
   PDivider,
+  PHeading,
   PLinkPure,
   PText,
 } from '@porsche-design-system/components-react/ssr';
@@ -18,11 +19,24 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
   return acc;
 }, {});
 
-type NavigationProps = {
-  readonly pdsVersion: PDSVersionGroup;
+/**
+ * Maps the first section key of each logical group to its group label.
+ * Sections without an entry belong to the preceding group (no extra header rendered).
+ */
+const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
+  news: 'Get Started', // designing, developing
+  components: 'Core', // components, styles, tokens, patterns, templates, partials
+  tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract
+  'ag-grid': 'Integrations', // ag-grid
+  'must-know': 'Resources', // must-know, help
 };
 
-export const Navigation = ({ pdsVersion }: NavigationProps) => {
+type NavigationProps = {
+  readonly pdsVersion: PDSVersionGroup;
+  readonly onNavigate: () => void;
+};
+
+export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
   const pathname = usePathname();
   const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
 
@@ -48,35 +62,46 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
 
   return (
     <>
-      <nav aria-label="Main">
-        {Object.entries(sitemap).map(([path, category]) => (
-          <PAccordion
-            key={path}
-            heading={category.name as string}
-            headingTag="h3"
-            compact={true}
-            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
-            open={openSections[path]}
-            onUpdate={handleAccordionUpdate(path)}
-          >
-            {category.subPaths &&
-              Object.entries(category.subPaths).map(([_, page]) => {
-                // If page has subPaths (tabs) link to first tab
-                const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
-                return (
-                  <PLinkPure
-                    className="my-static-xs inline-block"
-                    key={link}
-                    icon="none"
-                    stretch={true}
-                    active={pathname?.includes(`${page.path}/`)}
-                  >
-                    <Link href={link}>{page.name}</Link>
-                  </PLinkPure>
-                );
-              })}
-          </PAccordion>
-        ))}
+      <nav aria-label="Main" className="flex flex-col gap-static-sm">
+        {Object.entries(sitemap).map(([path, category]) => {
+          const groupLabel = SECTION_GROUP_HEADERS[path];
+
+          return (
+            <React.Fragment key={path}>
+              {groupLabel && (
+                <PHeading tag="h3" size="2xs" color="contrast-medium" className="mt-static-md first:mt-0">
+                  {groupLabel}
+                </PHeading>
+              )}
+              <PAccordion
+                compact={true}
+                className="[&>:not([slot]):not(:last-child)]:mb-static-sm"
+                open={openSections[path]}
+                onUpdate={handleAccordionUpdate(path)}
+              >
+                <PHeading slot="summary" tag="h3" size="small" weight="semibold">
+                  {category.name as string}
+                </PHeading>
+                {category.subPaths &&
+                  Object.entries(category.subPaths).map(([_, page]) => {
+                    // If page has subPaths (tabs) link to first tab
+                    const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
+                    return (
+                      <PLinkPure
+                        key={link}
+                        icon="none"
+                        active={pathname?.includes(`${page.path}/`)}
+                        onClick={() => onNavigate()}
+                        className={'w-full ps-static-sm'}
+                      >
+                        <Link href={link}>{page.name}</Link>
+                      </PLinkPure>
+                    );
+                  })}
+              </PAccordion>
+            </React.Fragment>
+          );
+        })}
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
@@ -85,19 +110,27 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
-          © 2026 Dr. Ing. h.c. F. Porsche AG.
+          © {new Date().getFullYear()} Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
-              <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+              </PLinkPure>
             </li>
             <li>
-              <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+              </PLinkPure>
             </li>
             <li>
-              <Link href="/license">License</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="/license">License</Link>
+              </PLinkPure>
             </li>
             <li>
-              <Link href="/accessibility-statement">Accessibility Statement</Link>
+              <PLinkPure color="contrast-medium" size="2xs" icon="none" underline={true}>
+                <Link href="/accessibility-statement">Accessibility Statement</Link>
+              </PLinkPure>
             </li>
           </ul>
         </PText>

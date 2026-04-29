@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import { sync as globbySync } from 'fast-glob';
 
 describe('nextjs', () => {
   const buildDirectory = path.resolve(__dirname, '../../../../nextjs/.next');
 
   beforeAll(() => {
     if (!fs.existsSync(buildDirectory)) {
-      throw new Error('Build for NextJs is missing. Make sure to build it first via `yarn build-app`.');
+      throw new Error('Build for NextJs is missing. Make sure to build it first via `npm run build-app`.');
     }
   });
 
@@ -21,7 +21,6 @@ describe('nextjs', () => {
 
         expect(fileContent).not.toContain('shadowrootmode');
         expect(fileContent).not.toContain('shadowrootdelegatesfocus');
-        expect(fileContent).not.toContain('process.browser');
         expect(fileContent).not.toContain('className:"ssr"'); // added className from server build
         expect(fileContent).not.toContain("className:'ssr'"); // added className from server build
       }
@@ -48,7 +47,7 @@ describe('remix', () => {
 
   beforeAll(() => {
     if (!fs.existsSync(serverBuildDirectory) || !fs.existsSync(clientBuildDirectory)) {
-      throw new Error('Build for Remix is missing. Make sure to build it first via `yarn build-app`.');
+      throw new Error('Build for Remix is missing. Make sure to build it first via `npm run build-app`.');
     }
   });
 
@@ -90,7 +89,7 @@ describe('react-router', () => {
 
   beforeAll(() => {
     if (!fs.existsSync(serverBuildDirectory) || !fs.existsSync(clientBuildDirectory)) {
-      throw new Error('Build for React Router is missing. Make sure to build it first via `yarn build-app`.');
+      throw new Error('Build for React Router is missing. Make sure to build it first via `npm run build-app`.');
     }
   });
 

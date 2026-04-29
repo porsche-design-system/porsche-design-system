@@ -1,47 +1,31 @@
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
+import { colorContrastHigh, colorContrastLow, colorContrastMedium, colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  forcedColorsMediaQuery,
-  getHighContrastColors,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-  type ThemedColors,
-} from '../../styles';
-import {
+  getSvgUrl,
   type ModelSignatureColor,
   type ModelSignatureModel,
   type ModelSignatureSize,
-  getSvgUrl,
 } from './model-signature-utils';
-import type { Theme } from '../../types';
-import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 
 const cssVariableWidth = '--p-model-signature-width';
 const cssVariableHeight = '--p-model-signature-height';
 const cssVariableColor = '--p-model-signature-color';
 
-const { canvasTextColor } = getHighContrastColors();
-
-const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
-  const colorMap: Record<ModelSignatureColor, string> = {
-    primary: themedColors.primaryColor,
-    inherit: 'black',
-    'contrast-low': themedColors.contrastLowColor,
-    'contrast-medium': themedColors.contrastMediumColor,
-    'contrast-high': themedColors.contrastHighColor,
-  };
-
-  return colorMap[color];
+const colorMap: Record<ModelSignatureColor, string> = {
+  primary: colorPrimary,
+  'contrast-low': colorContrastLow,
+  'contrast-medium': colorContrastMedium,
+  'contrast-high': colorContrastHigh,
+  inherit: 'currentcolor',
 };
 
 export const getComponentCss = (
   model: ModelSignatureModel,
   safeZone: boolean,
   size: ModelSignatureSize,
-  color: ModelSignatureColor,
-  theme: Theme
+  color: ModelSignatureColor
 ): string => {
   const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
   const isSizeInherit = size === 'inherit';
@@ -59,14 +43,10 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
-          background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors(theme))})`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors('dark'))})`,
-          }),
+          background: `var(${cssVariableColor},${colorMap[color]})`, // color="inherit" will use currentcolor for inheritance
           ...forcedColorsMediaQuery({
-            background: canvasTextColor,
+            background: 'CanvasText',
           }),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

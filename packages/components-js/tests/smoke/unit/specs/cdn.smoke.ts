@@ -1,8 +1,6 @@
 import {
   CRESTS_CDN_BASE_PATH,
   CRESTS_MANIFEST,
-  FALLBACKS_CDN_BASE_PATH,
-  FALLBACKS_MANIFEST,
   FLAGS_CDN_BASE_PATH,
   FLAGS_MANIFEST,
   FONT_FACE_CDN_BASE_PATH,
@@ -12,8 +10,6 @@ import {
   FONTS_MANIFEST,
   ICONS_CDN_BASE_PATH,
   ICONS_MANIFEST,
-  MARQUES_CDN_BASE_PATH,
-  MARQUES_MANIFEST,
   META_ICONS_CDN_BASE_PATH,
   META_ICONS_MANIFEST,
   MODEL_SIGNATURES_CDN_BASE_PATH,
@@ -72,11 +68,6 @@ describe('cdn', () => {
     bulkRequestItems(crests, `${CDN_BASE_URL_COM}${CRESTS_CDN_BASE_PATH}`);
   });
 
-  describe('fallbacks', () => {
-    const fallbacks = objectToFlatArray(FALLBACKS_MANIFEST);
-    bulkRequestItems(fallbacks, `${CDN_BASE_URL_COM}${FALLBACKS_CDN_BASE_PATH}`);
-  });
-
   describe('fonts', () => {
     const fonts = objectToFlatArray(FONTS_MANIFEST);
     bulkRequestItems(fonts, `${CDN_BASE_URL_COM}${FONTS_CDN_BASE_PATH}`);
@@ -90,11 +81,6 @@ describe('cdn', () => {
   describe('flags', () => {
     const flags = objectToFlatArray(FLAGS_MANIFEST);
     bulkRequestItems(flags, `${CDN_BASE_URL_COM}${FLAGS_CDN_BASE_PATH}`);
-  });
-
-  describe('marque', () => {
-    const marques = objectToFlatArray(MARQUES_MANIFEST);
-    bulkRequestItems(marques, `${CDN_BASE_URL_COM}${MARQUES_CDN_BASE_PATH}`);
   });
 
   describe('meta-icons', () => {

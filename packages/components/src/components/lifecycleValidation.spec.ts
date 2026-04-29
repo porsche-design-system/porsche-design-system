@@ -128,9 +128,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
     );
 
     // manual exceptions for props that have no validation
-    if (tagName === 'p-headline') {
-      propTypesStructure.variant = undefined; // TODO: with all the different values this can't easily be validated
-    } else if (tagName === 'p-banner') {
+    if (tagName === 'p-banner') {
       propTypesStructure.width = undefined;
     } else if (tagName === 'p-pagination') {
       propTypesStructure.maxNumberOfPageLinks = undefined;
@@ -220,10 +218,6 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
     vi.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
     const spy = vi.spyOn(attributeObserverUtils, 'observeAttributes');
 
-    if (tagName === 'p-select-wrapper') {
-      (component as any).native = true;
-    }
-
     component.componentWillLoad();
 
     expect(spy).toHaveBeenCalledWith(el, getComponentMeta(tagName).observedAttributes, expect.any(Function));
@@ -240,28 +234,24 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   });
 });
 
-// TODO: p-select-wrapper-dropdown is ignored since it behaved different as an internal component
-describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !== 'p-select-wrapper-dropdown'))(
-  '%s',
-  (tagName) => {
-    const component = componentFactory(tagName);
+describe.each<TagName>(tagNamesWithObserveChildren)('%s', (tagName) => {
+  const component = componentFactory(tagName);
 
-    it('should call observeChildren() with correct parameters via connectedCallback', () => {
-      const spy = vi.spyOn(childrenObserverUtils, 'observeChildren');
-      component.connectedCallback();
+  it('should call observeChildren() with correct parameters via connectedCallback', () => {
+    const spy = vi.spyOn(childrenObserverUtils, 'observeChildren');
+    component.connectedCallback();
 
-      expect(spy).toHaveBeenCalled();
-    });
+    expect(spy).toHaveBeenCalled();
+  });
 
-    it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
-      const spy = vi.spyOn(childrenObserverUtils, 'unobserveChildren');
+  it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
+    const spy = vi.spyOn(childrenObserverUtils, 'unobserveChildren');
 
-      try {
-        // carousel's splide.destroy() gets caught here
-        component.disconnectedCallback();
-      } catch {}
+    try {
+      // carousel's splide.destroy() gets caught here
+      component.disconnectedCallback();
+    } catch {}
 
-      expect(spy).toHaveBeenCalledWith(component.host);
-    });
-  }
-);
+    expect(spy).toHaveBeenCalledWith(component.host);
+  });
+});

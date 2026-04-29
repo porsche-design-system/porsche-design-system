@@ -1,8 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -12,81 +11,73 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #FC4040;
-  outline: 0;
-  cursor: pointer;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #FC4040;
-  background-color: #FC4040;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-error);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
-  input:hover,.wrapper:has(~.label-wrapper:hover) input {
-    border-color: #FB0404;
+  input:hover {
+    border-color: var(--p-color-error);
   }
-  input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked {
-    border-color: #FB0404;
-    background-color: #FB0404;
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .wrapper:has(~.label-wrapper:hover) input {
-      transition: unset;
-    }
-}
-
 }
 
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: var(--p-leading-normal);
+  cursor: pointer;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -98,16 +89,14 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -115,8 +104,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -125,7 +114,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -142,9 +134,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -154,81 +145,73 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #CC1922;
-  outline: 0;
-  cursor: pointer;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #CC1922;
-  background-color: #CC1922;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-error);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
-  input:hover,.wrapper:has(~.label-wrapper:hover) input {
-    border-color: #951219;
+  input:hover {
+    border-color: var(--p-color-error);
   }
-  input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked {
-    border-color: #951219;
-    background-color: #951219;
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .wrapper:has(~.label-wrapper:hover) input {
-      transition: unset;
-    }
-}
-
 }
 
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: var(--p-leading-normal);
+  cursor: pointer;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -240,16 +223,14 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -257,8 +238,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -267,7 +248,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -284,9 +268,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -296,81 +279,73 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #88898C;
-  outline: 0;
-  cursor: pointer;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #FBFCFF;
-  background-color: #FBFCFF;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-primary);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
-  input:hover,.wrapper:has(~.label-wrapper:hover) input {
-    border-color: #FBFCFF;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
-  input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked {
-    border-color: #AFB0B3;
-    background-color: #AFB0B3;
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .wrapper:has(~.label-wrapper:hover) input {
-      transition: unset;
-    }
-}
-
 }
 
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: var(--p-leading-normal);
+  cursor: pointer;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -382,16 +357,14 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -399,8 +372,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -409,7 +382,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -426,9 +402,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -438,81 +413,73 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #6B6D70;
-  outline: 0;
-  cursor: pointer;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #010205;
-  background-color: #010205;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-primary);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
-  input:hover,.wrapper:has(~.label-wrapper:hover) input {
-    border-color: #010205;
+  input:hover {
+    border-color: var(--p-color-primary);
   }
-  input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked {
-    border-color: #535457;
-    background-color: #535457;
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .wrapper:has(~.label-wrapper:hover) input {
-      transition: unset;
-    }
-}
-
 }
 
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: var(--p-leading-normal);
+  cursor: pointer;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -524,16 +491,14 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -541,8 +506,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -551,7 +516,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -568,9 +536,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -580,81 +547,73 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #09D087;
-  outline: 0;
-  cursor: pointer;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #09D087;
-  background-color: #09D087;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-success);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
-  input:hover,.wrapper:has(~.label-wrapper:hover) input {
-    border-color: #069561;
+  input:hover {
+    border-color: var(--p-color-success);
   }
-  input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked {
-    border-color: #069561;
-    background-color: #069561;
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .wrapper:has(~.label-wrapper:hover) input {
-      transition: unset;
-    }
-}
-
 }
 
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: var(--p-leading-normal);
+  cursor: pointer;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -666,16 +625,14 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -683,8 +640,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -693,7 +650,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -710,9 +670,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -722,111 +681,76 @@ slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #197E10;
-  outline: 0;
-  cursor: pointer;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #197E10;
-  background-color: #197E10;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-success);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
-  input:hover,.wrapper:has(~.label-wrapper:hover) input {
-    border-color: #0E4809;
+  input:hover {
+    border-color: var(--p-color-success);
   }
-  input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked {
-    border-color: #0E4809;
-    background-color: #0E4809;
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .wrapper:has(~.label-wrapper:hover) input {
-      transition: unset;
-    }
-}
-
 }
 
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
-}
-.label-wrapper {
-  min-width: fit-content;
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  min-height: var(--p-leading-normal);
   cursor: pointer;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  display: inline;
 }
-.label:empty {
-  display: none;
-}
-.label:is(span) {
-  cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -835,7 +759,35 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
+}
+.label {
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  display: inline;
+}
+.label:empty {
+  display: none;
+}
+.label:is(span) {
+  cursor: unset;
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -852,9 +804,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -863,78 +814,79 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
   pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+input:checked {
+  background: var(--p-color-error);
 }
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -946,16 +898,15 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -963,7 +914,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -972,7 +924,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -989,9 +944,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1000,78 +954,79 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
   pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+input:checked {
+  background: var(--p-color-error);
 }
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1083,16 +1038,15 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1100,7 +1054,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1109,7 +1064,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1126,9 +1084,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1137,78 +1094,79 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
   pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+input:checked {
+  background: var(--p-color-primary);
 }
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1220,16 +1178,15 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1237,7 +1194,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1246,7 +1204,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1263,9 +1224,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1274,78 +1234,79 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
   pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+input:checked {
+  background: var(--p-color-primary);
 }
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1357,16 +1318,15 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1374,7 +1334,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1383,7 +1344,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1400,9 +1364,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1411,78 +1374,79 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
   pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+input:checked {
+  background: var(--p-color-success);
 }
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1494,16 +1458,15 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1511,7 +1474,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1520,7 +1484,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1537,9 +1504,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1548,78 +1514,79 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
+}
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
   pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+input:checked {
+  background: var(--p-color-success);
 }
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1631,16 +1598,15 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1648,7 +1614,8 @@ input:focus-visible {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1657,7 +1624,10 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1674,9 +1644,8 @@ input:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1685,59 +1654,73 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-error);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1749,16 +1732,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1766,7 +1749,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1775,7 +1759,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1789,12 +1776,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1803,59 +1800,73 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-error);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1867,16 +1878,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1884,7 +1895,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -1893,7 +1905,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -1907,12 +1922,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1921,59 +1946,73 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-primary);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -1985,16 +2024,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2002,7 +2041,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2011,7 +2051,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2025,12 +2068,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2039,59 +2092,73 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-primary);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2103,16 +2170,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2120,7 +2187,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2129,7 +2197,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2143,12 +2214,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2157,59 +2238,73 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-success);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2221,16 +2316,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2238,7 +2333,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2247,7 +2343,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2261,12 +2360,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2275,59 +2384,73 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-success);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2339,16 +2462,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2356,7 +2479,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2365,7 +2489,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2379,12 +2506,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2393,68 +2530,80 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-error);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2466,16 +2615,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2483,7 +2632,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2492,7 +2642,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2506,12 +2659,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2520,68 +2683,80 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-error);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-error);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2593,16 +2768,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2610,7 +2785,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2619,7 +2795,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2633,12 +2812,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2647,68 +2836,80 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-primary);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2720,16 +2921,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2737,7 +2938,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2746,7 +2948,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2760,12 +2965,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2774,68 +2989,80 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-primary);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2847,16 +3074,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2864,7 +3091,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -2873,7 +3101,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -2887,12 +3118,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2901,68 +3142,80 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-success);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -2974,16 +3227,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -2991,7 +3244,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -3000,7 +3254,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -3014,12 +3271,22 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
 ":host {
-  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -3028,68 +3295,80 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  pointer-events: none;
-  opacity: 0.4;
 }
-input {
-  grid-area: 1/1;
-  border-radius: 50%;
-  position: relative;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
-  pointer-events: none;
-}
-input::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+slot[name="label-after"]::slotted(*) {
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  height: calc(var(--_p-radio-group-option-a) * 1.75rem);
+  margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border: 1px solid var(--p-color-success);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:checked {
+  background: var(--p-color-success);
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
+}
+@media(forced-colors:active) {
+  input {
+    border-color: GrayText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
+  row-gap: var(--p-spacing-static-xs);
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  display: grid;
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
   align-self: flex-start;
+  min-height: var(--p-leading-normal);
   cursor: not-allowed;
-  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+  opacity: 0.4;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
+  --p-spinner-size: calc(calc(var(--_p-radio-group-option-a) * 1.75rem) - 2px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -3101,16 +3380,16 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--_p-radio-group-option-a) * 1.75rem) - var(--p-leading-normal)) / 2));
+  padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -3118,7 +3397,8 @@ input:checked {
 }
 .label:is(span) {
   cursor: unset;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-size: var(--p-typescale-xs);
+  color: var(--p-color-contrast-high);
   position: static;
   width: auto;
   height: auto;
@@ -3127,7 +3407,10 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  margin-top: -4px;
+  margin-top: calc(-1 * var(--p-spacing-static-xs));
+}
+.label > slot[name="label"]::slotted(*) {
+  display: inline !important;
 }
 .required {
   user-select: none;
@@ -3141,5 +3424,16 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media(forced-colors:active) {
+  .wrapper {
+    opacity: 1;
+    color: GrayText;
+  }
+  .label {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+"
 `;

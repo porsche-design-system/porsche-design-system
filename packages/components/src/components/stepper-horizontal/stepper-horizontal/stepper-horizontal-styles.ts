@@ -1,29 +1,25 @@
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleSm } from '../../../styles/css-variables';
+import { sizeMap } from '../../../styles/maps';
+import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import type { StepperHorizontalSize } from './stepper-horizontal-utils';
-import type { BreakpointCustomizable } from '../../../types';
-import { fontSizeText, textSmallStyle } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
 
 export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSize>): string => {
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'grid',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
     },
     scroller: {
-      ...textSmallStyle,
-      ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => ({ fontSize: fontSizeText[s] })),
+      placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the stepper-horizontal is taller than the scroller (e.g. when placed in flex or grid context)
+      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => ({ fontSize: sizeMap[s] })),
     },
   });
 };

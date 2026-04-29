@@ -1,7 +1,7 @@
 import { type LinkTileProductLikeEventDetail, PLinkTileProduct, PTag } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-export const LinkTileProductExamplePage = (): JSX.Element => {
+export const LinkTileProductExamplePage = () => {
   const [liked, setLiked] = useState(false);
 
   const handleLike = (e: CustomEvent<LinkTileProductLikeEventDetail>) => {
@@ -17,7 +17,7 @@ export const LinkTileProductExamplePage = (): JSX.Element => {
       liked={liked}
       onLike={handleLike}
     >
-      <PTag slot="tags" color="background-base">
+      <PTag slot="tags" variant="primary">
         New
       </PTag>
       <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />

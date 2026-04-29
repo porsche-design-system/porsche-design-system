@@ -1,11 +1,11 @@
 'use client';
 
-import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type PropsWithChildren } from 'react';
 import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import { frameworkNameMap } from '@/models/framework';
 
 type CodeBlockProps = {
   frameworkMarkup: FrameworkMarkup & { next?: string };
@@ -32,15 +32,15 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
   return (
     <>
       <div className="m-static-md flex gap-fluid-sm justify-between flex-col md:flex-row">
-        <PTabsBar className="framework-select" activeTabIndex={tabIndex} onUpdate={onUpdate}>
-          {frameworks.map((framework, index) => (
-            <button
-              key={framework}
-              type="button"
-              role="tab"
-              tabIndex={index === tabIndex ? 0 : -1}
-              aria-selected={index === tabIndex}
-            >
+        <PTabsBar
+          className="framework-select"
+          activeTabIndex={tabIndex}
+          compact={true}
+          background="surface"
+          onUpdate={onUpdate}
+        >
+          {frameworks.map((framework) => (
+            <button key={framework} type="button">
               {frameworkNameMap[framework]}
             </button>
           ))}
@@ -54,7 +54,11 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}
         useInlineStyles={false}
-        codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1' }}
+        codeTagProps={{
+          tabIndex: 0,
+          className:
+            'max-h-96 overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1',
+        }}
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>

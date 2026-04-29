@@ -1,0 +1,110 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-typography {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: pds.$pds-spacing-fluid-medium;
+  padding: pds.$pds-spacing-fluid-medium;
+  color: pds.$color-primary;
+}
+
+.scss-heading-5xl {
+  @include pds.prose-heading-5xl;
+  margin: 0;
+}
+
+.scss-heading-4xl {
+  @include pds.prose-heading-4xl;
+  margin: 0;
+}
+
+.scss-heading-3xl {
+  @include pds.prose-heading-3xl;
+  margin: 0;
+}
+
+.scss-heading-2xl {
+  @include pds.prose-heading-2xl;
+  margin: 0;
+}
+
+.scss-heading-xl {
+  @include pds.prose-heading-xl;
+  margin: 0;
+}
+
+.scss-heading-lg {
+  @include pds.prose-heading-lg;
+  margin: 0;
+}
+
+.scss-heading-md {
+  @include pds.prose-heading-md;
+  margin: 0;
+}
+
+.scss-heading-sm {
+  @include pds.prose-heading-sm;
+  margin: 0;
+}
+
+.scss-heading-xs {
+  @include pds.prose-heading-xs;
+  margin: 0;
+}
+
+.scss-heading-2xs {
+  @include pds.prose-heading-2xs;
+  margin: 0;
+}
+
+.scss-text-5xl {
+  @include pds.prose-text-5xl;
+  margin: 0;
+}
+
+.scss-text-4xl {
+  @include pds.prose-text-4xl;
+  margin: 0;
+}
+
+.scss-text-3xl {
+  @include pds.prose-text-3xl;
+  margin: 0;
+}
+
+.scss-text-2xl {
+  @include pds.prose-text-2xl;
+  margin: 0;
+}
+
+.scss-text-xl {
+  @include pds.prose-text-xl;
+  margin: 0;
+}
+
+.scss-text-lg {
+  @include pds.prose-text-lg;
+  margin: 0;
+}
+
+.scss-text-md {
+  @include pds.prose-text-md;
+  margin: 0;
+}
+
+.scss-text-sm {
+  @include pds.prose-text-sm;
+  margin: 0;
+}
+
+.scss-text-xs {
+  @include pds.prose-text-xs;
+  margin: 0;
+}
+
+.scss-text-2xs {
+  @include pds.prose-text-2xs;
+  margin: 0;
+}

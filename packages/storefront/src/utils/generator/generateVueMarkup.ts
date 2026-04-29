@@ -1,3 +1,4 @@
+import { camelCase, pascalCase } from 'change-case';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
@@ -7,7 +8,6 @@ import type {
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
-import { camelCase, pascalCase } from 'change-case';
 
 export const getVueCode = ({ imports, states, eventHandlers, markup, style }: FrameworkConfiguratorMarkup['vue']) =>
   `<script setup lang="ts">\n${imports ? imports : ''}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
@@ -136,7 +136,7 @@ export const generateVueControlledScript = (
       if (eventValueKey) {
         eventType && types.push(eventType);
         return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
-    ${prop}.value = ${negateValue ? '!' : ''}e.${eventValueKey};
+    ${prop}.value = ${negateValue ? '!' : ''}e.detail.${eventValueKey};
   }`;
       }
       return `  const ${eventName} = () => {

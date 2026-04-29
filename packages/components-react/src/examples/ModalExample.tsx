@@ -1,7 +1,7 @@
+import { PButton, PHeading, PModal, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { PModal, PButton, PText, PButtonGroup, PHeading } from '@porsche-design-system/components-react';
 
-export const ModalExampleAccessibilityPage = (): JSX.Element => {
+export const ModalExampleAccessibilityPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
@@ -20,12 +20,12 @@ export const ModalExampleAccessibilityPage = (): JSX.Element => {
           Some Heading
         </PHeading>
         <PText>Some Content</PText>
-        <PButtonGroup slot="footer">
-          <PButton type="button">Accept</PButton>
-          <PButton type="button" variant="secondary">
-            Deny
-          </PButton>
-        </PButtonGroup>
+        <PButton slot="footer" type="button">
+          Accept
+        </PButton>
+        <PButton slot="footer" type="button" variant="secondary">
+          Deny
+        </PButton>
       </PModal>
     </>
   );

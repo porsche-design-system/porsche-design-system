@@ -3,7 +3,7 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Initialization: Angular - Porsche Design System',
-  description: 'Learn how to initialize and setup the Porsche Design System in an Angular app.',
+  description: 'Learn how to initialize and set up the Porsche Design System in an Angular app.',
 };
 
 # Initialization
@@ -32,7 +32,7 @@ components are exactly the same. In fact, the framework specific packages like
 developer experience just like with any other Angular component.
 
 For more details what happens when `load()` is invoked, please take a look at the
-[Vanilla Js Setup](/must-know/initialization/vanilla-js#setup).
+[Vanilla JS Setup](/must-know/initialization/vanilla-js#setup).
 
 ## Mounting
 
@@ -43,8 +43,8 @@ In the example from above we didn't render any component, yet, so let's render a
 ```
 
 Once rendered, this produces a `p-button` tag in the DOM. From here on the exact same things happen as described at
-[Vanilla Js Preparation](/must-know/initialization/vanilla-js#preparation) and
-[Vanilla Js Connect Lifecycle](must-know/initialization/vanilla-js#connect-lifecycle).
+[Vanilla JS Preparation](/must-know/initialization/vanilla-js#preparation) and
+[Vanilla JS Connect Lifecycle](/must-know/initialization/vanilla-js#connect-lifecycle).
 
 <Notification heading="Important" headingTag="h3" state="warning">
   In any JavaScript framework, the available wrapper components' purpose is typing, rendering a web component into the
@@ -56,13 +56,13 @@ Once rendered, this produces a `p-button` tag in the DOM. From here on the exact
 
 In case of a prop change the Angular `p-button` renders again and synchronizes its properties to the rendered `p-button`
 element. What follows is, again, exactly as documented at
-[Vanilla Js Change Lifecycle](must-know/initialization/vanilla-js#change-lifecycle).
+[Vanilla JS Change Lifecycle](/must-know/initialization/vanilla-js#change-lifecycle).
 
 ## Unmounting
 
 Once the Angular `p-button` is not needed anymore, e.g. when conditionally rendered or navigating away, the `p-button`
 element is removed from the DOM. What happens additionally can be found at
-[Vanilla Js Disconnect Lifecycle](must-know/initialization/vanilla-js#disconnect-lifecycle).
+[Vanilla JS Disconnect Lifecycle](/must-know/initialization/vanilla-js#disconnect-lifecycle).
 
 ---
 
@@ -80,17 +80,8 @@ By default, the network traffic looks something like this.
 - starts with the `index.html`
 - then continues with the `runtime.js`, `polyfills.js` and `main.js` bundle of the Angular app
 - which then loads the **core chunk**
-- that injects both the **font-face.css** and the **component chunk**
+- that injects the **component chunk**
 - and last the **font file** after the styles within the component's Shadow DOM are applied
-
-### Preloading font-face.css
-
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
-asset.
-
-![Loading Behavior Angular 02](assets/loading-behavior-angular-02.jpg)
-
-As we can see, this happens in parallel with the Angular bundles.
 
 ### Preloading font files
 

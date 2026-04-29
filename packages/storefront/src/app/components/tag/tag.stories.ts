@@ -22,12 +22,12 @@ export const tagStorySlottedButton: Story<'p-tag'> = {
       children: [
         {
           tag: 'p-tag',
-          properties: { variant: 'primary' },
+          properties: { icon: 'car', variant: 'primary' },
           children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant primary'] }],
         },
         {
           tag: 'p-tag',
-          properties: { icon: 'car', variant: 'secondary' },
+          properties: { variant: 'secondary' },
           children: [{ tag: 'button', properties: { type: 'button' }, children: ['Variant secondary'] }],
         },
         {
@@ -65,12 +65,12 @@ export const tagStorySlottedLink: Story<'p-tag'> = {
       children: [
         {
           tag: 'p-tag',
-          properties: { variant: 'primary' },
+          properties: { icon: 'car', variant: 'primary' },
           children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant primary'] }],
         },
         {
           tag: 'p-tag',
-          properties: { icon: 'car', variant: 'secondary' },
+          properties: { variant: 'secondary' },
           children: [{ tag: 'a', properties: { href: 'https://porsche.com' }, children: ['Variant secondary'] }],
         },
         {

@@ -1,5 +1,6 @@
 import { getMetaTagsAndIconLinks } from '../../../src';
 import { renderToString } from 'react-dom/server';
+import { describe, it, expect } from 'vitest';
 
 const hash = '[a-z0-9]{7}';
 const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system\\/meta-icons';

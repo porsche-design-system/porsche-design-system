@@ -1,9 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for state: error, labelSize: medium, hasLabel: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: error, labelSize: medium and hasLabel: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,22 +11,19 @@ exports[`getComponentCss() > should return correct css for state: error, labelSi
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -35,10 +31,9 @@ fieldset {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: error, labelSize: medium, hasLabel: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: error, labelSize: medium and hasLabel: false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -47,22 +42,19 @@ exports[`getComponentCss() > should return correct css for state: error, labelSi
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -70,10 +62,9 @@ fieldset {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: none, labelSize: medium, hasLabel: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: none, labelSize: medium and hasLabel: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -82,21 +73,18 @@ exports[`getComponentCss() > should return correct css for state: none, labelSiz
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -104,10 +92,9 @@ fieldset {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: none, labelSize: medium, hasLabel: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: none, labelSize: medium and hasLabel: true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -116,27 +103,24 @@ exports[`getComponentCss() > should return correct css for state: none, labelSiz
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 legend {
-  margin: 0 0 16px;
-  padding: 0;
-  color: #FBFCFF;
-  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  all: unset;
+  margin-bottom: var(--p-spacing-static-md);
+  color: var(--p-color-primary);
+  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -144,10 +128,9 @@ legend {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: none, labelSize: medium, hasLabel: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: none, labelSize: medium and hasLabel: true 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -156,27 +139,24 @@ exports[`getComponentCss() > should return correct css for state: none, labelSiz
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 legend {
-  margin: 0 0 16px;
-  padding: 0;
-  color: #010205;
-  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  all: unset;
+  margin-bottom: var(--p-spacing-static-md);
+  color: var(--p-color-primary);
+  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -184,10 +164,9 @@ legend {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: none, labelSize: small, hasLabel: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: none, labelSize: small and hasLabel: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -196,21 +175,18 @@ exports[`getComponentCss() > should return correct css for state: none, labelSiz
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -218,10 +194,9 @@ fieldset {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: none, labelSize: small, hasLabel: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: none, labelSize: small and hasLabel: true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -230,27 +205,24 @@ exports[`getComponentCss() > should return correct css for state: none, labelSiz
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 legend {
-  margin: 0 0 16px;
-  padding: 0;
-  color: #FBFCFF;
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  all: unset;
+  margin-bottom: var(--p-spacing-static-md);
+  color: var(--p-color-primary);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -258,10 +230,9 @@ legend {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: none, labelSize: small, hasLabel: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: none, labelSize: small and hasLabel: true 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -270,27 +241,24 @@ exports[`getComponentCss() > should return correct css for state: none, labelSiz
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 legend {
-  margin: 0 0 16px;
-  padding: 0;
-  color: #010205;
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  all: unset;
+  margin-bottom: var(--p-spacing-static-md);
+  color: var(--p-color-primary);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -298,10 +266,9 @@ legend {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: success, labelSize: medium, hasLabel: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: success, labelSize: medium and hasLabel: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -310,22 +277,19 @@ exports[`getComponentCss() > should return correct css for state: success, label
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;
@@ -333,10 +297,9 @@ fieldset {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for state: success, labelSize: medium, hasLabel: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: success, labelSize: medium and hasLabel: false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -345,22 +308,19 @@ exports[`getComponentCss() > should return correct css for state: success, label
   visibility: hidden;
 }
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+  all: unset;
+  display: block;
 }
 .required {
   user-select: none;
 }
 .message {
   display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin-top: 16px;
+  gap: var(--p-spacing-static-xs);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
   opacity: 0;

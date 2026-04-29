@@ -1,20 +1,18 @@
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { type WordmarkSize, type WordmarkTarget, type WordmarkAriaAttribute, WORDMARK_SIZES } from './wordmark-utils';
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   validateProps,
-  THEMES,
-  hasPropValueChanged,
 } from '../../utils';
 import { getComponentCss } from './wordmark-styles';
+import { WORDMARK_SIZES, type WordmarkAriaAttribute, type WordmarkSize, type WordmarkTarget } from './wordmark-utils';
 
 const propTypes: PropTypes<typeof Wordmark> = {
   size: AllowedTypes.oneOf<WordmarkSize>(WORDMARK_SIZES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   aria: AllowedTypes.aria<WordmarkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
@@ -27,19 +25,16 @@ const propTypes: PropTypes<typeof Wordmark> = {
 export class Wordmark {
   @Element() public host!: HTMLElement;
 
-  /** Adapts sizing of wordmark. */
+  /** Controls the size of the wordmark. */
   @Prop() public size?: WordmarkSize = 'small';
 
-  /** Adapts color depending on theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /** When providing an url then the component will be rendered as `<a>`. */
+  /** When `href` is provided, the component renders as an `<a>` element. */
   @Prop() public href?: string;
 
-  /** Target attribute where the link should be opened. */
+  /** Specifies where to open the linked document. */
   @Prop() public target?: WordmarkTarget = '_self';
 
-  /** Add ARIA attributes. */
+  /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -48,7 +43,7 @@ export class Wordmark {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size);
 
     // optimized with SVGO, see docs in assets folder
     const svg = (

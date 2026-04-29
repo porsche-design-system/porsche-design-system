@@ -3,6 +3,14 @@
 exports[`style package content > should match content 1`] = `
 {
   "pdsTheme": _ThemeImpl {
+    "params": {
+      "overridePrefix": undefined,
+      "themeLogger": {
+        "error": [Function],
+        "preInitErr": [Function],
+        "warn": [Function],
+      },
+    },
     "parts": [
       PartImpl {
         "css": undefined,
@@ -28,6 +36,12 @@ exports[`style package content > should match content 1`] = `
             },
             "cellFontFamily": {
               "ref": "fontFamily",
+            },
+            "cellFontSize": {
+              "ref": "dataFontSize",
+            },
+            "cellFontWeight": {
+              "ref": "fontWeight",
             },
             "cellHorizontalPadding": {
               "calc": "spacing * 2 * cellHorizontalPaddingScale",
@@ -73,23 +87,17 @@ exports[`style package content > should match content 1`] = `
               "mix": 0.05,
               "ref": "accentColor",
             },
+            "columnPanelApplyButtonBackgroundColor": {
+              "ref": "accentColor",
+            },
+            "columnPanelApplyButtonColor": {
+              "ref": "backgroundColor",
+            },
             "columnSelectIndentSize": {
               "ref": "iconSize",
             },
             "dataBackgroundColor": {
               "ref": "backgroundColor",
-            },
-            "dataFontSize": {
-              "ref": "fontSize",
-            },
-            "dialogBorder": {
-              "color": {
-                "mix": 0.2,
-                "ref": "foregroundColor",
-              },
-            },
-            "dialogShadow": {
-              "ref": "popupShadow",
             },
             "dragHandleColor": {
               "mix": 0.7,
@@ -127,9 +135,6 @@ exports[`style package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "invalidColor",
             },
-            "headerBackgroundColor": {
-              "ref": "chromeBackgroundColor",
-            },
             "headerCellBackgroundTransitionDuration": "0.2s",
             "headerCellHoverBackgroundColor": "transparent",
             "headerCellMovingBackgroundColor": {
@@ -142,21 +147,7 @@ exports[`style package content > should match content 1`] = `
             },
             "headerColumnResizeHandleHeight": "30%",
             "headerColumnResizeHandleWidth": 2,
-            "headerFontFamily": {
-              "ref": "fontFamily",
-            },
-            "headerFontSize": {
-              "ref": "fontSize",
-            },
-            "headerFontWeight": 500,
-            "headerHeight": {
-              "calc": "max(iconSize, dataFontSize) + spacing * 4 * headerVerticalPaddingScale",
-            },
             "headerRowBorder": true,
-            "headerTextColor": {
-              "ref": "textColor",
-            },
-            "headerVerticalPaddingScale": 1,
             "iconButtonActiveBackgroundColor": {
               "mix": 0.28,
               "ref": "accentColor",
@@ -180,28 +171,6 @@ exports[`style package content > should match content 1`] = `
             "iconButtonHoverColor": {
               "ref": "iconButtonColor",
             },
-            "menuBackgroundColor": {
-              "mix": 0.03,
-              "onto": "backgroundColor",
-              "ref": "foregroundColor",
-            },
-            "menuBorder": {
-              "color": {
-                "mix": 0.2,
-                "ref": "foregroundColor",
-              },
-            },
-            "menuSeparatorColor": {
-              "ref": "borderColor",
-            },
-            "menuShadow": {
-              "ref": "popupShadow",
-            },
-            "menuTextColor": {
-              "mix": 0.95,
-              "onto": "backgroundColor",
-              "ref": "foregroundColor",
-            },
             "modalOverlayBackgroundColor": {
               "mix": 0.66,
               "ref": "backgroundColor",
@@ -212,25 +181,6 @@ exports[`style package content > should match content 1`] = `
             "paginationPanelHeight": {
               "calc": "max(rowHeight, 22px)",
               "ref": "rowHeight",
-            },
-            "panelBackgroundColor": {
-              "ref": "backgroundColor",
-            },
-            "panelTitleBarBackgroundColor": {
-              "ref": "headerBackgroundColor",
-            },
-            "panelTitleBarBorder": true,
-            "panelTitleBarFontWeight": {
-              "ref": "headerFontWeight",
-            },
-            "panelTitleBarHeight": {
-              "ref": "headerHeight",
-            },
-            "panelTitleBarIconColor": {
-              "ref": "headerTextColor",
-            },
-            "panelTitleBarTextColor": {
-              "ref": "headerTextColor",
             },
             "pinnedColumnBorder": true,
             "pinnedRowBackgroundColor": {
@@ -276,7 +226,7 @@ exports[`style package content > should match content 1`] = `
               "calc": "cellWidgetSpacing + iconSize",
             },
             "rowHeight": {
-              "calc": "max(iconSize, dataFontSize) + spacing * 3.25 * rowVerticalPaddingScale",
+              "calc": "max(iconSize, cellFontSize) + spacing * 3.25 * rowVerticalPaddingScale",
             },
             "rowHoverColor": {
               "mix": 0.08,
@@ -311,6 +261,7 @@ exports[`style package content > should match content 1`] = `
             "sideBarBackgroundColor": {
               "ref": "chromeBackgroundColor",
             },
+            "sideBarPanelAnimationDuration": 0,
             "sideBarPanelWidth": 250,
             "sideButtonBackgroundColor": "transparent",
             "sideButtonBarBackgroundColor": {
@@ -359,25 +310,13 @@ exports[`style package content > should match content 1`] = `
             "valueChangeDeltaDownColor": "#e53935",
             "valueChangeDeltaUpColor": "#43a047",
             "valueChangeValueHighlightBackgroundColor": "#16a08580",
-            "widgetContainerHorizontalPadding": {
-              "calc": "spacing * 1.5",
-            },
-            "widgetContainerVerticalPadding": {
-              "calc": "spacing * 1.5",
-            },
-            "widgetHorizontalSpacing": {
-              "calc": "spacing * 1.5",
-            },
-            "widgetVerticalSpacing": {
-              "ref": "spacing",
-            },
             "wrapperBorder": true,
             "wrapperBorderRadius": 8,
           },
         },
       },
       PartImpl {
-        "css": ":where(.ag-button){background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0;text-indent:inherit;text-shadow:inherit;text-transform:inherit;word-spacing:inherit;&:disabled{cursor:default}&:focus-visible{box-shadow:var(--ag-focus-shadow);outline:none}}.ag-standard-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--ag-button-background-color);border:var(--ag-button-border);border-radius:var(--ag-button-border-radius);color:var(--ag-button-text-color);cursor:pointer;font-weight:var(--ag-button-font-weight);padding:var(--ag-button-vertical-padding) var(--ag-button-horizontal-padding);&:hover{background-color:var(--ag-button-hover-background-color);border:var(--ag-button-hover-border);color:var(--ag-button-hover-text-color)}&:active{background-color:var(--ag-button-active-background-color);border:var(--ag-button-active-border);color:var(--ag-button-active-text-color)}&:disabled{background-color:var(--ag-button-disabled-background-color);border:var(--ag-button-disabled-border);color:var(--ag-button-disabled-text-color)}}",
+        "css": ":where(.ag-button){background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0;text-indent:inherit;text-shadow:inherit;text-transform:inherit;word-spacing:inherit;&:disabled{cursor:default}&:focus-visible{box-shadow:var(--ag-focus-shadow);outline:none}}.ag-standard-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--ag-button-background-color);border:var(--ag-button-border);border-radius:var(--ag-button-border-radius);color:var(--ag-button-text-color);cursor:pointer;font-weight:var(--ag-button-font-weight);padding:var(--ag-button-vertical-padding) var(--ag-button-horizontal-padding);&:active{background-color:var(--ag-button-active-background-color);border:var(--ag-button-active-border);color:var(--ag-button-active-text-color)}&:disabled{background-color:var(--ag-button-disabled-background-color);border:var(--ag-button-disabled-border);color:var(--ag-button-disabled-text-color)}}.ag-standard-button:hover{background-color:var(--ag-button-hover-background-color);border:var(--ag-button-hover-border);color:var(--ag-button-hover-text-color)}",
         "cssImports": undefined,
         "feature": "buttonStyle",
         "modeParams": {
@@ -455,7 +394,86 @@ exports[`style package content > should match content 1`] = `
         },
       },
       PartImpl {
-        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);:where(input){-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}&:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color);&:after{background-color:var(--ag-checkbox-checked-shape-color)}}&:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color);&:after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}}.ag-cell-editing-error .ag-checkbox-input-wrapper:focus-within{box-shadow:var(--ag-focus-error-shadow)}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": "formulaStyle",
+        "modeParams": {
+          "$default": {
+            "formulaToken1BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken1Color",
+            },
+            "formulaToken1Border": {
+              "color": {
+                "ref": "formulaToken1Color",
+              },
+            },
+            "formulaToken1Color": "#3269c6",
+            "formulaToken2BackgroundColor": {
+              "mix": 0.06,
+              "ref": "formulaToken2Color",
+            },
+            "formulaToken2Border": {
+              "color": {
+                "ref": "formulaToken2Color",
+              },
+            },
+            "formulaToken2Color": "#c0343f",
+            "formulaToken3BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken3Color",
+            },
+            "formulaToken3Border": {
+              "color": {
+                "ref": "formulaToken3Color",
+              },
+            },
+            "formulaToken3Color": "#8156b8",
+            "formulaToken4BackgroundColor": {
+              "mix": 0.06,
+              "ref": "formulaToken4Color",
+            },
+            "formulaToken4Border": {
+              "color": {
+                "ref": "formulaToken4Color",
+              },
+            },
+            "formulaToken4Color": "#007c1f",
+            "formulaToken5BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken5Color",
+            },
+            "formulaToken5Border": {
+              "color": {
+                "ref": "formulaToken5Color",
+              },
+            },
+            "formulaToken5Color": "#b03e85",
+            "formulaToken6BackgroundColor": {
+              "mix": 0.06,
+              "ref": "formulaToken6Color",
+            },
+            "formulaToken6Border": {
+              "color": {
+                "ref": "formulaToken6Color",
+              },
+            },
+            "formulaToken6Color": "#b74900",
+            "formulaToken7BackgroundColor": {
+              "mix": 0.08,
+              "ref": "formulaToken7Color",
+            },
+            "formulaToken7Border": {
+              "color": {
+                "ref": "formulaToken7Color",
+              },
+            },
+            "formulaToken7Color": "#247492",
+          },
+        },
+      },
+      PartImpl {
+        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color)}&:where(.ag-checked):after{background-color:var(--ag-checkbox-checked-shape-color)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input,.ag-radio-button-input{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}.ag-checkbox-input-wrapper:after,.ag-radio-button-input-wrapper:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}.ag-checkbox-input-wrapper:where(:focus-within,:active),.ag-radio-button-input-wrapper:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color)}&:where(.ag-indeterminate):after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}.ag-cell-editing-error .ag-checkbox-input-wrapper:focus-within{box-shadow:var(--ag-focus-error-shadow)}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
         "cssImports": undefined,
         "feature": "checkboxStyle",
         "modeParams": {
@@ -547,6 +565,9 @@ exports[`style package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "foregroundColor",
             },
+            "columnPanelApplyButtonColor": {
+              "ref": "foregroundColor",
+            },
             "filterPanelApplyButtonColor": {
               "ref": "foregroundColor",
             },
@@ -557,6 +578,13 @@ exports[`style package content > should match content 1`] = `
               "ref": "backgroundColor",
             },
             "foregroundColor": "#FFF",
+            "formulaToken1Color": "#4da3e5",
+            "formulaToken2Color": "#f55864",
+            "formulaToken3Color": "#b688f2",
+            "formulaToken4Color": "#24bb4a",
+            "formulaToken5Color": "#e772ba",
+            "formulaToken6Color": "#f69b5f",
+            "formulaToken7Color": "#a3e6ff",
             "menuBackgroundColor": {
               "mix": 0.1,
               "onto": "backgroundColor",
@@ -609,6 +637,9 @@ exports[`style package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "foregroundColor",
             },
+            "columnPanelApplyButtonColor": {
+              "ref": "foregroundColor",
+            },
             "filterPanelApplyButtonColor": {
               "ref": "foregroundColor",
             },
@@ -619,6 +650,13 @@ exports[`style package content > should match content 1`] = `
               "ref": "backgroundColor",
             },
             "foregroundColor": "#FFF",
+            "formulaToken1Color": "#4da3e5",
+            "formulaToken2Color": "#f55864",
+            "formulaToken3Color": "#b688f2",
+            "formulaToken4Color": "#24bb4a",
+            "formulaToken5Color": "#e772ba",
+            "formulaToken6Color": "#f69b5f",
+            "formulaToken7Color": "#a3e6ff",
             "menuBackgroundColor": {
               "mix": 0.1,
               "onto": "backgroundColor",
@@ -672,7 +710,7 @@ exports[`style package content > should match content 1`] = `
         },
       },
       PartImpl {
-        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:solid var(--ag-border-width) var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:solid var(--ag-border-width) var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative;&:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}&.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}&:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}&.ag-tab-selected:after{opacity:1}}:where(.ag-ltr) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}}}:where(.ag-rtl) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}}}",
+        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:solid var(--ag-border-width) var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:solid var(--ag-border-width) var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative}.ag-tab:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}.ag-tab.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}:where(.ag-ltr) .ag-tab.ag-tab-selected:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}:where(.ag-rtl) .ag-tab.ag-tab-selected:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}:where(.ag-ltr) .ag-tab.ag-tab-selected:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}:where(.ag-rtl) .ag-tab.ag-tab-selected:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}.ag-tab:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}.ag-tab.ag-tab-selected:after{opacity:1}",
         "cssImports": undefined,
         "feature": "tabStyle",
         "modeParams": {
@@ -845,69 +883,36 @@ exports[`style package content > should match content 1`] = `
         "feature": undefined,
         "modeParams": {
           "$default": {
-            "accentColor": "#2762EC",
-            "backgroundColor": "#FFF",
-            "borderColor": "#D8D8DB",
+            "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+            "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
+            "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
             "borderRadius": "4px",
-            "browserColorScheme": "light",
+            "browserColorScheme": "inherit",
             "checkboxBorderRadius": "4px",
             "checkboxBorderWidth": 2,
-            "columnHoverColor": "rgba(148, 149, 152, .18)",
+            "columnHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
             "focusShadow": "none",
             "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
             "fontSize": "1rem",
-            "foregroundColor": "#010205",
-            "headerBackgroundColor": "#EEEFF2",
-            "headerFontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
+            "foregroundColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+            "headerBackgroundColor": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
+            "headerFontSize": ".875rem",
             "headerFontWeight": 600,
             "headerHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)",
             "iconSize": 24,
-            "inputBorder": "1px solid #6B6D70",
-            "inputDisabledBackgroundColor": "#FFF",
-            "inputDisabledBorder": "1px solid #949598",
-            "inputFocusBorder": "1px solid #010205",
             "inputFocusShadow": "none",
-            "inputInvalidBorder": "1px solid #CC1922",
-            "invalidColor": "#CC1922",
-            "modalOverlayBackgroundColor": "hsl(240 4% 85%/35%)",
-            "oddRowBackgroundColor": "#EEEFF2",
-            "rangeSelectionBorderColor": "#1A44EA",
+            "invalidColor": "light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))",
+            "modalOverlayBackgroundColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
+            "oddRowBackgroundColor": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
+            "rangeSelectionBorderColor": "light-dark(#1A44EA,#1A44EA)",
             "rowHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 4)",
-            "rowHoverColor": "rgba(148, 149, 152, .18)",
-            "selectedRowBackgroundColor": "#CBCED7",
+            "rowHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
+            "selectedRowBackgroundColor": "light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18))",
             "spacing": 10,
             "toggleButtonHeight": 28,
             "toggleButtonSwitchInset": 3,
             "toggleButtonWidth": 48,
-            "wrapperBorderRadius": "8px",
-          },
-        },
-      },
-      PartImpl {
-        "css": undefined,
-        "cssImports": undefined,
-        "feature": undefined,
-        "modeParams": {
-          "$default": {},
-          "dark": {
-            "accentColor": "#178BFF",
-            "backgroundColor": "#0E0E12",
-            "borderColor": "#404044",
-            "browserColorScheme": "dark",
-            "columnHoverColor": "rgba(148, 149, 152, .18)",
-            "foregroundColor": "#FBFCFF",
-            "headerBackgroundColor": "#212225",
-            "inputBorder": "1px solid #88898C",
-            "inputDisabledBackgroundColor": "#0E0E12",
-            "inputDisabledBorder": "1px solid #7E7F82",
-            "inputFocusBorder": "1px solid #FBFCFF",
-            "inputInvalidBorder": "1px solid #FC4040",
-            "invalidColor": "#FC4040",
-            "modalOverlayBackgroundColor": "hsl(240 3% 26%/35%)",
-            "oddRowBackgroundColor": "#212225",
-            "rangeSelectionBorderColor": "#1A44EA",
-            "rowHoverColor": "rgba(148, 149, 152, .18)",
-            "selectedRowBackgroundColor": "#040405",
+            "wrapperBorderRadius": "6px",
           },
         },
       },
@@ -972,35 +977,40 @@ exports[`style package content > should match content 1`] = `
       PartImpl {
         "css": "
     .ag-toggle-button-input-wrapper {
-        border: 2px solid var(--ag-toggle-button-off-border-color);
+        border: 1px solid var(--ag-toggle-button-off-border-color);
         position: relative;
 
+        /* Inner circle (switch) - default OFF state */
         &::before {
             height: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
             width: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
-            top: calc(4px - 2px) !important;
-            left: calc(4px - 2px) !important;
+            top: calc(4px - 1px) !important;
+            left: calc(4px - 1px) !important;
+            background-color: var(--ag-toggle-button-switch-background-color);
         }
 
+        /* ON state - inner circle becomes success color and moves to the right */
         &.ag-checked {
             border-color: var(--ag-toggle-button-on-border-color);
 
             &::before {
-                --ag-toggle-button-switch-background-color: #FFF;
-                --ag-toggle-button-on-border-color: #FFF;
+                background-color: light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%));
                 left: calc(100% - var(--ag-toggle-button-height) + 6px) !important;
             }
         }
 
+        /* Hover state (unchecked) */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-off-hover-border-color);
         }
 
+        /* Hover state (checked) */
         &.ag-checked:not(.ag-disabled):hover {
             border-color: var(--ag-toggle-button-on-hover-border-color);
             background-color: var(--ag-toggle-button-on-hover-background-color);
         }
 
+        /* Disabled state styling */
         &.ag-disabled {
             opacity: 1 !important;
             border-color: var(--ag-toggle-button-disabled-color);
@@ -1023,26 +1033,15 @@ exports[`style package content > should match content 1`] = `
         "feature": "toggleButtonStyle",
         "modeParams": {
           "$default": {
-            "toggleButtonDisabledColor": "#949598",
-            "toggleButtonOffBackgroundColor": "#FFF",
-            "toggleButtonOffBorderColor": "#6B6D70",
-            "toggleButtonOffHoverBorderColor": "#010205",
-            "toggleButtonOnBackgroundColor": "#197E10",
-            "toggleButtonOnBorderColor": "#197E10",
-            "toggleButtonOnHoverBackgroundColor": "#0E4809",
-            "toggleButtonOnHoverBorderColor": "#0E4809",
-            "toggleButtonSwitchBackgroundColor": "#010205",
-          },
-          "dark": {
-            "toggleButtonDisabledColor": "#7E7F82",
-            "toggleButtonOffBackgroundColor": "#0E0E12",
-            "toggleButtonOffBorderColor": "#88898C",
-            "toggleButtonOffHoverBorderColor": "#FBFCFF",
-            "toggleButtonOnBackgroundColor": "#09D087",
-            "toggleButtonOnBorderColor": "#09D087",
-            "toggleButtonOnHoverBackgroundColor": "#069561",
-            "toggleButtonOnHoverBorderColor": "#069561",
-            "toggleButtonSwitchBackgroundColor": "#FBFCFF",
+            "toggleButtonDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+            "toggleButtonOffBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
+            "toggleButtonOffBorderColor": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
+            "toggleButtonOffHoverBorderColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+            "toggleButtonOnBackgroundColor": "light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66))",
+            "toggleButtonOnBorderColor": "light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18))",
+            "toggleButtonOnHoverBackgroundColor": "light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66))",
+            "toggleButtonOnHoverBorderColor": "light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%))",
+            "toggleButtonSwitchBackgroundColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
           },
         },
       },
@@ -1055,7 +1054,7 @@ exports[`style package content > should match content 1`] = `
         width: var(--ag-icon-size);
         height: var(--ag-icon-size);
         background-color: var(--ag-checkbox-unchecked-background-color);
-        border: solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);
+        border: solid 1px var(--ag-checkbox-unchecked-border-color);
 
         :where(input) {
             cursor: pointer;
@@ -1105,6 +1104,7 @@ exports[`style package content > should match content 1`] = `
             }
         }
 
+        /* Hover styling for enabled items */
         &:not(.ag-disabled):hover {
             border-color: var(--ag-checkbox-unchecked-hover-border-color) !important;
         }
@@ -1116,7 +1116,7 @@ exports[`style package content > should match content 1`] = `
     }
 
     .ag-checkbox-input-wrapper {
-        border-radius: var(--ag-checkbox-border-radius);
+        border-radius: 8px;
 
         &.ag-checked::after {
             mask-image: var(--ag-checkbox-checked-shape-image);
@@ -1145,67 +1145,50 @@ exports[`style package content > should match content 1`] = `
         "feature": "checkboxStyle",
         "modeParams": {
           "$default": {
-            "checkboxCheckedBackgroundColor": "#010205",
-            "checkboxCheckedBorderColor": "#010205",
-            "checkboxCheckedHoverBackgroundColor": "#535457",
-            "checkboxCheckedHoverBorderColor": "#535457",
-            "checkboxCheckedShapeColor": {
-              "ref": "backgroundColor",
-            },
+            "checkboxCheckedBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
+            "checkboxCheckedBorderColor": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
+            "checkboxCheckedHoverBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
+            "checkboxCheckedHoverBorderColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+            "checkboxCheckedShapeColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
             "checkboxCheckedShapeImage": {
               "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
             },
-            "checkboxDisabledColor": "#949598",
-            "checkboxIndeterminateBackgroundColor": "#FFF",
-            "checkboxIndeterminateBorderColor": "#6B6D70",
-            "checkboxIndeterminateShapeColor": "#010205",
+            "checkboxDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+            "checkboxIndeterminateBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
+            "checkboxIndeterminateBorderColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+            "checkboxIndeterminateShapeColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
             "checkboxIndeterminateShapeImage": {
               "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
             },
-            "checkboxUncheckedBackgroundColor": {
-              "ref": "backgroundColor",
-            },
-            "checkboxUncheckedBorderColor": "#6B6D70",
-            "checkboxUncheckedHoverBorderColor": "#010205",
-            "radioCheckedShapeImage": {
-              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
-            },
-          },
-          "dark": {
-            "checkboxCheckedBackgroundColor": "#FBFCFF",
-            "checkboxCheckedBorderColor": "#FBFCFF",
-            "checkboxCheckedHoverBackgroundColor": "#AFB0B3",
-            "checkboxCheckedHoverBorderColor": "#AFB0B3",
-            "checkboxCheckedShapeColor": {
-              "ref": "backgroundColor",
-            },
-            "checkboxCheckedShapeImage": {
-              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
-            },
-            "checkboxDisabledColor": "#7E7F82",
-            "checkboxIndeterminateBackgroundColor": "#0E0E12",
-            "checkboxIndeterminateBorderColor": "#88898C",
-            "checkboxIndeterminateShapeColor": "#FBFCFF",
-            "checkboxIndeterminateShapeImage": {
-              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
-            },
-            "checkboxUncheckedBackgroundColor": {
-              "ref": "backgroundColor",
-            },
-            "checkboxUncheckedBorderColor": "#88898C",
-            "checkboxUncheckedHoverBorderColor": "#FBFCFF",
+            "checkboxUncheckedBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
+            "checkboxUncheckedBorderColor": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
+            "checkboxUncheckedHoverBorderColor": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
             "radioCheckedShapeImage": {
               "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
             },
           },
         },
       },
+      PartImpl {
+        "css": "
+    /* Custom border radius for input fields */
+    .ag-text-field-input {
+        border-radius: 12px;
+    }
+  ",
+        "cssImports": undefined,
+        "feature": "inputStyles",
+        "modeParams": {
+          "$default": {
+            "inputBorder": "solid 1px light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
+            "inputDisabledBackgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
+            "inputDisabledBorder": "solid 1px light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
+            "inputFocusBorder": "solid 1px light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
+            "inputInvalidBorder": "solid 1px light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))",
+          },
+        },
+      },
     ],
-    "themeLogger": {
-      "error": [Function],
-      "preInitErr": [Function],
-      "warn": [Function],
-    },
   },
 }
 `;
