@@ -209,13 +209,13 @@ export namespace Components {
          */
         "locale"?: AiTagLocale;
         /**
-          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
-         */
-        "variant"?: AiTagVariant;
-        /**
           * Adapts the tag color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -4876,13 +4876,13 @@ declare namespace LocalJSX {
          */
         "locale"?: AiTagLocale;
         /**
-          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
-         */
-        "variant"?: AiTagVariant;
-        /**
           * Adapts the tag color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}

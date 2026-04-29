@@ -3,8 +3,8 @@ import type { PropTypes, Theme } from '../../types';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './ai-tag-styles';
 import {
-  AI_TAG_VARIANTS,
   AI_TAG_TRANSLATIONS,
+  AI_TAG_VARIANTS,
   type AiTagLocale,
   type AiTagVariant,
   getAiTagTranslation,
@@ -40,10 +40,13 @@ export class AiTag {
     const { short, long, generated, modified } = getAiTagTranslation(this.locale);
 
     return (
-      <div class="root">
-        <span class="icon"></span>
+      <div>
         {this.variant !== 'abbreviation' ? (
-          <span>{this.variant === 'modified' ? modified : generated}</span>
+          this.variant === 'modified' ? (
+            modified
+          ) : (
+            generated
+          )
         ) : (
           <abbr title={long}>{short}</abbr>
         )}

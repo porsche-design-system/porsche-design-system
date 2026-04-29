@@ -33,38 +33,37 @@ export const getComponentCss = (theme: Theme): string => {
       abbr: {
         textDecoration: 'none',
       },
-    },
-    root: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '2px',
-      padding: '1px 6px 1px 4px',
-      borderRadius: borderRadiusSmall,
-      font: textXXSmallStyle.font,
-      color: contrastHighColor,
-      background: backgroundFrostedColor,
-      ...frostedGlassStyle,
-      ...(isHighContrastMode && {
-        outline: '1px solid transparent',
-      }),
-      transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
-        background: backgroundFrostedColorDark,
-      }),
-    },
-    icon: {
-      display: 'inline-block',
-      width: '1rem',
-      height: '1rem',
-      backgroundColor: contrastHighColor,
-      mask: iconMask,
-      WebkitMask: iconMask,
-      flexShrink: 0,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: contrastHighColorDark,
-      }),
-      ...(isHighContrastMode && { backgroundColor: 'CanvasText' }),
+      div: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '2px',
+        padding: '2px 6px 2px 4px',
+        borderRadius: borderRadiusSmall,
+        font: textXXSmallStyle.font,
+        color: contrastHighColor,
+        background: backgroundFrostedColor,
+        ...frostedGlassStyle,
+        ...(isHighContrastMode && {
+          outline: '1px solid transparent',
+        }),
+        transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastHighColorDark,
+          background: backgroundFrostedColorDark,
+        }),
+        '&::before': {
+          content: '""',
+          width: '1rem',
+          height: '1rem',
+          backgroundColor: contrastHighColor,
+          mask: iconMask,
+          WebkitMask: iconMask,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            backgroundColor: contrastHighColorDark,
+          }),
+          ...(isHighContrastMode && { backgroundColor: 'CanvasText' }),
+        },
+      },
     },
   });
 };
