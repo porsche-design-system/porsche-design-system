@@ -14,8 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.0.0-rc.2] - 2026-04-28
+
 ### Added
 
+- `Tag`: Prop `variants` supports new values:
+  `'info-frosted' | 'success-frosted' | 'warning-frosted' | 'error-frosted' |`
+  ([#4320](https://github.com/porsche-design-system/porsche-design-system/pull/4320))
 - `Carousel`: `--p-carousel-prev-next-color-scheme` CSS variable in order to change the `color-scheme` of the prev/next
   buttons individually ([#4308](https://github.com/porsche-design-system/porsche-design-system/pull/4308))
 - `Input Search`: `aria` prop to provide additional context for screen reader
@@ -23,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Tag`: Slightly adjusted padding for better visual appearance
+  ([#4320](https://github.com/porsche-design-system/porsche-design-system/pull/4320))
 - `Tokens`, `Tailwind CSS`, `SCSS`, `Emotion`, `Vanilla Extract`: Update notification frosted colors (success, error,
   warning, info) ([#4317](https://github.com/porsche-design-system/porsche-design-system/pull/4317))
 - `Banner`, `Inline Notification`: prop or slot `heading` is recommended but not required anymore

@@ -113,7 +113,7 @@ $color-success-frosted: var(
 );
 $color-success-frosted-soft: var(
   --_color-success-frosted-soft,
-  light-dark(hsl(115 77.5% 27.8% / 0.1), hsl(157 84.9% 41.6% / 0.1))
+  light-dark(hsl(109 80% 95% / 0.55), hsl(157 59% 15% / 0.66))
 );
 $color-warning: var(
   --_color-warning,
@@ -133,7 +133,7 @@ $color-warning-frosted: var(
 );
 $color-warning-frosted-soft: var(
   --_color-warning-frosted-soft,
-  light-dark(hsl(28 97.7% 34.1% / 0.1), hsl(28 90.2% 56.1% / 0.1))
+  light-dark(hsl(40 80% 95% / 0.55), hsl(52 59% 15% / 0.66))
 );
 $color-error: var(
   --_color-error,
@@ -153,7 +153,7 @@ $color-error-frosted: var(
 );
 $color-error-frosted-soft: var(
   --_color-error-frosted-soft,
-  light-dark(hsl(357 78% 41% / 0.1), hsl(0 96.9% 62% / 0.1))
+  light-dark(hsl(0 80% 95% / 0.55), hsl(0 59% 15% / 0.66))
 );
 $color-info: var(
   --_color-info,
@@ -173,7 +173,7 @@ $color-info-frosted: var(
 );
 $color-info-frosted-soft: var(
   --_color-info-frosted-soft,
-  light-dark(hsl(228 83.2% 51% / 0.1), hsl(210 100% 54.5% / 0.1))
+  light-dark(hsl(211 80% 95% / 0.55), hsl(210 59% 15% / 0.66))
 );
 
 @mixin color-scheme() {
@@ -219,22 +219,22 @@ $color-info-frosted-soft: var(
       --_color-success-low: hsl(115 77.5% 27.8% / 0.18);
       --_color-success-medium: hsl(115 77.5% 27.8% / 0.6);
       --_color-success-frosted: hsl(109 100% 90% / 0.55);
-      --_color-success-frosted-soft: hsl(115 77.5% 27.8% / 0.1);
+      --_color-success-frosted-soft: hsl(109 80% 95% / 0.55);
       --_color-warning: hsl(28 97.7% 34.1%);
       --_color-warning-low: hsl(28 97.7% 34.1% / 0.18);
       --_color-warning-medium: hsl(28 97.7% 34.1% / 0.6);
       --_color-warning-frosted: hsl(40 100% 90% / 0.55);
-      --_color-warning-frosted-soft: hsl(28 97.7% 34.1% / 0.1);
+      --_color-warning-frosted-soft: hsl(40 80% 95% / 0.55);
       --_color-error: hsl(357 78% 41%);
       --_color-error-low: hsl(357 78% 41% / 0.18);
       --_color-error-medium: hsl(357 78% 41% / 0.6);
       --_color-error-frosted: hsl(0 100% 90% / 0.55);
-      --_color-error-frosted-soft: hsl(357 78% 41% / 0.1);
+      --_color-error-frosted-soft: hsl(0 80% 95% / 0.55);
       --_color-info: hsl(228 83.2% 51%);
       --_color-info-low: hsl(228 83.2% 51% / 0.18);
       --_color-info-medium: hsl(228 83.2% 51% / 0.6);
       --_color-info-frosted: hsl(211 100% 90% / 0.55);
-      --_color-info-frosted-soft: hsl(228 83.2% 51% / 0.1);
+      --_color-info-frosted-soft: hsl(211 80% 95% / 0.55);
     }
 
     .scheme-dark,
@@ -256,22 +256,22 @@ $color-info-frosted-soft: var(
       --_color-success-low: hsl(157 84.9% 41.6% / 0.18);
       --_color-success-medium: hsl(157 84.9% 41.6% / 0.6);
       --_color-success-frosted: hsl(157 79% 20% / 0.66);
-      --_color-success-frosted-soft: hsl(157 84.9% 41.6% / 0.1);
+      --_color-success-frosted-soft: hsl(157 59% 15% / 0.66);
       --_color-warning: hsl(28 90.2% 56.1%);
       --_color-warning-low: hsl(28 90.2% 56.1% / 0.18);
       --_color-warning-medium: hsl(28 90.2% 56.1% / 0.6);
       --_color-warning-frosted: hsl(52 79% 20% / 0.66);
-      --_color-warning-frosted-soft: hsl(28 90.2% 56.1% / 0.1);
+      --_color-warning-frosted-soft: hsl(52 59% 15% / 0.66);
       --_color-error: hsl(0 96.9% 62%);
       --_color-error-low: hsl(0 96.9% 62% / 0.18);
       --_color-error-medium: hsl(0 96.9% 62% / 0.6);
       --_color-error-frosted: hsl(0 79% 20% / 0.66);
-      --_color-error-frosted-soft: hsl(0 96.9% 62% / 0.1);
+      --_color-error-frosted-soft: hsl(0 59% 15% / 0.66);
       --_color-info: hsl(210 100% 54.5%);
       --_color-info-low: hsl(210 100% 54.5% / 0.18);
       --_color-info-medium: hsl(210 100% 54.5% / 0.6);
       --_color-info-frosted: hsl(210 79% 20% / 0.66);
-      --_color-info-frosted-soft: hsl(210 100% 54.5% / 0.1);
+      --_color-info-frosted-soft: hsl(210 59% 15% / 0.66);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -293,22 +293,22 @@ $color-info-frosted-soft: var(
         --_color-success-low: hsl(157 84.9% 41.6% / 0.18);
         --_color-success-medium: hsl(157 84.9% 41.6% / 0.6);
         --_color-success-frosted: hsl(157 79% 20% / 0.66);
-        --_color-success-frosted-soft: hsl(157 84.9% 41.6% / 0.1);
+        --_color-success-frosted-soft: hsl(157 59% 15% / 0.66);
         --_color-warning: hsl(28 90.2% 56.1%);
         --_color-warning-low: hsl(28 90.2% 56.1% / 0.18);
         --_color-warning-medium: hsl(28 90.2% 56.1% / 0.6);
         --_color-warning-frosted: hsl(52 79% 20% / 0.66);
-        --_color-warning-frosted-soft: hsl(28 90.2% 56.1% / 0.1);
+        --_color-warning-frosted-soft: hsl(52 59% 15% / 0.66);
         --_color-error: hsl(0 96.9% 62%);
         --_color-error-low: hsl(0 96.9% 62% / 0.18);
         --_color-error-medium: hsl(0 96.9% 62% / 0.6);
         --_color-error-frosted: hsl(0 79% 20% / 0.66);
-        --_color-error-frosted-soft: hsl(0 96.9% 62% / 0.1);
+        --_color-error-frosted-soft: hsl(0 59% 15% / 0.66);
         --_color-info: hsl(210 100% 54.5%);
         --_color-info-low: hsl(210 100% 54.5% / 0.18);
         --_color-info-medium: hsl(210 100% 54.5% / 0.6);
         --_color-info-frosted: hsl(210 79% 20% / 0.66);
-        --_color-info-frosted-soft: hsl(210 100% 54.5% / 0.1);
+        --_color-info-frosted-soft: hsl(210 59% 15% / 0.66);
       }
     }
   }

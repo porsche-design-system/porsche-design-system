@@ -95,6 +95,7 @@ import {
   colorWarningFrosted,
   colorWarningFrostedDark,
   colorWarningFrostedLight,
+  colorWarningFrostedSoft,
   colorWarningFrostedSoftDark,
   colorWarningFrostedSoftLight,
   colorWarningLight,
@@ -189,7 +190,7 @@ export const getTailwindcssTheme = () => {
   --color-warning-low: ${colorWarningLow};
   --color-warning-medium: ${colorWarningMedium};
   --color-warning-frosted: ${colorWarningFrosted};
-  --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+  --color-warning-frosted-soft: ${colorWarningFrostedSoft};
   --color-error: ${colorError};
   --color-error-low: ${colorErrorLow};
   --color-error-medium: ${colorErrorMedium};

@@ -273,6 +273,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(StateMessage: FC<StateMessageProps> = \({)/, '$1 hasMessage, ') // destructure newly introduced hasMessage
             .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2'); // remove unused destructured host
         }
+
+        if (newFileContent.includes('export const NotificationBase:')) {
+          newFileContent = newFileContent.replace(/innerHTML=\{([^}]*)}/, 'dangerouslySetInnerHTML={{__html: $1}}');
+        }
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
