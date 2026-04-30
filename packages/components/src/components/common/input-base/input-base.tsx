@@ -10,7 +10,6 @@ import type {
   InputBaseInputEventDetail,
   InputBaseState,
   InputBaseWheelEventDetail,
-  InputMode,
 } from './input-base-utils';
 
 // TODO refine in #3852
@@ -40,7 +39,7 @@ type InputBaseProps = {
   value?: string;
   step?: number;
   spellCheck?: boolean;
-  inputMode?: InputMode;
+  inputMode?: string;
   onWheel?: (e: InputBaseWheelEventDetail) => void;
   onInput?: (e: InputBaseInputEventDetail) => void;
   onChange?: (e: InputBaseChangeEventDetail) => void;

@@ -20,7 +20,6 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
-import { INPUT_MODE_STATES, type InputMode } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-text-styles';
 import type {
   InputTextBlurEventDetail,
@@ -49,7 +48,6 @@ const propTypes: PropTypes<typeof InputText> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  inputMode: AllowedTypes.oneOf<InputMode>(INPUT_MODE_STATES),
 };
 
 /**
@@ -126,9 +124,6 @@ export class InputText {
 
   /** Show or hide the character counter. */
   @Prop() public counter?: boolean = false;
-
-  /** Hint for browsers to display an appropriate virtual keyboard for the expected input type (mainly on mobile devices) */
-  @Prop() public inputMode?: InputMode;
 
   /** Emitted when the text input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
@@ -246,7 +241,8 @@ export class InputText {
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}
-        inputMode={this.inputMode}
+        // Intentionally not defined as prop in the interface since it's a global HTML attribute/prop and will cause typescript issues when optional
+        inputMode={this.host.inputMode}
         {...(this.counter && {
           end: (
             <Fragment>
