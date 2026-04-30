@@ -5,9 +5,22 @@ exports[`should match compiled normalize css 1`] = `
 body {
   margin: 0;
   padding: 0;
-  font-family:
-    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
-  line-height: calc(6px + 2.125ex);
+  font-family: var(
+    --p-font-porsche-next,
+    "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif
+  );
+  line-height: var(--p-leading-normal, calc(6px + 2.125ex));
   letter-spacing: normal;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;

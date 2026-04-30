@@ -5,9 +5,22 @@ exports[`should match compiled index cn css 1`] = `
 body {
   margin: 0;
   padding: 0;
-  font-family:
-    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
-  line-height: calc(6px + 2.125ex);
+  font-family: var(
+    --p-font-porsche-next,
+    "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif
+  );
+  line-height: var(--p-leading-normal, calc(6px + 2.125ex));
   letter-spacing: normal;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -125,7 +138,10 @@ body {
   );
 
   --p-font-porsche-next:
-    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+    "Porsche Next", "Arial Narrow", Arial, "Hiragino Sans", "Yu Gothic",
+    "Apple SD Gothic Neo", "Malgun Gothic", "PingFang SC", "Microsoft YaHei",
+    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
   --p-font-weight-semibold: 600;
@@ -183,6 +199,35 @@ body {
   --p-duration-md: 0.4s;
   --p-duration-lg: 0.6s;
   --p-duration-xl: 1.2s;
+}
+
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
+  --p-font-porsche-next:
+    "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
+  --p-font-porsche-next:
+    "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(ja) {
+  --p-font-porsche-next:
+    "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(ko) {
+  --p-font-porsche-next:
+    "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+    "Arial Narrow", Arial, sans-serif;
 }
 .scheme-normal {
   color-scheme: normal;
@@ -327,9 +372,22 @@ exports[`should match compiled index css 1`] = `
 body {
   margin: 0;
   padding: 0;
-  font-family:
-    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
-  line-height: calc(6px + 2.125ex);
+  font-family: var(
+    --p-font-porsche-next,
+    "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif
+  );
+  line-height: var(--p-leading-normal, calc(6px + 2.125ex));
   letter-spacing: normal;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -447,7 +505,10 @@ body {
   );
 
   --p-font-porsche-next:
-    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+    "Porsche Next", "Arial Narrow", Arial, "Hiragino Sans", "Yu Gothic",
+    "Apple SD Gothic Neo", "Malgun Gothic", "PingFang SC", "Microsoft YaHei",
+    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
   --p-font-weight-semibold: 600;
@@ -505,6 +566,35 @@ body {
   --p-duration-md: 0.4s;
   --p-duration-lg: 0.6s;
   --p-duration-xl: 1.2s;
+}
+
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
+  --p-font-porsche-next:
+    "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
+  --p-font-porsche-next:
+    "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(ja) {
+  --p-font-porsche-next:
+    "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(ko) {
+  --p-font-porsche-next:
+    "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+    "Arial Narrow", Arial, sans-serif;
 }
 .scheme-normal {
   color-scheme: normal;

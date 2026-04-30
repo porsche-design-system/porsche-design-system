@@ -114,7 +114,10 @@ exports[`should match compiled variables css 1`] = `
   );
 
   --p-font-porsche-next:
-    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+    "Porsche Next", "Arial Narrow", Arial, "Hiragino Sans", "Yu Gothic",
+    "Apple SD Gothic Neo", "Malgun Gothic", "PingFang SC", "Microsoft YaHei",
+    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
   --p-font-weight-semibold: 600;
@@ -172,6 +175,35 @@ exports[`should match compiled variables css 1`] = `
   --p-duration-md: 0.4s;
   --p-duration-lg: 0.6s;
   --p-duration-xl: 1.2s;
+}
+
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
+  --p-font-porsche-next:
+    "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
+  --p-font-porsche-next:
+    "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(ja) {
+  --p-font-porsche-next:
+    "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+    "Arial Narrow", Arial, sans-serif;
+}
+
+:lang(ko) {
+  --p-font-porsche-next:
+    "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+    "Arial Narrow", Arial, sans-serif;
 }
 "
 `;
