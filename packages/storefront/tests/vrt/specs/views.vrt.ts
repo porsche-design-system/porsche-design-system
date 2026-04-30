@@ -28,7 +28,6 @@ for (const [name, url] of Object.entries(urls)) {
 
         // Hide version switch and switch to latest release button to avoid VRT update when new versions are released
         await page.locator('p-select[name="versions"]').evaluate((el) => (el.style.display = 'none'));
-        console.log(await page.getByText('Use Latest Release'));
         await page.getByText('Use Latest Release').evaluate((el) => (el.style.display = 'none'));
 
         // Modify video height if on the homepage
