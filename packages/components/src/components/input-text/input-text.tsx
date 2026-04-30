@@ -20,6 +20,7 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
+import { INPUT_MODE_STATES, type InputMode } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-text-styles';
 import type {
   InputTextBlurEventDetail,
@@ -48,6 +49,7 @@ const propTypes: PropTypes<typeof InputText> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  inputMode: AllowedTypes.oneOf<InputMode>(INPUT_MODE_STATES),
 };
 
 /**
@@ -126,7 +128,7 @@ export class InputText {
   @Prop() public counter?: boolean = false;
 
   /** Hint for browsers to display an appropriate virtual keyboard for the expected input type (mainly on mobile devices) */
-  @Prop() public inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+  @Prop() public inputMode?: InputMode;
 
   /** Emitted when the text input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
