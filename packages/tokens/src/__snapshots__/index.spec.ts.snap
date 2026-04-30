@@ -226,7 +226,15 @@ exports[`should contain correct value for easeInOut 1`] = `"cubic-bezier(.25,.1,
 
 exports[`should contain correct value for easeOut 1`] = `"cubic-bezier(.4,0,.5,1)"`;
 
-exports[`should contain correct value for fontPorscheNext 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
+exports[`should contain correct value for fontPorscheNext 1`] = `"'Porsche Next', 'Arial Narrow', Arial, 'Hiragino Sans', 'Yu Gothic', 'Apple SD Gothic Neo', 'Malgun Gothic', 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Microsoft JhengHei', sans-serif"`;
+
+exports[`should contain correct value for fontPorscheNextJa 1`] = `"'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif"`;
+
+exports[`should contain correct value for fontPorscheNextKo 1`] = `"'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif"`;
+
+exports[`should contain correct value for fontPorscheNextZhHans 1`] = `"'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif"`;
+
+exports[`should contain correct value for fontPorscheNextZhHant 1`] = `"'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif"`;
 
 exports[`should contain correct value for fontWeightBold 1`] = `700`;
 
