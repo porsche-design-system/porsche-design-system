@@ -32,7 +32,8 @@
     "packages/styles/projects/global-styles",
     "packages/utilities/projects/ag-grid",
     "packages/storefront/projects/stackblitz",
-    "packages/shared/dist"
+    "packages/shared/dist",
+    "packages/mcp-server"
   ],
   "description": "Porsche Design System Monorepo",
   "repository": {
