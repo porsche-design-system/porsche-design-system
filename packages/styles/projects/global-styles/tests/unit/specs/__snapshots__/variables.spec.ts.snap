@@ -177,30 +177,30 @@ exports[`should match compiled variables css 1`] = `
   --p-duration-xl: 1.2s;
 }
 
-:lang(zh-Hans),
-:lang(zh-CN),
-:lang(zh-SG) {
+:root:lang(zh-Hans),
+:root:lang(zh-CN),
+:root:lang(zh-SG) {
   --p-font-porsche-next:
     "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:lang(zh-Hant),
-:lang(zh-TW),
-:lang(zh-HK),
-:lang(zh-MO) {
+:root:lang(zh-Hant),
+:root:lang(zh-TW),
+:root:lang(zh-HK),
+:root:lang(zh-MO) {
   --p-font-porsche-next:
     "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:lang(ja) {
+:root:lang(ja) {
   --p-font-porsche-next:
     "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:lang(ko) {
+:root:lang(ko) {
   --p-font-porsche-next:
     "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
     "Arial Narrow", Arial, sans-serif;
