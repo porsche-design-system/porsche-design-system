@@ -113,7 +113,7 @@ jobs:
   akamai-cdn-assets-smoke:
     name: 'Akamai CDN (Assets) Smoke'
     needs:
-     - akamai-cdn-assets
+      - akamai-cdn-assets
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -152,18 +152,12 @@ jobs:
         with:
           source: ./packages/storefront/dist
           # Preview folder strategy:
-          #   - pull request (refs/pull/…) → "pr-<number>" (avoids "<n>/merge" with embedded slash)
+          #   - pull_request → "pr-<number>" (avoids "<n>/merge" with embedded slash)
           #   - push to main → "nightly"
           #   - push to other branches (v*) → branch name
-          # Note: github.event_name is "workflow_call" in reusable workflows; use github.ref to
-          # distinguish pull requests (refs/pull/…) from branch pushes (refs/heads/…).
-          target: >-
-            ${{
-              startsWith(github.ref, 'refs/pull/') && format('pr-{0}', github.event.pull_request.number)
-              || (github.ref_name == 'main' && 'nightly' || github.ref_name)
-            }}
+          target: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || (github.ref_name == 'main' && 'nightly' || github.ref_name)}}
           # Algolia indexing only for production-ish refs (main + version branches), never PRs.
-          algolia: ${{ startsWith(github.ref, 'refs/heads/') && (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && 'true' || 'false' }}
+          algolia: ${{ github.event_name == 'push' && (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && 'true' || 'false' }}
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
