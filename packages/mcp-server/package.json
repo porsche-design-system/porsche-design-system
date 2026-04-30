@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
-  "type": "module",
   "bin": {
     "pds-mcp-server": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "dev": "tsx src/index.ts",
     "prepare-context": "TSX_TSCONFIG_PATH=../storefront/tsconfig.json tsx scripts/prepare-context/index.ts",
     "start": "node dist/index.js"
@@ -21,7 +20,6 @@
   "devDependencies": {
     "@types/node": "^24.7.2",
     "tsx": "^4.20.6",
-    "tsup": "^8.5.0",
     "typescript": "~5.9.3"
   },
   "volta": {
