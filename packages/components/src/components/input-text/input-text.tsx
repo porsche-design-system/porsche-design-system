@@ -125,6 +125,9 @@ export class InputText {
   /** Show or hide the character counter. */
   @Prop() public counter?: boolean = false;
 
+  /** Hint for browsers to display an appropriate virtual keyboard for the expected input type (mainly on mobile devices) */
+  @Prop() public inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+
   /** Emitted when the text input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
 
@@ -241,6 +244,7 @@ export class InputText {
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        inputMode={this.inputMode}
         {...(this.counter && {
           end: (
             <Fragment>
