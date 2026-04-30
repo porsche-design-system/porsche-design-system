@@ -71,13 +71,9 @@ for (const [name, url] of Object.entries(urls)) {
         await page.goto(url);
         await resetAnimations(page);
 
-        await page.evaluate(() => {
-          const select = document.querySelector('div[slot="sidebar-start"] footer p-select');
-          if (select) {
-            // Hide version switch to avoid VRT update when new versions are released
-            (select as HTMLSelectElement).style.display = 'none';
-          }
-        });
+        // Hide version switch and switch to latest release button to avoid VRT update when new versions are released
+        await page.locator('p-select[name="versions"]').evaluate((el) => (el.style.display = 'none'));
+        await page.getByText('Use Latest Release').evaluate((el) => (el.style.display = 'none'));
 
         // Modify video height if on the homepage
         if (url === '/') {
