@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Improve CJK font-family support for simplified Chinese, traditional Chinese, Japanese and Korean by using more
   specific font-family stacks for each language.
   ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+  - **Simplified Chinese:** PingFang SC (macOS), Microsoft YaHei (Windows), Noto Sans SC (Android, Linux, ChromeOS)
+  - **Traditional Chinese:** PingFang TC (macOS), Microsoft JhengHei (Windows), Noto Sans TC (Android, Linux, ChromeOS)
+  - **Japanese:** Hiragino Sans (macOS), Yu Gothic (Windows), Noto Sans JP (Android, Linux, ChromeOS)
+  - **Korean:** Apple SD Gothic Neo (macOS), Malgun Gothic (Windows), Noto Sans KR (Android, Linux, ChromeOS)
 
 ### Fixed
 
