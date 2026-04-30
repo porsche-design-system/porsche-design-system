@@ -137,7 +137,7 @@ export class InputPassword {
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | null;
 
   // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
   private get parsedValue(): string {
@@ -157,7 +157,7 @@ export class InputPassword {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.parsedValue;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 

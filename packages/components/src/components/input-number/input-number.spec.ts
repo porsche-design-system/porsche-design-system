@@ -172,4 +172,122 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
     expect(component['initialLoading']).toBe(false);
   });
+
+  it('should not mutate value when null is passed, and should preserve null as defaultValue', () => {
+    const component = initComponent();
+    component.value = null;
+    component.componentWillLoad();
+
+    expect(component.value).toBeNull();
+    expect(component['defaultValue']).toBeNull();
+  });
+
+  it('should preserve a number value as-is in defaultValue (no coercion at load time)', () => {
+    const component = initComponent();
+    component.value = 42;
+    component.componentWillLoad();
+
+    expect(component.value).toBe(42);
+    expect(component['defaultValue']).toBe(42);
+  });
+
+  it('should keep an existing string value untouched and store it as defaultValue', () => {
+    const component = initComponent();
+    component.value = '7';
+    component.componentWillLoad();
+
+    expect(component.value).toBe('7');
+    expect(component['defaultValue']).toBe('7');
+  });
+});
+
+describe('onValueChange (coercion to string)', () => {
+  it("should call setFormValue('') (never null) when value is null", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = null;
+    component.onValueChange();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it('should call setFormValue with String(value) when value is a number', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = 42;
+    component.onValueChange();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('42');
+  });
+
+  it('should sync inputElement.value with the coerced string', () => {
+    const component = initComponent();
+    component['inputElement'].value = 'old';
+
+    component.value = '7';
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('7');
+
+    component.value = null;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('');
+
+    component.value = 13;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('13');
+  });
+
+  it('should call setFormValue with the new string value', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.value = '99';
+    component.onValueChange();
+    expect(setFormValueSpy).toHaveBeenCalledWith('99');
+  });
+});
+
+describe('formResetCallback (with null history)', () => {
+  it('should restore null when null was the original value', () => {
+    const component = initComponent();
+    component.value = null;
+    component.componentWillLoad();
+    component.value = '7';
+
+    component.formResetCallback();
+    expect(component.value).toBeNull();
+  });
+
+  it('should restore the original number value after reset', () => {
+    const component = initComponent();
+    component.value = 42;
+    component.componentWillLoad();
+    component.value = '7';
+
+    component.formResetCallback();
+    expect(component.value).toBe(42);
+  });
+});
+
+describe('formStateRestoreCallback (with null state)', () => {
+  it('should accept null and let the watcher coerce it to an empty string in the DOM', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = '7';
+    component.formStateRestoreCallback(null);
+
+    expect(component.value).toBeNull();
+    component.onValueChange();
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it('should restore the provided string state as-is', () => {
+    const component = initComponent();
+    component.formStateRestoreCallback('123');
+    expect(component.value).toBe('123');
+  });
 });

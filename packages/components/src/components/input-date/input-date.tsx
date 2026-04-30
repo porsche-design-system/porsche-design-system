@@ -121,7 +121,7 @@ export class InputDate {
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | null;
 
   // Native input.value is always a string; coerce null/undefined to mirror native behavior.
   private get parsedValue(): string {
@@ -141,7 +141,7 @@ export class InputDate {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.parsedValue;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -169,7 +169,7 @@ export class InputDate {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentDidRender(): void {
