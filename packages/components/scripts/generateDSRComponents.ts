@@ -89,6 +89,7 @@ const generateDSRComponents = (): void => {
             : group.endsWith('state-message') ||
                 group.endsWith('loading-message') ||
                 group.endsWith('input-base') ||
+                group.endsWith('notification-base') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
                 group.endsWith('no-results-option')
@@ -271,6 +272,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(StateMessage: FC<StateMessageProps> = \({)/, '$1 hasMessage, ') // destructure newly introduced hasMessage
             .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2'); // remove unused destructured host
         }
+
+        if (newFileContent.includes('export const NotificationBase:')) {
+          newFileContent = newFileContent.replace(/innerHTML=\{([^}]*)}/, 'dangerouslySetInnerHTML={{__html: $1}}');
+        }
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
@@ -378,9 +383,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // remove warning about deprecated title slot
         newFileContent = newFileContent
           .replace(/.+consoleWarn\([\s\S]+?\);\n/g, '')
+          .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
+          .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
           .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-inline-notification') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
+          .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
         newFileContent = newFileContent
           // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object

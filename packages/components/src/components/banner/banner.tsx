@@ -1,13 +1,17 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   getSlotTextContent,
+  hasNamedSlot,
   hasPropValueChanged,
+  observeChildren,
+  unobserveChildren,
   validateProps,
 } from '../../utils';
+import { NotificationBase } from '../common/notification-base/notification-base';
 import { getComponentCss } from './banner-styles';
 import {
   BANNER_HEADING_TAGS,
@@ -30,8 +34,9 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
 };
 
 /**
- * @slot {"name": "heading", "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.", "hasAltProp": true }
- * @slot {"name": "description", "description": "Defines the description used in the banner. Can be used alternatively to the description prop. Can be used for rich content.", "hasAltProp": true }
+ * @slot {"name": "heading", "description": "Defines the heading of the banner. Can be used as an alternative to the `heading` prop for rich content." }
+ * @slot {"name": "", "description": "Default slot for the banner description content." }
+ * @slot {"name": "description", "description": "Deprecated: Use the default slot instead.", "isDeprecated": true }
  *
  * @controlled {"props": ["open"], "event": "dismiss"}
  */
@@ -68,6 +73,8 @@ export class Banner {
 
   private refPopover: HTMLElement;
   private refDismiss: HTMLElement;
+  private hasHeadingSlot: boolean;
+  private hasDescriptionSlot: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -81,12 +88,24 @@ export class Banner {
   }
 
   public connectedCallback(): void {
+    // Observe dynamic slot changes (only needed until :has-slotted CSS pseudo-class gets better support)
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+
     if (this.open && this.dismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
   public disconnectedCallback(): void {
+    unobserveChildren(this.host);
+
     if (this.open && this.dismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
@@ -104,9 +123,20 @@ export class Banner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, this.position, this.state, this.dismissButton);
 
-    const Heading = this.headingTag;
+    this.hasHeadingSlot = hasNamedSlot(this.host, 'heading');
+    this.hasDescriptionSlot = hasNamedSlot(this.host, 'description');
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.open,
+      this.position,
+      this.state,
+      this.dismissButton,
+      !!(this.heading || this.hasHeadingSlot)
+    );
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headingText = this.heading ? this.heading : getSlotTextContent(this.host, 'heading');
 
@@ -117,25 +147,30 @@ export class Banner {
         {...getBannerAriaAttributes(this.state, headingText)}
         ref={(el: HTMLElement) => (this.refPopover = el)}
       >
-        <div class="banner">
-          {this.heading ? <Heading>{this.heading}</Heading> : <slot name="heading" />}
-          {this.description ? <p>{this.description}</p> : <slot name="description" />}
-          {this.dismissButton && (
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              type="button"
-              variant="secondary"
-              icon="close"
-              hideLabel={true}
-              compact={true}
-              onClick={this.dismissBanner}
-              {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
-              ref={(el: HTMLElement) => (this.refDismiss = el)}
-            >
-              Close banner
-            </PrefixedTagNames.pButton>
-          )}
-        </div>
+        <NotificationBase
+          heading={this.heading}
+          headingTag={this.headingTag}
+          hasHeadingSlot={this.hasHeadingSlot}
+          description={this.description}
+          hasDescriptionSlot={this.hasDescriptionSlot}
+          {...(this.dismissButton && {
+            dismissButton: (
+              <PrefixedTagNames.pButton
+                class="dismiss"
+                type="button"
+                variant="secondary"
+                icon="close"
+                hideLabel={true}
+                compact={true}
+                onClick={this.dismissBanner}
+                {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
+                ref={(el: HTMLElement) => (this.refDismiss = el)}
+              >
+                Close banner
+              </PrefixedTagNames.pButton>
+            ),
+          })}
+        />
       </div>
     );
   }

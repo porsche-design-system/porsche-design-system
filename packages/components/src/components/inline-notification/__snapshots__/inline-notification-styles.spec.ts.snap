@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for state: error, hasAction: false and hasClose: false 1`] = `
+exports[`getComponentCss() > should return correct css for state: error, hasAction: false, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
 ":host {
   display: block;
 }
@@ -10,26 +10,18 @@ exports[`getComponentCss() > should return correct css for state: error, hasActi
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-error-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -37,7 +29,7 @@ slot:not([name]),p {
 @media(min-width:760px) {
   .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
@@ -63,7 +55,7 @@ slot:not([name]),p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: info, hasAction: false and hasClose: false 1`] = `
+exports[`getComponentCss() > should return correct css for state: info, hasAction: false, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
 ":host {
   display: block;
 }
@@ -73,26 +65,18 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -100,7 +84,7 @@ slot:not([name]),p {
 @media(min-width:760px) {
   .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
@@ -126,7 +110,7 @@ slot:not([name]),p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: info, hasAction: false and hasClose: true 1`] = `
+exports[`getComponentCss() > should return correct css for state: info, hasAction: false, hasDismissButton: true, hasHeadingOrHeadingSlot: false 1`] = `
 ":host {
   display: block;
 }
@@ -136,40 +120,32 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
-  grid-area: 1/4/3;
-  margin-top: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-end: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-start: var(--p-spacing-static-md);
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 @media(min-width:760px) {
   .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
@@ -195,7 +171,141 @@ slot:not([name]),p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: info, hasAction: true and hasClose: false 1`] = `
+exports[`getComponentCss() > should return correct css for state: info, hasAction: true, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
+.notification {
+  display: grid;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-info-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.action {
+  grid-area: 3/1/auto/-1;
+  margin-top: var(--p-spacing-static-md);
+}
+@media(min-width:760px) {
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-info);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
+  .action {
+    grid-area: 1/3;
+    margin-top: 0px;
+    margin-inline-start: var(--p-spacing-static-md);
+  }
+}
+
+@media(forced-colors:active) {
+  .notification {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for state: info, hasAction: true, hasDismissButton: true, hasHeadingOrHeadingSlot: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]),slot[name="description"],p {
+  all: unset;
+  grid-area: 1/2;
+  margin-top: 0px;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+}
+.notification {
+  display: grid;
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  background: var(--p-color-info-frosted);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.action {
+  grid-area: 3/1/auto/-1;
+  margin-top: var(--p-spacing-static-md);
+}
+@media(min-width:760px) {
+  .notification::before {
+    grid-area: 1/1;
+    place-self: flex-start;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-inline-end: var(--p-spacing-static-sm);
+    background: var(--p-color-info);
+    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
+    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
+  }
+@media(forced-colors:active) {
+    .notification::before {
+      background: CanvasText;
+    }
+}
+
+  .action {
+    grid-area: 1/3;
+    margin-top: 0px;
+    margin-inline-start: var(--p-spacing-static-md);
+  }
+}
+
+@media(forced-colors:active) {
+  .notification {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for state: info, hasAction: true, hasDismissButton: true, hasHeadingOrHeadingSlot: true 1`] = `
 ":host {
   display: block;
 }
@@ -207,14 +317,12 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 }
 slot[name="heading"],h1,h2,h3,h4,h5,h6 {
   all: unset;
-  display: block;
   grid-area: 1/2;
   font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
-slot:not([name]),p {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 2/2;
   margin-top: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
@@ -222,12 +330,18 @@ slot:not([name]),p {
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
+}
+.dismiss {
+  grid-area: 1/4/-1;
+  align-self: flex-start;
+  margin-block: calc(-6 * var(--p-spacing-static-2xs));
+  margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
 }
 .action {
   grid-area: 3/1/auto/-1;
@@ -253,7 +367,7 @@ slot:not([name]),p {
 
   .action {
     grid-area: 1/3;
-    margin-top: 0;
+    margin-top: 0px;
     margin-inline-start: var(--p-spacing-static-md);
   }
 }
@@ -267,7 +381,7 @@ slot:not([name]),p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: info, hasAction: true and hasClose: true 1`] = `
+exports[`getComponentCss() > should return correct css for state: success, hasAction: false, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
 ":host {
   display: block;
 }
@@ -277,104 +391,18 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
-  background: var(--p-color-info-frosted);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-}
-.dismiss {
-  grid-area: 1/4/3;
-  margin-top: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-end: calc(-1 * var(--p-spacing-static-xs));
-  margin-inline-start: var(--p-spacing-static-md);
-}
-.action {
-  grid-area: 3/1/auto/-1;
-  margin-top: var(--p-spacing-static-md);
-}
-@media(min-width:760px) {
-  .notification::before {
-    grid-area: 1/1;
-    place-self: center;
-    content: "";
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-inline-end: var(--p-spacing-static-sm);
-    background: var(--p-color-info);
-    -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
-    mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9m-.75 4.5h1.5V9h-1.5zm1.5 8.5h-1.5v-6h1.5z"/></svg>') center/contain no-repeat;
-  }
-@media(forced-colors:active) {
-    .notification::before {
-      background: CanvasText;
-    }
-}
-
-  .action {
-    grid-area: 1/3;
-    margin-top: 0;
-    margin-inline-start: var(--p-spacing-static-md);
-  }
-}
-
-@media(forced-colors:active) {
-  .notification {
-    outline: 2px solid CanvasText;
-    outline-offset: -2px;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for state: success, hasAction: false and hasClose: false 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
-  all: unset;
-  display: block;
-  grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-.notification {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-success-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -382,7 +410,7 @@ slot:not([name]),p {
 @media(min-width:760px) {
   .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;
@@ -408,7 +436,7 @@ slot:not([name]),p {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for state: warning, hasAction: false and hasClose: false 1`] = `
+exports[`getComponentCss() > should return correct css for state: warning, hasAction: false, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
 ":host {
   display: block;
 }
@@ -418,26 +446,18 @@ exports[`getComponentCss() > should return correct css for state: warning, hasAc
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot[name="heading"],h1,h2,h3,h4,h5,h6 {
+slot:not([name]),slot[name="description"],p {
   all: unset;
-  display: block;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-primary);
-}
-slot:not([name]),p {
-  all: unset;
-  display: block;
-  grid-area: 2/2;
-  margin-top: var(--p-spacing-static-xs);
+  margin-top: 0px;
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  padding: var(--p-spacing-static-md);
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
   background: var(--p-color-warning-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -445,7 +465,7 @@ slot:not([name]),p {
 @media(min-width:760px) {
   .notification::before {
     grid-area: 1/1;
-    place-self: center;
+    place-self: flex-start;
     content: "";
     width: 1.5rem;
     height: 1.5rem;

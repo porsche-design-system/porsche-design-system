@@ -44,6 +44,46 @@ exports[`getComboboxAriaAttributes() > should return correct aria attributes wit
 }
 `;
 
+exports[`getListboxAriaAttributes() > should return correct aria attributes when not required and not multiselectable 1`] = `
+{
+  "aria-describedby": "message-id description-id",
+  "aria-labelledby": "label-id",
+  "aria-multiselectable": "false",
+  "aria-required": "false",
+  "role": "listbox",
+}
+`;
+
+exports[`getListboxAriaAttributes() > should return correct aria attributes when required and multiselectable, with all IDs 1`] = `
+{
+  "aria-describedby": "message-id description-id",
+  "aria-labelledby": "label-id",
+  "aria-multiselectable": "true",
+  "aria-required": "true",
+  "role": "listbox",
+}
+`;
+
+exports[`getListboxAriaAttributes() > should return correct aria attributes with empty labelId 1`] = `
+{
+  "aria-describedby": "message-id description-id",
+  "aria-labelledby": null,
+  "aria-multiselectable": "false",
+  "aria-required": "false",
+  "role": "listbox",
+}
+`;
+
+exports[`getListboxAriaAttributes() > should return correct aria attributes with empty messageId and descriptionId 1`] = `
+{
+  "aria-describedby": null,
+  "aria-labelledby": "label-id",
+  "aria-multiselectable": "true",
+  "aria-required": "true",
+  "role": "listbox",
+}
+`;
+
 exports[`getOptionAriaAttributes() > should return correct aria attributes for isSelected: true, isDisabled: false, isHidden: false and hasValue: false 1`] = `
 {
   "aria-disabled": null,

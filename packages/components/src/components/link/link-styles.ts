@@ -4,7 +4,7 @@ import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
-const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
+const cssVariableInternalLinkScaling = '--_p-link-a';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,

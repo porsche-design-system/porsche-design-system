@@ -22,7 +22,7 @@ import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
 import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
-export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
+export const cssVarInternalSegmentedControlScaling = '--_p-segmented-control-a';
 export const getScalingVar = (compact: boolean) =>
   `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
 

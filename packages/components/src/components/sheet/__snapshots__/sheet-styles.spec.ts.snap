@@ -10,7 +10,7 @@ exports[`getComponentCss() > should return correct css for open: false, backgrou
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -78,7 +78,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -109,7 +109,7 @@ exports[`getComponentCss() > should return correct css for open: false, backgrou
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -177,7 +177,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
@@ -198,7 +198,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .sheet {
@@ -218,7 +218,7 @@ exports[`getComponentCss() > should return correct css for open: true, backgroun
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -286,7 +286,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -304,7 +304,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .sheet {
@@ -324,7 +324,7 @@ exports[`getComponentCss() > should return correct css for open: true, backgroun
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-surface) !important;
+  --_p-dialog-a: var(--p-color-surface) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -392,7 +392,7 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   color: var(--p-color-primary);
-  background: var(--_a);
+  background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
   transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
@@ -410,7 +410,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_a) h s l / 0.35);
+  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
 }
 @media(forced-colors:active) {
   .sheet {

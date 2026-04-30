@@ -1,3 +1,1 @@
-import { palette } from '../../palette';
-
-export const colorSuccessFrostedDark = palette.dark.green['200a'];
+export const colorSuccessFrostedDark = 'hsl(157 79% 20% / 0.66)';

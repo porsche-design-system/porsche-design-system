@@ -11,13 +11,13 @@ import {
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
-export const cssVariablePaddingTop = '--p-internal-text-list-padding-top';
-export const cssVariablePaddingBottom = '--p-internal-text-list-padding-bottom';
-export const cssVariablePseudoSpace = '--p-internal-text-list-pseudo-space';
-export const cssVariableUnorderedGridColumn = '--p-internal-text-list-unordered-grid-column';
-export const cssVariableUnorderedPseudoContent = '--p-internal-text-list-unordered-pseudo-content';
-export const cssVariableOrderedGridColumn = '--p-internal-text-list-ordered-grid-column';
-export const cssVariableOrderedPseudoSuffix = '--p-internal-text-list-ordered-pseudo-suffix';
+export const cssVariableOrderedGridColumn = '--_p-text-list-a';
+export const cssVariableOrderedPseudoSuffix = '--_p-text-list-b';
+export const cssVariablePaddingBottom = '--_p-text-list-c';
+export const cssVariablePaddingTop = '--_p-text-list-d';
+export const cssVariablePseudoSpace = '--_p-text-list-e';
+export const cssVariableUnorderedGridColumn = '--_p-text-list-f';
+export const cssVariableUnorderedPseudoContent = '--_p-text-list-g';
 const counter = 'p-text-list-counter';
 
 export const getComponentCss = (type: TextListType): string => {

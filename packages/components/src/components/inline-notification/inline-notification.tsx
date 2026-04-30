@@ -1,6 +1,16 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, getSlotTextContent, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  getSlotTextContent,
+  hasNamedSlot,
+  observeChildren,
+  unobserveChildren,
+  validateProps,
+} from '../../utils';
+import { NotificationBase } from '../common/notification-base/notification-base';
 import { getComponentCss } from './inline-notification-styles';
 import {
   getInlineNotificationAriaAttributes,
@@ -23,8 +33,8 @@ const propTypes: PropTypes<typeof InlineNotification> = {
 };
 
 /**
- * @slot {"name": "heading", "description": "Shows a heading. Can be used to render rich markup." }
- * @slot {"name": "", "description": "Default slot to render a description. Can be used to render rich markup." }
+ * @slot {"name": "heading", "description": "Defines the heading of the inline notification. Can be used as an alternative to the `heading` prop for rich content." }
+ * @slot {"name": "", "description": "Default slot for the inline notification description content." }
  */
 @Component({
   tag: 'p-inline-notification',
@@ -63,47 +73,77 @@ export class InlineNotification {
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
+  private hasHeadingSlot: boolean;
+
+  public connectedCallback(): void {
+    // Observe dynamic slot changes (only needed until :has-slotted CSS pseudo-class gets better support)
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+  }
+
+  public disconnectedCallback(): void {
+    unobserveChildren(this.host);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.dismissButton);
 
-    const Heading = this.headingTag;
+    this.hasHeadingSlot = hasNamedSlot(this.host, 'heading');
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.state,
+      !!this.actionLabel,
+      this.dismissButton,
+      !!(this.heading || this.hasHeadingSlot)
+    );
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headingText = this.heading ? this.heading : getSlotTextContent(this.host, 'heading');
 
     return (
-      <div class="notification" {...getInlineNotificationAriaAttributes(this.state, headingText)}>
-        {this.heading ? <Heading>{this.heading}</Heading> : <slot name="heading" />}
-        {this.description ? <p>{this.description}</p> : <slot />}
-        {this.actionLabel && (
-          <PrefixedTagNames.pButtonPure
-            class="action"
-            icon={this.actionIcon}
-            loading={this.actionLoading}
-            onClick={this.action.emit}
-          >
-            {this.actionLabel}
-          </PrefixedTagNames.pButtonPure>
-        )}
-        {this.dismissButton && (
-          <PrefixedTagNames.pButton
-            class="dismiss"
-            type="button"
-            variant="secondary"
-            icon="close"
-            hideLabel={true}
-            compact={true}
-            onClick={this.dismissNotification}
-            {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
-          >
-            Close notification
-          </PrefixedTagNames.pButton>
-        )}
-      </div>
+      <NotificationBase
+        {...getInlineNotificationAriaAttributes(this.state, headingText)}
+        heading={this.heading}
+        headingTag={this.headingTag}
+        hasHeadingSlot={this.hasHeadingSlot}
+        description={this.description}
+        {...(this.actionLabel && {
+          actionLabel: (
+            <PrefixedTagNames.pButtonPure
+              class="action"
+              icon={this.actionIcon}
+              loading={this.actionLoading}
+              onClick={this.action.emit}
+            >
+              {this.actionLabel}
+            </PrefixedTagNames.pButtonPure>
+          ),
+        })}
+        {...(this.dismissButton && {
+          dismissButton: (
+            <PrefixedTagNames.pButton
+              class="dismiss"
+              type="button"
+              variant="secondary"
+              icon="close"
+              hideLabel={true}
+              compact={true}
+              onClick={this.dismiss.emit}
+              {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
+            >
+              Close notification
+            </PrefixedTagNames.pButton>
+          ),
+        })}
+      />
     );
   }
-
-  private dismissNotification = (): void => {
-    this.dismiss.emit();
-  };
 }

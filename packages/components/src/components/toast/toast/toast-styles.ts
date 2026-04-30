@@ -20,7 +20,7 @@ import { getCss } from '../../../utils';
  * @css-variable {"name": "--p-toast-position-bottom", "description": "Defines the spacing between the toast and the bottom edge of its container.", "defaultValue": "56px"}
  */
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const cssVariablePositionBottomInternal = '--_p-a';
+const cssVariablePositionBottomInternal = '--_p-toast-a';
 
 export const ANIMATION_DURATION = motionDurationModerate;
 const duration =
@@ -30,7 +30,7 @@ const duration =
 
 export type KeyframesDirection = 'in' | 'out';
 export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
-  const insideStyle: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+  const insideStyle: JssStyle = { transform: 'translate3d(0,0,0)' };
   return direction === 'in'
     ? {
         from: outsideStyle,
@@ -44,7 +44,6 @@ export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssSty
 
 export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): JssStyle =>
   getKeyframes(direction, {
-    opacity: 0,
     transform: `translate3d(0,calc(var(${bottomVar}) + 100%),0)`, // space before and after "+" is crucial
   });
 

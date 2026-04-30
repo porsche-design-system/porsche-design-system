@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { goto, initConsoleObserver, getConsoleErrorsAmount, getConsoleWarningsAmount } from '../helpers';
+import { expect, test } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
+import { getConsoleErrorsAmount, getConsoleWarningsAmount, goto, initConsoleObserver } from '../helpers';
 
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
@@ -23,7 +23,15 @@ const exampleUrls = exampleRoutes.map((item) => item.path.slice(1));
 for (const exampleUrl of exampleUrls) {
   test(`should work without error or warning for ${exampleUrl}`, async ({ page }) => {
     // Skip AG Grid pages since they will show licensing errors
-    test.skip(['aggrid-example', 'aggrid-example-storefront'].includes(exampleUrl));
+    // Skip dynamic optgroup pages since they intentionally start with value but empty options to reproduce a bug scenario
+    test.skip(
+      [
+        'aggrid-example',
+        'aggrid-example-storefront',
+        'select-example-dynamic-optgroup',
+        'multi-select-example-dynamic-optgroup',
+      ].includes(exampleUrl)
+    );
     await goto(page, exampleUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     expect(getConsoleWarningsAmount()).toBe(0);

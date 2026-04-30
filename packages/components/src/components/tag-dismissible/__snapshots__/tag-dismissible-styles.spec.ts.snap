@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() > should return correct css for hasLabel: false and compact: false 1`] = `
 ":host {
-  --p-internal-tag-dismissible-scaling: 1;
+  --_p-tag-dismissible-a: 1;
   display: inline-block;
   vertical-align: top;
 }
@@ -17,8 +17,8 @@ button {
   display: flex;
   position: relative;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
-  padding: calc(28px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 6px) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   cursor: pointer;
   background: var(--p-color-frosted);
@@ -47,8 +47,8 @@ button:focus-visible {
 }
 
 .icon {
-  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
-  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
@@ -66,7 +66,7 @@ button:focus-visible {
 
 exports[`getComponentCss() > should return correct css for hasLabel: false and compact: true 1`] = `
 ":host {
-  --p-internal-tag-dismissible-scaling: 0.64285714;
+  --_p-tag-dismissible-a: 0.64285714;
   display: inline-block;
   vertical-align: top;
 }
@@ -81,8 +81,8 @@ button {
   display: flex;
   position: relative;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
-  padding: calc(28px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 6px) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   cursor: pointer;
   background: var(--p-color-frosted);
@@ -111,8 +111,8 @@ button:focus-visible {
 }
 
 .icon {
-  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
-  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
@@ -130,7 +130,7 @@ button:focus-visible {
 
 exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 1`] = `
 ":host {
-  --p-internal-tag-dismissible-scaling: 1;
+  --_p-tag-dismissible-a: 1;
   display: inline-block;
   vertical-align: top;
 }
@@ -145,8 +145,8 @@ button {
   display: flex;
   position: relative;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
-  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   cursor: pointer;
   background: var(--p-color-frosted);
@@ -181,8 +181,8 @@ button:focus-visible {
   font-size: var(--p-typescale-xs);
 }
 .icon {
-  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
-  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
@@ -200,7 +200,7 @@ button:focus-visible {
 
 exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 2`] = `
 ":host {
-  --p-internal-tag-dismissible-scaling: 1;
+  --_p-tag-dismissible-a: 1;
   display: inline-block;
   vertical-align: top;
 }
@@ -215,8 +215,8 @@ button {
   display: flex;
   position: relative;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
-  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   cursor: pointer;
   background: var(--p-color-frosted);
@@ -251,8 +251,8 @@ button:focus-visible {
   font-size: var(--p-typescale-xs);
 }
 .icon {
-  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
-  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
@@ -270,7 +270,7 @@ button:focus-visible {
 
 exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 1`] = `
 ":host {
-  --p-internal-tag-dismissible-scaling: 0.64285714;
+  --_p-tag-dismissible-a: 0.64285714;
   display: inline-block;
   vertical-align: top;
 }
@@ -285,8 +285,8 @@ button {
   display: flex;
   position: relative;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
-  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   cursor: pointer;
   background: var(--p-color-frosted);
@@ -321,8 +321,8 @@ button:focus-visible {
   font-size: var(--p-typescale-xs);
 }
 .icon {
-  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
-  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
@@ -340,7 +340,7 @@ button:focus-visible {
 
 exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 2`] = `
 ":host {
-  --p-internal-tag-dismissible-scaling: 0.64285714;
+  --_p-tag-dismissible-a: 0.64285714;
   display: inline-block;
   vertical-align: top;
 }
@@ -355,8 +355,8 @@ button {
   display: flex;
   position: relative;
   align-items: center;
-  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
-  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   cursor: pointer;
   background: var(--p-color-frosted);
@@ -391,8 +391,8 @@ button:focus-visible {
   font-size: var(--p-typescale-xs);
 }
 .icon {
-  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
-  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }

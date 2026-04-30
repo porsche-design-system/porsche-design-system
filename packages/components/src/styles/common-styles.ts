@@ -47,7 +47,7 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
 export const SCALING_BASE_VALUE = '16px';
 
 export const dismissButtonJssStyle: JssStyle = {
-  '--p-internal-button-scaling': 0.5,
+  '--_p-button-a': 0.5,
 };
 
 export const cssVariableTransitionDuration = '--p-transition-duration';

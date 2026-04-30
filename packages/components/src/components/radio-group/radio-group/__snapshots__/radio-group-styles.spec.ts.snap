@@ -2,8 +2,8 @@
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -29,8 +29,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -108,8 +108,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false and direction: 'column' 2`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -135,8 +135,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -214,8 +214,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -241,8 +241,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -319,8 +319,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and direction: 'column' 2`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -346,8 +346,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -424,8 +424,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and direction: 'column' 3`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -451,8 +451,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -529,8 +529,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -556,8 +556,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -635,8 +635,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and direction: 'column' 2`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -662,8 +662,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   min-width: fit-content;
@@ -741,8 +741,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -768,8 +768,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -846,8 +846,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and direction: 'column' 2`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -873,8 +873,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -951,8 +951,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -978,8 +978,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -1055,8 +1055,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and direction: 'column' 2`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1082,8 +1082,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -1159,8 +1159,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 0.64285714;
-  --p-internal-radio-group-option-scaling: 0.64285714;
+  --_p-radio-group-a: 0.64285714;
+  --_p-radio-group-option-a: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1186,8 +1186,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -1264,8 +1264,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and direction: 'column' 2`] = `
 ":host {
-  --p-internal-radio-group-scaling: 0.64285714;
-  --p-internal-radio-group-option-scaling: 0.64285714;
+  --_p-radio-group-a: 0.64285714;
+  --_p-radio-group-option-a: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1291,8 +1291,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -1369,8 +1369,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1406,8 +1406,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .spinner {
   position: absolute;
@@ -1612,8 +1612,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1639,8 +1639,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .label-wrapper {
   position: absolute;
@@ -1846,8 +1846,8 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false and direction: 'column' 1`] = `
 ":host {
-  --p-internal-radio-group-scaling: 1;
-  --p-internal-radio-group-option-scaling: 1;
+  --_p-radio-group-a: 1;
+  --_p-radio-group-option-a: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1883,8 +1883,8 @@ slot[name="label-after"]::slotted(*) {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
-  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
+  column-gap: calc(22.4px * (var(--_p-radio-group-a) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--_p-radio-group-a) - 0.64285714) + 4px);
 }
 .spinner {
   position: absolute;

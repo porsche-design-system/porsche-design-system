@@ -24,7 +24,7 @@ import {
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
-export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
+export const cssVarInternalTagDismissibleScaling = '--_p-tag-dismissible-a';
 
 export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string => {
   const buttonPaddingBlock = hasLabel

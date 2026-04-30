@@ -1,3 +1,1 @@
-import { palette } from '../../palette';
-
-export const colorInfoFrostedSoftLight = palette.light.blue['50a'];
+export const colorInfoFrostedSoftLight = 'hsl(211 80% 95% / 0.55)';
