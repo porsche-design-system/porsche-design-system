@@ -1,0 +1,55 @@
+# =============================================================================
+# CODEOWNERS — Porsche Design System
+# =============================================================================
+#
+# Each line is a glob pattern followed by one or more owners (GitHub usernames
+# or @org/team handles). The LAST matching pattern in this file is the one
+# that takes effect for a given file.
+#
+# Owners listed here are automatically requested for review on PRs touching
+# matching files. To make this enforceable, configure the branch protection
+# rule (or ruleset) on `main` and `v4` to "Require review from Code Owners".
+#
+# Syntax notes:
+#   - Patterns follow the same rules as .gitignore.
+#   - "/foo"     → only `foo` at the repo root
+#   - "foo/"     → any directory called `foo` anywhere
+#   - "**/foo"   → `foo` at any depth
+#   - Multiple owners are space-separated; ALL of them are notified, but
+#     only ONE approval from any team member is required.
+#
+# Maintainership is managed via the GitHub team:
+#   https://github.com/orgs/porsche-design-system/teams/maintainers
+#
+# To add or remove maintainers, change team membership in the GitHub UI —
+# no edits to this file are required.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Default owners — match anything not covered by a more specific rule below.
+# -----------------------------------------------------------------------------
+*                                       @porsche-design-system/maintainers
+
+
+# -----------------------------------------------------------------------------
+# High-impact paths — explicit ownership for clarity, even though the default
+# rule above already covers them. Listing them keeps intent obvious in code
+# review and survives any future restructuring of the default line.
+# -----------------------------------------------------------------------------
+
+# CI/CD, GitHub config, this file itself.
+/.github/                               @porsche-design-system/maintainers
+/.github/workflows/                     @porsche-design-system/maintainers
+/.github/CODEOWNERS                     @porsche-design-system/maintainers
+
+# Security policy and root config.
+/SECURITY.md                            @porsche-design-system/maintainers
+/package.json                           @porsche-design-system/maintainers
+/package-lock.json                      @porsche-design-system/maintainers
+/biome.json                             @porsche-design-system/maintainers
+/prettier.config.js                     @porsche-design-system/maintainers
+/tsconfig*.json                         @porsche-design-system/maintainers
+
+# Patches applied to upstream dependencies — security-sensitive.
+/patches/                               @porsche-design-system/maintainers
