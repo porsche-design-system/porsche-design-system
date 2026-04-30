@@ -39,18 +39,18 @@
   "dependencies": {
     "@porsche-design-system/components-react": "4.0.0",
     "react-syntax-highlighter": "^16.1.1",
-    "next": "^16.2.3",
-    "algoliasearch": "^5.50.1",
+    "next": "^16.2.4",
+    "algoliasearch": "^5.51.0",
     "@algolia/cache-in-memory": "^4.26.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-instantsearch": "^7.29.0",
-    "react-instantsearch-nextjs": "^1.1.4"
+    "react-instantsearch": "^7.31.0",
+    "react-instantsearch-nextjs": "^1.1.6"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
-    "@next/mdx": "^16.2.3",
+    "@next/mdx": "^16.2.4",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@types/mdx": "^2.0.13",
@@ -58,7 +58,7 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.27",
+    "autoprefixer": "^10.5.0",
     "remark-gfm": "^4.0.1",
     "cheerio": "^1.2.0",
     "@testing-library/jest-dom": "^6.9.1",

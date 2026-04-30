@@ -36,14 +36,14 @@
   "dependencies": {
     "@porsche-design-system/components-vue": "4.0.0",
     "vue-imask": "^7.6.1",
-    "vue-router": "^5.0.4"
+    "vue-router": "^5.0.6"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.6",
-    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-vue": "^6.0.6",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
     "@vue/tsconfig": "0.9.1",
     "ag-grid-community": "35.2.1",
@@ -51,7 +51,7 @@
     "ag-grid-vue3": "35.2.1",
     "local-web-server": "^5.4.0",
     "vite-plugin-html": "^3.2.2",
-    "vue-tsc": "3.2.6"
+    "vue-tsc": "3.2.7"
   },
   "peerDependencies": {
     "vue": "*",
