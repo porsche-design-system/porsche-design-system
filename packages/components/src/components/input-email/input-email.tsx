@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof InputEmail> = {
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
   multiple: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -72,7 +72,7 @@ export class InputEmail {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The default email address (or comma-separated list of addresses) for the input. */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string | null = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email'). */
   @Prop() public autoComplete?: string;
@@ -134,12 +134,17 @@ export class InputEmail {
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
+  // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return this.value === null ? '' : String(this.value);
+  }
+
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {
@@ -147,7 +152,7 @@ export class InputEmail {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.parsedValue;
     this.initialLoading = this.loading;
   }
 
@@ -166,8 +171,8 @@ export class InputEmail {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
-    this.value = state;
+  public formStateRestoreCallback(state: string | null): void {
+    this.value = state; // browser may hand back null for empty restored state
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -175,7 +180,7 @@ export class InputEmail {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentDidRender(): void {
@@ -222,7 +227,7 @@ export class InputEmail {
         placeholder={this.placeholder}
         maxLength={this.maxLength}
         minLength={this.minLength}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}
