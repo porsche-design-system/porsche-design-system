@@ -25,11 +25,53 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  context:
+    name: 'Context'
+    # Resolve the storefront deployment target (used as both the storefront
+    # `basePath` at build time AND the gh-pages folder at deploy time) ONCE
+    # here, so build and deploy can never disagree.
+    #
+    # Strategy:
+    #   - pull_request → "pr-<number>"  (avoids "<n>/merge" with embedded slash
+    #                                    that github.ref_name would yield)
+    #   - push to main → "nightly"
+    #   - push to other branches (v*) → branch name
+    runs-on: ubuntu-latest
+    outputs:
+      storefront-slug: ${{ steps.resolve.outputs.storefront-slug }}
+      storefront-algolia: ${{ steps.resolve.outputs.storefront-algolia }}
+    steps:
+      - id: resolve
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            storefront_slug="pr-${{ github.event.pull_request.number }}"
+          elif [[ "${{ github.ref_name }}" == "main" ]]; then
+            storefront_slug="nightly"
+          else
+            storefront_slug="${{ github.ref_name }}"
+          fi
+          echo "storefront-slug=${storefront_slug}" >> "$GITHUB_OUTPUT"
+          echo "Resolved storefront deploy target: ${storefront_slug}"
+
+          # Algolia indexing only for production-ish refs (main + version
+          # branches) on push events, never PRs.
+          if [[ "${{ github.event_name }}" == "push" \
+                && ( "${{ github.ref_name }}" == "main" \
+                     || "${{ github.ref_name }}" == v* ) ]]; then
+            storefront_algolia="true"
+          else
+            storefront_algolia="false"
+          fi
+          echo "storefront-algolia=${storefront_algolia}" >> "$GITHUB_OUTPUT"
+          echo "Resolved storefront algolia indexing: ${storefront_algolia}"
   build:
     name: 'Build'
     uses: ./.github/workflows/build.yml
     with:
       image: mcr.microsoft.com/playwright:v1.59.1-jammy
+      storefront-slug: ${{ needs.context.outputs.storefront-slug }}
+    needs:
+      - context
   test:
     name: 'Test'
     uses: ./.github/workflows/test.yml
@@ -49,7 +91,10 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       image: mcr.microsoft.com/playwright:v1.59.1-jammy
+      storefront-slug: ${{ needs.context.outputs.storefront-slug }}
+      storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
+      - context
       - test
       - build
     secrets:
