@@ -41,7 +41,8 @@ jobs:
       storefront-slug: ${{ steps.resolve.outputs.storefront-slug }}
       storefront-algolia: ${{ steps.resolve.outputs.storefront-algolia }}
     steps:
-      - id: resolve
+      - name: 'Resolve'
+        id: resolve
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             storefront_slug="pr-${{ github.event.pull_request.number }}"
