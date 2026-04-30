@@ -1,7 +1,9 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import shared from '@porsche-design-system/shared';
 import { z } from 'zod';
+
+const { TAG_NAMES } = shared;
 
 const COMPONENT_NAMES = TAG_NAMES.map((tag) => tag.replace(/^p-/, ''));
 
