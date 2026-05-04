@@ -40,11 +40,12 @@ const getSelectedRadioGroupOptionProperty = async <K extends keyof RadioGroupOpt
     );
 
 const getSelectedOptionIndex = async (page: Page): Promise<number> =>
-  await page
-    .locator('p-radio-group p-radio-group-option')
-    .evaluateAll((options: RadioGroupOption[]) =>
-      options.filter((option) => !option.hidden).indexOf(options.find((option: RadioGroupOption) => option.selected))
-    );
+  await page.locator('p-radio-group p-radio-group-option').evaluateAll((options) => {
+    const opts = options as unknown as RadioGroupOption[];
+    const visible = opts.filter((option) => !option.hidden);
+    const selected = opts.find((option) => option.selected);
+    return selected ? visible.indexOf(selected) : -1;
+  });
 
 const getForm = (page: Page) => page.locator('form');
 
@@ -538,7 +539,7 @@ test.describe('slots', () => {
 
     const host: Locator = getHost(page);
     await host.evaluate((el) => {
-      (el as HTMLPRadioGroupElement).lastElementChild.remove();
+      (el as HTMLPRadioGroupElement).lastElementChild?.remove();
     });
 
     await waitForStencilLifecycle(page);

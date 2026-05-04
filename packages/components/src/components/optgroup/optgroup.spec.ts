@@ -36,3 +36,17 @@ describe('handleDisabledChange()', () => {
     expect(updateOptionsDisabledSpy).toHaveBeenCalledWith(component.host, component.disabled);
   });
 });
+
+describe('dispatchInternalOptgroupUpdate()', () => {
+  it('should dispatch internalOptgroupUpdate event with bubbles: true', () => {
+    const component = initComponent();
+    const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
+    component['dispatchInternalOptgroupUpdate']();
+    expect(dispatchEventSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'internalOptgroupUpdate',
+        bubbles: true,
+      })
+    );
+  });
+});

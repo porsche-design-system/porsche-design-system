@@ -24,8 +24,8 @@ on:
         description: 'Algolia API Key (Storefront).'
         required: true
 
+# Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
-  id-token: write # Required for OIDC
   contents: read
 
 jobs:
@@ -85,7 +85,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/install
@@ -99,7 +98,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   npm-components-angular:
@@ -111,7 +109,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/install
@@ -125,7 +122,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   npm-components-react:
@@ -137,7 +133,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/install
@@ -151,7 +146,6 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
   npm-components-vue:
@@ -163,7 +157,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/install
@@ -177,9 +170,42 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
+  github-release:
+    name: 'GitHub Release'
+    needs:
+      - check-publication-status
+      - npm-components-js
+      - npm-components-angular
+      - npm-components-react
+      - npm-components-vue
+    # Only run if at least one npm package was actually published in this run.
+    # Skipped jobs (already-published) shouldn't block the release, but we also
+    # don't want to release if every publish job was skipped or failed. The
+    # action itself skips pre-release versions (no -rc/-beta/-alpha suffix).
+    # Creating the release also creates the underlying git tag at github.sha.
+    if: |
+      always()
+      && needs.check-publication-status.result == 'success'
+      && (needs.npm-components-js.result == 'success'
+          || needs.npm-components-angular.result == 'success'
+          || needs.npm-components-react.result == 'success'
+          || needs.npm-components-vue.result == 'success')
+      && needs.npm-components-js.result != 'failure'
+      && needs.npm-components-angular.result != 'failure'
+      && needs.npm-components-react.result != 'failure'
+      && needs.npm-components-vue.result != 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
+    steps:
+      - uses: actions/checkout@v6
+      - name: 'Create GitHub Release'
+        uses: ./.github/actions/create-github-release
+        with:
+          version: ${{ needs.check-publication-status.outputs.components-version }}
+          github-token: ${{ secrets.github-token }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     needs: check-publication-status

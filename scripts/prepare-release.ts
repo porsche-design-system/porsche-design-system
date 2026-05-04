@@ -1,6 +1,7 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
-import * as semver from 'semver';
 import { sync as globbySync } from 'fast-glob';
+import * as semver from 'semver';
 
 const pkgVersion = process.argv[2];
 
@@ -9,11 +10,7 @@ if (semver.valid(pkgVersion) === null) {
 }
 
 const changelog = 'packages/components/CHANGELOG.md';
-const pkgFiles = globbySync([
-  './**/package.json',
-  '!./**/node_modules/**',
-  '!./packages/storefront/projects/stackblitz/src/**',
-]);
+const pkgFiles = globbySync(['./**/package.json', '!./**/node_modules/**']);
 const pkgNames = [
   '@porsche-design-system/components',
   '@porsche-design-system/components-js',
@@ -78,3 +75,6 @@ fs.writeFileSync(
     .readFileSync(changelog, 'utf8')
     .replace('## [Unreleased]', `## [Unreleased]\n\n## [${pkgVersion}] - ${formatDate(new Date())}`)
 );
+
+console.log('Updating package-lock.json via "npm install"…');
+execSync('npm install --package-lock-only --ignore-scripts', { stdio: 'inherit' });
