@@ -124,7 +124,7 @@ describe('normalizedValue getter', () => {
 });
 
 describe('componentWillLoad value coercion', () => {
-  it('should normalize a number value to string for setFormValue and selectOptionByValue', () => {
+  it('should normalize a number value to string for setFormValue but pass raw value to selectOptionByValue', () => {
     const component = initComponent();
     component.value = 42;
     const selectOptionByValueSpy = vi.spyOn(selectUtils, 'selectOptionByValue');
@@ -133,10 +133,10 @@ describe('componentWillLoad value coercion', () => {
     component.componentWillLoad();
 
     expect(setFormValueSpy).toHaveBeenCalledWith('42');
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], '42');
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], 42);
   });
 
-  it('should treat null value the same as undefined', () => {
+  it('should pass null directly to selectOptionByValue and undefined to setFormValue', () => {
     const component = initComponent();
     component.value = null;
     const selectOptionByValueSpy = vi.spyOn(selectUtils, 'selectOptionByValue');
@@ -145,7 +145,7 @@ describe('componentWillLoad value coercion', () => {
     component.componentWillLoad();
 
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], undefined);
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], null);
   });
 
   it('should preserve the original (non-normalized) value as defaultValue', () => {
@@ -204,7 +204,7 @@ describe('formResetCallback type preservation', () => {
 });
 
 describe('emitUpdateEvent', () => {
-  it('should emit normalized (string) value when value was set as number', () => {
+  it('should emit the value with its original type (number) when value was set as number', () => {
     const component = initComponent();
     component.value = 0;
     component.name = 'my-select';
@@ -213,7 +213,19 @@ describe('emitUpdateEvent', () => {
 
     component['emitUpdateEvent']();
 
-    expect(emitSpy).toHaveBeenCalledWith({ value: '0', name: 'my-select' });
+    expect(emitSpy).toHaveBeenCalledWith({ value: 0, name: 'my-select' });
+  });
+
+  it('should emit the value with its original type (string) when value was set as string', () => {
+    const component = initComponent();
+    component.value = 'a';
+    component.name = 'my-select';
+    const emitSpy = vi.fn();
+    component.change = { emit: emitSpy } as any;
+
+    component['emitUpdateEvent']();
+
+    expect(emitSpy).toHaveBeenCalledWith({ value: 'a', name: 'my-select' });
   });
 
   it('should emit undefined when value is null', () => {
@@ -230,7 +242,7 @@ describe('emitUpdateEvent', () => {
 });
 
 describe('updateSelectedOption value assignment', () => {
-  it('should coerce a numeric option.value to string when assigning to this.value', () => {
+  it('should preserve a numeric option.value (no string coercion) when assigning to this.value', () => {
     const component = initComponent();
     component['selectOptions'] = [];
     component.change = { emit: vi.fn() } as any;
@@ -239,7 +251,19 @@ describe('updateSelectedOption value assignment', () => {
 
     component['updateSelectedOption'](option);
 
-    expect(component.value).toBe('42');
+    expect(component.value).toBe(42);
+  });
+
+  it('should preserve a string option.value when assigning to this.value', () => {
+    const component = initComponent();
+    component['selectOptions'] = [];
+    component.change = { emit: vi.fn() } as any;
+    const option = { value: 'a', selected: false } as unknown as selectUtils.SelectOption;
+    component['buttonElement'] = { focus: vi.fn() } as unknown as HTMLButtonElement;
+
+    component['updateSelectedOption'](option);
+
+    expect(component.value).toBe('a');
   });
 
   it('should assign undefined when option.value is undefined', () => {

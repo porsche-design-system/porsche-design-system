@@ -173,9 +173,10 @@ export class Select {
   }
 
   /**
-   * Normalizes the public `value` prop to `string | undefined` for internal use.
-   * - `null` is treated as `undefined` (no preselection).
-   * - numbers are coerced to strings to match `p-select-option` value attributes.
+   * String-coerced value for the form internals (`ElementInternals.setFormValue`),
+   * which only accepts strings. `null`/`undefined` map to `undefined` (unset).
+   * Comparisons against options use the raw `this.value` (see `selectOptionByValue`)
+   * to preserve the original type set by the consumer.
    */
   private get parsedValue(): string | undefined {
     return this.value === null || this.value === undefined ? undefined : String(this.value);
@@ -199,7 +200,7 @@ export class Select {
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
+        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
     }
@@ -255,7 +256,7 @@ export class Select {
     this.defaultValue = this.value;
     this.internals?.setFormValue(this.parsedValue);
     this.updateOptions();
-    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
+    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
   }
 
   public componentDidLoad(): void {
@@ -418,7 +419,7 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue, !!this.filterSlot);
+    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
       this.selectedOption = selectedOption;
@@ -573,9 +574,10 @@ export class Select {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedOption(this.selectOptions, selectedOption);
-      // Normalize option.value (string | number | undefined) to string | undefined to keep
-      // `this.value` in a consistent shape and aligned with form submission semantics.
-      this.value = selectedOption.value === undefined ? undefined : String(selectedOption.value);
+      // Preserve the option's original value type (string | number | undefined) on the
+      // public `value` prop. Internal string normalization happens in `parsedValue` for
+      // matching and form submission only.
+      this.value = selectedOption.value;
       this.selectedOption = selectedOption;
       this.emitUpdateEvent();
     }
@@ -600,7 +602,9 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.parsedValue,
+      // Preserve the original value type (string | number) but map `null` to `undefined`
+      // so the event detail stays consistent with `SelectChangeEventDetail`.
+      value: this.value ?? undefined,
       name: this.name,
     });
   };

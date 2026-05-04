@@ -153,6 +153,41 @@ describe('updateSelectOptions', () => {
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
   });
+
+  it('should treat null host value the same as undefined (matches option with undefined value, no warning)', () => {
+    const host = document.createElement('p-select');
+    const options = [
+      { value: undefined, selected: false },
+      { value: 'a', selected: false },
+    ] as selectUtils.SelectOption[];
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    selectUtils.selectOptionByValue(host, options, null);
+    expect(options[0].selected).toBe(true);
+    expect(options[1].selected).toBe(false);
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it('should match a numeric host value against a string option.value', () => {
+    const host = document.createElement('p-select');
+    const options = [
+      { value: '1', selected: false },
+      { value: '2', selected: false },
+    ] as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(host, options, 2);
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+  });
+
+  it('should match a numeric host value against a numeric option.value', () => {
+    const host = document.createElement('p-select');
+    const options = [
+      { value: 1, selected: false },
+      { value: 2, selected: false },
+    ] as unknown as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(host, options, 2);
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+  });
 });
 
 describe('setSelectedOption', () => {

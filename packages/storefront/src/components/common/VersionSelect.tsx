@@ -1,4 +1,4 @@
-import { PButton, PSelect, PSelectOption } from '@porsche-design-system/components-react/ssr';
+import { PButton, PSelect, PSelectOption, type PSelectProps } from '@porsche-design-system/components-react/ssr';
 import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { isDevEnvironment } from '@/utils/isDev';
 import { getMajorVersion } from '@/utils/pdsVersion';
@@ -8,7 +8,7 @@ type VersionSelectProps = {
 };
 
 export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
-  const onVersionChange = (version: string) => {
+  const onVersionChange = (version: PSelectProps['value']) => {
     const ver = version === pdsVersion.latest ? getMajorVersion(version) : version;
     window.location.href = `https://designsystem.porsche.com/v${ver}`;
   };

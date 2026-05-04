@@ -10,7 +10,7 @@ export type SelectOptgroup = HTMLPOptgroupElement;
 
 export type SelectChangeEventDetail = {
   name: string;
-  value: string | undefined;
+  value: string | number | undefined;
 };
 export type SelectToggleEventDetail = { open: boolean };
 
@@ -32,14 +32,17 @@ export const internalSelect = {
 export const selectOptionByValue = (
   host: HTMLElement,
   options: SelectOption[],
-  value: string | undefined,
+  value: string | number | null | undefined,
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
-  // Normalize option.value to string for comparison (option.value can be string | number),
-  // but preserve undefined so an option without a value can still match value === undefined.
+  // `null` is treated the same as `undefined` (no preselection / unset value).
+  const isValueUnset = value === undefined || value === null;
+  // option.value and the host value can each be string | number; compare via String() coercion
+  // so e.g. host value={42} matches an option with value="42" or value={42}. An option without
+  // a value only matches when the host value is also unset.
   const optionToSelect = options.find((option) =>
-    option.value === undefined ? value === undefined : String(option.value) === value
+    option.value === undefined ? isValueUnset : !isValueUnset && String(option.value) === String(value)
   );
 
   if (optionToSelect) {
@@ -48,7 +51,7 @@ export const selectOptionByValue = (
     return optionToSelect;
   }
 
-  if (value !== undefined && !preventWarning) {
+  if (!isValueUnset && !preventWarning) {
     consoleWarn(
       `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
       host
