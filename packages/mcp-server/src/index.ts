@@ -2,6 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { z } from 'zod';
+import { version } from '../package.json';
 
 const COMPONENT_NAMES = TAG_NAMES.map((tag) => tag.replace(/^p-/, ''));
 
@@ -25,7 +26,7 @@ const CATEGORIES = [
 const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
 
 const api = async <T = unknown>(method: 'GET' | 'POST', path: string, body?: Record<string, unknown>): Promise<T> => {
-  const url = `${API_BASE}${path}`;
+  const url = new URL(path, API_BASE);
 
   const res = await fetch(url, {
     method,
@@ -50,7 +51,7 @@ const textResult = (data: unknown) => {
 const server = new McpServer(
   {
     name: 'pds-mcp',
-    version: '1.0.0',
+    version: version,
   },
   {
     instructions: 'Porsche Design System (PDS) documentation server. Use the query tool to search the docs.',
