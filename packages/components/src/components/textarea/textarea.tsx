@@ -171,8 +171,7 @@ export class Textarea {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
