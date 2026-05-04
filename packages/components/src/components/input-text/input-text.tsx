@@ -242,7 +242,7 @@ export class InputText {
         loading={this.loading}
         initialLoading={this.initialLoading}
         // Intentionally not defined as prop in the interface since it's a global HTML attribute/prop and will cause typescript issues when optional
-        inputMode={this.host.inputMode}
+        {...(this.host.inputMode !== "" && { inputMode: this.host.inputMode })}
         {...(this.counter && {
           end: (
             <Fragment>
