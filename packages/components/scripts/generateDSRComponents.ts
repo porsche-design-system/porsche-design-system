@@ -624,7 +624,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
-          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue');
       } else if (tagName === 'p-input-password') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
