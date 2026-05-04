@@ -13,7 +13,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -64,7 +64,7 @@ const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   state: AllowedTypes.oneOf<SelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),

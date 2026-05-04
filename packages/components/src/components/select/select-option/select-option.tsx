@@ -1,5 +1,5 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,7 +13,7 @@ import { getComponentCss } from './select-option-styles';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
-  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
 };
 
