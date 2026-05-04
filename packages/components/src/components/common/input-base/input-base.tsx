@@ -128,7 +128,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           disabled={disabled}
           pattern={pattern}
           multiple={multiple}
-          inputMode={inputMode}
+          {...(inputMode !== undefined && { inputMode })}
           onInput={onInput}
           onChange={onChange}
           onBlur={onBlur}
