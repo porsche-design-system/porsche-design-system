@@ -1,5 +1,6 @@
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { version } from '@porsche-design-system/components/package.json';
 
 // Paths (resolved relative to the monorepo root)
 
@@ -59,3 +60,5 @@ export const rawStoriesContent: Record<string, string> = {};
 
 /** Caches generated story framework markup to avoid re-importing story modules */
 export const storiesCache: Record<string, Record<string, string>> = {};
+
+export const VERSION: string = version;

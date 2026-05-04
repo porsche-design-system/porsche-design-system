@@ -11,6 +11,7 @@ import {
   rawStoriesContent,
   SKIP_DIRECTORIES,
   sourceDir,
+  VERSION,
 } from './config.ts';
 import { loadComponentMeta, processContent } from './transform.ts';
 
@@ -203,7 +204,7 @@ const deriveMetadataAttributes = (relativePath: string): Record<string, BedrockM
   const attrs: Record<string, BedrockMetadataAttribute> = {
     category: stringAttr(category),
     documentPath: stringAttr(relativePath),
-    version: stringAttr('3.33.0'),
+    version: stringAttr(VERSION),
   };
 
   if (category === 'components' && segments.length >= 2 && !segments[1].startsWith('_')) {
