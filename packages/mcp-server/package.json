@@ -1,8 +1,21 @@
 {
   "name": "@porsche-design-system/mcp-server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://designsystem.porsche.com",
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "mcp",
+    "server",
+    "model",
+    "context",
+    "protocol"
+  ],
   "bin": {
     "pds-mcp-server": "./dist/index.js"
   },
