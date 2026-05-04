@@ -20,8 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Input Text`, `Input Number`: extended types of `value` prop to allow `number | null`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
-- `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`: extended types
-  of `value` prop to allow `null` ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`, `Textarea`:
+  extended types of `value` prop to allow `null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 
 ### Fixed
 
