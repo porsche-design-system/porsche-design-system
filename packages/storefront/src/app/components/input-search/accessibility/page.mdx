@@ -65,9 +65,11 @@ For a search field that controls a separate list of suggestions, set the `aria` 
 expected semantics supported by this component, for example:
 
 - `role: 'combobox'`
-- `aria-controls` referring to the id of the associated listbox (or other controlled region)
+- `aria-controls` referring to the id of the associated listbox (or other controlled region). Hint: currently not
+supported across shadow DOM boundaries
 - `aria-expanded` reflecting open/closed state
-- `aria-haspopup` / `aria-autocomplete` as required by your pattern
+- `aria-haspopup` indicating the presence of a popup (e.g. `listbox`)
+- `aria-autocomplete` as required by your pattern
 
 Associate the suggestion list and keyboard interaction in the host application according to the
 [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) you implement there.
@@ -79,8 +81,6 @@ define (IDREF) relationships between elements across different shadow DOMs or sh
 
 | ARIA                    | Support |
 | ----------------------- | ------- |
-| `aria-labelledby`       | 🚫      |
-| `aria-describedby`      | 🚫      |
 | `aria-owns`             | 🚫      |
 | `aria-activedescendant` | 🚫      |
 
