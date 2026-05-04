@@ -213,6 +213,26 @@ describe('onValueChange (coercion to string)', () => {
     expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
   });
 
+  it("should call setFormValue('') (never undefined) when value is undefined", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = undefined;
+    component.onValueChange();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(undefined);
+  });
+
+  it('should sync inputElement.value with empty string when value is undefined', () => {
+    const component = initComponent();
+    component['inputElement'].value = 'old';
+
+    component.value = undefined;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('');
+  });
+
   it('should call setFormValue with String(value) when value is a number', () => {
     const component = initComponent();
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);

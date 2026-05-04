@@ -143,7 +143,7 @@ export class InputNumber {
 
   // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
   private get parsedValue(): string {
-    return this.value === null ? '' : String(this.value);
+    return String(this.value ?? '');
   }
 
   @Watch('value')
