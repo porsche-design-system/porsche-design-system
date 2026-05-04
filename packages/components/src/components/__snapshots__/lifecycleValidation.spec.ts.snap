@@ -267,7 +267,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -292,7 +292,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -314,7 +314,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -338,7 +338,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -361,7 +361,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "toggle": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -385,7 +385,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -409,7 +409,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -433,7 +433,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -455,7 +455,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -479,7 +479,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -501,7 +501,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
