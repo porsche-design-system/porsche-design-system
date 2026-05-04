@@ -18,8 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
-- Form components: extended types to allow `number | null` or `null` where applicable
+- `Input Text`, `Input Number`: extended types of `value` prop to allow `number | null`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`: extended types
+  of `value` prop to allow `null` ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 
 ### Fixed
 
