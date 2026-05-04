@@ -1,20 +1,78 @@
 name: 'Contribution'
 
+# Triggers:
+# - push: only on protected/release branches → full pipeline incl. release
+# - pull_request: every PR (incl. forks) → build + test always;
+#     - deploy/release are gated below to keep secrets out of fork PRs.
 on:
   push:
     branches:
       - main
-      - v[0-9]
-      - issue/*
-      - housekeeping/*
-      - release/*
+      - 'v[0-9]'      # v0–v9
+      - 'v[0-9][0-9]' # v10–v99
+  pull_request:
+
+# Principle of the least privilege at workflow level; individual jobs (incl. reusable workflows
+# called via `uses:`) elevate as needed via their own `permissions:` block.
+permissions:
+  contents: read
+
+# Cancel in-flight runs on the same ref when superseded by a newer commit — but only for
+# pull_request events. Never cancel a `push` run on main/v4: that would risk killing an
+# in-progress release.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  context:
+    name: 'Context'
+    # Resolve the storefront deployment target (used as both the storefront
+    # `basePath` at build time AND the gh-pages folder at deploy time) ONCE
+    # here, so build and deploy can never disagree.
+    #
+    # Strategy:
+    #   - pull_request → "pr-<number>"  (avoids "<n>/merge" with embedded slash
+    #                                    that github.ref_name would yield)
+    #   - push to main → "nightly"
+    #   - push to other branches (v*) → branch name
+    runs-on: ubuntu-latest
+    outputs:
+      storefront-slug: ${{ steps.resolve.outputs.storefront-slug }}
+      storefront-algolia: ${{ steps.resolve.outputs.storefront-algolia }}
+    steps:
+      - name: 'Resolve'
+        id: resolve
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            storefront_slug="pr-${{ github.event.pull_request.number }}"
+          elif [[ "${{ github.ref_name }}" == "main" ]]; then
+            storefront_slug="nightly"
+          else
+            storefront_slug="${{ github.ref_name }}"
+          fi
+          echo "storefront-slug=${storefront_slug}" >> "$GITHUB_OUTPUT"
+          echo "Resolved storefront deploy target: ${storefront_slug}"
+
+          # Algolia indexing only for production-ish refs (main + version
+          # branches) on push events, never PRs.
+          if [[ "${{ github.event_name }}" == "push" \
+                && ( "${{ github.ref_name }}" == "main" \
+                     || "${{ github.ref_name }}" == v* ) ]]; then
+            storefront_algolia="true"
+          else
+            storefront_algolia="false"
+          fi
+          echo "storefront-algolia=${storefront_algolia}" >> "$GITHUB_OUTPUT"
+          echo "Resolved storefront algolia indexing: ${storefront_algolia}"
   build:
     name: 'Build'
     uses: ./.github/workflows/build.yml
     with:
       image: mcr.microsoft.com/playwright:v1.59.1-jammy
+      storefront-slug: ${{ needs.context.outputs.storefront-slug }}
+    needs:
+      - context
   test:
     name: 'Test'
     uses: ./.github/workflows/test.yml
@@ -24,10 +82,20 @@ jobs:
       - build
   deploy:
     name: 'Deploy'
+    # Secrets are NOT available on pull_request events from forks, and we must
+    # not expose them. Run deploy only for:
+    #   - any push event (always from a trusted branch, see `on.push.branches`)
+    #   - pull_request events whose head is in this repository (internal PRs)
+    if: >-
+      github.event_name == 'push' ||
+      (github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]')
     uses: ./.github/workflows/deploy.yml
     with:
       image: mcr.microsoft.com/playwright:v1.59.1-jammy
+      storefront-slug: ${{ needs.context.outputs.storefront-slug }}
+      storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
+      - context
       - test
       - build
     secrets:
@@ -37,8 +105,18 @@ jobs:
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
   release:
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/v4'
     name: 'Release'
+    # Only on direct pushes to release branches — never on pull_request events.
+    if: >-
+      github.event_name == 'push' &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/v4')
+    # Reusable workflows inherit the caller's GITHUB_TOKEN scopes; per-job permissions
+    # in `release.yml` can only narrow, not widen. Grant the maximum scope needed here:
+    #   - contents: write → create GitHub releases + tags
+    #   - id-token: write → npm OIDC publish provenance
+    permissions:
+      contents: write
+      id-token: write
     uses: ./.github/workflows/release.yml
     with:
       image: mcr.microsoft.com/playwright:v1.59.1-jammy

@@ -1,0 +1,32 @@
+name: "(Core Team Only) New Task"
+description: Create a new task
+title: "Short description"
+labels: ["to be refined"]
+type: task
+projects: ["porsche-design-system/14"]
+body:
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Describe clearly the scope of the task.
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of Scope
+      description: List topics that are not part of this task.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Links, Figma, related issues, context.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Criteria
+    validations:
+      required: true
