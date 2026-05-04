@@ -290,7 +290,7 @@ export class Select {
   }
 
   public formResetCallback(): void {
-    this.value = this.defaultValue; // triggers value watcher
+    this.value = this.defaultValue; // triggers value watcher which syncs form value
   }
 
   public render(): JSX.Element {
@@ -573,7 +573,9 @@ export class Select {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedOption(this.selectOptions, selectedOption);
-      this.value = selectedOption.value;
+      // Normalize option.value (string | number | undefined) to string | undefined to keep
+      // `this.value` in a consistent shape and aligned with form submission semantics.
+      this.value = selectedOption.value === undefined ? undefined : String(selectedOption.value);
       this.selectedOption = selectedOption;
       this.emitUpdateEvent();
     }
@@ -598,7 +600,7 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
+      value: this.parsedValue,
       name: this.name,
     });
   };

@@ -82,6 +82,7 @@ describe('formResetCallback', () => {
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.formResetCallback();
+    component.onValueChange(); // simulate Stencil @Watch which doesn't fire in unit tests
     expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
     expect(component.value).toBe(defaultValue);
   });
@@ -168,6 +169,7 @@ describe('formResetCallback type preservation', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
+    component.onValueChange(); // simulate Stencil @Watch
 
     expect(component.value).toBe(7);
     // setFormValue is called with the normalized (string) form
@@ -181,6 +183,7 @@ describe('formResetCallback type preservation', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
+    component.onValueChange(); // simulate Stencil @Watch
 
     expect(component.value).toBeNull();
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
@@ -193,6 +196,7 @@ describe('formResetCallback type preservation', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
+    component.onValueChange(); // simulate Stencil @Watch
 
     expect(component.value).toBeUndefined();
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);

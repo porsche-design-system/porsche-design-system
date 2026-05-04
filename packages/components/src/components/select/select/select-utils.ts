@@ -10,7 +10,7 @@ export type SelectOptgroup = HTMLPOptgroupElement;
 
 export type SelectChangeEventDetail = {
   name: string;
-  value: string | number | undefined;
+  value: string | undefined;
 };
 export type SelectToggleEventDetail = { open: boolean };
 
@@ -36,7 +36,11 @@ export const selectOptionByValue = (
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
-  const optionToSelect = options.find((option) => option.value === value);
+  // Normalize option.value to string for comparison (option.value can be string | number),
+  // but preserve undefined so an option without a value can still match value === undefined.
+  const optionToSelect = options.find((option) =>
+    option.value === undefined ? value === undefined : String(option.value) === value
+  );
 
   if (optionToSelect) {
     optionToSelect.selected = true;
