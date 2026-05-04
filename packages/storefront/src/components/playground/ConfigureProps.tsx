@@ -72,17 +72,17 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   };
 
   const renderInput = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta) => {
-    // Components whose value prop accepts `string | number | null` (e.g. p-input-text) are emitted by
-    // generateComponentMeta as `allowedValues: ['string', 'number', 'null']`. For
-    // configurator UX we want to treat this exactly like a plain string prop and render a
-    // text input, not a select. Use a strict check so unrelated patterns such as
-    // p-segmented-control's `['string', 'number']` keep their existing array-branch handling.
+    // Components whose value prop accepts `string | null` (e.g. p-input-url) or
+    // `string | number | null` (e.g. p-input-text) are emitted by generateComponentMeta as
+    // `allowedValues: ['string', 'null']` or `['string', 'number', 'null']`. For configurator UX
+    // we want to treat these exactly like a plain string prop and render a text input, not a
+    // select. Use a strict check so unrelated patterns such as p-segmented-control's
+    // `['string', 'number']` keep their existing array-branch handling.
     const isNullableStringAllowedValues =
       Array.isArray(propMeta.allowedValues) &&
-      propMeta.allowedValues.length === 2 &&
       propMeta.allowedValues.includes('string' as never) &&
-      propMeta.allowedValues.includes('number' as never) &&
-      propMeta.allowedValues.includes('null' as never);
+      propMeta.allowedValues.includes('null' as never) &&
+      propMeta.allowedValues.every((value) => value === 'string' || value === 'number' || value === 'null');
 
     const allowedValues = isNullableStringAllowedValues ? 'string' : propMeta.allowedValues;
 
