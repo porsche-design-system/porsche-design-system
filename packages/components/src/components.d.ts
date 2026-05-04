@@ -3049,7 +3049,7 @@ export namespace Components {
           * The textarea value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
         /**
           * Handles wrapping behavior of elements.
           * @default 'soft'
@@ -7463,7 +7463,7 @@ declare namespace LocalJSX {
           * The textarea value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
         /**
           * Handles wrapping behavior of elements.
           * @default 'soft'
@@ -8198,7 +8198,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "state": TextareaState;
         "message": string;
         "hideLabel": string;
