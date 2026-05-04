@@ -1,7 +1,71 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`tailwind package content > snapshot for "/tailwindcss" 1`] = `
-"@theme {
+"/*
+     * Internal bridge variables (--_p-tw-*): a configured Tailwind prefix rewrites custom
+     * properties from @theme, but @utility rules keep fixed names such as
+     * var(--spacing-fluid-md). Utilities then resolve the wrong or unprefixed variables.
+     * Declaring stable --_p-tw-* here (outside @theme) matches @utility references to
+     * design tokens regardless of prefix. Semantic colors are updated again under @supports
+     * below where scheme classes mirror @layer theme for browsers without light-dark().
+     */
+:root {
+  --_p-tw-spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
+  --_p-tw-radius-sm: 4px;
+  --_p-tw-animate-skeleton: skeleton 1.2s cubic-bezier(0.25, 0.1, 0.25, 1)
+    infinite;
+  --_p-tw-font-weight-normal: 400;
+  --_p-tw-font-weight-semibold: 600;
+  --_p-tw-leading-normal: calc(6px + 2.125ex);
+  --_p-tw-font-porsche-next:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+  --_p-tw-text-2xs: 0.75rem;
+  --_p-tw-text-xs: 0.875rem;
+  --_p-tw-text-sm: 1rem;
+  --_p-tw-text-md: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  --_p-tw-text-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+  --_p-tw-text-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  --_p-tw-text-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
+  --_p-tw-text-3xl: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
+  --_p-tw-text-4xl: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
+  --_p-tw-text-5xl: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
+  --_p-tw-color-primary: light-dark(hsl(225 66.7% 1.2%), hsl(225 100% 99%));
+  --_p-tw-color-frosted: light-dark(
+    hsl(240 5% 70% / 0.148),
+    hsl(240 2% 43% / 0.228)
+  );
+  --_p-tw-color-frosted-strong: light-dark(
+    hsl(236 6.5% 42% / 0.236),
+    hsl(240 1.5% 61.8% / 0.302)
+  );
+}
+/* Same scheme overrides as @layer theme: keep internal colors aligned when light-dark() is unavailable. */
+@supports not (color: light-dark(white, black)) {
+  :root,
+  .scheme-light,
+  .scheme-only-light,
+  .scheme-normal,
+  .scheme-light-dark {
+    --_p-tw-color-primary: hsl(225 66.7% 1.2%);
+    --_p-tw-color-frosted: hsl(240 5% 70% / 0.148);
+    --_p-tw-color-frosted-strong: hsl(236 6.5% 42% / 0.236);
+  }
+  .scheme-dark,
+  .scheme-only-dark {
+    --_p-tw-color-primary: hsl(225 100% 99%);
+    --_p-tw-color-frosted: hsl(240 2% 43% / 0.228);
+    --_p-tw-color-frosted-strong: hsl(240 1.5% 61.8% / 0.302);
+  }
+  @media (prefers-color-scheme: dark) {
+    .scheme-light-dark {
+      --_p-tw-color-primary: hsl(225 100% 99%);
+      --_p-tw-color-frosted: hsl(240 2% 43% / 0.228);
+      --_p-tw-color-frosted-strong: hsl(240 1.5% 61.8% / 0.302);
+    }
+  }
+}
+
+@theme {
   /* Reset */
   --breakpoint-*: initial;
   --color-*: initial;
@@ -459,7 +523,7 @@ exports[`tailwind package content > snapshot for "/tailwindcss" 1`] = `
     0,
     var(
       --pds-internal-grid-outer-column,
-      calc(var(--pds-internal-grid-safe-zone) - var(--spacing-fluid-md))
+      calc(var(--pds-internal-grid-safe-zone) - var(--_p-tw-spacing-fluid-md))
     )
   );
   display: grid;
@@ -471,7 +535,7 @@ exports[`tailwind package content > snapshot for "/tailwindcss" 1`] = `
     ) [narrow-end basic-end extended-end wide-end] var(
       --_pds-grid-col
     ) [full-end];
-  gap: var(--spacing-fluid-md);
+  gap: var(--_p-tw-spacing-fluid-md);
   min-width: var(--pds-internal-grid-width-min, 320px);
   max-width: var(--pds-internal-grid-width-max, 2560px);
   box-sizing: content-box;
@@ -656,15 +720,15 @@ exports[`tailwind package content > snapshot for "/tailwindcss" 1`] = `
 
 /* Skeleton */
 @utility skeleton {
-  animation: var(--animate-skeleton);
+  animation: var(--_p-tw-animate-skeleton);
   display: block;
-  border-radius: var(--radius-sm);
+  border-radius: var(--_p-tw-radius-sm);
   background-color: transparent;
   background-image: linear-gradient(
     to right,
-    var(--color-frosted) 0%,
-    var(--color-frosted-strong) 50%,
-    var(--color-frosted) 100%
+    var(--_p-tw-color-frosted) 0%,
+    var(--_p-tw-color-frosted-strong) 50%,
+    var(--_p-tw-color-frosted) 100%
   );
   background-position: 0 0;
   background-size: 200% 100%;
@@ -672,123 +736,123 @@ exports[`tailwind package content > snapshot for "/tailwindcss" 1`] = `
 
 /* Typography: Text */
 @utility prose-text-2xs {
-  font: var(--font-weight-normal) var(--text-2xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-2xs) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-xs {
-  font: var(--font-weight-normal) var(--text-xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-xs) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-sm {
-  font: var(--font-weight-normal) var(--text-sm) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-sm) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-md) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-lg) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-2xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-3xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-4xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-text-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-5xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 
 /* Typography: Heading */
 @utility prose-heading-2xs {
-  font: var(--font-weight-semibold) var(--text-2xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-semibold) var(--_p-tw-text-2xs) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-xs {
-  font: var(--font-weight-semibold) var(--text-xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-semibold) var(--_p-tw-text-xs) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-sm {
-  font: var(--font-weight-semibold) var(--text-sm) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-semibold) var(--_p-tw-text-sm) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-md) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-lg) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-2xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-3xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-4xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-heading-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-5xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 
 /* Typography: Display */
 @utility prose-display-sm {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-3xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-display-md {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-4xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 @utility prose-display-lg {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: var(--_p-tw-font-weight-normal) var(--_p-tw-text-5xl) /
+    var(--_p-tw-leading-normal) var(--_p-tw-font-porsche-next);
+  color: var(--_p-tw-color-primary);
 }
 "
 `;
