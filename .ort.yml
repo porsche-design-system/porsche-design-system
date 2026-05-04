@@ -1,6 +1,13 @@
 analyzer:
   skip_excluded: true
   enabled_package_managers: [NPM]
+  package_managers:
+    NPM:
+      options:
+        # Required to match the `legacy-peer-deps=true` setting in `.npmrc`;
+        # without it, ORT surfaces transitive peer-dependency mismatches that
+        # npm itself ignores during install.
+        legacyPeerDeps: "true"
 
 excludes:
   # -----------------------------
@@ -67,3 +74,30 @@ excludes:
     - pattern: "peerDependencies"
       reason: PROVIDED_DEPENDENCY_OF
       comment: "Peer dependencies must be provided by the consuming project; not part of delivered artifacts."
+
+# -----------------------------
+# Issue resolutions
+# -----------------------------
+# `analyzer.package_managers.NPM.options.legacyPeerDeps: "true"` only controls how
+# ORT installs the dependency tree (equivalent to `npm install --legacy-peer-deps`).
+# After install, ORT still runs an `npm list`-style validation whose output surfaces
+# peer-dependency mismatches as ERROR issues. Those cannot be silenced via the
+# analyzer option, so we resolve them here — matching what npm itself ignores at
+# install time thanks to `legacy-peer-deps=true` in `.npmrc`.
+resolutions:
+  issues:
+    - message: "^invalid: .+ /project/node_modules/.+$"
+      reason: BUILD_TOOL_ISSUE
+      comment: "Transitive peer-dependency version mismatch reported by `npm list`. Ignored by npm install due to `legacy-peer-deps=true` in .npmrc; not relevant for distributed artifacts."
+
+    - message: "^missing: .+, required by .+$"
+      reason: BUILD_TOOL_ISSUE
+      comment: "Unmet (optional) peer dependency reported by `npm list`. Ignored by npm install due to `legacy-peer-deps=true` in .npmrc; not relevant for distributed artifacts."
+
+    - message: "^/project/packages/.+/node_modules/.+ /project/node_modules/.+$"
+      reason: BUILD_TOOL_ISSUE
+      comment: "Duplicate/hoisted package path reported by `npm list` in npm workspaces; not an actual dependency problem."
+
+    - message: "^karma-jasmine-html-reporter@.+ karma-jasmine@.+$"
+      reason: BUILD_TOOL_ISSUE
+      comment: "Peer-dependency host mismatch reported by `npm list` for the Angular test setup; only affects devDependencies and is tolerated via `legacy-peer-deps=true`."
