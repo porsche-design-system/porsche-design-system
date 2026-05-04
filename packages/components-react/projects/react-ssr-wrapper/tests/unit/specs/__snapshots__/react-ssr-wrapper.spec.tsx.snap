@@ -8927,7 +8927,7 @@ exports[`should render dsr component for PAiTag 1`] = `
   display: none !important;
 }
 abbr {
-  text-decoration: none;
+  all: unset;
 }
 div {
   display: flex;

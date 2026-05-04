@@ -31,7 +31,7 @@ export const getComponentCss = (theme: Theme): string => {
         }),
       },
       abbr: {
-        textDecoration: 'none',
+        all: 'unset',
       },
       div: {
         display: 'flex',
