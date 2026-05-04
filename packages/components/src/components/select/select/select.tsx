@@ -64,7 +64,7 @@ const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   state: AllowedTypes.oneOf<SelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -107,8 +107,8 @@ export class Select {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The selected value. */
-  @Prop({ mutable: true }) public value?: string;
+  /** The selected value. `null` is treated the same as `undefined` (no preselection). */
+  @Prop({ mutable: true }) public value?: string | number | null;
 
   /** The validation state. */
   @Prop() public state?: SelectState = 'none';
@@ -152,7 +152,7 @@ export class Select {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string;
+  private defaultValue: string | number | null | undefined;
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
   private inputSearchElement: HTMLPInputSearchElement;
@@ -172,6 +172,15 @@ export class Select {
     return !!(this.filter || this.filterSlot);
   }
 
+  /**
+   * Normalizes the public `value` prop to `string | undefined` for internal use.
+   * - `null` is treated as `undefined` (no preselection).
+   * - numbers are coerced to strings to match `p-select-option` value attributes.
+   */
+  private get parsedValue(): string | undefined {
+    return this.value === null || this.value === undefined ? undefined : String(this.value);
+  }
+
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
     e.stopPropagation();
@@ -186,11 +195,11 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
+        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
       }
       this.preventOptionUpdate = false;
     }
@@ -242,10 +251,11 @@ export class Select {
   }
 
   public componentWillLoad(): void {
+    // Preserve the original value (incl. number/null) so a form reset restores the exact same type
     this.defaultValue = this.value;
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
     this.updateOptions();
-    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
+    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
   }
 
   public componentDidLoad(): void {
@@ -280,8 +290,7 @@ export class Select {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public render(): JSX.Element {
@@ -409,7 +418,7 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
+    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue, !!this.filterSlot);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
       this.selectedOption = selectedOption;

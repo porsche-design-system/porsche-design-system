@@ -121,6 +121,38 @@ describe('updateSelectOptions', () => {
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
   });
+
+  it('should match a numeric option.value against a stringified value', () => {
+    const host = document.createElement('p-select');
+    const options = [
+      { value: 0, selected: false },
+      { value: 1, selected: false },
+      { value: 2, selected: false },
+    ] as unknown as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(host, options, '1');
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+    expect(options[2].selected).toBe(false);
+  });
+
+  it('should match numeric option.value=0 against value="0" (no falsy regression)', () => {
+    const host = document.createElement('p-select');
+    const options = [{ value: 0, selected: false }] as unknown as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(host, options, '0');
+    expect(options[0].selected).toBe(true);
+  });
+
+  it('should not match an option with undefined value when value is "undefined" string', () => {
+    const host = document.createElement('p-select');
+    const options = [
+      { value: undefined, selected: false },
+      { value: 'undefined', selected: false },
+    ] as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(host, options, 'undefined');
+    // option with the literal string 'undefined' should match, not the one with undefined value
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+  });
 });
 
 describe('setSelectedOption', () => {

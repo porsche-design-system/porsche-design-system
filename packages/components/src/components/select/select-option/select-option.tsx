@@ -13,7 +13,7 @@ import { getComponentCss } from './select-option-styles';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
 };
 
@@ -27,8 +27,8 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. */
-  @Prop() public value?: string;
+  /** The option value. Numbers are coerced to strings internally. */
+  @Prop() public value?: string | number;
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
@@ -49,7 +49,7 @@ export class SelectOption {
       <Host
         onClick={!isDisabled && this.onClick}
         role="option"
-        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, !!this.value)}
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, this.value !== undefined)}
       >
         <div
           class={{

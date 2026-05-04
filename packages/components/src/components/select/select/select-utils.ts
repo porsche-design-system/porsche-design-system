@@ -10,7 +10,7 @@ export type SelectOptgroup = HTMLPOptgroupElement;
 
 export type SelectChangeEventDetail = {
   name: string;
-  value: string;
+  value: string | number | undefined;
 };
 export type SelectToggleEventDetail = { open: boolean };
 
@@ -32,7 +32,7 @@ export const internalSelect = {
 export const selectOptionByValue = (
   host: HTMLElement,
   options: SelectOption[],
-  value: string,
+  value: string | undefined,
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
