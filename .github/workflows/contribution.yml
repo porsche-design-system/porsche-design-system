@@ -38,6 +38,9 @@ jobs:
   release:
     if: github.ref == 'refs/heads/main'
     name: 'Release'
+    permissions:
+      id-token: write
+      contents: read
     uses: ./.github/workflows/release.yml
     with:
       image: mcr.microsoft.com/playwright:v1.56.0-jammy
