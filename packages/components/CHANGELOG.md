@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- Form components: extended types to allow `number | null` or `null` where applicable
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+
 ### Fixed
 
 - `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
