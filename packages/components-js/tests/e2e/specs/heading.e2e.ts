@@ -1,13 +1,7 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
-import {
-  getLifecycleStatus,
-  getProperty,
-  setContentWithDesignSystem,
-  setProperty,
-  waitForStencilLifecycle,
-} from '../helpers';
 import type { BreakpointCustomizable, HeadingSize, HeadingTag } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
+import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 const initHeading = (
   page: Page,
