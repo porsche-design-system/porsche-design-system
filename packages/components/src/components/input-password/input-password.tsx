@@ -171,7 +171,7 @@ export class InputPassword {
   }
 
   public formStateRestoreCallback(state: string | null): void {
-    this.value = state; // browser may hand back null for empty restored state
+    this.value = state;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

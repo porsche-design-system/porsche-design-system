@@ -180,7 +180,7 @@ export class Textarea {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
