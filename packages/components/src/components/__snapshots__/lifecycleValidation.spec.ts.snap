@@ -903,7 +903,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "rows": "number",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
   "wrap": "oneOf",
 }
 `;
