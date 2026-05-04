@@ -150,7 +150,7 @@ export class Textarea {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string;
+  private defaultValue: string | null;
   private textAreaElement: HTMLTextAreaElement;
 
   // Native input.value is always a string; coerce null/undefined to mirror native behavior.
