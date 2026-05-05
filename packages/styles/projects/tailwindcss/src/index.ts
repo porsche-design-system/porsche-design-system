@@ -113,6 +113,10 @@ import {
   easeInOut,
   easeOut,
   fontPorscheNext,
+  fontPorscheNextJa,
+  fontPorscheNextKo,
+  fontPorscheNextZhHans,
+  fontPorscheNextZhHant,
   fontWeightBold,
   fontWeightNormal,
   fontWeightSemibold,
@@ -428,6 +432,24 @@ export const getTailwindcssTheme = () => {
         --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
       }
     }
+  }
+}
+
+@layer theme {
+  :root:lang(zh-Hans), :root:lang(zh-CN), :root:lang(zh-SG) {
+    --font-porsche-next: ${fontPorscheNextZhHans};
+  }
+
+  :root:lang(zh-Hant), :root:lang(zh-TW), :root:lang(zh-HK), :root:lang(zh-MO) {
+    --font-porsche-next: ${fontPorscheNextZhHant};
+  }
+
+  :root:lang(ja) {
+    --font-porsche-next: ${fontPorscheNextJa};
+  }
+
+  :root:lang(ko) {
+    --font-porsche-next: ${fontPorscheNextKo};
   }
 }
 
