@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: `aria` prop provides additional context for screen reader
   ([#4321](https://github.com/porsche-design-system/porsche-design-system/pull/4321))
 
+### Changed
+
+- 'Wordmark', 'Model Signature': Deprecate `size` and allow custom sizing via CSS Variables
+  ([#4373](https://github.com/porsche-design-system/porsche-design-system/issues/4373))
+
 ## [4.0.0] - 2026-04-29
 
 ## [4.0.0-rc.2] - 2026-04-28
