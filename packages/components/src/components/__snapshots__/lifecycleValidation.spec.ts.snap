@@ -367,6 +367,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-search > propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "autoComplete": "string",
   "clear": "boolean",
   "compact": "boolean",

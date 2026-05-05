@@ -30,7 +30,7 @@ import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInput
 import { InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
 import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
-import { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+import { InputSearchAriaAttribute, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 import { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
@@ -92,7 +92,7 @@ export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInput
 export { InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
 export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
-export { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+export { InputSearchAriaAttribute, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 export { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
@@ -1342,6 +1342,10 @@ export namespace Components {
         "value"?: string;
     }
     interface PInputSearch {
+        /**
+          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+         */
+        "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
@@ -5573,6 +5577,10 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
+          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+         */
+        "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
+        /**
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
@@ -7818,6 +7826,7 @@ declare namespace LocalJSX {
         "state": InputSearchState;
         "message": string;
         "hideLabel": string;
+        "aria": SelectedAriaAttributes<InputSearchAriaAttribute>;
     }
     interface PInputTelAttributes {
         "label": string;
