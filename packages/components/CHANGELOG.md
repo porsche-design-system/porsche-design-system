@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.1.0-rc.0] - 2026-05-05
+
 ### Added
 
 - `Input Search`: `aria` prop provides additional context for screen reader
