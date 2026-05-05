@@ -2,6 +2,11 @@ import type { RouteType } from '../routes';
 
 export * from './CoreClassNames';
 export * from './Events';
+
+/* Auto Generated Below */
+/* eslint-disable import/first */
+export * from './generated/CoreInitializer';
+export * from './generated/Overview';
 export * from './LifecycleOverlapping';
 export * from './ModalFocusCycle';
 export * from './StencilLifecycles';
@@ -9,11 +14,8 @@ export * from './Table';
 export * from './ThemeInjection';
 export * from './Utilities';
 
-/* Auto Generated Below */
-/* eslint-disable import/first */
-export * from './generated/CoreInitializer';
-export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
+import { AiTagPage } from './generated/AiTag';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
 import { BannerErrorPage } from './generated/BannerError';
@@ -248,6 +250,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Accordion',
     path: '/accordion',
     element: <AccordionPage />,
+  },
+  {
+    name: 'Ai Tag',
+    path: '/ai-tag',
+    element: <AiTagPage />,
   },
   {
     name: 'Banner',

@@ -1,6 +1,8 @@
 import {
   PAccordion,
   type PAccordionProps,
+  PAiTag,
+  type PAiTagProps,
   PBanner,
   type PBannerProps,
   PButton,
@@ -57,18 +59,14 @@ import {
   type PIconProps,
   PInlineNotification,
   type PInlineNotificationProps,
-  PInputEmail,
-  type PInputEmailProps,
-  PInputNumber,
-  type PInputNumberProps,
   PInputDate,
   type PInputDateProps,
+  PInputEmail,
+  type PInputEmailProps,
   PInputMonth,
   type PInputMonthProps,
-  PInputWeek,
-  type PInputWeekProps,
-  PInputTime,
-  type PInputTimeProps,
+  PInputNumber,
+  type PInputNumberProps,
   PInputPassword,
   type PInputPasswordProps,
   PInputSearch,
@@ -77,8 +75,12 @@ import {
   type PInputTelProps,
   PInputText,
   type PInputTextProps,
+  PInputTime,
+  type PInputTimeProps,
   PInputUrl,
   type PInputUrlProps,
+  PInputWeek,
+  type PInputWeekProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -112,9 +114,9 @@ import {
   PRadioButtonWrapper,
   type PRadioButtonWrapperProps,
   PRadioGroup,
-  type PRadioGroupProps,
   PRadioGroupOption,
   type PRadioGroupOptionProps,
+  type PRadioGroupProps,
   PScroller,
   type PScrollerProps,
   PSegmentedControl,
@@ -271,6 +273,7 @@ export type EventConfig = {
 
 export type PropTypeMapping = {
   'p-accordion': PAccordionProps;
+  'p-ai-tag': PAiTagProps;
   'p-banner': PBannerProps;
   'p-button': PButtonProps;
   'p-button-group': PButtonGroupProps;
@@ -363,6 +366,7 @@ export type PropTypeMapping = {
 
 const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-accordion': PAccordion,
+  'p-ai-tag': PAiTag,
   'p-banner': PBanner,
   'p-button': PButton,
   'p-button-group': PButtonGroup,

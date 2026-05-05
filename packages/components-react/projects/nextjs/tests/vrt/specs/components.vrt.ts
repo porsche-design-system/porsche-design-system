@@ -26,7 +26,7 @@ const components = fileNames
   });
 
 test('should have certain amount of components', () => {
-  expect(components.length).toBe(73);
+  expect(components.length).toBe(74);
 });
 
 for (const component of components) {

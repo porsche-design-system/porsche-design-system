@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -86,6 +87,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -200,6 +202,20 @@ export namespace Components {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+    }
+    interface PAiTag {
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3625,6 +3641,12 @@ declare global {
         prototype: HTMLPAccordionElement;
         new (): HTMLPAccordionElement;
     };
+    interface HTMLPAiTagElement extends Components.PAiTag, HTMLStencilElement {
+    }
+    var HTMLPAiTagElement: {
+        prototype: HTMLPAiTagElement;
+        new (): HTMLPAiTagElement;
+    };
     interface HTMLPBannerElementEventMap {
         "dismiss": void;
     }
@@ -4709,6 +4731,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
+        "p-ai-tag": HTMLPAiTagElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
@@ -4846,6 +4869,20 @@ declare namespace LocalJSX {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+    }
+    interface PAiTag {
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -8466,6 +8503,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
+        "p-ai-tag": PAiTag;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
@@ -8566,6 +8604,7 @@ declare module "@stencil/core" {
              * @controlled {"props": ["open"], "event": "update"}
              */
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
+            "p-ai-tag": LocalJSX.PAiTag & JSXBase.HTMLAttributes<HTMLPAiTagElement>;
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              */
