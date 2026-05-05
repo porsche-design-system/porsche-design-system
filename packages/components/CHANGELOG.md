@@ -14,16 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Wordmark`, `Model Signature`: Deprecate `size` and allow custom sizing via CSS Variables
+  ([#4373](https://github.com/porsche-design-system/porsche-design-system/pull/4393))
+
+## [4.1.0-rc.0] - 2026-05-05
+
 ### Added
 
 - `Input Search`: `aria` prop provides additional context for screen reader
   ([#4321](https://github.com/porsche-design-system/porsche-design-system/pull/4321))
 
-### Changed
+### Fixed
 
--
-- `Wordmark`, `Model Signature`: Deprecate `size` and allow custom sizing via CSS Variables
-  ([#4373](https://github.com/porsche-design-system/porsche-design-system/pull/4393))
+- `Tabs Bar`: scrolling page down when below the fold
+  ([#4392](https://github.com/porsche-design-system/porsche-design-system/pull/4392))
 
 ## [4.0.0] - 2026-04-29
 

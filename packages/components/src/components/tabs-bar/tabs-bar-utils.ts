@@ -190,6 +190,26 @@ export const animateBar = (
     .catch(() => {});
 };
 
+/**
+ * Horizontally centers the active tab within the scroller's inner scroll area.
+ *
+ * Implemented via `scrollTo` on the inner `.scroll` element instead of `Element.scrollIntoView`
+ * to guarantee that only the horizontal scroll position of the tabs-bar changes.
+ *
+ * Why we don't use `scrollIntoView({ block: 'nearest', inline: 'center', container: 'nearest' })`:
+ * - The `container: 'nearest'` option (Scroll-into-View Container, part of the CSSOM View
+ *   "scroll-into-view" proposal) is currently only implemented in Chromium. It scopes the
+ *   scroll to the nearest scrollable ancestor, which is exactly the behavior we want.
+ * - In Firefox and Safari the option is silently ignored. The browser then walks up every
+ *   scrollable ancestor (including the document) to bring the tab into view, so when the
+ *   tabs-bar is initially below the fold the whole page scrolls vertically. `block: 'nearest'`
+ *   does not prevent this because the tab is genuinely out of view in the document.
+ *
+ * TODO: switch back to `scrollIntoView({ ..., container: 'nearest' })` once Firefox and Safari
+ *  ship the `container` option (track https://caniuse.com/?search=scroll-into-view-container).
+ *  That implementation is more robust (handles RTL, snap points, scroll-padding, sub-pixel
+ *  rounding, etc.) than computing `scrollLeft` ourselves.
+ */
 export const scrollTabIntoView = (
   newTabIndex: number | undefined,
   scroller: HTMLElement | undefined,
@@ -206,12 +226,24 @@ export const scrollTabIntoView = (
     return;
   }
 
-  tabs[sanitizedNewTabIndex].scrollIntoView({
+  // TODO: would be better to expose `scrollLeft` (or a `scrollToTab` method) on `p-scroller`
+  const scrollArea = scroller.shadowRoot?.querySelector('.scroll') as HTMLElement | null;
+  if (!scrollArea) {
+    return;
+  }
+
+  const tab = tabs[sanitizedNewTabIndex];
+  const tabRect = tab.getBoundingClientRect();
+  const areaRect = scrollArea.getBoundingClientRect();
+  // Delta between tab center and visible scroll-area center (works for both LTR and RTL,
+  // since `scrollLeft` is negative in RTL and `scrollTo` clamps to the valid range).
+  const delta = tabRect.left + tabRect.width / 2 - (areaRect.left + areaRect.width / 2);
+  const targetLeft = scrollArea.scrollLeft + delta;
+
+  scrollArea.scrollTo({
+    left: targetLeft,
     behavior: isSmooth ? 'smooth' : 'instant',
-    block: 'nearest',
-    inline: 'center',
-    container: 'nearest',
-  } as ScrollIntoViewOptions);
+  } as ScrollToOptions);
 };
 
 export const isTabList = (tabs: HTMLElement[]): boolean => {

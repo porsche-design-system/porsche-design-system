@@ -23,7 +23,7 @@ jobs:
       - name: 'Production Builds'
         run: npm run build-prod
       - name: "Login"
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ${{ vars.OSO_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
