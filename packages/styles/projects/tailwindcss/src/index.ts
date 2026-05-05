@@ -208,7 +208,7 @@ export const getTailwindcssTheme = () => {
 
   /* Typography */
   --font-porsche-next: ${fontPorscheNext};
-  --font-sans: var(--font-porsche-next);
+  --font-sans: --theme(--font-porsche-next);
 
   --font-weight-normal: ${fontWeightNormal};
   --font-weight-semibold: ${fontWeightSemibold};
@@ -283,11 +283,11 @@ export const getTailwindcssTheme = () => {
 
   /* Shadow */
   --shadow-sm: ${shadowSm};
-  --shadow-low: var(--shadow-sm); /* alias (deprecated) */
+  --shadow-low: --theme(--shadow-sm); /* alias (deprecated) */
   --shadow-md: ${shadowMd};
-  --shadow-medium: var(--shadow-md); /* alias (deprecated) */
+  --shadow-medium: --theme(--shadow-md); /* alias (deprecated) */
   --shadow-lg: ${shadowLg};
-  --shadow-high: var(--shadow-lg); /* alias (deprecated) */
+  --shadow-high: --theme(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
   --default-outline-width: 2px;
@@ -300,16 +300,16 @@ export const getTailwindcssTheme = () => {
 
   --default-transition-duration: ${durationSm};
   --transition-duration-sm: ${durationSm};
-  --transition-duration-short: var(--transition-duration-sm); /* alias (deprecated) */
+  --transition-duration-short: --theme(--transition-duration-sm); /* alias (deprecated) */
   --transition-duration-md: ${durationMd};
-  --transition-duration-moderate: var(--transition-duration-md); /* alias (deprecated) */
+  --transition-duration-moderate: --theme(--transition-duration-md); /* alias (deprecated) */
   --transition-duration-lg: ${durationLg};
-  --transition-duration-long: var(--transition-duration-lg); /* alias (deprecated) */
+  --transition-duration-long: --theme(--transition-duration-lg); /* alias (deprecated) */
   --transition-duration-xl: ${durationXl};
-  --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
+  --transition-duration-very-long: --theme(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-xl) var(--ease-in-out) infinite;
+  --animate-skeleton: skeleton --theme(--transition-duration-xl) --theme(--ease-in-out) infinite;
 
   @keyframes skeleton {
     from {
@@ -473,10 +473,10 @@ export const getTailwindcssTheme = () => {
 /* Grid */
 @utility grid-template {
   --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
-  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - var(--spacing-fluid-md))));
+  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - --theme(--spacing-fluid-md))));
   display: grid;
   grid-template-columns: [full-start] var(--_pds-grid-col) [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr)) [narrow-end basic-end extended-end wide-end] var(--_pds-grid-col) [full-end];
-  gap: var(--spacing-fluid-md);
+  gap: --theme(--spacing-fluid-md);
   min-width: var(--pds-internal-grid-width-min, 320px);
   max-width: var(--pds-internal-grid-width-max, 2560px);
   box-sizing: content-box;
@@ -645,110 +645,110 @@ export const getTailwindcssTheme = () => {
 
 /* Skeleton */
 @utility skeleton {
-  animation: var(--animate-skeleton);
+  animation: --theme(--animate-skeleton);
   display: block;
-  border-radius: var(--radius-sm);
+  border-radius: --theme(--radius-sm);
   background-color: transparent;
-  background-image: linear-gradient(to right, var(--color-frosted) 0%, var(--color-frosted-strong) 50%, var(--color-frosted) 100%);
+  background-image: linear-gradient(to right, --theme(--color-frosted) 0%, --theme(--color-frosted-strong) 50%, --theme(--color-frosted) 100%);
   background-position: 0 0;
   background-size: 200% 100%;
 }
 
 /* Typography: Text */
 @utility prose-text-2xs {
-  font: var(--font-weight-normal) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-xs {
-  font: var(--font-weight-normal) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-sm {
-  font: var(--font-weight-normal) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-sm) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-md) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-lg) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 
 /* Typography: Heading */
 @utility prose-heading-2xs {
-  font: var(--font-weight-semibold) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-2xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-xs {
-  font: var(--font-weight-semibold) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-sm {
-  font: var(--font-weight-semibold) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-sm) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-md) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-lg) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 
 /* Typography: Display */
 @utility prose-display-sm {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-display-md {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-display-lg {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }`;
 };
