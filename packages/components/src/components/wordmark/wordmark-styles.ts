@@ -9,7 +9,7 @@ import type { WordmarkSize } from './wordmark-utils';
  */
 const cssVariableWidth = '--p-wordmark-width';
 /**
- * @css-variable {"name": "--p-wordmark-height", "description": "Defines the width of the wordmark. Overrides the `size` property when set.", "defaultValue": ""}
+ * @css-variable {"name": "--p-wordmark-height", "description": "Defines the height of the wordmark. Overrides the `size` property when set.", "defaultValue": ""}
  */
 const cssVariableHeight = '--p-wordmark-height';
 
