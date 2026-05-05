@@ -5,9 +5,13 @@ import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
 
 /**
- * @css-variable {"name": "--p-wordmark-size", "description": "Defines the width and height of the wordmark. Overrides the `size` property when set.", "defaultValue": ""}
+ * @css-variable {"name": "--p-wordmark-width", "description": "Defines the width of the wordmark. Overrides the `size` property when set.", "defaultValue": ""}
  */
-const cssVarSize = '--p-wordmark-size';
+const cssVariableWidth = '--p-wordmark-width';
+/**
+ * @css-variable {"name": "--p-wordmark-height", "description": "Defines the width of the wordmark. Overrides the `size` property when set.", "defaultValue": ""}
+ */
+const cssVariableHeight = '--p-wordmark-height';
 
 export const getComponentCss = (size: WordmarkSize): string => {
   const sizingStyles: Styles = {
@@ -31,10 +35,11 @@ export const getComponentCss = (size: WordmarkSize): string => {
           maxHeight: '100%',
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
           ...(size !== 'inherit' && {
-            height: `var(${cssVarSize}, ${defaultHeight})`,
+            height: `var(${cssVariableHeight}, ${defaultHeight})`,
+            width: `var(${cssVariableWidth}, auto)`,
             // workaround for Safari to optimize image rendering
             '@supports (height: round(down, 1px, 1px))': {
-              height: `var(${cssVarSize}, ${defaultHeightSafari})`,
+              height: `var(${cssVariableHeight}, ${defaultHeightSafari})`,
             },
           }),
           ...hostHiddenStyles,
