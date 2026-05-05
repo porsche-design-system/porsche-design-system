@@ -2,13 +2,10 @@ import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import {
   CSS_ANIMATION_DURATION,
-  getAttribute,
   getElementStyle,
   getLifecycleStatus,
   getOffsetWidth,
-  getProperty,
   getScrollLeft,
-  SCROLL_PERCENTAGE,
   setContentWithDesignSystem,
   setProperty,
   sleep,

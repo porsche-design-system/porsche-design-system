@@ -31,7 +31,7 @@ import {
   colorSurface,
   colorWarning,
   colorWarningFrosted,
-  colorWarningFrostedSoftDark,
+  colorWarningFrostedSoft,
   colorWarningLow,
   colorWarningMedium,
   durationLg,
@@ -110,7 +110,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-color-warning-low: ${colorWarningLow};
   --p-color-warning-medium: ${colorWarningMedium};
   --p-color-warning-frosted: ${colorWarningFrosted};
-  --p-color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+  --p-color-warning-frosted-soft: ${colorWarningFrostedSoft};
   --p-color-error: ${colorError};
   --p-color-error-low: ${colorErrorLow};
   --p-color-error-medium: ${colorErrorMedium};

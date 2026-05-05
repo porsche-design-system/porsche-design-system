@@ -7,6 +7,14 @@ on:
         description: 'Docker image to be used in workflow.'
         required: true
         type: string
+      storefront-slug:
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the gh-pages folder; must match the storefront basePath baked in at build time.'
+        required: true
+        type: string
+      storefront-algolia:
+        description: 'Whether to (re)index the storefront on Algolia. Resolved once in the caller (contribution.yml → context job); should be "true" only for production-ish refs (main + version branches), never PRs.'
+        required: true
+        type: string
     secrets:
       linode-aws-access-key-id:
         description: 'AWS Access Key ID for Linode / Akamai CDN.'
@@ -113,7 +121,7 @@ jobs:
   akamai-cdn-assets-smoke:
     name: 'Akamai CDN (Assets) Smoke'
     needs:
-     - akamai-cdn-assets
+      - akamai-cdn-assets
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -151,8 +159,13 @@ jobs:
         uses: ./.github/actions/gh-pages
         with:
           source: ./packages/storefront/dist
-          target: ${{ github.ref_name == 'main' && 'nightly' || github.ref_name }}
-          algolia: ${{ (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && 'true' || 'false' }}
+          # Target is resolved once in the caller (contribution.yml → context job)
+          # and passed through, so the gh-pages folder always matches the
+          # storefront basePath that was baked in at build time.
+          target: ${{ inputs.storefront-slug }}
+          # Algolia indexing flag is also resolved once in the caller
+          # (contribution.yml → context job) and passed through.
+          algolia: ${{ inputs.storefront-algolia }}
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}

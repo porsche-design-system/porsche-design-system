@@ -20,7 +20,7 @@ import {
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
 
-const cssVarBackgroundColor = '--_a';
+const cssVarBackgroundColor = '--_p-dialog-a';
 
 export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle => {
   return {

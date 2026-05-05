@@ -3,8 +3,8 @@ import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getKeyframesMobile()', () => {
   it.each<[KeyframesDirection, string]>([
-    ['in', '--p-bottom-var'],
-    ['out', '--p-bottom-var'],
+    ['in', '--_p-toast-a'],
+    ['out', '--_p-toast-a'],
   ])('should return correct JssStyle for direction: %s and bottomVar: %s', (direction, bottomVar) => {
     expect(getKeyframesMobile(direction, bottomVar)).toMatchSnapshot();
   });

@@ -38,7 +38,7 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
-export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
+export const cssVarInternalInputBaseScaling = '--_p-input-base-a';
 
 export const getFunctionalComponentInputBaseStyles = (
   isDisabled: boolean,

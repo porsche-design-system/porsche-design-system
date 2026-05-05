@@ -8,7 +8,7 @@ import {
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
-export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
+export const cssVarInternalOptgroupScaling = '--_p-optgroup-a';
 
 const paddingBlock = `calc(11.2px * (var(${cssVarInternalOptgroupScaling}) - 0.64285714) + 4px)`;
 const paddingInline = `calc(16.8px * (var(${cssVarInternalOptgroupScaling}) - 0.64285714) + 6px)`;
@@ -22,8 +22,8 @@ export const getComponentCss = (isDisabled: boolean): string => {
         ...hostHiddenStyles,
       }),
       '::slotted(*)': {
-        '--p-internal-select-option-padding-left': paddingSlottedInlineStart,
-        '--p-internal-multi-select-option-padding-left': paddingSlottedInlineStart,
+        '--_p-select-option-b': paddingSlottedInlineStart,
+        '--_p-multi-select-option-b': paddingSlottedInlineStart,
       },
       '[role="group"]': {
         display: 'flex',

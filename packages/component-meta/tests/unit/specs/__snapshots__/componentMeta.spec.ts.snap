@@ -171,7 +171,7 @@ exports[`should match snapshot 1`] = `
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
@@ -244,13 +244,15 @@ exports[`should match snapshot 1`] = `
       },
     },
     "slotsMeta": {
+      "": {
+        "description": "Default slot for the banner description content.",
+      },
       "description": {
-        "description": "Defines the description used in the banner. Can be used alternatively to the description prop. Can be used for rich content.",
-        "hasAltProp": true,
+        "description": "Deprecated: Use the default slot instead.",
+        "isDeprecated": true,
       },
       "heading": {
-        "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.",
-        "hasAltProp": true,
+        "description": "Defines the heading of the banner. Can be used as an alternative to the \`heading\` prop for rich content.",
       },
     },
     "styling": "jss",
@@ -3295,7 +3297,7 @@ exports[`should match snapshot 1`] = `
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
@@ -3660,10 +3662,10 @@ exports[`should match snapshot 1`] = `
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot to render a description. Can be used to render rich markup.",
+        "description": "Default slot for the inline notification description content.",
       },
       "heading": {
-        "description": "Shows a heading. Can be used to render rich markup.",
+        "description": "Defines the heading of the inline notification. Can be used as an alternative to the \`heading\` prop for rich content.",
       },
     },
     "styling": "jss",
@@ -4645,7 +4647,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4659,6 +4661,20 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-autocomplete": "string",
+          "aria-controls": "string",
+          "aria-expanded": "string",
+          "aria-haspopup": "string",
+          "aria-label": "string",
+          "role": "string",
+        },
+        "defaultValue": null,
+        "description": "Additional ARIA attributes for the native search input (e.g. \`role="combobox"\`, \`aria-expanded\`).",
+        "isAria": true,
+        "type": "InputSearchAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -9735,9 +9751,13 @@ exports[`should match snapshot 1`] = `
           "primary",
           "secondary",
           "info",
+          "info-frosted",
           "warning",
+          "warning-frosted",
           "success",
+          "success-frosted",
           "error",
+          "error-frosted",
         ],
         "defaultValue": "secondary",
         "description": "Background color variations.",
@@ -10241,7 +10261,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": true,
     "nestedComponents": [
-      "p-icon",
       "p-button",
     ],
     "propsMeta": {

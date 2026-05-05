@@ -8,4 +8,4 @@ export const cssVarCheckboxIconColor = '--p-checkbox-icon-color';
 /**
  * Internal CSS variables
  */
-export const cssVarInternalCheckboxScaling = '--__p-checkbox-scaling';
+export const cssVarInternalCheckboxScaling = '--_p-checkbox-scaling';
