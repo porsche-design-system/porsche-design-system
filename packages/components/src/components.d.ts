@@ -1343,7 +1343,7 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -2165,7 +2165,7 @@ export namespace Components {
          */
         "safeZone"?: boolean;
         /**
-          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @deprecated Will be removed in the next major release. Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
           * @default 'small'
          */
         "size"?: ModelSignatureSize;
@@ -3085,7 +3085,7 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * Controls the size of the wordmark.
+          * @deprecated Will be removed in the next major release. Controls the size of the wordmark.
           * @default 'small'
          */
         "size"?: WordmarkSize;
@@ -5577,7 +5577,7 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -6487,7 +6487,7 @@ declare namespace LocalJSX {
          */
         "safeZone"?: boolean;
         /**
-          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @deprecated Will be removed in the next major release. Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
           * @default 'small'
          */
         "size"?: ModelSignatureSize;
@@ -7506,7 +7506,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Controls the size of the wordmark.
+          * @deprecated Will be removed in the next major release. Controls the size of the wordmark.
           * @default 'small'
          */
         "size"?: WordmarkSize;
