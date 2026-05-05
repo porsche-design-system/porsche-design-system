@@ -208,7 +208,7 @@ jobs:
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
-          ref: 'v3'
+          ref: 'main'
           path: 'gh-pages'
       - name: 'Install'
         uses: ./.github/actions/install
