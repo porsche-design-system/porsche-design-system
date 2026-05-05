@@ -10,7 +10,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -22,11 +22,13 @@ import {
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-search-styles';
-import type {
-  InputSearchBlurEventDetail,
-  InputSearchChangeEventDetail,
-  InputSearchInputEventDetail,
-  InputSearchState,
+import {
+  INPUT_SEARCH_ARIA_ATTRIBUTES,
+  type InputSearchAriaAttribute,
+  type InputSearchBlurEventDetail,
+  type InputSearchChangeEventDetail,
+  type InputSearchInputEventDetail,
+  type InputSearchState,
 } from './input-search-utils';
 
 const propTypes: PropTypes<typeof InputSearch> = {
@@ -49,6 +51,7 @@ const propTypes: PropTypes<typeof InputSearch> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  aria: AllowedTypes.aria<InputSearchAriaAttribute>(INPUT_SEARCH_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -125,6 +128,9 @@ export class InputSearch {
 
   /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`). */
+  @Prop() public aria?: SelectedAriaAttributes<InputSearchAriaAttribute>;
 
   /** Emitted when the search input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputSearchChangeEventDetail>;
@@ -242,6 +248,7 @@ export class InputSearch {
         message={this.message}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        aria={this.aria}
         {...(this.indicator && {
           start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="contrast-medium" />,
         })}
