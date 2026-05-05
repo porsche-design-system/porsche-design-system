@@ -55,8 +55,9 @@ If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have t
 `--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
 
 <Notification heading="Attention" heading-tag="h3" state="warning">
-  In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive keyboard focus. Add <code>tabindex="-1"</code> to those UI elements.
-  The <code>label-after</code> slot is not affected by a <code>disabled/loading</code> state at all.
+  In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive
+  keyboard focus. Add <code>tabindex="-1"</code> to those UI elements. The <code>label-after</code> slot is not affected
+  by a <code>disabled/loading</code> state at all.
 </Notification>
 
 <ComponentStory story={inputSearchStorySlots} />
@@ -65,11 +66,10 @@ If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have t
 
 You can pass an `aria` property to expose extra semantics on the **native input** (see
 [accessibility](/components/input-search/accessibility)). The story below is intentionally incomplete: it sets common
-combobox-related `aria` values and shows a **non-interactive** listbox-shaped panel (Tailwind only) for visual
-context. If you use `aria-controls` to reference a light-DOM listbox from the native input inside Shadow DOM, be aware
-that assistive technologies may not reliably honor that cross-shadow relationship. This issue is known and will be
-resolved if browsers add support for it. A real implementation still needs your logic, keyboard handling, and
-relationship attributes that work for your setup per the
-[ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+combobox-related `aria` values and shows a **non-interactive** listbox-shaped panel (Tailwind only) for visual context.
+If you use `aria-controls` to reference a light-DOM listbox from the native input inside Shadow DOM, be aware that
+assistive technologies may not reliably honor that cross-shadow relationship. This issue is known and will be resolved
+if browsers add support for it. A real implementation still needs your logic, keyboard handling, and relationship
+attributes that work for your setup per the [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
 
 <ComponentStory story={inputSearchStoryAriaComboboxSketch} />
