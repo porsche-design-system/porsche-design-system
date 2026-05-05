@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. Numbers are coerced to strings internally. */
+  /** The option value. Selected when it equals the p-select value. */
   @Prop() public value?: string | number;
 
   /** Disables the option. */

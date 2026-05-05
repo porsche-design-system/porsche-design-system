@@ -2640,9 +2640,9 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * The selected value.
+          * The selected value. `null` is treated the same as `undefined` (no preselection).
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PSelectOption {
         /**
@@ -2651,9 +2651,9 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * The option value. Selected when it equals the p-select value.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -7010,9 +7010,9 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * The selected value.
+          * The selected value. `null` is treated the same as `undefined` (no preselection).
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PSelectOption {
         /**
@@ -7021,9 +7021,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * The option value. Selected when it equals the p-select value.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}

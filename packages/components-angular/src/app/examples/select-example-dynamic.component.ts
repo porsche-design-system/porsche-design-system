@@ -24,8 +24,8 @@ import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-des
   imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleDynamicComponent {
-  selectedValue: string = '1';
-  inputValue: string = '';
+  selectedValue: string | undefined = '1';
+  inputValue: string | undefined = '';
   optionCount: number = 3;
 
   get optionIndices(): number[] {

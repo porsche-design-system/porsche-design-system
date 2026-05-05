@@ -122,24 +122,31 @@ describe('updateSelectOptions', () => {
     expect(options[2].selected).toBe(false);
   });
 
-  it('should match a numeric option.value against a stringified value', () => {
+  it('should NOT match a numeric option.value against a string host value (strict type)', () => {
     const host = document.createElement('p-select');
     const options = [
       { value: 0, selected: false },
       { value: 1, selected: false },
       { value: 2, selected: false },
     ] as unknown as selectUtils.SelectOption[];
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
     selectUtils.selectOptionByValue(host, options, '1');
-    expect(options[0].selected).toBe(false);
-    expect(options[1].selected).toBe(true);
-    expect(options[2].selected).toBe(false);
+    // biome-ignore lint/suspicious/useIterableCallbackReturn: ok
+    options.forEach((option) => expect(option.selected).toBe(false));
+    expect(consoleWarnSpy).toHaveBeenCalled();
   });
 
-  it('should match numeric option.value=0 against value="0" (no falsy regression)', () => {
+  it('should NOT match a string option.value against a numeric host value (strict type)', () => {
     const host = document.createElement('p-select');
-    const options = [{ value: 0, selected: false }] as unknown as selectUtils.SelectOption[];
-    selectUtils.selectOptionByValue(host, options, '0');
-    expect(options[0].selected).toBe(true);
+    const options = [
+      { value: '1', selected: false },
+      { value: '2', selected: false },
+    ] as selectUtils.SelectOption[];
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    selectUtils.selectOptionByValue(host, options, 2);
+    // biome-ignore lint/suspicious/useIterableCallbackReturn: ok
+    options.forEach((option) => expect(option.selected).toBe(false));
+    expect(consoleWarnSpy).toHaveBeenCalled();
   });
 
   it('should not match an option with undefined value when value is "undefined" string', () => {
@@ -167,18 +174,7 @@ describe('updateSelectOptions', () => {
     expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
-  it('should match a numeric host value against a string option.value', () => {
-    const host = document.createElement('p-select');
-    const options = [
-      { value: '1', selected: false },
-      { value: '2', selected: false },
-    ] as selectUtils.SelectOption[];
-    selectUtils.selectOptionByValue(host, options, 2);
-    expect(options[0].selected).toBe(false);
-    expect(options[1].selected).toBe(true);
-  });
-
-  it('should match a numeric host value against a numeric option.value', () => {
+  it('should match a numeric host value against a numeric option.value (same type)', () => {
     const host = document.createElement('p-select');
     const options = [
       { value: 1, selected: false },
@@ -187,6 +183,13 @@ describe('updateSelectOptions', () => {
     selectUtils.selectOptionByValue(host, options, 2);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
+  });
+
+  it('should match numeric option.value=0 against host value=0 (no falsy regression)', () => {
+    const host = document.createElement('p-select');
+    const options = [{ value: 0, selected: false }] as unknown as selectUtils.SelectOption[];
+    selectUtils.selectOptionByValue(host, options, 0);
+    expect(options[0].selected).toBe(true);
   });
 });
 

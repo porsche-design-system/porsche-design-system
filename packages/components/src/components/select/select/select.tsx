@@ -173,10 +173,8 @@ export class Select {
   }
 
   /**
-   * String-coerced value for the form internals (`ElementInternals.setFormValue`),
-   * which only accepts strings. `null`/`undefined` map to `undefined` (unset).
-   * Comparisons against options use the raw `this.value` (see `selectOptionByValue`)
-   * to preserve the original type set by the consumer.
+   * String-coerced value for `ElementInternals.setFormValue`.
+   * `null`/`undefined` → `undefined`, removing the select from form submission (mirrors native behavior).
    */
   private get parsedValue(): string | undefined {
     return this.value === null || this.value === undefined ? undefined : String(this.value);
@@ -574,9 +572,6 @@ export class Select {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedOption(this.selectOptions, selectedOption);
-      // Preserve the option's original value type (string | number | undefined) on the
-      // public `value` prop. Internal string normalization happens in `parsedValue` for
-      // matching and form submission only.
       this.value = selectedOption.value;
       this.selectedOption = selectedOption;
       this.emitUpdateEvent();

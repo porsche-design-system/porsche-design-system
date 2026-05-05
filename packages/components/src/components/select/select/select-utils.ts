@@ -10,7 +10,7 @@ export type SelectOptgroup = HTMLPOptgroupElement;
 
 export type SelectChangeEventDetail = {
   name: string;
-  value: string | number | undefined;
+  value: string | number | undefined; // This matches the p-select-option value type
 };
 export type SelectToggleEventDetail = { open: boolean };
 
@@ -36,13 +36,13 @@ export const selectOptionByValue = (
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
-  // `null` is treated the same as `undefined` (no preselection / unset value).
+  // `null` is treated the same as `undefined` (no preselection / unset value) and matches
+  // an option whose value is `undefined`. Otherwise we use strict equality so types must
+  // match exactly: a numeric host value only matches a numeric option value, and a string
+  // host value only matches a string option value (no implicit coercion).
   const isValueUnset = value === undefined || value === null;
-  // option.value and the host value can each be string | number; compare via String() coercion
-  // so e.g. host value={42} matches an option with value="42" or value={42}. An option without
-  // a value only matches when the host value is also unset.
   const optionToSelect = options.find((option) =>
-    option.value === undefined ? isValueUnset : !isValueUnset && String(option.value) === String(value)
+    isValueUnset ? option.value === undefined : option.value === value
   );
 
   if (optionToSelect) {
