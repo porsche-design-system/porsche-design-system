@@ -21,8 +21,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
-- 'Wordmark', 'Model Signature': Deprecate `size` and allow custom sizing via CSS Variables
-  ([#4373](https://github.com/porsche-design-system/porsche-design-system/issues/4373))
+-
+- `Wordmark`, `Model Signature`: Deprecate `size` and allow custom sizing via CSS Variables
+  ([#4373](https://github.com/porsche-design-system/porsche-design-system/pull/4393))
 
 ## [4.0.0] - 2026-04-29
 
