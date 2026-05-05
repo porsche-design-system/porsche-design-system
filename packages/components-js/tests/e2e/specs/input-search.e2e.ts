@@ -133,6 +133,27 @@ test.describe('value', () => {
   });
 });
 
+test.describe('aria', () => {
+  test('should forward `aria` prop to the native input (e.g. combobox pattern)', async ({ page }) => {
+    await initInputSearch(page, {
+      props: {
+        name: 'q',
+        aria: {
+          role: 'combobox',
+          'aria-expanded': true,
+          'aria-haspopup': 'dialog',
+          'aria-controls': 'combobox-suggestions',
+        },
+      },
+    });
+    const inputSearch = getInputSearch(page);
+    await expect(inputSearch).toHaveAttribute('role', 'combobox');
+    await expect(inputSearch).toHaveAttribute('aria-expanded', 'true');
+    await expect(inputSearch).toHaveAttribute('aria-haspopup', 'dialog');
+    await expect(inputSearch).toHaveAttribute('aria-controls', 'combobox-suggestions');
+  });
+});
+
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
