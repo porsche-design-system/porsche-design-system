@@ -11,7 +11,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function), 'light');
+    expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function));
   });
 
   it('should call attachComponentCss() with correct parameters for dark theme', () => {
@@ -19,10 +19,9 @@ describe('render', () => {
     const component = new AiTag();
     component.host = document.createElement('p-ai-tag');
     component.host.attachShadow({ mode: 'open' });
-    component.theme = 'dark';
 
     component.render();
 
-    expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function), 'dark');
+    expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function));
   });
 });
