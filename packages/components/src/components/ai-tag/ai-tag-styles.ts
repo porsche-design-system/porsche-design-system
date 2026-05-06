@@ -32,7 +32,7 @@ export const getComponentCss = (): string => {
       abbr: {
         all: 'unset',
       },
-      span: {
+      div: {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
