@@ -187,19 +187,28 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-duration-xl: ${durationXl};
 }
 
-:root:lang(zh-Hans), :root:lang(zh-CN), :root:lang(zh-SG) {
+/* Simplified Chinese */
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
   --p-font-porsche-next: ${fontPorscheNextZhHans};
 }
 
-:root:lang(zh-Hant), :root:lang(zh-TW), :root:lang(zh-HK), :root:lang(zh-MO) {
+/* Traditional Chinese */
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
   --p-font-porsche-next: ${fontPorscheNextZhHant};
 }
 
-:root:lang(ja) {
+/* Japanese */
+:lang(ja) {
   --p-font-porsche-next: ${fontPorscheNextJa};
 }
 
-:root:lang(ko) {
+/* Korean */
+:lang(ko) {
   --p-font-porsche-next: ${fontPorscheNextKo};
 }`;
 
