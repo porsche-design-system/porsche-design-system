@@ -32,8 +32,11 @@ export const aiTagStoryWithCheckbox: Story<'p-ai-tag'> = {
               children: [
                 {
                   tag: 'span',
-                  properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-                  children: ['Banana ', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
+                  properties: { slot: 'label' },
+                  children: [
+                    'Banana',
+                    { tag: 'p-ai-tag', properties: { variant: 'generated', className: 'ms-static-sm' } },
+                  ],
                 },
               ],
             },
@@ -47,8 +50,11 @@ export const aiTagStoryWithCheckbox: Story<'p-ai-tag'> = {
               children: [
                 {
                   tag: 'span',
-                  properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-                  children: ['Melon ', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
+                  properties: { slot: 'label' },
+                  children: [
+                    'Melon',
+                    { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-sm' } },
+                  ],
                 },
               ],
             },
@@ -80,8 +86,11 @@ export const aiTagStoryWithRadioButton: Story<'p-ai-tag'> = {
           children: [
             {
               tag: 'span',
-              properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-              children: ['Banana', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
+              properties: { slot: 'label' },
+              children: [
+                'Banana',
+                { tag: 'p-ai-tag', properties: { variant: 'generated', className: 'ms-static-sm' } },
+              ],
             },
           ],
         },
@@ -95,8 +104,11 @@ export const aiTagStoryWithRadioButton: Story<'p-ai-tag'> = {
           children: [
             {
               tag: 'span',
-              properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-              children: ['Melon', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
+              properties: { slot: 'label' },
+              children: [
+                'Melon',
+                { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-sm' } },
+              ],
             },
           ],
         },
@@ -135,8 +147,11 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label', className: 'inline-flex items-center gap-static-sm' },
-          children: ['Pick your favorite Fruits ', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
+          properties: { slot: 'label' },
+          children: [
+            'Pick your favorite Fruits',
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-sm' } },
+          ],
         },
         {
           tag: 'p-optgroup',
@@ -145,13 +160,13 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
             {
               tag: 'p-select-option',
               properties: { value: 'a' },
-              children: ['Option A ', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
+              children: ['Option A', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
             },
             { tag: 'p-select-option', properties: { value: 'b' }, children: ['Option B'] },
             {
               tag: 'p-select-option',
               properties: { value: 'c' },
-              children: ['Option C ', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
+              children: ['Option C', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
             },
           ],
         },
@@ -163,7 +178,7 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
             {
               tag: 'p-select-option',
               properties: { value: 'e' },
-              children: ['Option E ', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
+              children: ['Option E', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
             },
             { tag: 'p-select-option', properties: { value: 'f' }, children: ['Option F'] },
           ],
@@ -183,8 +198,8 @@ export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
           tag: 'p-tag',
           properties: { icon: 'globe' },
           children: [
-            'Some label ',
-            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
+            'Some label',
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[7px]' } },
           ],
         },
         {
@@ -197,15 +212,15 @@ export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
               children: ['Some label'],
             },
             ' ',
-            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[7px]' } },
           ],
         },
         {
           tag: 'p-tag',
           properties: { icon: 'globe', compact: true },
           children: [
-            'Some label ',
-            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[5px]' } },
+            'Some label',
+            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[7px]' } },
           ],
         },
       ],
@@ -230,9 +245,8 @@ export const aiTagStoryWithImage: Story<'p-ai-tag'> = {
         {
           tag: 'p-ai-tag',
           properties: {
-            theme: 'dark',
             variant: 'modified',
-            className: 'absolute bottom-static-sm end-static-sm',
+            className: 'absolute bottom-static-sm end-static-sm scheme-dark',
           },
         },
       ],
