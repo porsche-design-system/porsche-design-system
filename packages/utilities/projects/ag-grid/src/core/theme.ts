@@ -1,5 +1,13 @@
 import { type Theme, themeQuartz } from 'ag-grid-community';
-import { checkboxStyle, inputStyles, pdsSvgIcons, toggleButtonStyle } from '../parts';
+import {
+  checkboxStyle,
+  checkboxStyleCompact,
+  inputStyles,
+  inputStylesCompact,
+  pdsSvgIcons,
+  toggleButtonStyle,
+  toggleButtonStyleCompact,
+} from '../parts';
 import {
   colorCanvas,
   colorContrastLow,
@@ -13,6 +21,14 @@ import {
   colorSurface,
   fontPorscheNext,
   fontWeightSemibold,
+  gridSpacing,
+  gridSpacingCompact,
+  pdsCheckboxBorderWidth,
+  pdsIconSize,
+  pdsIconSizeCompact,
+  pdsSwitchHeight,
+  pdsSwitchInset,
+  pdsSwitchWidth,
   radiusMd,
   radiusSm,
   typescaleSm,
@@ -60,13 +76,13 @@ export const pdsTheme: Theme = themeQuartz
   // Light mode parameters (default)
   .withParams({
     // Component sizing
-    checkboxBorderWidth: 2,
+    checkboxBorderWidth: pdsCheckboxBorderWidth,
     checkboxBorderRadius: radiusSm,
-    spacing: 10,
-    toggleButtonHeight: 28,
-    toggleButtonWidth: 48,
-    toggleButtonSwitchInset: 3,
-    iconSize: 24,
+    spacing: gridSpacing,
+    toggleButtonHeight: pdsSwitchHeight,
+    toggleButtonWidth: pdsSwitchWidth,
+    toggleButtonSwitchInset: pdsSwitchInset,
+    iconSize: pdsIconSize,
     borderRadius: radiusSm,
     wrapperBorderRadius: radiusMd,
 
@@ -108,3 +124,12 @@ export const pdsTheme: Theme = themeQuartz
   .withPart(toggleButtonStyle)
   .withPart(checkboxStyle)
   .withPart(inputStyles);
+
+export const pdsThemeCompact: Theme = pdsTheme
+  .withParams({
+    spacing: gridSpacingCompact,
+    iconSize: pdsIconSizeCompact,
+  })
+  .withPart(checkboxStyleCompact)
+  .withPart(toggleButtonStyleCompact)
+  .withPart(inputStylesCompact);
