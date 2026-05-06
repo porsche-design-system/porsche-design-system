@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `AG Grid`:
+  - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+  - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
 - `Ai Tag`: New component to mark AI-generated/AI-modified content
   ([#4400](https://github.com/porsche-design-system/porsche-design-system/pull/4400))
 
