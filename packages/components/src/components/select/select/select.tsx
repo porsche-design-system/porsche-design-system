@@ -112,6 +112,14 @@ export class Select {
    * `null` matches only an option with value `null`, `undefined` matches only an option
    * with value `undefined` (no preselection by default), and `string` / `number` only match
    * an option whose value has the same type and equal value.
+   *
+   * Note on native form behavior: `FormData` always serializes values as
+   * strings, so when participating in a native (uncontrolled) form a
+   * `number` value is restored as `string` via `formStateRestoreCallback`
+   * and will no longer strictly match a number-typed option. This limitation
+   * only applies to native form state restoration; in controlled forms
+   * (where the consumer manages `value` directly via the `change` event),
+   * the `number` type is preserved end-to-end.
    */
   @Prop({ mutable: true }) public value?: string | number | null;
 
@@ -177,14 +185,6 @@ export class Select {
     return !!(this.filter || this.filterSlot);
   }
 
-  /**
-   * String-coerced value for `ElementInternals.setFormValue`.
-   * `null`/`undefined` → `undefined`, removing the select from form submission (mirrors native behavior).
-   */
-  private get parsedValue(): string | undefined {
-    return this.value === null || this.value === undefined ? undefined : String(this.value);
-  }
-
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
     e.stopPropagation();
@@ -199,7 +199,7 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals?.setFormValue(this.parsedValue);
+    this.setFormValue();
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
@@ -242,6 +242,11 @@ export class Select {
     }
   }
 
+  public setFormValue(): void {
+    // `null`/`undefined` → `undefined`, removing the select from form submission (mirrors native behavior)
+    this.internals?.setFormValue(this.value === null || this.value === undefined ? undefined : String(this.value));
+  }
+
   public connectedCallback(): void {
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
@@ -257,7 +262,7 @@ export class Select {
   public componentWillLoad(): void {
     // Preserve the original value (incl. number/null) so a form reset restores the exact same type
     this.defaultValue = this.value;
-    this.internals?.setFormValue(this.parsedValue);
+    this.setFormValue();
     this.updateOptions();
     this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
   }
