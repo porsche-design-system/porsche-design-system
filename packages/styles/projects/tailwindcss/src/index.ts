@@ -164,72 +164,72 @@ export const getTailwindcssTheme = () => {
   // Used both for the `:root` default and inside `@utility scheme-*` blocks so
   // that Tailwind applies its configured prefix (e.g. `tw:scheme-dark`).
   const colorLightVars = `--_color-focus-dynamic: ${colorFocusLight};
-      --_color-canvas-dynamic: ${colorCanvasLight};
-      --_color-surface-dynamic: ${colorSurfaceLight};
-      --_color-frosted-dynamic: ${colorFrostedLight};
-      --_color-frosted-soft-dynamic: ${colorFrostedSoftLight};
-      --_color-frosted-strong-dynamic: ${colorFrostedStrongLight};
-      --_color-backdrop-dynamic: ${colorBackdropLight};
-      --_color-contrast-lower-dynamic: ${colorContrastLowerLight};
-      --_color-contrast-low-dynamic: ${colorContrastLowLight};
-      --_color-contrast-medium-dynamic: ${colorContrastMediumLight};
-      --_color-contrast-high-dynamic: ${colorContrastHighLight};
-      --_color-contrast-higher-dynamic: ${colorContrastHigherLight};
-      --_color-primary-dynamic: ${colorPrimaryLight};
-      --_color-success-dynamic: ${colorSuccessLight};
-      --_color-success-low-dynamic: ${colorSuccessLowLight};
-      --_color-success-medium-dynamic: ${colorSuccessMediumLight};
-      --_color-success-frosted-dynamic: ${colorSuccessFrostedLight};
-      --_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftLight};
-      --_color-warning-dynamic: ${colorWarningLight};
-      --_color-warning-low-dynamic: ${colorWarningLowLight};
-      --_color-warning-medium-dynamic: ${colorWarningMediumLight};
-      --_color-warning-frosted-dynamic: ${colorWarningFrostedLight};
-      --_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftLight};
-      --_color-error-dynamic: ${colorErrorLight};
-      --_color-error-low-dynamic: ${colorErrorLowLight};
-      --_color-error-medium-dynamic: ${colorErrorMediumLight};
-      --_color-error-frosted-dynamic: ${colorErrorFrostedLight};
-      --_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftLight};
-      --_color-info-dynamic: ${colorInfoLight};
-      --_color-info-low-dynamic: ${colorInfoLowLight};
-      --_color-info-medium-dynamic: ${colorInfoMediumLight};
-      --_color-info-frosted-dynamic: ${colorInfoFrostedLight};
-      --_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftLight};`;
+--_color-canvas-dynamic: ${colorCanvasLight};
+--_color-surface-dynamic: ${colorSurfaceLight};
+--_color-frosted-dynamic: ${colorFrostedLight};
+--_color-frosted-soft-dynamic: ${colorFrostedSoftLight};
+--_color-frosted-strong-dynamic: ${colorFrostedStrongLight};
+--_color-backdrop-dynamic: ${colorBackdropLight};
+--_color-contrast-lower-dynamic: ${colorContrastLowerLight};
+--_color-contrast-low-dynamic: ${colorContrastLowLight};
+--_color-contrast-medium-dynamic: ${colorContrastMediumLight};
+--_color-contrast-high-dynamic: ${colorContrastHighLight};
+--_color-contrast-higher-dynamic: ${colorContrastHigherLight};
+--_color-primary-dynamic: ${colorPrimaryLight};
+--_color-success-dynamic: ${colorSuccessLight};
+--_color-success-low-dynamic: ${colorSuccessLowLight};
+--_color-success-medium-dynamic: ${colorSuccessMediumLight};
+--_color-success-frosted-dynamic: ${colorSuccessFrostedLight};
+--_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftLight};
+--_color-warning-dynamic: ${colorWarningLight};
+--_color-warning-low-dynamic: ${colorWarningLowLight};
+--_color-warning-medium-dynamic: ${colorWarningMediumLight};
+--_color-warning-frosted-dynamic: ${colorWarningFrostedLight};
+--_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftLight};
+--_color-error-dynamic: ${colorErrorLight};
+--_color-error-low-dynamic: ${colorErrorLowLight};
+--_color-error-medium-dynamic: ${colorErrorMediumLight};
+--_color-error-frosted-dynamic: ${colorErrorFrostedLight};
+--_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftLight};
+--_color-info-dynamic: ${colorInfoLight};
+--_color-info-low-dynamic: ${colorInfoLowLight};
+--_color-info-medium-dynamic: ${colorInfoMediumLight};
+--_color-info-frosted-dynamic: ${colorInfoFrostedLight};
+--_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftLight};`;
 
   const colorDarkVars = `--_color-focus-dynamic: ${colorFocusDark};
-      --_color-canvas-dynamic: ${colorCanvasDark};
-      --_color-surface-dynamic: ${colorSurfaceDark};
-      --_color-frosted-dynamic: ${colorFrostedDark};
-      --_color-frosted-soft-dynamic: ${colorFrostedSoftDark};
-      --_color-frosted-strong-dynamic: ${colorFrostedStrongDark};
-      --_color-backdrop-dynamic: ${colorBackdropDark};
-      --_color-contrast-lower-dynamic: ${colorContrastLowerDark};
-      --_color-contrast-low-dynamic: ${colorContrastLowDark};
-      --_color-contrast-medium-dynamic: ${colorContrastMediumDark};
-      --_color-contrast-high-dynamic: ${colorContrastHighDark};
-      --_color-contrast-higher-dynamic: ${colorContrastHigherDark};
-      --_color-primary-dynamic: ${colorPrimaryDark};
-      --_color-success-dynamic: ${colorSuccessDark};
-      --_color-success-low-dynamic: ${colorSuccessLowDark};
-      --_color-success-medium-dynamic: ${colorSuccessMediumDark};
-      --_color-success-frosted-dynamic: ${colorSuccessFrostedDark};
-      --_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftDark};
-      --_color-warning-dynamic: ${colorWarningDark};
-      --_color-warning-low-dynamic: ${colorWarningLowDark};
-      --_color-warning-medium-dynamic: ${colorWarningMediumDark};
-      --_color-warning-frosted-dynamic: ${colorWarningFrostedDark};
-      --_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftDark};
-      --_color-error-dynamic: ${colorErrorDark};
-      --_color-error-low-dynamic: ${colorErrorLowDark};
-      --_color-error-medium-dynamic: ${colorErrorMediumDark};
-      --_color-error-frosted-dynamic: ${colorErrorFrostedDark};
-      --_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftDark};
-      --_color-info-dynamic: ${colorInfoDark};
-      --_color-info-low-dynamic: ${colorInfoLowDark};
-      --_color-info-medium-dynamic: ${colorInfoMediumDark};
-      --_color-info-frosted-dynamic: ${colorInfoFrostedDark};
-      --_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftDark};`;
+--_color-canvas-dynamic: ${colorCanvasDark};
+--_color-surface-dynamic: ${colorSurfaceDark};
+--_color-frosted-dynamic: ${colorFrostedDark};
+--_color-frosted-soft-dynamic: ${colorFrostedSoftDark};
+--_color-frosted-strong-dynamic: ${colorFrostedStrongDark};
+--_color-backdrop-dynamic: ${colorBackdropDark};
+--_color-contrast-lower-dynamic: ${colorContrastLowerDark};
+--_color-contrast-low-dynamic: ${colorContrastLowDark};
+--_color-contrast-medium-dynamic: ${colorContrastMediumDark};
+--_color-contrast-high-dynamic: ${colorContrastHighDark};
+--_color-contrast-higher-dynamic: ${colorContrastHigherDark};
+--_color-primary-dynamic: ${colorPrimaryDark};
+--_color-success-dynamic: ${colorSuccessDark};
+--_color-success-low-dynamic: ${colorSuccessLowDark};
+--_color-success-medium-dynamic: ${colorSuccessMediumDark};
+--_color-success-frosted-dynamic: ${colorSuccessFrostedDark};
+--_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftDark};
+--_color-warning-dynamic: ${colorWarningDark};
+--_color-warning-low-dynamic: ${colorWarningLowDark};
+--_color-warning-medium-dynamic: ${colorWarningMediumDark};
+--_color-warning-frosted-dynamic: ${colorWarningFrostedDark};
+--_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftDark};
+--_color-error-dynamic: ${colorErrorDark};
+--_color-error-low-dynamic: ${colorErrorLowDark};
+--_color-error-medium-dynamic: ${colorErrorMediumDark};
+--_color-error-frosted-dynamic: ${colorErrorFrostedDark};
+--_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftDark};
+--_color-info-dynamic: ${colorInfoDark};
+--_color-info-low-dynamic: ${colorInfoLowDark};
+--_color-info-medium-dynamic: ${colorInfoMediumDark};
+--_color-info-frosted-dynamic: ${colorInfoFrostedDark};
+--_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftDark};`;
 
   return `@theme {
   /* Reset */
@@ -404,7 +404,7 @@ export const getTailwindcssTheme = () => {
      points here, the font will update even if the utility class is prefixed.
   */
 
-  :root {
+  :root, :host {
     --_font-porsche-next-dynamic: ${fontPorscheNext};
   }
 
@@ -444,7 +444,7 @@ export const getTailwindcssTheme = () => {
   */
 
   @supports not (color: light-dark(white, black)) {
-    :root {
+    :root, :host {
       ${colorLightVars}
     }
   }
