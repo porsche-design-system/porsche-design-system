@@ -7007,6 +7007,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-model-signature": {
+    "cssVariablesMeta": {
+      "--p-model-signature-color": {
+        "defaultValue": "",
+        "description": "Defines the color of the model signature. Overrides the \`color\` property when set.",
+      },
+      "--p-model-signature-height": {
+        "defaultValue": "",
+        "description": "Defines the height of the model signature. Overrides the \`size\` property when set.",
+      },
+      "--p-model-signature-width": {
+        "defaultValue": "",
+        "description": "Defines the width of the model signature. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7077,7 +7091,8 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "Adapts the size of the component. When set to \`inherit\` a CSS \`width\` or \`height\` needs to be defined on the host but not both.",
+        "description": "@deprecated Will be removed in the next major release. Adapts the size of the component. When set to \`inherit\` a CSS \`width\` or \`height\` needs to be defined on the host but not both.",
+        "isDeprecated": true,
         "type": "ModelSignatureSize",
       },
     },
@@ -10281,6 +10296,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-wordmark": {
+    "cssVariablesMeta": {
+      "--p-wordmark-height": {
+        "defaultValue": "",
+        "description": "Defines the height of the wordmark. Overrides the \`size\` property when set.",
+      },
+      "--p-wordmark-width": {
+        "defaultValue": "",
+        "description": "Defines the width of the wordmark. Overrides the \`size\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -10315,7 +10340,8 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "Controls the size of the wordmark.",
+        "description": "@deprecated Will be removed in the next major release. Controls the size of the wordmark.",
+        "isDeprecated": true,
         "type": "WordmarkSize",
       },
       "target": {
