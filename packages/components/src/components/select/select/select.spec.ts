@@ -107,7 +107,7 @@ describe('formStateRestoreCallback', () => {
   });
 });
 
-describe('normalizedValue getter', () => {
+describe('parsedValue getter', () => {
   it.each<[string | number | null | undefined, string | undefined]>([
     [undefined, undefined],
     [null, undefined],
@@ -116,7 +116,7 @@ describe('normalizedValue getter', () => {
     [0, '0'],
     [42, '42'],
     [-1.5, '-1.5'],
-  ])('should normalize value=%p to %p', (input, expected) => {
+  ])('should parse value=%p to %p', (input, expected) => {
     const component = initComponent();
     component.value = input;
     expect(component['parsedValue']).toBe(expected);
