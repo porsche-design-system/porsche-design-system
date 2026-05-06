@@ -144,7 +144,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": true,
     "propsMeta": {
       "locale": {
         "allowedValues": [
@@ -187,16 +186,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "en_US",
         "description": "Locale for the AI text (ISO format, e.g. "de_DE").",
         "type": "AiTagLocale",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the tag color depending on the theme.",
-        "type": "Theme",
       },
       "variant": {
         "allowedValues": [
