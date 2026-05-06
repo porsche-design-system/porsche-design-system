@@ -10,7 +10,7 @@ export type SelectOptgroup = HTMLPOptgroupElement;
 
 export type SelectChangeEventDetail = {
   name: string;
-  value: string | number | undefined; // This matches the p-select-option value type
+  value: string | number | null | undefined; // Mirrors the p-select-option value type
 };
 export type SelectToggleEventDetail = { open: boolean };
 
@@ -36,16 +36,11 @@ export const selectOptionByValue = (
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
-  // `null` is treated the same as `undefined` (no preselection / unset value) and matches
-  // an option whose value is `undefined`. Otherwise we compare via `String(...)` coercion so a
-  // numeric host value matches a string option value and vice versa. This mirrors the platform:
-  // form data and `formStateRestoreCallback` always deliver strings, so coercion guarantees the
-  // same option is selected before and after a form-state restore regardless of the original
-  // JS type used in `value`.
-  const isValueUnset = value === undefined || value === null;
-  const optionToSelect = options.find((option) =>
-    isValueUnset ? option.value === undefined : option.value !== undefined && String(option.value) === String(value)
-  );
+  // Strict equality matching: a host value of `null`, `undefined`, a `string` or a `number`
+  // only matches an option whose `value` is strictly equal (same type and value). No
+  // cross-type coercion (e.g. number `5` does NOT match string `"5"`), and `null` and
+  // `undefined` are treated as distinct values.
+  const optionToSelect = options.find((option) => option.value === value);
 
   if (optionToSelect) {
     optionToSelect.selected = true;
@@ -53,7 +48,7 @@ export const selectOptionByValue = (
     return optionToSelect;
   }
 
-  if (!isValueUnset && !preventWarning) {
+  if (value !== undefined && !preventWarning) {
     consoleWarn(
       `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
       host

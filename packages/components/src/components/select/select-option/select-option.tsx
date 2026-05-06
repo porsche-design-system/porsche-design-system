@@ -13,7 +13,7 @@ import { getComponentCss } from './select-option-styles';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
-  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   disabled: AllowedTypes.boolean,
 };
 
@@ -27,8 +27,8 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. Selected when it equals the p-select value. */
-  @Prop() public value?: string | number;
+  /** The option value. Selected when it strictly matches the p-select value (same type and value: `null`, `undefined`, `string` or `number`). */
+  @Prop() public value?: string | number | null;
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;

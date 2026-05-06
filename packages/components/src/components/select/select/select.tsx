@@ -108,9 +108,10 @@ export class Select {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /**
-   * The selected value. `null` is treated the same as `undefined` (no preselection).
-   * Note: the `change` event always emits `undefined` for the unset state,
-   * even if `value` was initially set to `null`.
+   * The selected value. Matches an option strictly by type and value:
+   * `null` matches only an option with value `null`, `undefined` matches only an option
+   * with value `undefined` (no preselection by default), and `string` / `number` only match
+   * an option whose value has the same type and equal value.
    */
   @Prop({ mutable: true }) public value?: string | number | null;
 
@@ -202,7 +203,7 @@ export class Select {
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
+        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
     }
@@ -258,7 +259,7 @@ export class Select {
     this.defaultValue = this.value;
     this.internals?.setFormValue(this.parsedValue);
     this.updateOptions();
-    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
+    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
   }
 
   public componentDidLoad(): void {
@@ -421,7 +422,7 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue, !!this.filterSlot);
+    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
       this.selectedOption = selectedOption;
@@ -601,9 +602,9 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      // Read the raw option value so the event detail preserves the original type (string | number).
-      // `null`/`undefined` map to `undefined` to match `SelectChangeEventDetail`.
-      value: this.selectedOption?.value ?? undefined,
+      // Read the raw option value so the event detail preserves the original type
+      // (`string | number | null`). When no option is selected we emit `undefined`.
+      value: this.selectedOption ? this.selectedOption.value : undefined,
       name: this.name,
     });
   };

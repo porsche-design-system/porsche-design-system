@@ -2644,7 +2644,7 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * The selected value. `null` is treated the same as `undefined` (no preselection).
+          * The selected value. `null` is treated the same as `undefined` (no preselection). Note: the `change` event always emits `undefined` for the unset state, even if `value` was initially set to `null`.
          */
         "value"?: string | number | null;
     }
@@ -7018,7 +7018,7 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * The selected value. `null` is treated the same as `undefined` (no preselection).
+          * The selected value. `null` is treated the same as `undefined` (no preselection). Note: the `change` event always emits `undefined` for the unset state, even if `value` was initially set to `null`.
          */
         "value"?: string | number | null;
     }

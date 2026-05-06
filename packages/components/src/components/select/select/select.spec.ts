@@ -124,7 +124,7 @@ describe('normalizedValue getter', () => {
 });
 
 describe('componentWillLoad value coercion', () => {
-  it('should pass the normalized (string) value to setFormValue and selectOptionByValue while keeping public value raw', () => {
+  it('should pass the normalized (string) value to setFormValue and the raw value to selectOptionByValue', () => {
     const component = initComponent();
     component.value = 42;
     const selectOptionByValueSpy = vi.spyOn(selectUtils, 'selectOptionByValue');
@@ -133,12 +133,13 @@ describe('componentWillLoad value coercion', () => {
     component.componentWillLoad();
 
     expect(setFormValueSpy).toHaveBeenCalledWith('42');
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], '42');
+    // strict-typed matching: pass raw value, not stringified
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], 42);
     // public value retains its original (number) type
     expect(component.value).toBe(42);
   });
 
-  it('should pass undefined to both selectOptionByValue and setFormValue when value is null', () => {
+  it('should pass undefined to setFormValue and null (raw) to selectOptionByValue when value is null', () => {
     const component = initComponent();
     component.value = null;
     const selectOptionByValueSpy = vi.spyOn(selectUtils, 'selectOptionByValue');
@@ -147,7 +148,8 @@ describe('componentWillLoad value coercion', () => {
     component.componentWillLoad();
 
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
-    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], undefined);
+    // strict-typed matching: null is a distinct value, only matches options with value === null
+    expect(selectOptionByValueSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], null);
   });
 
   it('should preserve the original (non-normalized) value as defaultValue', () => {
