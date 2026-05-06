@@ -3115,7 +3115,7 @@ span {
   align-items: center;
   gap: 2px;
   padding: calc(2*var(--p-spacing-static-2xs)) var(--p-spacing-static-sm) calc(2*var(--p-spacing-static-2xs)) var(--p-spacing-static-xs);
-  border-radius: var(--p-radius-full);
+  border-radius: var(--_p-legacy-radius-small, calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2)));
   font: var(--p-font-weight-normal) var(--p-typescale-2xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   background: var(--p-color-frosted-strong);
