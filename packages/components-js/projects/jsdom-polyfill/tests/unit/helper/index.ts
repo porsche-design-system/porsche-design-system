@@ -166,6 +166,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-textarea': `<p-textarea name="some-name" label="Some label"></p-textarea>`,
   'p-toast': '<p-toast></p-toast>',
   'p-wordmark': '<p-wordmark></p-wordmark>',
+  'p-ai-tag': '<p-ai-tag></p-ai-tag>',
 };
 
 export const getMarkup = (tagName: TagName): string => tagNameMarkup[tagName];

@@ -25,6 +25,7 @@ export * from './tabs-bar-navigation-bug';
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
 import { AccordionComponent } from './generated/accordion.component';
+import { AiTagComponent } from './generated/ai-tag.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
 import { BannerCssVariablesComponent } from './generated/banner-css-variables.component';
@@ -214,6 +215,8 @@ import { TabsBarComponent } from './generated/tabs-bar.component';
 import { TagComponent } from './generated/tag.component';
 import { TagDismissibleComponent } from './generated/tag-dismissible.component';
 import { TextComponent } from './generated/text.component';
+import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
+import { TextListComponent } from './generated/text-list.component';
 import { TextareaComponent } from './generated/textarea.component';
 import { TextListComponent } from './generated/text-list.component';
 import { ToastComponent } from './generated/toast.component';
@@ -235,6 +238,7 @@ import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
+  AiTagComponent,
   BannerComponent,
   BannerBasicComponent,
   BannerCssVariablesComponent,
@@ -449,6 +453,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Accordion',
     path: 'accordion',
     component: AccordionComponent,
+  },
+  {
+    name: 'Ai Tag',
+    path: 'ai-tag',
+    component: AiTagComponent,
   },
   {
     name: 'Banner',

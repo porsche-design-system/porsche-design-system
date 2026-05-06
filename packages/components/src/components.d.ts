@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
 import { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
@@ -68,6 +69,7 @@ import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
 export { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
@@ -170,6 +172,20 @@ export namespace Components {
           * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
+    }
+    interface PAiTag {
+      /**
+       * Locale for the AI text (ISO format, e.g. "de_DE").
+       */
+      "locale"?: AiTagLocale;
+      /**
+       * Adapts the tag color depending on the theme.
+       */
+      "theme"?: Theme;
+      /**
+       * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+       */
+      "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3257,6 +3273,12 @@ declare global {
         prototype: HTMLPAccordionElement;
         new (): HTMLPAccordionElement;
     };
+    interface HTMLPAiTagElement extends Components.PAiTag, HTMLStencilElement {
+    }
+    var HTMLPAiTagElement: {
+        prototype: HTMLPAiTagElement;
+        new (): HTMLPAiTagElement;
+    };
     interface HTMLPBannerElementEventMap {
         "dismiss": void;
     }
@@ -4172,6 +4194,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
+        "p-ai-tag": HTMLPAiTagElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-pure": HTMLPButtonPureElement;
@@ -4292,6 +4315,20 @@ declare namespace LocalJSX {
           * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
+    }
+    interface PAiTag {
+      /**
+       * Locale for the AI text (ISO format, e.g. "de_DE").
+       */
+      "locale"?: AiTagLocale;
+      /**
+       * Adapts the tag color depending on the theme.
+       */
+      "theme"?: Theme;
+      /**
+       * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+       */
+      "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -8238,6 +8275,7 @@ declare namespace LocalJSX {
 
     interface IntrinsicElements {
         "p-accordion": Omit<PAccordion, keyof PAccordionAttributes> & { [K in keyof PAccordion & keyof PAccordionAttributes]?: PAccordion[K] } & { [K in keyof PAccordion & keyof PAccordionAttributes as `attr:${K}`]?: PAccordionAttributes[K] } & { [K in keyof PAccordion & keyof PAccordionAttributes as `prop:${K}`]?: PAccordion[K] };
+        "p-ai-tag": Omit<PAiTag, keyof PAiTagAttributes> & { [K in keyof PAiTag & keyof PAiTagAttributes]?: PAiTag[K] } & { [K in keyof PAiTag & keyof PAiTagAttributes as `attr:${K}`]?: PAiTagAttributes[K] } & { [K in keyof PAiTag & keyof PAiTagAttributes as `prop:${K}`]?: PAiTag[K] };
         "p-banner": Omit<PBanner, keyof PBannerAttributes> & { [K in keyof PBanner & keyof PBannerAttributes]?: PBanner[K] } & { [K in keyof PBanner & keyof PBannerAttributes as `attr:${K}`]?: PBannerAttributes[K] } & { [K in keyof PBanner & keyof PBannerAttributes as `prop:${K}`]?: PBanner[K] };
         "p-button": Omit<PButton, keyof PButtonAttributes> & { [K in keyof PButton & keyof PButtonAttributes]?: PButton[K] } & { [K in keyof PButton & keyof PButtonAttributes as `attr:${K}`]?: PButtonAttributes[K] } & { [K in keyof PButton & keyof PButtonAttributes as `prop:${K}`]?: PButton[K] };
         "p-button-pure": Omit<PButtonPure, keyof PButtonPureAttributes> & { [K in keyof PButtonPure & keyof PButtonPureAttributes]?: PButtonPure[K] } & { [K in keyof PButtonPure & keyof PButtonPureAttributes as `attr:${K}`]?: PButtonPureAttributes[K] } & { [K in keyof PButtonPure & keyof PButtonPureAttributes as `prop:${K}`]?: PButtonPure[K] };
@@ -8321,6 +8359,7 @@ declare module "@stencil/core" {
              * @controlled {"props": ["open"], "event": "update"}
              */
             "p-accordion": LocalJSX.IntrinsicElements["p-accordion"] & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
+            "p-ai-tag": LocalJSX.IntrinsicElements["p-ai-tag"] & JSXBase.HTMLAttributes<HTMLPAiTagElement>;
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              */
