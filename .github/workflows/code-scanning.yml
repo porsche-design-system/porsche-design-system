@@ -13,6 +13,10 @@ jobs:
   build:
     name: 'CodeQL'
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     # container:
     #   image: mcr.microsoft.com/playwright:v1.59.1-jammy
     #   options: --user 1001
