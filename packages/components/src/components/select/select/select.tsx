@@ -107,7 +107,11 @@ export class Select {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The selected value. `null` is treated the same as `undefined` (no preselection). */
+  /**
+   * The selected value. `null` is treated the same as `undefined` (no preselection).
+   * Note: the `change` event always emits `undefined` for the unset state,
+   * even if `value` was initially set to `null`.
+   */
   @Prop({ mutable: true }) public value?: string | number | null;
 
   /** The validation state. */
