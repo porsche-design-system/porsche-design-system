@@ -36,7 +36,7 @@ export class AiTag {
     const { short, long, generated, modified } = getAiTagTranslation(this.locale);
 
     return (
-      <span>
+      <div>
         {this.variant !== 'abbreviation' ? (
           this.variant === 'modified' ? (
             modified
@@ -46,7 +46,7 @@ export class AiTag {
         ) : (
           <abbr title={long}>{short}</abbr>
         )}
-      </span>
+      </div>
     );
   }
 }
