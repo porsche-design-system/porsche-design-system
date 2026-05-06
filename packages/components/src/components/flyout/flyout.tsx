@@ -19,6 +19,7 @@ import {
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
+import { DialogBase } from '../common/dialog-base/dialog-base';
 import { getComponentCss } from './flyout-styles';
 import {
   addStickyTopCssVarStyleSheet,
@@ -162,39 +163,37 @@ export class Flyout {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <dialog
-        tabIndex={-1} // needed for programmatic focus
-        ref={(el) => (this.dialog = el)}
+      <DialogBase
+        dialogRef={(el) => (this.dialog = el)}
+        scrollerRef={(el) => (this.scroller = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        {...parseAndGetAriaAttributes({
+        innerClass="flyout"
+        header={this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
+        footer={this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
+        subFooter={this.hasSubFooter && <slot name="sub-footer" />}
+        ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...{ 'aria-label': this.hasHeader ? getSlotTextContent(this.host, 'header') : 'Flyout' },
           ...parseAndGetAriaAttributes(this.aria),
         })}
+        dismissButton={
+          <PrefixedTagNames.pButton
+            class="dismiss"
+            variant="secondary"
+            compact={true}
+            type="button"
+            hideLabel={true}
+            icon="close"
+            onClick={this.dismissDialog}
+          >
+            Dismiss flyout
+          </PrefixedTagNames.pButton>
+        }
       >
-        <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="flyout">
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              variant="secondary"
-              compact={true}
-              type="button"
-              hideLabel={true}
-              icon="close"
-              onClick={this.dismissDialog}
-            >
-              Dismiss flyout
-            </PrefixedTagNames.pButton>
-            {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
-            <slot />
-            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
-            {this.hasSubFooter && <slot name="sub-footer" />}
-          </div>
-        </div>
-      </dialog>
+        <slot />
+      </DialogBase>
     );
   }
 

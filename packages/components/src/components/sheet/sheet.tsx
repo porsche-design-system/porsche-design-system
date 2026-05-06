@@ -16,6 +16,7 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
+import { DialogBase } from '../common/dialog-base/dialog-base';
 import { getComponentCss } from './sheet-styles';
 import {
   SHEET_ARIA_ATTRIBUTES,
@@ -105,42 +106,40 @@ export class Sheet {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <dialog
-        inert={!this.open} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-        tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(el) => (this.dialog = el)}
+      <DialogBase
+        inert={!this.open}
+        dialogRef={(el) => (this.dialog = el)}
+        scrollerRef={(el) => (this.scroller = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on sheet and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        {...parseAndGetAriaAttributes({
+        innerClass="sheet"
+        header={this.hasHeader && <slot name="header" />}
+        ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && {
             'aria-label': hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'),
           }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
+        dismissButton={
+          this.dismissButton && (
+            <PrefixedTagNames.pButton
+              class="dismiss"
+              variant="secondary"
+              compact={true}
+              type="button"
+              hideLabel={true}
+              icon="close"
+              onClick={this.dismissDialog}
+            >
+              Dismiss sheet
+            </PrefixedTagNames.pButton>
+          )
+        }
       >
-        <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="sheet">
-            {this.dismissButton && (
-              <PrefixedTagNames.pButton
-                class="dismiss"
-                variant="secondary"
-                compact={true}
-                type="button"
-                hideLabel={true}
-                icon="close"
-                onClick={this.dismissDialog}
-              >
-                Dismiss sheet
-              </PrefixedTagNames.pButton>
-            )}
-            {this.hasHeader && <slot name="header" />}
-            <slot />
-          </div>
-        </div>
-      </dialog>
+        <slot />
+      </DialogBase>
     );
   }
 
