@@ -1062,6 +1062,20 @@ and migration steps.
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
+## [3.35.0] - 2026-05-06
+
+## [3.35.0-rc.0] - 2026-05-05
+
+### Added
+
+- `AI-Tag`: New component to mark AI-generated/AI-modified content
+  ([#4236](https://github.com/porsche-design-system/porsche-design-system/pull/4236))
+
+### Fixed
+
+- `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
+  ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
+
 ## [3.34.0] - 2026-04-09
 
 ## [3.34.0-rc.0] - 2026-04-01
