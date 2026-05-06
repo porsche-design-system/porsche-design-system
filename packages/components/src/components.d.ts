@@ -71,6 +71,7 @@ import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./component
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
+export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -174,18 +175,16 @@ export namespace Components {
         "sticky"?: boolean;
     }
     interface PAiTag {
-      /**
-       * Locale for the AI text (ISO format, e.g. "de_DE").
-       */
-      "locale"?: AiTagLocale;
-      /**
-       * Adapts the tag color depending on the theme.
-       */
-      "theme"?: Theme;
-      /**
-       * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
-       */
-      "variant"?: AiTagVariant;
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+          * @default 'en_US'
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+          * @default 'generated'
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -4317,18 +4316,16 @@ declare namespace LocalJSX {
         "sticky"?: boolean;
     }
     interface PAiTag {
-      /**
-       * Locale for the AI text (ISO format, e.g. "de_DE").
-       */
-      "locale"?: AiTagLocale;
-      /**
-       * Adapts the tag color depending on the theme.
-       */
-      "theme"?: Theme;
-      /**
-       * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
-       */
-      "variant"?: AiTagVariant;
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+          * @default 'en_US'
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+          * @default 'generated'
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -7563,6 +7560,10 @@ declare namespace LocalJSX {
         "heading": string;
         "headingTag": AccordionHeadingTag;
         "sticky": boolean;
+    }
+    interface PAiTagAttributes {
+        "locale": AiTagLocale;
+        "variant": AiTagVariant;
     }
     interface PBannerAttributes {
         "open": boolean;

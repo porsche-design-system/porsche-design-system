@@ -215,8 +215,6 @@ import { TabsBarComponent } from './generated/tabs-bar.component';
 import { TagComponent } from './generated/tag.component';
 import { TagDismissibleComponent } from './generated/tag-dismissible.component';
 import { TextComponent } from './generated/text.component';
-import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
-import { TextListComponent } from './generated/text-list.component';
 import { TextareaComponent } from './generated/textarea.component';
 import { TextListComponent } from './generated/text-list.component';
 import { ToastComponent } from './generated/toast.component';
