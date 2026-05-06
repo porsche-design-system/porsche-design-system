@@ -17,8 +17,6 @@ export type MultiSelectToggleEventDetail = { open: boolean };
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 
-export const getSelectedOptionValues = (options: MultiSelectOption[]): string[] =>
-  options.filter((option) => option.selected).map((option) => option.value);
 
 export const getSelectedOptionsString = (options: MultiSelectOption[]): string =>
   getSelectedOptions(options)

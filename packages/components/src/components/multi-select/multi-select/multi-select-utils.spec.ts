@@ -2,7 +2,6 @@ import { vi } from 'vitest';
 import {
   getSelectedOptions,
   getSelectedOptionsString,
-  getSelectedOptionValues,
   type MultiSelectOption,
   resetSelectedOptions,
   selectOptionsByValue,
@@ -47,16 +46,6 @@ describe('getSelectedOptions()', () => {
   });
 });
 
-describe('getSelectedOptionValues', () => {
-  it('should return all selected options values', () => {
-    const options = generateMultiSelectOptions();
-    expect(getSelectedOptionValues(options)).toEqual([]);
-    options[0].selected = true;
-    expect(getSelectedOptionValues(options)).toEqual([options[0].value]);
-    options[2].selected = true;
-    expect(getSelectedOptionValues(options)).toEqual([options[0].value, options[2].value]);
-  });
-});
 
 describe('getSelectedOptionsString', () => {
   it('should return all selected options textContent joined to one string', () => {

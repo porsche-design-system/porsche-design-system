@@ -2228,7 +2228,7 @@ export namespace Components {
          */
         "state"?: MultiSelectState;
         /**
-          * The selected values. Matches options strictly by type and value: a `string` value only matches options whose value is the same string, a `number` value only matches options whose value is the same number. Pass `null` or `[]` to clear the selection.  Note on native form behavior: `FormData` always serializes values as strings, so when participating in a native (uncontrolled) form a `number[]` value is restored as `string[]` via `formStateRestoreCallback` and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages `value` directly via the `change` event), `number[]` types are preserved end-to-end.
+          * The selected values. Matches options strictly by type and value: a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection.  Note on native form behavior: FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.
           * @default []
          */
         "value"?: string[] | number[] | null;
@@ -2644,7 +2644,7 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * The selected value. Matches an option strictly by type and value: `null` matches only an option with value `null`, `undefined` matches only an option with value `undefined` (no preselection by default), and `string` / `number` only match an option whose value has the same type and equal value.  Note on native form behavior: `FormData` always serializes values as strings, so when participating in a native (uncontrolled) form a `number` value is restored as `string` via `formStateRestoreCallback` and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages `value` directly via the `change` event), the `number` type is preserved end-to-end.
+          * The selected value. Matches an option strictly by type and value: null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string / number only match an option whose value has the same type and equal value.  Note on native form behavior: FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
         "value"?: string | number | null;
     }
@@ -6562,7 +6562,7 @@ declare namespace LocalJSX {
          */
         "state"?: MultiSelectState;
         /**
-          * The selected values. Matches options strictly by type and value: a `string` value only matches options whose value is the same string, a `number` value only matches options whose value is the same number. Pass `null` or `[]` to clear the selection.  Note on native form behavior: `FormData` always serializes values as strings, so when participating in a native (uncontrolled) form a `number[]` value is restored as `string[]` via `formStateRestoreCallback` and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages `value` directly via the `change` event), `number[]` types are preserved end-to-end.
+          * The selected values. Matches options strictly by type and value: a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection.  Note on native form behavior: FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.
           * @default []
          */
         "value"?: string[] | number[] | null;
@@ -7018,7 +7018,7 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * The selected value. Matches an option strictly by type and value: `null` matches only an option with value `null`, `undefined` matches only an option with value `undefined` (no preselection by default), and `string` / `number` only match an option whose value has the same type and equal value.  Note on native form behavior: `FormData` always serializes values as strings, so when participating in a native (uncontrolled) form a `number` value is restored as `string` via `formStateRestoreCallback` and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages `value` directly via the `change` event), the `number` type is preserved end-to-end.
+          * The selected value. Matches an option strictly by type and value: null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string / number only match an option whose value has the same type and equal value.  Note on native form behavior: FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
         "value"?: string | number | null;
     }
