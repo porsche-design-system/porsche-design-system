@@ -23,4 +23,15 @@ export const typescaleSm = "1rem";
 export const typescaleXs = ".875rem";
 export const fontWeightSemibold = 600;
 export const spacingStaticXs = "4px";
+export const pdsCheckboxBorderWidth = 1;
+export const pdsSwitchWidth = 48;
+export const pdsSwitchHeight = 28;
+export const pdsSwitchInset = 3;
+export const pdsSwitchWidthCompact = 31;
+export const pdsSwitchHeightCompact = 18;
+export const pdsSwitchInsetCompact = 2;
+export const pdsIconSize = 24;
+export const pdsIconSizeCompact = 18;
+export const gridSpacing = 10;
+export const gridSpacingCompact = 2;
 /* Auto Generated End */

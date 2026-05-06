@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `AG Grid`:
+  - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+  - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+
 ### Changed
 
 - `Wordmark`, `Model Signature`: Deprecate `size` and allow custom sizing via CSS Variables
