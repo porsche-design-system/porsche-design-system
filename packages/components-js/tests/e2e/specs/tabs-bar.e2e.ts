@@ -26,12 +26,21 @@ type InitOptions = {
   activeTabIndex?: number;
   size?: BreakpointCustomizable<TabSize>;
   isWrapped?: boolean;
+  beforeMarkup?: string;
   otherMarkup?: string;
   tag?: 'a' | 'button';
 };
 
 const initTabsBar = (page: Page, opts?: InitOptions) => {
-  const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts || {};
+  const {
+    amount = 8,
+    activeTabIndex,
+    size = 'small',
+    isWrapped,
+    beforeMarkup = '',
+    otherMarkup = '',
+    tag = 'button',
+  } = opts || {};
 
   const tabAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const tabs = Array.from(Array(amount))
@@ -42,9 +51,11 @@ const initTabsBar = (page: Page, opts?: InitOptions) => {
     .filter(Boolean)
     .join(' ');
 
-  const content = `<p-tabs-bar ${attributes}>
+  const tabsBarMarkup = `<p-tabs-bar ${attributes}>
   ${tabs}
-</p-tabs-bar>
+</p-tabs-bar>`;
+
+  const content = `${beforeMarkup}${isWrapped ? `<div style="width: 300px">${tabsBarMarkup}</div>` : tabsBarMarkup}
 ${otherMarkup}
 <script>
   document.querySelector('p-tabs-bar').addEventListener('update', (e) => {
@@ -52,7 +63,7 @@ ${otherMarkup}
   });
 </script>`;
 
-  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+  return setContentWithDesignSystem(page, content);
 };
 
 const getHost = (page: Page) => page.locator('p-tabs-bar');
@@ -461,6 +472,90 @@ test.describe('tab visibility', () => {
 
     // activeTabIndex is still 7, onSlotChange should keep it scrolled into view
     expect(await isTabInView(page, 7)).toBe(true);
+  });
+
+  test('should not scroll the page on initial render when tabs-bar is below the fold', async ({ page }) => {
+    // place the tabs-bar far below the fold so any vertical bubbling from scrollIntoView
+    // would visibly scroll the document. activeTabIndex=7 forces an initial horizontal
+    // scroll to center the last tab.
+    await initTabsBar(page, {
+      amount: 8,
+      activeTabIndex: 7,
+      isWrapped: true,
+      beforeMarkup: '<div style="height: 200vh"></div>',
+    });
+    await waitForAnimation();
+
+    // active tab is centered horizontally within scroller
+    await expect.poll(() => isTabInView(page, 7)).toBe(true);
+    // page must not have scrolled vertically
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  });
+
+  test('should not scroll the page when activeTabIndex changes programmatically and tabs-bar is below the fold', async ({
+    page,
+  }) => {
+    await initTabsBar(page, {
+      amount: 8,
+      activeTabIndex: 0,
+      isWrapped: true,
+      beforeMarkup: '<div style="height: 200vh"></div>',
+    });
+    await waitForAnimation();
+
+    // baseline: page is at top
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+
+    const host = getHost(page);
+    await setProperty(host, 'activeTabIndex', 7);
+    await waitForAnimation();
+
+    // active tab is centered horizontally within scroller
+    await expect.poll(() => isTabInView(page, 7)).toBe(true);
+    // page must not have scrolled vertically
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  });
+
+  test('should not scroll the page on initial render when tabs-bar is below the fold (not wrapped)', async ({
+    page,
+  }) => {
+    // Same as the wrapped case but without the 300px wrapper. Use a high tab count so the
+    // tabs-bar overflows horizontally even at the default viewport width and `scrollTabIntoView`
+    // actually has work to do.
+    await initTabsBar(page, {
+      amount: 30,
+      activeTabIndex: 29,
+      beforeMarkup: '<div style="height: 200vh"></div>',
+    });
+    await waitForAnimation();
+
+    // active tab is centered horizontally within scroller
+    await expect.poll(() => isTabInView(page, 29)).toBe(true);
+    // page must not have scrolled vertically
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  });
+
+  test('should not scroll the page when activeTabIndex changes programmatically and tabs-bar is below the fold (not wrapped)', async ({
+    page,
+  }) => {
+    await initTabsBar(page, {
+      amount: 30,
+      activeTabIndex: 0,
+      beforeMarkup: '<div style="height: 200vh"></div>',
+    });
+    await waitForAnimation();
+
+    // baseline: page is at top
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+
+    const host = getHost(page);
+    await setProperty(host, 'activeTabIndex', 29);
+    await waitForAnimation();
+
+    // active tab is centered horizontally within scroller
+    await expect.poll(() => isTabInView(page, 29)).toBe(true);
+    // page must not have scrolled vertically
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   });
 });
 

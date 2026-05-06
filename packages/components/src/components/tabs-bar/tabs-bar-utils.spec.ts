@@ -313,97 +313,134 @@ describe('isTabList()', () => {
 });
 
 describe('scrollTabIntoView()', () => {
-  const createTabsWithScrollIntoView = (count: number): HTMLElement[] =>
-    Array.from({ length: count }, () => {
-      const el = document.createElement('button');
-      el.scrollIntoView = vi.fn();
-      return el;
+  type ScrollAreaMock = HTMLElement & { scrollTo: ReturnType<typeof vi.fn> };
+
+  const createScrollerWithScrollArea = (opts: {
+    scrollLeft?: number;
+    areaRect?: Partial<DOMRect>;
+  }): { scroller: HTMLElement; scrollArea: ScrollAreaMock } => {
+    const scroller = document.createElement('div');
+    const scrollArea = document.createElement('div') as unknown as ScrollAreaMock;
+    Object.defineProperty(scrollArea, 'scrollLeft', { value: opts.scrollLeft ?? 0, writable: true });
+    Object.defineProperty(scrollArea, 'scrollTo', { value: vi.fn(), writable: true });
+    scrollArea.getBoundingClientRect = vi.fn(
+      () =>
+        ({
+          left: 0,
+          right: 200,
+          top: 0,
+          bottom: 50,
+          width: 200,
+          height: 50,
+          x: 0,
+          y: 0,
+          ...opts.areaRect,
+        }) as DOMRect
+    );
+    Object.defineProperty(scroller, 'shadowRoot', {
+      value: { querySelector: vi.fn().mockReturnValue(scrollArea) },
+      writable: true,
     });
+    return { scroller, scrollArea };
+  };
 
   it('should not throw when scroller is undefined', () => {
-    const tabs = createTabsWithScrollIntoView(3);
+    const tabs = [createTab({ left: 0, right: 50, width: 50 })];
     expect(() => scrollTabIntoView(0, undefined, tabs)).not.toThrow();
-    expect(tabs[0].scrollIntoView).not.toHaveBeenCalled();
   });
 
   it('should not throw when tabs array is empty', () => {
-    const scroller = document.createElement('div');
+    const { scroller } = createScrollerWithScrollArea({});
     expect(() => scrollTabIntoView(0, scroller, [])).not.toThrow();
   });
 
-  it('should not call scrollIntoView when newTabIndex is undefined', () => {
-    const tabs = createTabsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should not call scrollTo when newTabIndex is undefined', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({});
+    const tabs = [createTab({ left: 0, right: 50, width: 50 })];
     scrollTabIntoView(undefined, scroller, tabs);
-    for (const tab of tabs) {
-      expect(tab.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('should not call scrollIntoView when newTabIndex is out of range', () => {
-    const tabs = createTabsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should not call scrollTo when newTabIndex is out of range', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({});
+    const tabs = [createTab({ left: 0, right: 50, width: 50 })];
     scrollTabIntoView(5, scroller, tabs);
-    for (const tab of tabs) {
-      expect(tab.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('should not call scrollIntoView when newTabIndex is negative', () => {
-    const tabs = createTabsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should not call scrollTo when newTabIndex is negative', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({});
+    const tabs = [createTab({ left: 0, right: 50, width: 50 })];
     scrollTabIntoView(-1, scroller, tabs);
-    for (const tab of tabs) {
-      expect(tab.scrollIntoView).not.toHaveBeenCalled();
-    }
+    expect(scrollArea.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('should call scrollIntoView with smooth behavior by default', () => {
-    const tabs = createTabsWithScrollIntoView(3);
+  it('should not throw and not call scrollTo when scroller has no shadow scroll area', () => {
     const scroller = document.createElement('div');
+    Object.defineProperty(scroller, 'shadowRoot', {
+      value: { querySelector: vi.fn().mockReturnValue(null) },
+      writable: true,
+    });
+    const tabs = [createTab({ left: 0, right: 50, width: 50 })];
+    expect(() => scrollTabIntoView(0, scroller, tabs)).not.toThrow();
+  });
+
+  it('should center the active tab horizontally with smooth behavior by default', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({
+      scrollLeft: 0,
+      areaRect: { left: 0, right: 200, width: 200 },
+    });
+    // tab spans [220, 270], center = 245; area center = 100; delta = 145
+    const tabs = [
+      createTab({ left: 0, right: 50, width: 50 }),
+      createTab({ left: 220, right: 270, width: 50 }),
+    ];
     scrollTabIntoView(1, scroller, tabs);
-    expect(tabs[1].scrollIntoView).toHaveBeenCalledWith({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
-      container: 'nearest',
-    });
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 145, behavior: 'smooth' });
   });
 
-  it('should call scrollIntoView with instant behavior when isSmooth is false', () => {
-    const tabs = createTabsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+  it('should center the active tab horizontally with instant behavior when isSmooth is false', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({
+      scrollLeft: 0,
+      areaRect: { left: 0, right: 200, width: 200 },
+    });
+    const tabs = [
+      createTab({ left: 0, right: 50, width: 50 }),
+      createTab({ left: 220, right: 270, width: 50 }),
+    ];
     scrollTabIntoView(1, scroller, tabs, false);
-    expect(tabs[1].scrollIntoView).toHaveBeenCalledWith({
-      behavior: 'instant',
-      block: 'nearest',
-      inline: 'center',
-      container: 'nearest',
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 145, behavior: 'instant' });
+  });
+
+  it('should add the current scrollLeft to the computed delta', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({
+      scrollLeft: 100,
+      areaRect: { left: 0, right: 200, width: 200 },
     });
-  });
-
-  it('should call scrollIntoView on the correct tab element', () => {
-    const tabs = createTabsWithScrollIntoView(5);
-    const scroller = document.createElement('div');
-    scrollTabIntoView(3, scroller, tabs);
-    expect(tabs[3].scrollIntoView).toHaveBeenCalledTimes(1);
-    for (const tab of tabs.filter((_, i) => i !== 3)) {
-      expect(tab.scrollIntoView).not.toHaveBeenCalled();
-    }
-  });
-
-  it('should call scrollIntoView for the first tab (index 0)', () => {
-    const tabs = createTabsWithScrollIntoView(3);
-    const scroller = document.createElement('div');
+    // tab center = 145, area center = 100, delta = 45, targetLeft = 100 + 45 = 145
+    const tabs = [createTab({ left: 120, right: 170, width: 50 })];
     scrollTabIntoView(0, scroller, tabs);
-    expect(tabs[0].scrollIntoView).toHaveBeenCalledTimes(1);
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: 145, behavior: 'smooth' });
   });
 
-  it('should call scrollIntoView for the last tab', () => {
-    const tabs = createTabsWithScrollIntoView(4);
-    const scroller = document.createElement('div');
-    scrollTabIntoView(3, scroller, tabs);
-    expect(tabs[3].scrollIntoView).toHaveBeenCalledTimes(1);
+  it('should compute a negative target scrollLeft when tab sits left of the visible area (RTL-like)', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({
+      scrollLeft: 0,
+      areaRect: { left: 0, right: 200, width: 200 },
+    });
+    // tab center = -125, area center = 100, delta = -225
+    const tabs = [createTab({ left: -150, right: -100, width: 50 })];
+    scrollTabIntoView(0, scroller, tabs);
+    expect(scrollArea.scrollTo).toHaveBeenCalledWith({ left: -225, behavior: 'smooth' });
+  });
+
+  it('should call scrollTo on the inner scroll area only (not on the tab element)', () => {
+    const { scroller, scrollArea } = createScrollerWithScrollArea({});
+    const tabs = [createTab({ left: 0, right: 50, width: 50 })];
+    tabs[0].scrollIntoView = vi.fn();
+    scrollTabIntoView(0, scroller, tabs);
+    expect(scrollArea.scrollTo).toHaveBeenCalledTimes(1);
+    expect(tabs[0].scrollIntoView).not.toHaveBeenCalled();
   });
 });
 

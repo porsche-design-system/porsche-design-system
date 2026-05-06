@@ -7,6 +7,10 @@ on:
         description: 'Docker image to be used in workflow.'
         required: true
         type: string
+      storefront-slug:
+        description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the gh-pages folder produced by the deploy workflow.'
+        required: true
+        type: string
 
 jobs:
   lint:
@@ -119,7 +123,7 @@ jobs:
       - run: npm run build:components-angular
       - run: npm run build:components-react
       - run: npm run build:components-vue
-      - run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" npm run build:storefront
+      - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
       - uses: actions/upload-artifact@v7
         with:
           name: build-production

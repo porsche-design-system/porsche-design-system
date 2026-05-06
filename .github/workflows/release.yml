@@ -24,8 +24,9 @@ on:
         description: 'Algolia API Key (Storefront).'
         required: true
 
+# Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
-  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   check-publication-status:
