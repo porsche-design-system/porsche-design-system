@@ -16,7 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `AG Grid`: custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+- `AG Grid`:
+  - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+  - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
 
 ## [4.1.0] - 2026-05-06
 
