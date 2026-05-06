@@ -1,0 +1,90 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Pangram } from '@/components/common/Pangram';
+
+export const metadata = {
+  title: 'Typography - Porsche Design System',
+  description: 'Different Font families for languages.',
+};
+
+# Typography
+
+The Porsche Design System ships **Porsche Next** as the global brand typeface. It covers most Western and Middle-Eastern
+scripts (Latin, Greek, Cyrillic, Arabic, Vietnamese) in three weights: `normal`, `semibold`, and `bold`.
+
+For scripts not included in Porsche Next — primarily **CJK** (Chinese, Japanese, Korean) and **Thai** — the design
+system relies on high-quality **system fallback fonts** that ship with each operating system. This keeps page weight low
+and rendering fast, while still respecting native typographic conventions for each script.
+
+The samples below use canonical **pangrams** — short texts that exercise the full character set of a script — to make
+font coverage and rendering quality easy to compare across browsers and platforms.
+
+> **Why no custom CJK font?** A complete Chinese font weighs **5–10 MB per weight**. Loading it on every page would add
+> 15–30 MB of font data, severely impacting Core Web Vitals (LCP, FCP) and mobile data usage. System fonts like
+> _PingFang SC_, _Microsoft YaHei_, or _Noto Sans CJK_ are excellent and pre-installed — using them is the right
+> trade-off for a global, performance-conscious design system.
+
+<TableOfContents headings={['Porsche Next', 'System fallback']} />
+
+## Porsche Next
+
+### 🇬🇧 Latin
+
+> **macOS**, **Windows**, **Linux**: `Porsche Next`
+
+<Pangram lang="en" />
+
+### 🇻🇳 Vietnamese
+
+> **macOS**, **Windows**, **Linux**: `Porsche Next`
+
+<Pangram lang="vi" />
+
+### 🇬🇷 Greek & Coptic
+
+> **macOS**, **Windows**, **Linux**: `Porsche Next`
+
+<Pangram lang="el" />
+
+### 🇷🇺 Cyrillic
+
+> **macOS**, **Windows**, **Linux**: `Porsche Next`
+
+<Pangram lang="ru" />
+
+### 🇸🇦 Arabic
+
+> **macOS**, **Windows**, **Linux**: `Porsche Next`
+
+<Pangram lang="ar" />
+
+## System fallback
+
+### 🇨🇳 Simplified Chinese
+
+> **macOS:** `PingFang SC`, **Windows:** `Microsoft YaHei`, **Linux:** `Noto Sans SC`
+
+<Pangram lang="zh-Hans" />
+
+### 🇹🇼 Traditional Chinese
+
+> **macOS:** `PingFang TC`, **Windows:** `Microsoft JhengHei`, **Linux:** `Noto Sans TC`
+
+<Pangram lang="zh-Hant" />
+
+### 🇯🇵 Japanese
+
+> **macOS:** `Hiragino Sans`, **Windows:** `Yu Gothic`, **Linux:** `Noto Sans JP`
+
+<Pangram lang="ja" />
+
+### 🇰🇷 Korean
+
+> **macOS:** `Apple SD Gothic Neo`, **Windows:** `Malgun Gothic`, **Linux:** `Noto Sans KR`
+
+<Pangram lang="ko" />
+
+### 🇹🇭 Thai
+
+> **macOS**, **Windows**, **Linux**: `DB Heavent`
+
+<Pangram lang="th" />

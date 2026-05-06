@@ -1815,6 +1815,11 @@ export const sitemap: Routes = {
         path: '/must-know/theme',
         type: 'PAGE',
       },
+      typography: {
+        name: 'Typography',
+        path: '/must-know/typography',
+        type: 'PAGE',
+      },
       performance: {
         name: 'Performance',
         path: '/must-know/performance',
