@@ -1343,7 +1343,7 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -5577,7 +5577,7 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**

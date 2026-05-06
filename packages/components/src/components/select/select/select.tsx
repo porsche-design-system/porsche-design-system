@@ -198,7 +198,7 @@ export class Select {
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
+        this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
       }
       this.preventOptionUpdate = false;
     }
@@ -254,7 +254,7 @@ export class Select {
     this.defaultValue = this.value;
     this.internals?.setFormValue(this.parsedValue);
     this.updateOptions();
-    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
+    this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue);
   }
 
   public componentDidLoad(): void {
@@ -417,7 +417,7 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
+    const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.parsedValue, !!this.filterSlot);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
       this.selectedOption = selectedOption;
@@ -597,9 +597,9 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      // Preserve the original value type (string | number) but map `null` to `undefined`
-      // so the event detail stays consistent with `SelectChangeEventDetail`.
-      value: this.value ?? undefined,
+      // Read the raw option value so the event detail preserves the original type (string | number).
+      // `null`/`undefined` map to `undefined` to match `SelectChangeEventDetail`.
+      value: this.selectedOption?.value ?? undefined,
       name: this.name,
     });
   };

@@ -37,12 +37,14 @@ export const selectOptionByValue = (
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
   // `null` is treated the same as `undefined` (no preselection / unset value) and matches
-  // an option whose value is `undefined`. Otherwise we use strict equality so types must
-  // match exactly: a numeric host value only matches a numeric option value, and a string
-  // host value only matches a string option value (no implicit coercion).
+  // an option whose value is `undefined`. Otherwise we compare via `String(...)` coercion so a
+  // numeric host value matches a string option value and vice versa. This mirrors the platform:
+  // form data and `formStateRestoreCallback` always deliver strings, so coercion guarantees the
+  // same option is selected before and after a form-state restore regardless of the original
+  // JS type used in `value`.
   const isValueUnset = value === undefined || value === null;
   const optionToSelect = options.find((option) =>
-    isValueUnset ? option.value === undefined : option.value === value
+    isValueUnset ? option.value === undefined : option.value !== undefined && String(option.value) === String(value)
   );
 
   if (optionToSelect) {
