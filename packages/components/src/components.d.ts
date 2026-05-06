@@ -2644,7 +2644,7 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * The selected value. `null` is treated the same as `undefined` (no preselection). Note: the `change` event always emits `undefined` for the unset state, even if `value` was initially set to `null`.
+          * The selected value. Matches an option strictly by type and value: `null` matches only an option with value `null`, `undefined` matches only an option with value `undefined` (no preselection by default), and `string` / `number` only match an option whose value has the same type and equal value.
          */
         "value"?: string | number | null;
     }
@@ -2655,9 +2655,9 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it equals the p-select value.
+          * The option value. Selected when it strictly matches the p-select value (same type and value: `null`, `undefined`, `string` or `number`).
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -7018,7 +7018,7 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * The selected value. `null` is treated the same as `undefined` (no preselection). Note: the `change` event always emits `undefined` for the unset state, even if `value` was initially set to `null`.
+          * The selected value. Matches an option strictly by type and value: `null` matches only an option with value `null`, `undefined` matches only an option with value `undefined` (no preselection by default), and `string` / `number` only match an option whose value has the same type and equal value.
          */
         "value"?: string | number | null;
     }
@@ -7029,9 +7029,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it equals the p-select value.
+          * The option value. Selected when it strictly matches the p-select value (same type and value: `null`, `undefined`, `string` or `number`).
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
