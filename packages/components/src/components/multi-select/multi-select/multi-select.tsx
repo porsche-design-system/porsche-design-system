@@ -113,17 +113,17 @@ export class MultiSelect {
 
   /**
    * The selected values. Matches options strictly by type and value:
-   * a `string` value only matches options whose value is the same string,
-   * a `number` value only matches options whose value is the same number.
-   * Pass `null` or `[]` to clear the selection.
+   * a string value only matches options whose value is the same string,
+   * a number value only matches options whose value is the same number.
+   * Pass null or [] to clear the selection.
    *
-   * Note on native form behavior: `FormData` always serializes values as
+   * Note on native form behavior: FormData always serializes values as
    * strings, so when participating in a native (uncontrolled) form a
-   * `number[]` value is restored as `string[]` via `formStateRestoreCallback`
+   * number[] value is restored as string[] via formStateRestoreCallback
    * and will no longer strictly match number-typed options. This limitation
    * only applies to native form state restoration; in controlled forms
-   * (where the consumer manages `value` directly via the `change` event),
-   * `number[]` types are preserved end-to-end.
+   * (where the consumer manages value directly via the change event),
+   * number[] types are preserved end-to-end.
    */
   @Prop({ mutable: true }) public value?: string[] | number[] | null = [];
 
@@ -583,12 +583,13 @@ export class MultiSelect {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedMultiSelectOption(selectedOption);
+      const currentValue = this.value ?? [];
       if (selectedOption.selected) {
         this.selectedOptions = [...this.selectedOptions, selectedOption];
-        this.value = [...this.value, selectedOption.value] as string[] | number[];
+        this.value = [...currentValue, selectedOption.value] as string[] | number[];
       } else {
         this.selectedOptions = this.selectedOptions.filter((option) => option.value !== selectedOption.value);
-        this.value = this.value.filter((val) => val !== selectedOption.value) as string[] | number[];
+        this.value = currentValue.filter((val) => val !== selectedOption.value) as string[] | number[];
       }
       this.emitUpdateEvent();
     }
