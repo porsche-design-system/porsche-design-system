@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-vue",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "keywords": [
     "porsche",
@@ -21,7 +21,7 @@
     "url": "https://github.com/porsche-design-system/porsche-design-system"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "4.0.0"
+    "@porsche-design-system/components-js": "4.1.0"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
