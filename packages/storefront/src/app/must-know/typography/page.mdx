@@ -59,6 +59,24 @@ font coverage and rendering quality easy to compare across browsers and platform
 
 ## System fallback
 
+**Tip — automatic font selection.** When you use the Porsche Design System (e.g. `--p-font-porsche-next` CSS variable,
+the `<p-text>`/`<p-heading>` component, or the Tailwind `font-porsche-next` CSS class), the correct typeface is selected
+automatically per language via the `:lang()` CSS selector. As long as your HTML has a correct `lang` attribute,
+**Porsche Next** renders for supported scripts and the appropriate **system font** for CJK and Thai — with no extra
+configuration.
+
+```html
+<html lang="zh-Hans">
+  <body>
+    <!-- Inherits lang="zh-Hans" → PingFang SC / Microsoft YaHei / Noto Sans SC -->
+    <p-text>保时捷驾驶体验活动在线销售通用条款与条件</p-text>
+
+    <!-- Per-element lang override → PingFang TC / Microsoft JhengHei / Noto Sans TC -->
+    <p-text lang="zh-Hant">天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。</p-text>
+  </body>
+</html>
+```
+
 ### 🇨🇳 Simplified Chinese
 
 > **macOS:** `PingFang SC`, **Windows:** `Microsoft YaHei`, **Linux:** `Noto Sans SC`
