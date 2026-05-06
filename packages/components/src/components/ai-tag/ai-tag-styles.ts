@@ -2,11 +2,14 @@ import { addImportantToEachRule, forcedColorsMediaQuery, getTransition, hostHidd
 import {
   blurFrosted,
   colorContrastHigh,
-  colorFrosted,
+  colorFrostedStrong,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  radiusSm,
+  radiusFull,
+  spacingStatic2Xs,
+  spacingStaticSm,
+  spacingStaticXs,
   typescale2Xs,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
@@ -29,15 +32,15 @@ export const getComponentCss = (): string => {
       abbr: {
         all: 'unset',
       },
-      div: {
+      span: {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
-        padding: '1px 6px 1px 4px',
-        borderRadius: radiusSm,
+        padding: `calc(2*${spacingStatic2Xs}) ${spacingStaticSm} calc(2*${spacingStatic2Xs}) ${spacingStaticXs}`,
+        borderRadius: radiusFull,
         font: `${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorContrastHigh,
-        background: colorFrosted,
+        background: colorFrostedStrong,
         WebkitBackdropFilter: blurFrosted,
         backdropFilter: blurFrosted,
         ...forcedColorsMediaQuery({
