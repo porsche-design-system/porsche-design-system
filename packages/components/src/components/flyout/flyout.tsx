@@ -170,9 +170,9 @@ export class Flyout {
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         innerClass="flyout"
-        header={this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
-        footer={this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
-        subFooter={this.hasSubFooter && <slot name="sub-footer" />}
+        header={this.hasHeader ? <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} /> : undefined}
+        footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
+        subFooter={this.hasSubFooter ? <slot name="sub-footer" /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...{ 'aria-label': this.hasHeader ? getSlotTextContent(this.host, 'header') : 'Flyout' },

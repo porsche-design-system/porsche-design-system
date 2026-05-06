@@ -114,7 +114,7 @@ export class Sheet {
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         innerClass="sheet"
-        header={this.hasHeader && <slot name="header" />}
+        header={this.hasHeader ? <slot name="header" /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && {
@@ -123,7 +123,7 @@ export class Sheet {
           ...parseAndGetAriaAttributes(this.aria),
         })}
         dismissButton={
-          this.dismissButton && (
+          this.dismissButton ? (
             <PrefixedTagNames.pButton
               class="dismiss"
               variant="secondary"
@@ -135,7 +135,7 @@ export class Sheet {
             >
               Dismiss sheet
             </PrefixedTagNames.pButton>
-          )
+          ) : undefined
         }
       >
         <slot />

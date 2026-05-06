@@ -170,15 +170,15 @@ export class Modal {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        header={this.hasHeader && <slot name="header" />}
-        footer={this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
+        header={this.hasHeader ? <slot name="header" /> : undefined}
+        footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
         dismissButton={
-          this.dismissButton && (
+          this.dismissButton ? (
             <PrefixedTagNames.pButton
               class="dismiss"
               variant="secondary"
@@ -190,7 +190,7 @@ export class Modal {
             >
               Dismiss modal
             </PrefixedTagNames.pButton>
-          )
+          ) : undefined
         }
       >
         <slot />
