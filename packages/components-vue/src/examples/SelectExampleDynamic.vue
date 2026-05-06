@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValue = ref<string>('1');
+const selectedValue = ref<string | number | undefined>('1');
 const inputValue = ref<string>('');
 const optionCount = ref<number>(3);
 
@@ -23,7 +23,7 @@ const onResetValue = () => {
 
 const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
   selectedValue.value = e.detail.value;
-  inputValue.value = e.detail.value;
+  inputValue.value = String(e.detail.value ?? '');
 };
 
 const onAddOption = () => {

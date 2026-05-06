@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-design-system/components-angular';
+import {
+  PInputText,
+  PorscheDesignSystemModule,
+  PSelect,
+  SelectChangeEventDetail,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-select-example-dynamic',
@@ -24,8 +29,8 @@ import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-des
   imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleDynamicComponent {
-  selectedValue: string | undefined = '1';
-  inputValue: string | undefined = '';
+  selectedValue: PSelect['value'] = '1';
+  inputValue: PInputText['value'] = '';
   optionCount: number = 3;
 
   get optionIndices(): number[] {
@@ -47,7 +52,7 @@ export class SelectExampleDynamicComponent {
 
   onChange(e: CustomEvent<SelectChangeEventDetail>) {
     this.selectedValue = e.detail.value;
-    this.inputValue = e.detail.value;
+    this.inputValue = String(e.detail.value ?? '');
   }
 
   onAddOption() {
