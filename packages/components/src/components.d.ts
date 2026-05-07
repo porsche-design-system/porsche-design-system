@@ -2655,7 +2655,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-select value (same type and value: `null`, `undefined`, `string` or `number`).
+          * The option value. Selected when it strictly matches the p-select value (same type and value).
          */
         "value"?: string | number | null;
     }
@@ -7029,7 +7029,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-select value (same type and value: `null`, `undefined`, `string` or `number`).
+          * The option value. Selected when it strictly matches the p-select value (same type and value).
          */
         "value"?: string | number | null;
     }
