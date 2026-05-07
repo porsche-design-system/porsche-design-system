@@ -23,11 +23,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - **Traditional Chinese:** PingFang TC (macOS), Microsoft JhengHei (Windows), Noto Sans TC (Android, Linux, ChromeOS)
   - **Japanese:** Hiragino Sans (macOS), Yu Gothic (Windows), Noto Sans JP (Android, Linux, ChromeOS)
   - **Korean:** Apple SD Gothic Neo (macOS), Malgun Gothic (Windows), Noto Sans KR (Android, Linux, ChromeOS)
-- `Tailwind CSS`: Improve prefixing support
-  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 
 ### Fixed
 
+- `Tailwind CSS`: Prefixing support ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 - `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
   ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
 
