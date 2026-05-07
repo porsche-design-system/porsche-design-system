@@ -4,7 +4,6 @@ import { ComponentStory } from '@/components/playground/ComponentStory';
 import {
   aiTagStoryWithCheckbox,
   aiTagStoryWithRadioButton,
-  aiTagStoryWithTag,
   aiTagStoryWithText,
   aiTagStoryWithSelect,
   aiTagStoryWithInputSearch,
@@ -23,9 +22,8 @@ export const metadata = {
   headings={[
     'Within Checkbox',
     'Within Radio Group',
+    'Within Form Label',
     'Within Input Search',
-    'Within Select',
-    'Within Tag',
     'Within Text',
     'Within Image',
     'Within Table',
@@ -46,25 +44,17 @@ for individual radio options.
 
 <ComponentStory story={aiTagStoryWithRadioButton} />
 
+## Within Form Label
+
+The `p-ai-tag` can be placed within a `label` of a `p-select` (or any other form component) to indicate AI-related content for selected options.
+
+<ComponentStory story={aiTagStoryWithSelect} />
+
 ## Within Input Search
 
 The `p-ai-tag` can be placed in the `end` slot of a `p-input-search` to indicate that the search results are AI-powered.
 
 <ComponentStory story={aiTagStoryWithInputSearch} />
-
-## Within Select
-
-The `p-ai-tag` can be placed within `p-select-option` children inside `p-optgroup` to indicate AI-related content for
-individual options in a grouped select.
-
-<ComponentStory story={aiTagStoryWithSelect} />
-
-## Within Tag
-
-The `p-ai-tag` can be placed alongside the text content of a `p-tag` to indicate AI-related context. This works with
-both compact and default sizes, as well as static and interactive (button-slotted) variants.
-
-<ComponentStory story={aiTagStoryWithTag} />
 
 ## Within Text
 

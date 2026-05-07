@@ -160,13 +160,13 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
             {
               tag: 'p-select-option',
               properties: { value: 'a' },
-              children: ['Option A', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
+              children: ['Option A'],
             },
             { tag: 'p-select-option', properties: { value: 'b' }, children: ['Option B'] },
             {
               tag: 'p-select-option',
               properties: { value: 'c' },
-              children: ['Option C', { tag: 'p-ai-tag', properties: { variant: 'abbreviation' } }],
+              children: ['Option C'],
             },
           ],
         },
@@ -178,49 +178,9 @@ export const aiTagStoryWithSelect: Story<'p-ai-tag'> = {
             {
               tag: 'p-select-option',
               properties: { value: 'e' },
-              children: ['Option E', { tag: 'p-ai-tag', properties: { variant: 'generated' } }],
+              children: ['Option E'],
             },
             { tag: 'p-select-option', properties: { value: 'f' }, children: ['Option F'] },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-export const aiTagStoryWithTag: Story<'p-ai-tag'> = {
-  generator: () => [
-    {
-      tag: 'div',
-      properties: { className: 'flex flex-col items-start gap-static-md' },
-      children: [
-        {
-          tag: 'p-tag',
-          properties: { icon: 'globe' },
-          children: [
-            'Some label',
-            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[7px]' } },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { icon: 'globe' },
-          children: [
-            {
-              tag: 'button',
-              properties: { type: 'button' },
-              children: ['Some label'],
-            },
-            ' ',
-            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[7px]' } },
-          ],
-        },
-        {
-          tag: 'p-tag',
-          properties: { icon: 'globe', compact: true },
-          children: [
-            'Some label',
-            { tag: 'p-ai-tag', properties: { variant: 'abbreviation', className: 'ms-static-xs -me-[7px]' } },
           ],
         },
       ],
