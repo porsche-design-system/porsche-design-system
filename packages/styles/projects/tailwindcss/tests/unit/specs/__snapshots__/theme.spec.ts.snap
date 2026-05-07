@@ -13,118 +13,144 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --color-black: #000;
   --color-white: #fff;
 
-  --color-focus: light-dark(#1a44ea, #1a44ea);
-  --color-canvas: light-dark(#fff, hsl(225 66.7% 1.2%));
-  --color-surface: light-dark(hsl(240 10% 95%), hsl(240 2% 10%));
-  --color-frosted: light-dark(hsl(240 5% 70% / 0.148), hsl(240 2% 43% / 0.228));
-  --color-frosted-soft: light-dark(
-    hsl(234 9.8% 60% / 0.06),
-    hsl(240 3.7% 26.5% / 0.154)
+  --color-focus: var(--_color-focus-dynamic, light-dark(#1a44ea, #1a44ea));
+  --color-canvas: var(
+    --_color-canvas-dynamic,
+    light-dark(#fff, hsl(225 66.7% 1.2%))
   );
-  --color-frosted-strong: light-dark(
-    hsl(236 6.5% 42% / 0.236),
-    hsl(240 1.5% 61.8% / 0.302)
+  --color-surface: var(
+    --_color-surface-dynamic,
+    light-dark(hsl(240 10% 95%), hsl(240 2% 10%))
   );
-  --color-backdrop: light-dark(
-    hsl(240 5.3% 14.9% / 0.5),
-    hsl(240 5.3% 14.9% / 0.5)
+  --color-frosted: var(
+    --_color-frosted-dynamic,
+    light-dark(hsl(240 5% 70% / 0.148), hsl(240 2% 43% / 0.228))
   );
-  --color-contrast-lower: light-dark(
-    hsl(234 6% 32.9% / 0.324),
-    hsl(240 1.5% 61.8% / 0.302)
+  --color-frosted-soft: var(
+    --_color-frosted-soft-dynamic,
+    light-dark(hsl(234 9.8% 60% / 0.06), hsl(240 3.7% 26.5% / 0.154))
   );
-  --color-contrast-low: light-dark(
-    hsl(240 5.3% 14.9% / 0.5),
-    hsl(240 12.5% 96.9% / 0.45)
+  --color-frosted-strong: var(
+    --_color-frosted-strong-dynamic,
+    light-dark(hsl(236 6.5% 42% / 0.236), hsl(240 1.5% 61.8% / 0.302))
   );
-  --color-contrast-medium: light-dark(
-    hsl(240 6.1% 7% / 0.6),
-    hsl(240 12.5% 96.9% / 0.56)
+  --color-backdrop: var(
+    --_color-backdrop-dynamic,
+    light-dark(hsl(240 5.3% 14.9% / 0.5), hsl(240 5.3% 14.9% / 0.5))
   );
-  --color-contrast-high: light-dark(
-    hsl(240 7.1% 11% / 0.7),
-    hsl(240 12.5% 96.9% / 0.67)
+  --color-contrast-lower: var(
+    --_color-contrast-lower-dynamic,
+    light-dark(hsl(234 6% 32.9% / 0.324), hsl(240 1.5% 61.8% / 0.302))
   );
-  --color-contrast-higher: light-dark(
-    hsl(240 8.7% 9% / 0.8),
-    hsl(240 12.5% 96.9% / 0.78)
+  --color-contrast-low: var(
+    --_color-contrast-low-dynamic,
+    light-dark(hsl(240 5.3% 14.9% / 0.5), hsl(240 12.5% 96.9% / 0.45))
   );
-  --color-primary: light-dark(hsl(225 66.7% 1.2%), hsl(225 100% 99%));
-  --color-success: light-dark(hsl(115 77.5% 27.8%), hsl(157 84.9% 41.6%));
-  --color-success-low: light-dark(
-    hsl(115 77.5% 27.8% / 0.18),
-    hsl(157 84.9% 41.6% / 0.18)
+  --color-contrast-medium: var(
+    --_color-contrast-medium-dynamic,
+    light-dark(hsl(240 6.1% 7% / 0.6), hsl(240 12.5% 96.9% / 0.56))
   );
-  --color-success-medium: light-dark(
-    hsl(115 77.5% 27.8% / 0.6),
-    hsl(157 84.9% 41.6% / 0.6)
+  --color-contrast-high: var(
+    --_color-contrast-high-dynamic,
+    light-dark(hsl(240 7.1% 11% / 0.7), hsl(240 12.5% 96.9% / 0.67))
   );
-  --color-success-frosted: light-dark(
-    hsl(109 100% 90% / 0.55),
-    hsl(157 79% 20% / 0.66)
+  --color-contrast-higher: var(
+    --_color-contrast-higher-dynamic,
+    light-dark(hsl(240 8.7% 9% / 0.8), hsl(240 12.5% 96.9% / 0.78))
   );
-  --color-success-frosted-soft: light-dark(
-    hsl(109 80% 95% / 0.55),
-    hsl(157 59% 15% / 0.66)
+  --color-primary: var(
+    --_color-primary-dynamic,
+    light-dark(hsl(225 66.7% 1.2%), hsl(225 100% 99%))
   );
-  --color-warning: light-dark(hsl(28 97.7% 34.1%), hsl(28 90.2% 56.1%));
-  --color-warning-low: light-dark(
-    hsl(28 97.7% 34.1% / 0.18),
-    hsl(28 90.2% 56.1% / 0.18)
+  --color-success: var(
+    --_color-success-dynamic,
+    light-dark(hsl(115 77.5% 27.8%), hsl(157 84.9% 41.6%))
   );
-  --color-warning-medium: light-dark(
-    hsl(28 97.7% 34.1% / 0.6),
-    hsl(28 90.2% 56.1% / 0.6)
+  --color-success-low: var(
+    --_color-success-low-dynamic,
+    light-dark(hsl(115 77.5% 27.8% / 0.18), hsl(157 84.9% 41.6% / 0.18))
   );
-  --color-warning-frosted: light-dark(
-    hsl(40 100% 90% / 0.55),
-    hsl(52 79% 20% / 0.66)
+  --color-success-medium: var(
+    --_color-success-medium-dynamic,
+    light-dark(hsl(115 77.5% 27.8% / 0.6), hsl(157 84.9% 41.6% / 0.6))
   );
-  --color-warning-frosted-soft: light-dark(
-    hsl(40 80% 95% / 0.55),
-    hsl(52 59% 15% / 0.66)
+  --color-success-frosted: var(
+    --_color-success-frosted-dynamic,
+    light-dark(hsl(109 100% 90% / 0.55), hsl(157 79% 20% / 0.66))
   );
-  --color-error: light-dark(hsl(357 78% 41%), hsl(0 96.9% 62%));
-  --color-error-low: light-dark(
-    hsl(357 78% 41% / 0.18),
-    hsl(0 96.9% 62% / 0.18)
+  --color-success-frosted-soft: var(
+    --_color-success-frosted-soft-dynamic,
+    light-dark(hsl(109 80% 95% / 0.55), hsl(157 59% 15% / 0.66))
   );
-  --color-error-medium: light-dark(
-    hsl(357 78% 41% / 0.6),
-    hsl(0 96.9% 62% / 0.6)
+  --color-warning: var(
+    --_color-warning-dynamic,
+    light-dark(hsl(28 97.7% 34.1%), hsl(28 90.2% 56.1%))
   );
-  --color-error-frosted: light-dark(
-    hsl(0 100% 90% / 0.55),
-    hsl(0 79% 20% / 0.66)
+  --color-warning-low: var(
+    --_color-warning-low-dynamic,
+    light-dark(hsl(28 97.7% 34.1% / 0.18), hsl(28 90.2% 56.1% / 0.18))
   );
-  --color-error-frosted-soft: light-dark(
-    hsl(0 80% 95% / 0.55),
-    hsl(0 59% 15% / 0.66)
+  --color-warning-medium: var(
+    --_color-warning-medium-dynamic,
+    light-dark(hsl(28 97.7% 34.1% / 0.6), hsl(28 90.2% 56.1% / 0.6))
   );
-  --color-info: light-dark(hsl(228 83.2% 51%), hsl(210 100% 54.5%));
-  --color-info-low: light-dark(
-    hsl(228 83.2% 51% / 0.18),
-    hsl(210 100% 54.5% / 0.18)
+  --color-warning-frosted: var(
+    --_color-warning-frosted-dynamic,
+    light-dark(hsl(40 100% 90% / 0.55), hsl(52 79% 20% / 0.66))
   );
-  --color-info-medium: light-dark(
-    hsl(228 83.2% 51% / 0.6),
-    hsl(210 100% 54.5% / 0.6)
+  --color-warning-frosted-soft: var(
+    --_color-warning-frosted-soft-dynamic,
+    light-dark(hsl(40 80% 95% / 0.55), hsl(52 59% 15% / 0.66))
   );
-  --color-info-frosted: light-dark(
-    hsl(211 100% 90% / 0.55),
-    hsl(210 79% 20% / 0.66)
+  --color-error: var(
+    --_color-error-dynamic,
+    light-dark(hsl(357 78% 41%), hsl(0 96.9% 62%))
   );
-  --color-info-frosted-soft: light-dark(
-    hsl(211 80% 95% / 0.55),
-    hsl(210 59% 15% / 0.66)
+  --color-error-low: var(
+    --_color-error-low-dynamic,
+    light-dark(hsl(357 78% 41% / 0.18), hsl(0 96.9% 62% / 0.18))
+  );
+  --color-error-medium: var(
+    --_color-error-medium-dynamic,
+    light-dark(hsl(357 78% 41% / 0.6), hsl(0 96.9% 62% / 0.6))
+  );
+  --color-error-frosted: var(
+    --_color-error-frosted-dynamic,
+    light-dark(hsl(0 100% 90% / 0.55), hsl(0 79% 20% / 0.66))
+  );
+  --color-error-frosted-soft: var(
+    --_color-error-frosted-soft-dynamic,
+    light-dark(hsl(0 80% 95% / 0.55), hsl(0 59% 15% / 0.66))
+  );
+  --color-info: var(
+    --_color-info-dynamic,
+    light-dark(hsl(228 83.2% 51%), hsl(210 100% 54.5%))
+  );
+  --color-info-low: var(
+    --_color-info-low-dynamic,
+    light-dark(hsl(228 83.2% 51% / 0.18), hsl(210 100% 54.5% / 0.18))
+  );
+  --color-info-medium: var(
+    --_color-info-medium-dynamic,
+    light-dark(hsl(228 83.2% 51% / 0.6), hsl(210 100% 54.5% / 0.6))
+  );
+  --color-info-frosted: var(
+    --_color-info-frosted-dynamic,
+    light-dark(hsl(211 100% 90% / 0.55), hsl(210 79% 20% / 0.66))
+  );
+  --color-info-frosted-soft: var(
+    --_color-info-frosted-soft-dynamic,
+    light-dark(hsl(211 80% 95% / 0.55), hsl(210 59% 15% / 0.66))
   );
 
   /* Typography */
-  --font-porsche-next:
-    "Porsche Next", "Arial Narrow", Arial, "Hiragino Sans", "Yu Gothic",
-    "Apple SD Gothic Neo", "Malgun Gothic", "PingFang SC", "Microsoft YaHei",
-    "PingFang TC", "Microsoft JhengHei", sans-serif;
-  --font-sans: var(--font-porsche-next);
+
+  /*
+    This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next).
+    By pointing it to our dynamic variable, we create a stable link.
+  */
+  --font-porsche-next: var(--_font-porsche-next-dynamic);
+  --font-sans: --theme(--font-porsche-next);
 
   --font-weight-normal: 400;
   --font-weight-semibold: 600;
@@ -199,11 +225,11 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
   /* Shadow */
   --shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
-  --shadow-low: var(--shadow-sm); /* alias (deprecated) */
+  --shadow-low: --theme(--shadow-sm); /* alias (deprecated) */
   --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
-  --shadow-medium: var(--shadow-md); /* alias (deprecated) */
+  --shadow-medium: --theme(--shadow-md); /* alias (deprecated) */
   --shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
-  --shadow-high: var(--shadow-lg); /* alias (deprecated) */
+  --shadow-high: --theme(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
   --default-outline-width: 2px;
@@ -216,25 +242,25 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
   --default-transition-duration: 0.25s;
   --transition-duration-sm: 0.25s;
-  --transition-duration-short: var(
+  --transition-duration-short: --theme(
     --transition-duration-sm
   ); /* alias (deprecated) */
   --transition-duration-md: 0.4s;
-  --transition-duration-moderate: var(
+  --transition-duration-moderate: --theme(
     --transition-duration-md
   ); /* alias (deprecated) */
   --transition-duration-lg: 0.6s;
-  --transition-duration-long: var(
+  --transition-duration-long: --theme(
     --transition-duration-lg
   ); /* alias (deprecated) */
   --transition-duration-xl: 1.2s;
-  --transition-duration-very-long: var(
+  --transition-duration-very-long: --theme(
     --transition-duration-xl
   ); /* alias (deprecated) */
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-xl) var(--ease-in-out)
-    infinite;
+  --animate-skeleton: skeleton --theme(--transition-duration-xl)
+    --theme(--ease-in-out) infinite;
 
   @keyframes skeleton {
     from {
@@ -246,152 +272,363 @@ exports[`should match compiled tailwindcss theme 1`] = `
   }
 }
 
-@layer theme {
+@layer base {
+  /*
+     Tailwind v4 won't add a prefix to variables defined outside the @theme block.
+     We override the "Bridge Variable". Since the Tailwind theme variable
+     points here, the font will update even if the utility class is prefixed.
+  */
+
+  :root,
+  :host {
+    --_font-porsche-next-dynamic:
+      "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+  }
+
+  /* Simplified Chinese */
+  :lang(zh-Hans),
+  :lang(zh-CN),
+  :lang(zh-SG) {
+    --_font-porsche-next-dynamic:
+      "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+      "Arial Narrow", Arial, sans-serif;
+  }
+
+  /* Traditional Chinese */
+  :lang(zh-Hant),
+  :lang(zh-TW),
+  :lang(zh-HK),
+  :lang(zh-MO) {
+    --_font-porsche-next-dynamic:
+      "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
+      "Arial Narrow", Arial, sans-serif;
+  }
+
+  /* Japanese */
+  :lang(ja) {
+    --_font-porsche-next-dynamic:
+      "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+      "Arial Narrow", Arial, sans-serif;
+  }
+
+  /* Korean */
+  :lang(ko) {
+    --_font-porsche-next-dynamic:
+      "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+      "Arial Narrow", Arial, sans-serif;
+  }
+}
+
+@layer base {
+  /*
+    Fallback for browsers without light-dark() support.
+    The :root rule provides defaults; the @utility scheme-* blocks below
+    handle per-scheme overrides via class selectors. Defining them as utilities
+    (instead of plain class selectors) ensures Tailwind applies its configured
+    prefix (e.g. tw:scheme-dark).
+  */
+
   @supports not (color: light-dark(white, black)) {
     :root,
-    .scheme-light,
-    .scheme-only-light,
-    .scheme-normal,
-    .scheme-light-dark {
-      --color-focus: #1a44ea;
-      --color-canvas: #fff;
-      --color-surface: hsl(240 10% 95%);
-      --color-frosted: hsl(240 5% 70% / 0.148);
-      --color-frosted-soft: hsl(234 9.8% 60% / 0.06);
-      --color-frosted-strong: hsl(236 6.5% 42% / 0.236);
-      --color-backdrop: hsl(240 5.3% 14.9% / 0.5);
-      --color-contrast-lower: hsl(234 6% 32.9% / 0.324);
-      --color-contrast-low: hsl(240 5.3% 14.9% / 0.5);
-      --color-contrast-medium: hsl(240 6.1% 7% / 0.6);
-      --color-contrast-high: hsl(240 7.1% 11% / 0.7);
-      --color-contrast-higher: hsl(240 8.7% 9% / 0.8);
-      --color-primary: hsl(225 66.7% 1.2%);
-      --color-success: hsl(115 77.5% 27.8%);
-      --color-success-low: hsl(115 77.5% 27.8% / 0.18);
-      --color-success-medium: hsl(115 77.5% 27.8% / 0.6);
-      --color-success-frosted: hsl(109 100% 90% / 0.55);
-      --color-success-frosted-soft: hsl(109 80% 95% / 0.55);
-      --color-warning: hsl(28 97.7% 34.1%);
-      --color-warning-low: hsl(28 97.7% 34.1% / 0.18);
-      --color-warning-medium: hsl(28 97.7% 34.1% / 0.6);
-      --color-warning-frosted: hsl(40 100% 90% / 0.55);
-      --color-warning-frosted-soft: hsl(40 80% 95% / 0.55);
-      --color-error: hsl(357 78% 41%);
-      --color-error-low: hsl(357 78% 41% / 0.18);
-      --color-error-medium: hsl(357 78% 41% / 0.6);
-      --color-error-frosted: hsl(0 100% 90% / 0.55);
-      --color-error-frosted-soft: hsl(0 80% 95% / 0.55);
-      --color-info: hsl(228 83.2% 51%);
-      --color-info-low: hsl(228 83.2% 51% / 0.18);
-      --color-info-medium: hsl(228 83.2% 51% / 0.6);
-      --color-info-frosted: hsl(211 100% 90% / 0.55);
-      --color-info-frosted-soft: hsl(211 80% 95% / 0.55);
-    }
-
-    .scheme-dark,
-    .scheme-only-dark {
-      --color-focus: #1a44ea;
-      --color-canvas: hsl(225 66.7% 1.2%);
-      --color-surface: hsl(240 2% 10%);
-      --color-frosted: hsl(240 2% 43% / 0.228);
-      --color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
-      --color-frosted-strong: hsl(240 1.5% 61.8% / 0.302);
-      --color-backdrop: hsl(240 5.3% 14.9% / 0.5);
-      --color-contrast-lower: hsl(240 1.5% 61.8% / 0.302);
-      --color-contrast-low: hsl(240 12.5% 96.9% / 0.45);
-      --color-contrast-medium: hsl(240 12.5% 96.9% / 0.56);
-      --color-contrast-high: hsl(240 12.5% 96.9% / 0.67);
-      --color-contrast-higher: hsl(240 12.5% 96.9% / 0.78);
-      --color-primary: hsl(225 100% 99%);
-      --color-success: hsl(157 84.9% 41.6%);
-      --color-success-low: hsl(157 84.9% 41.6% / 0.18);
-      --color-success-medium: hsl(157 84.9% 41.6% / 0.6);
-      --color-success-frosted: hsl(157 79% 20% / 0.66);
-      --color-success-frosted-soft: hsl(157 59% 15% / 0.66);
-      --color-warning: hsl(28 90.2% 56.1%);
-      --color-warning-low: hsl(28 90.2% 56.1% / 0.18);
-      --color-warning-medium: hsl(28 90.2% 56.1% / 0.6);
-      --color-warning-frosted: hsl(52 79% 20% / 0.66);
-      --color-warning-frosted-soft: hsl(52 59% 15% / 0.66);
-      --color-error: hsl(0 96.9% 62%);
-      --color-error-low: hsl(0 96.9% 62% / 0.18);
-      --color-error-medium: hsl(0 96.9% 62% / 0.6);
-      --color-error-frosted: hsl(0 79% 20% / 0.66);
-      --color-error-frosted-soft: hsl(0 59% 15% / 0.66);
-      --color-info: hsl(210 100% 54.5%);
-      --color-info-low: hsl(210 100% 54.5% / 0.18);
-      --color-info-medium: hsl(210 100% 54.5% / 0.6);
-      --color-info-frosted: hsl(210 79% 20% / 0.66);
-      --color-info-frosted-soft: hsl(210 59% 15% / 0.66);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .scheme-light-dark {
-        --color-focus: #1a44ea;
-        --color-canvas: hsl(225 66.7% 1.2%);
-        --color-surface: hsl(240 2% 10%);
-        --color-frosted: hsl(240 2% 43% / 0.228);
-        --color-frosted-soft: hsl(240 3.7% 26.5% / 0.154);
-        --color-frosted-strong: hsl(240 1.5% 61.8% / 0.302);
-        --color-backdrop: hsl(240 5.3% 14.9% / 0.5);
-        --color-contrast-lower: hsl(240 1.5% 61.8% / 0.302);
-        --color-contrast-low: hsl(240 12.5% 96.9% / 0.45);
-        --color-contrast-medium: hsl(240 12.5% 96.9% / 0.56);
-        --color-contrast-high: hsl(240 12.5% 96.9% / 0.67);
-        --color-contrast-higher: hsl(240 12.5% 96.9% / 0.78);
-        --color-primary: hsl(225 100% 99%);
-        --color-success: hsl(157 84.9% 41.6%);
-        --color-success-low: hsl(157 84.9% 41.6% / 0.18);
-        --color-success-medium: hsl(157 84.9% 41.6% / 0.6);
-        --color-success-frosted: hsl(157 79% 20% / 0.66);
-        --color-success-frosted-soft: hsl(157 59% 15% / 0.66);
-        --color-warning: hsl(28 90.2% 56.1%);
-        --color-warning-low: hsl(28 90.2% 56.1% / 0.18);
-        --color-warning-medium: hsl(28 90.2% 56.1% / 0.6);
-        --color-warning-frosted: hsl(52 79% 20% / 0.66);
-        --color-warning-frosted-soft: hsl(52 59% 15% / 0.66);
-        --color-error: hsl(0 96.9% 62%);
-        --color-error-low: hsl(0 96.9% 62% / 0.18);
-        --color-error-medium: hsl(0 96.9% 62% / 0.6);
-        --color-error-frosted: hsl(0 79% 20% / 0.66);
-        --color-error-frosted-soft: hsl(0 59% 15% / 0.66);
-        --color-info: hsl(210 100% 54.5%);
-        --color-info-low: hsl(210 100% 54.5% / 0.18);
-        --color-info-medium: hsl(210 100% 54.5% / 0.6);
-        --color-info-frosted: hsl(210 79% 20% / 0.66);
-        --color-info-frosted-soft: hsl(210 59% 15% / 0.66);
-      }
+    :host {
+      --_color-focus-dynamic: #1a44ea;
+      --_color-canvas-dynamic: #fff;
+      --_color-surface-dynamic: hsl(240 10% 95%);
+      --_color-frosted-dynamic: hsl(240 5% 70% / 0.148);
+      --_color-frosted-soft-dynamic: hsl(234 9.8% 60% / 0.06);
+      --_color-frosted-strong-dynamic: hsl(236 6.5% 42% / 0.236);
+      --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+      --_color-contrast-lower-dynamic: hsl(234 6% 32.9% / 0.324);
+      --_color-contrast-low-dynamic: hsl(240 5.3% 14.9% / 0.5);
+      --_color-contrast-medium-dynamic: hsl(240 6.1% 7% / 0.6);
+      --_color-contrast-high-dynamic: hsl(240 7.1% 11% / 0.7);
+      --_color-contrast-higher-dynamic: hsl(240 8.7% 9% / 0.8);
+      --_color-primary-dynamic: hsl(225 66.7% 1.2%);
+      --_color-success-dynamic: hsl(115 77.5% 27.8%);
+      --_color-success-low-dynamic: hsl(115 77.5% 27.8% / 0.18);
+      --_color-success-medium-dynamic: hsl(115 77.5% 27.8% / 0.6);
+      --_color-success-frosted-dynamic: hsl(109 100% 90% / 0.55);
+      --_color-success-frosted-soft-dynamic: hsl(109 80% 95% / 0.55);
+      --_color-warning-dynamic: hsl(28 97.7% 34.1%);
+      --_color-warning-low-dynamic: hsl(28 97.7% 34.1% / 0.18);
+      --_color-warning-medium-dynamic: hsl(28 97.7% 34.1% / 0.6);
+      --_color-warning-frosted-dynamic: hsl(40 100% 90% / 0.55);
+      --_color-warning-frosted-soft-dynamic: hsl(40 80% 95% / 0.55);
+      --_color-error-dynamic: hsl(357 78% 41%);
+      --_color-error-low-dynamic: hsl(357 78% 41% / 0.18);
+      --_color-error-medium-dynamic: hsl(357 78% 41% / 0.6);
+      --_color-error-frosted-dynamic: hsl(0 100% 90% / 0.55);
+      --_color-error-frosted-soft-dynamic: hsl(0 80% 95% / 0.55);
+      --_color-info-dynamic: hsl(228 83.2% 51%);
+      --_color-info-low-dynamic: hsl(228 83.2% 51% / 0.18);
+      --_color-info-medium-dynamic: hsl(228 83.2% 51% / 0.6);
+      --_color-info-frosted-dynamic: hsl(211 100% 90% / 0.55);
+      --_color-info-frosted-soft-dynamic: hsl(211 80% 95% / 0.55);
     }
   }
 }
 
-:root:lang(zh-Hans),
-:root:lang(zh-CN),
-:root:lang(zh-SG) {
-  --font-porsche-next:
-    "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
-    "Arial Narrow", Arial, sans-serif;
+@utility scheme-light {
+  @supports not (color: light-dark(white, black)) {
+    --_color-focus-dynamic: #1a44ea;
+    --_color-canvas-dynamic: #fff;
+    --_color-surface-dynamic: hsl(240 10% 95%);
+    --_color-frosted-dynamic: hsl(240 5% 70% / 0.148);
+    --_color-frosted-soft-dynamic: hsl(234 9.8% 60% / 0.06);
+    --_color-frosted-strong-dynamic: hsl(236 6.5% 42% / 0.236);
+    --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-lower-dynamic: hsl(234 6% 32.9% / 0.324);
+    --_color-contrast-low-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-medium-dynamic: hsl(240 6.1% 7% / 0.6);
+    --_color-contrast-high-dynamic: hsl(240 7.1% 11% / 0.7);
+    --_color-contrast-higher-dynamic: hsl(240 8.7% 9% / 0.8);
+    --_color-primary-dynamic: hsl(225 66.7% 1.2%);
+    --_color-success-dynamic: hsl(115 77.5% 27.8%);
+    --_color-success-low-dynamic: hsl(115 77.5% 27.8% / 0.18);
+    --_color-success-medium-dynamic: hsl(115 77.5% 27.8% / 0.6);
+    --_color-success-frosted-dynamic: hsl(109 100% 90% / 0.55);
+    --_color-success-frosted-soft-dynamic: hsl(109 80% 95% / 0.55);
+    --_color-warning-dynamic: hsl(28 97.7% 34.1%);
+    --_color-warning-low-dynamic: hsl(28 97.7% 34.1% / 0.18);
+    --_color-warning-medium-dynamic: hsl(28 97.7% 34.1% / 0.6);
+    --_color-warning-frosted-dynamic: hsl(40 100% 90% / 0.55);
+    --_color-warning-frosted-soft-dynamic: hsl(40 80% 95% / 0.55);
+    --_color-error-dynamic: hsl(357 78% 41%);
+    --_color-error-low-dynamic: hsl(357 78% 41% / 0.18);
+    --_color-error-medium-dynamic: hsl(357 78% 41% / 0.6);
+    --_color-error-frosted-dynamic: hsl(0 100% 90% / 0.55);
+    --_color-error-frosted-soft-dynamic: hsl(0 80% 95% / 0.55);
+    --_color-info-dynamic: hsl(228 83.2% 51%);
+    --_color-info-low-dynamic: hsl(228 83.2% 51% / 0.18);
+    --_color-info-medium-dynamic: hsl(228 83.2% 51% / 0.6);
+    --_color-info-frosted-dynamic: hsl(211 100% 90% / 0.55);
+    --_color-info-frosted-soft-dynamic: hsl(211 80% 95% / 0.55);
+  }
 }
 
-:root:lang(zh-Hant),
-:root:lang(zh-TW),
-:root:lang(zh-HK),
-:root:lang(zh-MO) {
-  --font-porsche-next:
-    "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
-    "Arial Narrow", Arial, sans-serif;
+@utility scheme-only-light {
+  @supports not (color: light-dark(white, black)) {
+    --_color-focus-dynamic: #1a44ea;
+    --_color-canvas-dynamic: #fff;
+    --_color-surface-dynamic: hsl(240 10% 95%);
+    --_color-frosted-dynamic: hsl(240 5% 70% / 0.148);
+    --_color-frosted-soft-dynamic: hsl(234 9.8% 60% / 0.06);
+    --_color-frosted-strong-dynamic: hsl(236 6.5% 42% / 0.236);
+    --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-lower-dynamic: hsl(234 6% 32.9% / 0.324);
+    --_color-contrast-low-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-medium-dynamic: hsl(240 6.1% 7% / 0.6);
+    --_color-contrast-high-dynamic: hsl(240 7.1% 11% / 0.7);
+    --_color-contrast-higher-dynamic: hsl(240 8.7% 9% / 0.8);
+    --_color-primary-dynamic: hsl(225 66.7% 1.2%);
+    --_color-success-dynamic: hsl(115 77.5% 27.8%);
+    --_color-success-low-dynamic: hsl(115 77.5% 27.8% / 0.18);
+    --_color-success-medium-dynamic: hsl(115 77.5% 27.8% / 0.6);
+    --_color-success-frosted-dynamic: hsl(109 100% 90% / 0.55);
+    --_color-success-frosted-soft-dynamic: hsl(109 80% 95% / 0.55);
+    --_color-warning-dynamic: hsl(28 97.7% 34.1%);
+    --_color-warning-low-dynamic: hsl(28 97.7% 34.1% / 0.18);
+    --_color-warning-medium-dynamic: hsl(28 97.7% 34.1% / 0.6);
+    --_color-warning-frosted-dynamic: hsl(40 100% 90% / 0.55);
+    --_color-warning-frosted-soft-dynamic: hsl(40 80% 95% / 0.55);
+    --_color-error-dynamic: hsl(357 78% 41%);
+    --_color-error-low-dynamic: hsl(357 78% 41% / 0.18);
+    --_color-error-medium-dynamic: hsl(357 78% 41% / 0.6);
+    --_color-error-frosted-dynamic: hsl(0 100% 90% / 0.55);
+    --_color-error-frosted-soft-dynamic: hsl(0 80% 95% / 0.55);
+    --_color-info-dynamic: hsl(228 83.2% 51%);
+    --_color-info-low-dynamic: hsl(228 83.2% 51% / 0.18);
+    --_color-info-medium-dynamic: hsl(228 83.2% 51% / 0.6);
+    --_color-info-frosted-dynamic: hsl(211 100% 90% / 0.55);
+    --_color-info-frosted-soft-dynamic: hsl(211 80% 95% / 0.55);
+  }
 }
 
-:root:lang(ja) {
-  --font-porsche-next:
-    "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
-    "Arial Narrow", Arial, sans-serif;
+@utility scheme-normal {
+  @supports not (color: light-dark(white, black)) {
+    --_color-focus-dynamic: #1a44ea;
+    --_color-canvas-dynamic: #fff;
+    --_color-surface-dynamic: hsl(240 10% 95%);
+    --_color-frosted-dynamic: hsl(240 5% 70% / 0.148);
+    --_color-frosted-soft-dynamic: hsl(234 9.8% 60% / 0.06);
+    --_color-frosted-strong-dynamic: hsl(236 6.5% 42% / 0.236);
+    --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-lower-dynamic: hsl(234 6% 32.9% / 0.324);
+    --_color-contrast-low-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-medium-dynamic: hsl(240 6.1% 7% / 0.6);
+    --_color-contrast-high-dynamic: hsl(240 7.1% 11% / 0.7);
+    --_color-contrast-higher-dynamic: hsl(240 8.7% 9% / 0.8);
+    --_color-primary-dynamic: hsl(225 66.7% 1.2%);
+    --_color-success-dynamic: hsl(115 77.5% 27.8%);
+    --_color-success-low-dynamic: hsl(115 77.5% 27.8% / 0.18);
+    --_color-success-medium-dynamic: hsl(115 77.5% 27.8% / 0.6);
+    --_color-success-frosted-dynamic: hsl(109 100% 90% / 0.55);
+    --_color-success-frosted-soft-dynamic: hsl(109 80% 95% / 0.55);
+    --_color-warning-dynamic: hsl(28 97.7% 34.1%);
+    --_color-warning-low-dynamic: hsl(28 97.7% 34.1% / 0.18);
+    --_color-warning-medium-dynamic: hsl(28 97.7% 34.1% / 0.6);
+    --_color-warning-frosted-dynamic: hsl(40 100% 90% / 0.55);
+    --_color-warning-frosted-soft-dynamic: hsl(40 80% 95% / 0.55);
+    --_color-error-dynamic: hsl(357 78% 41%);
+    --_color-error-low-dynamic: hsl(357 78% 41% / 0.18);
+    --_color-error-medium-dynamic: hsl(357 78% 41% / 0.6);
+    --_color-error-frosted-dynamic: hsl(0 100% 90% / 0.55);
+    --_color-error-frosted-soft-dynamic: hsl(0 80% 95% / 0.55);
+    --_color-info-dynamic: hsl(228 83.2% 51%);
+    --_color-info-low-dynamic: hsl(228 83.2% 51% / 0.18);
+    --_color-info-medium-dynamic: hsl(228 83.2% 51% / 0.6);
+    --_color-info-frosted-dynamic: hsl(211 100% 90% / 0.55);
+    --_color-info-frosted-soft-dynamic: hsl(211 80% 95% / 0.55);
+  }
 }
 
-:root:lang(ko) {
-  --font-porsche-next:
-    "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
-    "Arial Narrow", Arial, sans-serif;
+@utility scheme-dark {
+  @supports not (color: light-dark(white, black)) {
+    --_color-focus-dynamic: #1a44ea;
+    --_color-canvas-dynamic: hsl(225 66.7% 1.2%);
+    --_color-surface-dynamic: hsl(240 2% 10%);
+    --_color-frosted-dynamic: hsl(240 2% 43% / 0.228);
+    --_color-frosted-soft-dynamic: hsl(240 3.7% 26.5% / 0.154);
+    --_color-frosted-strong-dynamic: hsl(240 1.5% 61.8% / 0.302);
+    --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-lower-dynamic: hsl(240 1.5% 61.8% / 0.302);
+    --_color-contrast-low-dynamic: hsl(240 12.5% 96.9% / 0.45);
+    --_color-contrast-medium-dynamic: hsl(240 12.5% 96.9% / 0.56);
+    --_color-contrast-high-dynamic: hsl(240 12.5% 96.9% / 0.67);
+    --_color-contrast-higher-dynamic: hsl(240 12.5% 96.9% / 0.78);
+    --_color-primary-dynamic: hsl(225 100% 99%);
+    --_color-success-dynamic: hsl(157 84.9% 41.6%);
+    --_color-success-low-dynamic: hsl(157 84.9% 41.6% / 0.18);
+    --_color-success-medium-dynamic: hsl(157 84.9% 41.6% / 0.6);
+    --_color-success-frosted-dynamic: hsl(157 79% 20% / 0.66);
+    --_color-success-frosted-soft-dynamic: hsl(157 59% 15% / 0.66);
+    --_color-warning-dynamic: hsl(28 90.2% 56.1%);
+    --_color-warning-low-dynamic: hsl(28 90.2% 56.1% / 0.18);
+    --_color-warning-medium-dynamic: hsl(28 90.2% 56.1% / 0.6);
+    --_color-warning-frosted-dynamic: hsl(52 79% 20% / 0.66);
+    --_color-warning-frosted-soft-dynamic: hsl(52 59% 15% / 0.66);
+    --_color-error-dynamic: hsl(0 96.9% 62%);
+    --_color-error-low-dynamic: hsl(0 96.9% 62% / 0.18);
+    --_color-error-medium-dynamic: hsl(0 96.9% 62% / 0.6);
+    --_color-error-frosted-dynamic: hsl(0 79% 20% / 0.66);
+    --_color-error-frosted-soft-dynamic: hsl(0 59% 15% / 0.66);
+    --_color-info-dynamic: hsl(210 100% 54.5%);
+    --_color-info-low-dynamic: hsl(210 100% 54.5% / 0.18);
+    --_color-info-medium-dynamic: hsl(210 100% 54.5% / 0.6);
+    --_color-info-frosted-dynamic: hsl(210 79% 20% / 0.66);
+    --_color-info-frosted-soft-dynamic: hsl(210 59% 15% / 0.66);
+  }
+}
+
+@utility scheme-only-dark {
+  @supports not (color: light-dark(white, black)) {
+    --_color-focus-dynamic: #1a44ea;
+    --_color-canvas-dynamic: hsl(225 66.7% 1.2%);
+    --_color-surface-dynamic: hsl(240 2% 10%);
+    --_color-frosted-dynamic: hsl(240 2% 43% / 0.228);
+    --_color-frosted-soft-dynamic: hsl(240 3.7% 26.5% / 0.154);
+    --_color-frosted-strong-dynamic: hsl(240 1.5% 61.8% / 0.302);
+    --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-lower-dynamic: hsl(240 1.5% 61.8% / 0.302);
+    --_color-contrast-low-dynamic: hsl(240 12.5% 96.9% / 0.45);
+    --_color-contrast-medium-dynamic: hsl(240 12.5% 96.9% / 0.56);
+    --_color-contrast-high-dynamic: hsl(240 12.5% 96.9% / 0.67);
+    --_color-contrast-higher-dynamic: hsl(240 12.5% 96.9% / 0.78);
+    --_color-primary-dynamic: hsl(225 100% 99%);
+    --_color-success-dynamic: hsl(157 84.9% 41.6%);
+    --_color-success-low-dynamic: hsl(157 84.9% 41.6% / 0.18);
+    --_color-success-medium-dynamic: hsl(157 84.9% 41.6% / 0.6);
+    --_color-success-frosted-dynamic: hsl(157 79% 20% / 0.66);
+    --_color-success-frosted-soft-dynamic: hsl(157 59% 15% / 0.66);
+    --_color-warning-dynamic: hsl(28 90.2% 56.1%);
+    --_color-warning-low-dynamic: hsl(28 90.2% 56.1% / 0.18);
+    --_color-warning-medium-dynamic: hsl(28 90.2% 56.1% / 0.6);
+    --_color-warning-frosted-dynamic: hsl(52 79% 20% / 0.66);
+    --_color-warning-frosted-soft-dynamic: hsl(52 59% 15% / 0.66);
+    --_color-error-dynamic: hsl(0 96.9% 62%);
+    --_color-error-low-dynamic: hsl(0 96.9% 62% / 0.18);
+    --_color-error-medium-dynamic: hsl(0 96.9% 62% / 0.6);
+    --_color-error-frosted-dynamic: hsl(0 79% 20% / 0.66);
+    --_color-error-frosted-soft-dynamic: hsl(0 59% 15% / 0.66);
+    --_color-info-dynamic: hsl(210 100% 54.5%);
+    --_color-info-low-dynamic: hsl(210 100% 54.5% / 0.18);
+    --_color-info-medium-dynamic: hsl(210 100% 54.5% / 0.6);
+    --_color-info-frosted-dynamic: hsl(210 79% 20% / 0.66);
+    --_color-info-frosted-soft-dynamic: hsl(210 59% 15% / 0.66);
+  }
+}
+
+@utility scheme-light-dark {
+  @supports not (color: light-dark(white, black)) {
+    --_color-focus-dynamic: #1a44ea;
+    --_color-canvas-dynamic: #fff;
+    --_color-surface-dynamic: hsl(240 10% 95%);
+    --_color-frosted-dynamic: hsl(240 5% 70% / 0.148);
+    --_color-frosted-soft-dynamic: hsl(234 9.8% 60% / 0.06);
+    --_color-frosted-strong-dynamic: hsl(236 6.5% 42% / 0.236);
+    --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-lower-dynamic: hsl(234 6% 32.9% / 0.324);
+    --_color-contrast-low-dynamic: hsl(240 5.3% 14.9% / 0.5);
+    --_color-contrast-medium-dynamic: hsl(240 6.1% 7% / 0.6);
+    --_color-contrast-high-dynamic: hsl(240 7.1% 11% / 0.7);
+    --_color-contrast-higher-dynamic: hsl(240 8.7% 9% / 0.8);
+    --_color-primary-dynamic: hsl(225 66.7% 1.2%);
+    --_color-success-dynamic: hsl(115 77.5% 27.8%);
+    --_color-success-low-dynamic: hsl(115 77.5% 27.8% / 0.18);
+    --_color-success-medium-dynamic: hsl(115 77.5% 27.8% / 0.6);
+    --_color-success-frosted-dynamic: hsl(109 100% 90% / 0.55);
+    --_color-success-frosted-soft-dynamic: hsl(109 80% 95% / 0.55);
+    --_color-warning-dynamic: hsl(28 97.7% 34.1%);
+    --_color-warning-low-dynamic: hsl(28 97.7% 34.1% / 0.18);
+    --_color-warning-medium-dynamic: hsl(28 97.7% 34.1% / 0.6);
+    --_color-warning-frosted-dynamic: hsl(40 100% 90% / 0.55);
+    --_color-warning-frosted-soft-dynamic: hsl(40 80% 95% / 0.55);
+    --_color-error-dynamic: hsl(357 78% 41%);
+    --_color-error-low-dynamic: hsl(357 78% 41% / 0.18);
+    --_color-error-medium-dynamic: hsl(357 78% 41% / 0.6);
+    --_color-error-frosted-dynamic: hsl(0 100% 90% / 0.55);
+    --_color-error-frosted-soft-dynamic: hsl(0 80% 95% / 0.55);
+    --_color-info-dynamic: hsl(228 83.2% 51%);
+    --_color-info-low-dynamic: hsl(228 83.2% 51% / 0.18);
+    --_color-info-medium-dynamic: hsl(228 83.2% 51% / 0.6);
+    --_color-info-frosted-dynamic: hsl(211 100% 90% / 0.55);
+    --_color-info-frosted-soft-dynamic: hsl(211 80% 95% / 0.55);
+    @media (prefers-color-scheme: dark) {
+      --_color-focus-dynamic: #1a44ea;
+      --_color-canvas-dynamic: hsl(225 66.7% 1.2%);
+      --_color-surface-dynamic: hsl(240 2% 10%);
+      --_color-frosted-dynamic: hsl(240 2% 43% / 0.228);
+      --_color-frosted-soft-dynamic: hsl(240 3.7% 26.5% / 0.154);
+      --_color-frosted-strong-dynamic: hsl(240 1.5% 61.8% / 0.302);
+      --_color-backdrop-dynamic: hsl(240 5.3% 14.9% / 0.5);
+      --_color-contrast-lower-dynamic: hsl(240 1.5% 61.8% / 0.302);
+      --_color-contrast-low-dynamic: hsl(240 12.5% 96.9% / 0.45);
+      --_color-contrast-medium-dynamic: hsl(240 12.5% 96.9% / 0.56);
+      --_color-contrast-high-dynamic: hsl(240 12.5% 96.9% / 0.67);
+      --_color-contrast-higher-dynamic: hsl(240 12.5% 96.9% / 0.78);
+      --_color-primary-dynamic: hsl(225 100% 99%);
+      --_color-success-dynamic: hsl(157 84.9% 41.6%);
+      --_color-success-low-dynamic: hsl(157 84.9% 41.6% / 0.18);
+      --_color-success-medium-dynamic: hsl(157 84.9% 41.6% / 0.6);
+      --_color-success-frosted-dynamic: hsl(157 79% 20% / 0.66);
+      --_color-success-frosted-soft-dynamic: hsl(157 59% 15% / 0.66);
+      --_color-warning-dynamic: hsl(28 90.2% 56.1%);
+      --_color-warning-low-dynamic: hsl(28 90.2% 56.1% / 0.18);
+      --_color-warning-medium-dynamic: hsl(28 90.2% 56.1% / 0.6);
+      --_color-warning-frosted-dynamic: hsl(52 79% 20% / 0.66);
+      --_color-warning-frosted-soft-dynamic: hsl(52 59% 15% / 0.66);
+      --_color-error-dynamic: hsl(0 96.9% 62%);
+      --_color-error-low-dynamic: hsl(0 96.9% 62% / 0.18);
+      --_color-error-medium-dynamic: hsl(0 96.9% 62% / 0.6);
+      --_color-error-frosted-dynamic: hsl(0 79% 20% / 0.66);
+      --_color-error-frosted-soft-dynamic: hsl(0 59% 15% / 0.66);
+      --_color-info-dynamic: hsl(210 100% 54.5%);
+      --_color-info-low-dynamic: hsl(210 100% 54.5% / 0.18);
+      --_color-info-medium-dynamic: hsl(210 100% 54.5% / 0.6);
+      --_color-info-frosted-dynamic: hsl(210 79% 20% / 0.66);
+      --_color-info-frosted-soft-dynamic: hsl(210 59% 15% / 0.66);
+    }
+  }
 }
 
 /* Gradient */
@@ -490,7 +727,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
     0,
     var(
       --pds-internal-grid-outer-column,
-      calc(var(--pds-internal-grid-safe-zone) - var(--spacing-fluid-md))
+      calc(var(--pds-internal-grid-safe-zone) - --theme(--spacing-fluid-md))
     )
   );
   display: grid;
@@ -502,7 +739,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
     ) [narrow-end basic-end extended-end wide-end] var(
       --_pds-grid-col
     ) [full-end];
-  gap: var(--spacing-fluid-md);
+  gap: --theme(--spacing-fluid-md);
   min-width: var(--pds-internal-grid-width-min, 320px);
   max-width: var(--pds-internal-grid-width-max, 2560px);
   box-sizing: content-box;
@@ -687,15 +924,15 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
 /* Skeleton */
 @utility skeleton {
-  animation: var(--animate-skeleton);
+  animation: --theme(--animate-skeleton);
   display: block;
-  border-radius: var(--radius-sm);
+  border-radius: --theme(--radius-sm);
   background-color: transparent;
   background-image: linear-gradient(
     to right,
-    var(--color-frosted) 0%,
-    var(--color-frosted-strong) 50%,
-    var(--color-frosted) 100%
+    --theme(--color-frosted) 0%,
+    --theme(--color-frosted-strong) 50%,
+    --theme(--color-frosted) 100%
   );
   background-position: 0 0;
   background-size: 200% 100%;
@@ -703,123 +940,123 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
 /* Typography: Text */
 @utility prose-text-2xs {
-  font: var(--font-weight-normal) var(--text-2xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xs) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-xs {
-  font: var(--font-weight-normal) var(--text-xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xs) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-sm {
-  font: var(--font-weight-normal) var(--text-sm) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-sm) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-md) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-lg) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 
 /* Typography: Heading */
 @utility prose-heading-2xs {
-  font: var(--font-weight-semibold) var(--text-2xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-2xs) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-xs {
-  font: var(--font-weight-semibold) var(--text-xs) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-xs) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-sm {
-  font: var(--font-weight-semibold) var(--text-sm) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-sm) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-md) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-lg) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 
 /* Typography: Display */
 @utility prose-display-sm {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-display-md {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-display-lg {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal)
-    var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) /
+    --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 "
 `;
