@@ -110,10 +110,10 @@ export class Select {
   /**
    * The selected value. Matches an option strictly by type and value:
    * null matches only an option with value null, undefined matches only an option
-   * with value undefined (no preselection by default), and string / number only match
+   * with value undefined (no preselection by default), and string or number only match
    * an option whose value has the same type and equal value.
    *
-   * Note on native form behavior: FormData always serializes values as
+   * Please note that FormData always serializes values as
    * strings, so when participating in a native (uncontrolled) form a
    * number value is restored as string via formStateRestoreCallback
    * and will no longer strictly match a number-typed option. This limitation

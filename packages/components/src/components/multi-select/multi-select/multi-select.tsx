@@ -117,7 +117,7 @@ export class MultiSelect {
    * a number value only matches options whose value is the same number.
    * Pass null or [] to clear the selection.
    *
-   * Note on native form behavior: FormData always serializes values as
+   * Please note that FormData always serializes values as
    * strings, so when participating in a native (uncontrolled) form a
    * number[] value is restored as string[] via formStateRestoreCallback
    * and will no longer strictly match number-typed options. This limitation
