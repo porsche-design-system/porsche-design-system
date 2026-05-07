@@ -4647,7 +4647,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "InputEvent",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4661,6 +4661,20 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-autocomplete": "string",
+          "aria-controls": "string",
+          "aria-expanded": "string",
+          "aria-haspopup": "string",
+          "aria-label": "string",
+          "role": "string",
+        },
+        "defaultValue": null,
+        "description": "Additional ARIA attributes for the native search input (e.g. \`role="combobox"\`, \`aria-expanded\`).",
+        "isAria": true,
+        "type": "InputSearchAriaAttribute",
+      },
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,

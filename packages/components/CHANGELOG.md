@@ -30,6 +30,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
   ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
 
+### Added
+
+- `AG Grid`:
+  - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+  - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+
+## [4.1.0] - 2026-05-06
+
+## [4.1.0-rc.0] - 2026-05-05
+
+### Added
+
+- `Input Search`: `aria` prop provides additional context for screen reader
+  ([#4321](https://github.com/porsche-design-system/porsche-design-system/pull/4321))
+
+### Fixed
+
+- `Tabs Bar`: scrolling page down when below the fold
+  ([#4392](https://github.com/porsche-design-system/porsche-design-system/pull/4392))
+
 ## [4.0.0] - 2026-04-29
 
 ## [4.0.0-rc.2] - 2026-04-28
