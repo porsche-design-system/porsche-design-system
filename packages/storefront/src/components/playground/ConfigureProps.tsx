@@ -25,7 +25,7 @@ type ConfigurePropsProps<T extends ConfiguratorTagNames> = {
   defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
   onUpdateProps: (
     propName: keyof ElementConfig<T>['properties'],
-    selectedValue: string | boolean | number | undefined
+    selectedValue: string | boolean | number | undefined | null
   ) => void;
   onResetAllProps: () => void;
 };
