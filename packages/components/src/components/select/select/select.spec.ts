@@ -107,7 +107,7 @@ describe('formStateRestoreCallback', () => {
   });
 });
 
-describe('parsedValue getter', () => {
+describe('setFormValue', () => {
   it.each<[string | number | null | undefined, string | undefined]>([
     [undefined, undefined],
     [null, undefined],
@@ -116,10 +116,21 @@ describe('parsedValue getter', () => {
     [0, '0'],
     [42, '42'],
     [-1.5, '-1.5'],
-  ])('should parse value=%p to %p', (input, expected) => {
+  ])('should call internals.setFormValue with normalized value=%p as %p', (input, expected) => {
     const component = initComponent();
     component.value = input;
-    expect(component['parsedValue']).toBe(expected);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.setFormValue();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith(expected);
+  });
+
+  it('should not throw when internals is undefined', () => {
+    const component = initComponent();
+    component['internals'] = undefined;
+    component.value = 'foo';
+    expect(() => component.setFormValue()).not.toThrow();
   });
 });
 
@@ -178,7 +189,7 @@ describe('formResetCallback type preservation', () => {
     // public value retains the original numeric type
     expect(component.value).toBe(7);
     expect(component['defaultValue']).toBe(7);
-    // setFormValue is called with the normalized (string) form via the parsedValue getter
+    // setFormValue is called with the normalized (string) form
     expect(setFormValueSpy).toHaveBeenCalledWith('7');
   });
 
