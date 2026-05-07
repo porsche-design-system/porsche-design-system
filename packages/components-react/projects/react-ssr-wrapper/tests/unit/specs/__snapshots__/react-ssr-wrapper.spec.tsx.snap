@@ -10326,8 +10326,8 @@ exports[`should render dsr component for PModelSignature 1`] = `
   vertical-align: top;
   max-width: 100%;
   max-height: 100%;
-  width: var(--p-model-signature-width,94px);
-  height: var(--p-model-signature-height,auto);
+  height: var(--p-model-signature-height, auto) !important;
+  width: var(--p-model-signature-width, 94px) !important;
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,var(--p-color-primary)) !important;
