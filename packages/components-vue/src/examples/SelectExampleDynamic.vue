@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValue = ref<string | number | undefined>('1');
+const selectedValue = ref<string | number | null | undefined>('1');
 const inputValue = ref<string>('');
 const optionCount = ref<number>(3);
 

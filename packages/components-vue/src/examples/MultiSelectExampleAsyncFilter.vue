@@ -74,7 +74,7 @@ function useDebounce<T>(callback: (value: T) => void, delay = 400) {
   };
 }
 
-const value = ref<string[]>([]);
+const value = ref<string[] | number[]>([]);
 const options = ref<{ value: string; label: string }[]>([]);
 const searchValue = ref('');
 const initialLoading = ref(false);

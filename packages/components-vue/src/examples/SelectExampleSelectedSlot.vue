@@ -97,7 +97,7 @@ const optionsData: Option[] = [
   },
 ];
 
-const value = ref<string | number | undefined>(undefined);
+const value = ref<string | number | null | undefined>(undefined);
 const options = ref<Option[]>(optionsData);
 const selectedOption = ref<Option | undefined>(undefined);
 

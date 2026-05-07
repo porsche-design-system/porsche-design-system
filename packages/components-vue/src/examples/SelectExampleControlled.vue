@@ -2,7 +2,7 @@
 import { PSelect, PSelectOption, PText, type SelectChangeEventDetail } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const selectedValue = ref<string | number | undefined>('a');
+const selectedValue = ref<string | number | null | undefined>('a');
 
 const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
   selectedValue.value = e.detail.value;

@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const selectedValues = ref<string[]>([]);
+const selectedValues = ref<string[] | number[]>([]);
 
 const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
   selectedValues.value = e.detail.value;
