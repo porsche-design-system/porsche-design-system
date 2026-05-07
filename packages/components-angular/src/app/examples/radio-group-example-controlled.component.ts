@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule, RadioGroupChangeEventDetail } from '@porsche-design-system/components-angular';
+import {
+  type PRadioGroupProps,
+  PorscheDesignSystemModule,
+  RadioGroupChangeEventDetail,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-radio-group-example-controlled',
@@ -20,7 +24,7 @@ import { PorscheDesignSystemModule, RadioGroupChangeEventDetail } from '@porsche
   imports: [PorscheDesignSystemModule],
 })
 export class RadioGroupExampleControlledComponent {
-  selectedValue: string = 'a';
+  selectedValue: PRadioGroupProps['value'] = 'a';
   get debugText(): string {
     return `Selected value: ${this.selectedValue}`;
   }

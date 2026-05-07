@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  MultiSelectChangeEventDetail,
+  PMultiSelectProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-controlled',
@@ -20,9 +24,10 @@ import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsch
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleControlledComponent {
-  selectedValues: string[] = [];
+  selectedValues: PMultiSelectProps['value'] = [];
+
   get debugText(): string {
-    return `Selected values: ${this.selectedValues.join(', ') || 'none'}`;
+    return `Selected values: ${this.selectedValues?.join(', ') || 'none'}`;
   }
 
   onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {

@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputTimeInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputTimeInputEventDetail,
+  type PInputTimeProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-time-example-controlled',
@@ -13,7 +17,7 @@ import { type InputTimeInputEventDetail, PorscheDesignSystemModule } from '@pors
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputTimeExampleControlledComponent {
-  value: string = '';
+  value: PInputTimeProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }
