@@ -226,7 +226,7 @@ exports[`should contain correct value for easeInOut 1`] = `"cubic-bezier(.25,.1,
 
 exports[`should contain correct value for easeOut 1`] = `"cubic-bezier(.4,0,.5,1)"`;
 
-exports[`should contain correct value for fontPorscheNext 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
+exports[`should contain correct value for fontPorscheNext 1`] = `"'Porsche Next', 'Arial Narrow', Arial, sans-serif"`;
 
 exports[`should contain correct value for fontPorscheNextJa 1`] = `"'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif"`;
 
