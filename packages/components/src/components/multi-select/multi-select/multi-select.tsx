@@ -112,7 +112,7 @@ export class MultiSelect {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /**
-   * The selected values. Matches options strictly by type and value:
+   * The selected values. Matches options strictly by type and value, meaning
    * a string value only matches options whose value is the same string,
    * a number value only matches options whose value is the same number.
    * Pass null or [] to clear the selection.

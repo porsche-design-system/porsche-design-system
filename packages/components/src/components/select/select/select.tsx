@@ -108,7 +108,7 @@ export class Select {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /**
-   * The selected value. Matches an option strictly by type and value:
+   * The selected value. Matches an option strictly by type and value, meaning
    * null matches only an option with value null, undefined matches only an option
    * with value undefined (no preselection by default), and string or number only match
    * an option whose value has the same type and equal value.
