@@ -33,13 +33,13 @@ export const Pangram = ({ lang }: PangramProps) => {
   return (
     <>
       <PText lang={lang} dir={entry.dir}>
-        {entry.text}
+        Porsche 911: {entry.text}
       </PText>
       <PText lang={lang} dir={entry.dir} weight="semibold">
-        {entry.text}
+        Porsche 911: {entry.text}
       </PText>
       <PText lang={lang} dir={entry.dir} weight="bold">
-        {entry.text}
+        Porsche 911: {entry.text}
       </PText>
     </>
   );
