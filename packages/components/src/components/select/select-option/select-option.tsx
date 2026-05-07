@@ -49,7 +49,7 @@ export class SelectOption {
       <Host
         onClick={!isDisabled && this.onClick}
         role="option"
-        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, this.value !== undefined)}
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, this.value !== undefined && this.value !== null)}
       >
         <div
           class={{

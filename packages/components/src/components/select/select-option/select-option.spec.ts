@@ -29,8 +29,9 @@ describe('hasValue computation passed to getOptionAriaAttributes', () => {
     vi.spyOn(prefixedTagNamesUtils, 'getPrefixedTagNames').mockReturnValue({ pIcon: 'p-icon' } as never);
   });
 
-  it.each<[string | number | undefined, boolean]>([
+  it.each<[string | number | null | undefined, boolean]>([
     [undefined, false],
+    [null, false],
     ['', true],
     ['abc', true],
     [0, true],
