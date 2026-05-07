@@ -1,9 +1,11 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Pangram } from '@/components/common/Pangram';
+import { PFlag } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'Typography - Porsche Design System',
-  description: 'Different Font families for languages.',
+  description:
+    'Porsche Next typeface and system font fallbacks for Latin, CJK, Thai, Arabic and more — selected automatically per language.',
 };
 
 # Typography
@@ -39,6 +41,9 @@ font coverage and rendering quality easy to compare across browsers and platform
 
       <!-- Per-element lang override → PingFang TC / Microsoft JhengHei / Noto Sans TC -->
       <p-text lang="zh-Hant">天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。</p-text>
+
+      <!-- Per-element lang override → Porsche Next -->
+      <p-text lang="en">The quick brown fox jumps over the lazy dog.</p-text>
     </body>
   </html>
   ```
@@ -46,50 +51,58 @@ font coverage and rendering quality easy to compare across browsers and platform
 - Using [Tailwind CSS](/tailwindcss/typography/api):
 
   ```html
-  <html lang="en">
+  <html lang="ja">
     <body>
-      <p class="font-porsche-next">The quick brown fox jumps over the lazy dog.</p>
+      <!-- lang="ja" → Hiragino Sans / Yu Gothic / Noto Sans JP -->
+      <p class="font-porsche-next">
+        いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせすん
+      </p>
     </body>
   </html>
   ```
 
 - Using [CSS variable](/stylesheets/css-variables/api):
 
-  ```css
-  .my-text {
-    font-family: var(--p-font-porsche-next);
-  }
+  ```html
+  <html lang="ko">
+    <body>
+      <!-- lang="ko" → Apple SD Gothic Neo / Malgun Gothic / Noto Sans KR -->
+      <p style="font-family: var(--p-font-porsche-next)">
+        키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다
+      </p>
+    </body>
+  </html>
   ```
 
 <TableOfContents headings={['Porsche Next', 'System fallback']} />
 
 ## Porsche Next
 
-### 🇬🇧 Latin
+### <PFlag className="me-static-sm" name="gb" size="inherit" /> Latin
 
 > **macOS**, **Windows**, **Linux**: `Porsche Next`
 
 <Pangram lang="en" />
 
-### 🇻🇳 Vietnamese
+### <PFlag className="me-static-sm" name="vn" size="inherit" /> Vietnamese
 
 > **macOS**, **Windows**, **Linux**: `Porsche Next`
 
 <Pangram lang="vi" />
 
-### 🇬🇷 Greek & Coptic
+### <PFlag className="me-static-sm" name="gr" size="inherit" /> Greek & Coptic
 
 > **macOS**, **Windows**, **Linux**: `Porsche Next`
 
 <Pangram lang="el" />
 
-### 🇷🇺 Cyrillic
+### <PFlag className="me-static-sm" name="ru" size="inherit" /> Cyrillic
 
 > **macOS**, **Windows**, **Linux**: `Porsche Next`
 
 <Pangram lang="ru" />
 
-### 🇸🇦 Arabic
+### <PFlag className="me-static-sm" name="sa" size="inherit" /> Arabic
 
 > **macOS**, **Windows**, **Linux**: `Porsche Next`
 
@@ -97,31 +110,31 @@ font coverage and rendering quality easy to compare across browsers and platform
 
 ## System fallback
 
-### 🇨🇳 Simplified Chinese
+### <PFlag className="me-static-sm" name="cn" size="inherit" /> Simplified Chinese
 
 > **macOS:** `PingFang SC`, **Windows:** `Microsoft YaHei`, **Linux:** `Noto Sans SC`
 
 <Pangram lang="zh-Hans" />
 
-### 🇹🇼 Traditional Chinese
+### <PFlag className="me-static-sm" name="tw" size="inherit" /> Traditional Chinese
 
 > **macOS:** `PingFang TC`, **Windows:** `Microsoft JhengHei`, **Linux:** `Noto Sans TC`
 
 <Pangram lang="zh-Hant" />
 
-### 🇯🇵 Japanese
+### <PFlag className="me-static-sm" name="jp" size="inherit" /> Japanese
 
 > **macOS:** `Hiragino Sans`, **Windows:** `Yu Gothic`, **Linux:** `Noto Sans JP`
 
 <Pangram lang="ja" />
 
-### 🇰🇷 Korean
+### <PFlag className="me-static-sm" name="kr" size="inherit" /> Korean
 
 > **macOS:** `Apple SD Gothic Neo`, **Windows:** `Malgun Gothic`, **Linux:** `Noto Sans KR`
 
 <Pangram lang="ko" />
 
-### 🇹🇭 Thai
+### <PFlag className="me-static-sm" name="th" size="inherit" /> Thai
 
 > **macOS**, **Windows**, **Linux**: `DB Heavent`
 
