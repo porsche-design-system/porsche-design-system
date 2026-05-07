@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. Selected when it strictly matches the p-select value (same type and value: `null`, `undefined`, `string` or `number`). */
+  /** The option value. Selected when it strictly matches the p-select value (same type and value: null, undefined, string or number). */
   @Prop() public value?: string | number | null;
 
   /** Disables the option. */
