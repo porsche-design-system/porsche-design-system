@@ -10,14 +10,6 @@ body {
     "Porsche Next",
     "Arial Narrow",
     Arial,
-    "Hiragino Sans",
-    "Yu Gothic",
-    "Apple SD Gothic Neo",
-    "Malgun Gothic",
-    "PingFang SC",
-    "Microsoft YaHei",
-    "PingFang TC",
-    "Microsoft JhengHei",
     sans-serif
   );
   line-height: var(--p-leading-normal, calc(6px + 2.125ex));
@@ -137,10 +129,7 @@ body {
     hsl(210 59% 15% / 0.66)
   );
 
-  --p-font-porsche-next:
-    "Porsche Next", "Arial Narrow", Arial, "Hiragino Sans", "Yu Gothic",
-    "Apple SD Gothic Neo", "Malgun Gothic", "PingFang SC", "Microsoft YaHei",
-    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --p-font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
@@ -201,30 +190,34 @@ body {
   --p-duration-xl: 1.2s;
 }
 
-:root:lang(zh-Hans),
-:root:lang(zh-CN),
-:root:lang(zh-SG) {
+/* Simplified Chinese */
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
   --p-font-porsche-next:
     "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:root:lang(zh-Hant),
-:root:lang(zh-TW),
-:root:lang(zh-HK),
-:root:lang(zh-MO) {
+/* Traditional Chinese */
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
   --p-font-porsche-next:
     "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:root:lang(ja) {
+/* Japanese */
+:lang(ja) {
   --p-font-porsche-next:
     "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:root:lang(ko) {
+/* Korean */
+:lang(ko) {
   --p-font-porsche-next:
     "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
     "Arial Narrow", Arial, sans-serif;
@@ -377,14 +370,6 @@ body {
     "Porsche Next",
     "Arial Narrow",
     Arial,
-    "Hiragino Sans",
-    "Yu Gothic",
-    "Apple SD Gothic Neo",
-    "Malgun Gothic",
-    "PingFang SC",
-    "Microsoft YaHei",
-    "PingFang TC",
-    "Microsoft JhengHei",
     sans-serif
   );
   line-height: var(--p-leading-normal, calc(6px + 2.125ex));
@@ -504,10 +489,7 @@ body {
     hsl(210 59% 15% / 0.66)
   );
 
-  --p-font-porsche-next:
-    "Porsche Next", "Arial Narrow", Arial, "Hiragino Sans", "Yu Gothic",
-    "Apple SD Gothic Neo", "Malgun Gothic", "PingFang SC", "Microsoft YaHei",
-    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --p-font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
@@ -568,30 +550,34 @@ body {
   --p-duration-xl: 1.2s;
 }
 
-:root:lang(zh-Hans),
-:root:lang(zh-CN),
-:root:lang(zh-SG) {
+/* Simplified Chinese */
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
   --p-font-porsche-next:
     "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:root:lang(zh-Hant),
-:root:lang(zh-TW),
-:root:lang(zh-HK),
-:root:lang(zh-MO) {
+/* Traditional Chinese */
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
   --p-font-porsche-next:
     "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:root:lang(ja) {
+/* Japanese */
+:lang(ja) {
   --p-font-porsche-next:
     "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
     "Arial Narrow", Arial, sans-serif;
 }
 
-:root:lang(ko) {
+/* Korean */
+:lang(ko) {
   --p-font-porsche-next:
     "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
     "Arial Narrow", Arial, sans-serif;

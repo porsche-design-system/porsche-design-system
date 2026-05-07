@@ -432,8 +432,46 @@ $pds-theme-dark-state-disabled: hsla(
 `;
 
 exports[`should contain correct scss content for file ./dist/_font.scss 1`] = `
-"$font-porsche-next:
-  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+"$font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+$font-porsche-next-zh-hans:
+  "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+  "Arial Narrow", Arial, sans-serif;
+$font-porsche-next-zh-hant:
+  "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
+  "Arial Narrow", Arial, sans-serif;
+$font-porsche-next-ja:
+  "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Arial Narrow",
+  Arial, sans-serif;
+$font-porsche-next-ko:
+  "Porsche Next", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+  "Arial Narrow", Arial, sans-serif;
+
+@mixin cjk-font-family {
+  /* Simplified Chinese */
+  &:lang(zh-Hans),
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: $font-porsche-next-zh-hans;
+  }
+
+  /* Traditional Chinese */
+  &:lang(zh-Hant),
+  &:lang(zh-TW),
+  &:lang(zh-HK),
+  &:lang(zh-MO) {
+    font-family: $font-porsche-next-zh-hant;
+  }
+
+  /* Japanese */
+  &:lang(ja) {
+    font-family: $font-porsche-next-ja;
+  }
+
+  /* Korean */
+  &:lang(ko) {
+    font-family: $font-porsche-next-ko;
+  }
+}
 
 $leading-normal: calc(6px + 2.125ex);
 
@@ -453,7 +491,7 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $pds-font-family:
-  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif; /* alias (deprecated) */
+  "Porsche Next", "Arial Narrow", Arial, sans-serif; /* alias (deprecated) */
 $pds-font-hyphenation-style-overflow-wrap: break-word; /* alias (deprecated) */
 $pds-font-hyphenation-style-hyphens: var(
   --p-hyphens,
