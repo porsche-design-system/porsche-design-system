@@ -27,8 +27,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Fixed
 
 - `Tailwind CSS`: Prefixing support ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-- `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
-  ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
 
 ### Added
 
