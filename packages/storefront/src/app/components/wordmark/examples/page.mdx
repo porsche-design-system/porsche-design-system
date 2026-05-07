@@ -4,7 +4,7 @@ import { Configurator } from '@/components/playground/Configurator';
 import {
   wordmarkStory,
   wordmarkStoryCustomPadding,
-  wordmarkStorySizeInherit,
+  wordmarkStorySize,
 } from '@/app/components/wordmark/wordmark.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
@@ -19,9 +19,14 @@ export const metadata = {
 
 ## Size
 
-By default, the sizing is fluid, which can be changed to `inherit` a specified value.
+By default, the sizing is fluid, which can be changed to by custom CSS variables.
 
-<ComponentStory story={wordmarkStorySizeInherit} />
+```scss
+--p-model-signature-width
+--p-model-signature-height
+```
+
+<ComponentStory story={wordmarkStorySize} />
 
 ## Custom clickable/focusable area
 

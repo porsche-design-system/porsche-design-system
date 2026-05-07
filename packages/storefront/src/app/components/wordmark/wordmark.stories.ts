@@ -11,17 +11,27 @@ export const wordmarkStory: Story<'p-wordmark'> = {
   ],
 };
 
-export const wordmarkStorySizeInherit: Story<'p-wordmark'> = {
-  state: {
-    properties: {
-      className: 'h-[20px]',
-      size: 'inherit',
-    },
-  },
-  generator: ({ properties } = {}) => [
+export const wordmarkStorySize: Story<'p-wordmark'> = {
+  generator: () => [
     {
-      tag: 'p-wordmark',
-      properties,
+      tag: 'div',
+      properties: {
+        className: 'flex flex-col gap-4',
+      },
+      children: [
+        {
+          tag: 'p-wordmark',
+          properties: {
+            className: '[--p-wordmark-width:auto] [--p-wordmark-height:50px]',
+          },
+        },
+        {
+          tag: 'p-wordmark',
+          properties: {
+            className: '[--p-wordmark-width:200px] [--p-wordmark-height:auto]',
+          },
+        },
+      ],
     },
   ],
 };
