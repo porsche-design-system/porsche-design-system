@@ -12,7 +12,9 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
     return `${pascalCase(component.replace('p-', ''))}Wrapper.vue`;
   }
 
-  public generateImports(_: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+    const meta = getComponentMeta(component);
+    const hasPropsType = !!meta.propsMeta;
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
     const hasProps = !!extendedProps.length;
 
@@ -30,19 +32,39 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
+    // When the component exposes a props type, emit it from a separate, plain `<script lang="ts">`
+    // block placed before `<script setup>`. This is required because top-level `type` declarations
+    // inside `<script setup>` are NOT re-exported as named module exports — placing them in a
+    // sibling `<script>` block makes `PXxxProps` importable from the package's public API.
+    if (hasPropsType) {
+      const propsName = this.generatePropsName(component);
+      const rawComponentInterface = this.inputParser.getRawComponentInterface(component);
+      const componentInterfaceWithoutEventProps = rawComponentInterface
+        .slice(1, -1)
+        .split(';\n')
+        .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
+        .join(';\n');
+
+      const upperBlock = [
+        '<script lang="ts">',
+        ...(importsFromTypes ? [importsFromTypes, ''] : []),
+        `export type ${propsName} = {${componentInterfaceWithoutEventProps}};`,
+        '</script>',
+        '',
+        '',
+      ].join('\n');
+
+      return `${upperBlock}<script setup lang="ts">
+${[importsFromVue, importsFromUtils].filter(Boolean).join('\n')}`;
+    }
+
     return `<script setup lang="ts">
 ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n')}`;
   }
 
-  public generateProps(component: TagName, rawComponentInterface: string): string {
-    const propsName = this.generatePropsName(component);
-    const componentInterfaceWithoutEventProps = rawComponentInterface
-      .slice(1, -1)
-      .split(';\n')
-      .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
-      .join(';\n');
-
-    return getComponentMeta(component).propsMeta ? `type ${propsName} = {${componentInterfaceWithoutEventProps}};` : '';
+  public generateProps(_component: TagName, _rawComponentInterface: string): string {
+    // Props type is emitted from `generateImports` into the upper `<script lang="ts">` block.
+    return '';
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
@@ -148,8 +170,18 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
 `;
   }
 
-  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir: string): string {
-    return `export { default as P${pascalCase(componentFileNameWithoutExtension.replace('Wrapper', ''))} } from './${
+  public getBarrelFileContent(
+    componentFileNameWithoutExtension: string,
+    componentSubDir: string,
+    component?: TagName
+  ): string {
+    const componentName = `P${pascalCase(componentFileNameWithoutExtension.replace('Wrapper', ''))}`;
+    const propsTypeName = `${componentName}Props`;
+    const hasPropsType = !!(component && getComponentMeta(component).propsMeta);
+    const exportClause = hasPropsType
+      ? `default as ${componentName}, type ${propsTypeName}`
+      : `default as ${componentName}`;
+    return `export { ${exportClause} } from './${
       componentSubDir ? componentSubDir + '/' : ''
     }${componentFileNameWithoutExtension}.vue';`;
   }
