@@ -61,7 +61,7 @@
     --_pds-grid-wide-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px));
     --_pds-grid-full-offset: max(0px, 50vw - 1280px);
     --_pds-grid-visualization-color: rgba(0, 0, 255, 0.1);
-    --_pds-grid-visualization-grid-gap: var(--spacing-fluid-md);
+    --_pds-grid-visualization-grid-gap: clamp(16px, 1.25vw + 12px, 36px);
     --_pds-grid-visualization-safe-zone-base: var(--_pds-grid-wide-offset);
     --_pds-grid-visualization-column-width-base: calc(
       (100% - var(--_pds-grid-visualization-safe-zone-base) * 2 - var(--_pds-grid-visualization-grid-gap) * 5) /
