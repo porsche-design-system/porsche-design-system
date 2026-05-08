@@ -30,12 +30,6 @@ body:
       label: ART and Team
       description: For which ART and team (separated with slash) are you requesting the feature?
       placeholder: e.g. BaM / Model Page
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: By providing contact details, you agree that they are publicly visible and we may contact you for the purpose of further inquiries.
-      placeholder: e.g. email@example.com
   - type: textarea
     id: problem
     attributes:
