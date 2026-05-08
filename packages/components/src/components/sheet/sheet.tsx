@@ -3,7 +3,6 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getPrefixedTagNames,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -103,16 +102,17 @@ export class Sheet {
 
     attachComponentCss(this.host, getComponentCss, this.open, this.background, this.dismissButton);
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <DialogBase
+        host={this.host}
         inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
+        dismissable={this.dismissButton ?? undefined}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         containerClass="sheet"
         header={this.hasHeader ? <slot name="header" /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
@@ -122,21 +122,6 @@ export class Sheet {
           }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
-        dismissButton={
-          this.dismissButton ? (
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              variant="secondary"
-              compact={true}
-              type="button"
-              hideLabel={true}
-              icon="close"
-              onClick={this.dismissDialog}
-            >
-              Dismiss sheet
-            </PrefixedTagNames.pButton>
-          ) : undefined
-        }
       >
         <slot />
       </DialogBase>

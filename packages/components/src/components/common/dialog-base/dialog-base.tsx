@@ -1,16 +1,19 @@
 import { type FunctionalComponent, h, type JSX } from '@stencil/core';
 import type { AriaAttributes } from '../../../types';
+import { getPrefixedTagNames } from '../../../utils';
 
 type DialogBaseProps = {
+  host: HTMLElement;
   inert?: boolean;
   dialogRef?: (el: HTMLDialogElement) => void;
   scrollerRef?: (el: HTMLDivElement) => void;
-  containerClass: string;
+  containerClass: 'flyout' | 'modal' | 'sheet';
   onCancel?: (e: Event) => void;
   onClick?: (e: MouseEvent) => void;
   onTransitionEnd?: (e: TransitionEvent) => void;
+  onDismiss?: () => void;
   ariaAttributes?: AriaAttributes;
-  dismissButton?: JSX.Element;
+  dismissable?: boolean;
   header?: JSX.Element;
   footer?: JSX.Element;
   subFooter?: JSX.Element;
@@ -18,6 +21,7 @@ type DialogBaseProps = {
 
 export const DialogBase: FunctionalComponent<DialogBaseProps> = (
   {
+    host,
     inert,
     dialogRef,
     scrollerRef,
@@ -26,13 +30,16 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     onCancel,
     onClick,
     onTransitionEnd,
-    dismissButton,
+    onDismiss,
+    dismissable = false,
     header,
     footer,
     subFooter,
   },
   children
 ) => {
+  const PrefixedTagNames = getPrefixedTagNames(host);
+
   return (
     <dialog
       inert={inert} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
@@ -46,7 +53,19 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     >
       <div class="scroller" ref={scrollerRef}>
         <div class={containerClass}>
-          {dismissButton}
+          {dismissable && (
+            <PrefixedTagNames.pButton
+              class="dismiss"
+              variant="secondary"
+              compact={true}
+              type="button"
+              hideLabel={true}
+              icon="close"
+              onClick={onDismiss}
+            >
+              Dismiss {containerClass}
+            </PrefixedTagNames.pButton>
+          )}
           {header}
           {children}
           {footer}

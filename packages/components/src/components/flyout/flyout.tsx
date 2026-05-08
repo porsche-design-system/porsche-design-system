@@ -3,7 +3,6 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getPrefixedTagNames,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -160,15 +159,16 @@ export class Flyout {
       this.footerBehavior
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <DialogBase
+        host={this.host}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
+        dismissable={true}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onDismiss={this.dismissDialog}
         containerClass="flyout"
         header={this.hasHeader ? <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} /> : undefined}
         footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
@@ -178,19 +178,6 @@ export class Flyout {
           ...{ 'aria-label': this.hasHeader ? getSlotTextContent(this.host, 'header') : 'Flyout' },
           ...parseAndGetAriaAttributes(this.aria),
         })}
-        dismissButton={
-          <PrefixedTagNames.pButton
-            class="dismiss"
-            variant="secondary"
-            compact={true}
-            type="button"
-            hideLabel={true}
-            icon="close"
-            onClick={this.dismissDialog}
-          >
-            Dismiss flyout
-          </PrefixedTagNames.pButton>
-        }
       >
         <slot />
       </DialogBase>

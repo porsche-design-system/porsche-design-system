@@ -281,7 +281,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
 
         if (newFileContent.includes('export const DialogBase:')) {
-          const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd'];
+          const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd', 'onDismiss'];
           newFileContent = newFileContent
             .replace(/^/, "import type { AriaAttributes } from '../types';\n")
             .replace(/(type DialogBaseProps = {)/, '$1\n  children?: JSX.Element;')
