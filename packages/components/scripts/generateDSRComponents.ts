@@ -300,14 +300,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
       }
 
-      if (tagName === 'p-flyout' || tagName === 'p-sheet' || tagName === 'p-modal') {
-        newFileContent = newFileContent
-          .replace(/\n\s*dialogRef,/, '')
-          .replace(/\n\s*scrollerRef,/, '')
-          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
-          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
-      }
-
       if (!newFileContent.includes('export const InputBase:')) {
         // radio-group-option uses a label component
         if (tagName === 'p-radio-group-option') {
@@ -435,7 +427,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
           .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-accordion') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasSummary)/g, '$1')
@@ -458,14 +454,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItems(\.map)/, `otherChildren$1`)
