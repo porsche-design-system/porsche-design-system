@@ -2,6 +2,7 @@
 @use 'color';
 
 @mixin -prose-text($size) {
+  @include font.cjk-font-family;
   font: font.$font-weight-normal $size / font.$leading-normal font.$font-porsche-next;
   color: color.$color-primary;
 }
