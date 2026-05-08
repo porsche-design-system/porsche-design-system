@@ -52,10 +52,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    if (!getComponentMeta(component).propsMeta) {
-      return '';
-    }
-
     const propsName = this.generatePropsName(component);
     // Strip event handlers (`on*`) since they are exposed as `EventEmitter` outputs in Angular,
     // not as inputs. The resulting type describes only the component inputs.
