@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  MultiSelectChangeEventDetail,
-  PMultiSelectProps,
+  type MultiSelectChangeEventDetail,
+  type PMultiSelectProps,
   PorscheDesignSystemModule,
 } from '@porsche-design-system/components-angular';
 
