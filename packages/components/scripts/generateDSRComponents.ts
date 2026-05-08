@@ -295,7 +295,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
                 return `export const DialogBase: FC<DialogBaseProps> = ({\n  children,\n  ${normalized}\n}) => {`;
               }
             )
-            .replace(/inert/g, 'inert')
             .replace(new RegExp(`\\n\\s*(${removedProps.join('|')}),`, 'g'), '')
             .replace(/\n\s*onTransitionEnd=\{[^}]+}/, '');
         }
