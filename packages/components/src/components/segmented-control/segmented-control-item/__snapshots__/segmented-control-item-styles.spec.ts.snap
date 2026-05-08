@@ -22,7 +22,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -31,7 +31,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -74,7 +74,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -83,7 +83,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -126,7 +126,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -135,7 +135,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -182,7 +182,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -191,7 +191,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -238,7 +238,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -247,7 +247,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -295,7 +295,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -304,7 +304,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -342,7 +342,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -351,7 +351,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -385,7 +385,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -394,7 +394,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -432,7 +432,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -441,7 +441,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -480,7 +480,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -489,7 +489,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -528,7 +528,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: not-allowed;
 }
 button:focus-visible {
@@ -537,7 +537,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -583,7 +583,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: not-allowed;
 }
 button:focus-visible {
@@ -592,7 +592,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -641,7 +641,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -650,7 +650,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -684,7 +684,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
 }
 button:focus-visible {
@@ -693,7 +693,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -732,7 +732,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: not-allowed;
 }
 button:focus-visible {
@@ -741,7 +741,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
@@ -787,7 +787,7 @@ button {
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   cursor: not-allowed;
 }
 button:focus-visible {
@@ -796,7 +796,7 @@ button:focus-visible {
 }
 span {
   display: block;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
