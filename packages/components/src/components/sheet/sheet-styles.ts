@@ -5,6 +5,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { spacingFluidLg } from '../../styles/css-variables';
+import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -19,8 +20,7 @@ import {
   getScrollerJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
-} from '../../styles/dialog-styles';
-import { getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { SheetBackground } from './sheet-utils';
 
 /**

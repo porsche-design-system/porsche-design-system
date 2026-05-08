@@ -5,6 +5,8 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -20,9 +22,7 @@ import {
   getSlotFooterJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
-} from '../../styles/dialog-styles';
-import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { ModalBackdrop, ModalBackground } from './modal-utils';
 
 /**

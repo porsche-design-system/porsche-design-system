@@ -42,7 +42,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
       // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
       onClick={onClick}
       onTransitionEnd={onTransitionEnd}
-      {...ariaAttributes}
+      {...(ariaAttributes ?? {})}
     >
       <div class="scroller" ref={scrollerRef}>
         <div class={containerClass}>

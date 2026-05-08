@@ -4,6 +4,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -21,8 +22,7 @@ import {
   getSlotJssStyle,
   getSlotMainJssStyle,
   getSlotSubFooterJssStyle,
-} from '../../styles/dialog-styles';
-import { getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
 /**

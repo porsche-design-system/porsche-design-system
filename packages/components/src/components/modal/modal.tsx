@@ -1,5 +1,4 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import { BACKDROPS } from '../../styles/dialog-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
@@ -21,6 +20,7 @@ import {
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { DialogBase } from '../common/dialog-base/dialog-base';
+import { BACKDROPS } from '../common/dialog-base/dialog-base-styles';
 import { getComponentCss } from './modal-styles';
 import {
   MODAL_ARIA_ATTRIBUTES,
