@@ -25,8 +25,10 @@ const propTypes: PropTypes<typeof Wordmark> = {
 export class Wordmark {
   @Element() public host!: HTMLElement;
 
-  /** @deprecated Will be removed in the next major release.
-   * Controls the size of the wordmark. */
+  /**
+   * @deprecated Will be removed in the next major release. Use appropriate CSS variables for custom sizing instead (e.g. `--p-wordmark-width`, `--p-wordmark-height`).
+   * Adapts the size of the component.
+   */
   @Prop() public size?: WordmarkSize = 'small';
 
   /** When `href` is provided, the component renders as an `<a>` element. */
