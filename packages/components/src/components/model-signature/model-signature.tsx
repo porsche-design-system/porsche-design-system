@@ -45,8 +45,10 @@ export class ModelSignature {
   /** Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably). */
   @Prop() public lazy?: boolean = false;
 
-  /**@deprecated Will be removed in the next major release.
-   * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both. */
+  /**
+   * @deprecated Will be removed in the next major release. Use appropriate CSS variables for custom sizing instead (e.g. `--p-model-signature-width`, `--p-model-signature-height`).
+   * Adapts the size of the component.
+   */
   @Prop() public size?: ModelSignatureSize = 'small';
 
   /** Adapts the color of the component. */
