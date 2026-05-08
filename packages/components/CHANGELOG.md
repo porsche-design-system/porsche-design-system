@@ -14,6 +14,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Tailwind CSS`: cjk font-family `:lang()` selectors are available in theme by default for auto-detection of simplified
+  Chinese, traditional Chinese, Japanese and Korean content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `SCSS`:
+  - `$font-porsche-next-zh-hans`, `$font-porsche-next-zh-hant`, `$font-porsche-next-ja`, `$font-porsche-next-ko`,
+    `fontPorscheNextZhHant`: cjk font-family tokens
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+  - `cjk-font-family()`: cjk font-family mixin for `:lang()` selectors for auto-detection of simplified Chinese,
+    traditional Chinese, Japanese and Korean content
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Emotion`, `Vanilla Extract`:
+  - `fontPorscheNextJa`, `fontPorscheNextKo`, `fontPorscheNextZhHans`, `fontPorscheNextZhHant`: cjk font-family tokens
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+  - `getCJKFontFamilyStyle()`: cjk font-family function for `:lang()` selectors for auto-detection of simplified
+    Chinese, traditional Chinese, Japanese and Korean content
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+
 ### Changed
 
 - Improve CJK font-family support for simplified Chinese, traditional Chinese, Japanese and Korean by using more
@@ -23,6 +42,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - **Traditional Chinese:** PingFang TC (macOS), Microsoft JhengHei (Windows), Noto Sans TC (Android, Linux, ChromeOS)
   - **Japanese:** Hiragino Sans (macOS), Yu Gothic (Windows), Noto Sans JP (Android, Linux, ChromeOS)
   - **Korean:** Apple SD Gothic Neo (macOS), Malgun Gothic (Windows), Noto Sans KR (Android, Linux, ChromeOS)
+- `Tailwind CSS`:
+  - `.font-porsche-next`, `.font-sans`, `.prose-heading-*`, `.prose-text-*`: applies `:lang()` selectors for
+    auto-detection of simplified Chinese, traditional Chinese, Japanese and Korean content
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `SCSS`:
+  - `prose-heading-*()`, `prose-text-*()`: applies `:lang()` selectors for auto-detection of simplified Chinese,
+    traditional Chinese, Japanese and Korean content
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Emotion`, `Vanilla Extract`:
+  - `proseHeading*`, `proseText*`: applies `:lang()` selectors for auto-detection of simplified Chinese, traditional
+    Chinese, Japanese and Korean content
+    ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 
 ### Fixed
 
