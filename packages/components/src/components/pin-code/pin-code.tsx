@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,8 +14,9 @@ import {
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId, labelId } from '../common/label/label-utils';
-import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 import { getComponentCss } from './pin-code-styles';
 import {
   getConcatenatedInputValues,
@@ -32,7 +33,6 @@ import {
   type PinCodeType,
   removeWhiteSpaces,
 } from './pin-code-utils';
-import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -47,7 +47,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   form: AllowedTypes.string,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   compact: AllowedTypes.boolean,
 };
 
@@ -103,7 +103,7 @@ export class PinCode {
   @Prop() public type?: PinCodeType = 'number';
 
   /** Sets the initial value of the Pin Code. */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Displays the pin code in compact mode. */
   @Prop() public compact?: boolean = false;
@@ -120,8 +120,13 @@ export class PinCode {
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
-  private defaultValue: string;
+  private defaultValue: string | number | null | undefined;
   private inputElements: HTMLInputElement[] = [];
+
+  // Coerce number/null/undefined to string for internal handling
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
@@ -129,7 +134,7 @@ export class PinCode {
 
   public componentWillLoad(): void {
     this.initialLoading = this.loading;
-    this.value = getSanitisedValue(this.host, this.value, this.length);
+    this.value = getSanitisedValue(this.host, this.parsedValue, this.length);
     this.defaultValue = this.value;
   }
 
@@ -140,7 +145,7 @@ export class PinCode {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     for (const input of this.inputElements) {
       input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
@@ -163,7 +168,7 @@ export class PinCode {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(String(this.defaultValue ?? '')); // coerce defaultValue to string for form value
     this.value = this.defaultValue;
   }
 
@@ -224,7 +229,7 @@ export class PinCode {
               key={index}
               name={this.name}
               form={this.form}
-              {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
+              {...(isCurrentInput(index, this.parsedValue, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby={setAriaIDREF(inputLabelId, inputMessageId)}
@@ -233,7 +238,7 @@ export class PinCode {
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={this.value[index] === ' ' ? null : this.value[index]}
+              value={this.parsedValue[index] === ' ' ? null : this.parsedValue[index]}
               disabled={this.disabled}
               required={this.required}
               onBlur={this.onInputBlur}
