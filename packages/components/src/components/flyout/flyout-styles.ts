@@ -14,8 +14,8 @@ import {
   dialogPaddingTop,
   getDialogColorJssStyle,
   getDialogDismissButtonJssStyle,
-  getDialogJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
   getSlotFooterJssStyle,
   getSlotHeaderJssStyle,
@@ -90,7 +90,7 @@ export const getComponentCss = (
           '&[name=sub-footer]': getSlotSubFooterJssStyle(),
         }),
       },
-      dialog: getDialogJssStyle(isOpen, backdrop),
+      ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: {
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end'),

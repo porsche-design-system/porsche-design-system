@@ -15,8 +15,8 @@ import {
   dialogPaddingTop,
   getDialogColorJssStyle,
   getDialogDismissButtonJssStyle,
-  getDialogJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
@@ -58,7 +58,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
       },
-      dialog: getDialogJssStyle(isOpen, 'shading'),
+      ...getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {

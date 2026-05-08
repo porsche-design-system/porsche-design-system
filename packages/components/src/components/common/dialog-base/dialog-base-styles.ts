@@ -1,5 +1,5 @@
 import { gridGap } from '@porsche-design-system/emotion';
-import type { JssStyle } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import {
   blurFrosted,
@@ -32,10 +32,12 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
   };
 };
 
-export const getDialogJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
+export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): Styles => {
   return {
-    ...dialogBackdropResetJssStyle,
-    ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
+    dialog: {
+      ...dialogBackdropResetJssStyle,
+      ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
+    },
   };
 };
 

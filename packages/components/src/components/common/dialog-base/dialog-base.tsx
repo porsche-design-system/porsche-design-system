@@ -63,7 +63,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
               icon="close"
               onClick={onDismiss}
             >
-              Dismiss {containerClass}
+              {`Dismiss ${containerClass}`}
             </PrefixedTagNames.pButton>
           )}
           {header}
