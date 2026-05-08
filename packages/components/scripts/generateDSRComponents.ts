@@ -738,6 +738,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
         );
       }
+      // remove empty named imports left by symbol-stripping steps (e.g. getPrefixedTagNames was sole import)
+      newFileContent = newFileContent.replace(/^import\s*\{\s*\}\s*from\s*'[^']+';?\n/gm, '');
 
       return newFileContent;
     });
