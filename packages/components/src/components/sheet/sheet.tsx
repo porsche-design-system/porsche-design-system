@@ -113,7 +113,7 @@ export class Sheet {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        innerClass="sheet"
+        containerClass="sheet"
         header={this.hasHeader ? <slot name="header" /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,

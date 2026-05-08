@@ -5,11 +5,11 @@ type DialogBaseProps = {
   inert?: boolean;
   dialogRef?: (el: HTMLDialogElement) => void;
   scrollerRef?: (el: HTMLDivElement) => void;
-  innerClass?: string;
-  ariaAttributes?: AriaAttributes;
+  containerClass: string;
   onCancel?: (e: Event) => void;
   onClick?: (e: MouseEvent) => void;
   onTransitionEnd?: (e: TransitionEvent) => void;
+  ariaAttributes?: AriaAttributes;
   dismissButton?: JSX.Element;
   header?: JSX.Element;
   footer?: JSX.Element;
@@ -21,7 +21,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     inert,
     dialogRef,
     scrollerRef,
-    innerClass,
+    containerClass,
     ariaAttributes,
     onCancel,
     onClick,
@@ -36,7 +36,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
   return (
     <dialog
       inert={inert} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-      tabIndex={-1} // dialog always has a dismiss button to be focused
+      tabIndex={-1} // keeps dialog from being a tab stop; interactive content inside (or programmatic focus) handles focus management
       ref={dialogRef}
       onCancel={onCancel}
       // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
@@ -45,7 +45,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
       {...ariaAttributes}
     >
       <div class="scroller" ref={scrollerRef}>
-        <div class={innerClass}>
+        <div class={containerClass}>
           {dismissButton}
           {header}
           {children}

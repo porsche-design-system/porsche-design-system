@@ -281,19 +281,23 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
 
         if (newFileContent.includes('export const DialogBase:')) {
+          const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd'];
           newFileContent = newFileContent
             .replace(/^/, "import type { AriaAttributes } from '../types';\n")
-            .replace(/(type DialogBaseProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(type DialogBaseProps = {)/, '$1\n  children?: JSX.Element;')
             .replace(
               /export const DialogBase: FC<DialogBaseProps> = \(\s*\{([\s\S]*?)\n\s*},\n\s*children\n\) => \{/,
-              `export const DialogBase: FC<DialogBaseProps> = ({children,$1}) => {`
+              (_, props) => {
+                const normalized = props
+                  .replace(/\n    /g, '\n  ')
+                  .replace(/^\n/, '')
+                  .trim();
+                return `export const DialogBase: FC<DialogBaseProps> = ({\n  children,\n  ${normalized}\n}) => {`;
+              }
             )
-            .replace(/\n\s*dialogRef,/, '')
-            .replace(/\n\s*scrollerRef,/, '')
-            .replace(/\n\s*onCancel,/, '')
-            .replace(/\n\s*onClick,/, '')
-            .replace(/\n\s*onTransitionEnd,/, '')
-            .replace(/\s+onTransitionEnd=\{onTransitionEnd}/, '');
+            .replace(/inert/g, 'inert')
+            .replace(new RegExp(`\\n\\s*(${removedProps.join('|')}),`, 'g'), '')
+            .replace(/\n\s*onTransitionEnd=\{[^}]+}/, '');
         }
       }
 
