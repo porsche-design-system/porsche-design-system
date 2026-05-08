@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
   - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
   - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
+- Added `semibold` alias for Arabic Porsche Next, mapped to `bold` as a fallback since the font only provides `regular`
+  and `bold` weights. ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 
 ### Changed
 
