@@ -14,11 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-### Changed
-
-- `Flyout`, `Modal`, `Sheet`: Extracted shared `<dialog>` render structure into internal `DialogBase` functional
-  component to reduce duplication across all three components ([#4364](https://github.com/porsche-design-system/porsche-design-system/pull/4364))
-
 ### Added
 
 - `AG Grid`:
