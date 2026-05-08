@@ -74,7 +74,41 @@ font coverage and rendering quality easy to compare across browsers and platform
   </html>
   ```
 
-<TableOfContents headings={['Porsche Next', 'System fallback']} />
+<TableOfContents headings={['Why per-flavor APIs differ', 'Porsche Next', 'System fallback']} />
+
+## Why per-flavor APIs differ
+
+Porsche Next is exposed slightly differently across the four style flavors the design system ships. This is intentional
+— it reflects a real difference in how each flavor is consumed, not an inconsistency to be normalized away.
+
+| Flavor                                                                                  | Distribution model                                                                                          | CJK strategy                                                             |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [Stylesheets](/stylesheets/css-variables/api)                                           | One global stylesheet (used by PDS components, also consumable standalone) → cascades to the whole document | Automatic `:lang()` swap on `--p-font-porsche-next`                      |
+| [Tailwind CSS](/tailwindcss/typography/api)                                             | One global `@theme` block → cascades to the whole document                                                  | Automatic `:lang()` swap on `--font-porsche-next`                        |
+| [SCSS](/scss/typography/api)                                                            | Per-component mixins → only affect rules they're included in                                                | Explicit per-language tokens + optional `cjk-font-family` mixin          |
+| [Emotion](/emotion/typography/api) / [Vanilla Extract](/vanilla-extract/typography/api) | Per-component runtime style objects → only affect one element                                               | Explicit per-language tokens + optional `getCJKFontFamilyStyle()` helper |
+
+**Global flavors** (Stylesheets, Tailwind) ship a single stylesheet that reaches every element on the page. A `:lang()`
+rule placed once at the document root is enough to switch the font for the entire app — so these flavors expose **one
+logical font variable** and handle CJK automatically. The PDS Stylesheets are loaded automatically by the PDS
+components, but they're also a fully supported standalone option: you can use `--p-font-porsche-next` and the other
+`--p-*` design tokens in any project, with or without the web components.
+
+**Local flavors** (SCSS, Emotion, Vanilla Extract) are composed per component. A mixin or style helper only affects the
+element it's applied to. Forcing language switching into a single helper here would require every component author to
+remember to call it on every `font-family` rule — easy to forget, impossible to enforce at build time, and unable to
+express legitimate cases like a Japanese pull-quote inside an English document. These flavors therefore expose the
+**four CJK families as first-class tokens** (`fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`,
+`fontPorscheNextKo`) and provide an opt-in `:lang()` helper for the common case.
+
+**Recommendation:**
+
+- If your project already uses the **PDS Stylesheets** (directly, or transitively via PDS components) or the **Tailwind
+  theme**, you get language-aware typography for free — just set `lang` on `<html>` and use `--p-font-porsche-next` /
+  `.font-porsche-next`.
+- If you compose styles with **SCSS**, **Emotion** or **Vanilla Extract**, prefer the provided `cjk-font-family` mixin /
+  `getCJKFontFamilyStyle()` helper on any rule that sets `font-family`. Reach for the per-language tokens only when you
+  intentionally need to pin a specific CJK family regardless of the document's language.
 
 ## Porsche Next
 
