@@ -32,7 +32,7 @@
     "test": "npm run test:unit",
     "pretest:unit": "npm run prebuild:generateConstructorMap",
     "test:unit": "vitest -c tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
+    "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www && rm -rf ./src/styles-entry.ts && rm -rf ./src/utils-entry.ts"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
