@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:generateComponentMeta && npm run build:bundle",
     "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",
-    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "build:bundle": "rollup -c rollup.config.mjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
