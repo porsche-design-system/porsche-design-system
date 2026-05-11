@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
 import { inputTelStory, inputTelSlotStories } from '@/app/components/input-tel/input-tel.stories';
+import { FrameworkNotification } from '@/components/common/FrameworkNotification';
 
 export const metadata = {
   title: 'Input Tel - Porsche Design System',
@@ -11,15 +12,20 @@ export const metadata = {
 # Input Tel <ComponentStatus tagName="p-input-tel"></ComponentStatus>
 
 The `p-input-tel` component provides a user-friendly, accessible interface for entering valid telephone numbers. It
-leverages native HTML5 telephone validation and ensures appropriate keyboard behavior on mobile devices. It includes `start`
-and `end` slots to flexibly incorporate icons, buttons, or other elements within the input field.
+leverages native HTML5 telephone validation and ensures appropriate keyboard behavior on mobile devices. It includes
+`start` and `end` slots to flexibly incorporate icons, buttons, or other elements within the input field.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-input-tel` component can be used with or without a label, but it's recommended to keep the label visible for better
-accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text for
-screen readers.
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-input-tel`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
+
+<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
+  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
+  keystroke, use `onInput` instead.
+</FrameworkNotification>
 
 <Configurator tagName="p-input-tel" story={inputTelStory} slotStories={inputTelSlotStories} />

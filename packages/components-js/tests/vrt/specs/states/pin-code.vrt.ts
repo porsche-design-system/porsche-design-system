@@ -48,7 +48,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-pin-code:not(.force-label) >>> input');
-  await forceHoverState(page, '.hover p-pin-code.force-label >>> label');
+  await forceHoverState(page, '.hover p-pin-code.force-label >>> .label-wrapper');
   await forceHoverState(
     page,
     `.hover p-pin-code.force-label >>> #${await getValueOfForAttribute(page, 'p-pin-code label')}`
@@ -58,7 +58,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceFocusVisibleState(page, '.focus p-pin-code span a');
   await forceFocusHoverState(page, '.focus-hover p-pin-code:not(.force-label) >>> input');
   await forceFocusState(page, '.focus-hover p-pin-code.force-label >>> input');
-  await forceHoverState(page, '.focus-hover p-pin-code.force-label >>> label');
+  await forceHoverState(page, '.focus-hover p-pin-code.force-label >>> .label-wrapper');
   await forceFocusHoverState(page, '.focus-hover p-pin-code span a');
 };
 

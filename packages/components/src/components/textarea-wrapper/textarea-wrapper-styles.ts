@@ -1,6 +1,3 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
-
 import {
   borderWidthBase,
   spacingStaticLarge,
@@ -20,10 +17,16 @@ import {
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   isDisabled: boolean,
   isReadonly: boolean,

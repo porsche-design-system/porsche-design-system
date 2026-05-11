@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
 import { inputSearchStory, inputSearchSlotStories } from '@/app/components/input-search/input-search.stories';
+import { FrameworkNotification } from '@/components/common/FrameworkNotification';
 
 export const metadata = {
   title: 'Input Search - Porsche Design System',
@@ -21,5 +22,11 @@ for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
+
+<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
+  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
+  keystroke, use `onInput` instead.
+</FrameworkNotification>
 
 <Configurator tagName="p-input-search" story={inputSearchStory} slotStories={inputSearchSlotStories} />

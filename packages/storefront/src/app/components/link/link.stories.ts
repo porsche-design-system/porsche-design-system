@@ -10,7 +10,7 @@ export const linkSlotStories: SlotStories<'p-link'> = {
     },
     'slotted-anchor': {
       name: 'Slotted Anchor',
-      // @ts-ignore
+      // @ts-expect-error
       generator: ({ properties } = { href: 'https://www.porsche.com' }) => [
         { tag: 'a', properties, children: ['Some label'] },
       ],

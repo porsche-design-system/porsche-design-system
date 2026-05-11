@@ -1,5 +1,6 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { vi } from 'vitest';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
   const { requiredParent, requiredChild, propsMeta = {}, hasEvent, eventsMeta, slotsMeta } = getComponentMeta(tagName);
@@ -51,7 +52,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
 
   if (hasEvent) {
     for (const event of Object.keys(eventsMeta)) {
-      component[event] = jest.fn();
+      component[event] = vi.fn();
     }
   }
 };

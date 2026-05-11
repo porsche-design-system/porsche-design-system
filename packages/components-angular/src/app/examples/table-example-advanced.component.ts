@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule, TableUpdateEventDetail } from '@porsche-design-system/components-angular';
 
@@ -109,41 +109,45 @@ const dataAdvanced: DataAdvanced[] = [
       <p-heading slot="caption" size="large" tag="h3">Some visual caption</p-heading>
       <p-table-head>
         <p-table-head-row>
-          <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">
-            {{ item.name }}
-          </p-table-head-cell>
+          @for (item of head; track item) {
+            <p-table-head-cell [sort]="item" [hideLabel]="item.hideLabel">
+              {{ item.name }}
+            </p-table-head-cell>
+          }
         </p-table-head-row>
       </p-table-head>
       <p-table-body>
-        <p-table-row *ngFor="let item of data">
-          <p-table-cell>
-            <div style="display: flex;">
-              <img src="{{ item.imageUrl }}" width="80" height="45" style="margin-right: .5rem; object-fit: contain; max-width: none;" alt="" />
-              <div>
-                <p-text weight="semi-bold">{{ item.model }}</p-text>
-                <p-text size="x-small">{{ item.date }}</p-text>
+        @for (item of data; track item) {
+          <p-table-row>
+            <p-table-cell>
+              <div style="display: flex;">
+                <img src="{{ item.imageUrl }}" width="80" height="45" style="margin-right: .5rem; object-fit: contain; max-width: none;" alt="" />
+                <div>
+                  <p-text weight="semi-bold">{{ item.model }}</p-text>
+                  <p-text size="x-small">{{ item.date }}</p-text>
+                </div>
               </div>
-            </div>
-          </p-table-cell>
-          <p-table-cell>{{ item.interest }}</p-table-cell>
-          <p-table-cell>
-            <a href="https://porsche.com">{{ item.vin }}</a>
-          </p-table-cell>
-          <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
-          <p-table-cell>{{ item.status }}</p-table-cell>
-          <p-table-cell [multiline]="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
-          <p-table-cell>{{ item.leadId }}</p-table-cell>
-          <p-table-cell>
-            <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>
-            <p-button-pure icon="delete" style="padding: .5rem">Delete</p-button-pure>
-          </p-table-cell>
-        </p-table-row>
+            </p-table-cell>
+            <p-table-cell>{{ item.interest }}</p-table-cell>
+            <p-table-cell>
+              <a href="https://porsche.com">{{ item.vin }}</a>
+            </p-table-cell>
+            <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
+            <p-table-cell>{{ item.status }}</p-table-cell>
+            <p-table-cell [multiline]="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
+            <p-table-cell>{{ item.leadId }}</p-table-cell>
+            <p-table-cell>
+              <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>
+              <p-button-pure icon="delete" style="padding: .5rem">Delete</p-button-pure>
+            </p-table-cell>
+          </p-table-row>
+        }
       </p-table-body>
     </p-table>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class TableExampleAdvancedComponent {
   public head = headAdvanced;

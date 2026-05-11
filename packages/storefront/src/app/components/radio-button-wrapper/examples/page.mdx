@@ -1,20 +1,20 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import {TableOfContents} from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 import {
   radioButtonWrapperStoryLoading,
-  radioButtonWrapperStorySlots
-} from "@/app/components/radio-button-wrapper/radio-button-wrapper.stories";
-import { ComponentStory } from "@/components/playground/ComponentStory";
-import { Notification } from "@/components/common/Notification";
+  radioButtonWrapperStorySlots,
+} from '@/app/components/radio-button-wrapper/radio-button-wrapper.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Radio Button Wrapper - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Radio Button Wrapper component.'
-}
+  description: 'Discover detailed examples and insights of the Radio Button Wrapper component.',
+};
 
 # Radio Button Wrapper <ComponentStatus tagName="p-radio-button-wrapper"></ComponentStatus>
 
-<TableOfContents headings={['Slots','Loading']} />
+<TableOfContents headings={['Slots', 'Loading']} />
 
 ## Slots
 
@@ -34,8 +34,6 @@ allowed.
 
 The `loading` property can be used to indicate that the current state change requires loading. It should be applied
 exclusively to the radio button that is clicked and should remain visible until the checked state of that radio button
-has changed.
-Keep in mind that the loading state will only appear when the radio button is **not checked**.
+has changed. Keep in mind that the loading state will only appear when the radio button is **not checked**.
 
 <ComponentStory story={radioButtonWrapperStoryLoading} />
-

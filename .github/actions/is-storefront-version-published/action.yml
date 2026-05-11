@@ -17,7 +17,7 @@ runs:
     - name: 'Check GH Pages'
       id: check
       run: |
-        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://designsystem.porsche.com/v${{ inputs.package-version }}/")"
+        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://designsystem.porsche.com/v${{ inputs.version }}/")"
 
         if [[ ${http_status_code} == 200 ]]; then
           echo "Storefront version is published."

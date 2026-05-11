@@ -11,6 +11,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "accordionChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when accordion state is changed.",
@@ -31,7 +37,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -118,6 +124,83 @@ exports[`should match snapshot 1`] = `
       },
       "heading": {
         "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-ai-tag": {
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "propsMeta": {
+      "locale": {
+        "allowedValues": [
+          "bg_BG",
+          "bs_BA",
+          "cs_CZ",
+          "da_DK",
+          "de_DE",
+          "el_GR",
+          "en_CY",
+          "en_GB",
+          "en_US",
+          "es_ES",
+          "et_EE",
+          "fi_FI",
+          "fr_FR",
+          "he_IL",
+          "hr_HR",
+          "hu_HU",
+          "is_IS",
+          "it_IT",
+          "lt_LT",
+          "lv_LV",
+          "me_ME",
+          "mk_MK",
+          "mt_MT",
+          "nb_NO",
+          "nl_NL",
+          "pl_PL",
+          "pt_PT",
+          "ro_RO",
+          "ru_RU",
+          "sk_SK",
+          "sl_SI",
+          "sr_RS",
+          "sv_SE",
+          "tr_TR",
+          "uk_UA",
+        ],
+        "defaultValue": "en_US",
+        "description": "Locale for the AI text (ISO format, e.g. "de_DE").",
+        "type": "AiTagLocale",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the tag color depending on the theme.",
+        "type": "Theme",
+      },
+      "variant": {
+        "allowedValues": [
+          "abbreviation",
+          "generated",
+          "modified",
+        ],
+        "defaultValue": "generated",
+        "description": "Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").",
+        "type": "AiTagVariant",
       },
     },
     "styling": "jss",
@@ -258,6 +341,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -275,6 +364,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -323,8 +413,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -669,6 +767,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-group": {
+    "deprecationMessage": "since v3.32.0, will be removed with next major release. Use simple styles instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -677,6 +776,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "propsMeta": {
@@ -702,6 +802,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -741,6 +847,7 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -783,8 +890,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -1159,6 +1274,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-tile": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -1185,6 +1306,7 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -1265,8 +1387,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -1600,6 +1730,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "footer": {
+        "description": "Renders a footer section below the description.",
+      },
       "header": {
         "description": "Renders a header section above the content area.",
       },
@@ -1701,9 +1834,25 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-carousel-pe": {
+        "defaultValue": "",
+        "description": "Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-ps\`. When used then the prop \`width\` has no effect anymore.",
+      },
       "--p-carousel-prev-next-filter": {
         "defaultValue": "none",
         "description": "CSS Filter applied to the navigation (prev/next buttons)",
+      },
+      "--p-carousel-ps": {
+        "defaultValue": "",
+        "description": "Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-pe\`. When used then the prop \`width\` has no effect anymore.",
+      },
+      "--p-carousel-px": {
+        "defaultValue": "",
+        "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop \`width\` has no effect anymore.",
+      },
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
       },
     },
     "eventsMeta": {
@@ -1888,6 +2037,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "basic",
           "extended",
+          "wide",
+          "full",
         ],
         "defaultValue": "basic",
         "description": "Defines the outer spacings between the carousel and the left and right screen sides.",
@@ -1918,14 +2069,24 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-checkbox": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the checkbox has lost focus.",
         "type": "CheckboxBlurEventDetail",
         "typeDetail": "Event",
       },
-      "update": {
+      "change": {
         "description": "Emitted when checkbox checked property is changed.",
+        "type": "CheckboxChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "update": {
         "type": "CheckboxUpdateEventDetail",
         "typeDetail": "{ name: string; value?: string; checked: boolean }",
       },
@@ -1957,13 +2118,16 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays as a compact version.",
         "type": "boolean",
       },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Marks the checkbox as disabled.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -1978,7 +2142,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
+        "description": "Show or hide label. For better accessibility, it's recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -2053,6 +2217,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -2060,6 +2227,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-checkbox-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-checkbox\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -2213,6 +2386,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -2578,6 +2752,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -2814,13 +2989,16 @@ exports[`should match snapshot 1`] = `
       },
       "name": {
         "allowedValues": [
+          "ad",
           "ae",
+          "al",
           "am",
           "ar",
           "at",
           "au",
           "az",
           "ba",
+          "bd",
           "be",
           "bg",
           "bh",
@@ -2850,6 +3028,7 @@ exports[`should match snapshot 1`] = `
           "gb",
           "ge",
           "gh",
+          "gi",
           "gr",
           "gt",
           "hk",
@@ -2872,12 +3051,15 @@ exports[`should match snapshot 1`] = `
           "kw",
           "kz",
           "lb",
+          "li",
           "lk",
           "lt",
           "lu",
           "lv",
           "ma",
+          "mc",
           "md",
+          "me",
           "mk",
           "mn",
           "mo",
@@ -2901,6 +3083,7 @@ exports[`should match snapshot 1`] = `
           "pt",
           "py",
           "qa",
+          "re",
           "ro",
           "rs",
           "ru",
@@ -2914,12 +3097,14 @@ exports[`should match snapshot 1`] = `
           "tn",
           "tr",
           "tt",
+          "tw",
           "ua",
           "us",
           "uy",
           "uz",
           "ve",
           "vn",
+          "xx",
           "za",
         ],
         "defaultValue": "de",
@@ -3194,6 +3379,15 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
+      },
+      "backdrop": {
+        "allowedValues": [
+          "blur",
+          "shading",
+        ],
+        "defaultValue": "blur",
+        "description": "Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).",
+        "type": "FlyoutBackdrop",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
@@ -3640,8 +3834,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -3949,6 +4151,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-inline-notification": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "action": {
         "description": "Emitted when the action button is clicked.",
@@ -3985,8 +4193,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -4345,6 +4561,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-date": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4405,6 +4625,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4522,6 +4745,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4533,6 +4759,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-email": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4593,6 +4823,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4728,6 +4961,207 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-month": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputMonthBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputMonthChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputMonthInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputMonthState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default month value for the input, in YYYY-MM format (e.g., value='2025-07').",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4739,6 +5173,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-number": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4805,6 +5243,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4928,6 +5369,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4939,6 +5383,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-password": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4999,6 +5447,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5122,6 +5573,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5133,6 +5587,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-search": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5200,6 +5658,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5237,11 +5698,23 @@ exports[`should match snapshot 1`] = `
         "isExperimental": true,
         "type": "boolean",
       },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
         "description": "Dynamic feedback text for validation or status.",
         "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
       },
       "name": {
         "allowedValues": "string",
@@ -5311,6 +5784,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5322,6 +5798,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-tel": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5382,6 +5862,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5511,6 +5994,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5522,6 +6008,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-text": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5585,6 +6075,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5708,6 +6201,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5719,6 +6215,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-time": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5779,6 +6279,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5896,6 +6399,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5907,6 +6413,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-url": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5967,6 +6477,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -6096,6 +6609,207 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-week": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputWeekBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputWeekChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputWeekInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputWeekState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -6106,6 +6820,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6123,6 +6843,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -6166,8 +6887,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6499,6 +7228,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6538,6 +7273,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -6575,8 +7311,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6983,8 +7727,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -7301,6 +8053,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7328,6 +8086,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -7463,6 +8222,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "footer": {
+        "description": "Renders a footer section below the description.",
+      },
       "header": {
         "description": "Renders a header section above the content area.",
       },
@@ -7470,6 +8232,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile-model-signature": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7554,6 +8322,9 @@ exports[`should match snapshot 1`] = `
           "boxster",
           "cayenne",
           "cayman",
+          "gt3-rs",
+          "gt3",
+          "gts",
           "macan",
           "panamera",
           "taycan",
@@ -7608,6 +8379,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "like": {
         "description": "Emitted when the like button is clicked.",
@@ -7743,6 +8520,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -7989,6 +8767,9 @@ exports[`should match snapshot 1`] = `
           "boxster",
           "cayenne",
           "cayman",
+          "gt3-rs",
+          "gt3",
+          "gts",
           "macan",
           "panamera",
           "taycan",
@@ -8042,9 +8823,30 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
-      "update": {
+      "blur": {
+        "description": "Emitted when the multi-select has lost focus.",
+        "type": "void",
+      },
+      "change": {
         "description": "Emitted when the selection is changed.",
+        "type": "MultiSelectChangeEventDetail",
+        "typeDetail": "{ name: string; value: string[] }",
+      },
+      "toggle": {
+        "description": "Emitted when the dropdown is toggled.",
+        "type": "MultiSelectToggleEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
+      "update": {
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
+        "isDeprecated": true,
         "type": "MultiSelectUpdateEventDetail",
         "typeDetail": "{ name: string; value: string[] }",
       },
@@ -8081,6 +8883,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the multi-select",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "dropdownDirection": {
@@ -8175,16 +8980,34 @@ exports[`should match snapshot 1`] = `
       "description": {
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "filter": {
+        "description": "Optional slot for providing a custom \`p-input-search\` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior.",
+      },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "options-status": {
+        "description": "When implementing a custom filter with the \`filter\` slot, use this slot for loading, error and no results status.",
+      },
+      "selected": {
+        "description": "Use this slot to provide custom markup for the selected options display in the button area.",
       },
     },
     "styling": "jss",
   },
   "p-multi-select-option": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8396,9 +9219,25 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the pin-code has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the input is changed.",
+        "type": "PinCodeChangeEventDetail",
+        "typeDetail": "{ value: string; isComplete: boolean }",
+      },
       "update": {
-        "description": "Emitted when selected element changes.",
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the input is changed.",
+        "isDeprecated": true,
         "type": "PinCodeUpdateEventDetail",
         "typeDetail": "{ value: string; isComplete: boolean }",
       },
@@ -8418,6 +9257,12 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the pin-code as a compact version.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -8428,6 +9273,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the Pin Code. No events will be triggered while disabled state is active.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -8538,6 +9386,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -8545,6 +9396,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8607,6 +9464,13 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-button-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
+    "deprecationMessage": "since v3.30.0, will be removed with next major release. Please use \`p-radio-group\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8615,6 +9479,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -8684,6 +9549,230 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-radio-group": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the radio-group has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the selected option is changed.",
+        "type": "RadioGroupChangeEventDetail",
+        "typeDetail": "Event",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-spinner",
+      "p-icon",
+    ],
+    "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the radio group as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the radio group.",
+        "type": "string",
+      },
+      "direction": {
+        "allowedValues": [
+          "row",
+          "column",
+        ],
+        "defaultValue": "column",
+        "description": "Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.",
+        "isBreakpointCustomizable": true,
+        "type": "RadioGroupDirection",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the group of radio buttons, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the radio group component.",
+        "type": "RadioGroupState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default value for the radio-group.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the p-radio-group-option tags.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-radio-group-option": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-spinner",
+    ],
+    "propsMeta": {
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the radio group option unusable and unclickable.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The value for the input.",
+        "type": "string",
+      },
+    },
+    "requiredParent": [
+      "p-radio-group",
+    ],
+    "slotsMeta": {
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
     },
     "styling": "jss",
@@ -8801,6 +9890,15 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the segmented-control has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the selection is changed.",
+        "type": "SegmentedControlChangeEventDetail",
+        "typeDetail": "{ value: string | number }",
+      },
       "segmentedControlChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
         "isDeprecated": true,
@@ -8808,7 +9906,8 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ value: string | number }",
       },
       "update": {
-        "description": "Emitted when selected element changes.",
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when selected element changes.",
+        "isDeprecated": true,
         "type": "SegmentedControlUpdateEventDetail",
         "typeDetail": "{ value: string | number }",
       },
@@ -8819,13 +9918,14 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
-    "hostAttributes": {
-      "role": "group",
-    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-scroller",
+      "p-icon",
+    ],
     "propsMeta": {
       "backgroundColor": {
         "allowedValues": [
@@ -8872,6 +9972,18 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "SegmentedControlColumns",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the segmented-control.",
+        "type": "string",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -8890,6 +10002,25 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -8898,6 +10029,28 @@ exports[`should match snapshot 1`] = `
           "reflect": true,
         },
         "type": "string",
+      },
+      "noWrap": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the component.",
+        "type": "SegmentedControlState",
       },
       "theme": {
         "allowedValues": [
@@ -8926,10 +10079,28 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the \`p-segmented-control-item\` tags.",
       },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
     },
     "styling": "jss",
   },
   "p-segmented-control-item": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8937,7 +10108,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "internalProps": {
+      "compact": null,
       "selected": null,
+      "state": null,
       "theme": "light",
     },
     "isChunked": false,
@@ -8973,8 +10146,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -9289,9 +10470,30 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
-      "update": {
+      "blur": {
+        "description": "Emitted when the select has lost focus.",
+        "type": "void",
+      },
+      "change": {
         "description": "Emitted when the selection is changed.",
+        "type": "SelectChangeEventDetail",
+        "typeDetail": "{ name: string; value: string }",
+      },
+      "toggle": {
+        "description": "Emitted when the dropdown is toggled.",
+        "type": "SelectToggleEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
+      "update": {
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
+        "isDeprecated": true,
         "type": "SelectUpdateEventDetail",
         "typeDetail": "{ name: string; value: string }",
       },
@@ -9345,7 +10547,7 @@ exports[`should match snapshot 1`] = `
       "filter": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Shows an input in the dropdown allowing options to be filtered.",
+        "description": "Shows an input in the dropdown allowing options to be filtered. Will be ignored if the \`filter\` slot is used.",
         "type": "boolean",
       },
       "form": {
@@ -9429,16 +10631,34 @@ exports[`should match snapshot 1`] = `
       "description": {
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "filter": {
+        "description": "Optional slot for providing a custom \`p-input-search\` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior.",
+      },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "options-status": {
+        "description": "When implementing a custom filter with the \`filter\` slot, use this slot for loading, error and no results status.",
+      },
+      "selected": {
+        "description": "Use this slot to provide custom markup for the selected option display in the button area.",
       },
     },
     "styling": "jss",
   },
   "p-select-option": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9478,6 +10698,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-select\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -9847,6 +11073,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-stepper-horizontal-item": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9902,6 +11134,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "switchChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when checked status is changed.",
@@ -10535,7 +11773,8 @@ exports[`should match snapshot 1`] = `
           "notification-error",
           "background-default",
         ],
-        "description": "Background color variations depending on theme property.",
+        "description": "@deprecated since v3.33.0, will be removed with next major release. Use \`variant\` prop instead. Background color variations depending on theme property.",
+        "isDeprecated": true,
         "type": "TagColor",
       },
       "compact": {
@@ -10554,8 +11793,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -10845,6 +12092,20 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the tag color depending on the theme.",
         "type": "Theme",
       },
+      "variant": {
+        "allowedValues": [
+          null,
+          "primary",
+          "secondary",
+          "info",
+          "warning",
+          "success",
+          "error",
+        ],
+        "defaultValue": null,
+        "description": "Background color variations.",
+        "type": "TagVariant",
+      },
     },
     "slotsMeta": {
       "": {
@@ -10854,6 +12115,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tag-dismissible": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -10890,6 +12157,12 @@ exports[`should match snapshot 1`] = `
         "description": "Background color variations",
         "type": "TagDismissibleColor",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the tag dismissible as a compact version.",
+        "type": "boolean",
+      },
       "label": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -10915,6 +12188,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -11045,6 +12324,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text-field-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: \`p-input-date\`, \`p-input-email\`, \`p-input-number\`, \`p-input-password\`, \`p-input-search\`, \`p-input-tel\`, \`p-input-text\`, \`p-input-time\` or \`p-input-url\`.",
     "eventsMeta": {
       "action": {
@@ -11279,6 +12564,32 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--p-textarea-field-sizing": {
+        "defaultValue": "unset",
+        "description": "Controls CSS \`field-sizing\` for textarea.",
+      },
+      "--p-textarea-max-height": {
+        "defaultValue": "unset",
+        "description": "Maximum height of the textarea.",
+      },
+      "--p-textarea-max-width": {
+        "defaultValue": "unset",
+        "description": "Maximum width of the textarea.",
+      },
+      "--p-textarea-min-height": {
+        "defaultValue": "unset",
+        "description": "Minimum height of the textarea.",
+      },
+      "--p-textarea-min-width": {
+        "defaultValue": "52px",
+        "description": "Minimum width of the textarea.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the textarea has lost focus.",
@@ -11316,6 +12627,12 @@ exports[`should match snapshot 1`] = `
         "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the textarea as a compact version.",
+        "type": "boolean",
+      },
       "counter": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -11332,6 +12649,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -11418,7 +12738,7 @@ exports[`should match snapshot 1`] = `
       "rows": {
         "allowedValues": "number",
         "defaultValue": 7,
-        "description": "The number of rows of the textarea.",
+        "description": "The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.",
         "type": "number",
       },
       "spellCheck": {
@@ -11474,6 +12794,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -11481,6 +12804,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-textarea\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -11582,6 +12911,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-toast": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--p-toast-position-bottom": {
         "defaultValue": "56px",
         "description": "Defines the spacing between the toast and the bottom edge of its container.",
@@ -11678,6 +13011,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },

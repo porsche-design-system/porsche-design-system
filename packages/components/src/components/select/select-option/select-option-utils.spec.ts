@@ -1,16 +1,17 @@
-import { validateSelectOption } from './select-option-utils';
+import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
+import { validateSelectOption } from './select-option-utils';
 
 const createMockSlot = (assignedElements: Node[]): HTMLSlotElement => {
   return {
-    assignedNodes: jest.fn(() => assignedElements),
+    assignedNodes: vi.fn(() => assignedElements),
   } as unknown as HTMLSlotElement;
 };
 
 describe('validateSelectOption()', () => {
   it('should log error if slot contains invalid elements', () => {
     const host = document.createElement('p-select-option');
-    const consoleErrorSpy = jest.spyOn(loggerUtils, 'consoleError').mockReturnValueOnce();
+    const consoleErrorSpy = vi.spyOn(loggerUtils, 'consoleError').mockReturnValueOnce();
     const img = document.createElement('img');
     const p = document.createElement('p');
     p.innerHTML = 'Some Text';
@@ -23,7 +24,7 @@ describe('validateSelectOption()', () => {
   });
   it('should not log error if slot contains valid elements', () => {
     const host = document.createElement('p-select-option');
-    const consoleErrorSpy = jest.spyOn(loggerUtils, 'consoleError').mockReturnValueOnce();
+    const consoleErrorSpy = vi.spyOn(loggerUtils, 'consoleError').mockReturnValueOnce();
     const img = document.createElement('img');
     const text = document.createTextNode('Some Text');
     const slot = createMockSlot([img, text]);

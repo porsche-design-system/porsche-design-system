@@ -1,9 +1,10 @@
-import { SegmentedControlItem } from './segmented-control-item';
+import { vi } from 'vitest';
 import * as throwIfPropIsUndefinedUtils from '../../../utils/validation/throwIfPropIsUndefined';
+import { SegmentedControlItem } from './segmented-control-item';
 
 describe('render', () => {
   it('should call throwIfPropIsUndefined() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfPropIsUndefinedUtils, 'throwIfPropIsUndefined');
+    const spy = vi.spyOn(throwIfPropIsUndefinedUtils, 'throwIfPropIsUndefined');
 
     const component = new SegmentedControlItem();
     component.host = document.createElement('p-segmented-control-item') as any;
@@ -20,7 +21,7 @@ describe('render', () => {
       const component = new SegmentedControlItem();
       component.host = document.createElement('p-segmented-control-item') as any;
 
-      const dispatchEventSpy = jest.spyOn(component.host, 'dispatchEvent');
+      const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
       component.disabled = false;
       component.host.selected = false;
 
@@ -38,7 +39,7 @@ describe('render', () => {
       const component = new SegmentedControlItem();
       component.host = document.createElement('p-segmented-control-item') as any;
 
-      const dispatchEventSpy = jest.spyOn(component.host, 'dispatchEvent');
+      const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
       component.disabled = true;
       component.host.selected = false;
 
@@ -51,7 +52,7 @@ describe('render', () => {
       const component = new SegmentedControlItem();
       component.host = document.createElement('p-segmented-control-item') as any;
 
-      const dispatchEventSpy = jest.spyOn(component.host, 'dispatchEvent');
+      const dispatchEventSpy = vi.spyOn(component.host, 'dispatchEvent');
       component.disabled = false;
       component.host.selected = true;
 

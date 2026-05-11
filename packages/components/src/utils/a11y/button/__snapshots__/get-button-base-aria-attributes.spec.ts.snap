@@ -1,24 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false and isLoading: false 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: false and isLoading: false 1`] = `
 {
   "aria-disabled": null,
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false and isLoading: true 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: false and isLoading: true 1`] = `
 {
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true and isLoading: false 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: true and isLoading: false 1`] = `
 {
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true and isLoading: true 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: true and isLoading: true 1`] = `
 {
   "aria-disabled": "true",
 }

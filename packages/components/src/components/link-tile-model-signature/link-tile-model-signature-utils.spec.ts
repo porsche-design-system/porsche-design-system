@@ -1,9 +1,9 @@
+import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 import {
   getLinkOrSlottedAnchorElement,
   LINK_TILE_MODEL_SIGNATURE_MODELS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
-import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 
 describe('LINK_TILE_MODEL_SIGNATURE_MODELS', () => {
   it('should contain all elements of MODEL_SIGNATURE_MODELS', () => {

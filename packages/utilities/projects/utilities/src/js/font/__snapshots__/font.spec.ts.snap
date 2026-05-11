@@ -4,7 +4,7 @@ exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Ar
 
 exports[`should contain correct values for fontHyphenationStyle 1`] = `
 {
-  "hyphens": "auto",
+  "hyphens": "var(--p-hyphens, auto)",
   "overflowWrap": "break-word",
 }
 `;

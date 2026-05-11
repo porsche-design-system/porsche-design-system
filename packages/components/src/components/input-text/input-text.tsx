@@ -11,7 +11,15 @@ import {
   Watch,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, THEMES, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
+  hasPropValueChanged,
+  implicitSubmit,
+  THEMES,
+  validateProps,
+} from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
 import type {
@@ -46,6 +54,7 @@ const propTypes: PropTypes<typeof InputText> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix)."}
@@ -98,7 +107,7 @@ export class InputText {
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
@@ -161,6 +170,7 @@ export class InputText {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -177,7 +187,13 @@ export class InputText {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    if (!this.disabled && !this.readOnly) {
+      this.internals?.setValidity(
+        this.inputElement.validity,
+        this.inputElement.validationMessage || ' ',
+        this.inputElement
+      );
+    }
   }
 
   public render(): JSX.Element {
@@ -206,6 +222,7 @@ export class InputText {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="text"
@@ -240,6 +257,10 @@ export class InputText {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

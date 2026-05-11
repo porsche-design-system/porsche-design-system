@@ -1,0 +1,13 @@
+- radiogroup "Some label":
+  - radio "Some label A" [disabled]
+  - status
+  - radio "Some label B" [checked] [disabled]
+  - status
+  - radio "Some label C" [disabled]
+  - status
+  - radio "Some label D" [disabled]
+  - status
+  - radio "Some label E" [disabled]
+  - status: Loading
+  - alert
+  - status

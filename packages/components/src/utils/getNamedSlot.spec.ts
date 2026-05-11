@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
 import * as getHTMLElementUtils from './dom/getHTMLElement';
 import { getNamedSlot } from './getNamedSlot';
 
 it('should call getHTMLElement() with correct parameters', () => {
-  const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement');
+  const spy = vi.spyOn(getHTMLElementUtils, 'getHTMLElement');
 
   const el = document.createElement('div');
   getNamedSlot(el, 'someName');
@@ -12,7 +13,7 @@ it('should call getHTMLElement() with correct parameters', () => {
 
 it('should return return-value of getHTMLElement()', () => {
   const mockedEl = document.createElement('div');
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValue(mockedEl);
+  vi.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValue(mockedEl);
 
   const el = document.createElement('div');
   getNamedSlot(el, 'someName');

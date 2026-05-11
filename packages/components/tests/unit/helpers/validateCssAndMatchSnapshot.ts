@@ -1,4 +1,3 @@
-import { expect } from '@jest/globals';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { getCssObject } from '../../../src/test-utils';
@@ -12,10 +11,6 @@ export const validateCssAndMatchSnapshot = (css: string) => {
 
   expect(css).not.toMatch('. {'); // Invalid css which was produced before
 
-  console.log('componentNameMETA__', {
-    componentName,
-    componentMeta,
-  });
   validateVisibilityStyle(cssObject);
   validateSlottedStyles(cssObject, componentTagName);
   validateHoverMediaQuery(cssObject);

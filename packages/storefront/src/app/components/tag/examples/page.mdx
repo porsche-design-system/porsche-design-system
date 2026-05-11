@@ -1,22 +1,22 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
 import {
   tagStory,
   tagStoryMultiline,
   tagStorySlottedButton,
-  tagStorySlottedLink
-} from "@/app/components/tag/tag.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+  tagStorySlottedLink,
+} from '@/app/components/tag/tag.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
   title: 'Tag - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Tag component.'
-}
+  description: 'Discover detailed examples and insights of the Tag component.',
+};
 
 # Tag <ComponentStatus tagName="p-tag"></ComponentStatus>
 
-<TableOfContents headings={['With slotted button','With slotted link','Multiline']} />
+<TableOfContents headings={['With slotted button', 'With slotted link', 'Multiline']} />
 
 ## With slotted button
 
@@ -38,4 +38,3 @@ The contents of the `p-tag` component are rendered with `white-space: nowrap` by
 needed (e.g. due to less amount of space), the default behaviour can be overwritten with CSS from outside.
 
 <ComponentStory story={tagStoryMultiline} />
-

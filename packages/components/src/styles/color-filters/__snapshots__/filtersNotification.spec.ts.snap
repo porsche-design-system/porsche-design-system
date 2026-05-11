@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should have correct filter for filterDarkNotificationError 1`] = `"invert(64%) sepia(91%) saturate(5857%) hue-rotate(336deg) brightness(98%) contrast(102%)"`;
 

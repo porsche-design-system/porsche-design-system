@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css 1`] = `
+exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   position: fixed !important;
   inset-inline: max(22px, 10.625vw - 12px) !important;
@@ -52,7 +52,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   }"
 `;
 
-exports[`getKeyframesMobile() should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
+exports[`getKeyframesMobile() > should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
 {
   "from": {
     "opacity": 0,
@@ -65,7 +65,7 @@ exports[`getKeyframesMobile() should return correct JssStyle for direction: in a
 }
 `;
 
-exports[`getKeyframesMobile() should return correct JssStyle for direction: out and bottomVar: --p-bottom-var 1`] = `
+exports[`getKeyframesMobile() > should return correct JssStyle for direction: out and bottomVar: --p-bottom-var 1`] = `
 {
   "from": {
     "opacity": 1,

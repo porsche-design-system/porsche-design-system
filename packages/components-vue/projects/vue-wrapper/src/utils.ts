@@ -23,10 +23,12 @@ export const syncProperties = <T extends HTMLElement>(elementRef: Ref<T | undefi
 export const addEventListenerToElementRef = <T extends HTMLElement, E extends string>(
   elementRef: Ref<T | undefined>,
   eventName: E,
-  emit: (eventName: E, detail: any) => void
+  emit: (eventName: E, detail: any) => void,
+  cb?: (event: CustomEvent) => void
 ): void => {
   elementRef.value!.addEventListener(eventName, (e) => {
     emit(eventName, (e as CustomEvent).detail);
+    cb?.(e as CustomEvent);
   });
 };
 

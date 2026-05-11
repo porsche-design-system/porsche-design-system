@@ -14,7 +14,10 @@ import {
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   disabled: boolean,
   loading: boolean,
@@ -22,7 +25,7 @@ export const getComponentCss = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  theme: Theme,
+  theme: Theme
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {

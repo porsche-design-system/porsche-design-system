@@ -122,10 +122,15 @@ describe('getByRole()', () => {
 </p-select-wrapper>`;
     await componentsReady();
 
-    const selectEl = document.querySelector('select');
-    selectEl.addEventListener('change', (e: Event & { target: HTMLSelectElement }) => callback(e.target.value));
+    const selectEl: HTMLSelectElement | null = document.querySelector('select');
+    selectEl?.addEventListener('change', (e: Event) => {
+      const target = e.target as HTMLSelectElement | null;
+      callback(target?.value);
+    });
 
-    fireEvent.change(selectEl, { target: { value: '2' } });
+    if (selectEl) {
+      fireEvent.change(selectEl, { target: { value: '2' } });
+    }
 
     expect(callback).toHaveBeenCalledWith('2');
   });

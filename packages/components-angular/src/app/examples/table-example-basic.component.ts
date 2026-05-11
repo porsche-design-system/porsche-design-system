@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -56,23 +55,27 @@ const dataBasic: DataBasic[] = [
     <p-table caption="Some caption">
       <p-table-head>
         <p-table-head-row>
-          <p-table-head-cell *ngFor="let item of head">{{ item }}</p-table-head-cell>
+          @for (item of head; track item) {
+            <p-table-head-cell>{{ item }}</p-table-head-cell>
+          }
         </p-table-head-row>
       </p-table-head>
       <p-table-body>
-        <p-table-row *ngFor="let item of data">
-          <p-table-cell>{{ item.model }}</p-table-cell>
-          <p-table-cell>{{ item.date }}</p-table-cell>
-          <p-table-cell>{{ item.interest }}</p-table-cell>
-          <p-table-cell>{{ item.status }}</p-table-cell>
-          <p-table-cell>{{ item.leadId }}</p-table-cell>
-        </p-table-row>
+        @for (item of data; track item) {
+          <p-table-row>
+            <p-table-cell>{{ item.model }}</p-table-cell>
+            <p-table-cell>{{ item.date }}</p-table-cell>
+            <p-table-cell>{{ item.interest }}</p-table-cell>
+            <p-table-cell>{{ item.status }}</p-table-cell>
+            <p-table-cell>{{ item.leadId }}</p-table-cell>
+          </p-table-row>
+        }
       </p-table-body>
     </p-table>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class TableExampleBasicComponent {
   public head = headBasic;

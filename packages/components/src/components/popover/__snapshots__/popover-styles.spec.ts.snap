@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -27,7 +27,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   p {
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: var(--p-hyphens, auto);
     margin: 0;
   }
   button {
@@ -100,13 +100,13 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
     border-radius: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: var(--p-hyphens, auto);
     background: #212225;
     color: #FBFCFF;
   }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -133,7 +133,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   p {
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: var(--p-hyphens, auto);
     margin: 0;
   }
   button {
@@ -206,7 +206,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
     border-radius: 4px;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: var(--p-hyphens, auto);
     background: #FFF;
     color: #010205;
   }"

@@ -1,14 +1,14 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Initialization: Next JS - Porsche Design System',
   description: 'Learn how to initialize and setup the Porsche Design System in your Next.js app.',
-}
+};
 
 # Initialization
 
-<TableOfContents headings={['Setup','Optimization']} />
+<TableOfContents headings={['Setup', 'Optimization']} />
 
 ## Setup
 
@@ -16,9 +16,7 @@ The most basic [integration](/developing/next-js/getting-started#integration) of
 `@porsche-design-system/components-react/ssr` looks like this.
 
 ```tsx
-<PorscheDesignSystemProvider>
-  ...
-</PorscheDesignSystemProvider>
+<PorscheDesignSystemProvider>...</PorscheDesignSystemProvider>
 ```
 
 When investigating Next.js we have to cover two different scenarios, the **server side** and the **client side**.
@@ -50,9 +48,8 @@ JavaScript in your browser. In our scenario, this results in the following netwo
 
 ### Client Side
 
-Now, we already have a `p-button` tag in the DOM from the server side.
-From here on the exact same things happen as described at
-[Vanilla Js Preparation](/must-know/initialization/vanilla-js#preparation) and
+Now, we already have a `p-button` tag in the DOM from the server side. From here on the exact same things happen as
+described at [Vanilla Js Preparation](/must-know/initialization/vanilla-js#preparation) and
 [Vanilla Js Connect Lifecycle](/must-know/initialization/vanilla-js#connect-lifecycle).
 
 Any further client side rendering behaves just like it does for the
@@ -119,8 +116,9 @@ Now, everything is preloaded in parallel while the Next.js app chunks takes the 
 <Notification heading="Hint" heading-tag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.
 
-  Instead, the most performant but also more complicated approach would be to only preload the component chunks
-  (and fonts) that are located **above the fold** which means visible on page load without scrolling.
+Instead, the most performant but also more complicated approach would be to only preload the component chunks (and
+fonts) that are located **above the fold** which means visible on page load without scrolling.
+
 </Notification>
 
 ### Early initialization

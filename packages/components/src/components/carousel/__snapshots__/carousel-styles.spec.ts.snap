@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -33,7 +33,8 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -53,7 +54,9 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -139,8 +142,9 @@ slot[name="controls"] {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     column-gap: 16px;
   }
   .nav {
@@ -151,16 +155,19 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
@@ -191,7 +198,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -224,7 +231,8 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -244,7 +252,9 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -302,8 +312,9 @@ slot[name="controls"] {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     column-gap: 16px;
   }
   .nav {
@@ -314,22 +325,25 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -364,7 +378,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -375,7 +389,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -395,7 +410,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -517,8 +534,9 @@ p,::slotted([slot="description"]) {
 
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     column-gap: 16px;
   }
   .nav {
@@ -529,7 +547,8 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
   .pagination-container {
     display: none;
@@ -556,10 +575,12 @@ p,::slotted([slot="description"]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
@@ -590,7 +611,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -636,7 +657,8 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -656,7 +678,9 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -714,8 +738,9 @@ slot[name="controls"] {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -726,22 +751,25 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: center 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -776,11 +804,12 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -800,7 +829,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -886,8 +917,9 @@ p,::slotted([slot="description"]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -898,16 +930,19 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
@@ -938,7 +973,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, theme: dark, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, theme: dark, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -980,7 +1015,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -991,7 +1026,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -1011,7 +1047,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1121,8 +1159,9 @@ p,::slotted([slot="description"]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -1133,16 +1172,19 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
@@ -1173,7 +1215,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: false and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: false and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1215,7 +1257,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -1226,7 +1268,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -1246,7 +1289,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1332,8 +1377,9 @@ p,::slotted([slot="description"]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .nav {
     grid-row-start: 3;
@@ -1343,16 +1389,19 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
@@ -1383,7 +1432,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, theme: dark, hasNavigation: true and alignControls: start 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, theme: dark, hasNavigation: true and alignControls: start 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1416,7 +1465,8 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -1436,7 +1486,9 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1528,8 +1580,9 @@ slot[name="controls"] {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -1540,16 +1593,19 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
@@ -1580,7 +1636,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: center 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1613,7 +1669,8 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -1633,7 +1690,9 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1749,8 +1808,9 @@ slot[name="controls"] {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -1761,16 +1821,19 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
@@ -1801,7 +1864,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1834,7 +1897,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -1845,7 +1908,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -1865,7 +1929,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1923,8 +1989,9 @@ p,::slotted([slot="description"]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -1935,22 +2002,25 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: background-surface, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1992,7 +2062,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -2003,7 +2073,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -2023,7 +2094,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2115,8 +2188,9 @@ p,::slotted([slot="description"]) {
 
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     column-gap: 16px;
   }
   .nav {
@@ -2127,7 +2201,8 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
   .pagination-container {
     display: none;
@@ -2154,10 +2229,12 @@ p,::slotted([slot="description"]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
@@ -2188,7 +2265,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: none, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2236,7 +2313,8 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -2256,7 +2334,9 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2304,8 +2384,9 @@ slot[name="controls"] {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     column-gap: 16px;
   }
   .nav {
@@ -2316,22 +2397,25 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2375,7 +2459,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -2386,7 +2470,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -2406,7 +2491,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2454,8 +2541,9 @@ p,::slotted([slot="description"]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
     column-gap: 16px;
   }
   .nav {
@@ -2466,22 +2554,25 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2525,7 +2616,7 @@ p,::slotted([slot="description"]) {
   margin: clamp(8px, 0.5vw + 6px, 16px) 0 clamp(16px, 1.25vw + 12px, 36px) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
-  hyphens: auto !important;
+  hyphens: var(--p-hyphens, auto) !important;
 }
 @media(min-width:760px) {
   slot[name="controls"] {
@@ -2536,7 +2627,8 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -2556,7 +2648,9 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2656,8 +2750,9 @@ p,::slotted([slot="description"]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
     column-gap: 16px;
   }
   .nav {
@@ -2668,16 +2763,19 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1))) !important;
   }
 }
 

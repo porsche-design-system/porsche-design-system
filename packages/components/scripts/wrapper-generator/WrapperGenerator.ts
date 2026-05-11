@@ -1,10 +1,9 @@
 import { AngularWrapperGenerator } from './AngularWrapperGenerator';
-import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { NextJsReactWrapperGenerator } from './NextJsReactWrapperGenerator';
-import { UXPinReactWrapperGenerator } from './UXPinReactWrapperGenerator';
+import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { VueWrapperGenerator } from './VueWrapperGenerator';
 
-type Framework = 'angular' | 'react' | 'nextjs' | 'vue' | 'uxpin';
+type Framework = 'angular' | 'react' | 'nextjs' | 'vue';
 
 export class WrapperGenerator {
   public generate(framework: Framework): void {
@@ -16,8 +15,6 @@ export class WrapperGenerator {
       new NextJsReactWrapperGenerator().generate();
     } else if (framework === 'vue') {
       new VueWrapperGenerator().generate();
-    } else if (framework === 'uxpin') {
-      new UXPinReactWrapperGenerator().generate();
     } else {
       throw new Error(`Framework ${framework} isn't supported, yet.`);
     }

@@ -1,17 +1,17 @@
-import {Notification} from "@/components/common/Notification";
-import {TableOfContents} from "@/components/common/TableOfContents";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {gridLayout} from "@porsche-design-system/shared/examples";
-import {themeLightBackgroundBase} from "@porsche-design-system/components-react/styles";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { gridLayout } from '@porsche-design-system/shared/examples';
+import { themeLightBackgroundBase } from '@porsche-design-system/components-react/styles';
 
 export const metadata = {
   title: 'Styles: Grid - Porsche Design System',
   description: 'The grid system of the Porsche Design System.',
-}
+};
 
 # Grid
 
-<TableOfContents headings={['Example','Usage','Styles']} />
+<TableOfContents headings={['Example', 'Usage', 'Styles']} />
 
 ## Example
 
@@ -24,7 +24,11 @@ between 320px and 2560px, using fluid sized columns and gaps.
   The Porsche grid has to be used on a top level and can't be nested.
 </Notification>
 
-<ComponentExample codeSample={gridLayout} disableOpenInStackblitz={true} fixedBackgroundColor={themeLightBackgroundBase} />
+<ComponentExample
+  codeSample={gridLayout}
+  disableOpenInStackblitz={true}
+  fixedBackgroundColor={themeLightBackgroundBase}
+/>
 
 ## Usage
 
@@ -40,7 +44,7 @@ create a more immersive moment.
 interactive/productive modules can make use of the full 16 columns.
 
 **Full-bleed:** For immersive moments, images and background colors can be stretched to the full width of the viewport.
-  This does not correspond to the grid.
+This does not correspond to the grid.
 
 **Note:** that the Basic-, Extended-, and Wide-Grid all equal 6 columns on mobile viewports.
 
@@ -61,10 +65,10 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 ### JS
 
 When using `JSS`, `styled-components` etc. JavaScript styles can be imported by:
-  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
+`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
 When using `vanilla-extract` JavaScript styles can be imported by:
-  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
+`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
 
 - `gridStyle`
 - `gridGap`
@@ -142,25 +146,3 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angu
 - `$pds-grid-full-column-start`
 - `$pds-grid-full-column-end`
 - `$pds-grid-full-offset`
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getStylesGridCodeSamples } from '@porsche-design-system/shared';
-  import { adjustSelectedFramework } from '@/utils';
-  import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
-
-  @Component({
-  components: {
-  ExampleStylesGrid
-},
-})
-  export default class Code extends Vue {
-  codeExample = getStylesGridCodeSamples();
-  config = { supportsFullWindow: true };
-
-  public mounted(): void {
-  adjustSelectedFramework(this.codeExample);
-}
-}
-</script> */}

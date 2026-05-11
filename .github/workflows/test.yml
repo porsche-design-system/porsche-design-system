@@ -256,8 +256,8 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Unit (Jest)'
-        run: yarn test:unit:components-angular:jest
+      - name: 'Unit (Vitest)'
+        run: yarn test:unit:components-angular:vitest
       - name: 'Unit (Karma)'
         run: yarn test:unit:components-angular:karma-ci
       - name: 'E2E'

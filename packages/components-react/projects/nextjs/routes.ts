@@ -4,6 +4,10 @@ const generatedRoutes = {
     "path": "/accordion",
     "name": "Accordion"
   },
+  "aiTag": {
+    "path": "/ai-tag",
+    "name": "AiTag"
+  },
   "banner": {
     "path": "/banner",
     "name": "Banner"
@@ -236,6 +240,18 @@ const generatedRoutes = {
     "path": "/flyout-2",
     "name": "Flyout_2"
   },
+  "flyout_3": {
+    "path": "/flyout-3",
+    "name": "Flyout_3"
+  },
+  "flyoutBackdropBlur": {
+    "path": "/flyout-backdrop-blur",
+    "name": "FlyoutBackdropBlur"
+  },
+  "flyoutBackdropShading": {
+    "path": "/flyout-backdrop-shading",
+    "name": "FlyoutBackdropShading"
+  },
   "flyoutBasic": {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
@@ -392,6 +408,10 @@ const generatedRoutes = {
     "path": "/input-email",
     "name": "InputEmail"
   },
+  "inputMonth": {
+    "path": "/input-month",
+    "name": "InputMonth"
+  },
   "inputNumber": {
     "path": "/input-number",
     "name": "InputNumber"
@@ -419,6 +439,10 @@ const generatedRoutes = {
   "inputUrl": {
     "path": "/input-url",
     "name": "InputUrl"
+  },
+  "inputWeek": {
+    "path": "/input-week",
+    "name": "InputWeek"
   },
   "link": {
     "path": "/link",
@@ -556,6 +580,10 @@ const generatedRoutes = {
     "path": "/multi-select-opened-scroll-context",
     "name": "MultiSelectOpenedScrollContext"
   },
+  "multiSelectOpenedSelectedSlot": {
+    "path": "/multi-select-opened-selected-slot",
+    "name": "MultiSelectOpenedSelectedSlot"
+  },
   "multiSelectOpenedTop": {
     "path": "/multi-select-opened-top",
     "name": "MultiSelectOpenedTop"
@@ -652,6 +680,10 @@ const generatedRoutes = {
     "path": "/radio-button-wrapper",
     "name": "RadioButtonWrapper"
   },
+  "radioGroup": {
+    "path": "/radio-group",
+    "name": "RadioGroup"
+  },
   "scroller": {
     "path": "/scroller",
     "name": "Scroller"
@@ -695,6 +727,10 @@ const generatedRoutes = {
   "selectOpenedScrollContext": {
     "path": "/select-opened-scroll-context",
     "name": "SelectOpenedScrollContext"
+  },
+  "selectOpenedSelectedSlot": {
+    "path": "/select-opened-selected-slot",
+    "name": "SelectOpenedSelectedSlot"
   },
   "selectOpenedTop": {
     "path": "/select-opened-top",

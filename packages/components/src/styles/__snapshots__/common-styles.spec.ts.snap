@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`addImportantToEachRule() should add !important to each rule 1`] = `
+exports[`addImportantToEachRule() > should add !important to each rule 1`] = `
 {
   "&:hover": {
     "&:focus": {
@@ -15,7 +15,7 @@ exports[`addImportantToEachRule() should add !important to each rule 1`] = `
 }
 `;
 
-exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: false, zIndex: 9999, theme: dark and duration: moderate 1`] = `
+exports[`getBackdropJssStyle() > should return correct JssStyle for isVisible: false, zIndex: 9999, theme: dark and duration: moderate 1`] = `
 {
   "WebkitBackdropFilter": "blur(0px)",
   "backdropFilter": "blur(0px)",
@@ -30,7 +30,7 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: fal
 }
 `;
 
-exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: false, zIndex: 9999, theme: dark and duration: veryLong 1`] = `
+exports[`getBackdropJssStyle() > should return correct JssStyle for isVisible: false, zIndex: 9999, theme: dark and duration: veryLong 1`] = `
 {
   "WebkitBackdropFilter": "blur(0px)",
   "backdropFilter": "blur(0px)",
@@ -45,7 +45,7 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: fal
 }
 `;
 
-exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: true, zIndex: 9999, theme: light and duration: long 1`] = `
+exports[`getBackdropJssStyle() > should return correct JssStyle for isVisible: true, zIndex: 9999, theme: light and duration: long 1`] = `
 {
   "WebkitBackdropFilter": "blur(32px)",
   "backdropFilter": "blur(32px)",
@@ -60,7 +60,7 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: tru
 }
 `;
 
-exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: true, zIndex: 9999, theme: light and duration: short 1`] = `
+exports[`getBackdropJssStyle() > should return correct JssStyle for isVisible: true, zIndex: 9999, theme: light and duration: short 1`] = `
 {
   "WebkitBackdropFilter": "blur(32px)",
   "backdropFilter": "blur(32px)",
@@ -75,7 +75,7 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: tru
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: %o 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: auto and options: %o 1`] = `
 {
   "&::-moz-focus-inner": {
     "border": 0,
@@ -93,7 +93,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { offset: '911px' } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: auto and options: { offset: '911px' } 1`] = `
 {
   "&::-moz-focus-inner": {
     "border": 0,
@@ -111,7 +111,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: '.some-slotted-selector' } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: auto and options: { slotted: '.some-slotted-selector' } 1`] = `
 {
   "&(.some-slotted-selector::-moz-focus-inner)": {
     "border": 0,
@@ -129,7 +129,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: auto and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
 {
   "&(.some-slotted-selector::-moz-focus-inner)": {
     "border": 0,
@@ -150,7 +150,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: auto and options: { slotted: true } 1`] = `
 {
   "&(::-moz-focus-inner)": {
     "border": 0,
@@ -168,7 +168,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: true, pseudo: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: auto and options: { slotted: true, pseudo: true } 1`] = `
 {
   "&(::-moz-focus-inner)": {
     "border": 0,
@@ -189,7 +189,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: %o 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: dark and options: %o 1`] = `
 {
   "&::-moz-focus-inner": {
     "border": 0,
@@ -204,7 +204,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { offset: '911px' } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: dark and options: { offset: '911px' } 1`] = `
 {
   "&::-moz-focus-inner": {
     "border": 0,
@@ -219,7 +219,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: '.some-slotted-selector' } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: dark and options: { slotted: '.some-slotted-selector' } 1`] = `
 {
   "&(.some-slotted-selector::-moz-focus-inner)": {
     "border": 0,
@@ -234,7 +234,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: dark and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
 {
   "&(.some-slotted-selector::-moz-focus-inner)": {
     "border": 0,
@@ -252,7 +252,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: dark and options: { slotted: true } 1`] = `
 {
   "&(::-moz-focus-inner)": {
     "border": 0,
@@ -267,7 +267,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: true, pseudo: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: dark and options: { slotted: true, pseudo: true } 1`] = `
 {
   "&(::-moz-focus-inner)": {
     "border": 0,
@@ -285,7 +285,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: %o 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: light and options: %o 1`] = `
 {
   "&::-moz-focus-inner": {
     "border": 0,
@@ -300,7 +300,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { offset: '911px' } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: light and options: { offset: '911px' } 1`] = `
 {
   "&::-moz-focus-inner": {
     "border": 0,
@@ -315,7 +315,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: '.some-slotted-selector' } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: light and options: { slotted: '.some-slotted-selector' } 1`] = `
 {
   "&(.some-slotted-selector::-moz-focus-inner)": {
     "border": 0,
@@ -330,7 +330,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: light and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
 {
   "&(.some-slotted-selector::-moz-focus-inner)": {
     "border": 0,
@@ -348,7 +348,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: light and options: { slotted: true } 1`] = `
 {
   "&(::-moz-focus-inner)": {
     "border": 0,
@@ -363,7 +363,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
 }
 `;
 
-exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: true, pseudo: true } 1`] = `
+exports[`getFocusJssStyle() > should return correct JssStyle for theme: light and options: { slotted: true, pseudo: true } 1`] = `
 {
   "&(::-moz-focus-inner)": {
     "border": 0,
@@ -381,7 +381,7 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
 }
 `;
 
-exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
+exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
 {
   "clip": "auto",
   "height": "auto",
@@ -394,7 +394,7 @@ exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: fals
 }
 `;
 
-exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: undefined 1`] = `
+exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: false and shownStyles: undefined 1`] = `
 {
   "clip": "auto",
   "height": "auto",
@@ -407,7 +407,7 @@ exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: fals
 }
 `;
 
-exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true and shownStyles: { width: 'fit-content' } 1`] = `
+exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: true and shownStyles: { width: 'fit-content' } 1`] = `
 {
   "clip": "rect(0,0,0,0)",
   "height": "1px",
@@ -420,7 +420,7 @@ exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true
 }
 `;
 
-exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true and shownStyles: undefined 1`] = `
+exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: true and shownStyles: undefined 1`] = `
 {
   "clip": "rect(0,0,0,0)",
   "height": "1px",
@@ -433,12 +433,12 @@ exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true
 }
 `;
 
-exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s) 1`] = `"box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)"`;
+exports[`getTransition() > should for : 'box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)' return: box-shadow > box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s) 1`] = `"box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)"`;
 
-exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s) 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
+exports[`getTransition() > should for : 'box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)' return: box-shadow > box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s) 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
 
-exports[`getTransition() should for : 'color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)' return: color: color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s) 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
+exports[`getTransition() > should for : 'color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)' return: color > color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s) 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
 
-exports[`getTransition() should for : 'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)' return: color: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) 1`] = `"color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)"`;
+exports[`getTransition() > should for : 'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)' return: color > color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) 1`] = `"color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)"`;
 
-exports[`getTransition() should for : 'color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)' return: color: color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s) 1`] = `"color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)"`;
+exports[`getTransition() > should for : 'color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)' return: color > color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s) 1`] = `"color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)"`;

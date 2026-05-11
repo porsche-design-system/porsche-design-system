@@ -14,11 +14,15 @@ import {
   getOptionsJssStyle,
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
+  getSelectedSlotJssStyle,
 } from '../../../styles/select';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
@@ -26,6 +30,10 @@ import { cssVarInternalMultiSelectOptionScaling } from '../multi-select-option/m
 
 export const cssVarInternalMultiSelectScaling = '--p-internal-multi-select-scaling';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   isOpen: boolean,
   isDisabled: boolean,
@@ -49,12 +57,15 @@ export const getComponentCss = (
           [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar, theme),
         '& span': getButtonLabelJssStyle,
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
+      'slot[name="selected"]': getSelectedSlotJssStyle,
     },
     root: {
       display: 'grid',

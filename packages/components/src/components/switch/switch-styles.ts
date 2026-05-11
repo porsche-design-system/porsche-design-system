@@ -8,7 +8,6 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
-  SCALING_BASE_VALUE,
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
@@ -20,6 +19,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
+  SCALING_BASE_VALUE,
 } from '../../styles';
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
@@ -71,6 +71,10 @@ const getColors = (
   };
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   alignLabel: BreakpointCustomizable<AlignLabel>,
   hideLabel: BreakpointCustomizable<boolean>,

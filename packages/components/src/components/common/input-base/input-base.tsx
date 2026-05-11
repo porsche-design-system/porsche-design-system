@@ -45,6 +45,7 @@ type InputBaseProps = {
   onInput?: (e: InputBaseInputEventDetail) => void;
   onChange?: (e: InputBaseChangeEventDetail) => void;
   onBlur?: (e: InputBaseBlurEventDetail) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
   refElement?: (el: HTMLInputElement) => void;
   start?: JSX.Element;
   end?: JSX.Element;
@@ -81,6 +82,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   onWheel,
   onChange,
   onBlur,
+  onKeyDown,
   refElement,
   start,
   end,
@@ -112,11 +114,12 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           onChange={onChange}
           onBlur={onBlur}
           onWheel={onWheel}
+          onKeyDown={onKeyDown}
           name={name}
           form={form}
           type={type}
           required={required}
-          placeholder={placeholder}
+          placeholder={placeholder || null}
           maxlength={maxLength}
           minlength={minLength}
           spellcheck={spellCheck}
@@ -129,6 +132,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           disabled={disabled}
           pattern={pattern}
           multiple={multiple}
+          dir="auto" // This is the default: let the browser decide in which direction the value should be placed.
         />
         {end}
         <slot name="end" />

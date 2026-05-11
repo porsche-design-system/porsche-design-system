@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 
 describe('warnIfIsLoadingAndIconIsNone()', () => {
   it('should print warning if property icon = none, iconSource = "" and loading = true', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
+    const spy = vi.spyOn(global.console, 'warn').mockImplementation(() => {});
     const host = document.createElement('p-button-pure');
 
     warnIfIsLoadingAndIconIsNone(host, true, 'highway', '');

@@ -3,14 +3,14 @@ import {
   PSelectOption,
   type PSelectProps,
   PText,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
 export const SelectExampleControlledPage = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('a');
 
-  const onUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
     setSelectedValue(e.detail.value);
   };
 
@@ -18,7 +18,7 @@ export const SelectExampleControlledPage = (): JSX.Element => {
 
   return (
     <>
-      <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={onUpdate}>
+      <PSelect name="options" label="Some Label" value={selectedValue} onChange={onChange}>
         <PSelectOption value="a">Option A</PSelectOption>
         <PSelectOption value="b">Option B</PSelectOption>
         <PSelectOption value="c">Option C</PSelectOption>

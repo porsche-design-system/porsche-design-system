@@ -4,7 +4,7 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
-import { InputTextInputEventDetail } from '@porsche-design-system/components-react';
+import type { InputTextInputEventDetail } from '@porsche-design-system/components-react';
 
 type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;

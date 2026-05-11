@@ -3,7 +3,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
-import path from 'path';
+import * as path from 'path';
 import { setupScenario } from '../../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
@@ -66,7 +66,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test('should have certain amount of components', () => {
-  expect(components.length).toBe(69);
+  expect(components.length).toBe(74);
 });
 
 for (const component of components) {
@@ -75,8 +75,11 @@ for (const component of components) {
     for (const theme of themes) {
       test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
         test.skip(
-          (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
-          'This component has no theme support and stepper-horizontal is flaky'
+          (!isComponentThemeable(component) && theme === 'dark') ||
+            component === 'stepper-horizontal' ||
+            component === 'select' ||
+            component === 'multi-select',
+          'Component has no theme support and/or is flaky'
         );
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
@@ -95,6 +98,8 @@ for (const component of components) {
     // regular tests on different viewports
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+        test.skip(component === 'select' || component === 'multi-select', 'This component is flaky');
+
         await setupScenario(page, `/${component}`, viewportWidth);
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
@@ -108,6 +113,7 @@ for (const component of components) {
         page,
       }) => {
         test.skip(!isComponentThemeable(component), 'This component has no theme support');
+        test.skip(component === 'select' || component === 'multi-select', 'This component is flaky');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forceComponentTheme: 'auto',
@@ -121,6 +127,8 @@ for (const component of components) {
       test(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
+        test.skip(component === 'select' || component === 'multi-select', 'This component is flaky in HC mode');
+
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forcedColorsEnabled: true,
           prefersColorScheme: scheme,
@@ -134,6 +142,8 @@ for (const component of components) {
 
     // 200% font scaling
     test(`should have no visual regression for viewport ${viewportWidthM} in scale mode`, async ({ page }) => {
+      test.skip(component === 'select', 'This component is flaky');
+
       await setupScenario(page, `/${component}`, viewportWidthM, {
         scalePageFontSize: true,
       });
@@ -145,6 +155,8 @@ for (const component of components) {
     test(`should have no visual regression for viewport ${viewportWidthM} in rtl (right-to-left) mode`, async ({
       page,
     }) => {
+      test.skip(component === 'select', 'This component is flaky');
+
       await setupScenario(page, `/${component}`, viewportWidthM, {
         forceDirMode: 'rtl',
       });

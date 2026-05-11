@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-high, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -30,7 +30,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-high, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -60,7 +60,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-low, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -90,7 +90,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-low, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -120,7 +120,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-medium, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -150,7 +150,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-medium, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -180,7 +180,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: inherit, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -200,7 +200,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: inherit, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -220,7 +220,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-error, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-error, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -250,7 +250,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-error, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-error, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -280,7 +280,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-info, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-info, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -310,7 +310,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-info, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-info, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -340,7 +340,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-success, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-success, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -370,7 +370,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-success, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-success, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -400,7 +400,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-warning, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-warning, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -430,7 +430,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: notification-warning, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: notification-warning, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -460,7 +460,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: inherit and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: inherit and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -489,7 +489,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: large and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: large and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -519,7 +519,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: medium and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: medium and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -549,7 +549,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -579,7 +579,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -609,7 +609,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: x-large and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: x-large and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -639,7 +639,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: x-small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: x-small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -669,7 +669,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: primary, size: xx-small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary, size: xx-small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -699,7 +699,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: state-disabled, size: small and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: state-disabled, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -729,7 +729,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: 360, source: , color: state-disabled, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: 360, source: , color: state-disabled, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -759,7 +759,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: arrow-head-left, source: , color: primary, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: , color: primary, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -792,7 +792,7 @@ img:dir(rtl) {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for name: arrow-head-left, source: some-custom.svg, color: primary, size: small and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: some-custom.svg, color: primary, size: small and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;

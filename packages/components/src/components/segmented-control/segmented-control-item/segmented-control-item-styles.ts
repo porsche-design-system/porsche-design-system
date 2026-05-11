@@ -1,4 +1,10 @@
-import { borderRadiusSmall, borderWidthBase, textSmallStyle, textXSmallStyle } from '@porsche-design-system/styles';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  textSmallStyle,
+  textXSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
@@ -10,10 +16,18 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode } from '../../../utils';
+import { formElementPaddingVertical } from '../../../styles/form-styles';
+import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
-export const ITEM_PADDING = '17px';
+export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
+export const getScalingVar = (compact: boolean) =>
+  `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
+
+export const ICON_OFFSET = '4px';
+
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
@@ -22,6 +36,7 @@ export const ICON_MARGIN = '.25rem';
 export const getColors = (
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   theme: Theme
 ): {
   buttonColor: string;
@@ -32,6 +47,8 @@ export const getColors = (
   const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
@@ -40,29 +57,55 @@ export const getColors = (
         ? disabledColor
         : isHighContrastMode
           ? highlightColor
-          : primaryColor
-      : contrastLowColor,
-    hoverBorderColor: primaryColor,
+          : state === 'success'
+            ? formStateColor
+            : primaryColor
+      : state === 'error'
+        ? formStateColor
+        : contrastLowColor,
+    hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
   };
 };
 
-export const getItemPadding = (hasIconAndSlottedContent: boolean): string =>
-  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`;
+export const getScalableItemStyles = (
+  hasIconAndSlottedContent: boolean,
+  compact: boolean
+): { padding: string; dimension: string } => {
+  const scalingVar = getScalingVar(compact);
 
+  const verticalPadding = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+  const horizontalPadding = `calc(${verticalPadding} + ${ICON_OFFSET})`;
+
+  const padding = hasIconAndSlottedContent
+    ? `${verticalPadding} ${horizontalPadding} ${verticalPadding} ${verticalPadding}`
+    : `${verticalPadding} ${horizontalPadding}`;
+
+  const dimension = `calc(max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px)) + (${verticalPadding} + ${borderWidthBase}) * 2)`;
+
+  return { padding, dimension };
+};
+
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
+  compact: boolean,
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   hasIcon: boolean,
   hasSlottedContent: boolean,
   theme: Theme
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
+  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, state, theme);
   const {
     buttonColor: buttonColorDark,
     labelColor: labelColorDark,
     borderColor: borderColorDark,
     hoverBorderColor: hoverBorderColorDark,
-  } = getColors(isDisabled, isSelected, 'dark');
+  } = getColors(isDisabled, isSelected, state, 'dark');
+  const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
     '@global': {
@@ -80,7 +123,9 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: getItemPadding(hasIcon && hasSlottedContent),
+        minHeight: dimension,
+        minWidth: dimension,
+        padding: padding,
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,

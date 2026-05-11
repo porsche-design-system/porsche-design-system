@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  type MultiSelectUpdateEventDetail,
+  type MultiSelectChangeEventDetail,
   PMultiSelect,
   PMultiSelectOption,
   PText,
@@ -9,7 +9,7 @@ import { computed, ref } from 'vue';
 
 const selectedValues = ref<string[]>([]);
 
-const onUpdate = (e: MultiSelectUpdateEventDetail) => {
+const onChange = (e: MultiSelectChangeEventDetail) => {
   selectedValues.value = e.value;
 };
 
@@ -19,7 +19,7 @@ const debugText = computed(() => {
 </script>
 
 <template>
-  <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @update="onUpdate">
+  <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @change="onChange">
     <PMultiSelectOption :value="'a'">Option A</PMultiSelectOption>
     <PMultiSelectOption :value="'b'">Option B</PMultiSelectOption>
     <PMultiSelectOption :value="'c'">Option C</PMultiSelectOption>

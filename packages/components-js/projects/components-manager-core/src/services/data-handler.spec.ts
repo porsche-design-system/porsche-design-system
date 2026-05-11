@@ -1,5 +1,6 @@
-import { getComponentsManagerData, CM_KEY } from './data-handler';
+import { afterEach, expect, it } from 'vitest';
 import type { ComponentsManagerData } from './components-manager';
+import { CM_KEY, getComponentsManagerData } from './data-handler';
 
 afterEach(() => {
   delete document[CM_KEY];

@@ -2,7 +2,7 @@
 import { type InputEmailInputEventDetail, PInputEmail, PText } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const value = ref<string>('');
+const value = ref<string>('abc');
 
 const onInput = (e: InputEmailInputEventDetail) => {
   value.value = (e.target as HTMLInputElement).value;

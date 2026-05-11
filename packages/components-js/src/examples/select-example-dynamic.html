@@ -15,7 +15,7 @@
   const input = document.querySelector('input');
   const select = document.querySelector('p-select');
 
-  select.addEventListener('update', () => {
+  select.addEventListener('change', (e) => {
     input.value = select.value;
   });
 

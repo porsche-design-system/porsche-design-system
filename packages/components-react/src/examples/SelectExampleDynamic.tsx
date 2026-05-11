@@ -4,7 +4,7 @@ import {
   PSelectOption,
   type PSelectProps,
   PTextFieldWrapper,
-  type SelectUpdateEventDetail,
+  SelectChangeEventDetail,
 } from '@porsche-design-system/components-react';
 import { type ChangeEvent, useState } from 'react';
 
@@ -26,7 +26,7 @@ export const SelectExampleDynamicPage = (): JSX.Element => {
     setInputValue('');
   };
 
-  const onUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
     setSelectedValue(e.detail.value);
     setInputValue(e.detail.value);
   };
@@ -53,7 +53,7 @@ export const SelectExampleDynamicPage = (): JSX.Element => {
         Reset value
       </PButton>
 
-      <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={onUpdate}>
+      <PSelect name="options" label="Some Label" value={selectedValue} onChange={onChange}>
         {[...Array(optionCount).keys()].map((idx) => (
           <PSelectOption key={idx} value={`${idx + 1}`}>
             Option {idx + 1}

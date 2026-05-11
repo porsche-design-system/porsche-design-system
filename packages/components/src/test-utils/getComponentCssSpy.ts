@@ -1,19 +1,19 @@
+import { vi } from 'vitest';
 import * as jssUtils from '../utils/jss';
 import { getCssObject } from './getCssObject';
 
-export const getComponentCssSpy = (): jest.SpyInstance => {
+export const getComponentCssSpy = (): ReturnType<typeof vi.spyOn> => {
   // silence deprecation warnings
-  jest.spyOn(console, 'warn').mockImplementation();
+  vi.spyOn(console, 'warn').mockImplementation(() => null);
 
   // mock to get the result from getComponentCss() directly
-  return jest
+  return vi
     .spyOn(jssUtils, 'attachComponentCss')
     .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args)); // eslint-disable-line @typescript-eslint/no-unsafe-argument
 };
 
-export const getComponentCssObject = (spy: jest.SpyInstance): object => {
+export const getComponentCssObject = (spy: ReturnType<typeof vi.spyOn>): object | null => {
   const [result] = spy.mock.results;
-  const { type, value: cssString } = (result || {}) as jest.MockResultReturn<string>;
-
-  return type === 'return' ? getCssObject(cssString) : null;
+  if (!result || result.type !== 'return') return null;
+  return getCssObject(String(result.value));
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import type {SlotStories, Story} from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 
 export const inputPasswordSlotStories: SlotStories<'p-input-password'> = {
   start: {
@@ -59,10 +59,11 @@ export const inputPasswordStory: Story<'p-input-password'> = {
   state: {
     properties: { label: 'Some label', name: 'some-name', toggle: true },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-input-password',
       properties,
+      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
     },
   ],
 };
@@ -84,7 +85,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label', id: 'some-label-id' },
+          properties: { slot: 'label' },
           children: [
             'Some label with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
@@ -93,7 +94,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'description', id: 'some-description-id' },
+          properties: { slot: 'description' },
           children: [
             'Some description with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
@@ -102,7 +103,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'message', id: 'some-message-id' },
+          properties: { slot: 'message' },
           children: [
             'Some error message with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
@@ -113,4 +114,3 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
     },
   ],
 };
-

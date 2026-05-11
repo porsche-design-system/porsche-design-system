@@ -1,5 +1,5 @@
 import { componentFactory } from '../../test-utils';
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import * as getSlottedPictureImageStylesUtils from './slotted-picture-image-styles';
 import { getSlottedPictureImageStyles, tagNamesWithSlottedPictureImageArray } from './slotted-picture-image-styles';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
@@ -15,11 +15,11 @@ it.each(tagNamesWithSlottedPictureImageArray)(
   'should apply constructable stylesheet with slotted picture/image styles in connected callback for component %s',
   (tagName) => {
     const component = componentFactory(tagName);
-    const getSlottedPictureImageStylesSpy = jest.spyOn(
+    const getSlottedPictureImageStylesSpy = vi.spyOn(
       getSlottedPictureImageStylesUtils,
       'getSlottedPictureImageStyles'
     );
-    const applyConstructableStylesheetStylesSpy = jest.spyOn(
+    const applyConstructableStylesheetStylesSpy = vi.spyOn(
       applyConstructableStylesheetStylesUtils,
       'applyConstructableStylesheetStyles'
     );

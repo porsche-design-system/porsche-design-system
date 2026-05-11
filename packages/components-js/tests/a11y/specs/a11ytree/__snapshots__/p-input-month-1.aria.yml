@@ -1,0 +1,6 @@
+- text: Some label
+- textbox "Some label" [disabled]
+- button "Open date picker"
+- status
+- alert
+- status: Loading

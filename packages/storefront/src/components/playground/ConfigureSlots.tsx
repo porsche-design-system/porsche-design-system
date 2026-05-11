@@ -1,9 +1,9 @@
-import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
 import React from 'react';
+import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
+import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
   tagName: Tag;
@@ -53,7 +53,6 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                 <PSelect
                   className="[--p-select-background-color:bg-shading]"
                   name={slotName}
-                  // @ts-ignore
                   value={configuredSlots?.slots?.[slotName]?.name}
                   disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   hideLabel={true}

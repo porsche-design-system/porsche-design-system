@@ -1,0 +1,12 @@
+<fieldset
+  class="root"
+  role="radiogroup"
+  aria-describedby="description message"
+  aria-labelledby="label"
+>
+  <div class="wrapper">
+    <slot> </slot>
+  </div>
+  <span id="message" class="message" role="alert"> </span>
+  <span id="loading" class="loading" role="status"> </span>
+</fieldset>

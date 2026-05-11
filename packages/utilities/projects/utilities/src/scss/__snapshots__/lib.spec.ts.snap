@@ -71,7 +71,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 exports[`should contain correct content for auto generated file ./src/scss/lib/_font.scss 1`] = `
 "$pds-font-family: "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
 $pds-font-hyphenation-style-overflow-wrap: break-word;
-$pds-font-hyphenation-style-hyphens: auto;
+$pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto);
 $pds-font-line-height: calc(6px + 2.125ex);
 $pds-font-size-text-xx-small: 0.75rem;
 $pds-font-size-text-x-small: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
@@ -460,7 +460,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
 
@@ -472,7 +472,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
 
@@ -484,7 +484,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
 
@@ -496,7 +496,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
 
@@ -508,7 +508,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
 
@@ -520,7 +520,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
 "

@@ -1,20 +1,23 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
 import {
-  selectWrapperStory, selectWrapperStoryFilter, selectWrapperStoryOptgroups, selectWrapperStorySlots,
-  selectWrapperStoryWithoutPreselection
-} from "@/app/components/select-wrapper/select-wrapper.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+  selectWrapperStory,
+  selectWrapperStoryFilter,
+  selectWrapperStoryOptgroups,
+  selectWrapperStorySlots,
+  selectWrapperStoryWithoutPreselection,
+} from '@/app/components/select-wrapper/select-wrapper.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
   title: 'Select Wrapper - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Select Wrapper component.'
-}
+  description: 'Discover detailed examples and insights of the Select Wrapper component.',
+};
 
 # Select Wrapper <ComponentStatus tagName="p-select-wrapper"></ComponentStatus>
 
-<TableOfContents headings={['Basic example without preselection','With filter','With optgroups','Slots']} />
+<TableOfContents headings={['Basic example without preselection', 'With filter', 'With optgroups', 'Slots']} />
 
 ## Basic example without preselection
 
@@ -37,9 +40,9 @@ first character of the options text.
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`.
-Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
-named slot is used (because a property definition is preferred over a named slot). For named slots only
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore, a named slot
+can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used
+(because a property definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
 

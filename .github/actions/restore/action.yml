@@ -18,4 +18,5 @@ runs:
       run: |
         chmod +x ./packages/assets/bin/serve-cdn.js
         chmod +x ./packages/shared/bin/serve-dummyassets.js
+        chmod +x ./packages/shared/bin/prepareVRTSnapshots.js
       shell: bash

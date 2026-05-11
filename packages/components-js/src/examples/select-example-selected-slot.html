@@ -1,0 +1,110 @@
+<p-select name="selected-slot-select" label="Selected Slot">
+  <span slot="selected" class="h-full flex items-center gap-fluid-sm grow"></span>
+</p-select>
+
+<script>
+  const options = [
+      {
+        label: 'China',
+        code: 'cn',
+        continent: 'Asia',
+      },
+      {
+        label: 'Japan',
+        code: 'jp',
+        continent: 'Asia',
+      },
+      {
+        label: 'South Korea',
+        code: 'kr',
+        continent: 'Asia',
+      },
+      {
+        label: 'Austria',
+        code: 'at',
+        continent: 'Europe',
+      },
+      {
+        label: 'France',
+        code: 'fr',
+        continent: 'Europe',
+      },
+      {
+        label: 'Germany',
+        code: 'de',
+        continent: 'Europe',
+      },
+      {
+        label: 'Great Britain',
+        code: 'gb',
+        continent: 'Europe',
+      },
+      {
+        label: 'Italy',
+        code: 'it',
+        continent: 'Europe',
+      },
+      {
+        label: 'Portugal',
+        code: 'pt',
+        continent: 'Europe',
+      },
+      {
+        label: 'Spain',
+        code: 'es',
+        continent: 'Europe',
+      },
+
+      {
+        label: 'Canada',
+        code: 'ca',
+        continent: 'North America',
+      },
+      {
+        label: 'USA',
+        code: 'us',
+        continent: 'North America',
+      }
+  ];
+
+  const select = document.querySelector('p-select');
+  const selectedSlot = select.querySelector('[slot="selected"]');
+
+  select.addEventListener('change', (e) => {
+    const selectedOption = options.find((option) => option.code === e.target.value);
+    selectedSlot.innerHTML = `
+      <p-flag name="${selectedOption.code}"></p-flag>
+      <p class="prose-text-sm truncate m-0">${selectedOption.label}</p>
+    `;
+  });
+
+  const renderOptions = () => {
+    const optgroups = options.reduce(
+      (acc, item) => {
+        const key = item.continent;
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+      }, {}
+    );
+
+    Object.entries(optgroups).forEach(([continent, groupOptions]) => {
+      const optgroupElement = document.createElement('p-optgroup');
+      optgroupElement.label = continent;
+      select.appendChild(optgroupElement);
+      groupOptions.forEach(option => {
+        const optionElement = document.createElement('p-select-option');
+        optionElement.value = option.code;
+        optionElement.innerHTML = `
+          <div class="w-full flex gap-fluid-sm items-center">
+            <p-flag name="${option.code}"></p-flag>
+            <p class="prose-text-sm m-0">${option.label}</p>
+          </div>
+        `;
+        optgroupElement.appendChild(optionElement);
+      });
+    });
+  };
+
+  renderOptions();
+</script>

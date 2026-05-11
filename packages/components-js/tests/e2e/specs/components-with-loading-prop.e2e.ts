@@ -9,7 +9,10 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).propsMeta?.loading);
+const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => {
+  const meta = getComponentMeta(tagName);
+  return meta.propsMeta?.loading;
+});
 
 for (const tagName of tagNamesWithLoadingProp) {
   test.describe(tagName, () => {
@@ -21,6 +24,8 @@ for (const tagName of tagNamesWithLoadingProp) {
             'p-input-search',
             'p-input-number',
             'p-input-date',
+            'p-input-month',
+            'p-input-week',
             'p-input-time',
             'p-input-text',
             'p-input-email',
@@ -50,7 +55,7 @@ for (const tagName of tagNamesWithLoadingProp) {
     };
 
     test.describe('for loading="true"', () => {
-      const markup = buildDefaultComponentMarkup(tagName).replace(/>/, ' loading="true">'); // add loading attribute
+      const markup = buildDefaultComponentMarkup(tagName).replace(`<${tagName}`, `<${tagName} loading="true"`); // add loading attribute
 
       test('should render loading message initially', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);

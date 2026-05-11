@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { type SelectUpdateEventDetail, PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
+import { PSelect, PSelectOption, PText, type SelectChangeEventDetail } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
 const selectedValue = ref<string>('a');
 
-const onUpdate = (e: SelectUpdateEventDetail) => {
+const onChange = (e: SelectChangeEventDetail) => {
   selectedValue.value = e.value;
 };
 
@@ -14,7 +14,7 @@ const debugText = computed(() => {
 </script>
 
 <template>
-  <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @update="onUpdate">
+  <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @change="onChange">
     <PSelectOption :value="'a'">Option A</PSelectOption>
     <PSelectOption :value="'b'">Option B</PSelectOption>
     <PSelectOption :value="'c'">Option C</PSelectOption>

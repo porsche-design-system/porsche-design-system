@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for isPrimary: false, isSecondary: false, isCascade: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: false and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -81,7 +81,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: false, isSecondary: false, isCascade: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: false and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: false, isSecondary: true, isCascade: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: true and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -337,7 +337,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: false, isSecondary: true, isCascade: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: true and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: true, isSecondary: false, isCascade: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: false and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -619,7 +619,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: true, isSecondary: false, isCascade: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: false and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -741,7 +741,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: true, isSecondary: true, isCascade: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: true and isCascade: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -916,7 +916,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimary: true, isSecondary: true, isCascade: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: true and isCascade: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);

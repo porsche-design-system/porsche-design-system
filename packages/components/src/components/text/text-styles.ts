@@ -1,6 +1,3 @@
-import type { BreakpointCustomizable, TextSize, Theme } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   fontSizeTextLarge,
   fontSizeTextMedium,
@@ -10,15 +7,18 @@ import {
   fontSizeTextXXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
+import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { BreakpointCustomizable, TextSize, Theme } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
+  TEXT_TAGS,
   type TextAlign,
   type TextColor,
   type TextColorDeprecated,
   type TextWeight,
   type TextWeightDeprecated,
-  TEXT_TAGS,
 } from './text-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
@@ -30,6 +30,10 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-large': fontSizeTextXLarge,
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   weight: Exclude<TextWeight, TextWeightDeprecated>,

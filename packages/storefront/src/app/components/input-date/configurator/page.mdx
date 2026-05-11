@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
 import { inputDateStory, inputDateSlotStories } from '@/app/components/input-date/input-date.stories';
+import { FrameworkNotification } from '@/components/common/FrameworkNotification';
 
 export const metadata = {
   title: 'Input Date - Porsche Design System',
@@ -10,16 +11,18 @@ export const metadata = {
 
 # Input Date <ComponentStatus tagName="p-input-date"></ComponentStatus>
 
-The `p-input-date` component provides a versatile, user‑friendly interface for entering date values. It supports
-direct keyboard input, including arrow-key adjustments for precise changes. It has a start and end slot in order
-to support flexible slotted content.
+The `p-input-date` component provides a versatile, user‑friendly interface for entering date values. It supports direct
+keyboard input, including arrow-key adjustments for precise changes. It has a start and end slot in order to support
+flexible slotted content.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-input-date` component can be used with or without a label, but it's recommended to keep the label visible for
-better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text
-for screen readers.
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-input-date`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
 
-While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
-give the user visual cues to fill out the form.
+<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
+  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
+  keystroke, use `onInput` instead.
+</FrameworkNotification>
 
 <Configurator tagName="p-input-date" story={inputDateStory} slotStories={inputDateSlotStories} />

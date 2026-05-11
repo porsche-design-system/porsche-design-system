@@ -37,7 +37,7 @@ export const observeStickyArea = (scrollArea: HTMLElement, stickyNode: HTMLEleme
   let observer = scrollAreaObserverMap.get(scrollArea);
 
   if (!observer) {
-    observer = getIntersectionObserverStickyArea(scrollArea);
+    observer = internal.getIntersectionObserverStickyArea(scrollArea);
     scrollAreaObserverMap.set(scrollArea, observer);
   }
 
@@ -45,4 +45,8 @@ export const observeStickyArea = (scrollArea: HTMLElement, stickyNode: HTMLEleme
     observer.observe(stickyNode);
     observedStickyNodesMap.set(stickyNode, observer);
   }
+};
+
+export const internal = {
+  getIntersectionObserverStickyArea,
 };

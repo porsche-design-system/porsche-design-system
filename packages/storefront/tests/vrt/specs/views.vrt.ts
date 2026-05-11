@@ -26,6 +26,10 @@ for (const [name, url] of Object.entries(urls)) {
         await page.goto(url);
         await resetAnimations(page);
 
+        // Hide version switch and switch to latest release button to avoid VRT update when new versions are released
+        await page.locator('p-select[name="versions"]').evaluate((el) => (el.style.display = 'none'));
+        await page.getByText('Use Latest Release').evaluate((el) => (el.style.display = 'none'));
+
         // Modify video height if on the homepage
         if (url === '/') {
           await page.evaluate(() => {
@@ -66,6 +70,10 @@ for (const [name, url] of Object.entries(urls)) {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
         await resetAnimations(page);
+
+        // Hide version switch and switch to latest release button to avoid VRT update when new versions are released
+        await page.locator('p-select[name="versions"]').evaluate((el) => (el.style.display = 'none'));
+        await page.getByText('Use Latest Release').evaluate((el) => (el.style.display = 'none'));
 
         // Modify video height if on the homepage
         if (url === '/') {

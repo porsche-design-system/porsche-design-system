@@ -81,13 +81,13 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-radio-button-wrapper:not(.force-label) input[type="radio"]');
-  await forceHoverState(page, '.hover p-radio-button-wrapper.force-label >>> label');
+  await forceHoverState(page, '.hover p-radio-button-wrapper.force-label >>> .label-wrapper');
   await forceHoverState(page, '.hover p-radio-button-wrapper span a');
   await forceFocusVisibleState(page, '.focus p-radio-button-wrapper input[type="radio"]');
   await forceFocusVisibleState(page, '.focus p-radio-button-wrapper span a');
   await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper:not(.force-label) input[type="radio"]');
   await forceFocusVisibleState(page, '.focus-hover p-radio-button-wrapper.force-label input[type="radio"]');
-  await forceHoverState(page, '.focus-hover p-radio-button-wrapper.force-label >>> label');
+  await forceHoverState(page, '.focus-hover p-radio-button-wrapper.force-label >>> .label-wrapper');
   await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper span a');
 };
 

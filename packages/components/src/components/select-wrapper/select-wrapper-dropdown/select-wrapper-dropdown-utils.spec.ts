@@ -1,8 +1,7 @@
+import { vi } from 'vitest';
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   type DropdownInteractionType,
-  type OptgroupOptionMap,
-  type OptionMap,
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
@@ -14,6 +13,8 @@ import {
   getSelectedOptionMapIndex,
   getValidOptions,
   hasFilterResults,
+  type OptgroupOptionMap,
+  type OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,
@@ -377,7 +378,7 @@ describe('getNewOptionMapIndex()', () => {
 });
 
 describe('getDropdownVisibility()', () => {
-  const resetFilter = jest.fn();
+  const resetFilter = vi.fn();
   it.each<[boolean, DropdownInteractionType, boolean]>([
     [true, 'show', true],
     [true, 'toggle', false],

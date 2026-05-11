@@ -84,7 +84,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
       if (selectedValue === undefined || isDefault) {
         delete updatedProperties[propName];
       } else {
-        // @ts-ignore TODO: Fix typing
+        // @ts-expect-error TODO: Fix typing
         updatedProperties[propName] = selectedValue;
       }
 
@@ -95,7 +95,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
   const handleUpdateSlots = (slotName: string, selectedSlotStory: Story<T> | undefined) => {
     setStoryState((prev) => {
       const updatedSlots = { ...prev.slots };
-      // @ts-ignore TODO: Fix typing
+      // @ts-expect-error TODO: Fix typing
       updatedSlots[slotName] = selectedSlotStory;
       return { ...prev, slots: updatedSlots };
     });
@@ -113,7 +113,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
       } else {
         delete (updatedProps.style as Record<string, string>)[name];
         if (Object.keys(updatedProps.style).length === 0) {
-          // @ts-ignore TODO: Fix typing
+          // @ts-expect-error TODO: Fix typing
           delete updatedProps.style;
         }
       }

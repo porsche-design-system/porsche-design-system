@@ -1,6 +1,5 @@
 'use client';
 
-import type { StorefrontDirection } from '@/models/dir';
 import {
   PPopover,
   PSelect,
@@ -8,6 +7,7 @@ import {
   type PSelectProps,
   type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
+import type { StorefrontDirection } from '@/models/dir';
 
 type DirectionSelectProps = {
   value: StorefrontDirection;
@@ -27,16 +27,21 @@ export const DirectionSelect = ({
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>
-          Changes the direction of HTML elements, mostly used on
+          The <code>dir</code> global attribute in HTML changes the direction of text and other content within an
+          element. It's most often used on the{' '}
           <code>
             {'<'}html{'>'}
           </code>{' '}
-          tag to support languages which are read from right to left like e.g. Arabic.
+          tag to set the entire page's direction, which is crucial for supporting languages that are written from{' '}
+          <b>right to left</b> (RTL), such as Arabic and Hebrew. For example, using{' '}
+          <code>
+            {'<'}html dir="rtl"{'>'}
+          </code>{' '}
+          makes the entire page display from right to left, adjusting the layout and text flow accordingly.
         </PPopover>
       </span>
       <PSelectOption value="ltr">LTR (left-to-right)</PSelectOption>
       <PSelectOption value="rtl">RTL (right-to-left)</PSelectOption>
-      <PSelectOption value="auto">Auto</PSelectOption>
     </PSelect>
   );
 };

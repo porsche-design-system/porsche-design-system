@@ -56,9 +56,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-base w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-canvas w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-base',
+            '.bg-canvas',
           ],
         },
         {

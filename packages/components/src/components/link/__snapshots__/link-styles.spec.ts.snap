@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -56,7 +56,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   border: none;
@@ -95,7 +95,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -151,7 +151,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   border: none;
@@ -190,7 +190,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, hasSlottedAnchor: true, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, hasSlottedAnchor: true, compact: true and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -246,7 +246,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   border: none;
@@ -285,7 +285,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasSlottedAnchor: false, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasSlottedAnchor: false, compact: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -312,7 +312,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -458,7 +458,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: false, compact: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -485,7 +485,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -531,7 +531,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -587,7 +587,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -623,7 +623,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -679,7 +679,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -715,7 +715,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: true and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -771,7 +771,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -807,7 +807,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -863,7 +863,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -900,7 +900,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -956,7 +956,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -993,7 +993,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -1049,7 +1049,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -1086,7 +1086,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -1142,7 +1142,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -1179,7 +1179,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 "
 `;
 
-exports[`getComponentCss() should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true, compact: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top !important;
@@ -1235,7 +1235,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);

@@ -1,14 +1,7 @@
 import * as stencilUtils from '@stencil/core';
+import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import * as selectUtils from './select-utils';
-import {
-  type SelectOption,
-  getSelectedOptionString,
-  resetSelectedOption,
-  setSelectedOption,
-  syncSelectChildrenProps,
-  updateSelectOptions,
-} from './select-utils';
 
 type GenerateOptionsParams = {
   amount?: number;
@@ -33,7 +26,7 @@ const generateOptions = (
     amount: 3,
     selectedIndices: [],
   }
-): SelectOption[] => {
+): selectUtils.SelectOption[] => {
   return Array.from(
     new Array(amount),
     (_, idx) =>
@@ -44,7 +37,7 @@ const generateOptions = (
         highlighted: highlightedIndex === idx,
         disabled: disabledIndex === idx,
         hidden: hiddenIndex === idx,
-      }) as SelectOption
+      }) as selectUtils.SelectOption
   );
 };
 
@@ -54,7 +47,7 @@ describe('syncSelectChildrenProps', () => {
     options[0].theme = 'light';
     options[1].theme = 'dark';
 
-    syncSelectChildrenProps(options, 'dark');
+    selectUtils.syncSelectChildrenProps(options, 'dark');
 
     options.forEach((option) => {
       expect(option.theme).toBe('dark');
@@ -65,7 +58,7 @@ describe('syncSelectChildrenProps', () => {
 describe('getSelectedOptionString', () => {
   it('should return the textContent of the selected option', () => {
     const options = generateOptions({ selectedIndices: [2], textContents: ['a', 'b', 'c'] });
-    const selectedString = getSelectedOptionString(options);
+    const selectedString = selectUtils.getSelectedOptionString(options);
     expect(selectedString).toBe('c');
   });
 });
@@ -73,17 +66,17 @@ describe('getSelectedOptionString', () => {
 describe('resetSelectedOption', () => {
   it('should reset selected option when selected option exists and call forceUpdate', () => {
     const options = generateOptions({ selectedIndices: [2] });
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
+    const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     expect(options[2].selected).toBe(true);
-    resetSelectedOption(options);
+    selectUtils.resetSelectedOption(options);
     expect(options[2].selected).toBe(false);
     expect(forceUpdateSpy).toHaveBeenCalledWith(options[2]);
   });
   it('should not call forceUpdate when no selected option exists', () => {
     const options = generateOptions();
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
+    const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     expect(options[2].selected).toBe(false);
-    resetSelectedOption(options);
+    selectUtils.resetSelectedOption(options);
     expect(options[2].selected).toBe(false);
     expect(forceUpdateSpy).not.toHaveBeenCalled();
   });
@@ -91,9 +84,10 @@ describe('resetSelectedOption', () => {
 
 describe('updateSelectOptions', () => {
   it('should not select option when value="undefined" and no option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = generateOptions();
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
-    updateSelectOptions(options, undefined);
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
+    selectUtils.selectOptionByValue(host, options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     options.forEach((option) => {
       expect(option.selected).toBe(false);
@@ -101,38 +95,41 @@ describe('updateSelectOptions', () => {
   });
 
   it('should select correct option when value="undefined" and option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = [
       { value: undefined, selected: false },
       { value: 'a', selected: false },
       { value: 'b', selected: false },
-    ] as SelectOption[];
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
-    updateSelectOptions(options, undefined);
+    ] as selectUtils.SelectOption[];
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
+    selectUtils.selectOptionByValue(host, options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
   });
   it('should not select option and show warning when value="a" and no option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = generateOptions();
-    const consoleWarnSpy = jest.spyOn(loggerUtils, 'consoleWarn');
-    updateSelectOptions(options, 'a');
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    selectUtils.selectOptionByValue(host, options, 'a');
     options.forEach((option) => {
       expect(option.selected).toBe(false);
     });
     expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value is not included in the options of the p-select:',
-      'a'
+      'The provided value: a is not included in the options of the p-select:',
+      host
     );
   });
   it('should select correct option when value="a" and option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = [
       { value: 'a', selected: false },
       { value: 'b', selected: false },
       { value: 'c', selected: false },
-    ] as SelectOption[];
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
-    updateSelectOptions(options, 'a');
+    ] as selectUtils.SelectOption[];
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
+    selectUtils.selectOptionByValue(host, options, 'a');
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
@@ -142,10 +139,10 @@ describe('updateSelectOptions', () => {
 
 describe('setSelectedOption', () => {
   it('should set option selected and call resetSelectedOption and forceUpdate', () => {
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
+    const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     const options = generateOptions();
-    setSelectedOption(options, options[1]);
+    selectUtils.setSelectedOption(options, options[1]);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(true);
     expect(options[2].selected).toBe(false);

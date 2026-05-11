@@ -1,6 +1,8 @@
 import {
   PAccordion,
   type PAccordionProps,
+  PAiTag,
+  type PAiTagProps,
   PBanner,
   type PBannerProps,
   PButton,
@@ -57,14 +59,14 @@ import {
   type PIconProps,
   PInlineNotification,
   type PInlineNotificationProps,
-  PInputEmail,
-  type PInputEmailProps,
-  PInputNumber,
-  type PInputNumberProps,
   PInputDate,
   type PInputDateProps,
-  PInputTime,
-  type PInputTimeProps,
+  PInputEmail,
+  type PInputEmailProps,
+  PInputMonth,
+  type PInputMonthProps,
+  PInputNumber,
+  type PInputNumberProps,
   PInputPassword,
   type PInputPasswordProps,
   PInputSearch,
@@ -73,8 +75,12 @@ import {
   type PInputTelProps,
   PInputText,
   type PInputTextProps,
+  PInputTime,
+  type PInputTimeProps,
   PInputUrl,
   type PInputUrlProps,
+  PInputWeek,
+  type PInputWeekProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -107,6 +113,10 @@ import {
   type PPopoverProps,
   PRadioButtonWrapper,
   type PRadioButtonWrapperProps,
+  PRadioGroup,
+  PRadioGroupOption,
+  type PRadioGroupOptionProps,
+  type PRadioGroupProps,
   PScroller,
   type PScrollerProps,
   PSegmentedControl,
@@ -263,6 +273,7 @@ export type EventConfig = {
 
 export type PropTypeMapping = {
   'p-accordion': PAccordionProps;
+  'p-ai-tag': PAiTagProps;
   'p-banner': PBannerProps;
   'p-button': PButtonProps;
   'p-button-group': PButtonGroupProps;
@@ -294,6 +305,8 @@ export type PropTypeMapping = {
   'p-input-password': PInputPasswordProps;
   'p-input-number': PInputNumberProps;
   'p-input-date': PInputDateProps;
+  'p-input-month': PInputMonthProps;
+  'p-input-week': PInputWeekProps;
   'p-input-time': PInputTimeProps;
   'p-input-search': PInputSearchProps;
   'p-input-text': PInputTextProps;
@@ -316,6 +329,8 @@ export type PropTypeMapping = {
   'p-pin-code': PPinCodeProps;
   'p-popover': PPopoverProps;
   'p-radio-button-wrapper': PRadioButtonWrapperProps;
+  'p-radio-group': PRadioGroupProps;
+  'p-radio-group-option': PRadioGroupOptionProps;
   'p-scroller': PScrollerProps;
   'p-segmented-control': PSegmentedControlProps;
   'p-segmented-control-item': PSegmentedControlItemProps;
@@ -351,6 +366,7 @@ export type PropTypeMapping = {
 
 const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-accordion': PAccordion,
+  'p-ai-tag': PAiTag,
   'p-banner': PBanner,
   'p-button': PButton,
   'p-button-group': PButtonGroup,
@@ -382,6 +398,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-input-password': PInputPassword,
   'p-input-number': PInputNumber,
   'p-input-date': PInputDate,
+  'p-input-month': PInputMonth,
+  'p-input-week': PInputWeek,
   'p-input-time': PInputTime,
   'p-input-search': PInputSearch,
   'p-input-text': PInputText,
@@ -404,6 +422,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-pin-code': PPinCode,
   'p-popover': PPopover,
   'p-radio-button-wrapper': PRadioButtonWrapper,
+  'p-radio-group': PRadioGroup,
+  'p-radio-group-option': PRadioGroupOption,
   'p-scroller': PScroller,
   'p-segmented-control': PSegmentedControl,
   'p-segmented-control-item': PSegmentedControlItem,

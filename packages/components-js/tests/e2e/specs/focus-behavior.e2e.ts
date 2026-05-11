@@ -11,9 +11,10 @@ import {
 skipInBrowsers(['webkit', 'firefox']);
 
 // p-select-wrapper excluded since does not work without slotted select
-const tagNames: TagName[] = TAG_NAMES.filter((tagName) => tagName !== 'p-select-wrapper').filter(
-  (tagName) => getComponentMeta(tagName).isDelegatingFocus
-);
+// p-radio-group excluded since does not work without slotted p-radio-group-option and value prop
+const tagNames: TagName[] = TAG_NAMES.filter(
+  (tagName) => !['p-select-wrapper', 'p-radio-group'].includes(tagName)
+).filter((tagName) => getComponentMeta(tagName).isDelegatingFocus);
 
 for (const tagName of tagNames) {
   const href =

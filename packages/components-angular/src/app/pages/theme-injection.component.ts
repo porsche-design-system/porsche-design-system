@@ -8,9 +8,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button [theme]="'dark'">Dark Button</p-button>
       <br />
       <p-button (click)="isVisible = !isVisible">Show/Hide Button</p-button>
-      <p-button *ngIf="isVisible">Global Theme</p-button>
+      @if (isVisible) {
+        <p-button>Global Theme</p-button>
+      }
     </div>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

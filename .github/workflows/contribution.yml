@@ -14,19 +14,19 @@ jobs:
     name: 'Build'
     uses: ./.github/workflows/build.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.54.0-jammy
+      image: mcr.microsoft.com/playwright:v1.56.0-jammy
   test:
     name: 'Test'
     uses: ./.github/workflows/test.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.54.0-jammy
+      image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
       - build
   deploy:
     name: 'Deploy'
     uses: ./.github/workflows/deploy.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.54.0-jammy
+      image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
       - test
     secrets:
@@ -36,16 +36,19 @@ jobs:
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
   release:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/v3'
     name: 'Release'
+    permissions:
+      id-token: write
+      contents: read
     uses: ./.github/workflows/release.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.54.0-jammy
+      image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
       - deploy
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
-      npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
+      npm-token: ${{ secrets.NPM_TOKEN }}
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}

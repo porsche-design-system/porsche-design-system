@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule, TableUpdateEventDetail } from '@porsche-design-system/components-angular';
 
@@ -44,23 +43,27 @@ const dataSorting: DataSorting[] = [
     <p-table caption="Some caption" (update)="onUpdate($event)">
       <p-table-head>
         <p-table-head-row>
-          <p-table-head-cell *ngFor="let item of head" [sort]="item">
-            {{ item.name }}
-          </p-table-head-cell>
+          @for (item of head; track item) {
+            <p-table-head-cell [sort]="item">
+              {{ item.name }}
+            </p-table-head-cell>
+          }
         </p-table-head-row>
       </p-table-head>
       <p-table-body>
-        <p-table-row *ngFor="let item of data">
-          <p-table-cell>{{ item.col1 }}</p-table-cell>
-          <p-table-cell>{{ item.col2 }}</p-table-cell>
-          <p-table-cell>{{ item.col3 }}</p-table-cell>
-        </p-table-row>
+        @for (item of data; track item) {
+          <p-table-row>
+            <p-table-cell>{{ item.col1 }}</p-table-cell>
+            <p-table-cell>{{ item.col2 }}</p-table-cell>
+            <p-table-cell>{{ item.col3 }}</p-table-cell>
+          </p-table-row>
+        }
       </p-table-body>
     </p-table>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class TableExampleSortingComponent {
   public head = headSorting;

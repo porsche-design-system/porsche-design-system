@@ -1,5 +1,7 @@
 <div class="root">
-  <label class="label" id="label" for="input-tel"> </label>
+  <div class="label-wrapper">
+    <label class="label" id="label" for="input-tel"> Some label</label>
+  </div>
   <div class="wrapper">
     <slot name="start"> </slot>
     <input
@@ -7,7 +9,7 @@
       id="input-tel"
       name="value"
       type="tel"
-      placeholder=""
+      dir="auto"
     />
     <slot name="end"> </slot>
   </div>

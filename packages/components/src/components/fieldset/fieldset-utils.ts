@@ -13,7 +13,7 @@ export type FieldsetAriaAttribute = (typeof FIELDSET_ARIA_ATTRIBUTES)[number];
 export const getFieldsetAriaAttributes = (
   isRequired: boolean,
   isInvalid: boolean,
-  aria: { [key in FieldsetAriaAttribute]: Extract<AriaRole, 'radiogroup'> }
+  aria?: { [key in FieldsetAriaAttribute]: Extract<AriaRole, 'radiogroup'> }
 ): AriaAttributes => {
   const ariaAttrs = parseAndGetAriaAttributes(aria);
   return {

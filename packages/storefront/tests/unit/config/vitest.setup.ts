@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { beforeAll, vi } from 'vitest';
+import '@testing-library/jest-dom/vitest';
 import '@porsche-design-system/components-react/jsdom-polyfill';
 
 Object.defineProperty(window, 'matchMedia', {

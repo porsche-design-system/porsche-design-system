@@ -1,6 +1,5 @@
 'use client';
 
-import type { StorefrontTextZoom } from '@/models/textZoom';
 import {
   PPopover,
   PSelect,
@@ -8,6 +7,7 @@ import {
   type PSelectProps,
   type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
+import type { StorefrontTextZoom } from '@/models/textZoom';
 
 type TextZoomSelectProps = {
   value: StorefrontTextZoom;
@@ -27,12 +27,10 @@ export const TextZoomSelect = ({
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>
-          Changes the text size and values with unit <code>rem</code> or <code>em</code> relatively. This setting can be
-          defined in browser settings for any website or by an application itself on
-          <code>
-            {'<'}html{'>'}
-          </code>{' '}
-          tag. To achieve WCAG 2.2 AA compliance it's obligatory to support text zoom up to at least 200%.
+          To ensure accessibility and comply with <b>WCAG 2.2 AA standards</b>, it is mandatory for web content to
+          support text resizing up to at least <b>200%</b> without loss of content or functionality. Using relative
+          units like <code>rem</code> is a best practice for achieving this, as they allow the text to scale uniformly
+          based on the user's browser settings.
         </PPopover>
       </span>
       <PSelectOption value="100%">100%</PSelectOption>

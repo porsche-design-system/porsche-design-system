@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { VersionSelect } from '@/components/common/VersionSelect';
+import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
 
@@ -17,7 +18,11 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
   return acc;
 }, {});
 
-export const Navigation = () => {
+type NavigationProps = {
+  readonly pdsVersion: PDSVersionGroup;
+};
+
+export const Navigation = ({ pdsVersion }: NavigationProps) => {
   const pathname = usePathname();
   const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
 
@@ -75,12 +80,12 @@ export const Navigation = () => {
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
-        <VersionSelect />
+        {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
         <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
-          © 2025 Dr. Ing. h.c. F. Porsche AG.
+          © 2026 Dr. Ing. h.c. F. Porsche AG.
           <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>

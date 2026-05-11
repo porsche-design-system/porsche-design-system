@@ -3,7 +3,7 @@ import { setupScenario } from '../../../vrt/helpers';
 import { componentsValid, expect, test } from '../../helpers';
 
 const pagesToTest = componentsValid.filter((item) => {
-  return item !== 'flyout' && item !== 'optgroup'; // removes 'flyout' and 'optgroup' as they are not available as a test-page
+  return !['flyout', 'optgroup', 'radio-group-option'].includes(item); // removes 'flyout', 'optgroup' and 'radio-group-option' as they are not available as a test-page
 });
 const additionalPages = ['flyout-1']; // add additional pages that are not in componentsValid
 const advancedPagesToTest = [...pagesToTest, ...additionalPages];

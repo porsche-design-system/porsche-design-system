@@ -259,3 +259,15 @@
     <p-checkbox label="X" name="some-name"></p-checkbox>
   </div>
 </div>
+
+<div class="playground light" title="should render with label and label-after slot">
+  <p-checkbox label="Some label" name="some-name">
+    <p-popover slot="label-after">Some popover content</p-popover>
+  </p-checkbox>
+</div>
+
+<div class="playground light" title="should render with multiline label and label-after slot">
+  <p-checkbox label="Lorem ipsum dolor sit amet, consetetur" name="some-name" style="width: 15rem">
+    <p-popover slot="label-after">Some popover content</p-popover>
+  </p-checkbox>
+</div>

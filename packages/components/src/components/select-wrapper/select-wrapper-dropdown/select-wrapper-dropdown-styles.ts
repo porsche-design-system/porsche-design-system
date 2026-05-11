@@ -52,7 +52,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         margin: 0,
         padding: 0,
         background: 'transparent',
-        border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
+        border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for .label-wrapper:hover selector
         borderRadius: borderRadiusSmall,
         outline: '0',
         cursor: 'pointer',

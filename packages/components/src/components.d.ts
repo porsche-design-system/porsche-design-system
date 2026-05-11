@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -14,7 +15,7 @@ import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPu
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
+import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -27,7 +28,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -36,6 +37,7 @@ import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
 import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+import { InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
 import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
@@ -43,6 +45,7 @@ import { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventD
 import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
 import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
+import { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -53,15 +56,16 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
-import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
+import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -71,7 +75,7 @@ import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/s
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
-import { TagColor, TagIcon } from "./components/tag/tag-utils";
+import { TagColor, TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
@@ -83,6 +87,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -90,7 +95,7 @@ export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPu
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
+export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -103,7 +108,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -112,6 +117,7 @@ export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
 export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+export { InputMonthBlurEventDetail, InputMonthChangeEventDetail, InputMonthInputEventDetail, InputMonthState } from "./components/input-month/input-month-utils";
 export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
@@ -119,6 +125,7 @@ export { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventD
 export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
 export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
+export { InputWeekBlurEventDetail, InputWeekChangeEventDetail, InputWeekInputEventDetail, InputWeekState } from "./components/input-week/input-week-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -129,15 +136,16 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
-export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
+export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -147,7 +155,7 @@ export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/s
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
-export { TagColor, TagIcon } from "./components/tag/tag-utils";
+export { TagColor, TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
@@ -194,6 +202,20 @@ export namespace Components {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+    }
+    interface PAiTag {
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -291,6 +313,9 @@ export namespace Components {
          */
         "variant"?: ButtonVariant;
     }
+    /**
+     * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+     */
     interface PButtonGroup {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
@@ -535,7 +560,7 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -547,7 +572,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
+          * Show or hide label. For better accessibility, it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -910,6 +935,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
+          * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+         */
+        "backdrop"?: FlyoutBackdrop;
+        /**
           * If true, the flyout will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
@@ -1249,6 +1278,80 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface PInputMonth {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputMonthState;
+        /**
+          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+         */
+        "value"?: string;
+    }
     interface PInputNumber {
         /**
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
@@ -1451,9 +1554,17 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
           * Dynamic feedback text for validation or status.
          */
         "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
         /**
           * The name of the input field, used when submitting the form data.
          */
@@ -1800,6 +1911,80 @@ export namespace Components {
         "theme"?: Theme;
         /**
           * The url input value.
+         */
+        "value"?: string;
+    }
+    interface PInputWeek {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputWeekState;
+        /**
+          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
          */
         "value"?: string;
     }
@@ -2320,6 +2505,10 @@ export namespace Components {
      */
     interface PPinCode {
         /**
+          * A boolean value that, if present, renders the pin-code as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -2394,6 +2583,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+     */
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -2419,6 +2611,82 @@ export namespace Components {
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PRadioGroup {
+        /**
+          * A boolean value that, if present, renders the radio group as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the radio group.
+         */
+        "description"?: string;
+        /**
+          * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: BreakpointCustomizable<RadioGroupDirection>;
+        /**
+          * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * The name of the group of radio buttons, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the radio group component.
+         */
+        "state"?: RadioGroupState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default value for the radio-group.
+         */
+        "value"?: string;
+    }
+    interface PRadioGroupOption {
+        /**
+          * A boolean value that, if present, makes the radio group option unusable and unclickable.
+         */
+        "disabled"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The value for the input.
+         */
+        "value"?: string;
     }
     interface PScroller {
         /**
@@ -2467,6 +2735,14 @@ export namespace Components {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * A boolean value that, if present, renders the segmented-control as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the segmented-control.
+         */
+        "description"?: string;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -2475,9 +2751,33 @@ export namespace Components {
          */
         "form"?: string;
         /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
           * The name of the segmented-control.
          */
         "name"?: string;
+        /**
+          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+         */
+        "noWrap"?: boolean;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the component.
+         */
+        "state"?: SegmentedControlState;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -2534,7 +2834,7 @@ export namespace Components {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered.
+          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
          */
         "filter"?: boolean;
         /**
@@ -2847,7 +3147,7 @@ export namespace Components {
     }
     interface PTag {
         /**
-          * Background color variations depending on theme property.
+          * @deprecated since v3.33.0, will be removed with next major release. Use `variant` prop instead. Background color variations depending on theme property.
          */
         "color"?: TagColor;
         /**
@@ -2866,6 +3166,10 @@ export namespace Components {
           * Adapts the tag color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Background color variations.
+         */
+        "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**
@@ -2876,6 +3180,10 @@ export namespace Components {
           * Background color variations
          */
         "color"?: TagDismissibleColor;
+        /**
+          * A boolean value that, if present, renders the tag dismissible as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * The label text.
          */
@@ -3002,6 +3310,10 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
+          * A boolean value that, if present, renders the textarea as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Show or hide the character counter.
          */
         "counter"?: boolean;
@@ -3058,7 +3370,7 @@ export namespace Components {
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows of the textarea.
+          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
          */
         "rows"?: number;
         /**
@@ -3203,6 +3515,10 @@ export interface PInputEmailCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputEmailElement;
 }
+export interface PInputMonthCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputMonthElement;
+}
 export interface PInputNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputNumberElement;
@@ -3231,6 +3547,10 @@ export interface PInputUrlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputUrlElement;
 }
+export interface PInputWeekCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputWeekElement;
+}
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPLinkTileProductElement;
@@ -3250,6 +3570,10 @@ export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPinCodeElement;
+}
+export interface PRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPRadioGroupElement;
 }
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3317,6 +3641,12 @@ declare global {
         prototype: HTMLPAccordionElement;
         new (): HTMLPAccordionElement;
     };
+    interface HTMLPAiTagElement extends Components.PAiTag, HTMLStencilElement {
+    }
+    var HTMLPAiTagElement: {
+        prototype: HTMLPAiTagElement;
+        new (): HTMLPAiTagElement;
+    };
     interface HTMLPBannerElementEventMap {
         "dismiss": void;
     }
@@ -3343,6 +3673,9 @@ declare global {
         prototype: HTMLPButtonElement;
         new (): HTMLPButtonElement;
     };
+    /**
+     * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+     */
     interface HTMLPButtonGroupElement extends Components.PButtonGroup, HTMLStencilElement {
     }
     var HTMLPButtonGroupElement: {
@@ -3405,6 +3738,7 @@ declare global {
     };
     interface HTMLPCheckboxElementEventMap {
         "update": CheckboxUpdateEventDetail;
+        "change": CheckboxChangeEventDetail;
         "blur": CheckboxBlurEventDetail;
     }
     interface HTMLPCheckboxElement extends Components.PCheckbox, HTMLStencilElement {
@@ -3654,6 +3988,25 @@ declare global {
         prototype: HTMLPInputEmailElement;
         new (): HTMLPInputEmailElement;
     };
+    interface HTMLPInputMonthElementEventMap {
+        "change": InputMonthChangeEventDetail;
+        "blur": InputMonthBlurEventDetail;
+        "input": InputMonthInputEventDetail;
+    }
+    interface HTMLPInputMonthElement extends Components.PInputMonth, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputMonthElementEventMap>(type: K, listener: (this: HTMLPInputMonthElement, ev: PInputMonthCustomEvent<HTMLPInputMonthElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputMonthElementEventMap>(type: K, listener: (this: HTMLPInputMonthElement, ev: PInputMonthCustomEvent<HTMLPInputMonthElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputMonthElement: {
+        prototype: HTMLPInputMonthElement;
+        new (): HTMLPInputMonthElement;
+    };
     interface HTMLPInputNumberElementEventMap {
         "change": InputNumberChangeEventDetail;
         "blur": InputNumberBlurEventDetail;
@@ -3787,6 +4140,25 @@ declare global {
         prototype: HTMLPInputUrlElement;
         new (): HTMLPInputUrlElement;
     };
+    interface HTMLPInputWeekElementEventMap {
+        "change": InputWeekChangeEventDetail;
+        "blur": InputWeekBlurEventDetail;
+        "input": InputWeekInputEventDetail;
+    }
+    interface HTMLPInputWeekElement extends Components.PInputWeek, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputWeekElementEventMap>(type: K, listener: (this: HTMLPInputWeekElement, ev: PInputWeekCustomEvent<HTMLPInputWeekElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputWeekElementEventMap>(type: K, listener: (this: HTMLPInputWeekElement, ev: PInputWeekCustomEvent<HTMLPInputWeekElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputWeekElement: {
+        prototype: HTMLPInputWeekElement;
+        new (): HTMLPInputWeekElement;
+    };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
     var HTMLPLinkElement: {
@@ -3880,6 +4252,9 @@ declare global {
         new (): HTMLPModelSignatureElement;
     };
     interface HTMLPMultiSelectElementEventMap {
+        "blur": void;
+        "change": MultiSelectChangeEventDetail;
+        "toggle": MultiSelectToggleEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
     /**
@@ -3933,6 +4308,8 @@ declare global {
         new (): HTMLPPaginationElement;
     };
     interface HTMLPPinCodeElementEventMap {
+        "blur": void;
+        "change": PinCodeChangeEventDetail;
         "update": PinCodeUpdateEventDetail;
     }
     /**
@@ -3958,11 +4335,38 @@ declare global {
         prototype: HTMLPPopoverElement;
         new (): HTMLPPopoverElement;
     };
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+     */
     interface HTMLPRadioButtonWrapperElement extends Components.PRadioButtonWrapper, HTMLStencilElement {
     }
     var HTMLPRadioButtonWrapperElement: {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
+    };
+    interface HTMLPRadioGroupElementEventMap {
+        "blur": void;
+        "change": RadioGroupChangeEventDetail;
+    }
+    interface HTMLPRadioGroupElement extends Components.PRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPRadioGroupElementEventMap>(type: K, listener: (this: HTMLPRadioGroupElement, ev: PRadioGroupCustomEvent<HTMLPRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPRadioGroupElementEventMap>(type: K, listener: (this: HTMLPRadioGroupElement, ev: PRadioGroupCustomEvent<HTMLPRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPRadioGroupElement: {
+        prototype: HTMLPRadioGroupElement;
+        new (): HTMLPRadioGroupElement;
+    };
+    interface HTMLPRadioGroupOptionElement extends Components.PRadioGroupOption, HTMLStencilElement {
+    }
+    var HTMLPRadioGroupOptionElement: {
+        prototype: HTMLPRadioGroupOptionElement;
+        new (): HTMLPRadioGroupOptionElement;
     };
     interface HTMLPScrollerElement extends Components.PScroller, HTMLStencilElement {
     }
@@ -3972,6 +4376,8 @@ declare global {
     };
     interface HTMLPSegmentedControlElementEventMap {
         "segmentedControlChange": SegmentedControlUpdateEventDetail;
+        "blur": void;
+        "change": SegmentedControlChangeEventDetail;
         "update": SegmentedControlUpdateEventDetail;
     }
     /**
@@ -3998,6 +4404,9 @@ declare global {
         new (): HTMLPSegmentedControlItemElement;
     };
     interface HTMLPSelectElementEventMap {
+        "blur": void;
+        "change": SelectChangeEventDetail;
+        "toggle": SelectToggleEventDetail;
         "update": SelectUpdateEventDetail;
     }
     /**
@@ -4322,6 +4731,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
+        "p-ai-tag": HTMLPAiTagElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
@@ -4352,6 +4762,7 @@ declare global {
         "p-inline-notification": HTMLPInlineNotificationElement;
         "p-input-date": HTMLPInputDateElement;
         "p-input-email": HTMLPInputEmailElement;
+        "p-input-month": HTMLPInputMonthElement;
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
         "p-input-search": HTMLPInputSearchElement;
@@ -4359,6 +4770,7 @@ declare global {
         "p-input-text": HTMLPInputTextElement;
         "p-input-time": HTMLPInputTimeElement;
         "p-input-url": HTMLPInputUrlElement;
+        "p-input-week": HTMLPInputWeekElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -4375,6 +4787,8 @@ declare global {
         "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
+        "p-radio-group": HTMLPRadioGroupElement;
+        "p-radio-group-option": HTMLPRadioGroupOptionElement;
         "p-scroller": HTMLPScrollerElement;
         "p-segmented-control": HTMLPSegmentedControlElement;
         "p-segmented-control-item": HTMLPSegmentedControlItemElement;
@@ -4455,6 +4869,20 @@ declare namespace LocalJSX {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+    }
+    interface PAiTag {
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -4556,6 +4984,9 @@ declare namespace LocalJSX {
          */
         "variant"?: ButtonVariant;
     }
+    /**
+     * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+     */
     interface PButtonGroup {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
@@ -4816,7 +5247,7 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4828,7 +5259,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
+          * Show or hide label. For better accessibility, it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4857,6 +5288,11 @@ declare namespace LocalJSX {
         "onBlur"?: (event: PCheckboxCustomEvent<CheckboxBlurEventDetail>) => void;
         /**
           * Emitted when checkbox checked property is changed.
+         */
+        "onChange"?: (event: PCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
+        /**
+          * Emitted when checkbox checked property is changed.
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
          */
         "onUpdate"?: (event: PCheckboxCustomEvent<CheckboxUpdateEventDetail>) => void;
         /**
@@ -5206,6 +5642,10 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+         */
+        "backdrop"?: FlyoutBackdrop;
         /**
           * If true, the flyout will not be closable via backdrop click.
          */
@@ -5590,6 +6030,92 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PInputMonth {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number input has lost focus.
+         */
+        "onBlur"?: (event: PInputMonthCustomEvent<InputMonthBlurEventDetail>) => void;
+        /**
+          * Emitted when the number input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputMonthCustomEvent<InputMonthChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputMonthCustomEvent<InputMonthInputEventDetail>) => void;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputMonthState;
+        /**
+          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+         */
+        "value"?: string;
+    }
     interface PInputNumber {
         /**
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
@@ -5816,9 +6342,17 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
           * Dynamic feedback text for validation or status.
          */
         "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
         /**
           * The name of the input field, used when submitting the form data.
          */
@@ -6225,6 +6759,92 @@ declare namespace LocalJSX {
         "theme"?: Theme;
         /**
           * The url input value.
+         */
+        "value"?: string;
+    }
+    interface PInputWeek {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number input has lost focus.
+         */
+        "onBlur"?: (event: PInputWeekCustomEvent<InputWeekBlurEventDetail>) => void;
+        /**
+          * Emitted when the number input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputWeekCustomEvent<InputWeekChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputWeekCustomEvent<InputWeekInputEventDetail>) => void;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputWeekState;
+        /**
+          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
          */
         "value"?: string;
     }
@@ -6674,7 +7294,19 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the multi-select has lost focus.
+         */
+        "onBlur"?: (event: PMultiSelectCustomEvent<void>) => void;
+        /**
           * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
         /**
@@ -6777,6 +7409,10 @@ declare namespace LocalJSX {
      */
     interface PPinCode {
         /**
+          * A boolean value that, if present, renders the pin-code as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -6813,7 +7449,15 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when selected element changes.
+          * Emitted when the pin-code has lost focus.
+         */
+        "onBlur"?: (event: PPinCodeCustomEvent<void>) => void;
+        /**
+          * Emitted when the input is changed.
+         */
+        "onChange"?: (event: PPinCodeCustomEvent<PinCodeChangeEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
          */
         "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEventDetail>) => void;
         /**
@@ -6855,6 +7499,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+     */
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -6880,6 +7527,90 @@ declare namespace LocalJSX {
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PRadioGroup {
+        /**
+          * A boolean value that, if present, renders the radio group as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the radio group.
+         */
+        "description"?: string;
+        /**
+          * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: BreakpointCustomizable<RadioGroupDirection>;
+        /**
+          * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * The name of the group of radio buttons, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the radio-group has lost focus.
+         */
+        "onBlur"?: (event: PRadioGroupCustomEvent<void>) => void;
+        /**
+          * Emitted when the selected option is changed.
+         */
+        "onChange"?: (event: PRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the radio group component.
+         */
+        "state"?: RadioGroupState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default value for the radio-group.
+         */
+        "value"?: string;
+    }
+    interface PRadioGroupOption {
+        /**
+          * A boolean value that, if present, makes the radio group option unusable and unclickable.
+         */
+        "disabled"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The value for the input.
+         */
+        "value"?: string;
     }
     interface PScroller {
         /**
@@ -6928,6 +7659,14 @@ declare namespace LocalJSX {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * A boolean value that, if present, renders the segmented-control as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the segmented-control.
+         */
+        "description"?: string;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -6936,17 +7675,49 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
           * The name of the segmented-control.
          */
         "name"?: string;
+        /**
+          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+         */
+        "noWrap"?: boolean;
+        /**
+          * Emitted when the segmented-control has lost focus.
+         */
+        "onBlur"?: (event: PSegmentedControlCustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEventDetail>) => void;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
         "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
         /**
-          * Emitted when selected element changes.
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
          */
         "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the component.
+         */
+        "state"?: SegmentedControlState;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -7003,7 +7774,7 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered.
+          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
          */
         "filter"?: boolean;
         /**
@@ -7027,7 +7798,19 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the select has lost focus.
+         */
+        "onBlur"?: (event: PSelectCustomEvent<void>) => void;
+        /**
           * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
         /**
@@ -7372,7 +8155,7 @@ declare namespace LocalJSX {
     }
     interface PTag {
         /**
-          * Background color variations depending on theme property.
+          * @deprecated since v3.33.0, will be removed with next major release. Use `variant` prop instead. Background color variations depending on theme property.
          */
         "color"?: TagColor;
         /**
@@ -7391,6 +8174,10 @@ declare namespace LocalJSX {
           * Adapts the tag color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Background color variations.
+         */
+        "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**
@@ -7401,6 +8188,10 @@ declare namespace LocalJSX {
           * Background color variations
          */
         "color"?: TagDismissibleColor;
+        /**
+          * A boolean value that, if present, renders the tag dismissible as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * The label text.
          */
@@ -7531,6 +8322,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: string;
         /**
+          * A boolean value that, if present, renders the textarea as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Show or hide the character counter.
          */
         "counter"?: boolean;
@@ -7599,7 +8394,7 @@ declare namespace LocalJSX {
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows of the textarea.
+          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
          */
         "rows"?: number;
         /**
@@ -7708,6 +8503,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
+        "p-ai-tag": PAiTag;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
@@ -7738,6 +8534,7 @@ declare namespace LocalJSX {
         "p-inline-notification": PInlineNotification;
         "p-input-date": PInputDate;
         "p-input-email": PInputEmail;
+        "p-input-month": PInputMonth;
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
         "p-input-search": PInputSearch;
@@ -7745,6 +8542,7 @@ declare namespace LocalJSX {
         "p-input-text": PInputText;
         "p-input-time": PInputTime;
         "p-input-url": PInputUrl;
+        "p-input-week": PInputWeek;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -7761,6 +8559,8 @@ declare namespace LocalJSX {
         "p-pin-code": PPinCode;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
+        "p-radio-group": PRadioGroup;
+        "p-radio-group-option": PRadioGroupOption;
         "p-scroller": PScroller;
         "p-segmented-control": PSegmentedControl;
         "p-segmented-control-item": PSegmentedControlItem;
@@ -7804,11 +8604,15 @@ declare module "@stencil/core" {
              * @controlled {"props": ["open"], "event": "update"}
              */
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
+            "p-ai-tag": LocalJSX.PAiTag & JSXBase.HTMLAttributes<HTMLPAiTagElement>;
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              */
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
+            /**
+             * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+             */
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
@@ -7881,6 +8685,7 @@ declare module "@stencil/core" {
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-input-date": LocalJSX.PInputDate & JSXBase.HTMLAttributes<HTMLPInputDateElement>;
             "p-input-email": LocalJSX.PInputEmail & JSXBase.HTMLAttributes<HTMLPInputEmailElement>;
+            "p-input-month": LocalJSX.PInputMonth & JSXBase.HTMLAttributes<HTMLPInputMonthElement>;
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
             "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
@@ -7888,6 +8693,7 @@ declare module "@stencil/core" {
             "p-input-text": LocalJSX.PInputText & JSXBase.HTMLAttributes<HTMLPInputTextElement>;
             "p-input-time": LocalJSX.PInputTime & JSXBase.HTMLAttributes<HTMLPInputTimeElement>;
             "p-input-url": LocalJSX.PInputUrl & JSXBase.HTMLAttributes<HTMLPInputUrlElement>;
+            "p-input-week": LocalJSX.PInputWeek & JSXBase.HTMLAttributes<HTMLPInputWeekElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**
@@ -7925,7 +8731,12 @@ declare module "@stencil/core" {
              */
             "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
+            /**
+             * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+             */
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+            "p-radio-group": LocalJSX.PRadioGroup & JSXBase.HTMLAttributes<HTMLPRadioGroupElement>;
+            "p-radio-group-option": LocalJSX.PRadioGroupOption & JSXBase.HTMLAttributes<HTMLPRadioGroupOptionElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             /**
              * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }

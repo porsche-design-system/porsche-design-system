@@ -17,8 +17,8 @@ const onRemoveClick = (): void => {
     <div v-for="(_, i) in Array.from(Array(amountOfSlides))" :key="i">Slide {{ i + 1 }}</div>
   </PCarousel>
 
-  <PButton type="button" @update="onAddClick">Add slide</PButton>
-  <PButton type="button" @update="onRemoveClick">Remove last slide</PButton>
+  <PButton type="button" @click="onAddClick">Add slide</PButton>
+  <PButton type="button" @click="onRemoveClick">Remove last slide</PButton>
 </template>
 <style scoped>
   p-carousel div {

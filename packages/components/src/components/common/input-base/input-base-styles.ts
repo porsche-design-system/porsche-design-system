@@ -21,7 +21,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../label/label-styles';
+import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 
@@ -47,7 +47,8 @@ export const getFunctionalComponentInputBaseStyles = (
   compact: boolean,
   readOnly: boolean,
   theme: Theme,
-  additionalInputJssStyle?: JssStyle
+  additionalInputJssStyle?: JssStyle,
+  additionalHostJssStyle?: JssStyle
 ): Styles => {
   const scalingVar = getScalingVar(compact);
 
@@ -91,7 +92,14 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
           [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
         }),
+        // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
+        '&(:dir(rtl)) input::placeholder': {
+          direction: 'rtl',
+          textAlign: 'end',
+        },
+        ...additionalHostJssStyle,
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -172,6 +180,7 @@ export const getFunctionalComponentInputBaseStyles = (
       disabled,
       hideLabel,
       theme,
+      null,
       !disabled &&
         !readOnly &&
         hoverMediaQuery({

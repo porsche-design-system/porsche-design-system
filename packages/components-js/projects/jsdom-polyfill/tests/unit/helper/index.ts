@@ -10,6 +10,7 @@ export const WHITELISTED_TAG_NAMES = [
   'p-multi-select-option',
   'p-optgroup',
   'p-select-option',
+  'p-radio-group-option',
   'p-stepper-horizontal-item',
   'p-tabs-item',
   'p-segmented-control-item',
@@ -91,6 +92,8 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-inline-notification>`,
   'p-input-number': `<p-input-number name="some-name" label="Some label"></p-input-number>`,
   'p-input-date': `<p-input-date name="some-name" label="Some label"></p-input-date>`,
+  'p-input-month': `<p-input-month name="some-name" label="Some label"></p-input-month>`,
+  'p-input-week': `<p-input-week name="some-name" label="Some label"></p-input-week>`,
   'p-input-time': `<p-input-time name="some-name" label="Some label"></p-input-time>`,
   'p-input-text': `<p-input-text name="some-name" label="Some label"></p-input-text>`,
   'p-input-email': `<p-input-email name="some-name" label="Some label"></p-input-email>`,
@@ -138,6 +141,11 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-segmented-control-item value="1">Item 1</p-segmented-control-item>
     <p-segmented-control-item value="2">Item 2</p-segmented-control-item>
   </p-segmented-control>`,
+  'p-radio-group': `<p-radio-group label="Some label" name="name" value="a">
+    <p-radio-group-option label="Option A" value="a"></p-radio-group-option>
+    <p-radio-group-option label="Option A" value="b"></p-radio-group-option>
+    <p-radio-group-option label="Option A" value="c"></p-radio-group-option>
+  </p-radio-group>`,
   'p-select': `<p-select name="name">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -196,6 +204,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-textarea-wrapper>`,
   'p-toast': '<p-toast></p-toast>',
   'p-wordmark': '<p-wordmark></p-wordmark>',
+  'p-ai-tag': '<p-ai-tag></p-ai-tag>',
 };
 
 export const getMarkup = (tagName: TagName): string => tagNameMarkup[tagName];

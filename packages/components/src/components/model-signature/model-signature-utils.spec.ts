@@ -10,7 +10,7 @@ describe('MODEL_SIGNATURE_MODELS', () => {
 
 const getUrlRegex = (model: ModelSignatureModel): RegExp =>
   new RegExp(
-    `^https:\/\/cdn\\.ui\\.porsche\\.com\/porsche-design-system\/model-signatures\/${model}\\.[a-z0-9]{7}\\.svg$`
+    `^https://cdn\\.ui\\.porsche\\.com/porsche-design-system/model-signatures/${model}\\.[a-z0-9]{7}\\.svg$`
   );
 
 describe('getSvgUrl()', () => {

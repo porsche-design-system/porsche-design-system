@@ -15,7 +15,7 @@ export const switchStory: Story<'p-switch'> = {
         ...properties,
       },
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onUpdate: {
           target: 'p-switch',
           prop: 'checked',

@@ -1,8 +1,8 @@
+import { getHiddenTextJssStyle } from '../../styles';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
-import { getHiddenTextJssStyle } from '../../styles';
 
 // CSS Variables defined in base input
 /**
@@ -11,7 +11,10 @@ import { getHiddenTextJssStyle } from '../../styles';
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   disabled: boolean,
   loading: boolean,
@@ -22,13 +25,30 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
-      '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-        WebkitAppearance: 'none',
+    ...getFunctionalComponentInputBaseStyles(
+      disabled,
+      loading,
+      hideLabel,
+      state,
+      compact,
+      readOnly,
+      theme,
+      {
+        textOverflow: 'ellipsis',
+        MozAppearance: 'textfield',
+        '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+          WebkitAppearance: 'none',
+        },
       },
-    }),
+      // Overwrites direction to ltr for rtl languages to prevent issues with the email input, e.g. cursor jumping to the
+      // end of the input when typing in the middle of the text. This is necessary because email addresses are assumed
+      // to be always written in ltr direction and the input needs to accommodate that, even in rtl contexts.
+      {
+        '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
+          direction: 'ltr',
+        },
+      }
+    ),
     'sr-only': getHiddenTextJssStyle(),
   });
 };

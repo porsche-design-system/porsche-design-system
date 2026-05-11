@@ -1,9 +1,13 @@
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { borderRadiusSmall } from '@porsche-design-system/styles';
 import { addImportantToEachRule, getFocusJssStyle, getResetInitialStylesForSlottedAnchor } from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import { borderRadiusSmall } from '@porsche-design-system/styles';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,

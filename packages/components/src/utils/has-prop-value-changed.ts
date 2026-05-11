@@ -1,5 +1,5 @@
 export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean => {
-  if (typeof newVal !== 'object' || typeof oldVal !== 'object') {
+  if (newVal === null || oldVal === null || typeof newVal !== 'object' || typeof oldVal !== 'object') {
     // primitive types
     return newVal !== oldVal;
   }

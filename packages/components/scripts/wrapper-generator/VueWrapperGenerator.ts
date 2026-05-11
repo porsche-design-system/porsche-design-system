@@ -90,9 +90,14 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
 
     const pdsComponentRef = `const pdsComponentRef = ref<${propsName} & HTMLElement>();`;
 
+    const meta = getComponentMeta(component);
+    const hasInputEvent = !!Object.keys(meta.eventsMeta ?? {}).find((e) => e === 'input');
+    const hasVModelSupport = this.hasVModelSupport(component);
+    const vModelValue = component === 'p-checkbox' ? 'checked' : 'value';
+
     const defineEmits = eventNamesAndTypes.length
       ? `const emit = defineEmits<{
-  ${eventNamesAndTypes
+  ${hasVModelSupport ? `(e: 'update:${vModelValue}', value: ${meta.propsMeta[vModelValue].type}): void;\n  ` : ''}${eventNamesAndTypes
     .map(
       ({ eventName, type, isDeprecated }) =>
         (isDeprecated ? '/** @deprecated */\n  ' : '') + `(e: '${eventName}', value: ${type}): void;`
@@ -105,6 +110,12 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
       .map(({ eventName }, index, arr) => {
         const { eventName: lastEventName } = arr.at(-1) || {}; // We need to cast eventNames to the last eventName defined in defineEmits
         const typeCast = index + 1 < arr.length ? ` as '${lastEventName}'` : '';
+
+        if (hasVModelSupport && eventName === (hasInputEvent ? 'input' : 'change')) {
+          return `addEventListenerToElementRef(pdsComponentRef, '${eventName}'${typeCast}, emit, (e) => {
+      emit('update:${vModelValue}'${typeCast}, (e.target as any).${vModelValue})
+    });`;
+        }
 
         return `addEventListenerToElementRef(pdsComponentRef, '${eventName}'${typeCast}, emit);`;
       })
@@ -170,5 +181,10 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
 
   private generatePropsName(component: TagName): string {
     return `${pascalCase(component)}Props`;
+  }
+
+  private hasVModelSupport(component: TagName): boolean {
+    const meta = getComponentMeta(component);
+    return meta.hasElementInternals && component !== 'p-button' && component !== 'p-button-pure';
   }
 }

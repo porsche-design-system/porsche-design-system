@@ -9,7 +9,11 @@ const handlersSet: Set<() => void> = new Set();
 
 if (typeof window !== 'undefined') {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  const handleChange = () => handlersSet.forEach((cb) => cb());
+  const handleChange = () => {
+    handlersSet.forEach((cb) => {
+      cb();
+    });
+  };
   mediaQuery.addEventListener('change', handleChange);
 }
 

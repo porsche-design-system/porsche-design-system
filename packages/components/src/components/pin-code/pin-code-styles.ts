@@ -1,70 +1,68 @@
-import type { FormState } from '../../utils/form/form-state';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss } from '../../utils';
-import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
+import {
+  borderWidthBase,
+  fontLineHeight,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 import {
-  borderWidthBase,
-  fontLineHeight,
-  getMediaQueryMax,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
 
+export const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
+export const getScalingVar = (compact: boolean) => `var(${cssVarInternalPinCodeScaling}, ${compact ? 0.5 : 1})`;
+
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
   length: PinCodeLength,
+  compact: boolean,
   theme: Theme
 ): string => {
-  const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // equivalent to calculation of input height within form-styles
+  const scalingVar = getScalingVar(compact);
+
+  const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
+  const gap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
+  const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+  // Min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
+  const minWidth = `max(1rem, calc(${dimension} - ${borderWidthBase}*2 - ${paddingBlock}*2))`;
+
   const inputStyles = removeStyles(
     'input[readonly]',
     removeSlottedSelector(
       getSlottedTextFieldTextareaSelectStyles('input', state, isLoading, theme, {
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
-        padding: `${formElementPaddingVertical} ${spacingStaticXSmall}`,
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start
         textAlign: 'center',
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. size=max|min
-        maxWidth: inputSize,
-        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
-        minWidth: `calc(1rem + ${borderWidthBase}*2 + ${spacingStaticSmall}*2)`,
-        ...(length > 4 && {
-          [getMediaQueryMax('xs')]: {
-            // TODO: instead of having dedicated css rules depending on length we should try to implement a fluid one fits all solution
-            maxWidth: 'auto',
-            width: `calc((276px - (${spacingStaticSmall} * ${length - 1})) / ${length})`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
-          },
-        }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. isLoading
         ...(isLoading && {
           opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
           cursor: 'not-allowed',
         }),
-        // since @playwright/test@1.40.1 this does not work anymore in Webkit browser engine for unknown reasons
-        /* ...Object.fromEntries(
-          Array.from(Array(length)).map((_, i) => {
-            return [`&:nth-of-type(${i + 1})`, { gridArea: `1/${i + 1}` }];
-          })
-        ),*/
-        '&:nth-of-type(1)': { gridArea: '1/1' },
-        '&:nth-of-type(2)': { gridArea: '1/2' },
-        '&:nth-of-type(3)': { gridArea: '1/3' },
-        '&:nth-of-type(4)': { gridArea: '1/4' },
-        '&:nth-of-type(5)': { gridArea: '1/5' },
-        '&:nth-of-type(6)': { gridArea: '1/6' },
+        height: dimension,
+        minWidth,
+        maxWidth: dimension,
+        width: 'auto',
+        padding: paddingBlock,
+        boxSizing: 'content-box',
       })
     )
   );
@@ -78,6 +76,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       // input
       ...inputStyles,
@@ -87,17 +86,20 @@ export const getComponentCss = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
+      position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `repeat(${length}, minmax(auto, 1fr))`,
+      gridTemplateColumns: `repeat(${length}, 1fr)`,
       justifySelf: 'flex-start',
-      gap: spacingStaticSmall,
+      gap,
     },
     ...(isLoading && {
       spinner: {
-        gridArea: '1/1/1/-1',
-        placeSelf: 'center',
-        width: inputSize,
-        height: inputSize,
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: dimension,
+        height: dimension,
         pointerEvents: 'none',
       },
     }),

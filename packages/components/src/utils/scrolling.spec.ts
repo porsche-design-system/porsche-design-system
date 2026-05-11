@@ -1,10 +1,11 @@
-import { getScrollActivePosition, getScrollByX, scrollElementBy, scrollElementTo } from './scrolling';
+import { vi } from 'vitest';
 import * as scrollerUtils from '../components/scroller/scroller-utils';
+import { getScrollActivePosition, getScrollByX, scrollElementBy, scrollElementTo } from './scrolling';
 
 describe('scrollElementTo()', () => {
   it('should call el.scrollTo() with correct parameter if scrollBehavior is supported', () => {
     const el = document.createElement('div');
-    const spy = jest.fn();
+    const spy = vi.fn();
     el.scrollTo = spy;
 
     scrollElementTo(el, 100);
@@ -15,7 +16,7 @@ describe('scrollElementTo()', () => {
 describe('scrollElementBy()', () => {
   it('should call el.scrollBy() with correct parameter if scrollBehavior is supported', () => {
     const el = document.createElement('div');
-    const spy = jest.fn();
+    const spy = vi.fn();
     el.scrollBy = spy;
 
     scrollElementBy(el, 100);
@@ -40,21 +41,21 @@ describe('getScrollActivePosition()', () => {
   const gradientElement = { ...document.createElement('div'), offsetWidth: 20 };
 
   it('should call getScrollerElements() with correct parameter', () => {
-    const spy = jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
+    const spy = vi.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
 
     getScrollActivePosition([document.createElement('div')], 'next', 0, scrollerElement);
     expect(spy).toHaveBeenCalledWith(scrollerElement);
   });
 
   it('should return scrollActivePosition = 16 if scrolling to last tab', () => {
-    jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
+    vi.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
     expect(
       getScrollActivePosition([{ offsetLeft: 20, offsetWidth: 0 }] as HTMLElement[], 'next', 0, scrollerElement)
     ).toBe(16);
   });
 
   it('should return 8 if direction is "next" and next tab is set as active', () => {
-    jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
+    vi.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
     expect(
       getScrollActivePosition(
         [
@@ -69,14 +70,14 @@ describe('getScrollActivePosition()', () => {
   });
 
   it('should return 0 if direction is "prev" and first tab is set as active', () => {
-    jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
+    vi.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
     expect(
       getScrollActivePosition([{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[], 'prev', 0, scrollerElement)
     ).toBe(0);
   });
 
   it('should return 41 if scrolling to previous tab', () => {
-    jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
+    vi.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
     expect(
       getScrollActivePosition(
         [

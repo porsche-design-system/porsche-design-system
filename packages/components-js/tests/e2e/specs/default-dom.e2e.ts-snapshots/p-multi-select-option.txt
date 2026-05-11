@@ -2,5 +2,5 @@
   <span class="checkbox-wrapper">
     <span class="checkbox" aria-hidden="true"> </span>
   </span>
-  <slot slot="label"> </slot>
+  <slot> </slot>
 </div>

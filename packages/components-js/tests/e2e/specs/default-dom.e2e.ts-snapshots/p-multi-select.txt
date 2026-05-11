@@ -1,5 +1,4 @@
 <div class="root">
-  <label class="label" id="label" for="button"> </label>
   <button
     type="button"
     role="combobox"
@@ -28,6 +27,7 @@
       aria-label=""
       aria-multiselectable="true"
     >
+      <slot name="options-status"> </slot>
       <slot> </slot>
     </div>
   </div>

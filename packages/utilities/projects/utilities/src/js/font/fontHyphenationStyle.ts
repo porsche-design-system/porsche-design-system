@@ -1,4 +1,8 @@
-export const fontHyphenationStyle = {
+export const fontHyphenationStyle: {
+  readonly overflowWrap: 'break-word';
+  readonly hyphens: 'auto'; // Fix typing issues in react when 'var(--p-hyphens, auto)' is emitted in d.ts
+} = {
   overflowWrap: 'break-word',
-  hyphens: 'auto',
+  // @ts-ignore
+  hyphens: 'var(--p-hyphens, auto)',
 } as const;

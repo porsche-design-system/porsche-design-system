@@ -67,8 +67,8 @@ export const getSlottedTextFieldTextareaSelectStyles = (
     ...(!isLoading &&
       (hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
-        [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))${
-          child === 'select' ? ',label:hover~.wrapper ::part(select-wrapper-dropdown)' : ''
+        [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))${
+          child === 'select' ? ',.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown)' : ''
         }`]: {
           borderColor: formStateHoverColor || primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {

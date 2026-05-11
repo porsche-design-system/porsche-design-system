@@ -5,7 +5,7 @@ import { ref } from 'vue';
 const lastSubmittedData = ref('none');
 const handleSubmit = (e: Event) => {
   const formData = Array.from(new FormData(e.target as HTMLFormElement, (e as SubmitEvent).submitter).entries())[0];
-  lastSubmittedData.value = formData.join('=') || 'none';
+  lastSubmittedData.value = formData?.join('=') || 'none';
 };
 </script>
 

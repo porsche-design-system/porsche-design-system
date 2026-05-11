@@ -8,6 +8,10 @@ import { getCss } from '../../../utils';
 
 export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boolean): string => {
   return getCss({
     '@global': {
@@ -19,9 +23,6 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
           ...hostHiddenStyles,
           [`${cssVarInternalCheckboxScaling}`]: `var(${cssVarInternalMultiSelectOptionScaling})`,
         }),
-      },
-      slot: {
-        display: 'block',
       },
     },
     option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`, theme),

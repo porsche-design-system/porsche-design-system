@@ -1,6 +1,14 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { AccordionSize } from './accordion-utils';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXXSmall,
+  fontWeightSemiBold,
+  motionDurationShort,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,18 +21,14 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXXSmall,
-  fontWeightSemiBold,
-  motionDurationShort,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { AccordionSize } from './accordion-utils';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,

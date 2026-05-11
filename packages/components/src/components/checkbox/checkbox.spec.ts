@@ -1,14 +1,12 @@
+import { vi } from 'vitest';
 import { Checkbox } from './checkbox';
-import { expect } from '@jest/globals';
-
-jest.mock('../../utils/dom');
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
-let mockEmit: jest.SpyInstance;
+let mockEmit: ReturnType<typeof vi.fn>;
 
 const initComponent = (): Checkbox => {
   const component = new Checkbox();
@@ -20,9 +18,10 @@ const initComponent = (): Checkbox => {
   component['checkboxInputElement'] = input;
   component['internals'] = new MockElementInternals() as unknown as ElementInternals;
 
-  mockEmit = jest.fn();
+  mockEmit = vi.fn();
 
   component.update = { emit: mockEmit } as any;
+  component.change = { emit: mockEmit } as any;
   component.blur = { emit: mockEmit } as any;
   return component;
 };
@@ -49,7 +48,7 @@ describe('formResetCallback', () => {
     const component = initComponent();
     component.value = value;
     component['defaultChecked'] = defaultChecked;
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
@@ -63,7 +62,7 @@ describe('formResetCallback', () => {
     const component = initComponent();
     component.value = value;
     component['defaultChecked'] = defaultChecked;
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
     expect(setFormValueSpy).toHaveBeenCalledWith(value);
@@ -72,34 +71,39 @@ describe('formResetCallback', () => {
   });
 });
 describe('formDisabledCallback', () => {
-  const component = initComponent();
-  component.disabled = false;
-  component.formDisabledCallback(true);
-  expect(component.disabled).toBe(true);
+  it('should set disabled to true when called with true', () => {
+    const component = initComponent();
+    component.disabled = false;
+    component.formDisabledCallback(true);
+    expect(component.disabled).toBe(true);
+  });
 });
 describe('formStateRestoreCallback', () => {
-  const component = initComponent();
-  component.checked = false;
-  const restoredValue = 'on';
-  component.formStateRestoreCallback(restoredValue);
-  expect(component.checked).toBe(true);
+  it('should set checked to true when restoredValue is "on"', () => {
+    const component = initComponent();
+    component.checked = false;
+    const restoredValue = 'on';
+    component.formStateRestoreCallback(restoredValue);
+    expect(component.checked).toBe(true);
+  });
 });
 
 describe('componentDidRender', () => {
   it('should call ElementInternals setValidity()', () => {
     const component = initComponent();
-    const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+    const setValiditySpy = vi.spyOn(component['internals'], 'setValidity' as any);
     component.componentDidRender();
     expect(setValiditySpy).toHaveBeenCalledTimes(1);
     expect(setValiditySpy).toHaveBeenCalledWith(
       component['checkboxInputElement'].validity,
-      component['checkboxInputElement'].validationMessage,
+      component['checkboxInputElement'].validationMessage || ' ',
       component['checkboxInputElement']
     );
   });
+
   it('should not call ElementInternals setValidity() if checkbox is disabled', () => {
     const component = initComponent();
-    const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+    const setValiditySpy = vi.spyOn(component['internals'], 'setValidity' as any);
     component.disabled = true;
     component.componentDidRender();
     expect(setValiditySpy).toHaveBeenCalledTimes(0);
@@ -146,7 +150,7 @@ describe('componentDidLoad', () => {
     component['checkboxInputElement'].checked = true;
     component.indeterminate = true;
     expect(component['checkboxInputElement'].indeterminate).toBe(false);
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
     expect(component['checkboxInputElement'].indeterminate).toBe(true);
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
@@ -155,7 +159,7 @@ describe('componentDidLoad', () => {
   it('should not call setFormValue() on componentDidLoad() if checkbox is checked', () => {
     const component = initComponent();
     component.value = 'test';
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
     expect(setFormValueSpy).not.toHaveBeenCalled();
   });
@@ -165,8 +169,8 @@ describe('onBlur', () => {
   it('should stop propagation and emit blur event on onBlur', () => {
     const component = initComponent();
     const event = {
-      stopPropagation: jest.fn(),
-      stopImmediatePropagation: jest.fn(),
+      stopPropagation: vi.fn(),
+      stopImmediatePropagation: vi.fn(),
     } as unknown as Event;
 
     component['onBlur'](event);
@@ -178,18 +182,18 @@ describe('onBlur', () => {
 });
 
 describe('onChange', () => {
-  it('should call setFormValue() and emit update event', () => {
+  it('should call setFormValue() and emit change event', () => {
     const value = 'test-value';
     const name = 'test-name';
     const checked = true;
     const component = initComponent();
     component.name = name;
     component.value = value;
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     const event = {
-      stopPropagation: jest.fn(),
-      stopImmediatePropagation: jest.fn(),
+      stopPropagation: vi.fn(),
+      stopImmediatePropagation: vi.fn(),
       target: {
         checked,
       },
@@ -207,11 +211,11 @@ describe('onChange', () => {
     const component = initComponent();
     component.name = name;
     component.value = value;
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     const event = {
-      stopPropagation: jest.fn(),
-      stopImmediatePropagation: jest.fn(),
+      stopPropagation: vi.fn(),
+      stopImmediatePropagation: vi.fn(),
       target: {
         checked,
       },

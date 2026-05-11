@@ -1,14 +1,14 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Initialization: Remix - Porsche Design System',
   description: 'Learn how to initialize and setup the Porsche Design System in your Remix app.',
-}
+};
 
 # Initialization
 
-<TableOfContents headings={['Setup','Optimization']} />
+<TableOfContents headings={['Setup', 'Optimization']} />
 
 ## Setup
 
@@ -16,9 +16,7 @@ The most basic [integration](/developing/remix/getting-started#integration) of
 `@porsche-design-system/components-react/ssr` looks like this.
 
 ```tsx
-<PorscheDesignSystemProvider>
-  ...
-</PorscheDesignSystemProvider>
+<PorscheDesignSystemProvider>...</PorscheDesignSystemProvider>
 ```
 
 When investigating Remix we have to cover two different scenarios, the **server side** and the **client side**.
@@ -32,8 +30,8 @@ In the example from above we didn't render any component, yet, so let's render a
 ### Server Side
 
 On the **server side** the components of the `@porsche-design-system/components-react/ssr` sub-package render static
-markup for something called [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom)
-which is converted into a real Shadow DOM by modern browsers without any JavaScript.
+markup for something called [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom) which is converted into a
+real Shadow DOM by modern browsers without any JavaScript.
 
 To continue with the example, this is what the result that is returned by the server looks like.
 
@@ -50,9 +48,8 @@ JavaScript in your browser. In our scenario, this results in the following netwo
 
 ### Client Side
 
-Now, we already have a `p-button` tag in the DOM from the server side.
-From here on the exact same things happen as described at
-[Vanilla Js Preparation](/must-know/initialization/vanilla-js#preparation) and
+Now, we already have a `p-button` tag in the DOM from the server side. From here on the exact same things happen as
+described at [Vanilla Js Preparation](/must-know/initialization/vanilla-js#preparation) and
 [Vanilla Js Connect Lifecycle](/must-know/initialization/vanilla-js#connect-lifecycle).
 
 Any further client side rendering behaves just like it does for the
@@ -119,8 +116,9 @@ Now, everything is preloaded in parallel while the Remix app chunks takes the lo
 <Notification heading="Hint" headingTag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.
 
-  Instead, the most performant but also more complicated approach would be to only preload the component chunks
-  (and fonts) that are located **above the fold** which means visible on page load without scrolling.
+Instead, the most performant but also more complicated approach would be to only preload the component chunks (and
+fonts) that are located **above the fold** which means visible on page load without scrolling.
+
 </Notification>
 
 ### Early initialization
@@ -132,4 +130,3 @@ This is where it may be interesting to apply the [getLoaderScript()](/partials/l
 The loading behavior is essentially the same but the `load()` call happens way before the app chunks are even loaded.
 This can result in better user experience depending on the use case because the gap until the app actually being ready
 is bridged.
-

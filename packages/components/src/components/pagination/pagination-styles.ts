@@ -1,17 +1,3 @@
-import type { JssStyle } from 'jss';
-import type { Theme } from '../../types';
-import { getCss } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -23,6 +9,20 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import type { Theme } from '../../types';
+import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');

@@ -1,5 +1,5 @@
 import {
-  type MultiSelectUpdateEventDetail,
+  type MultiSelectChangeEventDetail,
   PButton,
   PMultiSelect,
   PMultiSelectOption,
@@ -26,7 +26,7 @@ export const MultiSelectExampleDynamicPage = (): JSX.Element => {
     setInputValue('');
   };
 
-  const onUpdate = (e: CustomEvent<MultiSelectUpdateEventDetail>) => {
+  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
     setSelectedValues(e.detail.value);
     setInputValue(e.detail.value.join(','));
   };
@@ -53,7 +53,7 @@ export const MultiSelectExampleDynamicPage = (): JSX.Element => {
         Reset value
       </PButton>
 
-      <PMultiSelect name="options" label="Some Label" value={selectedValues} onUpdate={onUpdate}>
+      <PMultiSelect name="options" label="Some Label" value={selectedValues} onChange={onChange}>
         {[...Array(optionCount).keys()].map((idx) => (
           <PMultiSelectOption key={idx} value={`${idx + 1}`}>
             Option {idx + 1}

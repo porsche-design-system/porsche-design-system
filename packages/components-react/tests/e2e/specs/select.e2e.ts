@@ -8,6 +8,7 @@ import {
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-select');
+const getButton = (page: Page) => page.locator('p-select button[role="combobox"]');
 const getForm = (page: Page) => page.locator('form');
 
 test.describe('form', () => {
@@ -39,5 +40,17 @@ test.describe('form', () => {
 
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'options')).toBe(newValue);
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should reflect option appended into an already-mounted optgroup in the displayed value', async ({ page }) => {
+    await goto(page, 'select-example-dynamic-optgroup');
+    const host = getHost(page);
+    const button = page.getByRole('button', { name: 'Add & change value' });
+
+    await button.dblclick();
+
+    await expect(host).toHaveJSProperty('value', 'a');
   });
 });

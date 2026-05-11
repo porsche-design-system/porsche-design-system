@@ -49,6 +49,10 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
         }
       });
     });
+  } else {
+    describe.skip('props', () => {
+      it('has no props', () => {});
+    });
   }
 
   if (eventNames.length > 0) {

@@ -40,7 +40,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   const amountOfConfiguredProps = Object.keys(configuredProps ?? {})
     .filter((key) => key !== 'style')
     .filter(
-      // @ts-ignore
+      // @ts-expect-error
       (key) => !Object.keys(defaultProps ?? {}).includes(key) || configuredProps?.[key] !== defaultProps?.[key]
     ).length;
 

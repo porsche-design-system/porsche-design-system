@@ -15,7 +15,7 @@
   const input = document.querySelector('input');
   const multiSelect = document.querySelector('p-multi-select');
 
-  multiSelect.addEventListener('update', () => {
+  multiSelect.addEventListener('change', (e) => {
     input.value = multiSelect.value.join(',');
   });
 

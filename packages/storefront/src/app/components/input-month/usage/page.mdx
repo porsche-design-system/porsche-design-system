@@ -1,0 +1,39 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Input Month - Porsche Design System',
+  description:
+    'Learn how to properly use the Input Month component with best practices and guidelines for effective design and user experience.',
+};
+
+# Input Month <ComponentStatus tagName="p-input-month"></ComponentStatus>
+
+<TableOfContents headings={['Usage', 'Related Components']} />
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+`p-input-month` is intended for month input scenarios. It should not be used for values that merely happen to consist of
+digits. For those cases, consider using another input with an appropriate input mode. For further guidance, see the
+[MDN documentation on month inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month#using_date_inputs).
+
+### Do:
+
+- Use when a month value is required or optional.
+- Use without a label only when the context is clear.
+- Use for validation and error of input.
+- Use asterisk for required fields.
+
+### Don't:
+
+- Don't use labels with more than two words whenever possible (keep it short and descriptive).
+- Don't use instructional or description text for the label.
+
+---
+
+## Related Components
+
+- [Text Field Wrapper](/components/text-field-wrapper)

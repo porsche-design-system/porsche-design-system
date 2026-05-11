@@ -30,16 +30,12 @@ version can be released.
 
 1. Go to according sample integration projects:
 
-- https://github.com/porsche-design-system/sample-integration-angular
-- https://github.com/porsche-design-system/sample-integration-react
-- https://github.com/porsche-design-system/sample-integration-nextjs
-- https://github.com/porsche-design-system/sample-integration-vanillajs
+- https://github.com/porsche-design-system/examples/frameworks/{angular/astro/next-js/react-router/react/vanilla-js/vue}/
 
 1. Open `package.json` and change `@porsche-design-system/components-(js/angular/react/vue)` version to the newly
    published RC.
-2. Run `yarn`
-3. Run `yarn build`
-4. Run `yarn start` and check if everything works.
+2. Run `npm run build:{angular/astro/next-js/react-router/react/vanilla-js/vue}`
+3. Run `npm run preview:{angular/astro/next-js/react-router/react/vanilla-js/vue}` and check if everything works.
 
 ## Stable Release
 
@@ -64,8 +60,12 @@ release can be published.
 
 ### Deploy
 
-1. Create pull request from `main` into `v3` branch
-2. Merge into `v3` branch (then CI/CD will trigger a Storefront deployment automatically)
+1. Create a new housekeeping branch from `main` e.g. `git checkout -b housekeeping/components-v3.0.0`
+2. Adapt PDS version in Stackblitz framework `package.json` files, e.g.
+   `/storefront/projects/stackblitz/src/(js/angular/react/vue)/package.json` to the newly released stable version.
+3. Create new pull request from e.g. `housekeeping/components-v3.0.0` into `main` branch and merge
+4. Create pull request from `main` into `v3` branch
+5. Merge into `v3` branch (then CI/CD will trigger a Storefront deployment automatically)
 
 ### Communicate
 

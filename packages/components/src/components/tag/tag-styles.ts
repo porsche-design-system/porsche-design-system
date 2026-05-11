@@ -4,8 +4,6 @@ import {
   spacingStaticXSmall,
   textXSmallStyle,
 } from '@porsche-design-system/styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -18,6 +16,8 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import type { Theme } from '../../types';
+import { getCss, isHighContrastMode } from '../../utils';
 import { getThemedBackgroundColor } from './tag-shared-utils';
 import { getThemedBackgroundHoverColor, type TagColor, type TagColorDeprecated } from './tag-utils';
 

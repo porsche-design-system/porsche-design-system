@@ -1,12 +1,13 @@
+import * as stencilCore from '@stencil/core';
+import { vi } from 'vitest';
+import type { Theme } from '../../../types';
+import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
+import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
 import {
   getIndexOfStepWithStateCurrent,
   syncStepperHorizontalItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
-import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
-import type { Theme } from '../../../types';
-import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
-import * as stencilCore from '@stencil/core';
 
 describe('getIndexOfStepWithStateCurrent()', () => {
   it('should return correct index', () => {
@@ -72,7 +73,7 @@ describe('syncStepperHorizontalItemsProps()', () => {
   });
 
   it('should call forceUpdate() on every item', () => {
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
 
     syncStepperHorizontalItemsProps(host, theme);
 

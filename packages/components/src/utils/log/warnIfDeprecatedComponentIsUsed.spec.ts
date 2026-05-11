@@ -1,9 +1,10 @@
-import { warnIfDeprecatedComponentIsUsed } from './warnIfDeprecatedComponentIsUsed';
+import { vi } from 'vitest';
 import * as loggerUtils from '../../utils/log/logger';
+import { warnIfDeprecatedComponentIsUsed } from './warnIfDeprecatedComponentIsUsed';
 
 it('should call consoleWarn() util with correct parameter', () => {
   const host = document.createElement('div');
-  const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
+  const spy = vi.spyOn(loggerUtils, 'consoleWarn').mockImplementation(()=> null);
   warnIfDeprecatedComponentIsUsed(host, 'Use some other component instead.');
 
   expect(spy).toHaveBeenCalledWith(

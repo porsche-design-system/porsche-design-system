@@ -1,12 +1,12 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/styles';
-import { type JssStyle, type Styles, create } from 'jss';
+import { create, type JssStyle, type Styles } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { getTagNameWithoutPrefix, hasPropValueChanged } from '.';
 import { addImportantToEachRule } from '../styles';
+import { getTagNameWithoutPrefix, hasPropValueChanged } from '.';
 import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 
@@ -69,9 +69,9 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   getComponentCss: T,
   ...args: Parameters<T>
 ): void => {
-  const css = getCachedComponentCss(host, getComponentCss, ...args);
+  const css = internalJss.getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (getHasConstructableStylesheetSupport()) {
+  if (internalJss.getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
@@ -142,4 +142,9 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
 
     return prev;
   }, {} as T);
+};
+
+export const internalJss = {
+  getCachedComponentCss,
+  getHasConstructableStylesheetSupport,
 };

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -31,7 +31,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 20px 0;
@@ -109,7 +109,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -140,7 +140,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 20px 0;
@@ -219,7 +219,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -250,7 +250,7 @@ button {
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 4px 0;
@@ -328,7 +328,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: true 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -359,7 +359,7 @@ button {
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 4px 0;
@@ -443,7 +443,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -474,7 +474,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 4px 0;
@@ -552,7 +552,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: true 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -583,7 +583,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 4px 0;
@@ -667,7 +667,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -698,7 +698,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   padding: 4px 0;
@@ -777,7 +777,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -808,7 +808,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
   padding: 15px 0;
@@ -886,7 +886,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true, theme: dark and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #404044 !important;
@@ -917,7 +917,7 @@ button {
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
   padding: 15px 0;
@@ -996,7 +996,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -1027,7 +1027,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
   padding: 15px 0;
@@ -1106,7 +1106,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -1137,7 +1137,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
   padding: 4px 0;
@@ -1215,7 +1215,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -1246,7 +1246,7 @@ button {
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
   padding: 4px 0;
@@ -1325,7 +1325,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true, theme: dark and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #404044 !important;
@@ -1356,7 +1356,7 @@ button {
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
   padding: 15px 0;

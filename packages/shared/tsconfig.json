@@ -5,5 +5,6 @@
     "verbatimModuleSyntax": false,
     "moduleResolution": "node"
   },
-  "include": ["./src", "./scripts"]
+  "include": ["./src", "./scripts"],
+  "exclude": ["**/*.spec.ts"]
 }

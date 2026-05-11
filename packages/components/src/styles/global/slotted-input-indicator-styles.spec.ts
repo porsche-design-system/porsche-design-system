@@ -1,5 +1,5 @@
 import { componentFactory } from '../../test-utils';
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import { getSlottedInputIndicatorStyles } from './slotted-input-indicator-styles';
 import { tagNamesWithSlottedInputIndicatorArray } from './slotted-input-indicator-styles';
 import * as getSlottedInputIndicatorStylesUtils from './slotted-input-indicator-styles';
@@ -16,11 +16,11 @@ it.each(tagNamesWithSlottedInputIndicatorArray)(
   'should apply constructable stylesheet with slotted input indicator styles in connected callback for component %s',
   (tagName) => {
     const component = componentFactory(tagName);
-    const getSlottedInputIndicatorStylesSpy = jest.spyOn(
+    const getSlottedInputIndicatorStylesSpy = vi.spyOn(
       getSlottedInputIndicatorStylesUtils,
       'getSlottedInputIndicatorStyles'
     );
-    const applyConstructableStylesheetStylesSpy = jest.spyOn(
+    const applyConstructableStylesheetStylesSpy = vi.spyOn(
       applyConstructableStylesheetStylesUtils,
       'applyConstructableStylesheetStyles'
     );

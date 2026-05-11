@@ -15,13 +15,16 @@ type Manifest = {
 type FlagsMap = Manifest;
 
 const flagsIso3166 = {
+  ad: 'Andorra',
   ae: 'United Arab Emirates',
+  al: 'Albania',
   am: 'Armenia',
   ar: 'Argentina',
   at: 'Austria',
   au: 'Australia',
   az: 'Azerbaijan',
   ba: 'Bosnia and Herzegovina',
+  bd: 'Bangladesh',
   be: 'Belgium',
   bg: 'Bulgaria',
   bh: 'Bahrain',
@@ -50,6 +53,7 @@ const flagsIso3166 = {
   fr: 'France',
   gb: 'United Kingdom',
   ge: 'Georgia',
+  gi: 'Gibraltar',
   gh: 'Ghana',
   gr: 'Greece',
   gt: 'Guatemala',
@@ -73,12 +77,15 @@ const flagsIso3166 = {
   kw: 'Kuwait',
   kz: 'Kazakhstan',
   lb: 'Lebanon',
+  li: 'Liechtenstein',
   lk: 'Sri Lanka',
   lt: 'Lithuania',
   lu: 'Luxembourg',
   lv: 'Latvia',
   ma: 'Morocco',
+  mc: 'Monaco',
   md: 'Moldova',
+  me: 'Montenegro',
   mk: 'North Macedonia',
   mn: 'Mongolia',
   mo: 'Macao',
@@ -102,6 +109,7 @@ const flagsIso3166 = {
   pt: 'Portugal',
   py: 'Paraguay',
   qa: 'Qatar',
+  re: 'Réunion',
   ro: 'Romania',
   rs: 'Serbia',
   ru: 'Russia',
@@ -115,6 +123,7 @@ const flagsIso3166 = {
   tn: 'Tunisia',
   tr: 'Turkey',
   tt: 'Trinidad and Tobago',
+  tw: 'Taiwan, Province of China',
   ua: 'Ukraine',
   us: 'United States of America',
   uy: 'Uruguay',
@@ -122,6 +131,7 @@ const flagsIso3166 = {
   ve: 'Venezuela',
   vn: 'Vietnam',
   za: 'South Africa',
+  xx: 'Unknown or Invalid Region',
 };
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
@@ -176,7 +186,7 @@ const createManifestAndOptimizeFlags = async (files: string[], config: Config): 
       } bytes (size: ${svgOptimizedSize} bytes)`
     );
 
-    if (svgOptimizedSize > 3000) {
+    if (svgRawName !== 'xx' && svgOptimizedSize > 3000) {
       throw new Error(`Flag "${svgRawName}" is too large.`);
     }
   }

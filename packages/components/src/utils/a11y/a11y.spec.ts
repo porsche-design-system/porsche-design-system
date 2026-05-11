@@ -1,13 +1,14 @@
-import * as a11yUtils from './a11y';
-import { parseAndGetAriaAttributes, setAriaAttributes, type SetAriaAttributesOptions } from './a11y';
-import * as jsonUtils from '../json';
-import * as setAttributeUtils from '../dom/setAttribute';
-import * as removeAttributeUtils from '../dom/removeAttribute';
-import type { AriaAttributes } from '../../types';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { vi } from 'vitest';
 import { componentFactory } from '../../test-utils';
+import type { AriaAttributes } from '../../types';
+import * as removeAttributeUtils from '../dom/removeAttribute';
+import * as setAttributeUtils from '../dom/setAttribute';
+import * as jsonUtils from '../json';
+import * as a11yUtils from './a11y';
+import { parseAndGetAriaAttributes, type SetAriaAttributesOptions, setAriaAttributes } from './a11y';
 
 describe('setAriaAttributes()', () => {
   const node = document.createElement('div');
@@ -22,8 +23,8 @@ describe('setAriaAttributes()', () => {
     { state: 'success' },
     { state: 'none' },
   ])('should call setAttribute and removeAttribute with correct params for options: %o', (options) => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const removeAttributeSpy = jest.spyOn(removeAttributeUtils, 'removeAttribute');
+    const setAttributeSpy = vi.spyOn(setAttributeUtils, 'setAttribute');
+    const removeAttributeSpy = vi.spyOn(removeAttributeUtils, 'removeAttribute');
 
     setAriaAttributes(node, options);
 
@@ -48,7 +49,7 @@ describe('parseAndGetAriaAttributes()', () => {
   const rawAttributes = "{ aria-label: 'Some label' }";
 
   it('should call parseJSONAttribute()', () => {
-    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
+    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
 
     parseAndGetAriaAttributes(rawAttributes);
     expect(spy).toHaveBeenCalledWith(rawAttributes);
@@ -88,7 +89,7 @@ describe('parseAndGetAriaAttributes()', () => {
   );
 
   it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
-    const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
+    const spy = vi.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
     const component = componentFactory(tagName);
     component['aria'] = { 'aria-label': 'Some label' };
 

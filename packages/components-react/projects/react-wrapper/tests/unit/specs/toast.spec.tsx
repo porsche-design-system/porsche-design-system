@@ -1,8 +1,9 @@
 import { componentsReady, PToast, useToastManager } from '@porsche-design-system/components-react';
-import { render, waitFor } from '@testing-library/react';
+import { cleanup, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState, type JSX } from 'react';
+import { type JSX, useState } from 'react';
 import '@porsche-design-system/components-react/jsdom-polyfill';
+import { afterEach, expect, it } from 'vitest';
 
 const Sample = (): JSX.Element => {
   const { addMessage } = useToastManager();
@@ -23,6 +24,10 @@ const Sample = (): JSX.Element => {
     </>
   );
 };
+
+afterEach(() => {
+  cleanup();
+});
 
 it('should have initialized shadow dom', async () => {
   const { getByTestId } = render(<Sample />);

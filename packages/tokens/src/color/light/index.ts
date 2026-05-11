@@ -1,5 +1,5 @@
 export { colorActiveLight } from './colorActiveLight';
-export { colorBaseLight } from './colorBaseLight';
+export { colorCanvasLight } from './colorCanvasLight';
 export { colorContrastHighLight } from './colorContrastHighLight';
 export { colorContrastLowLight } from './colorContrastLowLight';
 export { colorContrastMediumLight } from './colorContrastMediumLight';

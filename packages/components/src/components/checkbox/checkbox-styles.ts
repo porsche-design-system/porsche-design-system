@@ -1,6 +1,12 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
-import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,28 +19,29 @@ import {
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../styles';
-import {
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
@@ -102,6 +109,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
       ...(isLoading
@@ -144,13 +152,13 @@ export const getComponentCss = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          'input:hover,label:hover~.wrapper input': {
+          'input:hover,.wrapper:has(.label-wrapper:hover) input': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          'input:checked:hover,label:hover~.wrapper input:checked': {
+          'input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -158,7 +166,7 @@ export const getComponentCss = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+          'input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
@@ -168,7 +176,7 @@ export const getComponentCss = (
               backgroundColor: 'transparent',
             }),
           },
-          'label:hover~.wrapper input': supportsChromiumMediaQuery({
+          '.label-wrapper:hover~.wrapper input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
@@ -190,21 +198,24 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
       ...(disabledOrLoading && {
         cursor: 'not-allowed',
       }),
     },
     wrapper: {
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr)',
+    },
+    'input-wrapper': {
       ...textSmallStyle,
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
       justifyContent: 'center',
       alignItems: 'center',
+      alignSelf: 'flex-start', // in case label becomes multiline
       display: 'grid',
       gridArea: '1/1',
-      alignSelf: 'flex-start', // in case label becomes multiline
       height,
     },
     ...(isLoading && {
@@ -224,18 +235,16 @@ export const getComponentCss = (
       hideLabel,
       theme,
       {
-        gridArea: '1/2',
         ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
+      null,
       {
         paddingTop,
         paddingInlineStart,
       }
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state, {
-      gridColumn: '1/3',
-    }),
+    ...getFunctionalComponentStateMessageStyles(theme, state, {}),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

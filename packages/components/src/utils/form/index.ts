@@ -1,9 +1,10 @@
 export { FORM_STATES } from './form-state';
-export { inputEventListenerCurry, updateCounter, hasCounter, setAriaElementInnerHtml, debounce } from './form-utils';
+export { debounce, hasCounter, inputEventListenerCurry, setAriaElementInnerHtml, updateCounter } from './form-utils';
 export { hasDescription } from './hasDescription';
 export { hasHeading } from './hasHeading';
 export { hasLabel } from './hasLabel';
 export { hasMessage } from './hasMessage';
+export { implicitSubmit } from './implicitSubmit';
 export { isParentFieldsetRequired } from './isParentFieldsetRequired';
 export { isRequired } from './isRequired';
 export { isRequiredAndParentNotRequired } from './isRequiredAndParentNotRequired';

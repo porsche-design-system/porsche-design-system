@@ -1,5 +1,5 @@
-import type { TileAlign } from '../';
 import type { BreakpointCustomizable } from '../../types';
+import type { TileAlign } from '../';
 import { throwIfAlignTopAndNotCompact } from './link-button-tile-utils';
 
 describe('throwIfAlignTopAndNotCompact()', () => {
@@ -8,8 +8,8 @@ describe('throwIfAlignTopAndNotCompact()', () => {
     ['top', 'false'],
   ])('should throw error for align: %s and compact: %s', (align, compact) => {
     const divElement = document.createElement('div');
-    expect(() => throwIfAlignTopAndNotCompact(divElement, align, compact)).toThrowErrorMatchingInlineSnapshot(
-      "\"[Porsche Design System] usage of div is not valid. align='top' is only possible with compact='true'.\""
+    expect(() => throwIfAlignTopAndNotCompact(divElement, align, compact)).toThrowError(
+      /\[Porsche Design System\] usage of div is not valid\. align='top' is only possible with compact='true'\./
     );
   });
 

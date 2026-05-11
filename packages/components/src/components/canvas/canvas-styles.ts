@@ -18,7 +18,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { type Theme, getCss, isThemeDark } from '../../utils';
+import { getCss, isThemeDark, type Theme } from '../../utils';
 
 // public css classes
 const cssClassGrid = '-p-canvas-grid';

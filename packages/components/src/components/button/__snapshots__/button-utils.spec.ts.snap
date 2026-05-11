@@ -1,29 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
 {
   "aria-disabled": null,
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
 {
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
 {
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {
-  'aria-label': 'Some more detailed label',
-  'aria-expanded': true,
-  'aria-haspopup': true,
-  'aria-pressed': true
-} 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and aria: { 'aria-label': 'Some more detailed label', 'aria-expanded': true, 'aria-haspopup': true, 'aria-pressed': true } 1`] = `
 {
   "aria-disabled": "true",
   "aria-expanded": "true",
@@ -33,7 +28,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
 {
   "aria-disabled": "true",
 }

@@ -95,7 +95,7 @@ const generateDSRComponents = (): void => {
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
-        .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
+        .replace(/.*= .*getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
         .replace(
           /^/g,
@@ -177,7 +177,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
           .replace(
-            /this\.(?:input|select|textarea)(?!Elements)/g,
+            /this\.(?:input|select|textarea)(?!Elements|edOption|edOptions)/g,
             "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
           ); // fallback for undefined input, select and textarea reference
 
@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -209,14 +209,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(
+            /hasNamedSlot\(host, '(label-after)'\)/g,
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+          )
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
           newFileContent = newFileContent
+            .replace(/(type LabelProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 children, ')
             .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
-            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/}\) => \{/, `$& const { namedSlotChildren } = splitChildren(children);\n`)
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`);
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
@@ -230,7 +238,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onKeyDown|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
@@ -261,15 +269,21 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
-        newFileContent = newFileContent
-          .replace(
+        // radio-group-option uses a label component without allowing slots
+        if (tagName === 'p-radio-group-option') {
+          newFileContent = newFileContent
+            .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
+            .replace(/e\.stopImmediatePropagation\(\);/, '');
+        } else {
+          newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,
             "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
-          )
-          .replace(
-            /(<StateMessage(?!Props))([\s\S]*?\/>)/,
-            "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
           );
+        }
+        newFileContent = newFileContent.replace(
+          /(<StateMessage(?!Props))([\s\S]*?\/>)/,
+          "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
+        );
       } else {
         newFileContent = newFileContent
           .replace(
@@ -289,7 +303,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
+        .replace(/getItemWidths\(this.props, this.props.compact\)/g, '{ minWidth: 100, maxWidth: 100 }')
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
@@ -506,6 +520,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
+          .replace(/getItemMaxWidth\(this\.props,\s*this\.props\.compact\)/, '100')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-segmented-control-item') {
@@ -528,13 +543,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // part prop is not typed in JSX, although it's valid HTML attribute
           .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
           // Remove markup after button
-          .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
+          .replace(/\{\[\n\s*this\.props\.description && \([\s\S]+?]}/, '')
           // Change isOpen, optionMaps, searchString to not be a prop
           .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
           // fix warning about read-only field
           .replace(/value={/, 'defaultValue={')
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
-          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
+          .replace(/\{\.\.\.getFilterInputAriaAttributes([\s\S]*?)\)}/, '')
+          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes([\s\S]*?)\)}/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           .replace(/(required={).*(})/, '$1false$2')
@@ -554,15 +569,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          .replace(
-            /getSelectedOptionValues\(this\.props\.multiSelectOptions\);/,
-            'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
-          )
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(
-            /getSelectedOptionsString\(this\.props\.multiSelectOptions\)/,
-            'getSelectedOptionsString(otherChildren)'
-          )
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
@@ -598,6 +604,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
           .replace(/private searchTimeout: any\.Timeout \| number = null;/, '')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-radio-group') {
+        newFileContent = newFileContent
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
@@ -757,6 +772,8 @@ $&`
       } else if (
         tagName === 'p-input-number' ||
         tagName === 'p-input-date' ||
+        tagName === 'p-input-week' ||
+        tagName === 'p-input-month' ||
         tagName === 'p-input-time' ||
         tagName === 'p-input-search' ||
         tagName === 'p-input-text' ||
@@ -805,6 +822,11 @@ $&`
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
       } else if (tagName === 'p-button-pure') {
         newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
+      } else if (tagName === 'p-tag') {
+        newFileContent = newFileContent.replace(
+          /VARIANT_TO_COLOR_MAP\[this\.props\.variant]/,
+          'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
+        );
       }
 
       return newFileContent;

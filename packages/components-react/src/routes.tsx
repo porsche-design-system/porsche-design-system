@@ -157,6 +157,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.CheckboxExampleControlledPage />,
   },
   {
+    name: 'Checkbox Example Form',
+    path: '/checkbox-example-form',
+    element: <fromExamples.CheckboxExampleFormPage />,
+  },
+  {
     name: 'Flyout Example',
     path: '/flyout-example',
     element: <fromExamples.FlyoutExamplePage />,
@@ -212,6 +217,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputPasswordControlledExamplePage />,
   },
   {
+    name: 'Input Password Example Form',
+    path: '/input-password-example-form',
+    element: <fromExamples.InputPasswordExampleFormPage />,
+  },
+  {
     name: 'Input Number Example',
     path: '/input-number-example',
     element: <fromExamples.InputNumberExamplePage />,
@@ -220,6 +230,11 @@ export const routes: RouteType[] = [
     name: 'Input Number Example Controlled',
     path: '/input-number-example-controlled',
     element: <fromExamples.InputNumberControlledExamplePage />,
+  },
+  {
+    name: 'Input Number Example Form',
+    path: '/input-number-example-form',
+    element: <fromExamples.InputNumberExampleFormPage />,
   },
   {
     name: 'Input Date Example',
@@ -232,6 +247,41 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputDateControlledExamplePage />,
   },
   {
+    name: 'Input Date Example Form',
+    path: '/input-date-example-form',
+    element: <fromExamples.InputDateExampleFormPage />,
+  },
+  {
+    name: 'Input Month Example',
+    path: '/input-month-example',
+    element: <fromExamples.InputMonthExamplePage />,
+  },
+  {
+    name: 'Input Month Example Controlled',
+    path: '/input-month-example-controlled',
+    element: <fromExamples.InputMonthControlledExamplePage />,
+  },
+  {
+    name: 'Input Month Example Form',
+    path: '/input-month-example-form',
+    element: <fromExamples.InputMonthExampleFormPage />,
+  },
+  {
+    name: 'Input Week Example',
+    path: '/input-week-example',
+    element: <fromExamples.InputWeekExamplePage />,
+  },
+  {
+    name: 'Input Week Example Controlled',
+    path: '/input-week-example-controlled',
+    element: <fromExamples.InputWeekControlledExamplePage />,
+  },
+  {
+    name: 'Input Week Example Form',
+    path: '/input-week-example-form',
+    element: <fromExamples.InputWeekExampleFormPage />,
+  },
+  {
     name: 'Input Time Example',
     path: '/input-time-example',
     element: <fromExamples.InputTimeExamplePage />,
@@ -240,6 +290,11 @@ export const routes: RouteType[] = [
     name: 'Input Time Example Controlled',
     path: '/input-time-example-controlled',
     element: <fromExamples.InputTimeControlledExamplePage />,
+  },
+  {
+    name: 'Input Time Example Form',
+    path: '/input-time-example-form',
+    element: <fromExamples.InputTimeExampleFormPage />,
   },
   {
     name: 'Input Text Example',
@@ -252,6 +307,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputTextControlledExamplePage />,
   },
   {
+    name: 'Input Text Example Form',
+    path: '/input-text-example-form',
+    element: <fromExamples.InputTextExampleFormPage />,
+  },
+  {
     name: 'Input Email Example',
     path: '/input-email-example',
     element: <fromExamples.InputEmailExamplePage />,
@@ -260,6 +320,11 @@ export const routes: RouteType[] = [
     name: 'Input Email Example Controlled',
     path: '/input-email-example-controlled',
     element: <fromExamples.InputEmailControlledExamplePage />,
+  },
+  {
+    name: 'Input Email Example Form',
+    path: '/input-email-example-form',
+    element: <fromExamples.InputEmailExampleFormPage />,
   },
   {
     name: 'Input Tel Example',
@@ -272,6 +337,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputTelControlledExamplePage />,
   },
   {
+    name: 'Input Tel Example Form',
+    path: '/input-tel-example-form',
+    element: <fromExamples.InputTelExampleFormPage />,
+  },
+  {
     name: 'Input Url Example',
     path: '/input-url-example',
     element: <fromExamples.InputUrlExamplePage />,
@@ -282,6 +352,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputUrlControlledExamplePage />,
   },
   {
+    name: 'Input Url Example Form',
+    path: '/input-url-example-form',
+    element: <fromExamples.InputUrlExampleFormPage />,
+  },
+  {
     name: 'Input Search Example',
     path: '/input-search-example',
     element: <fromExamples.InputSearchExamplePage />,
@@ -290,6 +365,11 @@ export const routes: RouteType[] = [
     name: 'Input Search Example Controlled',
     path: '/input-search-example-controlled',
     element: <fromExamples.InputSearchControlledExamplePage />,
+  },
+  {
+    name: 'Input Search Example Form',
+    path: '/input-search-example-form',
+    element: <fromExamples.InputSearchExampleFormPage />,
   },
   {
     name: 'Link Tile Example Hyphens',
@@ -327,6 +407,26 @@ export const routes: RouteType[] = [
     element: <fromExamples.MultiSelectExampleDynamicPage />,
   },
   {
+    name: 'Multi-Select Example Dynamic Optgroup',
+    path: '/multi-select-example-dynamic-optgroup',
+    element: <fromExamples.MultiSelectExampleDynamicOptgroupPage />,
+  },
+  {
+    name: 'Multi-Select Example Form',
+    path: '/multi-select-example-form',
+    element: <fromExamples.MultiSelectExampleFormPage />,
+  },
+  {
+    name: 'Multi Select Example Async',
+    path: '/multi-select-example-async-filter',
+    element: <fromExamples.MultiSelectExampleAsyncFilter />,
+  },
+  {
+    name: 'Multi Select Selected Slot',
+    path: '/multi-select-example-selected-slot',
+    element: <fromExamples.MultiSelectExampleSelectedSlot />,
+  },
+  {
     name: 'Pin Code Example',
     path: '/pin-code-example',
     element: <fromExamples.PinCodeExamplePage />,
@@ -335,6 +435,11 @@ export const routes: RouteType[] = [
     name: 'Pin Code Example Controlled',
     path: '/pin-code-example-controlled',
     element: <fromExamples.PinCodeExampleControlledPage />,
+  },
+  {
+    name: 'Pin Code Example Form',
+    path: '/pin-code-example-form',
+    element: <fromExamples.PinCodeExampleFormPage />,
   },
   {
     name: 'Scroller Example',
@@ -352,6 +457,26 @@ export const routes: RouteType[] = [
     element: <fromExamples.SegmentedControlExampleControlledPage />,
   },
   {
+    name: 'Segmented Control Example Form',
+    path: '/segmented-control-example-form',
+    element: <fromExamples.SegmentedControlExampleFormPage />,
+  },
+  {
+    name: 'Radio Group Example',
+    path: '/radio-group-example',
+    element: <fromExamples.RadioGroupExamplePage />,
+  },
+  {
+    name: 'Radio Group Example Controlled',
+    path: '/radio-group-example-controlled',
+    element: <fromExamples.RadioGroupExampleControlledPage />,
+  },
+  {
+    name: 'Radio Group Example Form',
+    path: '/radio-group-example-form',
+    element: <fromExamples.RadioGroupExampleFormPage />,
+  },
+  {
     name: 'Select Example',
     path: '/select-example',
     element: <fromExamples.SelectExamplePage />,
@@ -367,9 +492,29 @@ export const routes: RouteType[] = [
     element: <fromExamples.SelectExampleDynamicPage />,
   },
   {
+    name: 'Select Example Dynamic Optgroup',
+    path: '/select-example-dynamic-optgroup',
+    element: <fromExamples.SelectExampleDynamicOptgroupPage />,
+  },
+  {
+    name: 'Select Example Form',
+    path: '/select-example-form',
+    element: <fromExamples.SelectExampleFormPage />,
+  },
+  {
     name: 'Select Example Required',
     path: '/select-example-required',
     element: <fromExamples.SelectExampleRequiredPage />,
+  },
+  {
+    name: 'Select Example Async',
+    path: '/select-example-async-filter',
+    element: <fromExamples.SelectExampleAsyncFilter />,
+  },
+  {
+    name: 'Select Example Selected Slot',
+    path: '/select-example-async-selected-slot',
+    element: <fromExamples.SelectExampleSelectedSlot />,
   },
   {
     name: 'Stepper Horizontal Example',
@@ -410,6 +555,11 @@ export const routes: RouteType[] = [
     name: 'Textarea Example Controlled',
     path: '/textarea-example-controlled',
     element: <fromExamples.TextareaExampleControlledPage />,
+  },
+  {
+    name: 'Textarea Example Form',
+    path: '/textarea-example-form',
+    element: <fromExamples.TextareaExampleFormPage />,
   },
   {
     name: 'Text Field Wrapper Example IMask',

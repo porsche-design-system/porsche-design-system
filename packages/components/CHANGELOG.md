@@ -14,6 +14,229 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.35.0] - 2026-05-06
+
+## [3.35.0-rc.0] - 2026-05-05
+
+### Added
+
+- `AI-Tag`: New component to mark AI-generated/AI-modified content
+  ([#4236](https://github.com/porsche-design-system/porsche-design-system/pull/4236))
+
+### Fixed
+
+- `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
+  ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
+
+## [3.34.0] - 2026-04-09
+
+## [3.34.0-rc.0] - 2026-04-01
+
+### Added
+
+- `Segmented Control`: `noWrap` property to render items inline with optional scroller
+  ([#4244](https://github.com/porsche-design-system/porsche-design-system/pull/4244))
+
+### Fixed
+
+- `Accordion`: missing `delegatesFocus`
+  ([#4238](https://github.com/porsche-design-system/porsche-design-system/pull/4238))
+
+## [3.33.0] - 2026-03-09
+
+## [3.33.0-rc.0] - 2026-03-04
+
+### Added
+
+- `Tag`: new `variant` property to define background colors which complies now with PDS `v4`
+  ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+- `Checkbox`: add warning for Firefox form restore bug
+
+### Changed
+
+- `Tag`: deprecated `color` property, use `variant` property instead to define background colors which complies now with
+  PDS `v4` ([#4227](https://github.com/porsche-design-system/porsche-design-system/pull/4227))
+
+## [3.32.1] - 2026-02-24
+
+## [3.32.1-rc.0] - 2026-02-20
+
+### Fixed
+
+- `Input Email`, `Input Password`, `Input Tel`, `Pin Code`: optimize input direction and behavior in RTL mode
+  ([#4209](https://github.com/porsche-design-system/porsche-design-system/pull/4209))
+
+## [3.32.0] - 2026-02-04
+
+## [3.32.0-rc.2] - 2026-02-03
+
+### Added
+
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+
+## [3.32.0-rc.1] - 2026-01-12
+
+### Added
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
+## [3.32.0-rc.0] - 2025-12-16
+
+### Added
+
+- `Multi Select, Select`:
+  - `selected` slot for custom selection rendering and enabling complex options
+  - `options-status` slot for loading, error and no results states when using custom filtering
+    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
+- `Multi Select, Select`:
+  - `filter` slot to allow custom asynchronous filtering
+  - `toggle` event when opening/closing the dropdown
+    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
+- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
+- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
+  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+### Fixed
+
+- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
+- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
+  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
+  ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+- `Multi Select`: trim whitespace of selected options text
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.31.0] - 2025-11-13
+
+## [3.31.0-rc.0] - 2025-11-11
+
+### Added
+
+- `hyphens` CSS property can be changed by CSS variable `--p-hyphens` in all components containing text content
+  ([#4093](https://github.com/porsche-design-system/porsche-design-system/pull/4093))
+
+### Fixed
+
+- `Segmented Control`: restore proportional shrinking of items when container is narrow
+  ([#4094](https://github.com/porsche-design-system/porsche-design-system/pull/4094))
+
+## [3.30.0] - 2025-10-31
+
+## [3.30.0-rc.3] - 2025-10-30
+
+### Added
+
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`: implicit submit on `Enter` key press when used inside a form
+  ([#4084](https://github.com/porsche-design-system/porsche-design-system/pull/4084))
+
+## [3.30.0-rc.2] - 2025-10-24
+
+### Added
+
+- `Flag`: added `AD, GI, LI, MC, ME, TW` flags & `XX` for unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+- `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
+- Vue: export `prefixInjectionKey` ([#4079](https://github.com/porsche-design-system/porsche-design-system/pull/4079))
+
+### Changed
+
+- `Flag`: international flag replaces `DE` flag as fallback for an unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+
+### Fixed
+
+- `Radio Group`: fixed `compact` mode styles
+  ([#4073](https://github.com/porsche-design-system/porsche-design-system/pull/4073))
+
+## [3.30.0-rc.1] - 2025-10-21
+
+### Added
+
+- Angular: form components implement ControlValueAccessor interface to support Angular forms out of the box
+  ([#4048](https://github.com/porsche-design-system/porsche-design-system/pull/4048))
+- Vue: form components support `v-model` with argument `value|checked`. Can be used like this:
+  `<PInputText v-model:value="foo" />`
+  ([#4066](https://github.com/porsche-design-system/porsche-design-system/pull/4066))
+- `Pin Code`, `Segmented Control`:
+  - `update` event is deprecated. Use `change` event instead.
+  - `blur` event ([#4050](https://github.com/porsche-design-system/porsche-design-system/pull/4050))
+- `Select`, `Multi Select`:
+  - `update` event is deprecated. Use `change` event instead.
+  - `blur` event ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
+- `Link Tile`, `Button Tile`: added `footer` slot
+  ([#4025](https://github.com/porsche-design-system/porsche-design-system/pull/4025))
+- `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
+- `Radio Group`: `blur` event ([#4057](https://github.com/porsche-design-system/porsche-design-system/pull/4057))
+- `Flyout`: Prop `backdrop` ([#4058](https://github.com/porsche-design-system/porsche-design-system/pull/4058))
+
+### Changed
+
+- `Radio Button Wrapper`: component is deprecated. Use `Radio Group` instead.
+  ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
+
+### Fixed
+
+- `Textarea`, `Input Password`: `input` event `target` doesn't have updated `value`
+  ([#4048](https://github.com/porsche-design-system/porsche-design-system/pull/4048))
+- `Select Wrapper`: disabled options in native dropdown not displayed correctly
+  ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
+- `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
+  ([#4037](https://github.com/porsche-design-system/porsche-design-system/pull/4037))
+- `Button`, `Link`: rendering of `variant="ghost"` in high contrast mode (HCM)
+  ([#4032](https://github.com/porsche-design-system/porsche-design-system/pull/4032))
+
+## [3.30.0-rc.0] - 2025-09-10
+
+### Added
+
+- `Icon`: `ai-3d-object`, `ai-code`, `ai-edit`, `ai-image`, `ai-scale`, `ai-sound`, `ai-text`, `ai-video`
+  ([#4022](https://github.com/porsche-design-system/porsche-design-system/pull/4022))
+- `Model Signature`: `gt3`, `gt3-rs` and `gts`
+  ([#4012](https://github.com/porsche-design-system/porsche-design-system/pull/4021))
+- `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
+  `aria` prop to provide additional context for screen readers.
+  ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))
+- `Pin Code`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4001](https://github.com/porsche-design-system/porsche-design-system/pull/4001))
+- `Checkbox`: `update` event is deprecated. Use `change` event instead.
+  ([#4010](https://github.com/porsche-design-system/porsche-design-system/pull/4010))
+
+### Fixed
+
+- `Link Tile`, `Button Tile`, `Link Tile Model Signature`: fix overflowing content
+  ([#4018](https://github.com/porsche-design-system/porsche-design-system/pull/4018))
+- `Select Wrapper`: fix axe-core violation when both `filter` and `description` prop are used
+  ([#4011](https://github.com/porsche-design-system/porsche-design-system/pull/4011))
+
 ## [3.29.0] - 2025-08-20
 
 ## [3.29.0-rc.5] - 2025-08-19

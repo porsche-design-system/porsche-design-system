@@ -1,5 +1,5 @@
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import {
   addParentAndSetRequiredProps,
   componentFactory,
@@ -24,7 +24,7 @@ it.each<TagName>(tagNamesWithJss)(
     component.render();
     expect(spy).toHaveBeenCalledTimes(1);
 
-    const cssObject = getComponentCssObject(spy);
+    const cssObject = getComponentCssObject(spy) as { [key: string]: { display?: string } };
     if (cssObject[':host'].display) {
       expect(cssObject[':host'].display).not.toMatch(/!important/);
     } else {

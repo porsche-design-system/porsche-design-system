@@ -1,9 +1,9 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {Notification} from "@/components/common/Notification";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/common/Notification';
 
 # Theme
 
-<TableOfContents headings={['Usage','Example']} />
+<TableOfContents headings={['Usage', 'Example']} />
 
 We provide a custom theme for the [AG Grid library](https://ag-grid.com) for cases where a more sophisticated table is
 required beyond the capabilities of our [p-table](/components/table/examples/) component. This theme is aligned with the
@@ -31,14 +31,14 @@ You can apply the theme using one of the following methods:
 
 1. Global Grid Options (Applies to all grid instances)
 
-Use [global grid options](https://ag-grid.com/javascript-data-grid/grid-interface/#global-grid-options) to set the
-theme globally:
+Use [global grid options](https://ag-grid.com/javascript-data-grid/grid-interface/#global-grid-options) to set the theme
+globally:
 
 ```js
 import { provideGlobalGridOptions } from 'ag-grid-community';
 
 provideGlobalGridOptions({ theme: pdsTheme });
-   ```
+```
 
 2. Individual Grid Options (Overrides global options):
 
@@ -46,7 +46,7 @@ Set the theme for a specific grid instance:
 
 ```js
 const gridOptions = { theme: pdsTheme };
-   ```
+```
 
 3. Component Prop Assignment
 
@@ -54,7 +54,7 @@ Pass the theme directly as a prop:
 
 ```tsx
 <AgGridReact theme={pdsTheme} />
-   ```
+```
 
 #### 3. Change the Theme Mode
 
@@ -72,4 +72,6 @@ setting the `data-ag-theme-mode` attribute on any parent element of the grid, su
 
 ## Example
 
-<Notification heading="Example Coming Soon">This example is currently in development and will be added soon.</Notification>
+<Notification heading="Example Coming Soon">
+  This example is currently in development and will be added soon.
+</Notification>

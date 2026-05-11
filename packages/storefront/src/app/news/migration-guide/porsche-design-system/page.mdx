@@ -1,14 +1,23 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Migration Guide - Porsche Design System',
-  description: 'Learn how to migrate from Porsche Design System v2 to v3.'
-}
+  description: 'Learn how to migrate from Porsche Design System v2 to v3.',
+};
 
 # Migration Guide
 
-<TableOfContents headings={['Migrate from Porsche Design System v2 to v3','Notable New Features','👹 Breaking Changes','🤡 Component deprecations','🤖 Property deprecations','👾 Property value deprecations']} />
+<TableOfContents
+  headings={[
+    'Migrate from Porsche Design System v2 to v3',
+    'Notable New Features',
+    '👹 Breaking Changes',
+    '🤡 Component deprecations',
+    '🤖 Property deprecations',
+    '👾 Property value deprecations',
+  ]}
+/>
 
 ## Migrate from Porsche Design System v2 to v3
 
@@ -22,7 +31,8 @@ which shows all component information including deprecated components/props/valu
 <Notification heading="Deprecation hint" headingTag="h3" state="error">
   Porsche Design System **v2** support will end on **June 30th, 2023** (until EOL date only critical bug fixing takes place).
 
-  **Please make sure that upgrading to Porsche Design System v3 is feasible before the EOL date.**
+**Please make sure that upgrading to Porsche Design System v3 is feasible before the EOL date.**
+
 </Notification>
 
 ## Notable New Features
@@ -39,7 +49,7 @@ which shows all component information including deprecated components/props/valu
 ### Banner:
 
 - It's a controlled component now and its visibility has to be controlled via the `open` prop (similar like
-**[Modal](/components/modal)**).
+  **[Modal](/components/modal)**).
 
 ```diff
 - <p-banner></p-banner>
@@ -62,7 +72,7 @@ which shows all component information including deprecated components/props/valu
 ```
 
 - Default value of prop `icon` has changed from `arrow-head-right` to `none`. Therefore, the `icon` property **must** be
-set if the component has the `hide-label` property.
+  set if the component has the `hide-label` property.
 
 ```diff
 - <p-button hide-label="true">Some label</p-button>
@@ -93,8 +103,8 @@ set if the component has the `hide-label` property.
 ### Icon:
 
 - Value `inherit` for prop `color` works slightly different to the previous major version. A CSS filter is required to
-apply custom coloring to take advantage of using an SVG embedded in an `<img/>` for better SSR support and loading
-performance in general.
+  apply custom coloring to take advantage of using an SVG embedded in an `<img/>` for better SSR support and loading
+  performance in general.
 
 ```diff
 - <p-icon color="inherit" style="color: white;"></p-icon>
@@ -102,7 +112,7 @@ performance in general.
 ```
 
 - Camel case syntax for `name` prop isn't supported, please use param case syntax instead (TypeScript typings have been
-updated too).
+  updated too).
 
 ```diff
 - <p-icon name="arrowRight"></p-icon>
@@ -112,7 +122,7 @@ updated too).
 ### Link:
 
 - Default value of prop `icon` has changed from `arrow-head-right` to `none`. Therefore, the `icon` property **must** be
-set if the component has the `hide-label` property.
+  set if the component has the `hide-label` property.
 
 ```diff
 - <p-link href="#" hide-label="true">Some label</p-link>
@@ -174,13 +184,13 @@ major version.
 ### Content Wrapper:
 
 - Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
-instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
-layout needs for a harmonic appearance across all digital Porsche touch-points.
+  instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
+  layout needs for a harmonic appearance across all digital Porsche touch-points.
 
 ### Fieldset Wrapper:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-**[Fieldset](/components/fieldset/)** component instead.
+  **[Fieldset](/components/fieldset/)** component instead.
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
@@ -195,19 +205,19 @@ layout needs for a harmonic appearance across all digital Porsche touch-points.
 ### Flex:
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
-[CSS Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox) instead for better performance and more
-standardized layout technique.
+  [CSS Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox) instead for better performance and more
+  standardized layout technique.
 
 ### Grid:
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
-[CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-**[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
+  [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
+  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
 
 ### Headline:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-**[Heading](/components/heading/)** component instead.
+  **[Heading](/components/heading/)** component instead.
 
 ```diff
 - <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
@@ -217,7 +227,7 @@ standardized layout technique.
 ### Link Social:
 
 - Component is deprecated and will be removed with the next major release. Please use the **[Link](/components/link/)**
-component instead.
+  component instead.
 
 ```diff
 - <p-link-social href="#" icon="logo-facebook" target="_blank" rel="nofollow noopener"></p-link-social>
@@ -227,7 +237,7 @@ component instead.
 ### Marque:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-**[Wordmark](/components/wordmark/)** component instead.
+  **[Wordmark](/components/wordmark/)** component instead.
 
 ```diff
 - <p-marque></p-marque>
@@ -252,7 +262,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 ### Banner:
 
 - Prop `width` is deprecated, instead the component is aligned with the **[Porsche Grid](/styles/grid/)** "extended" by
-default.
+  default.
 
 ```diff
 - <p-banner width="fluid"></p-banner>
@@ -290,7 +300,7 @@ default.
 ### Carousel:
 
 - Prop `wrap-content` is deprecated. The component is always aligned with the **[Porsche Grid](/styles/grid/)** now,
-adjustable by prop `width`.
+  adjustable by prop `width`.
 
 ```diff
 - <p-carousel wrap-content="true"></p-carousel>
@@ -333,7 +343,7 @@ adjustable by prop `width`.
 ### Grid (deprecated):
 
 - The `gutter` property is deprecated and has no effect anymore. Instead, a fluid gutter depending on the viewport width
-is used.
+  is used.
 
 ```diff
 - <p-grid gutter="16">Some content</p-grid>
@@ -575,7 +585,7 @@ p-banner>
 ### Divider:
 
 - Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated,
-use new values `contrast-low | contrast-medium | contrast-high`.
+  use new values `contrast-low | contrast-medium | contrast-high`.
 
 ```diff
 - <p-divider color="neutral-contrast-low"></p-divider>
@@ -591,9 +601,9 @@ use new values `contrast-low | contrast-medium | contrast-high`.
 ### Icon:
 
 - Prop values
-`brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-`color` prop are deprecated, use new values
-`primary | contrast-low | contrast-medium | contrast-high | notification-info`.
+  `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+  `color` prop are deprecated, use new values
+  `primary | contrast-low | contrast-medium | contrast-high | notification-info`.
 
 ```diff
 - <p-icon color="brand"></p-icon>
@@ -654,9 +664,9 @@ use new values `contrast-low | contrast-medium | contrast-high`.
 ### Tag:
 
 - Prop value
-`notification-neutral | background-error | background-success | background-warning | neutral-contrast-high | background-default`
-of `color` prop is deprecated, use new value
-`notification-info-soft | notification-error-soft | notification-success-soft | notification-warning-soft | primary | background-base`.
+  `notification-neutral | background-error | background-success | background-warning | neutral-contrast-high | background-default`
+  of `color` prop is deprecated, use new value
+  `notification-info-soft | notification-error-soft | notification-success-soft | notification-warning-soft | primary | background-base`.
 
 ```diff
 - <p-tag color="notification-neutral">Color label</p-tag>
@@ -700,9 +710,9 @@ of `color` prop is deprecated, use new value
 ```
 
 - Prop value
-`brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-`color` prop is deprecated, use new value
-`primary | contrast-low | contrast-medium | contrast-high | notification-info`.
+  `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+  `color` prop is deprecated, use new value
+  `primary | contrast-low | contrast-medium | contrast-high | notification-info`.
 
 ```diff
 - <p-text color="brand">Some text</p-text>

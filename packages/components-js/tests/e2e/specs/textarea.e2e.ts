@@ -1,19 +1,21 @@
 import { expect, type Page, test } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
   clickElementPosition,
+  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   hoverElementPosition,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-textarea');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -372,6 +374,36 @@ test.describe('form', () => {
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
     await expect(textarea).toHaveJSProperty('disabled', false);
+  });
+
+  test('should not set validity when disabled and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initTextarea(page, {
+      isWithinForm: true,
+      props: {
+        name: 'some-name',
+        required: true,
+        disabled: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
+  });
+
+  test('should not set validity when readonly and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initTextarea(page, {
+      isWithinForm: true,
+      props: {
+        name: 'some-name',
+        required: true,
+        readOnly: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

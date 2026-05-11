@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
+exports[`getComponentCss() > should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
@@ -72,7 +72,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
+exports[`getComponentCss() > should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
@@ -144,7 +144,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
+exports[`getComponentCss() > should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
@@ -216,7 +216,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
+exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
@@ -288,7 +288,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
+exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
@@ -360,7 +360,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
+exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
@@ -375,7 +375,7 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
+exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
 ":host {
   display: table-cell;
   padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;

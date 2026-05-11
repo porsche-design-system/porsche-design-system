@@ -1,9 +1,10 @@
+import { vi } from 'vitest';
 import { warnIfCaptionIsMissing } from './table-utils';
 
 describe('warnIfCaptionIsMissing()', () => {
-  let spy: jest.SpyInstance;
+  let spy: vi.SpyInstance;
   beforeEach(() => {
-    spy = jest.spyOn(global.console, 'warn').mockImplementation();
+    spy = vi.spyOn(global.console, 'warn').mockImplementation(() => {});
   });
   afterEach(() => {
     spy.mockRestore();

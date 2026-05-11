@@ -1,3 +1,5 @@
+import { MockInstance } from 'vitest';
+import * as vueUtils from '../../../src/utils/convertToVue';
 import {
   cleanVueBooleanAndUndefinedValues,
   convertToVue,
@@ -7,7 +9,6 @@ import {
   transformVueAttributesWithObjectValues,
   unbindVueNativeAttributes,
 } from '../../../src/utils/convertToVue';
-import * as vueUtils from '../../../src/utils/convertToVue';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
@@ -117,9 +118,9 @@ describe('unbindNativeAttributes()', () => {
 
 // TODO: Make this work again
 describe.skip('convertToVue()', () => {
-  afterEach(() => jest.clearAllMocks());
+  afterEach(() => vi.clearAllMocks());
 
-  let previousSpy: jest.SpyInstance;
+  let previousSpy: MockInstance;
   const transformFunctions: (keyof typeof vueUtils)[] = [
     'transformEventsToVueSyntax',
     'transformVueAttributesWithObjectValues',
@@ -133,11 +134,11 @@ describe.skip('convertToVue()', () => {
   ];
 
   it.each(transformFunctions)('should call %s()', (fn) => {
-    const spy = jest.spyOn(vueUtils, fn as any);
+    const spy = vi.spyOn(vueUtils, fn as any);
     const i = transformFunctions.indexOf(fn);
 
     if (i) {
-      previousSpy = jest.spyOn(vueUtils, transformFunctions[i - 1] as any);
+      previousSpy = vi.spyOn(vueUtils, transformFunctions[i - 1] as any);
     }
 
     convertToVue(markup);

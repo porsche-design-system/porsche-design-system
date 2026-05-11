@@ -36,6 +36,10 @@ const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
@@ -139,6 +143,7 @@ export const getComponentCss = (
       {
         gridArea: '1/2',
       },
+      null,
       {
         paddingTop: '2px', // compensate vertical alignment
         paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input

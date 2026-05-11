@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PorscheDesignSystemProvider should render components wrapped with nested provider and prefix 1`] = `
+exports[`PorscheDesignSystemProvider > should render components wrapped with nested provider and prefix 1`] = `
 <div>
   <my-prefix-p-button>
     Some Button
@@ -14,7 +14,7 @@ exports[`PorscheDesignSystemProvider should render components wrapped with neste
 </div>
 `;
 
-exports[`PorscheDesignSystemProvider should render prefixed components 1`] = `
+exports[`PorscheDesignSystemProvider > should render prefixed components 1`] = `
 <div>
   <my-prefix-p-button>
     Some Button
@@ -22,7 +22,7 @@ exports[`PorscheDesignSystemProvider should render prefixed components 1`] = `
 </div>
 `;
 
-exports[`PorscheDesignSystemProvider should render unprefixed components 1`] = `
+exports[`PorscheDesignSystemProvider > should render unprefixed components 1`] = `
 <div>
   <p-button>
     Some Button

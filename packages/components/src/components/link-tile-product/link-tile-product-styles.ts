@@ -1,16 +1,3 @@
-import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusLarge,
   borderRadiusMedium,
@@ -23,9 +10,22 @@ import {
   textXSmallStyle,
   textXXSmallStyle,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
-import type { JssStyle } from 'jss';
 
 const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
@@ -45,6 +45,10 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
   };
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,

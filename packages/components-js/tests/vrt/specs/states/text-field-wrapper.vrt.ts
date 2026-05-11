@@ -154,7 +154,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await page.mouse.click(0, 0);
 
   await forceHoverState(page, '.hover p-text-field-wrapper:not(.force-label) input');
-  await forceHoverState(page, '.hover p-text-field-wrapper.force-label >>> label');
+  await forceHoverState(page, '.hover p-text-field-wrapper.force-label >>> .label-wrapper');
   await forceHoverState(page, '.hover p-text-field-wrapper a');
   await forceHoverState(page, '.hover p-text-field-wrapper >>> p-button-pure >>> button');
   await forceFocusState(page, '.focus p-text-field-wrapper input');
@@ -162,7 +162,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceFocusVisibleState(page, '.focus p-text-field-wrapper >>> p-button-pure >>> button');
   await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper:not(.force-label) input');
   await forceFocusState(page, '.focus-hover p-text-field-wrapper.force-label input');
-  await forceHoverState(page, '.focus-hover p-text-field-wrapper.force-label >>> label');
+  await forceHoverState(page, '.focus-hover p-text-field-wrapper.force-label >>> .label-wrapper');
   await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper a');
   await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper >>> p-button-pure >>> button');
 };

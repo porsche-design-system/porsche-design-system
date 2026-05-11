@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: dark 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: dark 1`] = `
 ".no-results {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
@@ -9,7 +9,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #88898C;
   cursor: pointer;
   text-align: start;
@@ -46,7 +46,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
 }"
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: light 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: light 1`] = `
 ".no-results {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
@@ -55,7 +55,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #6B6D70;
   cursor: pointer;
   text-align: start;
@@ -92,7 +92,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
 }"
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-option, cssVarScaling: var(--p-internal-select-scaling, 1) and theme: dark 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option, cssVarScaling: var(--p-internal-select-scaling, 1) and theme: dark 1`] = `
 ".no-results {
   display: flex;
   gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -101,7 +101,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #88898C;
   cursor: pointer;
   text-align: start;
@@ -138,7 +138,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
 }"
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-option, cssVarScaling: var(--p-internal-select-scaling, 1) and theme: light 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option, cssVarScaling: var(--p-internal-select-scaling, 1) and theme: light 1`] = `
 ".no-results {
   display: flex;
   gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -147,7 +147,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #6B6D70;
   cursor: pointer;
   text-align: start;
@@ -184,7 +184,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
 }"
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-wrapper, cssVarScaling: 1 and theme: dark 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-wrapper, cssVarScaling: 1 and theme: dark 1`] = `
 ".no-results {
   display: flex;
   gap: max(4px, 1 * 12px);
@@ -193,7 +193,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #88898C;
   cursor: pointer;
   text-align: start;
@@ -230,7 +230,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
 }"
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-wrapper, cssVarScaling: 1 and theme: light 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-wrapper, cssVarScaling: 1 and theme: light 1`] = `
 ".no-results {
   display: flex;
   gap: max(4px, 1 * 12px);
@@ -239,7 +239,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #6B6D70;
   cursor: pointer;
   text-align: start;

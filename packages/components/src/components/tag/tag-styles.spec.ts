@@ -1,17 +1,18 @@
-import * as colorsUtils from '../../styles/colors';
-import * as tagSharedUtils from './tag-shared-utils';
-import * as tagUtils from './tag-utils';
-import { getColors, getComponentCss } from './tag-styles';
-import { getThemedColors } from '../../styles';
-import type { Theme } from '../../types';
-import type { TagColor, TagColorDeprecated } from './tag-utils';
+import { vi } from 'vitest';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getThemedColors } from '../../styles';
+import * as colorsUtils from '../../styles/colors';
+import type { Theme } from '../../types';
+import * as tagSharedUtils from './tag-shared-utils';
+import { getColors, getComponentCss } from './tag-styles';
+import type { TagColor, TagColorDeprecated } from './tag-utils';
+import * as tagUtils from './tag-utils';
 
 describe('getColors()', () => {
   it('should for tagColor: background-surface not call getInvertedThemedColorsSpy(), but call getThemedBackgroundColor() and getThemedBackgroundHoverColor() with correct parameters', () => {
-    const getInvertedThemedColorsSpy = jest.spyOn(colorsUtils, 'getInvertedThemedColors');
-    const getThemedBackgroundColorSpy = jest.spyOn(tagSharedUtils, 'getThemedBackgroundColor');
-    const getThemedBackgroundHoverColorSpy = jest.spyOn(tagUtils, 'getThemedBackgroundHoverColor');
+    const getInvertedThemedColorsSpy = vi.spyOn(colorsUtils, 'getInvertedThemedColors');
+    const getThemedBackgroundColorSpy = vi.spyOn(tagSharedUtils, 'getThemedBackgroundColor');
+    const getThemedBackgroundHoverColorSpy = vi.spyOn(tagUtils, 'getThemedBackgroundHoverColor');
 
     const themedColors = getThemedColors('light');
     getColors('background-surface', 'light');
@@ -22,9 +23,9 @@ describe('getColors()', () => {
   });
 
   it('should for tagColor: primary call getInvertedThemedColorsSpy(), getThemedBackgroundColor() and getThemedBackgroundHoverColor() with correct parameters', () => {
-    const getInvertedThemedColorsSpy = jest.spyOn(colorsUtils, 'getInvertedThemedColors');
-    const getThemedBackgroundColorSpy = jest.spyOn(tagSharedUtils, 'getThemedBackgroundColor');
-    const getThemedBackgroundHoverColorSpy = jest.spyOn(tagUtils, 'getThemedBackgroundHoverColor');
+    const getInvertedThemedColorsSpy = vi.spyOn(colorsUtils, 'getInvertedThemedColors');
+    const getThemedBackgroundColorSpy = vi.spyOn(tagSharedUtils, 'getThemedBackgroundColor');
+    const getThemedBackgroundHoverColorSpy = vi.spyOn(tagUtils, 'getThemedBackgroundHoverColor');
 
     const themedColors = getThemedColors('light');
     getColors('primary', 'light');

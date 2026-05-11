@@ -1,11 +1,11 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
 const initComponent = (): MultiSelect => {
@@ -23,7 +23,7 @@ const initComponent = (): MultiSelect => {
 describe('connectedCallback', () => {
   it('should add event listener', () => {
     const component = initComponent();
-    const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
+    const addEventListenerSpy = vi.spyOn(document, 'addEventListener');
     component.connectedCallback();
     expect(addEventListenerSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
   });
@@ -32,8 +32,8 @@ describe('connectedCallback', () => {
 describe('componentWillLoad', () => {
   it('should call setSelectedOptions() and setFormValue() with correct parameters', () => {
     const component = initComponent();
-    const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setSelectedOptionsSpy = vi.spyOn(multiSelectUtils, 'selectOptionsByValue');
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     const value = 'a';
     component.name = 'some-name';
     component.value = [value];
@@ -41,7 +41,7 @@ describe('componentWillLoad', () => {
     formData.append(component.name, value);
 
     component.componentWillLoad();
-    expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], component.value);
+    expect(setSelectedOptionsSpy).toHaveBeenCalledWith(component.host, [], component.value);
     expect(setFormValueSpy).toHaveBeenCalledWith(formData);
   });
 });
@@ -50,42 +50,45 @@ describe('componentDidLoad', () => {
   it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
     const component = initComponent();
     const slot = document.createElement('slot');
-    const slotSpy = jest.spyOn(slot, 'addEventListener');
-    const getShadowRootHTMLElementSpy = jest
+    const slotSpy = vi.spyOn(slot, 'addEventListener');
+    const getShadowRootHTMLElementSpy = vi
       .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
       .mockReturnValueOnce(slot);
     component.componentDidLoad();
-    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
     expect(slotSpy).toHaveBeenCalledTimes(1);
-  });
-  it('should set inputSearchInputElement and set ariaControlsElements on it', () => {
-    const component = initComponent();
-    const slot = document.createElement('slot');
-    jest.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValueOnce(slot);
-    const listbox = document.createElement('div');
-    component['listboxElement'] = listbox;
-    component.componentDidLoad();
-
-    expect(component['inputSearchInputElement']).toBe(
-      component['inputSearchElement'].shadowRoot.querySelector('input')
-    );
-    // @ts-expect-error typings missing
-    expect(component['inputSearchInputElement'].ariaControlsElements).toEqual([listbox]);
   });
 });
 
 describe('disconnectedCallback', () => {
   it('should remove event listener', () => {
     const component = initComponent();
-    const spy = jest.spyOn(document, 'removeEventListener');
+    const spy = vi.spyOn(document, 'removeEventListener');
     component.disconnectedCallback();
     expect(spy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
   });
 });
 
+describe('optgroupUpdateHandler', () => {
+  it('should call stopPropagation(), updateOptions() and syncMultiSelectChildrenProps() with correct parameters', () => {
+    const component = initComponent();
+    const syncSpy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
+    const event = new Event('internalOptgroupUpdate', { bubbles: true });
+    const stopPropagationSpy = vi.spyOn(event, 'stopPropagation');
+
+    component.optgroupUpdateHandler(event);
+
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(syncSpy).toHaveBeenCalledWith(
+      [...component['multiSelectOptions'], ...component['multiSelectOptgroups']],
+      component.theme
+    );
+  });
+});
+
 describe('render', () => {
   it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
-    const spy = jest.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
+    const spy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
     const component = initComponent();
     component.render();
     expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
@@ -93,43 +96,55 @@ describe('render', () => {
 });
 
 describe('formResetCallback', () => {
-  const component = initComponent();
-  const defaultValue = ['default-value'];
-  component['defaultValue'] = defaultValue;
-  component.value = ['test'];
-  component.name = 'name';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-  component.formResetCallback();
-  const formData = new FormData();
-  defaultValue.forEach((val) => formData.append(component.name, val));
-  expect(setFormValueSpy).toHaveBeenCalledWith(formData);
-  expect(component.value).toBe(defaultValue);
+  it('should reset value to defaultValue', () => {
+    const component = initComponent();
+    const defaultValue = ['default-value'];
+    component['defaultValue'] = defaultValue;
+    component.value = ['test'];
+    component.name = 'name';
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.formResetCallback();
+    const formData = new FormData();
+    defaultValue.forEach((val) => {
+      formData.append(component.name, val);
+    });
+    expect(setFormValueSpy).toHaveBeenCalledWith(formData);
+    expect(component.value).toBe(defaultValue);
+  });
 });
 
 describe('setFormValue', () => {
-  const component = initComponent();
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-  const value = ['a', 'b', 'c'];
-  component.name = 'some-name';
-  component.setFormValue(value);
-  const formData = new FormData();
-  value.forEach((val) => formData.append(component.name, val));
-  expect(setFormValueSpy).toHaveBeenCalledWith(formData);
+  it('should call setFormValue with correct FormData', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    const value = ['a', 'b', 'c'];
+    component.name = 'some-name';
+    component.setFormValue(value);
+    const formData = new FormData();
+    value.forEach((val) => {
+      formData.append(component.name, val);
+    });
+    expect(setFormValueSpy).toHaveBeenCalledWith(formData);
+  });
 });
 
 describe('formDisabledCallback', () => {
-  const component = initComponent();
-  component.disabled = false;
-  component.formDisabledCallback(true);
-  expect(component.disabled).toBe(true);
+  it('should set disabled to true when called with true', () => {
+    const component = initComponent();
+    component.disabled = false;
+    component.formDisabledCallback(true);
+    expect(component.disabled).toBe(true);
+  });
 });
 
 describe('formStateRestoreCallback', () => {
-  const component = initComponent();
-  component.value = ['test'];
-  const restoredValue = 'restored-value';
-  const formData = new FormData();
-  formData.append(component.name, restoredValue);
-  component.formStateRestoreCallback(formData);
-  expect(component.value).toStrictEqual([restoredValue]);
+  it('should restore value', () => {
+    const component = initComponent();
+    component.value = ['test'];
+    const restoredValue = 'restored-value';
+    const formData = new FormData();
+    formData.append(component.name, restoredValue);
+    component.formStateRestoreCallback(formData);
+    expect(component.value).toStrictEqual([restoredValue]);
+  });
 });
