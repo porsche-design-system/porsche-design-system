@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/esm/index.mjs",
   "types": "dist/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
@@ -29,5 +29,24 @@
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "default": "./dist/index.cjs"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/esm/utils/index.mjs",
+      "default": "./dist/utils/index.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "utils": [
+        "./dist/utils/index.d.ts"
+      ]
+    }
   }
 }

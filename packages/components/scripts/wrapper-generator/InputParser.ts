@@ -1,7 +1,7 @@
-import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
+import { isDeprecatedComponent } from '@porsche-design-system/component-meta/utils';
 import type { TagName } from '@porsche-design-system/shared';
-import * as fs from 'fs';
 import { sync as globbySync } from 'fast-glob';
+import * as fs from 'fs';
 import * as path from 'path';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
