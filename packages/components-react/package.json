@@ -33,7 +33,7 @@
   "dependencies": {
     "@porsche-design-system/components-react": "4.2.0-rc.0",
     "react-imask": "^7.6.1",
-    "react-router-dom": "^7.14.0",
+    "react-router-dom": "^7.15.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "react": "^19.2.5",
