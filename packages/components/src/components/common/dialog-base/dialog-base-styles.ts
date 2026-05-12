@@ -1,6 +1,6 @@
 import { gridGap } from '@porsche-design-system/emotion';
-import type { JssStyle } from 'jss';
-import { cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
+import type { JssStyle, Styles } from 'jss';
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import {
   blurFrosted,
   colorBackdrop,
@@ -15,7 +15,7 @@ import {
   spacingFluidMd,
   spacingFluidSm,
   spacingStaticMd,
-} from './css-variables';
+} from '../../../styles/css-variables';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -32,10 +32,12 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
   };
 };
 
-export const getDialogJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
+export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): Styles => {
   return {
-    ...dialogBackdropResetJssStyle,
-    ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
+    dialog: {
+      ...dialogBackdropResetJssStyle,
+      ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
+    },
   };
 };
 
@@ -180,7 +182,7 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
     marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSm})`,
     marginInlineEnd: spacingFluidSm,
     placeSelf: 'flex-start flex-end',
-    boxShadow: `0px 0px 30px hsla(from var(${cssVarBackgroundColor}) h s l / 0.35)`
+    boxShadow: `0px 0px 30px hsla(from var(${cssVarBackgroundColor}) h s l / 0.35)`,
   };
 };
 
