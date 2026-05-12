@@ -22,8 +22,9 @@ export default [
     output: {
       dir: `${outputDir}/cjs`,
       format: 'cjs',
-      entryFileNames: 'utils/[name].cjs',
+      entryFileNames: '[name].cjs',
       preserveModules: true,
+      preserveModulesRoot: 'src',
     },
     plugins: [typescript()],
   },
@@ -66,8 +67,9 @@ export default [
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
-      entryFileNames: 'utils/[name].mjs',
+      entryFileNames: '[name].mjs',
       preserveModules: true,
+      preserveModulesRoot: 'src',
     },
     plugins: [
       typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
