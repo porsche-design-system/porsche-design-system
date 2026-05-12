@@ -5,6 +5,8 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -14,15 +16,13 @@ import {
   dialogPaddingTop,
   getDialogColorJssStyle,
   getDialogDismissButtonJssStyle,
-  getDialogJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
   getSlotFooterJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
-} from '../../styles/dialog-styles';
-import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { ModalBackdrop, ModalBackground } from './modal-utils';
 
 /**
@@ -82,7 +82,7 @@ export const getComponentCss = (
           '&[name=footer]': getSlotFooterJssStyle(),
         }),
       },
-      dialog: getDialogJssStyle(isOpen, backdrop),
+      ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
