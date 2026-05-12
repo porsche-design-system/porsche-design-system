@@ -1,33 +1,76 @@
-import commonjs from '@rollup/plugin-commonjs';
+// @ts-check
 import typescript from '@rollup/plugin-typescript';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/index.ts';
 const utilsInput = 'src/utils/index.ts';
 const outputDir = 'dist';
 
 export default [
-  // Default JS Build - CJS
   {
     input,
-    output: [{ dir: outputDir, format: 'cjs', entryFileNames: '[name].cjs' }],
-    plugins: [commonjs(), typescript({ declaration: true, declarationDir: outputDir, rootDir: 'src' })],
-  },
-  // Default JS Build - ESM
-  {
-    input,
-    output: { dir: `${outputDir}/esm`, format: 'esm', entryFileNames: '[name].mjs' },
+    output: {
+      dir: `${outputDir}/cjs`,
+      format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
+    },
     plugins: [typescript()],
   },
-  // Utils Build - CJS
   {
     input: utilsInput,
-    output: [{ dir: outputDir, format: 'cjs', entryFileNames: 'utils/[name].cjs' }],
-    plugins: [commonjs(), typescript({ declaration: true, declarationDir: outputDir, rootDir: 'src' })],
-  },
-  // Utils Build - ESM
-  {
-    input: utilsInput,
-    output: { dir: `${outputDir}/esm`, format: 'esm', entryFileNames: 'utils/[name].mjs' },
+    output: {
+      dir: `${outputDir}/cjs`,
+      format: 'cjs',
+      entryFileNames: 'utils/[name].cjs',
+      preserveModules: true,
+    },
     plugins: [typescript()],
+  },
+  {
+    input: input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+    },
+    plugins: [
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+          exports: {
+            '.': {
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+            './utils': {
+              types: './esm/utils/index.d.ts',
+              import: './esm/utils/index.mjs',
+              default: './cjs/utils/index.cjs',
+            },
+          },
+        },
+      }),
+    ],
+  },
+  {
+    input: utilsInput,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      entryFileNames: 'utils/[name].mjs',
+      preserveModules: true,
+    },
+    plugins: [
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+    ],
   },
 ];

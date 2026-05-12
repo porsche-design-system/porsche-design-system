@@ -3,9 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/index.cjs",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "default": "./dist/cjs/index.cjs"
+    },
+    "./utils": {
+      "types": "./dist/esm/utils/index.d.ts",
+      "import": "./dist/esm/utils/index.mjs",
+      "default": "./dist/cjs/utils/index.cjs"
+    }
+  },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
@@ -29,24 +41,5 @@
   },
   "volta": {
     "extends": "../../package.json"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "default": "./dist/index.cjs"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "import": "./dist/esm/utils/index.mjs",
-      "default": "./dist/utils/index.cjs"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "utils": [
-        "./dist/utils/index.d.ts"
-      ]
-    }
   }
 }
