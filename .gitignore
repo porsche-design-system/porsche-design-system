@@ -114,6 +114,7 @@ packages/storefront/public/porsche-design-system
 
 # MCP Server
 packages/mcp-server/context-snapshots/
+packages/mcp-server/v*/
 
 # Lib
 packages/shared/src/lib/*
