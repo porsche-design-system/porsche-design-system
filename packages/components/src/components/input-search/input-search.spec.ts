@@ -27,6 +27,17 @@ const initComponent = (): InputSearch => {
   return component;
 };
 
+describe('aria', () => {
+  it('should accept a whitelisted ARIA object (forwarded to InputBase in render)', () => {
+    const component = initComponent();
+    component.aria = { role: 'combobox', 'aria-expanded': true };
+    expect(component.aria).toEqual({
+      role: 'combobox',
+      'aria-expanded': true,
+    });
+  });
+});
+
 describe('formResetCallback', () => {
   it('should reset value to defaultValue', () => {
     const component = initComponent();

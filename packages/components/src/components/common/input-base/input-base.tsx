@@ -1,15 +1,17 @@
 import { type FunctionalComponent, h, type JSX } from '@stencil/core';
+import type { AriaAttributes } from '../../../types';
 import { getPrefixedTagNames, hasDescription, hasMessage, setAriaIDREF } from '../../../utils';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
 import { LoadingMessage, loadingId } from '../loading-message/loading-message';
 import { messageId, StateMessage } from '../state-message/state-message';
-import type {
-  InputBaseBlurEventDetail,
-  InputBaseChangeEventDetail,
-  InputBaseInputEventDetail,
-  InputBaseState,
-  InputBaseWheelEventDetail,
+import {
+  type InputBaseBlurEventDetail,
+  type InputBaseChangeEventDetail,
+  type InputBaseInputEventDetail,
+  type InputBaseState,
+  type InputBaseWheelEventDetail,
+  mergeInputNativeAria,
 } from './input-base-utils';
 
 // TODO refine in #3852
@@ -47,6 +49,7 @@ type InputBaseProps = {
   refElement?: (el: HTMLInputElement) => void;
   start?: JSX.Element;
   end?: JSX.Element;
+  aria?: AriaAttributes | string;
 };
 
 export const InputBase: FunctionalComponent<InputBaseProps> = ({
@@ -83,10 +86,18 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   refElement,
   start,
   end,
+  aria,
 }) => {
   const PrefixedTagNames = getPrefixedTagNames(host);
   const inputDescriptionId = hasDescription(host, description) ? descriptionId : undefined;
   const inputMessageId = hasMessage(host, message, state) ? messageId : undefined;
+
+  const inputAria = mergeInputNativeAria(aria, {
+    'aria-describedby': setAriaIDREF(loading && loadingId, inputMessageId, inputDescriptionId),
+    'aria-invalid': state === 'error' ? 'true' : null,
+    'aria-disabled': disabled || loading ? 'true' : null,
+    'aria-readonly': readOnly ? 'true' : null,
+  });
 
   return (
     <div class="root">
@@ -103,10 +114,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         <slot name="start" />
         {start}
         <input
-          aria-describedby={setAriaIDREF(loading && loadingId, inputMessageId, inputDescriptionId)}
-          aria-invalid={state === 'error' ? 'true' : null}
-          aria-disabled={disabled || loading ? 'true' : null}
-          aria-readonly={readOnly ? 'true' : null}
+          {...inputAria}
           id={id}
           ref={refElement}
           onInput={onInput}

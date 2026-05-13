@@ -13,5 +13,10 @@ test.describe(component, () => {
       await setupScenario(page, `/ag-grid-example?scheme=${scheme}`, viewportWidthM);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-${scheme}.png`);
     });
+
+    test(`should have no visual regression for ag-grid compact with color-scheme "${scheme}"`, async ({ page }) => {
+      await setupScenario(page, `/ag-grid-example-compact?scheme=${scheme}`, viewportWidthM);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-compact-${viewportWidthM}-${scheme}.png`);
+    });
   }
 });

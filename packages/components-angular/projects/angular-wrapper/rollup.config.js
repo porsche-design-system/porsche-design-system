@@ -16,6 +16,7 @@ const external = [
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/tokens',
   '@porsche-design-system/components-js/emotion',
+  '@porsche-design-system/components-js/meta',
   '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/scss',
   '@porsche-design-system/components-js/vanilla-extract',
@@ -94,6 +95,32 @@ export default [
       }),
       generatePackageJson({
         outputFolder: `${outputDir}/vanilla-extract`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/meta/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/meta/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/meta/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/meta`,
         baseContents: {
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',

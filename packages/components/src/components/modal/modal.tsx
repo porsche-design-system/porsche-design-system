@@ -1,10 +1,8 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import { BACKDROPS } from '../../styles/dialog-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getPrefixedTagNames,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -20,6 +18,8 @@ import {
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
+import { DialogBase } from '../common/dialog-base/dialog-base';
+import { BACKDROPS } from '../common/dialog-base/dialog-base-styles';
 import { getComponentCss } from './modal-styles';
 import {
   MODAL_ARIA_ATTRIBUTES,
@@ -158,44 +158,28 @@ export class Modal {
       this.hasFooter
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
-      <dialog
-        inert={!this.open} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-        tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(el) => (this.dialog = el)}
+      <DialogBase
+        host={this.host}
+        inert={!this.open}
+        dialogRef={(el) => (this.dialog = el)}
+        scrollerRef={(el) => (this.scroller = el)}
+        dismissable={this.dismissButton ?? undefined}
+        containerClass="modal"
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        {...parseAndGetAriaAttributes({
+        onDismiss={this.dismissButton ? this.dismissDialog : undefined}
+        header={this.hasHeader ? <slot name="header" /> : undefined}
+        footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
+        ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="modal">
-            {this.dismissButton && (
-              <PrefixedTagNames.pButton
-                class="dismiss"
-                variant="secondary"
-                compact={true}
-                type="button"
-                hideLabel={true}
-                icon="close"
-                onClick={this.dismissDialog}
-              >
-                Dismiss modal
-              </PrefixedTagNames.pButton>
-            )}
-            {this.hasHeader && <slot name="header" />}
-            <slot />
-            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
-          </div>
-        </div>
-      </dialog>
+        <slot />
+      </DialogBase>
     );
   }
 
