@@ -156,6 +156,7 @@ const generateComponentMeta = (): void => {
         ([, tagName]) => kebabCase(tagName) as TagName
       ),
       ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
+      ...(source.match(/<DialogBase/) ? ['p-button' as TagName] : []),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
     // props
