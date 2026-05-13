@@ -52,11 +52,6 @@ export default [
               import: './esm/index.mjs',
               default: './cjs/index.cjs',
             },
-            './utils': {
-              types: './esm/utils/index.d.ts',
-              import: './esm/utils/index.mjs',
-              default: './cjs/utils/index.cjs',
-            },
           },
         },
       }),
@@ -71,8 +66,6 @@ export default [
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
-    ],
+    plugins: [typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' })],
   },
 ];
