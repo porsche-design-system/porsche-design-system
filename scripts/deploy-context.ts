@@ -1,17 +1,17 @@
 import { execSync } from 'node:child_process';
 import { BedrockAgentClient, StartIngestionJobCommand } from '@aws-sdk/client-bedrock-agent';
 
-const CONTEXT_DIR = 'packages/mcp-server/context-snapshots';
-const S3_BUCKET_NAME = '';
-const KNOWLEDGE_BASE_ID = '';
-const DATA_SOURCE_ID = '';
+const CONTEXT_DIR = 'packages/mcp-server/v3.35.0';
+const S3_BUCKET_NAME = required('S3_BUCKET_NAME');
+const KNOWLEDGE_BASE_ID = required('KNOWLEDGE_BASE_ID');
+const DATA_SOURCE_ID = required('DATA_SOURCE_ID');
 const REGION = 'eu-central-1';
 
 const deploy = async () => {
   // Step 1: Upload to S3
   console.log('Uploading context snapshots to S3...');
   try {
-    execSync(`aws s3 sync ${CONTEXT_DIR} s3://${S3_BUCKET_NAME} --region ${REGION} --delete`, {
+    execSync(`aws s3 sync ${CONTEXT_DIR} s3://${S3_BUCKET_NAME}/v3.35.0 --region ${REGION} --delete`, {
       stdio: 'inherit',
     });
   } catch (error) {
@@ -22,9 +22,12 @@ const deploy = async () => {
   // Step 2: Verify upload by listing objects
   console.log('Verifying S3 upload...');
   try {
-    const result = execSync(`aws s3 ls s3://${S3_BUCKET_NAME} --region ${REGION} --recursive --summarize | tail -1`, {
-      encoding: 'utf-8',
-    });
+    const result = execSync(
+      `aws s3 ls s3://${S3_BUCKET_NAME}/v3.35.0 --region ${REGION} --recursive --summarize | grep "Total Objects"`,
+      {
+        encoding: 'utf-8',
+      }
+    );
     const objectCount = parseInt(result.match(/Total Objects: (\d+)/)?.[1] ?? '0', 10);
     if (objectCount === 0) {
       throw new Error('S3 bucket is empty after sync — upload may have failed');
