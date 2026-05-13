@@ -1,9 +1,9 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
-import { kebabCase } from 'change-case';
-import * as fs from 'fs';
+import { kebabCase, pascalCase } from 'change-case';
 import { sync as globbySync } from 'fast-glob';
+import * as fs from 'fs';
 import * as path from 'path';
 import type { ComponentMeta, ComponentsMeta, CssVariableMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';
@@ -78,6 +78,28 @@ const generateComponentMeta = (): void => {
       return result;
     },
     {} as Record<TagName, string>
+  );
+
+  // The top-level source scan only detects PDS components rendered directly via PrefixedTagNames.
+  // Some Web Components delegate rendering to shared functional components in common/ (e.g. InputBase,
+  // DialogBase, StateMessage), which themselves render PDS components internally. This transitive usage
+  // is invisible to the scanner because functional components have no TAG_NAMES entry.
+  // To cover these cases, pre-scan all .tsx files in common/ and build a map of
+  // { FunctionalComponentName → [nested PDS tags] }. Any future functional component added to common/
+  // that uses PrefixedTagNames will be picked up automatically without touching this script.
+  const commonDir = path.join(sourceDirectory, 'common');
+  const functionalComponentNestedMap = new Map<string, TagName[]>(
+    componentFileNames
+      .filter((filePath) => filePath.startsWith(commonDir))
+      .map((filePath) => {
+        const fcSource = fs.readFileSync(filePath, 'utf8');
+        const componentName = pascalCase(path.basename(filePath, '.tsx'));
+        const nested = Array.from(fcSource.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
+          ([, tagName]) => kebabCase(tagName) as TagName
+        );
+        return [componentName, nested] as const;
+      })
+      .filter(([, nested]) => nested.length > 0)
   );
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
@@ -155,8 +177,9 @@ const generateComponentMeta = (): void => {
       ...Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
         ([, tagName]) => kebabCase(tagName) as TagName
       ),
-      ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
-      ...(source.match(/<DialogBase/) ? ['p-button' as TagName] : []),
+      ...Array.from(functionalComponentNestedMap.entries()).flatMap(([componentName, nestedTags]) =>
+        source.match(new RegExp(`<${componentName}[\\s>/]`)) ? nestedTags : []
+      ),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
     // props
