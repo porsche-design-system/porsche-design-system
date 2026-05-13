@@ -105,13 +105,13 @@
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.2",
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "35.2.1",
+    "ag-grid-community": "35.3.0",
     "ag-grid-enterprise": "35.2.1",
-    "devtools-protocol": "^0.0.1612613",
-    "jsdom": "^29.0.2",
+    "devtools-protocol": "^0.0.1629771",
+    "jsdom": "^29.1.1",
     "local-web-server": "^5.4.0",
     "mime": "^4.1.0",
-    "terser-webpack-plugin": "^5.4.0",
+    "terser-webpack-plugin": "^5.6.0",
     "webpack-bundle-analyzer": "^5.3.0",
     "webpack-cli": "^7.0.2"
   },
