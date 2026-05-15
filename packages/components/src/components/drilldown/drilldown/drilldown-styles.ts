@@ -23,8 +23,14 @@ import {
 } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 
-// public css variables
+/**
+ * @css-variable {"name": "--p-drilldown-grid-template", "description": "Overrides the CSS `grid-template` of the default slot container, allowing custom grid layout for drilldown items.", "defaultValue": "auto/auto"}
+ */
 export const cssVariableGridTemplate = '--p-drilldown-grid-template';
+
+/**
+ * @css-variable {"name": "--p-drilldown-gap", "description": "Overrides the gap between drilldown items in the default slot container.", "defaultValue": "8px"}
+ */
 export const cssVariableGap = '--p-drilldown-gap';
 
 // private css variables

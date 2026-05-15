@@ -55,66 +55,66 @@ const propTypes: PropTypes<typeof InputDate> = {
 export class InputDate {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the input field. */
   @Prop() public label?: string = '';
 
-  /** Defines the granularity of the date input. This value is given in days. The default is 1 (one day). */
+  /** Sets the stepping interval in days. The selected date must align with the `min` date by a multiple of this value. */
   @Prop() public step?: number = 1;
 
-  /** Supplementary text providing more context or explanation for the input. */
+  /** Sets a supplementary description displayed below the label to provide additional context. */
   @Prop() public description?: string = '';
 
-  /** Displays the input field in compact mode. */
+  /** Reduces the input height and padding for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the input field, used when submitting the form data. */
+  /** Sets the name submitted with the form data to identify this field's value on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02'). */
+  /** Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`). */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday). */
+  /** Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field). */
   @Prop() public autoComplete?: string;
 
-  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
+  /** Makes the field read-only — the date is displayed but cannot be changed. The value is still submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
+  /** Associates the field with a form element by its ID when the field is not nested directly inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31'). */
+  /** Sets the latest selectable date in YYYY-MM-DD format. Dates after this are disabled in the picker. */
   @Prop() public max?: string;
 
-  /** Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01'). */
+  /** Sets the earliest selectable date in YYYY-MM-DD format. Dates before this are disabled in the picker. */
   @Prop() public min?: string;
 
-  /** Disables the input field. The value will not be submitted with the form. */
+  /** Disables the field, preventing date selection. The value is not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
+  /** Marks the field as required — form submission is blocked while no date is selected. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Shows a loading indicator. */
+  /** @experimental Disables the field and displays a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Indicates the validation or overall status of the input component. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: InputDateState = 'none';
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the field when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Emitted when the date input loses focus after its value was changed. */
+  /** Emitted when the input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputDateChangeEventDetail>;
 
-  /** Emitted when the date input has lost focus. */
+  /** Emitted when the input loses focus, regardless of whether the value changed. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputDateBlurEventDetail>;
 
-  /** Emitted when the value has been changed as a direct result of a user action. */
+  /** Emitted on every value change as the user interacts with the date picker. */
   @Event({ bubbles: true }) public input: EventEmitter<InputDateInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;

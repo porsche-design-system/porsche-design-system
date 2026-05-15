@@ -61,34 +61,34 @@ const propTypes: PropTypes<typeof Flyout> = {
 export class Flyout {
   @Element() public host!: HTMLElement;
 
-  /** If true, the flyout is open. */
+  /** Controls whether the flyout panel is visible. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
-  /** The position of the flyout */
+  /** Sets the side the flyout slides in from — `start` for left or `end` for right in LTR layouts. */
   @Prop() public position?: FlyoutPosition = 'end';
 
-  /** If true, the flyout will not be closable via backdrop click. */
+  /** When enabled, clicking the backdrop will not close the flyout — users must use the close button. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** Defines the background color */
+  /** Sets the background color of the flyout panel (`canvas` or `surface`). */
   @Prop() public background?: FlyoutBackground = 'canvas';
 
-  /** Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content). */
+  /** Sets the backdrop style. Use `blur` when background content is irrelevant; use `shading` when users still need visual context. */
   @Prop() public backdrop?: FlyoutBackdrop = 'blur';
 
-  /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
+  /** Controls footer behavior. `fixed` keeps it anchored at the bottom; `sticky` pins it only when content overflows. */
   @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the flyout dialog element for improved screen reader accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
 
-  /** Emitted when the component requests to be dismissed. */
+  /** Emitted when the user closes the flyout via the close button, backdrop click, or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the flyout is opened and the transition is finished. */
+  /** Emitted after the flyout's open transition completes and the panel is fully visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<FlyoutMotionVisibleEndEventDetail>;
 
-  /** Emitted when the flyout is closed and the transition is finished. */
+  /** Emitted after the flyout's close transition completes and the panel is fully hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<FlyoutMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;

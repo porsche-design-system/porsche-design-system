@@ -44,22 +44,22 @@ const propTypes: PropTypes<typeof Fieldset> = {
 export class Fieldset {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible legend text displayed above the grouped form controls. */
   @Prop() public label?: string = '';
 
-  /** Controls the size of the label text. */
+  /** Sets the font size of the fieldset label (`small`, `medium`, or `large`). */
   @Prop() public labelSize?: FieldsetLabelSize = 'medium';
 
-  /** Marks the Fieldset as required. */
+  /** Marks all controls within the fieldset as required and adds a required indicator to the label. */
   @Prop() public required?: boolean = false;
 
-  /** The validation state. */
+  /** Sets the validation state of the fieldset, controlling the color and style of the feedback message. */
   @Prop() public state?: FieldsetState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the fieldset when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Sets ARIA attributes. */
+  /** Overrides the ARIA role on the fieldset — use `radiogroup` when grouping radio buttons. */
   @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

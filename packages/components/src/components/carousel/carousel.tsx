@@ -92,58 +92,55 @@ const propTypes: PropTypes<typeof Carousel> = {
 export class Carousel {
   @Element() public host!: HTMLElement;
 
-  /** Defines the heading used in the carousel. */
+  /** Sets the heading text displayed above the carousel. Also used as the accessible label when no `aria` prop is set. */
   @Prop() public heading?: string;
 
-  /** Defines the heading size used in the carousel. */
+  /** Sets the font size of the carousel heading. */
   @Prop() public headingSize?: CarouselHeadingSize = 'x-large';
 
-  /** Defines the description used in the carousel. */
+  /** Sets the description text displayed below the heading for additional context. */
   @Prop() public description?: string;
 
-  /** Aligns the heading and description. */
+  /** Controls the horizontal alignment of the heading and description. */
   @Prop() public alignHeader?: CarouselAlignHeader = 'start';
 
-  /** Aligns the slotted controls. */
+  /** Controls the alignment of custom slotted controls within the header area. */
   @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
-  /** Whether the slides should rewind from last to first slide and vice versa. */
+  /** Enables infinite looping — navigating past the last slide wraps back to the first, and vice versa. */
   @Prop() public rewind?: boolean = false;
 
-  /** Defines the outer spacings between the carousel and the left and right screen sides. */
+  /** Sets the maximum width and outer spacing of the carousel, aligned to PDS grid widths. */
   @Prop() public width?: CarouselWidth = 'basic';
 
-  /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
+  /** Sets how many slides are visible at once. Use `auto` to control each slide's width via CSS. Supports responsive breakpoint values. */
   @Prop() public slidesPerPage?: BreakpointCustomizable<CarouselSlidesPerPage> = 1;
 
-  /** If false, the carousel will not show pagination bullets at the bottom. */
+  /** Shows pagination dot indicators below the carousel. Supports responsive breakpoint values. */
   @Prop() public pagination?: BreakpointCustomizable<boolean> = false;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the carousel region element for improved accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
 
-  /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
+  /** Overrides the default label strings used for the previous, next, and page indicators — useful for localization. */
   @Prop() public intl?: CarouselInternationalization;
 
-  /** Defines which slide is active (zero-based numbering). */
+  /** Sets the zero-based index of the currently visible slide. Update this to navigate programmatically. */
   @Prop() public activeSlideIndex?: number = 0;
 
-  /** Defines the skip link target used to skip carousel entries. */
+  /** Sets the `href` of an in-page skip link that lets keyboard users jump past the carousel slides. */
   @Prop() public skipLinkTarget?: string;
 
-  /**
-   * Indicates whether focus should be set on the center slide.
-   * If true, the carousel loops by individual slide; otherwise, it loops by page.
-   */
+  /** When enabled, each slide is individually focusable and the carousel navigates one slide at a time instead of one page. */
   @Prop() public focusOnCenterSlide?: boolean = false;
 
-  /** Fades the slides out. */
+  /** Shows a gradient fade at the start and end edges to visually indicate more slides beyond the viewport. */
   @Prop() public gradient?: boolean = false;
 
-  /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
+  /** Removes whitespace before the first and after the last slide when `focusOnCenterSlide` is enabled. */
   @Prop() public trimSpace?: boolean = false;
 
-  /** Emitted when carousel's content slides. */
+  /** Emitted when the carousel navigates to a new slide, with the active and previous slide indexes in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
 
   @State() private amountOfPages: number;

@@ -47,28 +47,28 @@ const propTypes: PropTypes<typeof Sheet> = {
 export class Sheet {
   @Element() public host!: HTMLElement;
 
-  /** If true, the sheet is open. */
+  /** Controls whether the sheet panel slides in from the bottom and is visible to the user. */
   @Prop() public open: boolean = false;
 
-  /** If false, the sheet will not have a dismiss button. */
+  /** Shows a dismiss button in the sheet header so users can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** If true, the sheet will not be closable via backdrop click. */
+  /** When enabled, clicking the backdrop behind the sheet will not close it, forcing explicit dismissal via the close button. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** Defines the background color */
+  /** Sets the background color of the sheet panel (`canvas` or `surface`). */
   @Prop() public background?: SheetBackground = 'canvas';
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
-  /** Emitted when the component requests to be dismissed. */
+  /** Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the sheet is opened and the transition is finished. */
+  /** Emitted after the sheet's open transition has fully completed and the panel is visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<SheetMotionVisibleEndEventDetail>;
 
-  /** Emitted when the sheet is closed and the transition is finished. */
+  /** Emitted after the sheet's close transition has fully completed and the panel is hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<SheetMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;

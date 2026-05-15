@@ -9,8 +9,19 @@ import {
   type ModelSignatureSize,
 } from './model-signature-utils';
 
+/**
+ * @css-variable {"name": "--p-model-signature-width", "description": "Overrides the width of the model signature. Only takes effect when `size` is not `inherit`.", "defaultValue": ""}
+ */
 const cssVariableWidth = '--p-model-signature-width';
+
+/**
+ * @css-variable {"name": "--p-model-signature-height", "description": "Overrides the height of the model signature.", "defaultValue": "auto"}
+ */
 const cssVariableHeight = '--p-model-signature-height';
+
+/**
+ * @css-variable {"name": "--p-model-signature-color", "description": "Overrides the fill color of the model signature. Overrides the `color` property when set.", "defaultValue": ""}
+ */
 const cssVariableColor = '--p-model-signature-color';
 
 const colorMap: Record<ModelSignatureColor, string> = {

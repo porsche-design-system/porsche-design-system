@@ -47,16 +47,16 @@ const propTypes: PropTypes<typeof TabsBar> = {
 export class TabsBar {
   @Element() public host!: HTMLElement;
 
-  /** Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected. */
+  /** Sets the zero-based index of the currently active tab. Pass `undefined` to render all tabs in an unselected state. */
   @Prop() public activeTabIndex?: number | undefined;
 
-  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
+  /** Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients. */
   @Prop() public background?: TabsBarBackground = 'none';
 
-  /** The text size. */
+  /** Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<TabsBarSize> = 'small';
 
-  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  /** Reduces the tab height and padding for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean;
 
   /**
@@ -64,7 +64,7 @@ export class TabsBar {
    * Has no effect anymore. */
   @Prop() public weight?: TabsBarWeight = 'regular';
 
-  /** Emitted when active tab is changed. */
+  /** Emitted when the user clicks a different tab, carrying the new `activeTabIndex` in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsBarUpdateEventDetail>;
 
   @State() private tabs: HTMLElement[] = [];

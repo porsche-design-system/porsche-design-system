@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof StepperHorizontalItem> = {
 export class StepperHorizontalItem {
   @Element() public host!: HTMLElement;
 
-  /** The validation state. */
+  /** The current progression state of the step. Use `current` for the active step, `complete` for finished steps, `warning` for steps with issues. Leave unset for future steps. */
   @Prop() public state?: StepperHorizontalItemState;
 
   /** Disables the stepper-horizontal-item. No events will be triggered while disabled state is active. */

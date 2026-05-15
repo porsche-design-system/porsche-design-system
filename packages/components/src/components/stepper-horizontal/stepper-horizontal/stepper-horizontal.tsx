@@ -34,7 +34,7 @@ const propTypes: PropTypes<typeof StepperHorizontal> = {
 export class StepperHorizontal {
   @Element() public host!: HTMLElement;
 
-  /** The text size. */
+  /** The font size of the step labels. */
   @Prop() public size?: BreakpointCustomizable<StepperHorizontalSize> = 'small';
 
   /** Emitted when active step is changed. */

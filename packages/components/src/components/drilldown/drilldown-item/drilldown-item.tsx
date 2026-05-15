@@ -36,10 +36,10 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
 export class DrilldownItem {
   @Element() public host!: HTMLElement;
 
-  /** Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure. */
+  /** Sets the text used for the back button, sticky header, and cascade button that navigates into this navigation level. */
   @Prop() public label?: string;
 
-  /** Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value. */
+  /** Sets the unique identifier matched against the drilldown's `activeIdentifier` to determine if this item is shown. */
   @Prop({ reflect: true }) public identifier: string;
 
   /** Private property set by the component itself. */

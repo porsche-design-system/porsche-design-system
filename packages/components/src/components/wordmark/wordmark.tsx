@@ -25,16 +25,16 @@ const propTypes: PropTypes<typeof Wordmark> = {
 export class Wordmark {
   @Element() public host!: HTMLElement;
 
-  /** Controls the size of the wordmark. */
+  /** Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`). */
   @Prop() public size?: WordmarkSize = 'small';
 
-  /** When `href` is provided, the component renders as an `<a>` element. */
+  /** When set, wraps the wordmark in an anchor element that navigates to the given URL on click. */
   @Prop() public href?: string;
 
-  /** Specifies where to open the linked document. */
+  /** Specifies where to open the linked URL when `href` is set (e.g. `_self`, `_blank`). */
   @Prop() public target?: WordmarkTarget = '_self';
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the anchor element to improve accessibility when the wordmark is used as a link. */
   @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

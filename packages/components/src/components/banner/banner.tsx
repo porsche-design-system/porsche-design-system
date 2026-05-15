@@ -47,28 +47,28 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
 export class Banner {
   @Element() public host!: HTMLElement;
 
-  /** Controls whether the banner is open or closed. */
+  /** Controls whether the banner is visible. Set to `true` to show it and `false` to hide it. */
   @Prop() public open: boolean = false;
 
-  /** Sets the heading text of the banner. */
+  /** Sets the heading text displayed at the top of the banner. */
   @Prop() public heading?: string = '';
 
-  /** Sets the heading tag for proper semantic structure within the page. */
+  /** Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure for the heading. */
   @Prop() public headingTag?: BannerHeadingTag = 'h5';
 
-  /** Sets the description text of the banner. */
+  /** Sets the supporting description text shown below the heading. */
   @Prop() public description?: string = '';
 
-  /** Sets the position of the banner. */
+  /** Sets the position of the banner on screen — `top` or `bottom`. Supports responsive breakpoint values. */
   @Prop() public position?: BreakpointCustomizable<BannerPosition> = { base: 'bottom', s: 'top' };
 
-  /** Defines the visual state of the banner. */
+  /** Sets the visual state of the banner — controls the icon and color scheme (`info`, `warning`, `error`, `success`). */
   @Prop() public state?: BannerState = 'info';
 
-  /** Shows a dismiss button allowing the banner to be closed. */
+  /** Shows a dismiss button so the user can manually close the banner. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** Emitted when the banner is requested to be dismissed. */
+  /** Emitted when the user closes the banner via the dismiss button or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private refPopover: HTMLElement;

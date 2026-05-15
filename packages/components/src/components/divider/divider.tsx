@@ -16,10 +16,10 @@ const propTypes: PropTypes<typeof Divider> = {
 export class Divider {
   @Element() public host!: HTMLElement;
 
-  /** Defines color. */
+  /** Sets the color of the divider line using PDS contrast tokens. */
   @Prop() public color?: DividerColor = 'contrast-lower';
 
-  /** Defines direction. */
+  /** Sets the orientation of the divider to `horizontal` or `vertical`. Supports responsive breakpoint values. */
   @Prop() public direction?: BreakpointCustomizable<DividerDirection> = 'horizontal';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

@@ -42,16 +42,16 @@ const propTypes: PropTypes<typeof Tabs> = {
 export class Tabs {
   @Element() public host!: HTMLElement;
 
-  /** The text size. */
+  /** Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<TabsSize> = 'small';
 
-  /** Defines which tab is shown as selected (zero-based numbering). */
+  /** Sets the zero-based index of the currently active tab; update this prop to switch tabs programmatically. */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
-  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
+  /** Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients. */
   @Prop() public background?: TabsBackground = 'none';
 
-  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  /** Reduces the tab height and padding for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean;
 
   /**
@@ -59,7 +59,7 @@ export class Tabs {
    * Has no effect anymore. */
   @Prop() public weight?: TabsWeight = 'regular';
 
-  /** Emitted when active tab is changed. */
+  /** Emitted when the user switches to a different tab, carrying the new `activeTabIndex` in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEventDetail>;
 
   @State() private tabsItems: HTMLPTabsItemElement[] = [];
