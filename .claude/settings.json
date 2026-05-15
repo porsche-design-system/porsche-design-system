@@ -45,6 +45,7 @@
     ]
   },
   "autoCompactEnabled": true,
+  "autoMemoryEnabled": true,
   "enableAllProjectMcpServers": true,
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
