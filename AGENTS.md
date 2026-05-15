@@ -2,6 +2,7 @@
 
 > This file provides context for AI coding assistants working in this repository.
 > See [agents.md](https://agents.md/) for the specification.
+> For Claude Code users and agents: see `CLAUDE.md` and `.claude/rules/` for detailed guidance.
 
 ## Overview
 
