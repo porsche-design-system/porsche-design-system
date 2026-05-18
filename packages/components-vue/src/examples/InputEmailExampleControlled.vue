@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { type InputEmailInputEventDetail, PInputEmail, PText } from '@porsche-design-system/components-vue';
+import {
+  type InputEmailInputEventDetail,
+  PInputEmail,
+  type PInputEmailProps,
+  PText,
+} from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const value = ref<string>('abc');
+const value = ref<PInputEmailProps['value']>('abc');
 
 const onInput = (e: CustomEvent<InputEmailInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;

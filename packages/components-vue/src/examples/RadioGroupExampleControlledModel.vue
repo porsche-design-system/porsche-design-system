@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { PRadioGroup, PRadioGroupOption } from '@porsche-design-system/components-vue';
+import { PRadioGroup, PRadioGroupOption, type PRadioGroupProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myRadioGroup = ref('');
+const myRadioGroup = ref<PRadioGroupProps['value']>('');
 
 const resetValue = () => {
   myRadioGroup.value = '';
