@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import { PPinCode } from '@porsche-design-system/components-vue';
+import { PPinCode, type PPinCodeProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myPinCode = ref('');
+const myPinCode = ref<PPinCodeProps['value']>('');
 
 const resetValue = () => {
   myPinCode.value = '';

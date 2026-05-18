@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputTelInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputTelInputEventDetail,
+  type PInputTelProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-tel-example-controlled',
@@ -13,7 +17,7 @@ import { type InputTelInputEventDetail, PorscheDesignSystemModule } from '@porsc
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputTelExampleControlledComponent {
-  value: string = '';
+  value: PInputTelProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

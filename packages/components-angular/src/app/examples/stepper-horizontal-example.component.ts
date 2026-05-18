@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  type PStepperHorizontalItemProps,
   PorscheDesignSystemModule,
-  StepperHorizontalItemState,
   StepperHorizontalUpdateEventDetail,
 } from '@porsche-design-system/components-angular';
 
@@ -98,7 +98,6 @@ export class StepperHorizontalExampleComponent {
   }
 }
 
-type StepperHorizontalItemProps = {
-  state?: StepperHorizontalItemState;
+type StepperHorizontalItemProps = PStepperHorizontalItemProps & {
   name: string;
 };
