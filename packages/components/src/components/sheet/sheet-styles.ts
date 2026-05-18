@@ -5,6 +5,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { spacingFluidLg } from '../../styles/css-variables';
+import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -14,13 +15,12 @@ import {
   dialogPaddingTop,
   getDialogColorJssStyle,
   getDialogDismissButtonJssStyle,
-  getDialogJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
-} from '../../styles/dialog-styles';
-import { getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { SheetBackground } from './sheet-utils';
 
 /**
@@ -58,7 +58,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
       },
-      dialog: getDialogJssStyle(isOpen, 'shading'),
+      ...getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {

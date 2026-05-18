@@ -4,6 +4,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -13,16 +14,15 @@ import {
   dialogPaddingTop,
   getDialogColorJssStyle,
   getDialogDismissButtonJssStyle,
-  getDialogJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
   getSlotFooterJssStyle,
   getSlotHeaderJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
   getSlotSubFooterJssStyle,
-} from '../../styles/dialog-styles';
-import { getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
 /**
@@ -90,7 +90,7 @@ export const getComponentCss = (
           '&[name=sub-footer]': getSlotSubFooterJssStyle(),
         }),
       },
-      dialog: getDialogJssStyle(isOpen, backdrop),
+      ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: {
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end'),

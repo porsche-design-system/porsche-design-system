@@ -25,6 +25,7 @@ const generateDSRComponents = (): void => {
     .filter((filePath) => !EXCLUDED_COMPONENTS.includes(`p-${path.basename(filePath).split('.')[0]}` as TagName))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
+      const isFunctionalComponent = fileContent.includes('FunctionalComponent');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
       const tagName = kebabCase(`P${componentName}`) as TagName;
@@ -90,6 +91,7 @@ const generateDSRComponents = (): void => {
                 group.endsWith('loading-message') ||
                 group.endsWith('input-base') ||
                 group.endsWith('notification-base') ||
+                group.endsWith('dialog-base') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
                 group.endsWith('no-results-option')
@@ -114,7 +116,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}') // comment out isParentFieldsetRequired for now
         .replace(/(<\/?)Fragment(>)/g, '$1$2'); // replace <Fragment> with <> or </Fragment> with </>
 
-      if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
+      if (hasSlot && !isFunctionalComponent) {
         newFileContent = newFileContent.replace(
           /^/,
           `import { splitChildren } from '../../splitChildren';
@@ -122,7 +124,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         );
       }
 
-      if (!newFileContent.includes('FunctionalComponent')) {
+      if (!isFunctionalComponent) {
         // inject DSR template
         const getComponentCssParams =
           /attachComponentCss\([\s\S]*?getComponentCss(?:, ?([\s\S]*?))?\);/.exec(fileContent)![1] || '';
@@ -171,7 +173,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/<PToastItem[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
 
       // rewire default slot
-      if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
+      if (hasSlot && !isFunctionalComponent) {
         newFileContent = newFileContent
           .replace(
             /public render\(\): JSX\.Element {/,
@@ -202,7 +204,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /hasNamedSlot\(this\.props\.host, '(summary|summary-before|summary-after|caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
-      } else if (newFileContent.includes('FunctionalComponent')) {
+      } else if (isFunctionalComponent) {
         newFileContent = newFileContent
           .replace(/import { Component } from 'react';/, "import type { FC } from 'react';")
           .replace(/FunctionalComponent/, 'FC')
@@ -276,6 +278,25 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         if (newFileContent.includes('export const NotificationBase:')) {
           newFileContent = newFileContent.replace(/innerHTML=\{([^}]*)}/, 'dangerouslySetInnerHTML={{__html: $1}}');
+        }
+
+        if (newFileContent.includes('export const DialogBase:')) {
+          const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd', 'onDismiss'];
+          newFileContent = newFileContent
+            .replace(/^/, "import type { AriaAttributes } from '../types';\n")
+            .replace(/(type DialogBaseProps = {)/, '$1\n  children?: JSX.Element;')
+            .replace(
+              /export const DialogBase: FC<DialogBaseProps> = \(\s*\{([\s\S]*?)\n\s*},\n\s*children\n\) => \{/,
+              (_, props) => {
+                const normalized = props
+                  .replace(/\n    /g, '\n  ')
+                  .replace(/^\n/, '')
+                  .trim();
+                return `export const DialogBase: FC<DialogBaseProps> = ({\n  children,\n  ${normalized}\n}) => {`;
+              }
+            )
+            .replace(new RegExp(`\\n\\s*(${removedProps.join('|')}),`, 'g'), '')
+            .replace(/\n\s*onTransitionEnd=\{[^}]+}/, '');
         }
       }
 
@@ -406,7 +427,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
           .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-accordion') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasSummary)/g, '$1')
@@ -429,14 +454,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
-          .replace(/onTransitionEnd={[^}]*}\s*/, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '')
+          .replace(/\n\s*dialogRef,/, '')
+          .replace(/\n\s*scrollerRef,/, '')
+          .replace(/\n\s*dialogRef=\{[^}]+}/, '')
+          .replace(/\n\s*scrollerRef=\{[^}]+}/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItems(\.map)/, `otherChildren$1`)
@@ -706,6 +739,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           'VARIANT_TO_COLOR_MAP[this.props.variant as TagVariant]' // cast needed since this.props is typed as any
         );
       }
+      // remove empty named imports left by symbol-stripping steps (e.g. getPrefixedTagNames was sole import)
+      newFileContent = newFileContent.replace(/^import\s*\{\s*\}\s*from\s*'[^']+';?\n/gm, '');
 
       return newFileContent;
     });
