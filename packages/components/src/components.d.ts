@@ -2356,7 +2356,7 @@ export namespace Components {
           * Sets the initial value of the Pin Code.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PPopover {
         /**
@@ -2433,10 +2433,9 @@ export namespace Components {
          */
         "state"?: RadioGroupState;
         /**
-          * The default value for the radio-group.
-          * @default ''
+          * The selected value. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PRadioGroupOption {
         /**
@@ -2454,9 +2453,9 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The value for the input.
+          * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface PScroller {
         /**
@@ -6702,7 +6701,7 @@ declare namespace LocalJSX {
           * Sets the initial value of the Pin Code.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PPopover {
         /**
@@ -6787,10 +6786,9 @@ declare namespace LocalJSX {
          */
         "state"?: RadioGroupState;
         /**
-          * The default value for the radio-group.
-          * @default ''
+          * The selected value. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PRadioGroupOption {
         /**
@@ -6808,9 +6806,9 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The value for the input.
+          * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface PScroller {
         /**

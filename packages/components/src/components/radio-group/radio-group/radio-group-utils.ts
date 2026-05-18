@@ -18,15 +18,18 @@ export const resetSelectedRadioGroupOption = (options: RadioGroupOption[]): void
   }
 };
 
-export const updateRadioGroupOptions = (options: RadioGroupOption[], value: string): void => {
+export const updateRadioGroupOptions = (
+  options: RadioGroupOption[],
+  value: string | number | null | undefined
+): void => {
   resetSelectedRadioGroupOption(options);
   const optionToSelect = options.find((option) => option.value === value);
   if (optionToSelect) {
     optionToSelect.selected = true;
     forceUpdate(optionToSelect);
   } else {
-    if (value !== '') {
-      consoleWarn('The provided value is not included in the options of the radio group:', value);
+    if (value !== undefined && value !== null) {
+      consoleWarn('The provided value is not included in the options of the radio group:', String(value));
     }
   }
 };
