@@ -9,7 +9,7 @@ import {
 import { FormEvent, useState } from 'react';
 
 export const RadioGroupExampleFormPage = () => {
-  const [form, setForm] = useState({ myRadioGroup: '' });
+  const [form, setForm] = useState<{ myRadioGroup: PRadioGroupProps['value'] }>({ myRadioGroup: null });
   const [lastSubmittedData, setLastSubmittedData] = useState<any>();
 
   const onChange = (e: CustomEvent<RadioGroupChangeEventDetail>) => {
@@ -27,7 +27,7 @@ export const RadioGroupExampleFormPage = () => {
 
   const onReset = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setForm({ myRadioGroup: '' });
+    setForm({ myRadioGroup: null });
   };
 
   return (

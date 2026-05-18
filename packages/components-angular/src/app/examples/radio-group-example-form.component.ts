@@ -27,7 +27,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class RadioGroupExampleFormComponent {
   form = new FormGroup({
-    myRadioGroup: new FormControl<string>(''),
+    myRadioGroup: new FormControl<string | null>(null),
   });
 
   submittedValue: any = undefined;
