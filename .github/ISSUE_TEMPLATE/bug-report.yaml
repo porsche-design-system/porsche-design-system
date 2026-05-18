@@ -10,12 +10,6 @@ body:
       value: |
         Thanks for taking the time to fill out this bug report!
   - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: By providing contact details, you agree that they are publicly visible and we may contact you for the purpose of further inquiries.
-      placeholder: e.g. email@example.com
-  - type: input
     id: framework
     attributes:
       label: JS Framework

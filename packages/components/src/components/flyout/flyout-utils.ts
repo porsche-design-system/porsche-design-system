@@ -1,5 +1,5 @@
-import type { Backdrop } from '../../styles/dialog-styles';
 import { getHasConstructableStylesheetSupport } from '../../utils';
+import type { Backdrop } from '../common/dialog-base/dialog-base-styles';
 
 export const FLYOUT_BACKGROUNDS = ['canvas', 'surface'] as const;
 export type FlyoutBackground = (typeof FLYOUT_BACKGROUNDS)[number];
