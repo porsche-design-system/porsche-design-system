@@ -48,7 +48,7 @@ export const selectOptionByValue = (
     return optionToSelect;
   }
 
-  if (value !== undefined && !preventWarning) {
+  if (value !== undefined && value !== null && !preventWarning) {
     consoleWarn(
       `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
       host

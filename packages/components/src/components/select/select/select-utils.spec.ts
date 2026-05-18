@@ -183,9 +183,22 @@ describe('updateSelectOptions', () => {
       { value: undefined, selected: false },
       { value: 'a', selected: false },
     ] as selectUtils.SelectOption[];
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
     selectUtils.selectOptionByValue(host, options, null);
     expect(options[0].selected).toBe(false);
     expect(options[1].selected).toBe(false);
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not warn when host value is null and no option matches', () => {
+    const host = document.createElement('p-select');
+    const options = generateOptions();
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    selectUtils.selectOptionByValue(host, options, null);
+    options.forEach((option) => {
+      expect(option.selected).toBe(false);
+    });
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
   it('should match a numeric host value against a numeric option.value (same type)', () => {
