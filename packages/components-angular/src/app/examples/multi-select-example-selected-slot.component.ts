@@ -98,6 +98,6 @@ export class MultiSelectExampleSelectedSlotComponent {
   onChange(event: CustomEvent<MultiSelectChangeEventDetail>) {
     const { value } = event.detail;
     this.value = value;
-    this.selectedOptions = this.options.filter((option) => value.includes(option.value));
+    this.selectedOptions = this.options.filter((option) => (value as string[]).includes(option.value));
   }
 }
