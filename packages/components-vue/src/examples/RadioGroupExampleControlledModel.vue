@@ -17,9 +17,9 @@
 import { PRadioGroup, PRadioGroupOption, type PRadioGroupProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myRadioGroup = ref<PRadioGroupProps['value']>('');
+const myRadioGroup = ref<PRadioGroupProps['value']>(null);
 
 const resetValue = () => {
-  myRadioGroup.value = '';
+  myRadioGroup.value = null;
 };
 </script>
