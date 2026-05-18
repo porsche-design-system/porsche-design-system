@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
+  since `''` (empty string) is a valid option value and can lead to confusion.
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Radio Group Option`: extended types of `value` prop to allow `string | number`
