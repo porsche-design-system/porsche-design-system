@@ -186,7 +186,13 @@ const createManifestAndOptimizeFlags = async (files: string[], config: Config): 
       } bytes (size: ${svgOptimizedSize} bytes)`
     );
 
-    if (svgRawName !== 'xx' && svgOptimizedSize > 3000) {
+    /*
+    Saudi Arabia's flag has Arabic calligraphy rendered as hundreds of individual path segments
+    and by reducing the number of digits in float precision we can significantly reduce the file size
+    but with the trade-off of losing the calligraphy details. Because of this, we will allow 
+    Saudi Arabia's flag to be larger than 3000 bytes.
+    */
+    if (svgRawName !== 'xx' && svgRawName !== 'sa' && svgOptimizedSize > 3000) {
       throw new Error(`Flag "${svgRawName}" is too large.`);
     }
   }
