@@ -1,0 +1,39 @@
+{
+  "name": "@porsche-design-system/tokens-meta",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "npm run clean:build && npm run build:generate && npm run build:package",
+    "build:package": "rollup -c rollup.config.js",
+    "build:generate": "tsx scripts/generateTokensMeta.ts",
+    "clean:build": "rm -rf ./dist ./src/lib"
+  },
+  "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
+    "rollup": "*",
+    "typescript": "*",
+    "tsx": "*",
+    "fast-glob": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}
