@@ -7540,13 +7540,17 @@ exports[`should match snapshot 1`] = `
         "type": "PinCodeType",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": "",
         "description": "Sets the initial value of the Pin Code.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -7735,13 +7739,17 @@ exports[`should match snapshot 1`] = `
         "type": "RadioGroupState",
       },
       "value": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The default value for the radio-group.",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
+        "defaultValue": null,
+        "description": "The selected value. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -7797,10 +7805,13 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+        ],
         "defaultValue": null,
-        "description": "The value for the input.",
-        "type": "string",
+        "description": "The option value. Selected when it strictly matches the p-radio-group value (same type and value).",
+        "type": "string | number",
       },
     },
     "requiredParent": [
@@ -8053,13 +8064,14 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "string",
           "number",
+          "null",
         ],
         "defaultValue": null,
-        "description": "Sets the initial value of the segmented-control.",
+        "description": "The selected value. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string | number",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
