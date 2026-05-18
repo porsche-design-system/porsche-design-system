@@ -39,7 +39,7 @@ npm run test:unit:shared
 | `@porsche-design-system/shared/testing` | Playwright helpers: `schemes`, `viewportWidths`, `viewportWidthXXS`, `viewportWidthM`, `setupScenario`, `makeAxeBuilder` |
 | `@porsche-design-system/shared/examples` | Generated cross-framework code examples for storefront |
 
-These resolve via subdirectory files in the built `dist/` output — not via `package.json#exports`.
+These resolve via the `exports` map in the generated `dist/package.json` (produced by `rollup-plugin-generate-package-json` in `rollup.config.js`).
 
 ## Generated Files
 

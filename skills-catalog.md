@@ -1,7 +1,7 @@
 # Porsche Design System — Skills Catalog
 
-Implemented Claude Code skills (custom slash commands) for common workflows in this monorepo.
-All skills are in `.claude/commands/` — invoke via `/command-name {arguments}`.
+Implemented for common workflows in this monorepo.
+All skills live in `.cursor/skills/{skill-name}/SKILL.md` (Cursor) and `.github/skills/{skill-name}/SKILL.md` (GitHub) with the same name for easy reference.
 
 ## Implemented Skills (9)
 
@@ -66,7 +66,7 @@ Handle cross-cutting changes that touch many files across the monorepo. These in
 
 ## Relationship to Rule Files
 
-Each skill references one or more `.claude/rules/` files for context:
+Each skill references one or more rule files that contain the logic and templates it uses. The primary rule is where the main implementation lives, while "also uses" indicates additional rules that are consulted for specific checks or templates. This modular approach allows skills to share common logic while still being focused on their specific purpose.
 
 | Skill | Primary Rule | Also Uses |
 |-------|-------------|-----------|

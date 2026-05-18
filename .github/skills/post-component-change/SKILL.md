@@ -28,7 +28,13 @@ npm run build:components
 npm run build:components-js
 ```
 
-### 3. Regenerate wrappers (if API changed)
+### 3. Regenerate metadata (if API changed)
+
+```bash
+npm run build:component-meta
+```
+
+### 4. Regenerate wrappers (if API changed)
 
 ```bash
 npm run build:components-react
@@ -36,11 +42,6 @@ npm run build:components-angular
 npm run build:components-vue
 ```
 
-### 4. Regenerate metadata (if API changed)
-
-```bash
-npm run build:component-meta
-```
 
 ### 5. Run verification tests
 
@@ -54,6 +55,6 @@ Summarize what was rebuilt and tested. Flag if VRT snapshots, storefront docs, E
 
 ## In this repository (Porsche Design System)
 
-- Build order: `components` → `components-js` → wrappers (parallel) → `component-meta`
+- Build order: `components` → `components-js` → `component-meta` → wrappers (parallel)
 - VRT updates if needed: `./docker.sh npm run test:vrt:components-js -- --grep {name}`
 - Lint/format: `npm run lint` and `npm run format`

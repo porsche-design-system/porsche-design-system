@@ -47,7 +47,7 @@ Generators in `scripts/` read source files from sibling packages. Keep paths and
 | `@porsche-design-system/shared/testing` | Playwright test helpers: `schemes`, `viewportWidths`, `viewportWidthXXS`, `viewportWidthM`, `setupScenario`, `makeAxeBuilder` |
 | `@porsche-design-system/shared/examples` | Generated cross-framework code examples |
 
-These resolve via subdirectory files in the built `dist/` output — not via `package.json#exports`.
+These resolve via the `exports` map in the generated `dist/package.json` (produced by `rollup-plugin-generate-package-json` in `rollup.config.js`). 
 
 ## Code Example Generation
 

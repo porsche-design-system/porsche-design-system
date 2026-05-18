@@ -68,5 +68,5 @@ Summarize what changed in shared, which packages were rebuilt, test results, and
 ## In this repository (Porsche Design System)
 
 - `src/lib/` is generated — do not hand-edit, rebuild instead
-- Key import paths: `@porsche-design-system/shared/testing`, `@porsche-design-system/shared/examples` (resolve via `dist/` subdirectories)
+- Key import paths: `@porsche-design-system/shared/testing`, `@porsche-design-system/shared/examples` (resolve via the `exports` map in the generated `dist/package.json`; `./examples` intentionally points to an unbundled `index.ts` to avoid Next.js `"use client"` issues in MDX)
 - See `packages/shared/AGENTS.md` for generator and export path documentation
