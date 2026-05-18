@@ -80,7 +80,7 @@ export abstract class AbstractWrapperGenerator {
         const componentSubDir = this.getComponentSubDir(component);
         const componentFileNameWithoutExtension = this.stripFileExtension(component);
 
-        return this.getBarrelFileContent(componentFileNameWithoutExtension, componentSubDir);
+        return this.getBarrelFileContent(componentFileNameWithoutExtension, componentSubDir, component);
       })
       .join('\n');
 
@@ -158,7 +158,11 @@ export abstract class AbstractWrapperGenerator {
     return false;
   }
 
-  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir?: string): string {
+  public getBarrelFileContent(
+    componentFileNameWithoutExtension: string,
+    componentSubDir?: string,
+    _component?: TagName
+  ): string {
     return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
   }
 
