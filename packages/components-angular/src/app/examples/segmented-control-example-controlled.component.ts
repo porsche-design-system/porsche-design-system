@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  type PSegmentedControlProps,
   PorscheDesignSystemModule,
   SegmentedControlChangeEventDetail,
 } from '@porsche-design-system/components-angular';
@@ -22,9 +23,9 @@ import {
   imports: [PorscheDesignSystemModule],
 })
 export class SegmentedControlExampleControlledComponent {
-  currentValue = 1;
+  currentValue: PSegmentedControlProps['value'] = 1;
 
   onChange(e: CustomEvent<SegmentedControlChangeEventDetail>) {
-    this.currentValue = e.detail.value as number;
+    this.currentValue = e.detail.value;
   }
 }
