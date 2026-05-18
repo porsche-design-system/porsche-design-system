@@ -2,7 +2,6 @@
 
 > This file provides context for AI coding assistants working in this repository.
 > See [agents.md](https://agents.md/) for the specification.
-> For Claude Code users and agents: see `CLAUDE.md` and `.claude/rules/` for detailed guidance.
 
 ## Overview
 
@@ -16,11 +15,11 @@ The **Porsche Design System (PDS)** is a monorepo providing design tokens, web c
 | Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
 | Styling            | JSS (CSS-in-JS), Tailwind CSS              |
-| Frameworks         | Angular 21, React 19, Vue 3, Next.js 15    |
+| Frameworks         | Angular 21, React 19, Vue 3, Next.js 16    |
 | Build              | Rollup, Vite, Webpack                      |
 | Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
 | Linting/Formatting | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
-| Types              | TypeScript 5.9                             |
+| Types              | TypeScript ~6.0                            |
 
 ## Project Structure
 
@@ -113,6 +112,15 @@ Key test files:
 
 See [`docs/coding-standards-and-guidelines.md`](docs/coding-standards-and-guidelines.md) for details.
 
+### CSS Variable Naming
+
+| Prefix | Scope | JSDoc required |
+| -------------------------------- | ---------------------- | -------------- |
+| `--p-*` | Global design tokens | No |
+| `--p-<component>-*` | Public writable API | Yes |
+| `--ref-p-<component>-*` | Public read-only API | Yes |
+| `--_p-<component>-{a,b,c}` | Internal, may change | No |
+
 ## Accessibility (WCAG 2.2 AA — Non-negotiable)
 
 All UI code must:
@@ -169,11 +177,13 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 
 - [`packages/components/AGENTS.md`](packages/components/AGENTS.md) — Stencil web components
 - [`packages/component-meta/AGENTS.md`](packages/component-meta/AGENTS.md) — Component metadata generation
+- [`packages/assets/AGENTS.md`](packages/assets/AGENTS.md) — Icons, fonts, marque, crest
 - [`packages/shared/AGENTS.md`](packages/shared/AGENTS.md) — Internal shared utilities and generated lookups
 - [`packages/styles/AGENTS.md`](packages/styles/AGENTS.md) — Style libraries and preview app
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
+- [`packages/components-js/AGENTS.md`](packages/components-js/AGENTS.md) — JavaScript wrapper and CDN build
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper

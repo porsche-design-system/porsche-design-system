@@ -36,6 +36,56 @@ npm run test:unit:components
 npm run test:unit:components -- {name}.spec.ts
 ```
 
+## Component Class Pattern
+
+Every component follows this structure — do not deviate:
+
+```tsx
+const propTypes: PropTypes<typeof MyComponent> = {
+  variant: AllowedTypes.oneOf<Variant>(VARIANTS),
+  disabled: AllowedTypes.boolean,
+  compact: AllowedTypes.breakpoint('boolean'),
+};
+
+@Component({ tag: 'p-name', shadow: { delegatesFocus: true } })
+export class MyComponent {
+  @Element() public host!: HTMLElement;
+  @Prop() public variant?: Variant = 'primary';
+  @Prop() public disabled?: boolean = false;
+  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public render(): JSX.Element {
+    validateProps(this, propTypes);       // always first
+    attachComponentCss(this.host, getComponentCss, this.variant, this.disabled, this.compact);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    return <Host>...</Host>; // Host is typical; some components return <div class="root"> or a shared wrapper
+  }
+}
+```
+
+### Form Components
+
+Form components add `formAssociated: true` and `@AttachInternals()`:
+
+```tsx
+@Component({ tag: 'p-input-text', shadow: { delegatesFocus: true }, formAssociated: true })
+export class InputText {
+  @AttachInternals() private internals: ElementInternals;
+  @Prop({ reflect: true }) public form?: string;
+  @Prop({ mutable: true }) public value?: string = '';
+  private defaultValue: string;
+
+  public componentWillLoad(): void { this.defaultValue = this.value; }
+  public formResetCallback(): void { this.value = this.defaultValue; this.internals?.setFormValue(this.defaultValue); }
+  public formDisabledCallback(disabled: boolean): void { this.disabled = disabled; }
+  public formStateRestoreCallback(state: string): void { this.value = state; }
+}
+```
+
 ## Accessibility Contract (WCAG 2.2 AA)
 
 When adding or updating a component:

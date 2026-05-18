@@ -1,7 +1,5 @@
 ---
-description: Vue 3 wrapper architecture, syncProperties, addEventListenerToElementRef, v-model support, and provider patterns for packages/components-vue
-globs: packages/components-vue/**
-alwaysApply: false
+applyTo: "packages/components-vue/**"
 ---
 
 # Vue Wrapper (`packages/components-vue/`)
@@ -131,8 +129,6 @@ const app = createApp(App);
 app.use(createPorscheDesignSystem());
 app.mount('#app');
 ```
-
-The provider uses `provide(prefixInjectionKey, prefix)` and calls `load()` from `@porsche-design-system/components-js`.
 
 ## ARIA Usage
 

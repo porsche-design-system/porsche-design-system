@@ -9,7 +9,7 @@ This package contains the **Next.js documentation site** for the Porsche Design 
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 16 with App Router
 - **Components**: `@porsche-design-system/components-react/ssr`
 - **Styling**: Tailwind CSS
 - **Content**: MDX for documentation pages

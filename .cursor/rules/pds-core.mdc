@@ -5,6 +5,8 @@ alwaysApply: true
 
 # PDS Core
 
+> For full project context, commands, and coding conventions see the root [`AGENTS.md`](../../AGENTS.md).
+
 - Use `npm`, not `yarn`.
 - Assume Volta-pinned tooling from the repo root: Node 24.
 - Prefer the nearest `AGENTS.md` for package-specific guidance before applying generic repo rules.

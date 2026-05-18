@@ -31,6 +31,16 @@ npm run build:shared
 npm run test:unit:shared
 ```
 
+## Key Import Paths
+
+| Import path | What it provides |
+|-------------|-----------------|
+| `@porsche-design-system/shared` | Data, models, utils, styles |
+| `@porsche-design-system/shared/testing` | Playwright helpers: `schemes`, `viewportWidths`, `viewportWidthXXS`, `viewportWidthM`, `setupScenario`, `makeAxeBuilder` |
+| `@porsche-design-system/shared/examples` | Generated cross-framework code examples for storefront |
+
+These resolve via subdirectory files in the built `dist/` output — not via `package.json#exports`.
+
 ## Generated Files
 
 - `src/lib/` is generated during build.

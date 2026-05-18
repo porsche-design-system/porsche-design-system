@@ -23,6 +23,8 @@ packages/components-react/
 
 ## Commands
 
+> These are root workspace commands defined in the **repo root `package.json`**, not in this package's own scripts. Run them from the repo root.
+
 ```bash
 # Start dev server
 npm run start:components-react
@@ -35,6 +37,32 @@ npm run start:components-react/nextjs
 
 # Start Remix integration
 npm run start:components-react/remix
+```
+
+## Wrapper Component Pattern
+
+All wrappers are generated — do not hand-edit files under `projects/react-wrapper/src/lib/components/`. The key hooks and utilities:
+
+| Hook / Util | Purpose |
+| --- | --- |
+| `usePrefix(tagName)` | Resolves prefixed tag name from provider context |
+| `useBrowserLayoutEffect(fn, deps)` | SSR-safe `useLayoutEffect` — no-op on server |
+| `useMergedClass(ref, className)` | Merges React `className` with component-set classes |
+| `syncRef(elementRef, ref)` | Forwards ref to the underlying element |
+| `useEventCallback(ref, event, handler)` | Bridges custom events to React callbacks |
+
+Every wrapper uses `forwardRef` + props are synced as **element properties** (not HTML attributes) via `useBrowserLayoutEffect`:
+
+```tsx
+'use client';
+export const PComponent = forwardRef(({ prop1, className, ...rest }, ref) => {
+  const elementRef = useRef<HTMLElement | undefined>(undefined);
+  const WebComponentTag = usePrefix('p-component');
+  useBrowserLayoutEffect(() => {
+    (elementRef.current as any)['prop1'] = prop1;
+  }, [prop1]);
+  return <WebComponentTag {...rest} class={useMergedClass(elementRef, className)} ref={syncRef(elementRef, ref)} />;
+});
 ```
 
 ## Usage Patterns

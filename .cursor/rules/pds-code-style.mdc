@@ -1,0 +1,129 @@
+---
+description: Biome config, TypeScript conventions, component/prop naming, JSS style patterns, CSS variable naming, and protected files
+globs: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.vue"]
+alwaysApply: false
+---
+
+# Code Style (Cross-Cutting)
+
+## Biome Configuration
+
+Biome handles JS/TS/JSON/CSS formatting and linting. Configured in root `biome.json`.
+
+| Setting | Value |
+|---------|-------|
+| Indent | 2 spaces |
+| Line width | 120 characters |
+| Line ending | LF |
+| Quote style | Single quotes (JS/TS), double quotes (CSS/SCSS) |
+| JSX quote style | Double quotes |
+| Trailing commas | ES5 |
+| Semicolons | Always |
+| Arrow parentheses | Always |
+| Bracket spacing | `true` |
+| Bracket same line | `false` |
+
+### Key Lint Rules
+
+- **`noConsole`**: Error — only `console.warn` and `console.error` allowed
+- **Import organization**: Auto-sorted by Biome
+- Console is allowed in `scripts/`, `bin/`, build configs, and test files
+
+### Prettier
+
+Only for MD/MDX files. Not for JS/TS — Biome handles that.
+
+## TypeScript Conventions
+
+- TypeScript ~6.0 with strict mode
+- Use `type` imports where applicable
+- `AllowedTypes` for prop validation in Stencil components
+- `PropTypes<typeof Component>` pattern for type-safe prop definitions
+- `BreakpointCustomizable<T>` for responsive prop values
+- `SelectedAriaAttributes<A>` for ARIA prop types
+
+## Component Naming
+
+| Context | Convention | Example |
+|---------|-----------|---------|
+| Web component tag | `p-` prefix, kebab-case | `p-button`, `p-input-text` |
+| Stencil class | PascalCase matching tag | `Button`, `InputText` |
+| React wrapper | `P` prefix + PascalCase | `PButton`, `PInputText` |
+| Angular wrapper | Same as React | `PButton`, `PInputText` |
+| Vue wrapper file | PascalCase + `Wrapper` | `ButtonWrapper.vue`, `InputTextWrapper.vue` |
+
+## Prop Naming Conventions
+
+- **Feature-based**, not action-based: `compact` not `enableCompact`
+- **Avoid action/state verbs**: `show`, `hide`, `enable`, `disable`
+- **Boolean props**: Default to `false`, use positive naming (`disabled` not `notEnabled`)
+
+| Incorrect | Correct |
+|-----------|---------|
+| `showPasswordToggle` | `toggle` |
+| `enableDarkMode` | `mode` |
+| `isActive` | `active` |
+| `hideBorder` | `border` or `borderVisible` |
+| `disableAnimation` | `animation` |
+
+## File Naming
+
+- Component files: `{component-name}.tsx` (kebab-case)
+- Style files: `{component-name}-styles.ts`
+- Utility files: `{component-name}-utils.ts`
+- Test files: `{component-name}.spec.ts`, `{component-name}-styles.spec.ts`
+- React wrappers: `{component}.wrapper.tsx`
+- Angular wrappers: `{component}.wrapper.ts`
+- Vue wrappers: `{Component}Wrapper.vue` (PascalCase)
+
+## JSS Style Object Conventions
+
+```ts
+export const getComponentCss = (variant: Variant, isDisabled: boolean): string => {
+  return getCss({
+    root: {
+      transition: getTransition('opacity'),
+      ...(isDisabled && {
+        ...getDisabledBaseStyles(),
+      }),
+    },
+    label: {
+      // styles
+    },
+    icon: {
+      // styles
+    },
+  });
+};
+```
+
+- Class names as object keys: `root`, `label`, `icon`, `spinner`, `counter`
+- Conditional styles via spread: `...(condition && { /* styles */ })`
+- Style composition via `mergeDeep(baseStyles, overrideStyles)`
+- Never hardcode token values — import from `../../styles/css-variables`
+
+## CSS Variable Naming
+
+| Prefix | Scope | JSDoc Required | Example |
+|--------|-------|----------------|---------|
+| `--p-*` | Global design tokens | No | `--p-color-primary` |
+| `--p-<component>-*` | Public writable API | Yes | `--p-flyout-width` |
+| `--ref-p-<component>-*` | Public read-only API | Yes | `--ref-p-flyout-pt` |
+| `--_p-<component>-{a,b,c}` | Internal | No | `--_p-button-a` |
+
+Internal variables use single-letter suffixes to keep them terse and signal "do not depend on this."
+
+## Import Conventions
+
+- Relative imports within packages
+- `@porsche-design-system/*` scoped imports across packages
+- Barrel exports via `index.ts`
+- Biome auto-sorts imports — don't fight it
+
+## Files That Must Not Be Edited
+
+- `dist/` directories — generated build output
+- `src/lib/` in `shared` and `component-meta` — generated during build
+- `*.props.md` — auto-generated prop documentation
+- `package-lock.json` — run `npm install` to regenerate
+- Generated wrapper files in `components-react`, `components-angular`, `components-vue`

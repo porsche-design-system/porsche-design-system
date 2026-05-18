@@ -1,7 +1,5 @@
 ---
-description: Angular wrapper architecture, BaseComponent, ControlValueAccessor, NgModule and standalone setup for packages/components-angular
-globs: packages/components-angular/**
-alwaysApply: false
+applyTo: "packages/components-angular/**"
 ---
 
 # Angular Wrapper (`packages/components-angular/`)
@@ -161,13 +159,6 @@ Use the `[aria]` input binding, not direct `aria-*` attributes:
 ## Build Dependencies
 
 Requires built first: `shared` → `tokens` → `assets` → `styles` → `utilities` → `component-meta` → `components` → `components-js`
-
-## Testing
-
-Tests use Vitest for wrapper logic and Karma/Jasmine for Angular integration:
-- Ensure wrapped components maintain accessibility
-- Verify ARIA attribute passthrough works correctly
-- Test two-way binding if applicable
 
 ## Commands
 
