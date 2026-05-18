@@ -4,11 +4,12 @@ import {
   PInputText,
   PSelect,
   PSelectOption,
+  type PSelectProps,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValue = ref<string>('1');
+const selectedValue = ref<PSelectProps['value']>('1');
 const inputValue = ref<string>('');
 const optionCount = ref<number>(3);
 

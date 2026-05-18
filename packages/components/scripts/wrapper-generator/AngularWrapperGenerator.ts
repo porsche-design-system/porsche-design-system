@@ -51,8 +51,21 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       .join('\n');
   }
 
-  public generateProps(_: TagName, __: string): string {
-    return '';
+  public generateProps(component: TagName, rawComponentInterface: string): string {
+    const propsName = this.generatePropsName(component);
+    // Strip event handlers (`on*`) since they are exposed as `EventEmitter` outputs in Angular,
+    // not as inputs. The resulting type describes only the component inputs.
+    const componentInterfaceWithoutEventProps = rawComponentInterface
+      .slice(1, -1)
+      .split(';\n')
+      .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
+      .join(';\n');
+
+    return `export type ${propsName} = {${componentInterfaceWithoutEventProps}};`;
+  }
+
+  private generatePropsName(component: TagName): string {
+    return `${pascalCase(component)}Props`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {

@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Angular`, `Vue`: expose typings for component props (e.g. `PButtonProps`, `PInputProps`, etc.) for better type safety
+  and developer experience ([#4403](https://github.com/porsche-design-system/porsche-design-system/pull/4403))
+
 ### Changed
 
 - `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
