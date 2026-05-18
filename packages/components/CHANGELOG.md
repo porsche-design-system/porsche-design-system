@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group Option`: extended types of `value` prop to allow `string | number`
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+
 ## [4.2.0-rc.1] - 2026-05-18
 
 ### Added
