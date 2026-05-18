@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Angular`, `Vue`: expose typings for component props (e.g. `PButtonProps`, `PInputProps`, etc.) for better type safety
+  and developer experience ([#4403](https://github.com/porsche-design-system/porsche-design-system/pull/4403))
+
 ## [4.2.0-rc.0] - 2026-05-12
 
 ### Added
@@ -21,8 +26,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`:
   - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
   - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
-- `Angular`, `Vue`: expose typings for component props (e.g. `PButtonProps`, `PInputProps`, etc.) for better type safety
-  and developer experience ([#4403](https://github.com/porsche-design-system/porsche-design-system/pull/4403))
 
 ## [4.1.0] - 2026-05-06
 
