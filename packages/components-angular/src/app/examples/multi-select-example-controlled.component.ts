@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  MultiSelectChangeEventDetail,
-  PMultiSelect,
+  type MultiSelectChangeEventDetail,
+  type PMultiSelectProps,
   PorscheDesignSystemModule,
 } from '@porsche-design-system/components-angular';
 
@@ -24,7 +24,7 @@ import {
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleControlledComponent {
-  selectedValues: PMultiSelect['value'] = [];
+  selectedValues: PMultiSelectProps['value'] = [];
 
   get debugText(): string {
     return `Selected values: ${this.selectedValues?.join(', ') || 'none'}`;

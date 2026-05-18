@@ -5,10 +5,11 @@ import {
   PInputText,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValues = ref<string[] | number[]>([]);
+const selectedValues = ref<PMultiSelectProps['value']>([]);
 const inputValue = ref('');
 const optionCount = ref(3);
 

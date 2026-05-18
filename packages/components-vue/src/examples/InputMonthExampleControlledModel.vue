@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-  import { PInputMonth } from '@porsche-design-system/components-vue';
+  import { PInputMonth, type PInputMonthProps } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const myInputMonth = ref('');
+  const myInputMonth = ref<PInputMonthProps['value']>('');
 
   const resetValue = () => {
     myInputMonth.value = '';

@@ -2,12 +2,12 @@
 import {
   PButton,
   PScroller,
+  type PScrollerProps,
   PTagDismissible,
-  type ScrollerScrollToPosition,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const scrollToPosition = ref<ScrollerScrollToPosition>({
+const scrollToPosition = ref<PScrollerProps['scrollToPosition']>({
   scrollPosition: 220,
   isSmooth: false,
 });

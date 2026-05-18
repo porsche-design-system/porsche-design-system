@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule, PSelect, SelectChangeEventDetail } from '@porsche-design-system/components-angular';
+import {
+  type PSelectProps,
+  PorscheDesignSystemModule,
+  SelectChangeEventDetail,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-select-example-controlled',
@@ -20,7 +24,7 @@ import { PorscheDesignSystemModule, PSelect, SelectChangeEventDetail } from '@po
   imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleControlledComponent {
-  selectedValue: PSelect['value'] = 'a';
+  selectedValue: PSelectProps['value'] = 'a';
   get debugText(): string {
     return `Selected value: ${this.selectedValue}`;
   }

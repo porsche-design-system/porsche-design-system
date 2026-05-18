@@ -2,12 +2,13 @@
 import {
   PSegmentedControl,
   PSegmentedControlItem,
+  type PSegmentedControlProps,
   PText,
   type SegmentedControlChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const currentValue = ref(1);
+const currentValue = ref<PSegmentedControlProps['value']>(1);
 const onChange = (e: CustomEvent<SegmentedControlChangeEventDetail>): void => {
   currentValue.value = e.detail.value as number;
 };

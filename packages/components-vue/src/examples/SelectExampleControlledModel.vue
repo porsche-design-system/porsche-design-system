@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+import { PSelect, PSelectOption, type PSelectProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const mySelect = ref<string | number | undefined>('a');
+const mySelect = ref<PSelectProps['value']>('a');
 
 const resetValue = () => {
   mySelect.value = '';
