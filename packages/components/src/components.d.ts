@@ -2549,9 +2549,9 @@ export namespace Components {
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the initial value of the segmented-control.
+          * The selected value. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     interface PSegmentedControlItem {
         /**
@@ -6910,9 +6910,9 @@ declare namespace LocalJSX {
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the initial value of the segmented-control.
+          * The selected value. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     interface PSegmentedControlItem {
         /**
