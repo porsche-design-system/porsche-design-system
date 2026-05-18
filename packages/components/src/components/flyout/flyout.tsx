@@ -1,10 +1,8 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import { BACKDROPS } from '../../styles/dialog-styles';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getPrefixedTagNames,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -19,6 +17,8 @@ import {
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
+import { DialogBase } from '../common/dialog-base/dialog-base';
+import { BACKDROPS } from '../common/dialog-base/dialog-base-styles';
 import { getComponentCss } from './flyout-styles';
 import {
   addStickyTopCssVarStyleSheet,
@@ -159,42 +159,28 @@ export class Flyout {
       this.footerBehavior
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
-      <dialog
-        tabIndex={-1} // needed for programmatic focus
-        ref={(el) => (this.dialog = el)}
+      <DialogBase
+        host={this.host}
+        dialogRef={(el) => (this.dialog = el)}
+        scrollerRef={(el) => (this.scroller = el)}
+        dismissable={true}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        {...parseAndGetAriaAttributes({
+        onDismiss={this.dismissDialog}
+        containerClass="flyout"
+        header={this.hasHeader ? <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} /> : undefined}
+        footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
+        subFooter={this.hasSubFooter ? <slot name="sub-footer" /> : undefined}
+        ariaAttributes={parseAndGetAriaAttributes({
           'aria-modal': true,
           ...{ 'aria-label': this.hasHeader ? getSlotTextContent(this.host, 'header') : 'Flyout' },
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="flyout">
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              variant="secondary"
-              compact={true}
-              type="button"
-              hideLabel={true}
-              icon="close"
-              onClick={this.dismissDialog}
-            >
-              Dismiss flyout
-            </PrefixedTagNames.pButton>
-            {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
-            <slot />
-            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
-            {this.hasSubFooter && <slot name="sub-footer" />}
-          </div>
-        </div>
-      </dialog>
+        <slot />
+      </DialogBase>
     );
   }
 

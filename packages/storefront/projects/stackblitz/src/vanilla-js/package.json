@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "4.0.0"
+    "@porsche-design-system/components-js": "4.2.0-rc.0"
   },
   "devDependencies": {
     "vite": "^8.0.8",
