@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type PSegmentedControlProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-segmented-control-example-reactive-form',
@@ -42,10 +42,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SegmentedControlExampleReactiveFormComponent {
   form = new FormGroup({
-    mySegmentedControl: new FormControl<string | number | null>(
-      { value: null, disabled: false },
-      { validators: Validators.required }
-    ),
+    mySegmentedControl: new FormControl<PSegmentedControlProps['value']>(null, { validators: Validators.required }),
   });
 
   submittedValue: string | null = null;
@@ -55,7 +52,7 @@ export class SegmentedControlExampleReactiveFormComponent {
   }
 
   resetValue(): void {
-    this.form.controls.mySegmentedControl.reset({ value: null, disabled: false });
+    this.form.controls.mySegmentedControl.reset(null);
   }
 
   toggleDisabled(): void {

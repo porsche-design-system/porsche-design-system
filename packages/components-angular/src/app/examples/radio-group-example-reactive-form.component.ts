@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type PRadioGroupProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-radio-group-example-reactive-form',
@@ -43,7 +43,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class RadioGroupExampleReactiveFormComponent {
   form = new FormGroup({
-    myRadioGroup: new FormControl<string | null>(null, { validators: Validators.required }),
+    myRadioGroup: new FormControl<PRadioGroupProps['value']>(null, { validators: Validators.required }),
   });
 
   submittedValue: string | null = null;
