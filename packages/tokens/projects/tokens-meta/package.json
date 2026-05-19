@@ -21,17 +21,21 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "npm run clean:build && npm run build:generate && npm run build:package",
+    "build": "npm run clean:build && npm run build:generateTokensMeta && npm run build:package",
+    "build:generateTokensMeta": "tsx scripts/generateTokensMeta.ts",
     "build:package": "rollup -c rollup.config.js",
-    "build:generate": "tsx scripts/generateTokensMeta.ts",
-    "clean:build": "rm -rf ./dist ./src/lib"
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist && rm -rf ./src/lib"
   },
   "peerDependencies": {
     "@rollup/plugin-typescript": "*",
     "rollup": "*",
     "typescript": "*",
     "tsx": "*",
-    "fast-glob": "*"
+    "change-case": "*",
+    "fast-glob": "*",
+    "vitest": "*"
   },
   "devDependencies": {
     "@porsche-design-system/tokens": "0.0.0"
