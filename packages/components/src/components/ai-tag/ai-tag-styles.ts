@@ -7,10 +7,10 @@ import {
   fontWeightNormal,
   leadingNormal,
   legacyRadiusSmall,
-  spacingStatic2Xs,
   spacingStaticSm,
   spacingStaticXs,
   typescale2Xs,
+  typescaleSm,
 } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
@@ -27,6 +27,7 @@ export const getComponentCss = (): string => {
         whiteSpace: 'nowrap',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
+          font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         }),
       },
       abbr: {
@@ -36,9 +37,9 @@ export const getComponentCss = (): string => {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
-        padding: `calc(2*${spacingStatic2Xs}) ${spacingStaticSm} calc(2*${spacingStatic2Xs}) ${spacingStaticXs}`,
+        padding: `0 ${spacingStaticSm} 0 ${spacingStaticXs}`,
         borderRadius: `var(${legacyRadiusSmall}, calc(${spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
-        font: `${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext}`,
+        fontSize: typescale2Xs,
         color: colorContrastHigh,
         background: colorFrostedStrong,
         WebkitBackdropFilter: blurFrosted,
