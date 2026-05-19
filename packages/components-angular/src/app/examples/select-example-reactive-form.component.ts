@@ -35,7 +35,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.mySelect.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.mySelect.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.mySelect.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -43,20 +43,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SelectExampleReactiveFormComponent {
   form = new FormGroup({
-    mySelect: new FormControl<string | undefined>(
-      { value: undefined, disabled: false },
-      { validators: Validators.required, nonNullable: true }
-    ),
+    mySelect: new FormControl<string | null>({ value: null, disabled: false }, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: any = null;
 
   setValue(): void {
     this.form.controls.mySelect.setValue('a');
   }
 
   resetValue(): void {
-    this.form.controls.mySelect.reset({ value: undefined, disabled: false });
+    this.form.controls.mySelect.reset({ value: null, disabled: false });
   }
 
   toggleDisabled(): void {

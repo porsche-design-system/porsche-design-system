@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import {
   type InputSearchInputEventDetail,
   PorscheDesignSystemModule,
+  PSelect,
   type SelectChangeEventDetail,
   type SelectToggleEventDetail,
 } from '@porsche-design-system/components-angular';
@@ -75,7 +76,7 @@ import {
   imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleAsyncFilterComponent {
-  value?: string;
+  value?: PSelect['value'];
   options: { value: string; label: string }[] = [];
 
   searchValue = '';
@@ -137,7 +138,7 @@ export class SelectExampleAsyncFilterComponent {
   }
 
   onChange(event: CustomEvent<SelectChangeEventDetail>) {
-    this.value = (event.target as HTMLElement & { value: string }).value;
+    this.value = event.detail.value;
   }
 
   onToggle(event: CustomEvent<SelectToggleEventDetail>) {

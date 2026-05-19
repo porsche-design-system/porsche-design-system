@@ -183,7 +183,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           value={getCurrentValue(propName, propMeta)}
           compact={true}
           required={propMeta.isRequired}
-          onChange={(e) => onUpdateProps(propName, e.detail.value)}
+          onChange={(e) => onUpdateProps(propName, e.detail.value as string | number | undefined)}
         >
           <span slot="label">{capitalCase(propName)}</span>
           <span slot="label-after" className="inline-flex gap-static-xs">
