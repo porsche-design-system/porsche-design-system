@@ -71,3 +71,32 @@ release can be published.
 
 1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design
    System Slack channel
+
+## MCP Server
+
+The MCP server (`packages/mcp-server`) follows its **own independent versioning** — it is only bumped when the server
+interface changes (new tools, schema changes, protocol updates). It is NOT released with the component packages.
+
+### Context Snapshots (automated)
+
+When a **stable** PDS release is prepared via `npm run prepare-release`, a versioned context snapshot (`v{X.Y.Z}/`) is
+automatically generated and committed. This snapshot contains the processed documentation for that PDS version and is
+deployed to the AWS Bedrock Knowledge Base via CI.
+
+- RC releases (`-rc.X`) do **not** generate a snapshot.
+- The MCP server `package.json` version is **not** bumped during PDS releases.
+
+### Releasing the MCP Server (independent)
+
+Only bump the MCP server version when:
+
+- A new tool is added or an existing tool's schema changes
+- The server protocol or transport changes
+- Bug fixes in the server logic (not content)
+
+Steps:
+
+1. Update `packages/mcp-server/package.json` version manually (semver)
+2. Rebuild: `cd packages/mcp-server && npm run build`
+3. Commit: `chore(mcp-server): bump to v{X.Y.Z}`
+4. The server binary is consumed internally — no npm publish needed (`"private": true`)
