@@ -26,7 +26,7 @@ export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
 
   /** The option value. */
-  @Prop() public value: string;
+  @Prop() public value: string | number;
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;

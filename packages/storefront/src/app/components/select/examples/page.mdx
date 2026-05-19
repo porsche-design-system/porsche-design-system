@@ -65,11 +65,23 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 ## Basic example without preselection
 
-To ensure the user makes a conscious choice, use the initial value `undefined` of the `value` property. If you want to
-give the user the choice to deselect the current option, you can provide an option without a value
-`<p-select-option></p-select-option>`. If you don't want the user to be able to deselect the current option, but still
-want to show a placeholder text you can set the option `disabled` like this
-`<p-select-option disabled>Please choose an option</p-select-option>`.
+To require the user to actively pick an option, leave the `p-select` `value` property unset (or set it to `undefined` or
+`null`).
+
+> **How options are matched:** The selected option is determined by a strict equality check (`===`) between the
+> `p-select` `value` and each `p-select-option` `value`. As a result, types must match exactly — `undefined` does not
+> equal `null`, and `1` does not equal `"1"`.
+
+To let users clear their selection, add an empty option:
+
+`<p-select-option></p-select-option>`
+
+Its `value` defaults to `undefined`, so it becomes selected whenever the `p-select` `value` is `undefined`. If you
+prefer `null`, set both the `p-select` `value` and the option `value` to `null` consistently.
+
+To only show a placeholder without allowing the user to clear their selection, use a disabled option instead:
+
+`<p-select-option disabled>Please choose an option</p-select-option>`
 
 <ComponentExample codeSample={selectExampleRequired} />
 
