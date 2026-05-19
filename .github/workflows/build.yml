@@ -46,6 +46,7 @@ jobs:
       - run: npm run build:components-react
       - run: npm run build:components-vue
       - run: npm run build:storefront
+      - run: npm run prepare-context
       - uses: actions/upload-artifact@v7
         with:
           name: build-development
@@ -101,6 +102,8 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
+            ./packages/mcp-server/dist/
+            ./packages/mcp-server/v*/
           if-no-files-found: error
   build-production:
     name: 'Production'
@@ -124,6 +127,8 @@ jobs:
       - run: npm run build:components-react
       - run: npm run build:components-vue
       - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
+      - run: npm run build:mcp-server
+      - run: npm run prepare-context
       - uses: actions/upload-artifact@v7
         with:
           name: build-production
@@ -178,4 +183,6 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
+            ./packages/mcp-server/dist/
+            ./packages/mcp-server/v*/
           if-no-files-found: error

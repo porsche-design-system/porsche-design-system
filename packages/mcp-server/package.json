@@ -1,7 +1,7 @@
 {
   "name": "@porsche-design-system/mcp-server",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",

@@ -23,6 +23,21 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
+      aws-access-key-id-mcp:
+        description: 'AWS Access Key ID for MCP S3 bucket and Bedrock.'
+        required: true
+      aws-secret-access-key-mcp:
+        description: 'AWS Secret Access Key for MCP S3 bucket and Bedrock.'
+        required: true
+      mcp-s3-bucket-name:
+        description: 'S3 bucket name for MCP context snapshots.'
+        required: true
+      mcp-knowledge-base-id:
+        description: 'AWS Bedrock Knowledge Base ID for MCP.'
+        required: true
+      mcp-data-source-id:
+        description: 'AWS Bedrock Data Source ID for MCP.'
+        required: true
 
 # Default to the least privilege; jobs that need more declare it explicitly.
 permissions:
@@ -37,11 +52,13 @@ jobs:
       options: --user 1001
     outputs:
       components-version: ${{ steps.get_npm_version.outputs.version }}
+      mcp-server-version: ${{ steps.get_mcp_version.outputs.version }}
       is-components-js-published: ${{ steps.is_components_js_published_check.outputs.is-published }}
       is-components-angular-published: ${{ steps.is_components_angular_published_check.outputs.is-published }}
       is-components-react-published: ${{ steps.is_components_react_published_check.outputs.is-published }}
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
+      is-mcp-server-published: ${{ steps.is_mcp_server_published_check.outputs.is-published }}
     steps:
       - uses: actions/checkout@v6
       - name: 'Get Package Version'
@@ -49,6 +66,11 @@ jobs:
         uses: ./.github/actions/get-local-package-version
         with:
           path: 'packages/components'
+      - name: 'Get MCP Server Version'
+        id: get_mcp_version
+        uses: ./.github/actions/get-local-package-version
+        with:
+          path: 'packages/mcp-server'
       - name: 'Check if "@porsche-design-system/components-js" version is published'
         id: is_components_js_published_check
         uses: ./.github/actions/is-npm-package-published
@@ -78,6 +100,12 @@ jobs:
         uses: ./.github/actions/is-storefront-version-published
         with:
           version: ${{ steps.get_npm_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/mcp-server" version is published'
+        id: is_mcp_server_published_check
+        uses: ./.github/actions/is-npm-package-published
+        with:
+          package-name: '@porsche-design-system/mcp-server'
+          package-version: ${{ steps.get_mcp_version.outputs.version }}
   npm-components-js:
     name: 'NPM (Components JS)'
     needs: check-publication-status
@@ -172,6 +200,58 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
           NPM_CONFIG_PROVENANCE: true
+  npm-mcp-server:
+    name: 'NPM (MCP Server)'
+    needs: check-publication-status
+    if: ${{ needs.check-publication-status.outputs.is-mcp-server-published == 'false' }}
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+        with:
+          registry-url: 'https://registry.npmjs.org'
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/mcp-server/dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
+          NPM_CONFIG_PROVENANCE: true
+  deploy-context:
+    name: 'Deploy Context (MCP Knowledge Base)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    # Deploy context only for stable (non-RC) releases
+    if: |
+      always()
+      && needs.npm-components-js.result == 'success'
+      && !contains(needs.check-publication-status.outputs.components-version, '-')
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Deploy Context'
+        run: npm run deploy-context
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws-access-key-id-mcp }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws-secret-access-key-mcp }}
+          AWS_REGION: eu-central-1
+          S3_BUCKET_NAME: ${{ secrets.mcp-s3-bucket-name }}
+          KNOWLEDGE_BASE_ID: ${{ secrets.mcp-knowledge-base-id }}
+          DATA_SOURCE_ID: ${{ secrets.mcp-data-source-id }}
   github-release:
     name: 'GitHub Release'
     needs:
