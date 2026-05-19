@@ -23,6 +23,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`, `Textarea`:
   extended types of `value` prop to allow `string | null`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Select`, `Select Option`: extended types of `value` prop to allow `string | number | null`
+    ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Multi Select`: extended types of `value` prop to allow `string[] | number[] | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Multi Select Option`: extended types of `value` prop to allow `string | number`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 
 ### Fixed
 

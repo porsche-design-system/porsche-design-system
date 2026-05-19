@@ -10,15 +10,13 @@ export type MultiSelectOptgroup = HTMLPOptgroupElement;
 
 export type MultiSelectChangeEventDetail = {
   name: string;
-  value: string[];
+  value: string[] | number[];
 };
 export type MultiSelectToggleEventDetail = { open: boolean };
 
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 
-export const getSelectedOptionValues = (options: MultiSelectOption[]): string[] =>
-  options.filter((option) => option.selected).map((option) => option.value);
 
 export const getSelectedOptionsString = (options: MultiSelectOption[]): string =>
   getSelectedOptions(options)
@@ -28,10 +26,11 @@ export const getSelectedOptionsString = (options: MultiSelectOption[]): string =
 export const selectOptionsByValue = (
   host: HTMLElement,
   options: MultiSelectOption[],
-  value: string[],
+  value: string[] | number[] | null,
   preventWarning = false
 ): MultiSelectOption[] => {
-  const selectedValues = new Set(value);
+  const values: (string | number)[] = value ?? [];
+  const selectedValues = new Set<string | number>(values);
   const selectedOptions: MultiSelectOption[] = [];
 
   for (const option of options) {
@@ -45,7 +44,7 @@ export const selectOptionsByValue = (
     }
   }
 
-  const valuesNotIncluded = value.filter((val) => !options.some((option) => option.value === val));
+  const valuesNotIncluded = values.filter((val) => !options.some((option) => option.value === val));
 
   if (valuesNotIncluded.length > 0 && !preventWarning) {
     consoleWarn(
