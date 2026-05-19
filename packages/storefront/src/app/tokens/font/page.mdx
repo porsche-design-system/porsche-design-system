@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { TokensTable } from '@/components/common/TokensTable';
-import { fontMeta } from '@porsche-design-system/tokens-meta';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Font - Porsche Design System',
@@ -15,16 +15,16 @@ export const metadata = {
 
 ### Font Family
 
-<TokensTable meta={fontMeta} group="family" />
+<TokensTable meta={tokensMeta.font.family} />
 
 ### Font Size
 
-<TokensTable meta={fontMeta} group="size" sort="asc" />
+<TokensTable meta={tokensMeta.font.size} sort="asc" />
 
 ### Line Height
 
-<TokensTable meta={fontMeta} group="lineHeight" sort="asc" />
+<TokensTable meta={tokensMeta.font.lineHeight} sort="asc" />
 
 ### Font Weight
 
-<TokensTable meta={fontMeta} group="weight" sort="asc" />
+<TokensTable meta={tokensMeta.font.weight} sort="asc" />

@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { TokensTable } from '@/components/common/TokensTable';
-import { motionMeta } from '@porsche-design-system/tokens-meta';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Motion - Porsche Design System',
@@ -15,8 +15,8 @@ export const metadata = {
 
 ### Duration
 
-<TokensTable meta={motionMeta} group="duration" sort="asc"/>
+<TokensTable meta={tokensMeta.motion.duration} sort="asc" />
 
 ### Ease
 
-<TokensTable meta={motionMeta} group="ease" />
+<TokensTable meta={tokensMeta.motion.ease} />

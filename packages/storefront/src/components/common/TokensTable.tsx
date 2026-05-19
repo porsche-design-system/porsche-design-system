@@ -27,18 +27,17 @@ const renderDescription = (description: string): ReactNode => {
 export type SortDirection = 'asc' | 'desc' | 'none';
 
 type TokensTableProps = {
-  meta: TokenMeta[];
-  group?: string;
+  meta: Record<string, TokenMeta>;
   sort?: SortDirection;
 };
 
 // Convert camelCase token name to kebab-case CSS var, e.g. colorCanvas → --p-color-canvas
 const toCssVar = (name: string): string => `--p-${name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
 
-const isColorToken = (meta: TokenMeta[]): boolean => meta.length > 0 && meta[0].category === 'color';
+const isColorToken = (tokens: TokenMeta[]): boolean => tokens.length > 0 && tokens[0].name.startsWith('color');
 
-export const TokensTable = ({ meta, group, sort = 'none' }: TokensTableProps) => {
-  let filtered = group ? meta.filter((t) => t.group === group) : meta;
+export const TokensTable = ({ meta, sort = 'none' }: TokensTableProps) => {
+  let items = Object.values(meta);
 
   if (sort !== 'none') {
     // Extract a sortable number: handle plain values ("8px") and clamp() ("clamp(4px, ...)")
@@ -48,7 +47,7 @@ export const TokensTable = ({ meta, group, sort = 'none' }: TokensTableProps) =>
       return parseFloat(value);
     };
 
-    filtered = [...filtered].sort((a, b) => {
+    items = [...items].sort((a, b) => {
       const numA = toSortNum(a.value);
       const numB = toSortNum(b.value);
       const isNumeric = !Number.isNaN(numA) && !Number.isNaN(numB);
@@ -57,10 +56,10 @@ export const TokensTable = ({ meta, group, sort = 'none' }: TokensTableProps) =>
     });
   }
 
-  const showSwatch = isColorToken(filtered);
+  const showSwatch = isColorToken(items);
 
   return (
-    <PTable className="my-fluid-md" caption="table">
+    <PTable className="my-fluid-md">
       <PTableHead>
         <PTableRow>
           {showSwatch && <PTableHeadCell>Color</PTableHeadCell>}
@@ -70,7 +69,7 @@ export const TokensTable = ({ meta, group, sort = 'none' }: TokensTableProps) =>
         </PTableRow>
       </PTableHead>
       <PTableBody>
-        {filtered.map((token) => (
+        {items.map((token) => (
           <PTableRow key={token.name}>
             {showSwatch && (
               <PTableCell>

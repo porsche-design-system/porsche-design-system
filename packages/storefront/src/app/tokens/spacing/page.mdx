@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { TokensTable } from '@/components/common/TokensTable';
-import { spacingMeta } from '@porsche-design-system/tokens-meta';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Spacing - Porsche Design System',
@@ -15,8 +15,8 @@ export const metadata = {
 
 ### Fluid
 
-<TokensTable meta={spacingMeta} group="fluid" sort="asc" />
+<TokensTable meta={tokensMeta.spacing.fluid} sort="asc" />
 
 ### Static
 
-<TokensTable meta={spacingMeta} group="static" sort="asc" />
+<TokensTable meta={tokensMeta.spacing.static} sort="asc" />

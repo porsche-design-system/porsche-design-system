@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { TokensTable } from '@/components/common/TokensTable';
-import { colorMeta } from '@porsche-design-system/tokens-meta';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Color - Porsche Design System',
@@ -15,16 +15,16 @@ export const metadata = {
 
 ### Background
 
-<TokensTable meta={colorMeta} group="background" />
+<TokensTable meta={tokensMeta.color.lightDark.background} />
 
 ### Foreground
 
-<TokensTable meta={colorMeta} group="foreground" />
+<TokensTable meta={tokensMeta.color.lightDark.foreground} />
 
 ### Semantic
 
-<TokensTable meta={colorMeta} group="semantic" />
+<TokensTable meta={tokensMeta.color.lightDark.semantic} />
 
 ### A11y
 
-<TokensTable meta={colorMeta} group="a11y" />
+<TokensTable meta={tokensMeta.color.lightDark.a11y} />
