@@ -3103,6 +3103,7 @@ exports[`should render dsr component for PAiTag 1`] = `
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3114,9 +3115,9 @@ div {
   display: flex;
   align-items: center;
   gap: 2px;
-  padding: calc(2*var(--p-spacing-static-2xs)) var(--p-spacing-static-sm) calc(2*var(--p-spacing-static-2xs)) var(--p-spacing-static-xs);
+  padding: 0 var(--p-spacing-static-sm) 0 var(--p-spacing-static-xs);
   border-radius: var(--_p-legacy-radius-small, calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2)));
-  font: var(--p-font-weight-normal) var(--p-typescale-2xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-2xs);
   color: var(--p-color-contrast-high);
   background: var(--p-color-frosted-strong);
   -webkit-backdrop-filter: var(--p-blur-frosted);
