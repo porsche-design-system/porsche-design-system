@@ -33,6 +33,9 @@
     "tsx": "*",
     "fast-glob": "*"
   },
+  "devDependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
+  },
   "volta": {
     "extends": "../../../../package.json"
   }
