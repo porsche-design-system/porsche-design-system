@@ -23,14 +23,16 @@ export const updateRadioGroupOptions = (
   value: string | number | null | undefined
 ): void => {
   resetSelectedRadioGroupOption(options);
+  // `undefined`/`null` means "no preselection" – do not match any option
+  if (value === undefined || value === null) {
+    return;
+  }
   const optionToSelect = options.find((option) => option.value === value);
   if (optionToSelect) {
     optionToSelect.selected = true;
     forceUpdate(optionToSelect);
   } else {
-    if (value !== undefined && value !== null) {
-      consoleWarn('The provided value is not included in the options of the radio group:', String(value));
-    }
+    consoleWarn('The provided value is not included in the options of the radio group:', String(value));
   }
 };
 
