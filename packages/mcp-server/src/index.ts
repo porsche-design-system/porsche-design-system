@@ -1,16 +1,13 @@
-import { readdirSync } from 'node:fs';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { z } from 'zod';
 import { version } from '../package.json';
-import { sourceDir } from '../scripts/prepare-context/config';
+import categories from './generated/categories.json';
 
 const COMPONENT_NAMES = TAG_NAMES.map((tag) => tag.replace(/^p-/, ''));
+const CATEGORIES: string[] = categories;
 const API_BASE = process.env.PDS_MCP_API_BASE || 'https://37w7yuiql4.execute-api.eu-central-1.amazonaws.com/prod/';
-const CATEGORIES = readdirSync(sourceDir, { withFileTypes: true })
-  .filter((dirent) => dirent.isDirectory())
-  .map((dirent) => dirent.name);
 
 const api = async <T = unknown>(method: 'GET' | 'POST', path: string, body?: Record<string, unknown>): Promise<T> => {
   const url = new URL(path, API_BASE);
@@ -91,7 +88,7 @@ server.registerTool(
       body.filter = filter;
     }
 
-    const data = await api('POST', '/query', body);
+    const data = await api('POST', 'query', body);
     return textResult(data);
   }
 );
@@ -99,7 +96,7 @@ server.registerTool(
 const main = async () => {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`PDS MCP client connected → ${API_BASE}`);
+  console.error(`PDS MCP client connected. Listening for queries…`);
 };
 
 main().catch((err) => {

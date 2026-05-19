@@ -76,5 +76,18 @@ fs.writeFileSync(
     .replace('## [Unreleased]', `## [Unreleased]\n\n## [${pkgVersion}] - ${formatDate(new Date())}`)
 );
 
+// Generate MCP server context snapshot for this version (content only, does not bump MCP version)
+if (!semver.prerelease(pkgVersion)) {
+  console.log(`Generating MCP context snapshot for v${pkgVersion}…`);
+  execSync('npm run prepare-context', { cwd: 'packages/mcp-server', stdio: 'inherit' });
+
+  const snapshotSource = 'packages/mcp-server/context-snapshots';
+  const snapshotTarget = `packages/mcp-server/v${pkgVersion}`;
+  if (fs.existsSync(snapshotSource)) {
+    execSync(`cp -r ${snapshotSource} ${snapshotTarget}`, { stdio: 'inherit' });
+    console.log(`MCP context snapshot created at ${snapshotTarget}`);
+  }
+}
+
 console.log('Updating package-lock.json via "npm install"…');
 execSync('npm install --package-lock-only --ignore-scripts', { stdio: 'inherit' });

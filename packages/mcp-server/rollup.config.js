@@ -2,6 +2,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 import shebang from 'rollup-plugin-preserve-shebang';
 
 export default {
@@ -9,7 +10,6 @@ export default {
   output: {
     file: 'dist/index.js',
     format: 'cjs',
-    banner: '#!/usr/bin/env node',
   },
   // Suppress circular dependency warnings from third-party node_modules.
   // These are well-known internal cycles in bundled deps (zod, zod-to-json-schema)
@@ -30,7 +30,23 @@ export default {
       noEmit: false,
       declaration: false,
     }),
+    generatePackageJson({
+      baseContents: (pkg) => ({
+        name: pkg.name,
+        version: pkg.version,
+        description: 'Porsche Design System MCP Server – Model Context Protocol server for PDS documentation.',
+        author: pkg.author,
+        license: pkg.license,
+        homepage: pkg.homepage,
+        keywords: pkg.keywords,
+        bin: {
+          'pds-mcp-server': './index.js',
+        },
+        engines: {
+          node: '>=22',
+        },
+        // No dependencies — everything is bundled
+      }),
+    }),
   ],
 };
-
-
