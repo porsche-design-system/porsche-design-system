@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
+import { PButton, PCheckbox, PSelect, PSelectOption, type PSelectProps, PText } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const lastSubmittedData = ref<string>('none');
-const isRequired = ref<boolean>(true);
+const isRequired = ref<PSelectProps['required']>(true);
 const hasDeselection = ref<boolean>(false);
 
 const onChangeRequired = () => {

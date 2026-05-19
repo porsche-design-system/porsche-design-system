@@ -27,7 +27,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myInputTime.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myInputTime.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myInputTime.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,17 +35,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputTimeExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputTime: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputTime: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myInputTime.setValue('12:20');
   }
 
   resetValue(): void {
-    this.form.controls.myInputTime.reset('');
+    this.form.controls.myInputTime.reset(null);
   }
 
   toggleDisabled(): void {

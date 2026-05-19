@@ -1,8 +1,7 @@
 'use client';
 
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta, EventMeta, SlotMeta } from '@porsche-design-system/component-meta';
 import { componentMeta, type PropMeta } from '@porsche-design-system/component-meta';
-import type { EventMeta, SlotMeta } from '@porsche-design-system/component-meta/src';
 import {
   PSwitch,
   PTable,

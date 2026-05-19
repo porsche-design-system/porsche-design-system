@@ -14,9 +14,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Text`, `Input Number`: extended types of `value` prop to allow `string | number | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`, `Textarea`:
+  extended types of `value` prop to allow `string | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+
 ### Fixed
 
 - `Inline Notification`: The action label expands when heading becomes multiline
+
+## [4.2.0-rc.1] - 2026-05-18
+
+### Added
+
+- `Angular`, `Vue`: expose typings for component props (e.g. `PButtonProps`, `PInputProps`, etc.) for better type safety
+  and developer experience ([#4403](https://github.com/porsche-design-system/porsche-design-system/pull/4403))
 
 ## [4.2.0-rc.0] - 2026-05-12
 
