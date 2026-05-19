@@ -1,22 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  fontPorscheNext,
-  leadingNormal,
-  typescaleMd,
-  typescaleXs,
-  typescaleSm,
-  typescaleXl,
-  typescale2Xl,
-  typescale3Xl,
-  typescale4Xl,
-  typescale5Xl,
-  typescale2Xs,
-  typescaleLg,
-  fontWeightNormal,
-  fontWeightBold,
-  fontWeightSemibold,
-} from '@porsche-design-system/tokens';
+import { TokensTable } from '@/components/common/TokensTable';
+import { fontMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Font - Porsche Design System',
@@ -31,35 +15,16 @@ export const metadata = {
 
 ### Font Family
 
-| Token                                         | Description                                                       | Value                                          |
-| --------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------- |
-| <Code variant="nowrap">fontPorscheNext</Code> | Holds the **Porsche Next** font family along with fallback fonts. | <Code variant="value">{fontPorscheNext}</Code> |
+<TokensTable meta={fontMeta} group="family" />
 
 ### Font Size
 
-| Token                                      | Description                                                               | Value                                       |
-| ------------------------------------------ | ------------------------------------------------------------------------- | ------------------------------------------- |
-| <Code variant="nowrap">typescale2Xs</Code> | Holds the **2x-small** font size optimized for the Porsche Next typeface. | <Code variant="value">{typescale2Xs}</Code> |
-| <Code variant="nowrap">typescaleXs</Code>  | Holds the **x-small** font size optimized for the Porsche Next typeface.  | <Code variant="value">{typescaleXs}</Code>  |
-| <Code variant="nowrap">typescaleSm</Code>  | Holds the **small** font size optimized for the Porsche Next typeface.    | <Code variant="value">{typescaleSm}</Code>  |
-| <Code variant="nowrap">typescaleMd</Code>  | Holds the **medium** font size optimized for the Porsche Next typeface.   | <Code variant="value">{typescaleMd}</Code>  |
-| <Code variant="nowrap">typescaleLg</Code>  | Holds the **large** font size optimized for the Porsche Next typeface.    | <Code variant="value">{typescaleLg}</Code>  |
-| <Code variant="nowrap">typescaleXl</Code>  | Holds the **x-large** font size optimized for the Porsche Next typeface.  | <Code variant="value">{typescaleXl}</Code>  |
-| <Code variant="nowrap">typescale2Xl</Code> | Holds the **2x-large** font size optimized for the Porsche Next typeface. | <Code variant="value">{typescale2Xl}</Code> |
-| <Code variant="nowrap">typescale3Xl</Code> | Holds the **3x-large** font size optimized for the Porsche Next typeface. | <Code variant="value">{typescale3Xl}</Code> |
-| <Code variant="nowrap">typescale4Xl</Code> | Holds the **4x-large** font size optimized for the Porsche Next typeface. | <Code variant="value">{typescale4Xl}</Code> |
-| <Code variant="nowrap">typescale5Xl</Code> | Holds the **5x-large** font size optimized for the Porsche Next typeface. | <Code variant="value">{typescale5Xl}</Code> |
+<TokensTable meta={fontMeta} group="size" sort="asc" />
 
 ### Line Height
 
-| Token                                       | Description                                                                               | Value                                        |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------- |
-| <Code variant="nowrap">leadingNormal</Code> | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. | <Code variant="value">{leadingNormal}</Code> |
+<TokensTable meta={fontMeta} group="lineHeight" sort="asc" />
 
 ### Font Weight
 
-| Token                                            | Description                                                                 | Value                                             |
-| ------------------------------------------------ | --------------------------------------------------------------------------- | ------------------------------------------------- |
-| <Code variant="nowrap">fontWeightNormal</Code>   | Holds the **normal** font weight optimized for the Porsche Next typeface.   | <Code variant="value">{fontWeightNormal}</Code>   |
-| <Code variant="nowrap">fontWeightSemibold</Code> | Holds the **semibold** font weight optimized for the Porsche Next typeface. | <Code variant="value">{fontWeightSemibold}</Code> |
-| <Code variant="nowrap">fontWeightBold</Code>     | Holds the **bold** font weight optimized for the Porsche Next typeface.     | <Code variant="value">{fontWeightBold}</Code>     |
+<TokensTable meta={fontMeta} group="weight" sort="asc" />
