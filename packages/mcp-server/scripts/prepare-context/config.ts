@@ -1,3 +1,4 @@
+import { readdirSync } from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { version } from '@porsche-design-system/components/package.json';
@@ -8,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const monorepoRoot = path.resolve(__dirname, '..', '..', '..', '..');
 
 export const sourceDir = path.join(monorepoRoot, 'packages/storefront/src/app/');
-export const outputDir = path.join(monorepoRoot, 'packages/mcp-server/context-snapshots');
+export const outputDir = path.join(monorepoRoot, `packages/mcp-server/v${version}`);
 export const examplesDir = path.join(monorepoRoot, 'packages/shared/src/examples');
 export const changelogSourcePath = path.join(monorepoRoot, 'packages/components/CHANGELOG.md');
 export const componentMetaPath = path.join(monorepoRoot, 'packages/component-meta/src/lib/componentMeta.ts');
@@ -30,6 +31,11 @@ export const LARGE_ENUM_THRESHOLD = 20;
 
 /** Directories to skip entirely during source traversal */
 export const SKIP_DIRECTORIES = ['-', '[component]'];
+
+/** All top-level category directory names from the storefront source */
+export const CATEGORIES = readdirSync(sourceDir, { withFileTypes: true })
+  .filter((d) => d.isDirectory() && !SKIP_DIRECTORIES.includes(d.name))
+  .map((d) => d.name);
 
 export type BedrockMetadataValue =
   | { type: 'STRING'; stringValue: string }

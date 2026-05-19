@@ -2,6 +2,7 @@ import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import {
   type BedrockMetadataAttribute,
+  CATEGORIES,
   CHANGELOG_MAX_VERSIONS,
   changelogSourcePath,
   FRAMEWORKS,
@@ -57,6 +58,15 @@ const walkAndCopy = async (dir: string, relative: string = '') => {
       console.log(`  copy: ${newRelativePath}`);
     }
   }
+};
+
+// Step 1.5 — Generate static categories JSON for src/index.ts consumption
+
+const generateCategoriesJson = async () => {
+  const generatedDir = path.resolve(path.dirname(outputDir), 'src', 'generated');
+  await fs.mkdir(generatedDir, { recursive: true });
+  await fs.writeFile(path.join(generatedDir, 'categories.json'), JSON.stringify(CATEGORIES, null, 2) + '\n', 'utf-8');
+  console.log(`  gen: src/generated/categories.json (${CATEGORIES.length} categories)`);
 };
 
 // Step 2 — Process non-framework MDX pages (framework is irrelevant for these)
@@ -274,22 +284,25 @@ const prepareContextSnapshots = async () => {
   await fs.rm(outputDir, { recursive: true, force: true });
   await fs.mkdir(outputDir, { recursive: true });
 
-  console.log('Step 1/6: Copying source files...');
+  console.log('Step 1/7: Copying source files...');
   await walkAndCopy(sourceDir, '');
 
-  console.log('\nStep 2/6: Processing non-framework MDX → Markdown...');
+  console.log('\nStep 2/7: Generating categories JSON...');
+  await generateCategoriesJson();
+
+  console.log('\nStep 3/7: Processing non-framework MDX → Markdown...');
   await processNonFrameworkPages();
 
-  console.log('\nStep 3/6: Generating per-framework pages (examples & stories)...');
+  console.log('\nStep 4/7: Generating per-framework pages (examples & stories)...');
   await generateFrameworkPages();
 
-  console.log('\nStep 4/6: Truncating changelog...');
+  console.log('\nStep 5/7: Truncating changelog...');
   await truncateChangelog();
 
-  console.log('\nStep 5/6: Generating shared reference pages...');
+  console.log('\nStep 6/7: Generating shared reference pages...');
   await generateSharedReferences();
 
-  console.log('\nStep 6/6: Generating AWS Bedrock Knowledge Base metadata...');
+  console.log('\nStep 7/7: Generating AWS Bedrock Knowledge Base metadata...');
   await generateBedrockMetadata();
 
   console.log('\nDone! Context snapshots ready.');

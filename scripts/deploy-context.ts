@@ -2,11 +2,19 @@ import { execSync } from 'node:child_process';
 import { BedrockAgentClient, StartIngestionJobCommand } from '@aws-sdk/client-bedrock-agent';
 import { version } from '@porsche-design-system/components/package.json';
 
+const required = (name: string): string => {
+  const value = process.env[name];
+  if (!value) {
+    console.error(`Missing required environment variable: ${name}`);
+    process.exit(1);
+  }
+  return value;
+};
 const CONTEXT_DIR = `packages/mcp-server/v${version}`;
 const S3_BUCKET_NAME = required('S3_BUCKET_NAME');
 const KNOWLEDGE_BASE_ID = required('KNOWLEDGE_BASE_ID');
 const DATA_SOURCE_ID = required('DATA_SOURCE_ID');
-const REGION = 'eu-central-1';
+const REGION = process.env.AWS_REGION || 'eu-central-1';
 const S3_BUCKET_PATH = `s3://${S3_BUCKET_NAME}/v${version}`;
 
 const deploy = async () => {
