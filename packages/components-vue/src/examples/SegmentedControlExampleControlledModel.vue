@@ -13,10 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-vue';
+import { PSegmentedControl, PSegmentedControlItem, type PSegmentedControlProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const mySegmentedControl = ref();
+const mySegmentedControl = ref<PSegmentedControlProps['value']>();
 
 const resetValue = () => {
   mySegmentedControl.value = undefined;

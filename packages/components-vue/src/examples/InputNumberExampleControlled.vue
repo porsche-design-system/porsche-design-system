@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { type InputNumberInputEventDetail, PInputNumber, PText } from '@porsche-design-system/components-vue';
+import {
+  type InputNumberInputEventDetail,
+  PInputNumber,
+  type PInputNumberProps,
+  PText,
+} from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const value = ref<string>('');
+const value = ref<PInputNumberProps['value']>('');
 
 const onInput = (e: CustomEvent<InputNumberInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;

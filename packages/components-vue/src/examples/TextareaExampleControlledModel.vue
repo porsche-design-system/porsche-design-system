@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import { PTextarea } from '@porsche-design-system/components-vue';
+import { PTextarea, type PTextareaProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myTextarea = ref('');
+const myTextarea = ref<PTextareaProps['value']>('');
 
 const resetValue = () => {
   myTextarea.value = '';

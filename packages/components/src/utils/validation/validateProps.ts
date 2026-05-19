@@ -1,9 +1,9 @@
 import { type Breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
-import { consoleError } from '../log/logger';
-import { getTagNameWithoutPrefix } from '../tag-name';
 import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
+import { consoleError } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;
@@ -138,6 +138,7 @@ type AllowedTypeKey = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
+  null: ValidatorFunction;
   array: ValidatorFunctionArrayCreator;
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
@@ -253,6 +254,11 @@ export const AllowedTypes: {
         }
       }
     },
+  // method shorthand allows the reserved word `null` as a name, giving func.name === 'null'
+  // which yields readable `oneOf` error messages like "expected one of: string, null"
+  null(propName, propValue) {
+    return propValue === null || propValue === undefined ? undefined : { propName, propValue, propType: 'null' };
+  },
 };
 
 // utility type to retrieve all props based on a class
@@ -292,7 +298,11 @@ export const isValidArray = (propName: string, arr: any, validator: ValidatorFun
     : {
         propName,
         propValue: arr,
-        propType: validator(propName, null).propType, // Get propType by passing in null which will always result in error
+        // Derive propType for the error message by invoking the validator with a value that is
+        // guaranteed to fail. `null` works for most built-in validators (string/number/boolean),
+        // but not for `AllowedTypes.null` itself, so fall back to a unique Symbol which fails
+        // every typeof-based validator.
+        propType: (validator(propName, null) ?? validator(propName, Symbol('invalid')))?.propType,
       };
 
   if (validationError) {
