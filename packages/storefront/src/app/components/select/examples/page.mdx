@@ -74,18 +74,14 @@ To require the user to actively pick an option, leave the `p-select` `value` pro
 
 To let users clear their selection, add an empty option:
 
-```
-<p-select-option></p-select-option>
-```
+`<p-select-option></p-select-option>`
 
 Its `value` defaults to `undefined`, so it becomes selected whenever the `p-select` `value` is `undefined`. If you
 prefer `null`, set both the `p-select` `value` and the option `value` to `null` consistently.
 
 To only show a placeholder without allowing the user to clear their selection, use a disabled option instead:
 
-```
-<p-select-option disabled>Please choose an option</p-select-option>
-```
+`<p-select-option disabled>Please choose an option</p-select-option>`
 
 <ComponentExample codeSample={selectExampleRequired} />
 
