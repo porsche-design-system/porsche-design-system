@@ -2,6 +2,7 @@ import {
   type MultiSelectChangeEventDetail,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
   PTag,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
@@ -54,7 +55,7 @@ const optionsData: Option[] = [
 ];
 
 export const MultiSelectExampleSelectedSlot = () => {
-  const [value, setValue] = useState<string[]>([]);
+  const [value, setValue] = useState<PMultiSelectProps['value']>([]);
   const [options] = useState<Option[]>(optionsData);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
 
