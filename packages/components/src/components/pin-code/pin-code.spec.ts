@@ -65,26 +65,26 @@ describe('componentWillLoad', () => {
     expect(component['defaultValue']).toBe('3333');
   });
 
-  it('should coerce null value to empty string when calling getSanitisedValue() and store coerced value as defaultValue', () => {
+  it('should not call getSanitisedValue() and preserve null as value and defaultValue when value is null', () => {
     const component = initComponent();
     const spy = vi.spyOn(pinCodeUtils, 'getSanitisedValue');
     component.value = null;
     component.componentWillLoad();
 
-    expect(spy).toHaveBeenCalledWith(component.host, '', component.length);
-    expect(component.value).toBe('');
-    expect(component['defaultValue']).toBe('');
+    expect(spy).not.toHaveBeenCalled();
+    expect(component.value).toBeNull();
+    expect(component['defaultValue']).toBeNull();
   });
 
-  it('should coerce undefined value to empty string when calling getSanitisedValue() and store coerced value as defaultValue', () => {
+  it('should not call getSanitisedValue() and preserve undefined as value and defaultValue when value is undefined', () => {
     const component = initComponent();
     const spy = vi.spyOn(pinCodeUtils, 'getSanitisedValue');
     component.value = undefined;
     component.componentWillLoad();
 
-    expect(spy).toHaveBeenCalledWith(component.host, '', component.length);
-    expect(component.value).toBe('');
-    expect(component['defaultValue']).toBe('');
+    expect(spy).not.toHaveBeenCalled();
+    expect(component.value).toBeUndefined();
+    expect(component['defaultValue']).toBeUndefined();
   });
 
   it('should assign this.initialLoading to value of this.loading', () => {
