@@ -30,6 +30,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select Option`: extended types of `value` prop to allow `string | number`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 
+### Fixed
+
+- `Inline Notification`: The action label expands when the heading or content section becomes multiline
+  ([#4418](https://github.com/porsche-design-system/porsche-design-system/pull/4418))
+
 ## [4.2.0-rc.1] - 2026-05-18
 
 ### Added
@@ -44,6 +49,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`:
   - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
   - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+- `Ai Tag`: New component to mark AI-generated/AI-modified content
+  ([#4400](https://github.com/porsche-design-system/porsche-design-system/pull/4400))
 
 ## [4.1.0] - 2026-05-06
 
@@ -1092,6 +1099,20 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.35.0] - 2026-05-06
+
+## [3.35.0-rc.0] - 2026-05-05
+
+### Added
+
+- `AI-Tag`: New component to mark AI-generated/AI-modified content
+  ([#4236](https://github.com/porsche-design-system/porsche-design-system/pull/4236))
+
+### Fixed
+
+- `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
+  ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
 
 ## [3.34.0] - 2026-04-09
 
