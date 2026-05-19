@@ -30,6 +30,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select Option`: extended types of `value` prop to allow `string | number`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 
+### Fixed
+
+- `Inline Notification`: The action label expands when the heading or content section becomes multiline
+  ([#4418](https://github.com/porsche-design-system/porsche-design-system/pull/4418))
+
 ## [4.2.0-rc.1] - 2026-05-18
 
 ### Added
