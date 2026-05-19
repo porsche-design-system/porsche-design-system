@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 82123,
-    "gzipSize": 25641
+    "gzipSize": 25637
   },
   {
     "chunkShortName": "modal",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 14042,
-    "gzipSize": 5519
+    "size": 14207,
+    "gzipSize": 5578
   },
   {
     "chunkShortName": "popover",
@@ -206,8 +206,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 17671,
-    "gzipSize": 6584
+    "size": 17808,
+    "gzipSize": 6635
   },
   {
     "chunkShortName": "scroller",
@@ -216,8 +216,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 15943,
-    "gzipSize": 6092
+    "size": 15936,
+    "gzipSize": 6103
   },
   {
     "chunkShortName": "select",
