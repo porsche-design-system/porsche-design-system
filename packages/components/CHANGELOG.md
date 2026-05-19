@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   extended types of `value` prop to allow `string | null`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Select`, `Select Option`: extended types of `value` prop to allow `string | number | null`
-    ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Multi Select`: extended types of `value` prop to allow `string[] | number[] | null`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Multi Select Option`: extended types of `value` prop to allow `string | number`
@@ -34,8 +34,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
-- `Radio Group Option`: extended types of `value` prop to allow `string | number`
-  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group Option`:
+  - extended types of `value` prop to allow `string | number`
+    ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+  - `value` prop is now required ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 
 ## [4.2.0-rc.1] - 2026-05-18
 

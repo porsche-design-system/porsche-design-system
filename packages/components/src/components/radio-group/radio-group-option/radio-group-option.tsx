@@ -34,7 +34,7 @@ export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
 
   /** The option value. Selected when it strictly matches the p-radio-group value (same type and value). */
-  @Prop() public value?: string | number;
+  @Prop() public value: string | number;
 
   /** Text content for a user-facing label. */
   @Prop() public label?: string;
