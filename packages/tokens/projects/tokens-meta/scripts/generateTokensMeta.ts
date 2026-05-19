@@ -1,12 +1,17 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as tokens from '@porsche-design-system/tokens';
+import { camelCase } from 'change-case';
 import fg from 'fast-glob';
+import ts from 'typescript';
 
+const startTime = Date.now();
 const sourceDirectory = path.resolve('../../src/');
 const outputFile = path.resolve('./src/lib/tokensMeta.ts');
 
 const files = await fg(`${sourceDirectory}/**/*.ts`);
+// Exclude barrel files, tests, light/dark theme-specific files (only light-dark variants are used),
+// and the raw palette constants which are not design tokens themselves (as per previous implementation).
 const tokenFiles = files.filter(
   (f) =>
     !f.endsWith('index.ts') &&
@@ -16,57 +21,103 @@ const tokenFiles = files.filter(
     !f.endsWith('palette.ts')
 );
 
-const grouped: Record<
-  string,
-  { name: string; value: string; description: string; category: string; group?: string }[]
-> = {};
+function extractTokenInfo(filePath: string): { name: string; description: string } | null {
+  // setParentNodes=true is required so getJSDocCommentsAndTags() can walk up
+  // the AST via .parent pointers to find the comment attached to each node.
+  const source = ts.createSourceFile(filePath, fs.readFileSync(filePath, 'utf-8'), ts.ScriptTarget.Latest, true);
+
+  for (const statement of source.statements) {
+    if (!ts.isVariableStatement(statement)) continue;
+    // Only pick up exported declarations (e.g. `export const colorCanvas = ...`)
+    if (!statement.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)) continue;
+
+    const declaration = statement.declarationList.declarations[0];
+    if (!declaration || !ts.isIdentifier(declaration.name)) continue;
+
+    const name = declaration.name.text;
+
+    const jsDocs = ts.getJSDocCommentsAndTags(statement);
+    let description = '';
+    for (const node of jsDocs) {
+      if (ts.isJSDoc(node) && node.comment) {
+        // node.comment is either a plain string or an array of JSDocText/JSDocLink nodes
+        description =
+          typeof node.comment === 'string'
+            ? node.comment
+            : node.comment.map((c) => ('text' in c ? c.text : '')).join('');
+        break;
+      }
+    }
+
+    if (name && description) return { name, description };
+  }
+
+  return null;
+}
+
+// TokenLeaf is a resolved design token; TokenTree is any intermediate folder level.
+type TokenLeaf = { name: string; value: string; description: string };
+type TokenTree = { [key: string]: TokenTree | TokenLeaf };
+
+const tree: TokenTree = {};
 
 for (const file of tokenFiles) {
-  const content = fs.readFileSync(file, 'utf-8');
-  const nameMatch = content.match(/export const (\w+)/);
-  const descriptionMatch = content.match(/\/\*\*\s*(.+?)\s*\*\//);
+  const info = extractTokenInfo(file);
+  if (!info) continue;
 
-  if (!nameMatch || !descriptionMatch) continue;
-
-  const tokenName = nameMatch[1];
-  // Resolve actual runtime value from the built tokens package
-  const resolvedValue = (tokens as Record<string, unknown>)[tokenName];
+  // Resolve the runtime value from the built tokens package by the exported const name.
+  const resolvedValue = (tokens as Record<string, unknown>)[info.name];
   if (resolvedValue === undefined) continue;
 
-  /* Resolve category and group via path:
-  e.g. src/font/family/ -> category: 'font', group: 'family'
-  e.g. src/shadow/ -> category: 'shadow'
-  '*/
-  const relativePath = file.split('/src/')[1];
+  // Use path.relative + normalize to forward slashes so this works on Windows too.
+  // e.g. "color/light-dark/background/colorBackdrop.ts" -> ["color", "lightDark", "background"]
+  const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
   const parts = relativePath.split('/');
-  const category = parts[0];
-  const group = parts.length > 2 ? parts[parts.length - 2] : undefined;
+  // Drop the filename (last segment); camelCase each directory name so "light-dark" -> "lightDark"
+  const segments = parts.slice(0, -1).map((p) => camelCase(p));
 
-  if (!grouped[category]) grouped[category] = [];
+  let node = tree;
+  for (const seg of segments) {
+    if (!node[seg]) node[seg] = {};
+    node = node[seg] as TokenTree;
+  }
 
-  grouped[category].push({
-    name: tokenName,
+  node[info.name] = {
+    name: info.name,
+    // String() handles numeric token values (e.g. breakpoints) that aren't already strings
     value: String(resolvedValue),
-    description: descriptionMatch[1],
-    category,
-    ...(group ? { group } : {}),
-  });
+    description: info.description,
+  };
 }
 
-const lines: string[] = [`import type { TokenMeta } from '../types/token-meta';`, ''];
+// Recursively converts the nested tree into formatted TypeScript source.
+// Leaf detection: any object with a "name" string property is a TokenLeaf, not a subtree.
+function serializeTree(obj: TokenTree | TokenLeaf, indent = 0): string {
+  const pad = '  '.repeat(indent);
+  const innerPad = '  '.repeat(indent + 1);
 
-for (const [category, categoryTokens] of Object.entries(grouped)) {
-  const exportName = `${category}Meta`;
-  const items = categoryTokens
-    .map((t) => {
-      const groupProp = t.group ? `, group: '${t.group}'` : '';
-      return `  { name: '${t.name}', value: ${JSON.stringify(t.value)}, description: '${t.description}', category: '${t.category}'${groupProp} }`;
-    })
+  if (typeof (obj as TokenLeaf).name === 'string') {
+    const leaf = obj as TokenLeaf;
+    return `{ name: '${leaf.name}', value: ${JSON.stringify(leaf.value)}, description: ${JSON.stringify(leaf.description)} }`;
+  }
+
+  const entries = Object.entries(obj as TokenTree)
+    .map(([key, val]) => `${innerPad}${key}: ${serializeTree(val, indent + 1)}`)
     .join(',\n');
-  lines.push(`export const ${exportName}: TokenMeta[] = [\n${items},\n];`);
-  lines.push('');
+
+  return `{\n${entries},\n${pad}}`;
 }
+
+const output = [
+  `import type { TokenMeta } from '../types/token-meta';`,
+  ``,
+  `export type TokensMetaTree = { [key: string]: TokensMetaTree | TokenMeta };`,
+  ``,
+  `export const tokensMeta = ${serializeTree(tree)} satisfies TokensMetaTree;`,
+  ``,
+].join('\n');
 
 fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-fs.writeFileSync(outputFile, lines.join('\n'));
-console.log(`Generated ${outputFile}`);
+fs.writeFileSync(outputFile, output);
+const endTime = Date.now();
+console.log(`Generated ${outputFile} in ${endTime - startTime}ms`);
