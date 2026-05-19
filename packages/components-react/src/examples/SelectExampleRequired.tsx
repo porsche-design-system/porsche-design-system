@@ -1,5 +1,5 @@
 import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
-import { type FormEvent, useState } from 'react';
+import { type SubmitEvent, useState } from 'react';
 
 export const SelectExampleRequiredPage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
@@ -14,7 +14,7 @@ export const SelectExampleRequiredPage = () => {
     setHasDeselection((prev) => !prev);
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     setLastSubmittedData(formData.get('options')?.toString() || 'none');

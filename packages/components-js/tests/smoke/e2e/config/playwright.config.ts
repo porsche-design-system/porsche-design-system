@@ -1,6 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 import { playwrightConfigE2E } from '@porsche-design-system/shared/testing';
 
+// NOTE: cdn.ui.porsche.cn (Tencent EdgeOne) has a bot-protection rule that
+// returns 403 (with no CORS headers) for requests where User-Agent or the
+// sec-ch-ua Client Hints contain "HeadlessChrome". We override both so the
+// .cn smoke test reaches the real asset response.
 const realChromeUserAgent =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36';
 const realChromeSecChUa = '"Google Chrome";v="147", "Chromium";v="147", "Not.A/Brand";v="8"';

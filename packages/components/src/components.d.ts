@@ -2242,10 +2242,10 @@ export namespace Components {
          */
         "state"?: MultiSelectState;
         /**
-          * The selected values.
+          * The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.
           * @default []
          */
-        "value"?: string[];
+        "value"?: string[] | number[] | null;
     }
     interface PMultiSelectOption {
         /**
@@ -2256,7 +2256,7 @@ export namespace Components {
         /**
           * The option value.
          */
-        "value": string;
+        "value": string | number;
     }
     interface POptgroup {
         /**
@@ -2658,9 +2658,9 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * The selected value.
+          * The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PSelectOption {
         /**
@@ -2669,9 +2669,9 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * The option value. Selected when it strictly matches the p-select value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -6595,10 +6595,10 @@ declare namespace LocalJSX {
          */
         "state"?: MultiSelectState;
         /**
-          * The selected values.
+          * The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.
           * @default []
          */
-        "value"?: string[];
+        "value"?: string[] | number[] | null;
     }
     interface PMultiSelectOption {
         /**
@@ -6609,7 +6609,7 @@ declare namespace LocalJSX {
         /**
           * The option value.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface POptgroup {
         /**
@@ -7051,9 +7051,9 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * The selected value.
+          * The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PSelectOption {
         /**
@@ -7062,9 +7062,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * The option value. Selected when it strictly matches the p-select value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}

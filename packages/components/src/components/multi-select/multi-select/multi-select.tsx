@@ -13,7 +13,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -65,7 +65,11 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.array(AllowedTypes.string),
+  value: AllowedTypes.oneOf<ValidatorFunction>([
+    AllowedTypes.array(AllowedTypes.string),
+    AllowedTypes.array(AllowedTypes.number),
+    AllowedTypes.null,
+  ]),
   state: AllowedTypes.oneOf<MultiSelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -107,8 +111,21 @@ export class MultiSelect {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The selected values. */
-  @Prop({ mutable: true }) public value?: string[] = [];
+  /**
+   * The selected values. Matches options strictly by type and value, meaning
+   * a string value only matches options whose value is the same string,
+   * a number value only matches options whose value is the same number.
+   * Pass null or [] to clear the selection.
+   *
+   * Please note that FormData always serializes values as
+   * strings, so when participating in a native (uncontrolled) form a
+   * number[] value is restored as string[] via formStateRestoreCallback
+   * and will no longer strictly match number-typed options. This limitation
+   * only applies to native form state restoration; in controlled forms
+   * (where the consumer manages value directly via the change event),
+   * number[] types are preserved end-to-end.
+   */
+  @Prop({ mutable: true }) public value?: string[] | number[] | null = [];
 
   /** The validation state. */
   @Prop() public state?: MultiSelectState = 'none';
@@ -149,7 +166,7 @@ export class MultiSelect {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string[];
+  private defaultValue: string[] | number[] | null;
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private buttonElement: HTMLButtonElement;
@@ -178,7 +195,7 @@ export class MultiSelect {
 
   @Watch('value')
   public onValueChange(): void {
-    this.setFormValue(this.value);
+    this.setFormValue();
     // When setting initial value the watcher gets called before the options are defined
     if (this.multiSelectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
@@ -221,10 +238,15 @@ export class MultiSelect {
     }
   }
 
-  public setFormValue(value: string[]): void {
+  public setFormValue(): void {
+    if (this.value == null || this.value.length === 0) {
+      // null excludes the control from form submission (mirrors native behavior)
+      this.internals?.setFormValue(null);
+      return;
+    }
     const formData = new FormData();
-    for (const val of value) {
-      formData.append(this.name, val);
+    for (const val of this.value) {
+      formData.append(this.name, String(val));
     }
     this.internals?.setFormValue(formData);
   }
@@ -243,7 +265,7 @@ export class MultiSelect {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
-    this.setFormValue(this.value);
+    this.setFormValue();
     this.updateOptions();
     // Use initial value to set options
     this.selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value);
@@ -278,8 +300,7 @@ export class MultiSelect {
   }
 
   public formResetCallback(): void {
-    this.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher which syncs form value
   }
 
   public render(): JSX.Element {
@@ -338,7 +359,7 @@ export class MultiSelect {
           ) : (
             <span>{this.selectedOptions.map((option) => (option.textContent ?? '').toString().trim()).join(', ')}</span>
           )}
-          {this.value.length > 0 && (
+          {this.value?.length > 0 && (
             <PrefixedTagNames.pButtonPure
               type="button"
               class="button"
@@ -562,12 +583,13 @@ export class MultiSelect {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedMultiSelectOption(selectedOption);
+      const currentValue = this.value ?? [];
       if (selectedOption.selected) {
         this.selectedOptions = [...this.selectedOptions, selectedOption];
-        this.value = [...this.value, selectedOption.value];
+        this.value = [...currentValue, selectedOption.value] as string[] | number[];
       } else {
         this.selectedOptions = this.selectedOptions.filter((option) => option.value !== selectedOption.value);
-        this.value = this.value.filter((val) => val !== selectedOption.value);
+        this.value = currentValue.filter((val) => val !== selectedOption.value) as string[] | number[];
       }
       this.emitUpdateEvent();
     }

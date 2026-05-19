@@ -10,7 +10,7 @@ export type SelectOptgroup = HTMLPOptgroupElement;
 
 export type SelectChangeEventDetail = {
   name: string;
-  value: string;
+  value: string | number | null | undefined; // Mirrors the p-select-option value type
 };
 export type SelectToggleEventDetail = { open: boolean };
 
@@ -32,10 +32,14 @@ export const internalSelect = {
 export const selectOptionByValue = (
   host: HTMLElement,
   options: SelectOption[],
-  value: string,
+  value: string | number | null | undefined,
   preventWarning = false
 ): SelectOption | null => {
   internalSelect.resetSelectedOption(options);
+  // Strict equality matching: a host value of `null`, `undefined`, a `string` or a `number`
+  // only matches an option whose `value` is strictly equal (same type and value). No
+  // cross-type coercion (e.g. number `5` does NOT match string `"5"`), and `null` and
+  // `undefined` are treated as distinct values.
   const optionToSelect = options.find((option) => option.value === value);
 
   if (optionToSelect) {
@@ -44,7 +48,7 @@ export const selectOptionByValue = (
     return optionToSelect;
   }
 
-  if (value !== undefined && !preventWarning) {
+  if (value !== undefined && value !== null && !preventWarning) {
     consoleWarn(
       `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
       host
