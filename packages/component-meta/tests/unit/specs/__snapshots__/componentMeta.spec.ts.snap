@@ -7850,6 +7850,7 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": null,
         "description": "The option value. Selected when it strictly matches the p-radio-group value (same type and value).",
+        "isRequired": true,
         "type": "string | number",
       },
     },

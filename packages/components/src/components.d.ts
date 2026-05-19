@@ -2455,7 +2455,7 @@ export namespace Components {
         /**
           * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
          */
-        "value"?: string | number;
+        "value": string | number;
     }
     interface PScroller {
         /**
