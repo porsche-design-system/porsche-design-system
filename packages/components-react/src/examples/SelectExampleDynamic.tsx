@@ -29,7 +29,7 @@ export const SelectExampleDynamicPage = () => {
 
   const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
     setSelectedValue(e.detail.value);
-    setInputValue(e.detail.value);
+    setInputValue(String(e.detail.value ?? ''));
   };
 
   const onAddOption = () => {
