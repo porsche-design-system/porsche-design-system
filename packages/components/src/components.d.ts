@@ -996,7 +996,7 @@ export namespace Components {
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputEmail {
         /**
@@ -1092,7 +1092,7 @@ export namespace Components {
           * The default email address (or comma-separated list of addresses) for the input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputMonth {
         /**
@@ -1174,7 +1174,7 @@ export namespace Components {
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputNumber {
         /**
@@ -1266,7 +1266,7 @@ export namespace Components {
           * The value of the number input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
@@ -1353,7 +1353,7 @@ export namespace Components {
           * The password input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputSearch {
         /**
@@ -1449,7 +1449,7 @@ export namespace Components {
           * The search input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputTel {
         /**
@@ -1540,7 +1540,7 @@ export namespace Components {
           * The tel input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputText {
         /**
@@ -1631,7 +1631,7 @@ export namespace Components {
           * The text input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputTime {
         /**
@@ -1713,7 +1713,7 @@ export namespace Components {
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputUrl {
         /**
@@ -1804,7 +1804,7 @@ export namespace Components {
           * The URL input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputWeek {
         /**
@@ -1886,7 +1886,7 @@ export namespace Components {
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PLink {
         /**
@@ -3067,7 +3067,7 @@ export namespace Components {
           * The textarea value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
         /**
           * Handles wrapping behavior of elements.
           * @default 'soft'
@@ -5201,7 +5201,7 @@ declare namespace LocalJSX {
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputEmail {
         /**
@@ -5309,7 +5309,7 @@ declare namespace LocalJSX {
           * The default email address (or comma-separated list of addresses) for the input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputMonth {
         /**
@@ -5403,7 +5403,7 @@ declare namespace LocalJSX {
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputNumber {
         /**
@@ -5507,7 +5507,7 @@ declare namespace LocalJSX {
           * The value of the number input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
@@ -5606,7 +5606,7 @@ declare namespace LocalJSX {
           * The password input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputSearch {
         /**
@@ -5714,7 +5714,7 @@ declare namespace LocalJSX {
           * The search input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputTel {
         /**
@@ -5817,7 +5817,7 @@ declare namespace LocalJSX {
           * The tel input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputText {
         /**
@@ -5920,7 +5920,7 @@ declare namespace LocalJSX {
           * The text input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputTime {
         /**
@@ -6014,7 +6014,7 @@ declare namespace LocalJSX {
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputUrl {
         /**
@@ -6117,7 +6117,7 @@ declare namespace LocalJSX {
           * The URL input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputWeek {
         /**
@@ -6211,7 +6211,7 @@ declare namespace LocalJSX {
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PLink {
         /**
@@ -7504,7 +7504,7 @@ declare namespace LocalJSX {
           * The textarea value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
         /**
           * Handles wrapping behavior of elements.
           * @default 'soft'
@@ -7748,7 +7748,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7766,7 +7766,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7789,7 +7789,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7828,7 +7828,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7848,7 +7848,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "clear": boolean;
         "indicator": boolean;
@@ -7870,7 +7870,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7913,7 +7913,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7931,7 +7931,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7953,7 +7953,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -8244,7 +8244,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "state": TextareaState;
         "message": string;
         "hideLabel": string;
