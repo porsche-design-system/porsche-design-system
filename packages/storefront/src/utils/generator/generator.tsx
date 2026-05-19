@@ -1,6 +1,8 @@
 import {
   PAccordion,
   type PAccordionProps,
+  PAiTag,
+  type PAiTagProps,
   PBanner,
   type PBannerProps,
   PButton,
@@ -240,6 +242,7 @@ export type EventConfig = {
 
 export type PropTypeMapping = {
   'p-accordion': PAccordionProps;
+  'p-ai-tag': PAiTagProps;
   'p-banner': PBannerProps;
   'p-button': PButtonProps;
   'p-button-pure': PButtonPureProps;
@@ -316,6 +319,7 @@ export type PropTypeMapping = {
 
 const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-accordion': PAccordion,
+  'p-ai-tag': PAiTag,
   'p-banner': PBanner,
   'p-button': PButton,
   'p-button-pure': PButtonPure,

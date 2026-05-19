@@ -1,0 +1,30 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'AI Tag: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the AI Tag component',
+};
+
+# AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
+
+## Accessibility support
+
+For the `abbreviation` variant, the component uses an `<abbr>` element so the full “artificial intelligence” term
+is available as the expansion.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |

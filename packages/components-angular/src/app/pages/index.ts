@@ -25,6 +25,7 @@ export * from './tabs-bar-navigation-bug';
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
 import { AccordionComponent } from './generated/accordion.component';
+import { AiTagComponent } from './generated/ai-tag.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
 import { BannerCssVariablesComponent } from './generated/banner-css-variables.component';
@@ -235,6 +236,7 @@ import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
+  AiTagComponent,
   BannerComponent,
   BannerBasicComponent,
   BannerCssVariablesComponent,
@@ -449,6 +451,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Accordion',
     path: 'accordion',
     component: AccordionComponent,
+  },
+  {
+    name: 'Ai Tag',
+    path: 'ai-tag',
+    component: AiTagComponent,
   },
   {
     name: 'Banner',
