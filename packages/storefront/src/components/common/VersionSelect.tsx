@@ -17,7 +17,7 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
     <div className="flex gap-2 flex-col">
       <PSelect
         name="versions"
-        value={pdsVersion.latest}
+        value={pdsVersion.current}
         onChange={(e) => onVersionChange(e.detail.value)}
         label="Switch version"
         compact={true}

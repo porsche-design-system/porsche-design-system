@@ -91,58 +91,58 @@
   },
   {
     "chunkShortName": "input-date",
-    "size": 14152,
-    "gzipSize": 5359
+    "size": 14319,
+    "gzipSize": 5419
   },
   {
     "chunkShortName": "input-email",
-    "size": 13951,
-    "gzipSize": 5241
+    "size": 14118,
+    "gzipSize": 5299
   },
   {
     "chunkShortName": "input-month",
-    "size": 14207,
-    "gzipSize": 5382
+    "size": 14374,
+    "gzipSize": 5441
   },
   {
     "chunkShortName": "input-number",
-    "size": 14579,
-    "gzipSize": 5448
+    "size": 14757,
+    "gzipSize": 5512
   },
   {
     "chunkShortName": "input-password",
-    "size": 14173,
-    "gzipSize": 5327
+    "size": 14340,
+    "gzipSize": 5386
   },
   {
     "chunkShortName": "input-search",
-    "size": 14501,
-    "gzipSize": 5454
+    "size": 14689,
+    "gzipSize": 5517
   },
   {
     "chunkShortName": "input-tel",
-    "size": 13881,
-    "gzipSize": 5227
+    "size": 14048,
+    "gzipSize": 5285
   },
   {
     "chunkShortName": "input-text",
-    "size": 14685,
-    "gzipSize": 5455
+    "size": 14948,
+    "gzipSize": 5534
   },
   {
     "chunkShortName": "input-time",
-    "size": 14151,
-    "gzipSize": 5363
+    "size": 14318,
+    "gzipSize": 5422
   },
   {
     "chunkShortName": "input-url",
-    "size": 13883,
-    "gzipSize": 5228
+    "size": 14050,
+    "gzipSize": 5285
   },
   {
     "chunkShortName": "input-week",
-    "size": 14203,
-    "gzipSize": 5380
+    "size": 14370,
+    "gzipSize": 5439
   },
   {
     "chunkShortName": "link",
@@ -167,7 +167,7 @@
   {
     "chunkShortName": "main",
     "size": 82123,
-    "gzipSize": 25624
+    "gzipSize": 25628
   },
   {
     "chunkShortName": "modal",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 48231,
-    "gzipSize": 17213
+    "size": 48122,
+    "gzipSize": 17160
   },
   {
     "chunkShortName": "optgroup",
@@ -221,8 +221,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 46887,
-    "gzipSize": 16705
+    "size": 46733,
+    "gzipSize": 16665
   },
   {
     "chunkShortName": "sheet",
@@ -281,8 +281,8 @@
   },
   {
     "chunkShortName": "textarea",
-    "size": 12675,
-    "gzipSize": 4845
+    "size": 12777,
+    "gzipSize": 4878
   },
   {
     "chunkShortName": "toast",

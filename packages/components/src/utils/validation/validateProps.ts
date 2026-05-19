@@ -1,9 +1,9 @@
 import { type Breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
-import { consoleError } from '../log/logger';
-import { getTagNameWithoutPrefix } from '../tag-name';
 import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
+import { consoleError } from '../log/logger';
+import { getTagNameWithoutPrefix } from '../tag-name';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;

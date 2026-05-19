@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, vi } from 'vitest';
 import * as breakpointCustomizableUtils from '../breakpoint-customizable';
 import * as jsonUtils from '../json';
 import * as loggerUtils from '../log/logger';
@@ -192,10 +192,10 @@ describe('isValidArray()', () => {
     expect(isValidArray(propName, arr, validator)).toEqual(
       typeResult
         ? {
-          propName,
-          propValue: valueResult,
-          propType: typeResult,
-        }
+            propName,
+            propValue: valueResult,
+            propType: typeResult,
+          }
         : undefined
     );
   });
