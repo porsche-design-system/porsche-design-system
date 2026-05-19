@@ -63,6 +63,7 @@ import {
   PInputSearch,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -74,7 +75,7 @@ function useDebounce<T>(callback: (value: T) => void, delay = 400) {
   };
 }
 
-const value = ref<string[]>([]);
+const value = ref<PMultiSelectProps['value']>([]);
 const options = ref<{ value: string; label: string }[]>([]);
 const searchValue = ref('');
 const initialLoading = ref(false);

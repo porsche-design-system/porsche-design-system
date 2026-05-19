@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof InputMonth> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
   step: AllowedTypes.number,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -73,7 +73,7 @@ export class InputMonth {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The default month value for the input, in YYYY-MM format (e.g., value='2025-07'). */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string | null = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features. */
   @Prop() public autoComplete?: string;
@@ -121,14 +121,19 @@ export class InputMonth {
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | null;
+
+  // Native input.value is always a string; coerce null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {
@@ -136,7 +141,7 @@ export class InputMonth {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -155,7 +160,7 @@ export class InputMonth {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
@@ -164,7 +169,7 @@ export class InputMonth {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentDidRender(): void {
@@ -210,7 +215,7 @@ export class InputMonth {
         required={this.required}
         max={this.max}
         min={this.min}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}

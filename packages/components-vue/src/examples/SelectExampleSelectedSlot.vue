@@ -27,6 +27,7 @@ import {
   POptgroup,
   PSelect,
   PSelectOption,
+  type PSelectProps,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
@@ -97,7 +98,7 @@ const optionsData: Option[] = [
   },
 ];
 
-const value = ref<string | undefined>(undefined);
+const value = ref<PSelectProps['value']>(undefined);
 const options = ref<Option[]>(optionsData);
 const selectedOption = ref<Option | undefined>(undefined);
 
