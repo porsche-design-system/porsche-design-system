@@ -7141,7 +7141,7 @@ exports[`should match snapshot 1`] = `
       "change": {
         "description": "Emitted when the selection is changed.",
         "type": "MultiSelectChangeEventDetail",
-        "typeDetail": "{ name: string; value: string[] }",
+        "typeDetail": "{ name: string; value: string[] | number[] }",
       },
       "toggle": {
         "description": "Emitted when the dropdown is toggled.",
@@ -7250,14 +7250,18 @@ exports[`should match snapshot 1`] = `
         "type": "MultiSelectState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "array(AllowedTypes.string)",
+          "array(AllowedTypes.number)",
+          "null",
+        ],
         "defaultValue": [],
-        "description": "The selected values.",
+        "description": "The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.",
         "isArray": true,
         "propOptions": {
           "mutable": true,
         },
-        "type": "string[]",
+        "type": "string[] | number[] | null",
       },
     },
     "slotsMeta": {
@@ -7310,7 +7314,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "The option value.",
         "isRequired": true,
-        "type": "string",
+        "type": "string | number",
       },
     },
     "requiredParent": [
@@ -8509,7 +8513,7 @@ exports[`should match snapshot 1`] = `
       "change": {
         "description": "Emitted when the selection is changed.",
         "type": "SelectChangeEventDetail",
-        "typeDetail": "{ name: string; value: string }",
+        "typeDetail": "{ name: string; value: string | number | null | undefined }",
       },
       "toggle": {
         "description": "Emitted when the dropdown is toggled.",
@@ -8623,13 +8627,17 @@ exports[`should match snapshot 1`] = `
         "type": "SelectState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": null,
-        "description": "The selected value.",
+        "description": "The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -8681,10 +8689,14 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": null,
-        "description": "The option value.",
-        "type": "string",
+        "description": "The option value. Selected when it strictly matches the p-select value (same type and value).",
+        "type": "string | number | null",
       },
     },
     "requiredParent": [

@@ -609,7 +609,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "array",
+  "value": "oneOf",
 }
 `;
 
@@ -745,14 +745,14 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-select-option > propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 

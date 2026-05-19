@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   type FlagName,
   PorscheDesignSystemModule,
+  PSelect,
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-angular';
 
@@ -105,7 +106,7 @@ const optionsData: Option[] = [
   imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleSelectedSlotComponent {
-  value?: string;
+  value?: PSelect['value'];
   options: Option[] = optionsData;
   selectedOption?: Option;
 
@@ -122,7 +123,7 @@ export class SelectExampleSelectedSlotComponent {
   );
 
   onChange(event: CustomEvent<SelectChangeEventDetail>) {
-    const value = (event.target as HTMLElement & { value: string }).value;
+    const value = event.detail.value;
     this.value = value;
     this.selectedOption = this.options.find((option) => option.code === value);
   }
