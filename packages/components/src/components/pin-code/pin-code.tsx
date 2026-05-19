@@ -134,7 +134,9 @@ export class PinCode {
 
   public componentWillLoad(): void {
     this.initialLoading = this.loading;
-    this.value = getSanitisedValue(this.host, this.parsedValue, this.length);
+    if (this.value !== null && this.value !== undefined) {
+      this.value = getSanitisedValue(this.host, this.parsedValue, this.length);
+    }
     this.defaultValue = this.value;
   }
 

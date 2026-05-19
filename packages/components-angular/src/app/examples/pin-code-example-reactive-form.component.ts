@@ -36,7 +36,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class PinCodeExampleReactiveFormComponent {
   form = new FormGroup({
-    myPinCode: new FormControl<string | null>({ value: null, disabled: false }, { validators: Validators.required }),
+    myPinCode: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
   submittedValue: string | null = null;
@@ -46,7 +46,7 @@ export class PinCodeExampleReactiveFormComponent {
   }
 
   resetValue(): void {
-    this.form.controls.myPinCode.reset({ value: null, disabled: false });
+    this.form.controls.myPinCode.reset(null);
   }
 
   toggleDisabled(): void {
