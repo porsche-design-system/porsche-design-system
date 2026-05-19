@@ -16,9 +16,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Text`, `Input Number`: extended types of `value` prop to allow `string | number | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`, `Textarea`:
+  extended types of `value` prop to allow `string | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
-  since `''` (empty string) is a valid option value and can lead to confusion.
-  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+    since `''` (empty string) is a valid option value and can lead to confusion.
+    ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Radio Group Option`: extended types of `value` prop to allow `string | number`

@@ -27,7 +27,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myInputPassword.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myInputPassword.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myInputPassword.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,17 +35,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputPasswordExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputPassword: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputPassword: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myInputPassword.setValue('some-password');
   }
 
   resetValue(): void {
-    this.form.controls.myInputPassword.reset('');
+    this.form.controls.myInputPassword.reset(null);
   }
 
   toggleDisabled(): void {
