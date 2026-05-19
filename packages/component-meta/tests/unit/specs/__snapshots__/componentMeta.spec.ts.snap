@@ -3823,13 +3823,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4025,13 +4028,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputEmailState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default email address (or comma-separated list of addresses) for the input.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4209,13 +4215,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default month value for the input, in YYYY-MM format (e.g., value='2025-07').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4405,13 +4414,17 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The value of the number input.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -4595,13 +4608,16 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The password input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4806,13 +4822,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputSearchState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The search input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5002,13 +5021,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputTelState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The tel input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5197,13 +5219,17 @@ exports[`should match snapshot 1`] = `
         "type": "InputTextState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The text input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -5381,13 +5407,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5577,13 +5606,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputUrlState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The URL input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5761,13 +5793,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -10195,13 +10230,16 @@ exports[`should match snapshot 1`] = `
         "type": "TextareaState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The textarea value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
       "wrap": {
         "allowedValues": [

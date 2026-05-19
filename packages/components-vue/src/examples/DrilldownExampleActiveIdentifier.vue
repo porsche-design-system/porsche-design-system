@@ -5,11 +5,12 @@ import {
   PDrilldown,
   PDrilldownItem,
   PDrilldownLink,
+  type PDrilldownProps,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isDrilldownOpen = ref(false);
-const drilldownActiveIdentifier = ref<DrilldownUpdateEventDetail['activeIdentifier']>('id-2');
+const drilldownActiveIdentifier = ref<PDrilldownProps['activeIdentifier']>('id-2');
 const onOpen = (): void => {
   isDrilldownOpen.value = true;
 };

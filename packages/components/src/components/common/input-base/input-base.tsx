@@ -41,6 +41,7 @@ type InputBaseProps = {
   value?: string;
   step?: number;
   spellCheck?: boolean;
+  inputMode?: string;
   onWheel?: (e: InputBaseWheelEventDetail) => void;
   onInput?: (e: InputBaseInputEventDetail) => void;
   onChange?: (e: InputBaseChangeEventDetail) => void;
@@ -78,6 +79,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   pattern,
   multiple,
   name,
+  inputMode,
   onInput,
   onWheel,
   onChange,
@@ -117,11 +119,6 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           {...inputAria}
           id={id}
           ref={refElement}
-          onInput={onInput}
-          onChange={onChange}
-          onBlur={onBlur}
-          onWheel={onWheel}
-          onKeyDown={onKeyDown}
           name={name}
           form={form}
           type={type}
@@ -139,6 +136,12 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           disabled={disabled}
           pattern={pattern}
           multiple={multiple}
+          {...(inputMode !== undefined && { inputMode })}
+          onInput={onInput}
+          onChange={onChange}
+          onBlur={onBlur}
+          onWheel={onWheel}
+          onKeyDown={onKeyDown}
           dir="auto" // This overwrites the default: let the browser now decide in which direction the value should be placed.
         />
         {end}
