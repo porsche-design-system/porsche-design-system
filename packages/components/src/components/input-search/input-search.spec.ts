@@ -65,12 +65,12 @@ describe('formStateRestoreCallback', () => {
     expect(component.value).toBe(restoredValue);
   });
 });
-describe('componentDidLoad', () => {
+describe('componentDidRender (setFormValue)', () => {
   it('should call setFormValue with current value', () => {
     const component = initComponent();
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
