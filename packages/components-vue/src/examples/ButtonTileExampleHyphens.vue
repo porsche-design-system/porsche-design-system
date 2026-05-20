@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValue = ref('auto');
+const selectedValue = ref<string | number | null | undefined>('auto');
 
 const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
   selectedValue.value = e.detail.value;

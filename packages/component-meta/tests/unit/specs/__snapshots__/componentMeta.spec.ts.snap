@@ -134,6 +134,72 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-ai-tag": {
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "propsMeta": {
+      "locale": {
+        "allowedValues": [
+          "bg_BG",
+          "bs_BA",
+          "cs_CZ",
+          "da_DK",
+          "de_DE",
+          "el_GR",
+          "en_CY",
+          "en_GB",
+          "en_US",
+          "es_ES",
+          "et_EE",
+          "fi_FI",
+          "fr_FR",
+          "he_IL",
+          "hr_HR",
+          "hu_HU",
+          "is_IS",
+          "it_IT",
+          "lt_LT",
+          "lv_LV",
+          "me_ME",
+          "mk_MK",
+          "mt_MT",
+          "nb_NO",
+          "nl_NL",
+          "pl_PL",
+          "pt_PT",
+          "ro_RO",
+          "ru_RU",
+          "sk_SK",
+          "sl_SI",
+          "sr_RS",
+          "sv_SE",
+          "tr_TR",
+          "uk_UA",
+        ],
+        "defaultValue": "en_US",
+        "description": "Locale for the AI text (ISO format, e.g. "de_DE").",
+        "type": "AiTagLocale",
+      },
+      "variant": {
+        "allowedValues": [
+          "abbreviation",
+          "generated",
+          "modified",
+        ],
+        "defaultValue": "generated",
+        "description": "Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").",
+        "type": "AiTagVariant",
+      },
+    },
+    "styling": "jss",
+  },
   "p-banner": {
     "controlledMeta": [
       {
@@ -3822,13 +3888,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4023,13 +4092,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputEmailState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default email address (or comma-separated list of addresses) for the input.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4206,13 +4278,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default month value for the input, in YYYY-MM format (e.g., value='2025-07').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4401,13 +4476,17 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The value of the number input.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -4590,13 +4669,16 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The password input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4800,13 +4882,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputSearchState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The search input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -4995,13 +5080,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputTelState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The tel input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5187,13 +5275,17 @@ exports[`should match snapshot 1`] = `
         "type": "InputTextState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The text input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -5370,13 +5462,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5565,13 +5660,16 @@ exports[`should match snapshot 1`] = `
         "type": "InputUrlState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The URL input value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -5748,13 +5846,16 @@ exports[`should match snapshot 1`] = `
         "type": "number",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
     },
     "slotsMeta": {
@@ -7106,7 +7207,7 @@ exports[`should match snapshot 1`] = `
       "change": {
         "description": "Emitted when the selection is changed.",
         "type": "MultiSelectChangeEventDetail",
-        "typeDetail": "{ name: string; value: string[] }",
+        "typeDetail": "{ name: string; value: string[] | number[] }",
       },
       "toggle": {
         "description": "Emitted when the dropdown is toggled.",
@@ -7215,14 +7316,18 @@ exports[`should match snapshot 1`] = `
         "type": "MultiSelectState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "array(AllowedTypes.string)",
+          "array(AllowedTypes.number)",
+          "null",
+        ],
         "defaultValue": [],
-        "description": "The selected values.",
+        "description": "The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.",
         "isArray": true,
         "propOptions": {
           "mutable": true,
         },
-        "type": "string[]",
+        "type": "string[] | number[] | null",
       },
     },
     "slotsMeta": {
@@ -7275,7 +7380,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "The option value.",
         "isRequired": true,
-        "type": "string",
+        "type": "string | number",
       },
     },
     "requiredParent": [
@@ -8462,7 +8567,7 @@ exports[`should match snapshot 1`] = `
       "change": {
         "description": "Emitted when the selection is changed.",
         "type": "SelectChangeEventDetail",
-        "typeDetail": "{ name: string; value: string }",
+        "typeDetail": "{ name: string; value: string | number | null | undefined }",
       },
       "toggle": {
         "description": "Emitted when the dropdown is toggled.",
@@ -8576,13 +8681,17 @@ exports[`should match snapshot 1`] = `
         "type": "SelectState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": null,
-        "description": "The selected value.",
+        "description": "The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -8634,10 +8743,14 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": null,
-        "description": "The option value.",
-        "type": "string",
+        "description": "The option value. Selected when it strictly matches the p-select value (same type and value).",
+        "type": "string | number | null",
       },
     },
     "requiredParent": [
@@ -10182,13 +10295,16 @@ exports[`should match snapshot 1`] = `
         "type": "TextareaState",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "null",
+        ],
         "defaultValue": "",
         "description": "The textarea value.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | null",
       },
       "wrap": {
         "allowedValues": [

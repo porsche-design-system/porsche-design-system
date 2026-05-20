@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputTextInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputTextInputEventDetail,
+  type PInputTextProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-text-example-controlled',
@@ -13,7 +17,7 @@ import { type InputTextInputEventDetail, PorscheDesignSystemModule } from '@pors
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputTextExampleControlledComponent {
-  value: string = '';
+  value: PInputTextProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

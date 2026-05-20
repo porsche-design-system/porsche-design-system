@@ -43,7 +43,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class MultiSelectExampleReactiveFormComponent {
   form = new FormGroup({
-    myMultiSelect: new FormControl<string[]>([], { validators: Validators.required, nonNullable: true }),
+    myMultiSelect: new FormControl<string[]>([], { validators: Validators.required }),
   });
 
   submittedValue: any = undefined;

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
+import { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 import { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -69,6 +70,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { AccordionAlignMarker, AccordionBackground, AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole } from "./types";
+export { AiTagLocale, AiTagVariant } from "./components/ai-tag/ai-tag-utils";
 export { BannerHeadingTag, BannerPosition, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureColor, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
@@ -170,6 +172,18 @@ export namespace Components {
           * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
+    }
+    interface PAiTag {
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+          * @default 'en_US'
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+          * @default 'generated'
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -982,7 +996,7 @@ export namespace Components {
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputEmail {
         /**
@@ -1078,7 +1092,7 @@ export namespace Components {
           * The default email address (or comma-separated list of addresses) for the input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputMonth {
         /**
@@ -1160,7 +1174,7 @@ export namespace Components {
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputNumber {
         /**
@@ -1252,7 +1266,7 @@ export namespace Components {
           * The value of the number input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
@@ -1339,11 +1353,11 @@ export namespace Components {
           * The password input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputSearch {
         /**
-          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -1435,7 +1449,7 @@ export namespace Components {
           * The search input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputTel {
         /**
@@ -1526,7 +1540,7 @@ export namespace Components {
           * The tel input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputText {
         /**
@@ -1617,7 +1631,7 @@ export namespace Components {
           * The text input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputTime {
         /**
@@ -1699,7 +1713,7 @@ export namespace Components {
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputUrl {
         /**
@@ -1790,7 +1804,7 @@ export namespace Components {
           * The URL input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputWeek {
         /**
@@ -1872,7 +1886,7 @@ export namespace Components {
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PLink {
         /**
@@ -2228,10 +2242,10 @@ export namespace Components {
          */
         "state"?: MultiSelectState;
         /**
-          * The selected values.
+          * The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.
           * @default []
          */
-        "value"?: string[];
+        "value"?: string[] | number[] | null;
     }
     interface PMultiSelectOption {
         /**
@@ -2242,7 +2256,7 @@ export namespace Components {
         /**
           * The option value.
          */
-        "value": string;
+        "value": string | number;
     }
     interface POptgroup {
         /**
@@ -2644,9 +2658,9 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * The selected value.
+          * The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PSelectOption {
         /**
@@ -2655,9 +2669,9 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * The option value. Selected when it strictly matches the p-select value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3053,7 +3067,7 @@ export namespace Components {
           * The textarea value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
         /**
           * Handles wrapping behavior of elements.
           * @default 'soft'
@@ -3256,6 +3270,12 @@ declare global {
     var HTMLPAccordionElement: {
         prototype: HTMLPAccordionElement;
         new (): HTMLPAccordionElement;
+    };
+    interface HTMLPAiTagElement extends Components.PAiTag, HTMLStencilElement {
+    }
+    var HTMLPAiTagElement: {
+        prototype: HTMLPAiTagElement;
+        new (): HTMLPAiTagElement;
     };
     interface HTMLPBannerElementEventMap {
         "dismiss": void;
@@ -4172,6 +4192,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
+        "p-ai-tag": HTMLPAiTagElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-pure": HTMLPButtonPureElement;
@@ -4292,6 +4313,18 @@ declare namespace LocalJSX {
           * @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots.
          */
         "sticky"?: boolean;
+    }
+    interface PAiTag {
+        /**
+          * Locale for the AI text (ISO format, e.g. "de_DE").
+          * @default 'en_US'
+         */
+        "locale"?: AiTagLocale;
+        /**
+          * Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified").
+          * @default 'generated'
+         */
+        "variant"?: AiTagVariant;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -5168,7 +5201,7 @@ declare namespace LocalJSX {
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputEmail {
         /**
@@ -5276,7 +5309,7 @@ declare namespace LocalJSX {
           * The default email address (or comma-separated list of addresses) for the input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputMonth {
         /**
@@ -5370,7 +5403,7 @@ declare namespace LocalJSX {
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputNumber {
         /**
@@ -5474,7 +5507,7 @@ declare namespace LocalJSX {
           * The value of the number input.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
@@ -5573,11 +5606,11 @@ declare namespace LocalJSX {
           * The password input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputSearch {
         /**
-          * Native input ARIA passthrough; see {@link INPUT_SEARCH_ARIA_ATTRIBUTES} and JSDoc on that constant.
+          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
@@ -5681,7 +5714,7 @@ declare namespace LocalJSX {
           * The search input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputTel {
         /**
@@ -5784,7 +5817,7 @@ declare namespace LocalJSX {
           * The tel input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputText {
         /**
@@ -5887,7 +5920,7 @@ declare namespace LocalJSX {
           * The text input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PInputTime {
         /**
@@ -5981,7 +6014,7 @@ declare namespace LocalJSX {
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputUrl {
         /**
@@ -6084,7 +6117,7 @@ declare namespace LocalJSX {
           * The URL input value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PInputWeek {
         /**
@@ -6178,7 +6211,7 @@ declare namespace LocalJSX {
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface PLink {
         /**
@@ -6562,10 +6595,10 @@ declare namespace LocalJSX {
          */
         "state"?: MultiSelectState;
         /**
-          * The selected values.
+          * The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end.
           * @default []
          */
-        "value"?: string[];
+        "value"?: string[] | number[] | null;
     }
     interface PMultiSelectOption {
         /**
@@ -6576,7 +6609,7 @@ declare namespace LocalJSX {
         /**
           * The option value.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface POptgroup {
         /**
@@ -7018,9 +7051,9 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * The selected value.
+          * The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PSelectOption {
         /**
@@ -7029,9 +7062,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * The option value. Selected when it strictly matches the p-select value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -7471,7 +7504,7 @@ declare namespace LocalJSX {
           * The textarea value.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | null;
         /**
           * Handles wrapping behavior of elements.
           * @default 'soft'
@@ -7526,6 +7559,10 @@ declare namespace LocalJSX {
         "heading": string;
         "headingTag": AccordionHeadingTag;
         "sticky": boolean;
+    }
+    interface PAiTagAttributes {
+        "locale": AiTagLocale;
+        "variant": AiTagVariant;
     }
     interface PBannerAttributes {
         "open": boolean;
@@ -7711,7 +7748,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7729,7 +7766,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7752,7 +7789,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7791,7 +7828,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7811,7 +7848,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "clear": boolean;
         "indicator": boolean;
@@ -7833,7 +7870,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7876,7 +7913,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7894,7 +7931,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -7916,7 +7953,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "autoComplete": string;
         "readOnly": boolean;
         "form": string;
@@ -8207,7 +8244,7 @@ declare namespace LocalJSX {
         "description": string;
         "compact": boolean;
         "name": string;
-        "value": string;
+        "value": string | null;
         "state": TextareaState;
         "message": string;
         "hideLabel": string;
@@ -8238,6 +8275,7 @@ declare namespace LocalJSX {
 
     interface IntrinsicElements {
         "p-accordion": Omit<PAccordion, keyof PAccordionAttributes> & { [K in keyof PAccordion & keyof PAccordionAttributes]?: PAccordion[K] } & { [K in keyof PAccordion & keyof PAccordionAttributes as `attr:${K}`]?: PAccordionAttributes[K] } & { [K in keyof PAccordion & keyof PAccordionAttributes as `prop:${K}`]?: PAccordion[K] };
+        "p-ai-tag": Omit<PAiTag, keyof PAiTagAttributes> & { [K in keyof PAiTag & keyof PAiTagAttributes]?: PAiTag[K] } & { [K in keyof PAiTag & keyof PAiTagAttributes as `attr:${K}`]?: PAiTagAttributes[K] } & { [K in keyof PAiTag & keyof PAiTagAttributes as `prop:${K}`]?: PAiTag[K] };
         "p-banner": Omit<PBanner, keyof PBannerAttributes> & { [K in keyof PBanner & keyof PBannerAttributes]?: PBanner[K] } & { [K in keyof PBanner & keyof PBannerAttributes as `attr:${K}`]?: PBannerAttributes[K] } & { [K in keyof PBanner & keyof PBannerAttributes as `prop:${K}`]?: PBanner[K] };
         "p-button": Omit<PButton, keyof PButtonAttributes> & { [K in keyof PButton & keyof PButtonAttributes]?: PButton[K] } & { [K in keyof PButton & keyof PButtonAttributes as `attr:${K}`]?: PButtonAttributes[K] } & { [K in keyof PButton & keyof PButtonAttributes as `prop:${K}`]?: PButton[K] };
         "p-button-pure": Omit<PButtonPure, keyof PButtonPureAttributes> & { [K in keyof PButtonPure & keyof PButtonPureAttributes]?: PButtonPure[K] } & { [K in keyof PButtonPure & keyof PButtonPureAttributes as `attr:${K}`]?: PButtonPureAttributes[K] } & { [K in keyof PButtonPure & keyof PButtonPureAttributes as `prop:${K}`]?: PButtonPure[K] };
@@ -8321,6 +8359,7 @@ declare module "@stencil/core" {
              * @controlled {"props": ["open"], "event": "update"}
              */
             "p-accordion": LocalJSX.IntrinsicElements["p-accordion"] & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
+            "p-ai-tag": LocalJSX.IntrinsicElements["p-ai-tag"] & JSXBase.HTMLAttributes<HTMLPAiTagElement>;
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              */

@@ -2,7 +2,7 @@ import './style.css';
 
 import { FLAG_NAMES, ICON_NAMES } from '@porsche-design-system/assets';
 import { componentsReady } from '@porsche-design-system/components-js';
-import { pdsTheme } from '@porsche-design-system/components-js/ag-grid';
+import { pdsTheme, pdsThemeCompact } from '@porsche-design-system/components-js/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
 import * as agGrid from 'ag-grid-enterprise';
 import {
@@ -131,6 +131,7 @@ const updateSelect = (id, value) => {
   });
 
   window.agGrid = agGrid;
+  window.pdsThemeCompact = pdsThemeCompact;
   window.rowData = dataAdvanced;
 
   if (!isPageLoadedInIFrame()) {

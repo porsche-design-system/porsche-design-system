@@ -61,6 +61,7 @@ import {
   PInputSearch,
   PSelect,
   PSelectOption,
+  type PSelectProps,
   type SelectChangeEventDetail,
   type SelectToggleEventDetail,
 } from '@porsche-design-system/components-vue';
@@ -74,7 +75,7 @@ function useDebounce<T>(callback: (value: T) => void, delay = 400) {
   };
 }
 
-const value = ref<string | undefined>(undefined);
+const value = ref<PSelectProps['value']>(undefined);
 const options = ref<{ value: string; label: string }[]>([]);
 const searchValue = ref('');
 const initialLoading = ref(false);

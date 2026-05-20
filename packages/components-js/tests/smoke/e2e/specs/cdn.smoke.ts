@@ -16,6 +16,32 @@ const urlStartsWith =
   (item: ResponseType, _index: number, _arr: ResponseType[]): boolean =>
     item.url.startsWith(str);
 
+const logSummary = (label: string): void => {
+  const respUrls = new Set(responses.map((r) => r.url));
+  const orphanRequests = requests.filter((r) => !respUrls.has(r.url));
+  const reqUrls = new Set(requests.map((r) => r.url));
+  const orphanResponses = responses.filter((r) => !reqUrls.has(r.url));
+  const nonOk = responses.filter(isStatusNot200);
+
+  console.log(`\n========== [SUMMARY: ${label}] ==========`);
+  console.log(`requests:  ${requests.length}`);
+  console.log(`responses: ${responses.length}`);
+  console.log(`non-200:   ${nonOk.length}`);
+  if (orphanRequests.length > 0) {
+    console.warn(`[ORPHAN REQUESTS (no response)]`);
+    for (const r of orphanRequests) console.warn(`  - ${r.url}`);
+  }
+  if (orphanResponses.length > 0) {
+    console.warn(`[ORPHAN RESPONSES (no matching request)]`);
+    for (const r of orphanResponses) console.warn(`  - ${r.status} ${r.url}`);
+  }
+  if (nonOk.length > 0) {
+    console.warn(`[NON-200 RESPONSES]`);
+    for (const r of nonOk) console.warn(`  - ${r.status} ${r.url}`);
+  }
+  console.log(`==========================================\n`);
+};
+
 test.beforeEach(async ({ page }) => {
   const cdp: CDPSession = await page.context().newCDPSession(page);
   await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
@@ -24,6 +50,7 @@ test.beforeEach(async ({ page }) => {
     const url = req.url();
 
     if (url.includes('cdn.ui.porsche')) {
+      console.log(`[REQUEST] ${req.method()} ${url}`);
       requests.push({ url });
     }
   });
@@ -34,8 +61,33 @@ test.beforeEach(async ({ page }) => {
     const headers = resp.headers();
 
     if (url.includes('cdn.ui.porsche')) {
-      // console.log(status, url);
+      console.log(`[RESPONSE] ${status} ${url}`);
       responses.push({ url, status, headers });
+    }
+  });
+
+  page.on('requestfailed', (req) => {
+    const url = req.url();
+    if (url.includes('cdn.ui.porsche')) {
+      console.warn(`[REQUEST FAILED] ${url} - ${req.failure()?.errorText ?? 'unknown error'}`);
+    }
+  });
+
+  page.on('requestfinished', async (req) => {
+    const url = req.url();
+    if (url.includes('cdn.ui.porsche')) {
+      const resp = await req.response();
+      console.log(`[REQUEST FINISHED] ${url} - status: ${resp?.status() ?? 'no response'}`);
+    }
+  });
+
+  page.on('pageerror', (err) => {
+    console.error(`[PAGE ERROR] ${err.message}`);
+  });
+
+  page.on('console', (msg) => {
+    if (msg.type() === 'error' || msg.type() === 'warning') {
+      console.log(`[CONSOLE ${msg.type().toUpperCase()}] ${msg.text()}`);
     }
   });
 });
@@ -61,6 +113,8 @@ test.describe('bootstrapping with .com and .cn domains', () => {
     const cdnDomain = 'cdn.ui.porsche.com';
     const baseUrl = `https://${cdnDomain}/porsche-design-system`;
 
+    logSummary('COM');
+
     expect(requests.length).toBe(responses.length);
     expect(responses.filter(isStatusNot200).length).toBe(0);
     expect(responses.filter(urlIncludes(cdnDomain)).length).toBe(responses.length);
@@ -77,6 +131,8 @@ test.describe('bootstrapping with .com and .cn domains', () => {
 
     const cdnDomain = 'cdn.ui.porsche.cn';
     const baseUrl = `https://${cdnDomain}/porsche-design-system`;
+
+    logSummary('CN');
 
     expect(requests.length).toBe(responses.length);
     expect(responses.filter(isStatusNot200).length).toBe(0);

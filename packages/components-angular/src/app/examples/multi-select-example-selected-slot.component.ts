@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   type MultiSelectChangeEventDetail,
+  PMultiSelect,
   PorscheDesignSystemModule,
 } from '@porsche-design-system/components-angular';
 
@@ -86,7 +87,7 @@ const optionsData: Option[] = [
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleSelectedSlotComponent {
-  value: string[] = [];
+  value: PMultiSelect['value'] = [];
   options: Option[] = optionsData;
   selectedOptions: Option[] = [];
 
@@ -95,8 +96,8 @@ export class MultiSelectExampleSelectedSlotComponent {
   }
 
   onChange(event: CustomEvent<MultiSelectChangeEventDetail>) {
-    const value = (event.target as HTMLElement & { value: string[] }).value;
+    const { value } = event.detail;
     this.value = value;
-    this.selectedOptions = this.options.filter((option) => value.includes(option.value));
+    this.selectedOptions = this.options.filter((option) => (value as string[]).includes(option.value));
   }
 }

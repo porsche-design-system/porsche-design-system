@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof InputText> = {
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   spellCheck: AllowedTypes.boolean,
   counter: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
@@ -84,7 +84,7 @@ export class InputText {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The text input value. */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name'). */
   @Prop() public autoComplete?: string;
@@ -138,14 +138,19 @@ export class InputText {
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | number | null;
+
+  // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {
@@ -153,7 +158,7 @@ export class InputText {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -172,7 +177,7 @@ export class InputText {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
@@ -181,7 +186,7 @@ export class InputText {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentDidRender(): void {
@@ -227,7 +232,7 @@ export class InputText {
         placeholder={this.placeholder}
         maxLength={this.maxLength}
         minLength={this.minLength}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}
@@ -236,16 +241,18 @@ export class InputText {
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}
+        // Intentionally not defined as prop in the interface since it's a global HTML attribute/prop and will cause typescript issues when optional
+        {...(this.host.inputMode !== "" && { inputMode: this.host.inputMode })}
         {...(this.counter && {
           end: (
             <Fragment>
               <span class="sr-only" aria-live="polite">
                 {this.maxLength
-                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
-                  : `${this.value.length} characters entered`}
+                  ? `You have ${this.maxLength - this.parsedValue.length} out of ${this.maxLength} characters left`
+                  : `${this.parsedValue.length} characters entered`}
               </span>
               <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
-                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
+                {this.maxLength ? `${this.parsedValue.length}/${this.maxLength}` : `${this.parsedValue.length}`}
               </span>
             </Fragment>
           ),

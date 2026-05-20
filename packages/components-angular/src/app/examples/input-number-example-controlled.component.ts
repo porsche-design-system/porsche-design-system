@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputNumberInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputNumberInputEventDetail,
+  type PInputNumberProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-number-example-controlled',
@@ -13,7 +17,7 @@ import { type InputNumberInputEventDetail, PorscheDesignSystemModule } from '@po
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputNumberExampleControlledComponent {
-  value: string = '';
+  value: PInputNumberProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

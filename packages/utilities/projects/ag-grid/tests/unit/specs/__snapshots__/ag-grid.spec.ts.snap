@@ -45,7 +45,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-chart-menu-label-color: var(--ag-inherited-chart-menu-label-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 80%));
 	--ag-chart-menu-panel-width: var(--ag-inherited-chart-menu-panel-width, 260px);
 	--ag-checkbox-border-radius: var(--ag-inherited-checkbox-border-radius, 4px);
-	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 2px);
+	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 1px);
 	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)));
 	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302)));
 	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)));
@@ -909,7 +909,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "chartMenuPanelWidth": 260,
     "checkboxBorderRadius": "4px",
-    "checkboxBorderWidth": 2,
+    "checkboxBorderWidth": 1,
     "checkboxCheckedBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
     "checkboxCheckedBorderColor": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
     "checkboxCheckedHoverBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",

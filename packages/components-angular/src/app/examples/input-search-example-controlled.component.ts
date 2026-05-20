@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { InputSearchInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  InputSearchInputEventDetail,
+  type PInputSearchProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-search-example-controlled',
@@ -13,7 +17,7 @@ import { InputSearchInputEventDetail, PorscheDesignSystemModule } from '@porsche
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputSearchExampleControlledComponent {
-  value: string = '';
+  value: PInputSearchProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

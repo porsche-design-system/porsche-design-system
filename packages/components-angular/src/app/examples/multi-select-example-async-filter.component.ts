@@ -3,6 +3,7 @@ import {
   type InputSearchInputEventDetail,
   type MultiSelectChangeEventDetail,
   type MultiSelectToggleEventDetail,
+  PMultiSelect,
   PorscheDesignSystemModule,
 } from '@porsche-design-system/components-angular';
 
@@ -75,7 +76,7 @@ import {
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleAsyncFilterComponent {
-  value?: string[] = [];
+  value?: PMultiSelect['value'] = [];
   options: { value: string; label: string }[] = [];
 
   searchValue = '';
