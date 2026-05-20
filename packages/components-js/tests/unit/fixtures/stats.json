@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 9931,
-    "gzipSize": 4106
+    "size": 9954,
+    "gzipSize": 4107
   },
   {
     "chunkShortName": "button",
@@ -91,8 +91,8 @@
   },
   {
     "chunkShortName": "inline-notification",
-    "size": 7532,
-    "gzipSize": 3161
+    "size": 7555,
+    "gzipSize": 3163
   },
   {
     "chunkShortName": "input-date",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 82265,
-    "gzipSize": 25681
+    "size": 82264,
+    "gzipSize": 25685
   },
   {
     "chunkShortName": "modal",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 17667,
-    "gzipSize": 6583
+    "size": 18025,
+    "gzipSize": 6651
   },
   {
     "chunkShortName": "scroller",
@@ -291,8 +291,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 9307,
-    "gzipSize": 4026
+    "size": 9330,
+    "gzipSize": 4029
   },
   {
     "chunkShortName": "wordmark",
