@@ -15,10 +15,7 @@ const files = await fg(`${sourceDirectory}/**/*.ts`);
 const tokenFiles = files.filter(
   (f) =>
     !f.endsWith('index.ts') &&
-    !f.endsWith('.spec.ts') &&
-    !f.includes('/color/light/') &&
-    !f.includes('/color/dark/') &&
-    !f.endsWith('palette.ts')
+    !f.endsWith('.spec.ts')
 );
 
 function extractTokenInfo(filePath: string): { name: string; description: string } | null {
@@ -56,7 +53,7 @@ function extractTokenInfo(filePath: string): { name: string; description: string
 }
 
 // TokenLeaf is a resolved design token; TokenTree is any intermediate folder level.
-type TokenLeaf = { name: string; value: string; description: string };
+type TokenLeaf = { name: string; value: string | number; description: string };
 type TokenTree = { [key: string]: TokenTree | TokenLeaf };
 
 const tree: TokenTree = {};
@@ -67,7 +64,7 @@ for (const file of tokenFiles) {
 
   // Resolve the runtime value from the built tokens package by the exported const name.
   const resolvedValue = (tokens as Record<string, unknown>)[info.name];
-  if (resolvedValue === undefined) continue;
+  if (typeof resolvedValue !== 'string' && typeof resolvedValue !== 'number') continue;
 
   // Use path.relative + normalize to forward slashes so this works on Windows too.
   // e.g. "color/light-dark/background/colorBackdrop.ts" -> ["color", "lightDark", "background"]
@@ -84,8 +81,7 @@ for (const file of tokenFiles) {
 
   node[info.name] = {
     name: info.name,
-    // String() handles numeric token values (e.g. breakpoints) that aren't already strings
-    value: String(resolvedValue),
+    value: resolvedValue,
     description: info.description,
   };
 }

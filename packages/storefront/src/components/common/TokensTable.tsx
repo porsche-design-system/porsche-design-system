@@ -16,14 +16,14 @@ export type SortDirection = 'asc' | 'desc' | 'color';
 type TokensTableProps = {
   meta: Record<string, TokenMeta>;
   sort?: SortDirection;
+  showColorSwatch?: boolean;
 };
 
-type HslComponents = { h: number; l: number; a: number };
+type HslComponents = { l: number; a: number };
 
 const COLOR_FAMILY_ORDER = ['info', 'success', 'warning', 'error'];
 // Convert a camelCase token name to a PDS CSS custom property, e.g. colorCanvas → --p-color-canvas
 const toCssVar = (name: string): string => `--p-${kebabCase(name)}`;
-const isColorToken = (tokens: TokenMeta[]): boolean => tokens.length > 0 && tokens[0].name.startsWith('color');
 
 // Render Markdown bold (**text**) and backtick code (`text`) as React nodes
 const renderDescription = (description: string): ReactNode => {
@@ -43,19 +43,18 @@ const renderDescription = (description: string): ReactNode => {
 const extractHsl = (value: string): HslComponents => {
   const lightDarkMatch = value.match(/light-dark\(\s*(hsl\([^)]+\))/);
   const hslString = lightDarkMatch ? lightDarkMatch[1] : value;
-  const m = hslString.match(/hsl\(\s*([\d.]+)\s+[\d.]+%\s+([\d.]+)%(?:\s*\/\s*([\d.]+))?\s*\)/);
-  if (!m) return { h: 0, l: 0, a: 1 };
-  return { h: parseFloat(m[1]), l: parseFloat(m[2]), a: m[3] ? parseFloat(m[3]) : 1 };
+  const m = hslString.match(/hsl\(\s*[\d.]+\s+[\d.]+%\s+([\d.]+)%(?:\s*\/\s*([\d.]+))?\s*\)/);
+  if (!m) return { l: 0, a: 1 };
+  return { l: parseFloat(m[1]), a: m[2] ? parseFloat(m[2]) : 1 };
 };
 
 // Gets the color family from a token name, e.g. colorErrorFrostedSoft → "error".
 const extractFamily = (name: string): string => name.match(/^color([A-Z][a-z]+)/)?.[1].toLowerCase() ?? name;
 
-// How dark a color appears visually, taking transparency into account.
-const effectiveDarkness = ({ l, a }: HslComponents): number => (1 - l / 100) * a;
 
 // Extracts a number from a token value so tokens can be sorted by size.
-const toSortNum = (value: string): number => {
+const toSortNum = (value: string | number): number => {
+  if (typeof value === 'number') return value;
   const clampMatch = value.match(/clamp\(\s*([\d.]+)/);
   if (clampMatch) return parseFloat(clampMatch[1]);
   // shadows: use the largest px value as the size indicator
@@ -64,7 +63,7 @@ const toSortNum = (value: string): number => {
   return parseFloat(value);
 };
 
-export const TokensTable = ({ meta, sort }: TokensTableProps) => {
+export const TokensTable = ({ meta, sort, showColorSwatch }: TokensTableProps) => {
   let items = Object.values(meta);
 
   if (sort === 'color') {
@@ -76,7 +75,7 @@ export const TokensTable = ({ meta, sort }: TokensTableProps) => {
           {
             familyIdx: COLOR_FAMILY_ORDER.indexOf(family),
             family,
-            darkness: effectiveDarkness(extractHsl(t.value)),
+            darkness: (({ l, a }) => (1 - l / 100) * a)(extractHsl(String(t.value))),
           },
         ];
       })
@@ -95,18 +94,16 @@ export const TokensTable = ({ meta, sort }: TokensTableProps) => {
       const numB = nums.get(b.name) ?? Number.NaN;
 
       const isNumeric = !Number.isNaN(numA) && !Number.isNaN(numB);
-      const cmp = isNumeric ? numA - numB : a.value.localeCompare(b.value);
+      const cmp = isNumeric ? numA - numB : String(a.value).localeCompare(String(b.value));
       return sort === 'asc' ? cmp : -cmp;
     });
   }
-
-  const showSwatch = isColorToken(items);
 
   return (
     <PTable className="my-fluid-md">
       <PTableHead>
         <PTableRow>
-          {showSwatch && <PTableHeadCell>Color</PTableHeadCell>}
+          {showColorSwatch && <PTableHeadCell>Color</PTableHeadCell>}
           <PTableHeadCell>Token</PTableHeadCell>
           <PTableHeadCell>Description</PTableHeadCell>
           <PTableHeadCell>Value</PTableHeadCell>
@@ -115,7 +112,7 @@ export const TokensTable = ({ meta, sort }: TokensTableProps) => {
       <PTableBody>
         {items.map((token) => (
           <PTableRow key={token.name}>
-            {showSwatch && (
+            {showColorSwatch && (
               <PTableCell>
                 <div
                   className="w-10 h-10 rounded-md border border-contrast-low"
