@@ -11,10 +11,6 @@
  * when the consumer toggles `disabled` / `readOnly` on, preventing
  * "An invalid form control … is not focusable." on form submit.
  *
- * The `value` key in `options` is optional. When omitted, `setFormValue` is not called
- * (useful for components like `p-checkbox` that manage their form value via dedicated
- * change/reset handlers because submission depends on `checked`, not on every render).
- *
  * @param internals    The host's `ElementInternals` (may be `undefined` in environments where unavailable).
  * @param formControl  The inner native form control (`<input>`, `<textarea>`, `<select>`).
  * @param options      `disabled`, `readOnly`, optional `value` to submit.
@@ -29,17 +25,21 @@ export const syncFormState = (
   }
 ): void => {
   const { disabled, readOnly } = options;
-  const hasValue = 'value' in options;
 
   if (disabled) {
     internals?.setValidity({});
-    if (hasValue) internals?.setFormValue(null);
+    // Passing `null` to setFormValue removes the control from native form submission
+    // entirely (no entry in FormData). This mirrors how a disabled native <input> behaves.
+    internals?.setFormValue(null);
   } else if (readOnly) {
     internals?.setValidity({});
-    if (hasValue) internals?.setFormValue(options.value ?? null);
+    // A `null` value (e.g. when no value is set) removes the control from submission;
+    // any string value is submitted as-is. Read-only controls still participate in submission.
+    internals?.setFormValue(options.value ?? null);
   } else {
     internals?.setValidity(formControl.validity, formControl.validationMessage || ' ', formControl);
-    if (hasValue) internals?.setFormValue(options.value ?? null);
+    // A `null` value removes the control from submission (e.g. an unchecked checkbox);
+    // any string value is submitted as-is.
+    internals?.setFormValue(options.value ?? null);
   }
 };
-

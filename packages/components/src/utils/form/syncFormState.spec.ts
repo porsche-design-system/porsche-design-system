@@ -51,18 +51,18 @@ describe('syncFormState', () => {
     expect(internals.setFormValue).toHaveBeenCalledWith(null);
   });
 
-  it('does not call setFormValue when value is omitted', () => {
+  it('calls setFormValue with null when value is omitted', () => {
     syncFormState(internals as any, input, { disabled: false, readOnly: false });
 
     expect(internals.setValidity).toHaveBeenCalledTimes(1);
-    expect(internals.setFormValue).not.toHaveBeenCalled();
+    expect(internals.setFormValue).toHaveBeenCalledWith(null);
   });
 
-  it('does not call setFormValue when value is omitted (disabled branch)', () => {
+  it('calls setFormValue with null when value is omitted (disabled branch)', () => {
     syncFormState(internals as any, input, { disabled: true });
 
     expect(internals.setValidity).toHaveBeenCalledWith({});
-    expect(internals.setFormValue).not.toHaveBeenCalled();
+    expect(internals.setFormValue).toHaveBeenCalledWith(null);
   });
 
   it('treats null value as null on setFormValue (not omitted)', () => {
