@@ -131,6 +131,8 @@ export class RadioGroup {
 
   private radioGroupOptions: RadioGroupOption[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
+  /** Set when loading/disabled change; tab stops are updated in componentDidRender after syncRadioGroupChildrenProps. */
+  private scheduleTabStopsUpdate = false;
 
   @Listen('internalRadioGroupOptionChange')
   public updateOptionHandler(e: Event & { target: RadioGroupOption; detail: RadioGroupChangeEventDetail }): void {
@@ -149,6 +151,12 @@ export class RadioGroup {
     e.stopPropagation();
     e.stopImmediatePropagation();
     this.blur.emit();
+  }
+
+  @Watch('loading')
+  @Watch('disabled')
+  protected onTabStopDepsChanged(): void {
+    this.scheduleTabStopsUpdate = true;
   }
 
   @Watch('value')
@@ -204,6 +212,10 @@ export class RadioGroup {
   }
 
   public componentDidRender(): void {
+    if (!this.scheduleTabStopsUpdate) {
+      return;
+    }
+    this.scheduleTabStopsUpdate = false;
     this.updateTabStops();
   }
 

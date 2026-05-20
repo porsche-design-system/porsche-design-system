@@ -264,7 +264,7 @@ describe('updateTabStops', () => {
     expect(opt3.tabIndex).toBe(-1);
   });
 
-  it('should restore tabIndex 0 to the selected option after loading ends once loadingParent is synced (componentDidRender)', () => {
+  it('should restore tabIndex 0 to the selected option after loading ends and loadingParent is synced', () => {
     const component = initComponent();
     component.loading = true;
     const opt1 = createOption('a');
@@ -277,11 +277,42 @@ describe('updateTabStops', () => {
     component.loading = false;
     opt1.loadingParent = false;
     opt2.loadingParent = false;
-
+    (component as any).scheduleTabStopsUpdate = true;
     (component as any).componentDidRender();
 
     expect(opt1.tabIndex).toBe(-1);
     expect(opt2.tabIndex).toBe(0);
+  });
+
+  it('should skip updateTabStops in componentDidRender when scheduleTabStopsUpdate is false', () => {
+    const component = initComponent();
+    const opt1 = createOption('a', { selected: true });
+    const opt2 = createOption('b');
+    (component as any).radioGroupOptions = [opt1, opt2];
+    (component as any).updateTabStops();
+    opt1.tabIndex = -1;
+    opt2.tabIndex = -1;
+    (component as any).scheduleTabStopsUpdate = false;
+
+    (component as any).componentDidRender();
+
+    expect(opt1.tabIndex).toBe(-1);
+    expect(opt2.tabIndex).toBe(-1);
+  });
+
+  it('should run updateTabStops in componentDidRender when scheduleTabStopsUpdate is true', () => {
+    const component = initComponent();
+    const opt1 = createOption('a', { selected: true });
+    const opt2 = createOption('b');
+    (component as any).radioGroupOptions = [opt1, opt2];
+    opt1.tabIndex = -1;
+    opt2.tabIndex = -1;
+    (component as any).scheduleTabStopsUpdate = true;
+
+    (component as any).componentDidRender();
+
+    expect(opt1.tabIndex).toBe(0);
+    expect(opt2.tabIndex).toBe(-1);
   });
 });
 
