@@ -254,7 +254,7 @@ export class RadioGroup {
     );
   }
 
-  private focusOption(index: number): void {
+  private activateOption(index: number): void {
     const option = this.radioGroupOptions[index];
     if (option && isRadioGroupOptionFocusable(option)) {
       /*
@@ -274,25 +274,35 @@ export class RadioGroup {
     if (!this.radioGroupOptions.length) return;
 
     const currentIndex = getActiveOptionIndex(this.radioGroupOptions);
-    let nextIndex = currentIndex;
 
     switch (key) {
+      case ' ':
+      case 'Spacebar':
+      case 'Enter':
+        event.preventDefault();
+        if (currentIndex !== -1) {
+          this.activateOption(currentIndex);
+        }
+        return;
       case 'ArrowRight':
-      case 'ArrowDown':
+      case 'ArrowDown': {
         event.preventDefault();
-        nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, +1);
-        break;
+        const nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, +1);
+        this.activateOption(nextIndex);
+        this.updateTabStops();
+        return;
+      }
       case 'ArrowLeft':
-      case 'ArrowUp':
+      case 'ArrowUp': {
         event.preventDefault();
-        nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, -1);
-        break;
+        const nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, -1);
+        this.activateOption(nextIndex);
+        this.updateTabStops();
+        return;
+      }
       default:
-        return; // not a navigation key
+        return;
     }
-
-    this.focusOption(nextIndex);
-    this.updateTabStops();
   };
 
   private updateOptions = (): void => {

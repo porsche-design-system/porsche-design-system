@@ -284,3 +284,53 @@ describe('updateTabStops', () => {
     expect(opt2.tabIndex).toBe(0);
   });
 });
+
+describe('onKeyDown', () => {
+  const createOption = () => {
+    const click = vi.fn();
+    return { click } as unknown as RadioGroupOption;
+  };
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
+      callback(0);
+      return 0;
+    });
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('should preventDefault and activate the focused option on Space', () => {
+    const component = initComponent();
+    const opt = createOption();
+    (component as any).radioGroupOptions = [opt];
+    vi.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(0);
+    vi.spyOn(radioGroupUtils, 'isRadioGroupOptionFocusable').mockReturnValue(true);
+
+    const event = new KeyboardEvent('keydown', { key: ' ', bubbles: true, cancelable: true });
+    const preventDefault = vi.spyOn(event, 'preventDefault');
+
+    (component as any).onKeyDown(event);
+
+    expect(preventDefault).toHaveBeenCalled();
+    expect(opt.click).toHaveBeenCalled();
+  });
+
+  it('should not activate when the radio group is disabled', () => {
+    const component = initComponent();
+    component.disabled = true;
+    const opt = createOption();
+    (component as any).radioGroupOptions = [opt];
+    vi.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(0);
+
+    const event = new KeyboardEvent('keydown', { key: ' ', bubbles: true, cancelable: true });
+    const preventDefault = vi.spyOn(event, 'preventDefault');
+
+    (component as any).onKeyDown(event);
+
+    expect(preventDefault).not.toHaveBeenCalled();
+    expect(opt.click).not.toHaveBeenCalled();
+  });
+});
