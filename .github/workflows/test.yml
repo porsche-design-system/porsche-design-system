@@ -347,6 +347,7 @@ jobs:
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+      - run: npm run build:generateTokensMeta --workspace=@porsche-design-system/tokens-meta
       - run: npm run test:unit:tokens-meta
   shared:
     name: 'Shared'
