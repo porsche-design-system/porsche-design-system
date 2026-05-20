@@ -160,7 +160,6 @@ export class InputSearch {
     if (this.inputElement && this.inputElement.value !== this.parsedValue) {
       this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
     this.isClearable = !!this.parsedValue;
   }
 

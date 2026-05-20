@@ -134,7 +134,6 @@ export class InputWeek {
     if (this.inputElement && this.inputElement.value !== this.parsedValue) {
       this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {

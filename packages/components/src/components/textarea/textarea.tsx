@@ -164,7 +164,6 @@ export class Textarea {
     if (this.textAreaElement && this.textAreaElement.value !== this.parsedValue) {
       this.textAreaElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentWillLoad(): void {
