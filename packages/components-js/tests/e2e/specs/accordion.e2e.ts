@@ -120,6 +120,27 @@ test('should have correct gridTemplateRows and visibility after fast close/open 
   await expect(getCollapsible(page)).toBeHidden();
 });
 
+test('should not cause scrollbar on outer scroll container when closed with position:absolute slotted content', async ({
+  page,
+}) => {
+  await initAccordion(page, {
+    otherPreMarkup: `<div id="scroll-container" style="height: 400px; overflow-y: scroll;"><div style="position: relative">`,
+    otherPostMarkup: '</div></div>',
+    otherSlottedMarkup: `<div style="height: 2000px; background-color: red;">CONTENT</div>
+<div style="position: absolute; width: 1px; height: 1px;"></div>`,
+  });
+  await waitForStencilLifecycle(page);
+
+  expect(await getCollapsibleHeight(page)).toBe(0);
+  await expect(getCollapsible(page)).toBeHidden();
+
+  const hasVerticalScrollbar = await page.locator('#scroll-container').evaluate((el) => {
+    return el.scrollHeight > el.clientHeight;
+  });
+
+  expect(hasVerticalScrollbar).toBe(false);
+});
+
 test('should add attribute "open" when opened', async ({ page }) => {
   await initAccordion(page, { otherPostMarkup: clickHandlerScript });
   const details = getDetails(page);
