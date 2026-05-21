@@ -17,6 +17,7 @@ import {
   FORM_STATES,
   hasPropValueChanged,
   implicitSubmit,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -150,7 +151,6 @@ export class InputText {
     if (this.inputElement && this.inputElement.value !== this.parsedValue) {
       this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {
@@ -185,18 +185,12 @@ export class InputText {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.parsedValue);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.inputElement.validity,
-        this.inputElement.validationMessage || ' ',
-        this.inputElement
-      );
-    }
+    syncFormState(this.internals, this.inputElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -242,7 +236,7 @@ export class InputText {
         loading={this.loading}
         initialLoading={this.initialLoading}
         // Intentionally not defined as prop in the interface since it's a global HTML attribute/prop and will cause typescript issues when optional
-        {...(this.host.inputMode !== "" && { inputMode: this.host.inputMode })}
+        {...(this.host.inputMode !== '' && { inputMode: this.host.inputMode })}
         {...(this.counter && {
           end: (
             <Fragment>
