@@ -18,5 +18,5 @@ const onAction = (): void => {
     :actionLoading="isLoading"
     @action="onAction"
   ></PInlineNotification>
-  <button type="button" @click="onAction">Reset `actionLoading`</button>
+  <PButton :type="'button'" :compact="true" @click="onAction">Reset `actionLoading`</PButton>
 </template>

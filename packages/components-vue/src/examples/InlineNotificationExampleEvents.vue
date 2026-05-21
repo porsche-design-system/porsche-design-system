@@ -12,7 +12,7 @@ const onDismiss = (): void => {
 </script>
 
 <template>
-  <button type="button" @click="onShow">Show Inline Notification</button>
+  <PButton :type="'button'" :compact="true" @click="onShow">Show Inline Notification</PButton>
   <PInlineNotification
     v-if="isActive"
     :heading="'Some heading'"
