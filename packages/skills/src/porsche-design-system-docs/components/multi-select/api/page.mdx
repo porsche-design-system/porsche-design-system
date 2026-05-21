@@ -1,0 +1,60 @@
+# Multi Select 
+
+## Multi Select
+
+### API Reference for `p-multi-select`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `description` | `string` | `""` | Supplementary text providing more context or explanation for the multi-select. |
+| `name` | `string` | - | The name of the control. **(required)** |
+| `value` | `"array(AllowedTypes.string)" \| "array(AllowedTypes.number)" \| "null"` | `[]` | The selected values. Matches options strictly by type and value, meaning a string value only matches options whose value is the same string, a number value only matches options whose value is the same number. Pass null or [] to clear the selection. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number[] value is restored as string[] via formStateRestoreCallback and will no longer strictly match number-typed options. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), number[] types are preserved end-to-end. |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | The validation state. |
+| `message` | `string` | `""` | The message styled depending on validation state. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `disabled` | `boolean` | `false` | Disables the multi-select |
+| `required` | `boolean` | `false` | Requires an option with a non-empty string value to be selected. |
+| `dropdownDirection` | `"down" \| "up" \| "auto"` | `"auto"` | Changes the direction to which the dropdown list appears. |
+| `compact` | `boolean` | `false` | Displays the multi-select in compact mode. |
+| `form` | `string` | - | The id of a form element the multi-select should be associated with. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `blur` | `void` | Emitted when the multi-select has lost focus. |
+| `change` | `{ name: string; value: string[] | number[] }` | Emitted when the selection is changed. |
+| `toggle` | `{ open: boolean }` | Emitted when the dropdown is toggled. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+| `description` | Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `selected` | Use this slot to provide custom markup for the selected options display in the button area. |
+| (default) | Default slot for the p-multi-select-option tags. |
+| `options-status` | When implementing a custom filter with the `filter` slot, use this slot for loading, error and no results status. |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `filter` | Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior. |
+
+## Multi Select Option
+
+### API Reference for `p-multi-select-option`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `value` | `string` | - | The option value. **(required)** |
+| `disabled` | `boolean` | `false` | Disables the option. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the option text. |

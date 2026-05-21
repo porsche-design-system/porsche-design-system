@@ -1,0 +1,190 @@
+# Segmented Control 
+
+## Form
+
+The `p-segmented-control` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on
+your needs.
+
+In the **controlled** approach, the `p-segmented-control` state is externally managed using the `value` property and
+`change` event to keep it in sync with your application logic. This approach is ideal for complex forms or when using a
+form library. Note that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the `p-segmented-control` automatically manages its own state and includes its value
+in form submissions through the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
+API. This is convenient for smaller forms or simple submissions.
+
+> ⚠️ **Attention**
+>
+> The `p-segmented-control` lacks access to native `ValidityState`
+> properties and `validationMessage`, and it cannot display the native validation popover. This means
+> validation behavior and error display will need to be implemented separately if required.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `segmentedControlExampleForm`
+
+```tsx
+import React from 'react';
+import {
+  PButton,
+  PSegmentedControl,
+  PSegmentedControlItem,
+  type PSegmentedControlProps,
+  PText,
+  type SegmentedControlChangeEventDetail,
+} from '@porsche-design-system/components-react';
+import { FormEvent, useState } from 'react';
+
+export const Example = () => {
+  const [form, setForm] = useState({ mySegmentedControl: undefined });
+  const [lastSubmittedData, setLastSubmittedData] = useState<any>();
+
+  const onChange = (e: CustomEvent<SegmentedControlChangeEventDetail>) => {
+    const { name, value } = e.target as HTMLElement & PSegmentedControlProps;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLastSubmittedData(JSON.stringify(form));
+  };
+
+  const onReset = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setForm({ mySegmentedControl: undefined });
+  };
+
+  return (
+    <>
+      <form onSubmit={onSubmit} onReset={onReset} className="flex flex-col gap-fluid-sm">
+        <PSegmentedControl name="mySegmentedControl" value={form.mySegmentedControl} onChange={onChange}>
+          <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>Option 4</PSegmentedControlItem>
+          <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
+        </PSegmentedControl>
+        <div className="flex gap-fluid-sm">
+          <PButton type="submit">Submit</PButton>
+          <PButton type="reset">Reset</PButton>
+        </div>
+        <PText>Last submitted data: {lastSubmittedData}</PText>
+      </form>
+    </>
+  );
+};
+```
+
+## With Labels
+
+Additional meta information can be displayed by setting a `label` on each child.
+
+### Interactive Story: `segmentedControlStoryLabel`
+
+```tsx
+import React from 'react';
+import { PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSegmentedControl value="1">
+        <PSegmentedControlItem value="1" label="Label">
+          Option 1
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="2" label="Label">
+          Option 2
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="3" label="Label">
+          Option 3
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="4" label="Label" disabled={true}>
+          Option 4
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="5" label="Label">
+          Option 5
+        </PSegmentedControlItem>
+      </PSegmentedControl>
+    </>
+  )
+}
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `segmentedControlStorySlots`
+
+```tsx
+import React from 'react';
+import { PPopover, PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSegmentedControl state="error">
+        <span slot="label" id="some-label-id">
+          Some label with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+           and a "label-after" slot.
+        </span>
+        <PPopover slot="label-after">
+          Some Popover content with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </PPopover>
+        <span slot="description" id="some-description-id">
+          Some description with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </span>
+        <span slot="message" id="some-message-id">
+          Some error message with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </span>
+        <PSegmentedControlItem value="1">
+          Option 1
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="2">
+          Option 2
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="3">
+          Option 3
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="4">
+          Option 4
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="5">
+          Option 5
+        </PSegmentedControlItem>
+      </PSegmentedControl>
+    </>
+  )
+}
+```

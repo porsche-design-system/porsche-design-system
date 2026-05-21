@@ -1,0 +1,46 @@
+{
+  "metadataAttributes": {
+    "category": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "components"
+      },
+      "includeForEmbedding": true
+    },
+    "documentPath": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "components/input-text/examples/page.mdx"
+      },
+      "includeForEmbedding": true
+    },
+    "version": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "3.33.0"
+      },
+      "includeForEmbedding": true
+    },
+    "component": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "input-text"
+      },
+      "includeForEmbedding": true
+    },
+    "section": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "examples"
+      },
+      "includeForEmbedding": true
+    },
+    "framework": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "vanilla-js"
+      },
+      "includeForEmbedding": true
+    }
+  }
+}

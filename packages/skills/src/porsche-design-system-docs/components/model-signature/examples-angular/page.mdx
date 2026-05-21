@@ -1,0 +1,209 @@
+# Model Signature 
+
+## Safe Zone
+
+The `safe-zone` prop's default is <code>true</code>, which ensures a visual balance across
+all model signatures. This is most likely the best option when the model signatures are used in combination or within
+tiles next to each other. When `false` is set as value, the model signatures come without any safe zone which is
+probably preferred when the element is positioned independently.
+
+### Interactive Story: `modelSignatureStorySafeZone`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="718"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="911"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="boxster"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="cayenne"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="cayman"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="gt3-rs"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="gt3"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="gts"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="macan"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="panamera"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="taycan"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="turbo-s"></p-model-signature>
+      </div>
+
+      <div class="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <p-model-signature [safeZone]="false" model="turbo"></p-model-signature>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Mask: Blend Mode
+
+If `p-model-signature` should be blended with its background, the CSS property
+[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
+produce the best results). Depending on the use case, it may be important to use it together with the CSS property
+[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It is also
+important to note that `p-model-signature` must be used with the `contrast-{high|medium}` color for proper blend mode
+results.
+
+### Interactive Story: `modelSignatureStoryMaskBlendMode`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="isolate bg-[#00aa3680] inline-block p-static-lg">
+        <p-model-signature color="contrast-medium" [safeZone]="false" class="mix-blend-overlay"></p-model-signature>
+      </div>
+
+      <div class="isolate bg-[#f2f2f280] inline-block p-static-lg">
+        <p-model-signature color="contrast-medium" [safeZone]="false" class="mix-blend-overlay"></p-model-signature>
+      </div>
+
+      <div class="isolate bg-[#1f1f1f80] inline-block p-static-lg">
+        <p-model-signature color="contrast-medium" [safeZone]="false" class="mix-blend-overlay"></p-model-signature>
+      </div>
+
+      <div class="isolate bg-[#c5004280] inline-block p-static-lg">
+        <p-model-signature color="contrast-medium" [safeZone]="false" class="mix-blend-overlay"></p-model-signature>
+      </div>
+
+      <div class="isolate bg-[#e1d4a480] inline-block p-static-lg">
+        <p-model-signature color="contrast-medium" [safeZone]="false" class="mix-blend-overlay"></p-model-signature>
+      </div>
+
+      <div class="isolate bg-[#0099e080] inline-block p-static-lg">
+        <p-model-signature color="contrast-medium" [safeZone]="false" class="mix-blend-overlay"></p-model-signature>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Mask: Image
+
+> ⚠️ **Experimental**
+>
+> The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+
+### Interactive Story: `modelSignatureStoryMaskImage`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-model-signature [safeZone]="false" class="[--p-model-signature-width:auto]">
+        <img src="assets/dessert.jpg" alt="Dessert" />
+      </p-model-signature>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Mask: Video
+
+> ⚠️ **Experimental**
+>
+> The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+
+### Interactive Story: `modelSignatureStoryMaskVideo`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-model-signature [safeZone]="false" class="[--p-model-signature-width:auto]">
+        <video poster="assets/ocean.jpg" src="assets/ocean.mp4" autoplay playsinline loop muted></video>
+      </p-model-signature>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Custom styling
+
+The `p-model-signature` color can be changed by setting the `color` prop to `inherit` and applying some CSS `color`.
+Additionally, the component has some values that can be overridden via CSS custom properties (aka CSS variables):
+
+```scss
+--p-model-signature-width
+--p-model-signature-height
+```
+
+### Interactive Story: `modelSignatureStoryCustomStyling`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-model-signature color="inherit" class="text-info"></p-model-signature>
+
+      <p-model-signature class="[--p-model-signature-width:auto] [--p-model-signature-height:50px] block"></p-model-signature>
+
+      <p-model-signature class="[--p-model-signature-width:50px] [--p-model-signature-height:auto] block"></p-model-signature>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

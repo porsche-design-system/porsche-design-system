@@ -1,0 +1,67 @@
+# Inline Notification 
+
+## Event Handling
+
+The custom event that is emitted on close button click is called `dismiss`.
+It can be used to remove the component.
+
+### Code Example: `inlineNotificationExampleEvents`
+
+```vue
+<script setup lang="ts">
+import { PInlineNotification } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isActive = ref(false);
+const onShow = (): void => {
+  isActive.value = true;
+};
+const onDismiss = (): void => {
+  isActive.value = false;
+};
+</script>
+
+<template>
+  <button type="button" @click="onShow">Show Inline Notification</button>
+  <PInlineNotification
+    v-if="isActive"
+    :heading="'Some heading'"
+    :headingTag="'h4'"
+    :description="'Some description.'"
+    @dismiss="onDismiss"
+  ></PInlineNotification>
+</template>
+```
+
+### Action Button
+
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.
+The custom event that is emitted on action button click is called `action`.
+
+### Code Example: `inlineNotificationExampleActionButton`
+
+```vue
+<script setup lang="ts">
+import { PInlineNotification } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isLoading = ref(false);
+const onAction = (): void => {
+  isLoading.value = !isLoading.value;
+};
+</script>
+
+<template>
+  <PInlineNotification
+    :heading="'Some heading'"
+    :headingTag="'h4'"
+    :description="'Some description.'"
+    :actionLabel="'Retry'"
+    :actionIcon="'reset'"
+    :actionLoading="isLoading"
+    @action="onAction"
+  ></PInlineNotification>
+  <button type="button" @click="onAction">Reset `actionLoading`</button>
+</template>
+```

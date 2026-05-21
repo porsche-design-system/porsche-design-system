@@ -1,0 +1,101 @@
+# Input Date 
+
+## Form
+
+The `p-input-date` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similarly to a native `<input type="date" />`, automatically manages
+its own state, and includes its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `inputDateExampleForm`
+
+```html
+<form class="flex flex-col gap-fluid-sm">
+  <p-input-date name="myInputDate" label="Some Label"></p-input-date>
+  <div class="flex gap-fluid-sm">
+    <p-button type="submit">Submit</p-button>
+    <p-button type="reset">Reset</p-button>
+  </div>
+  <p-text>Last submitted data: </p-text>
+</form>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    debugElement.innerText = `Last submitted data: ${formData.get('myInputDate')}`;
+  });
+</script>
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
+example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
+to avoid being mistaken for a button.
+
+If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
+`--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `inputDateStorySlots`
+
+```html
+<p-input-date state="error">
+  <span slot="label">
+    Some label with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+     and a "label-after" slot.
+  </span>
+  <p-popover slot="label-after">
+    Some Popover content with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+    .
+  </p-popover>
+  <span slot="description">
+    Some description with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+    .
+  </span>
+  <p-icon slot="start" name="shopping-cart" color="contrast-medium" aria-hidden="true"></p-icon>
+  <p-button-pure slot="end" icon="delete" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)" aria="{'aria-label': 'Delete'}"></p-button-pure>
+  <span slot="message">
+    Some error message with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+    .
+  </span>
+</p-input-date>
+```

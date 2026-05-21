@@ -1,0 +1,29 @@
+# Link Tile 
+
+### API Reference for `p-link-tile`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `"medium" \| "large" \| "inherit"` | `"medium"` | Font size of the description. *(breakpoint customizable)* |
+| `weight` | `"regular" \| "semi-bold"` | `"semi-bold"` | Font weight of the description. *(breakpoint customizable)* |
+| `aspectRatio` | `"1/1" \| "4/3" \| "3/4" \| "16/9" \| "9/16" \| "auto"` | `"4/3"` | Aspect ratio of the link-tile. *(breakpoint customizable)* |
+| `label` | `string` | - | Label of the <a />. **(required)** |
+| `description` | `string` | - | Description text. **(required)** |
+| `align` | `"top" \| "bottom"` | `"bottom"` | Alignment of link and description. |
+| `gradient` | `boolean` | `false` | Show gradient. |
+| `compact` | `boolean` | `false` | Displays the link-tile as compact version with description and link icon only. *(breakpoint customizable)* |
+| `href` | `string` | - | href of the `<a>`. **(required)** |
+| `target` | `"_self" \| "_blank" \| "_parent" \| "_top" \| "string"` | `"_self"` | Specifies where to open the linked document. |
+| `download` | `string` | - | Sets the native `download` attribute when the target URL points to a downloadable file. |
+| `rel` | `string` | - | Sets the `rel` attribute on the link. |
+| `aria` | `{ aria-label: string, aria-description: string, aria-current: string, aria-haspopup: string }` | - | Sets ARIA attributes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `header` | Renders a header section above the content area. |
+| (default) | Default slot for the img or picture tag. |
+| `footer` | Renders a footer section below the description. |

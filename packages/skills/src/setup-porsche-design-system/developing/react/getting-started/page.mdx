@@ -1,0 +1,190 @@
+# React
+
+## Quick start
+
+To build a [React](https://react.dev/learn/creating-a-react-app#start-from-scratch) application using the Porsche Design
+System, follow these steps. This guide is based on the following dependencies:
+
+  
+  vite@8
+  
+  react@19
+  
+  tailwindcss@4
+  
+  @porsche-design-system/components-react@4
+
+```bash
+# Create a new application by executing:
+npm create vite@latest my-app -- --template react-ts
+```
+
+You're all set! Start building your own application now.
+
+## Integration
+
+### Step 1
+
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-react
+```
+
+### Step 2
+
+Wrap your app with the ``.
+
+```diff
+// src/main.tsx
+
++ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
++   <PorscheDesignSystemProvider>
+      <App />
++   </PorscheDesignSystemProvider>
+  </StrictMode>
+);
+```
+
+### Step 3
+
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
+
+```diff
+/* src/index.css */
++ @import '@porsche-design-system/components-react';
+```
+
+Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it's broken.
+[Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
+
+```diff
+// vite.config.ts
+
++ import { Features } from 'lightningcss';
+
+export default defineConfig({
++ css: {
++   transformer: 'lightningcss',
++   // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++   lightningcss: {
++     exclude: Features.LightDark,
++   },
++ },
+});
+```
+
+To prevent FOUC, hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/index.css */
+@import '@porsche-design-system/components-react';
+
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
+
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
+
+```diff
+// vite.config.ts
+
++ import {
++   getComponentChunkLinks,
++   getFontLinks,
++   getIconLinks,
++   getMetaTagsAndIconLinks,
++ } from '@porsche-design-system/components-react/partials';
+
++ const transformIndexHtmlPlugin = () => {
++   return {
++     name: 'html-transform',
++     transformIndexHtml(html: string) {
++       const headPartials = [
++         // preloads fonts
++         getFontLinks(),
++         // preloads icons
++         getIconLinks(),
++         // preloads components
++         getComponentChunkLinks(),
++         // injects favicon, apple touch icons, android touch icons, etc.
++         getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
++       ].join('');
++
++       return html.replace(/<\/head>/, `${headPartials}$&`);
++     },
++   };
++ };
+
+export default defineConfig({
++ plugins: [react(), transformIndexHtmlPlugin()],
+});
+```
+
+### Step 5 (recommended)
+
+Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
+[Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
+**seamless styling consistency** with Porsche's design principles.
+
+Install Tailwind CSS within your project directory.
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Configure the Vite Tailwind CSS plugin.
+
+```diff
+// vite.config.ts
+
++ import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
++ plugins: [react(), transformIndexHtmlPlugin(), tailwindcss()],
+});
+```
+
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+
+```diff
+/* src/index.css */
+@import '@porsche-design-system/components-react';
+
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-react/tailwindcss';
+```
+
+### Step 6
+
+Add a Porsche Design System component (e.g., ``) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
+
+```tsx
+// src/App.tsx
+
+export default function Home() {
+  return (
+    <>
+      
+        <PWordmark />
+        <h1 className="prose-heading-4xl">Porsche Design System</h1>
+      
+      …
+    </>
+  );
+}
+```

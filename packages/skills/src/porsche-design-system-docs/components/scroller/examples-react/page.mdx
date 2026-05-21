@@ -1,0 +1,110 @@
+# Scroller 
+
+## Height
+
+The height of `p-scroller` depends on the height of its content.
+
+Keep in mind that the content passed to the `p-scroller` should be within the size definition of the design system and
+thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
+
+The `p-scroller` only takes care of horizontal alignment. Spacing and custom CSS properties must be handled by the
+consumer, e.g. `white-space: nowrap`, to avoid line breaks inside the elements.
+
+### Interactive Story: `scrollerStoryHeight`
+
+```tsx
+import React from 'react';
+import { PScroller, PTagDismissible } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PScroller className="max-w-[600px] whitespace-nowrap">
+        <PTagDismissible className="me-static-md">
+          Some tag content
+        </PTagDismissible>
+        <PTagDismissible className="me-static-md">
+          Some tag content
+        </PTagDismissible>
+        <PTagDismissible className="me-static-md">
+          Some tag content
+        </PTagDismissible>
+        <PTagDismissible className="me-static-md">
+          Some tag content
+        </PTagDismissible>
+        <PTagDismissible className="me-static-md">
+          Some tag content
+        </PTagDismissible>
+      </PScroller>
+    </>
+  )
+}
+```
+
+## Scroll to position
+
+The `p-scroller` component provides the `scrollToPosition` property. It accepts
+`{ scrollPosition: number, isSmooth?: boolean }`.
+
+If `scrollToPosition` is set with `isSmooth: true`, the scrolling is animated.
+
+### Code Example: `scrollerExample`
+
+```tsx
+import React from 'react';
+import {
+  PButton,
+  PScroller,
+  PTagDismissible,
+  type ScrollerScrollToPosition,
+} from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
+
+export const Example = () => {
+  const style = `
+      p-scroller > *:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      button {
+        margin: 0 1rem 1rem 0;
+      }
+  `;
+
+  const [scrollToPosition, setScrollToPosition] = useState<ScrollerScrollToPosition>({
+    scrollPosition: 220,
+    isSmooth: false,
+  });
+
+  const onClick = useCallback(
+    (scrollPosition: number) => () => {
+      setScrollToPosition({ scrollPosition: scrollPosition, isSmooth: true });
+    },
+    []
+  );
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+
+      <PButton type="button" onClick={onClick(0)} compact={true}>
+        Scroll to start
+      </PButton>
+      <PButton type="button" onClick={onClick(220)} compact={true}>
+        Scroll to middle
+      </PButton>
+      <PButton type="button" onClick={onClick(720)} compact={true}>
+        Scroll to end
+      </PButton>
+
+      <div style={{ maxWidth: '400px', whiteSpace: 'nowrap' }}>
+        <PScroller scrollToPosition={scrollToPosition}>
+          <PTagDismissible>START - some tag content</PTagDismissible>
+          <PTagDismissible>MIDDLE - some tag content</PTagDismissible>
+          <PTagDismissible>END - some tag content</PTagDismissible>
+        </PScroller>
+      </div>
+    </>
+  );
+};
+```

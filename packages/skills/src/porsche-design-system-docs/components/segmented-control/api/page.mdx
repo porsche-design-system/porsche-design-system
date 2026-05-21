@@ -1,0 +1,61 @@
+# Segmented Control 
+
+## Segmented Control
+
+### API Reference for `p-segmented-control`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `description` | `string` | `""` | Supplementary text providing more context or explanation for the segmented-control. |
+| `value` | `"string" \| "number"` | - | Sets the initial value of the segmented-control. |
+| `name` | `string` | - | The name of the segmented-control. |
+| `compact` | `boolean` | `false` | Displays the segmented control in compact mode. |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | Indicates the validation or overall status of the component. |
+| `required` | `boolean` | `false` | A boolean value that specifies a selection must be made from the group before the form can be submitted. |
+| `message` | `string` | `""` | Dynamic feedback text for validation or status. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `columns` | `SegmentedControlColumns` | `"auto"` | Sets the amount of columns. *(breakpoint customizable)* 26 allowed values. |
+| `form` | `string` | - | The id of a form element the segmented-control should be associated with. |
+| `disabled` | `boolean` | `false` | Disables the segmented-control. |
+| `noWrap` | `boolean` | `false` | If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `blur` | `void` | Emitted when the segmented-control has lost focus. |
+| `change` | `{ value: string | number }` | Emitted when the selection is changed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+| `description` | Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| (default) | Default slot for the `p-segmented-control-item` tags. |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+
+## Segmented Control Item
+
+### API Reference for `p-segmented-control-item`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `value` | `"string" \| "number"` | - | The value of this item which is emitted by the parent element if it becomes selected. This property is*required**. **(required)** |
+| `disabled` | `boolean` | `false` | Disables the button. No events will be triggered while disabled state is active. |
+| `label` | `string` | - | Text content for a user-facing label. |
+| `icon` | `SegmentedControlItemIcon` | - | The icon shown. 291 allowed values. |
+| `iconSource` | `string` | - | A URL path to a custom icon. |
+| `aria` | `{ aria-label: string }` | - | Sets ARIA attributes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the content. |

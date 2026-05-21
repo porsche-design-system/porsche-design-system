@@ -1,0 +1,21 @@
+# Display ⚠️ Deprecated
+
+### API Reference for `p-display`
+
+> ⚠️ **Deprecated**: since v4.0.0, will be removed with next major release. Please use `p-heading` instead.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `tag` | `null \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | - | Sets a heading tag, so it fits correctly within the outline of the page. |
+| `size` | `"small" \| "medium" \| "large" \| "inherit"` | `"large"` | Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. *(breakpoint customizable)* |
+| `align` | `"start" \| "center" \| "end" \| "inherit"` | `"start"` | Text alignment of the component. |
+| `color` | `"primary" \| "inherit"` | `"primary"` | Basic text color variations. |
+| `ellipsis` | `boolean` | `false` | Adds an ellipsis to a single line of text if it overflows. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the display text. |

@@ -1,0 +1,48 @@
+# Carousel 
+
+### API Reference for `p-carousel`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `heading` | `string` | - | Defines the heading used in the carousel. |
+| `headingSize` | `"x-large" \| "xx-large"` | `"x-large"` | Defines the heading size used in the carousel. |
+| `description` | `string` | - | Defines the description used in the carousel. |
+| `alignHeader` | `"start" \| "center"` | `"start"` | Aligns the heading and description. |
+| `alignControls` | `"start" \| "center" \| "auto"` | `"auto"` | Aligns the slotted controls. |
+| `rewind` | `boolean` | `false` | Whether the slides should rewind from last to first slide and vice versa. |
+| `width` | `"basic" \| "extended" \| "wide" \| "full"` | `"basic"` | Defines the outer spacings between the carousel and the left and right screen sides. |
+| `slidesPerPage` | `"auto" \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| 9 \| 10` | `1` | Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. *(breakpoint customizable)* |
+| `pagination` | `boolean` | `false` | If false, the carousel will not show pagination bullets at the bottom. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string }` | - | Sets ARIA attributes. |
+| `intl` | `{ prev: string, next: string, first: string, last: string, slideLabel: string, slide: string }` | - | Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. |
+| `activeSlideIndex` | `number` | `0` | Defines which slide is active (zero-based numbering). |
+| `skipLinkTarget` | `string` | - | Defines the skip link target used to skip carousel entries. |
+| `focusOnCenterSlide` | `boolean` | `false` | Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page. |
+| `gradient` | `boolean` | `false` | Fades the slides out. |
+| `trimSpace` | `boolean` | `false` | Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ activeIndex: number; previousIndex: number }` | Emitted when carousel's content slides. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `heading` | Renders a heading above the carousel. |
+| `description` | Renders descriptive content below the heading. |
+| `controls` | Renders custom controls such as navigation buttons or indicators. |
+| (default) | Default slot for the carousel slides. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-carousel-px` | - | Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop `width` has no effect anymore. |
+| `--p-carousel-ps` | - | Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with `--p-carousel-px` or `--p-carousel-pe`. When used then the prop `width` has no effect anymore. |
+| `--p-carousel-pe` | - | Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with `--p-carousel-px` or `--p-carousel-ps`. When used then the prop `width` has no effect anymore. |
+| `--p-carousel-prev-next-color-scheme` | - | Color Scheme applied to the navigation (prev/next buttons) |

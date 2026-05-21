@@ -1,0 +1,172 @@
+# Flyout 
+
+## Sticky content with Custom CSS Property (Experimental)
+
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
+
+### Interactive Story: `flyoutStoryStickyTop`
+
+```tsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Flyout
+      </PButton>
+
+      <PFlyout open={open} aria={{'aria-label': 'Some Heading'}} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <div className="grid grid-cols-[2fr_1fr] gap-static-md items-start">
+          <div className="sticky top-[calc(var(--p-flyout-sticky-top,0)+16px)] p-static-md bg-surface">
+            Some sticky element within content relying on --p-flyout-sticky-top
+          </div>
+          <div>
+            <PText>
+              Some Content Begin
+            </PText>
+            <div className="w-[10px] h-[120vh] bg-[deeppink]"></div>
+            <PText>
+              Some Content End
+            </PText>
+          </div>
+        </div>
+      </PFlyout>
+    </>
+  )
+}
+```
+
+## Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+### Code Example: `flyoutExampleForm`
+
+```tsx
+import React from 'react';
+import { PButton, PCheckbox, PFlyout, PHeading, PText, PTextarea } from '@porsche-design-system/components-react';
+import { type FormEvent, useCallback, useState } from 'react';
+
+export const Example = () => {
+  const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
+  const [checkboxValue, setCheckboxValue] = useState('none');
+  const [textareaValue, setTextareaValue] = useState('none');
+
+  const onOpen = useCallback(() => {
+    setIsFlyoutOpen(true);
+  }, []);
+  const onDismiss = useCallback(() => {
+    setIsFlyoutOpen(false);
+  }, []);
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    setCheckboxValue(formData.get('some-checkbox')?.toString() || 'none');
+    setTextareaValue(formData.get('some-textarea')?.toString() || 'none');
+  };
+
+  return (
+    <>
+      <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
+        Open Flyout
+      </PButton>
+      <PFlyout open={isFlyoutOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <form id="some-form" onSubmit={onSubmit}>
+          <PCheckbox name="some-checkbox" label="Some Label"></PCheckbox>
+          <PTextarea name="some-textarea" label="Some Label"></PTextarea>
+        </form>
+        <PButton slot="footer" type="submit" form="some-form">
+          Submit
+        </PButton>
+        <PButton slot="footer" type="reset" variant="secondary" form="some-form">
+          Reset
+        </PButton>
+        <PText slot="sub-footer">
+          Last submitted data:
+          <br />
+          <br />
+          checkbox: {checkboxValue}
+          <br />
+          textarea: {textareaValue}
+        </PText>
+      </PFlyout>
+    </>
+  );
+};
+```
+
+## Custom Styling
+
+The Flyout exposes read-only CSS Variables (prefixed with `--ref-`). Additionally, some predefined CSS variables can be
+overwritten. This can be useful for positioning a media element to the edge of the Flyout, or for fully controlling the
+Flyout's width.
+
+### Interactive Story: `flyoutStoryCustomStyling`
+
+```tsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PButtonPure, PDisplay, PFlyout, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Flyout
+      </PButton>
+
+      <PFlyout open={open} aria={{'aria-label': 'Some Heading'}} footerBehavior="fixed" className="[--p-flyout-width:90vw]" onDismiss={onDismiss}>
+        <div className="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[300px]">
+          <img className="w-full h-full object-cover" src="assets/lights.jpg" alt="Some image description" />
+        </div>
+        <PDisplay className="mt-fluid-md" size="small" tag="h2">
+          Some heading
+        </PDisplay>
+        <PText className="mt-fluid-sm">
+          Some paragraph.
+        </PText>
+        <div slot="footer" className="grid grid-cols-[auto_1fr_auto] gap-static-sm justify-items-center">
+          <PButtonPure icon="arrow-left" type="button" hideLabel={true}>
+            Prev
+          </PButtonPure>
+          <PText>
+            1/4
+          </PText>
+          <PButtonPure icon="arrow-right" type="button" hideLabel={true}>
+            Next
+          </PButtonPure>
+        </div>
+      </PFlyout>
+    </>
+  )
+}
+```

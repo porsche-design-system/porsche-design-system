@@ -1,0 +1,61 @@
+# Select 
+
+## Select
+
+### API Reference for `p-select`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `description` | `string` | `""` | Supplementary text providing more context or explanation for the select. |
+| `name` | `string` | - | The name of the control. **(required)** |
+| `value` | `"string" \| "number" \| "null"` | - | The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end. |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | The validation state. |
+| `message` | `string` | `""` | The message styled depending on validation state. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `disabled` | `boolean` | `false` | Disables the select. |
+| `required` | `boolean` | `false` | Requires an option with a non-empty string value to be selected. |
+| `dropdownDirection` | `"down" \| "up" \| "auto"` | `"auto"` | Changes the direction to which the dropdown list appears. |
+| `filter` | `boolean` | `false` | Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used. |
+| `compact` | `boolean` | `false` | Displays the select in compact mode. |
+| `form` | `string` | - | The id of a form element the select should be associated with. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `blur` | `void` | Emitted when the select has lost focus. |
+| `change` | `{ name: string; value: string | number | null | undefined }` | Emitted when the selection is changed. |
+| `toggle` | `{ open: boolean }` | Emitted when the dropdown is toggled. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+| `description` | Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `selected` | Use this slot to provide custom markup for the selected option display in the button area. |
+| (default) | Default slot for the `p-select-option` tags. |
+| `options-status` | When implementing a custom filter with the `filter` slot, use this slot for loading, error and no results status. |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `filter` | Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior. |
+
+## Select Option
+
+### API Reference for `p-select-option`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `value` | `"string" \| "number" \| "null"` | - | The option value. Selected when it strictly matches the p-select value (same type and value). |
+| `disabled` | `boolean` | `false` | Disables the option. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the option content. |

@@ -1,0 +1,75 @@
+# Drilldown 🧪 Experimental
+
+## Drilldown
+
+### API Reference for `p-drilldown`
+
+> 🧪 **Experimental**: This component is experimental and may change.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `open` | `boolean` | `false` | If `true`, the drilldown is shown as open. |
+| `activeIdentifier` | `string` | - | Defines which `p-drilldown-item` is shown as open. |
+| `aria` | `{ aria-label: string }` | - | Sets ARIA attributes. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `dismiss` | `void` | Emitted when the component requests to be dismissed. |
+| `update` | `{ activeIdentifier: string | undefined }` | Emitted when `activeIdentifier` changes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot to render p-drilldown items. |
+
+## Drilldown Item
+
+### API Reference for `p-drilldown-item`
+
+> 🧪 **Experimental**: This component is experimental and may change.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | - | Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure. |
+| `identifier` | `string` | - | Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value. **(required)** |
+| `primary` | `boolean` | `false` | Private property set by the component itself. |
+| `secondary` | `boolean` | `false` | Private property set by the component itself. |
+| `cascade` | `boolean` | `false` | Private property set by the component itself. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the main content. |
+| `button` | Shows a custom button to reach a deeper level of the navigation structure. |
+| `header` | Shows a custom header section on mobile view. |
+
+## Drilldown Link
+
+### API Reference for `p-drilldown-link`
+
+> 🧪 **Experimental**: This component is experimental and may change.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `href` | `string` | - | When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element. |
+| `active` | `boolean` | `false` | Displays the link in its active state. |
+| `target` | `"_self" \| "_blank" \| "_parent" \| "_top" \| "string"` | `"_self"` | Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used). |
+| `download` | `string` | - | Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used). |
+| `rel` | `string` | - | Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used). |
+| `aria` | `{ aria-label: string, aria-description: string, aria-current: string, aria-haspopup: string }` | - | Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used). |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot to render the link label. |

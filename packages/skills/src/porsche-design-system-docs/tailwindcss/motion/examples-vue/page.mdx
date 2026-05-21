@@ -1,0 +1,55 @@
+# Motion
+
+The Porsche Design System Tailwind theme customizes the Tailwind variables `--transition-duration-*` and `--ease-*`,
+which affect multiple Tailwind classes including `.duration-*`, `.ease-*` and others.
+
+## Duration
+
+### Interactive Story: `motionStoryDuration`
+
+```vue
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <div class="grid gap-fluid-md prose-text-sm">
+    <div class="duration-sm transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .duration-sm
+    </div>
+    <div class="duration-md transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .duration-md
+    </div>
+    <div class="duration-lg transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .duration-lg
+    </div>
+    <div class="duration-xl transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .duration-xl
+    </div>
+  </div>
+</template>
+```
+
+## Ease
+
+### Interactive Story: `motionStoryEase`
+
+```vue
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <div class="grid gap-fluid-md prose-text-sm">
+    <div class="ease-in-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .ease-in-out
+    </div>
+    <div class="ease-in transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .ease-in
+    </div>
+    <div class="ease-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+      .ease-out
+    </div>
+  </div>
+</template>
+```

@@ -1,0 +1,196 @@
+# Color
+
+The Porsche Design System Tailwind theme customizes Tailwind variables such as `--color-*`, which affect multiple
+Tailwind classes including `bg-*`, `text-*`, `border-*` and others.
+
+The colors use the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function. To change the theme, use the utility classes `.scheme-light`, `.scheme-dark` or `.scheme-light-dark`. Learn
+more in the [Color Scheme](/tailwindcss/introduction#color-scheme) section.
+
+## Text Color
+
+### Interactive Story: `colorStoryTextColor`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <ul className="grid gap-fluid-sm prose-text-sm">
+        <li className="text-primary">
+          .text-primary
+        </li>
+        <li className="text-contrast-higher">
+          .text-contrast-higher
+        </li>
+        <li className="text-contrast-high">
+          .text-contrast-high
+        </li>
+        <li className="text-contrast-medium">
+          .text-contrast-medium
+        </li>
+        <li className="text-success">
+          .text-success
+        </li>
+        <li className="text-warning">
+          .text-warning
+        </li>
+        <li className="text-error">
+          .text-error
+        </li>
+        <li className="text-info">
+          .text-info
+        </li>
+      </ul>
+    </>
+  )
+}
+```
+
+## Background Color
+
+### Interactive Story: `colorStoryBackgroundColor`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <ul className="grid gap-fluid-sm prose-text-sm">
+        <li className="flex items-center gap-static-md">
+          <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-canvas
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-surface
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-frosted
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-frosted-soft
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-frosted-strong
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-backdrop
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-success-frosted
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-success-frosted-soft
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-warning-frosted
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-warning-frosted-soft
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-error-frosted
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-error-frosted-soft
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-info-frosted
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>
+          .bg-info-frosted-soft
+        </li>
+      </ul>
+    </>
+  )
+}
+```
+
+## Border Color
+
+### Interactive Story: `colorStoryBorderColor`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <ul className="grid gap-fluid-sm prose-text-sm">
+        <li className="flex items-center gap-static-md">
+          <div className="border-primary w-10 h-10 rounded-md border"></div>
+          .border-primary
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-contrast-higher w-10 h-10 rounded-md border"></div>
+          .border-contrast-higher
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-contrast-high w-10 h-10 rounded-md border"></div>
+          .border-contrast-high
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-contrast-medium w-10 h-10 rounded-md border"></div>
+          .border-contrast-medium
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-contrast-low w-10 h-10 rounded-md border"></div>
+          .border-contrast-low
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-contrast-lower w-10 h-10 rounded-md border"></div>
+          .border-contrast-lower
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-info-medium w-10 h-10 rounded-md border"></div>
+          .border-info-medium
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-info-low w-10 h-10 rounded-md border"></div>
+          .border-info-low
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-success-medium w-10 h-10 rounded-md border"></div>
+          .border-success-medium
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-success-low w-10 h-10 rounded-md border"></div>
+          .border-success-low
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-warning-medium w-10 h-10 rounded-md border"></div>
+          .border-warning-medium
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-warning-low w-10 h-10 rounded-md border"></div>
+          .border-warning-low
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-error-medium w-10 h-10 rounded-md border"></div>
+          .border-error-medium
+        </li>
+        <li className="flex items-center gap-static-md">
+          <div className="border-error-low w-10 h-10 rounded-md border"></div>
+          .border-error-low
+        </li>
+      </ul>
+    </>
+  )
+}
+```

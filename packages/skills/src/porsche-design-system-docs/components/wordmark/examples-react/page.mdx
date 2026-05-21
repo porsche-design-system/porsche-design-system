@@ -1,0 +1,40 @@
+# Wordmark 
+
+## Size
+
+By default, the sizing is fluid, which can be changed to `inherit` a specified value.
+
+### Interactive Story: `wordmarkStorySizeInherit`
+
+```tsx
+import React from 'react';
+import { PWordmark } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PWordmark className="h-[20px]" size="inherit"></PWordmark>
+    </>
+  )
+}
+```
+
+## Custom clickable/focusable area
+
+Sometimes it may be useful to enlarge the clickable/focusable area of the `p-wordmark`. Therefore, custom padding can be
+set on the host element.
+
+### Interactive Story: `wordmarkStoryCustomPadding`
+
+```tsx
+import React from 'react';
+import { PWordmark } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PWordmark className="p-static-md" href="https://porsche.com" aria={{'aria-label': 'Porsche Homepage'}}></PWordmark>
+    </>
+  )
+}
+```

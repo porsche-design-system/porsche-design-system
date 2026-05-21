@@ -1,0 +1,628 @@
+# Select 
+
+## Form
+
+The `p-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similarly to a native `<select>`, automatically managing its own
+state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+> ⚠️ **Attention**
+>
+> `p-select` does not use a native select internally. As a result, it lacks access to native
+> `ValidityState`
+> properties and `validationMessage`, and it cannot display the native validation popover. This means
+> validation behavior and error display will need to be implemented separately if required.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `selectExampleForm`
+
+```vue
+<template>
+  <form @submit.prevent="onSubmit" @reset.prevent="onReset" class="flex flex-col gap-fluid-sm">
+    <PSelect v-model:value="form.mySelect" :name="'mySelect'" :label="'Some Label'">
+      <PSelectOption :value="'a'">Option A</PSelectOption>
+      <PSelectOption :value="'b'">Option B</PSelectOption>
+      <PSelectOption :value="'c'">Option C</PSelectOption>
+      <PSelectOption :value="'d'">Option D</PSelectOption>
+      <PSelectOption :value="'e'">Option E</PSelectOption>
+      <PSelectOption :value="'f'">Option F</PSelectOption>
+    </PSelect>
+    <div class="flex gap-fluid-sm">
+      <PButton type="submit">Submit</PButton>
+      <PButton type="reset">Reset</PButton>
+    </div>
+    <PText>Last submitted data: {{ submittedValue }}</PText>
+  </form>
+</template>
+
+<script setup lang="ts">
+import { PButton, PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
+import { reactive, ref } from 'vue';
+
+const form = reactive({
+  mySelect: undefined,
+});
+
+const submittedValue = ref();
+
+const onSubmit = () => {
+  submittedValue.value = JSON.stringify(form);
+};
+
+const onReset = () => {
+  form.mySelect = undefined;
+};
+</script>
+```
+
+## Basic example without preselection
+
+To ensure the user makes a conscious choice, use the initial value `undefined` of the `value` property. If you want to
+give the user the choice to deselect the current option, you can provide an option without a value
+`<p-select-option></p-select-option>`. If you don't want the user to be able to deselect the current option, but still
+want to show a placeholder text you can set the option `disabled` like this
+`<p-select-option disabled>Please choose an option</p-select-option>`.
+
+### Code Example: `selectExampleRequired`
+
+```vue
+<script setup lang="ts">
+import { PButton, PCheckbox, PSelect, PSelectOption, type PSelectProps, PText } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const lastSubmittedData = ref<string>('none');
+const isRequired = ref<PSelectProps['required']>(true);
+const hasDeselection = ref<boolean>(false);
+
+const onChangeRequired = () => {
+  isRequired.value = !isRequired.value;
+};
+
+const onChangeDeselection = () => {
+  hasDeselection.value = !hasDeselection.value;
+};
+
+const onSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
+  lastSubmittedData.value = formData.get('options')?.toString() || 'none';
+};
+</script>
+
+<template>
+  <PCheckbox label="Required" name="required" :checked="isRequired" @update="onChangeRequired" />
+  <PCheckbox label="Allow deselection" name="deselection" :checked="hasDeselection" @update="onChangeDeselection" />
+
+  <form @submit.prevent="onSubmit">
+    <p-select name="options" label="Some Label" :required="isRequired">
+      <p-select-option v-if="hasDeselection"></p-select-option>
+      <p-select-option value="1">Option 1</p-select-option>
+      <p-select-option value="2">Option 2</p-select-option>
+      <p-select-option value="3">Option 3</p-select-option>
+    </p-select>
+    <PButton type="submit">Submit</PButton>
+  </form>
+
+  <PText>Last submitted data: {{ lastSubmittedData }}</PText>
+</template>
+```
+
+## Slotted images
+
+In order to show an icon for each option, you can optionally slot an `img` tag within the `p-select-option`. Be aware
+that the `p-select-option` can only contain a `#text` and an `img` node.
+
+### Interactive Story: `selectStorySlottedImages`
+
+```vue
+<script setup lang="ts">
+  import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSelect name="options" label="Some Label" description="Some description">
+    <PSelectOption value="718">
+      <img src="assets/718.png" />
+      718
+    </PSelectOption>
+    <PSelectOption value="911">
+      <img src="assets/911.png" />
+      911
+    </PSelectOption>
+    <PSelectOption value="taycan">
+      <img src="assets/taycan.png" />
+      taycan
+    </PSelectOption>
+    <PSelectOption value="macan">
+      <img src="assets/macan.png" />
+      macan
+    </PSelectOption>
+    <PSelectOption value="cayenne">
+      <img src="assets/cayenne.png" />
+      cayenne
+    </PSelectOption>
+    <PSelectOption value="panamera">
+      <img src="assets/panamera.png" />
+      panamera
+    </PSelectOption>
+  </PSelect>
+</template>
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `selectStorySlots`
+
+```vue
+<script setup lang="ts">
+  import { PPopover, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSelect name="options" state="error">
+    <span slot="label" id="some-label-id">
+      Some label with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+       and a "label-after" slot.
+    </span>
+    <PPopover slot="label-after">
+      Some Popover content with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+      .
+    </PPopover>
+    <span slot="description" id="some-description-id">
+      Some description with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+      .
+    </span>
+    <span slot="message" id="some-message-id">
+      Some error message with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+      .
+    </span>
+    <PSelectOption value="a">
+      Option A
+    </PSelectOption>
+    <PSelectOption value="b">
+      Option B
+    </PSelectOption>
+    <PSelectOption value="c">
+      Option C
+    </PSelectOption>
+  </PSelect>
+</template>
+```
+
+---
+
+## Set Value
+
+The `p-select` component behaves like regular form elements. It updates its value automatically based on user choices,
+but it can also be changed manually by using the `value` property. This property takes a string that represents the
+selected option value.
+
+### Code Example: `selectExampleDynamic`
+
+```vue
+<script setup lang="ts">
+import {
+  PButton,
+  PInputText,
+  PSelect,
+  PSelectOption,
+  type PSelectProps,
+  type SelectChangeEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const selectedValue = ref<PSelectProps['value']>('1');
+const inputValue = ref<string>('');
+const optionCount = ref<number>(3);
+
+const onSetValue = () => {
+  selectedValue.value = inputValue.value;
+};
+
+const onResetValue = () => {
+  selectedValue.value = '1';
+  inputValue.value = '';
+};
+
+const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+  selectedValue.value = e.detail.value;
+  inputValue.value = String(e.detail.value ?? '');
+};
+
+const onAddOption = () => {
+  optionCount.value++;
+};
+
+const onRemoveOption = () => {
+  if (optionCount.value > 0) {
+    optionCount.value--;
+  }
+};
+</script>
+
+<template>
+  <div>
+    <PInputText label="Value:" name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1" />
+    <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
+    <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
+
+    <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @change="onChange">
+      <PSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`"> Option {{ idx }} </PSelectOption>
+    </PSelect>
+
+    <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
+    <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
+  </div>
+</template>
+```
+
+---
+
+## With optgroups
+
+### Interactive Story: `selectStoryOptgroups`
+
+```vue
+<script setup lang="ts">
+  import { POptgroup, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSelect name="options" label="Some Label" description="Some description">
+    <POptgroup label="Some optgroup label 1">
+      <PSelectOption value="a">
+        Option A
+      </PSelectOption>
+      <PSelectOption value="b">
+        Option B
+      </PSelectOption>
+      <PSelectOption value="c">
+        Option C
+      </PSelectOption>
+      <PSelectOption value="d">
+        Option D
+      </PSelectOption>
+      <PSelectOption value="e">
+        Option E
+      </PSelectOption>
+      <PSelectOption value="f">
+        Option F
+      </PSelectOption>
+    </POptgroup>
+    <POptgroup label="Some optgroup label 2">
+      <PSelectOption value="g">
+        Option G
+      </PSelectOption>
+      <PSelectOption value="h">
+        Option H
+      </PSelectOption>
+      <PSelectOption value="i">
+        Option I
+      </PSelectOption>
+    </POptgroup>
+  </PSelect>
+</template>
+```
+
+---
+
+## Custom asynchronous filtering
+
+The `p-select` component automatically filters options based on user input. However, if you have a large dataset or need
+custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter` slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+### Code Example: `selectExampleAsyncFilter`
+
+```vue
+<template>
+  <PSelect
+    name="async-search-select"
+    label="Async Search"
+    :value="value"
+    @change="onChange"
+    @toggle="onToggle"
+  >
+    <PInputSearch
+      slot="filter"
+      name="search"
+      clear
+      indicator
+      compact
+      autocomplete="off"
+      :loading="loading"
+      :value="searchValue"
+      @input="onInput"
+      @blur.stop
+      @change.stop
+    />
+
+    <!-- Initial skeleton loading -->
+    <template v-if="initialLoading && !error">
+      <div v-for="i in 9" :key="i" slot="options-status" class="skeleton h-[40px]" />
+    </template>
+
+    <!-- Options -->
+    <PSelectOption v-for="opt in options" :key="opt.value" :value="opt.value">
+      {{ opt.label }}
+    </PSelectOption>
+
+    <!-- No filter results -->
+    <div
+      v-if="!initialLoading && options.length === 0 && !error"
+      slot="options-status"
+      class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
+      role="alert"
+    >
+      <span aria-hidden="true">–</span>
+      <span class="sr-only">No results found</span>
+    </div>
+
+    <!-- Error state -->
+    <div
+      v-if="error"
+      slot="options-status"
+      class="flex gap-static-sm py-static-sm px-[12px]"
+      role="alert"
+    >
+      <PIcon name="information" color="error" />
+      <span class="text-error">{{ error }}</span>
+    </div>
+  </PSelect>
+</template>
+
+<script setup lang="ts">
+import {
+  type InputSearchInputEventDetail,
+  PIcon,
+  PInputSearch,
+  PSelect,
+  PSelectOption,
+  type PSelectProps,
+  type SelectChangeEventDetail,
+  type SelectToggleEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+function useDebounce<T>(callback: (value: T) => void, delay = 400) {
+  let timer: number | undefined;
+  return (value: T) => {
+    if (timer) clearTimeout(timer);
+    timer = window.setTimeout(() => callback(value), delay);
+  };
+}
+
+const value = ref<PSelectProps['value']>(undefined);
+const options = ref<{ value: string; label: string }[]>([]);
+const searchValue = ref('');
+const initialLoading = ref(false);
+const loading = ref(false);
+const error = ref<string | null>(null);
+
+const hasLoadedOnce = ref(false);
+let currentFetchId = 0;
+
+// 💡 Consider using Vue Query or SWRV for data fetching.
+async function fetchOptions(term?: string, isInitial?: boolean) {
+  const fetchId = ++currentFetchId;
+  if (isInitial) initialLoading.value = true;
+  else loading.value = true;
+
+  try {
+    const url = term
+      ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+      : `https://jsonplaceholder.typicode.com/users`;
+    const res = await fetch(url);
+    const data: { id: number; name: string; username: string }[] = await res.json();
+
+    if (fetchId !== currentFetchId) return; // ignore stale fetch
+
+    options.value = data.map((user) => ({
+      value: user.id.toString(),
+      label: `${user.name} (${user.username})`,
+    }));
+    error.value = null;
+    hasLoadedOnce.value = true;
+  } catch (err) {
+    console.error('Failed to fetch options', err);
+    options.value = [];
+    error.value = 'Failed to load options';
+  } finally {
+    if (isInitial) initialLoading.value = false;
+    else loading.value = false;
+  }
+}
+
+const debouncedFetch = useDebounce((term?: string) => fetchOptions(term), 400);
+
+function onInput(e: CustomEvent<InputSearchInputEventDetail>) {
+  const term = (e.target as HTMLInputElement).value;
+  searchValue.value = term;
+  debouncedFetch(term.trim() || undefined);
+}
+
+function onChange(e: CustomEvent<SelectChangeEventDetail>) {
+  // Can be called from bubbling onChange event of PInputSearch, ignore those
+  if (e.detail.name) {
+    value.value = e.detail.value;
+  }
+}
+
+function onToggle(e: CustomEvent<SelectToggleEventDetail>) {
+  if (e.detail.open && !hasLoadedOnce.value) {
+    fetchOptions(undefined, true);
+  }
+}
+</script>
+```
+
+## Custom option rendering
+
+By default, `p-select-option` only allows `#text` and `img` nodes. To customize option rendering further, implement a
+custom selection renderer using the `selected` slot. This allows you to render different content in the selected area
+versus the dropdown options, enabling more complex option layouts.
+
+When using the `filter` option, the default behavior filters against all `textContent` within the options. For more
+granular control over filtering, implement custom filtering logic as shown in the
+[previous example](/components/select/examples#custom-asynchronous-filtering).
+
+### Code Example: `selectExampleSelectedSlot`
+
+```vue
+<template>
+  <PSelect
+    name="selected-slot-select"
+    label="Selected Slot"
+    :value="value"
+    @change="onChange"
+  >
+    <span slot="selected" class="h-full flex items-center gap-fluid-sm grow">
+      <PFlag v-if="selectedOption" :name="selectedOption.code"></PFlag>
+      <p v-if="selectedOption" class="prose-text-sm truncate m-0">{{ selectedOption.label }}</p>
+    </span>
+    <POptgroup v-for="[continent, options] in Object.entries(optgroups)" :key="continent" :label="continent">
+      <PSelectOption v-for="option in options" :key="option.code" :value="option.code">
+        <div class="w-full flex items-center gap-fluid-sm">
+          <PFlag :name="option.code"></PFlag>
+          <p class="prose-text-sm m-0">{{ option.label }}</p>
+        </div>
+      </PSelectOption>
+    </POptgroup>
+  </PSelect>
+</template>
+
+<script setup lang="ts">
+import {
+  type FlagName,
+  PFlag,
+  POptgroup,
+  PSelect,
+  PSelectOption,
+  type PSelectProps,
+  type SelectChangeEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+type Option = { label: string; code: FlagName; continent: string };
+
+const optionsData: Option[] = [
+  {
+    label: 'China',
+    code: 'cn',
+    continent: 'Asia',
+  },
+  {
+    label: 'Japan',
+    code: 'jp',
+    continent: 'Asia',
+  },
+  {
+    label: 'South Korea',
+    code: 'kr',
+    continent: 'Asia',
+  },
+  {
+    label: 'Austria',
+    code: 'at',
+    continent: 'Europe',
+  },
+  {
+    label: 'France',
+    code: 'fr',
+    continent: 'Europe',
+  },
+  {
+    label: 'Germany',
+    code: 'de',
+    continent: 'Europe',
+  },
+  {
+    label: 'Great Britain',
+    code: 'gb',
+    continent: 'Europe',
+  },
+  {
+    label: 'Italy',
+    code: 'it',
+    continent: 'Europe',
+  },
+  {
+    label: 'Portugal',
+    code: 'pt',
+    continent: 'Europe',
+  },
+  {
+    label: 'Spain',
+    code: 'es',
+    continent: 'Europe',
+  },
+
+  {
+    label: 'Canada',
+    code: 'ca',
+    continent: 'North America',
+  },
+  {
+    label: 'USA',
+    code: 'us',
+    continent: 'North America',
+  },
+];
+
+const value = ref<PSelectProps['value']>(undefined);
+const options = ref<Option[]>(optionsData);
+const selectedOption = ref<Option | undefined>(undefined);
+
+const optgroups: Record<string, Option[]> = options.value.reduce(
+  (acc, item) => {
+    const key = item.continent;
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  },
+  {} as Record<string, Option[]>
+);
+
+function onChange(e: CustomEvent<SelectChangeEventDetail>) {
+  value.value = e.detail.value;
+  selectedOption.value = options.value.find((option) => option.code === e.detail.value);
+}
+</script>
+```

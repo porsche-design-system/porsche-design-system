@@ -1,0 +1,32 @@
+{
+  "metadataAttributes": {
+    "category": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "partials"
+      },
+      "includeForEmbedding": true
+    },
+    "documentPath": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "partials/icon-links/page.mdx"
+      },
+      "includeForEmbedding": true
+    },
+    "version": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "3.33.0"
+      },
+      "includeForEmbedding": true
+    },
+    "section": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "icon-links"
+      },
+      "includeForEmbedding": true
+    }
+  }
+}

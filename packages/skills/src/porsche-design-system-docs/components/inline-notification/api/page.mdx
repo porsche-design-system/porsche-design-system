@@ -1,0 +1,30 @@
+# Inline Notification 
+
+### API Reference for `p-inline-notification`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `heading` | `string` | `""` | Heading of the inline-notification. |
+| `headingTag` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h5"` | Sets a heading tag, so it fits correctly within the outline of the page. |
+| `description` | `string` | `""` | Description of the inline-notification. |
+| `state` | `"info" \| "success" \| "warning" \| "error"` | `"info"` | State of the inline-notification. |
+| `dismissButton` | `boolean` | `true` | If false, the inline-notification will not have a dismiss button. |
+| `actionLabel` | `string` | - | Action label of the inline-notification. |
+| `actionLoading` | `boolean` | `false` | Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. |
+| `actionIcon` | `InlineNotificationActionIcon` | `"arrow-right"` | Action icon of the inline-notification. 291 allowed values. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `dismiss` | `void` | Emitted when the close button is clicked. |
+| `action` | `void` | Emitted when the action button is clicked. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `heading` | Defines the heading of the inline notification. Can be used as an alternative to the `heading` prop for rich content. |
+| (default) | Default slot for the inline notification description content. |

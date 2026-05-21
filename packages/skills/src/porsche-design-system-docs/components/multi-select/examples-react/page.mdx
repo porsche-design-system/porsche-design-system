@@ -1,0 +1,550 @@
+# Multi Select 
+
+## Form
+
+The `p-multi-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similarly to a native `<select multiple>`, automatically managing
+its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+> ⚠️ **Attention**
+>
+> `p-multi-select` does not use a native select internally. As a result, it lacks access to native
+> `ValidityState`
+> properties and `validationMessage`, and it cannot display the native validation popover. This means
+> validation behavior and error display will need to be implemented separately if required.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `multiSelectExampleForm`
+
+```tsx
+import React from 'react';
+import {
+  type MultiSelectChangeEventDetail,
+  PButton,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+  PText,
+} from '@porsche-design-system/components-react';
+import { FormEvent, useState } from 'react';
+
+export const Example = () => {
+  const [form, setForm] = useState({ myMultiSelect: [] });
+  const [lastSubmittedData, setLastSubmittedData] = useState<any>();
+
+  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+    const { name, value } = e.target as HTMLElement & PMultiSelectProps;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLastSubmittedData(JSON.stringify(form));
+  };
+
+  const onReset = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setForm({ myMultiSelect: [] });
+  };
+
+  return (
+    <>
+      <form onSubmit={onSubmit} onReset={onReset} className="flex flex-col gap-fluid-sm">
+        <PMultiSelect name="myMultiSelect" label="Some Label" value={form.myMultiSelect} onChange={onChange}>
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+        </PMultiSelect>
+        <div className="flex gap-fluid-sm">
+          <PButton type="submit">Submit</PButton>
+          <PButton type="reset">Reset</PButton>
+        </div>
+        <PText>Last submitted data: {lastSubmittedData}</PText>
+      </form>
+    </>
+  );
+};
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `multiSelectStorySlots`
+
+```tsx
+import React from 'react';
+import { PMultiSelect, PMultiSelectOption, PPopover } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PMultiSelect name="options" state="error">
+        <span slot="label" id="some-label-id">
+          Some label with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+           and a "label-after" slot.
+        </span>
+        <PPopover slot="label-after">
+          Some Popover content with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </PPopover>
+        <span slot="description" id="some-description-id">
+          Some description with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </span>
+        <span slot="message" id="some-message-id">
+          Some error message with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </span>
+        <PMultiSelectOption value="a">
+          Option A
+        </PMultiSelectOption>
+        <PMultiSelectOption value="b">
+          Option B
+        </PMultiSelectOption>
+        <PMultiSelectOption value="c">
+          Option C
+        </PMultiSelectOption>
+      </PMultiSelect>
+    </>
+  )
+}
+```
+
+## Set Value
+
+The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
+choices, but it can also be changed manually by using the `value` property. This property takes an array of strings that
+represent the selected option values.
+
+### Code Example: `multiSelectExampleDynamic`
+
+```tsx
+import React from 'react';
+import {
+  type InputTextInputEventDetail,
+  type MultiSelectChangeEventDetail,
+  PButton,
+  PInputText,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+} from '@porsche-design-system/components-react';
+import { useState } from 'react';
+
+export const Example = () => {
+  const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
+  const [inputValue, setInputValue] = useState('');
+  const [optionCount, setOptionCount] = useState(3);
+
+  const onChangeInput = (e: CustomEvent<InputTextInputEventDetail>) => {
+    setInputValue((e.detail.target as HTMLInputElement).value);
+  };
+
+  const onSetValue = () => {
+    setSelectedValues(inputValue.split(','));
+  };
+
+  const onResetValue = () => {
+    setSelectedValues([]);
+    setInputValue('');
+  };
+
+  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+    setSelectedValues(e.detail.value);
+    setInputValue(e.detail.value.join(','));
+  };
+
+  const onAddOption = () => {
+    setOptionCount((prev) => prev + 1);
+  };
+
+  const onRemoveOption = () => {
+    if (optionCount > 0) {
+      setOptionCount((prev) => prev - 1);
+    }
+  };
+
+  return (
+    <>
+      <PInputText
+        name="input-value"
+        label="Value:"
+        placeholder="e.g. 1,2"
+        value={inputValue}
+        onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
+      />
+      <PButton type="button" onClick={onSetValue} compact={true}>
+        Set Value
+      </PButton>
+      <PButton type="button" onClick={onResetValue} compact={true}>
+        Reset value
+      </PButton>
+
+      <PMultiSelect name="options" label="Some Label" value={selectedValues} onChange={onChange}>
+        {[...Array(optionCount).keys()].map((idx) => (
+          <PMultiSelectOption key={idx} value={`${idx + 1}`}>
+            Option {idx + 1}
+          </PMultiSelectOption>
+        ))}
+      </PMultiSelect>
+
+      <PButton type="button" onClick={onAddOption} compact={true}>
+        Add option
+      </PButton>
+      <PButton type="button" onClick={onRemoveOption} compact={true}>
+        Remove last option
+      </PButton>
+    </>
+  );
+};
+```
+
+## With optgroups
+
+### Interactive Story: `multiSelectStoryOptgroup`
+
+```tsx
+import React from 'react';
+import { PMultiSelect, PMultiSelectOption, POptgroup } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PMultiSelect name="options" label="Some Label">
+        <POptgroup label="Some optgroup label 1">
+          <PMultiSelectOption value="a">
+            Option A
+          </PMultiSelectOption>
+          <PMultiSelectOption value="b">
+            Option B
+          </PMultiSelectOption>
+          <PMultiSelectOption value="c">
+            Option C
+          </PMultiSelectOption>
+          <PMultiSelectOption value="d">
+            Option D
+          </PMultiSelectOption>
+          <PMultiSelectOption value="e">
+            Option E
+          </PMultiSelectOption>
+          <PMultiSelectOption value="f">
+            Option F
+          </PMultiSelectOption>
+        </POptgroup>
+        <POptgroup label="Some optgroup label 2">
+          <PMultiSelectOption value="g">
+            Option G
+          </PMultiSelectOption>
+          <PMultiSelectOption value="h">
+            Option H
+          </PMultiSelectOption>
+          <PMultiSelectOption value="i">
+            Option I
+          </PMultiSelectOption>
+        </POptgroup>
+      </PMultiSelect>
+    </>
+  )
+}
+```
+
+## Custom asynchronous filtering
+
+The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
+or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
+slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+### Code Example: `multiSelectExampleAsyncFilter`
+
+```tsx
+import React from 'react';
+import {
+  type InputSearchInputEventDetail,
+  type MultiSelectChangeEventDetail,
+  type MultiSelectToggleEventDetail,
+  PIcon,
+  PInputSearch,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+} from '@porsche-design-system/components-react';
+import { useCallback, useRef, useState } from 'react';
+
+const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
+  const timer = useRef<number | undefined>(undefined);
+  return (value: T) => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => callback(value), delay);
+  };
+};
+
+export const Example = () => {
+  const [value, setValue] = useState<PMultiSelectProps['value']>([]);
+  const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
+
+  const [searchValue, setSearchValue] = useState('');
+  const [initialLoading, setInitialLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const hasLoadedOnce = useRef(false);
+  const currentFetchId = useRef(0);
+
+  // 💡Consider using a data-fetching library like React Query or SWR here.
+  // They provide built-in caching, deduplication, retries, and loading/error state management,
+  // which would make this async logic cleaner and more reliable than manual fetch handling.
+  const fetchOptions = useCallback(async (term?: string, isInitial?: boolean) => {
+    const fetchId = ++currentFetchId.current;
+    isInitial ? setInitialLoading(true) : setLoading(true);
+    try {
+      const url = term
+        ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+        : `https://jsonplaceholder.typicode.com/users`;
+
+      const res = await fetch(url);
+      const data: { id: number; name: string; username: string }[] = await res.json();
+
+      // Ignore stale results
+      if (fetchId !== currentFetchId.current) return;
+
+      const newOptions = data.map((user) => ({
+        value: user.id.toString(),
+        label: `${user.name} (${user.username})`,
+      }));
+
+      setOptions(newOptions);
+      setError(null);
+      hasLoadedOnce.current = true;
+    } catch (err) {
+      console.error('Failed to fetch options', err);
+      setOptions([]);
+      setError('Failed to load options');
+    } finally {
+      isInitial ? setInitialLoading(false) : setLoading(false);
+    }
+  }, []);
+
+  const debouncedFetch = useDebounce(fetchOptions, 400);
+
+  const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
+    const term = (e.target as HTMLElement & { value: string }).value;
+    setSearchValue(term);
+    debouncedFetch(term.trim() || undefined);
+  };
+
+  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+    setValue((e.target as HTMLElement & { value: string[] }).value);
+  };
+
+  const onToggle = async (e: CustomEvent<MultiSelectToggleEventDetail>) => {
+    if (e.detail.open && !hasLoadedOnce.current) {
+      fetchOptions(undefined, true);
+    }
+  };
+
+  return (
+    <PMultiSelect name="async-search-select" label="Async Search" value={value} onChange={onChange} onToggle={onToggle}>
+      <PInputSearch
+        slot="filter"
+        name="search"
+        value={searchValue}
+        loading={loading}
+        clear
+        indicator
+        compact
+        autoComplete="off"
+        onInput={onInput}
+        // Prevent bubbling
+        onBlur={(e: any) => e.stopPropagation()}
+        onChange={(e: any) => e.stopPropagation()}
+      />
+
+      {/* Initial skeleton loading */}
+      {initialLoading &&
+        !error &&
+        Array.from({ length: 9 }).map((_, i) => <div key={i} slot="options-status" className="skeleton h-[40px]" />)}
+
+      {/* Options */}
+      {options.map((opt) => (
+        <PMultiSelectOption key={opt.value} value={opt.value}>
+          {opt.label}
+        </PMultiSelectOption>
+      ))}
+
+      {/* No filter results */}
+      {!initialLoading && options.length === 0 && !error && (
+        <div
+          slot="options-status"
+          className="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
+          role="alert"
+        >
+          <span aria-hidden="true">–</span>
+          <span className="sr-only">No results found</span>
+        </div>
+      )}
+
+      {/* Error state */}
+      {error && (
+        <div slot="options-status" className="flex gap-static-sm py-static-sm px-[12px]" role="alert">
+          <PIcon name="information" color="error" />
+          <span className="text-error">{error}</span>
+        </div>
+      )}
+    </PMultiSelect>
+  );
+};
+```
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+### Code Example: `multiSelectExampleSelectedSlot`
+
+```tsx
+import React from 'react';
+import {
+  type MultiSelectChangeEventDetail,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+  PTag,
+} from '@porsche-design-system/components-react';
+import { useState } from 'react';
+
+type Option = { value: string; label: string; description: string; tags: string[]; imgSrc: string };
+
+const optionsData: Option[] = [
+  {
+    value: '718',
+    label: '718',
+    description: 'Präziser Sportwagen mit Mittelmotor',
+    tags: ['Benzin'],
+    imgSrc: 'assets/718.png',
+  },
+  {
+    value: '911',
+    label: '911',
+    description: 'Ikonischer Sportwagen mit Heckmotor',
+    tags: ['Benzin'],
+    imgSrc: 'assets/911.png',
+  },
+  {
+    value: 'taycan',
+    label: 'Taycan',
+    description: 'Elektrischer Sportwagen',
+    tags: ['Elektro'],
+    imgSrc: 'assets/taycan.png',
+  },
+  {
+    value: 'macan',
+    label: 'Macan',
+    tags: ['Elektro'],
+    description: 'Sportlicher Kompakt-SUV',
+    imgSrc: 'assets/macan.png',
+  },
+  {
+    value: 'cayenne',
+    label: 'Cayenne',
+    tags: ['Hybrid', 'Benzin'],
+    description: 'Vielseitiger SUV',
+    imgSrc: 'assets/cayenne.png',
+  },
+  {
+    value: 'panamera',
+    label: 'Panamera',
+    tags: ['Hybrid', 'Benzin'],
+    description: 'Luxuslimousine mit hohem Komfort',
+    imgSrc: 'assets/panamera.png',
+  },
+];
+
+export const Example = () => {
+  const [value, setValue] = useState<PMultiSelectProps['value']>([]);
+  const [options] = useState<Option[]>(optionsData);
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+
+  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+    const value = (e.target as HTMLElement & { value: string[] }).value;
+    setValue(value);
+    setSelectedOptions(options.filter((option) => value.includes(option.value)));
+  };
+
+  return (
+    <PMultiSelect name="selected-slot-select" label="Selected Slot" value={value} onChange={onChange}>
+      <span slot="selected" className="h-full flex items-center">
+        <span className="truncate">{selectedOptions.map((option) => option.label).join(', ')}</span>
+      </span>
+      {options.map((option) => (
+        <PMultiSelectOption key={option.value} value={option.value}>
+          <div className="w-full flex gap-fluid-sm">
+            <img src={option.imgSrc} alt="" className="h-[34px] w-auto self-center" />
+            <div className="flex flex-col justify-center flex-1 min-w-0">
+              <p className="prose-text-sm m-0">{option.label}</p>
+              <p className="prose-text-2xs m-0">{option.description}</p>
+            </div>
+            <div className="self-center flex gap-fluid-sm">
+              {option.tags.map((tag) => (
+                <PTag key={tag} variant="info" compact={true}>
+                  {tag}
+                </PTag>
+              ))}
+            </div>
+          </div>
+        </PMultiSelectOption>
+      ))}
+    </PMultiSelect>
+  );
+};
+```

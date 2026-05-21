@@ -1,0 +1,747 @@
+# Icon 
+
+## Overview
+
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons
+([Porsche Icons](https://icons.porsche.com)). To reference an icon just use the `name` property with a predefined icon
+id.
+
+### Interactive Story: `iconStoryOverview`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon name="360" [aria]="{'aria-label': '360 icon'}"></p-icon>
+
+      <p-icon name="4-wheel-drive" [aria]="{'aria-label': '4 Wheel Drive icon'}"></p-icon>
+
+      <p-icon name="accessibility" [aria]="{'aria-label': 'Accessibility icon'}"></p-icon>
+
+      <p-icon name="active-cabin-ventilation" [aria]="{'aria-label': 'Active Cabin Ventilation icon'}"></p-icon>
+
+      <p-icon name="add" [aria]="{'aria-label': 'Add icon'}"></p-icon>
+
+      <p-icon name="adjust" [aria]="{'aria-label': 'Adjust icon'}"></p-icon>
+
+      <p-icon name="aggregation" [aria]="{'aria-label': 'Aggregation icon'}"></p-icon>
+
+      <p-icon name="ai-3d-object" [aria]="{'aria-label': 'Ai 3d Object icon'}"></p-icon>
+
+      <p-icon name="ai-code" [aria]="{'aria-label': 'Ai Code icon'}"></p-icon>
+
+      <p-icon name="ai-edit" [aria]="{'aria-label': 'Ai Edit icon'}"></p-icon>
+
+      <p-icon name="ai-image" [aria]="{'aria-label': 'Ai Image icon'}"></p-icon>
+
+      <p-icon name="ai-scale" [aria]="{'aria-label': 'Ai Scale icon'}"></p-icon>
+
+      <p-icon name="ai-sound" [aria]="{'aria-label': 'Ai Sound icon'}"></p-icon>
+
+      <p-icon name="ai-spark" [aria]="{'aria-label': 'Ai Spark icon'}"></p-icon>
+
+      <p-icon name="ai-spark-filled" [aria]="{'aria-label': 'Ai Spark Filled icon'}"></p-icon>
+
+      <p-icon name="ai-text" [aria]="{'aria-label': 'Ai Text icon'}"></p-icon>
+
+      <p-icon name="ai-video" [aria]="{'aria-label': 'Ai Video icon'}"></p-icon>
+
+      <p-icon name="arrow-compact-down" [aria]="{'aria-label': 'Arrow Compact Down icon'}"></p-icon>
+
+      <p-icon name="arrow-compact-left" [aria]="{'aria-label': 'Arrow Compact Left icon'}"></p-icon>
+
+      <p-icon name="arrow-compact-right" [aria]="{'aria-label': 'Arrow Compact Right icon'}"></p-icon>
+
+      <p-icon name="arrow-compact-up" [aria]="{'aria-label': 'Arrow Compact Up icon'}"></p-icon>
+
+      <p-icon name="arrow-double-down" [aria]="{'aria-label': 'Arrow Double Down icon'}"></p-icon>
+
+      <p-icon name="arrow-double-left" [aria]="{'aria-label': 'Arrow Double Left icon'}"></p-icon>
+
+      <p-icon name="arrow-double-right" [aria]="{'aria-label': 'Arrow Double Right icon'}"></p-icon>
+
+      <p-icon name="arrow-double-up" [aria]="{'aria-label': 'Arrow Double Up icon'}"></p-icon>
+
+      <p-icon name="arrow-down" [aria]="{'aria-label': 'Arrow Down icon'}"></p-icon>
+
+      <p-icon name="arrow-down-left" [aria]="{'aria-label': 'Arrow Down Left icon'}"></p-icon>
+
+      <p-icon name="arrow-down-right" [aria]="{'aria-label': 'Arrow Down Right icon'}"></p-icon>
+
+      <p-icon name="arrow-first" [aria]="{'aria-label': 'Arrow First icon'}"></p-icon>
+
+      <p-icon name="arrow-head-down" [aria]="{'aria-label': 'Arrow Head Down icon'}"></p-icon>
+
+      <p-icon name="arrow-head-left" [aria]="{'aria-label': 'Arrow Head Left icon'}"></p-icon>
+
+      <p-icon name="arrow-head-right" [aria]="{'aria-label': 'Arrow Head Right icon'}"></p-icon>
+
+      <p-icon name="arrow-head-up" [aria]="{'aria-label': 'Arrow Head Up icon'}"></p-icon>
+
+      <p-icon name="arrow-last" [aria]="{'aria-label': 'Arrow Last icon'}"></p-icon>
+
+      <p-icon name="arrow-left" [aria]="{'aria-label': 'Arrow Left icon'}"></p-icon>
+
+      <p-icon name="arrow-right" [aria]="{'aria-label': 'Arrow Right icon'}"></p-icon>
+
+      <p-icon name="arrow-up" [aria]="{'aria-label': 'Arrow Up icon'}"></p-icon>
+
+      <p-icon name="arrow-up-left" [aria]="{'aria-label': 'Arrow Up Left icon'}"></p-icon>
+
+      <p-icon name="arrow-up-right" [aria]="{'aria-label': 'Arrow Up Right icon'}"></p-icon>
+
+      <p-icon name="arrows" [aria]="{'aria-label': 'Arrows icon'}"></p-icon>
+
+      <p-icon name="attachment" [aria]="{'aria-label': 'Attachment icon'}"></p-icon>
+
+      <p-icon name="augmented-reality" [aria]="{'aria-label': 'Augmented Reality icon'}"></p-icon>
+
+      <p-icon name="battery-empty" [aria]="{'aria-label': 'Battery Empty icon'}"></p-icon>
+
+      <p-icon name="battery-empty-co2" [aria]="{'aria-label': 'Battery Empty Co2 icon'}"></p-icon>
+
+      <p-icon name="battery-empty-fuel" [aria]="{'aria-label': 'Battery Empty Fuel icon'}"></p-icon>
+
+      <p-icon name="battery-full" [aria]="{'aria-label': 'Battery Full icon'}"></p-icon>
+
+      <p-icon name="battery-half" [aria]="{'aria-label': 'Battery Half icon'}"></p-icon>
+
+      <p-icon name="battery-one-quarter" [aria]="{'aria-label': 'Battery One Quarter icon'}"></p-icon>
+
+      <p-icon name="battery-three-quarters" [aria]="{'aria-label': 'Battery Three Quarters icon'}"></p-icon>
+
+      <p-icon name="bell" [aria]="{'aria-label': 'Bell icon'}"></p-icon>
+
+      <p-icon name="bookmark" [aria]="{'aria-label': 'Bookmark icon'}"></p-icon>
+
+      <p-icon name="bookmark-filled" [aria]="{'aria-label': 'Bookmark Filled icon'}"></p-icon>
+
+      <p-icon name="brain" [aria]="{'aria-label': 'Brain icon'}"></p-icon>
+
+      <p-icon name="broadcast" [aria]="{'aria-label': 'Broadcast icon'}"></p-icon>
+
+      <p-icon name="cabriolet" [aria]="{'aria-label': 'Cabriolet icon'}"></p-icon>
+
+      <p-icon name="calculator" [aria]="{'aria-label': 'Calculator icon'}"></p-icon>
+
+      <p-icon name="calendar" [aria]="{'aria-label': 'Calendar icon'}"></p-icon>
+
+      <p-icon name="camera" [aria]="{'aria-label': 'Camera icon'}"></p-icon>
+
+      <p-icon name="car" [aria]="{'aria-label': 'Car icon'}"></p-icon>
+
+      <p-icon name="car-battery" [aria]="{'aria-label': 'Car Battery icon'}"></p-icon>
+
+      <p-icon name="card" [aria]="{'aria-label': 'Card icon'}"></p-icon>
+
+      <p-icon name="charging-active" [aria]="{'aria-label': 'Charging Active icon'}"></p-icon>
+
+      <p-icon name="charging-network" [aria]="{'aria-label': 'Charging Network icon'}"></p-icon>
+
+      <p-icon name="charging-state" [aria]="{'aria-label': 'Charging State icon'}"></p-icon>
+
+      <p-icon name="charging-station" [aria]="{'aria-label': 'Charging Station icon'}"></p-icon>
+
+      <p-icon name="chart" [aria]="{'aria-label': 'Chart icon'}"></p-icon>
+
+      <p-icon name="chat" [aria]="{'aria-label': 'Chat icon'}"></p-icon>
+
+      <p-icon name="check" [aria]="{'aria-label': 'Check icon'}"></p-icon>
+
+      <p-icon name="city" [aria]="{'aria-label': 'City icon'}"></p-icon>
+
+      <p-icon name="climate" [aria]="{'aria-label': 'Climate icon'}"></p-icon>
+
+      <p-icon name="climate-control" [aria]="{'aria-label': 'Climate Control icon'}"></p-icon>
+
+      <p-icon name="clock" [aria]="{'aria-label': 'Clock icon'}"></p-icon>
+
+      <p-icon name="close" [aria]="{'aria-label': 'Close icon'}"></p-icon>
+
+      <p-icon name="closed-caption" [aria]="{'aria-label': 'Closed Caption icon'}"></p-icon>
+
+      <p-icon name="cloud" [aria]="{'aria-label': 'Cloud icon'}"></p-icon>
+
+      <p-icon name="co2-class" [aria]="{'aria-label': 'Co2 Class icon'}"></p-icon>
+
+      <p-icon name="co2-emission" [aria]="{'aria-label': 'Co2 Emission icon'}"></p-icon>
+
+      <p-icon name="color-picker" [aria]="{'aria-label': 'Color Picker icon'}"></p-icon>
+
+      <p-icon name="compare" [aria]="{'aria-label': 'Compare icon'}"></p-icon>
+
+      <p-icon name="compass" [aria]="{'aria-label': 'Compass icon'}"></p-icon>
+
+      <p-icon name="configurate" [aria]="{'aria-label': 'Configurate icon'}"></p-icon>
+
+      <p-icon name="copy" [aria]="{'aria-label': 'Copy icon'}"></p-icon>
+
+      <p-icon name="country-road" [aria]="{'aria-label': 'Country Road icon'}"></p-icon>
+
+      <p-icon name="coupe" [aria]="{'aria-label': 'Coupe icon'}"></p-icon>
+
+      <p-icon name="cubic-capacity" [aria]="{'aria-label': 'Cubic Capacity icon'}"></p-icon>
+
+      <p-icon name="cut" [aria]="{'aria-label': 'Cut icon'}"></p-icon>
+
+      <p-icon name="delete" [aria]="{'aria-label': 'Delete icon'}"></p-icon>
+
+      <p-icon name="disable" [aria]="{'aria-label': 'Disable icon'}"></p-icon>
+
+      <p-icon name="dislike" [aria]="{'aria-label': 'Dislike icon'}"></p-icon>
+
+      <p-icon name="dislike-filled" [aria]="{'aria-label': 'Dislike Filled icon'}"></p-icon>
+
+      <p-icon name="document" [aria]="{'aria-label': 'Document icon'}"></p-icon>
+
+      <p-icon name="door" [aria]="{'aria-label': 'Door icon'}"></p-icon>
+
+      <p-icon name="download" [aria]="{'aria-label': 'Download icon'}"></p-icon>
+
+      <p-icon name="drag" [aria]="{'aria-label': 'Drag icon'}"></p-icon>
+
+      <p-icon name="duration" [aria]="{'aria-label': 'Duration icon'}"></p-icon>
+
+      <p-icon name="ear" [aria]="{'aria-label': 'Ear icon'}"></p-icon>
+
+      <p-icon name="edit" [aria]="{'aria-label': 'Edit icon'}"></p-icon>
+
+      <p-icon name="email" [aria]="{'aria-label': 'Email icon'}"></p-icon>
+
+      <p-icon name="error" [aria]="{'aria-label': 'Error icon'}"></p-icon>
+
+      <p-icon name="error-filled" [aria]="{'aria-label': 'Error Filled icon'}"></p-icon>
+
+      <p-icon name="exclamation" [aria]="{'aria-label': 'Exclamation icon'}"></p-icon>
+
+      <p-icon name="exclamation-filled" [aria]="{'aria-label': 'Exclamation Filled icon'}"></p-icon>
+
+      <p-icon name="external" [aria]="{'aria-label': 'External icon'}"></p-icon>
+
+      <p-icon name="fast-backward" [aria]="{'aria-label': 'Fast Backward icon'}"></p-icon>
+
+      <p-icon name="fast-forward" [aria]="{'aria-label': 'Fast Forward icon'}"></p-icon>
+
+      <p-icon name="file-csv" [aria]="{'aria-label': 'File Csv icon'}"></p-icon>
+
+      <p-icon name="file-excel" [aria]="{'aria-label': 'File Excel icon'}"></p-icon>
+
+      <p-icon name="filter" [aria]="{'aria-label': 'Filter icon'}"></p-icon>
+
+      <p-icon name="fingerprint" [aria]="{'aria-label': 'Fingerprint icon'}"></p-icon>
+
+      <p-icon name="flag" [aria]="{'aria-label': 'Flag icon'}"></p-icon>
+
+      <p-icon name="flash" [aria]="{'aria-label': 'Flash icon'}"></p-icon>
+
+      <p-icon name="fuel-station" [aria]="{'aria-label': 'Fuel Station icon'}"></p-icon>
+
+      <p-icon name="garage" [aria]="{'aria-label': 'Garage icon'}"></p-icon>
+
+      <p-icon name="genuine-parts" [aria]="{'aria-label': 'Genuine Parts icon'}"></p-icon>
+
+      <p-icon name="geo-localization" [aria]="{'aria-label': 'Geo Localization icon'}"></p-icon>
+
+      <p-icon name="gift" [aria]="{'aria-label': 'Gift icon'}"></p-icon>
+
+      <p-icon name="globe" [aria]="{'aria-label': 'Globe icon'}"></p-icon>
+
+      <p-icon name="grid" [aria]="{'aria-label': 'Grid icon'}"></p-icon>
+
+      <p-icon name="grip" [aria]="{'aria-label': 'Grip icon'}"></p-icon>
+
+      <p-icon name="group" [aria]="{'aria-label': 'Group icon'}"></p-icon>
+
+      <p-icon name="hand" [aria]="{'aria-label': 'Hand icon'}"></p-icon>
+
+      <p-icon name="heart" [aria]="{'aria-label': 'Heart icon'}"></p-icon>
+
+      <p-icon name="heart-filled" [aria]="{'aria-label': 'Heart Filled icon'}"></p-icon>
+
+      <p-icon name="highway" [aria]="{'aria-label': 'Highway icon'}"></p-icon>
+
+      <p-icon name="highway-filled" [aria]="{'aria-label': 'Highway Filled icon'}"></p-icon>
+
+      <p-icon name="history" [aria]="{'aria-label': 'History icon'}"></p-icon>
+
+      <p-icon name="home" [aria]="{'aria-label': 'Home icon'}"></p-icon>
+
+      <p-icon name="horn" [aria]="{'aria-label': 'Horn icon'}"></p-icon>
+
+      <p-icon name="image" [aria]="{'aria-label': 'Image icon'}"></p-icon>
+
+      <p-icon name="increase" [aria]="{'aria-label': 'Increase icon'}"></p-icon>
+
+      <p-icon name="information" [aria]="{'aria-label': 'Information icon'}"></p-icon>
+
+      <p-icon name="information-filled" [aria]="{'aria-label': 'Information Filled icon'}"></p-icon>
+
+      <p-icon name="key" [aria]="{'aria-label': 'Key icon'}"></p-icon>
+
+      <p-icon name="laptop" [aria]="{'aria-label': 'Laptop icon'}"></p-icon>
+
+      <p-icon name="leaf" [aria]="{'aria-label': 'Leaf icon'}"></p-icon>
+
+      <p-icon name="leather" [aria]="{'aria-label': 'Leather icon'}"></p-icon>
+
+      <p-icon name="light" [aria]="{'aria-label': 'Light icon'}"></p-icon>
+
+      <p-icon name="like" [aria]="{'aria-label': 'Like icon'}"></p-icon>
+
+      <p-icon name="like-filled" [aria]="{'aria-label': 'Like Filled icon'}"></p-icon>
+
+      <p-icon name="limousine" [aria]="{'aria-label': 'Limousine icon'}"></p-icon>
+
+      <p-icon name="linked" [aria]="{'aria-label': 'Linked icon'}"></p-icon>
+
+      <p-icon name="list" [aria]="{'aria-label': 'List icon'}"></p-icon>
+
+      <p-icon name="locate" [aria]="{'aria-label': 'Locate icon'}"></p-icon>
+
+      <p-icon name="lock" [aria]="{'aria-label': 'Lock icon'}"></p-icon>
+
+      <p-icon name="lock-open" [aria]="{'aria-label': 'Lock Open icon'}"></p-icon>
+
+      <p-icon name="logo-apple-carplay" [aria]="{'aria-label': 'Logo Apple Carplay icon'}"></p-icon>
+
+      <p-icon name="logo-apple-music" [aria]="{'aria-label': 'Logo Apple Music icon'}"></p-icon>
+
+      <p-icon name="logo-apple-podcast" [aria]="{'aria-label': 'Logo Apple Podcast icon'}"></p-icon>
+
+      <p-icon name="logo-baidu" [aria]="{'aria-label': 'Logo Baidu icon'}"></p-icon>
+
+      <p-icon name="logo-delicious" [aria]="{'aria-label': 'Logo Delicious icon'}"></p-icon>
+
+      <p-icon name="logo-digg" [aria]="{'aria-label': 'Logo Digg icon'}"></p-icon>
+
+      <p-icon name="logo-facebook" [aria]="{'aria-label': 'Logo Facebook icon'}"></p-icon>
+
+      <p-icon name="logo-foursquare" [aria]="{'aria-label': 'Logo Foursquare icon'}"></p-icon>
+
+      <p-icon name="logo-gmail" [aria]="{'aria-label': 'Logo Gmail icon'}"></p-icon>
+
+      <p-icon name="logo-google" [aria]="{'aria-label': 'Logo Google icon'}"></p-icon>
+
+      <p-icon name="logo-hatena" [aria]="{'aria-label': 'Logo Hatena icon'}"></p-icon>
+
+      <p-icon name="logo-instagram" [aria]="{'aria-label': 'Logo Instagram icon'}"></p-icon>
+
+      <p-icon name="logo-kaixin" [aria]="{'aria-label': 'Logo Kaixin icon'}"></p-icon>
+
+      <p-icon name="logo-kakaotalk" [aria]="{'aria-label': 'Logo Kakaotalk icon'}"></p-icon>
+
+      <p-icon name="logo-kununu" [aria]="{'aria-label': 'Logo Kununu icon'}"></p-icon>
+
+      <p-icon name="logo-linkedin" [aria]="{'aria-label': 'Logo Linkedin icon'}"></p-icon>
+
+      <p-icon name="logo-naver" [aria]="{'aria-label': 'Logo Naver icon'}"></p-icon>
+
+      <p-icon name="logo-pinterest" [aria]="{'aria-label': 'Logo Pinterest icon'}"></p-icon>
+
+      <p-icon name="logo-qq" [aria]="{'aria-label': 'Logo Qq icon'}"></p-icon>
+
+      <p-icon name="logo-qq-share" [aria]="{'aria-label': 'Logo Qq Share icon'}"></p-icon>
+
+      <p-icon name="logo-reddit" [aria]="{'aria-label': 'Logo Reddit icon'}"></p-icon>
+
+      <p-icon name="logo-skyrock" [aria]="{'aria-label': 'Logo Skyrock icon'}"></p-icon>
+
+      <p-icon name="logo-snapchat" [aria]="{'aria-label': 'Logo Snapchat icon'}"></p-icon>
+
+      <p-icon name="logo-sohu" [aria]="{'aria-label': 'Logo Sohu icon'}"></p-icon>
+
+      <p-icon name="logo-spotify" [aria]="{'aria-label': 'Logo Spotify icon'}"></p-icon>
+
+      <p-icon name="logo-tecent" [aria]="{'aria-label': 'Logo Tecent icon'}"></p-icon>
+
+      <p-icon name="logo-telegram" [aria]="{'aria-label': 'Logo Telegram icon'}"></p-icon>
+
+      <p-icon name="logo-tiktok" [aria]="{'aria-label': 'Logo Tiktok icon'}"></p-icon>
+
+      <p-icon name="logo-tumblr" [aria]="{'aria-label': 'Logo Tumblr icon'}"></p-icon>
+
+      <p-icon name="logo-twitter" [aria]="{'aria-label': 'Logo Twitter icon'}"></p-icon>
+
+      <p-icon name="logo-viber" [aria]="{'aria-label': 'Logo Viber icon'}"></p-icon>
+
+      <p-icon name="logo-vk" [aria]="{'aria-label': 'Logo Vk icon'}"></p-icon>
+
+      <p-icon name="logo-wechat" [aria]="{'aria-label': 'Logo Wechat icon'}"></p-icon>
+
+      <p-icon name="logo-weibo" [aria]="{'aria-label': 'Logo Weibo icon'}"></p-icon>
+
+      <p-icon name="logo-whatsapp" [aria]="{'aria-label': 'Logo Whatsapp icon'}"></p-icon>
+
+      <p-icon name="logo-x" [aria]="{'aria-label': 'Logo X icon'}"></p-icon>
+
+      <p-icon name="logo-xing" [aria]="{'aria-label': 'Logo Xing icon'}"></p-icon>
+
+      <p-icon name="logo-yahoo" [aria]="{'aria-label': 'Logo Yahoo icon'}"></p-icon>
+
+      <p-icon name="logo-youku" [aria]="{'aria-label': 'Logo Youku icon'}"></p-icon>
+
+      <p-icon name="logo-youtube" [aria]="{'aria-label': 'Logo Youtube icon'}"></p-icon>
+
+      <p-icon name="logout" [aria]="{'aria-label': 'Logout icon'}"></p-icon>
+
+      <p-icon name="map" [aria]="{'aria-label': 'Map icon'}"></p-icon>
+
+      <p-icon name="menu-dots-horizontal" [aria]="{'aria-label': 'Menu Dots Horizontal icon'}"></p-icon>
+
+      <p-icon name="menu-dots-vertical" [aria]="{'aria-label': 'Menu Dots Vertical icon'}"></p-icon>
+
+      <p-icon name="menu-lines" [aria]="{'aria-label': 'Menu Lines icon'}"></p-icon>
+
+      <p-icon name="microphone" [aria]="{'aria-label': 'Microphone icon'}"></p-icon>
+
+      <p-icon name="minus" [aria]="{'aria-label': 'Minus icon'}"></p-icon>
+
+      <p-icon name="mobile" [aria]="{'aria-label': 'Mobile icon'}"></p-icon>
+
+      <p-icon name="moon" [aria]="{'aria-label': 'Moon icon'}"></p-icon>
+
+      <p-icon name="new-chat" [aria]="{'aria-label': 'New Chat icon'}"></p-icon>
+
+      <p-icon name="news" [aria]="{'aria-label': 'News icon'}"></p-icon>
+
+      <p-icon name="north-arrow" [aria]="{'aria-label': 'North Arrow icon'}"></p-icon>
+
+      <p-icon name="oil-can" [aria]="{'aria-label': 'Oil Can icon'}"></p-icon>
+
+      <p-icon name="online-search" [aria]="{'aria-label': 'Online Search icon'}"></p-icon>
+
+      <p-icon name="parking-brake" [aria]="{'aria-label': 'Parking Brake icon'}"></p-icon>
+
+      <p-icon name="parking-light" [aria]="{'aria-label': 'Parking Light icon'}"></p-icon>
+
+      <p-icon name="paste" [aria]="{'aria-label': 'Paste icon'}"></p-icon>
+
+      <p-icon name="pause" [aria]="{'aria-label': 'Pause icon'}"></p-icon>
+
+      <p-icon name="phone" [aria]="{'aria-label': 'Phone icon'}"></p-icon>
+
+      <p-icon name="pin" [aria]="{'aria-label': 'Pin icon'}"></p-icon>
+
+      <p-icon name="pin-filled" [aria]="{'aria-label': 'Pin Filled icon'}"></p-icon>
+
+      <p-icon name="pivot" [aria]="{'aria-label': 'Pivot icon'}"></p-icon>
+
+      <p-icon name="play" [aria]="{'aria-label': 'Play icon'}"></p-icon>
+
+      <p-icon name="play-filled" [aria]="{'aria-label': 'Play Filled icon'}"></p-icon>
+
+      <p-icon name="plug" [aria]="{'aria-label': 'Plug icon'}"></p-icon>
+
+      <p-icon name="plus" [aria]="{'aria-label': 'Plus icon'}"></p-icon>
+
+      <p-icon name="preheating" [aria]="{'aria-label': 'Preheating icon'}"></p-icon>
+
+      <p-icon name="price-tag" [aria]="{'aria-label': 'Price Tag icon'}"></p-icon>
+
+      <p-icon name="printer" [aria]="{'aria-label': 'Printer icon'}"></p-icon>
+
+      <p-icon name="purchase" [aria]="{'aria-label': 'Purchase icon'}"></p-icon>
+
+      <p-icon name="push-pin" [aria]="{'aria-label': 'Push Pin icon'}"></p-icon>
+
+      <p-icon name="push-pin-off" [aria]="{'aria-label': 'Push Pin Off icon'}"></p-icon>
+
+      <p-icon name="qr" [aria]="{'aria-label': 'Qr icon'}"></p-icon>
+
+      <p-icon name="qr-off" [aria]="{'aria-label': 'Qr Off icon'}"></p-icon>
+
+      <p-icon name="question" [aria]="{'aria-label': 'Question icon'}"></p-icon>
+
+      <p-icon name="question-filled" [aria]="{'aria-label': 'Question Filled icon'}"></p-icon>
+
+      <p-icon name="racing-flag" [aria]="{'aria-label': 'Racing Flag icon'}"></p-icon>
+
+      <p-icon name="radar" [aria]="{'aria-label': 'Radar icon'}"></p-icon>
+
+      <p-icon name="radio" [aria]="{'aria-label': 'Radio icon'}"></p-icon>
+
+      <p-icon name="refresh" [aria]="{'aria-label': 'Refresh icon'}"></p-icon>
+
+      <p-icon name="replay" [aria]="{'aria-label': 'Replay icon'}"></p-icon>
+
+      <p-icon name="reset" [aria]="{'aria-label': 'Reset icon'}"></p-icon>
+
+      <p-icon name="return" [aria]="{'aria-label': 'Return icon'}"></p-icon>
+
+      <p-icon name="road" [aria]="{'aria-label': 'Road icon'}"></p-icon>
+
+      <p-icon name="roof-closed" [aria]="{'aria-label': 'Roof Closed icon'}"></p-icon>
+
+      <p-icon name="roof-open" [aria]="{'aria-label': 'Roof Open icon'}"></p-icon>
+
+      <p-icon name="route" [aria]="{'aria-label': 'Route icon'}"></p-icon>
+
+      <p-icon name="rss" [aria]="{'aria-label': 'Rss icon'}"></p-icon>
+
+      <p-icon name="save" [aria]="{'aria-label': 'Save icon'}"></p-icon>
+
+      <p-icon name="screen" [aria]="{'aria-label': 'Screen icon'}"></p-icon>
+
+      <p-icon name="search" [aria]="{'aria-label': 'Search icon'}"></p-icon>
+
+      <p-icon name="seat" [aria]="{'aria-label': 'Seat icon'}"></p-icon>
+
+      <p-icon name="send" [aria]="{'aria-label': 'Send icon'}"></p-icon>
+
+      <p-icon name="service-technician" [aria]="{'aria-label': 'Service Technician icon'}"></p-icon>
+
+      <p-icon name="share" [aria]="{'aria-label': 'Share icon'}"></p-icon>
+
+      <p-icon name="shopping-bag" [aria]="{'aria-label': 'Shopping Bag icon'}"></p-icon>
+
+      <p-icon name="shopping-bag-filled" [aria]="{'aria-label': 'Shopping Bag Filled icon'}"></p-icon>
+
+      <p-icon name="shopping-cart" [aria]="{'aria-label': 'Shopping Cart icon'}"></p-icon>
+
+      <p-icon name="shopping-cart-filled" [aria]="{'aria-label': 'Shopping Cart Filled icon'}"></p-icon>
+
+      <p-icon name="sidebar" [aria]="{'aria-label': 'Sidebar icon'}"></p-icon>
+
+      <p-icon name="sidelights" [aria]="{'aria-label': 'Sidelights icon'}"></p-icon>
+
+      <p-icon name="skip-backward" [aria]="{'aria-label': 'Skip Backward icon'}"></p-icon>
+
+      <p-icon name="skip-forward" [aria]="{'aria-label': 'Skip Forward icon'}"></p-icon>
+
+      <p-icon name="snowflake" [aria]="{'aria-label': 'Snowflake icon'}"></p-icon>
+
+      <p-icon name="sort" [aria]="{'aria-label': 'Sort icon'}"></p-icon>
+
+      <p-icon name="stack" [aria]="{'aria-label': 'Stack icon'}"></p-icon>
+
+      <p-icon name="star" [aria]="{'aria-label': 'Star icon'}"></p-icon>
+
+      <p-icon name="star-filled" [aria]="{'aria-label': 'Star Filled icon'}"></p-icon>
+
+      <p-icon name="steering-wheel" [aria]="{'aria-label': 'Steering Wheel icon'}"></p-icon>
+
+      <p-icon name="stop" [aria]="{'aria-label': 'Stop icon'}"></p-icon>
+
+      <p-icon name="stopwatch" [aria]="{'aria-label': 'Stopwatch icon'}"></p-icon>
+
+      <p-icon name="subtract" [aria]="{'aria-label': 'Subtract icon'}"></p-icon>
+
+      <p-icon name="success" [aria]="{'aria-label': 'Success icon'}"></p-icon>
+
+      <p-icon name="success-filled" [aria]="{'aria-label': 'Success Filled icon'}"></p-icon>
+
+      <p-icon name="sun" [aria]="{'aria-label': 'Sun icon'}"></p-icon>
+
+      <p-icon name="suv" [aria]="{'aria-label': 'Suv icon'}"></p-icon>
+
+      <p-icon name="switch" [aria]="{'aria-label': 'Switch icon'}"></p-icon>
+
+      <p-icon name="tablet" [aria]="{'aria-label': 'Tablet icon'}"></p-icon>
+
+      <p-icon name="tachometer" [aria]="{'aria-label': 'Tachometer icon'}"></p-icon>
+
+      <p-icon name="theme" [aria]="{'aria-label': 'Theme icon'}"></p-icon>
+
+      <p-icon name="tire" [aria]="{'aria-label': 'Tire icon'}"></p-icon>
+
+      <p-icon name="trigger-finger" [aria]="{'aria-label': 'Trigger Finger icon'}"></p-icon>
+
+      <p-icon name="truck" [aria]="{'aria-label': 'Truck icon'}"></p-icon>
+
+      <p-icon name="turismo" [aria]="{'aria-label': 'Turismo icon'}"></p-icon>
+
+      <p-icon name="unlinked" [aria]="{'aria-label': 'Unlinked icon'}"></p-icon>
+
+      <p-icon name="upload" [aria]="{'aria-label': 'Upload icon'}"></p-icon>
+
+      <p-icon name="user" [aria]="{'aria-label': 'User icon'}"></p-icon>
+
+      <p-icon name="user-filled" [aria]="{'aria-label': 'User Filled icon'}"></p-icon>
+
+      <p-icon name="user-group" [aria]="{'aria-label': 'User Group icon'}"></p-icon>
+
+      <p-icon name="user-manual" [aria]="{'aria-label': 'User Manual icon'}"></p-icon>
+
+      <p-icon name="video" [aria]="{'aria-label': 'Video icon'}"></p-icon>
+
+      <p-icon name="view" [aria]="{'aria-label': 'View icon'}"></p-icon>
+
+      <p-icon name="view-off" [aria]="{'aria-label': 'View Off icon'}"></p-icon>
+
+      <p-icon name="volume-off" [aria]="{'aria-label': 'Volume Off icon'}"></p-icon>
+
+      <p-icon name="volume-up" [aria]="{'aria-label': 'Volume Up icon'}"></p-icon>
+
+      <p-icon name="warning" [aria]="{'aria-label': 'Warning icon'}"></p-icon>
+
+      <p-icon name="warning-filled" [aria]="{'aria-label': 'Warning Filled icon'}"></p-icon>
+
+      <p-icon name="weather" [aria]="{'aria-label': 'Weather icon'}"></p-icon>
+
+      <p-icon name="weight" [aria]="{'aria-label': 'Weight icon'}"></p-icon>
+
+      <p-icon name="wifi" [aria]="{'aria-label': 'Wifi icon'}"></p-icon>
+
+      <p-icon name="work" [aria]="{'aria-label': 'Work icon'}"></p-icon>
+
+      <p-icon name="wrench" [aria]="{'aria-label': 'Wrench icon'}"></p-icon>
+
+      <p-icon name="wrenches" [aria]="{'aria-label': 'Wrenches icon'}"></p-icon>
+
+      <p-icon name="zoom-in" [aria]="{'aria-label': 'Zoom In icon'}"></p-icon>
+
+      <p-icon name="zoom-out" [aria]="{'aria-label': 'Zoom Out icon'}"></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Size
+
+There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
+the `size` property can be set to `inherit` to derive the icon's dimensions from the font-size of a parent element (e.g.
+a `p-text`). The internal calculation is based on the `ex`-unit relative to the inherited font-size and the global
+line-height, ensuring the icon stays visually consistent with surrounding typographic-scale-based components.
+
+### Interactive Story: `iconStorySize`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-text class="text-[48px]" size="inherit">
+        <p-icon class="me-static-sm" size="inherit" name="highway" [aria]="{'aria-label': 'Highway icon'}"></p-icon>
+        Some text
+      </p-text>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Alternatively, the size can be controlled via the custom CSS variable `--p-icon-size`, which accepts any valid CSS
+length value. This approach is particularly useful when the icon is placed independently of typographic-scale-based
+components and a precise, fixed size is required.
+
+### Interactive Story: `iconStorySizeCSSVar`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon class="[--p-icon-size:48px]" name="highway" [aria]="{'aria-label': 'Highway icon'}"></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major
+breakpoint (`xs`, `s`, `m`, `l`, `xl`). This makes it easy to adapt the icon's appearance responsively without
+additional CSS.
+
+### Interactive Story: `iconStoryResponsiveSize`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon [size]="{'base': 'sm', 'l': '2xl'}" name="highway" [aria]="{'aria-label': 'Highway icon'}"></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Color
+
+The `color` property can be set to `inherit` to derive the icon's color from the `currentcolor` of a parent element
+(e.g. a `p-text`). This ensures the icon matches the surrounding text color automatically.
+
+### Interactive Story: `iconStoryColor`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-text [style]="{'color': 'light-dark(mediumvioletred, deeppink)'}" color="inherit">
+        <p-icon class="me-static-sm" color="inherit" name="highway" [aria]="{'aria-label': 'Highway icon'}"></p-icon>
+        Some text
+      </p-text>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Alternatively, the color can be controlled via the custom CSS variable `--p-icon-color`, which accepts any valid CSS
+color value. This allows full control over the icon's color independently.
+
+### Interactive Story: `iconStoryColorCSSVar`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon class="[--p-icon-color:deeppink]" name="highway" [aria]="{'aria-label': 'Highway icon'}"></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Custom icon
+
+The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which
+doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be
+sure that the custom icon serves the specific needs like size and viewbox which are described in the
+[usage documentation](/components/icon/usage/).
+
+### Interactive Story: `iconStoryCustom`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon source="assets/icon-custom-kaixin.svg" [aria]="{'aria-label': 'Icon for social media platform Kaixin'}"></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

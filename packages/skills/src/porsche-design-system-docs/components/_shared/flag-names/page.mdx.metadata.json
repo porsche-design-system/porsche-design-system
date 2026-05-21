@@ -1,0 +1,32 @@
+{
+  "metadataAttributes": {
+    "category": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "components"
+      },
+      "includeForEmbedding": true
+    },
+    "documentPath": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "components/_shared/flag-names/page.mdx"
+      },
+      "includeForEmbedding": true
+    },
+    "version": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "3.33.0"
+      },
+      "includeForEmbedding": true
+    },
+    "section": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "flag-names"
+      },
+      "includeForEmbedding": true
+    }
+  }
+}

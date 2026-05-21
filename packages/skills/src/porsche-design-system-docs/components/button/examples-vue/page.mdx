@@ -1,0 +1,79 @@
+# Button 
+
+## Form
+
+When used as a submit button, the `name` and `value` props are submitted as a pair as part of the form data.
+
+### Code Example: `buttonExampleForm`
+
+```vue
+<script setup lang="ts">
+import { PButton, PText } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const lastSubmittedData = ref('none');
+const handleSubmit = (e: Event) => {
+  const formData = Array.from(new FormData(e.target as HTMLFormElement, (e as SubmitEvent).submitter).entries())[0];
+  lastSubmittedData.value = formData?.join('=') || 'none';
+};
+</script>
+
+<template>
+  <form @submit.prevent="handleSubmit">
+    <PButton name="option" value="A" type="submit">Button A</PButton>
+    <PButton name="option" value="B" type="submit">Button B</PButton>
+  </form>
+
+  <PText>Last submitted data: {{ lastSubmittedData }}</PText>
+</template>
+```
+
+## Form Attribute
+
+When a button is used as a submit or reset button outside a form, the `form` attribute can be utilized to explicitly
+associate the button with a specific form element.
+
+> ⚠️ **Attention**
+>
+> When using the `p-button` component as a **submit** or **reset** button outside a
+> form, it relies on the
+> [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, which has
+> limited browser support.
+> 
+> 
+> 
+> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+> to be passed as an argument to the `requestSubmit()` function (
+> [WICG/webcomponents#814](https://github.com/WICG/webcomponents/issues/814)).
+> 
+> 
+> 
+> 
+> Additionally, custom components using ElementInternals may include all values of elements with the same name attribute
+> in form data, rather than only the value of the triggering element, deviating from native form behavior.
+
+### Code Example: `buttonExampleFormAttribute`
+
+```vue
+<script setup lang="ts">
+import { PButton, PText, PTextarea } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const lastSubmittedData = ref('none');
+const handleSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
+  lastSubmittedData.value = (formData.get('some-name') as string) || 'none';
+};
+</script>
+
+<template>
+  <form @submit.prevent="handleSubmit" id="some-form">
+    <PTextarea :name="'some-name'" :label="'Some Label'" />
+  </form>
+
+  <PButton type="submit" form="some-form">Submit</PButton>
+  <PButton type="reset" form="some-form">Reset</PButton>
+
+  <PText>Last submitted data: {{ lastSubmittedData }}</PText>
+</template>
+```

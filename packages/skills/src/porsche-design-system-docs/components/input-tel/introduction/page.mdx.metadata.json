@@ -1,0 +1,39 @@
+{
+  "metadataAttributes": {
+    "category": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "components"
+      },
+      "includeForEmbedding": true
+    },
+    "documentPath": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "components/input-tel/introduction/page.mdx"
+      },
+      "includeForEmbedding": true
+    },
+    "version": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "3.33.0"
+      },
+      "includeForEmbedding": true
+    },
+    "component": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "input-tel"
+      },
+      "includeForEmbedding": true
+    },
+    "section": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "introduction"
+      },
+      "includeForEmbedding": true
+    }
+  }
+}

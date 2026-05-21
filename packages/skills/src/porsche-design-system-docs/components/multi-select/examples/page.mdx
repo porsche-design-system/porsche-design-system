@@ -1,0 +1,453 @@
+# Multi Select 
+
+## Form
+
+The `p-multi-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similarly to a native `<select multiple>`, automatically managing
+its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+> ⚠️ **Attention**
+>
+> `p-multi-select` does not use a native select internally. As a result, it lacks access to native
+> `ValidityState`
+> properties and `validationMessage`, and it cannot display the native validation popover. This means
+> validation behavior and error display will need to be implemented separately if required.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `multiSelectExampleForm`
+
+```html
+<form class="flex flex-col gap-fluid-sm">
+  <p-multi-select name="myMultiSelect" label="Some Label">
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+    <p-multi-select-option value="d">Option D</p-multi-select-option>
+    <p-multi-select-option value="e">Option E</p-multi-select-option>
+    <p-multi-select-option value="f">Option F</p-multi-select-option>
+  </p-multi-select>
+  <div class="flex gap-fluid-sm">
+    <p-button type="submit">Submit</p-button>
+    <p-button type="reset">Reset</p-button>
+  </div>
+  <p-text>Last submitted data: </p-text>
+</form>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    debugElement.innerText = `Last submitted data: ${Array.from(formData.values()).join(', ') || 'none'}`;
+  });
+</script>
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `multiSelectStorySlots`
+
+```html
+<p-multi-select name="options" state="error">
+  <span slot="label" id="some-label-id">
+    Some label with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+     and a "label-after" slot.
+  </span>
+  <p-popover slot="label-after">
+    Some Popover content with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+    .
+  </p-popover>
+  <span slot="description" id="some-description-id">
+    Some description with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+    .
+  </span>
+  <span slot="message" id="some-message-id">
+    Some error message with a 
+    <a href="https://designsystem.porsche.com" class="underline">
+      link
+    </a>
+    .
+  </span>
+  <p-multi-select-option value="a">
+    Option A
+  </p-multi-select-option>
+  <p-multi-select-option value="b">
+    Option B
+  </p-multi-select-option>
+  <p-multi-select-option value="c">
+    Option C
+  </p-multi-select-option>
+</p-multi-select>
+```
+
+## Set Value
+
+The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
+choices, but it can also be changed manually by using the `value` property. This property takes an array of strings that
+represent the selected option values.
+
+### Code Example: `multiSelectExampleDynamic`
+
+```html
+<p-text-field-wrapper label="Value:"><input name="input-value" type="text" placeholder="e.g. 1,2" /></p-text-field-wrapper>
+<p-button id="btn-input-value" type="button" compact="true">Set Value</p-button>
+<p-button id="btn-reset" type="button" compact="true">Reset value</p-button>
+
+<p-multi-select name="options" label="Some Label">
+  <p-multi-select-option value="1">Option 1</p-multi-select-option>
+  <p-multi-select-option value="2">Option 2</p-multi-select-option>
+  <p-multi-select-option value="3">Option 3</p-multi-select-option>
+</p-multi-select>
+
+<p-button id="btn-add" type="button" compact="true">Add option</p-button>
+<p-button id="btn-remove" type="button" compact="true">Remove last option</p-button>
+
+<script>
+  const input = document.querySelector('input');
+  const multiSelect = document.querySelector('p-multi-select');
+
+  multiSelect.addEventListener('change', (e) => {
+    input.value = multiSelect.value.join(',');
+  });
+
+  document.querySelector('#btn-input-value').addEventListener('click', () => {
+    multiSelect.value = input.value.split(',');
+  });
+
+  document.querySelector('#btn-reset').addEventListener('click', () => {
+    multiSelect.value = [];
+  });
+
+  document.querySelector('#btn-add').addEventListener('click', () => {
+    addOption();
+  });
+
+  document.querySelector('#btn-remove').addEventListener('click', () => {
+    if (multiSelect.children.length > 0) {
+      multiSelect.lastChild.remove();
+    }
+  });
+
+  function addOption() {
+    const child = document.createElement('p-multi-select-option');
+    child.innerText = `Option ${multiSelect.children.length + 1}`;
+    child.setAttribute('value', `${multiSelect.children.length + 1}`);
+    multiSelect.append(child);
+  }
+</script>
+```
+
+## With optgroups
+
+### Interactive Story: `multiSelectStoryOptgroup`
+
+```html
+<p-multi-select name="options" label="Some Label">
+  <p-optgroup label="Some optgroup label 1">
+    <p-multi-select-option value="a">
+      Option A
+    </p-multi-select-option>
+    <p-multi-select-option value="b">
+      Option B
+    </p-multi-select-option>
+    <p-multi-select-option value="c">
+      Option C
+    </p-multi-select-option>
+    <p-multi-select-option value="d">
+      Option D
+    </p-multi-select-option>
+    <p-multi-select-option value="e">
+      Option E
+    </p-multi-select-option>
+    <p-multi-select-option value="f">
+      Option F
+    </p-multi-select-option>
+  </p-optgroup>
+  <p-optgroup label="Some optgroup label 2">
+    <p-multi-select-option value="g">
+      Option G
+    </p-multi-select-option>
+    <p-multi-select-option value="h">
+      Option H
+    </p-multi-select-option>
+    <p-multi-select-option value="i">
+      Option I
+    </p-multi-select-option>
+  </p-optgroup>
+</p-multi-select>
+```
+
+## Custom asynchronous filtering
+
+The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
+or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
+slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+### Code Example: `multiSelectExampleAsyncFilter`
+
+```html
+<p-multi-select name="async-search-select" label="Async Search">
+  <p-input-search
+    slot="filter"
+    name="search"
+    clear
+    indicator
+    compact
+    autocomplete="off"
+  ></p-input-search>
+
+  <!-- Initial skeleton loading -->
+  <div slot="options-status" class="skeleton-container contents">
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+  </div>
+
+  <!-- No filter results -->
+  <div slot="options-status" class="no-results hidden text-contrast-medium cursor-not-allowed py-static-sm px-[12px]" role="alert">
+    <span aria-hidden="true">–</span>
+    <span class="sr-only">No results found</span>
+  </div>
+
+  <!-- Error state -->
+  <div slot="options-status" class="error hidden flex gap-static-sm py-static-sm px-[12px]" role="alert">
+    <p-icon name="information" color="error"></p-icon>
+    <span class="text-error"></span>
+  </div>
+</p-multi-select>
+
+<script>
+  const select = document.querySelector('p-multi-select');
+  const input = select.querySelector('p-input-search');
+  const skeletonContainer = select.querySelector('.skeleton-container');
+  const noResults = select.querySelector('.no-results');
+  const errorContainer = select.querySelector('.error');
+  const errorText = errorContainer.querySelector('span.text-error');
+
+  let value = [];
+  let options = [];
+  let searchValue = '';
+  let initialLoading = false;
+  let error = null;
+  let hasLoadedOnce = false;
+  let currentFetchId = 0;
+  let debounceTimer;
+
+  const debounce = (fn, delay = 400) => (...args) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => fn(...args), delay);
+  };
+
+  async function fetchOptions(term = '', isInitial = false) {
+    const fetchId = ++currentFetchId;
+    if (isInitial) initialLoading = true;
+    else input.loading = true;
+    render();
+
+    try {
+      const url = term
+        ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+        : `https://jsonplaceholder.typicode.com/users`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (fetchId !== currentFetchId) return;
+
+      options = data.map(u => ({ value: u.id.toString(), label: `${u.name} (${u.username})` }));
+      error = null;
+      hasLoadedOnce = true;
+    } catch (err) {
+      console.error(err);
+      options = [];
+      error = 'Failed to load options';
+    } finally {
+      if (isInitial) initialLoading = false;
+      else input.loading = false;
+      render();
+    }
+  }
+
+  const debouncedFetch = debounce(term => fetchOptions(term.trim()));
+
+  input.addEventListener('input', (e) => {
+    searchValue = e.target.value;
+    debouncedFetch(searchValue);
+  });
+
+  select.addEventListener('change', (e) => {
+    value = e.target.value;
+  });
+
+  select.addEventListener('toggle', (e) => {
+    if (e.detail.open && !hasLoadedOnce) {
+      fetchOptions('', true);
+    }
+  });
+
+  function render() {
+    // Skeleton
+    skeletonContainer.classList.toggle('hidden', !(initialLoading && !error));
+
+    // Options
+    select.querySelectorAll('p-multi-select-option').forEach(opt => opt.remove());
+    options.forEach(opt => {
+      const optionEl = document.createElement('p-multi-select-option');
+      optionEl.setAttribute('value', opt.value);
+      optionEl.textContent = opt.label;
+      select.appendChild(optionEl);
+    });
+
+    // No results
+    const showNoResults = !initialLoading && options.length === 0 && !error;
+    noResults.classList.toggle('hidden', !showNoResults);
+
+    // Error
+    const showError = !!error;
+    errorContainer.classList.toggle('hidden', !showError);
+    if (showError) errorText.textContent = error;
+  }
+</script>
+```
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+### Code Example: `multiSelectExampleSelectedSlot`
+
+```html
+<p-multi-select name="selected-slot-select" label="Selected Slot">
+  <span slot="selected" class="h-full flex items-center"></span>
+</p-multi-select>
+
+<script>
+  const options = [
+    {
+      value: '718',
+      label: '718',
+      description: 'Präziser Sportwagen mit Mittelmotor',
+      tags: ['Benzin'],
+      imgSrc: 'assets/718.png',
+    },
+    {
+      value: '911',
+      label: '911',
+      description: 'Ikonischer Sportwagen mit Heckmotor',
+      tags: ['Benzin'],
+      imgSrc: 'assets/911.png',
+    },
+    {
+      value: 'taycan',
+      label: 'Taycan',
+      description: 'Elektrischer Sportwagen',
+      tags: ['Elektro'],
+      imgSrc: 'assets/taycan.png',
+    },
+    {
+      value: 'macan',
+      label: 'Macan',
+      tags: ['Elektro'],
+      description: 'Sportlicher Kompakt-SUV',
+      imgSrc: 'assets/macan.png',
+    },
+    {
+      value: 'cayenne',
+      label: 'Cayenne',
+      tags: ['Hybrid', 'Benzin'],
+      description: 'Vielseitiger SUV',
+      imgSrc: 'assets/cayenne.png',
+    },
+    {
+      value: 'panamera',
+      label: 'Panamera',
+      tags: ['Hybrid', 'Benzin'],
+      description: 'Luxuslimousine mit hohem Komfort',
+      imgSrc: 'assets/panamera.png',
+    },
+  ];
+
+  const multiSelect = document.querySelector('p-multi-select');
+  const selectedSlot = multiSelect.querySelector('[slot="selected"]');
+
+  multiSelect.addEventListener('change', (e) => {
+    const selectedOptions = options.filter((option) => e.target.value.includes(option.value))
+    selectedSlot.innerHTML = `<span class="truncate">${selectedOptions.map((option) => option.label).join(', ')}</span>`;
+  });
+
+  const renderOptions = () => {
+    options.forEach(option => {
+      const optionElement = document.createElement('p-multi-select-option');
+      optionElement.value = option.value;
+      optionElement.innerHTML = `
+      <div class="w-full flex gap-fluid-sm">
+        <img src="${option.imgSrc}" alt="" class="h-[34px] w-auto self-center" />
+        <div class="flex flex-col justify-center flex-1 min-w-0">
+          <p class="prose-text-sm m-0">${option.label}</p>
+          <p class="prose-text-2xs m-0">${option.description}</p>
+        </div>
+        <div class="self-center flex gap-fluid-sm">
+          ${option.tags.map(tag => `
+              <p-tag variant="info" compact="true">
+                ${tag}
+              </p-tag>
+            `).join('')}
+        </div>
+      </div>
+    `;
+      multiSelect.appendChild(optionElement);
+    });
+  };
+
+  renderOptions();
+</script>
+```

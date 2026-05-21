@@ -1,0 +1,23 @@
+# Media Query
+
+## JS Functions
+
+| JS Function                                                                                                            | Description                                                       |
+| ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| getMediaQueryMin('base'\|'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')                               | Applies a **min** media query with the specified breakpoint.      |
+| getMediaQueryMax('xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')                                       | Applies a **max** media query with the specified breakpoint.      |
+| getMediaQueryMinMax('base'\|'xs'\|'s'\|'m'\|'l'\|'xl', 'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl') | Applies a **min-max** media query with the specified breakpoints. |
+
+## JS
+
+| JS                                           | Description                               | Value                                                      |
+| -------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+| breakpoints    | Array containting all breakpoint keys.    | {JSON.stringify(breakpoints)} |
+| breakpoint     | Object containting all breakpoint values. | {JSON.stringify(breakpoint)}  |
+| breakpointBase | Holds the `base` breakpoint value.        | 0              |
+| breakpointXS   | Holds the `xs` breakpoint value.          | 480                |
+| breakpointS    | Holds the `sm` breakpoint value.          | 760                 |
+| breakpointM    | Holds the `md` breakpoint value.          | 1000                 |
+| breakpointL    | Holds the `lg` breakpoint value.          | 1300                 |
+| breakpointXL   | Holds the `xl` breakpoint value.          | 1760                |
+| breakpointXXL  | Holds the `2xl` breakpoint value.         | 1920               |

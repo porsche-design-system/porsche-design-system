@@ -1,0 +1,270 @@
+# Carousel 
+
+## Slides with flexible widths
+
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+
+> ⚠️ **Attention**
+>
+> It is **crucial** that each slide has explicit dimensions by specifying their width via CSS.
+
+### Interactive Story: `carouselStoryFlexibleWidths`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-carousel heading="Some heading" slidesPerPage="auto" [trimSpace]="true" [pagination]="true" [rewind]="true">
+        <div class="grid place-content-center w-[10vw] h-[150px] bg-surface prose-text-sm">
+          10vw
+        </div>
+        <div class="grid place-content-center w-[200px] h-[150px] bg-surface prose-text-sm">
+          200px
+        </div>
+        <div class="grid place-content-center w-[100px] h-[150px] bg-surface prose-text-sm">
+          100px
+        </div>
+        <div class="grid place-content-center w-[40vw] h-[150px] bg-surface prose-text-sm">
+          40vw
+        </div>
+        <div class="grid place-content-center w-[150px] h-[150px] bg-surface prose-text-sm">
+          150px
+        </div>
+        <div class="grid place-content-center w-[50vw] h-[150px] bg-surface prose-text-sm">
+          50vw
+        </div>
+      </p-carousel>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Jump to slide (activeSlideIndex)
+
+To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+
+### Code Example: `carouselExampleJumpToSlide`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-carousel [heading]="'Some Heading'" [activeSlideIndex]="activeSlideIndex" (update)="onUpdate($event)">
+      <div>Slide 1</div>
+      <div>Slide 2</div>
+      <div>Slide 3</div>
+    </p-carousel>
+
+    @for (_ of [].constructor(3); track _; let i = $index) {
+      <p-button
+        type="button"
+        (click)="onButtonClick($event)"
+        [disabled]="activeSlideIndex === i"
+        >
+        {{ i + 1 }}
+      </p-button>
+    }
+    `,
+  styles: `
+    @use '@porsche-design-system/components-angular/scss' as *;
+
+    p-carousel div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #00b0f4;
+      height: 150px;
+      color: $color-primary;
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+})
+export class ExampleComponent {
+  activeSlideIndex = 1;
+
+  onUpdate(e: CustomEvent<CarouselUpdateEventDetail>) {
+    this.activeSlideIndex = e.detail.activeIndex;
+  }
+  onButtonClick(e: MouseEvent) {
+    this.activeSlideIndex = parseInt((e.target as HTMLButtonElement).innerText) - 1;
+  }
+}
+```
+
+## Add/remove slides
+
+Slides can be added and removed dynamically.
+
+### Code Example: `carouselExampleDynamicSlides`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-carousel [slidesPerPage]="2" [heading]="'Some Heading'">
+      @for (_ of [].constructor(amountOfSlides); track _; let i = $index) {
+        <div>Slide {{ i + 1 }}</div>
+      }
+    </p-carousel>
+
+    <p-button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add slide</p-button>
+    <p-button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">
+      Remove last slide
+    </p-button>
+    `,
+  styles: `
+    @use '@porsche-design-system/components-angular/scss' as *;
+
+    p-carousel div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #00b0f4;
+      height: 150px;
+      color: $color-primary;
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+})
+export class ExampleComponent {
+  amountOfSlides = 3;
+}
+```
+
+## Centered Slide and Gradient Customization
+
+The carousel centers the active slide and loops through slides individually rather than by page when multiple slides are
+visible. You can control its behavior with the `focusOnCenterSlide` prop to keep the active slide centered, and the
+`trimSpace` prop to manage spacing around the carousel. The `gradientColor` prop allows you to customize the background
+gradient, while the `--p-gradient-color-width` CSS variable gives you precise control over the gradient’s width,
+ensuring a consistent and visually polished design.
+
+### Code Example: `carouselExampleFocusOnCenterSlide`
+
+```typescript
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-carousel
+      [ngStyle]="{ '--p-gradient-color-width': '25%' }"
+      [slidesPerPage]="3"
+      [focusOnCenterSlide]="true"
+      [trimSpace]="false"
+      [heading]="'Some Heading'"
+      [gradient]="true"
+      (update)="onCarouselUpdate($event)"
+      >
+      @for (slide of slides; track slide; let i = $index) {
+        <div [ngClass]="getSlideClass(i)">
+          {{ slide }}
+        </div>
+      }
+    </p-carousel>
+    `,
+  styles: `
+    @use '@porsche-design-system/components-angular/scss' as *;
+
+    p-carousel div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #00b0f4;
+      height: 150px;
+      transition: background 0.3s ease;
+      color: $color-primary;
+    }
+
+    .is-active {
+      background: #fc4040 !important;
+    }
+
+    .is-prev,
+    .is-next {
+      background: #f7cb47 !important;
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, PorscheDesignSystemModule],
+})
+export class ExampleComponent {
+  slides: string[] = Array.from({ length: 6 }, (_, i) => `Slide ${i}`);
+  private activeSlideIndex = 0;
+
+  onCarouselUpdate(event: any): void {
+    this.activeSlideIndex = event.detail.activeIndex;
+  }
+
+  getSlideClass(index: number): { [key: string]: boolean } {
+    return {
+      'is-active': index === this.activeSlideIndex,
+      'is-prev': index === this.activeSlideIndex - 1,
+      'is-next': index === this.activeSlideIndex + 1,
+    };
+  }
+}
+```
+
+## Internationalization (i18n)
+
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property. It has
+the following defaults:
+
+```ts
+type CarouselInternationalization = {
+  prev: 'Previous slide'; // aria-label of prev button
+  next: 'Next slide'; // aria-label of next button
+  first: 'Go to first slide'; // aria-label of next button when on last slide
+  last: 'Go to last slide'; // aria-label of prev button when on first slide
+  slideLabel: '%s of %s'; // aria-label of each slide as "1 of 6"
+  slide: 'slide'; // aria-roledescription of each slide
+};
+```
+
+### Interactive Story: `carouselStoryIntl`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-carousel heading="Some heading" [intl]="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 1
+        </div>
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 2
+        </div>
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 3
+        </div>
+      </p-carousel>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

@@ -1,0 +1,19 @@
+# Spinner 
+
+### API Reference for `p-spinner`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `color` | `"primary" \| "inherit"` | `"primary"` | Basic color variations. |
+| `size` | `"2xs" \| "xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "4xl" \| "5xl" \| "inherit" \| "small" \| "medium" \| "large"` | `"sm"` | Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string }` | - | Sets ARIA attributes. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-spinner-size` | - | Defines the width and height of the spinner. Overrides the `size` property when set. |
+| `--p-spinner-color` | - | Defines the foreground color. Overrides the `color` property when set. |
+| `--p-spinner-track-color` | - | Defines the track/background color. Overrides the `color` property when set. |

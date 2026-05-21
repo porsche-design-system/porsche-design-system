@@ -1,0 +1,29 @@
+# Blur
+
+The Porsche Design System Tailwind theme customizes the Tailwind variable `--blur-*`, which affect multiple Tailwind
+classes including `.blur-*`, `.backdrop-blur-*` and others.
+
+### Interactive Story: `blurStory`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="grid prose-text-sm text-white">
+        <video class="col-1 row-1 w-full h-full object-cover" loop autoplay muted playsinline>
+          <source src="assets/mood-porsche-gts.mp4" type="video/mp4" />
+        </video>
+        <div class="backdrop-blur-frosted bg-frosted col-1 row-1 rounded-lg m-fluid-lg p-fluid-sm grid place-items-center">
+          .backdrop-blur-frosted .bg-frosted
+        </div>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

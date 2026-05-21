@@ -1,0 +1,42 @@
+# Tabs 
+
+## Gradient color
+
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.
+
+## Active Tab
+
+You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`. Make sure to
+update the `activeTabIndex` when adding or removing elements.
+
+### Interactive Story: `tabsStoryActiveTabIndex`
+
+```tsx
+import React from 'react';
+import { PTabs, PTabsItem, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTabs activeTabIndex={1}>
+        <PTabsItem label="Tab One">
+          <PText>
+            Tab Content One
+          </PText>
+        </PTabsItem>
+        <PTabsItem label="Tab Two">
+          <PText>
+            Tab Content Two
+          </PText>
+        </PTabsItem>
+        <PTabsItem label="Tab Three">
+          <PText>
+            Tab Content Three
+          </PText>
+        </PTabsItem>
+      </PTabs>
+    </>
+  )
+}
+```

@@ -1,0 +1,39 @@
+{
+  "metadataAttributes": {
+    "category": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "tailwindcss"
+      },
+      "includeForEmbedding": true
+    },
+    "documentPath": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "tailwindcss/grid/examples-react/page.mdx"
+      },
+      "includeForEmbedding": true
+    },
+    "version": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "3.33.0"
+      },
+      "includeForEmbedding": true
+    },
+    "framework": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "react"
+      },
+      "includeForEmbedding": true
+    },
+    "section": {
+      "value": {
+        "type": "STRING",
+        "stringValue": "examples"
+      },
+      "includeForEmbedding": true
+    }
+  }
+}

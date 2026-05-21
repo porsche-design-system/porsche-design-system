@@ -1,0 +1,34 @@
+# Crest 
+
+## Link
+
+The Porsche Crest will be rendered as `<a>`-tag as soon as an `href` is provided.
+
+### Interactive Story: `crestStoryLink`
+
+```vue
+<script setup lang="ts">
+  import { PCrest } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PCrest href="https://porsche.com" :aria="{'aria-label': 'Porsche Homepage'}"></PCrest>
+</template>
+```
+
+## Custom clickable/focusable area
+
+Sometimes it may be useful to enlarge the clickable/focusable area of the Porsche Crest. Therefore, custom padding can
+be set on the host element.
+
+### Interactive Story: `crestStoryCustomPadding`
+
+```vue
+<script setup lang="ts">
+  import { PCrest } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PCrest href="https://porsche.com" class="p-static-md" :aria="{'aria-label': 'Porsche Homepage'}"></PCrest>
+</template>
+```

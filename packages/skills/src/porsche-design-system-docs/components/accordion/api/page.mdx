@@ -1,0 +1,36 @@
+# Accordion 
+
+### API Reference for `p-accordion`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `open` | `boolean` | - | Controls whether the accordion is open or closed. |
+| `alignMarker` | `"start" \| "end"` | `"end"` | Aligns the marker within the summary section. |
+| `background` | `"canvas" \| "surface" \| "frosted" \| "none"` | `"none"` | Defines the background color. Use `frosted` only on images, videos or gradients. |
+| `compact` | `boolean` | - | Displays the accordion in compact mode. |
+| `sticky` | `boolean` | - | @experimental Makes the summary section sticky at the top while scrolling. Only works with `background="canvas"` or `background="surface"`. Not compatible with `summary-before` or `summary-after` slots. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ open: boolean }` | Emitted when the accordion state changes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `summary` | Content for the accordion's summary section. Clicking toggles the accordion open and closed. |
+| `summary-before` | Content or interactive elements placed before the accordion's summary section. |
+| `summary-after` | Content or interactive elements placed after the accordion's summary section. |
+| (default) | Main content displayed when the accordion is expanded. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-accordion-summary-top` | `0px` | Controls the sticky top position when `sticky` is enabled. |
+| `--p-accordion-px` | `16px` | Horizontal padding of the accordion. |
+| `--p-accordion-py` | `16px` | Vertical padding of the accordion. |

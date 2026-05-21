@@ -1,0 +1,81 @@
+# Color Scheme
+
+The Porsche Design System components rely on **CSS color variables** using the CSS
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function.
+Depending on the browser support you are targeting, it might be necessary to include a polyfill for `light-dark()`,
+which is provided in the `color-scheme.css` stylesheet.
+
+By default, color tokens use the light color scheme. To enable the dark color scheme or automatic switching based on
+system settings, add one of the following CSS classes to the `<html>` element or any ancestor element:
+
+- `.scheme-light` — enforces the light color scheme
+- `.scheme-dark` — enforces the dark color scheme
+- `.scheme-light-dark` — automatically switches based on the user's system preference
+
+The selected scheme applies to all child elements.
+
+If [browser support](https://caniuse.com/mdn-css_types_color_light-dark) is already sufficient for your project, you can
+skip the polyfill and use the native `color-scheme` property and `light-dark()` function directly to control
+[CSS Variables](/stylesheets/css-variables/):
+
+- `html { color-scheme: light; }` — enforces the light color scheme
+- `html { color-scheme: dark; }` — enforces the dark color scheme
+- `html { color-scheme: light dark; }` — automatically switches based on the user's system preference
+
+## Setup
+
+When you import the main package CSS file, the `light-dark()` polyfill is already included:
+
+```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
+@import '@porsche-design-system/components-{js|angular|react|vue}';
+```
+
+If you only need the `light-dark()` polyfill without any other styles, you can import it separately:
+
+```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
+@import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
+```
+
+Below is the content of the stylesheet file for reference only. **Don't copy this into your project** — use the import
+statement above instead:
+
+## Lightning CSS Bug
+
+Some frameworks in newer versions rely on [`lightningcss`](https://lightningcss.dev/), which includes a polyfill for the
+`light-dark()` function that is currently **broken**. To avoid any issues, we recommend disabling the `lightningcss`
+polyfill for now since we also include our own polyfill for the global styles.
+[More information](https://github.com/porsche-design-system/porsche-design-system/issues/4257)
+
+Disable Lightning CSS Polyfill:
+
+### React, React Router, Vue (Vite 8)
+
+```diff
+// vite.config.ts
++ import { Features } from "lightningcss"
+
+export default defineConfig({
++  css: {
++    transformer: "lightningcss",
++    lightningcss: {
++      exclude: Features.LightDark,
++    },
++  },
+});
+```
+
+### Next.js (Turbopack)
+
+```diff
+// next.config.ts
+const nextConfig: NextConfig = {
++  experimental: {
++    useLightningcss: true,
++    lightningCssFeatures: {
++      exclude: ['light-dark'],
++    },
++  },
+};
+```

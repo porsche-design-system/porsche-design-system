@@ -1,0 +1,507 @@
+# Multi Select 
+
+## Form
+
+The `p-multi-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similarly to a native `<select multiple>`, automatically managing
+its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+> ⚠️ **Attention**
+>
+> `p-multi-select` does not use a native select internally. As a result, it lacks access to native
+> `ValidityState`
+> properties and `validationMessage`, and it cannot display the native validation popover. This means
+> validation behavior and error display will need to be implemented separately if required.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `multiSelectExampleForm`
+
+```vue
+<template>
+  <form @submit.prevent="onSubmit" @reset.prevent="onReset" class="flex flex-col gap-fluid-sm">
+    <PMultiSelect v-model:value="form.myMultiSelect" :name="'myMultiSelect'" :label="'Some Label'">
+      <PMultiSelectOption :value="'a'">Option A</PMultiSelectOption>
+      <PMultiSelectOption :value="'b'">Option B</PMultiSelectOption>
+      <PMultiSelectOption :value="'c'">Option C</PMultiSelectOption>
+      <PMultiSelectOption :value="'d'">Option D</PMultiSelectOption>
+      <PMultiSelectOption :value="'e'">Option E</PMultiSelectOption>
+      <PMultiSelectOption :value="'f'">Option F</PMultiSelectOption>
+    </PMultiSelect>
+    <div class="flex gap-fluid-sm">
+      <PButton type="submit">Submit</PButton>
+      <PButton type="reset">Reset</PButton>
+    </div>
+    <PText>Last submitted data: {{ submittedValue }}</PText>
+  </form>
+</template>
+
+<script setup lang="ts">
+import { PButton, PMultiSelect, PMultiSelectOption, PText } from '@porsche-design-system/components-vue';
+import { reactive, ref } from 'vue';
+
+const form = reactive({
+  myMultiSelect: [],
+});
+
+const submittedValue = ref();
+
+const onSubmit = () => {
+  submittedValue.value = JSON.stringify(form);
+};
+
+const onReset = () => {
+  form.myMultiSelect = [];
+};
+</script>
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `multiSelectStorySlots`
+
+```vue
+<script setup lang="ts">
+  import { PMultiSelect, PMultiSelectOption, PPopover } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PMultiSelect name="options" state="error">
+    <span slot="label" id="some-label-id">
+      Some label with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+       and a "label-after" slot.
+    </span>
+    <PPopover slot="label-after">
+      Some Popover content with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+      .
+    </PPopover>
+    <span slot="description" id="some-description-id">
+      Some description with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+      .
+    </span>
+    <span slot="message" id="some-message-id">
+      Some error message with a 
+      <a href="https://designsystem.porsche.com" class="underline">
+        link
+      </a>
+      .
+    </span>
+    <PMultiSelectOption value="a">
+      Option A
+    </PMultiSelectOption>
+    <PMultiSelectOption value="b">
+      Option B
+    </PMultiSelectOption>
+    <PMultiSelectOption value="c">
+      Option C
+    </PMultiSelectOption>
+  </PMultiSelect>
+</template>
+```
+
+## Set Value
+
+The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
+choices, but it can also be changed manually by using the `value` property. This property takes an array of strings that
+represent the selected option values.
+
+### Code Example: `multiSelectExampleDynamic`
+
+```vue
+<script setup lang="ts">
+import {
+  type MultiSelectChangeEventDetail,
+  PButton,
+  PInputText,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const selectedValues = ref<PMultiSelectProps['value']>([]);
+const inputValue = ref('');
+const optionCount = ref(3);
+
+const onSetValue = () => {
+  selectedValues.value = inputValue.value.split(',');
+};
+
+const onResetValue = () => {
+  selectedValues.value = [];
+  inputValue.value = '';
+};
+
+const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+  selectedValues.value = e.detail.value;
+  inputValue.value = e.detail.value.join(',');
+};
+
+const onAddOption = () => {
+  optionCount.value++;
+};
+
+const onRemoveOption = () => {
+  if (optionCount.value > 0) {
+    optionCount.value--;
+  }
+};
+</script>
+
+<template>
+  <div>
+    <PInputText label="Value:" name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1,2" />
+    <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
+    <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
+
+    <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @change="onChange">
+      <PMultiSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`">
+        Option {{ idx }}
+      </PMultiSelectOption>
+    </PMultiSelect>
+
+    <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
+    <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
+  </div>
+</template>
+```
+
+## With optgroups
+
+### Interactive Story: `multiSelectStoryOptgroup`
+
+```vue
+<script setup lang="ts">
+  import { PMultiSelect, PMultiSelectOption, POptgroup } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PMultiSelect name="options" label="Some Label">
+    <POptgroup label="Some optgroup label 1">
+      <PMultiSelectOption value="a">
+        Option A
+      </PMultiSelectOption>
+      <PMultiSelectOption value="b">
+        Option B
+      </PMultiSelectOption>
+      <PMultiSelectOption value="c">
+        Option C
+      </PMultiSelectOption>
+      <PMultiSelectOption value="d">
+        Option D
+      </PMultiSelectOption>
+      <PMultiSelectOption value="e">
+        Option E
+      </PMultiSelectOption>
+      <PMultiSelectOption value="f">
+        Option F
+      </PMultiSelectOption>
+    </POptgroup>
+    <POptgroup label="Some optgroup label 2">
+      <PMultiSelectOption value="g">
+        Option G
+      </PMultiSelectOption>
+      <PMultiSelectOption value="h">
+        Option H
+      </PMultiSelectOption>
+      <PMultiSelectOption value="i">
+        Option I
+      </PMultiSelectOption>
+    </POptgroup>
+  </PMultiSelect>
+</template>
+```
+
+## Custom asynchronous filtering
+
+The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
+or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
+slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+### Code Example: `multiSelectExampleAsyncFilter`
+
+```vue
+<template>
+  <PMultiSelect
+    name="async-search-select"
+    label="Async Search"
+    :value="value"
+    @change="onChange"
+    @toggle="onToggle"
+  >
+    <PInputSearch
+      slot="filter"
+      name="search"
+      clear
+      indicator
+      compact
+      autocomplete="off"
+      :loading="loading"
+      :value="searchValue"
+      @input="onInput"
+      @blur.stop
+      @change.stop
+    />
+
+    <!-- Initial skeleton loading -->
+    <template v-if="initialLoading && !error">
+      <div v-for="i in 9" :key="i" slot="options-status" class="skeleton h-[40px]" />
+    </template>
+
+    <!-- Options -->
+    <PMultiSelectOption v-for="opt in options" :key="opt.value" :value="opt.value">
+      {{ opt.label }}
+    </PMultiSelectOption>
+
+    <!-- No filter results -->
+    <div
+      v-if="!initialLoading && options.length === 0 && !error"
+      slot="options-status"
+      class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
+      role="alert"
+    >
+      <span aria-hidden="true">–</span>
+      <span class="sr-only">No results found</span>
+    </div>
+
+    <!-- Error state -->
+    <div
+      v-if="error"
+      slot="options-status"
+      class="flex gap-static-sm py-static-sm px-[12px]"
+      role="alert"
+    >
+      <PIcon name="information" color="error" />
+      <span class="text-error">{{ error }}</span>
+    </div>
+  </PMultiSelect>
+</template>
+
+<script setup lang="ts">
+import {
+  type InputSearchInputEventDetail,
+  type MultiSelectChangeEventDetail,
+  type MultiSelectToggleEventDetail,
+  PIcon,
+  PInputSearch,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+function useDebounce<T>(callback: (value: T) => void, delay = 400) {
+  let timer: number | undefined;
+  return (value: T) => {
+    if (timer) clearTimeout(timer);
+    timer = window.setTimeout(() => callback(value), delay);
+  };
+}
+
+const value = ref<PMultiSelectProps['value']>([]);
+const options = ref<{ value: string; label: string }[]>([]);
+const searchValue = ref('');
+const initialLoading = ref(false);
+const loading = ref(false);
+const error = ref<string | null>(null);
+
+const hasLoadedOnce = ref(false);
+let currentFetchId = 0;
+
+// 💡 Consider using Vue Query or SWRV for data fetching.
+async function fetchOptions(term?: string, isInitial?: boolean) {
+  const fetchId = ++currentFetchId;
+  if (isInitial) initialLoading.value = true;
+  else loading.value = true;
+
+  try {
+    const url = term
+      ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+      : `https://jsonplaceholder.typicode.com/users`;
+    const res = await fetch(url);
+    const data: { id: number; name: string; username: string }[] = await res.json();
+
+    if (fetchId !== currentFetchId) return; // ignore stale fetch
+
+    options.value = data.map((user) => ({
+      value: user.id.toString(),
+      label: `${user.name} (${user.username})`,
+    }));
+    error.value = null;
+    hasLoadedOnce.value = true;
+  } catch (err) {
+    console.error('Failed to fetch options', err);
+    options.value = [];
+    error.value = 'Failed to load options';
+  } finally {
+    if (isInitial) initialLoading.value = false;
+    else loading.value = false;
+  }
+}
+
+const debouncedFetch = useDebounce((term?: string) => fetchOptions(term), 400);
+
+function onInput(e: CustomEvent<InputSearchInputEventDetail>) {
+  const term = (e.target as HTMLInputElement).value;
+  searchValue.value = term;
+  debouncedFetch(term.trim() || undefined);
+}
+
+function onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
+  // Can be called from bubbling onChange event of PInputSearch, ignore those
+  if (e.detail.name) {
+    value.value = e.detail.value;
+  }
+}
+
+function onToggle(e: CustomEvent<MultiSelectToggleEventDetail>) {
+  if (e.detail.open && !hasLoadedOnce.value) {
+    fetchOptions(undefined, true);
+  }
+}
+</script>
+```
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+### Code Example: `multiSelectExampleSelectedSlot`
+
+```vue
+<template>
+  <PMultiSelect
+    name="selected-slot-select"
+    label="Selected Slot"
+    :value="value"
+    @change="onChange"
+  >
+    <span slot="selected" class="h-full flex items-center">
+      <span class="truncate">{{ selectedOptions.map(option => option.label).join(', ') }}</span>
+    </span>
+    <PMultiSelectOption v-for="option in options" :key="option.value" :value="option.value">
+      <div class="w-full flex gap-fluid-sm">
+        <img :src="option.imgSrc" alt="" class="h-[34px] w-auto self-center" />
+        <div class="flex flex-col justify-center flex-1 min-w-0">
+          <p class="prose-text-sm m-0">{{ option.label }}</p>
+          <p class="prose-text-2xs m-0">{{ option.description }}</p>
+        </div>
+        <div class="self-center flex gap-fluid-sm">
+          <PTag v-for="tag in option.tags" :key="tag" variant="info" :compact="true">
+            {{ tag }}
+          </PTag>
+        </div>
+      </div>
+    </PMultiSelectOption>
+  </PMultiSelect>
+</template>
+
+<script setup lang="ts">
+import {
+  type MultiSelectChangeEventDetail,
+  PMultiSelect,
+  PMultiSelectOption,
+  type PMultiSelectProps,
+  PTag,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+type Option = { value: string; label: string; description: string; tags: string[]; imgSrc: string };
+
+const optionsData: Option[] = [
+  {
+    value: '718',
+    label: '718',
+    description: 'Präziser Sportwagen mit Mittelmotor',
+    tags: ['Benzin'],
+    imgSrc: 'assets/718.png',
+  },
+  {
+    value: '911',
+    label: '911',
+    description: 'Ikonischer Sportwagen mit Heckmotor',
+    tags: ['Benzin'],
+    imgSrc: 'assets/911.png',
+  },
+  {
+    value: 'taycan',
+    label: 'Taycan',
+    description: 'Elektrischer Sportwagen',
+    tags: ['Elektro'],
+    imgSrc: 'assets/taycan.png',
+  },
+  {
+    value: 'macan',
+    label: 'Macan',
+    tags: ['Elektro'],
+    description: 'Sportlicher Kompakt-SUV',
+    imgSrc: 'assets/macan.png',
+  },
+  {
+    value: 'cayenne',
+    label: 'Cayenne',
+    tags: ['Hybrid', 'Benzin'],
+    description: 'Vielseitiger SUV',
+    imgSrc: 'assets/cayenne.png',
+  },
+  {
+    value: 'panamera',
+    label: 'Panamera',
+    tags: ['Hybrid', 'Benzin'],
+    description: 'Luxuslimousine mit hohem Komfort',
+    imgSrc: 'assets/panamera.png',
+  },
+];
+
+const value = ref<PMultiSelectProps['value']>([]);
+const options = ref<Option[]>(optionsData);
+const selectedOptions = ref<Option[]>([]);
+
+function onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
+  value.value = e.detail.value;
+  selectedOptions.value = options.value.filter((option) => (e.detail.value as string[]).includes(option.value));
+}
+</script>
+```

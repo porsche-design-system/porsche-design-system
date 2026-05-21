@@ -1,0 +1,25 @@
+# Skeleton
+
+The Porsche Design System Tailwind theme includes the custom `@utility` CSS class `.skeleton` , which provides a
+skeleton loading style.
+
+### Interactive Story: `skeletonStory`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <div className="grid gap-fluid-sm prose-text-sm">
+        <span className="skeleton p-fluid-sm">
+          .skeleton
+        </span>
+        <span className="skeleton w-4/5 h-fluid-sm rounded-sm"></span>
+        <span className="skeleton w-4/5 h-fluid-sm rounded-sm"></span>
+        <span className="skeleton w-3/5 h-fluid-sm rounded-sm"></span>
+      </div>
+    </>
+  )
+}
+```

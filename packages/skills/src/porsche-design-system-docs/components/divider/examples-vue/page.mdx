@@ -1,0 +1,38 @@
+# Divider 
+
+## Vertical
+
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
+height on the component itself.
+
+### Interactive Story: `dividerStoryVertical`
+
+```vue
+<script setup lang="ts">
+  import { PDivider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <div class="flex h-[100px]">
+    <PDivider direction="vertical"></PDivider>
+  </div>
+</template>
+```
+
+## Responsive
+
+You can change the divider's direction by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+### Interactive Story: `dividerStoryResponsive`
+
+```vue
+<script setup lang="ts">
+  import { PDivider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <div class="lg:flex lg:h-[150px]">
+    <PDivider :direction="{'base': 'horizontal', 'l': 'vertical'}"></PDivider>
+  </div>
+</template>
+```

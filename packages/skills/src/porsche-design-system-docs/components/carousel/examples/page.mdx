@@ -1,0 +1,233 @@
+# Carousel 
+
+## Slides with flexible widths
+
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+
+> ⚠️ **Attention**
+>
+> It is **crucial** that each slide has explicit dimensions by specifying their width via CSS.
+
+### Interactive Story: `carouselStoryFlexibleWidths`
+
+```html
+<p-carousel heading="Some heading" slides-per-page="auto" trim-space="true" pagination="true" rewind="true">
+  <div class="grid place-content-center w-[10vw] h-[150px] bg-surface prose-text-sm">
+    10vw
+  </div>
+  <div class="grid place-content-center w-[200px] h-[150px] bg-surface prose-text-sm">
+    200px
+  </div>
+  <div class="grid place-content-center w-[100px] h-[150px] bg-surface prose-text-sm">
+    100px
+  </div>
+  <div class="grid place-content-center w-[40vw] h-[150px] bg-surface prose-text-sm">
+    40vw
+  </div>
+  <div class="grid place-content-center w-[150px] h-[150px] bg-surface prose-text-sm">
+    150px
+  </div>
+  <div class="grid place-content-center w-[50vw] h-[150px] bg-surface prose-text-sm">
+    50vw
+  </div>
+</p-carousel>
+```
+
+## Jump to slide (activeSlideIndex)
+
+To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+
+### Code Example: `carouselExampleJumpToSlide`
+
+```html
+<style>
+  p-carousel div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00b0f4;
+    height: 150px;
+  }
+</style>
+
+<p-carousel heading="Some Heading" active-slide-index="1">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</p-carousel>
+
+<p-button type="button">1</p-button>
+<p-button type="button">2</p-button>
+<p-button type="button">3</p-button>
+
+<script>
+  const carousel = document.querySelector('p-carousel');
+  const buttons = document.querySelectorAll('p-button');
+  buttons[1].disabled = true; // Initial state
+
+  const syncButtonsAndCarousel = (newIndex) => {
+    carousel.activeSlideIndex = newIndex;
+    buttons.forEach((el, i) => {
+      el.disabled = newIndex === i;
+    });
+  };
+
+  buttons.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      syncButtonsAndCarousel(parseInt(e.target.innerText) - 1);
+    });
+  });
+
+  carousel.addEventListener('update', (e) => {
+    syncButtonsAndCarousel(e.detail.activeIndex);
+  });
+</script>
+```
+
+## Add/remove slides
+
+Slides can be added and removed dynamically.
+
+### Code Example: `carouselExampleDynamicSlides`
+
+```html
+<style>
+  p-carousel div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00b0f4;
+    height: 150px;
+  }
+</style>
+
+<p-carousel slides-per-page="2" heading="Some Heading">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</p-carousel>
+
+<p-button id="btn-add" type="button">Add slide</p-button>
+<p-button id="btn-remove" type="button">Remove last slide</p-button>
+
+<script>
+  const carousel = document.querySelector('p-carousel');
+
+  document.querySelector('#btn-add').addEventListener('click', () => {
+    const child = document.createElement('div');
+    child.innerText = `Slide ${carousel.children.length + 1}`;
+    carousel.append(child);
+  });
+
+  document.querySelector('#btn-remove').addEventListener('click', () => {
+    carousel.lastChild.remove();
+  });
+</script>
+```
+
+## Centered Slide and Gradient Customization
+
+The carousel centers the active slide and loops through slides individually rather than by page when multiple slides are
+visible. You can control its behavior with the `focusOnCenterSlide` prop to keep the active slide centered, and the
+`trimSpace` prop to manage spacing around the carousel. The `gradientColor` prop allows you to customize the background
+gradient, while the `--p-gradient-color-width` CSS variable gives you precise control over the gradient’s width,
+ensuring a consistent and visually polished design.
+
+### Code Example: `carouselExampleFocusOnCenterSlide`
+
+```html
+<style>
+  p-carousel {
+    --p-gradient-color-width: 25%;
+  }
+
+  p-carousel div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00b0f4;
+    height: 150px;
+    transition: background 0.3s ease;
+  }
+
+  .is-active {
+    background: #fc4040;
+  }
+
+  .is-prev,
+  .is-next {
+    background: #f7cb47;
+  }
+</style>
+
+<p-carousel slides-per-page="3" focus-on-center-slide="true" trim-space="false" gradient="true">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+  <div>Slide 4</div>
+  <div>Slide 5</div>
+  <div>Slide 6</div>
+</p-carousel>
+
+<script>
+  const carousel = document.querySelector('p-carousel');
+
+  const updateActiveSlide = (activeSlideIndex) => {
+    const slides = Array.from(carousel?.children || []);
+    slides.forEach((slide, index) => {
+      slide.classList.remove('is-active', 'is-prev', 'is-next');
+
+      if (index === activeSlideIndex) {
+        slide.classList.add('is-active');
+      }
+
+      if (index === activeSlideIndex - 1) {
+        slide.classList.add('is-prev');
+      }
+
+      if (index === activeSlideIndex + 1) {
+        slide.classList.add('is-next');
+      }
+    });
+  };
+
+  updateActiveSlide(0);
+
+  carousel.addEventListener('update', (e) => {
+    const { activeIndex = 0 } = e.detail || {};
+    updateActiveSlide(activeIndex);
+  });
+</script>
+```
+
+## Internationalization (i18n)
+
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property. It has
+the following defaults:
+
+```ts
+type CarouselInternationalization = {
+  prev: 'Previous slide'; // aria-label of prev button
+  next: 'Next slide'; // aria-label of next button
+  first: 'Go to first slide'; // aria-label of next button when on last slide
+  last: 'Go to last slide'; // aria-label of prev button when on first slide
+  slideLabel: '%s of %s'; // aria-label of each slide as "1 of 6"
+  slide: 'slide'; // aria-roledescription of each slide
+};
+```
+
+### Interactive Story: `carouselStoryIntl`
+
+```html
+<p-carousel heading="Some heading" intl="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 1
+  </div>
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 2
+  </div>
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 3
+  </div>
+</p-carousel>
+```

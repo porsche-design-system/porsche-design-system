@@ -1,0 +1,108 @@
+# Table 
+
+## Table
+
+### API Reference for `p-table`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `caption` | `string` | - | A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption. |
+| `compact` | `boolean` | `false` | Displays with reduced spacing and smaller padding for a more condensed layout. |
+| `layout` | `"auto" \| "fixed"` | `"auto"` | Controls the layout behavior of the table. |
+| `sticky` | `boolean` | `false` | @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ id: string; active?: boolean; direction?: Direction }` | Emitted when sorting is changed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `caption` | Shows a caption that describes the content of the table. |
+| (default) | Default slot for the table content. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-table-scroll-indicator-top` | `0px` | Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and `sticky` is enabled. |
+| `--p-table-scroll-indicator-bottom` | `0px` | Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and `sticky` is enabled. |
+
+## Table Head
+
+### API Reference for `p-table-head`
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the table head content. |
+
+## Table Head Row
+
+### API Reference for `p-table-head-row`
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the table head row content. |
+
+## Table Head Cell
+
+### API Reference for `p-table-head-cell`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `sort` | `{ id: string, active: boolean, direction: ,asc,desc }` | - | Defines sortability properties. |
+| `hideLabel` | `boolean` | `false` | Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set. |
+| `multiline` | `boolean` | `false` | Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the table head cell content. |
+
+## Table Body
+
+### API Reference for `p-table-body`
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the table body content. |
+
+## Table Row
+
+### API Reference for `p-table-row`
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the table row content. |
+
+## Table Cell
+
+### API Reference for `p-table-cell`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `multiline` | `boolean` | `false` | Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the table cell content. |

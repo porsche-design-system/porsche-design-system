@@ -1,0 +1,69 @@
+# Text 
+
+## Size
+
+There are predefined fluid text sizes for the text component which should cover most use cases. If a specific text size
+is needed, the size can be set to `inherit` to specify the text size from outside.
+
+### Interactive Story: `textStorySize`
+
+```tsx
+import React from 'react';
+import { PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PText className="text-[3rem]" size="inherit">
+        The quick brown fox jumps over the lazy dog
+      </PText>
+    </>
+  )
+}
+```
+
+### Responsive
+
+### Interactive Story: `textStorySizeResponsive`
+
+```tsx
+import React from 'react';
+import { PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PText size={{'base': 'sm', 'l': '2xl'}}>
+        The quick brown fox jumps over the lazy dog
+      </PText>
+    </>
+  )
+}
+```
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+### Interactive Story: `textStorySemantics`
+
+```tsx
+import React from 'react';
+import { PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PText tag="blockquote">
+        The quick brown fox jumps over the lazy dog
+      </PText>
+
+      <PText>
+        <blockquote>
+          The quick brown fox jumps over the lazy dog
+        </blockquote>
+      </PText>
+    </>
+  )
+}
+```

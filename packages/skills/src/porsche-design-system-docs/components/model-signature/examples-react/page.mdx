@@ -1,0 +1,194 @@
+# Model Signature 
+
+## Safe Zone
+
+The `safe-zone` prop's default is <code>true</code>, which ensures a visual balance across
+all model signatures. This is most likely the best option when the model signatures are used in combination or within
+tiles next to each other. When `false` is set as value, the model signatures come without any safe zone which is
+probably preferred when the element is positioned independently.
+
+### Interactive Story: `modelSignatureStorySafeZone`
+
+```tsx
+import React from 'react';
+import { PModelSignature } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="718"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="911"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="boxster"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="cayenne"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="cayman"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="gt3-rs"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="gt3"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="gts"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="macan"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="panamera"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="taycan"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="turbo-s"></PModelSignature>
+      </div>
+
+      <div className="bg-[#ff000033] inline-block me-static-md mt-static-md">
+        <PModelSignature safeZone={false} model="turbo"></PModelSignature>
+      </div>
+    </>
+  )
+}
+```
+
+## Mask: Blend Mode
+
+If `p-model-signature` should be blended with its background, the CSS property
+[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
+produce the best results). Depending on the use case, it may be important to use it together with the CSS property
+[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It is also
+important to note that `p-model-signature` must be used with the `contrast-{high|medium}` color for proper blend mode
+results.
+
+### Interactive Story: `modelSignatureStoryMaskBlendMode`
+
+```tsx
+import React from 'react';
+import { PModelSignature } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <div className="isolate bg-[#00aa3680] inline-block p-static-lg">
+        <PModelSignature color="contrast-medium" safeZone={false} className="mix-blend-overlay"></PModelSignature>
+      </div>
+
+      <div className="isolate bg-[#f2f2f280] inline-block p-static-lg">
+        <PModelSignature color="contrast-medium" safeZone={false} className="mix-blend-overlay"></PModelSignature>
+      </div>
+
+      <div className="isolate bg-[#1f1f1f80] inline-block p-static-lg">
+        <PModelSignature color="contrast-medium" safeZone={false} className="mix-blend-overlay"></PModelSignature>
+      </div>
+
+      <div className="isolate bg-[#c5004280] inline-block p-static-lg">
+        <PModelSignature color="contrast-medium" safeZone={false} className="mix-blend-overlay"></PModelSignature>
+      </div>
+
+      <div className="isolate bg-[#e1d4a480] inline-block p-static-lg">
+        <PModelSignature color="contrast-medium" safeZone={false} className="mix-blend-overlay"></PModelSignature>
+      </div>
+
+      <div className="isolate bg-[#0099e080] inline-block p-static-lg">
+        <PModelSignature color="contrast-medium" safeZone={false} className="mix-blend-overlay"></PModelSignature>
+      </div>
+    </>
+  )
+}
+```
+
+## Mask: Image
+
+> ⚠️ **Experimental**
+>
+> The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+
+### Interactive Story: `modelSignatureStoryMaskImage`
+
+```tsx
+import React from 'react';
+import { PModelSignature } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PModelSignature safeZone={false} className="[--p-model-signature-width:auto]">
+        <img src="assets/dessert.jpg" alt="Dessert" />
+      </PModelSignature>
+    </>
+  )
+}
+```
+
+## Mask: Video
+
+> ⚠️ **Experimental**
+>
+> The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+
+### Interactive Story: `modelSignatureStoryMaskVideo`
+
+```tsx
+import React from 'react';
+import { PModelSignature } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PModelSignature safeZone={false} className="[--p-model-signature-width:auto]">
+        <video poster="assets/ocean.jpg" src="assets/ocean.mp4" autoPlay={true} playsInline={true} loop={true} muted={true}></video>
+      </PModelSignature>
+    </>
+  )
+}
+```
+
+## Custom styling
+
+The `p-model-signature` color can be changed by setting the `color` prop to `inherit` and applying some CSS `color`.
+Additionally, the component has some values that can be overridden via CSS custom properties (aka CSS variables):
+
+```scss
+--p-model-signature-width
+--p-model-signature-height
+```
+
+### Interactive Story: `modelSignatureStoryCustomStyling`
+
+```tsx
+import React from 'react';
+import { PModelSignature } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PModelSignature color="inherit" className="text-info"></PModelSignature>
+
+      <PModelSignature className="[--p-model-signature-width:auto] [--p-model-signature-height:50px] block"></PModelSignature>
+
+      <PModelSignature className="[--p-model-signature-width:50px] [--p-model-signature-height:auto] block"></PModelSignature>
+    </>
+  )
+}
+```

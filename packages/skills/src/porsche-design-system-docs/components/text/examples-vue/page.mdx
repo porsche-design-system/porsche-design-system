@@ -1,0 +1,60 @@
+# Text 
+
+## Size
+
+There are predefined fluid text sizes for the text component which should cover most use cases. If a specific text size
+is needed, the size can be set to `inherit` to specify the text size from outside.
+
+### Interactive Story: `textStorySize`
+
+```vue
+<script setup lang="ts">
+  import { PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PText class="text-[3rem]" size="inherit">
+    The quick brown fox jumps over the lazy dog
+  </PText>
+</template>
+```
+
+### Responsive
+
+### Interactive Story: `textStorySizeResponsive`
+
+```vue
+<script setup lang="ts">
+  import { PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PText :size="{'base': 'sm', 'l': '2xl'}">
+    The quick brown fox jumps over the lazy dog
+  </PText>
+</template>
+```
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+### Interactive Story: `textStorySemantics`
+
+```vue
+<script setup lang="ts">
+  import { PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PText tag="blockquote">
+    The quick brown fox jumps over the lazy dog
+  </PText>
+
+  <PText>
+    <blockquote>
+      The quick brown fox jumps over the lazy dog
+    </blockquote>
+  </PText>
+</template>
+```

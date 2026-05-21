@@ -1,0 +1,88 @@
+# Button Pure 
+
+## Button Pure with custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
+Therefore, a custom padding can be set on the host element.
+
+### Interactive Story: `buttonPureStoryCustomPadding`
+
+```html
+<p-button-pure class="p-static-md">
+  Some label
+</p-button-pure>
+```
+
+## Form
+
+When used as a submit button, the `name` and `value` props are submitted as a pair as part of the form data.
+
+### Code Example: `buttonPureExampleForm`
+
+```html
+<form>
+  <p-button-pure name="option" value="A" type="submit">Button A</p-button-pure>
+  <p-button-pure name="option" value="B" type="submit">Button B</p-button-pure>
+</form>
+
+<p-text>Last submitted data: none</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = Array.from(new FormData(e.target, e.submitter).entries())[0];
+    debugElement.innerText = `Last submitted data: ${formData.join('=') || 'none'}`;
+  });
+</script>
+```
+
+## Form Attribute
+
+When a button is used as a submit or reset button outside a form, the `form` attribute can be utilized to explicitly
+associate the button with a specific form element.
+
+> ⚠️ **Attention**
+>
+> When using the `p-button-pure` component as a **submit** or **reset** button
+> outside a form, it relies on the
+> <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has
+> limited browser support.
+> 
+> 
+> 
+> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+> to be passed as an argument to the `requestSubmit()` function (
+> <a href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</a>).
+> 
+> 
+> 
+> 
+> Additionally, custom components using ElementInternals may include all values of elements with the same name attribute
+> in form data, rather than only the value of the triggering element, deviating from native form behavior.
+
+### Code Example: `buttonPureExampleFormAttribute`
+
+```html
+<form id="some-form">
+  <p-textarea name="some-name" label="Some Label"></p-textarea>
+</form>
+
+<p-button-group>
+  <p-button-pure type="submit" form="some-form">Submit</p-button-pure>
+  <p-button-pure type="reset" form="some-form">Reset</p-button-pure>
+</p-button-group>
+
+<p-text>Last submitted data: none</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    debugElement.innerText = `Last submitted data: ${formData.get('some-name') || 'none'} `;
+  });
+</script>
+```

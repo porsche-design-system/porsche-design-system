@@ -1,0 +1,20 @@
+# Icon 
+
+### API Reference for `p-icon`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `name` | `IconName` | `"arrow-right"` | Specifies which icon to use. See [available icons](/components/_shared/icon-names) for all 290 values. |
+| `source` | `string` | - | Specifies a whole icon path which can be used for custom icons. |
+| `color` | `"primary" \| "contrast-higher" \| "contrast-high" \| "contrast-medium" \| "contrast-low" \| "contrast-lower" \| "success" \| "warning" \| "error" \| "info" \| "inherit"` | `"primary"` | Basic color variations. |
+| `size` | `"2xs" \| "xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "4xl" \| "5xl" \| "inherit" \| "xx-small" \| "x-small" \| "small" \| "medium" \| "large" \| "x-large" \| "xx-large"` | `"sm"` | Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string }` | - | Sets ARIA attributes. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-icon-size` | - | Defines the width and height of the icon. Overrides the `size` property when set. |
+| `--p-icon-color` | - | Defines the icon color. Overrides the `color` property when set. |

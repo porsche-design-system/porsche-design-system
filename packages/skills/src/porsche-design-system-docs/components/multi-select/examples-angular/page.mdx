@@ -1,0 +1,558 @@
+# Multi Select 
+
+## Form
+
+The `p-multi-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similarly to a native `<select multiple>`, automatically managing
+its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+> ⚠️ **Attention**
+>
+> `p-multi-select` does not use a native select internally. As a result, it lacks access to native
+> `ValidityState`
+> properties and `validationMessage`, and it cannot display the native validation popover. This means
+> validation behavior and error display will need to be implemented separately if required.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `multiSelectExampleForm`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
+      <p-multi-select formControlName="myMultiSelect" [label]="'Some Label'" >
+        <p-multi-select-option value="a">Option A</p-multi-select-option>
+        <p-multi-select-option value="b">Option B</p-multi-select-option>
+        <p-multi-select-option value="c">Option C</p-multi-select-option>
+        <p-multi-select-option value="d">Option D</p-multi-select-option>
+        <p-multi-select-option value="e">Option E</p-multi-select-option>
+        <p-multi-select-option value="f">Option F</p-multi-select-option>
+      </p-multi-select>
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
+    </form>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  form = new FormGroup({
+    myMultiSelect: new FormControl<string[]>([]),
+  });
+
+  submittedValue: any = undefined;
+
+  onSubmit(): void {
+    this.submittedValue = JSON.stringify(this.form.value);
+  }
+}
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `multiSelectStorySlots`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-multi-select name="options" state="error">
+        <span slot="label" id="some-label-id">
+          Some label with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+           and a "label-after" slot.
+        </span>
+        <p-popover slot="label-after">
+          Some Popover content with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+          .
+        </p-popover>
+        <span slot="description" id="some-description-id">
+          Some description with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+          .
+        </span>
+        <span slot="message" id="some-message-id">
+          Some error message with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+          .
+        </span>
+        <p-multi-select-option value="a">
+          Option A
+        </p-multi-select-option>
+        <p-multi-select-option value="b">
+          Option B
+        </p-multi-select-option>
+        <p-multi-select-option value="c">
+          Option C
+        </p-multi-select-option>
+      </p-multi-select>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Set Value
+
+The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
+choices, but it can also be changed manually by using the `value` property. This property takes an array of strings that
+represent the selected option values.
+
+### Code Example: `multiSelectExampleDynamic`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  MultiSelectChangeEventDetail,
+  type PMultiSelectProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-input-text
+      label="Value:"
+      name="input-value"
+      type="text"
+      [value]="inputValue"
+      (input)="onChangeInput($event)"
+      placeholder="e.g. 1,2"
+    ></p-input-text>
+    <p-button type="button" (click)="onSetValue()" [compact]="true">Set Value</p-button>
+    <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
+
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (change)="onChange($event)">
+      @for (idx of optionIndices; track idx) {
+        <p-multi-select-option [value]="(idx + 1).toString()"
+          >Option {{ idx + 1 }}</p-multi-select-option
+          >
+        }
+      </p-multi-select>
+
+      <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
+      <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
+    `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+})
+export class ExampleComponent {
+  selectedValues: PMultiSelectProps['value'] = [];
+  inputValue: string = '';
+  optionCount: number = 3;
+
+  get optionIndices(): number[] {
+    return [...Array(this.optionCount).keys()];
+  }
+
+  onChangeInput(e: Event) {
+    this.inputValue = (e.target as HTMLInputElement).value;
+  }
+
+  onSetValue() {
+    this.selectedValues = this.inputValue.split(',');
+  }
+
+  onResetValue() {
+    this.selectedValues = [];
+    this.inputValue = '';
+  }
+
+  onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
+    this.selectedValues = e.detail.value;
+    this.inputValue = e.detail.value.join(',');
+  }
+
+  onAddOption() {
+    this.optionCount += 1;
+  }
+
+  onRemoveOption() {
+    if (this.optionCount > 0) {
+      this.optionCount -= 1;
+    }
+  }
+}
+```
+
+## With optgroups
+
+### Interactive Story: `multiSelectStoryOptgroup`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-multi-select name="options" label="Some Label">
+        <p-optgroup label="Some optgroup label 1">
+          <p-multi-select-option value="a">
+            Option A
+          </p-multi-select-option>
+          <p-multi-select-option value="b">
+            Option B
+          </p-multi-select-option>
+          <p-multi-select-option value="c">
+            Option C
+          </p-multi-select-option>
+          <p-multi-select-option value="d">
+            Option D
+          </p-multi-select-option>
+          <p-multi-select-option value="e">
+            Option E
+          </p-multi-select-option>
+          <p-multi-select-option value="f">
+            Option F
+          </p-multi-select-option>
+        </p-optgroup>
+        <p-optgroup label="Some optgroup label 2">
+          <p-multi-select-option value="g">
+            Option G
+          </p-multi-select-option>
+          <p-multi-select-option value="h">
+            Option H
+          </p-multi-select-option>
+          <p-multi-select-option value="i">
+            Option I
+          </p-multi-select-option>
+        </p-optgroup>
+      </p-multi-select>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Custom asynchronous filtering
+
+The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
+or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
+slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+### Code Example: `multiSelectExampleAsyncFilter`
+
+```typescript
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import {
+  type InputSearchInputEventDetail,
+  type MultiSelectChangeEventDetail,
+  type MultiSelectToggleEventDetail,
+  PMultiSelect,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-multi-select
+      name="async-search-select"
+      label="Async Search"
+      [value]="value"
+      (change)="onChange($event)"
+      (toggle)="onToggle($event)"
+    >
+      <p-input-search
+        slot="filter"
+        name="search"
+        [value]="searchValue"
+        [loading]="loading"
+        [clear]="true"
+        [indicator]="true"
+        [compact]="true"
+        [autoComplete]="'off'"
+        (input)="onInput($event)"
+        (blur)="$event.stopPropagation()"
+        (change)="$event.stopPropagation()"
+      ></p-input-search>
+
+      <!-- Initial skeleton loading -->
+      @if (initialLoading && !error) {
+        @for (_ of [1,2,3,4,5,6,7,8,9]; track $index) {
+          <div slot="options-status" class="skeleton h-[40px]"></div>
+        }
+      }
+
+      <!-- Options -->
+      @for (option of options; track option.value) {
+        <p-multi-select-option [value]="option.value">
+          {{ option.label }}
+        </p-multi-select-option>
+      }
+
+      <!-- No filter results -->
+      @if (!initialLoading && options.length === 0 && !error) {
+        <div
+          slot="options-status"
+          class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
+          role="alert"
+        >
+          <span aria-hidden="true">–</span>
+          <span class="sr-only">No results found</span>
+        </div>
+      }
+
+      <!-- Error state -->
+      @if (error) {
+        <div
+          slot="options-status"
+          class="flex gap-static-sm py-static-sm px-[12px]"
+          role="alert"
+        >
+          <p-icon name="information" color="error"></p-icon>
+          <span class="text-error">{{ error }}</span>
+        </div>
+      }
+    </p-multi-select>
+
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+})
+export class ExampleComponent {
+  value?: PMultiSelect['value'] = [];
+  options: { value: string; label: string }[] = [];
+
+  searchValue = '';
+  initialLoading = false;
+  loading = false;
+  error: string | null = null;
+
+  private hasLoadedOnce = false;
+  private currentFetchId = 0;
+  private debounceTimer?: number;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  async fetchOptions(term?: string, isInitial = false) {
+    const fetchId = ++this.currentFetchId;
+    if (isInitial) this.initialLoading = true;
+    else this.loading = true;
+
+    this.cdr.markForCheck();
+
+    try {
+      const url = term
+        ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+        : `https://jsonplaceholder.typicode.com/users`;
+
+      const res = await fetch(url);
+      const data: { id: number; name: string; username: string }[] = await res.json();
+
+      // Ignore stale results
+      if (fetchId !== this.currentFetchId) return;
+
+      this.options = data.map((user) => ({
+        value: user.id.toString(),
+        label: `${user.name} (${user.username})`,
+      }));
+
+      this.error = null;
+      this.hasLoadedOnce = true;
+    } catch (err) {
+      console.error('Failed to fetch options', err);
+      this.options = [];
+      this.error = 'Failed to load options';
+    } finally {
+      if (isInitial) this.initialLoading = false;
+      else this.loading = false;
+
+      this.cdr.markForCheck();
+    }
+  }
+
+  onInput(event: CustomEvent<InputSearchInputEventDetail>) {
+    const term = (event.target as HTMLInputElement).value;
+    this.searchValue = term;
+
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
+    this.debounceTimer = window.setTimeout(() => {
+      this.fetchOptions(term.trim() || undefined);
+    }, 400);
+  }
+
+  onChange(event: CustomEvent<MultiSelectChangeEventDetail>) {
+    this.value = (event.target as HTMLElement & { value: string[] }).value;
+  }
+
+  onToggle(event: CustomEvent<MultiSelectToggleEventDetail>) {
+    if (event.detail.open && !this.hasLoadedOnce) {
+      this.fetchOptions(undefined, true);
+    }
+  }
+}
+```
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+### Code Example: `multiSelectExampleSelectedSlot`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  type MultiSelectChangeEventDetail,
+  PMultiSelect,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
+
+type Option = { value: string; label: string; description: string; tags: string[]; imgSrc: string };
+
+const optionsData: Option[] = [
+  {
+    value: '718',
+    label: '718',
+    description: 'Präziser Sportwagen mit Mittelmotor',
+    tags: ['Benzin'],
+    imgSrc: 'assets/718.png',
+  },
+  {
+    value: '911',
+    label: '911',
+    description: 'Ikonischer Sportwagen mit Heckmotor',
+    tags: ['Benzin'],
+    imgSrc: 'assets/911.png',
+  },
+  {
+    value: 'taycan',
+    label: 'Taycan',
+    description: 'Elektrischer Sportwagen',
+    tags: ['Elektro'],
+    imgSrc: 'assets/taycan.png',
+  },
+  {
+    value: 'macan',
+    label: 'Macan',
+    tags: ['Elektro'],
+    description: 'Sportlicher Kompakt-SUV',
+    imgSrc: 'assets/macan.png',
+  },
+  {
+    value: 'cayenne',
+    label: 'Cayenne',
+    tags: ['Hybrid', 'Benzin'],
+    description: 'Vielseitiger SUV',
+    imgSrc: 'assets/cayenne.png',
+  },
+  {
+    value: 'panamera',
+    label: 'Panamera',
+    tags: ['Hybrid', 'Benzin'],
+    description: 'Luxuslimousine mit hohem Komfort',
+    imgSrc: 'assets/panamera.png',
+  },
+];
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-multi-select
+      name="selected-slot-select"
+      label="Selected Slot"
+      [value]="value"
+      (change)="onChange($event)"
+    >
+    <span slot="selected" class="h-full flex items-center">
+      <span class="truncate">{{ selectedLabels }}</span>
+    </span>
+      @for (option of options; track option.value) {
+      <p-multi-select-option [value]="option.value">
+        <div class="w-full flex gap-fluid-sm">
+          <img [src]="option.imgSrc" alt="" class="h-[34px] w-auto self-center" />
+          <div class="flex flex-col justify-center flex-1 min-w-0">
+            <p class="prose-text-sm m-0">{{ option.label }}</p>
+            <p class="prose-text-2xs m-0">{{ option.description }}</p>
+          </div>
+          <div class="self-center flex gap-fluid-sm">
+            @for (tag of option.tags; track tag) {
+              <p-tag color="info-soft" [compact]="true">{{ tag }}</p-tag>
+            }
+          </div>
+        </div>
+      </p-multi-select-option>
+      }
+    </p-multi-select>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+})
+export class ExampleComponent {
+  value: PMultiSelect['value'] = [];
+  options: Option[] = optionsData;
+  selectedOptions: Option[] = [];
+
+  get selectedLabels(): string {
+    return this.selectedOptions.map((option) => option.label).join(', ');
+  }
+
+  onChange(event: CustomEvent<MultiSelectChangeEventDetail>) {
+    const { value } = event.detail;
+    this.value = value;
+    this.selectedOptions = this.options.filter((option) => (value as string[]).includes(option.value));
+  }
+}
+```

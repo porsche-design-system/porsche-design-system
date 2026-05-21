@@ -1,0 +1,129 @@
+# Link Tile 
+
+## With video
+
+### Interactive Story: `linkTileStoryVideo`
+
+```html
+<p-link-tile href="https://porsche.com" label="Some label" description="Some Description">
+  <p-tag slot="header" color="background-frosted" compact="true">
+    Some tag
+  </p-tag>
+  <video poster="assets/ocean.jpg" src="assets/ocean.mp4" loop muted autoplay aria-label="Some video description"></video>
+</p-link-tile>
+```
+
+## UI behaviour
+
+The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
+first row in example).
+
+Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
+CSS Grid context (see second row in example).
+
+### Interactive Story: `linkTileStoryLayout`
+
+```html
+<div class="grid grid-cols-2 gap-static-md">
+  <p-link-tile aspect-ratio="4/3" href="#" label="Some Label" size="large" description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      4/3
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+  </p-link-tile>
+  <p-link-tile aspect-ratio="4/3" href="#" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      4/3
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+  </p-link-tile>
+  <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      1/1
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+  </p-link-tile>
+  <p-link-tile aspect-ratio="9/16" href="#" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      9/16
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+  </p-link-tile>
+  <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      1/1
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+  </p-link-tile>
+</div>
+```
+
+## Hyphens
+
+It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
+hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
+to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
+language.
+
+### Code Example: `linkTileExampleHyphens`
+
+```html
+<p-select label="Select hyphens" name="hyphens">
+  <p-select-option value="auto">style="hyphens: auto;"</p-select-option>
+  <p-select-option value="manual">style="hyphens: manual;"</p-select-option>
+  <p-select-option value="none">style="hyphens: none;"</p-select-option>
+</p-select>
+
+<p-link-tile
+  href="https://porsche.com"
+  label="Some label"
+  description="An extra&shy;ordinarily Porsche"
+  compact="true"
+  size="inherit"
+  style="max-width: 400px; font-size: 45px;"
+>
+  <img src="assets/lights.jpg" alt="Some image description" />
+</p-link-tile>
+
+<script>
+  const select = document.querySelector('p-select');
+  select.addEventListener('update', (event) => {
+    const buttonTile = document.querySelector('p-link-tile');
+    buttonTile.style.hyphens = event.detail.value;
+  });
+</script>
+```
+
+## Footer slot
+
+You can also use a `footer` slot to display additional text below the description, providing more flexibility for custom
+content. The footer slot is intended for **non-interactive content only**, meaning it should not contain links, buttons,
+or other interactive elements. It is designed to handle plain text, making it ideal for supplementary or secondary
+information.
+
+We recommend using short and concise text to avoid visual clutter.
+
+### Interactive Story: `linkTileStoryFooterSlot`
+
+```html
+<div class="grid grid-cols-2 gap-static-md">
+  <p-link-tile href="https://porsche.com" label="Some label" description="Some Description">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      Some tag
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+    <p-text slot="footer">
+      Some footer text
+    </p-text>
+  </p-link-tile>
+  <p-link-tile href="https://porsche.com" label="Some label" description="Some Description" compact="true">
+    <p-tag slot="header" color="background-frosted" compact="true">
+      Some tag
+    </p-tag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+    <p-text slot="footer">
+      Some footer text
+    </p-text>
+  </p-link-tile>
+</div>
+```

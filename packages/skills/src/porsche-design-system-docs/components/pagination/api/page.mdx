@@ -1,0 +1,19 @@
+# Pagination 
+
+### API Reference for `p-pagination`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `totalItemsCount` | `number` | `1` | The total count of items. **(required)** |
+| `itemsPerPage` | `number` | `1` | The total count of items which should be shown per page. **(required)** |
+| `activePage` | `number` | `1` | Index of the currently active page. |
+| `showLastPage` | `boolean` | `true` | Show or hide the button to jump to the last page. |
+| `intl` | `{ root: string, prev: string, next: string, page: string }` | `{"root":"Pagination","prev":"Previous page","next":"Next page","page":"Page"}` | Override the default wordings that are used for aria-labels on the next/prev and page buttons. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ page: number; previousPage: number }` | Emitted when the page changes. |

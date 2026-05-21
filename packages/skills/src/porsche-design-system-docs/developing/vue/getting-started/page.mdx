@@ -1,0 +1,226 @@
+# Vue
+
+## Quick start
+
+To build a [Vue](https://vuejs.org/guide/quick-start.html) application using the Porsche Design System, follow these
+steps. This guide is based on the following dependencies:
+
+  
+  vue@3
+  
+  tailwindcss@4
+  
+  @porsche-design-system/components-vue@4
+
+```bash
+# Create a new application by executing:
+npm create vue@latest
+
+# Follow the installation wizard to set everything up:
+✔ Project name (target directory): "./my-app"
+✔ Select features to include in your project:
+    ◼ TypeScript "Yes"
+    ◼ JSX Support "Yes"
+    ◼ Router (SPA development) "Yes"
+    ◼ Pinia (state management) "Yes"
+    ◼ Vitest (unit testing) "Yes"
+    ◼ End-to-End Testing "Yes"
+    ◼ ESLint (error prevention) "Yes"
+    ◼ Prettier (code formatting) "Yes"
+✔ Select an End-to-End testing framework: "Playwright"
+✔ Select experimental features to include in your project:
+    ◻ Oxlint (experimental) "No"
+    ◻ rolldown-vite "No"
+✔ Skip all example code and start with a blank Vue project? "No"
+```
+
+You're all set! Start building your own application now.
+
+## Integration
+
+### Step 1
+
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-vue
+```
+
+### Step 2
+
+Wrap your app with the ``.
+
+```diff
+// src/App.vue
+
+<script setup lang="ts">
+  import { RouterView } from 'vue-router';
++ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
++ <PorscheDesignSystemProvider>
+    <header>…</header>
+    <RouterView />
++ </PorscheDesignSystemProvider>
+</template>
+```
+
+### Step 3
+
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
+
+```diff
+/* src/assets/main.css */
+
++ @import '@porsche-design-system/components-vue';
+```
+
+Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it's broken.
+[Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
+
+```diff
+// vite.config.ts
+
++ import { Features } from 'lightningcss';
+
+export default defineConfig({
++ css: {
++   transformer: 'lightningcss',
++   // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++   lightningcss: {
++     exclude: Features.LightDark,
++   },
++ },
+});
+```
+
+To prevent FOUC, hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/assets/main.css */
+
+@import '@porsche-design-system/components-vue';
+
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
+
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
+
+```diff
+// vite.config.ts
+
++ import {
++   getComponentChunkLinks,
++   getFontLinks,
++   getIconLinks,
++   getMetaTagsAndIconLinks,
++ } from '@porsche-design-system/components-vue/partials';
+
+const transformIndexHtmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html: string) {
++     const headPartials = [
++       // preloads fonts
++       getFontLinks(),
++       // preloads icons
++       getIconLinks(),
++       // preloads components
++       getComponentChunkLinks(),
++       // injects favicon, apple touch icons, android touch icons, etc.
++       getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
++     ].join('');
+
++     return html.replace(/<\/head>/, `${headPartials}$&`);
+    },
+  };
+};
+
+export default defineConfig({
+  plugins: [vue(), vueJsx(), vueDevTools(), transformIndexHtmlPlugin()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+});
+```
+
+### Step 5 (recommended)
+
+Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
+[Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
+**seamless styling consistency** with Porsche's design principles.
+
+Install Tailwind CSS within your project directory.
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Configure the Vite Tailwind CSS plugin.
+
+```diff
+// vite.config.ts
+
++ import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
++ plugins: [vue(), vueJsx(), vueDevTools(), transformIndexHtmlPlugin(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+});
+```
+
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+
+```diff
+/* src/assets/main.css */
+@import '@porsche-design-system/components-vue';
+
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-vue/tailwindcss';
+```
+
+### Step 6
+
+Add a Porsche Design System component (e.g., ``) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
+
+```tsx
+// src/App.vue
+
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+    <div class="grid justify-items-center col-span-full gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+      <PWordmark />
+      <h1 class="prose-heading-4xl">Porsche Design System</h1>
+    </div>
+    <header>…</header>
+    <RouterView />
+  </PorscheDesignSystemProvider>
+</template>
+
+<style scoped>
+  …
+</style>
+```

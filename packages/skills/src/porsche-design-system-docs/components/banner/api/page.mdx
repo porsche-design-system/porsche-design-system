@@ -1,0 +1,37 @@
+# Banner 
+
+### API Reference for `p-banner`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `open` | `boolean` | `false` | Controls whether the banner is open or closed. **(required)** |
+| `heading` | `string` | `""` | Sets the heading text of the banner. |
+| `headingTag` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h5"` | Sets the heading tag for proper semantic structure within the page. |
+| `description` | `string` | `""` | Sets the description text of the banner. |
+| `position` | `"top" \| "bottom"` | `{"base":"bottom","s":"top"}` | Sets the position of the banner. *(breakpoint customizable)* |
+| `state` | `"info" \| "success" \| "warning" \| "error"` | `"info"` | Defines the visual state of the banner. |
+| `dismissButton` | `boolean` | `true` | Shows a dismiss button allowing the banner to be closed. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `dismiss` | `void` | Emitted when the banner is requested to be dismissed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `heading` | Defines the heading of the banner. Can be used as an alternative to the `heading` prop for rich content. |
+| (default) | Default slot for the banner description content. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-banner-max-w` | `100ch` | Defines the maximum width of the Banner. |
+| `--p-banner-top` | `56px` | Defines the distance from the top of the viewport. Only takes effect when the `position` property is set to `top` (at the respective breakpoint). |
+| `--p-banner-bottom` | `56px` | Defines the distance from the bottom of the viewport. Only takes effect when the `position` property is set to `bottom` (at the respective breakpoint). |
+| `--p-banner-inset-x` | `max(22px, 10.625vw - 12px)` | Defines the horizontal offset of the Banner from the edges of the viewport. |

@@ -1,0 +1,26 @@
+# Scroller 
+
+### API Reference for `p-scroller`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `scrollbar` | `boolean` | `false` | Specifies if scrollbar should be shown. |
+| `compact` | `boolean` | - | Displays with reduced spacing and smaller padding for a more condensed layout. |
+| `aria` | `{ role: string }` | - | Add ARIA role. |
+| `sticky` | `boolean` | `false` | @experimental Makes the indicator sticky at the top or bottom while scrolling depending on the scroll direction. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the scroller content. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-scroller-gap` | `8px` | Defines the gap between slotted nodes. |
+| `--p-scroller-indicator-top` | `0px` | Defines the distance from the top of the viewport at which the indicator sticks when scrolling down and `sticky` is enabled. |
+| `--p-scroller-indicator-bottom` | `0px` | Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and `sticky` is enabled. |

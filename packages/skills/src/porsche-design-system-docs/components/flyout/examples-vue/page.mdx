@@ -1,0 +1,152 @@
+# Flyout 
+
+## Sticky content with Custom CSS Property (Experimental)
+
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
+
+### Interactive Story: `flyoutStoryStickyTop`
+
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+    Open Flyout
+  </PButton>
+
+  <PFlyout :open="open" :aria="{'aria-label': 'Some Heading'}" @dismiss="onDismiss">
+    <PHeading slot="header" size="large" tag="h2">
+      Some Heading
+    </PHeading>
+    <div class="grid grid-cols-[2fr_1fr] gap-static-md items-start">
+      <div class="sticky top-[calc(var(--p-flyout-sticky-top,0)+16px)] p-static-md bg-surface">
+        Some sticky element within content relying on --p-flyout-sticky-top
+      </div>
+      <div>
+        <PText>
+          Some Content Begin
+        </PText>
+        <div class="w-[10px] h-[120vh] bg-[deeppink]"></div>
+        <PText>
+          Some Content End
+        </PText>
+      </div>
+    </div>
+  </PFlyout>
+</template>
+```
+
+## Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+### Code Example: `flyoutExampleForm`
+
+```vue
+<script setup lang="ts">
+import { PButton, PCheckbox, PFlyout, PHeading, PText, PTextarea } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+const isFlyoutOpen = ref(false);
+const onOpen = (): void => {
+  isFlyoutOpen.value = true;
+};
+const onDismiss = (): void => {
+  isFlyoutOpen.value = false;
+};
+const checkboxValue = ref<string>('none');
+const textareaValue = ref<string>('none');
+const onSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
+  checkboxValue.value = formData.get('some-checkbox')?.toString() || 'none';
+  textareaValue.value = formData.get('some-textarea')?.toString() || 'none';
+};
+</script>
+
+<template>
+  <PButton type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Flyout</PButton>
+  <PFlyout :open="isFlyoutOpen" :position="'end'" @dismiss="onDismiss">
+    <PHeading slot="header" size="large" tag="h2">Some Heading</PHeading>
+    <form id="some-form" @submit.prevent="onSubmit">
+      <PCheckbox name="some-checkbox" label="Some Label"></PCheckbox>
+      <PTextarea name="some-textarea" label="Some Label"></PTextarea>
+    </form>
+    <PButton slot="footer" type="submit" form="some-form">Submit</PButton>
+    <PButton slot="footer" type="reset" variant="secondary" form="some-form">Reset</PButton>
+    <PText slot="sub-footer">
+      Last submitted data:
+      <br />
+      <br />
+      checkbox: {{checkboxValue}}
+      <br />
+      textarea: {{textareaValue}}
+    </PText>
+  </PFlyout>
+</template>
+```
+
+## Custom Styling
+
+The Flyout exposes read-only CSS Variables (prefixed with `--ref-`). Additionally, some predefined CSS variables can be
+overwritten. This can be useful for positioning a media element to the edge of the Flyout, or for fully controlling the
+Flyout's width.
+
+### Interactive Story: `flyoutStoryCustomStyling`
+
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PButton, PButtonPure, PDisplay, PFlyout, PText } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+    Open Flyout
+  </PButton>
+
+  <PFlyout :open="open" :aria="{'aria-label': 'Some Heading'}" footerBehavior="fixed" class="[--p-flyout-width:90vw]" @dismiss="onDismiss">
+    <div class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[300px]">
+      <img class="w-full h-full object-cover" src="assets/lights.jpg" alt="Some image description" />
+    </div>
+    <PDisplay class="mt-fluid-md" size="small" tag="h2">
+      Some heading
+    </PDisplay>
+    <PText class="mt-fluid-sm">
+      Some paragraph.
+    </PText>
+    <div slot="footer" class="grid grid-cols-[auto_1fr_auto] gap-static-sm justify-items-center">
+      <PButtonPure icon="arrow-left" type="button" :hideLabel="true">
+        Prev
+      </PButtonPure>
+      <PText>
+        1/4
+      </PText>
+      <PButtonPure icon="arrow-right" type="button" :hideLabel="true">
+        Next
+      </PButtonPure>
+    </div>
+  </PFlyout>
+</template>
+```

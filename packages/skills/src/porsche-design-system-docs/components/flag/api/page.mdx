@@ -1,0 +1,17 @@
+# Flag 
+
+### API Reference for `p-flag`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `name` | `FlagName` | `"de"` | Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain. See [available flags](/components/_shared/flag-names) for all 117 values. |
+| `size` | `"2xs" \| "xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "4xl" \| "5xl" \| "inherit" \| "xx-small" \| "x-small" \| "small" \| "medium" \| "large" \| "x-large" \| "xx-large"` | `"sm"` | Defines the size of the flag, aligned with the typographic scale used by components such as p-icon, p-spinner, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string }` | - | A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-flag-size` | - | Defines the width and height of the flag. Overrides the `size` property when set. |

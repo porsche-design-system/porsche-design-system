@@ -1,0 +1,26 @@
+# Divider 
+
+## Vertical
+
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
+height on the component itself.
+
+### Interactive Story: `dividerStoryVertical`
+
+```html
+<div class="flex h-[100px]">
+  <p-divider direction="vertical"></p-divider>
+</div>
+```
+
+## Responsive
+
+You can change the divider's direction by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+### Interactive Story: `dividerStoryResponsive`
+
+```html
+<div class="lg:flex lg:h-[150px]">
+  <p-divider direction="{'base': 'horizontal', 'l': 'vertical'}"></p-divider>
+</div>
+```

@@ -1,0 +1,152 @@
+# Modal 
+
+## Scrollable modal with sticky footer
+
+If the modal's content does not fit within the available space, the content becomes scrollable and the footer area
+remains sticky.
+
+### Interactive Story: `modalStoryScrollable`
+
+```tsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PHeading, PModal, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Modal
+      </PButton>
+
+      <PModal open={open} aria={{'aria-label': 'Some Heading'}} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <PText>
+          Some Content Begin
+        </PText>
+        <div className="w-[10px] h-[120vh] bg-[deeppink]"></div>
+        <PText>
+          Some Content End
+        </PText>
+        <div slot="footer" role="group" className="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+          <PButton type="button">
+            Proceed
+          </PButton>
+          <PButton type="button" variant="secondary">
+            Cancel
+          </PButton>
+        </div>
+      </PModal>
+    </>
+  )
+}
+```
+
+## Modal as alert dialog
+
+The `p-modal` component can be used as an alert dialog. This is a modal dialog that interrupts the user's workflow to
+draw attention to an important message and requires a response.
+
+### Interactive Story: `modalStoryAlertDialog`
+
+```tsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PHeading, PModal, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Modal
+      </PButton>
+
+      <PModal open={open} aria={{'role': 'alertdialog'}} disableBackdropClick={true} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some important Heading
+        </PHeading>
+        <PText>
+          Some important Content
+        </PText>
+        <div slot="footer" role="group" className="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+          <PButton type="button">
+            Accept
+          </PButton>
+          <PButton type="button" variant="secondary">
+            Deny
+          </PButton>
+        </div>
+      </PModal>
+    </>
+  )
+}
+```
+
+## Custom styling
+
+The modal component has some values that can be overridden via CSS custom properties (aka CSS variables). This might be
+useful, for example, for a "Cookie Consent Dialog" to reserve space when used with `backdrop: 'shading'` so that the
+Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) remains visible in the background of the page.
+Since the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will
+act like a safe zone.
+
+In addition, it is possible to make containers or elements (e.g. `div`, `img`, etc.) stretch into the padding safe zone
+by adding the <code v-text="stretchClassName"></code> CSS class.
+
+```scss
+// the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined
+--p-modal-width: clamp(276px, 45.25vw + 131px, 1000px);
+--p-modal-spacing-top: 200px;
+--p-modal-spacing-bottom: 50px;
+```
+
+### Interactive Story: `modalStoryCustomStyling`
+
+```tsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PModal } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Modal
+      </PButton>
+
+      <PModal open={open} backdrop="shading" aria={{'aria-label': 'Some Label'}} className="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)] [--p-modal-spacing-top:200px] [--p-modal-spacing-bottom:50px]" onDismiss={onDismiss}>
+        <img src="assets/porsche-992-carrera-s.jpg" className="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb) max-w-(--p-modal-width) rounded-xl" />
+      </PModal>
+    </>
+  )
+}
+```

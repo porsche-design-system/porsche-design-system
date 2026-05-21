@@ -1,0 +1,26 @@
+# Button 
+
+### API Reference for `p-button`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `type` | `"button" \| "submit" \| "reset"` | `"submit"` | Specifies the type of the button. |
+| `name` | `string` | - | The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. |
+| `value` | `string` | - | Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. |
+| `disabled` | `boolean` | `false` | Disables the button. No events will be triggered while disabled state is active. |
+| `loading` | `boolean` | `false` | Disables the button and shows a loading indicator. No events will be triggered while loading state is active. |
+| `variant` | `"primary" \| "secondary"` | `"primary"` | The style variant of the button. |
+| `icon` | `ButtonIcon` | `"none"` | The icon shown. By choosing 'none', no icon is displayed. See [available icons](/components/_shared/icon-names) for all 291 values. |
+| `iconSource` | `string` | - | A URL path to a custom icon. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `compact` | `boolean` | `false` | Displays the button in compact mode. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string, aria-description: string, aria-expanded: string, aria-pressed: string, aria-haspopup: string }` | - | Sets ARIA attributes. |
+| `form` | `string` | - | The id of a form element the button should be associated with. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the button label. |

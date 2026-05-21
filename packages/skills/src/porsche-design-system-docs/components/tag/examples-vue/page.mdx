@@ -1,0 +1,118 @@
+# Tag 
+
+## With slotted button
+
+It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
+clickable and no other content outside the button or link is allowed.
+
+### Interactive Story: `tagStorySlottedButton`
+
+```vue
+<script setup lang="ts">
+  import { PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <div class="flex flex-wrap gap-static-md">
+    <PTag icon="car" variant="primary">
+      <button type="button">
+        Variant primary
+      </button>
+    </PTag>
+    <PTag variant="secondary">
+      <button type="button">
+        Variant secondary
+      </button>
+    </PTag>
+    <PTag variant="info">
+      <button type="button">
+        Variant info
+      </button>
+    </PTag>
+    <PTag variant="warning">
+      <button type="button">
+        Variant warning
+      </button>
+    </PTag>
+    <PTag variant="success">
+      <button type="button">
+        Variant success
+      </button>
+    </PTag>
+    <PTag variant="error">
+      <button type="button">
+        Variant error
+      </button>
+    </PTag>
+  </div>
+</template>
+```
+
+## With slotted link
+
+It is possible to add an `<a>` tag to the `p-tag` component. If you do this, the entire component becomes clickable and
+no other content outside the button or link is allowed.
+
+### Interactive Story: `tagStorySlottedLink`
+
+```vue
+<script setup lang="ts">
+  import { PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <div class="flex flex-wrap gap-static-md">
+    <PTag icon="car" variant="primary">
+      <a href="https://porsche.com">
+        Variant primary
+      </a>
+    </PTag>
+    <PTag variant="secondary">
+      <a href="https://porsche.com">
+        Variant secondary
+      </a>
+    </PTag>
+    <PTag variant="info">
+      <a href="https://porsche.com">
+        Variant info
+      </a>
+    </PTag>
+    <PTag variant="warning">
+      <a href="https://porsche.com">
+        Variant warning
+      </a>
+    </PTag>
+    <PTag variant="success">
+      <a href="https://porsche.com">
+        Variant success
+      </a>
+    </PTag>
+    <PTag variant="error">
+      <a href="https://porsche.com">
+        Variant error
+      </a>
+    </PTag>
+  </div>
+</template>
+```
+
+## Multiline
+
+The contents of the `p-tag` component are rendered with `white-space: nowrap` by default. If multiline rendering is
+needed (e.g. due to limited space), the default behavior can be overridden with external CSS.
+
+### Interactive Story: `tagStoryMultiline`
+
+```vue
+<script setup lang="ts">
+  import { PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <div class="w-[100px]">
+    <PTag variant="success" class="whitespace-normal">
+      Some label with longer text wrapped in a narrow container
+    </PTag>
+  </div>
+</template>
+```

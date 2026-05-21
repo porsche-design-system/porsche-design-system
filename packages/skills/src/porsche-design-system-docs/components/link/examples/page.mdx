@@ -1,0 +1,34 @@
+# Link 
+
+## Framework routing (anchor nesting)
+
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the
+component.
+
+### Interactive Story: `linkStoryFrameworkRouting`
+
+```html
+<p-link>
+  <a href="https://porsche.com">
+    Some label
+  </a>
+</p-link>
+```
+
+## Link with specific icon
+
+If an icon needs to be implemented, just set another predefined icon. Per default, all icons are fetched from the
+Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted
+somewhere else, just set the whole icon path to the `iconSource` prop.
+
+### Interactive Story: `linkStoryIcon`
+
+```html
+<p-link href="https://porsche.com" icon="phone">
+  Some label
+</p-link>
+
+<p-link href="https://porsche.com" icon-source="assets/icon-custom-kaixin.svg" hide-label="true">
+  Some label
+</p-link>
+```

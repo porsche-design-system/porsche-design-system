@@ -1,0 +1,38 @@
+# Pin Code 
+
+### API Reference for `p-pin-code`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `description` | `string` | `""` | Supplementary text providing more context or explanation for the pin code. |
+| `name` | `string` | - | Name of the control. |
+| `length` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `4` | Number of characters of the Pin Code. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label and description. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | The validation state. |
+| `disabled` | `boolean` | `false` | Disables the Pin Code. No events will be triggered while disabled state is active. |
+| `loading` | `boolean` | `false` | Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active. |
+| `required` | `boolean` | `false` | Marks the Pin Code as required. |
+| `message` | `string` | `""` | The message styled depending on validation state. |
+| `type` | `"number" \| "password"` | `"number"` | Pin Code type. |
+| `value` | `string` | `""` | Sets the initial value of the Pin Code. |
+| `compact` | `boolean` | `false` | Displays the pin code in compact mode. |
+| `form` | `string` | - | The id of a form element the pin-code should be associated with. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `blur` | `void` | Emitted when the pin-code has lost focus. |
+| `change` | `{ value: string; isComplete: boolean }` | Emitted when the input is changed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+| `description` | Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |

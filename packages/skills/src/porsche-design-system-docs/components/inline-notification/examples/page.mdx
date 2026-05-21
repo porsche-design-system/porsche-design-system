@@ -1,0 +1,55 @@
+# Inline Notification 
+
+## Event Handling
+
+The custom event that is emitted on close button click is called `dismiss`.
+It can be used to remove the component.
+
+### Code Example: `inlineNotificationExampleEvents`
+
+```html
+<button type="button">Show Inline Notification</button>
+<div hidden>
+  <p-inline-notification
+    heading="Some heading"
+    heading-tag="h4"
+    description="Some description."
+  ></p-inline-notification>
+</div>
+
+<script>
+  const button = document.querySelector('p-button');
+  const inlineNotification = document.querySelector('p-inline-notification');
+  const { parentElement } = inlineNotification;
+
+  button.addEventListener('click', () => (parentElement.hidden = false));
+  inlineNotification.addEventListener('dismiss', () => (parentElement.hidden = true));
+</script>
+```
+
+### Action Button
+
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.
+The custom event that is emitted on action button click is called `action`.
+
+### Code Example: `inlineNotificationExampleActionButton`
+
+```html
+<p-inline-notification
+  heading="Some heading"
+  heading-tag="h4"
+  description="Some description."
+  action-label="Retry"
+  action-icon="reset"
+></p-inline-notification>
+<button type="button">Reset `actionLoading`</button>
+
+<script>
+  const button = document.querySelector('p-button');
+  const inlineNotification = document.querySelector('p-inline-notification');
+
+  button.addEventListener('click', () => (inlineNotification.actionLoading = false));
+  inlineNotification.addEventListener('action', () => (inlineNotification.actionLoading = true));
+</script>
+```

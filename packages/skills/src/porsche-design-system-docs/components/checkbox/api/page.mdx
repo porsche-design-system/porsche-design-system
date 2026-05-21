@@ -1,0 +1,44 @@
+# Checkbox 
+
+### API Reference for `p-checkbox`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `name` | `string` | `""` | The name of the checkbox. |
+| `required` | `boolean` | `false` | Marks the checkbox as required. |
+| `disabled` | `boolean` | `false` | Marks the checkbox as disabled. |
+| `indeterminate` | `boolean` | `false` | Marks the checkbox as indeterminate. |
+| `checked` | `boolean` | `false` | Reflects the checkbox current checked state and allows setting the initial checked state. |
+| `form` | `string` | - | The id of a form element the checkbox should be associated with. |
+| `value` | `string` | `"on"` | The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission. |
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | The validation state. |
+| `message` | `string` | `""` | The message styled depending on validation state. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `loading` | `boolean` | `false` | @experimental Disables the checkbox and shows a loading indicator. |
+| `compact` | `boolean` | `false` | Displays the checkbox in compact mode. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `change` | `Event` | Emitted when checkbox checked property is changed. |
+| `blur` | `Event` | Emitted when the checkbox has lost focus. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-checkbox-border-color` | - | 🧪Experimental: Border colors of Checkbox. Should be used to override the default border color in different states (e.g., hover, focus, error), e.g. when the Checkbox is wrapped inside a custom label. |
+| `--p-checkbox-background-color` | - | 🧪Experimental: Background color of Checkbox. |
+| `--p-checkbox-icon-color` | - | 🧪Experimental: Checkmark icon color of Checkbox. |

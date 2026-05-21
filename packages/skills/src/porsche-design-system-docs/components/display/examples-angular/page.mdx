@@ -1,0 +1,102 @@
+# Display ⚠️ Deprecated
+
+## Size
+
+There are predefined fluid text sizes for the component which should cover most use cases. If a specific text size is
+needed, the size can be set to `inherit` to specify the text size from outside.
+
+### Interactive Story: `displayStorySizeInherit`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-display tag="h3" size="inherit" class="text-[5rem]">
+        The quick brown fox jumps over the lazy dog
+      </p-display>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+### Responsive
+
+### Interactive Story: `displayStorySizeResponsive`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-display tag="h3" [size]="{'base': 'medium', 'l': 'large'}">
+        The quick brown fox jumps over the lazy dog
+      </p-display>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+### Interactive Story: `displayStorySemantics`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-display tag="h3">
+        The quick brown fox jumps over the lazy dog
+      </p-display>
+
+      <p-display>
+        <h3>
+          The quick brown fox jumps over the lazy dog
+        </h3>
+      </p-display>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Color
+
+Predefined theme-based colors are available, but `inherit` can also be used to define a custom color.
+
+### Interactive Story: `displayStoryColorInherit`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-display tag="h3" color="inherit" class="text-[deeppink]">
+        The quick brown fox jumps over the lazy dog
+      </p-display>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

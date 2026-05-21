@@ -1,0 +1,42 @@
+# Tabs 
+
+## Tabs
+
+### API Reference for `p-tabs`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `"small" \| "medium"` | `"small"` | The text size. *(breakpoint customizable)* |
+| `activeTabIndex` | `number` | `0` | Defines which tab is shown as selected (zero-based numbering). |
+| `background` | `"canvas" \| "surface" \| "frosted" \| "none"` | `"none"` | Defines the background color. Use `frosted` only on images, videos or gradients. |
+| `compact` | `boolean` | - | Displays with reduced spacing and smaller padding for a more condensed layout. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ activeTabIndex: number }` | Emitted when active tab is changed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the `p-tabs-item` tags. |
+
+## Tabs Item
+
+### API Reference for `p-tabs-item`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | - | Defines the label used in tabs. **(required)** |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the tab content. |

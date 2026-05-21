@@ -1,0 +1,74 @@
+# Border
+
+The Porsche Design System Tailwind theme customizes the Tailwind variables `--radius-*` and `--border-*`, which affect
+multiple Tailwind classes including `.rounded-*`, `.border-*` and others.
+
+## Border Radius
+
+### Interactive Story: `borderRadiusStory`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <div className="grid gap-fluid-md prose-text-sm">
+        <div className="rounded-xs border p-fluid-md">
+          .rounded-xs
+        </div>
+        <div className="rounded-sm border p-fluid-md">
+          .rounded-sm
+        </div>
+        <div className="rounded-md border p-fluid-md">
+          .rounded-md
+        </div>
+        <div className="rounded-lg border p-fluid-md">
+          .rounded-lg
+        </div>
+        <div className="rounded-xl border p-fluid-md">
+          .rounded-xl
+        </div>
+        <div className="rounded-2xl border p-fluid-md">
+          .rounded-2xl
+        </div>
+        <div className="rounded-3xl border p-fluid-md">
+          .rounded-3xl
+        </div>
+        <div className="rounded-4xl border p-fluid-md">
+          .rounded-4xl
+        </div>
+        <div className="rounded-full border p-fluid-md">
+          .rounded-full
+        </div>
+      </div>
+    </>
+  )
+}
+```
+
+## Border Width
+
+### Interactive Story: `borderWidthStory`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <div className="grid gap-fluid-md prose-text-sm">
+        <div className="border p-fluid-md">
+          .border
+        </div>
+        <div className="border-1 p-fluid-md">
+          .border-1
+        </div>
+        <div className="border-2 p-fluid-md">
+          .border-2
+        </div>
+      </div>
+    </>
+  )
+}
+```

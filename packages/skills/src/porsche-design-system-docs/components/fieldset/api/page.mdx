@@ -1,0 +1,22 @@
+# Fieldset 
+
+### API Reference for `p-fieldset`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `labelSize` | `"small" \| "medium"` | `"medium"` | Controls the size of the label text. |
+| `required` | `boolean` | `false` | Marks the Fieldset as required. |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | The validation state. |
+| `message` | `string` | `""` | The message styled depending on validation state. |
+| `aria` | `{ role: string }` | - | Sets ARIA attributes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| (default) | Default slot for the main content. |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |

@@ -1,0 +1,30 @@
+# Button Tile 
+
+### API Reference for `p-button-tile`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `"medium" \| "large" \| "inherit"` | `"medium"` | Font size of the description. *(breakpoint customizable)* |
+| `weight` | `"regular" \| "semi-bold"` | `"semi-bold"` | Font weight of the description. *(breakpoint customizable)* |
+| `aspectRatio` | `"1/1" \| "4/3" \| "3/4" \| "16/9" \| "9/16" \| "auto"` | `"4/3"` | Aspect ratio of the button-tile. *(breakpoint customizable)* |
+| `label` | `string` | - | Label of the button. **(required)** |
+| `description` | `string` | - | Description text. **(required)** |
+| `align` | `"top" \| "bottom"` | `"bottom"` | Alignment of button and description. |
+| `gradient` | `boolean` | `false` | Show gradient. |
+| `compact` | `boolean` | `false` | Displays the button-tile as compact version with description and button icon only. *(breakpoint customizable)* |
+| `type` | `"button" \| "submit" \| "reset"` | `"submit"` | Specifies the type of the button. |
+| `disabled` | `boolean` | `false` | Disables the button. No events will be triggered while disabled state is active. |
+| `loading` | `boolean` | `false` | Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active. |
+| `icon` | `ButtonTileIcon` | `"none"` | The icon shown. By choosing 'none', no icon is displayed. 291 allowed values. |
+| `iconSource` | `string` | - | A URL path to a custom icon. |
+| `aria` | `{ aria-label: string, aria-description: string, aria-expanded: string, aria-pressed: string, aria-haspopup: string }` | - | Sets ARIA attributes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `header` | Renders a header section above the content area. |
+| (default) | Default slot for the img or picture tag. |
+| `footer` | Renders a footer section below the description. |

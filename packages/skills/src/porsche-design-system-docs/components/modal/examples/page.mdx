@@ -1,0 +1,113 @@
+# Modal 
+
+## Scrollable modal with sticky footer
+
+If the modal's content does not fit within the available space, the content becomes scrollable and the footer area
+remains sticky.
+
+### Interactive Story: `modalStoryScrollable`
+
+```html
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Modal
+</p-button>
+
+<p-modal aria="{'aria-label': 'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <p-text>
+    Some Content Begin
+  </p-text>
+  <div class="w-[10px] h-[120vh] bg-[deeppink]"></div>
+  <p-text>
+    Some Content End
+  </p-text>
+  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+    <p-button type="button">
+      Proceed
+    </p-button>
+    <p-button type="button" variant="secondary">
+      Cancel
+    </p-button>
+  </div>
+</p-modal>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pModal = document.querySelector("p-modal");
+  pButton.addEventListener('click', () => (pModal.open = true));
+  pModal.addEventListener('dismiss', () => (pModal.open = false));
+</script>
+```
+
+## Modal as alert dialog
+
+The `p-modal` component can be used as an alert dialog. This is a modal dialog that interrupts the user's workflow to
+draw attention to an important message and requires a response.
+
+### Interactive Story: `modalStoryAlertDialog`
+
+```html
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Modal
+</p-button>
+
+<p-modal aria="{'role': 'alertdialog'}" disable-backdrop-click="true">
+  <p-heading slot="header" size="large" tag="h2">
+    Some important Heading
+  </p-heading>
+  <p-text>
+    Some important Content
+  </p-text>
+  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+    <p-button type="button">
+      Accept
+    </p-button>
+    <p-button type="button" variant="secondary">
+      Deny
+    </p-button>
+  </div>
+</p-modal>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pModal = document.querySelector("p-modal");
+  pButton.addEventListener('click', () => (pModal.open = true));
+  pModal.addEventListener('dismiss', () => (pModal.open = false));
+</script>
+```
+
+## Custom styling
+
+The modal component has some values that can be overridden via CSS custom properties (aka CSS variables). This might be
+useful, for example, for a "Cookie Consent Dialog" to reserve space when used with `backdrop: 'shading'` so that the
+Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) remains visible in the background of the page.
+Since the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will
+act like a safe zone.
+
+In addition, it is possible to make containers or elements (e.g. `div`, `img`, etc.) stretch into the padding safe zone
+by adding the <code v-text="stretchClassName"></code> CSS class.
+
+```scss
+// the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined
+--p-modal-width: clamp(276px, 45.25vw + 131px, 1000px);
+--p-modal-spacing-top: 200px;
+--p-modal-spacing-bottom: 50px;
+```
+
+### Interactive Story: `modalStoryCustomStyling`
+
+```html
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Modal
+</p-button>
+
+<p-modal backdrop="shading" aria="{'aria-label': 'Some Label'}" class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)] [--p-modal-spacing-top:200px] [--p-modal-spacing-bottom:50px]">
+  <img src="assets/porsche-992-carrera-s.jpg" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb) max-w-(--p-modal-width) rounded-xl" />
+</p-modal>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pModal = document.querySelector("p-modal");
+  pButton.addEventListener('click', () => (pModal.open = true));
+  pModal.addEventListener('dismiss', () => (pModal.open = false));
+</script>
+```

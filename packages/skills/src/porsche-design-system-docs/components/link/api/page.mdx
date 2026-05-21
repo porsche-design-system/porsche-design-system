@@ -1,0 +1,24 @@
+# Link 
+
+### API Reference for `p-link`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `variant` | `"primary" \| "secondary"` | `"primary"` | The style variant of the link. |
+| `icon` | `LinkIcon` | `"none"` | The icon shown. By choosing 'none', no icon is displayed. 291 allowed values. |
+| `iconSource` | `string` | - | A URL path to a custom icon. |
+| `href` | `string` | - | When `href` is provided, the component renders as an `<a>` element. |
+| `target` | `"_self" \| "_blank" \| "_parent" \| "_top" \| "string"` | `"_self"` | Specifies where to open the linked document. |
+| `download` | `string` | - | Sets the native `download` attribute when the target URL points to a downloadable file. |
+| `rel` | `string` | - | Sets the `rel` attribute on the link. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `compact` | `boolean` | `false` | Displays the link in compact mode. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string, aria-description: string, aria-current: string, aria-haspopup: string }` | - | Sets ARIA attributes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the href prop. |

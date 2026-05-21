@@ -1,0 +1,129 @@
+# Flyout 
+
+## Sticky content with Custom CSS Property (Experimental)
+
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
+
+### Interactive Story: `flyoutStoryStickyTop`
+
+```html
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Flyout
+</p-button>
+
+<p-flyout aria="{'aria-label': 'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <div class="grid grid-cols-[2fr_1fr] gap-static-md items-start">
+    <div class="sticky top-[calc(var(--p-flyout-sticky-top,0)+16px)] p-static-md bg-surface">
+      Some sticky element within content relying on --p-flyout-sticky-top
+    </div>
+    <div>
+      <p-text>
+        Some Content Begin
+      </p-text>
+      <div class="w-[10px] h-[120vh] bg-[deeppink]"></div>
+      <p-text>
+        Some Content End
+      </p-text>
+    </div>
+  </div>
+</p-flyout>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pFlyout = document.querySelector("p-flyout");
+  pButton.addEventListener('click', () => (pFlyout.open = true));
+  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));
+</script>
+```
+
+## Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+### Code Example: `flyoutExampleForm`
+
+```html
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+
+<p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
+  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+  <form id="some-form">
+    <p-checkbox name="some-checkbox" label="Some Label"></p-checkbox>
+    <p-textarea name="some-textarea" label="Some Label"></p-textarea>
+  </form>
+  <p-button-group slot="footer">
+    <p-button type="submit" form="some-form">Submit</p-button>
+    <p-button type="reset" variant="secondary" form="some-form">Reset</p-button>
+  </p-button-group>
+  <p-text slot="sub-footer">
+    Last submitted data:
+    <br/><br/>
+    checkbox: <span>none</span>
+    <br/>
+    textarea: <span>none</span>
+  </p-text>
+</p-flyout>
+
+<script>
+  const flyout = document.querySelector('p-flyout');
+  flyout.addEventListener('dismiss', () => (flyout.open = false));
+  document.querySelector('p-button').addEventListener('click', () => (flyout.open = true));
+
+  const debugElement = document.querySelectorAll('span');
+  const checkboxValue = debugElement[0];
+  const textareaValue = debugElement[1];
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    checkboxValue.innerHTML = formData.get('some-checkbox')?.toString() || 'none';
+    textareaValue.innerHTML = formData.get('some-textarea')?.toString() || 'none';
+  });
+</script>
+```
+
+## Custom Styling
+
+The Flyout exposes read-only CSS Variables (prefixed with `--ref-`). Additionally, some predefined CSS variables can be
+overwritten. This can be useful for positioning a media element to the edge of the Flyout, or for fully controlling the
+Flyout's width.
+
+### Interactive Story: `flyoutStoryCustomStyling`
+
+```html
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Flyout
+</p-button>
+
+<p-flyout aria="{'aria-label': 'Some Heading'}" footer-behavior="fixed" class="[--p-flyout-width:90vw]">
+  <div class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[300px]">
+    <img class="w-full h-full object-cover" src="assets/lights.jpg" alt="Some image description" />
+  </div>
+  <p-display class="mt-fluid-md" size="small" tag="h2">
+    Some heading
+  </p-display>
+  <p-text class="mt-fluid-sm">
+    Some paragraph.
+  </p-text>
+  <div slot="footer" class="grid grid-cols-[auto_1fr_auto] gap-static-sm justify-items-center">
+    <p-button-pure icon="arrow-left" type="button" hide-label="true">
+      Prev
+    </p-button-pure>
+    <p-text>
+      1/4
+    </p-text>
+    <p-button-pure icon="arrow-right" type="button" hide-label="true">
+      Next
+    </p-button-pure>
+  </div>
+</p-flyout>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pFlyout = document.querySelector("p-flyout");
+  pButton.addEventListener('click', () => (pFlyout.open = true));
+  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));
+</script>
+```

@@ -1,0 +1,36 @@
+# Tabs Bar 
+
+## Links
+
+### Interactive Story: `tabsBarStoryLinks`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-tabs-bar>
+        <a href="https://porsche.com" target="_blank">
+          Tab One
+        </a>
+        <a href="https://porsche.com" target="_blank">
+          Tab Two
+        </a>
+        <a href="https://porsche.com" target="_blank">
+          Tab Three
+        </a>
+      </p-tabs-bar>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Gradient color
+
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.

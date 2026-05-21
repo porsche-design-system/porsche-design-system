@@ -1,0 +1,105 @@
+# Grid
+
+The Porsche Design System Tailwind theme includes the custom `@utility` CSS classes `.grid-template`,
+`.col-{narrow|basic|extended|wide|full}` and `.col-span-{one-half|one-third|two-thirds}`, which together form a generic
+layout system called the "Porsche Grid". This system ensures consistent content placement and alignment across multiple
+Porsche applications.
+
+The Porsche Grid is based on native [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid), changing its
+available columns on mobile (6 content columns + 2 safe zone columns) and desktop view >= 760px viewport width
+(8-narrow/12-basic/14-extended/16-wide content columns + 2 safe zone columns). It has a size range between 320px and
+2560px, using fluid sized columns and gaps.
+
+The Porsche Grid must be applied once at the top level, **span the full viewport width**, and cannot be nested.
+
+## Area
+
+`.grid-template` defines a new instance of the Porsche Grid. Although content placement is flexible across any CSS grid
+column, predefined areas `full`, `wide`, `extended`, `basic` and `narrow` are provided for consistency.
+
+### Interactive Story: `gridStoryArea`
+
+```html
+<div class="grid-template prose-text-sm text-center _pds-grid-visualization">
+  <div class="col-full p-fluid-sm bg-[rgba(0,0,255,.25)]">
+    .col-full
+  </div>
+  <div class="col-wide p-fluid-sm bg-[rgba(0,255,255,.25)]">
+    .col-wide
+  </div>
+  <div class="col-extended p-fluid-sm bg-[rgba(0,255,0,.25)]">
+    .col-extended
+  </div>
+  <div class="col-basic p-fluid-sm bg-[rgba(255,0,255,.25)]">
+    .col-basic
+  </div>
+  <div class="col-narrow p-fluid-sm bg-[rgba(255,255,0,.25)]">
+    .col-narrow
+  </div>
+</div>
+```
+
+## Division
+
+Predefined areas can inherit the Porsche Grid using CSS subgrid (`.grid`, `.grid-cols-subgrid`), enabling layout
+divisions such as `one-half`, `one-third` (`basic` area only) and `two-thirds` (`basic` area only).
+
+### Interactive Story: `gridStoryDivision`
+
+```html
+<div class="grid-template prose-text-sm text-center _pds-grid-visualization">
+  <div class="col-wide grid grid-cols-subgrid gap-y-fluid-md">
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]">
+      .col-span-one-half
+    </div>
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]">
+      .col-span-one-half
+    </div>
+  </div>
+  <div class="col-extended grid grid-cols-subgrid gap-y-fluid-md">
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]">
+      .col-span-one-half
+    </div>
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]">
+      .col-span-one-half
+    </div>
+  </div>
+  <div class="col-basic grid grid-cols-subgrid gap-y-fluid-md">
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-half
+    </div>
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-half
+    </div>
+    <div class="col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-third
+    </div>
+    <div class="col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-third
+    </div>
+    <div class="col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-third
+    </div>
+    <div class="col-span-two-thirds p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-two-thirds
+    </div>
+    <div class="col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-third
+    </div>
+    <div class="col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-one-third
+    </div>
+    <div class="col-span-two-thirds p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]">
+      .col-span-two-thirds
+    </div>
+  </div>
+  <div class="col-narrow grid grid-cols-subgrid gap-y-fluid-md">
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]">
+      .col-span-one-half
+    </div>
+    <div class="col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]">
+      .col-span-one-half
+    </div>
+  </div>
+</div>
+```

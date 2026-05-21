@@ -1,0 +1,53 @@
+# Typography
+
+## SCSS Mixins
+
+### Heading
+
+| SCSS Mixin                                             | Description                                                                                                           |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| @mixin prose-heading-5xl | Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| @mixin prose-heading-4xl | Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| @mixin prose-heading-3xl | Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| @mixin prose-heading-2xl | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| @mixin prose-heading-xl  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
+| @mixin prose-heading-lg  | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
+| @mixin prose-heading-md  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
+| @mixin prose-heading-sm  | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
+| @mixin prose-heading-xs  | Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
+| @mixin prose-heading-2xs | Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+
+### Text
+
+| SCSS Mixin                                          | Description                                                                                               |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| @mixin prose-text-5xl | Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| @mixin prose-text-4xl | Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| @mixin prose-text-3xl | Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| @mixin prose-text-2xl | Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| @mixin prose-text-xl  | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
+| @mixin prose-text-lg  | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
+| @mixin prose-text-md  | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.   |
+| @mixin prose-text-sm  | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
+| @mixin prose-text-xs  | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
+| @mixin prose-text-2xs | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+
+## SCSS Variables
+
+| SCSS Variable                                       | Description                                                                               | Value                                             |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| $font-porsche-next    | Holds the **Porsche Next** font family along with fallback fonts.                         | 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif    |
+| $font-weight-normal   | Holds the **normal** font weight optimized for the Porsche Next typeface.                 | 400   |
+| $font-weight-semibold | Holds the **semibold** font weight optimized for the Porsche Next typeface.               | 600 |
+| $font-weight-bold     | Holds the **bold** font weight optimized for the Porsche Next typeface.                   | 700     |
+| $leading-normal       | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. | calc(6px + 2.125ex)      |
+| $typescale-2xs        | Holds the **2x-small** font size optimized for the Porsche Next typeface.                 | .75rem       |
+| $typescale-xs         | Holds the **x-small** font size optimized for the Porsche Next typeface.                  | .875rem        |
+| $typescale-sm         | Holds the **small** font size optimized for the Porsche Next typeface.                    | 1rem        |
+| $typescale-md         | Holds the **medium** font size optimized for the Porsche Next typeface.                   | clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)        |
+| $typescale-lg         | Holds the **large** font size optimized for the Porsche Next typeface.                    | clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)        |
+| $typescale-xl         | Holds the **x-large** font size optimized for the Porsche Next typeface.                  | clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)        |
+| $typescale-2xl        | Holds the **2x-large** font size optimized for the Porsche Next typeface.                 | clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)       |
+| $typescale-3xl        | Holds the **3x-large** font size optimized for the Porsche Next typeface.                 | clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)       |
+| $typescale-4xl        | Holds the **4x-large** font size optimized for the Porsche Next typeface.                 | clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)       |
+| $typescale-5xl        | Holds the **5x-large** font size optimized for the Porsche Next typeface.                 | clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)       |

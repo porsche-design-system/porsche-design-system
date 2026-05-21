@@ -1,0 +1,164 @@
+# CSS Variables
+
+## Color
+
+### Background
+
+| Color                                                                                               | CSS variable                                         | Description                                                                                      | Value                                           |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+|        | --p-color-canvas       | Applies the **canvas** color, typically used for surfaces.                                       | light-dark(#fff,hsl(225 66.7% 1.2%))      |
+|       | --p-color-surface      | Applies the **surface** color, typically used for surfaces.                                      | light-dark(hsl(240 10% 95%),hsl(240 2% 10%))     |
+|       | --p-color-frosted      | Applies the **frosted** color, typically used as a background in combination with a blur effect. | light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))     |
+|  | --p-color-frosted-soft | Applies the **frosted** color, typically used as a background `:hover`.                          | light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)) |
+|      | --p-color-backdrop     | Applies the **backdrop** color, typically used for backdrops.                                    | light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5))    |
+
+### Foreground
+
+| Color                                                                                                  | CSS variable                                            | Description                                                                                                        | Value                                              |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+|          | --p-color-primary         | Applies the **primary** color, typically used for text.                                                            | light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))        |
+|  | --p-color-contrast-higher | Applies the **contrast-higher** color, typically used for text.                                                    | light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78)) |
+|    | --p-color-contrast-high   | Applies the **contrast-high** color, typically used for text.                                                      | light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67))   |
+|  | --p-color-contrast-medium | Applies the **contrast-medium** color, typically used for text.                                                    | light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56)) |
+|     | --p-color-contrast-low    | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))    |
+|   | --p-color-contrast-lower  | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))  |
+
+### Semantic
+
+| Color                                                                                                       | CSS variable                                                 | Description                                                                                            | Value                                                  |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
+|                  | --p-color-info                 | Applies the **info** color, typically used for text.                                                   | light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))               |
+|           | --p-color-info-medium          | Applies the **info** color, typically used for text or border.                                         | light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6))         |
+|              | --p-color-info-low             | Applies the **info** color, typically used for text or border.                                         | light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18))            |
+|          | --p-color-info-frosted         | Applies the **info-frosted** color, typically used as background in combination with a blur effect.    | light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66))        |
+|     | --p-color-info-frosted-soft    | Applies the **info-frosted-soft** color, typically used as background `:hover`.                        | light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66))    |
+|               | --p-color-success              | Applies the **success** color, typically used for text.                                                | light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%))            |
+|        | --p-color-success-medium       | Applies the **success** color, typically used for text or border.                                      | light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6))      |
+|           | --p-color-success-low          | Applies the **success** color, typically used for text or border.                                      | light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18))         |
+|       | --p-color-success-frosted      | Applies the **success-frosted** color, typically used as background in combination with a blur effect. | light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66))     |
+|  | --p-color-success-frosted-soft | Applies the **success-frosted-soft** color, typically used as background `:hover`.                     | light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66)) |
+|               | --p-color-warning              | Applies the **warning** color, typically used for text.                                                | light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%))            |
+|        | --p-color-warning-medium       | Applies the **warning** color, typically used for text or border.                                      | light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6))      |
+|           | --p-color-warning-low          | Applies the **warning** color, typically used for text or border.                                      | light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18))         |
+|       | --p-color-warning-frosted      | Applies the **warning-frosted** color, typically used as background in combination with a blur effect. | light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66))     |
+|  | --p-color-warning-frosted-soft | Applies the **warning-frosted-soft** color, typically used as background `:hover`.                     | light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66)) |
+|                 | --p-color-error                | Applies the **error** color, typically used for text.                                                  | light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%))              |
+|          | --p-color-error-medium         | Applies the **error** color, typically used for text or border.                                        | light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6))        |
+|             | --p-color-error-low            | Applies the **error** color, typically used for text or border.                                        | light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))           |
+|         | --p-color-error-frosted        | Applies the **error-frosted** color, typically used as background in combination with a blur effect .  | light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66))       |
+|    | --p-color-error-frosted-soft   | Applies the **error-frosted-soft** color, typically used as background `:hover`.                       | light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66))   |
+
+### A11y
+
+| Color                                                                                        | CSS variable                                  | Description                                                                             | Value                                     |
+| -------------------------------------------------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------- |
+|  | --p-color-focus | Applies the **focus** color, typically used as the outline for `:focus-visible` states. | light-dark(#1A44EA,#1A44EA) |
+
+## Typography
+
+### Font Family
+
+| CSS variable                                        | Description                                                         | Value                                          |
+| --------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------- |
+| --p-font-porsche-next | Applies the **Porsche Next** font family along with fallback fonts. | 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif |
+
+### Font Weight
+
+| CSS variable                                           | Description                                                                    | Value                                             |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------- |
+| --p-font-weight-normal   | Applies the **regular** font weight optimized for the Porsche Next typeface.   | 400   |
+| --p-font-weight-semibold | Applies the **semi-bold** font weight optimized for the Porsche Next typeface. | 600 |
+| --p-font-weight-bold     | Applies the **bold** font weight optimized for the Porsche Next typeface.      | 700     |
+
+### Line Height
+
+| CSS variable                                     | Description                                                                                 | Value                                        |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| --p-leading-normal | Applies a dynamic default line height specifically optimized for the Porsche Next typeface. | calc(6px + 2.125ex) |
+
+### Typescale
+
+| CSS variable                                    | Description                                                       | Value                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------- |
+| --p-typescale-2xs | Applies the **2x-small** font size for the Porsche Next typeface. | .75rem |
+| --p-typescale-xs  | Applies the **x-small** font size for the Porsche Next typeface.  | .875rem  |
+| --p-typescale-sm  | Applies the **small** font size for the Porsche Next typeface.    | 1rem  |
+| --p-typescale-md  | Applies the **medium** font size for the Porsche Next typeface.   | clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)  |
+| --p-typescale-lg  | Applies the **large** font size for the Porsche Next typeface.    | clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)  |
+| --p-typescale-xl  | Applies the **x-large** font size for the Porsche Next typeface.  | clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)  |
+| --p-typescale-2xl | Applies the **2x-large** font size for the Porsche Next typeface. | clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) |
+| --p-typescale-3xl | Applies the **3x-large** font size for the Porsche Next typeface. | clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem) |
+| --p-typescale-4xl | Applies the **4x-large** font size for the Porsche Next typeface. | clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem) |
+| --p-typescale-5xl | Applies the **5x-large** font size for the Porsche Next typeface. | clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) |
+
+## Spacing
+
+### Fluid
+
+| CSS variable                                        | Description                             | Value                                          |
+| --------------------------------------------------- | --------------------------------------- | ---------------------------------------------- |
+| --p-spacing-fluid-xs  | Applies the **x-small** fluid spacing.  | clamp(4px, 0.25vw + 3px, 8px)  |
+| --p-spacing-fluid-sm  | Applies the **small** fluid spacing.    | clamp(8px, 0.5vw + 6px, 16px)  |
+| --p-spacing-fluid-md  | Applies the **medium** fluid spacing.   | clamp(16px, 1.25vw + 12px, 36px)  |
+| --p-spacing-fluid-lg  | Applies the **large** fluid spacing.    | clamp(32px, 2.75vw + 23px, 76px)  |
+| --p-spacing-fluid-xl  | Applies the **x-large** fluid spacing.  | clamp(48px, 3vw + 38px, 96px)  |
+| --p-spacing-fluid-2xl | Applies the **2x-large** fluid spacing. | clamp(80px, 7.5vw + 56px, 200px) |
+
+### Static
+
+| CSS variable                                         | Description                              | Value                                           |
+| ---------------------------------------------------- | ---------------------------------------- | ----------------------------------------------- |
+| --p-spacing-static-2xs | Applies the **2x-small** static spacing. | 1px |
+| --p-spacing-static-xs  | Applies the **x-small** static spacing.  | 4px  |
+| --p-spacing-static-sm  | Applies the **small** static spacing.    | 8px  |
+| --p-spacing-static-md  | Applies the **medium** static spacing.   | 16px  |
+| --p-spacing-static-lg  | Applies the **large** static spacing.    | 32px  |
+| --p-spacing-static-xl  | Applies the **x-large** static spacing.  | 48px  |
+| --p-spacing-static-2xl | Applies the **2x-large** static spacing. | 80px |
+
+## Border Radius
+
+| CSS variable                                  | Description                                  | Value                                     |
+| --------------------------------------------- | -------------------------------------------- | ----------------------------------------- |
+| --p-radius-xs   | Applies a **x-small** `border-radius`.       | 2px   |
+| --p-radius-sm   | Applies a **small** `border-radius`.         | 4px   |
+| --p-radius-md   | Applies a **medium** `border-radius`.        | 6px   |
+| --p-radius-lg   | Applies a **large** `border-radius`.         | 8px   |
+| --p-radius-xl   | Applies a **x-large** `border-radius`.       | 12px   |
+| --p-radius-2xl  | Applies a **2x-large** `border-radius`.      | 16px  |
+| --p-radius-3xl  | Applies a **3x-large** `border-radius`.      | 24px  |
+| --p-radius-4xl  | Applies a **4x-large** `border-radius`.      | 32px  |
+| --p-radius-full | Applies a **fully** rounded `border-radius`. | calc(infinity * 1px) |
+
+## Blur
+
+| CSS variable                                   | Description                                                                                                                    | Value                                      |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| --p-blur-frosted | Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color. | blur(32px) |
+
+## Shadow
+
+| CSS variable                                | Description                        | Value                                   |
+| ------------------------------------------- | ---------------------------------- | --------------------------------------- |
+| --p-shadow-sm | Applies a **small** `box-shadow`.  | 0px 3px 8px rgba(0,0,0,.16) |
+| --p-shadow-md | Applies a **medium** `box-shadow`. | 0px 4px 16px rgba(0,0,0,.16) |
+| --p-shadow-lg | Applies a **large** `box-shadow`.  | 0px 8px 40px rgba(0,0,0,.16) |
+
+## Motion
+
+### Duration
+
+| CSS variable                                  | Description                                    | Value                                     |
+| --------------------------------------------- | ---------------------------------------------- | ----------------------------------------- |
+| --p-duration-sm | Applies a **short** `transition-duration`.     | .25s |
+| --p-duration-md | Applies a **moderate** `transition-duration`.  | .4s |
+| --p-duration-lg | Applies a **long** `transition-duration`.      | .6s |
+| --p-duration-xl | Applies a **very long** `transition-duration`. | 1.2s |
+
+### Easing
+
+| CSS variable                                  | Description                                         | Value                                    |
+| --------------------------------------------- | --------------------------------------------------- | ---------------------------------------- |
+| --p-ease-in-out | Applies an **in-out** `transition-timing-function`. | cubic-bezier(.25,.1,.25,1) |
+| --p-ease-in     | Applies an **in** `transition-timing-function`.     | cubic-bezier(0,0,.2,1)    |
+| --p-ease-out    | Applies an **out** `transition-timing-function`.    | cubic-bezier(.4,0,.5,1)   |

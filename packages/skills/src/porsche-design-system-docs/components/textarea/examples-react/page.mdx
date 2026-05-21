@@ -1,0 +1,127 @@
+# Textarea 
+
+## Form
+
+The `p-textarea` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your needs.
+
+In the **controlled** approach, the textarea state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the textarea behaves similarly to a native `<textarea>`, automatically managing its
+own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `textareaExampleForm`
+
+```tsx
+import React from 'react';
+import {
+  PButton,
+  PText,
+  PTextarea,
+  type PTextareaProps,
+  type TextareaInputEventDetail,
+} from '@porsche-design-system/components-react';
+import { FormEvent, useState } from 'react';
+
+export const Example = () => {
+  const [form, setForm] = useState({ myTextarea: '' });
+  const [lastSubmittedData, setLastSubmittedData] = useState<any>();
+
+  const onInput = (e: CustomEvent<TextareaInputEventDetail>) => {
+    const { name, value } = e.target as HTMLElement & PTextareaProps;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLastSubmittedData(JSON.stringify(form));
+  };
+
+  const onReset = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setForm({ myTextarea: '' });
+  };
+
+  return (
+    <>
+      <form onSubmit={onSubmit} onReset={onReset} className="flex flex-col gap-fluid-sm">
+        <PTextarea name="myTextarea" label="Some Label" value={form.myTextarea} onInput={onInput} />
+        <div className="flex gap-fluid-sm">
+          <PButton type="submit">Submit</PButton>
+          <PButton type="reset">Reset</PButton>
+        </div>
+        <PText>Last submitted data: {lastSubmittedData}</PText>
+      </form>
+    </>
+  );
+};
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `textareaStorySlots`
+
+```tsx
+import React from 'react';
+import { PPopover, PTextarea } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTextarea name="some-name" state="error">
+        <span slot="label" id="some-label-id">
+          Some label with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+           and a "label-after" slot.
+        </span>
+        <PPopover slot="label-after">
+          Some Popover content with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </PPopover>
+        <span slot="description" id="some-description-id">
+          Some description with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </span>
+        <span slot="message" id="some-message-id">
+          Some error message with a 
+          <a href="https://designsystem.porsche.com" className="underline">
+            link
+          </a>
+          .
+        </span>
+      </PTextarea>
+    </>
+  )
+}
+```

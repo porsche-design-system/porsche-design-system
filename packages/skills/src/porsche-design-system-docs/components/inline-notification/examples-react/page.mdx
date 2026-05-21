@@ -1,0 +1,72 @@
+# Inline Notification 
+
+## Event Handling
+
+The custom event that is emitted on close button click is called `dismiss`.
+It can be used to remove the component.
+
+### Code Example: `inlineNotificationExampleEvents`
+
+```tsx
+import React from 'react';
+import { PInlineNotification } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
+
+export const Example = () => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const onShow = useCallback(() => setIsActive(true), []);
+  const onDismiss = useCallback(() => setIsActive(false), []);
+
+  return (
+    <>
+      <button type="button" onClick={onShow}>
+        Show Inline Notification
+      </button>
+      {isActive && (
+        <PInlineNotification
+          heading="Some heading"
+          headingTag="h4"
+          description="Some description."
+          onDismiss={onDismiss}
+        />
+      )}
+    </>
+  );
+};
+```
+
+### Action Button
+
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.
+The custom event that is emitted on action button click is called `action`.
+
+### Code Example: `inlineNotificationExampleActionButton`
+
+```tsx
+import React from 'react';
+import { PInlineNotification } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
+
+export const Example = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const onAction = useCallback(() => setIsLoading((prevValue) => !prevValue), []);
+
+  return (
+    <>
+      <PInlineNotification
+        heading="Some heading"
+        headingTag="h4"
+        description="Some description."
+        actionLabel="Retry"
+        actionIcon="reset"
+        actionLoading={isLoading}
+        onAction={onAction}
+      />
+      <button type="button" onClick={onAction}>
+        Reset `actionLoading`
+      </button>
+    </>
+  );
+};
+```

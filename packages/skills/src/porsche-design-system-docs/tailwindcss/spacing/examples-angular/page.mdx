@@ -1,0 +1,104 @@
+# Spacing
+
+The Porsche Design System Tailwind theme customizes the Tailwind variable `--spacing-*`, which affect multiple Tailwind
+classes including `.m-fluid-*`, `.m-static-*`, `.p-fluid-*`, `.p-static-*`, `.w-fluid-*`, `.w-static-*`, `.h-fluid-*`,
+`.h-static-*` and others.
+
+## Fluid
+
+Spacing scales dynamically based on the viewport width, within defined minimum and maximum limits. Mainly intended for
+**vertical** spacing between elements.
+
+### Interactive Story: `spacingFluidStory`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <ul class="grid gap-fluid-md prose-text-sm">
+        <li class="flex items-center gap-static-md">
+          <div class="w-fluid-xs h-fluid-xs bg-[blue]/50"></div>
+          .w-fluid-xs .h-fluid-xs
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-fluid-sm h-fluid-sm bg-[blue]/50"></div>
+          .w-fluid-sm .h-fluid-sm
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-fluid-md h-fluid-md bg-[blue]/50"></div>
+          .w-fluid-md .h-fluid-md
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-fluid-lg h-fluid-lg bg-[blue]/50"></div>
+          .w-fluid-lg .h-fluid-lg
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-fluid-xl h-fluid-xl bg-[blue]/50"></div>
+          .w-fluid-xl .h-fluid-xl
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-fluid-2xl h-fluid-2xl bg-[blue]/50"></div>
+          .w-fluid-2xl .h-fluid-2xl
+        </li>
+      </ul>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Static
+
+Spacing uses static, pixel-based values. Primarily used for **horizontal** spacing between elements.
+
+### Interactive Story: `spacingStaticStory`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <ul class="grid gap-fluid-md prose-text-sm">
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-2xs h-static-2xs bg-[deeppink]/50"></div>
+          .w-static-2xs .h-static-2xs
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-xs h-static-xs bg-[deeppink]/50"></div>
+          .w-static-xs .h-static-xs
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-sm h-static-sm bg-[deeppink]/50"></div>
+          .w-static-sm .h-static-sm
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-md h-static-md bg-[deeppink]/50"></div>
+          .w-static-md .h-static-md
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-lg h-static-lg bg-[deeppink]/50"></div>
+          .w-static-lg .h-static-lg
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-xl h-static-xl bg-[deeppink]/50"></div>
+          .w-static-xl .h-static-xl
+        </li>
+        <li class="flex items-center gap-static-md">
+          <div class="w-static-2xl h-static-2xl bg-[deeppink]/50"></div>
+          .w-static-2xl .h-static-2xl
+        </li>
+      </ul>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

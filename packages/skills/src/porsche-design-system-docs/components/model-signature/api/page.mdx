@@ -1,0 +1,20 @@
+# Model Signature 
+
+### API Reference for `p-model-signature`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `model` | `"718" \| "911" \| "boxster" \| "cayenne" \| "cayman" \| "gt3-rs" \| "gt3" \| "gts" \| "macan" \| "panamera" \| "taycan" \| "turbo-s" \| "turbo"` | `"911"` | Adapts the model of the component. |
+| `safeZone` | `boolean` | `true` | When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone. |
+| `fetchPriority` | `"low" \| "high" \| "auto"` | `"auto"` | Sets the browser's fetch priority hint for the model signature asset. |
+| `lazy` | `boolean` | `false` | Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably). |
+| `size` | `"small" \| "inherit"` | `"small"` | Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both. |
+| `color` | `"primary" \| "contrast-low" \| "contrast-medium" \| "contrast-high" \| "inherit"` | `"primary"` | Adapts the color of the component. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for an img or video tag when using the model-signature as a mask. |

@@ -1,0 +1,33 @@
+# Banner 
+
+## Customization
+
+Rich content for `heading` and `description` can be provided via named slots. Additionally, some values which can be
+overwritten by CSS Custom Properties (aka CSS Variables):
+
+### Interactive Story: `bannerStoryCustomStyling`
+
+```html
+<p-button type="button">
+  Open Banner
+</p-button>
+
+<p-banner class="[--p-banner-top:8px] [--p-banner-bottom:8px] [--p-banner-inset-x:8px] [--p-banner-max-w:70ch]">
+  <p-heading slot="heading" size="sm" weight="semibold">
+    Some heading
+  </p-heading>
+  <p-text slot="description">
+    Some description. You can also add inline 
+    <p-link-pure href="https://porsche.com" icon="none" underline="true">
+      links
+    </p-link-pure>
+     to route to another page.
+  </p-text>
+</p-banner>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pBanner = document.querySelector("p-banner");
+  pButton.addEventListener('click', () => (pBanner.open = true));
+  pBanner.addEventListener('dismiss', () => (pBanner.open = false));
+</script>
+```

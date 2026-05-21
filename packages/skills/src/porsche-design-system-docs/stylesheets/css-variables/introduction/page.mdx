@@ -1,0 +1,29 @@
+# CSS Variables
+
+The Porsche Design System provides **mandatory** global **CSS variables** used by its components. Color variables
+(prefixed with `--p-color-*`) automatically adapt to the active color scheme using the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function. Additional variables for spacing, typography, and other design tokens are also available.
+
+If you prefer not to use one of the styling solutions offered by the Porsche Design System —
+[Tailwind CSS](/tailwindcss/introduction), [SCSS](/scss/introduction), [Emotion](/emotion/introduction), or
+[Vanilla Extract](/vanilla-extract/introduction) — you can also use the global CSS variables directly for a pure CSS
+approach, for example to align components in your page layout or to build custom components when needed.
+
+## Setup
+
+When you import the main package CSS file, the CSS variables are already included:
+
+```css
+/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
+@import '@porsche-design-system/components-{js|angular|react|vue}';
+```
+
+If you only need the CSS variables without any other styles, you can import them separately:
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/variables.css';
+```
+
+Below is the content of the stylesheet file for reference only. **Don't copy this into your project** — use the import
+statement above instead:

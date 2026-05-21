@@ -1,0 +1,26 @@
+# Popover 
+
+## Slotted button
+
+The `p-popover` component can also be used with a **slotted button** via the `button` slot, allowing you to provide a
+custom button element.
+
+### Interactive Story: `popoverSlottedButtonStory`
+
+```tsx
+import React from 'react';
+import { PButtonPure, PPopover } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PPopover>
+        <PButtonPure hideLabel={true} icon="car" slot="button">
+          More information
+        </PButtonPure>
+        Some additional content.
+      </PPopover>
+    </>
+  )
+}
+```

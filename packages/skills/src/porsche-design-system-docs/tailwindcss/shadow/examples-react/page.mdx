@@ -1,0 +1,28 @@
+# Shadow
+
+The Porsche Design System Tailwind theme customizes the Tailwind variable `--shadow-*`, which affect multiple Tailwind
+classes including `.shadow-*` and others.
+
+### Interactive Story: `shadowStory`
+
+```tsx
+import React from 'react';
+
+export const Example = () => {
+  return (
+    <>
+      <div className="grid gap-fluid-md prose-text-sm">
+        <div className="shadow-sm rounded-lg p-fluid-sm">
+          .shadow-sm
+        </div>
+        <div className="shadow-md rounded-lg p-fluid-sm">
+          .shadow-md
+        </div>
+        <div className="shadow-lg rounded-lg p-fluid-sm">
+          .shadow-lg
+        </div>
+      </div>
+    </>
+  )
+}
+```

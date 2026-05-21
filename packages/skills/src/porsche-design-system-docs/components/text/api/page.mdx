@@ -1,0 +1,21 @@
+# Text 
+
+### API Reference for `p-text`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `tag` | `"p" \| "span" \| "div" \| "address" \| "blockquote" \| "figcaption" \| "cite" \| "time" \| "legend"` | `"p"` | Sets the HTML tag of the rendered element to ensure correct semantic meaning (e.g. 'p' for paragraphs, 'blockquote' for quotes, 'time' for dates). |
+| `size` | `"2xs" \| "xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "4xl" \| "5xl" \| "inherit" \| "xx-small" \| "x-small" \| "small" \| "medium" \| "large" \| "x-large"` | `"sm"` | Size of the text. Also defines the size for specific breakpoints, like {base: "sm", l: "md"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size. *(breakpoint customizable)* |
+| `weight` | `"normal" \| "semibold" \| "bold" \| "regular" \| "semi-bold"` | `"normal"` | The font weight of the text. Use 'normal' for regular body text, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. |
+| `align` | `"start" \| "center" \| "end" \| "inherit"` | `"start"` | Text alignment of the text. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment. |
+| `color` | `"primary" \| "contrast-higher" \| "contrast-high" \| "contrast-medium" \| "success" \| "warning" \| "error" \| "info" \| "inherit"` | `"primary"` | Text color of the text. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, 'success' / 'warning' / 'error' / 'info' for status messages, or 'inherit' to adopt the parent's color. |
+| `hyphens` | `"none" \| "manual" \| "auto" \| "inherit"` | `"inherit"` | Controls the hyphenation behavior of the text. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting. |
+| `ellipsis` | `boolean` | `false` | Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the text to render. |

@@ -1,0 +1,34 @@
+# Link Tile Product 🧪 Experimental
+
+### API Reference for `p-link-tile-product`
+
+> 🧪 **Experimental**: This component is experimental and may change.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `heading` | `string` | - | Product heading. **(required)** |
+| `price` | `string` | - | Product retail price (with or without discount). **(required)** |
+| `priceOriginal` | `string` | - | Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. |
+| `description` | `string` | - | Additional product description. |
+| `likeButton` | `boolean` | `true` | Shows a like button. |
+| `liked` | `boolean` | `false` | Indicates whether the product is liked. |
+| `href` | `string` | - | href of the `<a>`. |
+| `aspectRatio` | `"3/4" \| "9/16"` | `"3/4"` | Aspect ratio of the link-tile-product. *(breakpoint customizable)* |
+| `target` | `"_self" \| "_blank" \| "_parent" \| "_top" \| "string"` | `"_self"` | Specifies where to open the linked document. |
+| `rel` | `string` | - | Sets the `rel` attribute on the link. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `like` | `{ liked: boolean }` | Emitted when the like button is clicked. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `anchor` | Slotted anchor link which can be used instead of the `href` prop. Ensure the named slot is directly on the anchor element, without nesting. |
+| `header` | Shows special features about the product like novelty or exclusivity. Although you can pass in anything, it is recommended to use the `p-tag` component. |
+| (default) | Default slot for the img or picture tag. |

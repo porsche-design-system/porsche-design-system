@@ -1,0 +1,90 @@
+# Display ⚠️ Deprecated
+
+## Size
+
+There are predefined fluid text sizes for the component which should cover most use cases. If a specific text size is
+needed, the size can be set to `inherit` to specify the text size from outside.
+
+### Interactive Story: `displayStorySizeInherit`
+
+```tsx
+import React from 'react';
+import { PDisplay } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PDisplay tag="h3" size="inherit" className="text-[5rem]">
+        The quick brown fox jumps over the lazy dog
+      </PDisplay>
+    </>
+  )
+}
+```
+
+### Responsive
+
+### Interactive Story: `displayStorySizeResponsive`
+
+```tsx
+import React from 'react';
+import { PDisplay } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PDisplay tag="h3" size={{'base': 'medium', 'l': 'large'}}>
+        The quick brown fox jumps over the lazy dog
+      </PDisplay>
+    </>
+  )
+}
+```
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+### Interactive Story: `displayStorySemantics`
+
+```tsx
+import React from 'react';
+import { PDisplay } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PDisplay tag="h3">
+        The quick brown fox jumps over the lazy dog
+      </PDisplay>
+
+      <PDisplay>
+        <h3>
+          The quick brown fox jumps over the lazy dog
+        </h3>
+      </PDisplay>
+    </>
+  )
+}
+```
+
+## Color
+
+Predefined theme-based colors are available, but `inherit` can also be used to define a custom color.
+
+### Interactive Story: `displayStoryColorInherit`
+
+```tsx
+import React from 'react';
+import { PDisplay } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PDisplay tag="h3" color="inherit" className="text-[deeppink]">
+        The quick brown fox jumps over the lazy dog
+      </PDisplay>
+    </>
+  )
+}
+```

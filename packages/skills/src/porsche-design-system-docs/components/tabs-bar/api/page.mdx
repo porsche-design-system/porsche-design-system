@@ -1,0 +1,24 @@
+# Tabs Bar 
+
+### API Reference for `p-tabs-bar`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `activeTabIndex` | `number` | - | Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected. |
+| `background` | `"canvas" \| "surface" \| "frosted" \| "none"` | `"none"` | Defines the background color. Use `frosted` only on images, videos or gradients. |
+| `size` | `"small" \| "medium"` | `"small"` | The text size. *(breakpoint customizable)* |
+| `compact` | `boolean` | - | Displays with reduced spacing and smaller padding for a more condensed layout. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ activeTabIndex: number }` | Emitted when active tab is changed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the `button` or `a` tags which will be rendered as tabs. |

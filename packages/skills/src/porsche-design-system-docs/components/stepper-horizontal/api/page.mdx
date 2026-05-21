@@ -1,0 +1,40 @@
+# Stepper Horizontal 
+
+## Stepper Horizontal
+
+### API Reference for `p-stepper-horizontal`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `"small" \| "medium"` | `"small"` | The text size. *(breakpoint customizable)* |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ activeStepIndex: number }` | Emitted when active step is changed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the `p-stepper-horizontal-item` tags. |
+
+## Stepper Horizontal Item
+
+### API Reference for `p-stepper-horizontal-item`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `state` | `null \| "current" \| "complete" \| "warning"` | - | The validation state. |
+| `disabled` | `boolean` | `false` | Disables the stepper-horizontal-item. No events will be triggered while disabled state is active. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the content. |

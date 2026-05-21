@@ -1,0 +1,21 @@
+# Heading 
+
+### API Reference for `p-heading`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `tag` | `null \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | - | Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6'). |
+| `size` | `"2xs" \| "xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "4xl" \| "5xl" \| "inherit" \| "small" \| "medium" \| "large" \| "x-large" \| "xx-large"` | `"2xl"` | Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size. *(breakpoint customizable)* |
+| `weight` | `"normal" \| "semibold" \| "bold" \| "regular" \| "semi-bold"` | `"normal"` | The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability. |
+| `align` | `"start" \| "center" \| "end" \| "inherit"` | `"start"` | Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment. |
+| `color` | `"primary" \| "contrast-higher" \| "contrast-high" \| "contrast-medium" \| "inherit"` | `"primary"` | Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color. |
+| `hyphens` | `"none" \| "manual" \| "auto" \| "inherit"` | `"none"` | Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting. |
+| `ellipsis` | `boolean` | `false` | Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot to render the heading. |

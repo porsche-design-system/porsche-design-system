@@ -1,0 +1,82 @@
+# Inline Notification 
+
+## Event Handling
+
+The custom event that is emitted on close button click is called `dismiss`.
+It can be used to remove the component.
+
+### Code Example: `inlineNotificationExampleEvents`
+
+```typescript
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <button type="button" (click)="onShow()">Show Inline Notification</button>
+    @if (isActive) {
+      <p-inline-notification
+        [heading]="'Some heading'"
+        [headingTag]="'h4'"
+        [description]="'Some description.'"
+        (dismiss)="onDismiss()"
+      ></p-inline-notification>
+    }
+    `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class ExampleComponent {
+  isActive = false;
+
+  onShow() {
+    this.isActive = true;
+  }
+  onDismiss() {
+    this.isActive = false;
+  }
+}
+```
+
+### Action Button
+
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.
+The custom event that is emitted on action button click is called `action`.
+
+### Code Example: `inlineNotificationExampleActionButton`
+
+```typescript
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-inline-notification
+      [heading]="'Some heading'"
+      [headingTag]="'h4'"
+      [description]="'Some description.'"
+      [actionLabel]="'Retry'"
+      [actionIcon]="'reset'"
+      [actionLoading]="isLoading"
+      (action)="onAction()"
+    ></p-inline-notification>
+    <button type="button" (click)="onAction()">Reset \`actionLoading\`</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class ExampleComponent {
+  isLoading = false;
+
+  onAction() {
+    this.isLoading = !this.isLoading;
+  }
+}
+```

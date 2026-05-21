@@ -1,0 +1,40 @@
+# Crest 
+
+## Link
+
+The Porsche Crest will be rendered as `<a>`-tag as soon as an `href` is provided.
+
+### Interactive Story: `crestStoryLink`
+
+```tsx
+import React from 'react';
+import { PCrest } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PCrest href="https://porsche.com" aria={{'aria-label': 'Porsche Homepage'}}></PCrest>
+    </>
+  )
+}
+```
+
+## Custom clickable/focusable area
+
+Sometimes it may be useful to enlarge the clickable/focusable area of the Porsche Crest. Therefore, custom padding can
+be set on the host element.
+
+### Interactive Story: `crestStoryCustomPadding`
+
+```tsx
+import React from 'react';
+import { PCrest } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PCrest href="https://porsche.com" className="p-static-md" aria={{'aria-label': 'Porsche Homepage'}}></PCrest>
+    </>
+  )
+}
+```

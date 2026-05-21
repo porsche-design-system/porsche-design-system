@@ -1,0 +1,48 @@
+# Accordion 
+
+## Sticky summary
+
+The summary can be made sticky by adding the experimental property `sticky` to the `p-accordion` tag. The position `top`
+value (default: `0px`) can be overwritten by using the CSS Custom Property `--p-accordion-summary-top`.
+
+### Interactive Story: `accordionStoryStickySummary`
+
+```html
+<p-accordion sticky="true" background="surface" class="[--p-accordion-summary-top:40px]">
+  <p-heading slot="summary" tag="h3" size="small" weight="semibold">
+    Some summary
+  </p-heading>
+  <p-text>
+    Some details. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+  </p-text>
+</p-accordion>
+<script>
+  const pAccordion = document.querySelector("p-accordion");
+  pAccordion.addEventListener('update', (e) => e.target.open = e.detail.open);
+</script>
+```
+
+## Interactive elements in summary
+
+The summary section supports interactive elements via the `slot="summary-before"` and `slot="summary-after"` attributes.
+
+### Interactive Story: `accordionStoryInteractiveSummary`
+
+```html
+<p-accordion background="surface">
+  <p-heading slot="summary" tag="h3" size="small" weight="semibold">
+    Some summary
+  </p-heading>
+  <p-checkbox slot="summary-before" name="some-name" label="Some label" hide-label="true"></p-checkbox>
+  <p-popover slot="summary-after">
+    Some content
+  </p-popover>
+  <p-text>
+    Some details. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+  </p-text>
+</p-accordion>
+<script>
+  const pAccordion = document.querySelector("p-accordion");
+  pAccordion.addEventListener('update', (e) => e.target.open = e.detail.open);
+</script>
+```

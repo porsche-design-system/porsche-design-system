@@ -1,0 +1,71 @@
+# Spinner 
+
+## Size
+
+There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
+the `size` property can be set to `inherit` to derive the spinner's dimensions from the font-size of a parent element
+(e.g. a `p-text`). The internal calculation is based on the `ex`-unit relative to the inherited font-size and the global
+line-height, ensuring the spinner stays visually consistent with surrounding typographic-scale-based components.
+
+### Interactive Story: `spinnerStorySize`
+
+```html
+<p-text class="text-[48px]" size="inherit">
+  <p-spinner class="me-static-sm" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+  Some text
+</p-text>
+```
+
+Alternatively, the size can be controlled via the custom CSS variable `--p-spinner-size`, which accepts any valid CSS
+length value. This approach is particularly useful when the spinner is placed independently of typographic-scale-based
+components and a precise, fixed size is required.
+
+### Interactive Story: `spinnerStorySizeCSSVar`
+
+```html
+<p-spinner class="[--p-spinner-size:48px]" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+```
+
+The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major
+breakpoint (`xs`, `s`, `m`, `l`, `xl`). This makes it easy to adapt the spinner's appearance responsively without
+additional CSS.
+
+### Interactive Story: `spinnerStoryResponsiveSize`
+
+```html
+<p-spinner size="{'base': 'sm', 'l': '2xl'}" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+```
+
+## Color
+
+The `color` property can be set to `inherit` to derive the spinner's color from the `currentcolor` of a parent element
+(e.g. a `p-text`). This ensures the spinner matches the surrounding text color automatically.
+
+### Interactive Story: `spinnerStoryColor`
+
+```html
+<p-text style="color: light-dark(mediumvioletred, deeppink)" color="inherit">
+  <p-spinner class="me-static-sm" color="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+  Some text
+</p-text>
+```
+
+Alternatively, the colors can be controlled via the custom CSS variables `--p-spinner-color` and
+`--p-spinner-track-color`, which accept any valid CSS color value. This allows full control over both the foreground and
+track color independently.
+
+### Interactive Story: `spinnerStoryColorCSSVar`
+
+```html
+<p-spinner class="[--p-spinner-color:deeppink] [--p-spinner-track-color:lightpink]" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+```
+
+## Technical notes
+
+For automated visual regression tests, the spinner animation can be disabled by setting a global CSS variable:
+
+```
+:root {
+  --p-animation-duration: 0s !important;
+}
+```

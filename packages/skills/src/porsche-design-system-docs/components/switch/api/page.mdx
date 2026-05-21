@@ -1,0 +1,27 @@
+# Switch 
+
+### API Reference for `p-switch`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `alignLabel` | `"start" \| "end"` | `"end"` | Aligns the label. *(breakpoint customizable)* |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `stretch` | `boolean` | `false` | Stretches the contents to max available space. *(breakpoint customizable)* |
+| `checked` | `boolean` | `false` | Visualize the switch with on/off status. |
+| `disabled` | `boolean` | `false` | Disables the switch. No events will be triggered while disabled state is active. |
+| `loading` | `boolean` | `false` | Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. |
+| `compact` | `boolean` | `false` | Displays the switch in compact mode. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `update` | `{ checked: boolean }` | Emitted when the checked state changes. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the label. |

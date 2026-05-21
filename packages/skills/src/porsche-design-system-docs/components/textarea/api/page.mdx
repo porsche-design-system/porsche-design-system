@@ -1,0 +1,56 @@
+# Textarea 
+
+### API Reference for `p-textarea`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `""` | Text content for a user-facing label. |
+| `description` | `string` | `""` | Supplementary text providing more context or explanation for the textarea. |
+| `compact` | `boolean` | `false` | Displays the textarea in compact mode. |
+| `name` | `string` | - | The name of the textarea, used when submitting the form data. **(required)** |
+| `value` | `"string" \| "null"` | `""` | The textarea value. |
+| `state` | `"none" \| "error" \| "success"` | `"none"` | Indicates the validation or overall status of the textarea component. |
+| `message` | `string` | `""` | Dynamic feedback text for validation or status. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `counter` | `boolean` | `false` | Show or hide the character counter. |
+| `placeholder` | `string` | `""` | A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty. |
+| `required` | `boolean` | `false` | A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted. |
+| `disabled` | `boolean` | `false` | Disables the textarea. The value will not be submitted with the form. |
+| `maxLength` | `number` | - | A non-negative integer specifying the maximum number of characters the user can enter into the textarea. |
+| `minLength` | `number` | - | A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid. |
+| `form` | `string` | - | Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form). |
+| `rows` | `number` | `7` | The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'. |
+| `autoComplete` | `string` | - | Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). |
+| `spellCheck` | `boolean` | - | Specifies whether the textarea should have its spelling and grammar checked |
+| `wrap` | `"hard" \| "soft" \| "off"` | `"soft"` | Handles wrapping behavior of elements. |
+| `resize` | `"none" \| "both" \| "horizontal" \| "vertical" \| "block" \| "inline"` | `"vertical"` | Controls whether the textarea is resizable and in which direction. |
+| `readOnly` | `boolean` | `false` | A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form. |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `change` | `Event` | Emitted when the textarea loses focus after its value was changed. |
+| `blur` | `Event` | Emitted when the textarea has lost focus. |
+| `input` | `InputEvent` | Emitted when the value has been changed as a direct result of a user action. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `label` | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+| `description` | Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `message` | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-textarea-field-sizing` | `unset` | Controls CSS `field-sizing` for textarea. |
+| `--p-textarea-min-width` | `52px` | Minimum width of the textarea. |
+| `--p-textarea-max-width` | `unset` | Maximum width of the textarea. |
+| `--p-textarea-min-height` | `unset` | Minimum height of the textarea. |
+| `--p-textarea-max-height` | `unset` | Maximum height of the textarea. |

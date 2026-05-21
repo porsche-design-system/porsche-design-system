@@ -1,0 +1,186 @@
+# Input Text 
+
+## Form
+
+The `p-input-text` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similarly to a native `<input type="text" />`, automatically manages
+its own state, and includes its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+### Code Example: `inputTextExampleForm`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
+      <p-input-text formControlName="myInputText" [label]="'Some Label'" />
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
+    </form>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  form = new FormGroup({
+    myInputText: new FormControl<string>(''),
+  });
+
+  submittedValue: any = undefined;
+
+  onSubmit(): void {
+    this.submittedValue = JSON.stringify(this.form.value);
+  }
+}
+```
+
+## Controlled Input (Preventing User Input)
+
+In some cases you may want to fully control the input value (for example to limit or validate user input). In frameworks
+like React, native `<input />` elements behave as controlled components when a `value` is provided. The browser does not
+update the displayed value directly, it only changes when the framework state changes.
+
+Our `p-input-*` components currently do not block user-driven updates of the underlying native `<input>`. Therefore,
+when using them in a controlled setup, you must manually overwrite the host’s value inside the `input` event handler to
+keep it in sync with your state.
+
+We are aware of this limitation and may improve the framework integration in the future. You can find a detailed
+explanation here: [#4202](https://github.com/porsche-design-system/porsche-design-system/issues/4202)
+
+> ⚠️ **Attention**
+>
+> We strongly discourage preventing user input. This can feel broken and lead to confusion or frustration. Instead,
+> validate on `input` and provide clear feedback. Use the `state` and `message` props to explain what is allowed and why
+> a value is invalid.
+
+### Code Example: `inputTextExampleControlled`
+
+```typescript
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  type InputTextInputEventDetail,
+  type PInputTextProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+    <p-input-text name="some-name" label="Some Label" [value]="value" (input)="onInput($event)" />
+    <p-text>{{ debugText }}</p-text>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class ExampleComponent {
+  value: PInputTextProps['value'] = '';
+  get debugText(): string {
+    return `Value: ${this.value}`;
+  }
+
+  onInput(e: CustomEvent<InputTextInputEventDetail>) {
+    const target = e.target as HTMLElement & { value: string };
+
+    if (target.value.length > 3) {
+      const newValue = target.value.slice(0, 3);
+      this.value = newValue;
+      // The web component doesn't prevent native input, so we must manually reset the input element's value.
+      // Angular won't re-render since setState with the truncated value doesn't trigger a change when it's already set.
+      target.value = newValue;
+    }
+  }
+}
+```
+
+## Slots
+
+Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
+host property at the same time, because properties take precedence. Named slots only accept
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+
+Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
+label but is not part of the label itself, such as an external link or `popover`.
+
+If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
+example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
+to avoid being mistaken for a button.
+
+If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
+`--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+> ⚠️ **Attention**
+>
+> In `disabled/loading` state, slotted focusable UI elements (e.g. `a`) will still receive keyboard focus. Add `tabindex="-1"` to those UI elements.
+> 
+> The `label-after` slot is not affected by a `disabled/loading` state at all.
+
+### Interactive Story: `inputTextStorySlots`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-input-text state="error">
+        <span slot="label">
+          Some label with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+           and a "label-after" slot.
+        </span>
+        <p-popover slot="label-after">
+          Some Popover content with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+          .
+        </p-popover>
+        <span slot="description">
+          Some description with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+          .
+        </span>
+        <p-icon slot="start" name="shopping-cart" color="contrast-medium" [aria-hidden]="true"></p-icon>
+        <p-button-pure slot="end" icon="delete" [hideLabel]="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)" [aria]="{'aria-label': 'Delete'}"></p-button-pure>
+        <span slot="message">
+          Some error message with a 
+          <a href="https://designsystem.porsche.com" class="underline">
+            link
+          </a>
+          .
+        </span>
+      </p-input-text>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

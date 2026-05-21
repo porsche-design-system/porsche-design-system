@@ -1,0 +1,41 @@
+# Canvas 🧪 Experimental
+
+### API Reference for `p-canvas`
+
+> 🧪 **Experimental**: This component is experimental and may change.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `sidebarStartOpen` | `boolean` | `false` | Open the sidebar on the start side |
+| `sidebarEndOpen` | `boolean` | `false` | Open the sidebar on the end side |
+| `background` | `"canvas" \| "surface"` | `"canvas"` | Defines the background color of the main section and auto adjust it for the sidebar |
+
+#### Events
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `sidebarStartUpdate` | `{ open: boolean }` | Emitted when the sidebar start requests to be opened or dismissed. |
+| `sidebarEndDismiss` | `void` | Emitted when the sidebar end requests to be dismissed. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| `title` | Renders the application name in the header section of the sidebar start area. |
+| `header-start` | Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). |
+| `header-end` | Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). |
+| (default) | Default slot for the main content. |
+| `footer` | Renders a **sticky** footer section underneath the main content. |
+| `sidebar-start` | Renders a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout. |
+| `sidebar-end` | Renders a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout. |
+| `sidebar-end-header` | Renders in the header section of the sidebar end area. |
+| `background` | Can be used to pass a sticky media element <img/> or <video/> placed underneath the main content. |
+
+#### CSS Custom Properties
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--p-canvas-sidebar-start-width` | `320px` | Width of the sidebar start. |
+| `--p-canvas-sidebar-end-width` | `320px` | Width of the sidebar end. |

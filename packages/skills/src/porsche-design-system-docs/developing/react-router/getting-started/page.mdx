@@ -1,0 +1,210 @@
+# React Router
+
+## Quick start
+
+To build a [React Router](https://reactrouter.com/start/framework/installation) application using the Porsche Design
+System, follow these steps. This guide is based on the following dependencies:
+
+  
+  @react-router/*@7
+  
+  react@19
+  
+  tailwindcss@4
+  
+  @porsche-design-system/components-react@4
+
+```bash
+# Create a new application by executing:
+npx create-react-router@latest
+
+# Follow the installation wizard to set everything up:
+✔ Where should we create your new project? "./my-app"
+✔ Initialize a new git repository? "Yes"
+✔ Install dependencies with npm? "Yes"
+```
+
+You're all set! Start building your own application now.
+
+## Integration
+
+### Step 1
+
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-react
+```
+
+### Step 2
+
+Define the environment-based `process.browser` variable. This ensures that the correct Porsche Design System components
+are bundled for both client and server environments.
+
+```diff
+// vite.config.ts
+
++ export default defineConfig(({ isSsrBuild }) => {
+  return {
++   define: {
++     'process.browser': JSON.stringify(!isSsrBuild),
++   },
+    plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  };
+});
+```
+
+### Step 3
+
+Wrap your app with the ``.
+
+```diff
+// app/root.tsx
+
++ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
+
+export default function App() {
+  return (
++   <PorscheDesignSystemProvider>
+      <Outlet />
++   </PorscheDesignSystemProvider>
+  );
+}
+```
+
+### Step 4
+
+Add the PDS [Stylesheet](/stylesheets/introduction/) to your main CSS file — this single import covers all required and
+recommended global styles (for websites primarily targeting users in China, use the `/cn` import instead, see
+[China CDN](/must-know/performance/cdn/#china-cdn)).
+
+```diff
+/* app/app.css */
++ @import '@porsche-design-system/components-react';
+```
+
+Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it's broken.
+[Learn more](/stylesheets/color-scheme/introduction/#lightning-css-bug)
+
+```diff
+// vite.config.ts
+
++ import { Features } from 'lightningcss';
+
+export default defineConfig(({ isSsrBuild }) => {
+  return {
++   css: {
++     transformer: 'lightningcss',
++     // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++     lightningcss: {
++       exclude: Features.LightDark,
++     },
++   },
+  };
+});
+```
+
+To prevent FOUC, hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you run into issues with the `:defined`
+pseudo-class, scope the style to specific tags instead (e.g., `:is(p-button, p-accordion, …):not(:defined,[data-ssr])`).
+See [Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* app/app.css */
+@import '@porsche-design-system/components-react';
+
++ :not(:defined,[data-ssr]) {
++   visibility: hidden;
++ }
+```
+
+### Step 5 (recommended)
+
+To improve your web application's loading performance, integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML to preload fonts, icons, and component chunks.
+
+```diff
+// app/root.tsx
+
++ import {
++   getComponentChunkLinks,
++   getFontLinks,
++   getIconLinks,
++   getMetaTagsAndIconLinks,
++ } from '@porsche-design-system/components-react/partials';
+
++ export async function loader() {
++   return {
++     headPartials: (
++       <>
++         
++         {getFontLinks({ format: 'jsx' })}
++         
++         {getIconLinks({ format: 'jsx' })}
++         
++         {getComponentChunkLinks({ format: 'jsx' })}
++         
++         {getMetaTagsAndIconLinks({ appTitle: 'Porsche', format: 'jsx' })}
++       </>
++     ),
++   };
++ }
+
+export function Layout({ children }: { children: React.ReactNode }) {
++ const partials = useRouteLoaderData<typeof loader>('root');
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
++       {partials?.headPartials}
+      </head>
+      <body>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+### Step 6 (recommended)
+
+Import [Tailwind CSS](https://tailwindcss.com) and the PDS [Tailwind CSS Theme](/tailwindcss/introduction) — a
+utility-first setup that ensures **seamless styling consistency** with Porsche's design principles.
+
+```diff
+/* app/app.css */
+@import '@porsche-design-system/components-react';
+
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-react/tailwindcss';
+```
+
+### Step 7
+
+Add a Porsche Design System component (e.g., ``) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
+
+```tsx
+// routes/home.tsx
+
+import { PWordmark } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
+
+export default function Home() {
+  return (
+    <>
+      
+        <PWordmark />
+        <h1 className="prose-heading-4xl">Porsche Design System</h1>
+      
+      <Welcome />
+    </>
+  );
+}
+```

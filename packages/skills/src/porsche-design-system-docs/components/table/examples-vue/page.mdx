@@ -1,0 +1,495 @@
+# Table 
+
+## Caption
+
+A caption that describes the content of the table can be set in two ways. It's mandatory to define a descriptive caption
+to fulfill accessibility criteria.
+
+### Via property
+
+Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.
+
+### Interactive Story: `tableStoryCaptionProperty`
+
+```vue
+<script setup lang="ts">
+  import { PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTable caption="Some caption">
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell>
+          Column 1
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Column 2
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Column 3
+        </PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow>
+        <PTableCell>
+          Cell 1
+        </PTableCell>
+        <PTableCell>
+          Cell 2
+        </PTableCell>
+        <PTableCell>
+          Cell 3
+        </PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```
+
+### Via slot
+
+When using the `caption` slot, its content is rendered while giving you full control over its appearance.
+
+### Interactive Story: `tableStoryCaptionSlot`
+
+```vue
+<script setup lang="ts">
+  import { PHeading, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTable>
+    <PHeading slot="caption" size="large">
+      Some slotted caption
+    </PHeading>
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell>
+          Column 1
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Column 2
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Column 3
+        </PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow>
+        <PTableCell>
+          Cell 1
+        </PTableCell>
+        <PTableCell>
+          Cell 2
+        </PTableCell>
+        <PTableCell>
+          Cell 3
+        </PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```
+
+## Layout: fixed
+
+By setting `layout` to `fixed`, you can take full control over each column width, which would otherwise be controlled by
+its content. Identical `width`, `min-width` and/or `max-width` values, depending on what you want to achieve, must be
+specified on **every** `p-table-head-cell` and `p-table-cell` within the **same column**.
+
+While it is possible to use relative `width` units like `50%` or `50vw`, these may lead to unexpected results when the
+table is scrollable especially on smaller screens or when combined with absolute (e.g. `50px`) or default auto values
+(based on content).
+
+If there is more content than available space, it will overflow, which you need to handle, e.g. by using
+`<p-text ellipsis>Some content</p-text>`.
+
+> ⚠️ **Note**
+>
+> Since truncated content cannot be fully read, it is important to provide an alternative like a `title`
+> attribute or custom tooltip.
+
+### Interactive Story: `tableStoryLayoutFixed`
+
+```vue
+<script setup lang="ts">
+  import { PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTable caption="Some caption" layout="fixed">
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell class="w-[50%] max-w-[50%]">
+          Column 1 (50%)
+        </PTableHeadCell>
+        <PTableHeadCell class="w-[150px] max-w-[150px]">
+          Column 2 (150px)
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Column 3 (auto)
+        </PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow>
+        <PTableCell class="w-[50%] max-w-[50%]">
+          Cell 1
+        </PTableCell>
+        <PTableCell class="w-[150px] max-w-[150px]">
+          Cell 2
+        </PTableCell>
+        <PTableCell>
+          Cell 3
+        </PTableCell>
+      </PTableRow>
+      <PTableRow>
+        <PTableCell class="w-[50%] max-w-[50%]">
+          Cell 1
+        </PTableCell>
+        <PTableCell class="w-[150px] max-w-[150px]">
+          <PText :ellipsis="true" title="Cell 2 with more content">
+            Cell 2 with more content
+          </PText>
+        </PTableCell>
+        <PTableCell>
+          Cell 3
+        </PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```
+
+## Column Headers
+
+The `p-table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
+
+### Sorting
+
+To make a table column sortable, you need to provide the `sort` property. It has the following structure:
+
+```ts
+type TableHeadCellSort = {
+  id: string; // identifier for the column to be sorted by
+  active: boolean;
+  direction: 'asc' | 'desc';
+};
+```
+
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
+to.
+
+> ⚠️ **Deprecation hint**
+>
+> The `sortingChange` event has been deprecated and will be removed with the next major release.
+> 
+> 
+> Please use the `update` event instead.
+
+### Code Example: `tableExampleSorting`
+
+```vue
+<script setup lang="ts">
+import {
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  type TableUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+type HeadSorting = {
+  id: string;
+  name: string;
+  active?: boolean;
+  direction?: 'asc' | 'desc';
+};
+
+const headSorting: HeadSorting[] = [
+  { name: 'Column 1', id: 'col1' } as HeadSorting,
+  { name: 'Column 2', id: 'col2' } as HeadSorting,
+  { name: 'Column 3', id: 'col3' } as HeadSorting,
+].map((item, i) => ({
+  ...item,
+  active: i === 1,
+  direction: 'asc',
+}));
+
+type DataSorting = {
+  col1: string;
+  col2: string;
+  col3: string;
+};
+
+const dataSorting: DataSorting[] = [
+  {
+    col1: 'Name A',
+    col2: '9',
+    col3: '01.06.2021',
+  },
+  {
+    col1: 'Name Z',
+    col2: '1',
+    col3: '24.06.2021',
+  },
+];
+
+const head = ref(headSorting);
+const data = ref(dataSorting);
+
+const onUpdate = (e: CustomEvent<TableUpdateEventDetail>): void => {
+  const { id, direction } = e.detail as TableUpdateEventDetail & { id: keyof DataSorting };
+  head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
+  data.value = [...data.value].sort((a, b) =>
+    direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
+  );
+};
+</script>
+
+<template>
+  <PTable :caption="'Some caption'" @update="onUpdate">
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell v-for="(item, i) in head" :key="i" :sort="item">{{ item.name }}</PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow v-for="(item, i) in data" :key="i">
+        <PTableCell>{{ item.col1 }}</PTableCell>
+        <PTableCell>{{ item.col2 }}</PTableCell>
+        <PTableCell>{{ item.col3 }}</PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```
+
+### Hide Label
+
+Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This
+can be achieved by setting the `hide-label` property.
+
+### Interactive Story: `tableStoryHideLabel`
+
+```vue
+<script setup lang="ts">
+  import { PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTable caption="Some caption">
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell>
+          Column 1
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Column 2
+        </PTableHeadCell>
+        <PTableHeadCell :hideLabel="true">
+          Column 3
+        </PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow>
+        <PTableCell>
+          Cell 1
+        </PTableCell>
+        <PTableCell>
+          Cell 2
+        </PTableCell>
+        <PTableCell>
+          Cell 3
+        </PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```
+
+## Advanced Table
+
+The appearance of a table's contents can be customized as illustrated in the following example.
+
+### Code Example: `tableExampleAdvanced`
+
+```vue
+<script setup lang="ts">
+import {
+  PButtonPure,
+  PHeading,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  PText,
+  type TableUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+type HeadAdvanced = {
+  id: string;
+  name: string;
+  hideLabel: boolean;
+  active?: boolean;
+  direction?: 'asc' | 'desc';
+};
+
+const headAdvanced: HeadAdvanced[] = [
+  { name: 'Model', id: 'model' } as HeadAdvanced,
+  { name: 'Interest', id: 'interest' } as HeadAdvanced,
+  { name: 'VIN', id: 'vin' } as HeadAdvanced,
+  { name: 'Purchase Intention', id: 'purchaseIntention' } as HeadAdvanced,
+  { name: 'Status', id: 'status' } as HeadAdvanced,
+  { name: 'Comment', id: 'comment' } as HeadAdvanced,
+  { name: 'Lead ID', id: 'leadId' } as HeadAdvanced,
+  { name: 'Select Wrapper', id: 'selectWrapper' } as HeadAdvanced,
+  { name: 'Select', id: 'select' } as HeadAdvanced,
+  { name: 'Multi-Select', id: 'multiSelect' } as HeadAdvanced,
+  { name: 'Action', id: 'action', hideLabel: true } as HeadAdvanced,
+].map((item, i) => ({
+  ...item,
+  ...(i > 0 &&
+    i < 7 &&
+    i !== 5 && {
+      active: i === 1,
+      direction: 'asc',
+    }),
+}));
+
+type DataAdvanced = {
+  imageUrl: string;
+  model: string;
+  date: string;
+  interest: string;
+  vin: string;
+  purchaseIntention: string;
+  status: string;
+  comment: string;
+  leadId: string;
+};
+
+const dataAdvanced: DataAdvanced[] = [
+  {
+    imageUrl: 'assets/718.png',
+    model: '718',
+    date: '23.06.2021',
+    interest: 'New Car',
+    vin: '1FM5K7F84FGB16304',
+    purchaseIntention: '08/2021',
+    status: 'Won',
+    comment: '-',
+    leadId: '0000824402',
+  },
+  {
+    imageUrl: 'assets/panamera.png',
+    model: 'Panamera',
+    date: '19.06.2021',
+    interest: 'New Car',
+    vin: '2GCEC13T141374801',
+    purchaseIntention: '11/2021',
+    status: 'Lost',
+    comment: 'Some multiline text and a column with a min width.',
+    leadId: '0000824409',
+  },
+  {
+    imageUrl: 'assets/911.png',
+    model: '911',
+    date: '19.05.2021',
+    interest: 'Used Car',
+    vin: '5GAKVCKD8EJ335750',
+    purchaseIntention: '09/2021',
+    status: 'Won',
+    comment: '-',
+    leadId: '0000824408',
+  },
+  {
+    imageUrl: 'assets/macan.png',
+    model: 'Macan',
+    date: '10.05.2021',
+    interest: 'Used Car',
+    vin: '1FMPU17L83LC09302',
+    purchaseIntention: '07/2021',
+    status: 'Lost',
+    comment: '-',
+    leadId: '0000824407',
+  },
+  {
+    imageUrl: 'assets/taycan.png',
+    model: 'Taycan',
+    date: '03.05.2021',
+    interest: 'New Car',
+    vin: 'JN1BY1AR3BM375187',
+    purchaseIntention: '05/2021',
+    status: 'Won',
+    comment: '-',
+    leadId: '0000824406',
+  },
+];
+
+const head = ref(headAdvanced);
+const data = ref(dataAdvanced);
+
+const onUpdate = (e: CustomEvent<TableUpdateEventDetail>): void => {
+  const { id, direction } = e.detail as TableUpdateEventDetail & { id: keyof DataAdvanced };
+  head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
+  data.value = [...data.value].sort((a, b) =>
+    direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
+  );
+};
+</script>
+
+<template>
+  <PTable @update="onUpdate">
+    <!-- eslint-disable vue/no-deprecated-slot-attribute -->
+    <PHeading :slot="'caption'" :size="'large'" tag="h3">Some visual caption</PHeading>
+    <!-- eslint-enable -->
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell v-for="(item, i) in head" :key="i" :sort="item" :hideLabel="item.hideLabel">
+          {{ item.name }}
+        </PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow v-for="(item, i) in data" :key="i">
+        <PTableCell>
+          <div :style="{ display: 'flex' }">
+            <img :src="item.imageUrl" :width="80" :height="45" :style="{ marginRight: '.5rem', objectFit: 'contain', maxWidth: 'none' }" alt="" />
+            <div>
+              <PText :weight="'semi-bold'">{{ item.model }}</PText>
+              <PText :size="'x-small'">{{ item.date }}</PText>
+            </div>
+          </div>
+        </PTableCell>
+        <PTableCell>{{ item.interest }}</PTableCell>
+        <PTableCell>
+          <a :href="'https://porsche.com'">{{ item.vin }}</a>
+        </PTableCell>
+        <PTableCell>{{ item.purchaseIntention }}</PTableCell>
+        <PTableCell>{{ item.status }}</PTableCell>
+        <PTableCell :multiline="true" :style="{ minWidth: '10rem' }">
+          {{ item.comment }}
+        </PTableCell>
+        <PTableCell>{{ item.leadId }}</PTableCell>
+        <PTableCell>
+          <PButtonPure :icon="'edit'" :style="{ padding: '.5rem' }">Edit</PButtonPure>
+          <PButtonPure :icon="'delete'" :style="{ padding: '.5rem' }">Delete</PButtonPure>
+        </PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```

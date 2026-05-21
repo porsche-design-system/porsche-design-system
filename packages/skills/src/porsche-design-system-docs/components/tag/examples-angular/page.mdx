@@ -1,0 +1,136 @@
+# Tag 
+
+## With slotted button
+
+It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
+clickable and no other content outside the button or link is allowed.
+
+### Interactive Story: `tagStorySlottedButton`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="flex flex-wrap gap-static-md">
+        <p-tag icon="car" variant="primary">
+          <button type="button">
+            Variant primary
+          </button>
+        </p-tag>
+        <p-tag variant="secondary">
+          <button type="button">
+            Variant secondary
+          </button>
+        </p-tag>
+        <p-tag variant="info">
+          <button type="button">
+            Variant info
+          </button>
+        </p-tag>
+        <p-tag variant="warning">
+          <button type="button">
+            Variant warning
+          </button>
+        </p-tag>
+        <p-tag variant="success">
+          <button type="button">
+            Variant success
+          </button>
+        </p-tag>
+        <p-tag variant="error">
+          <button type="button">
+            Variant error
+          </button>
+        </p-tag>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## With slotted link
+
+It is possible to add an `<a>` tag to the `p-tag` component. If you do this, the entire component becomes clickable and
+no other content outside the button or link is allowed.
+
+### Interactive Story: `tagStorySlottedLink`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="flex flex-wrap gap-static-md">
+        <p-tag icon="car" variant="primary">
+          <a href="https://porsche.com">
+            Variant primary
+          </a>
+        </p-tag>
+        <p-tag variant="secondary">
+          <a href="https://porsche.com">
+            Variant secondary
+          </a>
+        </p-tag>
+        <p-tag variant="info">
+          <a href="https://porsche.com">
+            Variant info
+          </a>
+        </p-tag>
+        <p-tag variant="warning">
+          <a href="https://porsche.com">
+            Variant warning
+          </a>
+        </p-tag>
+        <p-tag variant="success">
+          <a href="https://porsche.com">
+            Variant success
+          </a>
+        </p-tag>
+        <p-tag variant="error">
+          <a href="https://porsche.com">
+            Variant error
+          </a>
+        </p-tag>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+## Multiline
+
+The contents of the `p-tag` component are rendered with `white-space: nowrap` by default. If multiline rendering is
+needed (e.g. due to limited space), the default behavior can be overridden with external CSS.
+
+### Interactive Story: `tagStoryMultiline`
+
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="w-[100px]">
+        <p-tag variant="success" class="whitespace-normal">
+          Some label with longer text wrapped in a narrow container
+        </p-tag>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```

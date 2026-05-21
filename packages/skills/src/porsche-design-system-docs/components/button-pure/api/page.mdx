@@ -1,0 +1,30 @@
+# Button Pure 
+
+### API Reference for `p-button-pure`
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `type` | `"button" \| "submit" \| "reset"` | `"submit"` | Specifies the type of the button. |
+| `name` | `string` | - | The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. |
+| `value` | `string` | - | Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. |
+| `disabled` | `boolean` | `false` | Disables the button. No events will be triggered while disabled state is active. |
+| `loading` | `boolean` | `false` | Disables the button and shows a loading indicator. No events will be triggered while loading state is active. |
+| `size` | `"2xs" \| "xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "3xl" \| "4xl" \| "5xl" \| "inherit" \| "xx-small" \| "x-small" \| "small" \| "medium" \| "large" \| "x-large"` | `"sm"` | Size of the button. *(breakpoint customizable)* |
+| `color` | `"primary" \| "contrast-higher" \| "contrast-high" \| "contrast-medium" \| "inherit"` | `"primary"` | The color. |
+| `icon` | `ButtonPureIcon` | `"arrow-right"` | The icon shown. 291 allowed values. |
+| `iconSource` | `string` | - | A URL path to a custom icon. |
+| `underline` | `boolean` | `false` | Shows an underline under the label. |
+| `active` | `boolean` | `false` | Displays the button in its active state. |
+| `hideLabel` | `boolean` | `false` | Shows or hides the label. For better accessibility, it is recommended to show the label. *(breakpoint customizable)* |
+| `alignLabel` | `"start" \| "end"` | `"end"` | Aligns the label. *(breakpoint customizable)* |
+| `stretch` | `boolean` | `false` | Stretches the area between icon and label to max available space. *(breakpoint customizable)* |
+| `aria` | `{ aria-label: string, aria-description: string, aria-expanded: string, aria-pressed: string, aria-haspopup: string }` | - | Sets ARIA attributes. |
+| `form` | `string` | - | The id of a form element the button should be associated with. |
+
+#### Slots
+
+| Slot | Description |
+|------|-------------|
+| (default) | Default slot for the button label. |
