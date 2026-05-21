@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,6 +7,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   implicitSubmit,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -23,7 +24,7 @@ const propTypes: PropTypes<typeof InputEmail> = {
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
   multiple: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -57,89 +58,93 @@ const propTypes: PropTypes<typeof InputEmail> = {
 export class InputEmail {
   @Element() public host!: HTMLElement;
 
-  /** Sets the visible label text displayed above the input field. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** Sets a supplementary description displayed below the label to provide additional context. */
+  /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** Reduces the input height and padding for a more compact layout. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
-  /** Sets the name submitted with the form data to identify this field's value on the server. */
+  /** The name of the input field, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses. */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** The default email address (or comma-separated list of addresses) for the input. */
+  @Prop({ mutable: true }) public value?: string | null = '';
 
-  /** Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email'). */
   @Prop() public autoComplete?: string;
 
-  /** Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form. */
+  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Associates the field with a form element by its ID when the field is not nested directly inside it. */
+  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Sets the maximum number of characters the user can enter. */
+  /** A non-negative integer specifying the maximum number of characters the user can enter into the input. */
   @Prop() public maxLength?: number;
 
-  /** Sets the minimum number of characters required for the field to be considered valid. */
+  /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
   @Prop() public minLength?: number;
 
-  /** Sets placeholder text shown inside the field when it is empty, to hint at the expected format. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
-  /** Disables the field, preventing all input. The value is not submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Marks the field as required — form submission is blocked while this field is empty. */
+  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Disables the field and displays a loading spinner to indicate an ongoing operation. */
+  /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
+  /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputEmailState = 'none';
 
-  /** Shows an email icon at the start of the field as a visual indicator. */
+  /** Controls the visibility of the email icon. */
   @Prop() public indicator?: boolean = false;
 
-  /** Sets the validation feedback message displayed below the field when `state` is `success` or `error`. */
+  /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Allows entry of multiple email addresses separated by commas. The browser validates each address individually. */
+  /** Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list. */
   @Prop() public multiple?: boolean = false;
 
-  /** Sets a regular expression the entered value must match to be valid. Overrides the browser's default email validation. */
+  /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation. */
   @Prop() public pattern?: string;
 
-  /** Emitted when the input loses focus after its value was changed. */
+  /** Emitted when the email input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputEmailChangeEventDetail>;
 
-  /** Emitted when the input loses focus, regardless of whether the value changed. */
+  /** Emitted when the email input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputEmailBlurEventDetail>;
 
-  /** Emitted on every value change as the user types. */
+  /** Emitted when the value has been changed as a direct result of a user action. */
   @Event({ bubbles: true }) public input: EventEmitter<InputEmailInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | null;
+
+  // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
   }
 
   public connectedCallback(): void {
@@ -147,7 +152,7 @@ export class InputEmail {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -166,7 +171,7 @@ export class InputEmail {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
@@ -174,18 +179,12 @@ export class InputEmail {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.inputElement.validity,
-        this.inputElement.validationMessage || ' ',
-        this.inputElement
-      );
-    }
+    syncFormState(this.internals, this.inputElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -222,7 +221,7 @@ export class InputEmail {
         placeholder={this.placeholder}
         maxLength={this.maxLength}
         minLength={this.minLength}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}

@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,6 +8,7 @@ import {
   hasPropValueChanged,
   hasShowPickerSupport,
   implicitSubmit,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -23,7 +24,7 @@ const propTypes: PropTypes<typeof InputWeek> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
   step: AllowedTypes.number,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -55,80 +56,84 @@ const propTypes: PropTypes<typeof InputWeek> = {
 export class InputWeek {
   @Element() public host!: HTMLElement;
 
-  /** Sets the visible label text displayed above the input field. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** Sets the stepping interval in weeks. */
+  /** Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week. */
   @Prop() public step?: number = 1;
 
-  /** Sets a supplementary description displayed below the label to provide additional context. */
+  /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** Reduces the input height and padding for a more compact layout. */
+  /** Displays the input field in compact mode. */
   @Prop() public compact?: boolean = false;
 
-  /** Sets the name submitted with the form data to identify this field's value on the server. */
+  /** The name of the input field, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`). */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** The default week value for the input, in YYYY-Www format (e.g., value='2025-W27'). */
+  @Prop({ mutable: true }) public value?: string | null = '';
 
-  /** Provides the browser with a week/year autofill hint. */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features. */
   @Prop() public autoComplete?: string;
 
-  /** Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form. */
+  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Associates the field with a form element by its ID when the field is not nested directly inside it. */
+  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Sets the latest selectable week in YYYY-Www format. Weeks after this are disabled in the picker. */
+  /** Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52'). */
   @Prop() public max?: string;
 
-  /** Sets the earliest selectable week in YYYY-Www format. Weeks before this are disabled in the picker. */
+  /** Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01'). */
   @Prop() public min?: string;
 
-  /** Disables the field, preventing week selection. The value is not submitted with the form. */
+  /** Disables the input field. The value will not be submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Marks the field as required — form submission is blocked while no week is selected. */
+  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Disables the field and displays a loading spinner to indicate an ongoing operation. */
+  /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
+  /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputWeekState = 'none';
 
-  /** Sets the validation feedback message displayed below the field when `state` is `success` or `error`. */
+  /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
+  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Emitted when the input loses focus after its value was changed. */
+  /** Emitted when the week input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputWeekChangeEventDetail>;
 
-  /** Emitted when the input loses focus, regardless of whether the value changed. */
+  /** Emitted when the week input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputWeekBlurEventDetail>;
 
-  /** Emitted on every value change as the user interacts with the week picker. */
+  /** Emitted when the value has been changed as a direct result of a user action. */
   @Event({ bubbles: true }) public input: EventEmitter<InputWeekInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | null;
+
+  // Native input.value is always a string; coerce null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
   }
 
   public connectedCallback(): void {
@@ -136,7 +141,7 @@ export class InputWeek {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -155,7 +160,7 @@ export class InputWeek {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
@@ -163,18 +168,12 @@ export class InputWeek {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.inputElement.validity,
-        this.inputElement.validationMessage || ' ',
-        this.inputElement
-      );
-    }
+    syncFormState(this.internals, this.inputElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -210,7 +209,7 @@ export class InputWeek {
         required={this.required}
         max={this.max}
         min={this.min}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}

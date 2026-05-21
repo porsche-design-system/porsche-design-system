@@ -54,12 +54,12 @@ describe('formStateRestoreCallback', () => {
     expect(component.value).toBe(restoredValue);
   });
 });
-describe('componentDidLoad', () => {
+describe('componentDidRender (setFormValue)', () => {
   it('should call setFormValue with current value', () => {
     const component = initComponent();
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -171,5 +171,145 @@ describe('componentWillLoad', () => {
     component.loading = false;
     component.componentWillLoad();
     expect(component['initialLoading']).toBe(false);
+  });
+
+  it('should not mutate value when null is passed, and should preserve null as defaultValue', () => {
+    const component = initComponent();
+    component.value = null;
+    component.componentWillLoad();
+
+    expect(component.value).toBeNull();
+    expect(component['defaultValue']).toBeNull();
+  });
+
+  it('should preserve a number value as-is in defaultValue (no coercion at load time)', () => {
+    const component = initComponent();
+    component.value = 42;
+    component.componentWillLoad();
+
+    expect(component.value).toBe(42);
+    expect(component['defaultValue']).toBe(42);
+  });
+
+  it('should keep an existing string value untouched and store it as defaultValue', () => {
+    const component = initComponent();
+    component.value = '7';
+    component.componentWillLoad();
+
+    expect(component.value).toBe('7');
+    expect(component['defaultValue']).toBe('7');
+  });
+});
+
+describe('onValueChange (inputElement sync)', () => {
+  it('should sync inputElement.value with empty string when value is undefined', () => {
+    const component = initComponent();
+    component['inputElement'].value = 'old';
+
+    component.value = undefined;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('');
+  });
+
+  it('should sync inputElement.value with the coerced string', () => {
+    const component = initComponent();
+    component['inputElement'].value = 'old';
+
+    component.value = '7';
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('7');
+
+    component.value = null;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('');
+
+    component.value = 13;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('13');
+  });
+});
+
+describe('componentDidRender (setFormValue coercion to string)', () => {
+  it("should call setFormValue('') (never null) when value is null", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = null;
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it("should call setFormValue('') (never undefined) when value is undefined", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = undefined;
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(undefined);
+  });
+
+  it('should call setFormValue with String(value) when value is a number', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = 42;
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('42');
+  });
+
+  it('should call setFormValue with the new string value', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.value = '99';
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith('99');
+  });
+});
+
+describe('formResetCallback (with null history)', () => {
+  it('should restore null when null was the original value', () => {
+    const component = initComponent();
+    component.value = null;
+    component.componentWillLoad();
+    component.value = '7';
+
+    component.formResetCallback();
+    expect(component.value).toBeNull();
+  });
+
+  it('should restore the original number value after reset', () => {
+    const component = initComponent();
+    component.value = 42;
+    component.componentWillLoad();
+    component.value = '7';
+
+    component.formResetCallback();
+    expect(component.value).toBe(42);
+  });
+});
+
+describe('formStateRestoreCallback (with null state)', () => {
+  it('should accept null and let componentDidRender coerce it to an empty string for form submission', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = '7';
+    component.formStateRestoreCallback(null);
+
+    expect(component.value).toBeNull();
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it('should restore the provided string state as-is', () => {
+    const component = initComponent();
+    component.formStateRestoreCallback('123');
+    expect(component.value).toBe('123');
   });
 });

@@ -1,14 +1,8 @@
-import {
-  PButton,
-  PMultiSelect,
-  PMultiSelectOption,
-  PMultiSelectProps,
-  POptgroup,
-} from '@porsche-design-system/components-react';
+import { PButton, PMultiSelect, PMultiSelectOption, POptgroup } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
 export const MultiSelectExampleDynamicOptgroupPage = () => {
-  const [value, setValue] = useState<PMultiSelectProps['value']>([]);
+  const [value, setValue] = useState<string[]>([]);
   const [options, setOptions] = useState<string[]>([]);
 
   const handleOnClick = () => {

@@ -84,6 +84,7 @@ export const getFunctionalComponentNotificationBaseStyles = (
       action: {
         gridArea: '3/1/auto/-1',
         marginTop: spacingStaticMd,
+        alignSelf: 'flex-start', // ensures button is not getting stretched in case heading or content section becomes multiline
         [getMediaQueryMin('s')]: {
           gridArea: '1/3',
           marginTop: '0px',
