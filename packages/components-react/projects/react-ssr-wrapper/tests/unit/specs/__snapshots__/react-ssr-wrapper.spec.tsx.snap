@@ -2962,6 +2962,7 @@ exports[`should render dsr component for PAccordion 1`] = `
   slot:not([name]) {
     display: block;
     overflow: hidden;
+    transform: translate3d(0,0,0);
   }
   details[open] slot:not([name]) {
     overflow: visible;
@@ -12085,7 +12086,6 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
-    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
