@@ -19,6 +19,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   setAriaIDREF,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -163,7 +164,6 @@ export class Textarea {
     if (this.textAreaElement && this.textAreaElement.value !== this.parsedValue) {
       this.textAreaElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentWillLoad(): void {
@@ -186,18 +186,12 @@ export class Textarea {
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.parsedValue);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.textAreaElement.validity,
-        this.textAreaElement.validationMessage || ' ',
-        this.textAreaElement
-      );
-    }
+    syncFormState(this.internals, this.textAreaElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
