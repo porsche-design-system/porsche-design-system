@@ -54,12 +54,12 @@ describe('formStateRestoreCallback', () => {
     expect(component.value).toBe(restoredValue);
   });
 });
-describe('componentDidLoad', () => {
+describe('componentDidRender (setFormValue)', () => {
   it('should call setFormValue with current value', () => {
     const component = initComponent();
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -192,29 +192,7 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('onValueChange (coercion to string)', () => {
-  it("should call setFormValue('') (never null) when value is null", () => {
-    const component = initComponent();
-    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-
-    component.value = null;
-    component.onValueChange();
-
-    expect(setFormValueSpy).toHaveBeenCalledWith('');
-    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
-  });
-
-  it("should call setFormValue('') (never undefined) when value is undefined", () => {
-    const component = initComponent();
-    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-
-    component.value = undefined;
-    component.onValueChange();
-
-    expect(setFormValueSpy).toHaveBeenCalledWith('');
-    expect(setFormValueSpy).not.toHaveBeenCalledWith(undefined);
-  });
-
+describe('onValueChange (inputElement sync)', () => {
   it('should sync inputElement.value with empty string when value is undefined', () => {
     const component = initComponent();
     component['inputElement'].value = 'old';
@@ -236,12 +214,36 @@ describe('onValueChange (coercion to string)', () => {
     component.onValueChange();
     expect(component['inputElement'].value).toBe('');
   });
+});
+
+describe('componentDidRender (setFormValue coercion to string)', () => {
+  it("should call setFormValue('') (never null) when value is null", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = null;
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it("should call setFormValue('') (never undefined) when value is undefined", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = undefined;
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(undefined);
+  });
 
   it('should call setFormValue with the new string value', () => {
     const component = initComponent();
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.value = 'https://x.de';
-    component.onValueChange();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith('https://x.de');
   });
 });
@@ -259,7 +261,7 @@ describe('formResetCallback (with null history)', () => {
 });
 
 describe('formStateRestoreCallback (with null state)', () => {
-  it('should accept null and let the watcher coerce it to an empty string in the DOM', () => {
+  it('should accept null and let componentDidRender coerce it to an empty string for form submission', () => {
     const component = initComponent();
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
@@ -267,7 +269,7 @@ describe('formStateRestoreCallback (with null state)', () => {
     component.formStateRestoreCallback(null);
 
     expect(component.value).toBeNull();
-    component.onValueChange();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith('');
     expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
   });
