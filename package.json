@@ -221,7 +221,7 @@
     "jss-preset-default": "^10.10.0"
   },
   "devDependencies": {
-    "@aws-sdk/client-bedrock-agent": "^3.1045.0",
+    "@aws-sdk/client-bedrock-agent": "^3.1051.0",
     "@axe-core/playwright": "^4.11.1",
     "@biomejs/biome": "^2.4.11",
     "@playwright/test": "1.59.1",
