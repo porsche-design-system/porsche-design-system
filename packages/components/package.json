@@ -44,7 +44,7 @@
     "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@stencil/core": "4.43.3"
+    "@stencil/core": "4.43.4"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
@@ -53,7 +53,7 @@
     "dts-bundle-generator": "^9.5.1",
     "imask": "7.6.1",
     "happy-dom": "^20.9.0",
-    "@tailwindcss/cli": "^4.2.2"
+    "@tailwindcss/cli": "^4.3.0"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
