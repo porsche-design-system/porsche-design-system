@@ -61,6 +61,7 @@
       <p-checkbox label="Table" name="table" data-section="common"></p-checkbox>
       <p-checkbox label="Tag" name="tag" data-section="common"></p-checkbox>
       <p-checkbox label="Tag Dismissible" name="tag-dismissible" data-section="common"></p-checkbox>
+      <p-checkbox label="AI Tag" name="ai-tag" data-section="common"></p-checkbox>
       <p-checkbox label="Text List" name="text-list" data-section="common"></p-checkbox>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
         <p-heading tag="h3" size="medium">Feedback</p-heading>
@@ -595,6 +596,11 @@
         <p-tag-dismissible>Some label</p-tag-dismissible>
         <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
       </div>
+      <div data-card="ai-tag">
+        <p-ai-tag></p-ai-tag>
+        <p-ai-tag variant="modified"></p-ai-tag>
+        <p-ai-tag variant="abbreviation"></p-ai-tag>
+      </div>
       <div data-card="text-list">
         <p-text-list type="unordered">
           <p-text-list-item>ABC</p-text-list-item>
@@ -676,7 +682,7 @@
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car">
-          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Some heading</p-heading>
+          <p-heading slot="heading" tag="h2" size="sm" weight="semibold">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-heading>
           <p-text>Some content</p-text>
         </p-inline-notification>
         <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car" action-loading="true">

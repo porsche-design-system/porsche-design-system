@@ -13,7 +13,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -64,7 +64,7 @@ const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   state: AllowedTypes.oneOf<SelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -107,8 +107,21 @@ export class Select {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The selected value. */
-  @Prop({ mutable: true }) public value?: string;
+  /**
+   * The selected value. Matches an option strictly by type and value, meaning
+   * null matches only an option with value null, undefined matches only an option
+   * with value undefined (no preselection by default), and string or number only match
+   * an option whose value has the same type and equal value.
+   *
+   * Please note that FormData always serializes values as
+   * strings, so when participating in a native (uncontrolled) form a
+   * number value is restored as string via formStateRestoreCallback
+   * and will no longer strictly match a number-typed option. This limitation
+   * only applies to native form state restoration; in controlled forms
+   * (where the consumer manages value directly via the change event),
+   * the number type is preserved end-to-end.
+   */
+  @Prop({ mutable: true }) public value?: string | number | null;
 
   /** The validation state. */
   @Prop() public state?: SelectState = 'none';
@@ -152,7 +165,7 @@ export class Select {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string;
+  private defaultValue: string | number | null | undefined;
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
   private inputSearchElement: HTMLPInputSearchElement;
@@ -186,7 +199,7 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals?.setFormValue(this.value);
+    this.setFormValue();
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
@@ -229,6 +242,11 @@ export class Select {
     }
   }
 
+  public setFormValue(): void {
+    // `null`/`undefined` → `undefined`, removing the select from form submission (mirrors native behavior)
+    this.internals?.setFormValue(this.value === null || this.value === undefined ? undefined : String(this.value));
+  }
+
   public connectedCallback(): void {
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
@@ -242,8 +260,9 @@ export class Select {
   }
 
   public componentWillLoad(): void {
+    // Preserve the original value (incl. number/null) so a form reset restores the exact same type
     this.defaultValue = this.value;
-    this.internals?.setFormValue(this.value);
+    this.setFormValue();
     this.updateOptions();
     this.selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value);
   }
@@ -280,8 +299,7 @@ export class Select {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher which syncs form value
   }
 
   public render(): JSX.Element {
@@ -589,7 +607,9 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
+      // Read the raw option value so the event detail preserves the original type
+      // (`string | number | null`). When no option is selected we emit `undefined`.
+      value: this.selectedOption ? this.selectedOption.value : undefined,
       name: this.name,
     });
   };

@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  MultiSelectChangeEventDetail,
+  type PMultiSelectProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-dynamic',
@@ -31,7 +35,7 @@ import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsch
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleDynamicComponent {
-  selectedValues: string[] = [];
+  selectedValues: PMultiSelectProps['value'] = [];
   inputValue: string = '';
   optionCount: number = 3;
 

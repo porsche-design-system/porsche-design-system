@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PInputText } from '@porsche-design-system/components-vue';
+import { PInputText, type PInputTextProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myInputText = ref('');
+const myInputText = ref<PInputTextProps['value']>('');
 
 const resetValue = () => {
   myInputText.value = '';

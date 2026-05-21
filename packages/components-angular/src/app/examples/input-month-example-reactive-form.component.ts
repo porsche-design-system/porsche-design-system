@@ -33,7 +33,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>
       Valid: <span data-field="valid">{{ form.controls.myInputMonth.valid }}</span>
     </div>
-    <div [@if]="submittedValue !== undefined">
+    <div [@if]="submittedValue !== null">
       Submitted: <span data-field="submitted">{{ submittedValue }}</span>
     </div>
   `,
@@ -43,17 +43,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputMonthExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputMonth: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputMonth: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myInputMonth.setValue('2025-10-24');
   }
 
   resetValue(): void {
-    this.form.controls.myInputMonth.reset('');
+    this.form.controls.myInputMonth.reset(null);
   }
 
   toggleDisabled(): void {

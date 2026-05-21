@@ -1,0 +1,35 @@
+<style>
+    .playground > div {
+        width: 50px;
+        overflow: auto;
+        border: 1px solid deeppink;
+    }
+</style>
+
+<div class="playground auto-layout-inline" title="should show component with default variant and locale">
+  <p-ai-tag class="a11ytree-snapshot-test"></p-ai-tag>
+</div>
+
+<div class="playground auto-layout-inline" title="should show all variants with default locale">
+  <p-ai-tag variant="abbreviation" class="a11ytree-snapshot-test"></p-ai-tag>
+  <p-ai-tag variant="generated"></p-ai-tag>
+  <p-ai-tag variant="modified"></p-ai-tag>
+</div>
+
+<div class="playground auto-layout-inline" title="should show all variants with de_DE locale">
+  <p-ai-tag variant="abbreviation" locale="de_DE"></p-ai-tag>
+  <p-ai-tag variant="generated" locale="de_DE"></p-ai-tag>
+  <p-ai-tag variant="modified" locale="de_DE"></p-ai-tag>
+</div>
+
+<div class="playground skip-axe-core-test" title="should not break into multiline although not enough space is given">
+  <div>
+    <p-ai-tag variant="generated"></p-ai-tag>
+  </div>
+</div>
+
+<div class="playground skip-axe-core-test" title="should break into multiline if not enough space is given">
+  <div>
+    <p-ai-tag variant="generated" style="white-space: normal"></p-ai-tag>
+  </div>
+</div>

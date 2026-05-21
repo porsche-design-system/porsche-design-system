@@ -2,7 +2,7 @@
 import { PLinkTile, PSelect, PSelectOption, type SelectChangeEventDetail } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValue = ref('auto');
+const selectedValue = ref<string | number | null | undefined>('auto');
 
 const onUpdate = (e: CustomEvent<SelectChangeEventDetail>) => {
   selectedValue.value = e.detail.value;
