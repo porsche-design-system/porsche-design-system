@@ -12086,6 +12086,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
