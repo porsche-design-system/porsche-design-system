@@ -38,6 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `Input Time`, `Input Url`, `Textarea`: form value, validity and `disabled`/`readOnly` state now stay in sync with the
   internal native control, so native form submission, reset and validation behave correctly when these props change
   dynamically ([4446](https://github.com/porsche-design-system/porsche-design-system/pull/4446))
+- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted content
+  ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
 
 ## [4.2.0-rc.1] - 2026-05-18
 
