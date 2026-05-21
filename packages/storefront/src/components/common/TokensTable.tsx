@@ -7,7 +7,6 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 import type { TokenMeta } from '@porsche-design-system/tokens-meta';
-import { kebabCase } from 'change-case';
 import type { ReactNode } from 'react';
 import { Code } from '@/components/common/Code';
 
@@ -15,9 +14,6 @@ type TokensTableProps = {
   meta: Record<string, TokenMeta>;
   showColorSwatch?: boolean;
 };
-
-// Convert a camelCase token name to a PDS CSS custom property, e.g. colorCanvas → --p-color-canvas
-const toCssVar = (name: string): string => `--p-${kebabCase(name)}`;
 
 // Render Markdown bold (**text**) and backtick code (`text`) as React nodes
 const renderDescription = (description: string): ReactNode => {
@@ -37,7 +33,7 @@ export const TokensTable = ({ meta, showColorSwatch }: TokensTableProps) => {
   const items = Object.values(meta);
 
   return (
-    <PTable className="my-fluid-md">
+    <PTable className="my-fluid-md" caption="List of design tokens with their descriptions and values.">
       <PTableHead>
         <PTableRow>
           {showColorSwatch && <PTableHeadCell>Color</PTableHeadCell>}
@@ -53,7 +49,7 @@ export const TokensTable = ({ meta, showColorSwatch }: TokensTableProps) => {
               <PTableCell>
                 <div
                   className="w-10 h-10 rounded-md border border-contrast-low"
-                  style={{ background: `var(${toCssVar(token.name)})` }}
+                  style={{ background: token.value }}
                 />
               </PTableCell>
             )}
