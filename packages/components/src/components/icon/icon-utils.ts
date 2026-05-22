@@ -26,7 +26,7 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
     return iconNameOrSource;
   }
   if (ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]) {
-    return `${getCDNBaseURL()}/icons/${ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]}`;
+    return `${getCDNBaseURL()}/porsche-design-system/icons/${ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]}`;
   }
 
   return buildIconUrl(DEFAULT_ICON_NAME);

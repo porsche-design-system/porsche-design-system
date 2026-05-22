@@ -21,10 +21,10 @@ export const getInnerManifest = (variant?: MarqueVariant, trademark?: boolean): 
 export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, format: MarqueFormat): string =>
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   Object.entries(innerManifest[size as keyof InnerManifest])
-    .map(([resolution, fileName]) => `${getCDNBaseURL()}/marque/${fileName[format]} ${resolution}`)
+    .map(([resolution, fileName]) => `${getCDNBaseURL()}/porsche-design-system/marque/${fileName[format]} ${resolution}`)
     .join();
 
 export const buildImgSrc = (innerManifest: InnerManifest): string =>
-  `${getCDNBaseURL()}/marque/${innerManifest.medium['2x'].png}`;
+  `${getCDNBaseURL()}/porsche-design-system/marque/${innerManifest.medium['2x'].png}`;
 
 export type MarqueAriaAttribute = LinkAriaAttribute;

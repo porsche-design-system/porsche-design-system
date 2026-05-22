@@ -1,8 +1,8 @@
 import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/assets/projects/font-face/scripts/fontFaceStyles';
 
 export const generateFontFaceStylesPartial = (): string => {
-  const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: 'com' });
-  const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: 'cn' });
+  const stylesCom = getMinifiedPorscheNextFontFaceCss( './assets/porsche-design-system' );
+  const stylesCn = getMinifiedPorscheNextFontFaceCss( './assets/porsche-design-system' );
 
   const types = `type GetFontFaceStylesOptions = {
   cdn?: Cdn;

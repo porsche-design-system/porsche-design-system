@@ -7,7 +7,7 @@ import { camelCase } from 'change-case';
 import { CDN_BASE_PATH_FALLBACKS } from '../../../../../cdn.config';
 
 const inputDir = './dist/tmp';
-const cdnPathBasePath = `https://cdn.ui.porsche.com/${CDN_BASE_PATH_FALLBACKS}`;
+const cdnPathBasePath = `./assets/${CDN_BASE_PATH_FALLBACKS}`;
 const outputDirFallbacks = './dist/fallbacks';
 const outputDirLoader = './dist/loader';
 

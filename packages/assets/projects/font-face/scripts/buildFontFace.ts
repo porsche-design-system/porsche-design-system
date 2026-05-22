@@ -11,7 +11,7 @@ const toHash = (str: string): string => {
 
 const buildFontFaceStylesheet = (opts: GetMinifiedPorscheNextFontFaceCssOptions): string => {
   const { cdn } = opts;
-  const style = getMinifiedPorscheNextFontFaceCss({ cdn });
+  const style = getMinifiedPorscheNextFontFaceCss();
   const suffix = cdn === 'cn' ? '.cn' : '';
   const hash = cdn !== 'localhost' ? `.${toHash(style)}` : '';
   const targetDirectory = './dist/styles';

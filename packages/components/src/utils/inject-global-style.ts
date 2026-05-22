@@ -5,7 +5,7 @@ import { getCDNBaseURL } from './getCDNBaseURL';
 export const injectGlobalStyle = (): void => {
   if (typeof document !== 'undefined' && ROLLUP_REPLACE_IS_STAGING === 'production') {
     const baseUrl = getCDNBaseURL();
-    const styleUrl = `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`;
+    const styleUrl = `${baseUrl}/porsche-design-system/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`;
     const { head } = document;
     if (!head.querySelector(`link[href='${styleUrl}'],style[data-pds-font-face-styles=""]`)) {
       const link = document.createElement('link');
