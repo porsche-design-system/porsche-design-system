@@ -64,7 +64,7 @@ export const getComponentCss = (
             all: 'unset',
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            borderRadius: radiusLg,
+            borderRadius: hasBackground ? radiusLg : radiusXl,
             // When the scroller has its own inset padding (hasBackground), shrink the tab
             // padding by the same amount so the overall hit area / visual height stays stable.
             padding: hasBackground
@@ -146,7 +146,7 @@ export const getComponentCss = (
       height: '100%',
       zIndex: -1,
       pointerEvents: 'none',
-      borderRadius: radiusLg,
+      borderRadius: hasBackground ? radiusLg : radiusXl,
       background: colorFrostedStrong,
       ...forcedColorsMediaQuery({
         display: 'none',
