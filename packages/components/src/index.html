@@ -33,7 +33,17 @@
     >Open sidebar
     </p-button>
 
-    <form slot="sidebar-start" class="grid gap-fluid-sm" onreset="resetComponentVisibility()">
+    <form slot="sidebar-start" class="grid gap-fluid-sm" onreset="resetComponentVisibility(); updateRoute({search: ''});">
+      <p-input-search
+        class="mb-fluid-md"
+        name="search"
+        label="Filter components"
+        hide-label="true"
+        placeholder="Filter by component…"
+        clear="true"
+        indicator="true"
+        oninput="updateRoute({search: this.value})"
+      ></p-input-search>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs">
         <p-heading tag="h3" size="medium">Brand</p-heading>
         <p-tag variant="secondary" compact="true">
@@ -268,7 +278,7 @@
           <p-text>Some details</p-text>
         </p-accordion>
       </div>
-      <div data-card="button">
+      <div data-card="button" style="align-items: flex-start">
         <p-button variant="primary">Some label</p-button>
         <p-button variant="secondary">Some label</p-button>
         <p-button variant="primary" icon="car">Some label</p-button>
@@ -1721,6 +1731,28 @@
         });
       };
 
+      const applySearchFilter = (query) => {
+        const q = (query || '').trim().toLowerCase();
+        const checkboxes = [...document.querySelectorAll('[slot="sidebar-start"] p-checkbox')];
+        // Toggle checkbox visibility based on label substring match.
+        for (const cb of checkboxes) {
+          const label = (cb.getAttribute('label') || '').toLowerCase();
+          const matches = !q || label.includes(q);
+          cb.hidden = !matches;
+        }
+        // Toggle each section header visibility: hide when all its checkboxes are hidden.
+        for (const button of document.querySelectorAll('[slot="sidebar-start"] button[onclick*="toggleSection"]')) {
+          const match = button.getAttribute('onclick').match(/toggleSection\(this,\s*'([^']+)'\)/);
+          if (!match) continue;
+          const section = match[1];
+          const sectionCheckboxes = [...document.querySelectorAll(`[slot="sidebar-start"] p-checkbox[data-section="${section}"]`)];
+          const anyVisible = sectionCheckboxes.some(cb => !cb.hidden);
+          // The header is the closest ancestor flex row containing the toggle button.
+          const header = button.closest('div.flex');
+          if (header) header.hidden = !anyVisible;
+        }
+      };
+
       // ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
       //   window.addEventListener(`stencil_${x}`, (e) => {
       //     const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
@@ -1736,6 +1768,7 @@
       const getLegacy = () => new URL(document.location).searchParams.get('legacy') || 'modern';
       const getBackground = () => new URL(document.location).searchParams.get('background') || 'gradient';
       const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
+      const getSearch = () => new URL(document.location).searchParams.get('search') || '';
       const getComponents = () => {
         const urlParams = new URL(document.location).searchParams;
         const components = urlParams.get('components');
@@ -1773,6 +1806,7 @@
         const background = getBackground();
         const accent = getAccent();
         const components = getComponents();
+        const search = getSearch();
 
         // Theme
         document.documentElement.classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
@@ -1782,7 +1816,12 @@
         // Zoom
         document.documentElement.style.setProperty('font-size', zoom);
         // Compact
-        for(const el of [...document.querySelectorAll('*')].filter(el => el.tagName.startsWith('P-') && !el.tagName.endsWith('-ITEM') && !el.tagName.endsWith('-OPTION'))) {
+        for (const el of [...document.querySelectorAll('*')].filter(el =>
+          el.tagName.startsWith('P-')
+          && !el.tagName.endsWith('-ITEM')
+          && !el.tagName.endsWith('-OPTION')
+          && !el.matches('p-button[slot="header-end"]')
+        )) {
           el.setAttribute('compact', compact);
         }
         // Animation
@@ -1798,25 +1837,26 @@
         const backgroundMap = {
           canvas: {
             app: 'w-full h-full bg-canvas',
-            card: 'bg-surface rounded-4xl p-fluid-md flex flex-col gap-fluid-sm',
+            card: 'bg-surface rounded-3xl p-fluid-md flex flex-col gap-fluid-sm',
           },
           surface: {
             app: 'w-full h-full bg-surface',
-            card: 'bg-canvas rounded-4xl p-fluid-md flex flex-col gap-fluid-sm',
+            card: 'bg-canvas rounded-3xl p-fluid-md flex flex-col gap-fluid-sm',
           },
           gradient: {
             app: 'w-full h-full relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-canvas))] before:bg-fixed',
-            card: 'bg-frosted backdrop-blur-frosted rounded-4xl p-fluid-md flex flex-col gap-fluid-sm',
+            card: 'bg-frosted backdrop-blur-frosted rounded-3xl p-fluid-md flex flex-col gap-fluid-sm',
           },
           mountain: {
             app: 'w-full h-full bg-[url(/assets/cabin.webp)] bg-fixed bg-cover bg-center',
-            card: 'bg-frosted backdrop-blur-frosted rounded-4xl p-fluid-md flex flex-col gap-fluid-sm',
+            card: 'bg-frosted backdrop-blur-frosted rounded-3xl p-fluid-md flex flex-col gap-fluid-sm',
           },
         };
         document.querySelector('[slot="background"]').setAttribute('class', backgroundMap[background].app);
         for (const el of document.querySelectorAll('[data-card]')) {
           el.setAttribute('class', backgroundMap[background].card);
         }
+        document.querySelector('p-canvas').background = ['canvas', 'surface'].includes(background) ? background : 'canvas';
         // Accent
         document.documentElement.style.setProperty('--accent', accent);
         // Components visibility
@@ -1832,13 +1872,16 @@
         if (typeof updateSectionButtons === 'function') {
           updateSectionButtons();
         }
+        // Apply search filter (hide/show checkboxes based on label)
+        applySearchFilter(search);
       };
 
       const updateInput = (name, value) => document.querySelector(`[name="${name}"]`).value = value;
 
       Promise.all([
         customElements.whenDefined('p-checkbox'),
-        customElements.whenDefined('p-select')
+        customElements.whenDefined('p-select'),
+        customElements.whenDefined('p-input-search')
       ]).then(() => {
         updateInput('theme', getTheme());
         updateInput('dir', getDir());
@@ -1848,6 +1891,7 @@
         updateInput('legacy', getLegacy());
         updateInput('background', getBackground());
         updateInput('accent', getAccent());
+        updateInput('search', getSearch());
 
         for (const checkbox of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
           checkbox.checked = getComponents().includes(checkbox.name);
