@@ -9,3 +9,4 @@ export { isParentFieldsetRequired } from './isParentFieldsetRequired';
 export { isRequired } from './isRequired';
 export { isVisibleFormState } from './isVisibleFormState';
 export { isWithinForm } from './isWithinForm';
+export { syncFormState } from './syncFormState';
