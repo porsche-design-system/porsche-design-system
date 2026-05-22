@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
 import { cssVariableAnimationDuration } from '../common-styles';
-import { colorCanvas, colorContrastLow, durationSm, easeInOut, legacyRadiusMedium, radiusXl } from '../css-variables';
+import { colorCanvas, colorContrastLow, durationSm, easeInOut, radiusXl } from '../css-variables';
 
 const keyframesName = 'fade-in';
 
@@ -39,7 +39,7 @@ export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, o
     filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
     background: colorCanvas,
     border: `1px solid ${colorContrastLow}`,
-    borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`,
+    borderRadius: radiusXl,
     '&:not(:popover-open)': {
       display: 'none',
     },

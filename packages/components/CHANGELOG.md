@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
-- `Tabs`, `Tabs Bar`, `Link Tile`, `Link Tile Product`, `Button Tile`: aligned `border-radius` with the app and vehicle
+- `Tabs`, `Tabs Bar`, `Link Tile`, `Link Tile Product`, `Button Tile`: aligned `border-radius` with the app and car
   design system for improved visual coherence
   ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 - `Tabs Bar`: refined active tab background color to improve visual coherence with the app and vehicle design system
@@ -48,6 +48,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   dynamically ([4446](https://github.com/porsche-design-system/porsche-design-system/pull/4446))
 - `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted
   content ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
+
+### Removed
+
+- Legacy border-radius stylesheet `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`, since
+  visual coherence between web, app and car design system is now achieved
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 
 ## [4.2.0-rc.1] - 2026-05-18
 

@@ -8,9 +8,8 @@ import {
   colorFrosted,
   colorPrimary,
   colorSurface,
-  legacyRadiusLarge,
+  radius2Xl,
   radius3Xl,
-  radiusXl,
   spacingFluidLg,
   spacingFluidMd,
   spacingFluidSm,
@@ -126,7 +125,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
   };
 };
 
-export const dialogBorderRadius = `var(${legacyRadiusLarge}, ${radiusXl})`;
+export const dialogBorderRadius = radius3Xl;
 export const dialogPaddingTop = spacingFluidMd;
 export const dialogPaddingBottom = `calc(${spacingFluidSm} + ${spacingFluidMd})`;
 export const dialogPaddingInline = spacingFluidLg;
@@ -235,7 +234,7 @@ export const getSlotFooterJssStyle = (): JssStyle => {
       position: 'absolute',
       inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
       background: colorFrosted,
-      borderRadius: radius3Xl,
+      borderRadius: radius2Xl,
       WebkitBackdropFilter: blurFrosted,
       backdropFilter: blurFrosted,
     },

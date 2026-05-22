@@ -22,8 +22,7 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusLarge,
-  radius4Xl,
+  radius3Xl,
   radiusFull,
   spacingFluidMd,
   spacingFluidSm,
@@ -149,7 +148,7 @@ export const getComponentCss = (
       ...addImportantToEachRule({
         '::slotted': {
           '&(*)': {
-            borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
+            borderRadius: `var(--p-carousel-border-radius, ${radius3Xl})`,
           },
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
@@ -260,7 +259,7 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
+        borderRadius: `var(--p-carousel-border-radius, ${radius3Xl})`,
         '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding

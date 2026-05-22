@@ -1,5 +1,3 @@
-export { legacyRadiusLarge } from './legacy-radius-large';
-export { legacyRadiusMedium } from './legacy-radius-medium';
 export { legacyRadiusSmall } from './legacy-radius-small';
 export { radius2Xl } from './radius-2xl';
 export { radius3Xl } from './radius-3xl';
