@@ -12,12 +12,11 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusLarge,
-  radius4Xl,
+  radius3Xl,
   spacingFluidLg,
   spacingFluidMd,
   spacingStaticMd,
-  typescaleMd,
+  typescaleSm,
 } from '../../styles/css-variables';
 import { sizeMap, weightMap } from '../../styles/maps';
 import {
@@ -93,7 +92,7 @@ export const getComponentCss = (
         all: 'unset',
         zIndex: 3,
         maxWidth: '34.375rem',
-        font: `${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext}`,
+        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
         color: colorPrimary,
         hyphens: 'inherit',
         ...mergeDeep(
@@ -114,7 +113,7 @@ export const getComponentCss = (
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
+      borderRadius: radius3Xl,
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue,
       })),
