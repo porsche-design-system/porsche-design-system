@@ -14,7 +14,7 @@ export default [
       entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [typescript()],
+    plugins: [typescript({ exclude: ['projects/**/*', '**/*.spec.ts'] })],
   },
   {
     input,
@@ -26,7 +26,7 @@ export default [
       preserveModulesRoot: 'src',
     },
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['**/*.spec.ts'] }),
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['projects/**/*', '**/*.spec.ts'] }),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
