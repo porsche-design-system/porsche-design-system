@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import { blurFrosted } from '@porsche-design-system/tokens';
+import { TokensTable } from '@/components/common/TokensTable';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Blur - Porsche Design System',
@@ -13,6 +13,4 @@ export const metadata = {
 
 ## Tokens
 
-| Token         | Description                            | Value         |
-| ------------- | -------------------------------------- | ------------- |
-| <Code variant="nowrap">blurFrosted</Code> | Holds a **frosted** blur effect value. | <Code variant="value">{blurFrosted}</Code> |
+<TokensTable meta={tokensMeta.blur} />
