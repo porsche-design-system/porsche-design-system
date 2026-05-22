@@ -1,5 +1,5 @@
 import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
-import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from '../../styles/css-variables';
+import { radiusFull, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
@@ -43,11 +43,11 @@ export const getComponentCss = (
               inset: 0,
               ...mergeDeep(
                 buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
-                  borderRadius: `var(${legacyRadiusSmall}, ${compactValue ? radiusLg : radiusXl})`,
+                  borderRadius: compactValue ? radiusLg : radiusXl,
                 })),
                 buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                   ...(hideLabelValue && {
-                    borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+                    borderRadius: radiusFull,
                   }),
                 }))
               ),

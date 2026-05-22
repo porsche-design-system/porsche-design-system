@@ -7,14 +7,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  blurFrosted,
-  colorFrosted,
-  legacyRadiusSmall,
-  radiusSm,
-  spacingFluidSm,
-  spacingStaticXs,
-} from '../../../styles/css-variables';
+import { blurFrosted, colorFrosted, radiusSm, spacingFluidSm, spacingStaticXs } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
@@ -70,7 +63,7 @@ export const getComponentCss = (
                 content: '""',
                 position: 'absolute',
                 inset: `${buttonBeforeOffsetVertical} ${buttonBeforeOffsetHorizontal}`,
-                borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+                borderRadius: radiusSm,
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
                 transition: getTransition('background-color'),
               },

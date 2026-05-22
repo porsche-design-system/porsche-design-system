@@ -11,7 +11,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusSm,
   spacingFluidSm,
   typescaleMd,
@@ -28,7 +27,7 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
     all: 'unset',
     padding: `calc(${spacingFluidSm} + 2px) calc(${spacingFluidSm} + 4px)`, // aligned with link-pure
     margin: `-2px calc(${spacingFluidSm} * -1 - 4px)`, // aligned with link-pure
-    borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`, // needed for focus outline
+    borderRadius: radiusSm, // needed for focus outline
     font: `${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext}`,
     color: `var(${cssVarColorPrimary})`,
     textDecoration: 'underline',

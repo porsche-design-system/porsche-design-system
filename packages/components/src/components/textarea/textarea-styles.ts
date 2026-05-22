@@ -14,7 +14,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusLg,
   radiusXl,
   spacingStaticXs,
@@ -81,7 +80,7 @@ export const getComponentCss = (
         minHeight: `var(--p-textarea-min-height, ${textareaMinHeight})`,
         maxHeight: 'var(--p-textarea-max-height, unset)',
         border: `1px solid ${formStateBorderColor}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
+        borderRadius: isCompact ? radiusLg : radiusXl,
         background: formStateBackgroundColor,
         color: colorPrimary,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.

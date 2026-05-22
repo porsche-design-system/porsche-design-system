@@ -9,14 +9,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  colorContrastMedium,
-  colorPrimary,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusLg,
-  radiusXl,
-} from '../../../styles/css-variables';
+import { colorContrastMedium, colorPrimary, leadingNormal, radiusLg, radiusXl } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
@@ -83,7 +76,7 @@ export const getComponentCss = (
         minWidth: dimension,
         padding: padding,
         border: `1px solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
+        borderRadius: isCompact ? radiusLg : radiusXl,
         background: formStateBackgroundColor,
         color: colorPrimary,
         ...textSmallStyle,

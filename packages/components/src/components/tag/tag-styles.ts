@@ -34,7 +34,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   spacingStatic2Xs,
   spacingStaticSm,
@@ -122,7 +121,7 @@ export const getComponentCss = (
         padding: compact
           ? `${spacingStatic2Xs} ${spacingStaticSm}`
           : `${spacingStaticXs} calc(12 * ${spacingStatic2Xs})`,
-        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
+        borderRadius: `calc(${compact ? '1px' : spacingStaticXs} + (${leadingNormal} / 2))`, // ensures pill shape has a maximum border radius to support multiline.
         font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
         ...((variant === 'secondary' ||
           variant === 'info-frosted' ||
@@ -160,7 +159,7 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           inset: 0,
-          borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+          borderRadius: radiusFull,
         },
         '&(a:focus-visible)::before,&(button:focus-visible)::before': getFocusBaseStyles(),
         '&(br)': {

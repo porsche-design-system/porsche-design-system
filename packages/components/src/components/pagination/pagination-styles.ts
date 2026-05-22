@@ -18,7 +18,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   spacingStaticSm,
   spacingStaticXs,
@@ -113,7 +112,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         cursor: 'pointer',
         backgroundColor: 'transparent',
         color: colorPrimary,
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+        borderRadius: radiusFull,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({

@@ -19,7 +19,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   radiusLg,
   spacingStaticXs,
@@ -109,7 +108,7 @@ export const getLinkButtonPureStyles = (
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
-          borderRadius: `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : radiusLg})`,
+          borderRadius: hideLabelValue ? radiusFull : radiusLg,
         })),
         transition: getTransition('background-color'),
         ...(active && {

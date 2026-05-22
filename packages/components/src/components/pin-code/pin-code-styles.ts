@@ -11,7 +11,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusLg,
   radiusXl,
   spacingStaticXs,
@@ -68,7 +67,7 @@ export const getComponentCss = (
         padding: inputPadding,
         boxSizing: 'border-box',
         border: `${inputBorderWidth} solid ${formStateBorderColor}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
+        borderRadius: isCompact ? radiusLg : radiusXl,
         background: formStateBackgroundColor,
         font: `${fontWeightNormal} ${typescaleSm} / calc(${leadingNormal} + 6px) ${fontPorscheNext}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         color: colorPrimary,

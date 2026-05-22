@@ -6,7 +6,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   spacingStaticSm,
   spacingStaticXs,
   typescale2Xs,
@@ -38,7 +37,7 @@ export const getComponentCss = (): string => {
         alignItems: 'center',
         gap: '2px',
         padding: `0 ${spacingStaticSm} 0 ${spacingStaticXs}`,
-        borderRadius: `var(${legacyRadiusSmall}, calc(${spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
+        borderRadius: `calc(${spacingStaticXs} + (${leadingNormal} / 2))`, // ensures pill shape has a maximum border radius to support multiline.
         fontSize: typescale2Xs,
         color: colorContrastHigh,
         background: colorFrostedStrong,

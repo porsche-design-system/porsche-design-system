@@ -7,7 +7,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusSm,
   typescaleSm,
 } from '../css-variables';
@@ -33,7 +32,7 @@ export const getOptionJssStyle = (
     textAlign: 'start',
     wordBreak: 'break-word',
     boxSizing: 'content-box',
-    borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+    borderRadius: radiusSm,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
       background: colorFrosted,

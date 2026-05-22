@@ -19,7 +19,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
 } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
@@ -64,7 +63,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         font: `${fontWeightNormal} inherit / ${leadingNormal} ${fontPorscheNext}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+        borderRadius: radiusFull,
         ...(isStateCurrent && {
           WebkitBackdropFilter: blurFrosted,
           backdropFilter: blurFrosted,

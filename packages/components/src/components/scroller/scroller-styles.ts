@@ -9,14 +9,7 @@ import {
   hoverMediaQuery,
   pointerCoarseMediaQuery,
 } from '../../styles';
-import {
-  colorPrimary,
-  durationSm,
-  legacyRadiusSmall,
-  radiusLg,
-  spacingStaticSm,
-  spacingStaticXs,
-} from '../../styles/css-variables';
+import { colorPrimary, durationSm, radiusLg, spacingStaticSm, spacingStaticXs } from '../../styles/css-variables';
 import { getSmoothMask } from '../../styles/mask';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
@@ -128,7 +121,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        borderRadius: `var(${legacyRadiusSmall},${radiusLg})`, // needs to be overwritable by tabs-bar to improve focus appearance
+        borderRadius: radiusLg, // needs to be overwritable by tabs-bar to improve focus appearance
         ...addImportantToEachRule({
           ...hostHiddenStyles,
         }),

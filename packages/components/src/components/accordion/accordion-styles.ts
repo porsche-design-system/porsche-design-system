@@ -17,7 +17,6 @@ import {
   fontPorscheNext,
   fontWeightSemibold,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   radiusXl,
   typescaleMd,
@@ -144,7 +143,7 @@ export const getComponentCss = (
           WebkitBackdropFilter: blurFrosted,
           backdropFilter: blurFrosted,
         }),
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
+        borderRadius: radiusXl,
         ...forcedColorsMediaQuery({
           outline: '1px solid CanvasText',
           outlineOffset: background === 'none' ? '0' : '-1px',
@@ -195,7 +194,7 @@ export const getComponentCss = (
             position: 'sticky',
             top: `var(${cssVarSummaryTop}, var(${cssVarSummaryTopDeprecated}, 0px))`,
             background: `linear-gradient(180deg,${backgroundMap[background]} 0%,${backgroundMap[background]} 90%,transparent 100%)`,
-            borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
+            borderRadius: radiusXl,
           }),
         '&:focus-visible::before': getFocusBaseStyles(),
         ...hoverMediaQuery({

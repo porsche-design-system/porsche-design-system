@@ -22,7 +22,6 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   radiusLg,
   radiusXl,
@@ -84,9 +83,7 @@ export const getLinkButtonStyles = (
             '--_p-link-button-a': compactValue ? radiusLg : radiusXl,
           })),
           buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-            borderRadius: addImportantToRule(
-              `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : 'var(--_p-link-button-a)'})`
-            ),
+            borderRadius: addImportantToRule(hideLabelValue ? radiusFull : 'var(--_p-link-button-a)'),
           }))
         ),
         ...addImportantToEachRule({

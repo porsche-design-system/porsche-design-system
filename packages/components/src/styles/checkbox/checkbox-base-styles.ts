@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
-import { fontPorscheNext, leadingNormal, legacyRadiusSmall, radiusLg, radiusMd, typescaleSm } from '../css-variables';
+import { fontPorscheNext, leadingNormal, radiusLg, radiusMd, typescaleSm } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
@@ -42,7 +42,7 @@ export const getCheckboxBaseStyles = (
       forcedColorsMediaQuery({
         borderColor: 'GrayText',
       })),
-    borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusMd : radiusLg})`,
+    borderRadius: isCompact ? radiusMd : radiusLg,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
     }),

@@ -1,4 +1,3 @@
-export { legacyRadiusSmall } from './legacy-radius-small';
 export { radius2Xl } from './radius-2xl';
 export { radius3Xl } from './radius-3xl';
 export { radius4Xl } from './radius-4xl';
