@@ -1,0 +1,76 @@
+name: 'Test Deploy Context'
+
+# Manual trigger only — used to verify AWS secrets and deploy-context script work correctly.
+# Safe to delete after initial validation.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-deploy-context:
+    name: 'Test Deploy Context (MCP Knowledge Base)'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-jammy
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+      - name: 'Build dependencies'
+        run: |
+          npm run build:shared
+          npm run build:tokens
+          npm run build:assets
+          npm run build:styles
+          npm run build:utilities
+          npm run build:component-meta
+          npm run build:components
+          npm run build:components-js
+          npm run build:mcp-server
+          npm run prepare-context
+      - name: 'Verify context snapshots exist'
+        run: |
+          VERSION=$(node -p "require('./packages/components/package.json').version")
+          CONTEXT_DIR="packages/mcp-server/v${VERSION}"
+          echo "Looking for context at: ${CONTEXT_DIR}"
+          if [ ! -d "${CONTEXT_DIR}" ]; then
+            echo "ERROR: Context directory not found at ${CONTEXT_DIR}"
+            echo "Listing packages/mcp-server/:"
+            ls -la packages/mcp-server/
+            exit 1
+          fi
+          echo "Context snapshots found:"
+          ls -la "${CONTEXT_DIR}"
+          FILE_COUNT=$(find "${CONTEXT_DIR}" -type f | wc -l)
+          echo "Total files: ${FILE_COUNT}"
+          if [ "${FILE_COUNT}" -eq 0 ]; then
+            echo "ERROR: No files in context directory"
+            exit 1
+          fi
+      - name: 'Test S3 access (dry-run)'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_MCP }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_MCP }}
+          AWS_REGION: eu-central-1
+        run: |
+          VERSION=$(node -p "require('./packages/components/package.json').version")
+          echo "Testing S3 access to s3://${{ secrets.MCP_S3_BUCKET_NAME }}/v${VERSION}"
+          aws s3 ls "s3://${{ secrets.MCP_S3_BUCKET_NAME }}/" --region eu-central-1
+          echo "S3 access confirmed ✓"
+          echo ""
+          echo "Dry-run sync:"
+          aws s3 sync "packages/mcp-server/v${VERSION}" \
+            "s3://${{ secrets.MCP_S3_BUCKET_NAME }}/v${VERSION}" \
+            --region eu-central-1 --dryrun
+      - name: 'Deploy Context (real)'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_MCP }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_MCP }}
+          AWS_REGION: eu-central-1
+          S3_BUCKET_NAME: ${{ secrets.MCP_S3_BUCKET_NAME }}
+          KNOWLEDGE_BASE_ID: ${{ secrets.MCP_KNOWLEDGE_BASE_ID }}
+          DATA_SOURCE_ID: ${{ secrets.MCP_DATA_SOURCE_ID }}
+        run: npm run deploy-context
+
