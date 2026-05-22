@@ -10,13 +10,6 @@
     <script nomodule src="/build/porsche-design-system.js"></script>
     <script src="/build/porsche-design-system.esm.js" type="module"></script>
     <link rel="stylesheet" href="/assets/tailwind.css">
-    <style>
-      .legacy {
-        --_p-legacy-radius-small: 4px;
-        --_p-legacy-radius-medium: 8px;
-        --_p-legacy-radius-large: 12px;
-      }
-    </style>
   </head>
   <body>
 
@@ -1617,7 +1610,7 @@
 
     <p-heading slot="sidebar-end-header" tag="h2" size="medium">Settings</p-heading>
 
-    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', legacy: 'modern', background: 'gradient', accent: '#3400f0'})">
+    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', background: 'gradient', accent: '#3400f0'})">
       <p-select name="theme" value="scheme-light-dark" label="Theme" onchange="updateRoute({theme: this.value})">
         <p-select-option value="scheme-light">Light</p-select-option>
         <p-select-option value="scheme-dark">Dark</p-select-option>
@@ -1641,10 +1634,6 @@
       <p-select name="animation" value="animated" label="Animation" onchange="updateRoute({animation: this.value})">
         <p-select-option value="animated">Animated</p-select-option>
         <p-select-option value="none">No Animation</p-select-option>
-      </p-select>
-      <p-select name="legacy" value="modern" label="Legacy" onchange="updateRoute({legacy: this.value})">
-        <p-select-option value="modern">Modern</p-select-option>
-        <p-select-option value="legacy">Legacy</p-select-option>
       </p-select>
       <p-select name="background" value="gradient" label="Background" onchange="updateRoute({'background': this.value})">
         <p-optgroup label="Colors">
@@ -1765,7 +1754,6 @@
       const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
       const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
       const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'animated';
-      const getLegacy = () => new URL(document.location).searchParams.get('legacy') || 'modern';
       const getBackground = () => new URL(document.location).searchParams.get('background') || 'gradient';
       const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
       const getSearch = () => new URL(document.location).searchParams.get('search') || '';
@@ -1802,7 +1790,6 @@
         const zoom = getZoom();
         const compact = getCompact();
         const animation = getAnimation();
-        const legacy = getLegacy();
         const background = getBackground();
         const accent = getAccent();
         const components = getComponents();
@@ -1827,12 +1814,6 @@
         // Animation
         document.documentElement.style.setProperty('--p-transition-duration', animation === 'none' ? '0s' : '');
         document.documentElement.style.setProperty('--p-animation-duration', animation === 'none' ? '0s' : '');
-        // Legacy
-        if (legacy === 'legacy') {
-          document.documentElement.classList.add('legacy');
-        } else {
-          document.documentElement.classList.remove('legacy');
-        }
         // Background
         const backgroundMap = {
           canvas: {
@@ -1888,7 +1869,6 @@
         updateInput('zoom', getZoom());
         updateInput('compact', getCompact());
         updateInput('animation', getAnimation());
-        updateInput('legacy', getLegacy());
         updateInput('background', getBackground());
         updateInput('accent', getAccent());
         updateInput('search', getSearch());
