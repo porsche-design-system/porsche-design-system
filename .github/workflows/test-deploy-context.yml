@@ -1,12 +1,11 @@
 name: 'Test Deploy Context'
 
-# Manual trigger only — used to verify AWS secrets and deploy-context script work correctly.
-# Safe to delete after initial validation.
 on:
   workflow_dispatch:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   test-deploy-context:
@@ -17,7 +16,14 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-mcp-deployer
+          aws-region: eu-central-1
+
       - uses: ./.github/actions/install
+
       - name: 'Build dependencies'
         run: |
           npm run build:shared
@@ -30,6 +36,7 @@ jobs:
           npm run build:components-js
           npm run build:mcp-server
           npm run prepare-context
+
       - name: 'Verify context snapshots exist'
         run: |
           VERSION=$(node -p "require('./packages/components/package.json').version")
@@ -49,11 +56,8 @@ jobs:
             echo "ERROR: No files in context directory"
             exit 1
           fi
+
       - name: 'Test S3 access (dry-run)'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_MCP }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_MCP }}
-          AWS_REGION: eu-central-1
         run: |
           VERSION=$(node -p "require('./packages/components/package.json').version")
           echo "Testing S3 access to s3://${{ secrets.MCP_S3_BUCKET_NAME }}/v${VERSION}"
@@ -64,13 +68,10 @@ jobs:
           aws s3 sync "packages/mcp-server/v${VERSION}" \
             "s3://${{ secrets.MCP_S3_BUCKET_NAME }}/v${VERSION}" \
             --region eu-central-1 --dryrun
+
       - name: 'Deploy Context (real)'
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_MCP }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_MCP }}
-          AWS_REGION: eu-central-1
           S3_BUCKET_NAME: ${{ secrets.MCP_S3_BUCKET_NAME }}
           KNOWLEDGE_BASE_ID: ${{ secrets.MCP_KNOWLEDGE_BASE_ID }}
           DATA_SOURCE_ID: ${{ secrets.MCP_DATA_SOURCE_ID }}
         run: npm run deploy-context
-
