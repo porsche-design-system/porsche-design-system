@@ -1,0 +1,63 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+# Connectivity
+
+<TableOfContents
+  headings={[
+    'Stdio Transport',
+    'HTTP Streamable Transport',
+    'Skills',
+    'Supported Versions',
+    'Framework Coverage',
+    "What's Included",
+  ]}
+/>
+
+## Stdio Transport
+
+The MCP server currently ships as an **npm package** that runs locally via **stdio transport**. You install it, your MCP
+client spawns the process, and they communicate over standard input/output. This is the most widely supported transport
+for developer-facing tools like Claude Code, Cursor, and VS Code.
+
+This requires a local Node.js environment (v18+) and the ability for your MCP client to spawn child processes.
+
+## HTTP Streamable Transport (Coming Soon)
+
+We recognise that not all tools support spawning local processes. Some MCP clients — particularly browser-based or
+managed environments — require a remotely hosted **HTTP Streamable** endpoint. We are actively working on providing a
+hosted HTTP transport option so that non-technical consumers and teams without local Node.js setups can connect just as
+easily.
+
+Once available, you will be able to point your MCP client at a URL instead of running a local binary.
+
+## Skills (Coming Soon)
+
+For teams that prefer integrated AI experiences without additional configuration, we are also working on releasing the
+Porsche Design System as **Skills** 1(e.g. Copilot Skills). This will allow you to access the same documentation and
+component knowledge directly within compatible AI assistants — no MCP setup required.
+
+## Supported Versions
+
+Only **full releases** are available through the MCP server — release candidates (RC) and pre-release versions are not
+included. Documentation is available for versions back to **3.32.0**.
+
+## Framework Coverage
+
+The documentation served through this MCP covers initialization guides, component APIs, and best practices for all
+officially supported frameworks:
+
+- Vanilla JavaScript
+- React
+- Angular
+- Vue
+
+## What's Included
+
+Beyond component references, the MCP provides access to:
+
+- **Accessibility** guidelines and WCAG compliance notes
+- **Browser compatibility** matrices
+- **Performance** recommendations (CDN setup, loading behavior)
+- **Security** documentation (CSP configuration, vulnerability info)
+- **Styling** and design token references (including Tailwind CSS integration)
+- **Migration guides** for version upgrades
