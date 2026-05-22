@@ -16,6 +16,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Tabs`, `Tabs Bar`, `Link Tile`, `Link Tile Product`, `Button Tile`: aligned `border-radius` with the app and vehicle
+  design system for improved visual coherence
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Tabs Bar`: refined active tab background color to improve visual coherence with the app and vehicle design system
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Tabs`, `Tabs Bar`: height now matches `p-button` and `p-link` when `background="none"` is used, so the visual height
+  stays stable when combined with buttons or links
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 - `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Input Text`, `Input Number`: extended types of `value` prop to allow `string | number | null`
@@ -38,8 +46,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `Input Time`, `Input Url`, `Textarea`: form value, validity and `disabled`/`readOnly` state now stay in sync with the
   internal native control, so native form submission, reset and validation behave correctly when these props change
   dynamically ([4446](https://github.com/porsche-design-system/porsche-design-system/pull/4446))
-- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted content
-  ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
+- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted
+  content ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
 
 ## [4.2.0-rc.1] - 2026-05-18
 
