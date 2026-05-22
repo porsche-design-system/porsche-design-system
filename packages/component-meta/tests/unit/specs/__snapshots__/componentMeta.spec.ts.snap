@@ -1740,7 +1740,7 @@ exports[`should match snapshot 1`] = `
     ],
     "cssVariablesMeta": {
       "--p-carousel-border-radius": {
-        "defaultValue": "",
+        "defaultValue": "var(--p-radius-large, var(--p-radius-4xl))",
         "description": "Sets the border radius of each carousel slide.",
       },
       "--p-carousel-pe": {
@@ -2811,7 +2811,7 @@ exports[`should match snapshot 1`] = `
       "disableBackdropClick": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "When enabled, clicking the backdrop will not close the flyout — users must use the close button.",
+        "description": "When enabled, clicking the backdrop will not close the flyout.",
         "type": "boolean",
       },
       "footerBehavior": {
@@ -7087,7 +7087,7 @@ exports[`should match snapshot 1`] = `
       "disableBackdropClick": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "When enabled, clicking the backdrop will not close the modal — users must use the dismiss button.",
+        "description": "When enabled, clicking the backdrop will not close the modal.",
         "type": "boolean",
       },
       "dismissButton": {
@@ -7136,7 +7136,7 @@ exports[`should match snapshot 1`] = `
       },
       "--p-model-signature-width": {
         "defaultValue": "",
-        "description": "Overrides the width of the model signature. Only takes effect when \`size\` is not \`inherit\`.",
+        "description": "Overrides the width of the model signature.",
       },
     },
     "hasAriaProp": false,
@@ -8866,7 +8866,7 @@ exports[`should match snapshot 1`] = `
       "disableBackdropClick": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "When enabled, clicking the backdrop behind the sheet will not close it, forcing explicit dismissal via the close button.",
+        "description": "When enabled, clicking the backdrop will not close the sheet.",
         "type": "boolean",
       },
       "dismissButton": {
