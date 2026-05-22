@@ -53,7 +53,7 @@ export class Sheet {
   /** Shows a dismiss button in the sheet header so users can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** When enabled, clicking the backdrop behind the sheet will not close it, forcing explicit dismissal via the close button. */
+  /**When enabled, clicking the backdrop will not close the sheet. */
   @Prop() public disableBackdropClick?: boolean = false;
 
   /** Sets the background color of the sheet panel (`canvas` or `surface`). */

@@ -10,7 +10,7 @@ import {
 } from './model-signature-utils';
 
 /**
- * @css-variable {"name": "--p-model-signature-width", "description": "Overrides the width of the model signature. Only takes effect when `size` is not `inherit`.", "defaultValue": ""}
+ * @css-variable {"name": "--p-model-signature-width", "description": "Overrides the width of the model signature.", "defaultValue": ""}
  */
 const cssVariableWidth = '--p-model-signature-width';
 

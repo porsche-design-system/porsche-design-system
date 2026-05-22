@@ -67,7 +67,7 @@ export class Flyout {
   /** Sets the side the flyout slides in from — `start` for left or `end` for right in LTR layouts. */
   @Prop() public position?: FlyoutPosition = 'end';
 
-  /** When enabled, clicking the backdrop will not close the flyout — users must use the close button. */
+  /** When enabled, clicking the backdrop will not close the flyout. */
   @Prop() public disableBackdropClick?: boolean = false;
 
   /** Sets the background color of the flyout panel (`canvas` or `surface`). */

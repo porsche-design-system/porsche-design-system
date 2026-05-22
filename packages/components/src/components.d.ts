@@ -794,7 +794,7 @@ export namespace Components {
          */
         "background"?: FlyoutBackground;
         /**
-          * When enabled, clicking the backdrop will not close the flyout — users must use the close button.
+          * When enabled, clicking the backdrop will not close the flyout.
           * @default false
          */
         "disableBackdropClick"?: boolean;
@@ -918,972 +918,972 @@ export namespace Components {
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).
+          * Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing date selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
+          * Sets the latest selectable date in YYYY-MM-DD format. Dates after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
+          * Sets the earliest selectable date in YYYY-MM-DD format. Dates before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the date is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no date is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputDateState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Sets the stepping interval in days. The selected date must align with the `min` date by a multiple of this value.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+          * Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputEmail {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the email icon.
+          * Shows an email icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.
+          * Allows entry of multiple email addresses separated by commas. The browser validates each address individually.
           * @default false
          */
         "multiple"?: boolean;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default email validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputEmailState;
         /**
-          * The default email address (or comma-separated list of addresses) for the input.
+          * Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputMonth {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a month/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing month selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').
+          * Sets the latest selectable month in YYYY-MM format. Months after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
+          * Sets the earliest selectable month in YYYY-MM format. Months before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no month is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputMonthState;
         /**
-          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+          * Sets the stepping interval in months (e.g. `1` for monthly, `12` for annual).
           * @default 1
          */
         "step"?: number;
         /**
-          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+          * Sets the current month value in YYYY-MM format (e.g. `2025-07`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls.
+          * Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking.
           * @default false
          */
         "controls"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The max value of the number input.
+          * Sets the maximum allowed numeric value. Values above this are invalid.
          */
         "max"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The min value of the number input.
+          * Sets the minimum allowed numeric value. Values below this are invalid.
          */
         "min"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputNumberState;
         /**
-          * The granularity that the value must adhere to.
+          * Sets the stepping granularity — the value must be a multiple of this number. Also controls step button increment size.
           * @default 1
          */
         "step"?: number;
         /**
-          * The value of the number input.
+          * Sets the current numeric value of the field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
+          * Provides the browser with a password autofill hint (e.g. `autocomplete='current-password'` or `autocomplete='new-password'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
-          * Show or hide password toggle for `input type="password"`.
+          * Shows a toggle button that switches the password between masked and plain text visibility.
           * @default false
          */
         "toggle"?: boolean;
         /**
-          * The password input value.
+          * Sets the current password value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputSearch {
         /**
-          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions.
          */
         "autoComplete"?: string;
         /**
-          * Show clear input value button
+          * Shows a clear button (×) inside the field that resets the value to empty when clicked.
           * @default false
          */
         "clear"?: boolean;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Show search indicator icon
+          * Shows a magnifying glass icon inside the field as a visual affordance for search input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputSearchState;
         /**
-          * The search input value.
+          * Sets the current search query value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
+          * Provides the browser with a phone number autofill hint (e.g. `autocomplete='tel'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the phone icon.
+          * Shows a phone icon at the start of the field as a visual indicator for telephone input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default telephone validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+          * Sets placeholder text shown inside the field when it is empty, such as an example phone number format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTelState;
         /**
-          * The tel input value.
+          * Sets the current telephone number value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputText {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited by the user. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicate whether to enable spell-checking.
+          * Controls whether the browser's built-in spell-checking is enabled for this field.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTextState;
         /**
-          * The text input value.
+          * Sets the current text value of the input field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a time autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing time selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
+          * Sets the latest selectable time in `hh:mm` or `hh:mm:ss` format. Times after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
+          * Sets the earliest selectable time in `hh:mm` or `hh:mm:ss` format. Times before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no time is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTimeState;
         /**
-          * Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * Sets the stepping interval in seconds. Use `60` for minute-level selection, `1` to also expose seconds.
           * @default 60
          */
         "step"?: number;
         /**
-          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+          * Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputUrl {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
+          * Provides the browser with a URL autofill hint (e.g. `autocomplete='url'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the URL icon.
+          * Shows a URL/link icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default URL validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+          * Sets placeholder text shown inside the field when it is empty, such as an example URL.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputUrlState;
         /**
-          * The URL input value.
+          * Sets the current URL value. Must be an absolute URL (e.g. `https://porsche.com`) to pass browser validation.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputWeek {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a week/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing week selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+          * Sets the latest selectable week in YYYY-Www format. Weeks after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+          * Sets the earliest selectable week in YYYY-Www format. Weeks before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no week is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputWeekState;
         /**
-          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.
+          * Sets the stepping interval in weeks.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
+          * Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`).
           * @default ''
          */
         "value"?: string | null;
@@ -2132,7 +2132,7 @@ export namespace Components {
          */
         "background"?: ModalBackground;
         /**
-          * When enabled, clicking the backdrop will not close the modal — users must use the dismiss button.
+          * When enabled, clicking the backdrop will not close the modal.
           * @default false
          */
         "disableBackdropClick"?: boolean;
@@ -2189,55 +2189,55 @@ export namespace Components {
      */
     interface PMultiSelect {
         /**
-          * Displays the multi-select in compact mode.
+          * Reduces the control height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the multi-select.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the multi-select
+          * Disables the multi-select, preventing all interaction. Selected values are not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown opens upward (`up`) or downward (`down`), or decides automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
-          * The id of a form element the multi-select should be associated with.
+          * Associates the multi-select with a form element by its ID when not directly nested inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the multi-select control.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the control when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name submitted with the form data to identify the selected values on the server.
          */
         "name": string;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the multi-select as required — form submission is blocked unless at least one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: MultiSelectState;
@@ -2249,12 +2249,12 @@ export namespace Components {
     }
     interface PMultiSelectOption {
         /**
-          * Disables the option.
+          * Disables the option, preventing it from being selected.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
          */
         "value": string | number;
     }
@@ -2600,60 +2600,60 @@ export namespace Components {
      */
     interface PSelect {
         /**
-          * Displays the select in compact mode.
+          * Reduces the control height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the select.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the select.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the select.
+          * Prevents user interaction with the select and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown list opens upward (`up`) or downward (`down`), or determines the direction automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
+          * Shows a text input inside the dropdown that filters the visible options as the user types. Ignored when the `filter` slot is used.
           * @default false
          */
         "filter"?: boolean;
         /**
-          * The id of a form element the select should be associated with.
+          * Associates the select with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the select control to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the select when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name of the control submitted with the form data, identifying the selected value on the server.
          */
         "name": string;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the select as required so the form cannot be submitted unless a non-empty option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the select, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: SelectState;
@@ -2664,12 +2664,12 @@ export namespace Components {
     }
     interface PSelectOption {
         /**
-          * Disables the option.
+          * Prevents the option from being selected and visually dims it to indicate it is unavailable.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-select value (same type and value).
+          * Sets the value submitted with the form data when this option is selected in the parent select control.
          */
         "value"?: string | number | null;
     }
@@ -2687,7 +2687,7 @@ export namespace Components {
          */
         "background"?: SheetBackground;
         /**
-          * When enabled, clicking the backdrop behind the sheet will not close it, forcing explicit dismissal via the close button.
+          * When enabled, clicking the backdrop will not close the sheet.
           * @default false
          */
         "disableBackdropClick"?: boolean;
@@ -2975,101 +2975,101 @@ export namespace Components {
     }
     interface PTextarea {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the textarea in compact mode.
+          * Reduces the textarea's initial height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the textarea indicating how many characters the user has typed relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the textarea.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the textarea.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the textarea. The value will not be submitted with the form.
+          * Prevents user interaction with the textarea and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
+          * Associates the textarea with a form element by its ID when the textarea is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the textarea to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
+          * Sets the maximum number of characters the user is allowed to enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the textarea when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
+          * Sets the minimum number of characters required for the textarea's value to pass constraint validation.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea, used when submitting the form data.
+          * Sets the name of the textarea submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
+          * Sets placeholder text displayed inside the textarea when it is empty to hint at the expected content format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
+          * Makes the textarea read-only so users cannot modify the value, while still including it in form submissions.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
+          * Marks the textarea as required so the form cannot be submitted while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Controls whether the textarea is resizable and in which direction.
+          * Controls whether and in which direction the user can resize the textarea (`horizontal`, `vertical`, `both`, or `none`).
           * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
+          * Sets the initial visible height of the textarea in lines of text. Has no effect when the `--p-textarea-field-sizing` CSS variable is set to `content`.
           * @default 7
          */
         "rows"?: number;
         /**
-          * Specifies whether the textarea should have its spelling and grammar checked
+          * Controls whether the browser's built-in spell-checking and grammar checking is enabled for the textarea content.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the textarea component.
+          * Sets the validation state of the textarea, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: TextareaState;
         /**
-          * The textarea value.
+          * Sets the current multi-line text value of the textarea and reflects any changes made by the user.
           * @default ''
          */
         "value"?: string | null;
         /**
-          * Handles wrapping behavior of elements.
+          * Controls how the submitted text wraps in the form data: `soft` wraps only visually, `hard` inserts line breaks at the textarea width.
           * @default 'soft'
          */
         "wrap"?: TextareaWrap;
@@ -4967,7 +4967,7 @@ declare namespace LocalJSX {
          */
         "background"?: FlyoutBackground;
         /**
-          * When enabled, clicking the backdrop will not close the flyout — users must use the close button.
+          * When enabled, clicking the backdrop will not close the flyout.
           * @default false
          */
         "disableBackdropClick"?: boolean;
@@ -5111,359 +5111,359 @@ declare namespace LocalJSX {
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).
+          * Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing date selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
+          * Sets the latest selectable date in YYYY-MM-DD format. Dates after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
+          * Sets the earliest selectable date in YYYY-MM-DD format. Dates before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the date input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputDateCustomEvent<InputDateBlurEventDetail>) => void;
         /**
-          * Emitted when the date input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputDateCustomEvent<InputDateChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the date picker.
          */
         "onInput"?: (event: PInputDateCustomEvent<InputDateInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the date is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no date is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputDateState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Sets the stepping interval in days. The selected date must align with the `min` date by a multiple of this value.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+          * Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputEmail {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the email icon.
+          * Shows an email icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.
+          * Allows entry of multiple email addresses separated by commas. The browser validates each address individually.
           * @default false
          */
         "multiple"?: boolean;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the email input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputEmailCustomEvent<InputEmailBlurEventDetail>) => void;
         /**
-          * Emitted when the email input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputEmailCustomEvent<InputEmailChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputEmailCustomEvent<InputEmailInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default email validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputEmailState;
         /**
-          * The default email address (or comma-separated list of addresses) for the input.
+          * Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputMonth {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a month/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing month selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').
+          * Sets the latest selectable month in YYYY-MM format. Months after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
+          * Sets the earliest selectable month in YYYY-MM format. Months before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the month input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputMonthCustomEvent<InputMonthBlurEventDetail>) => void;
         /**
-          * Emitted when the month input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputMonthCustomEvent<InputMonthChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the month picker.
          */
         "onInput"?: (event: PInputMonthCustomEvent<InputMonthInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no month is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputMonthState;
         /**
-          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+          * Sets the stepping interval in months (e.g. `1` for monthly, `12` for annual).
           * @default 1
          */
         "step"?: number;
         /**
-          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+          * Sets the current month value in YYYY-MM format (e.g. `2025-07`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls.
+          * Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking.
           * @default false
          */
         "controls"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The max value of the number input.
+          * Sets the maximum allowed numeric value. Values above this are invalid.
          */
         "max"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The min value of the number input.
+          * Sets the minimum allowed numeric value. Values below this are invalid.
          */
         "min"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
@@ -5479,90 +5479,90 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputNumberState;
         /**
-          * The granularity that the value must adhere to.
+          * Sets the stepping granularity — the value must be a multiple of this number. Also controls step button increment size.
           * @default 1
          */
         "step"?: number;
         /**
-          * The value of the number input.
+          * Sets the current numeric value of the field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
+          * Provides the browser with a password autofill hint (e.g. `autocomplete='current-password'` or `autocomplete='new-password'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
@@ -5578,112 +5578,112 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
-          * Show or hide password toggle for `input type="password"`.
+          * Shows a toggle button that switches the password between masked and plain text visibility.
           * @default false
          */
         "toggle"?: boolean;
         /**
-          * The password input value.
+          * Sets the current password value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputSearch {
         /**
-          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions.
          */
         "autoComplete"?: string;
         /**
-          * Show clear input value button
+          * Shows a clear button (×) inside the field that resets the value to empty when clicked.
           * @default false
          */
         "clear"?: boolean;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Show search indicator icon
+          * Shows a magnifying glass icon inside the field as a visual affordance for search input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the search input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputSearchCustomEvent<InputSearchBlurEventDetail>) => void;
         /**
-          * Emitted when the search input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputSearchCustomEvent<InputSearchChangeEventDetail>) => void;
         /**
@@ -5691,524 +5691,524 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputSearchState;
         /**
-          * The search input value.
+          * Sets the current search query value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
+          * Provides the browser with a phone number autofill hint (e.g. `autocomplete='tel'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the phone icon.
+          * Shows a phone icon at the start of the field as a visual indicator for telephone input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the tel input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputTelCustomEvent<InputTelBlurEventDetail>) => void;
         /**
-          * Emitted when the tel input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTelCustomEvent<InputTelChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputTelCustomEvent<InputTelInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default telephone validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+          * Sets placeholder text shown inside the field when it is empty, such as an example phone number format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTelState;
         /**
-          * The tel input value.
+          * Sets the current telephone number value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputText {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the text input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
         /**
-          * Emitted when the text input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited by the user. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicate whether to enable spell-checking.
+          * Controls whether the browser's built-in spell-checking is enabled for this field.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTextState;
         /**
-          * The text input value.
+          * Sets the current text value of the input field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a time autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing time selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
+          * Sets the latest selectable time in `hh:mm` or `hh:mm:ss` format. Times after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
+          * Sets the earliest selectable time in `hh:mm` or `hh:mm:ss` format. Times before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the time input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputTimeCustomEvent<InputTimeBlurEventDetail>) => void;
         /**
-          * Emitted when the time input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTimeCustomEvent<InputTimeChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the time picker.
          */
         "onInput"?: (event: PInputTimeCustomEvent<InputTimeInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no time is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTimeState;
         /**
-          * Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * Sets the stepping interval in seconds. Use `60` for minute-level selection, `1` to also expose seconds.
           * @default 60
          */
         "step"?: number;
         /**
-          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+          * Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputUrl {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
+          * Provides the browser with a URL autofill hint (e.g. `autocomplete='url'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the URL icon.
+          * Shows a URL/link icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the URL input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputUrlCustomEvent<InputUrlBlurEventDetail>) => void;
         /**
-          * Emitted when the URL input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputUrlCustomEvent<InputUrlChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputUrlCustomEvent<InputUrlInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default URL validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+          * Sets placeholder text shown inside the field when it is empty, such as an example URL.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputUrlState;
         /**
-          * The URL input value.
+          * Sets the current URL value. Must be an absolute URL (e.g. `https://porsche.com`) to pass browser validation.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputWeek {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a week/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing week selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+          * Sets the latest selectable week in YYYY-Www format. Weeks after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+          * Sets the earliest selectable week in YYYY-Www format. Weeks before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the week input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputWeekCustomEvent<InputWeekBlurEventDetail>) => void;
         /**
-          * Emitted when the week input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputWeekCustomEvent<InputWeekChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the week picker.
          */
         "onInput"?: (event: PInputWeekCustomEvent<InputWeekInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no week is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputWeekState;
         /**
-          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.
+          * Sets the stepping interval in weeks.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
+          * Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`).
           * @default ''
          */
         "value"?: string | null;
@@ -6461,7 +6461,7 @@ declare namespace LocalJSX {
          */
         "background"?: ModalBackground;
         /**
-          * When enabled, clicking the backdrop will not close the modal — users must use the dismiss button.
+          * When enabled, clicking the backdrop will not close the modal.
           * @default false
          */
         "disableBackdropClick"?: boolean;
@@ -6530,67 +6530,67 @@ declare namespace LocalJSX {
      */
     interface PMultiSelect {
         /**
-          * Displays the multi-select in compact mode.
+          * Reduces the control height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the multi-select.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the multi-select
+          * Disables the multi-select, preventing all interaction. Selected values are not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown opens upward (`up`) or downward (`down`), or decides automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
-          * The id of a form element the multi-select should be associated with.
+          * Associates the multi-select with a form element by its ID when not directly nested inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the multi-select control.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the control when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name submitted with the form data to identify the selected values on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the multi-select has lost focus.
+          * Emitted when the multi-select loses focus.
          */
         "onBlur"?: (event: PMultiSelectCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is changed.
+          * Emitted when the user selects or deselects an option, with the updated array of values in the event detail.
          */
         "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
         /**
-          * Emitted when the dropdown is toggled.
+          * Emitted when the dropdown opens or closes, with the new open state in the event detail.
          */
         "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the multi-select as required — form submission is blocked unless at least one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: MultiSelectState;
@@ -6602,12 +6602,12 @@ declare namespace LocalJSX {
     }
     interface PMultiSelectOption {
         /**
-          * Disables the option.
+          * Disables the option, preventing it from being selected.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
          */
         "value"?: string | number;
     }
@@ -6981,72 +6981,72 @@ declare namespace LocalJSX {
      */
     interface PSelect {
         /**
-          * Displays the select in compact mode.
+          * Reduces the control height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the select.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the select.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the select.
+          * Prevents user interaction with the select and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown list opens upward (`up`) or downward (`down`), or determines the direction automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
+          * Shows a text input inside the dropdown that filters the visible options as the user types. Ignored when the `filter` slot is used.
           * @default false
          */
         "filter"?: boolean;
         /**
-          * The id of a form element the select should be associated with.
+          * Associates the select with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the select control to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the select when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name of the control submitted with the form data, identifying the selected value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the select has lost focus.
+          * Emitted when the select component loses focus, useful for triggering validation on blur.
          */
         "onBlur"?: (event: PSelectCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is changed.
+          * Emitted when the user selects a different option, carrying the new value in the event detail.
          */
         "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
         /**
-          * Emitted when the dropdown is toggled.
+          * Emitted when the dropdown list opens or closes, carrying the new `isOpen` state in the event detail.
          */
         "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the select as required so the form cannot be submitted unless a non-empty option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the select, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: SelectState;
@@ -7057,12 +7057,12 @@ declare namespace LocalJSX {
     }
     interface PSelectOption {
         /**
-          * Disables the option.
+          * Prevents the option from being selected and visually dims it to indicate it is unavailable.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-select value (same type and value).
+          * Sets the value submitted with the form data when this option is selected in the parent select control.
          */
         "value"?: string | number | null;
     }
@@ -7080,7 +7080,7 @@ declare namespace LocalJSX {
          */
         "background"?: SheetBackground;
         /**
-          * When enabled, clicking the backdrop behind the sheet will not close it, forcing explicit dismissal via the close button.
+          * When enabled, clicking the backdrop will not close the sheet.
           * @default false
          */
         "disableBackdropClick"?: boolean;
@@ -7400,113 +7400,113 @@ declare namespace LocalJSX {
     }
     interface PTextarea {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the textarea in compact mode.
+          * Reduces the textarea's initial height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the textarea indicating how many characters the user has typed relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the textarea.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the textarea.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the textarea. The value will not be submitted with the form.
+          * Prevents user interaction with the textarea and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
+          * Associates the textarea with a form element by its ID when the textarea is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the textarea to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
+          * Sets the maximum number of characters the user is allowed to enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the textarea when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
+          * Sets the minimum number of characters required for the textarea's value to pass constraint validation.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea, used when submitting the form data.
+          * Sets the name of the textarea submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the textarea has lost focus.
+          * Emitted when the textarea element loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PTextareaCustomEvent<TextareaBlurEventDetail>) => void;
         /**
-          * Emitted when the textarea loses focus after its value was changed.
+          * Emitted when the textarea loses focus after its value was changed, equivalent to the native `change` event.
          */
         "onChange"?: (event: PTextareaCustomEvent<TextareaChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every keystroke or value change as a direct result of user interaction, equivalent to the native `input` event.
          */
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
+          * Sets placeholder text displayed inside the textarea when it is empty to hint at the expected content format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
+          * Makes the textarea read-only so users cannot modify the value, while still including it in form submissions.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
+          * Marks the textarea as required so the form cannot be submitted while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Controls whether the textarea is resizable and in which direction.
+          * Controls whether and in which direction the user can resize the textarea (`horizontal`, `vertical`, `both`, or `none`).
           * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
+          * Sets the initial visible height of the textarea in lines of text. Has no effect when the `--p-textarea-field-sizing` CSS variable is set to `content`.
           * @default 7
          */
         "rows"?: number;
         /**
-          * Specifies whether the textarea should have its spelling and grammar checked
+          * Controls whether the browser's built-in spell-checking and grammar checking is enabled for the textarea content.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the textarea component.
+          * Sets the validation state of the textarea, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: TextareaState;
         /**
-          * The textarea value.
+          * Sets the current multi-line text value of the textarea and reflects any changes made by the user.
           * @default ''
          */
         "value"?: string | null;
         /**
-          * Handles wrapping behavior of elements.
+          * Controls how the submitted text wraps in the form data: `soft` wraps only visually, `hard` inserts line breaks at the textarea width.
           * @default 'soft'
          */
         "wrap"?: TextareaWrap;

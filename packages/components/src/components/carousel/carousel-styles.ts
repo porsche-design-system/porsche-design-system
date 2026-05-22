@@ -59,7 +59,7 @@ export const cssVarPaddingInlineEnd = '--p-carousel-pe';
 const cssVariablePrevNextColorScheme = '--p-carousel-prev-next-color-scheme';
 
 /**
- * @css-variable {"name": "--p-carousel-border-radius", "description": "Sets the border radius of each carousel slide.", "defaultValue": ""}
+ * @css-variable {"name": "--p-carousel-border-radius", "description": "Sets the border radius of each carousel slide.", "defaultValue": "var(--p-radius-large, var(--p-radius-4xl))"}
  */
 
 export const cssVariableGradientColorWidth = '--p-gradient-color-width';

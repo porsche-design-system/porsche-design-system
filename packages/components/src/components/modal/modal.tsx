@@ -61,7 +61,7 @@ export class Modal {
   /** Shows a dismiss button in the modal header so the user can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** When enabled, clicking the backdrop will not close the modal — users must use the dismiss button. */
+  /** When enabled, clicking the backdrop will not close the modal. */
   @Prop() public disableBackdropClick?: boolean = false;
 
   /** Sets the backdrop style. Use `blur` when the modal is opened by user interaction; use `shading` when opened automatically (e.g. Cookie Consent). */
