@@ -29,15 +29,6 @@ export type LoadComponentLibraryOptions = {
  */
 export function loadComponentLibrary({ script, version, prefix, exclude = [] }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version as `${number}.${number}.${number}`);
-
-  if (exclude.length) {
-    for (const tag of exclude) {
-      if (!data.exclude.includes(tag)) {
-        data.exclude.push(tag);
-      }
-    }
-  }
-
   const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
@@ -48,6 +39,14 @@ export function loadComponentLibrary({ script, version, prefix, exclude = [] }: 
       `[Porsche Design System v${version}] prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
 Take a look at document.${CM_KEY} for more details.`
     );
+  }
+
+  if (exclude.length) {
+    for (const tag of exclude) {
+      if (!data.exclude.includes(tag)) {
+        data.exclude.push(tag);
+      }
+    }
   }
 
   if (!isInjected) {

@@ -275,3 +275,9 @@ it('should keep exclude empty when not provided', () => {
   loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
   expect(getComponentsManagerData()['1.0.0'].exclude).toEqual([]);
 });
+
+it('should not mutate exclude list when prefix collision throws', () => {
+  loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
+  expect(() => loadComponentLibrary({ ...defaultOptions, version: '1.1.0', exclude: ['p-table'] })).toThrow();
+  expect(getComponentsManagerData()['1.1.0'].exclude).toEqual([]);
+});
