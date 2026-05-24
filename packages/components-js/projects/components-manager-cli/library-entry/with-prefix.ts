@@ -31,10 +31,12 @@ declare var CM_CONFIG: EntryConfig;
 /**
  * @property prefix - the prefix used for the components
  * @property cdn - the cdn to load assets from
+ * @property exclude - tag names to skip during custom element registration (e.g. ['p-table', 'p-select'])
  */
 export type LoadOptions = {
   prefix?: string;
   cdn?: 'auto' | 'cn';
+  exclude?: string[];
 };
 
 export const load = (opts: LoadOptions = {}): void => {
@@ -58,5 +60,5 @@ export const load = (opts: LoadOptions = {}): void => {
     prefixes: [], // to not break older versions
   };
 
-  loadComponentLibrary({ ...CM_CONFIG, prefix: opts.prefix || '' });
+  loadComponentLibrary({ ...CM_CONFIG, prefix: opts.prefix || '', exclude: opts.exclude });
 };

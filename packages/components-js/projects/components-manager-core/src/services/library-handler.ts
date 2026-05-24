@@ -9,6 +9,7 @@ export type LibraryHandlerData = {
   isReady: () => Promise<unknown>;
   readyResolve: ReadyResolve;
   prefixes: string[];
+  exclude: string[];
   registerCustomElements: RegisterCustomElementsCallback | null;
 };
 
@@ -21,12 +22,22 @@ export type LoadComponentLibraryOptions = {
   script: string;
   version: string;
   prefix: string;
+  exclude?: string[];
 };
 /**
  * @param options - LoadComponentLibraryOptions
  */
-export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
+export function loadComponentLibrary({ script, version, prefix, exclude = [] }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version as `${number}.${number}.${number}`);
+
+  if (exclude.length) {
+    for (const tag of exclude) {
+      if (!data.exclude.includes(tag)) {
+        data.exclude.push(tag);
+      }
+    }
+  }
+
   const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
@@ -82,6 +93,7 @@ function getLibraryHandlerData(version: `${number}.${number}.${number}`): Librar
       isReady: () => readyPromise,
       readyResolve: readyPromiseResolve,
       prefixes: [],
+      exclude: [],
       registerCustomElements: null,
     };
   }

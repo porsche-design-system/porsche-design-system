@@ -52,6 +52,7 @@ it('should load the library for each version once if version and prefix is used'
           "",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
@@ -68,6 +69,7 @@ it('should load the library for each version once if version and prefix is used'
           "",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
       "2.0.0": {
@@ -77,6 +79,7 @@ it('should load the library for each version once if version and prefix is used'
           "some-prefix",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
@@ -94,6 +97,7 @@ it('should load the library for each version once if version and prefix is used'
           "my-prefix",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
       "2.0.0": {
@@ -103,6 +107,7 @@ it('should load the library for each version once if version and prefix is used'
           "some-prefix",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
@@ -120,6 +125,7 @@ it('should load the library for each version once if version and prefix is used'
           "my-prefix",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
       "2.0.0": {
@@ -130,6 +136,7 @@ it('should load the library for each version once if version and prefix is used'
           "another-prefix",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
@@ -193,6 +200,7 @@ it('should throw if prefix is already used by different version', () => {
           "",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
@@ -211,6 +219,7 @@ it('should throw if prefix is already used by different version', () => {
           "",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
       "1.1.0": {
@@ -218,6 +227,7 @@ it('should throw if prefix is already used by different version', () => {
         "isReady": [Function],
         "prefixes": [],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
@@ -233,6 +243,7 @@ it('should throw if prefix is already used by different version', () => {
           "",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
       "1.1.0": {
@@ -242,8 +253,25 @@ it('should throw if prefix is already used by different version', () => {
           "prefixed",
         ],
         "readyResolve": [Function],
+        "exclude": [],
         "registerCustomElements": null,
       },
     }
   `);
+});
+
+it('should store exclude list in version data', () => {
+  loadComponentLibrary({ ...defaultOptions, version: '1.0.0', exclude: ['p-table', 'p-scroller'] });
+  expect(getComponentsManagerData()['1.0.0'].exclude).toEqual(['p-table', 'p-scroller']);
+});
+
+it('should merge exclude lists from multiple load calls without duplicates', () => {
+  loadComponentLibrary({ ...defaultOptions, version: '1.0.0', exclude: ['p-table'] });
+  loadComponentLibrary({ ...defaultOptions, version: '1.0.0', prefix: 'my', exclude: ['p-table', 'p-select'] });
+  expect(getComponentsManagerData()['1.0.0'].exclude).toEqual(['p-table', 'p-select']);
+});
+
+it('should keep exclude empty when not provided', () => {
+  loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
+  expect(getComponentsManagerData()['1.0.0'].exclude).toEqual([]);
 });
