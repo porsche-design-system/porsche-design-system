@@ -48,6 +48,7 @@ const getGridTemplateColumns = (layout: 'mobile' | 'desktop'): string =>
         1
       )} [${gridWideColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`;
 
+/** Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). */
 export const gridStyle = {
   [_cssVariableGridSafeZone]: _gridSafeZoneBase,
   [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(3),
