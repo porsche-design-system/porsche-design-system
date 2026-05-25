@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const monorepoRoot = path.resolve(__dirname, '..', '..', '..', '..');
 
 export const sourceDir = path.join(monorepoRoot, 'packages/storefront/src/app/');
-export const outputDir = path.join(monorepoRoot, `packages/mcp-server/v5`);
+export const outputDir = path.join(monorepoRoot, `packages/mcp-server/v${version}`);
 export const examplesDir = path.join(monorepoRoot, 'packages/shared/src/examples');
 export const changelogSourcePath = path.join(monorepoRoot, 'packages/components/CHANGELOG.md');
 export const componentMetaPath = path.join(monorepoRoot, 'packages/component-meta/src/lib/componentMeta.ts');
