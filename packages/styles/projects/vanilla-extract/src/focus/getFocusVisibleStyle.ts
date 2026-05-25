@@ -4,6 +4,7 @@ export type Options = {
   offset?: string;
 };
 
+/** Applies a **focus-visible** outline style with configurable `outlineOffset`. */
 export const getFocusVisibleStyle = (opts?: Options) => {
   const { offset = '2px' } = opts || {};
   return {

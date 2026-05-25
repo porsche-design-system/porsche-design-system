@@ -7,6 +7,7 @@ import { breakpointXL } from './breakpointXL';
 import { breakpointXS } from './breakpointXS';
 import { breakpointXXL } from './breakpointXXL';
 
+/** Object containing all breakpoint values. */
 export const breakpoint: { [key in Breakpoint]: number } = {
   base: breakpointBase,
   xs: breakpointXS,

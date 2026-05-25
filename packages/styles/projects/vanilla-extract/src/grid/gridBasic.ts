@@ -4,6 +4,7 @@ import { gridBasicSpanOneHalf } from './gridBasicSpanOneHalf';
 import { gridBasicSpanOneThird } from './gridBasicSpanOneThird';
 import { gridBasicSpanTwoThirds } from './gridBasicSpanTwoThirds';
 
+/** Object containing all `basic` grid styles. */
 export const gridBasic = {
   columnStart: gridBasicColumnStart,
   columnEnd: gridBasicColumnEnd,
