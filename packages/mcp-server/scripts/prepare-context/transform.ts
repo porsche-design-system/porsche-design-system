@@ -15,6 +15,7 @@ import {
 // Token resolution — loads @porsche-design-system/tokens values for interpolation
 let tokenValues: Record<string, string> | null = null;
 let pdsVersion: string | null = null;
+let tokensMetaCache: Record<string, any> | null = null;
 
 const loadTokenValues = async (): Promise<Record<string, string>> => {
   if (tokenValues) return tokenValues;
@@ -53,6 +54,74 @@ const loadPdsVersion = async (): Promise<string> => {
     pdsVersion = '4';
     return pdsVersion;
   }
+};
+
+const loadTokensMeta = async (): Promise<Record<string, any>> => {
+  if (tokensMetaCache) return tokensMetaCache;
+  try {
+    const mod = await import('@porsche-design-system/tokens-meta');
+    tokensMetaCache = mod.tokensMeta ?? {};
+    return tokensMetaCache;
+  } catch (error) {
+    console.warn('Could not load tokens-meta:', error);
+    tokensMetaCache = {};
+    return tokensMetaCache;
+  }
+};
+
+/**
+ * Resolve a dot-path like "tokensMeta.color.lightDark.background" against the tokensMeta object.
+ * The leading "tokensMeta." prefix is stripped before traversal.
+ */
+const resolveTokensMetaPath = (dotPath: string, meta: Record<string, any>): Record<string, any> | null => {
+  const stripped = dotPath.replace(/^tokensMeta\./, '');
+  const segments = stripped.split('.');
+  let node: any = meta;
+  for (const seg of segments) {
+    if (node == null || typeof node !== 'object') return null;
+    node = node[seg];
+  }
+  // The resolved node should be a Record<string, { name, value, description }>
+  if (node && typeof node === 'object') return node;
+  return null;
+};
+
+/**
+ * Format a resolved tokensMeta node as a markdown table.
+ * Each leaf entry has { name, value, description }.
+ * If showColorSwatch is true, adds a Color column (with the value as background hint).
+ */
+const formatTokensTable = (
+  meta: Record<string, any>,
+  showColorSwatch: boolean
+): string => {
+  // Collect leaf entries (those with a `name` property)
+  const entries: Array<{ name: string; value: string | number; description: string }> = [];
+  for (const val of Object.values(meta)) {
+    if (val && typeof val === 'object' && 'name' in val && 'value' in val && 'description' in val) {
+      entries.push(val);
+    }
+  }
+
+  if (entries.length === 0) return '';
+
+  const lines: string[] = [];
+
+  if (showColorSwatch) {
+    lines.push('| Color | Token | Description | Value |');
+    lines.push('|-------|-------|-------------|-------|');
+    for (const entry of entries) {
+      lines.push(`| | ${entry.name} | ${entry.description} | ${entry.value} |`);
+    }
+  } else {
+    lines.push('| Token | Description | Value |');
+    lines.push('|-------|-------------|-------|');
+    for (const entry of entries) {
+      lines.push(`| ${entry.name} | ${entry.description} | ${entry.value} |`);
+    }
+  }
+
+  return lines.join('\n');
 };
 
 // Loaders
@@ -500,6 +569,21 @@ export const processContent = async (
 
   // TableOfContents
   content = content.replace(/<TableOfContents\s+headings={[\s\S]*?}\s*\/>/g, '');
+
+  // TokensTable → resolve tokensMeta paths and render markdown tables
+  const tMeta = await loadTokensMeta();
+  const tokensTableMatches = content.matchAll(/<TokensTable\s+((?:showColorSwatch\s+)?)meta={([^}]+)}\s*\/>/g);
+  for (const match of Array.from(tokensTableMatches)) {
+    const [fullMatch, swatchAttr, metaPath] = match;
+    const showColorSwatch = swatchAttr.includes('showColorSwatch');
+    const resolved = resolveTokensMetaPath(metaPath.trim(), tMeta);
+    if (resolved) {
+      const table = formatTokensTable(resolved, showColorSwatch);
+      content = content.replace(fullMatch, table);
+    } else {
+      content = content.replace(fullMatch, `\n> Token data not available for \`${metaPath.trim()}\`.\n`);
+    }
+  }
 
   // ComponentApi → inject API documentation
   content = content.replace(

@@ -31,6 +31,7 @@
     "zod": "^4.3.5"
   },
   "devDependencies": {
+    "@porsche-design-system/tokens-meta": "0.0.0",
     "@types/node": "^24.7.2",
     "tsx": "^4.20.6",
     "typescript": "~5.9.3"
