@@ -54,12 +54,12 @@ describe('formStateRestoreCallback', () => {
     expect(component.value).toBe(restoredValue);
   });
 });
-describe('componentDidLoad', () => {
+describe('componentDidRender (setFormValue)', () => {
   it('should call setFormValue with current value', () => {
     const component = initComponent();
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -208,6 +208,7 @@ describe('onValueChange (coercion to string)', () => {
 
     component.value = null;
     component.onValueChange();
+    component.componentDidRender();
 
     expect(setFormValueSpy).toHaveBeenCalledWith('');
     expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
@@ -219,6 +220,7 @@ describe('onValueChange (coercion to string)', () => {
 
     component.value = undefined;
     component.onValueChange();
+    component.componentDidRender();
 
     expect(setFormValueSpy).toHaveBeenCalledWith('');
     expect(setFormValueSpy).not.toHaveBeenCalledWith(undefined);
@@ -239,6 +241,7 @@ describe('onValueChange (coercion to string)', () => {
 
     component.value = 42;
     component.onValueChange();
+    component.componentDidRender();
 
     expect(setFormValueSpy).toHaveBeenCalledWith('42');
   });
@@ -283,6 +286,7 @@ describe('onValueChange (coercion to string)', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.value = 'updated';
     component.onValueChange();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith('updated');
   });
 });
@@ -320,6 +324,7 @@ describe('formStateRestoreCallback (with null state)', () => {
     // value can be null (consumer-facing), but DOM/FormData see ''
     expect(component.value).toBeNull();
     component.onValueChange();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith('');
     expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
   });

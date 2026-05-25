@@ -1,13 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  breakpointXl,
-  breakpoint2Xl,
-  breakpointLg,
-  breakpointMd,
-  breakpointSm,
-  breakpointXs,
-} from '@porsche-design-system/tokens';
+import { TokensTable } from '@/components/common/TokensTable';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Breakpoint - Porsche Design System',
@@ -20,11 +13,4 @@ export const metadata = {
 
 ## Tokens
 
-| Token           | Description                                                                 | Value           |
-| --------------- | --------------------------------------------------------------------------- | --------------- |
-| <Code variant="nowrap">breakpointXs</Code>  | Holds the `xs` breakpoint value, usable with `px` (**{breakpointXs}px**).   | <Code variant="value">{breakpointXs}</Code>  |
-| <Code variant="nowrap">breakpointSm</Code>  | Holds the `sm` breakpoint value, usable with `px` (**{breakpointSm}px**).   | <Code variant="value">{breakpointSm}</Code>  |
-| <Code variant="nowrap">breakpointMd</Code>  | Holds the `md` breakpoint value, usable with `px` (**{breakpointMd}px**).   | <Code variant="value">{breakpointMd}</Code>  |
-| <Code variant="nowrap">breakpointLg</Code>  | Holds the `lg` breakpoint value, usable with `px` (**{breakpointLg}px**).   | <Code variant="value">{breakpointLg}</Code>  |
-| <Code variant="nowrap">breakpointXl</Code>  | Holds the `xl` breakpoint value, usable with `px` (**{breakpointXl}px**).   | <Code variant="value">{breakpointXl}</Code>  |
-| <Code variant="nowrap">breakpoint2Xl</Code> | Holds the `2xl` breakpoint value, usable with `px` (**{breakpoint2Xl}px**). | <Code variant="value">{breakpoint2Xl}</Code> |
+<TokensTable meta={tokensMeta.breakpoint} />

@@ -41,7 +41,7 @@ describe('connectedCallback', () => {
 });
 
 describe('formResetCallback', () => {
-  it('should reset form value to undefined if defaultChecked is false', () => {
+  it('should reset form value to null if defaultChecked is false', () => {
     const value = 'test-value';
     const defaultChecked = false;
     const component = initComponent();
@@ -50,7 +50,8 @@ describe('formResetCallback', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
-    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith(null);
     expect(component.value).toBe(value);
     expect(component.checked).toBe(defaultChecked);
   });
@@ -64,6 +65,7 @@ describe('formResetCallback', () => {
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.formResetCallback();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith(value);
     expect(component.value).toBe(value);
     expect(component.checked).toBe(defaultChecked);
@@ -100,12 +102,13 @@ describe('componentDidRender', () => {
     );
   });
 
-  it('should not call ElementInternals setValidity() if checkbox is disabled', () => {
+  it('should call ElementInternals setValidity() with empty flags to clear validity if checkbox is disabled', () => {
     const component = initComponent();
     const setValiditySpy = vi.spyOn(component['internals'], 'setValidity' as any);
     component.disabled = true;
     component.componentDidRender();
-    expect(setValiditySpy).toHaveBeenCalledTimes(0);
+    expect(setValiditySpy).toHaveBeenCalledTimes(1);
+    expect(setValiditySpy).toHaveBeenCalledWith({});
   });
   it('should set ariaLabelledByElements when external label exists and no internal label is provided', () => {
     const component = initComponent();
@@ -183,24 +186,42 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call setFormValue() on componentDidLoad() if checkbox is checked', () => {
+  it('should set indeterminate property on the inner input', () => {
     const component = initComponent();
-    component.value = 'test';
-    component['checkboxInputElement'].checked = true;
     component.indeterminate = true;
     expect(component['checkboxInputElement'].indeterminate).toBe(false);
-    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
     expect(component['checkboxInputElement'].indeterminate).toBe(true);
-    expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
+});
 
-  it('should not call setFormValue() on componentDidLoad() if checkbox is checked', () => {
+describe('componentDidRender (setFormValue)', () => {
+  it('should call setFormValue() with value if checkbox is checked', () => {
     const component = initComponent();
     component.value = 'test';
+    component.checked = true;
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-    component.componentDidLoad();
-    expect(setFormValueSpy).not.toHaveBeenCalled();
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith('test');
+  });
+
+  it('should call setFormValue() with null if checkbox is not checked', () => {
+    const component = initComponent();
+    component.value = 'test';
+    component.checked = false;
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith(null);
+  });
+
+  it('should call setFormValue() with null when disabled, even if checked', () => {
+    const component = initComponent();
+    component.value = 'test';
+    component.checked = true;
+    component.disabled = true;
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith(null);
   });
 });
 
@@ -221,7 +242,7 @@ describe('onBlur', () => {
 });
 
 describe('onChange', () => {
-  it('should call setFormValue() and emit change event', () => {
+  it('should sync form value with checkbox value and emit change event when checked', () => {
     const value = 'test-value';
     const name = 'test-name';
     const checked = true;
@@ -239,11 +260,13 @@ describe('onChange', () => {
     } as unknown as Event;
 
     component['onChange'](event);
+    component.componentDidRender();
+    expect(component.checked).toBe(true);
     expect(setFormValueSpy).toHaveBeenCalledWith(value);
     expect(mockEmit).toHaveBeenCalledWith(event);
   });
 
-  it('should reset form value if checkbox is not checked', () => {
+  it('should clear form value if checkbox is not checked and emit change event', () => {
     const value = 'test-value';
     const name = 'test-name';
     const checked = false;
@@ -261,7 +284,9 @@ describe('onChange', () => {
     } as unknown as Event;
 
     component['onChange'](event);
-    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+    component.componentDidRender();
+    expect(component.checked).toBe(false);
+    expect(setFormValueSpy).toHaveBeenCalledWith(null);
     expect(mockEmit).toHaveBeenCalledWith(event);
   });
 });
