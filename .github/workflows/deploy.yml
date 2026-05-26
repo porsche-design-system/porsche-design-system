@@ -31,6 +31,21 @@ on:
       algolia-api-key:
         description: 'Algolia API Key (Storefront).'
         required: true
+      aws-access-key-id-mcp:
+        description: 'AWS Access Key ID for MCP S3 bucket and Bedrock.'
+        required: true
+      aws-secret-access-key-mcp:
+        description: 'AWS Secret Access Key for MCP S3 bucket and Bedrock.'
+        required: true
+      mcp-s3-bucket-name:
+        description: 'S3 bucket name for MCP context snapshots.'
+        required: true
+      mcp-knowledge-base-id:
+        description: 'AWS Bedrock Knowledge Base ID for MCP.'
+        required: true
+      mcp-data-source-id:
+        description: 'AWS Bedrock Data Source ID for MCP.'
+        required: true
 
 jobs:
   akamai-cdn-assets:
@@ -137,8 +152,53 @@ jobs:
       - run: npm run test:smoke:components-angular
       - run: npm run test:smoke:components-react
       - run: npm run test:smoke:components-vue
+  deploy-context:
+    name: 'Deploy Context (MCP Knowledge Base)'
+    needs:
+      - akamai-cdn-assets-smoke
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Check version and deploy context'
+        run: |
+          VERSION=$(node -p "require('./packages/components/package.json').version")
+          echo "Detected version: ${VERSION}"
+          if echo "${VERSION}" | grep -q '-'; then
+            echo "Pre-release version detected — skipping context deploy."
+            exit 0
+          fi
+          CONTEXT_DIR="packages/mcp-server/v${VERSION}"
+          if [ ! -d "${CONTEXT_DIR}" ]; then
+            echo "ERROR: Context directory not found at ${CONTEXT_DIR}"
+            ls -la packages/mcp-server/
+            exit 1
+          fi
+          FILE_COUNT=$(find "${CONTEXT_DIR}" -type f | wc -l)
+          echo "Context snapshots found: ${FILE_COUNT} files in ${CONTEXT_DIR}"
+          if [ "${FILE_COUNT}" -eq 0 ]; then
+            echo "ERROR: No files in context directory"
+            exit 1
+          fi
+          npm run deploy-context
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws-access-key-id-mcp }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws-secret-access-key-mcp }}
+          AWS_REGION: eu-central-1
+          S3_BUCKET_NAME: ${{ secrets.mcp-s3-bucket-name }}
+          KNOWLEDGE_BASE_ID: ${{ secrets.mcp-knowledge-base-id }}
+          DATA_SOURCE_ID: ${{ secrets.mcp-data-source-id }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
+    needs:
+      - deploy-context
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
