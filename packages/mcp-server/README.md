@@ -23,11 +23,14 @@ Run the SSO configuration wizard:
 aws configure sso --profile dev-profile
 ```
 
+the --profile flag allows you to create a named profile (e.g., `dev-profile`) that you can reference in CLI commands
+without affecting your default credentials.
+
 Follow the prompts:
 
 - **SSO start URL**: Your organization's SSO URL
 - **SSO Region**: `eu-central-1`
-- **Account**: Select the PDS account (real data is on prod :) )
+- **Account**: Select the PDS account (consumer setup is on prod :) )
 - **Role**: Choose a role with S3 and Bedrock access
 - **CLI default region**: `eu-central-1`
 - **CLI default output format**: `json`
@@ -49,16 +52,9 @@ aws sts get-caller-identity --profile dev-profile
 From the repo root:
 
 ```bash
-npm run build:shared
-npm run build:tokens
-npm run build:assets
-npm run build:styles
-npm run build:utilities
-npm run build:component-meta
-npm run build:components
-npm run build:components-js
-npm run build:mcp-server
-npm run prepare-context
+... (everything else) ...
+npm run build:storefront
+npm run build:mcp
 ```
 
 ### 4. Run the deploy
