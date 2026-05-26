@@ -104,6 +104,7 @@ jobs:
     name: 'NPM (Components Angular)'
     needs:
       - check-publication-status
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
     permissions:
@@ -127,6 +128,7 @@ jobs:
     name: 'NPM (Components React)'
     needs:
       - check-publication-status
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
     permissions:
@@ -150,6 +152,7 @@ jobs:
     name: 'NPM (Components Vue)'
     needs:
       - check-publication-status
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
     permissions:
