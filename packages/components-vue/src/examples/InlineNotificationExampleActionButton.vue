@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PInlineNotification } from '@porsche-design-system/components-vue';
+import { PButton, PInlineNotification } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isLoading = ref(false);
