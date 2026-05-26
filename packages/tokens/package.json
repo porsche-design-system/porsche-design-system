@@ -21,7 +21,8 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "npm run clean:build && npm run build:package",
+    "build": "npm run clean:build && npm run build:package && npm run build:tokens-meta",
+    "build:tokens-meta": "npm run build --workspace=@porsche-design-system/tokens-meta",
     "build:package": "rollup -c rollup.config.js",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
