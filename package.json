@@ -33,7 +33,8 @@
     "packages/tokens/projects/tokens-meta",
     "packages/utilities/projects/ag-grid",
     "packages/storefront/projects/stackblitz",
-    "packages/shared/dist"
+    "packages/shared/dist",
+    "packages/skills"
   ],
   "description": "Porsche Design System Monorepo",
   "repository": {

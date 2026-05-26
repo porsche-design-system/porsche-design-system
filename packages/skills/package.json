@@ -1,0 +1,30 @@
+{
+  "name": "@porsche-design-system/skills",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "npm run clean:build && npm run build:package",
+    "build:skills": "rollup -c rollup.config.js",
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "*",
+    "vitest": "*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
