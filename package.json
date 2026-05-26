@@ -33,8 +33,7 @@
     "packages/tokens/projects/tokens-meta",
     "packages/utilities/projects/ag-grid",
     "packages/storefront/projects/stackblitz",
-    "packages/shared/dist",
-    "packages/mcp-server"
+    "packages/shared/dist"
   ],
   "description": "Porsche Design System Monorepo",
   "repository": {
@@ -44,7 +43,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "prepare-release": "tsx scripts/prepare-release.ts",
-    "deploy-context": "tsx scripts/deploy-context.ts",
+    "deploy-context": "tsx packages/mcp-server/scripts/deploy-context.ts",
     "preinstall": "npm run preinstall:assets && npm run preinstall:components-manager-cli && npm run preinstall:components-js && npm run preinstall:components-angular && npm run preinstall:components-react && npm run preinstall:components-vue && npm run preinstall:shared",
     "prepare-context": "npm run prepare-context --workspace=@porsche-design-system/mcp-server",
     "start:mcp-server": "npm run start --workspace=@porsche-design-system/mcp-server",
