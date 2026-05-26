@@ -167,14 +167,10 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Check version and deploy context'
+      - name: 'Deploy context'
         run: |
           VERSION=$(node -p "require('./packages/components/package.json').version")
           echo "Detected version: ${VERSION}"
-          if echo "${VERSION}" | grep -q '-'; then
-            echo "Pre-release version detected — skipping context deploy."
-            exit 0
-          fi
           CONTEXT_DIR="packages/mcp-server/v${VERSION}"
           if [ ! -d "${CONTEXT_DIR}" ]; then
             echo "ERROR: Context directory not found at ${CONTEXT_DIR}"

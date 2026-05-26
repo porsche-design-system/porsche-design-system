@@ -96,7 +96,6 @@ jobs:
       storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
       - context
-      - test
       - build
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
