@@ -349,6 +349,19 @@ jobs:
         uses: ./.github/actions/restore
       - run: npm run build:generateTokensMeta --workspace=@porsche-design-system/tokens-meta
       - run: npm run test:unit:tokens-meta
+  emotion-meta:
+    name: 'Emotion Meta'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - run: npm run build:generateEmotionMeta --workspace=@porsche-design-system/emotion-meta
+      - run: npm run test:unit:emotion-meta
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
