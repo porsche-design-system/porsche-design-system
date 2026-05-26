@@ -1,0 +1,46 @@
+{
+  "name": "@porsche-design-system/emotion-meta",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "npm run clean:build && npm run build:generateEmotionMeta && npm run build:package",
+    "build:generateEmotionMeta": "tsx scripts/generateEmotionMeta.ts",
+    "build:package": "rollup -c rollup.config.js",
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist && rm -rf ./src/lib"
+  },
+  "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
+    "rollup": "*",
+    "typescript": "*",
+    "tsx": "*",
+    "change-case": "*",
+    "fast-glob": "*",
+    "vitest": "*"
+  },
+  "devDependencies": {
+    "@porsche-design-system/emotion": "0.0.0"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

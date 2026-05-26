@@ -31,6 +31,7 @@
     "packages/styles/projects/vanilla-extract",
     "packages/styles/projects/global-styles",
     "packages/tokens/projects/tokens-meta",
+    "packages/styles/projects/emotion/projects/emotion-meta",
     "packages/utilities/projects/ag-grid",
     "packages/storefront/projects/stackblitz",
     "packages/shared/dist"
@@ -111,6 +112,7 @@
     "test:unit:assets:font-face": "npm run test:unit --workspace=@porsche-design-system/font-face",
     "test:unit:component-meta": "npm run test:unit --workspace=@porsche-design-system/component-meta",
     "test:unit:tokens-meta": "npm run test:unit --workspace=@porsche-design-system/tokens-meta",
+    "test:unit:emotion-meta": "npm run test:unit --workspace=@porsche-design-system/emotion-meta",
     "test:unit:components": "npm run test:unit --workspace=@porsche-design-system/components",
     "test:unit:components-js": "npm run test:unit --workspace=@porsche-design-system/js",
     "test:unit:components-js:components-manager-cli": "npm run test:unit:components-manager-cli --workspace=@porsche-design-system/js",
