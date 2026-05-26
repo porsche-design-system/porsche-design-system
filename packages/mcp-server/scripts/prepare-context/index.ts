@@ -213,7 +213,6 @@ const deriveMetadataAttributes = (relativePath: string): Record<string, BedrockM
   const category = segments[0] ?? 'unknown';
   const attrs: Record<string, BedrockMetadataAttribute> = {
     category: stringAttr(category),
-    documentPath: stringAttr(relativePath),
     version: stringAttr(VERSION),
   };
 
