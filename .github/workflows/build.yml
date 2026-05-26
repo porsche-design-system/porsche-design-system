@@ -46,7 +46,6 @@ jobs:
       - run: npm run build:components-react
       - run: npm run build:components-vue
       - run: npm run build:storefront
-      - run: npm run prepare-context
       - run: npm run build:mcp-server
       - uses: actions/upload-artifact@v7
         with:
@@ -129,7 +128,6 @@ jobs:
       - run: npm run build:components-react
       - run: npm run build:components-vue
       - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
-      - run: npm run prepare-context
       - run: npm run build:mcp-server
       - uses: actions/upload-artifact@v7
         with:
