@@ -20,6 +20,9 @@
     "type": "git",
     "url": "https://github.com/porsche-design-system/porsche-design-system"
   },
+  "bin": {
+    "pds-mcp-server": "./mcp-server/index.js"
+  },
   "peerDependencies": {
     "ag-grid-community": ">= 35.0.0 <36.0.0",
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
@@ -118,7 +121,10 @@
     "./cn/font-face.css": "./global-styles/cn/font-face.css",
     "./cn/font-face": "./global-styles/cn/font-face.css",
     "./legacy-radius.css": "./global-styles/legacy-radius.css",
-    "./legacy-radius": "./global-styles/legacy-radius.css"
+    "./legacy-radius": "./global-styles/legacy-radius.css",
+    "./mcp-server": {
+      "default": "./mcp-server/index.js"
+    }
   },
   "style": "./global-styles/index.css"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/mcp-server",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": false,
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -20,10 +20,11 @@
     "pds-mcp-server": "./dist/index.js"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.js --bundleConfigAsCjs && npm run build:copyToComponentsJs",
+    "build": "npm run build:mcp && npm run build:copyToComponentsJs",
+    "build:mcp": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "dev": "tsx src/index.ts",
     "prepare-context": "TSX_TSCONFIG_PATH=../storefront/tsconfig.json tsx scripts/prepare-context/index.ts",
-    "build:copyToComponentsJs": "TARGET=../components-js/dist/components-wrapper/mcp && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
+    "build:copyToComponentsJs": "TARGET=../components-js/dist/components-wrapper/mcp-server && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
     "start": "node dist/index.js"
   },
   "dependencies": {
