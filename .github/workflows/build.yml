@@ -81,6 +81,7 @@ jobs:
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
+            ./packages/tokens/projects/tokens-meta/dist/
             ./packages/components-angular/dist/
             ./packages/assets/cdn/
             ./packages/shared/bin/
@@ -159,6 +160,7 @@ jobs:
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
+            ./packages/tokens/projects/tokens-meta/dist/
             ./packages/components-angular/dist/
             ./packages/assets/cdn/
             ./packages/shared/bin/
