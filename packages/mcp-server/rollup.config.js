@@ -33,7 +33,6 @@ export default {
     generatePackageJson({
       baseContents: (pkg) => ({
         name: pkg.name,
-        version: pkg.version,
         description: 'Porsche Design System MCP Server – Model Context Protocol server for PDS documentation.',
         author: pkg.author,
         license: pkg.license,
