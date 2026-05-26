@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { version as pdsVersion } from '@porsche-design-system/components-js/package.json';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { z } from 'zod';
-import { version } from '../package.json';
 import categories from './generated/categories.json';
 
 const COMPONENT_NAMES = TAG_NAMES.map((tag) => tag.replace(/^p-/, ''));
@@ -36,10 +36,10 @@ const textResult = (data: unknown) => {
 const server = new McpServer(
   {
     name: 'pds-mcp',
-    version: version,
+    version: pdsVersion,
   },
   {
-    instructions: 'Porsche Design System (PDS) documentation server. Use the query tool to search the docs.',
+    instructions: `Porsche Design System (PDS) documentation server. Use the query tool to search the docs. Always default to version "${pdsVersion}" unless the user specifies a different version.`,
   }
 );
 
@@ -74,7 +74,10 @@ server.registerTool(
         .enum(['react', 'angular', 'vue', 'vanilla-js'])
         .optional()
         .describe('Filter for framework-specific docs.'),
-      version: z.string().describe('Filter for specific version of the documentation. E.g. "3.33.0", "4.0.0".'),
+      version: z
+        .string()
+        .optional()
+        .describe(`Filter for specific version of the documentation. E.g. "3.33.0", "4.0.0". Defaults to "${pdsVersion}" if not specified.`),
     }),
   },
   async ({ query, category, component, framework, version }) => {
@@ -82,7 +85,7 @@ server.registerTool(
     if (category) filter.category = category;
     if (component) filter.component = component;
     if (framework) filter.framework = framework;
-    if (version) filter.version = version;
+    filter.version = version ?? pdsVersion;
 
     const body: Record<string, unknown> = { query };
     if (Object.keys(filter).length > 0) {
