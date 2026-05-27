@@ -9,8 +9,9 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle",
+    "build": "npm run clean:build && npm run build:bundle && npm run build:vanilla-extract-meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
+    "build:vanilla-extract-meta": "npm run build --workspace=@porsche-design-system/vanilla-extract-meta",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
     "test": "npm run test:unit",
     "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
