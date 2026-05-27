@@ -1,12 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import {
-  fieldsetStoryRequired,
-  fieldsetStoryRequiredRadio,
-  fieldsetStorySlottedLabel,
-  fieldsetStorySlottedMessage,
-} from '@/app/components/fieldset/fieldset.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { fieldsetMeta } from '@/app/components/fieldset/fieldset.meta';
 
 export const metadata = {
   title: 'Fieldset - Porsche Design System',
@@ -15,33 +10,30 @@ export const metadata = {
 
 # Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
 
-<TableOfContents headings={['Slotted label', 'Slotted message', 'Required']} />
+<TableOfContents
+  headings={[
+    fieldsetMeta.examples.slottedLabel.name,
+    fieldsetMeta.examples.slottedMessage.name,
+    fieldsetMeta.examples.required.name,
+  ]}
+/>
 
-## Slotted label
+## {fieldsetMeta.examples.slottedLabel.name}
 
-<ComponentStory story={fieldsetStorySlottedLabel} />
+<ComponentStory story={fieldsetMeta.examples.slottedLabel.story} />
 
-## Slotted message
+## {fieldsetMeta.examples.slottedMessage.name}
 
-<ComponentStory story={fieldsetStorySlottedMessage} />
+<ComponentStory story={fieldsetMeta.examples.slottedMessage.story} />
 
-## Required
+## {fieldsetMeta.examples.required.name}
 
-If the `p-fieldset` is set to `required="true"`, only the label of the `p-fieldset` gets an asterisk. It is removed from
-all wrapped child components, as long as they are Porsche Design System form elements.
-
-The `required="true"` prop should only be used if **all** child elements are required. If those child elements are a
-group of radio buttons, it is mandatory to add the `aria="{ 'role': 'radiogroup' }"` prop to `p-fieldset` as well. There
-is **no need** to set `required="true"` on the individual radio buttons, as the **fieldset already indicates** that a
-selection of the radio button group is required.
-
-For all other cases, you should set `required="true"` on the individual form elements, such as input fields or
-checkboxes.
+<fieldsetMeta.examples.required.description />
 
 ### Required fieldset with radio buttons
 
-<ComponentStory story={fieldsetStoryRequiredRadio} />
+<ComponentStory story={fieldsetMeta.examples.required.story} />
 
-### Required fieldset with input fields
+### {fieldsetMeta.examples.requiredInputs.name}
 
-<ComponentStory story={fieldsetStoryRequired} />
+<ComponentStory story={fieldsetMeta.examples.requiredInputs.story} />

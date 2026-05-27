@@ -1,12 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Configurator } from '@/components/playground/Configurator';
-import {
-  wordmarkStory,
-  wordmarkStoryCustomPadding,
-  wordmarkStorySizeInherit,
-} from '@/app/components/wordmark/wordmark.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { wordmarkMeta } from '@/app/components/wordmark/wordmark.meta';
 
 export const metadata = {
   title: 'Wordmark - Porsche Design System',
@@ -15,17 +10,16 @@ export const metadata = {
 
 # Wordmark <ComponentStatus tagName="p-wordmark"></ComponentStatus>
 
-<TableOfContents headings={['Size', 'Custom clickable/focusable area']} />
+<TableOfContents headings={[wordmarkMeta.examples.size.name, wordmarkMeta.examples.customClickableArea.name]} />
 
-## Size
+## {wordmarkMeta.examples.size.name}
 
-By default, the sizing is fluid, which can be changed to `inherit` a specified value.
+<wordmarkMeta.examples.size.description />
 
-<ComponentStory story={wordmarkStorySizeInherit} />
+<ComponentStory story={wordmarkMeta.examples.size.story} />
 
-## Custom clickable/focusable area
+## {wordmarkMeta.examples.customClickableArea.name}
 
-Sometimes it may be useful to enlarge the clickable/focusable area of the `p-wordmark`. Therefore, custom padding can be
-set on the host element.
+<wordmarkMeta.examples.customClickableArea.description />
 
-<ComponentStory story={wordmarkStoryCustomPadding} />
+<ComponentStory story={wordmarkMeta.examples.customClickableArea.story} />
