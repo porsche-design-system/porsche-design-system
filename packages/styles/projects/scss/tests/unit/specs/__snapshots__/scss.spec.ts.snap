@@ -432,7 +432,8 @@ $pds-theme-dark-state-disabled: hsla(
 `;
 
 exports[`should contain correct scss content for file ./dist/_font.scss 1`] = `
-"$font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+"$font-porsche-next:
+  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
 $font-porsche-next-zh-hans:
   "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
   "Arial Narrow", Arial, sans-serif;
@@ -491,7 +492,7 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $pds-font-family:
-  "Porsche Next", "Arial Narrow", Arial, sans-serif; /* alias (deprecated) */
+  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif; /* alias (deprecated) */
 $pds-font-hyphenation-style-overflow-wrap: break-word; /* alias (deprecated) */
 $pds-font-hyphenation-style-hyphens: var(
   --p-hyphens,

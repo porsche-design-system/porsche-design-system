@@ -282,7 +282,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   :root,
   :host {
     --_font-porsche-next-dynamic:
-      "Porsche Next", "Arial Narrow", Arial, sans-serif;
+      "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   }
 
   /* Simplified Chinese */

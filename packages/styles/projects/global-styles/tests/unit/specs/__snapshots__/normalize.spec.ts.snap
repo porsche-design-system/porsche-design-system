@@ -10,6 +10,8 @@ body {
     "Porsche Next",
     "Arial Narrow",
     Arial,
+    "Heiti SC",
+    SimHei,
     sans-serif
   );
   line-height: var(--p-leading-normal, calc(6px + 2.125ex));

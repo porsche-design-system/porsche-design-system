@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next', 'Arial Narrow', Arial, sans-serif"`;
+exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
 
 exports[`should contain correct values for fontLineHeight 1`] = `"calc(6px + 2.125ex)"`;
 

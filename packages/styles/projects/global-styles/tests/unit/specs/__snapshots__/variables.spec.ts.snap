@@ -113,7 +113,8 @@ exports[`should match compiled variables css 1`] = `
     hsl(210 59% 15% / 0.66)
   );
 
-  --p-font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  --p-font-porsche-next:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;

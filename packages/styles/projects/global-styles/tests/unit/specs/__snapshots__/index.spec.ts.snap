@@ -10,6 +10,8 @@ body {
     "Porsche Next",
     "Arial Narrow",
     Arial,
+    "Heiti SC",
+    SimHei,
     sans-serif
   );
   line-height: var(--p-leading-normal, calc(6px + 2.125ex));
@@ -129,7 +131,8 @@ body {
     hsl(210 59% 15% / 0.66)
   );
 
-  --p-font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  --p-font-porsche-next:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
@@ -370,6 +373,8 @@ body {
     "Porsche Next",
     "Arial Narrow",
     Arial,
+    "Heiti SC",
+    SimHei,
     sans-serif
   );
   line-height: var(--p-leading-normal, calc(6px + 2.125ex));
@@ -489,7 +494,8 @@ body {
     hsl(210 59% 15% / 0.66)
   );
 
-  --p-font-porsche-next: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  --p-font-porsche-next:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: 400;
