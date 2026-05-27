@@ -12,60 +12,83 @@ const outputFile = path.resolve('./src/lib/emotionMeta.ts');
 const files = await fg(`${sourceDirectory}/**/*.ts`);
 const tokenFiles = files.filter((f) => !f.endsWith('index.ts') && !f.endsWith('.spec.ts'));
 
-function extractTokenInfo(filePath: string): { name: string; description: string } | null {
+function extractTokenInfo(filePath: string): { identifier: string; name: string; description: string } | null {
   const source = ts.createSourceFile(filePath, fs.readFileSync(filePath, 'utf-8'), ts.ScriptTarget.Latest, true);
 
   for (const statement of source.statements) {
-    if (!ts.isVariableStatement(statement)) continue;
-    // Only pick up exported declarations (e.g. `export const colorCanvas = ...`)
-    if (!statement.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)) continue;
+    // Pick up both `export const x = ...` and `export function x(...)` declarations.
+    let identifier: string;
+    if (ts.isVariableStatement(statement)) {
+      if (!statement.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)) continue;
+      const declaration = statement.declarationList.declarations[0];
+      if (!declaration || !ts.isIdentifier(declaration.name)) continue;
+      identifier = declaration.name.text;
+    } else if (ts.isFunctionDeclaration(statement)) {
+      if (!statement.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)) continue;
+      if (!statement.name) continue;
+      identifier = statement.name.text;
+    } else {
+      continue;
+    }
 
-    const declaration = statement.declarationList.declarations[0];
-    if (!declaration || !ts.isIdentifier(declaration.name)) continue;
-
-    const name = declaration.name.text;
+    // name may be overridden by @signature to include a display-friendly function signature.
+    let name = identifier;
 
     const jsDocs = ts.getJSDocCommentsAndTags(statement);
     let description = '';
+
     for (const node of jsDocs) {
-      if (ts.isJSDoc(node) && node.comment) {
+      if (!ts.isJSDoc(node)) continue;
+      // Extract the main comment as description (first non-empty one wins).
+      if (node.comment && !description) {
         description =
           typeof node.comment === 'string'
             ? node.comment
             : node.comment.map((c) => ('text' in c ? c.text : '')).join('');
-        break;
+      }
+      // @signature overrides the display name (e.g. to include function parameters).
+      // @deprecated provides a fallback description when no main comment exists.
+      for (const tag of node.tags ?? []) {
+        const tagText =
+          typeof tag.comment === 'string'
+            ? tag.comment
+            : (tag.comment ?? []).map((c) => ('text' in c ? c.text : '')).join('');
+        if (tag.tagName.text === 'signature' && tagText) name = tagText;
+        if (tag.tagName.text === 'deprecated' && tagText && !description) description = tagText;
       }
     }
 
-    if (name && description) return { name, description };
-
-    // Fallback: if no main comment, use @deprecated tag text as the description.
-    // Deprecated files use `/** @deprecated since v4.0.0, ... */` without a leading description.
-    if (name) {
-      for (const node of jsDocs) {
-        if (!ts.isJSDoc(node) || !node.tags) continue;
-        for (const tag of node.tags) {
-          if (tag.tagName.text !== 'deprecated' || !tag.comment) continue;
-          const tagText =
-            typeof tag.comment === 'string'
-              ? tag.comment
-              : tag.comment.map((c) => ('text' in c ? c.text : '')).join('');
-          if (tagText) return { name, description: tagText };
-        }
-      }
-    }
+    if (identifier && description) return { identifier, name, description };
   }
 
   return null;
 }
 
 // TokenLeaf is a resolved design token; TokenTree is any intermediate folder level.
-type TokenLeaf = { name: string; value: string | number; description: string };
+type TokenLeaf = { name: string; value?: string | number; description: string };
 type TokenTree = { [key: string]: TokenTree | TokenLeaf };
 
-const COLOR_FAMILY_ORDER = ['primary', 'info', 'success', 'warning', 'error'];
+// Top-level directories whose entries should omit the value (too verbose or not useful for the storefront table).
+const SEGMENTS_WITHOUT_VALUE = ['typography', 'focus'];
+
+const COLOR_FAMILY_ORDER = [
+  'canvas',
+  'surface',
+  'frosted',
+  'backdrop',
+  'primary',
+  'contrast',
+  'info',
+  'success',
+  'warning',
+  'error',
+  'focus',
+];
 // '' -> accounts for cases such as "colorInfo", "colorWarning".... and puts it on top
 const COLOR_VARIANT_ORDER = ['', 'Higher', 'High', 'Medium', 'Low', 'Frosted', 'FrostedSoft'];
+
+// Typography size order: largest first so the storefront table displays largest-to-smallest.
+const TYPOGRAPHY_SIZE_ORDER = ['5Xl', '4Xl', '3Xl', '2Xl', 'Xl', 'Lg', 'Md', 'Sm', 'Xs', '2Xs'];
 
 // Extracts the first camelCase segment after "color", e.g. colorErrorFrostedSoft → "error".
 const extractColorFamily = (name: string): string => name.match(/^color([A-Z][a-z]+)/)?.[1].toLowerCase() ?? name;
@@ -76,12 +99,27 @@ const extractColorVariant = (name: string): string => {
   return match?.[1] ?? '';
 };
 
-// Extracts a numeric sort key from a token value (px, clamp, box-shadow, or plain number).
-const toSortNum = (value: string | number): number => {
+// Extracts the size suffix from a typography file name, e.g. proseText5XlStyle → "5Xl", proseHeading2XsStyle → "2Xs".
+const extractTypographySize = (name: string): string =>
+  name.match(/(?:Text|Heading)([A-Z0-9][a-zA-Z0-9]*)Style$/)?.[1] ?? '';
+
+// Returns the position of item in order, or order.length when not found (sends unknowns to end).
+const orderIndex = (order: readonly string[], item: string): number => {
+  const idx = order.indexOf(item);
+  return idx === -1 ? order.length : idx;
+};
+
+// Extracts a numeric sort key from a token value (clamp, rem, px, or plain number).
+// rem is checked before px so that typography styles with a fixed font-size (e.g. ".875rem / calc(6px...)")
+// sort by font-size rather than by the stray 6px embedded in the shared line-height calc.
+const toSortNum = (value: string | number | undefined): number => {
+  if (value === undefined) return NaN;
   if (typeof value === 'number') return value;
   if (value.includes('infinity')) return Infinity;
   const clampMatch = value.match(/clamp\(\s*([\d.]+)/);
   if (clampMatch) return parseFloat(clampMatch[1]);
+  const remValues = Array.from(value.matchAll(/([\d.]+)rem/g), (m) => parseFloat(m[1]));
+  if (remValues.length > 0) return Math.max(...remValues);
   const pxValues = Array.from(value.matchAll(/([\d.]+)px/g), (m) => parseFloat(m[1]));
   if (pxValues.length > 0) return Math.max(...pxValues);
   return parseFloat(value);
@@ -89,17 +127,22 @@ const toSortNum = (value: string | number): number => {
 
 const sortLeaves = (leaves: TokenLeaf[]): TokenLeaf[] => {
   const nums = new Map(leaves.map((t) => [t.name, toSortNum(t.value)]));
-  // All-numeric: sort ascending (e.g. radiusXs=2px < radiusSm=4px).
-  if ([...nums.values()].every((n) => !Number.isNaN(n))) {
-    return [...leaves].sort((a, b) => (nums.get(a.name) ?? 0) - (nums.get(b.name) ?? 0));
+  const allNumeric = [...nums.values()].every((n) => !Number.isNaN(n));
+
+  if (allNumeric) {
+    const sorted = [...leaves].sort((a, b) => (nums.get(a.name) ?? 0) - (nums.get(b.name) ?? 0));
+    // Typography style objects (JSON objects sorted by clamp font-size) are displayed
+    // largest-to-smallest — reverse the ascending sort for all-JSON-object groups.
+    const allJsonObjects = leaves.every((l) => l.value !== undefined && String(l.value).trimStart().startsWith('{'));
+    return allJsonObjects ? sorted.reverse() : sorted;
   }
-  // Mixed types (e.g. font or motion): sort the numeric-parseable subset ascending,
-  // keep non-parseable ones in insertion order after them.
-  const numeric = leaves.filter((l) => !Number.isNaN(nums.get(l.name)));
+
+  // Mixed types: non-numeric items first (e.g. compound breakpoint objects before px values),
+  // then numeric items sorted ascending.
   const nonNumeric = leaves.filter((l) => Number.isNaN(nums.get(l.name)));
+  const numeric = leaves.filter((l) => !Number.isNaN(nums.get(l.name)));
   const sortedNumeric = [...numeric].sort((a, b) => (nums.get(a.name) ?? 0) - (nums.get(b.name) ?? 0));
-  // Color tokens have no numeric sort key but are pre-ordered by the file-level sort above.
-  return [...sortedNumeric, ...nonNumeric];
+  return [...nonNumeric, ...sortedNumeric];
 };
 
 // Sort subtrees alphabetically; 'deprecated' is always placed last.
@@ -112,38 +155,42 @@ const sortSubtrees = (subtrees: [string, TokenTree][]): [string, TokenTree][] =>
 
 // Recursively sorts leaves at each level of the tree; subtrees are sorted alphabetically.
 const sortTree = (obj: TokenTree): TokenTree => {
-  const leaves: [string, TokenLeaf][] = [];
+  const leaves: TokenLeaf[] = [];
   const subtrees: [string, TokenTree][] = [];
+  // Track the original tree key (JS identifier) per leaf — name may differ when @signature overrides it.
+  const keyByLeaf = new Map<TokenLeaf, string>();
   for (const [k, v] of Object.entries(obj)) {
-    if (typeof (v as TokenLeaf).name === 'string') leaves.push([k, v as TokenLeaf]);
-    else subtrees.push([k, sortTree(v as TokenTree)]);
+    if (typeof (v as TokenLeaf).name === 'string') {
+      const leaf = v as TokenLeaf;
+      leaves.push(leaf);
+      keyByLeaf.set(leaf, k);
+    } else subtrees.push([k, sortTree(v as TokenTree)]);
   }
-  const sorted = sortLeaves(leaves.map(([, l]) => l));
-  const sortedSubtrees = sortSubtrees(subtrees);
-  if (leaves.length === 0) return Object.fromEntries(sortedSubtrees);
-  return Object.fromEntries([...sorted.map((l) => [l.name, l] as [string, TokenLeaf]), ...sortedSubtrees]);
+  return Object.fromEntries([
+    ...sortLeaves(leaves).map((l) => [keyByLeaf.get(l)!, l] as [string, TokenLeaf]),
+    ...sortSubtrees(subtrees),
+  ]);
 };
 
-// Sort files within each directory so color tokens arrive in family+variant order.
+// Sort files within each directory so tokens arrive in the correct display order.
 // JS object insertion order is preserved, so the tree inherits this ordering without any post-sort.
 const sortedTokenFiles = [...tokenFiles].sort((a, b) => {
   if (path.dirname(a) !== path.dirname(b)) return 0; // cross-directory: stable sort preserves relative order
   const nameA = path.basename(a, '.ts');
   const nameB = path.basename(b, '.ts');
+  // Typography: largest-to-smallest (5Xl → 2Xs).
+  const sizeA = extractTypographySize(nameA);
+  const sizeB = extractTypographySize(nameB);
+  if (sizeA || sizeB) return orderIndex(TYPOGRAPHY_SIZE_ORDER, sizeA) - orderIndex(TYPOGRAPHY_SIZE_ORDER, sizeB);
+  // Color: family order, then variant order within each family.
   const famA = extractColorFamily(nameA);
   const famB = extractColorFamily(nameB);
-  const idxA = COLOR_FAMILY_ORDER.indexOf(famA);
-  const idxB = COLOR_FAMILY_ORDER.indexOf(famB);
   const familyCmp =
-    (idxA === -1 ? COLOR_FAMILY_ORDER.length : idxA) - (idxB === -1 ? COLOR_FAMILY_ORDER.length : idxB) ||
-    famA.localeCompare(famB);
+    orderIndex(COLOR_FAMILY_ORDER, famA) - orderIndex(COLOR_FAMILY_ORDER, famB) || famA.localeCompare(famB);
   if (familyCmp !== 0) return familyCmp;
-  const varA = extractColorVariant(nameA);
-  const varB = extractColorVariant(nameB);
-  const varIdxA = COLOR_VARIANT_ORDER.indexOf(varA);
-  const varIdxB = COLOR_VARIANT_ORDER.indexOf(varB);
   return (
-    (varIdxA === -1 ? COLOR_VARIANT_ORDER.length : varIdxA) - (varIdxB === -1 ? COLOR_VARIANT_ORDER.length : varIdxB)
+    orderIndex(COLOR_VARIANT_ORDER, extractColorVariant(nameA)) -
+    orderIndex(COLOR_VARIANT_ORDER, extractColorVariant(nameB))
   );
 });
 
@@ -153,14 +200,6 @@ for (const file of sortedTokenFiles) {
   const info = extractTokenInfo(file);
   if (!info) continue;
 
-  // Resolve the runtime value from the built emotion package by the exported const name.
-  const resolvedValue = (emotion as Record<string, unknown>)[info.name];
-  if (resolvedValue === undefined || typeof resolvedValue === 'function') continue;
-  const serializedValue: string | number =
-    typeof resolvedValue === 'string' || typeof resolvedValue === 'number'
-      ? resolvedValue
-      : JSON.stringify(resolvedValue);
-
   // Use path.relative + normalize to forward slashes so this works on Windows too.
   // e.g. "color/light-dark/background/colorBackdrop.ts" -> ["color", "lightDark", "background"]
   const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
@@ -168,15 +207,29 @@ for (const file of sortedTokenFiles) {
   // Drop the filename (last segment); camelCase each directory name so "light-dark" -> "lightDark"
   const segments = parts.slice(0, -1).map((p) => camelCase(p));
 
+  // Resolve the runtime value from the built emotion package by the JS identifier (not the display name).
+  const resolvedValue = (emotion as Record<string, unknown>)[info.identifier];
+  if (resolvedValue === undefined) continue;
+  // Some top-level directories (e.g. typography) and functions (e.g. getFocusVisibleStyle) omit the value.
+  let value: string | number | undefined;
+  if (SEGMENTS_WITHOUT_VALUE.includes(segments[0]) || typeof resolvedValue === 'function') {
+    value = undefined;
+  } else if (typeof resolvedValue === 'string' || typeof resolvedValue === 'number') {
+    value = resolvedValue;
+  } else {
+    value = JSON.stringify(resolvedValue);
+  }
+
   let node = tree;
   for (const seg of segments) {
     if (!node[seg]) node[seg] = {};
     node = node[seg] as TokenTree;
   }
 
-  node[info.name] = {
+  // Use identifier as the tree key (JS-friendly); name may differ if @signature overrides the display name.
+  node[info.identifier] = {
     name: info.name,
-    value: serializedValue,
+    ...(value !== undefined && { value }),
     description: info.description,
   };
 }
@@ -187,7 +240,8 @@ function serializeTree(obj: TokenTree | TokenLeaf, indent = 0): string {
 
   if (typeof (obj as TokenLeaf).name === 'string') {
     const leaf = obj as TokenLeaf;
-    return `{ name: '${leaf.name}', value: ${JSON.stringify(leaf.value)}, description: ${JSON.stringify(leaf.description)} }`;
+    const valuePart = leaf.value !== undefined ? `, value: ${JSON.stringify(leaf.value)}` : '';
+    return `{ name: ${JSON.stringify(leaf.name)}${valuePart}, description: ${JSON.stringify(leaf.description)} }`;
   }
 
   const entries = Object.entries(obj as TokenTree)
