@@ -15,13 +15,14 @@ export const ButtonExampleFormAttributePage = () => {
       <form onSubmit={handleSubmit} id="some-form">
         <PTextarea name="some-name" label="Some Label"></PTextarea>
       </form>
-
-      <PButton type="submit" form="some-form">
-        Submit
-      </PButton>
-      <PButton type="reset" form="some-form">
-        Reset
-      </PButton>
+      <div className="flex gap-fluid-sm mt-fluid-sm">
+        <PButton type="submit" form="some-form">
+          Submit
+        </PButton>
+        <PButton type="reset" form="some-form">
+          Reset
+        </PButton>
+      </div>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>
     </>
