@@ -2179,7 +2179,7 @@ export namespace Components {
          */
         "safeZone"?: boolean;
         /**
-          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @deprecated Will be removed in the next major release. Use appropriate CSS variables for custom sizing instead (e.g. `--p-model-signature-width`, `--p-model-signature-height`). Adapts the size of the component.
           * @default 'small'
          */
         "size"?: ModelSignatureSize;
@@ -3099,7 +3099,7 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * Controls the size of the wordmark.
+          * @deprecated Will be removed in the next major release. Use appropriate CSS variables for custom sizing instead (e.g. `--p-wordmark-width`, `--p-wordmark-height`). Adapts the size of the component.
           * @default 'small'
          */
         "size"?: WordmarkSize;
@@ -6520,7 +6520,7 @@ declare namespace LocalJSX {
          */
         "safeZone"?: boolean;
         /**
-          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @deprecated Will be removed in the next major release. Use appropriate CSS variables for custom sizing instead (e.g. `--p-model-signature-width`, `--p-model-signature-height`). Adapts the size of the component.
           * @default 'small'
          */
         "size"?: ModelSignatureSize;
@@ -7539,7 +7539,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Controls the size of the wordmark.
+          * @deprecated Will be removed in the next major release. Use appropriate CSS variables for custom sizing instead (e.g. `--p-wordmark-width`, `--p-wordmark-height`). Adapts the size of the component.
           * @default 'small'
          */
         "size"?: WordmarkSize;

@@ -10386,8 +10386,8 @@ exports[`should render dsr component for PModelSignature 1`] = `
   vertical-align: top;
   max-width: 100%;
   max-height: 100%;
-  width: var(--p-model-signature-width,94px);
-  height: var(--p-model-signature-height,auto);
+  height: var(--p-model-signature-height, auto) !important;
+  width: var(--p-model-signature-width, 94px) !important;
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,var(--p-color-primary)) !important;
@@ -15264,7 +15264,8 @@ exports[`should render dsr component for PWordmark 1`] = `
   max-width: 100% !important;
   max-height: 100% !important;
   box-sizing: content-box !important;
-  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+  height: var(--p-wordmark-height, clamp(0.63rem, 0.42vw + 0.5rem, 1rem)) !important;
+  width: var(--p-wordmark-width, auto) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -15296,7 +15297,7 @@ svg {
 }
 @supports (height: round(down, 1px, 1px)) {
   :host {
-    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+    height: var(--p-wordmark-height, round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px)) !important;
   }
 }
 

@@ -1,16 +1,27 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { modelSignatureStory } from "@/app/components/model-signature/model-signature.stories";
+import { Configurator } from '@/components/playground/Configurator';
+import { modelSignatureStory } from '@/app/components/model-signature/model-signature.stories';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Model Signature - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Model Signature component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Model Signature component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
 
-The `p-model-signature` component is purely visual and renders the different signatures of Porsche car models.
-It can be used to overlay background images or enhance cards and teasers to be more dynamic and recognizable.
+The `p-model-signature` component is purely visual and renders the different signatures of Porsche car models. It can be
+used to overlay background images or enhance cards and teasers to be more dynamic and recognizable.
+
+<Notification heading="Sizing" heading-tag="h2" state="info">
+  To preserve backwards compatibility, the `p-model-signature` is bound by its `width` — the `height` follows the
+  signature's intrinsic aspect ratio automatically.
+
+Setting `--p-model-signature-height` alone will not increase the rendered size, because the width fallback still
+applies. If you need to constrain by height, set `--p-model-signature-width: auto` together with
+`--p-model-signature-height`.
+
+</Notification>
 
 <Configurator tagName="p-model-signature" story={modelSignatureStory} />
