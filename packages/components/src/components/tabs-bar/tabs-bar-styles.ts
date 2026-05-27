@@ -19,6 +19,7 @@ import {
   fontPorscheNext,
   leadingNormal,
   radiusLg,
+  radiusMd,
   radiusXl,
   spacingStatic2Xs,
   spacingStaticMd,
@@ -51,6 +52,9 @@ export const getComponentCss = (
   const hasActiveTab = activeTabIndex !== undefined;
   const nthActiveTab = hasActiveTab ? activeTabIndex + 1 : 0; // :nth-child is 1-based
 
+  const radiusRail = hasBackground ? (isCompact ? radiusLg : radiusXl) : isCompact ? radiusLg : radiusXl;
+  const radiusButton = hasBackground ? (isCompact ? radiusMd : radiusLg) : isCompact ? radiusLg : radiusXl;
+
   return getCss({
     '@global': {
       ':host': {
@@ -64,7 +68,7 @@ export const getComponentCss = (
             all: 'unset',
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            borderRadius: hasBackground ? radiusLg : radiusXl,
+            borderRadius: radiusButton,
             // When the scroller has its own inset padding (hasBackground), shrink the tab
             // padding by the same amount so the overall hit area / visual height stays stable.
             padding: hasBackground
@@ -125,7 +129,7 @@ export const getComponentCss = (
     },
     scroller: {
       placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
-      borderRadius: radiusXl,
+      borderRadius: radiusRail,
       ...(hasBackground && {
         background: backgroundMap[background],
         padding: spacingStaticXs,
@@ -146,7 +150,7 @@ export const getComponentCss = (
       height: '100%',
       zIndex: -1,
       pointerEvents: 'none',
-      borderRadius: hasBackground ? radiusLg : radiusXl,
+      borderRadius: radiusButton,
       background: colorFrostedStrong,
       ...forcedColorsMediaQuery({
         display: 'none',
