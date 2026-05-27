@@ -7,18 +7,20 @@ export const metadata = {
   description: 'Discover detailed examples and insights of the Accordion component.',
 };
 
+export const { stickySummary, interactiveElementsInSummary } = accordionMeta.examples;
+
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-<TableOfContents headings={[accordionMeta.stickySummary.name, accordionMeta.interactiveElementsInSummary.name]} />
+<TableOfContents headings={[stickySummary.name, interactiveElementsInSummary.name]} />
 
-## {accordionMeta.stickySummary.name}
+## {stickySummary.name}
 
-<accordionMeta.stickySummary.description />
+<stickySummary.description />
 
-<ComponentStory story={accordionMeta.stickySummary.story} />
+<ComponentStory story={stickySummary.story} />
 
-## {accordionMeta.interactiveElementsInSummary.name}
+## {interactiveElementsInSummary.name}
 
-<accordionMeta.interactiveElementsInSummary.description />
+<interactiveElementsInSummary.description />
 
-<ComponentStory story={accordionMeta.interactiveElementsInSummary.story} />
+<ComponentStory story={interactiveElementsInSummary.story} />

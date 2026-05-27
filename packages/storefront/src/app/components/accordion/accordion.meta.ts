@@ -1,31 +1,40 @@
-// accordion.meta.ts — explicit, no require.context
-
-import type { ComponentExampleMeta } from '@/models/meta';
-import IntroductionDescription from './configurator/introduction.mdx';
-import { accordionSlotStories, accordionStory } from './configurator/story';
+import Accessibility from '@/app/components/accordion/accessibility.mdx';
+import IntroductionDescription from '@/app/components/accordion/configurator/introduction.mdx';
+import { accordionSlotStories, accordionStory } from '@/app/components/accordion/configurator/story';
+import InteractiveDescription from '@/app/components/accordion/examples/interactive-elements-in-summary/example.mdx';
 import {
   accordionStoryInteractiveSummary,
   accordionStoryInteractiveSummaryName,
-} from './examples/interactive-elements-in-summary/example';
-import InteractiveDescription from './examples/interactive-elements-in-summary/example.mdx';
-import { accordionStoryStickySummary, accordionStoryStickySummaryName } from './examples/sticky-summary/example';
-import StickyDescription from './examples/sticky-summary/example.mdx';
+} from '@/app/components/accordion/examples/interactive-elements-in-summary/story';
+import StickyDescription from '@/app/components/accordion/examples/sticky-summary/example.mdx';
+import {
+  accordionStoryStickySummary,
+  accordionStoryStickySummaryName,
+} from '@/app/components/accordion/examples/sticky-summary/story';
+import Usage from '@/app/components/accordion/usage.mdx';
+import type { ComponentDocsMeta } from '@/models/meta';
 
-export const accordionMeta: ComponentExampleMeta<'p-accordion'> = {
+export const accordionMeta = {
   configurator: {
     name: 'Default',
     description: IntroductionDescription,
     story: accordionStory,
     slotStories: accordionSlotStories,
   },
-  stickySummary: {
-    name: accordionStoryStickySummaryName,
-    description: StickyDescription,
-    story: accordionStoryStickySummary,
+  examples: {
+    stickySummary: {
+      kind: 'story',
+      name: accordionStoryStickySummaryName,
+      description: StickyDescription,
+      story: accordionStoryStickySummary,
+    },
+    interactiveElementsInSummary: {
+      kind: 'story',
+      name: accordionStoryInteractiveSummaryName,
+      description: InteractiveDescription,
+      story: accordionStoryInteractiveSummary,
+    },
   },
-  interactiveElementsInSummary: {
-    name: accordionStoryInteractiveSummaryName,
-    description: InteractiveDescription,
-    story: accordionStoryInteractiveSummary,
-  },
-};
+  usage: Usage,
+  accessibility: Accessibility,
+} satisfies ComponentDocsMeta<'p-accordion'>;

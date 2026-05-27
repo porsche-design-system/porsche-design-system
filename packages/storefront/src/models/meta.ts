@@ -3,15 +3,55 @@ import type { ComponentType } from 'react';
 import type { SlotStories, Story } from '@/models/story';
 import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
-export type ComponentExampleMeta<Tag extends HTMLTagOrComponent> = {
-  [x: string]: ExampleMeta<Tag>;
+/**
+ * Meta describing the interactive configurator entry of a component documentation page.
+ * The configurator is always backed by a `Story` (never a static `CodeSample`) and is the
+ * only entry that may expose configurable `slotStories`.
+ */
+export type ConfiguratorMeta<Tag extends HTMLTagOrComponent> = {
+  name: string;
+  description?: ComponentType;
+  story: Story<Tag>;
+  slotStories?: SlotStories<Tag>;
 };
 
-// Either a story or a manually created code sample can be used for an example
-export type ExampleMeta<Tag extends HTMLTagOrComponent> = {
-  name: string;
-  description?: string | ComponentType;
-  story?: Story<Tag>;
-  slotStories?: SlotStories<Tag>;
-  example?: CodeSample;
+/**
+ * Meta describing a single example on a component's `examples` page.
+ *
+ * Discriminated by `kind` so that exactly one of `story` / `example` is required:
+ *  - `kind: 'story'`   → rendered through the storefront `Story` generator pipeline.
+ *  - `kind: 'example'` → rendered from a manually authored cross-framework `CodeSample`.
+ *
+ * `Tag` defaults to `HTMLTagOrComponent` so that example entries on a component page
+ * may render cross-component demos that don't share the page's primary tag.
+ */
+export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
+  | {
+      kind: 'story';
+      name: string;
+      description?: ComponentType;
+      story: Story<Tag>;
+    }
+  | {
+      kind: 'example';
+      name: string;
+      description?: ComponentType;
+      example: CodeSample;
+    };
+
+/**
+ * Aggregated meta for a component documentation page.
+ *
+ * `Tag` is the primary component tag and pins the configurator's typing. Example entries
+ * use the broader `ExampleMeta` default so cross-component examples are still typable.
+ *
+ * Authors should declare the value with `satisfies ComponentExampleMeta<'p-xxx'>` to
+ * preserve narrow literal keys in `examples` (enabling autocomplete and typo safety on
+ * consumers like `accordionMeta.examples.stickySummary`).
+ */
+export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
+  configurator: ConfiguratorMeta<Tag>;
+  examples: Record<string, ExampleMeta<Tag>>;
+  usage: ComponentType;
+  accessibility: ComponentType;
 };
