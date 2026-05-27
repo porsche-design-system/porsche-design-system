@@ -65,30 +65,33 @@ const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEventDetail>): void => {
 </script>
 
 <template>
-  <PStepperHorizontal @update="onUpdate">
-    <PStepperHorizontalItem v-for="step in steps" :key="step.name" :state="step.state">
-      {{ step.name }}
-    </PStepperHorizontalItem>
-  </PStepperHorizontal>
+  <div class="flex flex-col gap-fluid-sm">
+    <PStepperHorizontal @update="onUpdate">
+      <PStepperHorizontalItem v-for="step in steps" :key="step.name" :state="step.state">
+        {{ step.name }}
+      </PStepperHorizontalItem>
+    </PStepperHorizontal>
 
-  <PText :key="getActiveStepIndex(steps)">{{ stepContent[getActiveStepIndex(steps)] }}</PText>
+    <PText :key="getActiveStepIndex(steps)">{{ stepContent[getActiveStepIndex(steps)] }}</PText>
+    <div class="flex gap-fluid-sm">
+      <PButton
+        type="button"
+        :icon="'arrow-head-left'"
+        :variant="'secondary'"
+        @click="onNextPrevStep('prev')"
+        :disabled="getActiveStepIndex(steps) === 0"
+      >
+        Previous Step
+      </PButton>
 
-  <PButton
-    type="button"
-    :icon="'arrow-head-left'"
-    :variant="'secondary'"
-    @click="onNextPrevStep('prev')"
-    :disabled="getActiveStepIndex(steps) === 0"
-  >
-    Previous Step
-  </PButton>
-
-  <PButton
-    type="button"
-    :variant="'primary'"
-    :disabled="getActiveStepIndex(steps) === steps.length - 1"
-    @click="onNextPrevStep('next')"
-  >
-    Next Step
-  </PButton>
+      <PButton
+        type="button"
+        :variant="'primary'"
+        :disabled="getActiveStepIndex(steps) === steps.length - 1"
+        @click="onNextPrevStep('next')"
+      >
+        Next Step
+      </PButton>
+    </div>
+  </div>
 </template>
