@@ -24,9 +24,10 @@ it('should contain all expected top-level categories', () => {
 it('every leaf should have name, value and description', () => {
   for (const entry of allEntries) {
     expect(entry.name, `missing name`).toBeTruthy();
-    // value may be 0 (e.g. breakpointBase) — check for defined + non-empty-string only
-    expect(entry.value, `${entry.name}: missing value`).not.toBeUndefined();
-    expect(String(entry.value), `${entry.name}: empty value`).not.toBe('');
+    // Function exports (e.g. getFocusVisibleStyle, getSkeletonStyle) intentionally have no value
+    if (entry.value !== undefined) {
+      expect(String(entry.value), `${entry.name}: empty value`).not.toBe('');
+    }
     expect(entry.description, `${entry.name}: missing description`).toBeTruthy();
   }
 });
@@ -35,7 +36,9 @@ it('every leaf name should match its key in the tree', () => {
   function checkKeys(tree: EmotionMetaTree, path = ''): void {
     for (const [key, node] of Object.entries(tree)) {
       if ('name' in node) {
-        expect((node as EmotionMeta).name, `key mismatch at ${path}.${key}`).toBe(key);
+        const name = (node as EmotionMeta).name;
+        // name equals the key, or is a @signature override that starts with the key followed by '('
+        expect(name === key || name.startsWith(`${key}(`), `key mismatch at ${path}.${key}: "${name}"`).toBe(true);
       } else {
         checkKeys(node as EmotionMetaTree, `${path}.${key}`);
       }
