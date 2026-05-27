@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "npm run clean:build && npm run build:global-styles && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:emotion-meta && npm run build:vanilla-extract && npm run build:app",
+    "build": "npm run clean:build && npm run build:global-styles && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:emotion-meta && npm run build:vanilla-extract && npm run build:vanilla-extract-meta && npm run build:app",
     "build-app": "tsc -b && vite build",
     "build-prod": "npm run clean:build && npm run build-prod:global-styles && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
     "build:app": "vite build",
@@ -20,6 +20,7 @@
     "build:vanilla-extract": "npm run build --workspace=@porsche-design-system/vanilla-extract",
     "build-prod:global-styles": "npm run build-prod --workspace=@porsche-design-system/global-styles",
     "build:emotion-meta": "npm run build --workspace=@porsche-design-system/emotion-meta",
+    "build:vanilla-extract-meta": "npm run build --workspace=@porsche-design-system/vanilla-extract-meta",
     "test": "npm run test:unit && npm run test:vrt",
     "test:unit": "npm run test:unit:global-styles && npm run test:unit:tailwindcss && npm run test:unit:scss && npm run test:unit:emotion && npm run test:unit:vanilla-extract",
     "test:unit:global-styles": "npm run test:unit --workspace=@porsche-design-system/global-styles",
