@@ -58,3 +58,23 @@ it('no description should contain raw JSDoc syntax', () => {
     expect(entry.description, `${entry.name}: raw JSDoc in description`).not.toMatch(/\/\*\*?|\*\/|@\w+/);
   }
 });
+
+it('colorContrast tokens should be ordered Higher→High→Medium→Low→Lower', () => {
+  const lightDark = (vanillaExtractMeta.color as VanillaExtractMetaTree).lightDark as VanillaExtractMetaTree;
+  const keys = Object.keys(lightDark).filter((k) => k.startsWith('colorContrast'));
+  const variantOrder = ['Higher', 'High', 'Medium', 'Low', 'Lower'];
+  for (let i = 0; i < variantOrder.length - 1; i++) {
+    const a = keys.indexOf(`colorContrast${variantOrder[i]}`);
+    const b = keys.indexOf(`colorContrast${variantOrder[i + 1]}`);
+    if (a !== -1 && b !== -1) expect(a, `colorContrast${variantOrder[i]} should precede colorContrast${variantOrder[i + 1]}`).toBeLessThan(b);
+  }
+});
+
+it('typography tokens should be ordered largest-to-smallest (5Xl before 2Xs)', () => {
+  const keys = Object.keys(vanillaExtractMeta.typography as VanillaExtractMetaTree);
+  const idx5Xl = keys.findIndex((k) => k.includes('5Xl'));
+  const idx2Xs = keys.findIndex((k) => k.includes('2Xs'));
+  expect(idx5Xl, '5Xl tokens should exist').toBeGreaterThanOrEqual(0);
+  expect(idx2Xs, '2Xs tokens should exist').toBeGreaterThanOrEqual(0);
+  expect(idx5Xl, '5Xl should come before 2Xs').toBeLessThan(idx2Xs);
+});

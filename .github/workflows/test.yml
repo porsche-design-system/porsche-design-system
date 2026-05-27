@@ -362,6 +362,19 @@ jobs:
         uses: ./.github/actions/restore
       - run: npm run build:generateEmotionMeta --workspace=@porsche-design-system/emotion-meta
       - run: npm run test:unit:emotion-meta
+  vanilla-extract-meta:
+    name: 'Vanilla Extract Meta'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - run: npm run build:generateVanillaExtractMeta --workspace=@porsche-design-system/vanilla-extract-meta
+      - run: npm run test:unit:vanilla-extract-meta
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
