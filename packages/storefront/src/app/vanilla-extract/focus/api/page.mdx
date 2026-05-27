@@ -1,5 +1,7 @@
+import { StylesTable } from '@/components/common/StylesTable';
+import { withoutDeprecated } from '@/lib/withoutDeprecated';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract-meta';
 
 export const metadata = {
   title: 'Vanilla Extract: Focus - Porsche Design System',
@@ -12,6 +14,4 @@ export const metadata = {
 
 ## JS Functions
 
-| JS Function                                                                                  | Description                        |
-| -------------------------------------------------------------------------------------------- | ---------------------------------- |
-| <Code variant="nowrap">getFocusVisibleStyle({'{'} offset: string = 2px {'}'})</Code> | Applies a **focus-visible** style. |
+<StylesTable meta={withoutDeprecated(vanillaExtractMeta.focus)} columnLabel="JS Function" />

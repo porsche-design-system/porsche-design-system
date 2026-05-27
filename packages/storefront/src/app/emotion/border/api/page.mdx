@@ -1,16 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  radius3Xl,
-  radius4Xl,
-  radiusXl,
-  radius2Xl,
-  radiusFull,
-  radiusLg,
-  radiusMd,
-  radiusSm,
-  radiusXs,
-} from '@porsche-design-system/components-react/emotion';
+import { StylesTable } from '@/components/common/StylesTable';
+import { emotionMeta } from '@porsche-design-system/emotion-meta';
 
 export const metadata = {
   title: 'Emotion: Border - Porsche Design System',
@@ -25,14 +15,4 @@ export const metadata = {
 
 ### Radius
 
-| JS                                                 | Description                                | Value                                            |
-| -------------------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
-| <Code variant="nowrap">radiusXs</Code>   | Holds a **x-small** `border-radius`.       | <Code variant="value">{radiusXs}</Code>   |
-| <Code variant="nowrap">radiusSm</Code>   | Holds a **small** `border-radius`.         | <Code variant="value">{radiusSm}</Code>   |
-| <Code variant="nowrap">radiusMd</Code>   | Holds a **medium** `border-radius`.        | <Code variant="value">{radiusMd}</Code>   |
-| <Code variant="nowrap">radiusLg</Code>   | Holds a **large** `border-radius`.         | <Code variant="value">{radiusLg}</Code>   |
-| <Code variant="nowrap">radiusXl</Code>   | Holds a **x-large** `border-radius`.       | <Code variant="value">{radiusXl}</Code>   |
-| <Code variant="nowrap">radius2Xl</Code>  | Holds a **2x-large** `border-radius`.      | <Code variant="value">{radius2Xl}</Code>  |
-| <Code variant="nowrap">radius3Xl</Code>  | Holds a **3x-large** `border-radius`.      | <Code variant="value">{radius3Xl}</Code>  |
-| <Code variant="nowrap">radius4Xl</Code>  | Holds a **4x-large** `border-radius`.      | <Code variant="value">{radius4Xl}</Code>  |
-| <Code variant="nowrap">radiusFull</Code> | Holds a **fully** rounded `border-radius`. | <Code variant="value">{radiusFull}</Code> |
+<StylesTable meta={emotionMeta.border.radius} columnLabel="JS" />

@@ -1,20 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  spacingStaticXs,
-  spacingStaticSm,
-  spacingStaticMd,
-  spacingStaticLg,
-  spacingStaticXl,
-  spacingStatic2Xl,
-  spacingFluidXs,
-  spacingFluidSm,
-  spacingFluidMd,
-  spacingFluidLg,
-  spacingFluidXl,
-  spacingFluid2Xl,
-  spacingStatic2Xs,
-} from '@porsche-design-system/components-react/emotion';
+import { StylesTable } from '@/components/common/StylesTable';
+import { emotionMeta } from '@porsche-design-system/emotion-meta';
 
 export const metadata = {
   title: 'Emotion: Spacing - Porsche Design System',
@@ -29,23 +15,8 @@ export const metadata = {
 
 ### Fluid
 
-| JS                                            | Description                           | Value                                          |
-| --------------------------------------------- | ------------------------------------- | ---------------------------------------------- |
-| <Code variant="nowrap">spacingFluidXs</Code>  | Holds the **x-small fluid** spacing.  | <Code variant="value">{spacingFluidXs}</Code>  |
-| <Code variant="nowrap">spacingFluidSm</Code>  | Holds the **small fluid** spacing.    | <Code variant="value">{spacingFluidSm}</Code>  |
-| <Code variant="nowrap">spacingFluidMd</Code>  | Holds the **medium fluid** spacing.   | <Code variant="value">{spacingFluidMd}</Code>  |
-| <Code variant="nowrap">spacingFluidLg</Code>  | Holds the **large fluid** spacing.    | <Code variant="value">{spacingFluidLg}</Code>  |
-| <Code variant="nowrap">spacingFluidXl</Code>  | Holds the **x-large fluid** spacing.  | <Code variant="value">{spacingFluidXl}</Code>  |
-| <Code variant="nowrap">spacingFluid2Xl</Code> | Holds the **2x-large fluid** spacing. | <Code variant="value">{spacingFluid2Xl}</Code> |
+<StylesTable meta={emotionMeta.spacing.fluid} columnLabel="JS" />
 
 ### Static
 
-| JS                                             | Description                            | Value                                           |
-| ---------------------------------------------- | -------------------------------------- | ----------------------------------------------- |
-| <Code variant="nowrap">spacingStatic2Xs</Code> | Holds the **2x-small static** spacing. | <Code variant="value">{spacingStatic2Xs}</Code> |
-| <Code variant="nowrap">spacingStaticXs</Code>  | Holds the **x-small static** spacing.  | <Code variant="value">{spacingStaticXs}</Code>  |
-| <Code variant="nowrap">spacingStaticSm</Code>  | Holds the **small static** spacing.    | <Code variant="value">{spacingStaticSm}</Code>  |
-| <Code variant="nowrap">spacingStaticMd</Code>  | Holds the **medium static** spacing.   | <Code variant="value">{spacingStaticMd}</Code>  |
-| <Code variant="nowrap">spacingStaticLg</Code>  | Holds the **large static** spacing.    | <Code variant="value">{spacingStaticLg}</Code>  |
-| <Code variant="nowrap">spacingStaticXl</Code>  | Holds the **x-large static** spacing.  | <Code variant="value">{spacingStaticXl}</Code>  |
-| <Code variant="nowrap">spacingStatic2Xl</Code> | Holds the **2x-large static** spacing. | <Code variant="value">{spacingStatic2Xl}</Code> |
+<StylesTable meta={emotionMeta.spacing.static} columnLabel="JS" />

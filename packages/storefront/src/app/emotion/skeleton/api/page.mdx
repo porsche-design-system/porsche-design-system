@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { StylesTable } from '@/components/common/StylesTable';
+import { emotionMeta } from '@porsche-design-system/emotion-meta';
 
 export const metadata = {
   title: 'Emotion: Skeleton - Porsche Design System',
@@ -12,6 +13,4 @@ export const metadata = {
 
 ## JS Functions
 
-| JS Function                                      | Description                                                     |
-| ------------------------------------------------ | --------------------------------------------------------------- |
-| <Code variant="nowrap">getSkeletonStyle()</Code> | Applies a skeleton placeholder style to indicate loading state. |
+<StylesTable meta={emotionMeta.skeleton} columnLabel="JS Function" />

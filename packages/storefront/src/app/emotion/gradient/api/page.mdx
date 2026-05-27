@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import { gradientStopsFadeDark } from '@porsche-design-system/components-react/emotion';
+import { StylesTable } from '@/components/common/StylesTable';
+import { withoutDeprecated } from '@/lib/withoutDeprecated';
+import { emotionMeta } from '@porsche-design-system/emotion-meta';
 
 export const metadata = {
   title: 'Emotion: Gradient - Porsche Design System',
@@ -13,6 +14,4 @@ export const metadata = {
 
 ## JS
 
-| JS                                                     | Description                                                         | Value                                                    |
-| ------------------------------------------------------ | ------------------------------------------------------------------- | -------------------------------------------------------- |
-| <Code variant="nowrap">gradientStopsFadeDark</Code> | Holds color stops for a faded gradient, used as `background-image`. | <Code variant="value">{gradientStopsFadeDark}</Code> |
+<StylesTable meta={withoutDeprecated(emotionMeta.gradient)} columnLabel="JS" />

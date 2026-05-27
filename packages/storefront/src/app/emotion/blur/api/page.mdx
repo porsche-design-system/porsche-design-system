@@ -1,6 +1,7 @@
-import { blurFrosted } from '@porsche-design-system/components-react/emotion';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { StylesTable } from '@/components/common/StylesTable';
+import { emotionMeta } from '@porsche-design-system/emotion-meta';
+import { withoutDeprecated } from '@/lib/withoutDeprecated';
 
 export const metadata = {
   title: 'Emotion: Blur - Porsche Design System',
@@ -13,6 +14,4 @@ export const metadata = {
 
 ## JS
 
-| JS                                                  | Description                                                                              | Value                                            |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| <Code variant="nowrap">blurFrosted</Code> | Holds a blur value for a **frosted** effect when combined with a semi-transparent color. | <Code variant="value">{blurFrosted}</Code> |
+<StylesTable meta={withoutDeprecated(emotionMeta.blur)} columnLabel="JS" />
