@@ -1,19 +1,8 @@
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { CodeSample } from '@porsche-design-system/shared';
 import type { ComponentType } from 'react';
 import type { SlotStories, Story } from '@/models/story';
 import type { HTMLTagOrComponent } from '@/utils/generator/generator';
-
-/**
- * Meta describing the interactive configurator entry of a component documentation page.
- * The configurator is always backed by a `Story` (never a static `CodeSample`) and is the
- * only entry that may expose configurable `slotStories`.
- */
-export type ConfiguratorMeta<Tag extends HTMLTagOrComponent> = {
-  name: string;
-  description?: ComponentType;
-  story: Story<Tag>;
-  slotStories?: SlotStories<Tag>;
-};
 
 /**
  * Meta describing a single example on a component's `examples` page.
@@ -50,8 +39,13 @@ export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
  * consumers like `accordionMeta.examples.stickySummary`).
  */
 export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
-  configurator: ConfiguratorMeta<Tag>;
+  introduction: ComponentType;
+  configurator: {
+    story: Story<Tag>;
+    slotStories?: SlotStories<Tag>;
+  };
   examples: Record<string, ExampleMeta<Tag>>;
   usage: ComponentType;
   accessibility: ComponentType;
+  api: ComponentMeta;
 };

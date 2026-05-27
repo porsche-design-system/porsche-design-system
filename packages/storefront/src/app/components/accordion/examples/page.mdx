@@ -1,3 +1,4 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { accordionMeta } from '@/app/components/accordion/accordion.meta';
@@ -7,20 +8,23 @@ export const metadata = {
   description: 'Discover detailed examples and insights of the Accordion component.',
 };
 
-export const { stickySummary, interactiveElementsInSummary } = accordionMeta.examples;
-
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-<TableOfContents headings={[stickySummary.name, interactiveElementsInSummary.name]} />
+<TableOfContents
+  headings={[
+    accordionMeta.examples.stickySummary.name,
+    accordionMeta.examples.interactiveElementsInSummary.name,
+  ]}
+/>
 
-## {stickySummary.name}
+## {accordionMeta.examples.stickySummary.name}
 
-<stickySummary.description />
+<accordionMeta.examples.stickySummary.description />
 
-<ComponentStory story={stickySummary.story} />
+<ComponentStory story={accordionMeta.examples.stickySummary.story} />
 
-## {interactiveElementsInSummary.name}
+## {accordionMeta.examples.interactiveElementsInSummary.name}
 
-<interactiveElementsInSummary.description />
+<accordionMeta.examples.interactiveElementsInSummary.description />
 
-<ComponentStory story={interactiveElementsInSummary.story} />
+<ComponentStory story={accordionMeta.examples.interactiveElementsInSummary.story} />

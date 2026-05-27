@@ -1,6 +1,7 @@
+"use client";
+
 import type { Story } from '@/models/story';
 
-export const accordionStoryInteractiveSummaryName = 'Interactive elements in summary';
 
 export const accordionStoryInteractiveSummary: Story<'p-accordion'> = {
   state: {

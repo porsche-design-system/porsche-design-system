@@ -1,6 +1,7 @@
+"use client";
+
 import type { Story } from '@/models/story';
 
-export const accordionStoryStickySummaryName = 'Sticky summary';
 
 export const accordionStoryStickySummary: Story<'p-accordion'> = {
   state: {
