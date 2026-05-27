@@ -22,8 +22,10 @@ export const CarouselExampleDynamicSlidesPage = () => {
         ))}
       </PCarousel>
 
-      <PButton type="button" onClick={onAddClick} children="Add slide" />
-      <PButton type="button" onClick={onRemoveClick} children="Remove last slide" />
+      <div className="flex gap-fluid-sm mt-fluid-sm">
+        <PButton type="button" onClick={onAddClick} children="Add slide" />
+        <PButton type="button" onClick={onRemoveClick} children="Remove last slide" />
+      </div>
     </>
   );
 };
