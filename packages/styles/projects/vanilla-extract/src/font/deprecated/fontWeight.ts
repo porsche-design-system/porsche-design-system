@@ -1,6 +1,6 @@
 import { fontWeightRegular } from './fontWeightRegular';
 import { fontWeightSemiBold } from './fontWeightSemiBold';
-import { fontWeightBold } from '../fontWeightBold';
+import { fontWeightBold } from '../weight/fontWeightBold';
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
 export const fontWeight = {

@@ -3,20 +3,8 @@ import { colorFrosted, colorFrostedStrong } from '../color';
 import { durationXl, easeInOut } from '../motion';
 
 /**
- * Keyframes for the skeleton loading animation.
- * Animates the background position from right to left to create a shimmer effect.
- */
-export const skeletonKeyframes = {
-  from: { backgroundPositionX: '100%' },
-  to: { backgroundPositionX: '-100%' },
-};
-
-/**
- * Applies skeleton loading styles with a background animation.
- * Uses the CSS `light-dark()` color function for automatic theme adaptation.
- *
- * @param animationName - The name of the animation, which must be the generated name from `vanilla-extract`.
- * This should be the return value of the `keyframes` function.
+ * Applies a skeleton placeholder style to indicate loading state.
+ * @signature getSkeletonStyle(animationName: string)
  */
 export const getSkeletonStyle = (animationName: string) => {
   return {

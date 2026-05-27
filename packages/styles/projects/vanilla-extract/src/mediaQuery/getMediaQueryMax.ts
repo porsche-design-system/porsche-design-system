@@ -2,7 +2,10 @@ import { breakpoint } from './breakpoint';
 import type { Breakpoint } from './breakpointShared';
 import type { BKey } from './mediaQueryShared';
 
-/** Returns a **max-width** media query string for the specified breakpoint. */
+/**
+ * Returns a **max-width** media query string for the specified breakpoint.
+ * @signature getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')
+ */
 export function getMediaQueryMax(max: BKey<'xs'>): '(max-width:479px)';
 export function getMediaQueryMax(max: BKey<'s'>): '(max-width:759px)';
 export function getMediaQueryMax(max: BKey<'m'>): '(max-width:999px)';

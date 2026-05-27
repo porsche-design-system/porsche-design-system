@@ -1,0 +1,1 @@
+export { fontPorscheNext } from './fontPorscheNext';
